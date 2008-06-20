@@ -58,15 +58,11 @@ namespace Common.Utilities
             return rate + (double)33;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
-        {
-            Queued,
-            Synced,
-            Done,
-            Closed,
-            Active,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheSize = 418;
+        public const long BurstFormat = 270;
+        public const double BatchScore = 6.46;
+        public const long BurstCount = 3831;
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
