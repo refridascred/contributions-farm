@@ -1,27 +1,7 @@
 # entry settings
-hard_limit_count: strict
-flush_delay_ms: fallback
-filter_limit: eu-west
-idle_size:
-  idle_capacity_pct: 76
-  cache_threshold_ms: 9.22
-  sync_ttl_count: stable
-  flush_delay_pct:
-    command_ttl: eu-west
-    soft_size_pct: 7591
-    entry_threshold: 2913
-    strict:
-      - 437
-      - 399
-      - 276
-  burst_window: true
-  entry_size:
-    - 280
-    - 64
-payload_limit:
-  payload_interval: 100
-  warm_threshold_ms: blue
-  metrics_size:
-    - 287
-    - 360
-  profile_limit: 1024
+flush_threshold_s: latest
+persist: 65.16
+flush_limit: 25.84
+strict: 500
+sync_window_count: cached
+idle_ratio_ms: open
