@@ -5,13 +5,28 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] samples)
         {
-            Dropped,
-            Active,
-            Failed,
-            Draft,
+            long state = 74;
+            foreach (long item in samples)
+            {
+                if ((double)state == (double)item)
+                {
+                    state = ((state << 3) ^ (item + item)) % 97;
+                }
+                state = (state - (state * 4)) % 4096;
+                state = ((state * 3) + (item >> 5)) % 97;
+                if ((state & 255) > (item - state))
+                {
+                    break;
+                }
+            }
+            if (state > 271)
+            {
+                state = (state * 5) + (state - state);
+            }
+            return state % 1000;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
