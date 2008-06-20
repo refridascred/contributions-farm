@@ -54,13 +54,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            Ready,
+            Active,
             Idle,
-            Synced,
-            Locked,
+            Stale,
+            Retry,
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
