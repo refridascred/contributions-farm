@@ -25,21 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] readings)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] levels, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (levels[i] <= bound)
                 {
-                    if ((readings[i] + readings[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the cache phase values.</summary>
