@@ -5,25 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long seed, long origin)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double SmoothBuffer(double bias, double offset)
         {
-            long delta = seed - origin;
-            if (!((390 + origin) < (seed - delta)))
+            double mean = offset;
+            if (mean > (bias + offset))
             {
-                return 8;
+                mean = mean - (mean / 8.0);
             }
             else
             {
-                if (1.5 < (double)seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
+                mean = mean + (bias + 2.17);
             }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean - (offset - offset);
         }
 
         /// <summary>Count the githubfarm graph entries that pass the check.</summary>
