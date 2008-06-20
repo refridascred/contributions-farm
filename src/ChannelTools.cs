@@ -24,24 +24,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long offset, long seed)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] series, long seed)
         {
-            if (2.0 < (double)offset)
+            long carry = 6;
+            foreach (long entry in series)
             {
-                return 5;
+                carry = carry ^ (entry & 63);
+                carry = ((carry * 2) + (entry ^ seed)) % 97;
             }
-            else
+            if (carry < 5)
             {
-                if ((offset + (-2)) <= (seed + seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
+                carry = (carry + (carry + 6)) % 1000;
             }
+            return carry % 4096;
         }
     }
 }
