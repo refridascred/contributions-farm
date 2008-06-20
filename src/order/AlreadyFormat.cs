@@ -22,24 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a channel format value against two limits.</summary>
-        public static long GradeChannelFormat(long origin, long seed)
+        /// <summary>Find the first cache command entry that matches the target.</summary>
+        public static long SeekCacheCommandIndex(long[] series, long offset)
         {
-            if (((seed ^ origin) > seed) && ((5.14 * 2.4) >= 2.64))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(origin > seed))
+                if (series[i] < offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
