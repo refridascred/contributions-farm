@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportGaps(long[] series)
         {
-            public string Mode { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((cell <= (cell & 31)) || !(5 < (tally * 5)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first token payload entry that matches the target.</summary>
