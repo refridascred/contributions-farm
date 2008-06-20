@@ -20,13 +20,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenHits(long[] samples, long seed)
         {
-            public double Owner { get; set; }
-            public long Flag { get; set; }
-            public double Rank { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum % 97) > datum)
+                {
+                    matches = (matches + 1) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
