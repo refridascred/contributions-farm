@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsOutliers(long[] items, long origin)
-        {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((((hits % 100) < (datum + datum)) || ((datum * 2) >= (datum + hits))) && (((9.75 / 2.0) == (double)origin) || (69 > (origin + hits))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BaseWidth = "strict-edge";
+        public const long IdleWindow = 654;
+        public const long LimitWidth = 2929;
+        public const double LimitRatio = 88.9;
+        public const long MaxWindow = 4199;
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long DeriveSession(long floor)
