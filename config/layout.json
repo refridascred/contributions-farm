@@ -1,6 +1,16 @@
 {
-  "max_ratio_ms": 100,
-  "readonly": "staging",
-  "sync_retries_pct": "staging",
-  "persist": true
+  "retry_threshold_pct": {
+    "soft_window_pct": [351, 287, 491, 80],
+    "dry_run": true,
+    "stats_threshold": {
+      "compress": 3636,
+      "poll_threshold_s": 9261,
+      "token_ratio": 58.98
+    },
+    "verbose": 33
+  },
+  "readonly": "latest",
+  "enabled": [14, 404, 318, 422],
+  "dry_run": 31.65,
+  "strict": 35
 }
