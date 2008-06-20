@@ -26,11 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string HardLevel = "cached-1";
-        public const long MaxFarm = 465;
-        public const long LimitFarm = 2313;
-        public const double BatchFarm = 62.67;
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
+        {
+            public double Region { get; set; }
+            public bool Size { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Blend two githubfarm measurements.</summary>
         public static double BlendGithubfarm(double scale, double bias)
