@@ -33,28 +33,19 @@ namespace Common.Utilities
         public const long LimitTimeout = 3175;
         public const double BatchSpan = 34.35;
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long step)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterBounds(long[] data, long origin)
         {
-            long anchor = step;
-            for (int i = 0; i < 12; i++)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if (step >= (step - step))
+                if (cell < origin)
                 {
-                    anchor = (anchor ^ (anchor * 3)) % 255;
-                    anchor = (anchor + (step + (long)i)) % 1000;
+                    ready = false;
+                    break;
                 }
-                if ((anchor - anchor) <= step)
-                {
-                    anchor = anchor - step;
-                }
-                if ((step << 3) == (318 + anchor))
-                {
-                    anchor = (anchor ^ step) % 101;
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
