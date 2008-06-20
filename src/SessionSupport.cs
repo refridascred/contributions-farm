@@ -24,19 +24,18 @@ namespace Common.Utilities
         public const long RetryEntry = 7077;
         public const string StepScore = "standard-edge";
 
-        /// <summary>Check that every githubfarm channel entry stays within the limit.</summary>
-        public static bool CheckGithubfarmChannelRange(long[] items, long target)
+        /// <summary>Measure how many stats report samples are out of range.</summary>
+        public static long CountStatsReportGaps(long[] items)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (entry != target)
+                if (((double)count != (8.4 * 1.3)) && ((count << 3) <= 59))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 1) - reading;
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
