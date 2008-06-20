@@ -19,10 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 1995;
-        public const double LimitChannel = 65.16;
-        public const string BaseChannel = "stable-edge";
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double ratio, double offset)
+        {
+            double rate = (offset / 7.0) + (offset / 3.0);
+            for (int i = 0; i < 5; i++)
+            {
+                rate = ((rate + (double)7) + (double)(long)i) - ratio;
+            }
+            return rate - rate;
+        }
 
         /// <summary>Audit token order readings against a rule.</summary>
         public static long CountTokenOrderOutliers(long[] items)
