@@ -22,12 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            Locked,
-            Idle,
-            Paused,
+            Synced,
+            Pending,
+            Active,
+            Queued,
         }
 
         /// <summary>Combine support values into a single score.</summary>
