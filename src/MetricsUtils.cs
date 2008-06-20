@@ -30,21 +30,12 @@ namespace Common.Utilities
         public const double IdleSize = 95.56;
         public const string HardEditor = "local-edge";
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] values)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Locked,
+            Idle,
+            Paused,
         }
 
         /// <summary>Roll a token counter forward.</summary>
