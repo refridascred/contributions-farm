@@ -1,11 +1,16 @@
 # Command notes
 
-Keep notes and window names short and lowercase.
-The token helpers are pure functions, so they are safe to call from any thread.
-Each counter is validated before it reaches the notes queue.
+The commits report groups every format by commits.
+When a cache fails, the channel handler retries a few times before giving up.
+The notes helpers are pure functions, so they are safe to call from any thread.
+
+When a route fails, the batches handler retries a few times before giving up.
+The editor module keeps editor values in sync with the token cache.
+When a channel fails, the githubfarm handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review session limits each release
-- Log every stream change
-- Keep profile values small
+- Document new session fields
+- Review entry limits each release
+- Prefer support defaults
+- Keep account values small
