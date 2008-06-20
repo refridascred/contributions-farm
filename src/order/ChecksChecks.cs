@@ -39,9 +39,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string HardWindow = "stable-1";
-        public const long BurstDepth = 2915;
-        public const string LimitScore = "latest-v2";
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterHits(long[] samples)
+        {
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((value + value) == (value & 127))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
