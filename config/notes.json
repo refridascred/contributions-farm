@@ -1,7 +1,7 @@
 {
-  "burst_delay": true,
-  "token_size": 9492,
-  "strict": 42.41,
-  "account_threshold": ["standard", "latest"],
-  "audit": 44.11
+  "cache_timeout_s": true,
+  "verbose": ["fallback", "staging"],
+  "dry_run": "strict",
+  "commits_delay": true,
+  "warm_window": ["eu-west", "blue", "cached"]
 }
