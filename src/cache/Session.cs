@@ -36,11 +36,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportRange(long[] items, long offset)
         {
-            public long Label { get; set; }
-            public long Level { get; set; }
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
