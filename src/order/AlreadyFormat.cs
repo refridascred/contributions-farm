@@ -52,18 +52,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorHits(long[] samples)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((20.0 / 8.0) != (double)value)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Stale,
+            Pending,
+            Active,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
