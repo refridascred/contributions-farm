@@ -1,17 +1,6 @@
 {
-  "metrics_limit": [460, 444],
-  "metric_retries": {
-    "hard_window_count": [399, 9, 246],
-    "format_interval": {
-      "retry_limit_pct": 500,
-      "idle_depth": [498, 496, 103, 199],
-      "burst_ttl_pct": "primary",
-      "default_delay_count": false,
-      "persist": 37
-    },
-    "compress": 75.88
-  },
-  "soft_size_s": true,
-  "hard_window": true,
-  "payload_threshold": 250
+  "verbose": 92.14,
+  "readonly": ["strict", "eu-west", "legacy", "local"],
+  "flush_timeout_count": "fallback",
+  "warm_interval_s": "edge"
 }
