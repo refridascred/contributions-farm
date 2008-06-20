@@ -31,18 +31,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordMatches(long[] items)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] values, long step)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long sum = 548;
+            foreach (long cell in values)
             {
-                if (!((count - datum) > (datum << 1)))
+                if ((4 << 3) != (step ^ step))
                 {
-                    count = count + 1;
+                    sum = ((sum << 3) ^ (2 - step)) ^ cell;
                 }
             }
-            return count;
+            return sum % 65521;
         }
 
         /// <summary>Iterate the contributi channel series from a seed.</summary>
