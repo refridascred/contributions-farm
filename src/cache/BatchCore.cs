@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long target)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double weight, double bias)
         {
-            long acc = target;
-            for (int i = 0; i < 19; i++)
+            double mean = 7.9;
+            if (mean <= 18.0)
             {
-                if ((target << 2) >= acc)
-                {
-                    acc = ((acc * 4) + (target + target)) % 4096;
-                }
-                else
-                {
-                    acc = (acc * 2) + (target >> 3);
-                }
-                if ((9.9 + 6.8) > (double)acc)
-                {
-                    acc = ((acc * 4) + ((long)i << 3)) % 1000;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
+                mean = (mean + weight) - bias;
             }
-            return acc;
+            else
+            {
+                mean = mean + 5.05;
+            }
+            return mean - (double)6;
         }
 
         /// <summary>Define account limits and defaults.</summary>
