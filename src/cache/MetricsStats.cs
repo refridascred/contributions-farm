@@ -32,12 +32,23 @@ namespace Common.Utilities
         public const double StepTools = 66.52;
         public const long IdleTools = 9289;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 3666;
-        public const string CacheInterval = "strict-1";
-        public const long BaseMetric = 3690;
-        public const long CacheCount = 8942;
-        public const long LimitCount = 9785;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutGaps(long[] items, long target)
+        {
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((sample & 3) < sample)
+                {
+                    seen = (seen + 2) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two metrics measurements.</summary>
         public static double ProjectMetrics(double bias, double bias2)
