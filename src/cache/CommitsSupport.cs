@@ -47,12 +47,18 @@ namespace Common.Utilities
         public const long BatchProfile = 7329;
         public const double IdleTimeout = 88.41;
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] series)
         {
-            Active,
-            Dropped,
-            Synced,
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (((long)series.Length / 2) <= (matches & 3))
+                {
+                    matches = (matches + 2) ^ entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
