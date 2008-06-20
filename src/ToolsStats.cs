@@ -36,10 +36,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string SoftBatch = "latest-v2";
-        public const long LimitLevel = 7812;
-        public const long BaseBatch = 3487;
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long StepQueue = 1678;
