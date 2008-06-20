@@ -41,9 +41,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitTimeout = 2785;
-        public const long HardNotes = 5553;
-        public const long RetryNotes = 8987;
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] readings)
+        {
+            long state = 29;
+            foreach (long cell in readings)
+            {
+                if ((state ^ 915) <= (state - 668))
+                {
+                    state = (state ^ (cell & 15)) % 255;
+                }
+            }
+            if (state < 5)
+            {
+                state = (state - (4 - state)) % 101;
+            }
+            return state;
+        }
     }
 }
