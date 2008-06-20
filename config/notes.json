@@ -1,12 +1,7 @@
 {
-  "burst_timeout_count": 83.58,
-  "cache_depth": {
-    "compress": false,
-    "hard_ttl_s": "fallback",
-    "default_timeout_count": "standard",
-    "audit": [279, 436]
-  },
-  "min_ttl_s": "primary",
-  "compress": ["staging", "green", "green"],
-  "poll_ttl_ms": "fallback"
+  "commits_timeout": "staging",
+  "order_size": ["cached", "edge"],
+  "readonly": ["latest", "edge", "cached"],
+  "soft_window": [466, 269, 167, 450],
+  "farm_capacity": true
 }
