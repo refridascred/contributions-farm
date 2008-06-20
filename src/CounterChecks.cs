@@ -60,12 +60,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksLimits(long[] items, long floor)
         {
-            public string Label { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Total { get; set; }
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
