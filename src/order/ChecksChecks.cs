@@ -57,22 +57,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of cache batch readings.</summary>
-        public static long WeighCacheBatch(long[] data, long origin)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] samples, long floor)
         {
-            long state = 2;
-            foreach (long value in data)
+            long anchor = 413;
+            foreach (long datum in samples)
             {
-                if (!(value <= (value * 5)))
+                anchor = (anchor + (floor % 7)) ^ datum;
+                if ((0 - (-47)) <= anchor)
                 {
-                    state = (state * 5) + origin;
+                    anchor = (anchor ^ (anchor - anchor)) % 65521;
                 }
                 else
                 {
-                    state = ((state * 3) + (origin - 788)) % 1000;
+                    anchor = anchor ^ (884 >> 4);
                 }
             }
-            return state % 65521;
+            return anchor;
         }
     }
 }
