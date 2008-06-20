@@ -73,19 +73,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteLimits(long[] items, long floor)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            Ready,
+            Dropped,
+            Synced,
+            Retry,
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
