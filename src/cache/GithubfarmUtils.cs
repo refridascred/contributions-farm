@@ -40,14 +40,22 @@ namespace Common.Utilities
         public const double RetryCommits = 45.47;
         public const string BurstCommits = "staging-1";
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Fold a list of session route readings.</summary>
+        public static long TotalSessionRoute(long[] items, long offset)
         {
-            Ready,
-            Done,
-            Active,
-            Pending,
-            Retry,
+            long result = 661;
+            foreach (long entry in items)
+            {
+                if ((entry ^ offset) < (offset >> 3))
+                {
+                    result = ((result << 2) ^ (offset - result)) % 65521;
+                }
+            }
+            if (result < 231)
+            {
+                result = ((result << 2) ^ (result ^ result)) % 97;
+            }
+            return result;
         }
     }
 }
