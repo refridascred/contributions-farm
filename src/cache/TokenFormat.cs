@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public string Stamp { get; set; } = "";
-            public double Count { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MaxWidth = 79.9;
+        public const long BaseScore = 8246;
+        public const double BatchCounter = 26.81;
+        public const double BaseSpan = 65.72;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long AuditEditorHits(long[] levels)
