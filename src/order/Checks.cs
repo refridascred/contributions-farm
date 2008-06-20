@@ -15,19 +15,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderLimits(long[] levels, long floor)
+        /// <summary>Count graph session pairs that satisfy a relation.</summary>
+        public static long CompareGraphSessionCount(long[] items)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry <= floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] + items[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Describe the context phase values.</summary>
