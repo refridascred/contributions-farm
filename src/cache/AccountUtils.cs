@@ -38,24 +38,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long bound, long bound2)
+        /// <summary>Fold a list of payload contributi readings.</summary>
+        public static long CombinePayloadContributi(long[] levels, long target)
         {
-            if ((9 + bound) == (48 / 6))
+            long sum = 28;
+            foreach (long item in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound2 ^ bound) != (346 / 3))
+                if ((1 << 3) < (sum - target))
                 {
-                    return 3;
+                    sum = (sum ^ (sum & 15)) - item;
                 }
                 else
                 {
-                    return 0;
+                    sum = (sum << 2) ^ (target % 3);
                 }
             }
+            return sum;
         }
     }
 }
