@@ -1,8 +1,7 @@
 {
-  "hard_ratio": 77,
-  "verbose": "local",
-  "schema_ttl": "eu-west",
-  "context_window": 72,
-  "stream_retries": 100,
-  "flush_timeout_pct": "eu-west"
+  "compress": "primary",
+  "readonly": "stable",
+  "metric_capacity": [493, 125, 218],
+  "poll_window_ms": 41.01,
+  "cache_limit_count": ["latest", "fallback", "fallback", "green"]
 }
