@@ -21,21 +21,19 @@ namespace Common.Utilities
         public const double StepCommits = 39.29;
         public const double CacheCommits = 66.79;
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] series)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchRange(long[] data, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (datum >= seed)
                 {
-                    if ((series[i] - series[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
