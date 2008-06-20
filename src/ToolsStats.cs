@@ -67,23 +67,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double ratio, double offset)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] series, long target)
         {
-            double mean = 8.7;
-            if (mean <= 6.65)
+            long score = 6;
+            foreach (long item in series)
             {
-                mean = (mean - (double)2) - ratio;
+                if (!(score >= ((-564) - score)))
+                {
+                    score = ((score * 3) + (item + target)) % 65521;
+                }
+                score = score + target;
+                score = (score + (item << 1)) % 101;
             }
-            else
-            {
-                mean = mean + offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + (double)806;
+            return score;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
