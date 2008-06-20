@@ -1,7 +1,7 @@
 {
-  "compress": "fallback",
-  "warm_depth_ms": 2067,
-  "sync_ratio": true,
-  "audit": "latest",
-  "max_ttl": "eu-west"
+  "base_interval": 66.1,
+  "default_retries_pct": 38.79,
+  "min_limit_s": ["blue", "blue", "latest"],
+  "channel_retries": ["strict", "local", "eu-west"],
+  "already_threshold": 4.45
 }
