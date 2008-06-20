@@ -51,18 +51,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Measure how many editor cache samples are out of range.</summary>
-        public static long CountEditorCacheHits(long[] data, long origin)
+        /// <summary>Find the first contributi graph entry that matches the target.</summary>
+        public static long SeekContributiGraphIndex(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((3.1 * 7.5) < (double)entry)
+                if ((items[i] >= step) && ((items[i] % 5) != 0))
                 {
-                    hits = (hits + 2) - origin;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
