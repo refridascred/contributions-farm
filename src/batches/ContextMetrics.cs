@@ -19,21 +19,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count record command pairs that satisfy a relation.</summary>
-        public static long MatchRecordCommandCount(long[] items)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long bound, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long step = bound ^ offset;
+            if ((offset - offset) == (step + step))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)step >= (2.86 + 0.1))
                 {
-                    if ((items[i] - items[j]) > 18)
+                    return 2;
+                }
+                else
+                {
+                    if ((offset - step) != (bound + step))
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Blend two graph window measurements.</summary>
