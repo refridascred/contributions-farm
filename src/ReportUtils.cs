@@ -23,18 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandGaps(long[] samples, long limit)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] data)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((5.0 / 5.0) >= (double)limit) || (limit < (limit * 3))) || ((66 * 4) >= (item - matches)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((data[i] + data[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the channel phase values.</summary>
