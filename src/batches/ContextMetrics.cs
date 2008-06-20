@@ -79,11 +79,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string IdleLevel = "primary";
-        public const long RetryPayload = 8827;
-        public const string BurstPayload = "open-v2";
-        public const string HardPayload = "latest-edge";
-        public const double BatchPayload = 77.84;
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
