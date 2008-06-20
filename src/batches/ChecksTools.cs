@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadOutliers(long[] values)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterHits(long[] data)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (!((count ^ datum) != (563 ^ 0)))
+                if ((entry + 0) <= (entry + tally))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Match up cluster samples.</summary>
