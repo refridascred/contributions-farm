@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double scale, double span)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowOutliers(long[] items)
         {
-            double rate = 4.7;
-            return (rate - (span - 19.0)) + scale;
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((value % 60) < value)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
