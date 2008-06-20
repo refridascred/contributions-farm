@@ -38,12 +38,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            Locked,
-            Retry,
             Failed,
+            Idle,
+            Locked,
+            Stale,
+            Paused,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
