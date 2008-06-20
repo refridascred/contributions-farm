@@ -1,6 +1,22 @@
 {
-  "idle_ratio": "standard",
-  "profile_capacity": 8489,
-  "default_window_count": true,
-  "record_ratio": 8427
+  "sync_ratio_s": {
+    "support_size": {
+      "token_capacity": false,
+      "retry_capacity_pct": 60,
+      "hard_timeout_pct": 22.91,
+      "burst_retries_ms": 226,
+      "persist": 88,
+      "checks_ttl": "local"
+    },
+    "readonly": "standard",
+    "burst_interval": {
+      "verbose": ["cached", "blue", "green"],
+      "base_depth_ms": 55.05,
+      "githubfarm_size": "green",
+      "hard_ttl_s": 51.75,
+      "graph_retries": 500
+    }
+  },
+  "cache_capacity_ms": false,
+  "hard_depth_count": 10.95
 }
