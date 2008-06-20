@@ -40,19 +40,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmBounds(long[] samples, long seed)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] data, long step)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell >= seed)
+                if ((data[i] == step) && ((data[i] % 3) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
