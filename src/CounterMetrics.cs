@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadRange(long[] series, long bound)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] values, long bound)
         {
-            bool flag = true;
-            foreach (long item in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item != bound)
+                if ((values[i] == bound) && ((values[i] % 5) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
