@@ -1,5 +1,13 @@
 {
-  "min_retries_pct": "blue",
-  "warm_limit": false,
-  "sync_delay": 60
+  "idle_window_pct": 58.11,
+  "retry_interval_ms": "latest",
+  "flush_interval": "staging",
+  "sync_limit_pct": 250,
+  "batch_limit": {
+    "warm_delay": "staging",
+    "dry_run": 250,
+    "batch_timeout_ms": "local",
+    "poll_retries_s": [415, 133, 5]
+  },
+  "warm_size_pct": 8518
 }
