@@ -27,19 +27,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long floor)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long sum = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    sum = sum - ((long)i2 << 3);
-                }
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            Paused,
+            Synced,
+            Failed,
+            New,
         }
     }
 }
