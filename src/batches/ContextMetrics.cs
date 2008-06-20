@@ -41,32 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long origin, long origin2)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsHits(long[] samples, long step)
         {
-            long span = origin - origin2;
-            if ((origin * 3) <= origin)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (((origin / 9) <= (origin + span)) && (((-9) + origin2) > span))
+                if (((double)step == (6.59 + 4.85)) && (hits >= value))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin * 2) == (9 + origin2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
