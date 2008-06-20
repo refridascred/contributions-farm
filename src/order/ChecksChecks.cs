@@ -31,10 +31,22 @@ namespace Common.Utilities
             return gain + (gain + gain);
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchWidth = 1879;
-        public const string IdleFactor = "primary-v2";
-        public const long LimitCommits = 1102;
-        public const long IdleCount = 6467;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] series, long origin)
+        {
+            long state = -1;
+            foreach (long reading in series)
+            {
+                if ((state & 63) < origin)
+                {
+                    state = state - (reading % 24);
+                }
+                else
+                {
+                    state = (state * 4) + (reading << 2);
+                }
+            }
+            return state;
+        }
     }
 }
