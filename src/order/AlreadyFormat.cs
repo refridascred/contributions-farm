@@ -66,19 +66,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate tools githubfarm readings against a bound.</summary>
-        public static bool GuardToolsGithubfarmRange(long[] samples, long offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextOutliers(long[] readings, long origin)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (cell < offset)
+                if (59 <= (origin + value))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
