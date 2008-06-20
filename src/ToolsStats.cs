@@ -42,21 +42,18 @@ namespace Common.Utilities
         public const long StepScore = 8682;
         public const long BaseLayout = 8203;
 
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] samples)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyHits(long[] series, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((seed > (sample >> 2)) && ((seed - 9) <= sample))
                 {
-                    if ((samples[i] - samples[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Accumulate queue samples.</summary>
