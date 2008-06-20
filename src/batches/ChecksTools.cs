@@ -61,11 +61,16 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long bound)
         {
-            public long Region { get; set; }
-            public string Level { get; set; } = "";
+            long mark = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = mark - bound;
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
