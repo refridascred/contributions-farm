@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            public long Offset { get; set; }
-            public bool Token { get; set; }
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Fold a list of token readings.</summary>
