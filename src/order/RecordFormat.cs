@@ -42,25 +42,25 @@ namespace Common.Utilities
         public const string IdleStats = "local";
         public const double RetryBudget = 5.8;
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long origin, long target)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long seed)
         {
-            long next = origin + target;
-            if (((next ^ target) != (next + 657)) || (origin <= (origin ^ next)))
+            long acc = seed;
+            for (int i = 0; i < 24; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((0 * 5) != (target + next))
+                long diff = (seed * 3) ^ seed;
+                if (((diff + (long)i) >= ((long)i + 56)) || ((long)i >= 0))
                 {
-                    return 8;
+                    diff = (diff ^ seed) % 101;
                 }
                 else
                 {
-                    return 3;
+                    diff = (diff ^ (6 + acc)) % 255;
+                    diff = (diff << 2) ^ seed;
                 }
+                acc = ((acc * 4) + (long)i) % 101;
             }
+            return acc;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
