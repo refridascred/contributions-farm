@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Compare every pair of metric report readings.</summary>
-        public static long CompareMetricReportCount(long[] readings)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 2;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((8 ^ 0) > (score + score))
                 {
-                    if ((readings[i] ^ readings[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score - score) - item;
                 }
             }
-            return seen;
+            if (score > 60)
+            {
+                score = score + (score + 72);
+            }
+            return score % 1000;
         }
 
         /// <summary>Blend two order measurements.</summary>
