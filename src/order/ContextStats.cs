@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] readings, long bound)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long sum = 534;
-            foreach (long reading in readings)
-            {
-                sum = ((sum - (55 * 2)) % 4096) + reading;
-            }
-            if (sum < 28)
-            {
-                sum = (sum ^ bound) % 255;
-            }
-            return sum;
+            New,
+            Closed,
+            Pending,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Describe the editor class values.</summary>
