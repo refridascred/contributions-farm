@@ -51,28 +51,28 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long origin, long offset)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long target, long offset)
         {
-            if (((origin / 7) >= (offset / 4)) && (offset >= (origin ^ origin)))
+            if ((double)target < (3.98 - 2.36))
             {
-                return 3;
+                return 2;
             }
             else
             {
-                if (((7.6 - 2.11) > (double)offset) || ((offset * 2) > origin))
+                if ((target > (target - target)) && ((target << 3) != (offset + offset)))
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    if (offset < (origin >> 4))
+                    if ((offset > (85 * 3)) || ((target + offset) > offset))
                     {
-                        return 5;
+                        return 7;
                     }
                     else
                     {
-                        return 7;
+                        return 8;
                     }
                 }
             }
