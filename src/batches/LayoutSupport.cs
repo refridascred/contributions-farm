@@ -40,11 +40,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long step)
         {
-            public double Score { get; set; }
-            public long Rank { get; set; }
+            long mix = step;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = (mix + (mix ^ step)) % 4096;
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Describe the support status values.</summary>
