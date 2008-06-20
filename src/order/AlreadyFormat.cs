@@ -52,38 +52,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long target, long limit)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorHits(long[] samples)
         {
-            if ((92 < target) && ((1.3 - 3.0) > (double)target))
+            long hits = 0;
+            foreach (long value in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((target + target) != (limit / 2)))
+                if ((20.0 / 8.0) != (double)value)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (target < (target - target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit + target) > (limit - limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a batches options.</summary>
