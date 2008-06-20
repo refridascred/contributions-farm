@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
-        {
-            public bool Level { get; set; }
-            public double Owner { get; set; }
-            public bool Limit { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleFarm = 9762;
+        public const string BurstLevel = "fallback-v2";
+        public const long MinFarm = 2110;
+        public const long BurstFarm = 3146;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long MeasureProfileHits(long[] data, long offset)
