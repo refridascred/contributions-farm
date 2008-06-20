@@ -33,17 +33,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] values, long limit)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long offset, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (2.0 < (double)offset)
             {
-                if (values[i] > limit)
+                return 5;
+            }
+            else
+            {
+                if ((offset + (-2)) <= (seed + seed))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
     }
 }
