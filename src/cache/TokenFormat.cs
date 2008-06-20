@@ -18,21 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of record context readings.</summary>
-        public static long OverlapRecordContextCount(long[] values)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double rate, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double gain = rate;
+            return (gain + (gain / 7.0)) + offset;
         }
 
         /// <summary>Describe the route kind values.</summary>
