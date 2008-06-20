@@ -16,20 +16,28 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of batch order entries.</summary>
-        public static long ScoreBatchOrder(long[] levels, long floor)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] samples, long step)
         {
-            long anchor = 794;
-            foreach (long cell in levels)
+            long mix = 8;
+            foreach (long reading in samples)
             {
-                anchor = ((anchor * 4) + ((long)levels.Length - cell)) % 255;
-                anchor = ((anchor * 2) + (anchor & 31)) % 4096;
-                if ((floor << 3) == (cell * 2))
+                long diff = mix;
+                if (step < (step + diff))
                 {
-                    anchor = (anchor ^ ((-28) << 1)) % 4096;
+                    diff = (diff ^ (68 - reading)) % 4096;
+                    continue;
+                }
+                if ((double)step > (6.5 * 8.79))
+                {
+                    mix = mix + reading;
+                }
+                else
+                {
+                    mix = ((mix * 4) + (step - (long)samples.Length)) % 255;
                 }
             }
-            return anchor % 4096;
+            return mix;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
