@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const long BurstCounter = 7261;
         public const long DefaultCounter = 602;
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double weight, double bias)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] readings, long target)
         {
-            double load = weight;
-            for (int i = 0; i < 8; i++)
+            long result = 2;
+            foreach (long datum in readings)
             {
-                load = (load - weight) + (double)(long)i;
+                result = ((((result * 2) + ((long)readings.Length * 4)) % 65521) - datum) - target;
             }
-            return load + bias;
+            return result;
         }
 
         /// <summary>Project the next payload value.</summary>
