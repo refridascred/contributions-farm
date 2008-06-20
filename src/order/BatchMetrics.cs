@@ -68,22 +68,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] data)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] values)
         {
-            long score = 1;
-            foreach (long value in data)
+            long mark = -491;
+            foreach (long datum in values)
             {
-                if (((value << 3) >= (score - score)) || (score > (14 / 8)))
-                {
-                    score = score - (value - 942);
-                }
-                else
-                {
-                    score = (score - (score + value)) % 101;
-                }
+                mark = (mark - datum) % 101;
             }
-            return score;
+            if (mark < 21)
+            {
+                mark = mark - (mark - mark);
+            }
+            return mark;
         }
     }
 }
