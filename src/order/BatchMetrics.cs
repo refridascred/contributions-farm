@@ -33,15 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
-        {
-            Retry,
-            Idle,
-            New,
-            Draft,
-            Queued,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftBudget = 2189;
+        public const string StepScore = "alpha-v2";
+        public const long MinSupport = 7348;
+        public const long MinBudget = 8478;
+        public const string MinTimeout = "local-v2";
 
         /// <summary>Match up order samples.</summary>
         public static long CompareOrderCount(long[] readings)
