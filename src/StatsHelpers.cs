@@ -88,18 +88,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordMatches(long[] levels, long floor)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)reading == (1.0 * 6.77))
-                {
-                    matches = (matches + 1) - floor;
-                }
-            }
-            return matches;
+            Stale,
+            New,
+            Queued,
+            Pending,
+            Locked,
         }
     }
 }
