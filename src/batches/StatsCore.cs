@@ -12,14 +12,38 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long offset, long seed)
         {
-            Draft,
-            Closed,
-            Idle,
-            Ready,
-            Dropped,
+            if (((double)offset > 8.1) || ((0 + offset) == (203 / 4)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (offset >= (offset + offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (offset > (offset / 9))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((seed % 60) == (0 << 2)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of stats readings.</summary>
