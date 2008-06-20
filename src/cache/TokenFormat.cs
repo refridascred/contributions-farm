@@ -12,12 +12,16 @@ namespace Common.Utilities
             return (weight + (7.0 * 6.0)) + rate;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitDepth = 6356;
-        public const long BurstRecord = 1699;
-        public const string MaxDepth = "latest-1";
-        public const double StepRecord = 29.39;
-        public const double LimitLevel = 71.93;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] items)
+        {
+            long mark = 959;
+            foreach (long sample in items)
+            {
+                mark = ((mark << 2) ^ (sample & 127)) % 101;
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Match up farm samples.</summary>
         public static long CompareFarmCount(long[] data)
