@@ -42,17 +42,39 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] readings, long limit)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long offset, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long cur = offset - floor;
+            if (cur < offset)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
+                return 7;
+            }
+            else
+            {
+                if (5.35 < (double)floor)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (cur < (floor & 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor >> 1) != (465 - (-43)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
