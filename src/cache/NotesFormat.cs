@@ -24,18 +24,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmMatches(long[] items)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (0.7 <= (double)reading)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
