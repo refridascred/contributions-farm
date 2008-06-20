@@ -61,12 +61,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            Stale,
-            Ready,
-            Paused,
+            Closed,
+            Synced,
+            Idle,
         }
     }
 }
