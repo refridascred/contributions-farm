@@ -48,19 +48,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteLimits(long[] values, long bound)
-        {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitSpan = 5439;
+        public const string CacheProfile = "standard-v2";
+        public const double WindowScore = 90.42;
+        public const long RetryProfile = 1970;
     }
 }
