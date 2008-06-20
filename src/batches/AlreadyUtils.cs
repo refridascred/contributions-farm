@@ -39,19 +39,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] readings, long offset)
+        /// <summary>Compare every pair of tools payload readings.</summary>
+        public static long OverlapToolsPayloadCount(long[] readings)
         {
-            long carry = 79;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (((carry << 2) ^ (offset >> 5)) % 97) + reading;
-                if ((offset / 3) != (4 % 16))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] ^ readings[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Project the next commits metrics value.</summary>
