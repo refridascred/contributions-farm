@@ -47,12 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
-        {
-            public double Label { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinAccount = "standard";
+        public const long CacheAccount = 1457;
+        public const long RetryFactor = 6684;
+        public const double WindowAccount = 52.72;
+        public const long LimitAccount = 6418;
 
         /// <summary>Combine metrics notes values into a single score.</summary>
         public static long FoldMetricsNotes(long[] items)
