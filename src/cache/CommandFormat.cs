@@ -29,17 +29,26 @@ namespace Common.Utilities
         public const double DefaultCluster = 62.64;
         public const long MaxWidth = 100;
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] values, long target)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 14;
+            foreach (long datum in series)
             {
-                if ((values[i] == target) && ((values[i] % 3) == 0))
+                if ((acc % 12) <= acc)
                 {
-                    return (long)i;
+                    acc = ((acc << 3) ^ datum) % 65521;
+                }
+                else
+                {
+                    acc = (acc ^ (acc >> 3)) % 101;
                 }
             }
-            return -1;
+            if (acc > 9)
+            {
+                acc = (acc ^ acc) % 4096;
+            }
+            return acc;
         }
     }
 }
