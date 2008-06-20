@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Adjust a profile notes reading.</summary>
+        public static double SmoothProfileNotes(double scale, double offset)
         {
-            public string Weight { get; set; } = "";
-            public double Offset { get; set; }
-            public long Flag { get; set; }
+            double ratio = scale;
+            if (ratio >= (double)581)
+            {
+                ratio = ratio - (double)27;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + offset) - (double)(long)i;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Hold a route snapshot.</summary>
