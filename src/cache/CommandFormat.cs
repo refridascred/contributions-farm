@@ -32,19 +32,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] readings, long seed)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double SmoothContributi(double gain, double span)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            double bias = gain / 9.0;
+            if (bias > gain)
             {
-                if (entry < seed)
-                {
-                    ready = false;
-                    break;
-                }
+                bias = bias - (bias + span);
             }
-            return ready;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - (3.0 - 12.0)) + (double)(long)i;
+            }
+            return bias + (3.4 * 18.0);
         }
 
         /// <summary>Fold a list of format readings.</summary>
