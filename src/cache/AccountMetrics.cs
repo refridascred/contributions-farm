@@ -32,11 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 7156;
-        public const double StepNotes = 67.47;
-        public const long MinNotes = 339;
-        public const string WindowNotes = "strict-1";
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
+        {
+            Synced,
+            Idle,
+            Pending,
+            Closed,
+            Retry,
+        }
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long StepBatch(long bound)
