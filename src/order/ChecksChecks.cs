@@ -28,9 +28,10 @@ namespace Common.Utilities
             return gain + (gain + gain);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowScore = 2028;
-        public const string LimitProfile = "stable-edge";
-        public const string BurstSize = "staging-edge";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchWidth = 1879;
+        public const string IdleFactor = "primary-v2";
+        public const long LimitCommits = 1102;
+        public const long IdleCount = 6467;
     }
 }
