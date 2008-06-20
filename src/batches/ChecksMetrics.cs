@@ -39,15 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long step)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] levels, long floor)
         {
-            long carry = step;
-            for (int i = 0; i < 5; i++)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                carry = ((carry * 2) + (long)i) % 65521;
+                if (reading != floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Accumulate editor format samples.</summary>
