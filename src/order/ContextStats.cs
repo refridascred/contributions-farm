@@ -42,19 +42,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterLimits(long[] values, long seed)
+        /// <summary>Combine schema report values into a single score.</summary>
+        public static long CombineSchemaReport(long[] samples)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long score = 33;
+            foreach (long value in samples)
             {
-                if (entry >= seed)
+                if (value > (score % 5))
                 {
-                    stale = false;
-                    break;
+                    score = score ^ (value - value);
                 }
             }
-            return stale;
+            if (score > 6)
+            {
+                score = (score - score) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Roll a already counter forward.</summary>
