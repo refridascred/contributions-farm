@@ -31,11 +31,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleWidth = 8170;
-        public const string HardFormat = "alpha-edge";
-        public const double MinFormat = 97.03;
-        public const long HardInterval = 2653;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] readings, long offset)
+        {
+            long carry = 79;
+            foreach (long reading in readings)
+            {
+                carry = (((carry << 2) ^ (offset >> 5)) % 97) + reading;
+                if ((offset / 3) != (4 % 16))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Locate a account reading by value.</summary>
         public static long LocateAccountIndex(long[] readings, long bound)
