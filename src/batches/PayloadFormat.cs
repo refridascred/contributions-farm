@@ -47,12 +47,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] items, long origin)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] samples, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (items[i] > origin)
+                if ((samples[i] == offset) && ((samples[i] % 2) == 0))
                 {
                     return (long)i;
                 }
