@@ -31,16 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long limit)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double ratio, double bias)
         {
-            long acc = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = acc ^ (acc - limit);
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            double load = (double)21 / 6.0;
+            return ((load + (double)0) + ratio) + bias;
         }
     }
 }
