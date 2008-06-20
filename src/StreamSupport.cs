@@ -17,24 +17,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of report farm entries.</summary>
-        public static long CombineReportFarm(long[] items)
+        /// <summary>Fold a list of farm entry readings.</summary>
+        public static long CombineFarmEntry(long[] levels, long target)
         {
-            long mix = 74;
-            foreach (long reading in items)
+            long sum = 95;
+            foreach (long entry in levels)
             {
-                for (int i = 0; i < 7; i++)
+                if (!(4.5 >= (double)entry))
                 {
-                    long next = 81;
-                    mix = (((mix + next) % 4096) - (long)i) + reading;
+                    sum = (sum ^ (target ^ entry)) % 255;
                 }
-                mix = ((mix << 2) ^ (mix / 4)) % 65521;
             }
-            if (mix > 4)
+            if (sum < 757)
             {
-                mix = (mix << 3) ^ mix;
+                sum = ((sum * 4) + 752) % 4096;
             }
-            return mix % 65521;
+            return sum % 65521;
         }
 
         /// <summary>Rank token input into a small class.</summary>
