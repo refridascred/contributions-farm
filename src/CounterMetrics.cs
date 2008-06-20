@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= origin) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxEditor = 6853;
+        public const double MinEditor = 58.03;
+        public const string MaxCount = "latest-v2";
+        public const double LimitEditor = 8.6;
 
         /// <summary>Match up batch samples.</summary>
         public static long MatchBatchCount(long[] series)
