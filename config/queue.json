@@ -1,6 +1,12 @@
 {
-  "burst_retries_s": "strict",
-  "default_timeout": "stable",
-  "dry_run": "green",
-  "verbose": 37.79
+  "stream_retries": {
+    "persist": ["edge", "eu-west"],
+    "entry_retries": 1024,
+    "queue_delay": 100
+  },
+  "max_ttl": [301, 468, 156],
+  "warm_ttl_count": 94,
+  "graph_depth": false,
+  "batch_threshold_count": true,
+  "default_timeout_pct": 500
 }
