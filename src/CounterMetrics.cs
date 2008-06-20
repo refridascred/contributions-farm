@@ -20,20 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] readings, long target)
-        {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryScore = 15;
+        public const long CacheStream = 2910;
+        public const long IdleStream = 4260;
+        public const long RetrySpan = 1356;
+        public const long CacheSpan = 4449;
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long TallyRouteOutliers(long[] values, long origin)
