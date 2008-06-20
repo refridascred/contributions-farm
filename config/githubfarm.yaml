@@ -1,13 +1,7 @@
 # githubfarm settings
-cache_timeout_ms:
-  layout_timeout:
-    - 330
-    - 367
-    - 244
-  report_window: true
-  warm_window_pct: 500
-verbose:
-  - 231
-  - 14
-  - 12
+entry_retries: edge
+context_timeout: blue
+base_retries: 18.08
+base_window_ms: legacy
 dry_run: true
+hard_retries_ms: 25.4
