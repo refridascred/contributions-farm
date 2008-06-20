@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MaxWidth = 79.9;
-        public const long BaseScore = 8246;
-        public const double BatchCounter = 26.81;
-        public const double BaseSpan = 65.72;
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                score = ((score * 5) + origin) % 65521;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    score = (score + (long)i) - (long)i2;
+                }
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long AuditEditorHits(long[] levels)
