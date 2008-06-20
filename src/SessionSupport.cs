@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit commits filter readings against a rule.</summary>
-        public static long AuditCommitsFilterHits(long[] values, long seed)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (seed >= (seed << 1))
-                {
-                    hits = (hits + 1) - cell;
-                }
-            }
-            return hits;
+            Paused,
+            Idle,
+            Done,
         }
 
         /// <summary>Hold a schema stats.</summary>
