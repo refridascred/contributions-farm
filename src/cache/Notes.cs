@@ -22,11 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            public long Limit { get; set; }
-            public string Owner { get; set; } = "";
+            Locked,
+            Idle,
+            Paused,
         }
 
         /// <summary>Audit already readings against a rule.</summary>
