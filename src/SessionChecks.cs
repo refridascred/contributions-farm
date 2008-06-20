@@ -58,23 +58,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] items, long step)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long OverlapPayloadCount(long[] samples)
         {
-            long mix = 40;
-            foreach (long item in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                long prev = mix;
-                if ((mix + prev) == (mix - step))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    prev = ((prev << 2) ^ (step << 2)) % 101;
-                }
-                if (((item + step) == (item >> 2)) || ((6.0 * 9.24) < (double)mix))
-                {
-                    mix = (mix + (mix * 3)) % 4096;
+                    if ((samples[i] + samples[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix % 65521;
+            return tally;
         }
     }
 }
