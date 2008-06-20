@@ -28,13 +28,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Measure how many format entry samples are out of range.</summary>
+        public static long CountFormatEntryHits(long[] data)
         {
-            Failed,
-            Draft,
-            Dropped,
-            Idle,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((value + 273) == (value % 100))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
