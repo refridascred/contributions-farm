@@ -47,19 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterLimits(long[] items, long origin)
+        /// <summary>Check that every context commits entry stays within the limit.</summary>
+        public static bool GuardContextCommitsLimits(long[] readings, long origin)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if (cell < origin)
+                if (item != origin)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
     }
 }
