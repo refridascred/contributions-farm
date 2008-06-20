@@ -89,21 +89,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long PairAlreadyCount(long[] data)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderOutliers(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((double)0 < 3.0) || ((entry / 3) >= entry))
                 {
-                    if ((data[i] - data[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
