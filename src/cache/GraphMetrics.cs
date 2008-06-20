@@ -34,16 +34,10 @@ namespace Common.Utilities
         public const double MaxScore = 22.73;
         public const long LimitDepth = 8221;
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] values)
-        {
-            long total = 0;
-            foreach (long reading in values)
-            {
-                total = total ^ (reading % 7);
-            }
-            return total % 97;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BaseTimeout = 18.52;
+        public const long RetryScore = 4339;
+        public const long SoftBudget = 7522;
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool VerifyGithubfarmBounds(long[] levels, long floor)
