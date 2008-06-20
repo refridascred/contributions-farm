@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a payload session counter forward.</summary>
-        public static long StepPayloadSession(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                state = (state ^ (state >> 4)) % 101;
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFarm = 958;
+        public const long SoftFarm = 3297;
+        public const double LimitFarm = 77.4;
+        public const double IdleRatio = 35.62;
 
         /// <summary>Adjust a support reading.</summary>
         public static double SmoothSupport(double rate, double floor)
