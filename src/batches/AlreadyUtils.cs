@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many channel support samples are out of range.</summary>
-        public static long AuditChannelSupportHits(long[] series, long origin)
+        /// <summary>Combine buffer profile values into a single score.</summary>
+        public static long DigestBufferProfile(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long total = 77;
+            foreach (long entry in samples)
             {
-                if ((double)datum > (0.1 / 2.0))
+                if ((entry >> 5) < ((long)samples.Length << 3))
                 {
-                    hits = (hits + 3) + origin;
+                    total = (total ^ total) % 4096;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    total = (total - (entry + entry)) % 101;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Hold a batches header.</summary>
