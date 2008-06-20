@@ -37,18 +37,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphMatches(long[] readings, long offset)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (offset < (offset / 4))
-                {
-                    matches = (matches + 2) ^ value;
-                }
-            }
-            return matches;
+            Draft,
+            New,
+            Failed,
+            Locked,
+            Idle,
         }
 
         /// <summary>Accumulate command batches samples.</summary>
