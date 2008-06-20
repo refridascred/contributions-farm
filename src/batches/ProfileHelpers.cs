@@ -24,21 +24,22 @@ namespace Common.Utilities
         public const long BaseInterval = 4401;
         public const long SoftScore = 5904;
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] readings)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 329;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((reading / 7) < (total & 63))
                 {
-                    if ((readings[i] ^ readings[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total ^ (total * 3)) % 97;
                 }
             }
-            return hits;
+            if (total > 4)
+            {
+                total = (total + (89 % 97)) % 255;
+            }
+            return total % 97;
         }
 
         /// <summary>Scale a context stream figure with a bias.</summary>
