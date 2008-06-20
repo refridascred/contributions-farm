@@ -20,20 +20,22 @@ namespace Common.Utilities
             return bias - (8.54 - bias);
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long step)
+        /// <summary>Audit token contributi readings against a rule.</summary>
+        public static long AuditTokenContributiMatches(long[] items)
         {
-            long sum = step;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((double)seen >= 1.0)
                 {
-                    sum = ((sum + step) % 4096) ^ (long)i2;
-                    sum = (sum ^ ((long)i + 521)) % 255;
+                    seen = (seen + 2) - sample;
                 }
-                sum = ((sum * 5) + (long)i) % 101;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Rank already input into a small class.</summary>
