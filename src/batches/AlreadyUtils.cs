@@ -19,19 +19,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double ratio, double span)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            double bias = (double)0 + 7.0;
-            if (bias > (ratio / 7.0))
-            {
-                bias = bias + ratio;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - bias) - (double)(long)i;
-            }
-            return bias - span;
+            Draft,
+            New,
+            Stale,
+            Failed,
         }
 
         /// <summary>Describe the commits class values.</summary>
