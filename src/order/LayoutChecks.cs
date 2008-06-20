@@ -119,10 +119,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultInterval = 8175;
-        public const string MaxDepth = "strict-1";
-        public const long RetryFarm = 5006;
-        public const double MaxInterval = 80.13;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterHits(long[] readings, long bound)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((bound + hits) >= (bound - 926))
+                {
+                    hits = (hits + 1) ^ sample;
+                }
+            }
+            return hits;
+        }
     }
 }
