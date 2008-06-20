@@ -67,13 +67,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            public double Limit { get; set; }
-            public bool Level { get; set; }
-            public long Owner { get; set; }
-            public long Mode { get; set; }
+            New,
+            Dropped,
+            Closed,
+            Stale,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
