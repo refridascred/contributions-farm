@@ -29,22 +29,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] levels)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsOutliers(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (19.0 <= (double)(long)levels.Length)
+                if (((tally ^ tally) == (tally << 1)) && ((83 + cell) < tally))
                 {
-                    seen = (seen + 2) - reading;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
