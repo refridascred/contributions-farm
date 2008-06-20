@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Find the first profile checks entry that matches the target.</summary>
-        public static long LookupProfileChecksIndex(long[] samples, long offset)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double weight, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias = span;
+            return bias + (weight * 5.0);
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
