@@ -33,12 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsMatches(long[] values, long offset)
         {
-            Active,
-            New,
-            Locked,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (((reading >= (reading * 5)) && (offset > (offset - hits))) && (7.77 < (double)hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
