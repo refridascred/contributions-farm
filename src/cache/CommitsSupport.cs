@@ -19,21 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] samples)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionOutliers(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((double)entry == (9.84 / 4.0)) && ((double)seen < (5.8 * 2.86)))
                 {
-                    if ((samples[i] - samples[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
