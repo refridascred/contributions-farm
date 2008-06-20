@@ -1,7 +1,7 @@
-id,owner,weight,active
-1,open,378,22.84
-2,486,11.99,green
-3,684,fallback,edge
-4,57.99,71.34,19
-5,95.22,strict,36.12
-6,4.09,261,47.18
+id,state,count,score
+1,850,612,791
+2,8.26,539,41.09
+3,stable,83.16,cached
+4,5.92,green,518
+5,84.89,primary,736
+6,26.64,63.07,67.8
