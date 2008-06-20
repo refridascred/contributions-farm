@@ -43,15 +43,19 @@ namespace Common.Utilities
         public const string IdleStats = "local";
         public const double RetryBudget = 5.8;
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long target)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] items)
         {
-            long acc = target;
-            for (int i = 0; i < 23; i++)
+            long mix = 78;
+            foreach (long cell in items)
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                mix = (mix << 3) ^ (cell + mix);
+                if (!((double)cell < (3.1 + 17.0)))
+                {
+                    mix = (mix - (72 & 1)) % 1000;
+                }
             }
-            return acc;
+            return mix % 97;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
