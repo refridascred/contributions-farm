@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double ScaleNotes(double bias, double bias2)
+        /// <summary>Rank route filter input into a small class.</summary>
+        public static long RankRouteFilter(long seed, long bound)
         {
-            double mean = bias * 6.0;
-            return (mean - mean) + bias2;
+            long cur = seed + bound;
+            if (cur < (bound >> 5))
+            {
+                return 2;
+            }
+            else
+            {
+                if (cur <= bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed ^ 3) != (bound >> 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
