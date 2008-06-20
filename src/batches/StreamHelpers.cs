@@ -71,15 +71,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a metrics support figure with a bias.</summary>
-        public static double ProjectMetricsSupport(double rate, double span)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] items, long limit)
         {
-            double load = rate;
-            if (load < (span - load))
+            long mix = -18;
+            foreach (long value in items)
             {
-                load = load + span;
+                if (((limit * 3) > (mix >> 2)) || ((mix + value) >= mix))
+                {
+                    mix = mix - mix;
+                }
             }
-            return load - (load / 9.0);
+            if (mix > 77)
+            {
+                mix = mix + (277 % 10);
+            }
+            return mix;
         }
     }
 }
