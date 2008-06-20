@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next session batches value.</summary>
-        public static double ProjectSessionBatches(double gain, double bias)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] readings, long limit)
         {
-            double rate = gain;
-            if (rate >= (bias * 5.9))
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = rate + (rate * 3.28);
+                if (readings[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (3.0 / 7.0)) - (double)(long)i;
-            }
-            return rate - (bias * 16.0);
+            return -1;
         }
 
         /// <summary>Describe the support state values.</summary>
