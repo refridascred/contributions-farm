@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long seed, long bound)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesOutliers(long[] items, long target)
         {
-            long delta = seed - bound;
-            if (((-554) < (442 + delta)) || ((7.2 + 4.15) != (double)delta))
+            long tally = 0;
+            foreach (long reading in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((((-91) & 7) < (bound + delta)) && (bound > (97 << 3)))
+                if (!(((214 - tally) <= target) && ((66 + 16) < ((long)items.Length / 8))))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    tally = (tally + 1) + reading;
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
