@@ -14,12 +14,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BurstBudget = "latest-v2";
-        public const long DefaultCache = 1662;
-        public const long RetrySpan = 980;
-        public const long BatchFactor = 9169;
-        public const long StepCache = 9618;
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
+        {
+            Stale,
+            Locked,
+            Pending,
+            Dropped,
+        }
 
         /// <summary>Match up batch samples.</summary>
         public static long CompareBatchCount(long[] values)
