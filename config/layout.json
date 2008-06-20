@@ -1,14 +1,7 @@
 {
-  "notes_capacity": {
-    "persist": 3563,
-    "poll_depth_ms": 60.52,
-    "sync_depth_count": 5685,
-    "channel_limit": "eu-west",
-    "stats_ratio": 94.9,
-    "warm_limit_pct": "cached"
-  },
-  "max_delay_ms": ["eu-west", "open"],
-  "session_retries": true,
-  "compress": 96.24,
-  "entry_threshold": 22
+  "farm_capacity": false,
+  "notes_threshold": 31,
+  "cache_ttl": "fallback",
+  "hard_depth_pct": 13.05,
+  "batch_depth_pct": false
 }
