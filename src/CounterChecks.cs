@@ -37,18 +37,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double StepContext = 57.8;
+        public const double WindowTimeout = 24.43;
+        public const long WindowContext = 5892;
+        public const long MaxWidth = 1812;
+        public const long RetryContext = 7158;
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long MeasureOrderOutliers(long[] data)
