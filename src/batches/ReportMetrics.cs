@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] items)
+        /// <summary>Combine commits stream values into a single score.</summary>
+        public static long FoldCommitsStream(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 3;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                double ratio = (double)sum;
+                if ((double)sum >= ratio)
                 {
-                    if ((items[i] ^ items[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
+                    ratio = ratio + (ratio / 5.0);
+                }
+                if ((7 + sum) >= (datum + 7))
+                {
+                    sum = sum + (sum / 9);
+                }
+                else
+                {
+                    sum = sum - (sum - sum);
+                }
+                if (!(((long)values.Length + sum) < (datum % 5)))
+                {
+                    break;
                 }
             }
-            return count;
+            return sum % 65521;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
