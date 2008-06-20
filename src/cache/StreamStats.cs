@@ -14,13 +14,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long bound)
         {
-            Stale,
-            Locked,
-            Pending,
-            Dropped,
+            long anchor = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = ((anchor << 2) ^ bound) % 255;
+                if ((long)i >= anchor)
+                {
+                    break;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate tools samples.</summary>
