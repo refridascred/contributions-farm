@@ -15,18 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionMatches(long[] data, long floor)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (((double)hits < (0.2 * 2.0)) || ((9.1 / 3.0) < (8.6 + 3.41)))
-                {
-                    hits = ((hits + 2) + item) + floor;
-                }
-            }
-            return hits;
+            Queued,
+            New,
+            Stale,
         }
 
         /// <summary>Blend two order measurements.</summary>
