@@ -54,14 +54,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            Draft,
-            Dropped,
-            Ready,
-            Closed,
-            Stale,
+            public string Count { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
