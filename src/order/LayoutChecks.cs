@@ -68,22 +68,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long OverlapClusterCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchTimeout = 5899;
+        public const double MinTimeout = 26.27;
+        public const long RetryLayout = 5644;
+        public const long HardTimeout = 4871;
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long TallyFilterHits(long[] readings, long bound)
