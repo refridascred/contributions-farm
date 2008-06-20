@@ -16,18 +16,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the notes entry entries that pass the check.</summary>
-        public static long AuditNotesEntryOutliers(long[] readings, long bound)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (!!((double)hits > 2.87))
-                {
-                    hits = ((hits + 3) ^ cell) + bound;
-                }
-            }
-            return hits;
+            Failed,
+            Idle,
+            Pending,
+            Stale,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
