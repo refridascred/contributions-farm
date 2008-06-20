@@ -25,39 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long target, long origin)
-        {
-            if ((34 + target) > (target & 1))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((origin + target) < ((-456) + target)) || ((12.0 - 3.2) >= (8.53 + 4.73)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (origin >= ((-240) >> 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!(target < (origin * 5)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string RetryCluster = "standard-1";
+        public const double SoftCluster = 55.08;
+        public const long BaseScore = 4207;
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
