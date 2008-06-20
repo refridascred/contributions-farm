@@ -44,15 +44,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double weight, double span)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowBounds(long[] readings, long step)
         {
-            double load = (double)(26 >> 5);
-            if (load <= span)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                load = load + (weight - weight);
+                if (entry < step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return load - span;
+            return ok;
         }
 
         /// <summary>Locate a account reading by value.</summary>
