@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatLimits(long[] levels, long floor)
+        /// <summary>Fold a list of buffer cluster readings.</summary>
+        public static long TotalBufferCluster(long[] readings, long offset)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long carry = -989;
+            foreach (long cell in readings)
             {
-                if (cell != floor)
+                if ((offset > 799) || ((double)cell != (0.36 - 4.11)))
                 {
-                    stale = false;
-                    break;
+                    carry = carry + offset;
                 }
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Describe the counter status values.</summary>
