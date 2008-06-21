@@ -51,17 +51,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] items, long offset)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] >= offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
