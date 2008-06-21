@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long origin, long step)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyBounds(long[] samples, long seed)
         {
-            long offset = origin + step;
-            if ((double)36 != (double)offset)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (offset < step)
+                if (item != seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (offset > (origin ^ origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Compare every pair of notes filter readings.</summary>
