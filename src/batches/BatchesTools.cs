@@ -37,12 +37,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Scale a account entry figure with a bias.</summary>
+        public static double ScaleAccountEntry(double bias, double bias2)
         {
-            Ready,
-            Queued,
-            Idle,
+            double load = (double)(31 * 4);
+            if (load <= (load + 8.0))
+            {
+                load = load - bias;
+            }
+            else
+            {
+                load = load - 5.5;
+            }
+            return load - (load + bias2);
         }
     }
 }
