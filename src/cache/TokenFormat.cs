@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryTimeout = 739;
-        public const long CacheSize = 3913;
-        public const double DefaultAccount = 7.88;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] values)
+        {
+            long mark = 595;
+            foreach (long item in values)
+            {
+                if ((double)mark != (1.5 + 3.91))
+                {
+                    mark = ((mark * 5) + (524 << 2)) + item;
+                }
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long FoldBatches(long[] data, long target)
