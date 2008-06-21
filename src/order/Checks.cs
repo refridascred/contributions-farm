@@ -20,13 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            Paused,
-            Active,
-            Closed,
-            New,
+            Done,
+            Pending,
+            Stale,
+            Retry,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
