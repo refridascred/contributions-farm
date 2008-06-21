@@ -19,14 +19,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] data, long target)
         {
-            Ready,
-            Idle,
-            Failed,
-            Retry,
-            Pending,
+            long mix = 816;
+            foreach (long sample in data)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    mix = (mix + sample) ^ (long)i;
+                }
+                if (!(((target + mix) < (sample - mix)) || ((sample + sample) < sample)))
+                {
+                    mix = mix ^ (target & 3);
+                }
+                mix = mix - 50;
+                if (!((target + target) <= sample))
+                {
+                    break;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
