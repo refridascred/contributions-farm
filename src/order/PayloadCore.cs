@@ -26,18 +26,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the route format entries that pass the check.</summary>
-        public static long TallyRouteFormatHits(long[] series)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long score = 34;
+            foreach (long entry in samples)
             {
-                if ((5.3 * 2.0) < (double)tally)
-                {
-                    tally = (tally + 1) - sample;
-                }
+                score = ((score * 2) + (score >> 2)) - entry;
             }
-            return tally;
+            return score % 4096;
         }
 
         /// <summary>Describe the editor kind values.</summary>
