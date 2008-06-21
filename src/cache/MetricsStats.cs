@@ -22,18 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteGaps(long[] samples, long offset)
+        /// <summary>Audit notes batches readings against a rule.</summary>
+        public static long AuditNotesBatchesHits(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (offset <= (hits * 4))
+                if ((((5.0 + 11.0) <= (double)seen) && ((floor - item) <= floor)) || ((seen + item) > (seen % 7)))
                 {
-                    hits = (hits + 3) ^ datum;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
