@@ -1,12 +1,13 @@
 {
-  "cache_size": "green",
-  "checks_timeout": false,
-  "poll_size_count": {
-    "min_delay": [405, 38],
-    "poll_ratio_count": 100,
-    "session_size": false
-  },
-  "min_capacity": "local",
-  "notes_delay": [417, 252, 14, 183],
-  "audit": 100
+  "metric_ttl": false,
+  "account_timeout": "local",
+  "farm_delay": "edge",
+  "tools_window": "open",
+  "cache_capacity": {
+    "dry_run": [74, 233, 386],
+    "flush_retries": "standard",
+    "route_ttl": 6.76,
+    "command_delay": 14.81,
+    "already_ttl": ["eu-west", "green"]
+  }
 }
