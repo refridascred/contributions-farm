@@ -1,7 +1,21 @@
 {
-  "burst_limit": 6649,
-  "sync_capacity_count": 2.28,
-  "payload_capacity": 12,
-  "poll_ttl": "local",
-  "max_size": "fallback"
+  "base_interval": true,
+  "burst_ratio_s": "standard",
+  "default_threshold_s": {
+    "cache_depth_pct": 26.96,
+    "max_retries": 5303,
+    "support_depth": {
+      "command_interval": [428, 198, 133, 206],
+      "dry_run": "standard",
+      "poll_retries_ms": "strict",
+      "max_delay_ms": "staging",
+      "max_timeout_s": 30,
+      "audit": 2.05
+    },
+    "retry_ratio_count": {
+      "burst_ttl_s": 79,
+      "already_ttl": true,
+      "token_capacity": 100
+    }
+  }
 }
