@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate channel queue readings against a bound.</summary>
-        public static bool GuardChannelQueueBounds(long[] items, long target)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
