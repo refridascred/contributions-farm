@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            Closed,
-            New,
-            Ready,
-            Stale,
-            Synced,
+            public bool Region { get; set; }
+            public bool Token { get; set; }
+            public bool Mode { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Look up the position of a support sample.</summary>
