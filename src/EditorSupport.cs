@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] samples, long limit)
+        /// <summary>Find the first profile commits entry that matches the target.</summary>
+        public static long LookupProfileCommitsIndex(long[] levels, long limit)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum != limit)
+                if (levels[i] > limit)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
