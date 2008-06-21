@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 7675;
-        public const long LimitLayout = 3192;
-        public const long SoftRatio = 8313;
+        /// <summary>Count the metrics channel entries that pass the check.</summary>
+        public static long TallyMetricsChannelHits(long[] data, long offset)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((offset >= (5 - count)) || (datum < (count << 1)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long MeasureFarmGaps(long[] samples)
