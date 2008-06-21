@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge blue standard; do
+for item in stable local latest; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=443
+BUFFER_LIMIT=64
 log "limit is ${BUFFER_LIMIT}"
