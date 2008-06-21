@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long seed)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchLimits(long[] values, long target)
         {
-            long state = seed;
-            for (int i = 0; i < 14; i++)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                state = state - (seed - (long)i);
-                for (int i2 = 0; i2 < 11; i2++)
+                if (datum != target)
                 {
-                    state = ((state << 3) ^ (state ^ seed)) ^ (long)i2;
+                    stale = false;
+                    break;
                 }
-                if (state <= (state ^ (long)i))
-                {
-                    state = state ^ ((long)i ^ seed);
-                }
-                state = ((state * 5) + (long)i) % 65521;
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
