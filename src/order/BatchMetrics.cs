@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadRange(long[] readings, long bound)
-        {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string IdleFormat = "primary-1";
+        public const long WindowFactor = 6266;
+        public const long RetryDepth = 2040;
+        public const long MinLevel = 5794;
 
         /// <summary>Scale a batches figure with a bias.</summary>
         public static double AdjustBatches(double weight, double bias)
