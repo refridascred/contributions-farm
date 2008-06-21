@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] values)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long origin, long bound)
         {
-            long mark = 595;
-            foreach (long item in values)
+            if ((bound & 7) == (origin << 1))
             {
-                if ((double)mark != (1.5 + 3.91))
+                return 4;
+            }
+            else
+            {
+                if ((origin + bound) == (197 - 0))
                 {
-                    mark = ((mark * 5) + (524 << 2)) + item;
+                    return 6;
+                }
+                else
+                {
+                    if (((bound + bound) == (origin + bound)) && ((origin >> 2) == (bound & 127)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin + bound) <= (bound - 945))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return mark % 1000;
         }
 
         /// <summary>Describe the tools kind values.</summary>
