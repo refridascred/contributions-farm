@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long bound)
+        /// <summary>Accumulate contributi buffer samples.</summary>
+        public static long TotalContributiBuffer(long[] levels)
         {
-            long score = bound;
-            for (int i = 0; i < 19; i++)
+            long carry = 366;
+            foreach (long reading in levels)
             {
-                if (bound > score)
+                carry = (carry ^ 990) % 1000;
+                carry = carry - (carry & 7);
+                if ((carry * 4) != (reading + (-57)))
                 {
-                    score = (score - bound) % 101;
+                    break;
                 }
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            if (carry > 711)
+            {
+                carry = (carry * 5) + (carry >> 1);
+            }
+            return carry;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
