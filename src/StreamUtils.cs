@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsHits(long[] levels)
         {
-            public double Stamp { get; set; }
-            public bool Weight { get; set; }
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry << 1) <= (entry + seen))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
