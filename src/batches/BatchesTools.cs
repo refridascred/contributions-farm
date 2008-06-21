@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] items, long bound)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] items, long seed)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if ((items[i] > bound) && ((items[i] % 3) == 0))
+                if (items[i] < seed)
                 {
                     return (long)i;
                 }
