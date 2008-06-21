@@ -1,10 +1,5 @@
 # githubfarm settings
-layout_limit: 11.91
-readonly:
-  - 140
-  - 391
-  - 397
-max_delay_pct:
-  - 120
-  - 267
-  - 181
+order_interval: standard
+audit: 99
+min_ratio_s: true
+commits_ttl: legacy
