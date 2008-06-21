@@ -36,17 +36,21 @@ namespace Common.Utilities
         public const double LimitFarm = 17.42;
         public const double BaseFarm = 34.07;
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] readings, long offset)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] readings)
         {
+            long matches = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] < offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
