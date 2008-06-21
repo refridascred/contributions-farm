@@ -38,30 +38,13 @@ namespace Common.Utilities
         public const long StepCount = 8713;
         public const long MinRatio = 8396;
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] readings)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long mix = 491;
-            foreach (long entry in readings)
-            {
-                if (((double)mix == (5.0 - 15.0)) && (207 < (mix * 3)))
-                {
-                    mix = (mix ^ (191 - mix)) % 65521;
-                }
-                else
-                {
-                    mix = (mix - (mix + mix)) % 65521;
-                }
-                if ((mix * 4) == (entry % 7))
-                {
-                    break;
-                }
-            }
-            if (mix < 364)
-            {
-                mix = (mix ^ (mix + 4)) % 1000;
-            }
-            return mix;
+            public bool Total { get; set; }
+            public bool Flag { get; set; }
+            public string Size { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
