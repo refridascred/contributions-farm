@@ -1,6 +1,6 @@
-id,token,active,ratio
-1,39.55,6.23,646
-2,448,1.25,legacy
-3,346,324,626
-4,897,946,46.58
-5,270,900,local
+id,ratio,score,region,rank
+1,352,5.73,865,staging
+2,155,cached,20.09,staging
+3,28.77,72.03,staging,710
+4,50.74,fallback,743,82.24
+5,42,32.65,19.09,407
