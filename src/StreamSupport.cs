@@ -20,18 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit cache layout readings against a rule.</summary>
-        public static long MeasureCacheLayoutHits(long[] values, long offset)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamMatches(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (hits <= cell)
+                if ((entry >> 3) < (count - count))
                 {
-                    hits = (hits + 2) + offset;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
