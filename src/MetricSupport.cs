@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchGaps(long[] levels)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)seen != (2.64 - 1.3))
-                {
-                    seen = (seen + 1) + cell;
-                }
-            }
-            return seen;
+            Pending,
+            Locked,
+            New,
         }
 
         /// <summary>Compare every pair of account readings.</summary>
