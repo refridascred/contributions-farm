@@ -49,11 +49,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxWidth = 1667;
-        public const double LimitSession = 72.88;
-        public const string HardSession = "standard-v2";
-        public const long DefaultSession = 9080;
-        public const long CacheScore = 81;
+        /// <summary>Check that every format contributi entry stays within the limit.</summary>
+        public static bool VerifyFormatContributiBounds(long[] samples, long target)
+        {
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
