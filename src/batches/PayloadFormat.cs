@@ -22,22 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFormat = 4322;
+        public const long CacheTimeout = 6423;
+        public const long SoftInterval = 815;
+        public const string MinDepth = "strict-edge";
+        public const long BaseFormat = 3725;
 
         /// <summary>Look up the position of a notes sample.</summary>
         public static long LookupNotesIndex(long[] items, long target)
