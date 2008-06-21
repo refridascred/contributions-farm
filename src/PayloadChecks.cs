@@ -47,11 +47,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Iterate the format window series from a seed.</summary>
+        public static long IterateFormatWindow(long target)
         {
-            public long Owner { get; set; }
-            public bool Token { get; set; }
+            long mix = target;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Hold a stats info.</summary>
