@@ -19,19 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] data)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] items, long step)
         {
-            long mix = 58;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = mix ^ (90 % 7);
-                if (((double)value > (7.0 + 11.0)) || ((double)value == (9.0 * 9.5)))
+                if (items[i] > step)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
