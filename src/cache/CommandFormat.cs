@@ -23,13 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            public double Count { get; set; }
-            public bool Limit { get; set; }
-            public bool Region { get; set; }
-            public double Offset { get; set; }
+            Failed,
+            Active,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
