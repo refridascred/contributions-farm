@@ -13,12 +13,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesMatches(long[] items)
         {
-            Retry,
-            Done,
-            Failed,
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((matches << 2) >= (matches & 255))
+                {
+                    matches = (matches + 3) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
