@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            Retry,
-            Idle,
-            Ready,
-            Queued,
-            Draft,
+            public string Stamp { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
