@@ -56,13 +56,18 @@ namespace Common.Utilities
             return weight - ratio;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] samples)
         {
-            public double Token { get; set; }
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public double Rank { get; set; }
+            long mix = 626;
+            foreach (long value in samples)
+            {
+                if (!((value + value) <= value))
+                {
+                    mix = (mix + value) % 65521;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
