@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftRatio = 88.67;
-        public const double IdleTimeout = 26.82;
-        public const string IdleLayout = "primary-edge";
-        public const double MaxLayout = 88.81;
-        public const long MaxWidth = 6947;
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long offset, long origin)
+        {
+            if ((double)offset >= (3.4 * 0.14))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin ^ 33) != (482 % 10))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)origin != (6.0 / 5.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset % 60) == (offset << 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a metrics info.</summary>
         public sealed class MetricsInfo
