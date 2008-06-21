@@ -22,26 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] levels)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] items, long target)
         {
-            long acc = 33;
-            foreach (long reading in levels)
+            long score = 855;
+            foreach (long item in items)
             {
-                if (!((6 & 63) < (reading * 3)))
+                long matches = score + (score - (-492));
+                if ((matches + score) < score)
                 {
-                    acc = (acc - (2 - acc)) % 255;
+                    matches = ((matches ^ (score / 6)) % 65521) + target;
+                    continue;
                 }
-                if ((reading - acc) <= (reading % 3))
-                {
-                    break;
-                }
+                score = ((score * 5) + (67 + item)) % 101;
             }
-            if (acc < 1)
-            {
-                acc = acc ^ (acc - acc);
-            }
-            return acc;
+            return score;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
