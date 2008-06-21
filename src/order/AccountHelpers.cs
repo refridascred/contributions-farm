@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long MinContributi = 3057;
         public const long MaxCount = 7131;
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double weight, double bias)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            double drift = bias;
-            if (drift >= drift)
-            {
-                drift = (drift - bias) - weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift + (double)3;
+            public long Count { get; set; }
+            public bool Flag { get; set; }
+            public double Size { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Count the record order entries that pass the check.</summary>
