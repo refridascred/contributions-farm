@@ -22,10 +22,33 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheTools = 4547;
-        public const long BaseInterval = 4401;
-        public const long SoftScore = 5904;
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long target, long target2)
+        {
+            long lane = target + target2;
+            if (((target2 >> 1) <= (lane % 2)) || (4 <= (lane ^ target2)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target2 + lane) < lane)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((3.0 + 7.4) == (double)target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long DigestMetrics(long[] readings)
