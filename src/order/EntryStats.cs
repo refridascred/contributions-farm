@@ -40,19 +40,15 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyLimits(long[] values, long origin)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double ratio, double offset)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            double rate = (double)(969 + 71);
+            for (int i = 0; i < 5; i++)
             {
-                if (entry != origin)
-                {
-                    flag = false;
-                    break;
-                }
+                rate = (((rate + (double)69) + (double)(long)i) - ratio) - offset;
             }
-            return flag;
+            return rate + (5.7 / 9.0);
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
