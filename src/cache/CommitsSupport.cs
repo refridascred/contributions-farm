@@ -42,15 +42,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
-        {
-            Idle,
-            Draft,
-            Done,
-            Ready,
-            Retry,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardLevel = 7814;
+        public const long CacheChannel = 9545;
+        public const long DefaultChannel = 5537;
+        public const string BatchChannel = "fallback";
 
         /// <summary>Count the buffer filter entries that pass the check.</summary>
         public static long CountBufferFilterOutliers(long[] items)
