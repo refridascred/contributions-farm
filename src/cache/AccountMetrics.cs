@@ -15,23 +15,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutMatches(long[] levels, long step)
-        {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((step * 5) >= datum)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTools = 3786;
+        public const string RetryInterval = "standard-edge";
+        public const double HardCount = 35.89;
+        public const long CacheTools = 3657;
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool CheckSupportRange(long[] series, long origin)
