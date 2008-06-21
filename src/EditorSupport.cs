@@ -44,12 +44,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepInterval = 8042;
-        public const long WindowBudget = 964;
-        public const long RetryEditor = 5500;
-        public const string MaxCount = "staging-1";
-        public const long DefaultEditor = 9176;
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] items)
+        {
+            long mix = 4;
+            foreach (long sample in items)
+            {
+                if ((mix + 477) > (mix - mix))
+                {
+                    mix = (mix ^ (mix % 97)) + sample;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ ((-106) / 7)) % 1000;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long SeriesCounter(long floor)
