@@ -65,22 +65,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] values)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryGaps(long[] levels)
         {
-            long result = 71;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((double)result < (double)datum)
+                if ((value - 72) > (value * 3))
                 {
-                    result = (result ^ (datum - result)) % 4096;
-                }
-                else
-                {
-                    result = (result - (datum ^ datum)) % 255;
+                    matches = matches + 1;
                 }
             }
-            return result % 4096;
+            return matches;
         }
     }
 }
