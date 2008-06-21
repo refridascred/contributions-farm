@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaRange(long[] data, long offset)
+        /// <summary>Audit layout record readings against a rule.</summary>
+        public static long AuditLayoutRecordMatches(long[] data, long target)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (datum >= offset)
+                if ((item * 2) == (item - 68))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 2) - target;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Describe the commits phase values.</summary>
