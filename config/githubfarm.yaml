@@ -1,14 +1,19 @@
 # githubfarm settings
-flush_interval_s:
-  compress: 41.91
-  max_depth: strict
-  enabled:
-    idle_retries_count: edge
-    max_window_count: 250
-    batch_capacity: 60
-    max_threshold: blue
-  default_limit_pct: false
-cache_depth_count: cached
-metric_interval: latest
-cache_interval_ms: true
-batch_depth: 63.46
+max_ttl_pct: cached
+batch_window_s: standard
+base_size_count:
+  graph_capacity:
+    notes_ttl: 41.28
+    sync_limit_count: edge
+    editor_delay:
+      - fallback
+      - eu-west
+      - fallback
+    cache_interval_s:
+      - cached
+      - legacy
+      - standard
+    soft_retries_ms: fallback
+  default_timeout_count: 81
+  default_delay: 26
+burst_retries_pct: strict
