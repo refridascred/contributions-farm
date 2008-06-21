@@ -5,38 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long origin, long bound)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long seed)
         {
-            if ((bound & 7) == (origin << 1))
+            long score = seed;
+            for (int i = 0; i < 22; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin + bound) == (197 - 0))
+                score = ((score << 3) ^ (seed + seed)) % 4096;
+                if (((double)seed == (6.3 - 7.7)) && ((seed >> 5) >= (score + score)))
                 {
-                    return 6;
+                    score = score - (seed ^ seed);
+                    break;
                 }
                 else
                 {
-                    if (((bound + bound) == (origin + bound)) && ((origin >> 2) == (bound & 127)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin + bound) <= (bound - 945))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    score = ((score * 4) + (score & 31)) % 4096;
                 }
+                score = ((score * 4) + (long)i) % 101;
             }
+            return score;
         }
 
         /// <summary>Describe the tools kind values.</summary>
