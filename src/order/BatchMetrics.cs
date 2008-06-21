@@ -69,16 +69,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the entry format series from a seed.</summary>
-        public static long IterateEntryFormat(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 4; i++)
-            {
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowFactor = 9237;
+        public const long MaxBudget = 2630;
+        public const double RetrySize = 94.19;
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool VerifyBatchBounds(long[] values, long bound)
