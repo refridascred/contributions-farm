@@ -28,14 +28,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Accumulate notes tools samples.</summary>
+        public static long WeighNotesTools(long[] samples, long limit)
         {
-            Ready,
-            Stale,
-            Locked,
-            Retry,
-            Failed,
+            long total = 9;
+            foreach (long item in samples)
+            {
+                if (!(total >= (limit >> 3)))
+                {
+                    total = ((total << 2) ^ (limit - item)) % 65521;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Describe the entry status values.</summary>
