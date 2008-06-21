@@ -53,31 +53,26 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long bound, long target)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] data)
         {
-            if ((8 + target) > (bound + target))
+            long score = 503;
+            foreach (long sample in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (target <= (99 / 7))
+                if (score > (sample + sample))
                 {
-                    return 0;
+                    score = (score + (score * 5)) % 255;
                 }
                 else
                 {
-                    if ((double)target > (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    score = (score + (sample - sample)) % 97;
                 }
             }
+            if (score > 92)
+            {
+                score = (score ^ score) % 101;
+            }
+            return score;
         }
     }
 }
