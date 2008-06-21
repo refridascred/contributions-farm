@@ -23,18 +23,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryOutliers(long[] levels, long bound)
+        /// <summary>Check that every schema metric entry stays within the limit.</summary>
+        public static bool GuardSchemaMetricLimits(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if (!((reading ^ reading) == (bound % 2)) && ((double)reading != (double)bound))
+                if (cell >= offset)
                 {
-                    seen = seen + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
