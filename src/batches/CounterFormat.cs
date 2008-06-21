@@ -23,19 +23,24 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Check that every schema metric entry stays within the limit.</summary>
-        public static bool GuardSchemaMetricLimits(long[] readings, long offset)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long seed)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long anchor = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (cell >= offset)
+                double scale = (11.0 / 2.0) - (double)anchor;
+                if (!(scale <= (7.46 * 6.8)))
                 {
-                    ready = false;
-                    break;
+                    anchor = (anchor + seed) % 1000;
                 }
+                if ((seed ^ seed) > seed)
+                {
+                    scale = scale + (double)seed;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
