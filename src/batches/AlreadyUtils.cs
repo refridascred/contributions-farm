@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] values, long floor)
+        /// <summary>Iterate the editor schema series from a seed.</summary>
+        public static long DeriveEditorSchema(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
+                total = ((total * 4) + (539 << 3)) % 4096;
+                total = ((total * 4) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Project the next notes support value.</summary>
