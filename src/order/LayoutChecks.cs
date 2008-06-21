@@ -23,15 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double rate, double bias)
+        /// <summary>Check that every editor queue entry stays within the limit.</summary>
+        public static bool CheckEditorQueueLimits(long[] readings, long bound)
         {
-            double bias2 = rate;
-            if (bias2 > 9.01)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                bias2 = (bias2 - (double)(-81)) + bias;
+                if (datum != bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return bias2 - (bias2 / 5.0);
+            return valid;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
