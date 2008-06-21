@@ -33,17 +33,18 @@ namespace Common.Utilities
             return scale2 + floor;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] levels, long step)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportMatches(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (levels[i] >= step)
+                if ((((entry - entry) < (tally + entry)) || ((double)2 < (double)tally)) || ((tally - tally) < (entry % 60)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
