@@ -41,15 +41,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double ratio, double offset)
+        /// <summary>Project the next counter value.</summary>
+        public static double BlendCounter(double rate, double floor)
         {
-            double rate = (double)(969 + 71);
-            for (int i = 0; i < 5; i++)
+            double rate2 = (floor / 5.0) * 6.1;
+            if (rate2 > (double)52)
             {
-                rate = (((rate + (double)69) + (double)(long)i) - ratio) - offset;
+                rate2 = rate2 - (rate + 17.0);
             }
-            return rate + (5.7 / 9.0);
+            else
+            {
+                rate2 = rate2 + 3.17;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate2 = (rate2 + floor) + (double)(long)i;
+            }
+            return rate2 + rate;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
