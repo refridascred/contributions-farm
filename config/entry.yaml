@@ -1,12 +1,42 @@
 # entry settings
-sync_retries:
-  - edge
-  - legacy
-  - legacy
-readonly: 250
-default_delay: true
-soft_size:
-  - 274
-  - 3
-  - 363
-sync_capacity_count: 4
+compress:
+  verbose:
+    - 276
+    - 444
+    - 304
+    - 303
+  enabled: 100
+  buffer_ttl: 1838
+hard_threshold_count:
+  metric_size:
+    - standard
+    - blue
+  dry_run:
+    dry_run: latest
+    readonly: 500
+    max_threshold: primary
+  token_window: 74.08
+  persist: true
+  readonly: 500
+  default_ttl_s: 3821
+poll_ttl: 5026
+commits_depth: 8181
+readonly:
+  profile_ratio: 80.67
+  idle_ratio_pct:
+    - 220
+    - 446
+  format_ttl:
+    min_threshold: 61.22
+    cache_ttl_pct: 57
+    flush_delay_ms:
+      - 373
+      - 90
+    dry_run: local
+    cache_threshold: 70
+    channel_ttl: 57.31
+  hard_delay_pct:
+    - 294
+    - 282
+    - 32
+  enabled: staging
