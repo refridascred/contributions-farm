@@ -39,12 +39,13 @@ namespace Common.Utilities
             return ratio2 - floor;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BatchOrder = "alpha-1";
-        public const long RetryInterval = 8816;
-        public const string DefaultOrder = "staging-v2";
-        public const string WindowLevel = "stable-v2";
-        public const long SoftInterval = 6280;
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
+        {
+            public double Stamp { get; set; }
+            public long Level { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long MaxWidth = 3364;
