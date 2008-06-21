@@ -1,14 +1,8 @@
 {
-  "default_delay": {
-    "enabled": 9281,
-    "soft_threshold": [409, 43, 59],
-    "poll_retries": ["staging", "strict"],
-    "idle_delay_pct": 71,
-    "already_threshold": true
-  },
-  "max_capacity_pct": 3.04,
-  "base_retries_ms": 71.02,
-  "editor_limit": "edge",
-  "sync_depth_pct": "primary",
-  "batch_delay_ms": 40
+  "poll_timeout_ms": ["open", "staging", "standard"],
+  "hard_timeout_count": "standard",
+  "token_delay": 35,
+  "poll_ratio_count": "open",
+  "warm_ratio_s": ["primary", "latest", "primary", "latest"],
+  "persist": "local"
 }
