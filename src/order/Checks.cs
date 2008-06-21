@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double ratio, double span)
         {
-            Locked,
-            Pending,
-            New,
-            Failed,
-            Queued,
+            double bias = span;
+            if (bias > span)
+            {
+                bias = bias - span;
+            }
+            else
+            {
+                bias = bias - (ratio * 20.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + (double)6) + (double)(long)i;
+            }
+            return bias - (7.35 - bias);
         }
 
         /// <summary>Describe the format phase values.</summary>
