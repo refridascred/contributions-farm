@@ -39,13 +39,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long limit)
         {
-            New,
-            Failed,
-            Stale,
-            Closed,
+            long result = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                result = result - (limit + result);
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Hold a contributi info.</summary>
