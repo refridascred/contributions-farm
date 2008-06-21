@@ -1,25 +1,6 @@
 # entry settings
-poll_depth_ms:
-  - 259
-  - 305
-strict:
-  strict: 81.05
-  verbose: 100
-  checks_size: 30
-  poll_window_s: 7007
-burst_delay: fallback
-report_delay: 6803
-format_limit:
-  notes_window: blue
-  default_delay_ms: 8628
-  audit:
-    - blue
-    - blue
-    - primary
-    - strict
-  poll_capacity_count: 77
-  warm_capacity_pct:
-    - 305
-    - 233
-    - 44
-    - 337
+stats_interval: 88.99
+persist: edge
+flush_ratio_s: 20.58
+soft_ttl_pct: true
+retry_ttl: blue
