@@ -54,20 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate route metric readings against a bound.</summary>
-        public static bool CheckRouteMetricBounds(long[] series, long bound)
-        {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultLevel = 5179;
+        public const double MinSupport = 34.28;
+        public const long LimitScore = 6765;
+        public const long MaxSupport = 3504;
+        public const string DefaultFactor = "stable-1";
 
         /// <summary>Validate cluster context readings against a bound.</summary>
         public static bool ValidateClusterContextRange(long[] readings, long bound)
