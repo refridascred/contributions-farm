@@ -30,12 +30,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Classify a format token pair into a bucket.</summary>
+        public static long GradeFormatToken(long target, long seed)
         {
-            Idle,
-            Paused,
-            Stale,
+            long offset = target + seed;
+            if ((double)target <= 19.0)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((offset % 12) < offset) || (seed >= (offset / 5)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
