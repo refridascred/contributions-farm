@@ -40,16 +40,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine format report values into a single score.</summary>
-        public static long TotalFormatReport(long[] readings)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long mix = 61;
-            foreach (long sample in readings)
-            {
-                mix = (((mix << 2) ^ (3 * 3)) % 65521) ^ sample;
-                mix = (mix - (mix & 255)) % 101;
-            }
-            return mix % 97;
+            public double Level { get; set; }
+            public long Count { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a batches stats.</summary>
