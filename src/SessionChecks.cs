@@ -52,13 +52,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Roll a command commits counter forward.</summary>
+        public static long DeriveCommandCommits(long step)
         {
-            Active,
-            Closed,
-            Ready,
-            Retry,
+            long mix = step;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
