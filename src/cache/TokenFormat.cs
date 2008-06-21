@@ -34,14 +34,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
-        {
-            Pending,
-            Active,
-            Draft,
-            Locked,
-            Done,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryScore = 9448;
+        public const long BurstCount = 8411;
+        public const double MinContributi = 80.2;
     }
 }
