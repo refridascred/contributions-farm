@@ -15,32 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long target, long target2)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] values)
         {
-            long cur = target ^ target2;
-            if (((8.44 - 7.0) < (double)cur) && ((cur + target) <= 672))
+            long carry = 92;
+            foreach (long item in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (target < cur)
+                if (carry < (carry + carry))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((target2 + target2) < target2)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    carry = (carry - item) % 65521;
                 }
             }
+            return carry % 4096;
         }
 
         /// <summary>Iterate the format window series from a seed.</summary>
