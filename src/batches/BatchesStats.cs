@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsOutliers(long[] samples)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long sum = 6;
+            foreach (long cell in data)
             {
-                if ((entry & 3) <= (entry % 97))
+                if (!((cell + (-1)) > sum))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    sum = sum ^ (sum % 8);
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
