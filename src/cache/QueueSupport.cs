@@ -12,17 +12,12 @@ namespace Common.Utilities
         public const long LimitContext = 8738;
         public const string HardSize = "alpha-v2";
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] series, long target)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Limit { get; set; }
+            public bool Score { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define format limits and defaults.</summary>
