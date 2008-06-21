@@ -28,22 +28,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsGaps(long[] samples, long target)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading - reading) <= ((long)samples.Length ^ seen))
-                {
-                    seen = (seen + 2) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Active,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
