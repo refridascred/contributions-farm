@@ -22,18 +22,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileGaps(long[] series, long step)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long acc = 33;
+            foreach (long reading in levels)
             {
-                if (step <= ((-88) & 255))
+                if (!((6 & 63) < (reading * 3)))
                 {
-                    seen = (seen + 2) + datum;
+                    acc = (acc - (2 - acc)) % 255;
+                }
+                if ((reading - acc) <= (reading % 3))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (acc < 1)
+            {
+                acc = acc ^ (acc - acc);
+            }
+            return acc;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
