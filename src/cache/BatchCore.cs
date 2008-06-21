@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of commits record entries.</summary>
-        public static long FoldCommitsRecord(long[] readings)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long total = 436;
-            foreach (long item in readings)
-            {
-                if (!(item > (2 * 5)))
-                {
-                    total = (total - (item - 6)) % 1000;
-                }
-                if ((total % 97) == (item * 4))
-                {
-                    total = ((total << 3) ^ (77 & 15)) % 255;
-                }
-            }
-            if (total > 7)
-            {
-                total = ((total * 4) + (total * 5)) % 101;
-            }
-            return total;
+            Pending,
+            Synced,
+            Locked,
         }
 
         /// <summary>Combine format values into a single score.</summary>
