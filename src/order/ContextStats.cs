@@ -41,18 +41,11 @@ namespace Common.Utilities
         public const long IdleInterval = 6173;
         public const long RetryPayload = 4652;
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] samples, long bound)
-        {
-            long mix = 4;
-            foreach (long cell in samples)
-            {
-                if ((1.6 / 9.0) < (double)mix)
-                {
-                    mix = ((((mix * 5) + 80) % 1000) + cell) + bound;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleWidth = 4859;
+        public const double DefaultLayout = 78.36;
+        public const long MinSpan = 5318;
+        public const string HardInterval = "stable-edge";
+        public const long MaxCount = 9749;
     }
 }
