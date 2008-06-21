@@ -53,17 +53,13 @@ namespace Common.Utilities
         public const long WindowLevel = 8363;
         public const string MaxDepth = "latest";
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] samples, long step)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Level { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
