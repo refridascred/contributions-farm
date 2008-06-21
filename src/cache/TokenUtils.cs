@@ -20,21 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] levels)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] data, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (data[i] < limit)
                 {
-                    if ((levels[i] ^ levels[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Match up command samples.</summary>
