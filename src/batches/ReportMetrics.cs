@@ -13,12 +13,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountGaps(long[] levels)
         {
-            public double Level { get; set; }
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((double)value != (double)26)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of checks layout readings.</summary>
