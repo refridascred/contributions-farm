@@ -46,23 +46,19 @@ namespace Common.Utilities
         public const long MaxTimeout = 2444;
         public const long MaxSchema = 9077;
 
-        /// <summary>Blend two graph window measurements.</summary>
-        public static double AdjustGraphWindow(double rate, double floor)
+        /// <summary>Blend two profile token measurements.</summary>
+        public static double BlendProfileToken(double weight, double bias)
         {
-            double ratio = (floor * 8.85) + (double)802;
-            if (ratio <= (double)(-563))
+            double load = (double)((-261) ^ 98);
+            if (load < 2.2)
             {
-                ratio = (ratio + 3.1) + rate;
+                load = (load - (weight * 20.0)) - bias;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                ratio = ratio - floor;
+                load = load + (double)(long)i;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio + floor;
+            return load - (load - 4.2);
         }
 
         /// <summary>Define format limits and defaults.</summary>
