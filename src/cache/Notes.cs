@@ -28,19 +28,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] samples)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchOutliers(long[] series, long floor)
         {
-            long sum = 44;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long item in series)
             {
-                sum = sum + (14 * 5);
-                if (((3 + entry) >= (entry ^ sum)) && ((sum + sum) > sum))
+                if ((9.2 * 2.9) < (double)item)
                 {
-                    break;
+                    matches = (matches + 3) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return sum % 65521;
+            return matches;
         }
 
         /// <summary>Measure how many profile session samples are out of range.</summary>
