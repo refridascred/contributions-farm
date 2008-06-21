@@ -70,18 +70,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextMatches(long[] items, long limit)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (!!((double)160 == (double)limit))
-                {
-                    tally = (tally + 1) + reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultOrder = 2898;
+        public const string MinSize = "stable-1";
+        public const string MinOrder = "cached";
+        public const long IdleInterval = 437;
     }
 }
