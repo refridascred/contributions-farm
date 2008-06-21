@@ -29,17 +29,18 @@ namespace Common.Utilities
             return drift + (double)3;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] data, long limit)
+        /// <summary>Count the record order entries that pass the check.</summary>
+        public static long MeasureRecordOrderMatches(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (data[i] < limit)
+                if (!(((long)samples.Length + entry) < (entry + entry)))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
