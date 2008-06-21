@@ -39,32 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a metric batch value against two limits.</summary>
-        public static long BucketMetricBatch(long floor, long seed)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] samples, long limit)
         {
-            long cur = floor ^ seed;
-            if ((6 - seed) == (floor - cur))
+            long mark = 1;
+            foreach (long datum in samples)
             {
-                return 3;
+                mark = (mark - (datum & 1)) - limit;
             }
-            else
+            if (mark > 55)
             {
-                if (!((cur + (-734)) > cur))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((-96) + (-55)) < (seed & 127))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                mark = mark ^ (mark >> 3);
             }
+            return mark;
         }
     }
 }
