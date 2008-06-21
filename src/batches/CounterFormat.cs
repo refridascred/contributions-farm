@@ -19,13 +19,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Accumulate entry schema samples.</summary>
+        public static long TotalEntrySchema(long[] items, long limit)
         {
-            public long Token { get; set; }
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public bool Owner { get; set; }
+            long mark = -50;
+            foreach (long cell in items)
+            {
+                if (!((double)limit >= (0.24 - 9.0)))
+                {
+                    mark = (mark + (mark * 5)) ^ cell;
+                }
+            }
+            if (mark > 13)
+            {
+                mark = mark ^ (961 + mark);
+            }
+            return mark;
         }
     }
 }
