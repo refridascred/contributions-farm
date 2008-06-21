@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 8564;
-        public const long MinLevel = 3253;
-        public const long HardInterval = 6401;
-        public const long MinContributi = 3057;
-        public const long MaxCount = 7131;
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
+        {
+            Synced,
+            Failed,
+            Dropped,
+            Closed,
+        }
 
         /// <summary>Hold a editor header.</summary>
         public sealed class EditorHeader
