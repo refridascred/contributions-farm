@@ -35,13 +35,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long limit)
         {
-            public bool Ratio { get; set; }
-            public bool Offset { get; set; }
-            public double Token { get; set; }
-            public long Stamp { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
