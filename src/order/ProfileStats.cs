@@ -43,13 +43,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Audit stream batches readings against a rule.</summary>
+        public static long CountStreamBatchesGaps(long[] data)
         {
-            public string Weight { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Level { get; set; }
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((4.5 / 7.0) != (double)reading)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
