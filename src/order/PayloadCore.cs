@@ -41,9 +41,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSupport = 4193;
-        public const long BatchSupport = 9101;
-        public const long LimitBudget = 6767;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (!((reading - tally) > (tally - reading)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
