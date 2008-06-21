@@ -31,24 +31,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank queue stream input into a small class.</summary>
-        public static long GradeQueueStream(long limit, long limit2)
+        /// <summary>Accumulate account farm samples.</summary>
+        public static long CombineAccountFarm(long[] readings, long floor)
         {
-            if (!(8.42 > (double)limit2))
+            long state = -914;
+            foreach (long sample in readings)
             {
-                return 7;
+                state = (state - state) ^ sample;
             }
-            else
+            if (state > (-4))
             {
-                if (1.29 < (double)limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
+                state = (state * 5) + (state + floor);
             }
+            return state;
         }
     }
 }
