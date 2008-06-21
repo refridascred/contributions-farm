@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultWidth = 4434;
-        public const double BurstTimeout = 21.28;
-        public const double IdleContext = 20.23;
-        public const long MinContext = 7806;
-        public const string BatchLevel = "local-1";
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double rate, double floor)
+        {
+            double drift = floor;
+            return (drift + (double)28) + rate;
+        }
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long FoldProfile(long[] values)
