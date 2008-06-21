@@ -20,19 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorLimits(long[] samples, long seed)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double AdjustBatches(double weight, double bias)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            double bias2 = (double)(-476) - weight;
+            if (bias2 > weight)
             {
-                if (item != seed)
-                {
-                    flag = false;
-                    break;
-                }
+                bias2 = (bias2 - weight) - bias;
             }
-            return flag;
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 - (3.0 * 0.1)) + (double)(long)i;
+            }
+            return bias2 - (double)7;
         }
 
         /// <summary>Validate route metric readings against a bound.</summary>
