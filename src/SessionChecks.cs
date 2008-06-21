@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderBounds(long[] values, long limit)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long target)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long state = target;
+            for (int i = 0; i < 12; i++)
             {
-                if (value <= limit)
-                {
-                    valid = false;
-                    break;
-                }
+                state = ((state << 3) ^ (long)i) % 255;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
