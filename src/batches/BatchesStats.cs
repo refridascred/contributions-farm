@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double weight, double bias)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            double mean = weight;
-            for (int i = 0; i < 2; i++)
-            {
-                mean = ((mean - (double)865) + (double)(long)i) - bias;
-            }
-            return mean + weight;
+            public long Mode { get; set; }
+            public bool Token { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Check that every graph account entry stays within the limit.</summary>
