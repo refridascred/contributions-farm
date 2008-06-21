@@ -22,13 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            Stale,
-            Draft,
+            Idle,
             Ready,
-            Done,
+            Draft,
             New,
         }
 
