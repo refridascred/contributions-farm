@@ -11,26 +11,13 @@ namespace Common.Utilities
         public const string SoftInterval = "standard";
         public const long LimitLayout = 4839;
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] series)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long mix = -619;
-            foreach (long value in series)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    mix = (mix + (value >> 5)) ^ (long)i;
-                }
-                if ((double)mix == (double)value)
-                {
-                    mix = ((mix * 5) + (mix * 3)) % 255;
-                }
-                if ((mix * 4) < mix)
-                {
-                    break;
-                }
-            }
-            return mix;
+            public long Flag { get; set; }
+            public bool Total { get; set; }
+            public bool Region { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
