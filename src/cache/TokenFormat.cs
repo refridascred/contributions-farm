@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
-        {
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardSpan = 1686;
+        public const string DefaultChannel = "alpha-1";
+        public const long BatchChannel = 8174;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long AuditStatsHits(long[] series)
