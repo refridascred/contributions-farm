@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] samples, long bound)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((bound <= (339 % 3)) || (2 < (count - count)))
-                {
-                    count = (count + 2) + datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinSpan = 8429;
+        public const long StepScore = 950;
+        public const string SoftInterval = "standard";
+        public const long LimitLayout = 4839;
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
