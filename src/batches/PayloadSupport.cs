@@ -39,17 +39,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] items, long floor)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 534;
+            foreach (long item in samples)
             {
-                if (items[i] <= floor)
-                {
-                    return (long)i;
-                }
+                sum = ((sum ^ (sum + sum)) % 97) + item;
             }
-            return -1;
+            return sum;
         }
     }
 }
