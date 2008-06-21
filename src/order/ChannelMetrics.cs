@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchMetrics = 3274;
-        public const double HardMetrics = 62.17;
-        public const long MinMetrics = 6452;
-        public const string MinSpan = "stable";
+        /// <summary>Count the session metrics entries that pass the check.</summary>
+        public static long TallySessionMetricsMatches(long[] data, long bound)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (((9 + bound) != (cell + cell)) && (cell > (cell ^ tally)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long MeasureProfileHits(long[] series)
