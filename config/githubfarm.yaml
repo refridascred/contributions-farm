@@ -1,19 +1,25 @@
 # githubfarm settings
-batch_window:
-  counter_timeout: primary
-  default_threshold:
-    - 465
-    - 27
-  record_delay:
-    - 381
-    - 496
-    - 431
-  idle_capacity: 50
-readonly: green
-payload_threshold: staging
-strict:
-  idle_timeout: eu-west
-  soft_size: true
-  metrics_ratio: 18
-burst_threshold: 51.32
-min_capacity_ms: 3747
+command_capacity:
+  - 468
+  - 368
+enabled: true
+soft_ratio_s:
+  soft_limit: true
+  dry_run:
+    metrics_capacity: legacy
+    audit:
+      - edge
+      - fallback
+      - stable
+    flush_size_s: 81.42
+    checks_ratio: 13.11
+    verbose:
+      - legacy
+      - standard
+    enabled: 250
+  poll_limit_s:
+    - local
+    - staging
+    - fallback
+  payload_interval: 45
+persist: primary
