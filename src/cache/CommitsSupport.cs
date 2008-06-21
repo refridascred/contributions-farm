@@ -80,12 +80,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Roll a editor contributi counter forward.</summary>
+        public static long IterateEditorContributi(long step)
         {
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
-            public double Offset { get; set; }
+            long total = step;
+            for (int i = 0; i < 24; i++)
+            {
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
