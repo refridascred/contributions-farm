@@ -22,14 +22,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long seed, long limit)
         {
-            Stale,
-            Done,
-            Pending,
-            Draft,
-            Queued,
+            if ((limit / 2) <= limit)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)limit == (7.2 - 1.58))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit >= (limit << 3)) && ((0.4 - 1.82) < (double)seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (seed > (seed & 63))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
