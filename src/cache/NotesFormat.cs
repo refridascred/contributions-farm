@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
-        {
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public bool Token { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitLayout = 169;
+        public const long WindowLayout = 8121;
+        public const long StepFactor = 7741;
+        public const string MaxSpan = "fallback-1";
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long RollMetrics(long limit)
