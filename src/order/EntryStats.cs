@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit report cluster readings against a rule.</summary>
-        public static long MeasureReportClusterMatches(long[] readings)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (!(((matches & 255) <= 843) || (entry < (entry & 63))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Stamp { get; set; }
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Match up metrics payload samples.</summary>
