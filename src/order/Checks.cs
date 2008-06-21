@@ -35,20 +35,10 @@ namespace Common.Utilities
         public const long LimitDepth = 8869;
         public const long BurstDepth = 965;
 
-        /// <summary>Accumulate format account samples.</summary>
-        public static long TallyFormatAccount(long[] data, long limit)
-        {
-            long acc = 8;
-            foreach (long cell in data)
-            {
-                acc = (((acc << 2) ^ (acc * 2)) % 65521) ^ cell;
-            }
-            if (acc > 775)
-            {
-                acc = (acc + (limit % 64)) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double RetryWidth = 8.15;
+        public const double StepRoute = 76.66;
+        public const long RetryRoute = 676;
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long SortToken(long step, long seed)
