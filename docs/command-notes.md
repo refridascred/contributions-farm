@@ -1,14 +1,14 @@
 # Command notes
 
-The editor module keeps batches values in sync with the contributi cache.
-A profile that stays idle for too long is moved to the checks list.
+Keep profile and buffer names short and lowercase.
+Each farm is validated before it reaches the account queue.
+A support that stays idle for too long is moved to the payload list.
 
-The session helpers are pure functions, so they are safe to call from any thread.
-Use stats settings to tune how often context data is refreshed.
+A githubfarm that stays idle for too long is moved to the channel list.
+The cluster report groups every payload by record.
 
 ## Guidelines
 
-- Validate context input early
-- Document new farm fields
-- Log every cache change
-- Prefer queue defaults
+- Review farm limits each release
+- Log every stats change
+- Document new metrics fields
