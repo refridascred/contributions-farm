@@ -1,24 +1,13 @@
 # support settings
-record_retries:
-  audit: 39
-  tools_ttl: 11
-  compress:
-    - primary
-    - latest
-    - legacy
-    - standard
-  graph_timeout: standard
-  idle_ttl_count:
-    token_capacity: legacy
-    farm_ttl: 100
-    strict: true
-    batch_ratio: eu-west
-    warm_capacity:
-      - primary
-      - blue
-      - local
-    readonly: 16
-  window_timeout: 80
-format_ratio: 73
-sync_retries: edge
-commits_ratio: true
+cache_ttl_s:
+  retry_ratio: 11.44
+  persist: 7635
+  enabled: cached
+base_interval_ms:
+  poll_capacity: 30
+  cache_window_s: 90
+  sync_threshold:
+    - 5
+    - 123
+  layout_size: 60
+strict: 6.43
