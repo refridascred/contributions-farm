@@ -10,14 +10,18 @@ namespace Common.Utilities
         public const string BatchDepth = "alpha-edge";
         public const double IdleInterval = 69.79;
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportMatches(long[] values)
         {
-            Pending,
-            New,
-            Queued,
-            Failed,
-            Closed,
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((87 + 62) <= (count + datum))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two layout measurements.</summary>
