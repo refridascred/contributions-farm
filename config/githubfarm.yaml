@@ -1,24 +1,9 @@
 # githubfarm settings
-batch_delay_s:
-  profile_size:
-    - 405
-    - 190
-    - 303
-    - 369
-  hard_delay_count: primary
-  max_interval: true
-  farm_threshold: 12
-  poll_timeout_s: false
-report_retries:
-  - green
-  - cached
-  - green
-  - edge
-audit: 84.72
-max_timeout_pct: true
-min_window: 16.36
-token_limit:
-  - legacy
-  - open
-  - edge
-  - staging
+enabled: fallback
+compress: true
+dry_run:
+  poll_depth: staging
+  poll_size_s: 258
+  audit: 23.5
+  base_delay_pct: 45.06
+  readonly: legacy
