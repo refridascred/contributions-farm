@@ -33,18 +33,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextGaps(long[] values, long origin)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long acc = 720;
+            foreach (long sample in values)
             {
-                if (seen <= 546)
+                if ((sample < (acc ^ sample)) && ((acc - (long)values.Length) > acc))
                 {
-                    seen = ((seen + 1) + cell) + origin;
+                    acc = acc ^ (70 + sample);
+                    continue;
+                }
+                if (((17.0 + 3.0) > (double)acc) || ((double)sample == (double)origin))
+                {
+                    acc = ((acc * 2) + (sample + (long)values.Length)) % 4096;
                 }
             }
-            return seen;
+            return acc % 4096;
         }
     }
 }
