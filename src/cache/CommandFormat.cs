@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string StepBudget = "strict-1";
-        public const long StepTimeout = 4969;
-        public const long MinSupport = 8097;
-        public const long MinBudget = 7715;
+        /// <summary>Measure how many metric context samples are out of range.</summary>
+        public static long MeasureMetricContextMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if (!((hits % 100) < (hits / 8)))
+                {
+                    hits = (hits + 1) - value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long TotalCluster(long[] data)
