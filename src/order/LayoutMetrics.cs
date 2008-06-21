@@ -16,24 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long step)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadLimits(long[] items, long origin)
         {
-            long total = step;
-            for (int i = 0; i < 5; i++)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if ((4.8 * 5.9) < (double)total)
+                if (sample < origin)
                 {
-                    total = (total - (step / 2)) % 97;
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    long step2 = (total % 7) - (total >> 2);
-                    total = total ^ (step2 + step2);
-                }
-                total = ((total * 3) + (long)i) % 65521;
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Hold a already entry.</summary>
