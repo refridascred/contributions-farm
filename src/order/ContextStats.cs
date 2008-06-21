@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long offset)
         {
-            Draft,
-            Done,
-            Queued,
+            long state = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                state = (state + offset) % 101;
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
