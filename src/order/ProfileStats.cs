@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandHits(long[] items, long step)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long target)
         {
-            long count = 0;
-            foreach (long value in items)
+            long carry = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (!!((count >> 5) < value))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    count = (count + 1) + step;
+                    carry = ((carry - (carry ^ (-607))) % 255) - (long)i2;
+                    carry = ((carry * 2) + carry) % 65521;
                 }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Blend two stream measurements.</summary>
