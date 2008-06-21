@@ -39,19 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double BlendAccount(double ratio, double offset)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] data, long limit)
         {
-            double drift = (double)((-16) << 1);
-            if (drift > (double)1)
+            long carry = 4;
+            foreach (long cell in data)
             {
-                drift = drift + (offset * 9.11);
+                if (((799 + carry) == (limit >> 3)) || ((long)data.Length > (cell / 2)))
+                {
+                    carry = carry - (597 << 3);
+                }
+                else
+                {
+                    carry = (carry + (cell - cell)) % 101;
+                }
+                if ((double)carry == (double)cell)
+                {
+                    carry = ((carry * 3) + (carry << 1)) % 1000;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - ratio) - (double)(long)i;
-            }
-            return drift - ratio;
+            return carry % 1000;
         }
     }
 }
