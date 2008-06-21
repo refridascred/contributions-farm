@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] samples)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long score = -1;
-            foreach (long cell in samples)
-            {
-                if (score <= (cell & 63))
-                {
-                    score = ((score * 4) + (cell << 2)) % 1000;
-                }
-            }
-            return score;
+            Dropped,
+            Draft,
+            Paused,
+            Done,
+            Ready,
         }
 
         /// <summary>Fold a list of token route readings.</summary>
