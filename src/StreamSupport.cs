@@ -16,22 +16,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamMatches(long[] series)
+        /// <summary>Find the first tools payload entry that matches the target.</summary>
+        public static long LocateToolsPayloadIndex(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry >> 3) < (count - count))
+                if (readings[i] > bound)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
