@@ -35,12 +35,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmHits(long[] levels, long floor)
         {
-            Paused,
-            Draft,
-            Queued,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((hits > (value >> 5)) || !((floor - floor) <= (54 >> 1)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
