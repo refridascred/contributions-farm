@@ -32,15 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] samples, long limit)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long state = 53;
-            foreach (long item in samples)
-            {
-                state = (((state * 5) + (limit << 2)) % 97) ^ item;
-            }
-            return state;
+            public long Flag { get; set; }
+            public bool Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the counter class values.</summary>
