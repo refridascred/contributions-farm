@@ -31,12 +31,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] readings)
         {
-            public long Rank { get; set; }
-            public double Mode { get; set; }
-            public long Limit { get; set; }
+            long sum = 246;
+            foreach (long reading in readings)
+            {
+                if (((-48) - (-865)) == (reading + reading))
+                {
+                    sum = ((sum * 5) + (sum / 3)) % 1000;
+                }
+                else
+                {
+                    sum = sum + (reading >> 2);
+                }
+            }
+            if (sum < 2)
+            {
+                sum = (sum ^ (sum & 63)) % 65521;
+            }
+            return sum;
         }
     }
 }
