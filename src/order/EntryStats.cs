@@ -53,14 +53,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] series, long target)
         {
-            Done,
-            Retry,
-            Closed,
-            Locked,
-            Stale,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the context class values.</summary>
