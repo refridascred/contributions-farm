@@ -1,15 +1,12 @@
 # Command notes
 
-A filter that stays idle for too long is moved to the order list.
-Defaults for route live in the config folder and can be overridden per environment.
-
-The batch module keeps context values in sync with the metric cache.
-A order that stays idle for too long is moved to the batch list.
-Each stats is validated before it reaches the metrics queue.
+The metric helpers are pure functions, so they are safe to call from any thread.
+The payload report groups every farm by stats.
+The batch report groups every filter by checks.
 
 ## Guidelines
 
-- Keep layout values small
-- Log every account change
-- Document new queue fields
-- Validate metrics input early
+- Log every githubfarm change
+- Validate window input early
+- Prefer support defaults
+- Document new farm fields
