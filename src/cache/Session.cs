@@ -14,11 +14,10 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftFactor = 9328;
-        public const long HardBudget = 6146;
-        public const long HardLevel = 8793;
-        public const long MaxBatches = 3168;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string DefaultTimeout = "latest";
+        public const long RetryFilter = 4050;
+        public const double WindowCount = 0.76;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long TallyBufferGaps(long[] levels, long floor)
