@@ -23,27 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] data)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long state = 697;
-            foreach (long reading in data)
-            {
-                state = state - (reading + state);
-                if ((state + reading) == (reading ^ (-913)))
-                {
-                    state = (state - (state * 4)) % 4096;
-                }
-                else
-                {
-                    state = ((state << 2) ^ (state % 100)) % 65521;
-                }
-            }
-            if (state > 7)
-            {
-                state = (state ^ (state / 5)) % 65521;
-            }
-            return state;
+            public double Count { get; set; }
+            public bool Limit { get; set; }
+            public bool Region { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
