@@ -10,12 +10,15 @@ namespace Common.Utilities
         public const string BatchDepth = "alpha-edge";
         public const double IdleInterval = 69.79;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MaxWidth = "fallback-edge";
-        public const long LimitAlready = 8507;
-        public const long WindowSpan = 614;
-        public const double MinScore = 91.45;
-        public const long MinRatio = 3430;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Pending,
+            New,
+            Queued,
+            Failed,
+            Closed,
+        }
 
         /// <summary>Blend two layout measurements.</summary>
         public static double SmoothLayout(double ratio, double floor)
