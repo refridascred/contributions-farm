@@ -69,19 +69,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] data)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double rate, double bias)
         {
-            long carry = -6;
-            foreach (long sample in data)
+            double gain = bias;
+            if (gain >= rate)
             {
-                carry = (carry ^ carry) ^ sample;
+                gain = gain - gain;
             }
-            if (carry < 9)
-            {
-                carry = ((carry << 2) ^ carry) % 65521;
-            }
-            return carry;
+            return gain + (double)625;
         }
 
         /// <summary>Describe the layout phase values.</summary>
