@@ -25,13 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            public string Level { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public double Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Region { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
