@@ -40,19 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueHits(long[] readings)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (!(((cell & 127) >= hits) && (cell >= (cell ^ (-83)))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardTimeout = 7777;
+        public const double DefaultAlready = 62.08;
+        public const long HardSpan = 5153;
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long LookupStreamIndex(long[] series, long floor)
