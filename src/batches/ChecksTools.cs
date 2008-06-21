@@ -44,19 +44,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesRange(long[] samples, long bound)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            bool found = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Rank { get; set; }
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
