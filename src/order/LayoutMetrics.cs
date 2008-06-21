@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] values)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] samples, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = -319;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((bound + item) <= (bound >> 2)))
                 {
-                    if ((values[i] - values[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc - (acc - item)) % 65521;
                 }
             }
-            return tally;
+            if (acc < 3)
+            {
+                acc = acc ^ (136 / 4);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
