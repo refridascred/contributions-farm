@@ -31,15 +31,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] samples, long origin)
+        /// <summary>Validate route metric readings against a bound.</summary>
+        public static bool CheckRouteMetricBounds(long[] series, long bound)
         {
-            long acc = -75;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                acc = ((((acc * 4) + 63) % 97) - reading) - origin;
+                if (datum != bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
