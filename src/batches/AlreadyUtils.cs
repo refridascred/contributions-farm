@@ -39,19 +39,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double BlendMetric(double weight, double floor)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            double ratio = floor;
-            if (ratio > floor)
-            {
-                ratio = (ratio - ratio) + weight;
-            }
-            else
-            {
-                ratio = ratio - 3.11;
-            }
-            return ratio - 6.4;
+            New,
+            Failed,
+            Stale,
+            Closed,
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
