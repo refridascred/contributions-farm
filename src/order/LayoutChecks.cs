@@ -40,13 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            public double Size { get; set; }
-            public string Level { get; set; } = "";
-            public bool Weight { get; set; }
-            public double Count { get; set; }
+            Queued,
+            Idle,
+            Paused,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Roll a already counter forward.</summary>
