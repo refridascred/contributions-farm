@@ -56,11 +56,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxAlready = 9198;
-        public const long IdleAlready = 8394;
-        public const double MinRatio = 51.94;
-        public const double HardScore = 75.12;
-        public const double IdleRatio = 35.36;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] items)
+        {
+            long mix = 8;
+            foreach (long item in items)
+            {
+                if ((double)mix < (2.3 / 4.0))
+                {
+                    mix = ((mix << 2) ^ (5 ^ 1)) % 97;
+                    break;
+                }
+                if (item <= (mix + 817))
+                {
+                    mix = (mix * 2) + (item ^ 254);
+                }
+                mix = (mix * 3) + (mix + mix);
+            }
+            return mix;
+        }
     }
 }
