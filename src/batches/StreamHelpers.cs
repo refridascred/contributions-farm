@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine account token values into a single score.</summary>
-        public static long DigestAccountToken(long[] values, long offset)
+        /// <summary>Digest a series of layout notes entries.</summary>
+        public static long TallyLayoutNotes(long[] items, long origin)
         {
-            long state = 43;
-            foreach (long reading in values)
+            long total = 72;
+            foreach (long datum in items)
             {
-                if (state <= (524 ^ offset))
+                long hits = datum;
+                if (((total + datum) < (total >> 4)) || ((9.4 - 0.33) > (double)datum))
                 {
-                    state = ((state ^ state) % 101) ^ reading;
+                    hits = (hits - (datum * 3)) % 4096;
+                    total = (total << 3) ^ (hits - 31);
+                }
+                if ((origin > (origin % 24)) && ((6.9 / 4.0) >= (double)total))
+                {
+                    total = (total + (datum - origin)) % 97;
                 }
             }
-            return state;
+            return total;
         }
 
         /// <summary>Accumulate counter samples.</summary>
