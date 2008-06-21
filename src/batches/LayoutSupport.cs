@@ -67,32 +67,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank buffer cluster input into a small class.</summary>
-        public static long BucketBufferCluster(long floor, long offset)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long prev = floor + offset;
-            if ((floor / 2) >= (offset + prev))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((floor + floor) < offset) && ((double)floor <= (3.0 / 6.0)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (7 < (floor / 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public long Label { get; set; }
         }
     }
 }
