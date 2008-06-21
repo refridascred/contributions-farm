@@ -34,11 +34,12 @@ namespace Common.Utilities
         public const double LimitBatch = 95.56;
         public const long StepBatch = 2703;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double StepChecks = 57.38;
-        public const double LimitChecks = 40.78;
-        public const long MaxChecks = 9994;
-        public const long RetryChecks = 4358;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultRatio = 2532;
+        public const long DefaultLevel = 1553;
+        public const string BatchScore = "fallback";
+        public const long IdleInterval = 6173;
+        public const long RetryPayload = 4652;
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool CheckLayoutLimits(long[] data, long origin)
