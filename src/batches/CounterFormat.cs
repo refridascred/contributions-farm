@@ -15,18 +15,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] items)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((46 - 91) >= seen)
+                if (data[i] == origin)
                 {
-                    seen = (seen + 2) - value;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a token summary.</summary>
