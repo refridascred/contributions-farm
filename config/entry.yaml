@@ -1,7 +1,8 @@
 # entry settings
-metric_window: 51.55
-metrics_ratio: 71.51
-max_delay_ms:
+min_size_ms: true
+graph_delay:
+  - green
+  - standard
+  - blue
   - cached
-  - cached
-  - legacy
+flush_limit_s: edge
