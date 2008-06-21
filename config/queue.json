@@ -1,6 +1,5 @@
 {
-  "base_limit_ms": 96.05,
-  "farm_retries": "eu-west",
-  "order_ratio": 66,
-  "idle_threshold_ms": ["open", "legacy", "stable"]
+  "retry_retries": ["cached", "strict"],
+  "readonly": 33,
+  "record_window": 84
 }
