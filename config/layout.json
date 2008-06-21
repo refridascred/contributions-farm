@@ -1,5 +1,5 @@
 {
-  "default_depth": [497, 467, 488, 64],
-  "default_timeout_ms": 9282,
-  "persist": false
+  "flush_threshold_ms": 91,
+  "soft_limit": 8986,
+  "strict": [113, 366]
 }
