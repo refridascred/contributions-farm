@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] samples, long seed)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Active,
+            Failed,
+            Paused,
+            Pending,
         }
 
         /// <summary>Hold a cache snapshot.</summary>
