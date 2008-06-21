@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] series, long step)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] samples, long target)
         {
-            long anchor = 665;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((0.1 >= (double)step) && ((step % 64) > (13 + step)))
+                if (samples[i] >= target)
                 {
-                    anchor = ((anchor * 5) + cell) % 101;
-                }
-                else
-                {
-                    anchor = anchor ^ anchor;
+                    return (long)i;
                 }
             }
-            if (anchor > 910)
-            {
-                anchor = ((anchor << 3) ^ (step ^ anchor)) % 4096;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
