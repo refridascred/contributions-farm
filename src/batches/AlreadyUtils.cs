@@ -20,11 +20,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next notes support value.</summary>
-        public static double ScaleNotesSupport(double scale, double offset)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long limit, long step)
         {
-            double rate = offset * 6.75;
-            return (rate - 9.36) + scale;
+            if (97 > limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((step << 3) >= (step + step)) || ((step + limit) == (limit + step)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)step == (double)limit) && (step <= (step % 8)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)step >= 8.61) || ((limit + step) != (step % 97)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
