@@ -16,18 +16,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the cluster session entries that pass the check.</summary>
-        public static long AuditClusterSessionMatches(long[] data, long offset)
+        /// <summary>Iterate the cache tools series from a seed.</summary>
+        public static long SeriesCacheTools(long bound)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long state = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if ((894 - 222) <= offset)
-                {
-                    seen = (seen + 2) + item;
-                }
+                state = (state + (state % 16)) % 1000;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Digest a series of queue profile entries.</summary>
