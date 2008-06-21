@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate contributi buffer samples.</summary>
-        public static long TotalContributiBuffer(long[] levels)
+        /// <summary>Look up the position of a stats order sample.</summary>
+        public static long SeekStatsOrderIndex(long[] values, long step)
         {
-            long carry = 366;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (carry ^ 990) % 1000;
-                carry = carry - (carry & 7);
-                if ((carry * 4) != (reading + (-57)))
+                if ((values[i] == step) && ((values[i] % 2) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry > 711)
-            {
-                carry = (carry * 5) + (carry >> 1);
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
