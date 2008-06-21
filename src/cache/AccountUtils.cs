@@ -55,11 +55,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 7491;
-        public const string LimitTools = "stable-v2";
-        public const long BatchSpan = 8021;
-        public const long HardTools = 1658;
-        public const long MaxTimeout = 3423;
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
