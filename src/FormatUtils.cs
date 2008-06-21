@@ -57,20 +57,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double gain, double span)
-        {
-            double scale = (double)(72 >> 4);
-            if (scale < gain)
-            {
-                scale = scale + (double)949;
-            }
-            else
-            {
-                scale = scale - (span / 7.0);
-            }
-            return scale - span;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseWidth = 3796;
+        public const long StepCount = 8713;
+        public const long MinRatio = 8396;
 
         /// <summary>Accumulate filter samples.</summary>
         public static long TotalFilter(long[] readings)
