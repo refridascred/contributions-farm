@@ -51,14 +51,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] values, long seed)
         {
-            Ready,
-            Locked,
-            Retry,
-            Draft,
-            Closed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many filter batch samples are out of range.</summary>
