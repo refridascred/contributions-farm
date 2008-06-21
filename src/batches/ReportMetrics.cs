@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine commits stream values into a single score.</summary>
-        public static long FoldCommitsStream(long[] values)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterRange(long[] levels, long limit)
         {
-            long sum = 3;
-            foreach (long datum in values)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                double ratio = (double)sum;
-                if ((double)sum >= ratio)
+                if (datum <= limit)
                 {
-                    ratio = ratio + (ratio / 5.0);
-                }
-                if ((7 + sum) >= (datum + 7))
-                {
-                    sum = sum + (sum / 9);
-                }
-                else
-                {
-                    sum = sum - (sum - sum);
-                }
-                if (!(((long)values.Length + sum) < (datum % 5)))
-                {
+                    found = false;
                     break;
                 }
             }
-            return sum % 65521;
+            return found;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
