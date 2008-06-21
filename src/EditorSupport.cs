@@ -78,23 +78,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatGaps(long[] samples, long floor)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (((3.0 + 4.3) < (double)matches) || !((floor + matches) >= (sample * 4)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 652;
+        public const string HardTools = "stable";
+        public const long MinBudget = 1259;
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long OverlapEntryCount(long[] data)
