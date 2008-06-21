@@ -37,10 +37,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BatchSupport = 85.31;
-        public const long IdleSupport = 530;
-        public const long DefaultCount = 5817;
-        public const long MaxFactor = 3377;
+        /// <summary>Define context limits and defaults.</summary>
+        public const double IdleContext = 28.49;
+        public const long BatchInterval = 4877;
+        public const string HardRatio = "standard-1";
+        public const long LimitCount = 3861;
     }
 }
