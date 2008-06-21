@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long step)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long bound, long origin)
         {
-            long mark = step;
-            for (int i = 0; i < 9; i++)
+            long gap = bound + origin;
+            if ((4.12 + 0.76) <= (double)gap)
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if (((gap << 2) <= 344) || ((4.3 * 8.0) >= (double)origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((gap << 1) >= (origin >> 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (bound <= gap)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
