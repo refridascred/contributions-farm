@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSpan = 9272;
-        public const double WindowTimeout = 5.07;
-        public const double StepSchema = 14.47;
+        /// <summary>Combine metric report values into a single score.</summary>
+        public static long TallyMetricReport(long[] series, long bound)
+        {
+            long state = 44;
+            foreach (long value in series)
+            {
+                if (((bound - value) <= ((-899) & 1)) && ((9 % 8) >= (bound - bound)))
+                {
+                    state = (state ^ state) % 65521;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
