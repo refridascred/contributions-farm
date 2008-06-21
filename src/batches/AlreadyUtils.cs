@@ -55,9 +55,10 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string StepBuffer = "fallback-1";
-        public const long CacheDepth = 4556;
-        public const long RetryBuffer = 7561;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double DefaultMetric = 98.36;
+        public const long MaxMetric = 9729;
+        public const double DefaultInterval = 29.04;
+        public const double BurstMetric = 85.05;
     }
 }
