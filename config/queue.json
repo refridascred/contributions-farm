@@ -1,8 +1,13 @@
 {
-  "retry_timeout": 1024,
-  "soft_size_ms": "edge",
-  "already_window": 30,
-  "readonly": "stable",
-  "order_size": 1024,
-  "max_retries_ms": 88.19
+  "compress": false,
+  "audit": {
+    "readonly": 9370,
+    "dry_run": 16.16,
+    "context_ttl": true,
+    "batch_size": true
+  },
+  "hard_threshold": "legacy",
+  "hard_size_ms": [128, 471, 311, 114],
+  "readonly": false,
+  "batch_ratio": "edge"
 }
