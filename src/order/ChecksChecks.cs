@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandMatches(long[] values, long target)
         {
-            public long Weight { get; set; }
-            public string Level { get; set; } = "";
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if (95 > matches)
+                {
+                    matches = ((matches + 3) + item) - target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
