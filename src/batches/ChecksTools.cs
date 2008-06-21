@@ -22,10 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double WindowFactor = 56.01;
-        public const double CacheSize = 98.84;
-        public const string MaxAccount = "latest-edge";
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
+        {
+            public long Size { get; set; }
+            public bool Token { get; set; }
+            public string Label { get; set; } = "";
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Digest a series of already entries.</summary>
         public static long WeighAlready(long[] values)
