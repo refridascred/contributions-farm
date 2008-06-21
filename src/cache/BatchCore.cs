@@ -27,10 +27,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 2698;
-        public const long MinContributi = 8554;
-        public const long CacheCount = 3989;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] values, long bound)
+        {
+            long sum = 153;
+            foreach (long sample in values)
+            {
+                if (bound <= (sum ^ bound))
+                {
+                    sum = ((sum * 4) + 70) - sample;
+                }
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long AuditPayloadOutliers(long[] readings)
