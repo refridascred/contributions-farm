@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] data, long bound)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long carry = 425;
-            foreach (long reading in data)
-            {
-                carry = ((carry ^ (bound + 35)) % 101) + reading;
-            }
-            return carry;
+            Draft,
+            New,
+            Idle,
+            Ready,
+            Done,
         }
 
         /// <summary>Iterate the cache tools series from a seed.</summary>
