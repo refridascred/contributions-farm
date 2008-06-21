@@ -63,19 +63,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchRange(long[] values, long offset)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] readings)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long mix = -902;
+            foreach (long reading in readings)
             {
-                if (reading >= offset)
+                if ((reading + mix) > (mix & 1))
                 {
-                    ready = false;
-                    break;
+                    mix = (mix + (mix + reading)) % 255;
                 }
             }
-            return ready;
+            if (mix < 90)
+            {
+                mix = (mix - mix) % 255;
+            }
+            return mix % 97;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
