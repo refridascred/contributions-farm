@@ -26,12 +26,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryDepth = 479;
-        public const string BaseBatches = "legacy-1";
-        public const long CacheBatches = 9240;
-        public const string BaseCount = "local";
-        public const long BaseScore = 1398;
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == origin) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long PairEntryCount(long[] levels)
