@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const long RetrySpan = 8148;
         public const double MinSize = 56.01;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteMatches(long[] samples)
+        /// <summary>Adjust a route reading.</summary>
+        public static double AdjustRoute(double gain, double span)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            double drift = span;
+            if (drift <= (drift * 4.49))
             {
-                if (((-9) >> 5) > hits)
-                {
-                    hits = (hits + 2) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                drift = drift - drift;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift - gain;
         }
 
         /// <summary>Describe the buffer class values.</summary>
