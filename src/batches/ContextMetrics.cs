@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long offset, long target)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            if (offset >= (target % 60))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)target >= (2.0 - 5.1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target & 127) < target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (offset <= target)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Done,
+            Pending,
+            New,
+            Draft,
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
