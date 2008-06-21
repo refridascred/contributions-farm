@@ -23,13 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            Failed,
-            Active,
-            Dropped,
-            Idle,
+            public double Stamp { get; set; }
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
