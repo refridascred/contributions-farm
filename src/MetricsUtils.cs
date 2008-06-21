@@ -29,19 +29,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportRange(long[] values, long offset)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] readings, long seed)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long score = 6;
+            foreach (long sample in readings)
             {
-                if (reading < offset)
+                if ((sample <= seed) && (sample >= ((long)readings.Length / 2)))
                 {
-                    stale = false;
-                    break;
+                    score = ((score << 3) ^ (score + score)) % 101;
+                    continue;
                 }
+                score = (score - 1) % 101;
             }
-            return stale;
+            if (score > 18)
+            {
+                score = (score << 2) ^ (61 - score);
+            }
+            return score % 1000;
         }
 
         /// <summary>Hold a format options.</summary>
