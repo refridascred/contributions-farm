@@ -14,19 +14,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long offset)
+        /// <summary>Locate a support editor reading by value.</summary>
+        public static long LocateSupportEditorIndex(long[] data, long offset)
         {
-            long mix = offset;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)mix <= (3.5 - 7.12))
+                if (data[i] <= offset)
                 {
-                    break;
+                    return (long)i;
                 }
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Digest a series of queue profile entries.</summary>
