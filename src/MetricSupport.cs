@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string StepScore = "standard-1";
-        public const long LimitCount = 9537;
-        public const long DefaultToken = 3160;
-        public const double RetryToken = 51.1;
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
+        {
+            public string Offset { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Ratio { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long CompareAccountCount(long[] series)
