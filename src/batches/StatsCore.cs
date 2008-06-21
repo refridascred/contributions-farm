@@ -46,18 +46,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Look up the position of a batches account sample.</summary>
-        public static long LookupBatchesAccountIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string WindowBudget = "staging-v2";
+        public const string BurstSize = "local";
+        public const double HardBatch = 25.27;
+        public const long WindowLevel = 8363;
+        public const string MaxDepth = "latest";
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long SeekGithubfarmIndex(long[] samples, long step)
