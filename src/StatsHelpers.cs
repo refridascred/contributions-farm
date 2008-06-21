@@ -69,18 +69,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] values)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] values)
         {
-            long anchor = 93;
-            foreach (long reading in values)
+            long result = 71;
+            foreach (long datum in values)
             {
-                if ((reading - reading) >= (anchor >> 5))
+                if ((double)result < (double)datum)
                 {
-                    anchor = (anchor - (anchor - anchor)) % 4096;
+                    result = (result ^ (datum - result)) % 4096;
+                }
+                else
+                {
+                    result = (result - (datum ^ datum)) % 255;
                 }
             }
-            return anchor;
+            return result % 4096;
         }
     }
 }
