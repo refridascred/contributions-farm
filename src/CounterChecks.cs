@@ -26,13 +26,18 @@ namespace Common.Utilities
         public const long IdleStats = 4686;
         public const long IdleSpan = 5424;
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] data)
         {
-            Pending,
-            Retry,
-            Ready,
-            Active,
+            long sum = 22;
+            foreach (long value in data)
+            {
+                if ((value + sum) >= sum)
+                {
+                    sum = sum ^ value;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Count stream cache pairs that satisfy a relation.</summary>
