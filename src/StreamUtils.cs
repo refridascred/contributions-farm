@@ -56,24 +56,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] readings)
+        /// <summary>Accumulate already metrics samples.</summary>
+        public static long TallyAlreadyMetrics(long[] data, long floor)
         {
-            long mix = 2;
-            foreach (long cell in readings)
+            long anchor = -2;
+            foreach (long cell in data)
             {
-                if (((double)mix == (2.5 + 3.1)) || ((mix - mix) != (cell >> 5)))
+                if ((anchor > (anchor + anchor)) || ((cell & 3) < 2))
                 {
-                    mix = mix + (cell % 64);
-                    continue;
+                    anchor = anchor - (cell * 5);
+                    break;
                 }
-                mix = (mix * 5) + (cell << 3);
+                if ((anchor + cell) <= 4)
+                {
+                    anchor = (anchor ^ cell) % 255;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (cell ^ 95)) % 97;
+                }
             }
-            if (mix > (-52))
+            if (anchor > 2)
             {
-                mix = (mix ^ (mix + 3)) % 1000;
+                anchor = anchor + (floor - floor);
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Describe the batch mode values.</summary>
