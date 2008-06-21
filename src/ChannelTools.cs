@@ -30,11 +30,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstDepth = 5997;
-        public const double MaxLevel = 88.66;
-        public const string MaxBatch = "alpha-v2";
-        public const double CacheTimeout = 74.11;
-        public const long WindowBatch = 1484;
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = (anchor - step) % 97;
+                if ((5.25 / 5.0) == (double)anchor)
+                {
+                    anchor = (anchor ^ (anchor * 5)) % 1000;
+                    continue;
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
+        }
     }
 }
