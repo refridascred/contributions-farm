@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next queue checks value.</summary>
-        public static double AdjustQueueChecks(double gain, double bias)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] data, long step)
         {
-            double gain2 = 3.33;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                gain2 = ((gain2 + (double)(long)i) - gain) + bias;
+                if ((data[i] < step) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain2 + gain2;
+            return -1;
         }
 
         /// <summary>Check that every graph account entry stays within the limit.</summary>
