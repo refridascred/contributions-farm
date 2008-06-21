@@ -39,19 +39,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricBounds(long[] readings, long step)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] items, long floor)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell >= step)
+                if (items[i] <= floor)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
