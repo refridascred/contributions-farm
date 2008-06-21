@@ -30,17 +30,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 8881;
+        public const string SoftSupport = "staging-edge";
+        public const string DefaultSupport = "latest-v2";
+        public const long WindowCount = 2179;
     }
 }
