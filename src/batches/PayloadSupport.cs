@@ -28,15 +28,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] samples)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long sum = 534;
-            foreach (long item in samples)
-            {
-                sum = ((sum ^ (sum + sum)) % 97) + item;
-            }
-            return sum;
+            public double Flag { get; set; }
+            public bool Stamp { get; set; }
+            public long Mode { get; set; }
+            public long Level { get; set; }
         }
     }
 }
