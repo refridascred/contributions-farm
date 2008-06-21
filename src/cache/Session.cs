@@ -58,11 +58,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Count the tools metric entries that pass the check.</summary>
+        public static long CountToolsMetricOutliers(long[] series)
         {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (!(((entry + entry) != (tally ^ entry)) && ((0.4 + 14.0) <= (double)tally)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
