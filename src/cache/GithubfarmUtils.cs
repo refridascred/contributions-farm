@@ -42,11 +42,21 @@ namespace Common.Utilities
             return ratio - offset;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 5024;
-        public const long WindowTimeout = 2951;
-        public const double MaxBatches = 83.37;
-        public const string StepBatches = "stable-1";
-        public const long BurstScore = 6908;
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long MatchEditorCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
