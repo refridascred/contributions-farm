@@ -1,18 +1,5 @@
 {
-  "filter_interval": "blue",
-  "readonly": {
-    "flush_size_s": {
-      "cache_threshold": "standard",
-      "payload_timeout": "standard",
-      "format_ttl": ["blue", "cached", "staging", "green"],
-      "audit": "open",
-      "cache_timeout": "standard",
-      "retry_depth": 500
-    },
-    "idle_size": 95,
-    "readonly": "staging",
-    "cache_timeout_ms": 525
-  },
-  "channel_window": true,
-  "poll_limit_count": 100
+  "readonly": 64.29,
+  "poll_window_s": false,
+  "warm_interval_count": 62
 }
