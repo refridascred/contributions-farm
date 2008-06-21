@@ -63,15 +63,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
-        {
-            Ready,
-            Queued,
-            Done,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 4261;
+        public const long BurstDepth = 5438;
+        public const long RetryLevel = 8379;
+        public const long WindowSpan = 1367;
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long FoldLayout(long[] data, long floor)
