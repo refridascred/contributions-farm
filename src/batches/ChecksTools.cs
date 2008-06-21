@@ -27,25 +27,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] values)
+        /// <summary>Compare every pair of profile token readings.</summary>
+        public static long MatchProfileTokenCount(long[] series)
         {
-            long sum = 31;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum * 5) + (sum + sum);
-                if (!(162 > (sum % 7)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = (sum * 4) + (sum + entry);
-                    sum = ((sum << 2) ^ (27 - (long)values.Length)) % 101;
+                    if ((series[i] - series[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                sum = ((sum << 2) ^ (entry ^ 2)) % 97;
             }
-            if (sum < 81)
-            {
-                sum = (sum - (sum % 97)) % 4096;
-            }
-            return sum % 65521;
+            return matches;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
