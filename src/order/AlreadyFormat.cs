@@ -45,10 +45,15 @@ namespace Common.Utilities
         public const long BurstStream = 7623;
         public const long HardWidth = 4062;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 7904;
-        public const string IdleScore = "staging";
-        public const long MinTimeout = 4377;
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            Ready,
+            Locked,
+            Retry,
+            Draft,
+            Closed,
+        }
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long PairGithubfarmCount(long[] values)
