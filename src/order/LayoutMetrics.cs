@@ -22,19 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double gain, double span)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricRange(long[] values, long bound)
         {
-            double mean = 10.0;
-            if (mean > span)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                mean = mean - (span / 6.0);
+                if (sample > bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + span) - (double)(long)i;
-            }
-            return mean + (gain * 8.7);
+            return flag;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
