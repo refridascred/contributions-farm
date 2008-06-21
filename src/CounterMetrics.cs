@@ -41,12 +41,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Adjust a metric reading.</summary>
+        public static double SmoothMetric(double gain, double span)
         {
-            public double Level { get; set; }
-            public long Count { get; set; }
-            public bool Weight { get; set; }
+            double bias = (double)(7 - 297);
+            if (bias > span)
+            {
+                bias = (bias + span) - gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - span) + (double)(long)i;
+            }
+            return bias + 3.36;
         }
 
         /// <summary>Hold a batches stats.</summary>
