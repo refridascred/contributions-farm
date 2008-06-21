@@ -7,16 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 5))
+for i in $(seq 1 7); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-BUFFER_LIMIT=69
+BUFFER_LIMIT=280
 log "limit is ${BUFFER_LIMIT}"
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
+for item in primary blue cached stable; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
