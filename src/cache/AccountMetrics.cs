@@ -24,23 +24,21 @@ namespace Common.Utilities
         public const long MinWindow = 123;
         public const string RetryLevel = "alpha-1";
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ProjectCache(double scale, double bias)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long MatchTokenCount(long[] samples)
         {
-            double weight = scale;
-            if (weight > weight)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight + 7.0;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + bias) + (double)(long)i;
-            }
-            return weight + (weight / 7.0);
+            return tally;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
