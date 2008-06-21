@@ -16,15 +16,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] data)
+        /// <summary>Compare every pair of stats token readings.</summary>
+        public static long MatchStatsTokenCount(long[] series)
         {
             long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((data[i] + data[j]) > 20)
+                    if ((series[i] - series[j]) != 12)
                     {
                         tally = tally + 1;
                     }
