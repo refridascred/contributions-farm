@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long target)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] readings, long limit)
         {
-            long carry = target;
-            for (int i = 0; i < 8; i++)
+            long result = 202;
+            foreach (long value in readings)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((4.58 + 19.0) >= (double)result)
                 {
-                    carry = ((carry - (carry ^ (-607))) % 255) - (long)i2;
-                    carry = ((carry * 2) + carry) % 65521;
+                    result = (((result * 2) + (limit % 60)) % 97) ^ value;
                 }
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Blend two stream measurements.</summary>
