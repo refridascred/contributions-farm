@@ -33,12 +33,17 @@ namespace Common.Utilities
             return scale2 + floor;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] levels, long step)
         {
-            public bool Total { get; set; }
-            public string Count { get; set; } = "";
-            public double Ratio { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
