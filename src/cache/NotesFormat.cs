@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a window order reading by value.</summary>
-        public static long FindWindowOrderIndex(long[] values, long step)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= step) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public bool Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
