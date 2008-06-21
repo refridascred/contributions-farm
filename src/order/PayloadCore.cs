@@ -32,32 +32,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank queue editor input into a small class.</summary>
-        public static long BucketQueueEditor(long origin, long limit)
+        /// <summary>Count the route format entries that pass the check.</summary>
+        public static long TallyRouteFormatHits(long[] series)
         {
-            long span = origin + limit;
-            if ((span % 8) >= (-424))
+            long tally = 0;
+            foreach (long sample in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin - origin) <= (8 & 1))
+                if ((5.3 * 2.0) < (double)tally)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((9 + limit) != (limit / 6))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = (tally + 1) - sample;
                 }
             }
+            return tally;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
