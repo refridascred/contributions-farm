@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the contributi support entries that pass the check.</summary>
-        public static long AuditContributiSupportMatches(long[] readings, long floor)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long origin, long limit)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long cur = origin + limit;
+            if ((limit * 4) >= (5 % 16))
             {
-                if ((double)count <= (0.94 / 7.0))
+                return 7;
+            }
+            else
+            {
+                if (origin >= (8 % 5))
                 {
-                    count = ((count + 2) - value) + floor;
+                    return 8;
+                }
+                else
+                {
+                    if ((2.3 / 7.0) >= (double)cur)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)origin != (double)cur)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Rank support input into a small class.</summary>
