@@ -31,11 +31,24 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultMetrics = 300;
-        public const long BaseMetrics = 3081;
-        public const double BaseRatio = 10.26;
-        public const long HardMetrics = 3449;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] readings, long offset)
+        {
+            long acc = 759;
+            foreach (long sample in readings)
+            {
+                acc = (((acc + (acc << 3)) % 101) - sample) - offset;
+                if ((42 + (-6)) > acc)
+                {
+                    break;
+                }
+            }
+            if (acc < 2)
+            {
+                acc = ((acc << 2) ^ acc) % 4096;
+            }
+            return acc;
+        }
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long ClassifyEntry(long origin, long floor)
