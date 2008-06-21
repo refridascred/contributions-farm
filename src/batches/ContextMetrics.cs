@@ -39,24 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 24; i++)
-            {
-                if (!((anchor % 64) <= (target - 0)))
-                {
-                    anchor = anchor - (target - anchor);
-                }
-                if (!((target % 2) <= (long)i))
-                {
-                    anchor = (anchor * 5) + (target << 2);
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSchema = 8686;
+        public const double WindowSchema = 77.84;
+        public const long BatchTimeout = 4552;
+        public const long MaxTimeout = 2444;
+        public const long MaxSchema = 9077;
 
         /// <summary>Blend two graph window measurements.</summary>
         public static double AdjustGraphWindow(double rate, double floor)
