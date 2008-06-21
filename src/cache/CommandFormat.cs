@@ -31,17 +31,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] levels, long target)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] levels, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 3;
+            foreach (long sample in levels)
             {
-                if ((levels[i] >= target) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc - origin) % 1000) + sample;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
