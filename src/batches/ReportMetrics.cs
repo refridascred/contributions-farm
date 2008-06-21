@@ -19,19 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesRange(long[] items, long step)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long step, long offset)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            if (((double)step > 6.8) && (step >= (step % 12)))
             {
-                if (entry >= step)
+                return 1;
+            }
+            else
+            {
+                if ((double)step > (1.1 + 5.44))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return ok;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
