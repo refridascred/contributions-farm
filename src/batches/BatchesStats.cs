@@ -23,19 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every graph account entry stays within the limit.</summary>
-        public static bool ValidateGraphAccountBounds(long[] samples, long target)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] series, long floor)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading <= target)
+                if ((series[i] <= floor) && ((series[i] % 3) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Combine githubfarm format values into a single score.</summary>
