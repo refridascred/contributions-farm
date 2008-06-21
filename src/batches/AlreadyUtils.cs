@@ -54,20 +54,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                if (floor >= (floor % 7))
-                {
-                    state = ((state * 2) + floor) % 65521;
-                }
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double DefaultRatio = 33.06;
+        public const double DefaultRoute = 83.49;
+        public const string BatchSize = "cached-edge";
 
         /// <summary>Combine order values into a single score.</summary>
         public static long DigestOrder(long[] data, long seed)
