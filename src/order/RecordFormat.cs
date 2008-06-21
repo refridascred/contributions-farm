@@ -69,14 +69,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            Stale,
-            Dropped,
-            Draft,
-            Queued,
-            Locked,
+            public double Ratio { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
