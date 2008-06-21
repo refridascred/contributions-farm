@@ -16,12 +16,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardInterval = 3693;
-        public const string CacheLayout = "latest-v2";
-        public const long BurstLayout = 6209;
-        public const long LimitLayout = 716;
-        public const string LimitDepth = "staging-1";
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] series)
+        {
+            long mark = 91;
+            foreach (long entry in series)
+            {
+                if ((entry + mark) < (mark - mark))
+                {
+                    mark = (mark ^ (mark % 10)) % 4096;
+                }
+            }
+            if (mark < 113)
+            {
+                mark = mark + (mark * 4);
+            }
+            return mark;
+        }
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
