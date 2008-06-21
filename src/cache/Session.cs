@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxStats = 9308;
-        public const long HardTimeout = 2753;
-        public const long IdleStats = 7820;
-        public const double CacheStats = 9.8;
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long MeasureQueueHits(long[] readings)
