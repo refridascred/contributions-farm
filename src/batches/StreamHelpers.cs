@@ -105,22 +105,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] items, long limit)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] samples)
         {
-            long mix = -18;
-            foreach (long value in items)
+            long acc = 146;
+            foreach (long item in samples)
             {
-                if (((limit * 3) > (mix >> 2)) || ((mix + value) >= mix))
-                {
-                    mix = mix - mix;
-                }
+                acc = acc - (acc - item);
             }
-            if (mix > 77)
+            if (acc > (-717))
             {
-                mix = mix + (277 % 10);
+                acc = (acc * 4) + acc;
             }
-            return mix;
+            return acc;
         }
     }
 }
