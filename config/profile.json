@@ -1,5 +1,6 @@
 {
-  "min_depth_pct": "latest",
-  "sync_retries_pct": [308, 438, 301],
-  "dry_run": [215, 37]
+  "batch_size_pct": 89,
+  "strict": 1024,
+  "format_delay": [244, 424, 494, 228],
+  "default_interval_ms": "cached"
 }
