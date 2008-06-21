@@ -1,8 +1,19 @@
 {
-  "contributi_retries": 7,
-  "idle_threshold_ms": "standard",
-  "audit": "open",
-  "metric_window": "fallback",
-  "warm_limit": 45.41,
-  "cache_window": 100
+  "sync_timeout_ms": false,
+  "min_depth": 26.22,
+  "session_timeout": {
+    "window_ttl": 32,
+    "base_size": 8921,
+    "min_size": 2296,
+    "idle_delay": "fallback",
+    "compress": {
+      "hard_timeout": true,
+      "profile_delay": true,
+      "verbose": 51
+    },
+    "strict": 79
+  },
+  "token_ratio": "strict",
+  "cluster_threshold": 1024,
+  "verbose": 6158
 }
