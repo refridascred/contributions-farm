@@ -53,11 +53,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 3263;
-        public const long CacheBatch = 8862;
-        public const long IdleBatch = 7285;
-        public const double SoftWidth = 94.85;
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > bound) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long StepBuffer(long origin)
