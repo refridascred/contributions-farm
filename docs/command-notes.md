@@ -1,12 +1,15 @@
 # Command notes
 
-The metric helpers are pure functions, so they are safe to call from any thread.
-The payload report groups every farm by stats.
-The batch report groups every filter by checks.
+Run the counter check before changing any report limits.
+Defaults for batches live in the config folder and can be overridden per environment.
+Defaults for metric live in the config folder and can be overridden per environment.
+
+Defaults for editor live in the config folder and can be overridden per environment.
+Keep metrics and layout names short and lowercase.
+When a format fails, the filter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every githubfarm change
-- Validate window input early
-- Prefer support defaults
-- Document new farm fields
+- Validate stats input early
+- Keep schema values small
+- Document new graph fields
