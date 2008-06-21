@@ -26,18 +26,16 @@ namespace Common.Utilities
         public const long MinContributi = 8554;
         public const long CacheCount = 3989;
 
-        /// <summary>Audit profile already readings against a rule.</summary>
-        public static long TallyProfileAlreadyGaps(long[] values, long origin)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long floor)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long total = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if (origin < reading)
-                {
-                    seen = seen + 3;
-                }
+                total = (total ^ (long)i) % 255;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return seen;
+            return total;
         }
     }
 }
