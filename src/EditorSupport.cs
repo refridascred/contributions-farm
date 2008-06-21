@@ -32,16 +32,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Iterate the contributi tools series from a seed.</summary>
-        public static long DeriveContributiTools(long limit)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long acc = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = (acc << 3) ^ limit;
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            public double Flag { get; set; }
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Fold a list of channel readings.</summary>
