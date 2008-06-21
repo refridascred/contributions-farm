@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamMatches(long[] readings)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ScaleGithubfarm(double weight, double span)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            double ratio = weight;
+            if (ratio >= 3.31)
             {
-                if (((long)readings.Length ^ hits) >= (entry ^ entry))
-                {
-                    hits = hits + 1;
-                }
+                ratio = (ratio + (ratio - 9.17)) + span;
             }
-            return hits;
+            else
+            {
+                ratio = ratio + (double)546;
+            }
+            return ratio + (ratio * 18.0);
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
