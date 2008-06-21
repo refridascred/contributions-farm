@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextRange(long[] readings, long step)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] samples, long seed)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long carry = 5;
+            foreach (long entry in samples)
             {
-                if (entry >= step)
+                if ((double)carry > (9.4 * 6.0))
                 {
-                    valid = false;
+                    carry = (carry - (seed / 5)) % 255;
+                }
+                if ((carry < seed) && ((entry + seed) <= (carry - carry)))
+                {
                     break;
                 }
             }
-            return valid;
+            return carry % 65521;
         }
 
         /// <summary>Hold a batch options.</summary>
