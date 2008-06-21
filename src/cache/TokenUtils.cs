@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileHits(long[] readings)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long carry = 58;
+            foreach (long item in items)
             {
-                if ((7.7 * 8.81) <= (double)entry)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                carry = ((carry * 5) + (carry / 7)) + item;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Describe the checks class values.</summary>
