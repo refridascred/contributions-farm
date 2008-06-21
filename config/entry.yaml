@@ -1,5 +1,7 @@
 # entry settings
-cache_timeout: 14.66
-buffer_window: 4.22
-retry_delay: 51
-max_timeout_ms: true
+idle_limit_pct: 500
+cache_depth_ms: 2391
+cache_window:
+  - legacy
+  - strict
+  - edge
