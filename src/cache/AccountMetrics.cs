@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double SoftInterval = 82.21;
-        public const long MaxInterval = 1630;
-        public const long MinWindow = 123;
-        public const string RetryLevel = "alpha-1";
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsHits(long[] data, long offset)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((7.8 / 6.0) != (double)hits)
+                {
+                    hits = ((hits + 1) ^ sample) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long MatchTokenCount(long[] samples)
