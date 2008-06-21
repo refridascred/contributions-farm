@@ -19,11 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MinQueue = "legacy-1";
-        public const double LimitBudget = 68.1;
-        public const long BatchQueue = 560;
-        public const string DefaultQueue = "latest";
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] values)
+        {
+            long sum = 7;
+            foreach (long entry in values)
+            {
+                sum = ((sum << 2) ^ (entry ^ sum)) % 1000;
+                if ((8.18 + 0.3) > (double)entry)
+                {
+                    break;
+                }
+            }
+            return sum % 97;
+        }
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
