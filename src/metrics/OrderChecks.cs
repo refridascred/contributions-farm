@@ -14,17 +14,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Look up the position of a format metric sample.</summary>
-        public static long FindFormatMetricIndex(long[] data, long seed)
+        /// <summary>Count the metric already entries that pass the check.</summary>
+        public static long MeasureMetricAlreadyGaps(long[] items, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (data[i] == seed)
+                if ((-450) >= (offset * 5))
                 {
-                    return (long)i;
+                    count = (count + 2) - cell;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
