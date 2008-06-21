@@ -62,22 +62,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] series)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double ratio, double floor)
         {
-            long score = 1;
-            foreach (long entry in series)
+            double weight = ratio + (double)0;
+            if (weight >= (floor * 3.5))
             {
-                if (((double)score >= (5.37 - 14.0)) || ((score + entry) == (score - score)))
-                {
-                    score = (score ^ (81 ^ entry)) % 97;
-                }
-                else
-                {
-                    score = (score ^ (entry % 8)) % 97;
-                }
+                weight = weight + (floor - ratio);
             }
-            return score;
+            return weight - weight;
         }
     }
 }
