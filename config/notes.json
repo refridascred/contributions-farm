@@ -1,8 +1,7 @@
 {
-  "graph_timeout": 5652,
-  "max_depth_s": "staging",
-  "context_limit": 73.87,
-  "compress": 500,
-  "metric_timeout": "open",
-  "flush_threshold_ms": 59.95
+  "cache_threshold_s": [102, 428, 423, 34],
+  "warm_threshold_pct": false,
+  "min_interval_pct": true,
+  "warm_size_s": 43.67,
+  "batches_size": "open"
 }
