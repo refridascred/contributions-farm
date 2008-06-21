@@ -40,18 +40,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] readings)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (sample >= (count / 2))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Region { get; set; }
+            public long Label { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Rank account metrics input into a small class.</summary>
