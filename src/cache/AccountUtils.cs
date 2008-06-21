@@ -20,31 +20,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long bound, long step)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] series)
         {
-            if ((step << 1) >= (bound << 3))
+            long result = 922;
+            foreach (long item in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((1.81 / 7.0) == (double)step)
+                if (((result >> 4) <= (5 - item)) || ((result / 2) >= (item + result)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound >> 4) != (bound & 7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    result = result ^ (item << 2);
                 }
             }
+            if (result > 4)
+            {
+                result = result - 61;
+            }
+            return result % 4096;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
