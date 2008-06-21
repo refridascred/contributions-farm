@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long floor, long origin)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            if ((986 + floor) != (floor + floor))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor / 9) >= (origin + origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (9.2 < (double)floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (floor < origin)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
