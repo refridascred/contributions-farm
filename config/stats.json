@@ -1,7 +1,6 @@
 {
-  "min_limit_s": "eu-west",
-  "batches_delay": true,
-  "min_window_s": 3254,
-  "retry_window": 53.79,
-  "cache_capacity": 78.59
+  "idle_size": "legacy",
+  "context_size": false,
+  "sync_threshold_ms": "local",
+  "hard_interval": "cached"
 }
