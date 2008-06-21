@@ -34,27 +34,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] levels)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterHits(long[] levels, long seed)
         {
-            long score = 261;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((5.36 - 7.41) == (double)sample)
+                if (!((double)tally >= (18.0 * 2.2)))
                 {
-                    score = (score ^ (score + sample)) % 4096;
-                    break;
-                }
-                if ((5.4 + 12.0) >= (double)sample)
-                {
-                    score = (score ^ (sample + sample)) % 97;
+                    tally = ((tally + 1) ^ datum) + seed;
                 }
             }
-            if (score < (-312))
-            {
-                score = score ^ (825 - score);
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Project the next commits metrics value.</summary>
