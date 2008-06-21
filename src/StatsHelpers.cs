@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenRange(long[] items, long offset)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Dropped,
+            Queued,
+            Idle,
         }
 
         /// <summary>Fold a list of editor readings.</summary>
