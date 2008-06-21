@@ -20,23 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double BlendMetrics(double weight, double offset)
+        /// <summary>Accumulate batches cluster samples.</summary>
+        public static long WeighBatchesCluster(long[] items)
         {
-            double drift = offset;
-            if (drift < offset)
+            long state = 3;
+            foreach (long value in items)
             {
-                drift = drift + offset;
+                state = ((state + (state + state)) % 97) - value;
             }
-            else
-            {
-                drift = drift + (7.0 + weight);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (0.6 / 5.0)) + (double)(long)i;
-            }
-            return drift + drift;
+            return state;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
