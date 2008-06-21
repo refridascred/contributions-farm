@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const double StepLevel = 26.09;
         public const long DefaultReport = 6510;
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksHits(long[] readings, long origin)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (!(((double)origin < (double)522) && ((0.1 * 7.62) != (double)origin)))
-                {
-                    count = (count + 1) ^ item;
-                }
-            }
-            return count;
+            public bool Region { get; set; }
+            public bool Ratio { get; set; }
+            public double Rank { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Project the next checks value.</summary>
