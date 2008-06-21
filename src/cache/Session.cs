@@ -37,18 +37,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsOutliers(long[] readings, long origin)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long seed, long step)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long edge = seed ^ step;
+            if (step > (seed + 786))
             {
-                if (origin < ((long)readings.Length - origin))
+                return 6;
+            }
+            else
+            {
+                if ((double)edge < 9.3)
                 {
-                    seen = (seen + 3) + sample;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
     }
 }
