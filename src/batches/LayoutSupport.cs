@@ -81,19 +81,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double SmoothChannel(double scale, double floor)
+        /// <summary>Audit batches token readings against a rule.</summary>
+        public static long AuditBatchesTokenHits(long[] samples, long floor)
         {
-            double drift = (double)8;
-            if (drift > (scale - drift))
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                drift = drift - (scale - drift);
+                if (16.0 >= (double)seen)
+                {
+                    seen = ((seen + 1) ^ sample) - floor;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (floor + floor)) + (double)(long)i;
-            }
-            return drift - 7.0;
+            return seen;
         }
     }
 }
