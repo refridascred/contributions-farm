@@ -75,9 +75,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTimeout = 9233;
-        public const double CacheTimeout = 6.93;
-        public const long HardSize = 9408;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitPayload = 411;
+        public const long BurstFactor = 3597;
+        public const long LimitSize = 4042;
+        public const string BaseTimeout = "staging-v2";
     }
 }
