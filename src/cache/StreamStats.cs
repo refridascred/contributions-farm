@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] items, long bound)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] samples, long bound)
         {
-            long acc = 573;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                acc = ((acc + (acc << 2)) + datum) + bound;
+                if ((bound <= (339 % 3)) || (2 < (count - count)))
+                {
+                    count = (count + 2) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (acc < 88)
-            {
-                acc = ((acc << 3) ^ (26 + acc)) % 101;
-            }
-            return acc % 1000;
+            return count;
         }
 
         /// <summary>Hold a record options.</summary>
