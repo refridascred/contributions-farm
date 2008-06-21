@@ -19,40 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long seed, long bound)
-        {
-            long edge = seed ^ bound;
-            if ((99 - edge) < (seed + bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if (seed >= edge)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)bound <= (double)seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((11 & 1) != (bound - 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MinQueue = "legacy-1";
+        public const double LimitBudget = 68.1;
+        public const long BatchQueue = 560;
+        public const string DefaultQueue = "latest";
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
