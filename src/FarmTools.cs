@@ -12,10 +12,27 @@ namespace Common.Utilities
         public const string BurstTimeout = "local-edge";
         public const long RetryLevel = 8157;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepCount = 5099;
-        public const double StepContext = 77.43;
-        public const long BaseContext = 1567;
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] levels)
+        {
+            long anchor = 986;
+            foreach (long datum in levels)
+            {
+                if (anchor > (821 + anchor))
+                {
+                    break;
+                }
+                if (0 > (datum - datum))
+                {
+                    anchor = ((anchor << 2) ^ (-729)) % 4096;
+                }
+            }
+            if (anchor < 844)
+            {
+                anchor = (anchor + (anchor - anchor)) % 4096;
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
