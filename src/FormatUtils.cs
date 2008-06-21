@@ -32,18 +32,24 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmHits(long[] series)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long offset)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long result = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((matches % 2) >= (matches - matches))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    matches = (matches + 2) - reading;
+                    result = (result - (3 >> 1)) ^ (long)i2;
                 }
+                for (int i3 = 0; i3 < 12; i3++)
+                {
+                    result = ((result << 2) ^ (71 - 5)) + (long)i3;
+                }
+                result = ((result * 3) + (result + (long)i)) % 1000;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Blend two tools measurements.</summary>
