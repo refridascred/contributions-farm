@@ -1,11 +1,12 @@
 # Command notes
 
-The payload report groups every contributi by session.
-Run the checks check before changing any metric limits.
+A counter that stays idle for too long is moved to the cluster list.
+Keep payload and profile names short and lowercase.
+Each schema is validated before it reaches the cache queue.
 
 ## Guidelines
 
-- Keep editor values small
-- Review window limits each release
-- Log every cache change
-- Prefer command defaults
+- Review buffer limits each release
+- Prefer commits defaults
+- Keep report values small
+- Validate record input early
