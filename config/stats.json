@@ -1,10 +1,6 @@
 {
-  "flush_limit": 30,
-  "sync_limit_pct": 6794,
-  "cache_interval_pct": {
-    "verbose": 54.5,
-    "githubfarm_threshold": true,
-    "max_capacity_ms": 1024
-  },
-  "enabled": "edge"
+  "batch_threshold": true,
+  "retry_ttl_count": "legacy",
+  "account_depth": 2585,
+  "poll_delay": "legacy"
 }
