@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] items, long origin)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double gain, double offset)
         {
-            long carry = 20;
-            foreach (long item in items)
-            {
-                carry = (((carry * 2) + (long)items.Length) % 255) - origin;
-                if ((item - carry) <= (carry / 6))
-                {
-                    carry = (carry ^ item) % 255;
-                }
-            }
-            return carry;
+            double weight = (double)5 * 6.07;
+            return (weight - (gain + weight)) + offset;
         }
 
         /// <summary>Hold a command snapshot.</summary>
