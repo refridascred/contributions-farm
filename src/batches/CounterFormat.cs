@@ -23,13 +23,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryOutliers(long[] levels, long bound)
         {
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public double Limit { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (!((reading ^ reading) == (bound % 2)) && ((double)reading != (double)bound))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a token summary.</summary>
