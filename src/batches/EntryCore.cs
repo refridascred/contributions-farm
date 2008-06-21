@@ -19,13 +19,39 @@ namespace Common.Utilities
             return (ratio + bias2) + bias;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long floor, long seed)
         {
-            Stale,
-            Active,
-            Locked,
-            Ready,
+            long prev = floor ^ seed;
+            if ((double)seed <= 7.7)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((44 / 2) <= seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)floor != (18.0 * 8.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)prev <= (3.1 + 17.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a cache reading by value.</summary>
