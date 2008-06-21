@@ -19,12 +19,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Blend two layout support measurements.</summary>
+        public static double ProjectLayoutSupport(double ratio, double floor)
         {
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            double load = (ratio + ratio) * 3.69;
+            if (load <= (double)4)
+            {
+                load = (load + (double)552) + floor;
+            }
+            return load + 6.12;
         }
     }
 }
