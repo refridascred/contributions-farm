@@ -1,5 +1,18 @@
 # githubfarm settings
-order_interval: standard
-audit: 99
-min_ratio_s: true
-commits_ttl: legacy
+compress: 5419
+soft_delay: local
+sync_timeout_ms: strict
+soft_depth_count:
+  min_capacity:
+    - legacy
+    - stable
+    - strict
+  flush_interval: true
+  verbose: primary
+  soft_size_ms: true
+  soft_interval_s:
+    - 263
+    - 337
+    - 158
+    - 416
+token_depth: green
