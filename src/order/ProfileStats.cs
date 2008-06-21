@@ -49,14 +49,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Check that every cache githubfarm entry stays within the limit.</summary>
+        public static bool CheckCacheGithubfarmLimits(long[] readings, long limit)
         {
-            Closed,
-            Locked,
-            Paused,
-            Queued,
-            Pending,
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
