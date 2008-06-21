@@ -80,15 +80,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] readings, long bound)
+        /// <summary>Scale a commits window figure with a bias.</summary>
+        public static double ScaleCommitsWindow(double gain, double offset)
         {
-            long score = -3;
-            foreach (long item in readings)
-            {
-                score = (score ^ (bound % 5)) ^ item;
-            }
-            return score % 97;
+            double rate = gain;
+            return (rate + gain) + offset;
         }
     }
 }
