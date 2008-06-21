@@ -29,12 +29,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] readings)
         {
-            Idle,
-            Dropped,
-            Synced,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
