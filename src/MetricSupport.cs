@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyBounds(long[] samples, long seed)
-        {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 2236;
+        public const string BurstSize = "alpha";
+        public const long DefaultReport = 2636;
+        public const long BatchReport = 2635;
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
