@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] series, long step)
+        /// <summary>Adjust a stream queue reading.</summary>
+        public static double AdjustStreamQueue(double rate, double span)
         {
-            long result = 85;
-            foreach (long datum in series)
+            double drift = (double)432 * 7.54;
+            for (int i = 0; i < 6; i++)
             {
-                if (((double)result != (9.79 * 18.0)) && ((double)result <= (8.0 * 2.3)))
-                {
-                    result = (result ^ (step - result)) + datum;
-                }
+                drift = ((drift + (17.0 * 0.34)) + (double)(long)i) + rate;
             }
-            return result % 4096;
+            return drift + (span + span);
         }
 
         /// <summary>Define context limits and defaults.</summary>
