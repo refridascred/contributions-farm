@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            Active,
-            Paused,
-            Retry,
-            Failed,
-            Ready,
+            public string Size { get; set; } = "";
+            public long Flag { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the cache class values.</summary>
