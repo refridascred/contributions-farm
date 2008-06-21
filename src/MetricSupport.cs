@@ -20,13 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            New,
-            Closed,
-            Paused,
-            Locked,
+            Failed,
+            Stale,
+            Retry,
         }
 
         /// <summary>Roll a layout schema counter forward.</summary>
