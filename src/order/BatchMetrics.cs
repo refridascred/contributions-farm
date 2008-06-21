@@ -11,19 +11,38 @@ namespace Common.Utilities
         public const long RetryDepth = 2040;
         public const long MinLevel = 5794;
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double AdjustBatches(double weight, double bias)
+        /// <summary>Classify a route report pair into a bucket.</summary>
+        public static long SortRouteReport(long seed, long offset)
         {
-            double bias2 = (double)(-476) - weight;
-            if (bias2 > weight)
+            if ((1.41 + 9.71) <= (double)seed)
             {
-                bias2 = (bias2 - weight) - bias;
+                return 8;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                bias2 = (bias2 - (3.0 * 0.1)) + (double)(long)i;
+                if (offset < (seed % 100))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((seed / 5) == (seed - offset)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed <= (-68)) && (offset > (offset + seed)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return bias2 - (double)7;
         }
 
         /// <summary>Validate route metric readings against a bound.</summary>
