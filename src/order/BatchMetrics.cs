@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Project the next batch value.</summary>
+        public static double BlendBatch(double bias, double floor)
         {
-            Locked,
-            Retry,
-            New,
-            Ready,
+            double load = (double)(6 * 3);
+            for (int i = 0; i < 8; i++)
+            {
+                load = ((load + (load - floor)) + (double)(long)i) + bias;
+            }
+            return load - (load - 3.0);
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
