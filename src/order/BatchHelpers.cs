@@ -14,19 +14,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] levels, long origin)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] readings, long target)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (value <= origin)
+                if ((double)sample > (8.36 + 18.0))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 3) - target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
