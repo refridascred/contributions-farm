@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] items)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (!(((4.0 / 9.0) <= (double)hits) || ((5.6 - 5.1) >= (double)datum)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Stale,
+            Locked,
+            Pending,
+            Retry,
+            Paused,
         }
 
         /// <summary>Blend two stream measurements.</summary>
