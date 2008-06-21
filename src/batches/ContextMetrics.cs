@@ -79,12 +79,19 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Validate stats editor readings against a bound.</summary>
+        public static bool CheckStatsEditorBounds(long[] data, long seed)
         {
-            public long Level { get; set; }
-            public bool Ratio { get; set; }
-            public string Region { get; set; } = "";
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit metrics channel readings against a rule.</summary>
