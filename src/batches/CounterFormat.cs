@@ -22,19 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsRange(long[] readings, long target)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] levels, long target)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (entry != target)
+                if ((double)target > (2.7 + 1.4))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 2) + cell;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
