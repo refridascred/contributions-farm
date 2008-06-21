@@ -1,8 +1,6 @@
 {
-  "base_timeout": 9011,
-  "poll_depth_pct": false,
-  "entry_size": 12.98,
-  "max_depth": 6851,
-  "batch_timeout_count": ["standard", "legacy"],
-  "enabled": ["open", "staging", "strict"]
+  "flush_size_count": 22,
+  "sync_size_ms": "blue",
+  "soft_interval_s": 500,
+  "flush_capacity_s": "eu-west"
 }
