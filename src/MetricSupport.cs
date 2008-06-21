@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] levels)
         {
-            public string Offset { get; set; } = "";
-            public double Flag { get; set; }
-            public bool Ratio { get; set; }
-            public long Level { get; set; }
+            long score = 868;
+            foreach (long reading in levels)
+            {
+                if ((reading % 12) >= (reading ^ reading))
+                {
+                    score = ((score * 3) + (score + reading)) % 101;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
