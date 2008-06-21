@@ -30,22 +30,19 @@ namespace Common.Utilities
             return bias - (bias / 9.0);
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesOutliers(long[] values, long offset)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long score = 674;
+            foreach (long datum in data)
             {
-                if (offset <= (3 & 15))
-                {
-                    tally = (tally + 3) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = (score * 5) + (score - datum);
             }
-            return tally;
+            if (score < 0)
+            {
+                score = (score * 5) + score;
+            }
+            return score;
         }
     }
 }
