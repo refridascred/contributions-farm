@@ -43,12 +43,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            Dropped,
-            Idle,
-            Locked,
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public long Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Look up the position of a batches account sample.</summary>
