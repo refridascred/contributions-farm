@@ -19,11 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsRange(long[] levels, long origin)
         {
-            public long Rank { get; set; }
-            public string Size { get; set; } = "";
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit farm cluster readings against a rule.</summary>
