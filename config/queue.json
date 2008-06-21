@@ -1,6 +1,7 @@
 {
-  "default_ratio_ms": ["fallback", "standard", "local", "standard"],
+  "payload_ratio": "primary",
+  "commits_window": [149, 478],
+  "burst_delay_count": false,
   "soft_ratio_s": "eu-west",
-  "stream_ratio": 46.56,
-  "notes_timeout": 5209
+  "batch_ratio_pct": "strict"
 }
