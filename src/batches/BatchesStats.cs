@@ -33,39 +33,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long offset, long seed)
+        /// <summary>Combine githubfarm format values into a single score.</summary>
+        public static long DigestGithubfarmFormat(long[] items)
         {
-            long prev = offset ^ seed;
-            if ((2.62 * 6.5) > (double)offset)
+            long anchor = 28;
+            foreach (long sample in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)prev < (double)offset)
+                if ((7.2 * 4.52) >= (double)sample)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((9.0 + 11.0) <= (double)seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed - prev) == (offset + seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    anchor = ((anchor << 3) ^ (sample << 3)) % 1000;
                 }
             }
+            return anchor % 1000;
         }
 
         /// <summary>Hold a profile entry.</summary>
