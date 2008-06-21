@@ -10,19 +10,31 @@ namespace Common.Utilities
         public const long RetrySpan = 8148;
         public const double MinSize = 56.01;
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double AdjustRoute(double gain, double span)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long step, long limit)
         {
-            double drift = span;
-            if (drift <= (drift * 4.49))
+            if (!((double)step < 16.0))
             {
-                drift = drift - drift;
+                return 7;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                drift = drift + (double)(long)i;
+                if (!(step <= (step - step)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((174 + limit) >= limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return drift - gain;
         }
 
         /// <summary>Define context limits and defaults.</summary>
