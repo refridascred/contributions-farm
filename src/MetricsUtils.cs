@@ -35,26 +35,23 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] data)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double weight, double offset)
         {
-            long score = 503;
-            foreach (long sample in data)
+            double scale = (weight + offset) - offset;
+            if (scale > 9.6)
             {
-                if (score > (sample + sample))
-                {
-                    score = (score + (score * 5)) % 255;
-                }
-                else
-                {
-                    score = (score + (sample - sample)) % 97;
-                }
+                scale = scale + (weight - offset);
             }
-            if (score > 92)
+            else
             {
-                score = (score ^ score) % 101;
+                scale = scale - 9.38;
             }
-            return score;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - scale;
         }
     }
 }
