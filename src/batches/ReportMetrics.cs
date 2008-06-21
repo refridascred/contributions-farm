@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Project the next queue value.</summary>
+        public static double ScaleQueue(double bias, double bias2)
         {
-            Active,
-            Queued,
-            Retry,
+            double weight = 6.9;
+            if (weight < (bias2 - 8.4))
+            {
+                weight = weight - (bias / 3.0);
+            }
+            else
+            {
+                weight = weight - (10.0 - bias2);
+            }
+            return weight + bias2;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
