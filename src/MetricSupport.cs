@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitReport = 2236;
-        public const string BurstSize = "alpha";
-        public const long DefaultReport = 2636;
-        public const long BatchReport = 2635;
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 4; i++)
+            {
+                state = state + (8 << 2);
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Digest a series of metrics order entries.</summary>
         public static long DigestMetricsOrder(long[] levels, long limit)
