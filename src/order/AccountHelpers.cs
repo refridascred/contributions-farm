@@ -73,23 +73,21 @@ namespace Common.Utilities
         public const double StepSpan = 97.62;
         public const double IdleSpan = 46.97;
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] items)
+        /// <summary>Match up notes layout samples.</summary>
+        public static long MatchNotesLayoutCount(long[] values)
         {
-            long score = 281;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = score + (cell ^ cell);
-                if ((2.22 > (double)cell) && (5 < (cell ^ (-54))))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (score * 3) + (cell << 2);
-                }
-                else
-                {
-                    score = ((score * 3) + (score + cell)) % 65521;
+                    if ((values[i] - values[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score;
+            return seen;
         }
     }
 }
