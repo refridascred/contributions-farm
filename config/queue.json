@@ -1,8 +1,5 @@
 {
-  "flush_size_s": 250,
-  "cache_timeout_pct": true,
-  "burst_timeout_ms": 66,
-  "base_delay_ms": [277, 218],
-  "flush_size_count": "latest",
-  "min_ttl": ["green", "strict", "fallback", "edge"]
+  "max_size_pct": false,
+  "cache_ttl_ms": 81.79,
+  "burst_threshold_count": 5304
 }
