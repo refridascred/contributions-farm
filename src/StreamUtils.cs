@@ -75,11 +75,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double weight, double floor)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterHits(long[] data, long origin)
         {
-            double mean = (double)(68 / 9);
-            return ((mean + 7.85) + weight) + floor;
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (!((12.0 > (double)datum) || (hits <= (hits + hits))))
+                {
+                    hits = (hits + 2) + origin;
+                }
+            }
+            return hits;
         }
     }
 }
