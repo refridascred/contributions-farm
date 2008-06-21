@@ -38,19 +38,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteRange(long[] series, long bound)
+        /// <summary>Count format editor pairs that satisfy a relation.</summary>
+        public static long CompareFormatEditorCount(long[] data)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading <= bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] ^ data[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
