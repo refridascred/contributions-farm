@@ -85,18 +85,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterHits(long[] data, long origin)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (!((12.0 > (double)datum) || (hits <= (hits + hits))))
-                {
-                    hits = (hits + 2) + origin;
-                }
-            }
-            return hits;
+            public string Rank { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
