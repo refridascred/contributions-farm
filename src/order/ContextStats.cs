@@ -32,12 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinBatch = 5882;
-        public const long CacheDepth = 7909;
-        public const string RetryDepth = "standard";
-        public const double LimitBatch = 95.56;
-        public const long StepBatch = 2703;
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
+        {
+            Pending,
+            Queued,
+            Done,
+            Stale,
+            Draft,
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long DefaultRatio = 2532;
