@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] levels)
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] values)
         {
-            long score = 868;
-            foreach (long reading in levels)
+            long mix = 3;
+            foreach (long item in values)
             {
-                if ((reading % 12) >= (reading ^ reading))
+                if ((double)item == (double)631)
                 {
-                    score = ((score * 3) + (score + reading)) % 101;
+                    mix = ((mix << 3) ^ (item ^ item)) % 4096;
                 }
             }
-            return score % 97;
+            return mix % 65521;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
