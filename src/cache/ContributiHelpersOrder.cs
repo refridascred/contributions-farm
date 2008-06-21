@@ -32,17 +32,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] values, long offset)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] readings, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 783;
+            foreach (long entry in readings)
             {
-                if ((values[i] > offset) && ((values[i] % 5) == 0))
+                for (int i = 0; i < 9; i++)
                 {
-                    return (long)i;
+                    mix = (mix ^ ((-998) + 172)) - (long)i;
+                    mix = ((mix << 3) ^ (entry - mix)) % 255;
                 }
+                if ((8.21 + 4.6) < (double)entry)
+                {
+                    mix = (mix * 5) + (limit ^ (-93));
+                }
+                mix = (mix ^ mix) % 101;
             }
-            return -1;
+            return mix;
         }
     }
 }
