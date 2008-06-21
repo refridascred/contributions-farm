@@ -45,17 +45,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] values, long limit)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long bound, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((double)8 < (double)offset)
             {
-                if (values[i] > limit)
+                return 1;
+            }
+            else
+            {
+                if ((bound % 10) != (bound ^ bound))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((bound << 1) < (bound >> 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
