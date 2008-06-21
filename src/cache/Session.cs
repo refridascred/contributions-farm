@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            public double Count { get; set; }
-            public double Flag { get; set; }
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
+            public long Level { get; set; }
+            public double Weight { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
