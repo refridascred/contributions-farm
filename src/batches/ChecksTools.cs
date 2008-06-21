@@ -23,12 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            Idle,
-            Ready,
-            Locked,
+            public long Flag { get; set; }
+            public double Owner { get; set; }
+            public double Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
