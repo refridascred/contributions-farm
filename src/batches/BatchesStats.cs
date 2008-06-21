@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] data, long step)
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double weight, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = weight;
+            for (int i = 0; i < 2; i++)
             {
-                if ((data[i] < step) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mean = ((mean - (double)865) + (double)(long)i) - bias;
             }
-            return -1;
+            return mean + weight;
         }
 
         /// <summary>Check that every graph account entry stays within the limit.</summary>
