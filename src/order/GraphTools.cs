@@ -52,15 +52,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double bias, double floor)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] readings, long floor)
         {
-            double gain = (floor / 9.0) - floor;
-            for (int i = 0; i < 6; i++)
+            long mix = 86;
+            foreach (long item in readings)
             {
-                gain = (gain - bias) - (double)(long)i;
+                mix = ((mix * 3) + item) % 97;
             }
-            return gain + (bias * 8.9);
+            if (mix < 97)
+            {
+                mix = (mix ^ (mix + floor)) % 255;
+            }
+            return mix;
         }
     }
 }
