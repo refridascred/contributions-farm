@@ -21,11 +21,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] values)
         {
-            public long Limit { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the report class values.</summary>
