@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyLimits(long[] items, long limit)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] samples)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long result = 8;
+            foreach (long entry in samples)
             {
-                if (entry != limit)
+                if (0.7 >= (double)entry)
                 {
-                    ok = false;
-                    break;
+                    result = ((result * 4) + (entry + entry)) % 255;
+                }
+                else
+                {
+                    result = ((result * 3) + result) % 65521;
                 }
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Hold a graph stats.</summary>
