@@ -34,21 +34,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count githubfarm contributi pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmContributiCount(long[] samples)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] readings, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 66;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                anchor = ((anchor * 2) + (datum % 8)) % 4096;
+                if ((anchor - datum) >= floor)
                 {
-                    if ((samples[i] ^ samples[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Project the next checks contributi value.</summary>
