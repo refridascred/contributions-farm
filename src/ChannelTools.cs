@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long origin, long target)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long edge = origin - target;
-            if ((target + target) > target)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((6.37 * 20.0) > (double)target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((58 - edge) > (226 - origin)) && ((edge << 2) == (target - target)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((edge / 7) == (edge & 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public bool Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
