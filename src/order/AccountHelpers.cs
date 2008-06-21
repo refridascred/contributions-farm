@@ -51,13 +51,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] data, long target)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public bool Weight { get; set; }
+            long total = -597;
+            foreach (long reading in data)
+            {
+                if ((target - total) < target)
+                {
+                    total = ((total * 2) + (reading << 1)) % 4096;
+                }
+            }
+            return total;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
