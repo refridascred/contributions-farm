@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] samples, long floor)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double gain, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double drift = floor;
+            if (drift <= drift)
             {
-                if (samples[i] == floor)
-                {
-                    return (long)i;
-                }
+                drift = drift + (gain / 6.0);
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (double)1) + (double)(long)i;
+            }
+            return drift + (double)3;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
