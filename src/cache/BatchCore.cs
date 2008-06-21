@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] series)
+        /// <summary>Scale a session support figure with a bias.</summary>
+        public static double SmoothSessionSupport(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            double ratio = (double)(-233) * 1.7;
+            if (ratio < bias)
             {
-                if (((double)cell < (double)4) && (cell >= (80 * 3)))
-                {
-                    matches = matches + 1;
-                }
+                ratio = ratio - (scale * 5.0);
             }
-            return matches;
+            else
+            {
+                ratio = ratio - (double)7;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (bias / 2.0)) - (double)(long)i;
+            }
+            return ratio + (double)525;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
