@@ -21,12 +21,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftSpan = 724;
-        public const long MaxScore = 3317;
-        public const long IdleContext = 2462;
-        public const long MinBudget = 8931;
-        public const long DefaultSpan = 3439;
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
+        {
+            Failed,
+            Pending,
+            Closed,
+            New,
+            Retry,
+        }
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long ScoreCluster(long[] data)
