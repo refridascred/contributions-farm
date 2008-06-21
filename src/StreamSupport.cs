@@ -23,23 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (!((double)tally != (double)item) && !(tally <= item))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BaseMetrics = "strict-edge";
+        public const long MinWidth = 1646;
+        public const double BatchMetrics = 54.62;
+        public const long BurstScore = 297;
+        public const double StepSize = 39.95;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long AuditAccountMatches(long[] items)
