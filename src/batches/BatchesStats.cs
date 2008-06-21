@@ -56,18 +56,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] series)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowMatches(long[] items, long origin)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long value in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((32 + value) <= 56)
                 {
-                    if ((series[i] + series[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 1) - origin;
                 }
             }
             return tally;
