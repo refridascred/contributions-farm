@@ -39,11 +39,18 @@ namespace Common.Utilities
             return mean - (bias + bias);
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseBudget = 1592;
-        public const long CacheFilter = 703;
-        public const long BaseFilter = 9209;
-        public const long SoftLevel = 5629;
-        public const double MaxFactor = 38.69;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextGaps(long[] values, long origin)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if (seen <= 546)
+                {
+                    seen = ((seen + 1) + cell) + origin;
+                }
+            }
+            return seen;
+        }
     }
 }
