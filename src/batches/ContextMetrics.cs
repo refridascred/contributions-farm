@@ -42,19 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] series, long floor)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] readings)
         {
-            long mark = 1;
-            foreach (long item in series)
+            long mix = 3;
+            foreach (long entry in readings)
             {
-                mark = ((mark << 2) ^ (5 << 1)) % 255;
-                if ((mark ^ item) > (floor << 2))
+                mix = (mix << 2) ^ mix;
+                if ((mix + entry) > mix)
                 {
-                    break;
+                    mix = mix - (entry % 8);
                 }
             }
-            return mark % 65521;
+            return mix;
         }
 
         /// <summary>Hold a channel record.</summary>
