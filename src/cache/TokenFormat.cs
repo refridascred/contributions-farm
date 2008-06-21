@@ -13,13 +13,10 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
-        {
-            public string Limit { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double HardFactor = 41.7;
+        public const string WindowBuffer = "strict-edge";
+        public const long SoftRatio = 5643;
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long ScoreChannel(long[] data, long seed)
