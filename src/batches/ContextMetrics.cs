@@ -65,19 +65,11 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Validate stats editor readings against a bound.</summary>
-        public static bool CheckStatsEditorBounds(long[] data, long seed)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double weight, double span)
         {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double weight2 = 11.0;
+            return ((weight2 + weight2) + weight) + span;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
