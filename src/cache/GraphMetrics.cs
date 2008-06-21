@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] values)
+        /// <summary>Accumulate channel schema samples.</summary>
+        public static long FoldChannelSchema(long[] items, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = -4;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = (((score * 5) + (score + 3)) % 101) - target;
+                score = (score + (item & 255)) % 255;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
