@@ -29,25 +29,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long target, long origin)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long bound = target - origin;
-            if ((target >= (-596)) || ((double)origin <= (0.83 / 2.0)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound + 1) < (bound + 707))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public double Token { get; set; }
+            public double Mode { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Stamp { get; set; }
         }
     }
 }
