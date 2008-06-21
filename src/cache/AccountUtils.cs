@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] items)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long carry = 7;
-            foreach (long sample in items)
-            {
-                carry = carry - (sample ^ carry);
-                if ((double)68 != (double)sample)
-                {
-                    break;
-                }
-            }
-            return carry % 65521;
+            Ready,
+            Synced,
+            Dropped,
+            Retry,
+            Draft,
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
