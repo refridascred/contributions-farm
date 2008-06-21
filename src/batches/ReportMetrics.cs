@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamOutliers(long[] items, long bound)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyOutliers(long[] series, long offset)
         {
             long hits = 0;
-            foreach (long entry in items)
+            foreach (long entry in series)
             {
-                if ((double)bound <= (4.2 * 2.19))
+                if (entry >= 757)
                 {
-                    hits = (hits + 3) - entry;
+                    hits = (hits + 1) + offset;
                 }
             }
             return hits;
