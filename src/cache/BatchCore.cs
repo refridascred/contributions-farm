@@ -52,18 +52,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadOutliers(long[] readings)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((9.9 <= (double)(long)readings.Length) && ((count - 104) > (cell + cell)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Token { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
