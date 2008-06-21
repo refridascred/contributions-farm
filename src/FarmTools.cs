@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    score = ((score - (floor << 2)) % 97) ^ (long)i2;
-                }
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepCount = 5099;
+        public const double StepContext = 77.43;
+        public const long BaseContext = 1567;
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
