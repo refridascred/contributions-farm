@@ -36,14 +36,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
-        {
-            Queued,
-            Synced,
-            Idle,
-            Closed,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowInterval = 4012;
+        public const string LimitScore = "cached-edge";
+        public const long LimitReport = 6455;
 
         /// <summary>Count the profile schema entries that pass the check.</summary>
         public static long TallyProfileSchemaHits(long[] items, long step)
