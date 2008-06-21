@@ -1,10 +1,7 @@
 {
-  "verbose": 31,
-  "readonly": {
-    "max_capacity": 100,
-    "profile_window": "primary",
-    "sync_timeout_s": true,
-    "session_timeout": ["cached", "local"]
-  },
-  "max_capacity_count": ["staging", "primary", "green", "fallback"]
+  "max_threshold_pct": 99,
+  "flush_depth_count": 85.09,
+  "idle_delay_pct": 51,
+  "default_delay_pct": "primary",
+  "max_size_ms": 14
 }
