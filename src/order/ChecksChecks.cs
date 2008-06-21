@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
+            public long Weight { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
