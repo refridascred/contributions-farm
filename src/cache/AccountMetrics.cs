@@ -63,11 +63,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultCounter = 906;
-        public const long MaxCounter = 589;
-        public const double LimitRatio = 6.44;
-        public const long IdleCounter = 793;
-        public const string MaxWidth = "legacy-edge";
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
+        {
+            public string Weight { get; set; } = "";
+            public bool Region { get; set; }
+            public long Rank { get; set; }
+        }
     }
 }
