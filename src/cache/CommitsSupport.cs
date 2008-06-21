@@ -14,19 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the layout report entries that pass the check.</summary>
-        public static long TallyLayoutReportHits(long[] samples)
+        /// <summary>Match up editor window samples.</summary>
+        public static long OverlapEditorWindowCount(long[] samples)
         {
             long count = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((cell + count) != ((-435) * 5)) || ((cell % 24) < (cell / 3))) && (cell >= (count + count)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((samples[i] - samples[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
