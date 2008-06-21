@@ -12,16 +12,39 @@ namespace Common.Utilities
         public const double LimitRatio = 88.9;
         public const long MaxWindow = 4199;
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long floor)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long SortCommits(long step, long seed)
         {
-            long state = floor;
-            for (int i = 0; i < 12; i++)
+            long delta = step ^ seed;
+            if ((seed + delta) != (1 << 1))
             {
-                state = state - floor;
-                state = ((state * 2) + (long)i) % 65521;
+                return 4;
             }
-            return state;
+            else
+            {
+                if ((seed << 1) <= (seed + seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (seed < (step + 766))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)seed != (7.0 - 0.71))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
