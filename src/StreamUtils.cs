@@ -43,17 +43,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] readings, long step)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchHits(long[] samples, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if ((readings[i] == step) && ((readings[i] % 2) == 0))
+                if ((((long)samples.Length - item) >= 6) && ((5.0 - 2.46) > (double)target))
                 {
-                    return (long)i;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Accumulate already metrics samples.</summary>
