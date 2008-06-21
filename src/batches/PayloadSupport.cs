@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long bound)
         {
-            public double Token { get; set; }
-            public double Mode { get; set; }
-            public long Size { get; set; }
-            public double Region { get; set; }
+            long score = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                if (bound > score)
+                {
+                    score = (score - bound) % 101;
+                }
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
