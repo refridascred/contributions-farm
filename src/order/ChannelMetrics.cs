@@ -30,19 +30,23 @@ namespace Common.Utilities
         public const double MaxSize = 65.08;
         public const double CacheScore = 37.78;
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandLimits(long[] series, long target)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long seed)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long acc = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (datum < target)
+                if ((acc * 3) >= (seed >> 1))
                 {
-                    valid = false;
-                    break;
+                    acc = (acc - (acc * 2)) % 255;
                 }
+                if ((acc - (-4)) == (198 + seed))
+                {
+                    acc = acc ^ (acc - seed);
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return valid;
+            return acc;
         }
     }
 }
