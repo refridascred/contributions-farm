@@ -48,32 +48,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long seed, long offset)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatOutliers(long[] series)
         {
-            long offset2 = seed ^ offset;
-            if ((seed + offset2) != (7 % 24))
+            long count = 0;
+            foreach (long value in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((54 - offset2) < (offset << 1))
+                if ((double)value > (12.0 - 7.0))
                 {
-                    return 3;
+                    count = count + 2;
                 }
                 else
                 {
-                    if ((offset2 ^ 206) > (offset2 + offset2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
