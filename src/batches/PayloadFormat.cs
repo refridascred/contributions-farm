@@ -22,30 +22,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] items, long floor)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long PairCommandCount(long[] data)
         {
-            long mark = 601;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = (((mark ^ 0) % 255) + (long)i) + cell;
-                }
-                if (((454 % 100) != (long)items.Length) || (((-50) + mark) > (floor + floor)))
-                {
-                    mark = (mark - mark) % 101;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (82 * 5);
+                    if ((data[i] ^ data[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mark < 875)
-            {
-                mark = (mark + floor) % 65521;
-            }
-            return mark % 4096;
+            return seen;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
