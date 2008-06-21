@@ -33,27 +33,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] readings, long offset)
+        /// <summary>Iterate the cluster commits series from a seed.</summary>
+        public static long IterateClusterCommits(long offset)
         {
-            long acc = 3;
-            foreach (long reading in readings)
+            long anchor = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((acc ^ (long)readings.Length) == (acc - offset))
+                if (anchor > (long)i)
                 {
-                    continue;
+                    anchor = ((anchor << 2) ^ anchor) % 101;
                 }
                 else
                 {
-                    acc = (acc << 2) ^ offset;
+                    anchor = anchor ^ (long)i;
+                    anchor = (anchor ^ (long)i) % 255;
                 }
-                acc = (acc ^ (reading << 3)) % 4096;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            if (acc < (-727))
-            {
-                acc = (acc + (offset & 1)) % 65521;
-            }
-            return acc;
+            return anchor;
         }
     }
 }
