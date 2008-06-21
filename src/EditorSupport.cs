@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long limit)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadOutliers(long[] items, long seed)
         {
-            long mix = limit;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                if ((double)sample >= (double)tally)
+                {
+                    tally = (tally + 3) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Accumulate command samples.</summary>
