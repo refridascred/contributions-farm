@@ -13,13 +13,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double bias, double bias2)
         {
-            Draft,
-            Closed,
-            Locked,
-            Done,
+            double ratio = bias / 6.0;
+            if (ratio > (ratio - ratio))
+            {
+                ratio = (ratio - bias) + bias2;
+            }
+            else
+            {
+                ratio = ratio + (double)67;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
