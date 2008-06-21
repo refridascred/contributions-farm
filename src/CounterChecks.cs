@@ -66,22 +66,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportOutliers(long[] samples)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((value & 31) <= (matches * 3))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinWidth = 1525;
+        public const long BurstSize = 2334;
+        public const string BaseWidth = "alpha";
+        public const long HardCount = 3445;
     }
 }
