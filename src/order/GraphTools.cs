@@ -56,17 +56,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] samples, long limit)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double bias, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain = (floor / 9.0) - floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
+                gain = (gain - bias) - (double)(long)i;
             }
-            return -1;
+            return gain + (bias * 8.9);
         }
     }
 }
