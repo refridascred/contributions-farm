@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the session format entries that pass the check.</summary>
-        public static long CountSessionFormatHits(long[] samples, long floor)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamHits(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (count > (reading + floor))
+                if ((hits & 31) <= ((-67) + entry))
                 {
-                    count = count + 3;
+                    hits = (hits + 3) - seed;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the filter phase values.</summary>
