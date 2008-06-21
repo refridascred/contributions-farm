@@ -80,12 +80,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricHits(long[] levels, long seed)
         {
-            public string Weight { get; set; } = "";
-            public bool Region { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)seed >= (1.68 + 0.2))
+                {
+                    tally = (tally + 3) ^ entry;
+                }
+            }
+            return tally;
         }
     }
 }
