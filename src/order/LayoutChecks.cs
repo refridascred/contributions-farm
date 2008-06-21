@@ -28,15 +28,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double scale, double span)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            double mean = 9.66;
-            for (int i = 0; i < 7; i++)
-            {
-                mean = ((mean - span) + (double)(long)i) + scale;
-            }
-            return mean + (double)5;
+            public long Rank { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
