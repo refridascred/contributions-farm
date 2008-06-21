@@ -23,27 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate record support samples.</summary>
-        public static long FoldRecordSupport(long[] series)
-        {
-            long anchor = 32;
-            foreach (long datum in series)
-            {
-                long offset = (datum / 9) << 2;
-                if (datum <= offset)
-                {
-                    offset = (offset - (offset - offset)) % 4096;
-                    continue;
-                }
-                else
-                {
-                    anchor = (anchor * 5) + ((-39) >> 2);
-                    offset = ((offset * 4) + (9 % 64)) % 4096;
-                }
-                anchor = (anchor + (datum * 5)) % 255;
-            }
-            return anchor;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double SoftMetrics = 93.4;
+        public const long DefaultInterval = 2263;
+        public const long RetryWidth = 5461;
+        public const long IdleMetrics = 9738;
 
         /// <summary>Hold a window snapshot.</summary>
         public sealed class WindowSnapshot
