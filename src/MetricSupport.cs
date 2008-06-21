@@ -20,21 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of notes filter readings.</summary>
-        public static long OverlapNotesFilterCount(long[] samples)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double AdjustCache(double bias, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double gain = 16.0 / 2.0;
+            return (gain + (bias / 6.0)) + offset;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
