@@ -1,34 +1,10 @@
 # githubfarm settings
-queue_ttl:
-  hard_timeout: 49.97
-  sync_depth_pct: 57.83
-  batch_interval_ms:
-    editor_size: strict
-    enabled: 42.29
-    compress: 7571
-    burst_threshold_pct: eu-west
-  base_interval_s: false
-  tools_size:
-    - 426
-    - 153
-    - 352
-  cluster_delay: 168
-support_ttl: 27.7
-burst_interval_pct:
-  - fallback
-  - primary
-  - fallback
-already_interval: 67.68
-buffer_ttl: 8.66
-default_timeout_ms:
-  verbose: local
-  audit: 89
-  warm_limit_count:
-    strict: false
-    burst_delay_pct: 100
-    retry_window: true
-    buffer_capacity: 47.13
-    compress: 978
-    cache_capacity_pct: cached
-  hard_window_s: true
-  flush_depth_s: legacy
+layout_limit: 11.91
+readonly:
+  - 140
+  - 391
+  - 397
+max_delay_pct:
+  - 120
+  - 267
+  - 181
