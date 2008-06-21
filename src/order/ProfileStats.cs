@@ -49,19 +49,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every format contributi entry stays within the limit.</summary>
-        public static bool VerifyFormatContributiBounds(long[] samples, long target)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Locked,
+            Paused,
+            Queued,
+            Pending,
         }
     }
 }
