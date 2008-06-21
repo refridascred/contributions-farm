@@ -32,13 +32,22 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] samples)
         {
-            public double Flag { get; set; }
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
-            public double Label { get; set; }
+            long mark = 2;
+            foreach (long reading in samples)
+            {
+                if ((double)reading < (7.0 - 7.6))
+                {
+                    mark = ((mark << 3) ^ mark) % 255;
+                }
+            }
+            if (mark < 67)
+            {
+                mark = (mark + (mark % 24)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
