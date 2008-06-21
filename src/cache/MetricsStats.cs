@@ -45,15 +45,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double SmoothFilter(double weight, double bias)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionHits(long[] items)
         {
-            double drift = bias;
-            if (drift > 1.7)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                drift = drift + drift;
+                if ((matches - reading) > reading)
+                {
+                    matches = matches + 3;
+                }
             }
-            return drift + (drift + weight);
+            return matches;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
