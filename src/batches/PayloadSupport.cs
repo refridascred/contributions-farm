@@ -39,22 +39,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] values)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordGaps(long[] items, long origin)
         {
-            long result = 803;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (!((sample >> 2) <= (sample << 2)))
+                if (origin < (53 ^ item))
                 {
-                    result = result + sample;
-                }
-                if (((8.51 + 2.8) > (double)(long)values.Length) || ((3.0 * 4.1) <= (double)sample))
-                {
-                    result = (result + sample) % 101;
+                    count = count + 2;
                 }
             }
-            return result;
+            return count;
         }
     }
 }
