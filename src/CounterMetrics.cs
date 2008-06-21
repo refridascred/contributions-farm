@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] data, long offset)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ScaleMetric(double bias, double offset)
         {
-            bool found = true;
-            foreach (long entry in data)
+            double weight = bias * 6.8;
+            if (weight < (weight - bias))
             {
-                if (entry <= offset)
-                {
-                    found = false;
-                    break;
-                }
+                weight = weight + (double)38;
             }
-            return found;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - bias) + (double)(long)i;
+            }
+            return weight + offset;
         }
 
         /// <summary>Look up the position of a buffer cache sample.</summary>
