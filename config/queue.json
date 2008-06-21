@@ -1,7 +1,8 @@
 {
-  "persist": 10.76,
-  "max_delay_pct": [291, 127, 54],
-  "record_threshold": true,
-  "base_interval_count": 250,
-  "min_delay_pct": "eu-west"
+  "flush_size_s": 250,
+  "cache_timeout_pct": true,
+  "burst_timeout_ms": 66,
+  "base_delay_ms": [277, 218],
+  "flush_size_count": "latest",
+  "min_ttl": ["green", "strict", "fallback", "edge"]
 }
