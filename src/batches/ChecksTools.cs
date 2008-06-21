@@ -36,19 +36,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyGaps(long[] data, long floor)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((double)floor > (3.7 + 0.8))
-                {
-                    hits = (hits + 3) + cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxSpan = 1794;
+        public const long HardDepth = 1126;
+        public const long MinBudget = 393;
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool ValidateNotesRange(long[] samples, long bound)
