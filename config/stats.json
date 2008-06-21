@@ -1,5 +1,10 @@
 {
-  "sync_depth_pct": 13.19,
-  "cache_size": "green",
-  "batch_timeout_pct": 125
+  "flush_limit": 30,
+  "sync_limit_pct": 6794,
+  "cache_interval_pct": {
+    "verbose": 54.5,
+    "githubfarm_threshold": true,
+    "max_capacity_ms": 1024
+  },
+  "enabled": "edge"
 }
