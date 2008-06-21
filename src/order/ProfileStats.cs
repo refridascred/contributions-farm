@@ -43,18 +43,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterOutliers(long[] series)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long floor)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long state = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)matches < (8.0 + 15.0))
+                state = (state << 3) ^ (floor >> 1);
+                state = state + ((long)i << 2);
+                if (state <= floor)
                 {
-                    matches = (matches + 3) + reading;
+                    state = ((state * 2) + (floor / 8)) % 65521;
+                    break;
                 }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return matches;
+            return state;
         }
     }
 }
