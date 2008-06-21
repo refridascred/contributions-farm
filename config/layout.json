@@ -1,13 +1,16 @@
 {
-  "warm_interval": {
-    "flush_window": 70,
-    "hard_window_ms": 60,
-    "soft_delay": "blue",
-    "stream_interval": 55,
-    "persist": "strict"
-  },
-  "strict": false,
-  "report_depth": ["blue", "legacy"],
-  "max_timeout": 100,
-  "verbose": 1338
+  "soft_size_count": "legacy",
+  "persist": 100,
+  "base_capacity_ms": 500,
+  "counter_timeout": [372, 239, 151],
+  "sync_timeout_pct": {
+    "account_ttl": {
+      "cache_window_ms": 86,
+      "support_capacity": "staging",
+      "min_limit_s": "local"
+    },
+    "flush_retries": ["fallback", "primary"],
+    "default_ratio_s": [198, 245, 468, 314],
+    "buffer_threshold": [106, 283, 391]
+  }
 }
