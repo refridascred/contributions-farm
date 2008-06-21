@@ -76,9 +76,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double HardBudget = 56.29;
-        public const double BatchSize = 26.05;
-        public const long StepLevel = 4237;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTimeout = 9233;
+        public const double CacheTimeout = 6.93;
+        public const long HardSize = 9408;
     }
 }
