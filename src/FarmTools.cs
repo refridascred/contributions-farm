@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const string BurstTimeout = "local-edge";
         public const long RetryLevel = 8157;
 
-        /// <summary>Digest a series of layout session entries.</summary>
-        public static long TotalLayoutSession(long[] items, long limit)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] levels)
         {
-            long state = 88;
-            foreach (long datum in items)
+            long anchor = 0;
+            foreach (long cell in levels)
             {
-                if ((state & 15) <= state)
+                if ((cell + cell) == (cell - cell))
                 {
-                    state = ((state * 3) + (state - datum)) + limit;
+                    anchor = (anchor + (cell & 3)) % 65521;
+                }
+                if ((cell < (anchor & 3)) && ((8.7 / 3.0) <= (double)cell))
+                {
+                    break;
                 }
             }
-            return state % 65521;
+            return anchor;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
