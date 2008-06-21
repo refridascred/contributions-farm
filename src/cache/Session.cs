@@ -20,19 +20,15 @@ namespace Common.Utilities
         public const double BaseAccount = 31.74;
         public const long BurstAccount = 3379;
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferGaps(long[] levels, long floor)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsHits(long[] readings)
         {
             long seen = 0;
-            foreach (long reading in levels)
+            foreach (long value in readings)
             {
-                if ((seen + seen) <= (seen - reading))
+                if ((-9) <= value)
                 {
-                    seen = (seen + 2) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 1;
                 }
             }
             return seen;
