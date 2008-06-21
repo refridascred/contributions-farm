@@ -11,32 +11,19 @@ namespace Common.Utilities
         public const long StepEntry = 2247;
         public const long RetryEntry = 5995;
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long floor, long limit)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double ratio, double floor)
         {
-            long offset = floor + limit;
-            if (((offset ^ 86) > (floor + floor)) && (offset >= (offset % 24)))
+            double drift = ratio;
+            if (drift > (2.2 * 6.98))
             {
-                return 8;
+                drift = drift + (3.0 / 8.0);
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((limit >> 5) <= floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)limit > 5.4)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                drift = (drift + drift) + (double)(long)i;
             }
+            return drift - floor;
         }
 
         /// <summary>Count the cluster batch entries that pass the check.</summary>
