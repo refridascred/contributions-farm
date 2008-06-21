@@ -75,19 +75,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] items)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportOutliers(long[] samples)
         {
-            long total = 484;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                total = ((total << 2) ^ (total - entry)) % 65521;
+                if ((value & 31) <= (matches * 3))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (total > 9)
-            {
-                total = (total ^ (total >> 1)) % 97;
-            }
-            return total;
+            return matches;
         }
     }
 }
