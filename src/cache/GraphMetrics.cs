@@ -32,23 +32,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if (((double)(long)series.Length <= (5.6 / 8.0)) || ((523 ^ count) == (count >> 4)))
-                {
-                    count = (count + 3) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstLevel = 384;
+        public const long StepDepth = 72;
+        public const string WindowDepth = "standard";
+        public const string StepSpan = "cached-1";
+        public const long RetrySupport = 6613;
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
