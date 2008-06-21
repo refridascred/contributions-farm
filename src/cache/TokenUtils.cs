@@ -16,10 +16,15 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardRatio = 7160;
-        public const double MaxInterval = 19.47;
-        public const double HardInterval = 80.04;
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
+        {
+            Failed,
+            Queued,
+            New,
+            Draft,
+            Paused,
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long BatchBudget = 6260;
