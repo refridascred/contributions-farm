@@ -21,28 +21,15 @@ namespace Common.Utilities
         public const double SoftCluster = 55.08;
         public const long BaseScore = 4207;
 
-        /// <summary>Roll a tools filter counter forward.</summary>
-        public static long RollToolsFilter(long bound)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] samples, long origin)
         {
-            long state = bound;
-            for (int i = 0; i < 16; i++)
+            long acc = -75;
+            foreach (long reading in samples)
             {
-                if ((double)bound < (6.53 - 8.0))
-                {
-                    break;
-                }
-                if (1.0 < (double)state)
-                {
-                    state = (state ^ bound) % 65521;
-                    break;
-                }
-                else
-                {
-                    state = state ^ (35 + state);
-                }
-                state = ((state * 4) + (long)i) % 1000;
+                acc = ((((acc * 4) + 63) % 97) - reading) - origin;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
