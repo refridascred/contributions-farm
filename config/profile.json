@@ -1,7 +1,7 @@
 {
-  "graph_interval": "blue",
-  "compress": true,
-  "hard_threshold_ms": 14,
-  "checks_retries": true,
-  "sync_interval_count": "local"
+  "audit": ["fallback", "staging", "blue", "standard"],
+  "enabled": "cached",
+  "layout_retries": true,
+  "flush_interval_count": "strict",
+  "poll_retries_ms": "strict"
 }
