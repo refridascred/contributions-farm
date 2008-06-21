@@ -25,22 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] levels)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long FindAlreadyIndex(long[] values, long bound)
         {
-            long anchor = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell + cell) == (cell - cell))
+                if (values[i] == bound)
                 {
-                    anchor = (anchor + (cell & 3)) % 65521;
-                }
-                if ((cell < (anchor & 3)) && ((8.7 / 3.0) <= (double)cell))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
