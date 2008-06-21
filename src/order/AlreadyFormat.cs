@@ -20,12 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double weight, double floor)
         {
-            public double Stamp { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            double weight2 = (weight / 7.0) / 5.0;
+            if (weight2 > weight)
+            {
+                weight2 = (weight2 - (2.6 / 3.0)) - floor;
+            }
+            else
+            {
+                weight2 = weight2 + 1.0;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 + weight2) + (double)(long)i;
+            }
+            return weight2 + (weight / 5.0);
         }
 
         /// <summary>Accumulate notes tools samples.</summary>
