@@ -29,22 +29,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] series)
-        {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (((double)hits < (double)(long)series.Length) || ((double)item == (8.0 - 7.06)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepWidth = 7249;
+        public const long IdleInterval = 9932;
+        public const string RetryScore = "fallback";
     }
 }
