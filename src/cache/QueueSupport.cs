@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ratio + (ratio * 18.0);
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] samples, long offset)
+        /// <summary>Count the filter contributi entries that pass the check.</summary>
+        public static long AuditFilterContributiHits(long[] data, long step)
         {
-            long result = 438;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (result >= (result >> 2))
+                if ((double)item >= 6.57)
                 {
-                    result = ((result - offset) % 4096) + datum;
+                    matches = (matches + 3) + step;
                 }
             }
-            return result % 65521;
+            return matches;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
