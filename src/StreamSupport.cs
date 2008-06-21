@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaOutliers(long[] samples, long bound)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (count > (-95))
-                {
-                    count = ((count + 1) ^ datum) + bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultScore = 9111;
+        public const long LimitAlready = 1586;
+        public const long BatchAlready = 6752;
+        public const long WindowAlready = 433;
+        public const double BaseFactor = 84.12;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string BaseMetrics = "strict-edge";
