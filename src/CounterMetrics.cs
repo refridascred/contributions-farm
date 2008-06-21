@@ -25,11 +25,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksRange(long[] data, long target)
         {
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine format report values into a single score.</summary>
