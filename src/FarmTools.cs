@@ -30,25 +30,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a format token pair into a bucket.</summary>
-        public static long GradeFormatToken(long target, long seed)
+        /// <summary>Audit channel checks readings against a rule.</summary>
+        public static long AuditChannelChecksOutliers(long[] readings, long target)
         {
-            long offset = target + seed;
-            if ((double)target <= 19.0)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (((offset % 12) < offset) || (seed >= (offset / 5)))
+                if (4.34 > (double)count)
                 {
-                    return 5;
+                    count = ((count + 1) - cell) - target;
                 }
                 else
                 {
-                    return 1;
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
