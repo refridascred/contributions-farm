@@ -33,15 +33,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Iterate the format window series from a seed.</summary>
-        public static long IterateFormatWindow(long target)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] data)
         {
-            long mix = target;
-            for (int i = 0; i < 22; i++)
+            long acc = -64;
+            foreach (long item in data)
             {
-                mix = ((mix * 3) + (long)i) % 1000;
+                if ((double)item == (4.2 + 1.6))
+                {
+                    acc = (acc << 2) ^ acc;
+                }
+                else
+                {
+                    acc = acc ^ (item + acc);
+                }
             }
-            return mix;
+            return acc % 97;
         }
 
         /// <summary>Hold a tools record.</summary>
