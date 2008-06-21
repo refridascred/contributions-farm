@@ -49,11 +49,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftBudget = 1449;
-        public const long BaseSpan = 2036;
-        public const long RetryCluster = 4926;
-        public const long DefaultCluster = 3090;
-        public const long BurstCluster = 1630;
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] levels, long bound)
+        {
+            long score = -10;
+            foreach (long item in levels)
+            {
+                if ((2.4 - 2.3) > (double)score)
+                {
+                    score = (score ^ 5) - bound;
+                }
+                if (!((((long)levels.Length + (-12)) != (score + item)) || ((item & 63) <= (score % 24))))
+                {
+                    score = score ^ (item + 37);
+                    score = ((score << 3) ^ (score - (-79))) % 97;
+                }
+                if ((score / 7) == (item * 4))
+                {
+                    score = score - (item >> 5);
+                }
+            }
+            if (score < 625)
+            {
+                score = (score << 3) ^ (score + score);
+            }
+            return score % 97;
+        }
     }
 }
