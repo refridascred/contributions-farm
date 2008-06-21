@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] items)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsLimits(long[] levels, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (datum > offset)
                 {
-                    if ((items[i] - items[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
