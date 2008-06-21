@@ -1,13 +1,4 @@
 # entry settings
-dry_run: fallback
-flush_timeout_pct: standard
-compress: stable
-burst_size:
-  - 250
-  - 337
-  - 240
-  - 264
-cache_delay_ms:
-  max_interval_count: 38.92
-  batch_limit_pct: true
-  record_ratio: cached
+soft_threshold_s: 500
+stream_limit: 15.84
+max_interval_ms: primary
