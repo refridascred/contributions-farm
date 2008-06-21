@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long bound, long origin)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long gap = bound + origin;
-            if ((4.12 + 0.76) <= (double)gap)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((gap << 2) <= 344) || ((4.3 * 8.0) >= (double)origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((gap << 1) >= (origin >> 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (bound <= gap)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public double Count { get; set; }
+            public double Flag { get; set; }
+            public bool Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
