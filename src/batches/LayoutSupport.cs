@@ -47,22 +47,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenHits(long[] readings)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long CompareAlreadyCount(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((reading * 2) >= (59 ^ tally)) || ((double)tally != (4.1 * 9.23)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((data[i] + data[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Rank buffer cluster input into a small class.</summary>
