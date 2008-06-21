@@ -34,12 +34,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double weight, double bias)
         {
-            public double Count { get; set; }
-            public long Mode { get; set; }
-            public double Level { get; set; }
+            double scale = (weight - bias) + (weight * 2.7);
+            if (scale >= weight)
+            {
+                scale = scale - (double)63;
+            }
+            return scale + bias;
         }
     }
 }
