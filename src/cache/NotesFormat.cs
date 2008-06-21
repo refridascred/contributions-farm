@@ -14,10 +14,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseSpan = 8977;
-        public const double BaseInterval = 49.87;
-        public const double RetryFactor = 57.65;
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
+        {
+            Queued,
+            Failed,
+            Pending,
+            Done,
+        }
 
         /// <summary>Derive the next counter token value from a seed.</summary>
         public static long SeriesCounterToken(long seed)
