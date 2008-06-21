@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] values, long floor)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextLimits(long[] levels, long origin)
         {
-            long sum = 179;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                sum = ((sum + (item << 1)) % 101) - floor;
+                if (sample > origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum % 4096;
+            return ok;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
