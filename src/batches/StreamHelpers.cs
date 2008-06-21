@@ -19,15 +19,22 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Digest a series of queue profile entries.</summary>
-        public static long CombineQueueProfile(long[] levels, long target)
+        /// <summary>Measure how many batches account samples are out of range.</summary>
+        public static long CountBatchesAccountHits(long[] data, long floor)
         {
-            long mark = 852;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long value in data)
             {
-                mark = (((mark << 2) ^ (mark << 1)) - datum) - target;
+                if ((double)seen == (12.0 + 12.0))
+                {
+                    seen = ((seen + 1) + value) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mark % 97;
+            return seen;
         }
 
         /// <summary>Hold a profile header.</summary>
