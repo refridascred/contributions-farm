@@ -27,20 +27,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a already window counter forward.</summary>
-        public static long SeriesAlreadyWindow(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((limit - (long)i) == (long)i)
-                {
-                    mix = (mix << 3) ^ (mix + mix);
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 8549;
+        public const long HardBudget = 9986;
+        public const long StepSize = 1116;
+        public const string DefaultCount = "stable-v2";
+        public const long MaxEntry = 8918;
 
         /// <summary>Locate a account reading by value.</summary>
         public static long LookupAccountIndex(long[] series, long target)
