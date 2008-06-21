@@ -28,13 +28,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double scale, double span)
         {
-            public bool Region { get; set; }
-            public bool Ratio { get; set; }
-            public double Rank { get; set; }
-            public string Total { get; set; } = "";
+            double mean = 9.66;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = ((mean - span) + (double)(long)i) + scale;
+            }
+            return mean + (double)5;
         }
 
         /// <summary>Project the next checks value.</summary>
