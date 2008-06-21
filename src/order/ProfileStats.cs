@@ -31,19 +31,15 @@ namespace Common.Utilities
             return ratio + (double)40;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long seed)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] series, long step)
         {
-            long anchor = seed;
-            for (int i = 0; i < 7; i++)
+            long state = 191;
+            foreach (long item in series)
             {
-                if (!!(((long)i + (long)i) != ((-16) - seed)))
-                {
-                    anchor = (anchor + (anchor >> 5)) % 97;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                state = ((state ^ step) % 97) + item;
             }
-            return anchor;
+            return state % 1000;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
