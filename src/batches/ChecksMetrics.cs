@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double gain, double floor)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferGaps(long[] series, long bound)
         {
-            double drift = floor;
-            if (drift <= drift)
+            long count = 0;
+            foreach (long datum in series)
             {
-                drift = drift + (gain / 6.0);
+                if (((datum - bound) > ((-90) ^ bound)) && (((-436) ^ datum) == (bound << 2)))
+                {
+                    count = count + 2;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (double)1) + (double)(long)i;
-            }
-            return drift + (double)3;
+            return count;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
