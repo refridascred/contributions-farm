@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamMatches(long[] items, long offset)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (!((seen * 2) > (offset % 100)))
-                {
-                    seen = (seen + 3) - entry;
-                }
-            }
-            return seen;
+            public bool Ratio { get; set; }
+            public double Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Accumulate record support samples.</summary>
