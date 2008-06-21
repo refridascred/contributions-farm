@@ -40,13 +40,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] readings)
         {
-            Ready,
-            Stale,
-            Draft,
-            New,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (sample >= (count / 2))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank account metrics input into a small class.</summary>
