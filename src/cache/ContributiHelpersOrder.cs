@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            public double Stamp { get; set; }
-            public string Offset { get; set; } = "";
+            Locked,
+            Ready,
+            Retry,
+            Idle,
+            Failed,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
