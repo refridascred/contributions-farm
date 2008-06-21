@@ -65,22 +65,28 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine payload farm values into a single score.</summary>
-        public static long DigestPayloadFarm(long[] data)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] items)
         {
-            long acc = 1;
-            foreach (long item in data)
+            long acc = 614;
+            foreach (long value in items)
             {
-                if (((-65) + item) == (acc / 2))
+                acc = (acc + (acc & 127)) % 65521;
+                if (!(((acc + acc) >= acc) || ((acc + acc) <= (681 ^ value))))
                 {
-                    acc = acc + (75 ^ acc);
+                    acc = (acc + (acc * 2)) % 255;
+                    acc = (acc << 2) ^ (acc - acc);
                 }
-                if ((8.96 / 2.0) > (double)acc)
+                if (((21 + value) != (value % 8)) || (value > 31))
                 {
-                    acc = (acc ^ ((long)data.Length + acc)) % 65521;
+                    acc = acc + acc;
+                }
+                else
+                {
+                    acc = (acc * 3) + (77 / 3);
                 }
             }
-            return acc % 97;
+            return acc;
         }
     }
 }
