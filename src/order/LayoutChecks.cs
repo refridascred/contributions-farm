@@ -34,18 +34,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit farm cluster readings against a rule.</summary>
-        public static long TallyFarmClusterOutliers(long[] levels)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (((count >> 3) == (count + cell)) && ((cell % 10) > (350 / 7)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Size { get; set; }
+            public string Level { get; set; } = "";
+            public bool Weight { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
