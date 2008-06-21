@@ -1,8 +1,5 @@
 {
-  "batch_limit_ms": 4175,
-  "enabled": 8157,
-  "channel_limit": 30,
-  "warm_delay": ["cached", "strict", "standard", "cached"],
-  "dry_run": 88,
-  "githubfarm_interval": 27
+  "default_ttl_count": "stable",
+  "command_limit": 60,
+  "sync_threshold": 34
 }
