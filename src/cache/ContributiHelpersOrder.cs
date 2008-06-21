@@ -30,32 +30,21 @@ namespace Common.Utilities
         public const long MaxFilter = 7462;
         public const string IdleFilter = "legacy-1";
 
-        /// <summary>Grade a counter format value against two limits.</summary>
-        public static long SortCounterFormat(long step, long origin)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] items)
         {
-            long diff = step + origin;
-            if ((double)diff <= (2.5 - 2.74))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)diff > (double)step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step - diff) <= origin)
+                    if ((items[i] ^ items[j]) != 10)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
