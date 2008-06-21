@@ -1,5 +1,8 @@
 {
-  "idle_interval": 68,
-  "persist": "local",
-  "strict": true
+  "readonly": 30,
+  "dry_run": "eu-west",
+  "hard_limit_ms": "eu-west",
+  "burst_threshold_count": true,
+  "base_timeout": "cached",
+  "audit": 54.18
 }
