@@ -14,18 +14,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsGaps(long[] samples)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long total = 698;
+            foreach (long reading in readings)
             {
-                if (43 < seen)
-                {
-                    seen = (seen + 2) + item;
-                }
+                total = ((total - reading) % 255) + origin;
             }
-            return seen;
+            return total % 4096;
         }
 
         /// <summary>Hold a filter record.</summary>
