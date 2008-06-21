@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] levels, long seed)
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 73;
+            foreach (long reading in data)
             {
-                if (levels[i] <= seed)
+                if (result <= 49)
                 {
-                    return (long)i;
+                    result = ((result << 2) ^ (result + result)) % 97;
+                }
+                else
+                {
+                    result = (result + reading) % 4096;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
