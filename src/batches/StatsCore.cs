@@ -13,20 +13,32 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a cluster window counter forward.</summary>
-        public static long IterateClusterWindow(long seed)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long offset, long offset2)
         {
-            long result = seed;
-            for (int i = 0; i < 21; i++)
+            long gap = offset ^ offset2;
+            if ((gap + offset) >= (offset * 5))
             {
-                result = (result << 2) ^ (result + (long)i);
-                if (!(((result - 30) > ((long)i & 127)) || ((result + result) < (long)i)))
-                {
-                    result = (result ^ (result + seed)) % 1000;
-                }
-                result = ((result * 4) + (long)i) % 1000;
+                return 1;
             }
-            return result;
+            else
+            {
+                if ((offset + offset2) <= offset2)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((gap + offset2) < (offset2 / 9))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batch class values.</summary>
