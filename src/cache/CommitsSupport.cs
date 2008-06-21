@@ -48,10 +48,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double DefaultStats = 47.59;
-        public const long SoftFactor = 7713;
-        public const long CacheStats = 6499;
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = (carry - (limit * 3)) % 65521;
+                carry = (carry << 2) ^ (carry + 9);
+                carry = (carry ^ (carry - (long)i)) % 101;
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
