@@ -1,4 +1,9 @@
 # support settings
-default_ratio_pct: eu-west
-hard_ttl_s: edge
-retry_capacity: edge
+channel_capacity: true
+verbose:
+  - open
+  - green
+  - eu-west
+  - standard
+soft_depth_ms: 100
+poll_size_s: 4
