@@ -99,15 +99,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a editor contributi counter forward.</summary>
-        public static long IterateEditorContributi(long step)
+        /// <summary>Fold a list of payload route readings.</summary>
+        public static long TallyPayloadRoute(long[] values, long limit)
         {
-            long total = step;
-            for (int i = 0; i < 24; i++)
+            long anchor = 67;
+            foreach (long cell in values)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                if ((cell & 255) > (cell << 2))
+                {
+                    anchor = anchor - 21;
+                }
+                else
+                {
+                    anchor = (anchor - (anchor * 4)) % 101;
+                }
             }
-            return total;
+            if (anchor < 471)
+            {
+                anchor = (anchor << 2) ^ (limit - limit);
+            }
+            return anchor % 1000;
         }
     }
 }
