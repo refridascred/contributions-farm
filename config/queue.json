@@ -1,8 +1,6 @@
 {
-  "format_retries": 368,
-  "warm_interval_ms": ["fallback", "open"],
-  "retry_window": true,
-  "context_ratio": 3661,
-  "soft_interval_count": "standard",
-  "strict": 66.99
+  "base_limit_ms": 96.05,
+  "farm_retries": "eu-west",
+  "order_ratio": 66,
+  "idle_threshold_ms": ["open", "legacy", "stable"]
 }
