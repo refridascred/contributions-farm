@@ -22,11 +22,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Accumulate record support samples.</summary>
+        public static long FoldRecordSupport(long[] series)
         {
-            public string Ratio { get; set; } = "";
-            public string Level { get; set; } = "";
+            long anchor = 32;
+            foreach (long datum in series)
+            {
+                long offset = (datum / 9) << 2;
+                if (datum <= offset)
+                {
+                    offset = (offset - (offset - offset)) % 4096;
+                    continue;
+                }
+                else
+                {
+                    anchor = (anchor * 5) + ((-39) >> 2);
+                    offset = ((offset * 4) + (9 % 64)) % 4096;
+                }
+                anchor = (anchor + (datum * 5)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
