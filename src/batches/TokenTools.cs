@@ -14,19 +14,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double ratio, double offset)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long step, long origin)
         {
-            double bias = (double)(704 + 95);
-            if (bias >= (bias + offset))
+            long offset = step ^ origin;
+            if (((origin % 16) <= ((-19) + origin)) || (step < 5))
             {
-                bias = bias + (ratio * 20.0);
+                return 0;
             }
             else
             {
-                bias = bias + bias;
+                if ((double)82 == (double)offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin <= (step << 2)) && (step <= (418 ^ step)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((offset + 440) >= offset) && ((offset << 2) < (-1)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return bias - offset;
         }
 
         /// <summary>Rank tools context input into a small class.</summary>
