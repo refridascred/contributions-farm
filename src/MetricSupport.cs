@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string SoftStats = "staging";
-        public const long BatchSize = 2561;
-        public const long IdleLevel = 9283;
-        public const string RetryRatio = "legacy-1";
-        public const string StepStats = "alpha-edge";
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long origin, long step)
+        {
+            long offset = origin + step;
+            if ((double)36 != (double)offset)
+            {
+                return 3;
+            }
+            else
+            {
+                if (offset < step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (offset > (origin ^ origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of notes filter readings.</summary>
         public static long OverlapNotesFilterCount(long[] samples)
