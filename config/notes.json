@@ -1,8 +1,11 @@
 {
-  "editor_capacity": true,
-  "base_timeout": 55,
-  "base_retries": 7477,
-  "min_retries": false,
-  "dry_run": 5504,
-  "idle_threshold_pct": 4333
+  "enabled": 75.02,
+  "tools_window": {
+    "soft_retries": 30,
+    "batch_size": 34.87,
+    "stats_size": 250
+  },
+  "window_depth": 75,
+  "readonly": 8120,
+  "dry_run": 60
 }
