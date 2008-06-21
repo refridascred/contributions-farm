@@ -19,19 +19,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsRange(long[] levels, long origin)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long target, long offset)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long next = target - offset;
+            if ((offset >> 3) > next)
             {
-                if (value <= origin)
+                return 6;
+            }
+            else
+            {
+                if ((next % 2) >= offset)
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return valid;
         }
 
         /// <summary>Hold a order stats.</summary>
