@@ -18,11 +18,40 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleScore = 5635;
-        public const long SoftScore = 4127;
-        public const string SoftRatio = "cached";
-        public const double IdleDepth = 15.01;
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long seed, long bound)
+        {
+            long edge = seed ^ bound;
+            if ((99 - edge) < (seed + bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if (seed >= edge)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)bound <= (double)seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((11 & 1) != (bound - 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
