@@ -36,17 +36,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] samples, long floor)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long target, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long diff = target ^ seed;
+            if (seed > (diff >> 3))
             {
-                if ((samples[i] < floor) && ((samples[i] % 5) == 0))
+                return 2;
+            }
+            else
+            {
+                if (!(seed < (5 - diff)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((2 - 62) != (target & 63))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the record phase values.</summary>
