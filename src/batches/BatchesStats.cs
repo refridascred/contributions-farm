@@ -11,27 +11,19 @@ namespace Common.Utilities
         public const string LimitInterval = "legacy-v2";
         public const long RetryInterval = 6289;
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] series)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] values, long offset)
         {
-            long total = 0;
-            foreach (long sample in series)
+            long total = 299;
+            foreach (long reading in values)
             {
-                total = ((total << 3) ^ sample) % 1000;
-                if (((double)total <= (0.5 / 4.0)) || ((15.0 / 7.0) != (double)total))
+                total = (total ^ 1) % 101;
+                if ((double)reading < (9.21 - 1.0))
                 {
-                    total = (total << 3) ^ (total & 3);
-                }
-                else
-                {
-                    total = total + 9;
+                    total = (total ^ (reading + offset)) % 4096;
                 }
             }
-            if (total < 27)
-            {
-                total = (total ^ (932 + total)) % 101;
-            }
-            return total;
+            return total % 1000;
         }
 
         /// <summary>Audit window batches readings against a rule.</summary>
