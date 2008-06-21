@@ -62,15 +62,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double ratio, double floor)
+        /// <summary>Compare every pair of window support readings.</summary>
+        public static long OverlapWindowSupportCount(long[] items)
         {
-            double weight = ratio + (double)0;
-            if (weight >= (floor * 3.5))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = weight + (floor - ratio);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return weight - weight;
+            return tally;
         }
     }
 }
