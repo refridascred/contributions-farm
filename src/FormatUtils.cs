@@ -13,13 +13,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
-        {
-            Idle,
-            New,
-            Done,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string SoftStream = "open-edge";
+        public const double StepDepth = 80.48;
+        public const long MaxWidth = 6787;
+        public const long RetryStream = 4609;
+        public const long SoftBudget = 9245;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long LimitCommand = 6817;
