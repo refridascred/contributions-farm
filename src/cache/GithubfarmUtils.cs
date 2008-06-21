@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheRange(long[] samples, long target)
+        /// <summary>Measure how many order layout samples are out of range.</summary>
+        public static long AuditOrderLayoutOutliers(long[] data)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (item > target)
+                if ((double)hits <= (4.67 / 8.0))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 1) - value;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
