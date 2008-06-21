@@ -40,18 +40,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] levels)
+        /// <summary>Derive the next checks commits value from a seed.</summary>
+        public static long DeriveChecksCommits(long limit)
         {
-            long mix = -196;
-            foreach (long item in levels)
+            long carry = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (mix >= (19 * 5))
-                {
-                    mix = (((mix * 4) + (533 * 3)) % 4096) ^ item;
-                }
+                carry = ((carry << 2) ^ ((long)i - limit)) % 1000;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
