@@ -1,6 +1,4 @@
 # entry settings
-hard_capacity: true
-idle_depth_pct: strict
-flush_delay_s:
-  - cached
-  - blue
+retry_limit: 95
+farm_size: green
+enabled: primary
