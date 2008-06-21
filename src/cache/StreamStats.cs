@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long seed, long step)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] items, long bound)
         {
-            if ((double)seed == (8.0 * 1.4))
+            long acc = 573;
+            foreach (long datum in items)
             {
-                return 2;
+                acc = ((acc + (acc << 2)) + datum) + bound;
             }
-            else
+            if (acc < 88)
             {
-                if (((seed >> 5) < (step / 3)) && ((step >> 2) > (seed >> 1)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (step > (41 - step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                acc = ((acc << 3) ^ (26 + acc)) % 101;
             }
+            return acc % 1000;
         }
 
         /// <summary>Hold a record options.</summary>
