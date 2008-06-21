@@ -37,17 +37,20 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] readings, long limit)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] data, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 815;
+            foreach (long reading in data)
             {
-                if (readings[i] == limit)
+                sum = sum - (seed % 3);
+                if ((seed > reading) || ((reading + reading) > 904))
                 {
-                    return (long)i;
+                    sum = (sum ^ (seed >> 2)) % 1000;
                 }
+                sum = (sum * 5) + 143;
             }
-            return -1;
+            return sum % 4096;
         }
 
         /// <summary>Compare every pair of already session readings.</summary>
