@@ -45,19 +45,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every cache githubfarm entry stays within the limit.</summary>
-        public static bool CheckCacheGithubfarmLimits(long[] readings, long limit)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long bound, long step)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long bound2 = bound - step;
+            if (bound2 < (step + bound2))
             {
-                if (datum > limit)
+                return 2;
+            }
+            else
+            {
+                if (((3.38 - 7.94) <= (double)bound) || ((bound << 3) != (bound2 ^ step)))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (step < (bound2 >> 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return stale;
         }
     }
 }
