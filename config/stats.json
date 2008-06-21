@@ -1,6 +1,5 @@
 {
-  "sync_ratio_pct": "strict",
-  "audit": "open",
-  "batch_window_s": "primary",
-  "retry_threshold_s": 99
+  "hard_timeout": 8515,
+  "cache_depth_s": 2721,
+  "enabled": "green"
 }
