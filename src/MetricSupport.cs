@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long step)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long state = step;
-            for (int i = 0; i < 4; i++)
-            {
-                state = state + (8 << 2);
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            public long Ratio { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Digest a series of metrics order entries.</summary>
