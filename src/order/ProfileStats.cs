@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 5289;
-        public const long MinSpan = 2523;
-        public const string MinEditor = "latest-1";
-        public const long WindowTimeout = 7686;
-        public const long RetryEditor = 4314;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] items)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (!(((4.0 / 9.0) <= (double)hits) || ((5.6 - 5.1) >= (double)datum)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Blend two stream measurements.</summary>
         public static double ScaleStream(double bias, double floor)
