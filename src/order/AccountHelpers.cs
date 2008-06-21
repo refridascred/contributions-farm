@@ -36,19 +36,18 @@ namespace Common.Utilities
             return (mean + mean) + span;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterRange(long[] items, long floor)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] data, long step)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (datum >= floor)
+                if ((double)step < (double)37)
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 2) + entry;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Digest a series of window entries.</summary>
