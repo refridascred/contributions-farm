@@ -53,27 +53,12 @@ namespace Common.Utilities
             return weight - (double)96;
         }
 
-        /// <summary>Derive the next contributi route value from a seed.</summary>
-        public static long RollContributiRoute(long offset)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long sum = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                if (sum > offset)
-                {
-                    sum = (sum - (sum ^ (-35))) % 4096;
-                }
-                else
-                {
-                    sum = (sum - (46 + sum)) % 1000;
-                }
-                if ((sum << 1) > (sum - 0))
-                {
-                    sum = sum + 539;
-                }
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            Active,
+            Idle,
+            Retry,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
