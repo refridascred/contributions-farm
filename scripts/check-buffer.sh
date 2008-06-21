@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=480
-log "limit is ${BUFFER_LIMIT}"
-
-mode="${1:-staging}"
+mode="${1:-stable}"
 case "${mode}" in
-    primary)
+    local)
         log "fast path"
         ;;
     *)
@@ -19,8 +16,8 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 5))
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
