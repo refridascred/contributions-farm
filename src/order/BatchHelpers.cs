@@ -47,14 +47,15 @@ namespace Common.Utilities
             return drift - (double)182;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double scale, double floor)
         {
-            Synced,
-            Draft,
-            Active,
-            Retry,
-            Done,
+            double rate = (double)((-823) + 1);
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (((rate - 6.0) + (double)(long)i) - scale) - floor;
+            }
+            return rate + 11.0;
         }
     }
 }
