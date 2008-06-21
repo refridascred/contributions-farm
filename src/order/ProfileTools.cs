@@ -60,11 +60,15 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] levels)
         {
-            public double Token { get; set; }
-            public long Mode { get; set; }
+            long acc = 925;
+            foreach (long item in levels)
+            {
+                acc = (acc << 2) ^ (acc - item);
+            }
+            return acc % 1000;
         }
     }
 }
