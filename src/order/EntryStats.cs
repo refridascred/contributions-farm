@@ -60,18 +60,18 @@ namespace Common.Utilities
             return rate2 + rate;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterOutliers(long[] values, long floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long result = 367;
+            foreach (long value in data)
             {
-                if (!((54 / 9) < (reading * 5)))
+                if (!(((-41) ^ origin) <= (value & 63)))
                 {
-                    seen = (seen + 2) + floor;
+                    result = (result + (821 + origin)) % 4096;
                 }
             }
-            return seen;
+            return result % 97;
         }
     }
 }
