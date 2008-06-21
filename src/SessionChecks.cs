@@ -33,12 +33,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] items, long floor)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] series, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] > floor)
+                if (series[i] > step)
                 {
                     return (long)i;
                 }
