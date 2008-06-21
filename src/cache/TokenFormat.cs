@@ -16,22 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] series)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long mark = 91;
-            foreach (long entry in series)
-            {
-                if ((entry + mark) < (mark - mark))
-                {
-                    mark = (mark ^ (mark % 10)) % 4096;
-                }
-            }
-            if (mark < 113)
-            {
-                mark = mark + (mark * 4);
-            }
-            return mark;
+            Retry,
+            Synced,
+            Closed,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
