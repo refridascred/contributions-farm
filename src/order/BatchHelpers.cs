@@ -29,15 +29,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double gain, double offset)
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] samples)
         {
-            double load = offset * 1.56;
-            for (int i = 0; i < 3; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = ((load + (offset * 8.0)) + (double)(long)i) - gain;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return load - (double)911;
+            return hits;
         }
     }
 }
