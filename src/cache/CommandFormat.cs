@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
-        {
-            Locked,
-            Paused,
-            Draft,
-            Pending,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MaxInterval = "local";
+        public const string RetryCount = "alpha-1";
+        public const string MaxMetrics = "primary-v2";
 
         /// <summary>Project the next order profile value.</summary>
         public static double ScaleOrderProfile(double weight, double floor)
