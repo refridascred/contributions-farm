@@ -79,19 +79,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double rate, double offset)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            double load = offset - offset;
-            if (load > (double)(-68))
-            {
-                load = load + (double)807;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (double)10) + (double)(long)i;
-            }
-            return load + (rate / 7.0);
+            public long Token { get; set; }
+            public long Count { get; set; }
+            public double Stamp { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
