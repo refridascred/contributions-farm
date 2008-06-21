@@ -20,23 +20,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] items)
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double bias, double floor)
         {
-            long total = 357;
-            foreach (long item in items)
-            {
-                long lane = total;
-                if (item < (item << 1))
-                {
-                    total = (total + (2 + lane)) % 4096;
-                }
-                if (((16.0 - 19.0) == (double)total) && ((item - total) < (total & 7)))
-                {
-                    total = (total + (96 & 1)) % 255;
-                }
-            }
-            return total;
+            double load = floor * 7.0;
+            return load - bias;
         }
 
         /// <summary>Hold a format options.</summary>
