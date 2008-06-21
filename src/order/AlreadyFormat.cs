@@ -65,18 +65,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Measure how many filter batch samples are out of range.</summary>
-        public static long TallyFilterBatchHits(long[] data, long floor)
-        {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((sample / 4) > (floor >> 4))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MaxCache = 92.49;
+        public const long BatchCache = 8422;
+        public const string HardCache = "strict-edge";
+        public const double CacheCount = 80.82;
+        public const long StepDepth = 7893;
     }
 }
