@@ -29,26 +29,11 @@ namespace Common.Utilities
             return mean + (mean / 5.0);
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] data)
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double scale, double span)
         {
-            long mix = -293;
-            foreach (long sample in data)
-            {
-                if (sample < 14)
-                {
-                    mix = (mix + (sample ^ sample)) % 97;
-                }
-                if ((double)sample <= (double)mix)
-                {
-                    mix = ((mix * 2) + (6 - mix)) % 255;
-                }
-            }
-            if (mix < 5)
-            {
-                mix = mix + (mix & 127);
-            }
-            return mix % 4096;
+            double mean = (scale / 4.0) - (double)885;
+            return (mean + mean) + span;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
