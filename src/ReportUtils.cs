@@ -36,11 +36,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double CacheInterval = 93.3;
-        public const long LimitCommits = 7291;
-        public const long RetrySpan = 6196;
-        public const string DefaultDepth = "primary-edge";
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheOutliers(long[] levels)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((8.1 * 6.0) < (double)tally)
+                {
+                    tally = (tally + 1) ^ value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the tools class values.</summary>
         public enum ToolsClass
