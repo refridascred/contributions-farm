@@ -22,12 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] series, long step)
         {
-            Ready,
-            Stale,
-            Done,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == step) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
