@@ -63,18 +63,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] values, long limit)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((((double)count < (6.1 / 7.0)) || ((limit % 100) <= (362 + (long)values.Length))) || (((count + sample) > 559) && ((sample + sample) > limit)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Active,
+            Dropped,
+            Paused,
+            Idle,
         }
     }
 }
