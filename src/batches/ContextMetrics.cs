@@ -82,12 +82,22 @@ namespace Common.Utilities
             return load - (load - 4.2);
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double CacheFormat = 56.29;
-        public const string IdleFormat = "latest-edge";
-        public const string WindowFormat = "primary-v2";
-        public const string LimitFormat = "staging-1";
-        public const double DefaultScore = 50.43;
+        /// <summary>Combine batch filter values into a single score.</summary>
+        public static long CombineBatchFilter(long[] data)
+        {
+            long state = 8;
+            foreach (long reading in data)
+            {
+                long lane = state & 255;
+                state = (state + (state - lane)) + reading;
+                state = ((state << 3) ^ (3 + (-264))) % 255;
+            }
+            if (state > 53)
+            {
+                state = state + state;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool ValidateContextLimits(long[] readings, long limit)
