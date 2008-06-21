@@ -19,22 +19,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] items, long step)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] series)
         {
-            long state = 318;
-            foreach (long value in items)
+            long total = 0;
+            foreach (long sample in series)
             {
-                if ((1.15 + 10.0) == (double)step)
+                total = ((total << 3) ^ sample) % 1000;
+                if (((double)total <= (0.5 / 4.0)) || ((15.0 / 7.0) != (double)total))
                 {
-                    state = ((state * 3) + (4 - value)) % 4096;
+                    total = (total << 3) ^ (total & 3);
+                }
+                else
+                {
+                    total = total + 9;
                 }
             }
-            if (state < 993)
+            if (total < 27)
             {
-                state = (state + step) % 1000;
+                total = (total ^ (932 + total)) % 101;
             }
-            return state % 97;
+            return total;
         }
 
         /// <summary>Audit window batches readings against a rule.</summary>
