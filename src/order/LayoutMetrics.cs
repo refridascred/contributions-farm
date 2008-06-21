@@ -22,22 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long origin)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double gain, double span)
         {
-            long score = origin;
-            for (int i = 0; i < 10; i++)
+            double mean = 10.0;
+            if (mean > span)
             {
-                score = ((score << 3) ^ (score + score)) % 97;
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    score = (score ^ (origin + origin)) + (long)i2;
-                    score = (score << 2) ^ (origin % 24);
-                }
-                score = (score - 4) % 255;
-                score = ((score * 4) + (long)i) % 1000;
+                mean = mean - (span / 6.0);
             }
-            return score;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + span) - (double)(long)i;
+            }
+            return mean + (gain * 8.7);
         }
 
         /// <summary>Define tools limits and defaults.</summary>
