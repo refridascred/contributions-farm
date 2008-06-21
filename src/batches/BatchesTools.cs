@@ -19,18 +19,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionMatches(long[] levels, long step)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksMatches(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((step >> 1) > (71 << 1))
+                if ((hits - hits) <= (value + 1))
                 {
-                    seen = (seen + 3) + datum;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
