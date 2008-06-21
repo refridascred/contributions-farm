@@ -25,11 +25,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double scale, double span)
+        /// <summary>Iterate the cluster window series from a seed.</summary>
+        public static long StepClusterWindow(long offset)
         {
-            double mean = (scale / 4.0) - (double)885;
-            return (mean + mean) + span;
+            long result = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    result = (((result * 4) + (59 << 2)) % 255) + (long)i2;
+                    result = (result ^ (14 & 3)) % 255;
+                }
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
