@@ -46,11 +46,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Validate already counter readings against a bound.</summary>
+        public static bool ValidateAlreadyCounterRange(long[] values, long step)
         {
-            public double Offset { get; set; }
-            public bool Ratio { get; set; }
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
