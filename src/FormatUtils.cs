@@ -25,13 +25,17 @@ namespace Common.Utilities
             return bias2 + (10.0 / 5.0);
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] levels, long limit)
         {
-            public long Token { get; set; }
-            public long Stamp { get; set; }
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
