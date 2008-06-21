@@ -70,22 +70,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] levels, long target)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] items)
         {
-            long state = 59;
-            foreach (long datum in levels)
+            long mix = 83;
+            foreach (long sample in items)
             {
-                if ((datum / 5) <= (datum + datum))
+                if (1.5 <= (double)sample)
                 {
-                    state = ((state * 3) + (target >> 2)) % 4096;
+                    mix = (mix - (mix & 255)) % 4096;
                 }
             }
-            if (state > 365)
-            {
-                state = ((state * 4) + (target & 127)) % 4096;
-            }
-            return state % 4096;
+            return mix % 65521;
         }
     }
 }
