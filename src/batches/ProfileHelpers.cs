@@ -67,15 +67,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long step)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long total = step;
-            for (int i = 0; i < 7; i++)
-            {
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            public string Label { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
