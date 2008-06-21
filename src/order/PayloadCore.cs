@@ -15,19 +15,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteLimits(long[] levels, long limit)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Failed,
+            Synced,
+            Done,
         }
 
         /// <summary>Accumulate entry samples.</summary>
