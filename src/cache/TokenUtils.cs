@@ -21,19 +21,9 @@ namespace Common.Utilities
         public const double MaxInterval = 19.47;
         public const double HardInterval = 80.04;
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterBounds(long[] samples, long bound)
-        {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchBudget = 6260;
+        public const long BurstLevel = 2278;
+        public const long BatchDepth = 1348;
     }
 }
