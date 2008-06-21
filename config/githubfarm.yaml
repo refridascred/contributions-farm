@@ -1,27 +1,18 @@
 # githubfarm settings
-soft_delay_pct: 2420
-counter_depth:
-  sync_size_ms:
-    schema_retries: latest
-    hard_retries_count:
-      - primary
-      - open
-      - fallback
-      - eu-west
-    base_interval_pct: latest
-    burst_retries_ms: fallback
-    sync_depth_ms: true
-  default_depth_pct:
-    warm_ratio_ms: 38
-    min_ttl_pct: false
-    sync_retries_ms: open
-    sync_limit: 3287
-  idle_size: 38.55
-  stream_ratio:
-    - cached
-    - primary
-    - primary
-    - fallback
-idle_retries_count: 77
-poll_delay: cached
-readonly: green
+warm_delay_s: 6632
+schema_interval: 40
+enabled:
+  sync_size: 85.91
+  retry_interval_pct: true
+  persist: 28
+  hard_ttl: 4436
+  flush_delay: 1955
+  record_threshold: 52
+audit: 100
+retry_delay_ms:
+  - 271
+  - 238
+hard_timeout_s:
+  - primary
+  - primary
+  - legacy
