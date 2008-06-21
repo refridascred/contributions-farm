@@ -60,9 +60,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MinScore = "latest-1";
-        public const double WindowCounter = 53.33;
-        public const double WindowDepth = 43.12;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsHits(long[] data)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((entry & 63) >= hits)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
