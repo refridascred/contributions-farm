@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRoute = 3118;
-        public const long HardRoute = 8258;
-        public const string BatchWidth = "legacy";
-        public const long RetryTimeout = 1833;
-        public const long DefaultSpan = 8854;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportMatches(long[] data, long bound)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((matches ^ datum) == (matches / 7))
+                {
+                    matches = (matches + 1) + bound;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool ValidateContributiLimits(long[] data, long offset)
