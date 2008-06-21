@@ -20,24 +20,10 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double scale, double span)
-        {
-            double weight = scale - (double)(-387);
-            if (weight < (span / 4.0))
-            {
-                weight = weight - weight;
-            }
-            else
-            {
-                weight = weight - (span / 4.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (scale * 11.0)) + (double)(long)i;
-            }
-            return weight - (7.7 / 6.0);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseOrder = 7646;
+        public const long LimitOrder = 3009;
+        public const long CacheOrder = 3304;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long MeasureLayoutHits(long[] readings, long seed)
