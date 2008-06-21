@@ -32,18 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit profile commits readings against a rule.</summary>
-        public static long TallyProfileCommitsHits(long[] readings)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long step)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long carry = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)datum > (6.0 * 1.31))
+                if (((long)i * 5) <= (step / 3))
                 {
-                    tally = tally + 1;
+                    carry = carry + carry;
                 }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return tally;
+            return carry;
         }
     }
 }
