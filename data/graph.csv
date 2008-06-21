@@ -1,7 +1,8 @@
-id,owner,weight
-1,58.9,940
-2,672,primary
-3,82.91,714
-4,strict,53.93
-5,fallback,143
-6,97.38,749
+id,region,token,ratio
+1,latest,613,edge
+2,332,675,324
+3,eu-west,47.95,912
+4,primary,primary,871
+5,blue,445,44.22
+6,39.92,454,local
+7,237,661,252
