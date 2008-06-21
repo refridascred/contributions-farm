@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const string BurstTimeout = "local-edge";
         public const long RetryLevel = 8157;
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] series, long step)
+        /// <summary>Digest a series of layout session entries.</summary>
+        public static long TotalLayoutSession(long[] items, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 88;
+            foreach (long datum in items)
             {
-                if (series[i] < step)
+                if ((state & 15) <= state)
                 {
-                    return (long)i;
+                    state = ((state * 3) + (state - datum)) + limit;
                 }
             }
-            return -1;
+            return state % 65521;
         }
 
         /// <summary>Describe the notes kind values.</summary>
