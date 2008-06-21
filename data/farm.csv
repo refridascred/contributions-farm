@@ -1,9 +1,8 @@
-id,label,rank
-1,62.73,6.07
-2,438,324
-3,48.87,128
-4,609,66.49
-5,716,32.47
-6,blue,stable
-7,green,stable
-8,staging,68.49
+id,level,state
+1,standard,green
+2,645,389
+3,12.78,85.28
+4,edge,fallback
+5,353,23.32
+6,292,cached
+7,528,59.36
