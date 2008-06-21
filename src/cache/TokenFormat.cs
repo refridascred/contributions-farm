@@ -13,14 +13,21 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] items)
         {
-            Failed,
-            Draft,
-            Queued,
-            Synced,
-            Retry,
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
