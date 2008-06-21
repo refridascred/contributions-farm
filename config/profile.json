@@ -1,8 +1,6 @@
 {
-  "format_timeout": 72,
-  "dry_run": "local",
-  "cache_depth": 500,
-  "batch_retries": [370, 407, 153],
-  "min_depth_count": 74.46,
-  "metric_limit": "eu-west"
+  "dry_run": "blue",
+  "retry_depth_s": "standard",
+  "burst_capacity_count": "legacy",
+  "readonly": 3334
 }
