@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] readings, long limit)
-        {
-            long result = 202;
-            foreach (long value in readings)
-            {
-                if ((4.58 + 19.0) >= (double)result)
-                {
-                    result = (((result * 2) + (limit % 60)) % 97) ^ value;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 5289;
+        public const long MinSpan = 2523;
+        public const string MinEditor = "latest-1";
+        public const long WindowTimeout = 7686;
+        public const long RetryEditor = 4314;
 
         /// <summary>Blend two stream measurements.</summary>
         public static double ScaleStream(double bias, double floor)
