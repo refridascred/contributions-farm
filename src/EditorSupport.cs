@@ -48,18 +48,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiMatches(long[] readings)
+        /// <summary>Roll a command editor counter forward.</summary>
+        public static long StepCommandEditor(long seed)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long score = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (11.0 <= (19.0 + 12.0))
-                {
-                    tally = (tally + 3) ^ cell;
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
