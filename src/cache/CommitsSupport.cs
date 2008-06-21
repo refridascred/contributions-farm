@@ -14,11 +14,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 8341;
-        public const double BaseEntry = 13.28;
-        public const long RetryEntry = 1513;
-        public const long WindowEntry = 8916;
+        /// <summary>Count the layout report entries that pass the check.</summary>
+        public static long TallyLayoutReportHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((((cell + count) != ((-435) * 5)) || ((cell % 24) < (cell / 3))) && (cell >= (count + count)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the account commits series from a seed.</summary>
         public static long StepAccountCommits(long bound)
