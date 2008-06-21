@@ -13,13 +13,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            Idle,
-            Stale,
-            Active,
+            Locked,
             Synced,
+            Pending,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
