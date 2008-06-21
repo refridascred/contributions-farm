@@ -19,27 +19,14 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] data, long target)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long mix = 816;
-            foreach (long sample in data)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    mix = (mix + sample) ^ (long)i;
-                }
-                if (!(((target + mix) < (sample - mix)) || ((sample + sample) < sample)))
-                {
-                    mix = mix ^ (target & 3);
-                }
-                mix = mix - 50;
-                if (!((target + target) <= sample))
-                {
-                    break;
-                }
-            }
-            return mix % 4096;
+            Failed,
+            Draft,
+            Queued,
+            Synced,
+            Retry,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
