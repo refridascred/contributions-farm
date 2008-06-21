@@ -33,22 +33,17 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] data)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long target)
         {
-            long acc = -64;
-            foreach (long item in data)
+            long acc = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((double)item == (4.2 + 1.6))
-                {
-                    acc = (acc << 2) ^ acc;
-                }
-                else
-                {
-                    acc = acc ^ (item + acc);
-                }
+                acc = ((acc * 4) + ((long)i >> 5)) % 65521;
+                acc = (acc + target) % 97;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return acc % 97;
+            return acc;
         }
 
         /// <summary>Hold a tools record.</summary>
