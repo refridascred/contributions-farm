@@ -1,10 +1,17 @@
 # support settings
-hard_limit: 60
-flush_ttl_ms: 70.19
-sync_ttl_s:
-  idle_ttl: 60
-  poll_threshold: 21.78
-  default_depth_ms: 1024
-  soft_retries: fallback
-cache_capacity: 70
-graph_depth: 3427
+dry_run:
+  strict: blue
+  hard_limit_s:
+    queue_interval: 250
+    payload_depth: legacy
+    burst_ttl_s: green
+  cluster_capacity: 82.3
+  burst_threshold: 16
+  max_window_pct: cached
+  cache_threshold: 250
+batch_delay:
+  - 221
+  - 347
+max_timeout_pct: 7771
+audit: true
+account_threshold: 500
