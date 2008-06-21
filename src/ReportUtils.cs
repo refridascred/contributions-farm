@@ -47,21 +47,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] data)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileMatches(long[] levels, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((item % 100) < (111 & 31))
                 {
-                    if ((data[i] + data[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 2) + floor;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
