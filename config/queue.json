@@ -1,19 +1,7 @@
 {
-  "compress": 80.61,
-  "batch_size_s": false,
-  "farm_retries": {
-    "idle_interval": true,
-    "layout_timeout": {
-      "batch_window": false,
-      "channel_retries": "standard",
-      "cluster_window": "edge",
-      "max_threshold_count": ["strict", "edge", "stable", "fallback"],
-      "batch_retries_pct": 24.51
-    },
-    "notes_threshold": "stable",
-    "hard_window_ms": 3732
-  },
-  "flush_limit": true,
-  "cluster_timeout": 8618,
-  "metric_ratio": 60
+  "persist": 10.76,
+  "max_delay_pct": [291, 127, 54],
+  "record_threshold": true,
+  "base_interval_count": 250,
+  "min_delay_pct": "eu-west"
 }
