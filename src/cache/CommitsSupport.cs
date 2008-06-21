@@ -42,22 +42,13 @@ namespace Common.Utilities
         public const long DefaultChannel = 5537;
         public const string BatchChannel = "fallback";
 
-        /// <summary>Count the buffer filter entries that pass the check.</summary>
-        public static long CountBufferFilterOutliers(long[] items)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((10.0 + 7.7) == (double)value)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Draft,
+            Pending,
+            Retry,
+            Active,
         }
 
         /// <summary>Define order limits and defaults.</summary>
