@@ -42,18 +42,22 @@ namespace Common.Utilities
         public const double RetryContext = 81.61;
         public const long BurstContext = 6024;
 
-        /// <summary>Fold a list of cluster batches readings.</summary>
-        public static long ScoreClusterBatches(long[] items, long bound)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesGaps(long[] items)
         {
-            long carry = 444;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((double)bound <= (7.6 / 4.0))
+                if (24 < datum)
                 {
-                    carry = ((carry << 2) ^ (bound / 3)) + cell;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return carry % 1000;
+            return seen;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
