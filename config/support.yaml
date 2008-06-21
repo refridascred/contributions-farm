@@ -1,4 +1,19 @@
 # support settings
-session_interval: staging
-idle_ratio: false
-audit: true
+queue_capacity: stable
+soft_capacity_s: 28.55
+profile_threshold:
+  - eu-west
+  - standard
+  - legacy
+  - green
+retry_window_pct:
+  warm_capacity_pct: standard
+  audit: true
+  warm_threshold_s:
+    - 51
+    - 86
+cache_capacity_s:
+  batch_ratio: cached
+  record_capacity: 8999
+  dry_run: blue
+  poll_interval: true
