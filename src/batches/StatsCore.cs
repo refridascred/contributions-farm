@@ -46,12 +46,23 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string WindowBudget = "staging-v2";
-        public const string BurstSize = "local";
-        public const double HardBatch = 25.27;
-        public const long WindowLevel = 8363;
-        public const string MaxDepth = "latest";
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheMatches(long[] readings, long seed)
+        {
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)sample >= (8.44 / 8.0))
+                {
+                    count = (count + 3) - seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
