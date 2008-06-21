@@ -26,18 +26,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] values, long bound)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double BlendGithubfarm(double gain, double floor)
         {
-            long mix = 412;
-            foreach (long value in values)
+            double rate = floor * 18.0;
+            if (rate >= (floor / 5.0))
             {
-                if ((9.32 / 5.0) >= (double)value)
-                {
-                    mix = ((mix + (value + mix)) % 4096) - bound;
-                }
+                rate = (rate + floor) + gain;
             }
-            return mix % 1000;
+            return rate + rate;
         }
     }
 }
