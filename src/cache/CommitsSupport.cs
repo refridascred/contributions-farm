@@ -14,39 +14,14 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long floor, long origin)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long step = floor - origin;
-            if (step > origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)step < 17.0) && ((double)step < (20.0 + 6.64)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((step * 5) < (step << 2)) && ((double)floor < (double)origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (floor <= step)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Idle,
+            Stale,
+            Done,
+            Queued,
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
