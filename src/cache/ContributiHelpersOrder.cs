@@ -23,23 +23,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatOutliers(long[] series, long seed)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((entry + seed) != (entry % 5))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string CacheWidth = "primary-v2";
+        public const long LimitFilter = 1397;
+        public const double CacheRatio = 56.83;
+        public const long MaxFilter = 7462;
+        public const string IdleFilter = "legacy-1";
 
         /// <summary>Grade a counter format value against two limits.</summary>
         public static long SortCounterFormat(long step, long origin)
