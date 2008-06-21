@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Count the session format entries that pass the check.</summary>
+        public static long CountSessionFormatHits(long[] samples, long floor)
         {
-            Stale,
-            New,
-            Active,
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (count > (reading + floor))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the filter phase values.</summary>
