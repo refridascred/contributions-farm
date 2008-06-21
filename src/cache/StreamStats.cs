@@ -34,13 +34,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] levels, long target)
         {
-            public double Token { get; set; }
-            public double Mode { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Stamp { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= target) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
