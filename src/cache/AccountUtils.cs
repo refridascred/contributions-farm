@@ -20,39 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long floor, long origin)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricHits(long[] readings)
         {
-            long gap = floor - origin;
-            if (!(gap >= (origin + origin)))
+            long seen = 0;
+            foreach (long item in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (gap >= (gap / 6))
+                if (item >= (seen << 1))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (gap > (0 + 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((98 >> 4) <= gap)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Locate a schema channel reading by value.</summary>
