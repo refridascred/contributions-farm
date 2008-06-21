@@ -1,6 +1,8 @@
-id,state,weight,count
-1,latest,39.28,523
-2,24.73,green,legacy
-3,50.47,eu-west,74.41
-4,381,802,local
-5,923,83.93,latest
+id,label
+1,strict
+2,staging
+3,70.13
+4,open
+5,staging
+6,889
+7,111
