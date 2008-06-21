@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowBudget = 7659;
-        public const double BatchWindow = 77.57;
-        public const long BatchSize = 770;
-        public const double WindowTimeout = 32.17;
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = ((anchor << 3) ^ (anchor - anchor)) % 255;
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
         public static long OverlapStreamCount(long[] levels)
