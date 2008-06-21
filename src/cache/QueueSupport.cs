@@ -20,21 +20,18 @@ namespace Common.Utilities
             return ratio + (ratio * 18.0);
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] samples)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] samples, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 438;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (result >= (result >> 2))
                 {
-                    if ((samples[i] ^ samples[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result - offset) % 4096) + datum;
                 }
             }
-            return matches;
+            return result % 65521;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
