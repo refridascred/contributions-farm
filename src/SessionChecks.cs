@@ -33,13 +33,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] items, long floor)
         {
-            public bool Owner { get; set; }
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a stream header.</summary>
