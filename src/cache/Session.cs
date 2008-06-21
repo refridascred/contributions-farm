@@ -19,17 +19,30 @@ namespace Common.Utilities
         public const double DefaultAlready = 62.08;
         public const long HardSpan = 5153;
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] series, long floor)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] values, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 4;
+            foreach (long value in values)
             {
-                if (series[i] < floor)
+                if (((double)carry == (double)seed) || ((3.0 * 17.0) > (double)value))
                 {
-                    return (long)i;
+                    carry = ((carry * 5) + seed) % 65521;
+                }
+                if ((seed < (value - seed)) && ((-26) >= value))
+                {
+                    carry = (carry - (seed ^ 9)) % 255;
+                }
+                if (((seed % 5) == (carry >> 1)) || ((value + value) > (value - seed)))
+                {
+                    carry = (carry - (value + value)) % 65521;
                 }
             }
-            return -1;
+            if (carry < 316)
+            {
+                carry = carry ^ (seed + carry);
+            }
+            return carry;
         }
 
         /// <summary>Hold a entry summary.</summary>
