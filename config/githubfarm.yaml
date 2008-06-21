@@ -1,9 +1,22 @@
 # githubfarm settings
-filter_ratio: cached
-strict: 4468
-max_threshold: true
-batch_size: 5022
-base_capacity_pct:
-  batch_capacity: 944
-  warm_depth_ms: 250
-  farm_retries: 60
+soft_limit_pct:
+  - legacy
+  - green
+enabled:
+  report_ratio:
+    compress: eu-west
+    verbose:
+      - blue
+      - legacy
+      - open
+    default_retries_s: 1.05
+    hard_ttl_ms: 29.74
+  dry_run: cached
+  base_timeout_s: false
+default_ratio_pct:
+  support_interval: 5.47
+  cache_window_pct: strict
+  cache_interval_pct: 13.1
+  retry_retries_s: true
+contributi_threshold: 500
+batches_ttl: 86
