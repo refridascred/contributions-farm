@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == seed) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 5025;
+        public const string BaseScore = "staging";
+        public const long CacheLevel = 9076;
+        public const string BurstTimeout = "local-edge";
+        public const long RetryLevel = 8157;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long StepCount = 5099;
