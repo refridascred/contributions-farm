@@ -16,22 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterOutliers(long[] readings)
+        /// <summary>Project the next cache buffer value.</summary>
+        public static double AdjustCacheBuffer(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            double bias3 = bias;
+            if (bias3 > bias2)
             {
-                if ((seen - seen) <= (seen ^ seen))
-                {
-                    seen = (seen + 2) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                bias3 = bias3 + (20.0 + bias2);
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                bias3 = (bias3 - (bias / 3.0)) + (double)(long)i;
+            }
+            return bias3 + 1.0;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
