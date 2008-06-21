@@ -79,21 +79,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long CompareBatchesCount(long[] samples)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Paused,
+            Synced,
+            Queued,
         }
     }
 }
