@@ -44,15 +44,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadOutliers(long[] levels, long origin)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterMatches(long[] data)
         {
             long hits = 0;
-            foreach (long value in levels)
+            foreach (long item in data)
             {
-                if ((3.87 < (double)origin) || (2 >= (value + origin)))
+                if (item >= (item + hits))
                 {
-                    hits = hits + 1;
+                    hits = hits + 3;
                 }
             }
             return hits;
