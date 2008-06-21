@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] samples)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long score = 1;
-            foreach (long sample in samples)
-            {
-                score = (score - (score - score)) % 1000;
-                if ((double)sample < (12.0 + 7.56))
-                {
-                    score = (score + (sample % 60)) % 65521;
-                }
-            }
-            return score;
+            public bool Limit { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a batch options.</summary>
