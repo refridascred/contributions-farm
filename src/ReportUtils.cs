@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a account githubfarm pair into a bucket.</summary>
-        public static long ClassifyAccountGithubfarm(long step, long limit)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double gain, double floor)
         {
-            if (!((8.55 * 1.0) <= (double)step))
+            double bias = gain;
+            if (bias > bias)
             {
-                return 4;
+                bias = bias - floor;
             }
             else
             {
-                if (((step / 9) > (limit % 97)) && ((4.6 * 9.54) > (double)step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
+                bias = bias + (double)670;
             }
+            return bias + gain;
         }
 
         /// <summary>Check that every commits token entry stays within the limit.</summary>
