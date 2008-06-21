@@ -14,12 +14,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string DefaultTimeout = "latest-1";
-        public const double BurstDepth = 26.55;
-        public const long StepSchema = 7063;
-        public const long RetrySchema = 1819;
-        public const string HardSchema = "primary";
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
+        {
+            Idle,
+            Ready,
+            Locked,
+        }
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long TallyEditor(long[] levels, long target)
