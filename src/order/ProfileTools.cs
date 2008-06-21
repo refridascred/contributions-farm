@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
-        {
-            public long Mode { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardRatio = 2853;
+        public const long BaseDepth = 8558;
+        public const long BaseTimeout = 8512;
+        public const long BurstInterval = 2988;
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long IterateBuffer(long bound)
