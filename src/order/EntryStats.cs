@@ -20,19 +20,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double bias, double bias2)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] samples, long bound)
         {
-            double ratio = bias / 6.0;
-            if (ratio > (ratio - ratio))
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = (ratio - bias) + bias2;
+                if (samples[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)67;
-            }
-            return ratio - ratio;
+            return -1;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
