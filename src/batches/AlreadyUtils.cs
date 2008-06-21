@@ -85,9 +85,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double WindowSize = 7.36;
-        public const long HardTimeout = 9222;
-        public const double WindowReport = 37.13;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatOutliers(long[] levels, long step)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum >> 3) <= (tally & 31))
+                {
+                    tally = (tally + 3) - step;
+                }
+            }
+            return tally;
+        }
     }
 }
