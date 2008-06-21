@@ -27,22 +27,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchHits(long[] samples, long target)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((long)samples.Length - item) >= 6) && ((5.0 - 2.46) > (double)target))
+                if ((samples[i] >= origin) && ((samples[i] % 3) == 0))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Match up already tools samples.</summary>
