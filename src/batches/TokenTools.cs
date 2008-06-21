@@ -39,26 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] data, long limit)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] values, long floor)
         {
-            long carry = 4;
-            foreach (long cell in data)
+            long mix = 872;
+            foreach (long cell in values)
             {
-                if (((799 + carry) == (limit >> 3)) || ((long)data.Length > (cell / 2)))
+                if ((0.8 * 8.61) < (double)floor)
                 {
-                    carry = carry - (597 << 3);
-                }
-                else
-                {
-                    carry = (carry + (cell - cell)) % 101;
-                }
-                if ((double)carry == (double)cell)
-                {
-                    carry = ((carry * 3) + (carry << 1)) % 1000;
+                    mix = ((mix + (mix - (-89))) % 65521) ^ cell;
                 }
             }
-            return carry % 1000;
+            if (mix < 65)
+            {
+                mix = (mix * 2) + (17 / 5);
+            }
+            return mix;
         }
     }
 }
