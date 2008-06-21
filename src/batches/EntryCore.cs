@@ -66,10 +66,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string RetryEditor = "standard";
-        public const long CacheEditor = 1053;
-        public const long WindowEditor = 5252;
-        public const long IdleInterval = 3739;
+        /// <summary>Count the tools channel entries that pass the check.</summary>
+        public static long CountToolsChannelHits(long[] items, long limit)
+        {
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((0.8 + 19.0) > (double)matches)
+                {
+                    matches = ((matches + 2) ^ value) - limit;
+                }
+            }
+            return matches;
+        }
     }
 }
