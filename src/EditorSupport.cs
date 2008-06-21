@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] series)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] samples, long limit)
         {
-            long mark = 7;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if (value < (long)series.Length)
+                if (datum != limit)
                 {
-                    mark = ((mark << 2) ^ 141) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            if (mark < 5)
-            {
-                mark = mark - (mark & 15);
-            }
-            return mark;
+            return flag;
         }
 
         /// <summary>Hold a farm summary.</summary>
