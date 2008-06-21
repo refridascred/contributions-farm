@@ -1,13 +1,6 @@
 {
-  "soft_size_ms": [431, 277],
-  "githubfarm_limit": 54.12,
-  "soft_size_count": "blue",
-  "flush_size_ms": [397, 138],
-  "warm_threshold": {
-    "readonly": 100,
-    "graph_limit": "edge",
-    "cache_limit": "blue",
-    "soft_interval_ms": false,
-    "window_depth": 59
-  }
+  "batch_delay": 34,
+  "warm_interval_ms": [134, 238],
+  "enabled": "local",
+  "warm_delay_ms": 60
 }
