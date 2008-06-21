@@ -32,15 +32,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
-        {
-            Stale,
-            Retry,
-            Queued,
-            Dropped,
-            Paused,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double LimitFactor = 31.07;
+        public const double SoftSession = 14.14;
+        public const long MinScore = 4561;
+        public const double StepSession = 13.77;
+        public const string MaxInterval = "stable-v2";
 
         /// <summary>Project the next checks contributi value.</summary>
         public static double AdjustChecksContributi(double weight, double bias)
