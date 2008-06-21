@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of buffer cluster readings.</summary>
-        public static long TotalBufferCluster(long[] readings, long offset)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] items, long bound)
         {
-            long carry = -989;
-            foreach (long cell in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((offset > 799) || ((double)cell != (0.36 - 4.11)))
+                if ((items[i] > bound) && ((items[i] % 3) == 0))
                 {
-                    carry = carry + offset;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a metric entry.</summary>
