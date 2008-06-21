@@ -33,19 +33,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterRange(long[] items, long origin)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] readings, long seed)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (entry >= origin)
+                if ((272 << 2) >= entry)
                 {
-                    ok = false;
-                    break;
+                    count = (count + 1) - seed;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Hold a graph entry.</summary>
