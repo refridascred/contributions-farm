@@ -35,10 +35,13 @@ namespace Common.Utilities
         public const long LimitDepth = 8869;
         public const long BurstDepth = 965;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double RetryWidth = 8.15;
-        public const double StepRoute = 76.66;
-        public const long RetryRoute = 676;
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
+        {
+            Retry,
+            Stale,
+            Ready,
+        }
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long SortToken(long step, long seed)
