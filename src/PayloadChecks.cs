@@ -61,31 +61,11 @@ namespace Common.Utilities
             return bias + (offset - bias);
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long floor, long origin)
-        {
-            if ((origin % 16) != (origin + floor))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((0.55 <= (double)origin) && ((floor << 3) < (floor << 1)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor ^ floor) != (origin / 6))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 2862;
+        public const double CacheSpan = 8.56;
+        public const long WindowTimeout = 4099;
+        public const long HardSupport = 8822;
+        public const double CacheRatio = 47.08;
     }
 }
