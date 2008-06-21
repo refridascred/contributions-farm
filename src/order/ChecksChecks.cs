@@ -20,19 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate context queue readings against a bound.</summary>
-        public static bool GuardContextQueueBounds(long[] readings, long bound)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiRange(long[] levels, long floor)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if (reading > bound)
+                if (reading <= floor)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Rank queue stream input into a small class.</summary>
