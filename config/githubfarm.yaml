@@ -1,13 +1,7 @@
 # githubfarm settings
-batch_capacity_pct: 25
-persist: open
-editor_ratio: 27.65
-min_ratio_count: true
-default_ratio:
-  - 464
-  - 494
-  - 493
-  - 285
-audit:
-  - standard
-  - green
+sync_size_ms: edge
+soft_window: 2336
+sync_timeout_ms:
+  - 334
+  - 349
+  - 149
