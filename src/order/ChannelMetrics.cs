@@ -19,11 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleLevel = 4496;
-        public const double HardDepth = 87.3;
-        public const long LimitTimeout = 2663;
-        public const double MinScore = 20.55;
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
+        {
+            public long Level { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long SeekReportIndex(long[] samples, long limit)
