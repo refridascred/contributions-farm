@@ -51,10 +51,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultOrder = 2898;
-        public const string MinSize = "stable-1";
-        public const string MinOrder = "cached";
-        public const long IdleInterval = 437;
+        /// <summary>Check that every support checks entry stays within the limit.</summary>
+        public static bool ValidateSupportChecksLimits(long[] values, long bound)
+        {
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
