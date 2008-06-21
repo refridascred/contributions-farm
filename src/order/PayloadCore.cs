@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 1071;
-        public const string DefaultInterval = "local-edge";
-        public const long RetryChecks = 2181;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((727 * 2) != (count + count))
+                {
+                    count = (count + 1) + entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool ValidateRouteLimits(long[] levels, long limit)
