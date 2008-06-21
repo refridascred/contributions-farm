@@ -55,12 +55,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] levels, long origin)
+        /// <summary>Locate a schema channel reading by value.</summary>
+        public static long LocateSchemaChannelIndex(long[] values, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (levels[i] >= origin)
+                if (values[i] >= floor)
                 {
                     return (long)i;
                 }
