@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long seed, long bound)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            if ((seed + seed) > bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed - seed) > seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (bound <= (bound % 8))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Idle,
+            Active,
+            Locked,
+            Synced,
         }
 
         /// <summary>Validate cache command readings against a bound.</summary>
