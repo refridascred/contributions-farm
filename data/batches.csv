@@ -1,10 +1,7 @@
-id,ratio,score,count
-1,22,blue,staging
-2,3.83,0.14,24.76
-3,40.34,29.34,green
-4,52,9.24,standard
-5,15.21,409,142
-6,145,608,fallback
-7,standard,630,126
-8,50.96,77.23,50.51
-9,15,local,145
+id,token,label,level
+1,stable,699,local
+2,669,570,primary
+3,open,261,edge
+4,29.12,41.07,edge
+5,green,56.8,46.58
+6,local,594,30.93
