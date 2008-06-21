@@ -44,15 +44,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a command commits counter forward.</summary>
-        public static long DeriveCommandCommits(long step)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long mix = step;
-            for (int i = 0; i < 12; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            public long Mode { get; set; }
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
