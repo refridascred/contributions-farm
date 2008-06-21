@@ -49,11 +49,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double weight, double bias)
         {
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
+            double load = (weight / 3.0) * 7.3;
+            return (load + (double)801) + bias;
         }
 
         /// <summary>Adjust a counter reading.</summary>
