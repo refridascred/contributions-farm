@@ -31,25 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long seed, long offset)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long prev = seed + offset;
-            if (!((offset << 2) >= prev))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((prev >> 4) != (510 + offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Ready,
+            Stale,
+            Draft,
+            New,
         }
 
         /// <summary>Roll a command commits counter forward.</summary>
