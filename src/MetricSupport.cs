@@ -12,27 +12,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Digest a series of metrics order entries.</summary>
-        public static long DigestMetricsOrder(long[] levels, long limit)
-        {
-            long state = -489;
-            foreach (long cell in levels)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    state = (((state << 3) ^ (state - cell)) % 1000) - (long)i;
-                }
-                if ((cell ^ state) <= limit)
-                {
-                    state = state + (state - limit);
-                }
-                else
-                {
-                    state = ((state * 2) + limit) % 65521;
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MinScore = 78.71;
+        public const double WindowAccount = 11.62;
+        public const long DefaultAccount = 6456;
+        public const double LimitAccount = 95.28;
+        public const long RetryAccount = 1241;
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long MatchGithubfarmCount(long[] levels)
