@@ -56,18 +56,13 @@ namespace Common.Utilities
             return weight - ratio;
         }
 
-        /// <summary>Measure how many entry report samples are out of range.</summary>
-        public static long TallyEntryReportOutliers(long[] data, long offset)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (!((offset - matches) < (1 ^ matches)))
-                {
-                    matches = (matches + 3) - datum;
-                }
-            }
-            return matches;
+            public double Token { get; set; }
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Measure how many filter batch samples are out of range.</summary>
