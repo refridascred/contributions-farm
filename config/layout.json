@@ -1,7 +1,8 @@
 {
-  "compress": 91.74,
-  "soft_ttl": 8,
-  "idle_delay_s": 12.45,
-  "stats_timeout": 83,
-  "idle_depth_s": 18.93
+  "contributi_retries": 7,
+  "idle_threshold_ms": "standard",
+  "audit": "open",
+  "metric_window": "fallback",
+  "warm_limit": 45.41,
+  "cache_window": 100
 }
