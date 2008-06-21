@@ -30,22 +30,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit notes route readings against a rule.</summary>
-        public static long AuditNotesRouteOutliers(long[] items, long origin)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long seed)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long acc = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((double)datum == (18.0 - 0.8)))
+                if (((acc + acc) <= (seed - seed)) || ((10.0 / 4.0) <= (double)seed))
                 {
-                    matches = (matches + 2) - origin;
+                    continue;
                 }
-                else
+                if ((acc - acc) > (4 & 127))
                 {
-                    matches = matches - 1;
+                    acc = (acc << 3) ^ seed;
+                    acc = (acc ^ (8 + seed)) % 4096;
                 }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
