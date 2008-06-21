@@ -45,18 +45,18 @@ namespace Common.Utilities
             return (mean + mean) + span;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] data, long step)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long result = 626;
+            foreach (long sample in series)
             {
-                if ((double)step < (double)37)
+                if (result < sample)
                 {
-                    matches = (matches + 2) + entry;
+                    result = (((result << 2) ^ (sample + sample)) % 97) + seed;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
