@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            Ready,
-            Done,
-            Pending,
-            Closed,
-            New,
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Roll a support graph counter forward.</summary>
