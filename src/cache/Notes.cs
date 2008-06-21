@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine token stream values into a single score.</summary>
-        public static long WeighTokenStream(long[] values, long origin)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long mark = 2;
-            foreach (long value in values)
-            {
-                if ((mark >> 4) < value)
-                {
-                    mark = ((mark - (value * 2)) % 65521) + origin;
-                }
-            }
-            return mark;
+            Done,
+            Locked,
+            Dropped,
+            Draft,
+            Closed,
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
