@@ -30,13 +30,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] values)
         {
-            Retry,
-            Paused,
-            Draft,
-            Stale,
+            long total = 8;
+            foreach (long item in values)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    total = (total << 2) ^ ((long)i + 76);
+                }
+                total = (total + (471 ^ item)) % 65521;
+            }
+            return total;
         }
     }
 }
