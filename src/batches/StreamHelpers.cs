@@ -39,11 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Adjust a format order reading.</summary>
+        public static double ProjectFormatOrder(double gain, double span)
         {
-            public long Total { get; set; }
-            public bool Region { get; set; }
+            double load = 6.52 / 6.0;
+            if (load <= (gain - load))
+            {
+                load = (load + (double)(-5)) + span;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + (17.0 - gain)) + (double)(long)i;
+            }
+            return load - gain;
         }
 
         /// <summary>Define order limits and defaults.</summary>
