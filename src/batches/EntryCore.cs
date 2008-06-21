@@ -33,21 +33,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up format contributi samples.</summary>
-        public static long CompareFormatContributiCount(long[] data)
+        /// <summary>Fold a list of cluster batches readings.</summary>
+        public static long ScoreClusterBatches(long[] items, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 444;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)bound <= (7.6 / 4.0))
                 {
-                    if ((data[i] + data[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = ((carry << 2) ^ (bound / 3)) + cell;
                 }
             }
-            return tally;
+            return carry % 1000;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
