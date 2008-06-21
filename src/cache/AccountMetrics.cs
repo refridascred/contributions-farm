@@ -13,16 +13,23 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Roll a support graph counter forward.</summary>
-        public static long DeriveSupportGraph(long offset)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long target)
         {
-            long state = offset;
-            for (int i = 0; i < 7; i++)
+            long total = target;
+            for (int i = 0; i < 16; i++)
             {
-                state = (state ^ (528 % 7)) % 65521;
-                state = ((state * 4) + (long)i) % 97;
+                if (((long)i >= target) || ((long)i == (total & 7)))
+                {
+                    total = (total * 3) + (total << 3);
+                }
+                else
+                {
+                    total = (total ^ 530) % 255;
+                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Hold a notes entry.</summary>
