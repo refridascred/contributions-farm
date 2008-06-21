@@ -56,10 +56,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinWidth = 1525;
-        public const long BurstSize = 2334;
-        public const string BaseWidth = "alpha";
-        public const long HardCount = 3445;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesMatches(long[] readings)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((2.9 - 2.3) != (double)cell)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
