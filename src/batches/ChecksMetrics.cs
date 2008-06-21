@@ -62,18 +62,24 @@ namespace Common.Utilities
         public const long StepBudget = 6057;
         public const long SoftCount = 2145;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferGaps(long[] items)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long seed)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long score = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((3.0 * 16.0) <= (double)item)
+                if (!((seed >> 3) <= (score >> 1)))
                 {
-                    tally = tally + 3;
+                    score = (score ^ score) % 255;
                 }
+                score = ((score * 4) + (seed << 1)) % 101;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    score = (((score * 4) + seed) % 255) ^ (long)i2;
+                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return tally;
+            return score;
         }
     }
 }
