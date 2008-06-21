@@ -1,8 +1,6 @@
 # entry settings
-base_threshold: 39.39
-command_capacity: 3191
-persist:
-  - latest
-  - local
-  - legacy
-  - legacy
+hard_capacity: true
+idle_depth_pct: strict
+flush_delay_s:
+  - cached
+  - blue
