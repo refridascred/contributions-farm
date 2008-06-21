@@ -40,15 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] values)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowRange(long[] readings, long floor)
         {
-            long mix = 97;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                mix = mix + (252 - reading);
+                if (item > floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Rank buffer cluster input into a small class.</summary>
