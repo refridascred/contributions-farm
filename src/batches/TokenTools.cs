@@ -11,11 +11,32 @@ namespace Common.Utilities
         public const long StepEntry = 2247;
         public const long RetryEntry = 5995;
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long floor, long limit)
         {
-            public string Mode { get; set; } = "";
-            public string Count { get; set; } = "";
+            long offset = floor + limit;
+            if (((offset ^ 86) > (floor + floor)) && (offset >= (offset % 24)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit >> 5) <= floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit > 5.4)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a account reading.</summary>
