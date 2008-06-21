@@ -15,12 +15,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Roll a support graph counter forward.</summary>
+        public static long DeriveSupportGraph(long offset)
         {
-            Ready,
-            Retry,
-            Queued,
+            long state = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                state = (state ^ (528 % 7)) % 65521;
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
