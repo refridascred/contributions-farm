@@ -20,31 +20,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long step, long limit)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long bound)
         {
-            if (!((double)step < 16.0))
+            long acc = bound;
+            for (int i = 0; i < 7; i++)
             {
-                return 7;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            else
-            {
-                if (!(step <= (step - step)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((174 + limit) >= limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Define context limits and defaults.</summary>
