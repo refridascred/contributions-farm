@@ -1,5 +1,7 @@
 {
-  "max_size_pct": false,
-  "cache_ttl_ms": 81.79,
-  "burst_threshold_count": 5304
+  "burst_limit": 6649,
+  "sync_capacity_count": 2.28,
+  "payload_capacity": 12,
+  "poll_ttl": "local",
+  "max_size": "fallback"
 }
