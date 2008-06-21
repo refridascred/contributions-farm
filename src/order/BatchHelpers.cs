@@ -47,17 +47,18 @@ namespace Common.Utilities
             return drift - (double)182;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] values, long offset)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (values[i] > offset)
+                if ((matches % 10) < (sample * 5))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
