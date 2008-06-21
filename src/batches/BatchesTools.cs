@@ -19,19 +19,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Roll a channel counter counter forward.</summary>
-        public static long StepChannelCounter(long origin)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionMatches(long[] levels, long step)
         {
-            long result = origin;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((step >> 1) > (71 << 1))
                 {
-                    result = ((result ^ origin) % 4096) - (long)i2;
+                    seen = (seen + 3) + datum;
                 }
-                result = ((result * 4) + (long)i) % 4093;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
