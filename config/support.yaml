@@ -1,11 +1,9 @@
 # support settings
-stream_retries: 54
-idle_delay:
-  - legacy
-  - strict
-  - local
-  - fallback
-warm_window: latest
-soft_ttl_count: 88.44
-audit: false
-enabled: 30
+max_ratio_count: 71
+compress: false
+persist:
+  - 339
+  - 374
+  - 150
+  - 408
+strict: true
