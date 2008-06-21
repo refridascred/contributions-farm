@@ -40,15 +40,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double scale, double offset)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            double rate = scale;
-            if (rate < 8.21)
-            {
-                rate = rate - 6.14;
-            }
-            return rate - (scale - offset);
+            public long Ratio { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
