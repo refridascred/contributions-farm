@@ -36,19 +36,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheOutliers(long[] levels)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchHits(long[] series)
         {
             long tally = 0;
-            foreach (long value in levels)
+            foreach (long item in series)
             {
-                if ((8.1 * 6.0) < (double)tally)
+                if (item >= (tally - 65))
                 {
-                    tally = (tally + 1) ^ value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = tally + 1;
                 }
             }
             return tally;
