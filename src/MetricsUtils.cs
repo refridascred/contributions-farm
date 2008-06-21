@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
-        {
-            public long Total { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxRatio = 8364;
+        public const long MaxSize = 4195;
+        public const string CacheInterval = "fallback-v2";
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
