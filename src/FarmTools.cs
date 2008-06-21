@@ -14,15 +14,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
-        {
-            Failed,
-            Pending,
-            New,
-            Dropped,
-            Active,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 7912;
+        public const string DefaultSize = "strict-1";
+        public const long WindowRecord = 4156;
+        public const string BatchRecord = "latest-v2";
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long BucketFormat(long offset, long origin)
