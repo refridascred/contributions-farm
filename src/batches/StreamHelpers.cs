@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const double MaxLayout = 88.81;
         public const long MaxWidth = 6947;
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricHits(long[] series, long limit)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((item - limit) <= (limit * 3))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Digest a series of queue profile entries.</summary>
