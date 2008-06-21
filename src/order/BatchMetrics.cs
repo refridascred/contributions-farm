@@ -50,19 +50,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterRange(long[] readings, long origin)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            bool flag = true;
-            foreach (long sample in readings)
-            {
-                if (sample != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
