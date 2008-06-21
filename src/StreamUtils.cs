@@ -18,13 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] samples, long target)
         {
-            Locked,
-            Synced,
-            Stale,
-            Draft,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
