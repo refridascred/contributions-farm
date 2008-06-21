@@ -1,7 +1,24 @@
 # githubfarm settings
-entry_retries: edge
-context_timeout: blue
-base_retries: 18.08
-base_window_ms: legacy
-dry_run: true
-hard_retries_ms: 25.4
+batch_delay_s:
+  profile_size:
+    - 405
+    - 190
+    - 303
+    - 369
+  hard_delay_count: primary
+  max_interval: true
+  farm_threshold: 12
+  poll_timeout_s: false
+report_retries:
+  - green
+  - cached
+  - green
+  - edge
+audit: 84.72
+max_timeout_pct: true
+min_window: 16.36
+token_limit:
+  - legacy
+  - open
+  - edge
+  - staging
