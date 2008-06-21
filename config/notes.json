@@ -1,6 +1,15 @@
 {
-  "flush_size_count": 22,
-  "sync_size_ms": "blue",
-  "soft_interval_s": 500,
-  "flush_capacity_s": "eu-west"
+  "cache_ratio": "eu-west",
+  "readonly": "open",
+  "hard_threshold_count": 6,
+  "max_depth": 21,
+  "already_size": {
+    "context_interval": 71,
+    "layout_limit": true,
+    "compress": ["strict", "fallback"],
+    "retry_delay_count": 6312,
+    "channel_ttl": "green",
+    "context_delay": ["standard", "open"]
+  },
+  "retry_retries": "stable"
 }
