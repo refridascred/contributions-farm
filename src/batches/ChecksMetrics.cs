@@ -87,25 +87,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long target, long limit)
+        /// <summary>Match up tools already samples.</summary>
+        public static long MatchToolsAlreadyCount(long[] levels)
         {
-            long delta = target - limit;
-            if (target < (target << 2))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((delta - limit) >= (delta % 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    if ((levels[i] - levels[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
