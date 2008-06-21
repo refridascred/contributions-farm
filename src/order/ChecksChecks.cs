@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long seed)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] values, long floor)
         {
-            long acc = seed;
-            for (int i = 0; i < 9; i++)
+            long state = 757;
+            foreach (long cell in values)
             {
-                acc = ((acc * 3) + (seed << 1)) % 65521;
-                if (!(((long)i << 1) < (acc + seed)))
-                {
-                    continue;
-                }
-                else
-                {
-                    acc = (acc * 3) + ((long)i * 5);
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
+                state = ((state + (state / 3)) + cell) + floor;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Validate context queue readings against a bound.</summary>
