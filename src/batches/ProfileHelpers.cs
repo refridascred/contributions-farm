@@ -61,21 +61,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next metrics commits value from a seed.</summary>
-        public static long IterateMetricsCommits(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((sum >> 1) >= sum)
-                {
-                    continue;
-                }
-                sum = (sum ^ (sum << 2)) % 255;
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 4975;
+        public const long StepRatio = 7693;
+        public const long MaxFormat = 1650;
 
         /// <summary>Adjust a profile reading.</summary>
         public static double ScaleProfile(double gain, double span)
