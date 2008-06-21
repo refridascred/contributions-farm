@@ -87,22 +87,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] series, long seed)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double gain, double span)
         {
-            long acc = 3;
-            foreach (long item in series)
+            double bias = gain;
+            if (bias <= (gain / 7.0))
             {
-                if (((double)acc == (12.0 * 18.0)) && ((item + 1) == (acc + (-969))))
-                {
-                    acc = (acc ^ (item - acc)) - seed;
-                }
-                if (item >= (562 % 10))
-                {
-                    break;
-                }
+                bias = bias - (bias - span);
             }
-            return acc;
+            else
+            {
+                bias = bias - (gain + 0.35);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + (gain / 3.0)) - (double)(long)i;
+            }
+            return bias - (double)6;
         }
     }
 }
