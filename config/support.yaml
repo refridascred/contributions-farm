@@ -1,8 +1,12 @@
 # support settings
-retry_retries_ms:
-  - 500
-  - 98
-  - 83
-  - 415
-commits_depth: 6220
-dry_run: 71
+compress: 31.27
+flush_capacity_pct: fallback
+max_delay_pct:
+  - standard
+  - eu-west
+  - strict
+commits_depth: 70.87
+base_ratio_pct: false
+enabled:
+  - latest
+  - strict
