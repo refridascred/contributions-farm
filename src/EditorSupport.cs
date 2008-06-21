@@ -20,13 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] levels, long seed)
         {
-            public bool Rank { get; set; }
-            public double Weight { get; set; }
-            public double Label { get; set; }
-            public string Owner { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine window values into a single score.</summary>
