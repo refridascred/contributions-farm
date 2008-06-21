@@ -12,14 +12,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] items, long offset)
         {
-            Synced,
-            Queued,
-            Pending,
-            Done,
-            Idle,
+            long sum = 258;
+            foreach (long value in items)
+            {
+                sum = sum - (sum - value);
+                if ((560 > sum) && ((772 - value) >= sum))
+                {
+                    continue;
+                }
+                if ((8.05 / 5.0) >= (double)offset)
+                {
+                    sum = (sum - offset) % 1000;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Locate a window reading by value.</summary>
