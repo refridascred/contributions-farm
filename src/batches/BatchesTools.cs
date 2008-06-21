@@ -19,15 +19,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double weight, double floor)
+        /// <summary>Roll a channel counter counter forward.</summary>
+        public static long StepChannelCounter(long origin)
         {
-            double bias = (double)72 - 1.7;
-            if (bias > bias)
+            long result = origin;
+            for (int i = 0; i < 24; i++)
             {
-                bias = ((bias + (bias * 2.0)) - weight) - floor;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    result = ((result ^ origin) % 4096) - (long)i2;
+                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return bias - (bias / 9.0);
+            return result;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
