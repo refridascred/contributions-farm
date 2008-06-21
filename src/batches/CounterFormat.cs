@@ -36,10 +36,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 8015;
-        public const long WindowInterval = 6064;
-        public const long DefaultSchema = 2387;
-        public const string CacheSchema = "fallback";
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
+        {
+            public long Owner { get; set; }
+            public string Size { get; set; } = "";
+            public bool Count { get; set; }
+            public double Weight { get; set; }
+        }
     }
 }
