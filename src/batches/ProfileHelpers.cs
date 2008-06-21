@@ -56,18 +56,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsGaps(long[] readings, long origin)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((((962 & 3) == (matches % 12)) && ((16.0 + 4.8) != (double)matches)) && !((entry + entry) < matches))
-                {
-                    matches = (matches + 1) + origin;
-                }
-            }
-            return matches;
+            public bool Region { get; set; }
+            public bool Mode { get; set; }
+            public long Size { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the schema level values.</summary>
