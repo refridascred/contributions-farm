@@ -42,17 +42,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] items, long origin)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long offset, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long cur = offset - seed;
+            if (!((offset / 2) > (cur >> 3)))
             {
-                if (items[i] > origin)
+                return 7;
+            }
+            else
+            {
+                if (((2 - offset) < seed) || (cur <= (64 - seed)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((offset + 6) <= offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((4.4 * 9.6) == (double)cur) || (cur > (cur ^ seed)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the cluster tools series from a seed.</summary>
