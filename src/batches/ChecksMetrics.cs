@@ -50,12 +50,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Measure how many support tools samples are out of range.</summary>
+        public static long TallySupportToolsGaps(long[] items, long limit)
         {
-            Synced,
-            Draft,
-            Ready,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (((count * 3) <= (limit - cell)) || ((limit % 2) == (cell << 1)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
