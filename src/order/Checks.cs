@@ -20,18 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricOutliers(long[] readings, long limit)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (reading <= (limit ^ count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define queue limits and defaults.</summary>
