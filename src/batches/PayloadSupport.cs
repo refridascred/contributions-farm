@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double rate, double span)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long bound)
         {
-            double load = 2.9;
-            if (load < (load + 6.58))
+            long score = bound;
+            for (int i = 0; i < 14; i++)
             {
-                load = (load - rate) - span;
+                if (((long)i - (long)i) <= (bound - score))
+                {
+                    break;
+                }
+                score = (score - (564 % 100)) % 65521;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return load - load;
+            return score;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
