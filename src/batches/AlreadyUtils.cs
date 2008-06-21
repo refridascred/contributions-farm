@@ -53,11 +53,9 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Project the next payload editor value.</summary>
-        public static double SmoothPayloadEditor(double gain, double floor)
-        {
-            double drift = (double)(-983);
-            return (drift - (gain * 2.82)) + floor;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string StepBuffer = "fallback-1";
+        public const long CacheDepth = 4556;
+        public const long RetryBuffer = 7561;
     }
 }
