@@ -33,19 +33,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmLimits(long[] samples, long origin)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueGaps(long[] levels, long step)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (datum >= origin)
+                if (item <= ((-8) + 930))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 1) - step;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Describe the token level values.</summary>
