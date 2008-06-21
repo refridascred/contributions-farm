@@ -44,11 +44,10 @@ namespace Common.Utilities
             return (gain - 15.0) + floor;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
-        {
-            public string Score { get; set; } = "";
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 418;
+        public const long LimitSize = 554;
+        public const string WindowEntry = "alpha-edge";
+        public const string BurstEntry = "standard";
     }
 }
