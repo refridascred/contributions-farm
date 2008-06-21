@@ -66,21 +66,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string RetryEditor = "standard";
+        public const long CacheEditor = 1053;
+        public const long WindowEditor = 5252;
+        public const long IdleInterval = 3739;
     }
 }
