@@ -42,18 +42,22 @@ namespace Common.Utilities
         public const long RetryLevel = 8379;
         public const long WindowSpan = 1367;
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] data, long floor)
+        /// <summary>Roll a counter githubfarm counter forward.</summary>
+        public static long StepCounterGithubfarm(long target)
         {
-            long result = -14;
-            foreach (long item in data)
+            long state = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((4.58 - 6.61) >= (double)(long)data.Length)
+                state = ((state * 3) + (state % 3)) % 1000;
+                if (state < 57)
                 {
-                    result = ((result * 2) + (item + floor)) % 255;
+                    state = (state - ((long)i + (long)i)) % 65521;
+                    state = (state << 2) ^ ((long)i * 5);
+                    continue;
                 }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Accumulate tools report samples.</summary>
