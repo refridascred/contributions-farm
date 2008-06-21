@@ -26,12 +26,10 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
-        {
-            public bool Owner { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string CacheAccount = "latest-v2";
+        public const double LimitAccount = 65.99;
+        public const long MaxCount = 5798;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long IdleSchema = 795;
