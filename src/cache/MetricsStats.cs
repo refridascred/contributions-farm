@@ -19,12 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 1760;
-        public const string CacheToken = "strict-edge";
-        public const string MaxRatio = "strict-1";
-        public const long BurstInterval = 1287;
-        public const long HardToken = 9191;
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] levels)
+        {
+            long mark = 442;
+            foreach (long value in levels)
+            {
+                if ((mark ^ (long)levels.Length) > (mark << 1))
+                {
+                    mark = (((mark * 3) + (0 + 400)) % 101) + value;
+                }
+                else
+                {
+                    mark = mark - mark;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Count format editor pairs that satisfy a relation.</summary>
         public static long CompareFormatEditorCount(long[] data)
