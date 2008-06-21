@@ -20,19 +20,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a account entry figure with a bias.</summary>
-        public static double ScaleAccountEntry(double bias, double bias2)
+        /// <summary>Validate channel record readings against a bound.</summary>
+        public static bool ValidateChannelRecordBounds(long[] items, long step)
         {
-            double load = (double)(31 * 4);
-            if (load <= (load + 8.0))
+            bool found = true;
+            foreach (long sample in items)
             {
-                load = load - bias;
+                if (sample != step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - 5.5;
-            }
-            return load - (load + bias2);
+            return found;
         }
     }
 }
