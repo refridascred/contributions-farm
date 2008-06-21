@@ -1,8 +1,10 @@
 # support settings
-graph_window: standard
-support_depth:
-  - 70
-  - 470
-  - 195
-  - 380
-sync_threshold: 31
+cache_limit_pct: true
+enabled: 12.91
+idle_threshold_ms: edge
+entry_ttl: 250
+batch_threshold_pct: 82.59
+cache_depth_s:
+  - open
+  - primary
+  - stable
