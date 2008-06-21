@@ -20,11 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double AdjustCache(double bias, double offset)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            double gain = 16.0 / 2.0;
-            return (gain + (bias / 6.0)) + offset;
+            New,
+            Closed,
+            Paused,
+            Locked,
         }
 
         /// <summary>Roll a graph counter forward.</summary>
