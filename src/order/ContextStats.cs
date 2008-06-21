@@ -17,20 +17,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferRange(long[] samples, long step)
-        {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinBatch = 5882;
+        public const long CacheDepth = 7909;
+        public const string RetryDepth = "standard";
+        public const double LimitBatch = 95.56;
+        public const long StepBatch = 2703;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double StepChecks = 57.38;
