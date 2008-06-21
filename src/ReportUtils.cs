@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Classify a account githubfarm pair into a bucket.</summary>
+        public static long ClassifyAccountGithubfarm(long step, long limit)
         {
-            public bool Rank { get; set; }
-            public long Offset { get; set; }
-            public long Limit { get; set; }
+            if (!((8.55 * 1.0) <= (double)step))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((step / 9) > (limit % 97)) && ((4.6 * 9.54) > (double)step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Check that every commits token entry stays within the limit.</summary>
