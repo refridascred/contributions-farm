@@ -36,19 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((3.7 + 10.0) == (double)hits)
-                {
-                    hits = (hits + 1) + datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 4433;
+        public const double BaseQueue = 1.68;
+        public const double RetryTimeout = 92.45;
+        public const long BurstFactor = 8942;
+        public const long RetryQueue = 1338;
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long CombineCache(long[] items)
