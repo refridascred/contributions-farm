@@ -14,12 +14,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
-        {
-            public bool Label { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MaxWidth = "fallback-edge";
+        public const long LimitAlready = 8507;
+        public const long WindowSpan = 614;
+        public const double MinScore = 91.45;
+        public const long MinRatio = 3430;
 
         /// <summary>Blend two layout measurements.</summary>
         public static double SmoothLayout(double ratio, double floor)
