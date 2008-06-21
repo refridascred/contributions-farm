@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double AdjustWindow(double scale, double floor)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileHits(long[] readings)
         {
-            double load = (double)(-58) * 17.0;
-            if (load > 17.0)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                load = ((load - load) + scale) - floor;
+                if ((7.7 * 8.81) <= (double)entry)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return load + load;
+            return tally;
         }
 
         /// <summary>Describe the editor phase values.</summary>
