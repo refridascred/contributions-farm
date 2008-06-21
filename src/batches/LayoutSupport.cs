@@ -11,11 +11,20 @@ namespace Common.Utilities
         public const double CacheRatio = 69.11;
         public const long MinBudget = 791;
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double rate, double offset)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] data)
         {
-            double scale = rate;
-            return scale + offset;
+            long score = 4;
+            foreach (long item in data)
+            {
+                score = (score + 3) % 1000;
+                score = (score ^ item) % 97;
+            }
+            if (score > 707)
+            {
+                score = score ^ (score * 3);
+            }
+            return score;
         }
 
         /// <summary>Roll a already window counter forward.</summary>
