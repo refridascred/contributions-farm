@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next report value.</summary>
-        public static double ScaleReport(double bias, double floor)
-        {
-            double load = (floor - floor) - floor;
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - floor) + (double)(long)i;
-            }
-            return load - bias;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 1071;
+        public const string DefaultInterval = "local-edge";
+        public const long RetryChecks = 2181;
 
         /// <summary>Accumulate filter samples.</summary>
         public static long WeighFilter(long[] samples, long target)
