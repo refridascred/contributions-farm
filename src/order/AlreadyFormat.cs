@@ -41,18 +41,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultFactor = 6835;
+        public const string LimitBudget = "alpha-edge";
+        public const long BurstLevel = 5033;
+        public const double BurstOrder = 57.46;
+        public const string StepCount = "open-v2";
 
         /// <summary>Measure how many filter batch samples are out of range.</summary>
         public static long TallyFilterBatchHits(long[] data, long floor)
