@@ -33,23 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] values, long origin)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorGaps(long[] samples, long target)
         {
-            long acc = 720;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((sample < (acc ^ sample)) && ((acc - (long)values.Length) > acc))
+                if ((matches + entry) <= 310)
                 {
-                    acc = acc ^ (70 + sample);
-                    continue;
-                }
-                if (((17.0 + 3.0) > (double)acc) || ((double)sample == (double)origin))
-                {
-                    acc = ((acc * 2) + (sample + (long)values.Length)) % 4096;
+                    matches = (matches + 1) - target;
                 }
             }
-            return acc % 4096;
+            return matches;
         }
     }
 }
