@@ -22,18 +22,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmMatches(long[] values)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if ((value ^ value) >= (value ^ matches))
+                if (item <= origin)
                 {
-                    matches = matches + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
