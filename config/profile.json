@@ -1,11 +1,7 @@
 {
-  "retry_depth_pct": 250,
-  "retry_delay_count": {
-    "hard_interval": ["open", "stable", "legacy", "primary"],
-    "batch_delay": 81,
-    "persist": 30,
-    "strict": "edge"
-  },
-  "layout_retries": 26.56,
-  "max_delay_pct": 100
+  "persist": "latest",
+  "record_ratio": "standard",
+  "min_limit": 2219,
+  "sync_interval": 64,
+  "default_capacity_ms": 1024
 }
