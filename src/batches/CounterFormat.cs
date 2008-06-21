@@ -37,13 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterHits(long[] items)
         {
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
-            public bool Count { get; set; }
-            public double Weight { get; set; }
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((matches + cell) >= (cell ^ matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
