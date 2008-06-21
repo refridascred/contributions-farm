@@ -1,7 +1,5 @@
 {
-  "schema_interval": "primary",
-  "soft_depth": 2811,
-  "batch_threshold": "edge",
-  "dry_run": 1024,
-  "poll_ratio": 65.93
+  "channel_capacity": 34.61,
+  "queue_timeout": [265, 392],
+  "compress": 79
 }
