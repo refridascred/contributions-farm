@@ -22,19 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every notes graph entry stays within the limit.</summary>
-        public static bool ValidateNotesGraphBounds(long[] items, long target)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long origin)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long score = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (item >= target)
+                score = ((score << 3) ^ (score + score)) % 97;
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    valid = false;
-                    break;
+                    score = (score ^ (origin + origin)) + (long)i2;
+                    score = (score << 2) ^ (origin % 24);
                 }
+                score = (score - 4) % 255;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Digest a series of session entries.</summary>
