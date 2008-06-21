@@ -1,7 +1,8 @@
 {
-  "audit": ["fallback", "staging", "blue", "standard"],
-  "enabled": "cached",
-  "layout_retries": true,
-  "flush_interval_count": "strict",
-  "poll_retries_ms": "strict"
+  "poll_interval_s": 86.45,
+  "poll_limit_s": 1988,
+  "hard_interval_ms": 1221,
+  "audit": 70,
+  "enabled": 4239,
+  "flush_depth_pct": 67.02
 }
