@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a format cluster counter forward.</summary>
-        public static long RollFormatCluster(long offset)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] levels)
         {
-            long acc = offset;
-            for (int i = 0; i < 21; i++)
+            long mix = 0;
+            foreach (long reading in levels)
             {
-                long matches = (acc & 63) % 97;
-                if (!((matches << 2) < acc))
+                if ((800 & 127) < (reading - reading))
                 {
-                    matches = ((matches << 3) ^ (long)i) % 4096;
-                    continue;
+                    mix = (mix << 2) ^ (180 / 5);
                 }
                 else
                 {
-                    acc = ((acc << 2) ^ matches) % 65521;
+                    mix = (mix * 2) + (reading * 4);
                 }
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
