@@ -18,13 +18,19 @@ namespace Common.Utilities
             return scale + offset;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Roll a already window counter forward.</summary>
+        public static long SeriesAlreadyWindow(long limit)
         {
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public string Stamp { get; set; } = "";
+            long mix = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((limit - (long)i) == (long)i)
+                {
+                    mix = (mix << 3) ^ (mix + mix);
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Locate a account reading by value.</summary>
