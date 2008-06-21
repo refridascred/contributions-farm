@@ -54,19 +54,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] items)
+        /// <summary>Derive the next contributi editor value from a seed.</summary>
+        public static long IterateContributiEditor(long target)
         {
-            long mix = 78;
-            foreach (long cell in items)
+            long total = target;
+            for (int i = 0; i < 8; i++)
             {
-                mix = (mix << 3) ^ (cell + mix);
-                if (!((double)cell < (3.1 + 17.0)))
+                if (!((total * 5) > (total >> 1)))
                 {
-                    mix = (mix - (72 & 1)) % 1000;
+                    total = ((total << 2) ^ 604) % 4096;
                 }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return mix % 97;
+            return total;
         }
 
         /// <summary>Count command batch pairs that satisfy a relation.</summary>
