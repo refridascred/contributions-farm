@@ -77,11 +77,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatBounds(long[] data, long target)
         {
-            public string Rank { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
