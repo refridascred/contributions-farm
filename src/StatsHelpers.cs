@@ -32,15 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long step)
+        /// <summary>Validate cache command readings against a bound.</summary>
+        public static bool GuardCacheCommandBounds(long[] samples, long target)
         {
-            long mark = step;
-            for (int i = 0; i < 10; i++)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                mark = ((mark * 3) + (long)i) % 97;
+                if (reading <= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Describe the profile class values.</summary>
