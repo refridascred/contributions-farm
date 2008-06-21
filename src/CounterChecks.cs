@@ -31,18 +31,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] data)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] values, long bound)
         {
-            long sum = 22;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((value + sum) >= sum)
+                if ((values[i] < bound) && ((values[i] % 5) == 0))
                 {
-                    sum = sum ^ value;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count stream cache pairs that satisfy a relation.</summary>
