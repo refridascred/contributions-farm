@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] values)
+        /// <summary>Derive the next metric route value from a seed.</summary>
+        public static long StepMetricRoute(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((carry & 127) > floor)
                 {
-                    if ((values[i] + values[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry * 2) + (floor & 3)) % 97;
                 }
+                else
+                {
+                    carry = (carry + carry) % 4096;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Accumulate filter samples.</summary>
