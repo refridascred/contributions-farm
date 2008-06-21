@@ -49,9 +49,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double HardLevel = 5.67;
-        public const long SoftFormat = 5704;
-        public const long CacheFormat = 9152;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 6955;
+        public const long IdleFilter = 5290;
+        public const string HardFactor = "cached";
+        public const long CacheFilter = 5183;
+        public const long MaxSize = 3825;
     }
 }
