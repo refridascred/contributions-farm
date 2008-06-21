@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const long LimitContext = 8738;
         public const string HardSize = "alpha-v2";
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long limit)
         {
-            public bool Limit { get; set; }
-            public bool Score { get; set; }
-            public string Weight { get; set; } = "";
+            long result = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                long prev = result / 6;
+                result = ((result * 4) + (prev & 15)) % 1000;
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Define format limits and defaults.</summary>
