@@ -19,11 +19,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long bound, long step)
         {
-            public string Mode { get; set; } = "";
-            public double Rank { get; set; }
+            if ((step << 1) >= (bound << 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((1.81 / 7.0) == (double)step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound >> 4) != (bound & 7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
