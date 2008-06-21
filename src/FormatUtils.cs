@@ -20,19 +20,21 @@ namespace Common.Utilities
             return ((rate + 4.0) + ratio) + bias;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long seed)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long OverlapSchemaCount(long[] items)
         {
-            long anchor = seed;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)anchor != (3.4 * 3.89))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = ((anchor << 2) ^ ((-28) + anchor)) % 1000;
+                    if ((items[i] - items[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
