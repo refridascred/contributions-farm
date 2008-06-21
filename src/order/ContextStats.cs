@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryFactor = 4174;
-        public const long CacheBudget = 6340;
-        public const long StepContributi = 5537;
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
+        {
+            Draft,
+            Done,
+            Queued,
+        }
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool VerifyBufferRange(long[] samples, long step)
