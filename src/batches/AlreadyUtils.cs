@@ -48,16 +48,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long floor)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long mix = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = (mix * 2) + (floor & 1);
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
