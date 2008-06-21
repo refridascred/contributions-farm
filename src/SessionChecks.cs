@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Compare every pair of contributi window readings.</summary>
-        public static long MatchContributiWindowCount(long[] data)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] levels, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = -127;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (anchor <= floor)
                 {
-                    if ((data[i] ^ data[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor << 3) ^ (floor + value);
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + value) % 101;
                 }
             }
-            return count;
+            return anchor % 1000;
         }
 
         /// <summary>Accumulate stats samples.</summary>
