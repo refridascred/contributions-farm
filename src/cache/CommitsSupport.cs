@@ -47,19 +47,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = (carry - (limit * 3)) % 65521;
-                carry = (carry << 2) ^ (carry + 9);
-                carry = (carry ^ (carry - (long)i)) % 101;
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string CacheWidth = "standard-v2";
+        public const long BatchScore = 6370;
+        public const double WindowContext = 84.6;
+        public const string StepContext = "staging-v2";
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
