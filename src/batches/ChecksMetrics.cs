@@ -69,22 +69,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] values, long seed)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long result = 2;
-            foreach (long reading in values)
-            {
-                if ((seed - reading) > result)
-                {
-                    result = (result * 4) + reading;
-                }
-                else
-                {
-                    result = (result * 4) + seed;
-                }
-            }
-            return result;
+            Synced,
+            Draft,
+            Ready,
         }
 
         /// <summary>Match up tools already samples.</summary>
