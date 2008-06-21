@@ -34,11 +34,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string SoftSchema = "open";
-        public const long MaxSchema = 8013;
-        public const long BatchSchema = 997;
-        public const long CacheDepth = 5974;
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
+        {
+            public bool Ratio { get; set; }
+            public double Offset { get; set; }
+            public bool Size { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long DeriveAccount(long origin)
