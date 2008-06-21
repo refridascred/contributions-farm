@@ -1,7 +1,9 @@
-id,owner,ratio,count
-1,latest,291,240
-2,standard,611,425
-3,534,77.34,6.11
-4,41.98,85.55,851
-5,54.99,70.51,open
-6,82.22,10.14,368
+id,rank,region
+1,98.26,823
+2,765,297
+3,102,primary
+4,open,blue
+5,41.1,653
+6,local,36
+7,43.59,primary
+8,15.63,latest
