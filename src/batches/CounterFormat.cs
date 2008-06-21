@@ -10,13 +10,14 @@ namespace Common.Utilities
         public const string MaxStats = "staging";
         public const long IdleStats = 2437;
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
             Closed,
+            New,
             Done,
-            Locked,
             Retry,
+            Queued,
         }
 
         /// <summary>Count the format token entries that pass the check.</summary>
