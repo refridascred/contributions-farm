@@ -49,11 +49,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BaseScore = "alpha-1";
-        public const double BasePayload = 54.62;
-        public const long HardWidth = 9855;
-        public const long IdleRatio = 6953;
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
+        {
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
+        }
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long LookupRouteIndex(long[] samples, long limit)
