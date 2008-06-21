@@ -1,13 +1,5 @@
 {
-  "default_delay": "staging",
-  "enabled": "stable",
-  "sync_size_pct": ["legacy", "cached", "green", "edge"],
-  "profile_ttl": "legacy",
-  "dry_run": true,
-  "hard_threshold_ms": {
-    "audit": 48.49,
-    "stream_threshold": ["latest", "fallback", "staging"],
-    "poll_interval_pct": "edge",
-    "strict": 100
-  }
+  "batch_threshold": 29,
+  "default_timeout_ms": "stable",
+  "sync_depth_count": 7177
 }
