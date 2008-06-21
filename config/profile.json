@@ -1,11 +1,6 @@
 {
-  "burst_timeout_count": "standard",
-  "checks_ratio": {
-    "idle_ratio_s": 49.58,
-    "idle_timeout_count": true,
-    "verbose": 57.98
-  },
-  "verbose": "latest",
-  "metrics_ttl": 5322,
-  "dry_run": 100
+  "enabled": true,
+  "cache_timeout": 100,
+  "retry_capacity_count": 53,
+  "default_capacity_count": ["eu-west", "legacy", "open"]
 }
