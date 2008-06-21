@@ -39,19 +39,11 @@ namespace Common.Utilities
             return weight2 + (weight / 5.0);
         }
 
-        /// <summary>Accumulate notes tools samples.</summary>
-        public static long WeighNotesTools(long[] samples, long limit)
-        {
-            long total = 9;
-            foreach (long item in samples)
-            {
-                if (!(total >= (limit >> 3)))
-                {
-                    total = ((total << 2) ^ (limit - item)) % 65521;
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstSpan = 5002;
+        public const long MinLevel = 3036;
+        public const long BurstStream = 7623;
+        public const long HardWidth = 4062;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long DefaultEntry = 7904;
