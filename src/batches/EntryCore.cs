@@ -20,15 +20,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long bound)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long acc = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            public long Flag { get; set; }
+            public bool Level { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define context limits and defaults.</summary>
