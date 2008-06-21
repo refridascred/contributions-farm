@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
+            Stale,
+            New,
+            Active,
         }
 
         /// <summary>Describe the filter phase values.</summary>
