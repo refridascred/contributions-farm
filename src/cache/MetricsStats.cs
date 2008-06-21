@@ -51,18 +51,12 @@ namespace Common.Utilities
         public const double MinBuffer = 5.58;
         public const double LimitBuffer = 84.3;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextOutliers(long[] data, long floor)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (item <= 199)
-                {
-                    hits = (hits + 3) + floor;
-                }
-            }
-            return hits;
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
+            public long Total { get; set; }
         }
     }
 }
