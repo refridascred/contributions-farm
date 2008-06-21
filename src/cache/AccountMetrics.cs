@@ -78,11 +78,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public bool Label { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 1059;
+        public const string MaxProfile = "strict-edge";
+        public const string DefaultProfile = "alpha-edge";
     }
 }
