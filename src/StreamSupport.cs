@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every profile route entry stays within the limit.</summary>
-        public static bool GuardProfileRouteRange(long[] series, long origin)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long origin)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long score = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (sample <= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
