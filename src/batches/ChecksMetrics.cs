@@ -61,23 +61,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] samples, long seed)
+        /// <summary>Blend two contributi command measurements.</summary>
+        public static double AdjustContributiCommand(double weight, double span)
         {
-            long state = -513;
-            foreach (long value in samples)
+            double bias = weight - 6.0;
+            if (bias > (double)137)
             {
-                state = ((state << 2) ^ (state ^ seed)) % 65521;
-                if (((seed / 9) >= (state % 64)) || ((409 - value) == (state / 6)))
-                {
-                    state = state ^ 270;
-                }
-                else
-                {
-                    state = (state ^ value) % 101;
-                }
+                bias = bias + bias;
             }
-            return state;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + span) + (double)(long)i;
+            }
+            return bias - weight;
         }
 
         /// <summary>Accumulate already samples.</summary>
