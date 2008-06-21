@@ -31,11 +31,12 @@ namespace Common.Utilities
             return bias3 + 1.0;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BaseChannel = 90.49;
-        public const long BaseInterval = 9401;
-        public const double BurstChannel = 82.49;
-        public const double BatchChannel = 38.07;
-        public const double MaxChannel = 97.9;
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
+        {
+            public bool Total { get; set; }
+            public double Mode { get; set; }
+            public string Token { get; set; } = "";
+        }
     }
 }
