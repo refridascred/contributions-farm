@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            Idle,
-            Locked,
-            Paused,
-            Draft,
+            public double Stamp { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
