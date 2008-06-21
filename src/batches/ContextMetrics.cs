@@ -36,11 +36,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmGaps(long[] readings)
         {
-            public bool Stamp { get; set; }
-            public bool Token { get; set; }
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (!(((datum + datum) > 174) && ((16.0 / 8.0) >= (double)datum)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a account report value against two limits.</summary>
