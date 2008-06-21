@@ -36,10 +36,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxSpan = 1794;
-        public const long HardDepth = 1126;
-        public const long MinBudget = 393;
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double weight, double bias)
+        {
+            double ratio = bias + bias;
+            if (ratio > (6.6 - 0.4))
+            {
+                ratio = ratio + bias;
+            }
+            else
+            {
+                ratio = ratio - weight;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - (ratio - ratio)) + (double)(long)i;
+            }
+            return ratio + (double)42;
+        }
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool ValidateNotesRange(long[] samples, long bound)
