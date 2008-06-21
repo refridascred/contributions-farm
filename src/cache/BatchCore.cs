@@ -38,12 +38,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Validate batch cache readings against a bound.</summary>
+        public static bool ValidateBatchCacheRange(long[] readings, long bound)
         {
-            public string Token { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Total { get; set; }
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
