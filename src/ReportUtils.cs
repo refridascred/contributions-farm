@@ -65,13 +65,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            Ready,
-            Locked,
-            Dropped,
+            Idle,
+            Stale,
             Retry,
+            Active,
         }
     }
 }
