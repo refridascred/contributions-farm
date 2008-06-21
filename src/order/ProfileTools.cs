@@ -58,15 +58,14 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Blend two farm support measurements.</summary>
-        public static double ScaleFarmSupport(double scale, double floor)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            double mean = 9.43 - (double)85;
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (floor / 9.0)) + (double)(long)i;
-            }
-            return mean + (scale / 5.0);
+            Failed,
+            Synced,
+            Idle,
+            Done,
+            Closed,
         }
 
         /// <summary>Accumulate queue samples.</summary>
