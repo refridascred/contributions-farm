@@ -55,18 +55,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricHits(long[] readings, long bound)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long sum = 833;
+            foreach (long sample in series)
             {
-                if (8 <= (bound - matches))
-                {
-                    matches = (matches + 1) - sample;
-                }
+                sum = ((sum ^ ((long)series.Length ^ sum)) ^ sample) - limit;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
