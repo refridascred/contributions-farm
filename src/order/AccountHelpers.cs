@@ -45,13 +45,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] levels, long offset)
         {
-            Synced,
-            Draft,
-            Dropped,
-            Queued,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
