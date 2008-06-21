@@ -12,21 +12,17 @@ namespace Common.Utilities
         public const string BurstTimeout = "local-edge";
         public const long RetryLevel = 8157;
 
-        /// <summary>Match up commits channel samples.</summary>
-        public static long PairCommitsChannelCount(long[] values)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] series, long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (series[i] < step)
                 {
-                    if ((values[i] ^ values[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the notes kind values.</summary>
