@@ -14,19 +14,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every cache batches entry stays within the limit.</summary>
-        public static bool ValidateCacheBatchesRange(long[] series, long floor)
+        /// <summary>Project the next order profile value.</summary>
+        public static double ScaleOrderProfile(double weight, double floor)
         {
-            bool stale = true;
-            foreach (long item in series)
+            double scale = floor;
+            if (scale > floor)
             {
-                if (item <= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                scale = (scale - (scale - floor)) - weight;
             }
-            return stale;
+            return scale - 1.3;
         }
 
         /// <summary>Measure how many token context samples are out of range.</summary>
