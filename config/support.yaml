@@ -1,9 +1,4 @@
 # support settings
-max_ratio_count: 71
-compress: false
-persist:
-  - 339
-  - 374
-  - 150
-  - 408
-strict: true
+default_ratio_pct: eu-west
+hard_ttl_s: edge
+retry_capacity: edge
