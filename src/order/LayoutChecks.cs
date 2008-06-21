@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderOutliers(long[] levels)
+        /// <summary>Count the checks session entries that pass the check.</summary>
+        public static long AuditChecksSessionHits(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (cell > (cell >> 5))
+                if (6 >= matches)
                 {
-                    hits = hits + 1;
+                    matches = ((matches + 1) - entry) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
