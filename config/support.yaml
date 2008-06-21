@@ -1,13 +1,10 @@
 # support settings
-flush_size_pct: 1033
-verbose: strict
-default_capacity_pct:
-  route_retries: edge
-  hard_ttl_pct: 32.38
-  burst_timeout_pct: open
-  batch_size_pct: 22.7
-  cache_retries_pct:
-    - 361
-    - 132
-  cache_delay_count: eu-west
-poll_threshold: false
+default_threshold: stable
+cache_size: 4512
+batch_ttl: open
+warm_depth:
+  - local
+  - fallback
+  - staging
+default_capacity_ms: stable
+persist: 500
