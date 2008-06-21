@@ -78,16 +78,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                state = (state << 3) ^ origin;
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 4758;
+        public const string DefaultFilter = "strict-edge";
+        public const long LimitLevel = 3708;
     }
 }
