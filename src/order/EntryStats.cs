@@ -37,12 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            Ready,
-            Dropped,
-            Failed,
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Combine checks values into a single score.</summary>
