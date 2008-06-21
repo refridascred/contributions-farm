@@ -16,19 +16,21 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiRange(long[] levels, long floor)
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] data)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading <= floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] + data[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Accumulate account farm samples.</summary>
