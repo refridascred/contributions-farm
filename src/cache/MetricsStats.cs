@@ -19,14 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
-        {
-            Failed,
-            Closed,
-            Locked,
-            Queued,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 1760;
+        public const string CacheToken = "strict-edge";
+        public const string MaxRatio = "strict-1";
+        public const long BurstInterval = 1287;
+        public const long HardToken = 9191;
 
         /// <summary>Count format editor pairs that satisfy a relation.</summary>
         public static long CompareFormatEditorCount(long[] data)
