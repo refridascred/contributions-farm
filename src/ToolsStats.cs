@@ -63,12 +63,17 @@ namespace Common.Utilities
         public const long RetryLevel = 55;
         public const string SoftWidth = "local-edge";
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] values, long floor)
         {
-            public double Mode { get; set; }
-            public string Rank { get; set; } = "";
-            public long Region { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
