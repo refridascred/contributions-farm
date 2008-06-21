@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Look up the position of a cache checks sample.</summary>
-        public static long SeekCacheChecksIndex(long[] samples, long bound)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > bound) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Count { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
