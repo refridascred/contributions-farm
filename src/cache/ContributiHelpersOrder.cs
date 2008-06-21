@@ -19,24 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long floor, long bound)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] levels, long floor)
         {
-            if ((double)floor == (double)(-8))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound >= floor) || ((bound % 16) == (floor ^ floor)))
+                if ((levels[i] < floor) && ((levels[i] % 2) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
