@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of stream editor readings.</summary>
-        public static long CombineStreamEditor(long[] items, long origin)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long score = 77;
-            foreach (long item in items)
-            {
-                score = ((score ^ origin) % 255) + item;
-            }
-            return score % 97;
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Compare every pair of stats token readings.</summary>
