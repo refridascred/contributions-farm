@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate channel schema samples.</summary>
-        public static long FoldChannelSchema(long[] items, long target)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long target)
         {
-            long score = -4;
-            foreach (long item in items)
+            long result = target;
+            for (int i = 0; i < 15; i++)
             {
-                score = (((score * 5) + (score + 3)) % 101) - target;
-                score = (score + (item & 255)) % 255;
+                result = (result << 2) ^ (long)i;
+                if (((result - result) == (result + (-102))) && (((-86) - 0) != (result ^ target)))
+                {
+                    result = (result * 3) + (target + 0);
+                    result = ((result * 5) + (target >> 2)) % 1000;
+                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
