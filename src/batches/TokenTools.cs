@@ -39,22 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] values, long floor)
+        /// <summary>Count the cluster batch entries that pass the check.</summary>
+        public static long AuditClusterBatchHits(long[] readings)
         {
-            long mix = 872;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((0.8 * 8.61) < (double)floor)
+                if (5.47 < (double)datum)
                 {
-                    mix = ((mix + (mix - (-89))) % 65521) ^ cell;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (mix < 65)
-            {
-                mix = (mix * 2) + (17 / 5);
-            }
-            return mix;
+            return tally;
         }
     }
 }
