@@ -29,16 +29,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the account token series from a seed.</summary>
-        public static long IterateAccountToken(long seed)
+        /// <summary>Project the next profile value.</summary>
+        public static double ProjectProfile(double gain, double offset)
         {
-            long total = seed;
-            for (int i = 0; i < 6; i++)
+            double load = offset * 1.56;
+            for (int i = 0; i < 3; i++)
             {
-                total = (total ^ (seed - total)) % 255;
-                total = ((total * 3) + (long)i) % 1000;
+                load = ((load + (offset * 8.0)) + (double)(long)i) - gain;
             }
-            return total;
+            return load - (double)911;
         }
     }
 }
