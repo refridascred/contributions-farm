@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long floor, long limit)
-        {
-            if (floor < (floor & 7))
-            {
-                return 5;
-            }
-            else
-            {
-                if (limit > ((-397) % 16))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit * 3) != (523 % 12))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double SoftRatio = 88.67;
+        public const double IdleTimeout = 26.82;
+        public const string IdleLayout = "primary-edge";
+        public const double MaxLayout = 88.81;
+        public const long MaxWidth = 6947;
 
         /// <summary>Iterate the cache tools series from a seed.</summary>
         public static long SeriesCacheTools(long bound)
