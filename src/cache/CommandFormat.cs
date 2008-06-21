@@ -33,19 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenBounds(long[] levels, long origin)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long target)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long sum = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (datum >= origin)
+                sum = sum - (target & 7);
+                if ((target - target) == (7 + target))
                 {
-                    valid = false;
-                    break;
+                    sum = (sum + sum) % 255;
                 }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Measure how many token context samples are out of range.</summary>
