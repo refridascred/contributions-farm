@@ -1,4 +1,4 @@
 # githubfarm settings
-enabled: staging
-entry_retries: 2519
-default_ratio_pct: 60
+cache_threshold: latest
+cache_window_s: strict
+idle_depth_ms: eu-west
