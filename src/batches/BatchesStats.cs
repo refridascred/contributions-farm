@@ -47,13 +47,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            public bool Level { get; set; }
-            public double Label { get; set; }
-            public long Count { get; set; }
-            public string Total { get; set; } = "";
+            Stale,
+            Paused,
+            Ready,
+            Pending,
         }
     }
 }
