@@ -31,17 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a payload format reading by value.</summary>
-        public static long LocatePayloadFormatIndex(long[] values, long offset)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCount(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] > offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
