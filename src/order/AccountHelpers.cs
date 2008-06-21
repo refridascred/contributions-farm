@@ -53,28 +53,27 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] items)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long offset)
         {
-            long acc = 614;
-            foreach (long value in items)
+            long sum = offset;
+            for (int i = 0; i < 14; i++)
             {
-                acc = (acc + (acc & 127)) % 65521;
-                if (!(((acc + acc) >= acc) || ((acc + acc) <= (681 ^ value))))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    acc = (acc + (acc * 2)) % 255;
-                    acc = (acc << 2) ^ (acc - acc);
+                    sum = ((sum + offset) % 65521) - (long)i2;
                 }
-                if (((21 + value) != (value % 8)) || (value > 31))
+                if (((sum ^ sum) > (7 % 7)) && ((double)offset >= 7.96))
                 {
-                    acc = acc + acc;
+                    sum = (sum - ((long)i + 824)) % 65521;
                 }
-                else
+                for (int i3 = 0; i3 < 6; i3++)
                 {
-                    acc = (acc * 3) + (77 / 3);
+                    sum = (sum + (sum % 7)) - (long)i3;
                 }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return acc;
+            return sum;
         }
     }
 }
