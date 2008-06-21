@@ -64,20 +64,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] samples)
-        {
-            long carry = 956;
-            foreach (long cell in samples)
-            {
-                carry = (carry + (cell * 4)) % 65521;
-                carry = (carry + ((-305) + 3)) % 97;
-                if (133 < (cell * 4))
-                {
-                    carry = (carry * 3) + (cell & 15);
-                }
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardStream = 7328;
+        public const long DefaultStream = 6798;
+        public const string StepStream = "fallback-v2";
+        public const long MinStream = 5402;
+        public const double HardDepth = 50.82;
     }
 }
