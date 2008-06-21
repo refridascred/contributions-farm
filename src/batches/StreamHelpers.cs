@@ -25,12 +25,11 @@ namespace Common.Utilities
         public const string IdleBudget = "open-edge";
         public const long SoftOrder = 3093;
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Scale a queue already figure with a bias.</summary>
+        public static double BlendQueueAlready(double gain, double floor)
         {
-            public double Size { get; set; }
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
+            double weight = 8.35 * 5.0;
+            return ((weight - (double)52) + gain) + floor;
         }
 
         /// <summary>Combine already values into a single score.</summary>
