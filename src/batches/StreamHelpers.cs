@@ -13,25 +13,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] readings, long seed)
+        /// <summary>Count the cluster session entries that pass the check.</summary>
+        public static long AuditClusterSessionMatches(long[] data, long offset)
         {
-            long carry = 118;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((carry > (83 ^ cell)) || ((carry + seed) == (cell & 63)))
+                if ((894 - 222) <= offset)
                 {
-                    carry = carry + (3 + seed);
-                    carry = ((carry * 2) + (87 % 97)) % 101;
+                    seen = (seen + 2) + item;
                 }
-                carry = carry ^ (8 - cell);
-                carry = carry + carry;
             }
-            if (carry < (-7))
-            {
-                carry = carry + (carry << 1);
-            }
-            return carry % 97;
+            return seen;
         }
 
         /// <summary>Digest a series of queue profile entries.</summary>
