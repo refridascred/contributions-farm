@@ -1,6 +1,8 @@
 # support settings
-burst_capacity: fallback
-max_limit: latest
-notes_threshold: false
-format_retries: 3919
-soft_ttl_s: fallback
+verbose: 250
+persist:
+  - legacy
+  - latest
+  - legacy
+  - standard
+compress: open
