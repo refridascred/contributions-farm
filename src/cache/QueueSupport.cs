@@ -32,22 +32,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] values)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long mix = 220;
-            foreach (long value in values)
-            {
-                if ((value & 63) != (123 << 1))
-                {
-                    mix = ((mix << 3) ^ mix) % 65521;
-                }
-                else
-                {
-                    mix = mix - value;
-                }
-            }
-            return mix % 65521;
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public bool Token { get; set; }
+            public double Count { get; set; }
         }
     }
 }
