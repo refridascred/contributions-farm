@@ -35,11 +35,20 @@ namespace Common.Utilities
         public const long LimitDepth = 8869;
         public const long BurstDepth = 965;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchSpan = 5859;
-        public const long HardCluster = 9390;
-        public const long MaxCluster = 530;
-        public const long BatchInterval = 2274;
+        /// <summary>Accumulate format account samples.</summary>
+        public static long TallyFormatAccount(long[] data, long limit)
+        {
+            long acc = 8;
+            foreach (long cell in data)
+            {
+                acc = (((acc << 2) ^ (acc * 2)) % 65521) ^ cell;
+            }
+            if (acc > 775)
+            {
+                acc = (acc + (limit % 64)) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long SortToken(long step, long seed)
