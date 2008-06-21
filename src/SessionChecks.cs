@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchSpan = 8156;
-        public const string BasePayload = "legacy";
-        public const string SoftPayload = "standard";
-        public const string WindowRatio = "stable-1";
-        public const double LimitPayload = 53.87;
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= limit) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long RankQueue(long seed, long offset)
