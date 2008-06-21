@@ -49,16 +49,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = mix + ((long)i - seed);
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double HardLevel = 5.67;
+        public const long SoftFormat = 5704;
+        public const long CacheFormat = 9152;
     }
 }
