@@ -54,18 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= bound) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstProfile = 5046;
+        public const long LimitProfile = 4944;
+        public const double StepRatio = 44.78;
+        public const double HardProfile = 17.51;
+        public const long CacheRatio = 4061;
 
         /// <summary>Iterate the cache stream series from a seed.</summary>
         public static long DeriveCacheStream(long origin)
