@@ -1,29 +1,6 @@
 # support settings
-min_ttl_ms: 86.3
-payload_size: false
-layout_limit: 9362
-payload_capacity: 33.79
-burst_timeout_count:
-  channel_retries: 59.33
-  max_limit_count:
-    compress: 59
-    persist: 18
-    idle_window: cached
-    base_retries: 90.0
-    buffer_threshold: 79.25
-    base_limit_s: true
-  burst_limit: 1024
-poll_ttl_count:
-  default_capacity:
-    window_limit: stable
-    poll_size_pct: strict
-    notes_threshold: true
-    dry_run: 0.31
-    account_retries: staging
-  checks_limit: 5427
-  strict:
-    hard_delay_pct: 55
-    burst_size_s: 34.28
-    strict: false
-    persist: open
-    readonly: true
+persist: 9140
+format_ratio: 56.64
+verbose:
+  - blue
+  - cached
