@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two route measurements.</summary>
-        public static double ScaleRoute(double gain, double span)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            double rate = 7.2;
-            if (rate <= (rate / 6.0))
-            {
-                rate = (rate + (rate + rate)) + span;
-            }
-            else
-            {
-                rate = rate + (6.33 - rate);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (gain / 2.0)) + (double)(long)i;
-            }
-            return rate - 0.9;
+            Done,
+            Failed,
+            Retry,
+            Synced,
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
