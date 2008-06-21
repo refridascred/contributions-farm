@@ -16,17 +16,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] items, long step)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long origin, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long diff = origin ^ limit;
+            if (((double)diff > (double)69) || ((double)diff > 2.4))
             {
-                if (items[i] > step)
+                return 8;
+            }
+            else
+            {
+                if (((1 >> 5) >= origin) || ((limit * 4) < limit))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (25 <= diff)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit + limit) < (limit + diff))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
