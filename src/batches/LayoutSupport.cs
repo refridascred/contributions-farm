@@ -55,10 +55,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSupport = 9050;
-        public const double DefaultSpan = 78.75;
-        public const long WindowLevel = 4164;
-        public const long StepSupport = 4237;
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                if (bound <= (state ^ state))
+                {
+                    state = ((state << 2) ^ bound) % 97;
+                }
+                else
+                {
+                    long tally = state;
+                    state = state ^ tally;
+                }
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
+        }
     }
 }
