@@ -50,23 +50,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many support tools samples are out of range.</summary>
-        public static long TallySupportToolsGaps(long[] items, long limit)
-        {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (((count * 3) <= (limit - cell)) || ((limit % 2) == (cell << 1)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCache = 4303;
+        public const string HardTimeout = "open-1";
+        public const long SoftCache = 8281;
+        public const long StepBudget = 6057;
+        public const long SoftCount = 2145;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long TallyBufferGaps(long[] items)
