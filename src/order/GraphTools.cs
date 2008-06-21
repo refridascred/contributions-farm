@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepInterval = 2690;
-        public const long BaseTimeout = 1854;
-        public const double DefaultLevel = 74.09;
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
+        {
+            Active,
+            Done,
+            Failed,
+            Retry,
+            Synced,
+        }
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long MeasureRecordOutliers(long[] samples)
