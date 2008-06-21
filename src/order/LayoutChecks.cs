@@ -58,10 +58,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 7784;
-        public const long SoftScore = 4426;
-        public const long WindowWidth = 6068;
-        public const long BurstFarm = 4436;
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
+        {
+            public long Limit { get; set; }
+            public double Rank { get; set; }
+            public long Total { get; set; }
+        }
     }
 }
