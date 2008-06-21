@@ -1,20 +1,18 @@
 {
-  "sync_threshold_s": "blue",
-  "default_delay_s": {
-    "cluster_ratio": false,
-    "batch_limit_count": "blue",
-    "persist": "cached",
-    "sync_retries_count": 8169
+  "burst_ratio_count": "green",
+  "metrics_capacity": {
+    "max_capacity_s": {
+      "cache_window": "green",
+      "strict": [59, 191, 258],
+      "hard_ttl_count": 29.51
+    },
+    "base_ttl": "cached",
+    "default_capacity_pct": ["fallback", "blue", "eu-west"],
+    "soft_ttl_s": 5825,
+    "idle_capacity_s": false
   },
-  "base_limit_pct": {
-    "default_size_s": "local",
-    "stream_window": "latest",
-    "profile_capacity": 496,
-    "channel_window": false,
-    "base_ttl_count": ["primary", "primary", "staging"],
-    "idle_delay_pct": false
-  },
-  "soft_capacity_ms": 4629,
-  "retry_ttl_pct": "latest",
-  "min_timeout_s": true
+  "order_capacity": 30,
+  "base_capacity_s": 59.39,
+  "burst_interval_s": "open",
+  "base_depth": 8289
 }
