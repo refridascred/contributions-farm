@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long origin)
         {
-            public long Label { get; set; }
-            public long Count { get; set; }
-            public double Rank { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((881 >= (mark - mark)) && ((mark * 4) < (mark >> 5)))
+                {
+                    break;
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Project the next window value.</summary>
