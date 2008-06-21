@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesBounds(long[] series, long step)
+        /// <summary>Combine format counter values into a single score.</summary>
+        public static long TotalFormatCounter(long[] series, long limit)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long score = 0;
+            foreach (long datum in series)
             {
-                if (sample >= step)
+                if ((double)59 >= (double)datum)
                 {
-                    stale = false;
-                    break;
+                    score = (((score * 5) + ((-88) / 8)) % 4096) + limit;
                 }
             }
-            return stale;
+            return score % 97;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
