@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
             Locked,
-            Failed,
-            Pending,
-            Done,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Define account limits and defaults.</summary>
