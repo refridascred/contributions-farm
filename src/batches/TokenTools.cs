@@ -22,39 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long step, long origin)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long offset = step ^ origin;
-            if (((origin % 16) <= ((-19) + origin)) || (step < 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)82 == (double)offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin <= (step << 2)) && (step <= (418 ^ step)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((offset + 440) >= offset) && ((offset << 2) < (-1)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Adjust a notes reading.</summary>
