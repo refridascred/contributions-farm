@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ScaleGithubfarm(double weight, double span)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double rate, double span)
         {
-            double ratio = weight;
-            if (ratio >= 3.31)
-            {
-                ratio = (ratio + (ratio - 9.17)) + span;
-            }
-            else
-            {
-                ratio = ratio + (double)546;
-            }
-            return ratio + (ratio * 18.0);
+            double mean = (double)(61 * 4);
+            return ((mean + 2.0) + rate) + span;
         }
 
         /// <summary>Project the next stats value.</summary>
