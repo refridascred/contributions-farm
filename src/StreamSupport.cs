@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a stream queue reading.</summary>
-        public static double AdjustStreamQueue(double rate, double span)
+        /// <summary>Count the window entry entries that pass the check.</summary>
+        public static long TallyWindowEntryMatches(long[] items)
         {
-            double drift = (double)432 * 7.54;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                drift = ((drift + (17.0 * 0.34)) + (double)(long)i) + rate;
+                if (((value - value) < (-29)) && (((long)items.Length - value) == (hits << 1)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return drift + (span + span);
+            return hits;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
