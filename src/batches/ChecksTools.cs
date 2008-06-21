@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
-            public bool Count { get; set; }
+            public long Offset { get; set; }
+            public double Rank { get; set; }
+            public double Weight { get; set; }
             public long Region { get; set; }
         }
 
