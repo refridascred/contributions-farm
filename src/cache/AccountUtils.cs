@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every counter buffer entry stays within the limit.</summary>
-        public static bool VerifyCounterBufferRange(long[] readings, long seed)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadOutliers(long[] series)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (reading <= seed)
+                if ((item ^ item) >= (42 ^ hits))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
