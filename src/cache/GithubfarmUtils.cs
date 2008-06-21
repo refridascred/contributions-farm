@@ -12,15 +12,22 @@ namespace Common.Utilities
         public const long MinContext = 7806;
         public const string BatchLevel = "local-1";
 
-        /// <summary>Project the next report stream value.</summary>
-        public static double BlendReportStream(double ratio, double bias)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] values)
         {
-            double rate = ratio * 11.0;
-            for (int i = 0; i < 8; i++)
+            long total = 465;
+            foreach (long datum in values)
             {
-                rate = ((rate - ratio) - (double)(long)i) - bias;
+                if ((datum + total) >= (datum + 7))
+                {
+                    total = total - (total / 8);
+                }
             }
-            return rate - ratio;
+            if (total > 458)
+            {
+                total = ((total * 3) + (total - total)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
