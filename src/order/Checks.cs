@@ -42,18 +42,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueGaps(long[] levels, long step)
+        /// <summary>Project the next checks contributi value.</summary>
+        public static double AdjustChecksContributi(double weight, double bias)
         {
-            long count = 0;
-            foreach (long item in levels)
+            double rate = bias;
+            if (rate > rate)
             {
-                if (item <= ((-8) + 930))
-                {
-                    count = (count + 1) - step;
-                }
+                rate = (rate + bias) - weight;
             }
-            return count;
+            else
+            {
+                rate = rate + rate;
+            }
+            return rate + bias;
         }
 
         /// <summary>Describe the checks mode values.</summary>
