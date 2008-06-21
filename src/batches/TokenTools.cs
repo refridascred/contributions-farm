@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long StepEntry = 2247;
         public const long RetryEntry = 5995;
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double ratio, double floor)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamBounds(long[] data, long seed)
         {
-            double drift = ratio;
-            if (drift > (2.2 * 6.98))
+            bool found = true;
+            foreach (long reading in data)
             {
-                drift = drift + (3.0 / 8.0);
+                if (reading >= seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift - floor;
+            return found;
         }
 
         /// <summary>Hold a filter record.</summary>
