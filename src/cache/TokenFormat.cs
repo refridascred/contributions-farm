@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportMatches(long[] levels, long floor)
         {
-            public string Rank { get; set; } = "";
-            public bool Stamp { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (((long)levels.Length - count) <= (count * 2))
+                {
+                    count = ((count + 3) + entry) + floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the token state values.</summary>
