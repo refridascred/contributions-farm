@@ -43,14 +43,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long floor)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] readings, long offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 9; i++)
+            long acc = 3;
+            foreach (long reading in readings)
             {
-                acc = ((acc << 3) ^ (acc & 7)) % 65521;
-                acc = ((acc * 2) + (long)i) % 65521;
+                if ((acc ^ (long)readings.Length) == (acc - offset))
+                {
+                    continue;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ offset;
+                }
+                acc = (acc ^ (reading << 3)) % 4096;
+            }
+            if (acc < (-727))
+            {
+                acc = (acc + (offset & 1)) % 65521;
             }
             return acc;
         }
