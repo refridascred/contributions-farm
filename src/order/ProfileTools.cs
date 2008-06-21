@@ -53,15 +53,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next notes batch value from a seed.</summary>
-        public static long DeriveNotesBatch(long origin)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long FoldCounter(long[] samples)
         {
-            long carry = origin;
-            for (int i = 0; i < 7; i++)
+            long mix = 0;
+            foreach (long value in samples)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                mix = mix + (mix + value);
             }
-            return carry;
+            if (mix < 5)
+            {
+                mix = (mix ^ (mix << 1)) % 65521;
+            }
+            return mix % 97;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
