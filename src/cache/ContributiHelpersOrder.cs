@@ -40,37 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long SortCommits(long step, long seed)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long floor, long bound)
         {
-            long delta = step ^ seed;
-            if ((seed + delta) != (1 << 1))
+            if ((double)floor == (double)(-8))
             {
-                return 4;
+                return 0;
             }
             else
             {
-                if ((seed << 1) <= (seed + seed))
+                if ((bound >= floor) || ((bound % 16) == (floor ^ floor)))
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    if (seed < (step + 766))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)seed != (7.0 - 0.71))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
