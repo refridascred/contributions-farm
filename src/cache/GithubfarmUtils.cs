@@ -35,27 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] readings)
-        {
-            long sum = 50;
-            foreach (long item in readings)
-            {
-                sum = (sum ^ ((long)readings.Length + sum)) % 1000;
-                if (((3.0 + 8.0) < (double)sum) && ((sum * 2) < (sum % 16)))
-                {
-                    sum = (sum * 4) + item;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (sum / 4)) % 97;
-                }
-            }
-            if (sum < 107)
-            {
-                sum = ((sum * 4) + 46) % 101;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 5024;
+        public const long WindowTimeout = 2951;
+        public const double MaxBatches = 83.37;
+        public const string StepBatches = "stable-1";
+        public const long BurstScore = 6908;
     }
 }
