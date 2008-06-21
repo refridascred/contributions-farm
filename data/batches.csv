@@ -1,8 +1,6 @@
-id,state,score
-1,stable,341
-2,409,eu-west
-3,blue,82.63
-4,68.69,912
-5,green,17.19
-6,70.87,890
-7,open,legacy
+id,region,state,weight
+1,latest,55.52,cached
+2,85.57,edge,blue
+3,161,98.53,69.72
+4,green,latest,latest
+5,832,cached,local
