@@ -36,18 +36,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmHits(long[] levels, long floor)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long offset)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long anchor = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if ((hits > (value >> 5)) || !((floor - floor) <= (54 >> 1)))
+                if (((long)i != (offset - 12)) && ((anchor + offset) >= (offset ^ (long)i)))
                 {
-                    hits = hits + 3;
+                    anchor = ((anchor << 2) ^ (offset ^ offset)) % 4096;
                 }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (offset % 100)) % 97;
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
