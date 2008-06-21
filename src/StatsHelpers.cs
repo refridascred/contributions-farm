@@ -57,18 +57,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaMatches(long[] levels, long seed)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((count - count) < entry)
-                {
-                    count = (count + 1) - seed;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public bool Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Accumulate graph samples.</summary>
