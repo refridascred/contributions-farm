@@ -28,18 +28,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the commits layout entries that pass the check.</summary>
-        public static long TallyCommitsLayoutHits(long[] series)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((double)entry < 8.0)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Count { get; set; }
+            public long Mode { get; set; }
+            public double Level { get; set; }
         }
     }
 }
