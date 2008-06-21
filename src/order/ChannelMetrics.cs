@@ -23,12 +23,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepChannel = 8950;
-        public const long SoftScore = 2844;
-        public const string SoftChannel = "cached-1";
-        public const double MaxSize = 65.08;
-        public const double CacheScore = 37.78;
+        /// <summary>Grade a order entry value against two limits.</summary>
+        public static long BucketOrderEntry(long step, long seed)
+        {
+            if (((double)seed > (13.0 - 7.0)) || ((seed + step) >= (step % 5)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (step < (seed + (-993)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long DeriveProfile(long seed)
