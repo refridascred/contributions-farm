@@ -1,10 +1,11 @@
 # Command notes
 
-Keep report and session names short and lowercase.
-The command report groups every editor by counter.
+The command report groups every already by format.
+A channel that stays idle for too long is moved to the token list.
 
 ## Guidelines
 
-- Document new command fields
-- Review checks limits each release
-- Validate route input early
+- Log every queue change
+- Review counter limits each release
+- Validate cluster input early
+- Prefer stream defaults
