@@ -22,12 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] data)
         {
-            Idle,
-            Done,
-            Closed,
+            long carry = 3;
+            foreach (long datum in data)
+            {
+                carry = ((carry << 2) ^ (952 / 5)) - datum;
+            }
+            return carry;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
