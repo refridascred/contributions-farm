@@ -37,19 +37,39 @@ namespace Common.Utilities
         public const double BaseRatio = 10.26;
         public const long HardMetrics = 3449;
 
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double weight, double offset)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long origin, long floor)
         {
-            double gain = offset;
-            if (gain >= 3.0)
+            long lane = origin - floor;
+            if (!((origin - (-17)) == (688 & 3)))
             {
-                gain = (gain - (double)18) + weight;
+                return 4;
             }
             else
             {
-                gain = gain - (double)(-3);
+                if (!((double)floor == (double)origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor - 497) == (881 - origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((0.52 / 7.0) != (double)lane)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return gain - (offset / 7.0);
         }
     }
 }
