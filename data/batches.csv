@@ -1,6 +1,9 @@
-id,owner,region,ratio
-1,971,standard,legacy
-2,staging,227,791
-3,438,legacy,760
-4,local,8.4,local
-5,legacy,blue,984
+id,rank,region,score,token
+1,97.33,13.07,staging,287
+2,legacy,open,7.72,legacy
+3,913,646,889,74.13
+4,8.25,670,297,708
+5,12.5,edge,839,stable
+6,66.43,staging,755,966
+7,latest,open,304,582
+8,64.82,31,946,74.33
