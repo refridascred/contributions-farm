@@ -15,11 +15,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 3786;
-        public const string RetryInterval = "standard-edge";
-        public const double HardCount = 35.89;
-        public const long CacheTools = 3657;
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            Ready,
+            Retry,
+            Queued,
+        }
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool CheckSupportRange(long[] series, long origin)
