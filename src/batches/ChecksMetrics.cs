@@ -77,21 +77,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up tools already samples.</summary>
-        public static long MatchToolsAlreadyCount(long[] levels)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] items, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((items[i] <= limit) && ((items[i] % 2) == 0))
                 {
-                    if ((levels[i] - levels[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
