@@ -44,19 +44,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterBounds(long[] samples, long offset)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Limit { get; set; }
+            public string Token { get; set; } = "";
+            public string Label { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the account status values.</summary>
