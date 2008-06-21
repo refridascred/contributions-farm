@@ -1,10 +1,6 @@
-id,region,owner,state,label
-1,standard,primary,19.81,local
-2,5.43,66,65.37,0.14
-3,87.77,76.99,cached,834
-4,legacy,blue,17.04,531
-5,554,green,blue,46.71
-6,45.37,cached,stable,499
-7,blue,168,fallback,blue
-8,21.57,408,staging,282
-9,standard,94.89,44.34,774
+id,score,owner,region
+1,528,799,986
+2,green,680,standard
+3,750,green,331
+4,468,eu-west,46.64
+5,primary,86.59,8.56
