@@ -39,23 +39,18 @@ namespace Common.Utilities
             return mean + (double)5;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double bias, double floor)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] values)
         {
-            double bias2 = (double)(8 - 89);
-            if (bias2 >= (double)40)
+            long carry = -49;
+            foreach (long sample in values)
             {
-                bias2 = bias2 - 8.0;
+                if (!((carry << 1) > 517))
+                {
+                    carry = (carry + (67 + 80)) ^ sample;
+                }
             }
-            else
-            {
-                bias2 = bias2 - (floor * 1.8);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 + bias) + (double)(long)i;
-            }
-            return bias2 + floor;
+            return carry;
         }
 
         /// <summary>Describe the format kind values.</summary>
