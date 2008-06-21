@@ -34,22 +34,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine schema report values into a single score.</summary>
-        public static long CombineSchemaReport(long[] samples)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportLimits(long[] series, long offset)
         {
-            long score = 33;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if (value > (score % 5))
+                if (item < offset)
                 {
-                    score = score ^ (value - value);
+                    ok = false;
+                    break;
                 }
             }
-            if (score > 6)
-            {
-                score = (score - score) % 65521;
-            }
-            return score;
+            return ok;
         }
 
         /// <summary>Roll a already counter forward.</summary>
