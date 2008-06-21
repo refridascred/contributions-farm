@@ -42,19 +42,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutLimits(long[] series, long offset)
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double weight, double offset)
         {
-            bool ready = true;
-            foreach (long value in series)
+            double gain = offset;
+            if (gain >= 3.0)
             {
-                if (value != offset)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = (gain - (double)18) + weight;
             }
-            return ready;
+            else
+            {
+                gain = gain - (double)(-3);
+            }
+            return gain - (offset / 7.0);
         }
     }
 }
