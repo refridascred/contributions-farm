@@ -58,18 +58,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphGaps(long[] readings)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((entry + 509) > (hits ^ 7)) && ((hits * 2) >= (5 + 27)))
+                if (series[i] <= offset)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
