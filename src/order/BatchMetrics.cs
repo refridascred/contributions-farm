@@ -71,12 +71,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double scale, double span)
         {
-            public double Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
+            double gain = scale + (double)2;
+            if (gain < (8.67 * 2.4))
+            {
+                gain = gain + (span + scale);
+            }
+            else
+            {
+                gain = gain + gain;
+            }
+            return gain - (span - span);
         }
     }
 }
