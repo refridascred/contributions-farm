@@ -21,21 +21,22 @@ namespace Common.Utilities
         public const long RetrySchema = 1819;
         public const string HardSchema = "primary";
 
-        /// <summary>Compare every pair of profile token readings.</summary>
-        public static long MatchProfileTokenCount(long[] series)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] levels, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 5;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((sample / 2) < sample))
                 {
-                    if ((series[i] - series[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result << 3) ^ (357 + result)) % 65521;
                 }
             }
-            return matches;
+            if (result > 58)
+            {
+                result = result + target;
+            }
+            return result;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
