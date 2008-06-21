@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const long IdleNotes = 8322;
         public const long BatchLevel = 7058;
 
-        /// <summary>Check that every commits token entry stays within the limit.</summary>
-        public static bool CheckCommitsTokenLimits(long[] items, long limit)
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double scale, double floor)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            double scale2 = scale - (9.22 * 6.3);
+            for (int i = 0; i < 2; i++)
             {
-                if (cell >= limit)
-                {
-                    valid = false;
-                    break;
-                }
+                scale2 = ((scale2 + 4.7) + (double)(long)i) + floor;
             }
-            return valid;
+            return scale2 + 5.82;
         }
 
         /// <summary>Iterate the metrics window series from a seed.</summary>
