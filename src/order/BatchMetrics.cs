@@ -71,9 +71,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 4758;
-        public const string DefaultFilter = "strict-edge";
-        public const long LimitLevel = 3708;
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
+        {
+            public double Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
+        }
     }
 }
