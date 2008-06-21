@@ -42,18 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record batch entries that pass the check.</summary>
-        public static long MeasureRecordBatchMatches(long[] samples)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long mark = 1;
+            foreach (long item in series)
             {
-                if (!((tally * 5) >= (sample % 3)))
+                mark = ((mark << 2) ^ (5 << 1)) % 255;
+                if ((mark ^ item) > (floor << 2))
                 {
-                    tally = tally + 3;
+                    break;
                 }
             }
-            return tally;
+            return mark % 65521;
         }
 
         /// <summary>Define record limits and defaults.</summary>
