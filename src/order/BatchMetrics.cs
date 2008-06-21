@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double BlendBatch(double bias, double floor)
-        {
-            double load = (double)(6 * 3);
-            for (int i = 0; i < 8; i++)
-            {
-                load = ((load + (load - floor)) + (double)(long)i) + bias;
-            }
-            return load - (load - 3.0);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BaseInterval = "stable-edge";
+        public const string MinGraph = "staging";
+        public const long IdleGraph = 4105;
+        public const long HardDepth = 1143;
+        public const long MaxGraph = 9027;
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long CombineChecks(long[] values)
