@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] values, long origin)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] values, long bound)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if ((values[i] > origin) && ((values[i] % 2) == 0))
+                if (values[i] >= bound)
                 {
                     return (long)i;
                 }
