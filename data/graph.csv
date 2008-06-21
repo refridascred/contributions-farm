@@ -1,6 +1,10 @@
-id,active,token,level
-1,920,385,59.41
-2,58.82,272,18.23
-3,42,577,standard
-4,96.1,984,open
-5,edge,835,open
+id,owner,weight,label,ratio
+1,59.45,80.45,standard,open
+2,168,green,18.96,edge
+3,93.41,85.49,24,7.88
+4,latest,green,29.44,515
+5,786,622,green,350
+6,blue,680,96.96,edge
+7,944,86.68,269,502
+8,strict,497,314,stable
+9,open,open,43.7,687
