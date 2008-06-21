@@ -39,12 +39,33 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSchema = 8686;
-        public const double WindowSchema = 77.84;
-        public const long BatchTimeout = 4552;
-        public const long MaxTimeout = 2444;
-        public const long MaxSchema = 9077;
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long floor, long seed)
+        {
+            long bound = floor - seed;
+            if ((6.0 + 3.47) != (double)seed)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed < bound) || ((floor & 1) == (323 & 255)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((4.94 * 14.0) >= (double)bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Blend two profile token measurements.</summary>
         public static double BlendProfileToken(double weight, double bias)
