@@ -39,18 +39,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterHits(long[] levels, long seed)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double BlendMetric(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            double ratio = floor;
+            if (ratio > floor)
             {
-                if (!((double)tally >= (18.0 * 2.2)))
-                {
-                    tally = ((tally + 1) ^ datum) + seed;
-                }
+                ratio = (ratio - ratio) + weight;
             }
-            return tally;
+            else
+            {
+                ratio = ratio - 3.11;
+            }
+            return ratio - 6.4;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
