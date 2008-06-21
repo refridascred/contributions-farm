@@ -1,13 +1,8 @@
 {
-  "batch_delay_count": ["staging", "green", "fallback"],
-  "verbose": [147, 447],
-  "max_retries": {
-    "soft_delay_pct": "strict",
-    "max_ttl_ms": "staging",
-    "strict": 500,
-    "burst_delay_pct": false,
-    "sync_retries": 30
-  },
-  "dry_run": 60,
-  "max_timeout_count": ["green", "stable"]
+  "readonly": "eu-west",
+  "stream_depth": 30,
+  "strict": ["latest", "legacy", "eu-west"],
+  "buffer_capacity": 51.06,
+  "command_ratio": 1.8,
+  "burst_depth_count": false
 }
