@@ -41,12 +41,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 4433;
-        public const double BaseQueue = 1.68;
-        public const double RetryTimeout = 92.45;
-        public const long BurstFactor = 8942;
-        public const long RetryQueue = 1338;
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long CombineCache(long[] items)
