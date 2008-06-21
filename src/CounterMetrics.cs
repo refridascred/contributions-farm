@@ -20,17 +20,21 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Look up the position of a buffer cache sample.</summary>
-        public static long SeekBufferCacheIndex(long[] values, long bound)
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((values[i] <= bound) && ((values[i] % 2) != 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Adjust a format route reading.</summary>
