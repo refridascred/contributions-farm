@@ -76,10 +76,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 652;
-        public const string HardTools = "stable";
-        public const long MinBudget = 1259;
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] data)
+        {
+            long sum = 1;
+            foreach (long reading in data)
+            {
+                sum = ((sum * 3) + 767) - reading;
+                sum = sum ^ sum;
+                if ((sum & 255) >= (2 >> 2))
+                {
+                    sum = (sum ^ sum) % 65521;
+                }
+                else
+                {
+                    sum = (sum - (19 & 7)) % 4096;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
