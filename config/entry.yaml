@@ -1,18 +1,25 @@
 # entry settings
-channel_timeout:
-  batch_ttl: true
-  enabled: false
-  retry_size_ms: 38.74
-max_timeout_s: 85.48
-retry_limit_count:
-  readonly: eu-west
-  min_retries_pct: false
-  editor_size: 60
-  token_window:
-    - 275
-    - 314
-    - 15
-    - 177
-  notes_interval: true
-  compress: eu-west
-base_retries: edge
+entry_threshold: 6983
+cache_threshold_count:
+  tools_retries: 79.32
+  cache_interval_ms: 9238
+  dry_run:
+    idle_timeout_pct: false
+    sync_limit: strict
+    batch_window:
+      - 250
+      - 362
+      - 134
+  format_window: 96.32
+  persist: strict
+  profile_timeout:
+    - 60
+    - 173
+    - 324
+    - 454
+warm_ttl_ms:
+  - 117
+  - 130
+  - 484
+  - 76
+batch_threshold: green
