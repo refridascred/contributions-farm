@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] values)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long mix = 3;
-            foreach (long item in values)
-            {
-                if ((double)item == (double)631)
-                {
-                    mix = ((mix << 3) ^ (item ^ item)) % 4096;
-                }
-            }
-            return mix % 65521;
+            New,
+            Dropped,
+            Active,
+            Idle,
+            Stale,
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
