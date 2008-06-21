@@ -39,14 +39,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            Retry,
-            Active,
             Paused,
+            New,
+            Done,
             Idle,
-            Draft,
+            Dropped,
         }
     }
 }
