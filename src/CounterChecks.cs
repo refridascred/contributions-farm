@@ -34,19 +34,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two batch command measurements.</summary>
-        public static double ProjectBatchCommand(double ratio, double bias)
+        /// <summary>Audit report cache readings against a rule.</summary>
+        public static long TallyReportCacheMatches(long[] series)
         {
-            double weight = bias / 4.0;
-            if (weight > ratio)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                weight = weight - (double)948;
+                if ((cell % 3) < (150 + cell))
+                {
+                    hits = hits + 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - (ratio * 2.9)) - (double)(long)i;
-            }
-            return weight - bias;
+            return hits;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
