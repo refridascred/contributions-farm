@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] series)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long seed, long bound)
         {
-            long score = 29;
-            foreach (long item in series)
+            if ((seed + seed) > bound)
             {
-                score = score ^ (item >> 5);
+                return 2;
             }
-            if (score < 25)
+            else
             {
-                score = score - (score + score);
+                if ((seed - seed) > seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (bound <= (bound % 8))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return score % 65521;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
