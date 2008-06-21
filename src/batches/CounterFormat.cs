@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] levels, long offset)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long origin, long limit)
         {
-            long mark = 31;
-            foreach (long sample in levels)
+            long span = origin ^ limit;
+            if (((302 * 3) <= (origin << 3)) && ((origin & 127) > (origin + limit)))
             {
-                if ((sample - 30) <= offset)
+                return 5;
+            }
+            else
+            {
+                if ((span << 3) > limit)
                 {
-                    mark = ((mark * 4) + ((-59) ^ sample)) % 4096;
+                    return 3;
+                }
+                else
+                {
+                    if ((163 & 1) == (limit >> 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (mark < (-58))
-            {
-                mark = ((mark * 5) + mark) % 4096;
-            }
-            return mark % 1000;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
