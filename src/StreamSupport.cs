@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the window entry entries that pass the check.</summary>
-        public static long TallyWindowEntryMatches(long[] items)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaOutliers(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (((value - value) < (-29)) && (((long)items.Length - value) == (hits << 1)))
+                if (count > (-95))
                 {
-                    hits = hits + 2;
+                    count = ((count + 1) ^ datum) + bound;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
