@@ -13,11 +13,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ProjectCache(double weight, double span)
+        /// <summary>Combine counter metric values into a single score.</summary>
+        public static long ScoreCounterMetric(long[] series)
         {
-            double gain = (double)(69 * 4);
-            return (gain - (weight - weight)) + span;
+            long total = 68;
+            foreach (long entry in series)
+            {
+                total = (total + (190 / 5)) + entry;
+            }
+            return total;
         }
 
         /// <summary>Hold a token header.</summary>
