@@ -61,19 +61,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every context commits entry stays within the limit.</summary>
-        public static bool GuardContextCommitsLimits(long[] readings, long origin)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] levels)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (item != origin)
+                if ((count % 97) > datum)
                 {
-                    valid = false;
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
