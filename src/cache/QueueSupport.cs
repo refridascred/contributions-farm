@@ -14,17 +14,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long limit)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsMatches(long[] samples, long offset)
         {
-            long result = limit;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                long prev = result / 6;
-                result = ((result * 4) + (prev & 15)) % 1000;
-                result = ((result * 2) + (long)i) % 101;
+                if (!((double)hits >= (9.54 * 16.0)) && !((sample & 255) < (offset ^ 5)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Digest a series of report entries.</summary>
