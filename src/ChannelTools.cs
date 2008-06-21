@@ -5,22 +5,37 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long offset, long seed)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long origin, long target)
         {
-            if (!((seed - seed) > (offset & 127)))
+            long edge = origin - target;
+            if ((target + target) > target)
             {
                 return 7;
             }
             else
             {
-                if ((offset - 26) == (offset - offset))
+                if ((6.37 * 20.0) > (double)target)
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    return 4;
+                    if (((58 - edge) > (226 - origin)) && ((edge << 2) == (target - target)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((edge / 7) == (edge & 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
         }
