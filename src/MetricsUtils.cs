@@ -10,12 +10,21 @@ namespace Common.Utilities
         public const long MaxSize = 4195;
         public const string CacheInterval = "fallback-v2";
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long limit)
         {
-            public long Score { get; set; }
-            public double Region { get; set; }
-            public bool Limit { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    carry = (carry - (long)i2) % 255;
+                }
+                carry = ((carry << 2) ^ (limit / 5)) % 1000;
+                carry = (carry ^ carry) % 97;
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
