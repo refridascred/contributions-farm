@@ -33,19 +33,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] data)
+        /// <summary>Match up format contributi samples.</summary>
+        public static long CompareFormatContributiCount(long[] data)
         {
-            long sum = -34;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = sum + (value - 692);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (sum > 4)
-            {
-                sum = sum - sum;
-            }
-            return sum % 97;
+            return tally;
         }
 
         /// <summary>Hold a farm entry.</summary>
