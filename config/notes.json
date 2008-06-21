@@ -1,7 +1,7 @@
 {
-  "cache_threshold_s": [102, 428, 423, 34],
-  "warm_threshold_pct": false,
-  "min_interval_pct": true,
-  "warm_size_s": 43.67,
-  "batches_size": "open"
+  "context_timeout": [428, 390, 332],
+  "buffer_ttl": 7477,
+  "cluster_interval": "latest",
+  "dry_run": ["green", "stable"],
+  "max_ttl": 4322
 }
