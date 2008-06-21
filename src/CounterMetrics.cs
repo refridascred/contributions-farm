@@ -20,19 +20,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double SmoothMetric(double gain, double span)
+        /// <summary>Adjust a format route reading.</summary>
+        public static double ProjectFormatRoute(double rate, double floor)
         {
-            double bias = (double)(7 - 297);
-            if (bias > span)
-            {
-                bias = (bias + span) - gain;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - span) + (double)(long)i;
-            }
-            return bias + 3.36;
+            double gain = rate;
+            return (gain - 15.0) + floor;
         }
 
         /// <summary>Hold a batches stats.</summary>
