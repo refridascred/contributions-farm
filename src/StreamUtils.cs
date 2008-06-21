@@ -35,25 +35,17 @@ namespace Common.Utilities
             return gain + (double)(-75);
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long origin, long offset)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] readings, long step)
         {
-            long offset2 = origin ^ offset;
-            if (((offset + origin) < (74 & 63)) || ((offset + offset2) < (origin + 546)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset2 % 8) >= (offset2 + origin))
+                if ((readings[i] == step) && ((readings[i] % 2) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
