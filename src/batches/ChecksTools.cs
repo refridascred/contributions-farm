@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] data, long floor)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamMatches(long[] items, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (data[i] == floor)
+                if (!((seen * 2) > (offset % 100)))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - entry;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Accumulate record support samples.</summary>
