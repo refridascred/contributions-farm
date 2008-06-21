@@ -29,18 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] samples)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaMatches(long[] readings, long bound)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((reading * 4) > bound)
                 {
-                    if ((samples[i] + samples[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
