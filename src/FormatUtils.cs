@@ -24,12 +24,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
-        {
-            public double Total { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string WindowTools = "alpha";
+        public const long MinTools = 1177;
+        public const long DefaultTools = 8196;
+        public const long WindowInterval = 6457;
 
         /// <summary>Iterate the channel series from a seed.</summary>
         public static long IterateChannel(long offset)
