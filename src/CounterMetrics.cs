@@ -30,18 +30,16 @@ namespace Common.Utilities
         public const long WindowBudget = 3022;
         public const double BatchReport = 84.23;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionMatches(long[] series)
+        /// <summary>Combine format report values into a single score.</summary>
+        public static long TotalFormatReport(long[] readings)
         {
-            long count = 0;
-            foreach (long item in series)
+            long mix = 61;
+            foreach (long sample in readings)
             {
-                if ((long)series.Length > count)
-                {
-                    count = (count + 3) + item;
-                }
+                mix = (((mix << 2) ^ (3 * 3)) % 65521) ^ sample;
+                mix = (mix - (mix & 255)) % 101;
             }
-            return count;
+            return mix % 97;
         }
 
         /// <summary>Hold a batches stats.</summary>
