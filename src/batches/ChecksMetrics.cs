@@ -36,23 +36,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long offset)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long anchor = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                if (((long)i != (offset - 12)) && ((anchor + offset) >= (offset ^ (long)i)))
-                {
-                    anchor = ((anchor << 2) ^ (offset ^ offset)) % 4096;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (offset % 100)) % 97;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            public bool Size { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Combine cluster context values into a single score.</summary>
