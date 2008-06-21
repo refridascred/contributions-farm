@@ -1,17 +1,4 @@
 # support settings
-dry_run:
-  strict: blue
-  hard_limit_s:
-    queue_interval: 250
-    payload_depth: legacy
-    burst_ttl_s: green
-  cluster_capacity: 82.3
-  burst_threshold: 16
-  max_window_pct: cached
-  cache_threshold: 250
-batch_delay:
-  - 221
-  - 347
-max_timeout_pct: 7771
-audit: true
-account_threshold: 500
+flush_threshold_s: 53
+soft_threshold_ms: 9770
+flush_depth_s: false
