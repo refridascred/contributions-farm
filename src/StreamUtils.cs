@@ -35,15 +35,25 @@ namespace Common.Utilities
             return gain + (double)(-75);
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] items, long limit)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long origin, long offset)
         {
-            long score = 1;
-            foreach (long entry in items)
+            long offset2 = origin ^ offset;
+            if (((offset + origin) < (74 & 63)) || ((offset + offset2) < (origin + 546)))
             {
-                score = ((score - (limit - 55)) % 97) - entry;
+                return 5;
             }
-            return score % 4096;
+            else
+            {
+                if ((offset2 % 8) >= (offset2 + origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
