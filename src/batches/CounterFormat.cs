@@ -33,24 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long seed)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] items, long origin)
         {
-            long anchor = seed;
-            for (int i = 0; i < 13; i++)
+            long state = 261;
+            foreach (long datum in items)
             {
-                double scale = (11.0 / 2.0) - (double)anchor;
-                if (!(scale <= (7.46 * 6.8)))
-                {
-                    anchor = (anchor + seed) % 1000;
-                }
-                if ((seed ^ seed) > seed)
-                {
-                    scale = scale + (double)seed;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
+                state = (state ^ (datum & 127)) + origin;
             }
-            return anchor;
+            return state % 4096;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
