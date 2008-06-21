@@ -34,23 +34,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit metrics route readings against a rule.</summary>
-        public static long TallyMetricsRouteHits(long[] readings)
-        {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((hits / 6) <= (102 / 9))
-                {
-                    hits = (hits + 1) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string HardQueue = "stable-v2";
+        public const long MinBudget = 434;
+        public const long LimitDepth = 8869;
+        public const long BurstDepth = 965;
 
         /// <summary>Project the next checks contributi value.</summary>
         public static double AdjustChecksContributi(double weight, double bias)
