@@ -13,31 +13,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Rank window graph input into a small class.</summary>
-        public static long GradeWindowGraph(long origin, long step)
+        /// <summary>Check that every commits token entry stays within the limit.</summary>
+        public static bool CheckCommitsTokenLimits(long[] items, long limit)
         {
-            if (step > (step ^ 59))
+            bool valid = true;
+            foreach (long cell in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin + step) == (step / 7))
+                if (cell >= limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)origin < (6.1 / 6.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
