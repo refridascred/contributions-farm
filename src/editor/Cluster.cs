@@ -44,15 +44,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] items, long limit)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long floor, long step)
         {
-            long score = 98;
-            foreach (long cell in items)
+            if (floor > (77 << 3))
             {
-                score = ((((score << 3) ^ score) % 65521) + cell) + limit;
+                return 3;
             }
-            return score;
+            else
+            {
+                if ((2.0 - 8.17) >= (double)floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((19.0 / 4.0) < (double)step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
