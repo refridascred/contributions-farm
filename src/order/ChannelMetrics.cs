@@ -20,14 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            New,
-            Failed,
-            Ready,
-            Active,
-            Dropped,
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
