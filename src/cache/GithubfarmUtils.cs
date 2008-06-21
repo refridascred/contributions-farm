@@ -31,17 +31,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] series, long offset)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double bias, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double ratio = bias;
+            if (ratio < (double)788)
             {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
+                ratio = ratio + bias;
             }
-            return -1;
+            return ratio - offset;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
