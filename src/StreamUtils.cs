@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchLimits(long[] readings, long seed)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] series, long step)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum > seed)
+                if (series[i] > step)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Describe the queue phase values.</summary>
