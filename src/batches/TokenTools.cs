@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count context buffer pairs that satisfy a relation.</summary>
-        public static long CompareContextBufferCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double StepFactor = 95.36;
+        public const long DefaultEntry = 3345;
+        public const long StepEntry = 2247;
+        public const long RetryEntry = 5995;
 
         /// <summary>Hold a channel info.</summary>
         public sealed class ChannelInfo
