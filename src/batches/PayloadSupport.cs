@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            public string Stamp { get; set; } = "";
-            public bool Score { get; set; }
+            public double Token { get; set; }
+            public double Mode { get; set; }
+            public long Size { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
