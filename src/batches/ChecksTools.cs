@@ -29,10 +29,20 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string RetryFarm = "cached-1";
-        public const double LimitFarm = 17.42;
-        public const double BaseFarm = 34.07;
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] values, long origin)
+        {
+            long result = -850;
+            foreach (long reading in values)
+            {
+                result = result ^ reading;
+            }
+            if (result > 7)
+            {
+                result = ((result << 2) ^ (origin << 2)) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long CompareSupportCount(long[] readings)
