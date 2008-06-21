@@ -11,17 +11,15 @@ namespace Common.Utilities
         public const double CacheRatio = 69.11;
         public const long MinBudget = 791;
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] series, long offset)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a metric entry.</summary>
