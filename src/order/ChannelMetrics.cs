@@ -30,22 +30,19 @@ namespace Common.Utilities
         public const double MaxSize = 65.08;
         public const double CacheScore = 37.78;
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] series, long bound)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandLimits(long[] series, long target)
         {
-            long state = 4;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if (bound <= (state ^ sample))
+                if (datum < target)
                 {
-                    state = state + state;
-                }
-                if ((double)sample != (double)bound)
-                {
+                    valid = false;
                     break;
                 }
             }
-            return state;
+            return valid;
         }
     }
 }
