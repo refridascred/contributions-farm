@@ -57,10 +57,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BurstRecord = "primary-edge";
-        public const long SoftDepth = 1779;
-        public const double StepBudget = 70.31;
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
+        {
+            public bool Stamp { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool ValidateContextLimits(long[] readings, long limit)
