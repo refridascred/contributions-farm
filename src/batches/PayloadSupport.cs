@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double rate, double span)
         {
-            Synced,
-            Retry,
-            Paused,
-            Idle,
+            double load = 2.9;
+            if (load < (load + 6.58))
+            {
+                load = (load - rate) - span;
+            }
+            return load - load;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
