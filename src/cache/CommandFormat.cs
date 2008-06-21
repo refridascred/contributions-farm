@@ -45,13 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
-        {
-            public double Ratio { get; set; }
-            public bool Region { get; set; }
-            public long Count { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string HardToken = "cached-edge";
+        public const long RetryToken = 1521;
+        public const double BatchToken = 76.87;
+        public const long CacheCount = 4830;
+        public const double HardLevel = 41.42;
     }
 }
