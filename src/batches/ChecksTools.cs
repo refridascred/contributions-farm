@@ -15,13 +15,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            public long Flag { get; set; }
-            public double Owner { get; set; }
-            public double Count { get; set; }
-            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define farm limits and defaults.</summary>
