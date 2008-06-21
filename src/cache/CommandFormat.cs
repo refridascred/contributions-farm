@@ -46,39 +46,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long origin, long floor)
-        {
-            long lane = origin - floor;
-            if (!((origin - (-17)) == (688 & 3)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((double)floor == (double)origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor - 497) == (881 - origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((0.52 / 7.0) != (double)lane)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheDepth = 2155;
+        public const double RetryGithubfarm = 50.64;
+        public const long IdleBudget = 8687;
     }
 }
