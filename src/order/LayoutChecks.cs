@@ -35,32 +35,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long offset, long target)
+        /// <summary>Audit farm cluster readings against a rule.</summary>
+        public static long TallyFarmClusterOutliers(long[] levels)
         {
-            long span = offset - target;
-            if (!((offset << 3) < (target % 7)))
+            long count = 0;
+            foreach (long cell in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((0.77 <= (double)span) && (target >= (span * 3)))
+                if (((count >> 3) == (count + cell)) && ((cell % 10) > (350 / 7)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (target < 22)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
