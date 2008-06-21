@@ -80,17 +80,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] readings, long origin)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] values, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 2;
+            foreach (long reading in values)
             {
-                if (readings[i] == origin)
+                if ((seed - reading) > result)
                 {
-                    return (long)i;
+                    result = (result * 4) + reading;
+                }
+                else
+                {
+                    result = (result * 4) + seed;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
