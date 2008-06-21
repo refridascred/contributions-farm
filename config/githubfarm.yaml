@@ -1,19 +1,7 @@
 # githubfarm settings
-max_ttl_pct: cached
-batch_window_s: standard
-base_size_count:
-  graph_capacity:
-    notes_ttl: 41.28
-    sync_limit_count: edge
-    editor_delay:
-      - fallback
-      - eu-west
-      - fallback
-    cache_interval_s:
-      - cached
-      - legacy
-      - standard
-    soft_retries_ms: fallback
-  default_timeout_count: 81
-  default_delay: 26
-burst_retries_pct: strict
+max_capacity: eu-west
+persist:
+  - 207
+  - 107
+  - 243
+default_limit_s: 3523
