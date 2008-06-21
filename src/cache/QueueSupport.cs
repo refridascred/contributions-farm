@@ -27,19 +27,10 @@ namespace Common.Utilities
             return drift + offset;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] series, long bound)
-        {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFormat = 1694;
+        public const long LimitSize = 3810;
+        public const double BurstSize = 57.49;
+        public const double MaxFormat = 15.16;
     }
 }
