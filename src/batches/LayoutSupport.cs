@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many stats payload samples are out of range.</summary>
-        public static long MeasureStatsPayloadGaps(long[] samples, long target)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (((3.0 * 18.0) == (double)datum) || (target < 191))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Fold a list of notes readings.</summary>
