@@ -31,16 +31,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next counter token value from a seed.</summary>
-        public static long SeriesCounterToken(long seed)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long result = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                result = (result - seed) % 255;
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            Retry,
+            Active,
+            Paused,
+            Idle,
+            Draft,
         }
     }
 }
