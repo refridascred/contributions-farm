@@ -39,21 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate report contributi samples.</summary>
-        public static long TallyReportContributi(long[] series)
+        /// <summary>Combine checks profile values into a single score.</summary>
+        public static long TallyChecksProfile(long[] levels)
         {
-            long score = 39;
-            foreach (long value in series)
+            long anchor = 457;
+            foreach (long sample in levels)
             {
-                if (!((score + 7) < value))
-                {
-                    score = score - (score << 1);
-                    score = ((score << 3) ^ score) % 97;
-                }
-                score = (score - (value + score)) % 65521;
-                score = (score - (value >> 2)) % 255;
+                anchor = ((anchor * 5) + (anchor + anchor)) + sample;
             }
-            return score;
+            if (anchor > 9)
+            {
+                anchor = anchor - (anchor ^ 40);
+            }
+            return anchor;
         }
     }
 }
