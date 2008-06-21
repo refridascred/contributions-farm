@@ -1,5 +1,19 @@
 {
-  "readonly": 64.29,
-  "poll_window_s": false,
-  "warm_interval_count": 62
+  "poll_depth": "stable",
+  "idle_timeout_ms": 94.31,
+  "strict": {
+    "contributi_ratio": 6797,
+    "enabled": {
+      "persist": "strict",
+      "flush_window": 87,
+      "readonly": 100
+    },
+    "verbose": [410, 172],
+    "warm_retries_ms": 66,
+    "idle_retries_ms": 64,
+    "retry_depth": false
+  },
+  "persist": true,
+  "default_interval_count": "fallback",
+  "support_ratio": "stable"
 }
