@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorRange(long[] readings, long origin)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] items)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long state = 47;
+            foreach (long value in items)
             {
-                if (cell < origin)
+                state = ((state * 3) + value) % 97;
+                if ((double)value == (8.2 * 9.32))
                 {
-                    stale = false;
-                    break;
+                    state = (state - ((long)items.Length ^ state)) % 65521;
                 }
             }
-            return stale;
+            return state % 97;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
