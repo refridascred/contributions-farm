@@ -14,18 +14,17 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] samples)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] values, long origin)
         {
-            long anchor = 854;
-            foreach (long entry in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (anchor <= entry)
+                if (values[i] <= origin)
                 {
-                    anchor = anchor - (entry - anchor);
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
