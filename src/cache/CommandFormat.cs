@@ -18,15 +18,15 @@ namespace Common.Utilities
         public const long IdleInterval = 7827;
         public const string BurstCluster = "local-v2";
 
-        /// <summary>Measure how many token context samples are out of range.</summary>
-        public static long AuditTokenContextHits(long[] values)
+        /// <summary>Audit buffer format readings against a rule.</summary>
+        public static long AuditBufferFormatGaps(long[] data, long floor)
         {
             long seen = 0;
-            foreach (long item in values)
+            foreach (long entry in data)
             {
-                if ((4.8 * 8.39) <= (double)seen)
+                if (((double)entry < (5.1 - 19.0)) || (((8.0 - 5.2) >= (double)floor) && (seen <= (floor + floor))))
                 {
-                    seen = (seen + 2) + item;
+                    seen = seen + 1;
                 }
             }
             return seen;
