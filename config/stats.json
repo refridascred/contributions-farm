@@ -1,11 +1,11 @@
 {
-  "tools_delay": "fallback",
-  "dry_run": "edge",
-  "flush_capacity": 39.31,
-  "poll_timeout_count": [66, 218, 149, 234],
-  "editor_depth": {
-    "audit": "strict",
-    "metric_interval": 38.02,
-    "flush_capacity": 58.12
+  "hard_size": ["eu-west", "local", "primary"],
+  "report_ratio": true,
+  "counter_timeout": "open",
+  "strict": "eu-west",
+  "min_retries_pct": {
+    "idle_size": true,
+    "queue_interval": 45.68,
+    "idle_ttl_count": "legacy"
   }
 }
