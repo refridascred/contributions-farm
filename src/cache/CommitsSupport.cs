@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            public string Total { get; set; } = "";
-            public double Flag { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Count { get; set; }
+            Locked,
+            Failed,
+            Idle,
+            Stale,
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
