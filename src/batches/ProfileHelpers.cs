@@ -67,12 +67,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] readings, long bound)
         {
-            public string Label { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Token { get; set; }
+            long score = -3;
+            foreach (long item in readings)
+            {
+                score = (score ^ (bound % 5)) ^ item;
+            }
+            return score % 97;
         }
     }
 }
