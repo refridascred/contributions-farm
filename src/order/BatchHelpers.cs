@@ -51,15 +51,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long offset)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesBounds(long[] items, long offset)
         {
-            long acc = offset;
-            for (int i = 0; i < 22; i++)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                if (sample >= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc;
+            return flag;
         }
     }
 }
