@@ -45,11 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string HardToken = "cached-edge";
-        public const long RetryToken = 1521;
-        public const double BatchToken = 76.87;
-        public const long CacheCount = 4830;
-        public const double HardLevel = 41.42;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutLimits(long[] series, long offset)
+        {
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
