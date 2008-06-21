@@ -1,4 +1,7 @@
 # entry settings
-verbose: 34.97
-max_delay_s: 91.48
-warm_size: 41.89
+record_ratio: 96
+flush_size_ms: 9614
+warm_ratio: 80.75
+strict: true
+schema_limit: false
+idle_interval_s: 83.83
