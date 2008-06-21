@@ -1,25 +1,19 @@
 # entry settings
-entry_threshold: 6983
-cache_threshold_count:
-  tools_retries: 79.32
-  cache_interval_ms: 9238
-  dry_run:
-    idle_timeout_pct: false
-    sync_limit: strict
-    batch_window:
-      - 250
-      - 362
-      - 134
-  format_window: 96.32
-  persist: strict
-  profile_timeout:
-    - 60
-    - 173
-    - 324
-    - 454
-warm_ttl_ms:
-  - 117
-  - 130
-  - 484
-  - 76
-batch_threshold: green
+audit: blue
+retry_interval_count: 1024
+enabled: standard
+base_ratio_ms:
+  notes_interval: local
+  persist: 87
+  idle_capacity_ms: 43.75
+  hard_size:
+    - latest
+    - eu-west
+    - cached
+    - standard
+  poll_ratio_pct:
+    - blue
+    - legacy
+  min_timeout_s: 87.08
+warm_delay: 78
+batch_retries: 58.74
