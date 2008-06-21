@@ -5,16 +5,32 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a commits window counter forward.</summary>
-        public static long StepCommitsWindow(long bound)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long floor, long limit)
         {
-            long carry = bound;
-            for (int i = 0; i < 12; i++)
+            long prev = floor - limit;
+            if (((5.64 / 2.0) < (double)prev) || ((0.88 / 5.0) == (double)limit))
             {
-                carry = (carry - (carry + (long)i)) % 101;
-                carry = ((carry * 3) + (long)i) % 101;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if ((limit > (floor + prev)) && (prev > limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (prev <= floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate token readings against a bound.</summary>
