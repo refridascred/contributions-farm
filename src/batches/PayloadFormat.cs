@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardAlready = 9301;
+        public const double LimitWidth = 60.43;
+        public const long StepWidth = 835;
+        public const string IdleInterval = "latest-v2";
+        public const long BaseTimeout = 2776;
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
