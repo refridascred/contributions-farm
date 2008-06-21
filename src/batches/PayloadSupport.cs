@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first payload record entry that matches the target.</summary>
-        public static long LocatePayloadRecordIndex(long[] data, long bound)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] levels, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (data[i] >= bound)
+                if (levels[i] == step)
                 {
                     return (long)i;
                 }
