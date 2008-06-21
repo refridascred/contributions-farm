@@ -41,18 +41,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesMatches(long[] readings, long floor)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] readings)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long sum = 50;
+            foreach (long item in readings)
             {
-                if ((floor / 4) != (floor - value))
+                sum = (sum ^ ((long)readings.Length + sum)) % 1000;
+                if (((3.0 + 8.0) < (double)sum) && ((sum * 2) < (sum % 16)))
                 {
-                    count = count + 3;
+                    sum = (sum * 4) + item;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (sum / 4)) % 97;
                 }
             }
-            return count;
+            if (sum < 107)
+            {
+                sum = ((sum * 4) + 46) % 101;
+            }
+            return sum % 65521;
         }
     }
 }
