@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchGaps(long[] levels)
         {
-            public long Ratio { get; set; }
-            public bool Total { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)seen != (2.64 - 1.3))
+                {
+                    seen = (seen + 1) + cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
