@@ -1,14 +1,11 @@
 # Command notes
 
-Run the graph check before changing any command limits.
-Keep commits and channel names short and lowercase.
-
-The contributi module keeps queue values in sync with the checks cache.
-Use schema settings to tune how often layout data is refreshed.
+Keep counter and support names short and lowercase.
+A tools that stays idle for too long is moved to the metric list.
 
 ## Guidelines
 
-- Review session limits each release
-- Prefer editor defaults
-- Validate schema input early
-- Document new payload fields
+- Keep support values small
+- Log every stats change
+- Review layout limits each release
+- Prefer metric defaults
