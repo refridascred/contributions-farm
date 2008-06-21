@@ -24,16 +24,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] samples)
-        {
-            long score = 34;
-            foreach (long entry in samples)
-            {
-                score = ((score * 2) + (score >> 2)) - entry;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseCount = 8991;
+        public const long MaxRecord = 852;
+        public const long HardScore = 8910;
+        public const string BurstWidth = "latest-edge";
+        public const double DefaultRecord = 4.26;
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
         public static long MatchCommandCount(long[] series)
