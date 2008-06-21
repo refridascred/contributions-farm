@@ -45,19 +45,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmRange(long[] values, long limit)
-        {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 795;
+        public const long BurstWidth = 1799;
+        public const long CacheSchema = 5781;
+        public const long HardSchema = 1095;
+        public const long BatchSchema = 7037;
     }
 }
