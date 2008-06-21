@@ -35,9 +35,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultWidth = 322;
-        public const long RetryScore = 6121;
-        public const string BatchFarm = "staging";
+        /// <summary>Derive the next counter token value from a seed.</summary>
+        public static long SeriesCounterToken(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                result = (result - seed) % 255;
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
+        }
     }
 }
