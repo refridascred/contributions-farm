@@ -1,5 +1,8 @@
 {
-  "compress": ["stable", "stable", "latest", "blue"],
-  "audit": false,
-  "sync_interval_s": false
+  "base_size": "cached",
+  "poll_interval_count": 78,
+  "min_depth_pct": "open",
+  "verbose": 30.24,
+  "base_delay_ms": "strict",
+  "schema_depth": false
 }
