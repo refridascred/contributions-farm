@@ -55,15 +55,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] series, long limit)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterRange(long[] readings, long bound)
         {
-            long sum = 833;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                sum = ((sum ^ ((long)series.Length ^ sum)) ^ sample) - limit;
+                if (datum <= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
