@@ -20,18 +20,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the format token entries that pass the check.</summary>
-        public static long TallyFormatTokenOutliers(long[] samples)
+        /// <summary>Derive the next cluster entry value from a seed.</summary>
+        public static long IterateClusterEntry(long offset)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long state = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if ((seen - sample) > seen)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    seen = seen + 1;
+                    state = (((state * 3) + 322) % 1000) + (long)i2;
                 }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return seen;
+            return state;
         }
     }
 }
