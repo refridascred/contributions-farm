@@ -13,25 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long floor, long origin)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextBounds(long[] data, long target)
         {
-            long slot = floor ^ origin;
-            if ((slot << 3) < origin)
+            bool found = true;
+            foreach (long cell in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (((2 / 9) < (origin << 2)) || ((floor % 8) == (floor + slot)))
+                if (cell > target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the batch class values.</summary>
