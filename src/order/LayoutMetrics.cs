@@ -30,18 +30,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] levels)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] series, long seed)
         {
-            long total = 8;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value >> 4) != (value + total))
+                if (series[i] == seed)
                 {
-                    total = (total ^ value) % 97;
+                    return (long)i;
                 }
             }
-            return total % 65521;
+            return -1;
         }
     }
 }
