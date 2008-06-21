@@ -37,18 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the token commits entries that pass the check.</summary>
-        public static long CountTokenCommitsGaps(long[] levels, long offset)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((matches & 63) == (offset - offset))
-                {
-                    matches = (matches + 1) ^ sample;
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public double Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a filter info.</summary>
