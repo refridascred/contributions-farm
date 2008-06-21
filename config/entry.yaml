@@ -1,14 +1,6 @@
 # entry settings
-filter_ttl:
-  flush_window: 100
-  strict: 60
-  flush_ratio:
-    - 285
-    - 299
-    - 14
-    - 73
-min_delay_pct: false
-cache_retries:
-  - eu-west
-  - green
-sync_retries: 9747
+tools_depth: 1024
+poll_interval: stable
+default_size_ms: cached
+editor_ttl: true
+default_window: 4159
