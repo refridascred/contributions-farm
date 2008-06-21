@@ -30,12 +30,22 @@ namespace Common.Utilities
             return bias - (bias / 9.0);
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesOutliers(long[] values, long offset)
         {
-            public bool Stamp { get; set; }
-            public bool Weight { get; set; }
-            public double Offset { get; set; }
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (offset <= (3 & 15))
+                {
+                    tally = (tally + 3) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
