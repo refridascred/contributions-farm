@@ -14,18 +14,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < offset) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string DefaultTimeout = "latest-1";
+        public const double BurstDepth = 26.55;
+        public const long StepSchema = 7063;
+        public const long RetrySchema = 1819;
+        public const string HardSchema = "primary";
 
         /// <summary>Compare every pair of profile token readings.</summary>
         public static long MatchProfileTokenCount(long[] series)
