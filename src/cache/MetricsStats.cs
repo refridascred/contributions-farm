@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate schema stats readings against a bound.</summary>
-        public static bool CheckSchemaStatsBounds(long[] levels, long step)
-        {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MinLevel = "cached";
+        public const string MaxEditor = "latest";
+        public const double IdleScore = 96.86;
+        public const long MaxBudget = 3933;
+        public const long IdleEditor = 7418;
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long CountSchemaMatches(long[] levels, long floor)
