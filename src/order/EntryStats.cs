@@ -34,27 +34,21 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] readings, long floor)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long CompareRecordCount(long[] samples)
         {
-            long total = 7;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total << 2) ^ value;
-                if (((total * 5) < (total + value)) || ((36 * 5) != (floor - value)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = ((total * 2) + (floor - floor)) % 65521;
-                }
-                else
-                {
-                    total = total ^ (813 << 2);
-                }
-                if (((long)readings.Length / 6) == (775 ^ total))
-                {
-                    break;
+                    if ((samples[i] + samples[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total % 4096;
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
