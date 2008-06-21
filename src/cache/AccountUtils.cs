@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the filter session series from a seed.</summary>
-        public static long IterateFilterSession(long step)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long total = step;
-            for (int i = 0; i < 16; i++)
-            {
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            public long Count { get; set; }
+            public double Flag { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a channel header.</summary>
