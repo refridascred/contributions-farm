@@ -36,13 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            Draft,
-            Queued,
-            Active,
-            Pending,
+            public double Offset { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Audit session readings against a rule.</summary>
