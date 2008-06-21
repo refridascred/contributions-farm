@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a profile notes reading.</summary>
-        public static double SmoothProfileNotes(double scale, double offset)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] samples)
         {
-            double ratio = scale;
-            if (ratio >= (double)581)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ratio - (double)27;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + offset) - (double)(long)i;
-            }
-            return ratio - ratio;
+            return count;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
