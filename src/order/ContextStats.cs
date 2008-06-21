@@ -32,14 +32,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Grade a stream format value against two limits.</summary>
+        public static long BucketStreamFormat(long bound, long origin)
         {
-            Pending,
-            Queued,
-            Done,
-            Stale,
-            Draft,
+            long slot = bound - origin;
+            if ((origin + slot) >= slot)
+            {
+                return 2;
+            }
+            else
+            {
+                if (slot >= (bound + 0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
