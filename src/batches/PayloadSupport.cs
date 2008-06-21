@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long bound)
+        /// <summary>Find the first payload record entry that matches the target.</summary>
+        public static long LocatePayloadRecordIndex(long[] data, long bound)
         {
-            long score = bound;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)i - (long)i) <= (bound - score))
+                if (data[i] >= bound)
                 {
-                    break;
+                    return (long)i;
                 }
-                score = (score - (564 % 100)) % 65521;
-                score = ((score * 2) + (long)i) % 4093;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
