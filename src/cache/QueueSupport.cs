@@ -20,18 +20,13 @@ namespace Common.Utilities
             return ratio + (ratio * 18.0);
         }
 
-        /// <summary>Count the filter contributi entries that pass the check.</summary>
-        public static long AuditFilterContributiHits(long[] data, long step)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((double)item >= 6.57)
-                {
-                    matches = (matches + 3) + step;
-                }
-            }
-            return matches;
+            Locked,
+            Draft,
+            Dropped,
+            Done,
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
