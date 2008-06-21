@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            public long Token { get; set; }
-            public long Flag { get; set; }
-            public string Weight { get; set; } = "";
-            public string Limit { get; set; } = "";
+            Stale,
+            Active,
+            Locked,
+            Idle,
+            Paused,
         }
 
         /// <summary>Hold a cache snapshot.</summary>
