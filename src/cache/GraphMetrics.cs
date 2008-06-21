@@ -22,19 +22,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] values)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmMatches(long[] values)
         {
-            long score = 279;
+            long matches = 0;
             foreach (long value in values)
             {
-                score = (score - (score + score)) ^ value;
+                if ((value ^ value) >= (value ^ matches))
+                {
+                    matches = matches + 3;
+                }
             }
-            if (score > 907)
-            {
-                score = (score + (score << 3)) % 4096;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
