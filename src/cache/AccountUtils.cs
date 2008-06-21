@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryMatches(long[] items)
         {
-            public long Count { get; set; }
-            public double Flag { get; set; }
-            public string Offset { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (((tally - tally) > tally) && ((tally + sample) <= (sample - sample)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a channel header.</summary>
