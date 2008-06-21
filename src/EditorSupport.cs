@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            Active,
-            Pending,
-            Failed,
-            Closed,
-            Queued,
+            public bool Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Accumulate command samples.</summary>
