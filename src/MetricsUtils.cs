@@ -37,23 +37,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double weight, double offset)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] levels, long step)
         {
-            double scale = (weight + offset) - offset;
-            if (scale > 9.6)
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = scale + (weight - offset);
+                if (levels[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - 9.38;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - scale;
+            return -1;
         }
     }
 }
