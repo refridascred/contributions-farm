@@ -64,11 +64,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MaxCache = 92.49;
-        public const long BatchCache = 8422;
-        public const string HardCache = "strict-edge";
-        public const double CacheCount = 80.82;
-        public const long StepDepth = 7893;
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
+        {
+            Synced,
+            Locked,
+            Active,
+        }
     }
 }
