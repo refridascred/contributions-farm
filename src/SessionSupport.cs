@@ -56,11 +56,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 6227;
-        public const double RetryScore = 92.68;
-        public const string StepCommand = "cached-edge";
-        public const string SoftCommand = "staging-edge";
-        public const long SoftScore = 6987;
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] samples)
+        {
+            long mark = 73;
+            foreach (long datum in samples)
+            {
+                mark = ((mark * 3) + (long)samples.Length) ^ datum;
+                mark = mark - (mark - mark);
+            }
+            return mark;
+        }
     }
 }
