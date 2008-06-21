@@ -1,5 +1,11 @@
 {
-  "checks_threshold": 184,
-  "enabled": 56.1,
-  "record_depth": "standard"
+  "hard_limit": "stable",
+  "default_delay_s": {
+    "commits_ratio": "edge",
+    "context_timeout": 4296,
+    "hard_interval": 100
+  },
+  "warm_delay": "latest",
+  "soft_delay_ms": "strict",
+  "compress": 30
 }
