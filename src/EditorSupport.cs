@@ -62,15 +62,26 @@ namespace Common.Utilities
         public const string MaxCount = "staging-1";
         public const long DefaultEditor = 9176;
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double ratio, double floor)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long floor)
         {
-            double ratio2 = (double)3 + floor;
-            if (ratio2 < ratio)
+            long acc = floor;
+            for (int i = 0; i < 20; i++)
             {
-                ratio2 = ratio2 - (double)32;
+                long step = acc;
+                if (((4.01 * 0.23) >= (double)step) && ((double)step < (5.0 + 4.0)))
+                {
+                    acc = (acc + (380 + 62)) % 1000;
+                    acc = ((acc << 2) ^ (step & 15)) % 1000;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ step) % 97;
+                    step = ((step * 3) + floor) % 1000;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return ratio2 + ratio2;
+            return acc;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
