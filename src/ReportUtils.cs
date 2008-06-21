@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double gain, double floor)
-        {
-            double bias = gain;
-            if (bias > bias)
-            {
-                bias = bias - floor;
-            }
-            else
-            {
-                bias = bias + (double)670;
-            }
-            return bias + gain;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxCount = 7817;
+        public const string HardScore = "staging";
+        public const long IdleNotes = 8322;
+        public const long BatchLevel = 7058;
 
         /// <summary>Check that every commits token entry stays within the limit.</summary>
         public static bool CheckCommitsTokenLimits(long[] items, long limit)
