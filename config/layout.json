@@ -1,5 +1,7 @@
 {
-  "compress": "edge",
-  "sync_delay_pct": "staging",
-  "poll_timeout": 11.9
+  "account_timeout": "legacy",
+  "cache_delay": 14.19,
+  "hard_depth_s": 41.27,
+  "burst_delay_ms": 30.82,
+  "sync_threshold": ["local", "eu-west"]
 }
