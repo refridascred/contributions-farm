@@ -60,15 +60,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long bound)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double scale, double offset)
         {
-            long acc = bound;
-            for (int i = 0; i < 6; i++)
+            double rate = scale;
+            if (rate < 8.21)
             {
-                acc = ((acc * 3) + (long)i) % 101;
+                rate = rate - 6.14;
             }
-            return acc;
+            return rate - (scale - offset);
         }
     }
 }
