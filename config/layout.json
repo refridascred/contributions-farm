@@ -1,5 +1,23 @@
 {
-  "dry_run": 14,
-  "cache_delay_pct": ["open", "legacy"],
-  "enabled": true
+  "flush_interval": 2.43,
+  "audit": {
+    "sync_size_ms": 12.02,
+    "schema_threshold": false,
+    "base_interval_ms": 79.2,
+    "batch_interval": "stable",
+    "soft_window": "cached"
+  },
+  "sync_depth": true,
+  "flush_depth_s": {
+    "enabled": "standard",
+    "metric_retries": {
+      "account_ttl": 9386,
+      "compress": "local",
+      "batch_threshold": "green",
+      "base_retries_count": "green",
+      "warm_interval_s": "legacy",
+      "hard_timeout": "latest"
+    },
+    "base_capacity": ["staging", "blue", "staging"]
+  }
 }
