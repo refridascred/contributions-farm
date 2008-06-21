@@ -68,23 +68,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double ratio, double span)
+        /// <summary>Check that every session profile entry stays within the limit.</summary>
+        public static bool CheckSessionProfileRange(long[] values, long seed)
         {
-            double scale = ratio - 7.8;
-            if (scale <= (3.6 * 9.95))
+            bool ready = true;
+            foreach (long item in values)
             {
-                scale = (scale - (double)127) + span;
+                if (item <= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - (8.33 * 20.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (10.0 + 0.58)) + (double)(long)i;
-            }
-            return scale - (ratio - scale);
+            return ready;
         }
 
         /// <summary>Combine already values into a single score.</summary>
