@@ -13,10 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 4110;
-        public const long WindowRatio = 8314;
-        public const long SoftToken = 855;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiHits(long[] series)
+        {
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((double)(long)series.Length >= (double)datum)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
