@@ -49,14 +49,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
-        {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public long Token { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 4492;
+        public const double SoftDepth = 62.7;
+        public const double BatchScore = 84.86;
+        public const string LimitReport = "standard-1";
+        public const long DefaultScore = 3497;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long TallyCacheMatches(long[] readings, long seed)
