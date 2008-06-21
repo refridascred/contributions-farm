@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] data, long target)
         {
-            Dropped,
-            Draft,
-            Paused,
-            Done,
-            Ready,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of token route readings.</summary>
