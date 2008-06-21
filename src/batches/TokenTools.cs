@@ -49,39 +49,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank tools context input into a small class.</summary>
-        public static long ClassifyToolsContext(long offset, long floor)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long seed)
         {
-            long slot = offset - floor;
-            if (((floor + floor) == (slot - slot)) && (slot < (floor - 7)))
+            long mix = seed;
+            for (int i = 0; i < 16; i++)
             {
-                return 4;
+                mix = mix + ((long)i - seed);
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if (floor > (36 + slot))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)floor < (4.4 + 6.73)) && ((floor - offset) > floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)slot >= (double)offset)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
