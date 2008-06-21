@@ -26,19 +26,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksBounds(long[] data, long limit)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long carry = 498;
+            foreach (long value in data)
             {
-                if (entry >= limit)
+                if (!((target - value) <= carry))
                 {
-                    stale = false;
-                    break;
+                    carry = ((carry << 3) ^ value) % 255;
+                }
+                else
+                {
+                    carry = (carry - carry) % 255;
                 }
             }
-            return stale;
+            return carry;
         }
     }
 }
