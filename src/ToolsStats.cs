@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Roll a buffer profile counter forward.</summary>
-        public static long DeriveBufferProfile(long step)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordMatches(long[] items, long origin)
         {
-            long sum = step;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                if (reading <= (62 % 64))
+                {
+                    seen = (seen + 3) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
