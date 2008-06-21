@@ -43,23 +43,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long seed)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] samples, long limit)
         {
-            long acc = seed;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((acc * 3) >= (seed >> 1))
+                if (samples[i] >= limit)
                 {
-                    acc = (acc - (acc * 2)) % 255;
+                    return (long)i;
                 }
-                if ((acc - (-4)) == (198 + seed))
-                {
-                    acc = acc ^ (acc - seed);
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return acc;
+            return -1;
         }
     }
 }
