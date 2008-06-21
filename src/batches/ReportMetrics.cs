@@ -28,19 +28,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchBounds(long[] values, long offset)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long bound)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long result = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (datum <= offset)
+                if (!(4 > result))
                 {
-                    stale = false;
-                    break;
+                    result = result + (bound - 94);
                 }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return stale;
+            return result;
         }
     }
 }
