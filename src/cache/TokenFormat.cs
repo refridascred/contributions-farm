@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            public double Weight { get; set; }
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public long Level { get; set; }
+            public long Weight { get; set; }
+            public bool Rank { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the tools kind values.</summary>
