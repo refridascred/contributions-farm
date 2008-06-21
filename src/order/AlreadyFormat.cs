@@ -40,19 +40,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Scale a counter editor figure with a bias.</summary>
-        public static double SmoothCounterEditor(double ratio, double offset)
+        /// <summary>Count the order cache entries that pass the check.</summary>
+        public static long MeasureOrderCacheHits(long[] values, long target)
         {
-            double weight = ratio - offset;
-            if (weight < weight)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                weight = weight + (weight * 9.84);
+                if ((target << 3) < (target * 4))
+                {
+                    matches = (matches + 2) ^ reading;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (weight * 5.95)) + (double)(long)i;
-            }
-            return weight - ratio;
+            return matches;
         }
 
         /// <summary>Accumulate window samples.</summary>
