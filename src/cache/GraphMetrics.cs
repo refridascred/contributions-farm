@@ -42,16 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next checks commits value from a seed.</summary>
-        public static long DeriveChecksCommits(long limit)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long seed)
         {
-            long carry = limit;
-            for (int i = 0; i < 23; i++)
+            long result = seed;
+            for (int i = 0; i < 10; i++)
             {
-                carry = ((carry << 2) ^ ((long)i - limit)) % 1000;
-                carry = ((carry * 5) + (long)i) % 1000;
+                if (!(((long)i / 6) >= (seed + seed)))
+                {
+                    result = (result ^ (seed * 5)) % 255;
+                }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
