@@ -23,17 +23,24 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] data, long target)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = step;
+            for (int i = 0; i < 5; i++)
             {
-                if ((data[i] <= target) && ((data[i] % 3) == 0))
+                if ((4.8 * 5.9) < (double)total)
                 {
-                    return (long)i;
+                    total = (total - (step / 2)) % 97;
                 }
+                else
+                {
+                    long step2 = (total % 7) - (total >> 2);
+                    total = total ^ (step2 + step2);
+                }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Define support limits and defaults.</summary>
