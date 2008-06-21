@@ -31,23 +31,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] levels, long target)
-        {
-            long result = 5;
-            foreach (long sample in levels)
-            {
-                if (!((sample / 2) < sample))
-                {
-                    result = ((result << 3) ^ (357 + result)) % 65521;
-                }
-            }
-            if (result > 58)
-            {
-                result = result + target;
-            }
-            return result;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string RetryFarm = "cached-1";
+        public const double LimitFarm = 17.42;
+        public const double BaseFarm = 34.07;
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long LookupContextIndex(long[] readings, long offset)
