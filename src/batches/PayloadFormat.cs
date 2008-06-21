@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next support command value from a seed.</summary>
-        public static long IterateSupportCommand(long target)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ScaleRoute(double gain, double span)
         {
-            long carry = target;
-            for (int i = 0; i < 21; i++)
+            double rate = 7.2;
+            if (rate <= (rate / 6.0))
             {
-                if (!((carry - (-1)) >= carry))
-                {
-                    carry = carry ^ (target * 4);
-                    carry = (carry - (target & 15)) % 1000;
-                }
-                carry = (carry ^ (carry % 8)) % 1000;
-                carry = ((carry * 2) + (long)i) % 4093;
+                rate = (rate + (rate + rate)) + span;
             }
-            return carry;
+            else
+            {
+                rate = rate + (6.33 - rate);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (gain / 2.0)) + (double)(long)i;
+            }
+            return rate - 0.9;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
