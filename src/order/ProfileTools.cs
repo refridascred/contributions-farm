@@ -34,19 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheLimits(long[] levels, long floor)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double ratio, double bias)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            double drift = bias + (double)525;
+            if (drift > (double)3)
             {
-                if (reading != floor)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = (drift + drift) + ratio;
             }
-            return ok;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (3.3 / 9.0)) - (double)(long)i;
+            }
+            return drift + bias;
         }
 
         /// <summary>Blend two buffer graph measurements.</summary>
