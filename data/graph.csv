@@ -1,9 +1,6 @@
-id,rank,region
-1,98.26,823
-2,765,297
-3,102,primary
-4,open,blue
-5,41.1,653
-6,local,36
-7,43.59,primary
-8,15.63,latest
+id,active,token,level
+1,920,385,59.41
+2,58.82,272,18.23
+3,42,577,standard
+4,96.1,984,open
+5,edge,835,open
