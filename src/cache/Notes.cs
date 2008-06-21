@@ -55,35 +55,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long origin)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long floor)
         {
-            long state = origin;
-            for (int i = 0; i < 13; i++)
+            long mix = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (((3.9 / 3.0) >= (double)origin) && ((0.77 * 20.0) > (double)state))
-                {
-                    state = ((state * 4) + (737 + origin)) % 255;
-                }
-                if (((double)15 != (double)state) && ((0.94 + 2.0) != (double)origin))
-                {
-                    state = ((state * 4) + (origin + state)) % 97;
-                }
-                else
-                {
-                    state = state - (origin ^ (long)i);
-                }
-                if ((long)i < (origin & 1))
-                {
-                    state = (state + state) % 97;
-                }
-                else
-                {
-                    state = (state ^ origin) % 4096;
-                }
-                state = ((state * 4) + (long)i) % 97;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Describe the channel class values.</summary>
