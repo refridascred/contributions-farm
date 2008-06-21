@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] data)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] levels)
         {
-            long sum = 6;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (!((cell + (-1)) > sum))
+                if (!((seen + reading) >= (95 << 3)))
                 {
-                    sum = sum ^ (sum % 8);
+                    seen = seen + 1;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Accumulate graph samples.</summary>
