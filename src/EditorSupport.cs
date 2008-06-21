@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long seed, long offset)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] series)
         {
-            if (!((4 % 60) >= seed))
+            long mark = 7;
+            foreach (long value in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed + seed) == (2 + seed))
+                if (value < (long)series.Length)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    mark = ((mark << 2) ^ 141) % 65521;
                 }
             }
+            if (mark < 5)
+            {
+                mark = mark - (mark & 15);
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
