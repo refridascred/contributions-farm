@@ -45,13 +45,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesRange(long[] samples, long bound)
         {
-            Done,
-            Pending,
-            Locked,
-            Synced,
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
