@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long MatchBufferCount(long[] items)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
