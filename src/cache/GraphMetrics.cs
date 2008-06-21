@@ -36,12 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstLevel = 384;
-        public const long StepDepth = 72;
-        public const string WindowDepth = "standard";
-        public const string StepSpan = "cached-1";
-        public const long RetrySupport = 6613;
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < floor) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
