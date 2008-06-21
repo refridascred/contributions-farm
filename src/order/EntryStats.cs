@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextLimits(long[] levels, long origin)
+        /// <summary>Audit report cluster readings against a rule.</summary>
+        public static long MeasureReportClusterMatches(long[] readings)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (sample > origin)
+                if (!(((matches & 255) <= 843) || (entry < (entry & 63))))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Match up metrics payload samples.</summary>
