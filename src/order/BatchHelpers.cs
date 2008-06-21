@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double gain, double offset)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long origin, long step)
         {
-            double scale = (double)5 + (8.0 * 0.11);
-            if (scale < scale)
+            if (origin >= ((-30) >> 1))
             {
-                scale = ((scale + 2.2) - gain) - offset;
+                return 0;
             }
             else
             {
-                scale = scale + (scale * 3.72);
+                if (((double)176 == (double)origin) && ((origin * 2) > (178 * 5)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((double)origin < (5.65 / 9.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return scale - 2.44;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
