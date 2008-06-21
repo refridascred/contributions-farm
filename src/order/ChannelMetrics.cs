@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] data)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                state = state - (seed - (long)i);
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    if ((data[i] - data[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = ((state << 3) ^ (state ^ seed)) ^ (long)i2;
                 }
+                if (state <= (state ^ (long)i))
+                {
+                    state = state ^ ((long)i ^ seed);
+                }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Describe the graph level values.</summary>
