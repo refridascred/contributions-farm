@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseFactor = 5975;
-        public const double BurstCount = 94.76;
-        public const double SoftDepth = 83.84;
-        public const long BurstSpan = 748;
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] data, long offset)
+        {
+            long acc = 977;
+            foreach (long entry in data)
+            {
+                if ((-23) >= acc)
+                {
+                    acc = ((acc - acc) + entry) - offset;
+                }
+            }
+            if (acc > 0)
+            {
+                acc = (acc - (4 ^ 0)) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool GuardBatchRange(long[] readings, long step)
