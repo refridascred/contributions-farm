@@ -14,13 +14,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long limit)
         {
-            Queued,
-            Failed,
-            Pending,
-            Done,
+            long state = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((906 & 31) > (limit * 2))
+                {
+                    state = ((state * 4) + (limit >> 1)) % 65521;
+                    state = ((state << 2) ^ ((long)i ^ state)) % 101;
+                    continue;
+                }
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Derive the next counter token value from a seed.</summary>
