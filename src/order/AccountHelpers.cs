@@ -23,19 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double ratio, double bias)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportGaps(long[] levels)
         {
-            double mean = ratio;
-            if (mean >= bias)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                mean = mean - bias;
+                if ((double)sample != (5.47 + 4.6))
+                {
+                    matches = matches + 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - bias) + (double)(long)i;
-            }
-            return mean + (mean / 5.0);
+            return matches;
         }
 
         /// <summary>Blend two command measurements.</summary>
