@@ -1,9 +1,8 @@
 # support settings
-channel_capacity: true
-verbose:
-  - open
-  - green
-  - eu-west
-  - standard
-soft_depth_ms: 100
-poll_size_s: 4
+graph_window: standard
+support_depth:
+  - 70
+  - 470
+  - 195
+  - 380
+sync_threshold: 31
