@@ -31,23 +31,17 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] readings, long offset)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] samples, long offset)
         {
-            long acc = 759;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (((acc + (acc << 3)) % 101) - sample) - offset;
-                if ((42 + (-6)) > acc)
+                if (samples[i] == offset)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (acc < 2)
-            {
-                acc = ((acc << 2) ^ acc) % 4096;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
