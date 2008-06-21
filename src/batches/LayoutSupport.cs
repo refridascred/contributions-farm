@@ -58,24 +58,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long bound)
+        /// <summary>Rank buffer cluster input into a small class.</summary>
+        public static long BucketBufferCluster(long floor, long offset)
         {
-            long state = bound;
-            for (int i = 0; i < 12; i++)
+            long prev = floor + offset;
+            if ((floor / 2) >= (offset + prev))
             {
-                if (bound <= (state ^ state))
+                return 5;
+            }
+            else
+            {
+                if (((floor + floor) < offset) && ((double)floor <= (3.0 / 6.0)))
                 {
-                    state = ((state << 2) ^ bound) % 97;
+                    return 6;
                 }
                 else
                 {
-                    long tally = state;
-                    state = state ^ tally;
+                    if (7 < (floor / 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
         }
     }
 }
