@@ -1,7 +1,20 @@
 {
-  "persist": "latest",
-  "record_ratio": "standard",
-  "min_limit": 2219,
-  "sync_interval": 64,
-  "default_capacity_ms": 1024
+  "burst_interval": {
+    "cache_retries_count": "legacy",
+    "hard_limit_pct": "staging",
+    "batch_depth_count": 6.71,
+    "flush_ttl_count": "open",
+    "warm_depth_ms": {
+      "verbose": 500,
+      "hard_size_pct": 3.08,
+      "tools_interval": 100,
+      "order_limit": 88,
+      "min_size_pct": true
+    }
+  },
+  "audit": ["legacy", "staging", "staging", "legacy"],
+  "min_interval": 91.12,
+  "queue_ratio": 45.2,
+  "warm_ttl": "cached",
+  "batch_window_pct": "stable"
 }
