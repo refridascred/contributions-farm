@@ -41,19 +41,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine githubfarm format values into a single score.</summary>
-        public static long DigestGithubfarmFormat(long[] items)
-        {
-            long anchor = 28;
-            foreach (long sample in items)
-            {
-                if ((7.2 * 4.52) >= (double)sample)
-                {
-                    anchor = ((anchor << 3) ^ (sample << 3)) % 1000;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double WindowMetrics = 60.06;
+        public const string LimitFactor = "cached-v2";
+        public const long SoftLevel = 2463;
+        public const long LimitSize = 9955;
+        public const long SoftBudget = 2731;
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long LookupNotesIndex(long[] items, long offset)
