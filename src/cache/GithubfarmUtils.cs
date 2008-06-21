@@ -34,21 +34,18 @@ namespace Common.Utilities
             return ratio - offset;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] readings)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadHits(long[] data, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((((6.5 + 6.8) <= (double)step) || ((6 / 9) > datum)) || !(matches < (matches << 2)))
                 {
-                    if ((readings[i] ^ readings[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
