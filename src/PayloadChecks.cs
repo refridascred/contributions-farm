@@ -81,27 +81,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] samples)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long anchor = 160;
-            foreach (long item in samples)
-            {
-                anchor = anchor - (anchor * 4);
-                if ((item - anchor) <= (anchor + anchor))
-                {
-                    anchor = (anchor << 3) ^ (anchor << 3);
-                }
-                if (((39 + 1) < (item - anchor)) || (item < (anchor + anchor)))
-                {
-                    break;
-                }
-            }
-            if (anchor < 190)
-            {
-                anchor = ((anchor << 2) ^ anchor) % 65521;
-            }
-            return anchor % 4096;
+            Retry,
+            Done,
+            Active,
         }
     }
 }
