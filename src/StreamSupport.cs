@@ -20,13 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
-        {
-            Pending,
-            Synced,
-            Retry,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string StepFactor = "stable-edge";
+        public const double DefaultInterval = 1.94;
+        public const long StepLevel = 6780;
+        public const string SoftDepth = "strict-1";
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long AuditAccountMatches(long[] items)
