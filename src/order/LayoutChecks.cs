@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string RetryReport = "local-1";
-        public const long StepTimeout = 9371;
-        public const long LimitInterval = 8045;
-        public const double StepLevel = 26.09;
-        public const long DefaultReport = 6510;
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] series, long floor)
+        {
+            long mix = 8;
+            foreach (long datum in series)
+            {
+                if (((mix ^ datum) >= (datum - datum)) || ((mix - datum) != (long)series.Length))
+                {
+                    mix = (mix << 3) ^ floor;
+                    continue;
+                }
+                if (20 > floor)
+                {
+                    mix = ((mix << 3) ^ mix) % 65521;
+                }
+                else
+                {
+                    mix = (mix + (mix & 7)) % 1000;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
