@@ -69,10 +69,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowFactor = 9237;
-        public const long MaxBudget = 2630;
-        public const double RetrySize = 94.19;
+        /// <summary>Scale a profile route figure with a bias.</summary>
+        public static double AdjustProfileRoute(double rate, double span)
+        {
+            double weight = 7.3 / 9.0;
+            if (weight > (rate * 17.0))
+            {
+                weight = weight - rate;
+            }
+            return weight + span;
+        }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool VerifyBatchBounds(long[] values, long bound)
