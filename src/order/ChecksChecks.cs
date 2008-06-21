@@ -31,12 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            Locked,
-            New,
-            Synced,
+            public long Rank { get; set; }
+            public double Mode { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
