@@ -59,12 +59,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
-            public long Total { get; set; }
+            public bool Flag { get; set; }
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
