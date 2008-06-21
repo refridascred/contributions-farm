@@ -19,21 +19,28 @@ namespace Common.Utilities
         public const double SoftCluster = 55.08;
         public const long BaseScore = 4207;
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] values)
+        /// <summary>Roll a tools filter counter forward.</summary>
+        public static long RollToolsFilter(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)bound < (6.53 - 8.0))
                 {
-                    if ((values[i] + values[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
+                if (1.0 < (double)state)
+                {
+                    state = (state ^ bound) % 65521;
+                    break;
+                }
+                else
+                {
+                    state = state ^ (35 + state);
+                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
