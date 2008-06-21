@@ -12,12 +12,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmGaps(long[] samples)
         {
-            public double Total { get; set; }
-            public bool Score { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)sample != (1.0 * 8.0))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
