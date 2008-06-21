@@ -27,19 +27,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportRange(long[] series, long origin)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ScaleGraph(double weight, double offset)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            double mean = weight;
+            if (mean >= (weight / 5.0))
             {
-                if (reading > origin)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = (mean + mean) - offset;
             }
-            return ready;
+            else
+            {
+                mean = mean + mean;
+            }
+            return mean - 7.46;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
