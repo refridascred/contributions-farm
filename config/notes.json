@@ -1,12 +1,13 @@
 {
-  "cache_window": true,
-  "sync_ratio_pct": "stable",
-  "flush_interval": {
-    "route_interval": "local",
-    "idle_threshold_s": "local",
-    "sync_limit": true,
-    "buffer_ttl": "eu-west"
+  "sync_ttl": 9,
+  "stats_size": {
+    "flush_delay_pct": "fallback",
+    "sync_threshold": false,
+    "already_size": 13,
+    "poll_limit_pct": "blue"
   },
-  "persist": "stable",
-  "flush_limit_count": 35.12
+  "persist": 8801,
+  "entry_capacity": false,
+  "warm_limit_count": false,
+  "metrics_limit": [272, 261]
 }
