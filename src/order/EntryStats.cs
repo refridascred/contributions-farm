@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of entry route readings.</summary>
-        public static long TotalEntryRoute(long[] items, long offset)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long mark = 43;
-            foreach (long item in items)
-            {
-                if (((double)offset != (18.0 * 0.96)) || (mark >= (offset >> 3)))
-                {
-                    mark = (mark ^ (31 & 1)) ^ item;
-                }
-            }
-            return mark;
+            public long Label { get; set; }
+            public long Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the cache level values.</summary>
