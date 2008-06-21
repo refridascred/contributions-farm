@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] series, long floor)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long mix = 8;
-            foreach (long datum in series)
-            {
-                if (((mix ^ datum) >= (datum - datum)) || ((mix - datum) != (long)series.Length))
-                {
-                    mix = (mix << 3) ^ floor;
-                    continue;
-                }
-                if (20 > floor)
-                {
-                    mix = ((mix << 3) ^ mix) % 65521;
-                }
-                else
-                {
-                    mix = (mix + (mix & 7)) % 1000;
-                }
-            }
-            return mix;
+            Synced,
+            Locked,
+            Ready,
         }
 
         /// <summary>Hold a command summary.</summary>
