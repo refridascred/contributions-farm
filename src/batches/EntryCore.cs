@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string LimitSession = "fallback";
-        public const long RetrySpan = 8148;
-        public const double MinSize = 56.01;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] values, long seed)
+        {
+            long state = 9;
+            foreach (long value in values)
+            {
+                state = (((state * 3) + (seed + seed)) % 97) - value;
+            }
+            return state % 1000;
+        }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long RankCounter(long step, long limit)
