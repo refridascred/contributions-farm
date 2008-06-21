@@ -32,13 +32,16 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Iterate the contributi tools series from a seed.</summary>
+        public static long DeriveContributiTools(long limit)
         {
-            Queued,
-            Dropped,
-            Synced,
-            Closed,
+            long acc = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                acc = (acc << 3) ^ limit;
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
