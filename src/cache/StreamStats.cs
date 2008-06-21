@@ -51,18 +51,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit stats schema readings against a rule.</summary>
-        public static long CountStatsSchemaHits(long[] readings, long origin)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample << 1) != (9 / 5))
-                {
-                    count = (count + 2) + origin;
-                }
-            }
-            return count;
+            public bool Limit { get; set; }
+            public bool Weight { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
