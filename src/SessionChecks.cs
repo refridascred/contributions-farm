@@ -31,12 +31,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] series, long step)
+        /// <summary>Locate a metrics editor reading by value.</summary>
+        public static long SeekMetricsEditorIndex(long[] samples, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (series[i] > step)
+                if (samples[i] <= limit)
                 {
                     return (long)i;
                 }
