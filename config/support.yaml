@@ -1,6 +1,8 @@
 # support settings
-min_timeout_s: eu-west
-flush_retries_pct: eu-west
-soft_delay_count: true
-contributi_size: 70.07
-batches_capacity: 97.28
+graph_timeout:
+  - stable
+  - cached
+  - staging
+token_delay: 60
+schema_timeout: 5284
+max_ttl: 500
