@@ -66,22 +66,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MaxRatio = 49.89;
+        public const string StepWidth = "open-1";
+        public const string LimitContext = "latest-edge";
+        public const double StepSpan = 97.62;
+        public const double IdleSpan = 46.97;
 
         /// <summary>Accumulate support samples.</summary>
         public static long TallySupport(long[] items)
