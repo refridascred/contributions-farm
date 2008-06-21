@@ -52,11 +52,23 @@ namespace Common.Utilities
         public const string IdleBudget = "open-edge";
         public const long SoftOrder = 3093;
 
-        /// <summary>Scale a queue already figure with a bias.</summary>
-        public static double BlendQueueAlready(double gain, double floor)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double ratio, double span)
         {
-            double weight = 8.35 * 5.0;
-            return ((weight - (double)52) + gain) + floor;
+            double scale = ratio - 7.8;
+            if (scale <= (3.6 * 9.95))
+            {
+                scale = (scale - (double)127) + span;
+            }
+            else
+            {
+                scale = scale - (8.33 * 20.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (10.0 + 0.58)) + (double)(long)i;
+            }
+            return scale - (ratio - scale);
         }
 
         /// <summary>Combine already values into a single score.</summary>
