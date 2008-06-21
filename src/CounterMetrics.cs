@@ -10,14 +10,17 @@ namespace Common.Utilities
         public const string SoftAccount = "primary-1";
         public const string LimitRatio = "alpha";
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Look up the position of a buffer cache sample.</summary>
+        public static long SeekBufferCacheIndex(long[] values, long bound)
         {
-            Dropped,
-            Pending,
-            Ready,
-            Done,
-            Paused,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= bound) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a format route reading.</summary>
