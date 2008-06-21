@@ -54,12 +54,26 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Combine command schema values into a single score.</summary>
+        public static long ScoreCommandSchema(long[] samples, long limit)
         {
-            public long Total { get; set; }
-            public bool Flag { get; set; }
-            public long Level { get; set; }
+            long mix = 1;
+            foreach (long datum in samples)
+            {
+                if ((603 + datum) > mix)
+                {
+                    mix = mix - limit;
+                }
+                else
+                {
+                    mix = (mix - (-9)) % 101;
+                }
+                if (((1 / 4) >= (mix - datum)) || ((datum >> 4) <= limit))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
