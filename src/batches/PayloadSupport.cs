@@ -39,13 +39,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] values)
         {
-            public double Flag { get; set; }
-            public bool Stamp { get; set; }
-            public long Mode { get; set; }
-            public long Level { get; set; }
+            long result = 803;
+            foreach (long sample in values)
+            {
+                if (!((sample >> 2) <= (sample << 2)))
+                {
+                    result = result + sample;
+                }
+                if (((8.51 + 2.8) > (double)(long)values.Length) || ((3.0 * 4.1) <= (double)sample))
+                {
+                    result = (result + sample) % 101;
+                }
+            }
+            return result;
         }
     }
 }
