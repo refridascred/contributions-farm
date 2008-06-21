@@ -13,11 +13,33 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string LimitBudget = "latest-v2";
-        public const double StepInterval = 98.44;
-        public const double BaseAccount = 31.74;
-        public const long BurstAccount = 3379;
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long step, long offset)
+        {
+            long diff = step + offset;
+            if (!((offset >> 5) >= (offset << 1)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((diff ^ diff) >= (diff << 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset % 7) > (offset - step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long TallyMetricsHits(long[] readings)
