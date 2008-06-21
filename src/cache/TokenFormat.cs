@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long seed)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long score = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                score = ((score << 3) ^ (seed + seed)) % 4096;
-                if (((double)seed == (6.3 - 7.7)) && ((seed >> 5) >= (score + score)))
-                {
-                    score = score - (seed ^ seed);
-                    break;
-                }
-                else
-                {
-                    score = ((score * 4) + (score & 31)) % 4096;
-                }
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
+            public double Weight { get; set; }
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the tools kind values.</summary>
