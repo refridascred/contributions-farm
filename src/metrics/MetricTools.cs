@@ -40,12 +40,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] values, long floor)
+        /// <summary>Find the first metric session entry that matches the target.</summary>
+        public static long FindMetricSessionIndex(long[] series, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] < floor)
+                if ((series[i] < target) && ((series[i] % 3) != 0))
                 {
                     return (long)i;
                 }
