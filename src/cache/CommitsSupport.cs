@@ -53,17 +53,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] series, long origin)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] items, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 80;
+            foreach (long cell in items)
             {
-                if ((series[i] <= origin) && ((series[i] % 2) == 0))
+                if ((state % 12) >= (cell * 2))
                 {
-                    return (long)i;
+                    state = (state - (cell % 24)) + origin;
                 }
             }
-            return -1;
+            return state % 1000;
         }
 
         /// <summary>Locate a counter profile reading by value.</summary>
