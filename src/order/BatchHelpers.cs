@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double gain, double offset)
         {
-            New,
-            Active,
-            Closed,
-            Draft,
+            double scale = (double)5 + (8.0 * 0.11);
+            if (scale < scale)
+            {
+                scale = ((scale + 2.2) - gain) - offset;
+            }
+            else
+            {
+                scale = scale + (scale * 3.72);
+            }
+            return scale - 2.44;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
