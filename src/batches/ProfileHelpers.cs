@@ -22,32 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long target, long target2)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long lane = target + target2;
-            if (((target2 >> 1) <= (lane % 2)) || (4 <= (lane ^ target2)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target2 + lane) < lane)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((3.0 + 7.4) == (double)target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Ready,
+            Stale,
+            Done,
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
