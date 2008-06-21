@@ -37,18 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileMatches(long[] samples)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long score = 0;
+            foreach (long item in values)
             {
-                if (!(((count * 5) <= (count << 3)) && ((cell >> 2) > (cell - cell))))
-                {
-                    count = count + 1;
-                }
+                score = (((score * 4) + (seed >> 2)) % 101) ^ item;
             }
-            return count;
+            return score;
         }
     }
 }
