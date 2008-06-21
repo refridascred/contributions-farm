@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long limit)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long offset)
         {
-            long mix = limit;
+            long total = offset;
             for (int i = 0; i < 17; i++)
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
