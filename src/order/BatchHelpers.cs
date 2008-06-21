@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine metric report values into a single score.</summary>
-        public static long TallyMetricReport(long[] series, long bound)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double scale, double floor)
         {
-            long state = 44;
-            foreach (long value in series)
-            {
-                if (((bound - value) <= ((-899) & 1)) && ((9 % 8) >= (bound - bound)))
-                {
-                    state = (state ^ state) % 65521;
-                }
-            }
-            return state;
+            double scale2 = scale;
+            return (scale2 - 18.0) + floor;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
