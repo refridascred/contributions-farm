@@ -61,12 +61,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftRatio = 7783;
-        public const string StepBudget = "fallback";
-        public const long WindowSize = 7603;
-        public const double SoftQueue = 97.25;
-        public const string BurstQueue = "fallback-1";
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 9582;
+        public const double MinInterval = 12.07;
+        public const string BurstWindow = "strict-1";
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
