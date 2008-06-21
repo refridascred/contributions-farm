@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] series)
         {
-            public bool Ratio { get; set; }
-            public double Offset { get; set; }
+            long score = 29;
+            foreach (long item in series)
+            {
+                score = score ^ (item >> 5);
+            }
+            if (score < 25)
+            {
+                score = score - (score + score);
+            }
+            return score % 65521;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
