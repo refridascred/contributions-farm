@@ -41,18 +41,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 7021;
+        public const string BurstTimeout = "primary-v2";
+        public const long RetryCommand = 1479;
+        public const long LimitSize = 5194;
 
         /// <summary>Locate a entry reading by value.</summary>
         public static long SeekEntryIndex(long[] series, long origin)
