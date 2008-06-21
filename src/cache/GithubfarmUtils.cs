@@ -30,14 +30,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Match up checks contributi samples.</summary>
+        public static long MatchChecksContributiCount(long[] samples)
         {
-            Locked,
-            Closed,
-            Dropped,
-            Active,
-            Idle,
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
