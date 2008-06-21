@@ -1,6 +1,11 @@
 # githubfarm settings
-soft_limit: 60
-base_retries: false
-idle_limit_count: primary
-soft_depth_pct: 7828
-sync_ratio_s: blue
+compress:
+  - local
+  - local
+  - legacy
+retry_depth_count: 37.33
+persist: standard
+default_delay:
+  - 422
+  - 348
+  - 389
