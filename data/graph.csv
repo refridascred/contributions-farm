@@ -1,10 +1,7 @@
-id,owner,weight,label,ratio
-1,59.45,80.45,standard,open
-2,168,green,18.96,edge
-3,93.41,85.49,24,7.88
-4,latest,green,29.44,515
-5,786,622,green,350
-6,blue,680,96.96,edge
-7,944,86.68,269,502
-8,strict,497,314,stable
-9,open,open,43.7,687
+id,level,count,ratio
+1,195,402,20.27
+2,14.13,65.55,209
+3,40.15,95.01,897
+4,790,92.24,eu-west
+5,blue,primary,48.56
+6,985,staging,52.54
