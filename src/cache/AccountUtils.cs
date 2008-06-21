@@ -39,18 +39,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorGaps(long[] samples, long target)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            double load = bias2;
+            for (int i = 0; i < 5; i++)
             {
-                if ((matches + entry) <= 310)
-                {
-                    matches = (matches + 1) - target;
-                }
+                load = ((load - load) + (double)(long)i) - bias;
             }
-            return matches;
+            return load - 5.05;
         }
     }
 }
