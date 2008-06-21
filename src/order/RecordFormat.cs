@@ -20,18 +20,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] levels, long target)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long mix = 95;
-            foreach (long datum in levels)
-            {
-                if ((mix & 63) > mix)
-                {
-                    mix = (((mix << 3) ^ (998 % 16)) + datum) + target;
-                }
-            }
-            return mix;
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Look up the position of a window sample.</summary>
