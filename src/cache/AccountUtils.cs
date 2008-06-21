@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Check that every counter buffer entry stays within the limit.</summary>
+        public static bool VerifyCounterBufferRange(long[] readings, long seed)
         {
-            Ready,
-            Synced,
-            Dropped,
-            Retry,
-            Draft,
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
