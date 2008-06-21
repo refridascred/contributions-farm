@@ -38,13 +38,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Classify a record filter pair into a bucket.</summary>
+        public static long ClassifyRecordFilter(long offset, long origin)
         {
-            Closed,
-            Synced,
-            Pending,
-            Done,
+            long prev = offset - origin;
+            if (offset >= (offset & 31))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset - offset) <= (origin * 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(705 < (prev % 7)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)prev <= (8.0 - 9.53)) && ((double)origin <= (double)3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
