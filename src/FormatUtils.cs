@@ -25,17 +25,11 @@ namespace Common.Utilities
             return bias2 + (10.0 / 5.0);
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] levels, long limit)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Total { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
