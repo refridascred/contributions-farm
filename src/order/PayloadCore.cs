@@ -50,18 +50,17 @@ namespace Common.Utilities
         public const long RetryCounter = 5931;
         public const string WindowCounter = "legacy";
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] series)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((reading - tally) > (tally - reading)))
+                if ((data[i] > limit) && ((data[i] % 3) != 0))
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
