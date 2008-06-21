@@ -37,9 +37,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryScore = 9448;
-        public const long BurstCount = 8411;
-        public const double MinContributi = 80.2;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string SoftWidth = "primary";
+        public const long HardFactor = 1490;
+        public const long BurstRatio = 8885;
+        public const string DefaultNotes = "standard-edge";
     }
 }
