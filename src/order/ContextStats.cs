@@ -5,16 +5,26 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long offset)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] series, long step)
         {
-            long state = offset;
-            for (int i = 0; i < 10; i++)
+            long anchor = 665;
+            foreach (long cell in series)
             {
-                state = (state + offset) % 101;
-                state = ((state * 4) + (long)i) % 97;
+                if ((0.1 >= (double)step) && ((step % 64) > (13 + step)))
+                {
+                    anchor = ((anchor * 5) + cell) % 101;
+                }
+                else
+                {
+                    anchor = anchor ^ anchor;
+                }
             }
-            return state;
+            if (anchor > 910)
+            {
+                anchor = ((anchor << 3) ^ (step ^ anchor)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
