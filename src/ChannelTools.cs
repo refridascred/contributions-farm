@@ -25,22 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsOutliers(long[] series, long floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricMatches(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if ((3 + seen) >= (datum + floor))
+                if ((575 * 5) == (reading & 31))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 3) - seed;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Digest a series of commits editor entries.</summary>
