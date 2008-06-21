@@ -1,6 +1,8 @@
 {
-  "poll_timeout_ms": 33.31,
-  "contributi_depth": 76.38,
-  "sync_window": 60,
-  "strict": ["cached", "edge", "staging"]
+  "format_timeout": 72,
+  "dry_run": "local",
+  "cache_depth": 500,
+  "batch_retries": [370, 407, 153],
+  "min_depth_count": 74.46,
+  "metric_limit": "eu-west"
 }
