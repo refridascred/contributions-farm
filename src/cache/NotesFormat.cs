@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next already entry value from a seed.</summary>
-        public static long RollAlreadyEntry(long seed)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long PairEntryCount(long[] levels)
         {
-            long score = seed;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = ((score * 5) + (long)i) % 97;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the account phase values.</summary>
