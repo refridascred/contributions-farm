@@ -20,13 +20,23 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double scale, double span)
         {
-            public long Flag { get; set; }
-            public bool Total { get; set; }
-            public bool Region { get; set; }
-            public string Token { get; set; } = "";
+            double weight = scale - (double)(-387);
+            if (weight < (span / 4.0))
+            {
+                weight = weight - weight;
+            }
+            else
+            {
+                weight = weight - (span / 4.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (scale * 11.0)) + (double)(long)i;
+            }
+            return weight - (7.7 / 6.0);
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
