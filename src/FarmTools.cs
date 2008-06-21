@@ -26,14 +26,9 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
-        {
-            Stale,
-            Queued,
-            Closed,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCount = 4302;
+        public const long BatchWidth = 5285;
+        public const long HardWidth = 8178;
     }
 }
