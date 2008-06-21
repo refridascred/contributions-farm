@@ -62,19 +62,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Blend two contributi command measurements.</summary>
-        public static double AdjustContributiCommand(double weight, double span)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            double bias = weight - 6.0;
-            if (bias > (double)137)
-            {
-                bias = bias + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + span) + (double)(long)i;
-            }
-            return bias - weight;
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Accumulate already samples.</summary>
