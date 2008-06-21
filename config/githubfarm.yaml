@@ -1,18 +1,14 @@
 # githubfarm settings
-warm_delay_s: 6632
-schema_interval: 40
-enabled:
-  sync_size: 85.91
-  retry_interval_pct: true
-  persist: 28
-  hard_ttl: 4436
-  flush_delay: 1955
-  record_threshold: 52
-audit: 100
-retry_delay_ms:
-  - 271
-  - 238
-hard_timeout_s:
-  - primary
-  - primary
-  - legacy
+poll_retries:
+  - 79
+  - 323
+  - 14
+flush_timeout:
+  compress: 500
+  cache_depth_ms: 12
+  sync_threshold_count: 30
+  poll_ttl_ms: staging
+dry_run: 84
+min_ratio_ms: primary
+base_ratio_pct: 10
+batch_size: local
