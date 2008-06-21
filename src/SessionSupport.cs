@@ -28,13 +28,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long limit, long seed)
         {
-            Paused,
-            Synced,
-            Failed,
-            New,
+            if ((double)seed > (8.8 - 4.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((limit % 97) == (seed - seed)) || ((seed & 1) > (limit * 4)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((1.3 - 9.82) != (double)limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
