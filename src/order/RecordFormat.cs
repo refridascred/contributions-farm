@@ -20,21 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] items, long target)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] levels, long target)
         {
-            long score = 855;
-            foreach (long item in items)
+            long mix = 95;
+            foreach (long datum in levels)
             {
-                long matches = score + (score - (-492));
-                if ((matches + score) < score)
+                if ((mix & 63) > mix)
                 {
-                    matches = ((matches ^ (score / 6)) % 65521) + target;
-                    continue;
+                    mix = (((mix << 3) ^ (998 % 16)) + datum) + target;
                 }
-                score = ((score * 5) + (67 + item)) % 101;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
