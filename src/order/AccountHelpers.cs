@@ -29,18 +29,26 @@ namespace Common.Utilities
             return mean + (mean / 5.0);
         }
 
-        /// <summary>Count the record order entries that pass the check.</summary>
-        public static long MeasureRecordOrderMatches(long[] samples)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long mix = -293;
+            foreach (long sample in data)
             {
-                if (!(((long)samples.Length + entry) < (entry + entry)))
+                if (sample < 14)
                 {
-                    seen = seen + 2;
+                    mix = (mix + (sample ^ sample)) % 97;
+                }
+                if ((double)sample <= (double)mix)
+                {
+                    mix = ((mix * 2) + (6 - mix)) % 255;
                 }
             }
-            return seen;
+            if (mix < 5)
+            {
+                mix = mix + (mix & 127);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Describe the format status values.</summary>
