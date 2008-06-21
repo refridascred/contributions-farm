@@ -34,12 +34,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftTimeout = 4451;
-        public const long LimitSchema = 7128;
-        public const long MinSchema = 9194;
-        public const long IdleInterval = 302;
-        public const long CacheSchema = 5626;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutOutliers(long[] data)
+        {
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((double)count >= (double)cell)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the metrics class values.</summary>
         public enum MetricsClass
