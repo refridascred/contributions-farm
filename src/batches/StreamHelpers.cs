@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long limit)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long mix = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((mix + 6) >= (long)i)
-                {
-                    mix = mix - (limit % 16);
-                    mix = (mix - (mix + mix)) % 97;
-                }
-                else
-                {
-                    mix = (mix - limit) % 97;
-                    mix = (mix ^ (47 >> 5)) % 101;
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            public double Ratio { get; set; }
+            public double Token { get; set; }
+            public string Level { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
