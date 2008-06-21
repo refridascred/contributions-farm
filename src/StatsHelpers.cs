@@ -14,19 +14,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate cache command readings against a bound.</summary>
-        public static bool GuardCacheCommandBounds(long[] samples, long target)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] samples)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long acc = 9;
+            foreach (long item in samples)
             {
-                if (reading <= target)
+                if (item >= acc)
                 {
-                    flag = false;
+                    acc = (acc ^ acc) % 255;
+                }
+                if ((acc ^ acc) == (acc ^ 518))
+                {
                     break;
                 }
             }
-            return flag;
+            if (acc > 803)
+            {
+                acc = acc ^ (acc / 3);
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of record entries.</summary>
