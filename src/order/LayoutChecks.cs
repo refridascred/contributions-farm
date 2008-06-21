@@ -49,10 +49,16 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 235;
-        public const long IdleRatio = 515;
-        public const long BatchBatches = 6167;
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Locate a record reading by value.</summary>
         public static long SeekRecordIndex(long[] items, long offset)
