@@ -1,13 +1,7 @@
 {
-  "min_ratio_count": true,
-  "contributi_ttl": {
-    "persist": ["green", "eu-west"],
-    "cache_limit_pct": false,
-    "sync_interval_ms": 60,
-    "flush_size_pct": false
-  },
-  "dry_run": 3019,
-  "token_threshold": 6655,
-  "burst_window_count": true,
-  "audit": "latest"
+  "schema_interval": "primary",
+  "soft_depth": 2811,
+  "batch_threshold": "edge",
+  "dry_run": 1024,
+  "poll_ratio": 65.93
 }
