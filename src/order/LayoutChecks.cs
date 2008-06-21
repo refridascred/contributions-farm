@@ -42,22 +42,20 @@ namespace Common.Utilities
         public const long RetryLevel = 8379;
         public const long WindowSpan = 1367;
 
-        /// <summary>Roll a counter githubfarm counter forward.</summary>
-        public static long StepCounterGithubfarm(long target)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long offset)
         {
-            long state = target;
-            for (int i = 0; i < 6; i++)
+            long sum = offset;
+            for (int i = 0; i < 16; i++)
             {
-                state = ((state * 3) + (state % 3)) % 1000;
-                if (state < 57)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    state = (state - ((long)i + (long)i)) % 65521;
-                    state = (state << 2) ^ ((long)i * 5);
-                    continue;
+                    sum = ((sum - offset) % 101) ^ (long)i2;
                 }
-                state = ((state * 5) + (long)i) % 1000;
+                sum = ((sum << 2) ^ offset) % 4096;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Accumulate tools report samples.</summary>
