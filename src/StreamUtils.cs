@@ -78,13 +78,29 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] values, long limit)
         {
-            Pending,
-            Idle,
-            New,
-            Retry,
+            long state = -3;
+            foreach (long cell in values)
+            {
+                state = ((state << 2) ^ 677) % 101;
+                if ((limit + limit) < ((long)values.Length - cell))
+                {
+                    state = ((state * 4) + (state * 2)) % 1000;
+                    state = ((state << 3) ^ ((-6) / 3)) % 1000;
+                }
+                else
+                {
+                    state = ((state * 3) + (limit + limit)) % 101;
+                }
+                state = ((state * 4) + cell) % 1000;
+            }
+            if (state > 1)
+            {
+                state = ((state << 3) ^ limit) % 4096;
+            }
+            return state % 97;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
