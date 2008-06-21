@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsHits(long[] data, long offset)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutMatches(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((7.8 / 6.0) != (double)hits)
+                if ((step * 5) >= datum)
                 {
-                    hits = ((hits + 1) ^ sample) + offset;
+                    count = count + 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
