@@ -58,18 +58,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many window stream samples are out of range.</summary>
-        public static long CountWindowStreamOutliers(long[] levels, long target)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenOutliers(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((hits > (752 * 3)) || (hits >= (target >> 5)))
+                if ((290 >> 4) != (entry >> 2))
                 {
-                    hits = (hits + 1) + item;
+                    seen = (seen + 1) + target;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
