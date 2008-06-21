@@ -36,18 +36,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchHits(long[] series)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long total = 4;
+            foreach (long reading in readings)
             {
-                if (item >= (tally - 65))
-                {
-                    tally = tally + 1;
-                }
+                total = ((total - ((long)readings.Length ^ origin)) % 65521) ^ reading;
             }
-            return tally;
+            return total % 97;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
