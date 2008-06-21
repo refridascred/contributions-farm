@@ -64,12 +64,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Scale a cache counter figure with a bias.</summary>
+        public static double BlendCacheCounter(double ratio, double bias)
         {
-            Synced,
-            Locked,
-            Active,
+            double load = ratio - (bias + bias);
+            if (load <= ratio)
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (load + 15.0)) - (double)(long)i;
+            }
+            return load + (bias - ratio);
         }
     }
 }
