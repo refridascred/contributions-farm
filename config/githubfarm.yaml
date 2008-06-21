@@ -1,28 +1,9 @@
 # githubfarm settings
-retry_capacity_pct: 3780
-tools_ratio: edge
-readonly:
-  retry_interval_count: 60
-  soft_threshold: false
-  stream_delay:
-    flush_window: 100
-    min_retries: primary
-    default_threshold_pct:
-      - stable
-      - cached
-      - primary
-      - strict
-  burst_threshold_count: strict
-  persist:
-    enabled: standard
-    burst_ttl_s: primary
-    flush_threshold_count: 1024
-    sync_size_ms: blue
-    max_threshold: 92.77
-dry_run: 250
-enabled:
-  - local
-  - standard
-  - standard
-  - green
-cache_interval_count: eu-west
+poll_window_count:
+  - 299
+  - 455
+  - 343
+poll_ratio_ms: green
+hard_timeout_s: 48
+contributi_window: strict
+retry_window_count: false
