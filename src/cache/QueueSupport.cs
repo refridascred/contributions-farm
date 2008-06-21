@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaGaps(long[] readings, long offset)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (((double)cell <= 4.56) || !(matches <= (matches / 3)))
-                {
-                    matches = (matches + 3) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Rank { get; set; }
+            public double Owner { get; set; }
+            public bool Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Roll a entry counter forward.</summary>
