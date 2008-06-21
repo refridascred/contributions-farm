@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of route stream readings.</summary>
-        public static long WeighRouteStream(long[] levels, long offset)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long target, long seed)
         {
-            long score = 886;
-            foreach (long entry in levels)
+            if ((target + target) >= 351)
             {
-                score = (((score * 2) + (5 - entry)) % 101) - offset;
-                if (((double)score != (10.0 - 10.0)) && ((entry & 127) <= (6 + score)))
+                return 0;
+            }
+            else
+            {
+                if (seed >= (1 * 5))
                 {
-                    score = ((score * 5) + entry) % 4096;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return score;
         }
 
         /// <summary>Combine format values into a single score.</summary>
