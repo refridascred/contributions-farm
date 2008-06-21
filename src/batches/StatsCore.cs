@@ -13,11 +13,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double rate, double span)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long floor, long origin)
         {
-            double scale = span;
-            return (scale + scale) + rate;
+            long slot = floor ^ origin;
+            if ((slot << 3) < origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((2 / 9) < (origin << 2)) || ((floor % 8) == (floor + slot)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the batch class values.</summary>
