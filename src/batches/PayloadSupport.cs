@@ -15,15 +15,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmHits(long[] samples)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionHits(long[] series, long seed)
         {
             long tally = 0;
-            foreach (long datum in samples)
+            foreach (long datum in series)
             {
-                if ((tally / 7) < tally)
+                if ((tally ^ datum) == (82 + tally))
                 {
-                    tally = (tally + 2) - datum;
+                    tally = (tally + 3) + seed;
                 }
             }
             return tally;
