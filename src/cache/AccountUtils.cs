@@ -20,22 +20,39 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] series)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long floor, long origin)
         {
-            long result = 922;
-            foreach (long item in series)
+            long gap = floor - origin;
+            if (!(gap >= (origin + origin)))
             {
-                if (((result >> 4) <= (5 - item)) || ((result / 2) >= (item + result)))
+                return 3;
+            }
+            else
+            {
+                if (gap >= (gap / 6))
                 {
-                    result = result ^ (item << 2);
+                    return 1;
+                }
+                else
+                {
+                    if (gap > (0 + 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((98 >> 4) <= gap)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (result > 4)
-            {
-                result = result - 61;
-            }
-            return result % 4096;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
