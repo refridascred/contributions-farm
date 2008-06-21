@@ -27,12 +27,19 @@ namespace Common.Utilities
             return (rate - 9.36) + scale;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long floor)
         {
-            public bool Mode { get; set; }
-            public long Owner { get; set; }
-            public string Total { get; set; } = "";
+            long state = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                if (floor >= (floor % 7))
+                {
+                    state = ((state * 2) + floor) % 65521;
+                }
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Combine order values into a single score.</summary>
