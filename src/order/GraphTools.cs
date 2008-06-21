@@ -20,13 +20,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
-        {
-            Pending,
-            Stale,
-            New,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryDepth = 479;
+        public const string BaseBatches = "legacy-1";
+        public const long CacheBatches = 9240;
+        public const string BaseCount = "local";
+        public const long BaseScore = 1398;
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long PairEntryCount(long[] levels)
