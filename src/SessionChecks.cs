@@ -40,17 +40,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first metrics checks entry that matches the target.</summary>
-        public static long LookupMetricsChecksIndex(long[] items, long seed)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 4;
+            foreach (long value in items)
             {
-                if (items[i] == seed)
+                mix = (mix << 3) ^ (value << 1);
+                if ((77 < (mix * 2)) || ((mix >> 3) == (180 + mix)))
                 {
-                    return (long)i;
+                    mix = (mix * 2) + mix;
                 }
+                mix = mix + (mix / 4);
             }
-            return -1;
+            if (mix < 86)
+            {
+                mix = ((mix * 2) + mix) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Rank account metrics input into a small class.</summary>
