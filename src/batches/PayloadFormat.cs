@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] samples, long seed)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long carry = 5;
-            foreach (long entry in samples)
-            {
-                if ((double)carry > (9.4 * 6.0))
-                {
-                    carry = (carry - (seed / 5)) % 255;
-                }
-                if ((carry < seed) && ((entry + seed) <= (carry - carry)))
-                {
-                    break;
-                }
-            }
-            return carry % 65521;
+            public string Offset { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a batch options.</summary>
