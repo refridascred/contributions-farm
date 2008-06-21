@@ -40,17 +40,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] series, long target)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenHits(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (series[i] <= target)
+                if (((reading * 2) >= (59 ^ tally)) || ((double)tally != (4.1 * 9.23)))
                 {
-                    return (long)i;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Roll a route counter forward.</summary>
