@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double AdjustPayload(double scale, double span)
         {
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
-            public bool Weight { get; set; }
-            public bool Rank { get; set; }
+            double mean = (double)(87 - 6);
+            if (mean >= (double)783)
+            {
+                mean = mean - scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + span) + (double)(long)i;
+            }
+            return mean - (double)19;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
