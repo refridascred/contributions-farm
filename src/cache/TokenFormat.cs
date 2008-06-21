@@ -13,10 +13,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double HardFactor = 41.7;
-        public const string WindowBuffer = "strict-edge";
-        public const long SoftRatio = 5643;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsHits(long[] series)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((double)item > (1.77 * 7.93))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long TallyCounterGaps(long[] levels)
