@@ -1,10 +1,5 @@
 {
-  "sync_ratio_count": {
-    "contributi_delay": 2973,
-    "cache_threshold_count": 26,
-    "cache_interval": "fallback"
-  },
-  "max_retries_s": 34.81,
-  "schema_depth": "eu-west",
-  "poll_depth": 65.12
+  "compress": "edge",
+  "sync_delay_pct": "staging",
+  "poll_timeout": 11.9
 }
