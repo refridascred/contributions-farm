@@ -25,13 +25,25 @@ namespace Common.Utilities
         public const string WindowRatio = "stable-1";
         public const double LimitPayload = 53.87;
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long seed, long offset)
         {
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
-            public long Label { get; set; }
-            public long Limit { get; set; }
+            long prev = seed + offset;
+            if (!((offset << 2) >= prev))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((prev >> 4) != (510 + offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the metrics level values.</summary>
