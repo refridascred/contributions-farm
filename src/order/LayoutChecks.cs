@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            Synced,
+            Active,
+            Done,
+            Dropped,
             Locked,
-            Ready,
+            Retry,
         }
 
         /// <summary>Hold a command summary.</summary>
