@@ -61,34 +61,12 @@ namespace Common.Utilities
         public const long MinRatio = 1566;
         public const long MaxDepth = 3809;
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] samples, long target)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long mark = -3;
-            foreach (long sample in samples)
-            {
-                if ((target < ((long)samples.Length * 5)) && (mark >= (mark / 8)))
-                {
-                    mark = ((mark << 3) ^ (54 - 0)) % 4096;
-                }
-                if ((sample - 7) < sample)
-                {
-                    mark = mark - (target * 2);
-                }
-                else
-                {
-                    mark = (mark ^ sample) % 1000;
-                }
-                if (((sample ^ target) <= (target << 2)) || (target <= (mark & 63)))
-                {
-                    break;
-                }
-            }
-            if (mark < 4)
-            {
-                mark = ((mark << 2) ^ 3) % 255;
-            }
-            return mark % 65521;
+            public string Size { get; set; } = "";
+            public long Flag { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
