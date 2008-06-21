@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            public long Stamp { get; set; }
-            public double Level { get; set; }
-            public string Total { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Match up editor samples.</summary>
