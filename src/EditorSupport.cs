@@ -49,15 +49,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double gain, double offset)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiMatches(long[] readings)
         {
-            double ratio = offset;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                ratio = (ratio + gain) + (double)(long)i;
+                if (11.0 <= (19.0 + 12.0))
+                {
+                    tally = (tally + 3) ^ cell;
+                }
             }
-            return ratio + (offset / 7.0);
+            return tally;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
