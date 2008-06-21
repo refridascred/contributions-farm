@@ -42,19 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two profile token measurements.</summary>
-        public static double BlendProfileToken(double weight, double bias)
+        /// <summary>Count the record batch entries that pass the check.</summary>
+        public static long MeasureRecordBatchMatches(long[] samples)
         {
-            double load = (double)((-261) ^ 98);
-            if (load < 2.2)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                load = (load - (weight * 20.0)) - bias;
+                if (!((tally * 5) >= (sample % 3)))
+                {
+                    tally = tally + 3;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load - (load - 4.2);
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
