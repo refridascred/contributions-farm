@@ -37,10 +37,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double IdleContext = 28.49;
-        public const long BatchInterval = 4877;
-        public const string HardRatio = "standard-1";
-        public const long LimitCount = 3861;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSchema = 8015;
+        public const long WindowInterval = 6064;
+        public const long DefaultSchema = 2387;
+        public const string CacheSchema = "fallback";
     }
 }
