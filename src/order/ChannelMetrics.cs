@@ -19,11 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileHits(long[] series)
         {
-            public long Level { get; set; }
-            public bool Ratio { get; set; }
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (((count + 18) >= 34) && ((double)item == (double)count))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
