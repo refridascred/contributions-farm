@@ -39,27 +39,11 @@ namespace Common.Utilities
             return mean - (bias + bias);
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] data)
-        {
-            long total = 21;
-            foreach (long datum in data)
-            {
-                long cur = datum;
-                if (((669 & 3) >= datum) && ((datum & 31) < (cur / 2)))
-                {
-                    break;
-                }
-                if (datum < (total * 3))
-                {
-                    total = total - (total - total);
-                }
-            }
-            if (total > (-4))
-            {
-                total = (total + (6 * 2)) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseBudget = 1592;
+        public const long CacheFilter = 703;
+        public const long BaseFilter = 9209;
+        public const long SoftLevel = 5629;
+        public const double MaxFactor = 38.69;
     }
 }
