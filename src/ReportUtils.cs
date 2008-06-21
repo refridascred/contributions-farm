@@ -13,15 +13,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine counter metric values into a single score.</summary>
-        public static long ScoreCounterMetric(long[] series)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long total = 68;
-            foreach (long entry in series)
-            {
-                total = (total + (190 / 5)) + entry;
-            }
-            return total;
+            Retry,
+            Done,
+            Failed,
         }
 
         /// <summary>Hold a token header.</summary>
