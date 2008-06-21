@@ -22,11 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Check that every notes graph entry stays within the limit.</summary>
+        public static bool ValidateNotesGraphBounds(long[] items, long target)
         {
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Digest a series of session entries.</summary>
