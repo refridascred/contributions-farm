@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long origin, long limit)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] data, long target)
         {
-            long cur = origin + limit;
-            if ((limit * 4) >= (5 % 16))
+            long anchor = 870;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (origin >= (8 % 5))
+                anchor = ((anchor << 3) ^ target) % 65521;
+                if ((anchor - 86) >= entry)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((2.3 / 7.0) >= (double)cur)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)origin != (double)cur)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    break;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
