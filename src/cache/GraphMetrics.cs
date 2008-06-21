@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
-        {
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 7675;
+        public const long LimitLayout = 3192;
+        public const long SoftRatio = 8313;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long MeasureFarmGaps(long[] samples)
