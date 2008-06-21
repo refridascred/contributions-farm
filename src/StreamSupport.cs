@@ -20,11 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string StepFactor = "stable-edge";
-        public const double DefaultInterval = 1.94;
-        public const long StepLevel = 6780;
-        public const string SoftDepth = "strict-1";
+        /// <summary>Audit cache layout readings against a rule.</summary>
+        public static long MeasureCacheLayoutHits(long[] values, long offset)
+        {
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (hits <= cell)
+                {
+                    hits = (hits + 2) + offset;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long SeekChecksIndex(long[] data, long floor)
