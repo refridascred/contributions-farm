@@ -21,12 +21,19 @@ namespace Common.Utilities
         public const double MaxInterval = 19.47;
         public const double HardInterval = 80.04;
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterBounds(long[] samples, long bound)
         {
-            Synced,
-            Paused,
-            Draft,
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
