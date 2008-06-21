@@ -10,12 +10,13 @@ namespace Common.Utilities
         public const long MinFactor = 7103;
         public const string SoftMetric = "primary-1";
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            Stale,
-            Locked,
-            Done,
+            Paused,
+            Active,
+            Closed,
+            New,
         }
 
         /// <summary>Count githubfarm contributi pairs that satisfy a relation.</summary>
