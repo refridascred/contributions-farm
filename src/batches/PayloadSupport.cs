@@ -18,27 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long bound)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] levels, long offset)
         {
-            long carry = bound;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                carry = carry ^ bound;
-                carry = ((carry << 2) ^ (carry + bound)) % 97;
-                if ((3 - bound) < carry)
+                if (value >= offset)
                 {
-                    carry = ((carry * 5) + (carry % 100)) % 101;
-                    carry = (carry << 2) ^ ((-301) / 9);
+                    count = count + 1;
                 }
-                else
-                {
-                    carry = (carry + (carry << 1)) % 4096;
-                    carry = ((carry * 5) + (bound - bound)) % 255;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
