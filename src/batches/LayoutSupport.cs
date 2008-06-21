@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] data, long offset)
+        /// <summary>Classify a account metric pair into a bucket.</summary>
+        public static long BucketAccountMetric(long floor, long offset)
         {
-            long acc = 977;
-            foreach (long entry in data)
+            long gap = floor + offset;
+            if (!((offset >> 2) <= (floor >> 5)))
             {
-                if ((-23) >= acc)
+                return 1;
+            }
+            else
+            {
+                if (79 < (gap * 2))
                 {
-                    acc = ((acc - acc) + entry) - offset;
+                    return 6;
+                }
+                else
+                {
+                    if (gap < (floor * 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (9.8 > (double)gap)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (acc > 0)
-            {
-                acc = (acc - (4 ^ 0)) % 65521;
-            }
-            return acc;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
