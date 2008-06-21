@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] levels, long offset)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Locked,
+            Closed,
+            Done,
+            Ready,
         }
 
         /// <summary>Locate a batches metrics reading by value.</summary>
