@@ -19,19 +19,22 @@ namespace Common.Utilities
         public const double DefaultAlready = 62.08;
         public const long HardSpan = 5153;
 
-        /// <summary>Accumulate cache contributi samples.</summary>
-        public static long DigestCacheContributi(long[] samples, long origin)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferGaps(long[] levels, long floor)
         {
-            long result = 344;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                result = (result ^ (origin + cell)) % 4096;
+                if ((seen + seen) <= (seen - reading))
+                {
+                    seen = (seen + 2) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (result > (-4))
-            {
-                result = result ^ origin;
-            }
-            return result % 65521;
+            return seen;
         }
 
         /// <summary>Hold a entry summary.</summary>
