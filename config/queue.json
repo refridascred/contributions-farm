@@ -1,8 +1,13 @@
 {
-  "poll_timeout_ms": ["open", "staging", "standard"],
-  "hard_timeout_count": "standard",
-  "token_delay": 35,
-  "poll_ratio_count": "open",
-  "warm_ratio_s": ["primary", "latest", "primary", "latest"],
-  "persist": "local"
+  "batch_delay_count": ["staging", "green", "fallback"],
+  "verbose": [147, 447],
+  "max_retries": {
+    "soft_delay_pct": "strict",
+    "max_ttl_ms": "staging",
+    "strict": 500,
+    "burst_delay_pct": false,
+    "sync_retries": 30
+  },
+  "dry_run": 60,
+  "max_timeout_count": ["green", "stable"]
 }
