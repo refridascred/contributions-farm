@@ -43,17 +43,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] values, long floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaMatches(long[] levels, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (values[i] >= floor)
+                if ((count - count) < entry)
                 {
-                    return (long)i;
+                    count = (count + 1) - seed;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
