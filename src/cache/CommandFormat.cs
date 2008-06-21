@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long floor, long limit)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long prev = floor - limit;
-            if (((5.64 / 2.0) < (double)prev) || ((0.88 / 5.0) == (double)limit))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit > (floor + prev)) && (prev > limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (prev <= floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Locked,
+            Paused,
+            Draft,
+            Pending,
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
