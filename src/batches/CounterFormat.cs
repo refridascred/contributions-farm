@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long limit)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] levels, long offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 14; i++)
+            long mark = 31;
+            foreach (long sample in levels)
             {
-                if (((long)i < sum) && ((double)(long)i >= 3.6))
+                if ((sample - 30) <= offset)
                 {
-                    sum = (sum - (limit + sum)) % 101;
+                    mark = ((mark * 4) + ((-59) ^ sample)) % 4096;
                 }
-                sum = ((sum * 3) + limit) % 101;
-                sum = ((sum * 3) + (sum - limit)) % 4096;
-                sum = ((sum * 5) + (long)i) % 97;
             }
-            return sum;
+            if (mark < (-58))
+            {
+                mark = ((mark * 5) + mark) % 4096;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Hold a report options.</summary>
