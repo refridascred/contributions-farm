@@ -13,19 +13,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextBounds(long[] data, long target)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] values, long step)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long sum = 799;
+            foreach (long datum in values)
             {
-                if (cell > target)
+                if (sum > step)
                 {
-                    found = false;
-                    break;
+                    sum = (((sum << 3) ^ (step ^ step)) % 101) + datum;
+                }
+                else
+                {
+                    sum = (sum * 5) + sum;
                 }
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Measure how many checks batches samples are out of range.</summary>
