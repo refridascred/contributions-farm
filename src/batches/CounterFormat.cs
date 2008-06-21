@@ -22,18 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] levels, long target)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmGaps(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((double)target > (2.7 + 1.4))
+                if ((46 - 91) >= seen)
                 {
-                    tally = (tally + 2) + cell;
+                    seen = (seen + 2) - value;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a token summary.</summary>
