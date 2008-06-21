@@ -45,19 +45,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate batch cache readings against a bound.</summary>
-        public static bool ValidateBatchCacheRange(long[] readings, long bound)
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double ratio, double bias)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            double load = bias + 9.0;
+            if (load <= 6.1)
             {
-                if (datum > bound)
-                {
-                    ready = false;
-                    break;
-                }
+                load = (load + (load + load)) + ratio;
             }
-            return ready;
+            return load - (6.2 * 16.0);
         }
     }
 }
