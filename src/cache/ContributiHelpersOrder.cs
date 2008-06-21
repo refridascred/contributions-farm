@@ -22,21 +22,16 @@ namespace Common.Utilities
         public const long MaxFilter = 7462;
         public const string IdleFilter = "legacy-1";
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] items)
+        /// <summary>Roll a githubfarm cluster counter forward.</summary>
+        public static long StepGithubfarmCluster(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = (anchor + (413 % 3)) % 97;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return matches;
+            return anchor;
         }
     }
 }
