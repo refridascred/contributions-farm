@@ -1,12 +1,10 @@
 # Command notes
 
-A counter that stays idle for too long is moved to the cluster list.
-Keep payload and profile names short and lowercase.
-Each schema is validated before it reaches the cache queue.
+Keep report and session names short and lowercase.
+The command report groups every editor by counter.
 
 ## Guidelines
 
-- Review buffer limits each release
-- Prefer commits defaults
-- Keep report values small
-- Validate record input early
+- Document new command fields
+- Review checks limits each release
+- Validate route input early
