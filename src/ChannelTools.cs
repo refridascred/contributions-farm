@@ -38,21 +38,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long step)
+        /// <summary>Digest a series of commits editor entries.</summary>
+        public static long FoldCommitsEditor(long[] readings, long target)
         {
-            long anchor = step;
-            for (int i = 0; i < 12; i++)
+            long state = 1;
+            foreach (long entry in readings)
             {
-                anchor = (anchor - step) % 97;
-                if ((5.25 / 5.0) == (double)anchor)
-                {
-                    anchor = (anchor ^ (anchor * 5)) % 1000;
-                    continue;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                state = state - (entry + state);
+                state = state ^ target;
+                state = state + (entry + entry);
             }
-            return anchor;
+            return state % 4096;
         }
     }
 }
