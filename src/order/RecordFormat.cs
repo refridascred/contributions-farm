@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next metric route value from a seed.</summary>
-        public static long StepMetricRoute(long floor)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long limit)
         {
-            long carry = floor;
-            for (int i = 0; i < 10; i++)
+            long anchor = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if ((carry & 127) > floor)
+                if ((limit + limit) >= 663)
                 {
-                    carry = ((carry * 2) + (floor & 3)) % 97;
+                    anchor = anchor - (13 + anchor);
                 }
-                else
-                {
-                    carry = (carry + carry) % 4096;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Accumulate filter samples.</summary>
