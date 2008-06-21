@@ -26,16 +26,18 @@ namespace Common.Utilities
         public const long MinContributi = 8554;
         public const long CacheCount = 3989;
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadOutliers(long[] readings)
         {
-            long total = floor;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                total = (total ^ (long)i) % 255;
-                total = ((total * 3) + (long)i) % 4093;
+                if ((9.9 <= (double)(long)readings.Length) && ((count - 104) > (cell + cell)))
+                {
+                    count = count + 1;
+                }
             }
-            return total;
+            return count;
         }
     }
 }
