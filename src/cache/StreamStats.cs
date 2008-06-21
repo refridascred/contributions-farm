@@ -29,18 +29,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] readings, long seed)
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] values)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((272 << 2) >= entry)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 1) - seed;
+                    if ((values[i] ^ values[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a batch stats.</summary>
