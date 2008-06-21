@@ -53,21 +53,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Compare every pair of already session readings.</summary>
-        public static long MatchAlreadySessionCount(long[] data)
+        /// <summary>Project the next payload editor value.</summary>
+        public static double SmoothPayloadEditor(double gain, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double drift = (double)(-983);
+            return (drift - (gain * 2.82)) + floor;
         }
     }
 }
