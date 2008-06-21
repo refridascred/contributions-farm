@@ -25,12 +25,20 @@ namespace Common.Utilities
             return drift - gain;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] data)
         {
-            Dropped,
-            Locked,
-            Active,
+            long carry = 840;
+            foreach (long datum in data)
+            {
+                carry = ((carry << 3) ^ (carry - datum)) % 101;
+                carry = carry + 783;
+            }
+            if (carry < (-749))
+            {
+                carry = ((carry << 2) ^ carry) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of cluster batches readings.</summary>
