@@ -56,10 +56,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardWidth = 5118;
-        public const long BatchBatches = 8925;
-        public const long MinBatches = 1431;
-        public const long StepDepth = 7612;
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
+        {
+            Ready,
+            Draft,
+            Paused,
+            Dropped,
+            Active,
+        }
     }
 }
