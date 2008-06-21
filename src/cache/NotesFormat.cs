@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const long StepFactor = 7741;
         public const string MaxSpan = "fallback-1";
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long limit)
+        /// <summary>Project the next token account value.</summary>
+        public static double ScaleTokenAccount(double gain, double bias)
         {
-            long state = limit;
-            for (int i = 0; i < 14; i++)
+            double ratio = gain + (bias * 9.0);
+            if (ratio > gain)
             {
-                if ((906 & 31) > (limit * 2))
-                {
-                    state = ((state * 4) + (limit >> 1)) % 65521;
-                    state = ((state << 2) ^ ((long)i ^ state)) % 101;
-                    continue;
-                }
-                state = ((state * 3) + (long)i) % 4093;
+                ratio = ratio + (bias - ratio);
             }
-            return state;
+            else
+            {
+                ratio = ratio - gain;
+            }
+            return ratio - gain;
         }
 
         /// <summary>Describe the farm phase values.</summary>
