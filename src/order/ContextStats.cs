@@ -20,23 +20,29 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a stream format value against two limits.</summary>
-        public static long BucketStreamFormat(long bound, long origin)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long target, long offset)
         {
-            long slot = bound - origin;
-            if ((origin + slot) >= slot)
+            if ((double)offset == (9.8 * 3.64))
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if (slot >= (bound + 0))
+                if ((2.08 / 9.0) != (double)offset)
                 {
-                    return 7;
+                    return 2;
                 }
                 else
                 {
-                    return 0;
+                    if ((double)offset != (double)target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
         }
