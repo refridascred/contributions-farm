@@ -12,15 +12,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] samples, long floor)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long state = 50;
-            foreach (long item in samples)
-            {
-                state = ((state << 3) ^ floor) + item;
-            }
-            return state;
+            public bool Score { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a commits record.</summary>
