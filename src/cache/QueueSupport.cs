@@ -32,13 +32,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            public long Region { get; set; }
-            public long Offset { get; set; }
+            public long Mode { get; set; }
             public bool Token { get; set; }
-            public double Count { get; set; }
+            public long Ratio { get; set; }
+            public long Region { get; set; }
         }
     }
 }
