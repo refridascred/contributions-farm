@@ -1,4 +1,4 @@
 # entry settings
-persist: edge
-hard_retries_count: 33
-idle_threshold: stable
+order_interval: 8278
+compress: 30
+batch_delay: 29.58
