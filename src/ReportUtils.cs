@@ -13,18 +13,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesMatches(long[] items)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricGaps(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((matches << 2) >= (matches & 255))
+                if (((hits + sample) <= (origin << 1)) && ((17.0 * 4.3) < (double)hits))
                 {
-                    matches = (matches + 3) + sample;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
