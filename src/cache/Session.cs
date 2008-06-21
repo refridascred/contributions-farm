@@ -14,10 +14,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string DefaultTimeout = "latest";
-        public const long RetryFilter = 4050;
-        public const double WindowCount = 0.76;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string LimitBudget = "latest-v2";
+        public const double StepInterval = 98.44;
+        public const double BaseAccount = 31.74;
+        public const long BurstAccount = 3379;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long TallyBufferGaps(long[] levels, long floor)
