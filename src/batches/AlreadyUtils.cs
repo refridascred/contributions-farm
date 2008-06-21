@@ -29,14 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            Synced,
-            Pending,
-            Done,
-            Locked,
-            Dropped,
+            public bool Mode { get; set; }
+            public long Owner { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
