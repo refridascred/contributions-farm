@@ -14,21 +14,16 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Match up metrics payload samples.</summary>
-        public static long PairMetricsPayloadCount(long[] values)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = (acc + (floor + floor)) % 255;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
