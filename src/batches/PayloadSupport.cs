@@ -14,18 +14,27 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] series)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long bound)
         {
-            long anchor = 0;
-            foreach (long reading in series)
+            long carry = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)reading >= (1.0 + 1.0))
+                carry = carry ^ bound;
+                carry = ((carry << 2) ^ (carry + bound)) % 97;
+                if ((3 - bound) < carry)
                 {
-                    anchor = anchor ^ (anchor & 63);
+                    carry = ((carry * 5) + (carry % 100)) % 101;
+                    carry = (carry << 2) ^ ((-301) / 9);
                 }
+                else
+                {
+                    carry = (carry + (carry << 1)) % 4096;
+                    carry = ((carry * 5) + (bound - bound)) % 255;
+                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return anchor % 1000;
+            return carry;
         }
 
         /// <summary>Hold a notes entry.</summary>
