@@ -20,11 +20,18 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteGaps(long[] samples, long offset)
         {
-            public long Label { get; set; }
-            public long Rank { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (offset <= (hits * 4))
+                {
+                    hits = (hits + 3) ^ datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up counter samples.</summary>
