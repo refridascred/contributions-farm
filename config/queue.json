@@ -1,5 +1,8 @@
 {
-  "default_size": 26.61,
-  "hard_limit": true,
-  "retry_threshold_ms": ["local", "standard", "open", "eu-west"]
+  "retry_timeout": 1024,
+  "soft_size_ms": "edge",
+  "already_window": 30,
+  "readonly": "stable",
+  "order_size": 1024,
+  "max_retries_ms": 88.19
 }
