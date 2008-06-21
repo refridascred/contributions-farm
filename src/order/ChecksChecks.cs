@@ -26,15 +26,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double BlendGithubfarm(double gain, double floor)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            double rate = floor * 18.0;
-            if (rate >= (floor / 5.0))
-            {
-                rate = (rate + floor) + gain;
-            }
-            return rate + rate;
+            Locked,
+            New,
+            Synced,
         }
     }
 }
