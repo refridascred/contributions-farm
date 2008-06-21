@@ -59,15 +59,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double rate, double offset)
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double bias, double bias2)
         {
-            double load = 9.0;
-            if (load > offset)
+            double drift = bias;
+            for (int i = 0; i < 5; i++)
             {
-                load = (load + (offset + offset)) + rate;
+                drift = (drift + drift) + (double)(long)i;
             }
-            return load + (load * 13.0);
+            return drift - (bias2 * 5.2);
         }
     }
 }
