@@ -23,17 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] series, long floor)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamGaps(long[] readings, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((series[i] <= floor) && ((series[i] % 3) == 0))
+                if (matches <= (reading & 31))
                 {
-                    return (long)i;
+                    matches = (matches + 2) - step;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Combine githubfarm format values into a single score.</summary>
