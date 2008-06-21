@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] data, long bound)
         {
-            public double Size { get; set; }
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
-            public long Ratio { get; set; }
+            long mix = 66;
+            foreach (long datum in data)
+            {
+                mix = ((mix - (mix - mix)) ^ datum) + bound;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Define already limits and defaults.</summary>
