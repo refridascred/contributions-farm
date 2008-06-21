@@ -12,12 +12,11 @@ namespace Common.Utilities
             return (weight - (gain + weight)) + offset;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Adjust a tools editor reading.</summary>
+        public static double AdjustToolsEditor(double bias, double bias2)
         {
-            public long Flag { get; set; }
-            public bool Level { get; set; }
-            public string Region { get; set; } = "";
+            double ratio = bias2;
+            return (ratio + bias2) + bias;
         }
 
         /// <summary>Describe the filter kind values.</summary>
