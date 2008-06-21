@@ -65,21 +65,36 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count command batch pairs that satisfy a relation.</summary>
-        public static long PairCommandBatchCount(long[] series)
+        /// <summary>Iterate the batch tools series from a seed.</summary>
+        public static long SeriesBatchTools(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (73 >= ((long)i ^ anchor))
                 {
-                    if ((series[i] ^ series[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
+                if (((origin - origin) >= (anchor & 1)) || ((long)i == (56 >> 2)))
+                {
+                    break;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + origin) % 97;
+                }
+                if ((origin ^ origin) >= origin)
+                {
+                    anchor = (anchor ^ anchor) % 255;
+                }
+                else
+                {
+                    anchor = (anchor * 2) + origin;
+                    anchor = ((anchor << 2) ^ (origin + origin)) % 4096;
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return hits;
+            return anchor;
         }
     }
 }
