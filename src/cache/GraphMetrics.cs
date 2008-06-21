@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the metrics channel entries that pass the check.</summary>
-        public static long TallyMetricsChannelHits(long[] data, long offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorMatches(long[] series, long target)
         {
             long count = 0;
-            foreach (long datum in data)
+            foreach (long sample in series)
             {
-                if ((offset >= (5 - count)) || (datum < (count << 1)))
+                if ((9.54 * 15.0) >= (double)target)
                 {
-                    count = count + 3;
+                    count = (count + 3) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
