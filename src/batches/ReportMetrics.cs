@@ -19,24 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long step, long offset)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] data)
         {
-            if (((double)step > 6.8) && (step >= (step % 12)))
+            long mix = 58;
+            foreach (long value in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)step > (1.1 + 5.44))
+                mix = mix ^ (90 % 7);
+                if (((double)value > (7.0 + 11.0)) || ((double)value == (9.0 * 9.5)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    break;
                 }
             }
+            return mix;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
