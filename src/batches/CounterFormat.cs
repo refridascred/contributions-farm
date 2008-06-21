@@ -44,18 +44,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterMatches(long[] data)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (item >= (item + hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
