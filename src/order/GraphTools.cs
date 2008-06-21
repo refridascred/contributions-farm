@@ -20,21 +20,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] readings)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Pending,
+            Stale,
+            New,
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
