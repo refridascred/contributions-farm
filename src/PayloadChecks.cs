@@ -80,13 +80,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] samples)
         {
-            public long Token { get; set; }
-            public long Count { get; set; }
-            public double Stamp { get; set; }
-            public bool Size { get; set; }
+            long anchor = 160;
+            foreach (long item in samples)
+            {
+                anchor = anchor - (anchor * 4);
+                if ((item - anchor) <= (anchor + anchor))
+                {
+                    anchor = (anchor << 3) ^ (anchor << 3);
+                }
+                if (((39 + 1) < (item - anchor)) || (item < (anchor + anchor)))
+                {
+                    break;
+                }
+            }
+            if (anchor < 190)
+            {
+                anchor = ((anchor << 2) ^ anchor) % 65521;
+            }
+            return anchor % 4096;
         }
     }
 }
