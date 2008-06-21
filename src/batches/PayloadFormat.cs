@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools editor samples are out of range.</summary>
-        public static long AuditToolsEditorGaps(long[] levels, long bound)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextRange(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if (((matches - matches) <= (bound + 15)) && ((35 % 16) != (matches % 60)))
+                if (entry >= step)
                 {
-                    matches = (matches + 1) - reading;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Hold a batch options.</summary>
