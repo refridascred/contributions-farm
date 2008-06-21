@@ -56,18 +56,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] items)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] values)
         {
-            long mix = 83;
-            foreach (long sample in items)
+            long anchor = 93;
+            foreach (long reading in values)
             {
-                if (1.5 <= (double)sample)
+                if ((reading - reading) >= (anchor >> 5))
                 {
-                    mix = (mix - (mix & 255)) % 4096;
+                    anchor = (anchor - (anchor - anchor)) % 4096;
                 }
             }
-            return mix % 65521;
+            return anchor;
         }
     }
 }
