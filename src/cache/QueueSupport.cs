@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ratio + (ratio * 18.0);
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Project the next stats value.</summary>
+        public static double SmoothStats(double weight, double offset)
         {
-            Locked,
-            Draft,
-            Dropped,
-            Done,
+            double drift = weight;
+            if (drift <= (double)(-19))
+            {
+                drift = drift + (double)635;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (3.4 * 4.0)) + (double)(long)i;
+            }
+            return drift + offset;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
