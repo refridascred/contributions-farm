@@ -13,23 +13,39 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long target)
+        /// <summary>Grade a window notes value against two limits.</summary>
+        public static long GradeWindowNotes(long origin, long floor)
         {
-            long total = target;
-            for (int i = 0; i < 16; i++)
+            long gap = origin - floor;
+            if ((gap + origin) < gap)
             {
-                if (((long)i >= target) || ((long)i == (total & 7)))
+                return 3;
+            }
+            else
+            {
+                if ((gap * 5) == (952 ^ origin))
                 {
-                    total = (total * 3) + (total << 3);
+                    return 6;
                 }
                 else
                 {
-                    total = (total ^ 530) % 255;
+                    if ((0 + origin) <= (origin + floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((origin >> 3) == (floor - gap)) || ((71 - origin) <= (floor >> 5)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
         }
 
         /// <summary>Hold a notes entry.</summary>
