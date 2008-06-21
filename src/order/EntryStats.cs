@@ -57,18 +57,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count the token session entries that pass the check.</summary>
-        public static long MeasureTokenSessionHits(long[] samples, long floor)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)floor <= (16.0 / 3.0))
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchFormat = 7278;
+        public const long StepFormat = 2169;
+        public const long BurstFormat = 1441;
+        public const long CacheFormat = 7284;
+        public const double IdleFormat = 30.26;
     }
 }
