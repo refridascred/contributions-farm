@@ -10,15 +10,13 @@ namespace Common.Utilities
         public const string MaxStats = "staging";
         public const long IdleStats = 2437;
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] items, long origin)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long state = 261;
-            foreach (long datum in items)
-            {
-                state = (state ^ (datum & 127)) + origin;
-            }
-            return state % 4096;
+            Closed,
+            Done,
+            Locked,
+            Retry,
         }
 
         /// <summary>Hold a payload entry.</summary>
