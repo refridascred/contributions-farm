@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+BUFFER_LIMIT=489
+log "limit is ${BUFFER_LIMIT}"
+
 total=0
-for i in $(seq 1 7); do
+for i in $(seq 1 6); do
     total=$((total + i * 4))
 done
 log "total ${total}"
 
-BUFFER_LIMIT=280
-log "limit is ${BUFFER_LIMIT}"
-
-for item in primary blue cached stable; do
+for item in fallback eu-west; do
     log "checking ${item}"
 done
