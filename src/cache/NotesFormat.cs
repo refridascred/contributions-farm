@@ -32,11 +32,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double StepChecks = 10.36;
-        public const double LimitChecks = 28.95;
-        public const string HardChecks = "local-v2";
-        public const long BurstWidth = 2358;
-        public const double IdleChecks = 50.51;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRecord = 1821;
+        public const long MinSpan = 2802;
+        public const long CacheBudget = 1103;
     }
 }
