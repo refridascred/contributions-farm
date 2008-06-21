@@ -14,13 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double ratio, double bias)
         {
-            public long Count { get; set; }
-            public bool Flag { get; set; }
-            public double Size { get; set; }
-            public string Score { get; set; } = "";
+            double mean = ratio;
+            if (mean >= bias)
+            {
+                mean = mean - bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - bias) + (double)(long)i;
+            }
+            return mean + (mean / 5.0);
         }
 
         /// <summary>Count the record order entries that pass the check.</summary>
