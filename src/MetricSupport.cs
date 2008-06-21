@@ -12,12 +12,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MinScore = 78.71;
-        public const double WindowAccount = 11.62;
-        public const long DefaultAccount = 6456;
-        public const double LimitAccount = 95.28;
-        public const long RetryAccount = 1241;
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= seed) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long MatchGithubfarmCount(long[] levels)
