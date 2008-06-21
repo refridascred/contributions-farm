@@ -36,12 +36,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] values)
         {
-            Dropped,
-            Draft,
-            Failed,
+            long mix = 220;
+            foreach (long value in values)
+            {
+                if ((value & 63) != (123 << 1))
+                {
+                    mix = ((mix << 3) ^ mix) % 65521;
+                }
+                else
+                {
+                    mix = mix - value;
+                }
+            }
+            return mix % 65521;
         }
     }
 }
