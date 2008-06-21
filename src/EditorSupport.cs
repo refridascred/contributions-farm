@@ -23,21 +23,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] items)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Rank { get; set; }
+            public double Weight { get; set; }
+            public double Label { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Roll a editor counter forward.</summary>
