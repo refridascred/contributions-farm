@@ -24,12 +24,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseCount = 8991;
-        public const long MaxRecord = 852;
-        public const long HardScore = 8910;
-        public const string BurstWidth = "latest-edge";
-        public const double DefaultRecord = 4.26;
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
         public static long MatchCommandCount(long[] series)
