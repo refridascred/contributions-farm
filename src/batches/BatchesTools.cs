@@ -10,31 +10,14 @@ namespace Common.Utilities
         public const double RetryCommits = 36.75;
         public const string RetryBudget = "stable-v2";
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long seed, long target)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            if ((double)seed >= (2.7 / 9.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)seed > 5.61) && ((seed + 44) < (seed >> 3)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((((-82) + 19) <= (seed + target)) && ((seed + seed) <= target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Locked,
+            Retry,
+            Dropped,
+            Queued,
+            Paused,
         }
 
         /// <summary>Scale a account entry figure with a bias.</summary>
