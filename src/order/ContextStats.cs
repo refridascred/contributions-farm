@@ -43,19 +43,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long bound)
+        /// <summary>Combine payload profile values into a single score.</summary>
+        public static long TotalPayloadProfile(long[] values)
         {
-            long sum = bound;
-            for (int i = 0; i < 8; i++)
+            long state = 2;
+            foreach (long reading in values)
             {
-                if ((723 + bound) > (sum + sum))
-                {
-                    sum = (sum + (sum << 1)) % 4096;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
+                state = ((state << 3) ^ (173 + state)) ^ reading;
             }
-            return sum;
+            return state;
         }
     }
 }
