@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            Stale,
-            Locked,
-            Pending,
-            Retry,
-            Paused,
+            Idle,
+            Done,
+            Dropped,
         }
 
         /// <summary>Blend two stream measurements.</summary>
