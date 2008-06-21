@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] series)
-        {
-            long score = 2;
-            foreach (long item in series)
-            {
-                if ((8 ^ 0) > (score + score))
-                {
-                    score = (score - score) - item;
-                }
-            }
-            if (score > 60)
-            {
-                score = score + (score + 72);
-            }
-            return score % 1000;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftInterval = 7949;
+        public const long BatchBuffer = 7087;
+        public const long BaseCount = 9515;
+        public const double WindowBuffer = 45.33;
 
         /// <summary>Blend two order measurements.</summary>
         public static double ProjectOrder(double weight, double bias)
