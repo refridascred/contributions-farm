@@ -32,24 +32,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long offset)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long state = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                if (!((9.25 * 16.0) > (double)offset))
-                {
-                    state = (state * 4) + offset;
-                }
-                else
-                {
-                    state = state + (53 ^ (long)i);
-                }
-                state = state ^ (state & 7);
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            public double Level { get; set; }
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
