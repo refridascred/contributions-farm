@@ -12,39 +12,20 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long step, long origin)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] data)
         {
-            long offset = step ^ origin;
-            if (!((5 + step) != (step / 3)))
+            long result = 24;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (10.0 < (double)step)
+                result = (result + (5 + entry)) % 255;
+                result = (result * 5) + (result - 6);
+                if ((double)result <= 3.7)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((offset + offset) <= (step % 100)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step ^ offset) <= (origin + offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    result = (result + (result + entry)) % 4096;
                 }
             }
+            return result;
         }
 
         /// <summary>Locate a window reading by value.</summary>
