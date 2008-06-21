@@ -25,21 +25,10 @@ namespace Common.Utilities
             return drift - gain;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] data)
-        {
-            long carry = 840;
-            foreach (long datum in data)
-            {
-                carry = ((carry << 3) ^ (carry - datum)) % 101;
-                carry = carry + 783;
-            }
-            if (carry < (-749))
-            {
-                carry = ((carry << 2) ^ carry) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinFactor = 737;
+        public const double RetryContext = 81.61;
+        public const long BurstContext = 6024;
 
         /// <summary>Fold a list of cluster batches readings.</summary>
         public static long ScoreClusterBatches(long[] items, long bound)
