@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Derive the next account support value from a seed.</summary>
-        public static long SeriesAccountSupport(long target)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long result = target;
-            for (int i = 0; i < 12; i++)
-            {
-                result = result + (target + 99);
-                if (7.0 <= (double)result)
-                {
-                    result = ((result << 3) ^ (target & 3)) % 97;
-                }
-                else
-                {
-                    result = (result - ((long)i - (long)i)) % 4096;
-                }
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            public long Count { get; set; }
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the stream state values.</summary>
