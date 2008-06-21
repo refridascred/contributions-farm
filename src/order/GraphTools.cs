@@ -20,19 +20,30 @@ namespace Common.Utilities
         public const double RetryToken = 75.69;
         public const string WindowToken = "open";
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] series)
+        /// <summary>Fold a list of filter format readings.</summary>
+        public static long DigestFilterFormat(long[] values)
         {
-            long total = -97;
-            foreach (long cell in series)
+            long result = -550;
+            foreach (long value in values)
             {
-                total = (total << 2) ^ (cell - total);
-                if ((1.5 - 5.8) < (double)cell)
+                if (!(((value & 31) > (value << 3)) && ((result ^ result) == (value >> 4))))
                 {
-                    total = ((total * 4) + (cell << 3)) % 1000;
+                    result = (result ^ (value & 127)) % 97;
+                }
+                if ((result < value) && (value > (value ^ value)))
+                {
+                    result = (result << 2) ^ result;
+                }
+                if ((((long)values.Length - value) == (value << 3)) && (value < (result >> 5)))
+                {
+                    break;
                 }
             }
-            return total;
+            if (result > 2)
+            {
+                result = (result + 27) % 255;
+            }
+            return result % 4096;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
