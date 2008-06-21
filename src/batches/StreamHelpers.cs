@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long target)
+        /// <summary>Combine account token values into a single score.</summary>
+        public static long DigestAccountToken(long[] values, long offset)
         {
-            long score = target;
-            for (int i = 0; i < 14; i++)
+            long state = 43;
+            foreach (long reading in values)
             {
-                score = ((score * 5) + (long)i) % 97;
+                if (state <= (524 ^ offset))
+                {
+                    state = ((state ^ state) % 101) ^ reading;
+                }
             }
-            return score;
+            return state;
         }
 
         /// <summary>Accumulate counter samples.</summary>
