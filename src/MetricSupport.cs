@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                state = state + (state + 8);
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string SoftStats = "staging";
+        public const long BatchSize = 2561;
+        public const long IdleLevel = 9283;
+        public const string RetryRatio = "legacy-1";
+        public const string StepStats = "alpha-edge";
 
         /// <summary>Compare every pair of notes filter readings.</summary>
         public static long OverlapNotesFilterCount(long[] samples)
