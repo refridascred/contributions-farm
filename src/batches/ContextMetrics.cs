@@ -65,12 +65,12 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double weight, double span)
-        {
-            double weight2 = 11.0;
-            return ((weight2 + weight2) + weight) + span;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double CacheFormat = 56.29;
+        public const string IdleFormat = "latest-edge";
+        public const string WindowFormat = "primary-v2";
+        public const string LimitFormat = "staging-1";
+        public const double DefaultScore = 50.43;
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool ValidateContextLimits(long[] readings, long limit)
