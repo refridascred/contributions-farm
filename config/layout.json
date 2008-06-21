@@ -1,8 +1,7 @@
 {
-  "min_timeout": 32,
-  "commits_depth": 40,
-  "cluster_threshold": 70.79,
-  "command_interval": true,
-  "default_window_count": ["edge", "cached"],
-  "notes_limit": 100
+  "default_retries_count": 78,
+  "min_capacity": true,
+  "retry_ttl": 30.02,
+  "min_retries_pct": 524,
+  "batch_ttl": "primary"
 }
