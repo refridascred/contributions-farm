@@ -48,19 +48,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] readings, long limit)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] data)
         {
-            long result = 404;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result ^ (limit + result)) % 255;
-                if (((result & 15) <= (limit - limit)) && (335 < (3 - limit)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result - reading) % 1000;
+                    if ((data[i] ^ data[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result % 4096;
+            return matches;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
