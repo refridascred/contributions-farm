@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepTimeout = 9265;
-        public const long MaxLevel = 2299;
-        public const long SoftInterval = 7410;
-        public const long MaxCount = 286;
-        public const long BurstBatch = 9736;
+        /// <summary>Define support limits and defaults.</summary>
+        public const string DefaultSupport = "local-v2";
+        public const long WindowSupport = 3737;
+        public const long RetrySupport = 6471;
+        public const long MinSupport = 2684;
+        public const string HardDepth = "primary-v2";
 
         /// <summary>Check that every graph account entry stays within the limit.</summary>
         public static bool ValidateGraphAccountBounds(long[] samples, long target)
