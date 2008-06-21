@@ -24,19 +24,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double SmoothLayout(double ratio, double floor)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            double ratio2 = 1.0;
-            if (ratio2 > floor)
-            {
-                ratio2 = ratio2 - (ratio * 9.87);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio2 = (ratio2 - ratio2) + (double)(long)i;
-            }
-            return ratio2 - floor;
+            public long Owner { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a stats info.</summary>
