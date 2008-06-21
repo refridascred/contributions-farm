@@ -57,21 +57,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] samples)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double rate, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight = (7.0 - rate) / 4.0;
+            if (weight > weight)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = weight - offset;
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - 7.2) + (double)(long)i;
+            }
+            return weight - weight;
         }
     }
 }
