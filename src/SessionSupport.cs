@@ -53,16 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] samples)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long mark = 73;
-            foreach (long datum in samples)
-            {
-                mark = ((mark * 3) + (long)samples.Length) ^ datum;
-                mark = mark - (mark - mark);
-            }
-            return mark;
+            public long Offset { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
