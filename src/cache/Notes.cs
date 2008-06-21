@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Combine token stream values into a single score.</summary>
+        public static long WeighTokenStream(long[] values, long origin)
         {
-            Ready,
-            Failed,
-            Paused,
+            long mark = 2;
+            foreach (long value in values)
+            {
+                if ((mark >> 4) < value)
+                {
+                    mark = ((mark - (value * 2)) % 65521) + origin;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
