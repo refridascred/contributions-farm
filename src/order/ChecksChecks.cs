@@ -31,14 +31,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Rank queue stream input into a small class.</summary>
+        public static long GradeQueueStream(long limit, long limit2)
         {
-            Ready,
-            Queued,
-            Done,
-            Locked,
-            Pending,
+            if (!(8.42 > (double)limit2))
+            {
+                return 7;
+            }
+            else
+            {
+                if (1.29 < (double)limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
