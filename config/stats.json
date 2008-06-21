@@ -1,13 +1,7 @@
 {
-  "hard_limit_s": 57,
-  "default_threshold": {
-    "buffer_size": 500,
-    "notes_ttl": 6440,
-    "verbose": true,
-    "max_limit": "blue",
-    "flush_depth_ms": 5991
-  },
-  "filter_ratio": false,
-  "idle_timeout_s": 25,
-  "idle_depth_pct": 222
+  "min_limit_s": "eu-west",
+  "batches_delay": true,
+  "min_window_s": 3254,
+  "retry_window": 53.79,
+  "cache_capacity": 78.59
 }
