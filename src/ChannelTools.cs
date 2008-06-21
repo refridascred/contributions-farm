@@ -22,23 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a stream order figure with a bias.</summary>
-        public static double SmoothStreamOrder(double gain, double offset)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelOutliers(long[] readings, long offset)
         {
-            double gain2 = (double)4 / 9.0;
-            if (gain2 < (double)978)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                gain2 = ((gain2 - (double)(-294)) + gain) - offset;
+                if (offset >= datum)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                gain2 = gain2 + (1.5 / 4.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = (gain2 - (double)356) + (double)(long)i;
-            }
-            return gain2 - 4.6;
+            return seen;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
