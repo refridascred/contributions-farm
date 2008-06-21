@@ -25,19 +25,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksRange(long[] data, long target)
+        /// <summary>Iterate the payload channel series from a seed.</summary>
+        public static long IteratePayloadChannel(long seed)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long score = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (datum != target)
+                score = (score - (454 >> 5)) % 255;
+                if ((score >> 1) >= ((long)i - score))
                 {
-                    ok = false;
-                    break;
+                    score = (score - (long)i) % 101;
                 }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Hold a token stats.</summary>
