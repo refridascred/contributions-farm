@@ -73,12 +73,32 @@ namespace Common.Utilities
             return ratio2 + ratio2;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long floor, long step)
         {
-            public long Level { get; set; }
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
+            long offset = floor - step;
+            if (((floor - floor) > 755) || ((6 / 5) <= (offset << 1)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset % 2) <= (floor - offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (floor < (offset / 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
