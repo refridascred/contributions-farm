@@ -22,12 +22,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
-            public bool Total { get; set; }
+            Paused,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Hold a stream options.</summary>
