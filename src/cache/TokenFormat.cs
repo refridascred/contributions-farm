@@ -12,11 +12,14 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            public long Size { get; set; }
-            public bool Total { get; set; }
+            Ready,
+            Idle,
+            Failed,
+            Retry,
+            Pending,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
