@@ -54,21 +54,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] items)
+        /// <summary>Audit stats schema readings against a rule.</summary>
+        public static long CountStatsSchemaHits(long[] readings, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((sample << 1) != (9 / 5))
                 {
-                    if ((items[i] + items[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 2) + origin;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
