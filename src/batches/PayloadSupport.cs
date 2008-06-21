@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchBudget = 4829;
-        public const long LimitRatio = 670;
-        public const long SoftBudget = 6688;
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            Synced,
+            Retry,
+            Paused,
+            Idle,
+        }
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long CountSessionHits(long[] series, long seed)
