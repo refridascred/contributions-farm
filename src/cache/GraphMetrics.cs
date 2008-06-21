@@ -65,13 +65,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            Stale,
-            Done,
-            Queued,
-            New,
+            public long Size { get; set; }
+            public bool Level { get; set; }
+            public string Rank { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a filter info.</summary>
