@@ -55,18 +55,18 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] readings, long offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricOutliers(long[] samples)
         {
-            long state = 631;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (999 < (offset >> 3))
+                if (count > cell)
                 {
-                    state = (state + (-818)) + sample;
+                    count = count + 3;
                 }
             }
-            return state;
+            return count;
         }
     }
 }
