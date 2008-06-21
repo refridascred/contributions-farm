@@ -47,32 +47,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a buffer already value against two limits.</summary>
-        public static long ClassifyBufferAlready(long target, long floor)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] series, long bound)
         {
-            long cur = target - floor;
-            if ((floor << 3) < (target - floor))
+            long seen = 0;
+            foreach (long sample in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor + cur) < (3 - target))
+                if (((((-6) + seen) < (sample - sample)) || ((0 + sample) >= (bound * 5))) && ((11.0 < (double)seen) || (471 > (sample ^ sample))))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor & 3) < (cur - 476))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
     }
 }
