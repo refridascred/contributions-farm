@@ -1,6 +1,11 @@
-id,token,count,label,score
-1,fallback,local,stable,edge
-2,cached,836,legacy,985
-3,440,843,primary,457
-4,primary,stable,464,624
-5,blue,32.56,fallback,686
+id,label,ratio,level
+1,27,643,74.77
+2,486,808,edge
+3,84.32,869,76.96
+4,37.01,277,812
+5,legacy,80,21.19
+6,latest,555,legacy
+7,87.02,cached,689
+8,49.25,open,56.93
+9,42.33,324,831
+10,cached,primary,28.48
