@@ -25,19 +25,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double weight, double offset)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            double mean = weight;
-            if (mean >= (weight / 5.0))
-            {
-                mean = (mean + mean) - offset;
-            }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean - 7.46;
+            public long Region { get; set; }
+            public double Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Blend two metrics measurements.</summary>
