@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BurstTimeout = "primary-1";
-        public const string CacheInterval = "latest-edge";
-        public const long SoftBuffer = 7280;
-        public const long RetryBuffer = 1258;
+        /// <summary>Project the next commits value.</summary>
+        public static double BlendCommits(double weight, double span)
+        {
+            double weight2 = (double)2 + (weight - span);
+            if (weight2 <= weight)
+            {
+                weight2 = weight2 + weight2;
+            }
+            else
+            {
+                weight2 = weight2 + (span * 0.12);
+            }
+            return weight2 - 2.67;
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long WeighFormat(long[] levels)
