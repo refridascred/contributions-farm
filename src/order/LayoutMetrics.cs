@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] series, long target)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long mark = -59;
-            foreach (long item in series)
-            {
-                mark = ((mark * 3) + (target & 1)) % 4096;
-                mark = ((mark << 3) ^ (mark - target)) % 4096;
-                if (item > (mark % 2))
-                {
-                    mark = (mark + (item + (-46))) % 65521;
-                }
-            }
-            return mark;
+            public string Limit { get; set; } = "";
+            public long Size { get; set; }
+            public bool Weight { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
