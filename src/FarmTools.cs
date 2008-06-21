@@ -22,12 +22,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Derive the next filter profile value from a seed.</summary>
+        public static long DeriveFilterProfile(long step)
         {
-            Pending,
-            Done,
-            Active,
+            long carry = step;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = ((carry << 3) ^ ((long)i - carry)) % 1000;
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
