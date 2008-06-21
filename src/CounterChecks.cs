@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a githubfarm command counter forward.</summary>
-        public static long IterateGithubfarmCommand(long offset)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long score = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((score >> 4) != (23 ^ score))
-                {
-                    score = score + (score + offset);
-                    score = score ^ (497 ^ score);
-                }
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            Active,
+            Paused,
+            Retry,
+            Failed,
+            Ready,
         }
 
         /// <summary>Describe the queue class values.</summary>
