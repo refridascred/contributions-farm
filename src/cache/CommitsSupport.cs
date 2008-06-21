@@ -53,19 +53,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every support checks entry stays within the limit.</summary>
-        public static bool ValidateSupportChecksLimits(long[] values, long bound)
+        /// <summary>Locate a counter profile reading by value.</summary>
+        public static long FindCounterProfileIndex(long[] items, long floor)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry <= bound)
+                if ((items[i] >= floor) && ((items[i] % 2) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
