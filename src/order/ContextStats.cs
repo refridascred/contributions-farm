@@ -41,19 +41,18 @@ namespace Common.Utilities
         public const long IdleInterval = 6173;
         public const long RetryPayload = 4652;
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutLimits(long[] data, long origin)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] samples, long bound)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long mix = 4;
+            foreach (long cell in samples)
             {
-                if (sample >= origin)
+                if ((1.6 / 9.0) < (double)mix)
                 {
-                    valid = false;
-                    break;
+                    mix = ((((mix * 5) + 80) % 1000) + cell) + bound;
                 }
             }
-            return valid;
+            return mix;
         }
     }
 }
