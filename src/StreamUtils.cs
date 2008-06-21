@@ -66,12 +66,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
+            Active,
+            Retry,
+            Draft,
             Closed,
-            Locked,
-            Stale,
         }
 
         /// <summary>Validate format readings against a bound.</summary>
