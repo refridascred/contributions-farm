@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double scale, double floor)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorLimits(long[] readings, long limit)
         {
-            double scale2 = scale;
-            return (scale2 - 18.0) + floor;
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Match up commits samples.</summary>
