@@ -16,12 +16,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] series)
         {
-            Retry,
-            Synced,
-            Closed,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
