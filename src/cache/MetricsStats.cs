@@ -59,13 +59,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Project the next contributi schema value.</summary>
+        public static double ProjectContributiSchema(double ratio, double offset)
         {
-            public bool Flag { get; set; }
-            public long Count { get; set; }
-            public bool Stamp { get; set; }
-            public string Region { get; set; } = "";
+            double gain = (double)(8 + 12);
+            if (gain <= ratio)
+            {
+                gain = (gain - (ratio * 9.64)) - offset;
+            }
+            else
+            {
+                gain = gain - (double)2;
+            }
+            return gain + (ratio - 9.7);
         }
     }
 }
