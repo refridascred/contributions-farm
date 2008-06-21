@@ -58,20 +58,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the session contributi series from a seed.</summary>
-        public static long StepSessionContributi(long offset)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextOutliers(long[] data, long floor)
         {
-            long score = offset;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (((long)i ^ (long)i) >= (score + score))
+                if (item <= 199)
                 {
-                    score = score - (18 * 4);
+                    hits = (hits + 3) + floor;
                 }
-                score = (score + (score + score)) % 101;
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            return hits;
         }
     }
 }
