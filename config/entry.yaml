@@ -1,42 +1,15 @@
 # entry settings
-compress:
-  verbose:
-    - 276
-    - 444
-    - 304
-    - 303
-  enabled: 100
-  buffer_ttl: 1838
-hard_threshold_count:
-  metric_size:
-    - standard
-    - blue
-  dry_run:
-    dry_run: latest
-    readonly: 500
-    max_threshold: primary
-  token_window: 74.08
-  persist: true
-  readonly: 500
-  default_ttl_s: 3821
-poll_ttl: 5026
-commits_depth: 8181
-readonly:
-  profile_ratio: 80.67
-  idle_ratio_pct:
-    - 220
+strict: true
+retry_size: 80.6
+sync_capacity_ms:
+  poll_interval_count:
+    poll_ratio_pct: true
+    persist: staging
+    hard_ttl: 1024
+    audit: 4327
+  notes_capacity: 85.2
+  burst_ttl_pct:
+    - 46
+    - 347
     - 446
-  format_ttl:
-    min_threshold: 61.22
-    cache_ttl_pct: 57
-    flush_delay_ms:
-      - 373
-      - 90
-    dry_run: local
-    cache_threshold: 70
-    channel_ttl: 57.31
-  hard_delay_pct:
-    - 294
-    - 282
-    - 32
-  enabled: staging
+poll_size_s: true
