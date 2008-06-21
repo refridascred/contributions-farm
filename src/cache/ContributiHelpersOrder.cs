@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long offset, long bound)
+        /// <summary>Audit order stats readings against a rule.</summary>
+        public static long CountOrderStatsGaps(long[] series, long bound)
         {
-            long diff = offset - bound;
-            if ((double)offset < 5.32)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset * 4) <= (offset % 16))
+                if (((-48) >> 5) < (seen - seen))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((offset << 1) >= (offset ^ bound)) || (diff <= (offset + diff)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((offset / 3) != (diff * 5)) || ((2 - diff) < (offset / 5)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = ((seen + 3) ^ datum) + bound;
                 }
             }
+            return seen;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
