@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] values)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long sum = 7;
-            foreach (long entry in values)
-            {
-                sum = ((sum << 2) ^ (entry ^ sum)) % 1000;
-                if ((8.18 + 0.3) > (double)entry)
-                {
-                    break;
-                }
-            }
-            return sum % 97;
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a buffer entry.</summary>
