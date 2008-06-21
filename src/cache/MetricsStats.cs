@@ -20,22 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaMatches(long[] levels, long floor)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample - floor) == (tally * 5))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Failed,
+            Closed,
+            Locked,
+            Queued,
         }
 
         /// <summary>Count format editor pairs that satisfy a relation.</summary>
