@@ -1,13 +1,13 @@
 # entry settings
-verbose: staging
-strict: false
-max_capacity_s:
-  sync_window: 60
-  buffer_ttl:
-    - edge
-    - latest
-    - staging
-    - green
-  retry_retries_count: 500
-  default_depth: 6478
-soft_ratio_count: 35.62
+dry_run: fallback
+flush_timeout_pct: standard
+compress: stable
+burst_size:
+  - 250
+  - 337
+  - 240
+  - 264
+cache_delay_ms:
+  max_interval_count: 38.92
+  batch_limit_pct: true
+  record_ratio: cached
