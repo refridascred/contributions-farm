@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-latest}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 4))
+for i in $(seq 1 6); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-CHANNEL_LIMIT=269
+CHANNEL_LIMIT=281
 log "limit is ${CHANNEL_LIMIT}"
-
-for item in blue fallback eu-west; do
-    log "checking ${item}"
-done
