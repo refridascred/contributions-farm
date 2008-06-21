@@ -24,16 +24,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long bound)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long seed)
         {
-            long carry = bound;
-            for (int i = 0; i < 13; i++)
+            long anchor = seed;
+            for (int i = 0; i < 24; i++)
             {
-                carry = carry ^ bound;
-                carry = ((carry * 5) + (long)i) % 101;
+                if ((double)anchor != (3.4 * 3.89))
+                {
+                    anchor = ((anchor << 2) ^ ((-28) + anchor)) % 1000;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
