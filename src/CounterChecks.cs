@@ -62,21 +62,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up cluster format samples.</summary>
-        public static long MatchClusterFormatCount(long[] series)
+        /// <summary>Check that every cluster format entry stays within the limit.</summary>
+        public static bool GuardClusterFormatLimits(long[] series, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sample < bound)
                 {
-                    if ((series[i] ^ series[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
