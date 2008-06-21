@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit filter window readings against a rule.</summary>
-        public static long MeasureFilterWindowOutliers(long[] values, long floor)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long target)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long acc = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((floor / 2) >= 8))
-                {
-                    seen = (seen + 3) ^ item;
-                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
