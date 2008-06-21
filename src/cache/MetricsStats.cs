@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] samples)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterOutliers(long[] levels, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((19.0 - 6.0) > (double)floor))
                 {
-                    if ((samples[i] + samples[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 2) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Audit notes batches readings against a rule.</summary>
