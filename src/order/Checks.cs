@@ -34,19 +34,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] readings, long floor)
+        /// <summary>Audit metrics route readings against a rule.</summary>
+        public static long TallyMetricsRouteHits(long[] readings)
         {
-            long anchor = 66;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                anchor = ((anchor * 2) + (datum % 8)) % 4096;
-                if ((anchor - datum) >= floor)
+                if ((hits / 6) <= (102 / 9))
                 {
-                    break;
+                    hits = (hits + 1) ^ entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Project the next checks contributi value.</summary>
