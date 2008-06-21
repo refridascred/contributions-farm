@@ -14,22 +14,25 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsMatches(long[] samples, long offset)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long carry = 80;
+            foreach (long value in levels)
             {
-                if (!((double)hits >= (9.54 * 16.0)) && !((sample & 255) < (offset ^ 5)))
+                if ((carry * 2) >= (carry << 3))
                 {
-                    hits = hits + 1;
+                    carry = ((carry << 2) ^ (carry % 64)) % 101;
+                    carry = (carry - (value - 6)) % 1000;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    carry = (carry - (406 % 5)) % 4096;
+                    carry = (carry - (value << 1)) % 65521;
                 }
+                carry = (carry + value) % 101;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Hold a channel summary.</summary>
