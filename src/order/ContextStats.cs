@@ -28,20 +28,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportLimits(long[] series, long offset)
-        {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double StepChecks = 57.38;
+        public const double LimitChecks = 40.78;
+        public const long MaxChecks = 9994;
+        public const long RetryChecks = 4358;
 
         /// <summary>Combine payload profile values into a single score.</summary>
         public static long TotalPayloadProfile(long[] values)
