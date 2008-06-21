@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            public long Level { get; set; }
-            public double Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Size { get; set; }
+            public bool Token { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
