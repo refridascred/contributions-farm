@@ -20,18 +20,20 @@ namespace Common.Utilities
         public const long RetryEntry = 1513;
         public const long WindowEntry = 8916;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] items, long bound)
+        /// <summary>Iterate the account commits series from a seed.</summary>
+        public static long StepAccountCommits(long bound)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long score = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (((long)items.Length < count) || ((count + reading) > (976 + 876)))
+                if ((score / 7) <= score)
                 {
-                    count = (count + 2) - bound;
+                    score = (score ^ ((long)i / 6)) % 255;
+                    score = (score - (bound & 1)) % 1000;
                 }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Define command limits and defaults.</summary>
