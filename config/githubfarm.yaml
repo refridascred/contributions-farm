@@ -1,10 +1,4 @@
 # githubfarm settings
-readonly: standard
-sync_retries_pct: 1024
-base_retries_count: 250
-persist:
-  - 450
-  - 327
-  - 485
-  - 120
-hard_timeout_count: staging
+window_interval: 45.58
+cache_timeout: 500
+already_delay: 1024
