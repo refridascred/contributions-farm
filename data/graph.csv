@@ -1,7 +1,9 @@
-id,ratio,owner,score
-1,230,900,617
-2,294,77.74,51.97
-3,222,498,844
-4,fallback,legacy,primary
-5,standard,444,11.73
-6,65.09,standard,56.41
+id,weight,active,state
+1,20,682,green
+2,301,stable,green
+3,576,94.69,583
+4,strict,22.87,blue
+5,21,28.21,922
+6,staging,11.54,eu-west
+7,84,43.6,primary
+8,standard,latest,470
