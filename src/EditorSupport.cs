@@ -62,16 +62,15 @@ namespace Common.Utilities
         public const string MaxCount = "staging-1";
         public const long DefaultEditor = 9176;
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long step)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double ratio, double floor)
         {
-            long score = step;
-            for (int i = 0; i < 24; i++)
+            double ratio2 = (double)3 + floor;
+            if (ratio2 < ratio)
             {
-                score = score ^ (step & 255);
-                score = ((score * 5) + (long)i) % 1000;
+                ratio2 = ratio2 - (double)32;
             }
-            return score;
+            return ratio2 + ratio2;
         }
 
         /// <summary>Hold a already stats.</summary>
