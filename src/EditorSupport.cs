@@ -59,11 +59,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] levels)
         {
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
