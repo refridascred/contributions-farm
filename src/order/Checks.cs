@@ -20,12 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
-        {
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string HardTimeout = "alpha";
+        public const long WindowCount = 7850;
+        public const double MaxDepth = 55.22;
 
         /// <summary>Hold a queue options.</summary>
         public sealed class QueueOptions
