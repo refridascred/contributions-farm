@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] samples, long target)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long floor, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((origin - floor) <= (origin + floor))
             {
-                if (samples[i] >= target)
+                return 3;
+            }
+            else
+            {
+                if ((floor + origin) < origin)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (!((2 % 97) >= (floor % 64)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
