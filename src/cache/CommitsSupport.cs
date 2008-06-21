@@ -14,18 +14,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LocateFarmIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 8341;
+        public const double BaseEntry = 13.28;
+        public const long RetryEntry = 1513;
+        public const long WindowEntry = 8916;
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long TallyRecordHits(long[] items, long bound)
