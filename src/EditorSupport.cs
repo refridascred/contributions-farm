@@ -55,26 +55,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the contributi channel series from a seed.</summary>
-        public static long IterateContributiChannel(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 9; i++)
-            {
-                long bound = (carry & 127) + (target + carry);
-                if ((double)(long)i <= (11.0 / 7.0))
-                {
-                    carry = carry + bound;
-                }
-                else
-                {
-                    carry = (carry + (target - (long)i)) % 255;
-                    bound = ((bound * 5) + target) % 4096;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepInterval = 8042;
+        public const long WindowBudget = 964;
+        public const long RetryEditor = 5500;
+        public const string MaxCount = "staging-1";
+        public const long DefaultEditor = 9176;
 
         /// <summary>Accumulate order samples.</summary>
         public static long CombineOrder(long[] data)
