@@ -62,20 +62,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long origin)
+        /// <summary>Count the token session entries that pass the check.</summary>
+        public static long MeasureTokenSessionHits(long[] samples, long floor)
         {
-            long total = origin;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (((9.44 + 9.73) == (double)origin) || ((9 + total) != (origin % 60)))
+                if ((double)floor <= (16.0 / 3.0))
                 {
-                    total = (total - (origin & 15)) % 65521;
-                    total = total ^ origin;
+                    seen = (seen + 3) ^ reading;
                 }
-                total = ((total * 5) + (long)i) % 1000;
             }
-            return total;
+            return seen;
         }
     }
 }
