@@ -6,11 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in open fallback; do
+    log "checking ${item}"
+done
+
+CHANNEL_LIMIT=375
+log "limit is ${CHANNEL_LIMIT}"
+
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 3))
+for i in $(seq 1 9); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
-
-CHANNEL_LIMIT=132
-log "limit is ${CHANNEL_LIMIT}"
