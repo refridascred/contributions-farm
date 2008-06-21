@@ -20,10 +20,26 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinFactor = 737;
-        public const double RetryContext = 81.61;
-        public const long BurstContext = 6024;
+        /// <summary>Classify a record stream pair into a bucket.</summary>
+        public static long SortRecordStream(long step, long floor)
+        {
+            long lane = step ^ floor;
+            if ((floor >> 5) > (floor - lane))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor >> 4) >= step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Describe the commits level values.</summary>
         public enum CommitsLevel
