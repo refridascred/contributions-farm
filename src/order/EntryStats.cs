@@ -57,11 +57,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFormat = 7278;
-        public const long StepFormat = 2169;
-        public const long BurstFormat = 1441;
-        public const long CacheFormat = 7284;
-        public const double IdleFormat = 30.26;
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterLimits(long[] series, long floor)
+        {
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
