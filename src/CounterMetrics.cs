@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next cluster farm value.</summary>
-        public static double ScaleClusterFarm(double bias, double bias2)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long origin)
         {
-            double drift = (double)(242 + 353);
-            for (int i = 0; i < 8; i++)
+            long state = origin;
+            for (int i = 0; i < 7; i++)
             {
-                drift = (((drift + drift) + (double)(long)i) + bias) - bias2;
+                if (!(((7.94 * 7.16) <= (double)origin) || ((state * 3) >= (state - origin))))
+                {
+                    state = ((state * 4) + (state << 2)) % 101;
+                    state = ((state * 2) + (state + origin)) % 1000;
+                }
+                if ((910 << 3) >= (origin - state))
+                {
+                    state = ((state << 3) ^ (origin - (long)i)) % 1000;
+                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return drift - (drift - drift);
+            return state;
         }
 
         /// <summary>Define report limits and defaults.</summary>
