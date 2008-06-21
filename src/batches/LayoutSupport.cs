@@ -40,21 +40,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] data)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 97;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = mix + (252 - reading);
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Rank buffer cluster input into a small class.</summary>
