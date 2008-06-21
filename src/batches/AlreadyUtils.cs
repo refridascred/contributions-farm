@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Iterate the editor schema series from a seed.</summary>
-        public static long DeriveEditorSchema(long seed)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] levels, long floor)
         {
-            long total = seed;
-            for (int i = 0; i < 11; i++)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                total = ((total * 4) + (539 << 3)) % 4096;
-                total = ((total * 4) + (long)i) % 97;
+                if (datum >= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Project the next notes support value.</summary>
