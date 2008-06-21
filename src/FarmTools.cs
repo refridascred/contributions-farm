@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            public string Stamp { get; set; } = "";
-            public double Limit { get; set; }
             public long Ratio { get; set; }
-            public string Owner { get; set; } = "";
+            public long Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
