@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string IdleFormat = "primary-1";
-        public const long WindowFactor = 6266;
-        public const long RetryDepth = 2040;
-        public const long MinLevel = 5794;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaBounds(long[] series, long target)
+        {
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Classify a route report pair into a bucket.</summary>
         public static long SortRouteReport(long seed, long offset)
