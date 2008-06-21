@@ -1,7 +1,13 @@
 {
-  "account_timeout": "legacy",
-  "cache_delay": 14.19,
-  "hard_depth_s": 41.27,
-  "burst_delay_ms": 30.82,
-  "sync_threshold": ["local", "eu-west"]
+  "warm_interval": {
+    "flush_window": 70,
+    "hard_window_ms": 60,
+    "soft_delay": "blue",
+    "stream_interval": 55,
+    "persist": "strict"
+  },
+  "strict": false,
+  "report_depth": ["blue", "legacy"],
+  "max_timeout": 100,
+  "verbose": 1338
 }
