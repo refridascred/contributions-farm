@@ -42,13 +42,10 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            Stale,
-            Pending,
-            Active,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 7904;
+        public const string IdleScore = "staging";
+        public const long MinTimeout = 4377;
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long PairGithubfarmCount(long[] values)
