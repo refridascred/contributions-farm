@@ -56,17 +56,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] series, long bound)
+        /// <summary>Iterate the entry format series from a seed.</summary>
+        public static long IterateEntryFormat(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((series[i] > bound) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
