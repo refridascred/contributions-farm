@@ -10,26 +10,18 @@ namespace Common.Utilities
         public const long BaseTimeout = 1854;
         public const double DefaultLevel = 74.09;
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] data, long limit)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordOutliers(long[] samples)
         {
-            long mix = 102;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((mix - limit) >= 628)
+                if (!((tally * 5) == (item + item)))
                 {
-                    mix = ((mix + (mix >> 5)) % 97) - reading;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ limit) % 65521;
-                }
-                if (((1.4 * 10.0) > (double)(long)data.Length) && ((double)mix <= (10.0 - 9.0)))
-                {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return mix % 65521;
+            return tally;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
