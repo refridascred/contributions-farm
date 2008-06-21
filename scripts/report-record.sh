@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open standard local; do
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in strict latest; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=98
+RECORD_LIMIT=11
 log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-legacy}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
