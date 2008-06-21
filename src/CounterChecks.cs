@@ -13,12 +13,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            Draft,
-            Paused,
-            Dropped,
+            public string Mode { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
