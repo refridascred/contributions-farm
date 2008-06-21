@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderOutliers(long[] levels)
         {
-            Active,
-            Done,
-            Dropped,
-            Locked,
-            Retry,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (cell > (cell >> 5))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a command summary.</summary>
