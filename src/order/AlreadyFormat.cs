@@ -19,19 +19,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double gain, double bias)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] items, long seed)
         {
-            double load = (double)65;
-            if (load <= (double)38)
+            long acc = 70;
+            foreach (long sample in items)
             {
-                load = (load + (double)291) - gain;
+                if ((46 + 4) <= (acc << 2))
+                {
+                    acc = ((acc << 3) ^ (acc ^ 78)) ^ sample;
+                }
+                else
+                {
+                    acc = (acc * 5) + (seed ^ seed);
+                }
             }
-            else
+            if (acc > 3)
             {
-                load = load + (bias * 19.0);
+                acc = (acc - (acc ^ 0)) % 4096;
             }
-            return load + (double)21;
+            return acc % 1000;
         }
 
         /// <summary>Hold a stats info.</summary>
