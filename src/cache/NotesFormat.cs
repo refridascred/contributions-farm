@@ -22,21 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] readings)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Stale,
+            Draft,
+            Ready,
+            Done,
+            New,
         }
 
         /// <summary>Define support limits and defaults.</summary>
