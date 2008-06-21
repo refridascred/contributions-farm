@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double StepFactor = 95.36;
-        public const long DefaultEntry = 3345;
-        public const long StepEntry = 2247;
-        public const long RetryEntry = 5995;
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
+        {
+            Idle,
+            Dropped,
+            Queued,
+            Ready,
+        }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long AuditStatsGaps(long[] samples)
