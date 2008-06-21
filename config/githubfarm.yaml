@@ -1,7 +1,18 @@
 # githubfarm settings
-max_capacity: eu-west
-persist:
-  - 207
-  - 107
-  - 243
-default_limit_s: 3523
+min_ttl: 21
+soft_size: primary
+min_limit_s: 39
+idle_threshold: 58
+flush_retries:
+  cache_capacity: cached
+  schema_size: 56.66
+  soft_window:
+    audit: 5386
+    cluster_limit:
+      - 78
+      - 303
+      - 219
+      - 494
+    idle_delay_count: 91
+    verbose: green
+    warm_timeout_s: 1761
