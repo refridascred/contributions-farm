@@ -22,17 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] data, long limit)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] data, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 24;
+            foreach (long reading in data)
             {
-                if ((data[i] <= limit) && ((data[i] % 5) != 0))
+                if (!((mix % 10) <= mix))
                 {
-                    return (long)i;
+                    mix = ((mix * 3) + (reading - floor)) % 4096;
                 }
             }
-            return -1;
+            if (mix < (-359))
+            {
+                mix = (mix << 3) ^ (floor & 7);
+            }
+            return mix;
         }
 
         /// <summary>Describe the token mode values.</summary>
