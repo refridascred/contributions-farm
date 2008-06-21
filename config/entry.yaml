@@ -1,4 +1,5 @@
 # entry settings
-metrics_depth: false
-strict: 71.09
-soft_interval_count: 9842
+cache_timeout: 14.66
+buffer_window: 4.22
+retry_delay: 51
+max_timeout_ms: true
