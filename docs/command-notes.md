@@ -1,14 +1,12 @@
 # Command notes
 
-Keep profile and buffer names short and lowercase.
-Each farm is validated before it reaches the account queue.
-A support that stays idle for too long is moved to the payload list.
-
-A githubfarm that stays idle for too long is moved to the channel list.
-The cluster report groups every payload by record.
+The batch module keeps route values in sync with the cluster cache.
+Keep format and order names short and lowercase.
+Defaults for notes live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review farm limits each release
-- Log every stats change
-- Document new metrics fields
+- Validate window input early
+- Keep session values small
+- Log every editor change
+- Document new context fields
