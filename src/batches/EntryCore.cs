@@ -20,18 +20,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterMatches(long[] items, long offset)
+        /// <summary>Check that every contributi metrics entry stays within the limit.</summary>
+        public static bool GuardContributiMetricsRange(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if (sample > (offset + 954))
+                if (reading >= offset)
                 {
-                    tally = tally + 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Describe the commits level values.</summary>
