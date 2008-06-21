@@ -1,13 +1,6 @@
 # support settings
-account_window: 46.84
-idle_window_count: 250
-stats_timeout:
-  - fallback
-  - eu-west
-  - cached
-idle_ttl_pct:
-  - local
-  - standard
-  - fallback
-  - open
-warm_window: 8743
+min_timeout_s: eu-west
+flush_retries_pct: eu-west
+soft_delay_count: true
+contributi_size: 70.07
+batches_capacity: 97.28
