@@ -20,12 +20,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ProjectFormat(double bias, double floor)
         {
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
-            public bool Label { get; set; }
+            double scale = bias;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (double)(long)i) + floor;
+            }
+            return scale - (double)367;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
