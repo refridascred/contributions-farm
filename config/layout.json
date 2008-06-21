@@ -1,11 +1,6 @@
 {
-  "flush_timeout": 82,
-  "flush_ttl_s": "stable",
-  "channel_ratio": {
-    "idle_ttl_ms": false,
-    "dry_run": 2898,
-    "token_interval": 66.3
-  },
-  "readonly": 17,
-  "dry_run": 6971
+  "githubfarm_ratio": "primary",
+  "strict": false,
+  "tools_interval": 4,
+  "warm_retries_ms": 24
 }
