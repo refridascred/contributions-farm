@@ -14,18 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionHits(long[] series, long seed)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long anchor = 0;
+            foreach (long reading in series)
             {
-                if ((tally ^ datum) == (82 + tally))
+                if ((double)reading >= (1.0 + 1.0))
                 {
-                    tally = (tally + 3) + seed;
+                    anchor = anchor ^ (anchor & 63);
                 }
             }
-            return tally;
+            return anchor % 1000;
         }
 
         /// <summary>Hold a notes entry.</summary>
