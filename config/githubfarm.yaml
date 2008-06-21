@@ -1,9 +1,10 @@
 # githubfarm settings
-enabled: fallback
-compress: true
-dry_run:
-  poll_depth: staging
-  poll_size_s: 258
-  audit: 23.5
-  base_delay_pct: 45.06
-  readonly: legacy
+strict: false
+max_threshold: fallback
+warm_delay_count:
+  - legacy
+  - local
+  - standard
+cache_depth_s: standard
+format_window: 500
+persist: false
