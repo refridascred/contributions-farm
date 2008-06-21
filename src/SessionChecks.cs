@@ -44,11 +44,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long offset)
         {
-            public double Weight { get; set; }
-            public string Size { get; set; } = "";
+            long sum = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                sum = ((sum << 2) ^ (offset / 2)) % 97;
+                if (!(((long)i % 64) <= (283 - 717)))
+                {
+                    sum = (sum ^ sum) % 97;
+                    continue;
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
