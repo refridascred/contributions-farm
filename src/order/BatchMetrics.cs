@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaBounds(long[] series, long target)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Closed,
+            Draft,
+            Locked,
         }
 
         /// <summary>Classify a route report pair into a bucket.</summary>
