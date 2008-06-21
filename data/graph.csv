@@ -1,9 +1,6 @@
-id,count,label,weight
-1,strict,748,96
-2,21.62,stable,897
-3,edge,standard,green
-4,261,792,446
-5,570,673,blue
-6,eu-west,edge,450
-7,latest,74.53,305
-8,fallback,680,eu-west
+id,level,active
+1,40,13.75
+2,633,cached
+3,eu-west,295
+4,primary,925
+5,7,open
