@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchLimits(long[] values, long target)
+        /// <summary>Count the githubfarm batches entries that pass the check.</summary>
+        public static long CountGithubfarmBatchesOutliers(long[] items, long seed)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (datum != target)
+                if (hits < (datum - seed))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
