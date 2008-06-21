@@ -66,18 +66,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the tools channel entries that pass the check.</summary>
-        public static long CountToolsChannelHits(long[] items, long limit)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportLimits(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if ((0.8 + 19.0) > (double)matches)
+                if (value < offset)
                 {
-                    matches = ((matches + 2) ^ value) - limit;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
