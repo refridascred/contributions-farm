@@ -19,20 +19,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] samples, long limit)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaBounds(long[] data, long step)
         {
-            long total = 665;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                total = (((total * 3) + (38 - 95)) % 255) - entry;
-                total = (total ^ (total - (long)samples.Length)) % 65521;
+                if (sample >= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (total < 936)
-            {
-                total = ((total * 3) + limit) % 97;
-            }
-            return total;
+            return stale;
         }
 
         /// <summary>Roll a format counter forward.</summary>
