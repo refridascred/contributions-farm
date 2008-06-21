@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double rate, double floor)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheRange(long[] samples, long target)
         {
-            double drift = floor;
-            return (drift + (double)28) + rate;
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
