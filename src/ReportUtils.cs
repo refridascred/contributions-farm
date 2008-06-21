@@ -11,15 +11,12 @@ namespace Common.Utilities
         public const long IdleNotes = 8322;
         public const long BatchLevel = 7058;
 
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double scale, double floor)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            double scale2 = scale - (9.22 * 6.3);
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = ((scale2 + 4.7) + (double)(long)i) + floor;
-            }
-            return scale2 + 5.82;
+            public long Stamp { get; set; }
+            public double Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Iterate the metrics window series from a seed.</summary>
