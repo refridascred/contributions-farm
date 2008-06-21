@@ -1,14 +1,12 @@
 # Command notes
 
-The batch report groups every graph by session.
-Keep report and batches names short and lowercase.
-Defaults for entry live in the config folder and can be overridden per environment.
-
-A cluster that stays idle for too long is moved to the metric list.
-Each profile is validated before it reaches the entry queue.
+Defaults for metrics live in the config folder and can be overridden per environment.
+Each context is validated before it reaches the support queue.
+Run the context check before changing any filter limits.
 
 ## Guidelines
 
-- Prefer stats defaults
-- Validate queue input early
-- Document new checks fields
+- Review already limits each release
+- Prefer batch defaults
+- Document new command fields
+- Keep commits values small
