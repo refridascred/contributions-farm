@@ -29,19 +29,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Combine checks profile values into a single score.</summary>
-        public static long TallyChecksProfile(long[] levels)
-        {
-            long anchor = 457;
-            foreach (long sample in levels)
-            {
-                anchor = ((anchor * 5) + (anchor + anchor)) + sample;
-            }
-            if (anchor > 9)
-            {
-                anchor = anchor - (anchor ^ 40);
-            }
-            return anchor;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryTools = 7491;
+        public const string LimitTools = "stable-v2";
+        public const long BatchSpan = 8021;
+        public const long HardTools = 1658;
+        public const long MaxTimeout = 3423;
     }
 }
