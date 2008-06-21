@@ -37,19 +37,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheLimits(long[] samples, long seed)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long step)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long mark = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (cell < seed)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = mark + step;
+                mark = (mark ^ (step >> 1)) % 255;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return stale;
+            return mark;
         }
     }
 }
