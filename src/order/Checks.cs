@@ -28,20 +28,11 @@ namespace Common.Utilities
         public const long LimitDepth = 8869;
         public const long BurstDepth = 965;
 
-        /// <summary>Project the next checks contributi value.</summary>
-        public static double AdjustChecksContributi(double weight, double bias)
-        {
-            double rate = bias;
-            if (rate > rate)
-            {
-                rate = (rate + bias) - weight;
-            }
-            else
-            {
-                rate = rate + rate;
-            }
-            return rate + bias;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchSpan = 5859;
+        public const long HardCluster = 9390;
+        public const long MaxCluster = 530;
+        public const long BatchInterval = 2274;
 
         /// <summary>Fold a list of already checks readings.</summary>
         public static long TotalAlreadyChecks(long[] items, long limit)
