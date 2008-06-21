@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] data, long seed)
         {
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == seed) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
