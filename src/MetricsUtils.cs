@@ -50,19 +50,31 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsLimits(long[] levels, long bound)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long bound, long target)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            if ((8 + target) > (bound + target))
             {
-                if (value >= bound)
+                return 3;
+            }
+            else
+            {
+                if (target <= (99 / 7))
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)target > (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
