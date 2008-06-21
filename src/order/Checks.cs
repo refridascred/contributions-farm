@@ -32,10 +32,22 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinSize = 9597;
-        public const long SoftWidth = 4449;
-        public const long MaxStats = 973;
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long PairCommitsCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long SortToken(long step, long seed)
