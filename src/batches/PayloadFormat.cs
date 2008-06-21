@@ -18,10 +18,13 @@ namespace Common.Utilities
         public const long LimitEditor = 9054;
         public const double CacheRatio = 96.04;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string CacheAccount = "latest-v2";
-        public const double LimitAccount = 65.99;
-        public const long MaxCount = 5798;
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
+        {
+            Draft,
+            Ready,
+            Locked,
+        }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long CompareFarmCount(long[] readings)
