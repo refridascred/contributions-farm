@@ -1,5 +1,13 @@
 # githubfarm settings
-default_window: false
-cluster_ratio: latest
-max_limit: 68
-strict: 97.79
+batch_capacity_pct: 25
+persist: open
+editor_ratio: 27.65
+min_ratio_count: true
+default_ratio:
+  - 464
+  - 494
+  - 493
+  - 285
+audit:
+  - standard
+  - green
