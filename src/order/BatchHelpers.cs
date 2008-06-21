@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            Retry,
-            Pending,
-            Stale,
-            Synced,
+            New,
+            Active,
+            Closed,
+            Draft,
         }
 
         /// <summary>Validate order readings against a bound.</summary>
