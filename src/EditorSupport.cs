@@ -48,15 +48,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a command editor counter forward.</summary>
-        public static long StepCommandEditor(long seed)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long score = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            public double Token { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Compare every pair of already readings.</summary>
