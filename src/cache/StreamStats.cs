@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] series)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long limit)
         {
-            long mix = 864;
-            foreach (long reading in series)
+            long mix = limit;
+            for (int i = 0; i < 17; i++)
             {
-                mix = (mix - reading) % 101;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            if (mix < 698)
-            {
-                mix = mix - (mix - mix);
-            }
-            return mix % 4096;
+            return mix;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
