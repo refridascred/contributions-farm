@@ -73,19 +73,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every queue order entry stays within the limit.</summary>
-        public static bool ValidateQueueOrderRange(long[] series, long limit)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Count { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
