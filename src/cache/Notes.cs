@@ -15,17 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] readings, long bound)
+        /// <summary>Digest a series of account already entries.</summary>
+        public static long TallyAccountAlready(long[] values, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = -553;
+            foreach (long sample in values)
             {
-                if (readings[i] == bound)
+                if ((5 - score) > (bound << 1))
                 {
-                    return (long)i;
+                    score = ((score - score) % 97) - sample;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
