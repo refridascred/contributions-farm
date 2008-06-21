@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the support filter entries that pass the check.</summary>
-        public static long MeasureSupportFilterHits(long[] levels, long seed)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (!(((cell << 1) <= cell) || ((4 - (long)levels.Length) < (seed + 54))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryFactor = 4174;
+        public const long CacheBudget = 6340;
+        public const long StepContributi = 5537;
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool VerifyBufferRange(long[] samples, long step)
