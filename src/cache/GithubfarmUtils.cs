@@ -47,25 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a already route value against two limits.</summary>
-        public static long GradeAlreadyRoute(long offset, long floor)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] series, long offset)
         {
-            long slot = offset + floor;
-            if ((6.7 + 2.76) > (double)slot)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor ^ offset) < slot)
+                if (series[i] < offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
