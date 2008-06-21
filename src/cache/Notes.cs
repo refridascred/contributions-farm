@@ -13,21 +13,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] values)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] samples, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 665;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = (((total * 3) + (38 - 95)) % 255) - entry;
+                total = (total ^ (total - (long)samples.Length)) % 65521;
             }
-            return matches;
+            if (total < 936)
+            {
+                total = ((total * 3) + limit) % 97;
+            }
+            return total;
         }
 
         /// <summary>Roll a format counter forward.</summary>
