@@ -65,18 +65,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryGaps(long[] levels)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long result = 214;
+            foreach (long sample in levels)
             {
-                if ((value - 72) > (value * 3))
-                {
-                    matches = matches + 1;
-                }
+                result = ((result + sample) % 101) + seed;
             }
-            return matches;
+            if (result < 3)
+            {
+                result = result ^ (long)levels.Length;
+            }
+            return result % 97;
         }
     }
 }
