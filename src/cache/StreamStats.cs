@@ -37,21 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] values)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] data, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 65;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)seed < (double)reading)
                 {
-                    if ((values[i] ^ values[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state ^ (seed << 1)) % 4096;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Audit stats schema readings against a rule.</summary>
