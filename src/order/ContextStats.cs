@@ -42,12 +42,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultRatio = 2532;
-        public const long DefaultLevel = 1553;
-        public const string BatchScore = "fallback";
-        public const long IdleInterval = 6173;
-        public const long RetryPayload = 4652;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftInterval = 4445;
+        public const string MaxSupport = "staging-v2";
+        public const double SoftFactor = 15.15;
+        public const long IdleRatio = 5478;
+        public const long StepSpan = 291;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long IdleWidth = 4859;
