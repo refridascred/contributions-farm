@@ -1,20 +1,5 @@
 {
-  "warm_interval_pct": ["local", "eu-west", "strict"],
-  "soft_ratio_pct": 500,
-  "payload_ratio": "strict",
-  "enabled": 39.49,
-  "cache_limit_pct": true,
-  "buffer_size": {
-    "queue_window": 3414,
-    "command_timeout": {
-      "min_delay": 542,
-      "verbose": 4746,
-      "format_timeout": [312, 304],
-      "retry_window": 61,
-      "default_window_s": 45.31
-    },
-    "flush_interval_count": 88.15,
-    "min_ttl_pct": "local",
-    "default_window_s": 73.28
-  }
+  "editor_capacity": ["staging", "open", "standard"],
+  "retry_interval_pct": 100,
+  "burst_capacity_s": true
 }
