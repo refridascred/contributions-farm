@@ -16,15 +16,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of farm counter readings.</summary>
-        public static long CombineFarmCounter(long[] readings)
+        /// <summary>Fold a list of window record readings.</summary>
+        public static long DigestWindowRecord(long[] data, long limit)
         {
-            long state = -94;
-            foreach (long value in readings)
+            long acc = 835;
+            foreach (long datum in data)
             {
-                state = (state + (value * 5)) % 4096;
+                acc = (acc ^ datum) + limit;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
