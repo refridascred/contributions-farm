@@ -28,12 +28,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            Active,
-            Stale,
-            Dropped,
+            public bool Count { get; set; }
+            public bool Rank { get; set; }
+            public double Limit { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define channel limits and defaults.</summary>
