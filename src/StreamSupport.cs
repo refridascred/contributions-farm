@@ -23,9 +23,32 @@ namespace Common.Utilities
         public const long SoftContext = 6221;
         public const long HardFactor = 9945;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepBudget = 7357;
-        public const double LimitCommand = 61.77;
-        public const long BatchBudget = 8114;
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long offset, long step)
+        {
+            long edge = offset - step;
+            if ((step + 0) != (offset + edge))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((offset ^ step) != (step - 88)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((5 - edge) == (edge - step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
