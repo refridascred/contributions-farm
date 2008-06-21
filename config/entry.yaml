@@ -1,9 +1,6 @@
 # entry settings
-sync_retries: 30
-default_timeout: 77
-filter_size:
-  - 289
-  - 393
-  - 303
-max_limit: true
-sync_ttl: eu-west
+window_ratio: staging
+readonly: latest
+sync_threshold_count: 75.37
+metrics_threshold: false
+queue_limit: stable
