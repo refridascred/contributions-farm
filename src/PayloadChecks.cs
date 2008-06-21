@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long target, long offset)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long offset2 = target + offset;
-            if (609 < offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset2 - offset2) < target)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((offset + target) > 24) || ((target - 33) < (4 / 2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Closed,
+            Queued,
+            Ready,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
