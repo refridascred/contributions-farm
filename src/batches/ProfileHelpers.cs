@@ -43,22 +43,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesGaps(long[] samples, long seed)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsOutliers(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((long)samples.Length >= matches)
+                if (((6.59 * 17.0) == (double)seen) || (limit < (limit << 3)))
                 {
-                    matches = ((matches + 3) + datum) - seed;
+                    seen = (seen + 3) + item;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define format limits and defaults.</summary>
