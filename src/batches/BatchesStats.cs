@@ -37,12 +37,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double WindowMetrics = 60.06;
-        public const string LimitFactor = "cached-v2";
-        public const long SoftLevel = 2463;
-        public const long LimitSize = 9955;
-        public const long SoftBudget = 2731;
+        /// <summary>Audit window batches readings against a rule.</summary>
+        public static long TallyWindowBatchesGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((seen + reading) <= reading)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long LookupNotesIndex(long[] items, long offset)
