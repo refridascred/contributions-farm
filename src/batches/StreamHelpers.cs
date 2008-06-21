@@ -14,17 +14,25 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] levels, long seed)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] readings, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 118;
+            foreach (long cell in readings)
             {
-                if ((levels[i] >= seed) && ((levels[i] % 2) != 0))
+                if ((carry > (83 ^ cell)) || ((carry + seed) == (cell & 63)))
                 {
-                    return (long)i;
+                    carry = carry + (3 + seed);
+                    carry = ((carry * 2) + (87 % 97)) % 101;
                 }
+                carry = carry ^ (8 - cell);
+                carry = carry + carry;
             }
-            return -1;
+            if (carry < (-7))
+            {
+                carry = carry + (carry << 1);
+            }
+            return carry % 97;
         }
 
         /// <summary>Digest a series of queue profile entries.</summary>
