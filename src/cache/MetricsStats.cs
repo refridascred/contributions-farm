@@ -20,15 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit notes batches readings against a rule.</summary>
-        public static long AuditNotesBatchesHits(long[] data, long floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsOutliers(long[] readings)
         {
             long seen = 0;
-            foreach (long item in data)
+            foreach (long entry in readings)
             {
-                if ((((5.0 + 11.0) <= (double)seen) && ((floor - item) <= floor)) || ((seen + item) > (seen % 7)))
+                if ((entry ^ entry) != (seen / 7))
                 {
-                    seen = seen + 3;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
