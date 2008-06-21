@@ -1,18 +1,12 @@
 # entry settings
-persist:
+retry_timeout_pct:
+  - 90
+  - 476
+  - 37
+soft_window: standard
+dry_run:
   - eu-west
-  - legacy
-support_ratio:
-  metric_limit: staging
-  burst_capacity_ms: 500
-  poll_size_ms:
-    - 317
-    - 32
-    - 309
-    - 497
-cache_limit_count: 30
-poll_size_count:
+  - primary
+  - staging
   - green
-  - latest
-  - latest
-  - strict
+sync_depth_pct: 3044
