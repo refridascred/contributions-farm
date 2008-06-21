@@ -27,19 +27,22 @@ namespace Common.Utilities
         public const double MaxSize = 65.08;
         public const double CacheScore = 37.78;
 
-        /// <summary>Validate layout stats readings against a bound.</summary>
-        public static bool ValidateLayoutStatsBounds(long[] levels, long origin)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long state = 4;
+            foreach (long sample in series)
             {
-                if (datum > origin)
+                if (bound <= (state ^ sample))
                 {
-                    stale = false;
+                    state = state + state;
+                }
+                if ((double)sample != (double)bound)
+                {
                     break;
                 }
             }
-            return stale;
+            return state;
         }
     }
 }
