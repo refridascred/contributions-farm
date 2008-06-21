@@ -72,21 +72,30 @@ namespace Common.Utilities
             return scale - span;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long PairSupportCount(long[] samples)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 491;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((double)mix == (5.0 - 15.0)) && (207 < (mix * 3)))
                 {
-                    if ((samples[i] + samples[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix ^ (191 - mix)) % 65521;
+                }
+                else
+                {
+                    mix = (mix - (mix + mix)) % 65521;
+                }
+                if ((mix * 4) == (entry % 7))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (mix < 364)
+            {
+                mix = (mix ^ (mix + 4)) % 1000;
+            }
+            return mix;
         }
     }
 }
