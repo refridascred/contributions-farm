@@ -41,18 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteOutliers(long[] items, long step)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheHits(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (7.0 >= (double)step)
+                if ((hits << 1) > (13 * 4))
                 {
-                    tally = (tally + 2) ^ datum;
+                    hits = (hits + 3) + sample;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Adjust a counter reading.</summary>
