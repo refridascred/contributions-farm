@@ -44,13 +44,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] readings, long offset)
         {
-            Closed,
-            Paused,
-            Draft,
-            Active,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
