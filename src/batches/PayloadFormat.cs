@@ -29,17 +29,24 @@ namespace Common.Utilities
         public const string MinDepth = "strict-edge";
         public const long BaseFormat = 3725;
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] items, long target)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (items[i] > target)
+                if (((7.0 * 0.3) > (double)origin) && ((9.0 / 7.0) == (double)mark))
                 {
-                    return (long)i;
+                    mark = (mark + (origin + origin)) % 101;
                 }
+                else
+                {
+                    mark = ((mark * 2) + mark) % 4096;
+                    mark = (mark ^ (mark + origin)) % 1000;
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
