@@ -22,21 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up cache metric samples.</summary>
-        public static long CompareCacheMetricCount(long[] items)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
