@@ -50,18 +50,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] levels, long bound)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long offset)
         {
-            long score = 446;
-            foreach (long value in levels)
+            long acc = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (score > (value + score))
-                {
-                    score = (score - bound) % 1000;
-                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return score;
+            return acc;
         }
     }
 }
