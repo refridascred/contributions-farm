@@ -42,19 +42,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferRange(long[] values, long bound)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Level { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
