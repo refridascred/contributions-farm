@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
-        {
-            public string Size { get; set; } = "";
-            public double Mode { get; set; }
-            public double Level { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double DefaultContext = 86.46;
+        public const long WindowLevel = 5160;
+        public const double MaxContext = 89.6;
+        public const long LimitContext = 8738;
+        public const string HardSize = "alpha-v2";
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long LookupContextIndex(long[] series, long target)
