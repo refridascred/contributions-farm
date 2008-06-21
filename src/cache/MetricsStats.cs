@@ -45,12 +45,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 4814;
-        public const double StepTools = 92.61;
-        public const long BaseTools = 629;
-        public const long RetryTools = 7510;
-        public const long CacheRatio = 9692;
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next contributi schema value.</summary>
         public static double ProjectContributiSchema(double ratio, double offset)
