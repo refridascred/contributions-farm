@@ -6,12 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary eu-west green latest; do
+for item in green open latest; do
     log "checking ${item}"
 done
 
+mode="${1:-standard}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 total=0
-for i in $(seq 1 6); do
+for i in $(seq 1 7); do
     total=$((total + i * 5))
 done
 log "total ${total}"
