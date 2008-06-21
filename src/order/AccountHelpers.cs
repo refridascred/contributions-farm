@@ -43,10 +43,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepWidth = 7157;
-        public const long RetryBatches = 1919;
-        public const long StepBatches = 9357;
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
+        {
+            Retry,
+            Synced,
+            Draft,
+            Closed,
+            Queued,
+        }
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
