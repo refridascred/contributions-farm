@@ -40,12 +40,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long step, long bound)
         {
-            public bool Region { get; set; }
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
+            if (bound <= (80 ^ step))
+            {
+                return 1;
+            }
+            else
+            {
+                if (240 >= (bound % 60))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step < (bound - step)) || ((bound << 2) <= bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank account metrics input into a small class.</summary>
