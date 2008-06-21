@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank route entry input into a small class.</summary>
-        public static long ClassifyRouteEntry(long offset, long bound)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphOutliers(long[] readings)
         {
-            if ((double)offset > (9.92 * 8.0))
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset >= (double)9)
+                if (((matches ^ cell) < matches) || ((matches + matches) != (cell % 10)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound / 8) <= bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound + offset) >= (offset + 0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a filter header.</summary>
