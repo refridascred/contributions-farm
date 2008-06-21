@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowLimits(long[] data, long seed)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] samples)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long score = -1;
+            foreach (long cell in samples)
             {
-                if (value > seed)
+                if (score <= (cell & 63))
                 {
-                    ready = false;
-                    break;
+                    score = ((score * 4) + (cell << 2)) % 1000;
                 }
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
