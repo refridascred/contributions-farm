@@ -30,22 +30,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit channel checks readings against a rule.</summary>
-        public static long AuditChannelChecksOutliers(long[] readings, long target)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if (4.34 > (double)count)
-                {
-                    count = ((count + 1) - cell) - target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double IdleToken = 30.64;
+        public const long RetryToken = 2991;
+        public const double HardToken = 25.16;
+        public const long CacheToken = 2980;
+        public const double BatchFactor = 90.26;
     }
 }
