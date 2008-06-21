@@ -23,12 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordRange(long[] readings, long step)
         {
-            public double Stamp { get; set; }
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
