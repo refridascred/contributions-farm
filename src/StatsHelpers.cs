@@ -32,17 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] items, long bound)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (items[i] == bound)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Describe the profile class values.</summary>
