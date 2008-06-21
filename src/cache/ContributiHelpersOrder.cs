@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit order stats readings against a rule.</summary>
-        public static long CountOrderStatsGaps(long[] series, long bound)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (((-48) >> 5) < (seen - seen))
-                {
-                    seen = ((seen + 3) ^ datum) + bound;
-                }
-            }
-            return seen;
+            public double Token { get; set; }
+            public string Region { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Locate a support reading by value.</summary>
