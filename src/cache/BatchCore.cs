@@ -30,18 +30,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] values, long bound)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long step)
         {
-            long sum = 153;
-            foreach (long sample in values)
+            long sum = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (bound <= (sum ^ bound))
-                {
-                    sum = ((sum * 4) + 70) - sample;
-                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum % 4096;
+            return sum;
         }
 
         /// <summary>Validate batch cache readings against a bound.</summary>
