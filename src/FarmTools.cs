@@ -25,12 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Validate metric report readings against a bound.</summary>
+        public static bool GuardMetricReportBounds(long[] readings, long origin)
         {
-            Done,
-            Failed,
-            Draft,
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define token limits and defaults.</summary>
