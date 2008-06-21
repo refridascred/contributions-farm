@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] levels)
+        /// <summary>Count the contributi support entries that pass the check.</summary>
+        public static long AuditContributiSupportMatches(long[] readings, long floor)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long value in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)count <= (0.94 / 7.0))
                 {
-                    if ((levels[i] + levels[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
+                    count = ((count + 2) - value) + floor;
                 }
             }
             return count;
