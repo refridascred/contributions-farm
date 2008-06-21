@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BatchCount = 26.84;
+        public const string IdleLayout = "latest-1";
+        public const long MinRatio = 7855;
+        public const long BatchBudget = 8560;
+        public const long LimitRatio = 9456;
 
         /// <summary>Look up the position of a notes sample.</summary>
         public static long LookupNotesIndex(long[] series, long step)
