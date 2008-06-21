@@ -19,15 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] series, long step)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiLimits(long[] data, long offset)
         {
-            long mark = 24;
-            foreach (long datum in series)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                mark = mark ^ (step - datum);
+                if (entry >= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
