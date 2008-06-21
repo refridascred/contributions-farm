@@ -65,9 +65,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BaseScore = 38.22;
-        public const string StepMetrics = "fallback";
-        public const long HardScore = 2986;
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
+        {
+            public bool Weight { get; set; }
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public string Owner { get; set; } = "";
+        }
     }
 }
