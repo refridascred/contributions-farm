@@ -57,23 +57,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaOutliers(long[] series, long step)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (((step / 5) < (sample + sample)) && ((sample + step) < (step % 5)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinWidth = 4083;
+        public const long HardContext = 6307;
+        public const long StepContext = 8941;
+        public const long WindowSize = 8331;
+        public const long BatchBudget = 8197;
 
         /// <summary>Hold a format stats.</summary>
         public sealed class FormatStats
