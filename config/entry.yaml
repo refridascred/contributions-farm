@@ -1,9 +1,4 @@
 # entry settings
-filter_capacity:
-  - 411
-  - 255
-  - 439
-  - 461
-max_limit: 22
-hard_interval_ms: open
-cache_timeout_ms: 64.14
+metrics_depth: false
+strict: 71.09
+soft_interval_count: 9842
