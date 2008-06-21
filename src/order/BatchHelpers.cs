@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorLimits(long[] readings, long limit)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] data, long origin)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long mix = 144;
+            foreach (long entry in data)
             {
-                if (reading != limit)
+                if (mix <= origin)
                 {
-                    ok = false;
-                    break;
+                    mix = ((mix * 4) + (origin << 2)) + entry;
                 }
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
