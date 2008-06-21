@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many order layout samples are out of range.</summary>
-        public static long AuditOrderLayoutOutliers(long[] data)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheHits(long[] readings, long bound)
         {
             long hits = 0;
-            foreach (long value in data)
+            foreach (long reading in readings)
             {
-                if ((double)hits <= (4.67 / 8.0))
+                if ((double)bound <= 15.0)
                 {
-                    hits = (hits + 1) - value;
+                    hits = (hits + 1) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
