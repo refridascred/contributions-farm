@@ -25,22 +25,26 @@ namespace Common.Utilities
         public const double RetryContext = 81.61;
         public const long BurstContext = 6024;
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesGaps(long[] items)
+        /// <summary>Roll a stream metrics counter forward.</summary>
+        public static long DeriveStreamMetrics(long step)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long carry = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (24 < datum)
+                carry = (carry ^ (carry / 3)) % 4096;
+                if ((double)step == (4.27 / 6.0))
                 {
-                    seen = seen + 3;
+                    break;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    carry = (carry ^ ((long)i << 2)) % 97;
+                    carry = (carry ^ (step << 3)) % 65521;
                 }
+                carry = (carry ^ (step << 3)) % 97;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
