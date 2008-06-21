@@ -29,9 +29,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepWidth = 7249;
-        public const long IdleInterval = 9932;
-        public const string RetryScore = "fallback";
+        /// <summary>Iterate the account token series from a seed.</summary>
+        public static long IterateAccountToken(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                total = (total ^ (seed - total)) % 255;
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
