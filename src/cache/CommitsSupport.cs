@@ -37,11 +37,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardLevel = 7814;
-        public const long CacheChannel = 9545;
-        public const long DefaultChannel = 5537;
-        public const string BatchChannel = "fallback";
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a entry reading by value.</summary>
         public static long SeekEntryIndex(long[] series, long origin)
