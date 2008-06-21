@@ -1,7 +1,10 @@
 # support settings
-buffer_retries: eu-west
-retry_size_s: fallback
-retry_ratio_ms: true
-warm_depth: staging
-editor_capacity: strict
-soft_size_pct: open
+hard_limit: 60
+flush_ttl_ms: 70.19
+sync_ttl_s:
+  idle_ttl: 60
+  poll_threshold: 21.78
+  default_depth_ms: 1024
+  soft_retries: fallback
+cache_capacity: 70
+graph_depth: 3427
