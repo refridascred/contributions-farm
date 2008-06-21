@@ -44,18 +44,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] values)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long seed, long offset)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            if (!((double)offset < (4.2 - 5.0)))
             {
-                if ((sample % 16) > (sample + sample))
+                return 4;
+            }
+            else
+            {
+                if ((11.0 / 5.0) <= (double)offset)
                 {
-                    hits = hits + 3;
+                    return 1;
+                }
+                else
+                {
+                    if ((seed + offset) < seed)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset % 10) != (offset % 8))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
