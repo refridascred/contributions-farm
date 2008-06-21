@@ -31,22 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheOutliers(long[] data)
+        /// <summary>Match up report cluster samples.</summary>
+        public static long MatchReportClusterCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)value == (19.0 * 1.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((levels[i] + levels[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
