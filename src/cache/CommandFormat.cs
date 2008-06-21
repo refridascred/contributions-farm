@@ -12,11 +12,28 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 8890;
-        public const long MinSpan = 8018;
-        public const long IdleInterval = 7827;
-        public const string BurstCluster = "local-v2";
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] data)
+        {
+            long state = 697;
+            foreach (long reading in data)
+            {
+                state = state - (reading + state);
+                if ((state + reading) == (reading ^ (-913)))
+                {
+                    state = (state - (state * 4)) % 4096;
+                }
+                else
+                {
+                    state = ((state << 2) ^ (state % 100)) % 65521;
+                }
+            }
+            if (state > 7)
+            {
+                state = (state ^ (state / 5)) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Audit buffer format readings against a rule.</summary>
         public static long AuditBufferFormatGaps(long[] data, long floor)
