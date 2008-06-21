@@ -28,13 +28,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] items, long bound)
         {
-            public bool Count { get; set; }
-            public bool Rank { get; set; }
-            public double Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (((long)items.Length < count) || ((count + reading) > (976 + 876)))
+                {
+                    count = (count + 2) - bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a window reading by value.</summary>
