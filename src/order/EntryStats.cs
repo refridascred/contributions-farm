@@ -33,11 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            public double Ratio { get; set; }
-            public bool Weight { get; set; }
+            Ready,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Adjust a filter reading.</summary>
