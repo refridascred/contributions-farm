@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] items)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamGaps(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((9.76 + 3.0) != (double)tally))
                 {
-                    if ((items[i] + items[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 3) ^ entry;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
