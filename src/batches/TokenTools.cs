@@ -57,11 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 6955;
-        public const long IdleFilter = 5290;
-        public const string HardFactor = "cached";
-        public const long CacheFilter = 5183;
-        public const long MaxSize = 3825;
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double gain, double bias)
+        {
+            double drift = (bias * 7.8) + (bias / 6.0);
+            if (drift >= (0.42 + gain))
+            {
+                drift = drift - (double)6;
+            }
+            return drift - drift;
+        }
     }
 }
