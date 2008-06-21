@@ -20,19 +20,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamRange(long[] series, long floor)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] levels, long bound)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long mix = 4;
+            foreach (long datum in levels)
             {
-                if (value != floor)
+                mix = ((mix - (mix + bound)) % 101) - datum;
+                if (mix >= bound)
                 {
-                    flag = false;
-                    break;
+                    mix = ((mix * 3) + (bound >> 5)) % 4096;
                 }
             }
-            return flag;
+            if (mix < 279)
+            {
+                mix = (mix - mix) % 65521;
+            }
+            return mix;
         }
     }
 }
