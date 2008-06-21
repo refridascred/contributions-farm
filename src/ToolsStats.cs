@@ -41,18 +41,11 @@ namespace Common.Utilities
         public const long RetryLevel = 55;
         public const string SoftWidth = "local-edge";
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitLayout = 1550;
+        public const long WindowFactor = 2313;
+        public const long DefaultDepth = 8289;
+        public const string DefaultRatio = "cached-v2";
 
         /// <summary>Accumulate session samples.</summary>
         public static long TallySession(long[] levels, long bound)
