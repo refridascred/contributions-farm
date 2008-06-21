@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] series)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] readings, long limit)
         {
-            long mark = 322;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (mark + value) % 1000;
+                if (readings[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            if (mark < 2)
-            {
-                mark = (mark << 2) ^ (mark + mark);
-            }
-            return mark % 65521;
+            return -1;
         }
 
         /// <summary>Match up editor samples.</summary>
