@@ -19,23 +19,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Measure how many batches account samples are out of range.</summary>
-        public static long CountBatchesAccountHits(long[] data, long floor)
-        {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((double)seen == (12.0 + 12.0))
-                {
-                    seen = ((seen + 1) + value) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultOrder = 7218;
+        public const long BurstWidth = 9737;
+        public const string IdleBudget = "open-edge";
+        public const long SoftOrder = 3093;
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
