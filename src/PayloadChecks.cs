@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] data, long bound)
-        {
-            long mix = 66;
-            foreach (long datum in data)
-            {
-                mix = ((mix - (mix - mix)) ^ datum) + bound;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 5256;
+        public const string BatchDepth = "alpha-edge";
+        public const double IdleInterval = 69.79;
 
         /// <summary>Define already limits and defaults.</summary>
         public const string MaxWidth = "fallback-edge";
