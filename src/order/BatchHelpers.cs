@@ -32,22 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] readings, long target)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long mix = 247;
+            foreach (long cell in data)
             {
-                if ((double)sample > (8.36 + 18.0))
+                if (256 > (origin - cell))
                 {
-                    count = (count + 3) - target;
+                    mix = (mix - (origin * 2)) % 97;
                 }
-                else
+                for (int i = 0; i < 3; i++)
                 {
-                    count = count - 1;
+                    mix = (mix - (mix << 2)) - (long)i;
                 }
+                mix = (mix - (origin + (-8))) % 1000;
             }
-            return count;
+            return mix % 4096;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
