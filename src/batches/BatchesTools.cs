@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportHits(long[] readings, long offset)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sample <= (offset + offset)) && ((double)sample != (double)seen))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((data[i] ^ data[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
