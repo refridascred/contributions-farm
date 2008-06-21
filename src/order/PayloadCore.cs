@@ -40,15 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long floor)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long mark = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            Retry,
+            Idle,
+            Draft,
         }
     }
 }
