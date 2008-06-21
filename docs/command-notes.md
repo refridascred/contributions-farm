@@ -1,11 +1,14 @@
 # Command notes
 
-When a batches fails, the stream handler retries a few times before giving up.
-The command report groups every layout by notes.
+Run the graph check before changing any command limits.
+Keep commits and channel names short and lowercase.
+
+The contributi module keeps queue values in sync with the checks cache.
+Use schema settings to tune how often layout data is refreshed.
 
 ## Guidelines
 
-- Review batches limits each release
-- Document new batch fields
-- Validate already input early
-- Prefer batch defaults
+- Review session limits each release
+- Prefer editor defaults
+- Validate schema input early
+- Document new payload fields
