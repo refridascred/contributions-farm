@@ -13,12 +13,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Locate a batches token reading by value.</summary>
-        public static long SeekBatchesTokenIndex(long[] items, long origin)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] levels, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (items[i] > origin)
+                if (levels[i] <= bound)
                 {
                     return (long)i;
                 }
