@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long floor, long limit)
         {
-            Draft,
-            New,
-            Idle,
-            Ready,
-            Done,
+            if (floor < (floor & 7))
+            {
+                return 5;
+            }
+            else
+            {
+                if (limit > ((-397) % 16))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit * 3) != (523 % 12))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the cache tools series from a seed.</summary>
