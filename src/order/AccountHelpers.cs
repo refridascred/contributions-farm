@@ -56,22 +56,20 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] items, long origin)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] samples)
         {
-            long result = 53;
-            foreach (long entry in items)
+            long carry = 956;
+            foreach (long cell in samples)
             {
-                if ((double)entry <= (9.37 * 18.0))
+                carry = (carry + (cell * 4)) % 65521;
+                carry = (carry + ((-305) + 3)) % 97;
+                if (133 < (cell * 4))
                 {
-                    result = ((result << 2) ^ ((-1) ^ entry)) % 97;
-                }
-                else
-                {
-                    result = result + (origin + origin);
+                    carry = (carry * 3) + (cell & 15);
                 }
             }
-            return result;
+            return carry % 4096;
         }
     }
 }
