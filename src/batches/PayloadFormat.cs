@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Measure how many tools editor samples are out of range.</summary>
+        public static long AuditToolsEditorGaps(long[] levels, long bound)
         {
-            public bool Limit { get; set; }
-            public string Owner { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (((matches - matches) <= (bound + 15)) && ((35 % 16) != (matches % 60)))
+                {
+                    matches = (matches + 1) - reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a batch options.</summary>
