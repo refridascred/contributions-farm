@@ -20,17 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] readings, long origin)
+        /// <summary>Match up metrics payload samples.</summary>
+        public static long PairMetricsPayloadCount(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] <= origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the channel phase values.</summary>
