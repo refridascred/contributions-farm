@@ -39,18 +39,32 @@ namespace Common.Utilities
             return mean + (double)5;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] values)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long offset, long target)
         {
-            long carry = -49;
-            foreach (long sample in values)
+            long span = offset - target;
+            if (!((offset << 3) < (target % 7)))
             {
-                if (!((carry << 1) > 517))
+                return 6;
+            }
+            else
+            {
+                if ((0.77 <= (double)span) && (target >= (span * 3)))
                 {
-                    carry = (carry + (67 + 80)) ^ sample;
+                    return 7;
+                }
+                else
+                {
+                    if (target < 22)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Describe the format kind values.</summary>
