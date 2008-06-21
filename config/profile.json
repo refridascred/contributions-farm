@@ -1,6 +1,20 @@
 {
-  "batch_size_pct": 89,
-  "strict": 1024,
-  "format_delay": [244, 424, 494, 228],
-  "default_interval_ms": "cached"
+  "base_capacity_pct": 6446,
+  "min_retries": [149, 403],
+  "burst_window_ms": [404, 215, 381, 464],
+  "cache_interval_count": {
+    "base_window": ["standard", "edge", "eu-west", "primary"],
+    "already_ratio": 60,
+    "sync_interval_pct": {
+      "payload_interval": true,
+      "min_delay": 87,
+      "strict": "eu-west",
+      "checks_interval": "latest",
+      "persist": "primary",
+      "graph_retries": [381, 221, 416]
+    },
+    "session_depth": 88,
+    "metric_capacity": "staging"
+  },
+  "order_interval": true
 }
