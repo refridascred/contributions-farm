@@ -27,15 +27,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] readings)
+        /// <summary>Combine record counter values into a single score.</summary>
+        public static long CombineRecordCounter(long[] readings, long offset)
         {
-            long anchor = -15;
-            foreach (long cell in readings)
+            long total = 2;
+            foreach (long entry in readings)
             {
-                anchor = ((anchor - (anchor << 1)) % 1000) + cell;
+                for (int i = 0; i < 2; i++)
+                {
+                    total = (total * 4) + ((long)i + offset);
+                    total = ((total * 2) + 37) % 1000;
+                }
+                total = total + (entry + offset);
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Classify a record filter pair into a bucket.</summary>
