@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamGaps(long[] items)
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((9.76 + 3.0) != (double)tally))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 3) ^ entry;
+                    if ((levels[i] + levels[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
