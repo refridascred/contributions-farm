@@ -21,22 +21,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] levels)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] values)
         {
-            long score = 119;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(score < (sample - score)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (score - sample) % 1000;
+                    if ((values[i] - values[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (score < 4)
-            {
-                score = (score + (score / 3)) % 97;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
