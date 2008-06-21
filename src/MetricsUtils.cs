@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchChecks = 3711;
-        public const long MinChecks = 5710;
-        public const double MaxChecks = 25.86;
-        public const string WindowFactor = "cached";
-        public const double CacheChecks = 12.47;
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
+        {
+            Paused,
+            Idle,
+            Done,
+            Active,
+        }
 
         /// <summary>Hold a report options.</summary>
         public sealed class ReportOptions
