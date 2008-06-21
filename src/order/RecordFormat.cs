@@ -36,12 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinDepth = 3496;
-        public const double WindowStats = 19.37;
-        public const double BaseStats = 90.43;
-        public const string IdleStats = "local";
-        public const double RetryBudget = 5.8;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryMatches(long[] levels)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((3.7 + 10.0) == (double)hits)
+                {
+                    hits = (hits + 1) + datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long CombineCache(long[] items)
