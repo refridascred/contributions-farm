@@ -62,24 +62,16 @@ namespace Common.Utilities
         public const string MaxCount = "staging-1";
         public const long DefaultEditor = 9176;
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] data)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long step)
         {
-            long sum = 1;
-            foreach (long reading in data)
+            long score = step;
+            for (int i = 0; i < 24; i++)
             {
-                sum = ((sum * 3) + 767) - reading;
-                sum = sum ^ sum;
-                if ((sum & 255) >= (2 >> 2))
-                {
-                    sum = (sum ^ sum) % 65521;
-                }
-                else
-                {
-                    sum = (sum - (19 & 7)) % 4096;
-                }
+                score = score ^ (step & 255);
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Hold a already stats.</summary>
