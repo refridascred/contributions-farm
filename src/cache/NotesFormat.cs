@@ -32,12 +32,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
-        {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double StepChecks = 10.36;
+        public const double LimitChecks = 28.95;
+        public const string HardChecks = "local-v2";
+        public const long BurstWidth = 2358;
+        public const double IdleChecks = 50.51;
     }
 }
