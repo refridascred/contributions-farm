@@ -1,4 +1,24 @@
 # support settings
-cache_threshold_pct: 53.02
-warm_capacity: 27
-flush_capacity: standard
+record_retries:
+  audit: 39
+  tools_ttl: 11
+  compress:
+    - primary
+    - latest
+    - legacy
+    - standard
+  graph_timeout: standard
+  idle_ttl_count:
+    token_capacity: legacy
+    farm_ttl: 100
+    strict: true
+    batch_ratio: eu-west
+    warm_capacity:
+      - primary
+      - blue
+      - local
+    readonly: 16
+  window_timeout: 80
+format_ratio: 73
+sync_retries: edge
+commits_ratio: true
