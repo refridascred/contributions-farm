@@ -34,17 +34,11 @@ namespace Common.Utilities
             return load + (double)21;
         }
 
-        /// <summary>Find the first cache batch entry that matches the target.</summary>
-        public static long SeekCacheBatchIndex(long[] values, long origin)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a report sample.</summary>
