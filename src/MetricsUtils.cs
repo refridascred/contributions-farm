@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const string WindowFactor = "cached";
         public const double CacheChecks = 12.47;
 
-        /// <summary>Measure how many contributi batch samples are out of range.</summary>
-        public static long MeasureContributiBatchMatches(long[] samples, long step)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (hits <= (87 - step))
-                {
-                    hits = (hits + 1) - sample;
-                }
-            }
-            return hits;
+            public double Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Combine support values into a single score.</summary>
