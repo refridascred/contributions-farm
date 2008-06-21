@@ -26,12 +26,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBuffer = 8382;
-        public const long DefaultBuffer = 2162;
-        public const double RetryBuffer = 55.11;
-        public const double HardSize = 14.97;
-        public const double CacheLevel = 28.83;
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsBounds(long[] samples, long limit)
+        {
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool CheckCommitsLimits(long[] levels, long step)
