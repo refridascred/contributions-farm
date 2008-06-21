@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Roll a buffer profile counter forward.</summary>
+        public static long DeriveBufferProfile(long step)
         {
-            Paused,
-            Queued,
-            Ready,
+            long sum = step;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
