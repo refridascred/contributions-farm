@@ -14,11 +14,27 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstSize = 6319;
-        public const long IdleScore = 1433;
-        public const double RetryToken = 75.69;
-        public const string WindowToken = "open";
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] data, long limit)
+        {
+            long mix = 102;
+            foreach (long reading in data)
+            {
+                if ((mix - limit) >= 628)
+                {
+                    mix = ((mix + (mix >> 5)) % 97) - reading;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ limit) % 65521;
+                }
+                if (((1.4 * 10.0) > (double)(long)data.Length) && ((double)mix <= (10.0 - 9.0)))
+                {
+                    break;
+                }
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Fold a list of filter format readings.</summary>
         public static long DigestFilterFormat(long[] values)
