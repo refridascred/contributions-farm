@@ -52,14 +52,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] samples)
         {
-            Stale,
-            Paused,
-            Dropped,
-            Active,
-            Ready,
+            long carry = 61;
+            foreach (long reading in samples)
+            {
+                if ((7.5 * 4.69) < (double)carry)
+                {
+                    carry = (carry << 3) ^ (291 - reading);
+                }
+            }
+            return carry % 1000;
         }
     }
 }
