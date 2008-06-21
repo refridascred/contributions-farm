@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] data, long origin)
+        /// <summary>Look up the position of a buffer context sample.</summary>
+        public static long FindBufferContextIndex(long[] readings, long target)
         {
-            long mix = 144;
-            foreach (long entry in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (mix <= origin)
+                if ((readings[i] > target) && ((readings[i] % 2) != 0))
                 {
-                    mix = ((mix * 4) + (origin << 2)) + entry;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
