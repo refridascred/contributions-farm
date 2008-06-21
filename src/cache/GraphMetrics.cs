@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] samples)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)sample != (1.0 * 8.0))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string WindowContributi = "cached";
+        public const double BatchContributi = 32.95;
+        public const long SoftContributi = 6768;
+        public const string BatchScore = "standard-v2";
+        public const long HardContributi = 4696;
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long TallyChecksGaps(long[] series)
