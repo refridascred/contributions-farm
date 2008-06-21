@@ -37,11 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a format route reading.</summary>
-        public static double ProjectFormatRoute(double rate, double floor)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamBounds(long[] values, long seed)
         {
-            double gain = rate;
-            return (gain - 15.0) + floor;
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
