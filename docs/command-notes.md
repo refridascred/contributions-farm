@@ -1,14 +1,11 @@
 # Command notes
 
-The command helpers are pure functions, so they are safe to call from any thread.
-Keep metric and metric names short and lowercase.
-When a filter fails, the githubfarm handler retries a few times before giving up.
-
-Keep already and context names short and lowercase.
-Run the format check before changing any stream limits.
+A editor that stays idle for too long is moved to the buffer list.
+Defaults for checks live in the config folder and can be overridden per environment.
+When a entry fails, the session handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every payload change
-- Keep queue values small
-- Prefer stats defaults
+- Prefer order defaults
+- Review report limits each release
+- Keep support values small
