@@ -30,17 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] readings, long target)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] values, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 412;
+            foreach (long value in values)
             {
-                if ((readings[i] == target) && ((readings[i] % 3) != 0))
+                if ((9.32 / 5.0) >= (double)value)
                 {
-                    return (long)i;
+                    mix = ((mix + (value + mix)) % 4096) - bound;
                 }
             }
-            return -1;
+            return mix % 1000;
         }
     }
 }
