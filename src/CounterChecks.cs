@@ -53,18 +53,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricGaps(long[] levels)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long origin)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long state = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if ((6 + hits) > (hits - datum))
+                if (!((origin ^ 45) < (origin - (long)i)))
                 {
-                    hits = hits + 1;
+                    state = state + origin;
+                    state = ((state << 2) ^ (state * 2)) % 255;
                 }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
