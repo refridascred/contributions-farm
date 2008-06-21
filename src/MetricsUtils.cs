@@ -33,39 +33,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a record filter pair into a bucket.</summary>
-        public static long ClassifyRecordFilter(long offset, long origin)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferRange(long[] values, long bound)
         {
-            long prev = offset - origin;
-            if (offset >= (offset & 31))
+            bool valid = true;
+            foreach (long cell in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset - offset) <= (origin * 3))
+                if (cell > bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!(705 < (prev % 7)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)prev <= (8.0 - 9.53)) && ((double)origin <= (double)3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
