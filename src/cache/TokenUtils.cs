@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] items)
+        /// <summary>Check that every profile session entry stays within the limit.</summary>
+        public static bool CheckProfileSessionRange(long[] values, long target)
         {
-            long carry = 58;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long item in values)
             {
-                carry = ((carry * 5) + (carry / 7)) + item;
+                if (item != target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
