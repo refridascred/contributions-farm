@@ -1,13 +1,8 @@
 {
-  "sync_ttl": 9,
-  "stats_size": {
-    "flush_delay_pct": "fallback",
-    "sync_threshold": false,
-    "already_size": 13,
-    "poll_limit_pct": "blue"
-  },
-  "persist": 8801,
-  "entry_capacity": false,
-  "warm_limit_count": false,
-  "metrics_limit": [272, 261]
+  "base_timeout": 9011,
+  "poll_depth_pct": false,
+  "entry_size": 12.98,
+  "max_depth": 6851,
+  "batch_timeout_count": ["standard", "legacy"],
+  "enabled": ["open", "staging", "strict"]
 }
