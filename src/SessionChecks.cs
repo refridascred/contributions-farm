@@ -47,10 +47,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string LimitWidth = "standard";
-        public const long BaseCommits = 6302;
-        public const double IdleCommits = 9.67;
-        public const long BurstBudget = 2167;
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
+        {
+            Active,
+            Closed,
+            Ready,
+            Retry,
+        }
     }
 }
