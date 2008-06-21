@@ -50,17 +50,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a metrics checks sample.</summary>
-        public static long SeekMetricsChecksIndex(long[] readings, long limit)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportLimits(long[] readings, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if ((readings[i] < limit) && ((readings[i] % 5) == 0))
+                if (sample <= step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
