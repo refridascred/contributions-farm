@@ -60,12 +60,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long bound)
         {
-            Draft,
-            Active,
-            Stale,
+            long acc = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
