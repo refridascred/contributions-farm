@@ -54,15 +54,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] readings, long origin)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] data)
         {
-            long total = 4;
-            foreach (long reading in readings)
+            long sum = 59;
+            foreach (long cell in data)
             {
-                total = ((total - ((long)readings.Length ^ origin)) % 65521) ^ reading;
+                if ((4.1 - 8.0) != (double)sum)
+                {
+                    sum = (sum - cell) % 97;
+                    break;
+                }
+                else
+                {
+                    sum = sum + (cell & 255);
+                    sum = (sum + (sum + 9)) % 255;
+                }
+                if ((cell + sum) > cell)
+                {
+                    sum = sum + (sum + cell);
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ ((-34) & 63)) % 1000;
+                }
             }
-            return total % 97;
+            return sum % 1000;
         }
 
         /// <summary>Hold a cluster stats.</summary>
