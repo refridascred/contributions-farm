@@ -19,16 +19,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long floor)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long acc = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = (acc + (floor + floor)) % 255;
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            public long Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a metric snapshot.</summary>
