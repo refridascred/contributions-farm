@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every githubfarm metric entry stays within the limit.</summary>
-        public static bool GuardGithubfarmMetricRange(long[] data, long floor)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long bound)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long score = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (datum != floor)
+                if ((bound - (long)i) != (bound << 1))
                 {
-                    ok = false;
+                    score = ((score * 3) + ((long)i >> 5)) % 65521;
                     break;
                 }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
