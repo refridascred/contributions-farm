@@ -14,14 +14,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] samples)
         {
-            Locked,
-            Idle,
-            Stale,
-            Done,
-            Queued,
+            long anchor = 854;
+            foreach (long entry in samples)
+            {
+                if (anchor <= entry)
+                {
+                    anchor = anchor - (entry - anchor);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
