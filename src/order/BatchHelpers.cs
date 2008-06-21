@@ -20,20 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of support order entries.</summary>
-        public static long DigestSupportOrder(long[] readings, long floor)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] levels, long origin)
         {
-            long mix = 427;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                mix = (mix - (datum + floor)) % 65521;
-                mix = (mix - (datum + datum)) % 4096;
+                if (value <= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (mix < (-3))
-            {
-                mix = mix + (floor + mix);
-            }
-            return mix % 97;
+            return ready;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
