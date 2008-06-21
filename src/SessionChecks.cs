@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long target)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] samples, long step)
         {
-            long state = target;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state << 3) ^ (long)i) % 255;
-                state = ((state * 2) + (long)i) % 65521;
+                if ((samples[i] == step) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
