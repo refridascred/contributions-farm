@@ -13,14 +13,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
-        {
-            Stale,
-            New,
-            Failed,
-            Closed,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 4110;
+        public const long WindowRatio = 8314;
+        public const long SoftToken = 855;
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
