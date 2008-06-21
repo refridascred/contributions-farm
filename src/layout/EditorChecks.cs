@@ -19,12 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxCount = 1905;
-        public const string MinChannel = "legacy";
-        public const long BaseTimeout = 1098;
-        public const long SoftChannel = 5798;
-        public const double BatchChannel = 55.49;
+        /// <summary>Locate a githubfarm booking reading by value.</summary>
+        public static long LookupGithubfarmBookingIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == target) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
