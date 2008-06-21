@@ -32,11 +32,25 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double SoftFactor = 29.5;
-        public const long RetryBatch = 4860;
-        public const long HardSpan = 2761;
-        public const double MinBatch = 4.52;
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                if (!((9.25 * 16.0) > (double)offset))
+                {
+                    state = (state * 4) + offset;
+                }
+                else
+                {
+                    state = state + (53 ^ (long)i);
+                }
+                state = state ^ (state & 7);
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool VerifyBatchBounds(long[] values, long offset)
