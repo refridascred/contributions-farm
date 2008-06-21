@@ -12,21 +12,15 @@ namespace Common.Utilities
         public const long MinContext = 7806;
         public const string BatchLevel = "local-1";
 
-        /// <summary>Count metrics order pairs that satisfy a relation.</summary>
-        public static long PairMetricsOrderCount(long[] values)
+        /// <summary>Project the next report stream value.</summary>
+        public static double BlendReportStream(double ratio, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate = ratio * 11.0;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = ((rate - ratio) - (double)(long)i) - bias;
             }
-            return count;
+            return rate - ratio;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
