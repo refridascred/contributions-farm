@@ -34,11 +34,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstWidth = 8383;
-        public const long CacheQueue = 4297;
-        public const double LimitQueue = 11.54;
-        public const long HardQueue = 6455;
-        public const long IdleDepth = 5493;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileRange(long[] series, long bound)
+        {
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
