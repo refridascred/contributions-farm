@@ -44,19 +44,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long seed)
+        /// <summary>Count the token commits entries that pass the check.</summary>
+        public static long CountTokenCommitsGaps(long[] levels, long offset)
         {
-            long result = seed;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (!(((long)i / 6) >= (seed + seed)))
+                if ((matches & 63) == (offset - offset))
                 {
-                    result = (result ^ (seed * 5)) % 255;
+                    matches = (matches + 1) ^ sample;
                 }
-                result = ((result * 2) + (long)i) % 1000;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
