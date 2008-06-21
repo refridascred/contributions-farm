@@ -27,11 +27,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string HardQueue = "stable-v2";
-        public const long MinBudget = 434;
-        public const long LimitDepth = 8869;
-        public const long BurstDepth = 965;
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
+        {
+            public double Size { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long MinSize = 9597;
