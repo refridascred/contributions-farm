@@ -1,9 +1,12 @@
 # entry settings
-strict:
-  - 439
-  - 260
-  - 372
-  - 39
-flush_depth: 500
-min_depth_s: local
-default_interval_s: 60
+sync_retries:
+  - edge
+  - legacy
+  - legacy
+readonly: 250
+default_delay: true
+soft_size:
+  - 274
+  - 3
+  - 363
+sync_capacity_count: 4
