@@ -13,11 +13,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double ratio, double bias)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            double rate = 7.62;
-            return ((rate + 4.0) + ratio) + bias;
+            Idle,
+            New,
+            Done,
         }
 
         /// <summary>Define command limits and defaults.</summary>
