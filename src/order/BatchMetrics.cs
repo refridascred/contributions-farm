@@ -53,12 +53,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
-        {
-            public string Ratio { get; set; } = "";
-            public double Rank { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 3263;
+        public const long CacheBatch = 8862;
+        public const long IdleBatch = 7285;
+        public const double SoftWidth = 94.85;
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long StepBuffer(long origin)
