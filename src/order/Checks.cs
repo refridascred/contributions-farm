@@ -33,17 +33,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next order already value from a seed.</summary>
-        public static long RollOrderAlready(long seed)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmLimits(long[] samples, long origin)
         {
-            long acc = seed;
-            for (int i = 0; i < 15; i++)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                acc = (acc - (43 % 10)) % 255;
-                acc = (acc * 2) + (seed >> 5);
-                acc = ((acc * 5) + (long)i) % 97;
+                if (datum >= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Describe the token level values.</summary>
