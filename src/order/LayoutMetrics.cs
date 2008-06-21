@@ -37,11 +37,18 @@ namespace Common.Utilities
             return mean + (gain * 8.7);
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftSize = 6005;
-        public const double SoftTools = 21.97;
-        public const double BurstTools = 40.77;
-        public const string DefaultTools = "cached-v2";
-        public const string HardTools = "local-1";
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] levels)
+        {
+            long total = 8;
+            foreach (long value in levels)
+            {
+                if ((value >> 4) != (value + total))
+                {
+                    total = (total ^ value) % 97;
+                }
+            }
+            return total % 65521;
+        }
     }
 }
