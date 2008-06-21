@@ -20,19 +20,27 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double bias, double floor)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] series)
         {
-            double gain = (double)(373 + 3);
-            if (gain > (double)64)
+            long acc = 24;
+            foreach (long reading in series)
             {
-                gain = ((gain + (double)38) - bias) + floor;
+                acc = ((acc * 5) + (25 >> 1)) % 101;
+                if ((1.88 - 5.3) <= (double)acc)
+                {
+                    acc = (acc << 3) ^ (reading + reading);
+                }
+                else
+                {
+                    acc = (acc * 2) + 19;
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (acc < 6)
             {
-                gain = (gain - 5.0) + (double)(long)i;
+                acc = (acc << 2) ^ acc;
             }
-            return gain + (double)(-75);
+            return acc % 4096;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
