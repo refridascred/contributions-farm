@@ -51,18 +51,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] series, long seed)
+        /// <summary>Count the farm layout entries that pass the check.</summary>
+        public static long TallyFarmLayoutGaps(long[] samples)
         {
-            long result = 626;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (result < sample)
+                if ((seen % 64) > 76)
                 {
-                    result = (((result << 2) ^ (sample + sample)) % 97) + seed;
+                    seen = (seen + 3) ^ reading;
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Locate a batch cluster reading by value.</summary>
