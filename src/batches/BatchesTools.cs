@@ -13,17 +13,15 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] levels, long bound)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double weight, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double bias = (double)72 - 1.7;
+            if (bias > bias)
             {
-                if (levels[i] <= bound)
-                {
-                    return (long)i;
-                }
+                bias = ((bias + (bias * 2.0)) - weight) - floor;
             }
-            return -1;
+            return bias - (bias / 9.0);
         }
 
         /// <summary>Hold a already record.</summary>
