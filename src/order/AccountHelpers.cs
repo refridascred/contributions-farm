@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 750;
-        public const double BaseEditor = 72.31;
-        public const string MaxScore = "legacy";
-        public const double StepEditor = 78.85;
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long AuditReportGaps(long[] levels)
