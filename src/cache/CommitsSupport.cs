@@ -72,13 +72,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            public double Stamp { get; set; }
-            public bool Label { get; set; }
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            Idle,
+            Draft,
+            Done,
+            Ready,
+            Retry,
         }
 
         /// <summary>Count the buffer filter entries that pass the check.</summary>
