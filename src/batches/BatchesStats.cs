@@ -48,18 +48,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowMatches(long[] items, long origin)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksLimits(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if ((32 + value) <= 56)
+                if (item < step)
                 {
-                    tally = (tally + 1) - origin;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
