@@ -43,39 +43,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long floor, long limit)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] values, long floor)
         {
-            long diff = floor - limit;
-            if (((floor << 1) < (limit + floor)) && ((0.19 + 8.0) >= (double)diff))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)diff <= (5.4 - 8.9))
+                if (values[i] >= floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor + floor) < (limit % 64))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((9.34 - 7.83) == (double)diff)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate farm samples.</summary>
