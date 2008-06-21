@@ -61,9 +61,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftScore = 7557;
-        public const string DefaultFormat = "alpha-v2";
-        public const string SoftFormat = "stable-1";
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 3072;
+        public const string MaxFactor = "stable";
+        public const string DefaultRatio = "fallback-edge";
     }
 }
