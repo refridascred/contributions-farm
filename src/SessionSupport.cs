@@ -56,19 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] samples, long limit)
-        {
-            long mark = 1;
-            foreach (long datum in samples)
-            {
-                mark = (mark - (datum & 1)) - limit;
-            }
-            if (mark > 55)
-            {
-                mark = mark ^ (mark >> 3);
-            }
-            return mark;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxAlready = 9198;
+        public const long IdleAlready = 8394;
+        public const double MinRatio = 51.94;
+        public const double HardScore = 75.12;
+        public const double IdleRatio = 35.36;
     }
 }
