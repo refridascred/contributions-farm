@@ -14,12 +14,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            Active,
-            Done,
-            New,
+            public bool Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
