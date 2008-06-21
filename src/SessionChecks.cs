@@ -40,24 +40,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] items)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long mix = 4;
-            foreach (long value in items)
-            {
-                mix = (mix << 3) ^ (value << 1);
-                if ((77 < (mix * 2)) || ((mix >> 3) == (180 + mix)))
-                {
-                    mix = (mix * 2) + mix;
-                }
-                mix = mix + (mix / 4);
-            }
-            if (mix < 86)
-            {
-                mix = ((mix * 2) + mix) % 101;
-            }
-            return mix;
+            public long Owner { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Rank account metrics input into a small class.</summary>
