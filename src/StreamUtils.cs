@@ -20,15 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate batches cluster samples.</summary>
-        public static long WeighBatchesCluster(long[] items)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long state = 3;
-            foreach (long value in items)
-            {
-                state = ((state + (state + state)) % 97) - value;
-            }
-            return state;
+            Idle,
+            Locked,
+            Paused,
+            Draft,
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
