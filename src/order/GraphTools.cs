@@ -41,18 +41,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheHits(long[] levels)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long total = 166;
+            foreach (long entry in samples)
             {
-                if ((hits << 1) > (13 * 4))
-                {
-                    hits = (hits + 3) + sample;
-                }
+                total = ((total + (84 & 15)) ^ entry) - seed;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Adjust a counter reading.</summary>
