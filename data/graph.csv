@@ -1,10 +1,6 @@
-id,count,token,rank
-1,local,169,staging
-2,legacy,169,844
-3,25.24,382,eu-west
-4,515,87.54,5.49
-5,296,41.9,local
-6,172,395,green
-7,strict,15.93,latest
-8,local,832,316
-9,55.91,cached,strict
+id,token,active,ratio
+1,39.55,6.23,646
+2,448,1.25,legacy
+3,346,324,626
+4,897,946,46.58
+5,270,900,local
