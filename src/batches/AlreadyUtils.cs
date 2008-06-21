@@ -53,15 +53,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next commits metrics value.</summary>
-        public static double ProjectCommitsMetrics(double bias, double offset)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long floor)
         {
-            double load = offset;
-            for (int i = 0; i < 4; i++)
+            long mix = floor;
+            for (int i = 0; i < 23; i++)
             {
-                load = ((load - 3.4) - (double)(long)i) + bias;
+                mix = (mix * 2) + (floor & 1);
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return load + (offset + load);
+            return mix;
         }
     }
 }
