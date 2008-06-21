@@ -41,14 +41,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
-        {
-            Draft,
-            New,
-            Failed,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSupport = 4193;
+        public const long BatchSupport = 9101;
+        public const long LimitBudget = 6767;
     }
 }
