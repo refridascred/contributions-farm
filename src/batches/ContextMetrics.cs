@@ -80,18 +80,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit metrics channel readings against a rule.</summary>
-        public static long TallyMetricsChannelHits(long[] levels, long target)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextLimits(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if (!((entry - target) == (tally ^ 92)) || (entry <= (entry % 24)))
+                if (sample <= limit)
                 {
-                    tally = tally + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
