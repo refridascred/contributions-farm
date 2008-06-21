@@ -1,6 +1,4 @@
 # entry settings
-tools_depth: 1024
-poll_interval: stable
-default_size_ms: cached
-editor_ttl: true
-default_window: 4159
+verbose: 34.97
+max_delay_s: 91.48
+warm_size: 41.89
