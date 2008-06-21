@@ -27,17 +27,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] samples, long seed)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterGaps(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((samples[i] < seed) && ((samples[i] % 2) != 0))
+                if ((double)datum == (2.0 + 8.3))
                 {
-                    return (long)i;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the metrics state values.</summary>
