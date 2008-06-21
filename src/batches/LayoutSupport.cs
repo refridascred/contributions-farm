@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseFactor = 5975;
+        public const double BurstCount = 94.76;
+        public const double SoftDepth = 83.84;
+        public const long BurstSpan = 748;
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool GuardBatchRange(long[] readings, long step)
