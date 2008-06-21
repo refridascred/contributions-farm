@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            Active,
-            Done,
-            Failed,
-            Retry,
-            Synced,
+            public string Level { get; set; } = "";
+            public double Flag { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
