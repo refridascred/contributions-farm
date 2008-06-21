@@ -11,15 +11,11 @@ namespace Common.Utilities
         public const double CacheRatio = 69.11;
         public const long MinBudget = 791;
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long seed)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double rate, double offset)
         {
-            long acc = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            double scale = rate;
+            return scale + offset;
         }
 
         /// <summary>Hold a metric entry.</summary>
