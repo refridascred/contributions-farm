@@ -14,15 +14,14 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double gain, double bias)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            double bias2 = bias;
-            if (bias2 < gain)
-            {
-                bias2 = bias2 + gain;
-            }
-            return bias2 + (10.0 / 5.0);
+            Closed,
+            Done,
+            Synced,
+            Pending,
+            New,
         }
 
         /// <summary>Hold a channel header.</summary>
