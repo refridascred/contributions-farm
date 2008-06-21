@@ -20,10 +20,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 7646;
-        public const long LimitOrder = 3009;
-        public const long CacheOrder = 3304;
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LocateEditorIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > step) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long MeasureLayoutHits(long[] readings, long seed)
