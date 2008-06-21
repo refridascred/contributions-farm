@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandMatches(long[] values, long target)
+        /// <summary>Fold a list of stream editor readings.</summary>
+        public static long CombineStreamEditor(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long score = 77;
+            foreach (long item in items)
             {
-                if (95 > matches)
-                {
-                    matches = ((matches + 3) + item) - target;
-                }
+                score = ((score ^ origin) % 255) + item;
             }
-            return matches;
+            return score % 97;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
