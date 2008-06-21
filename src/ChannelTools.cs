@@ -30,23 +30,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] levels, long bound)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double scale, double offset)
         {
-            long mix = 4;
-            foreach (long datum in levels)
+            double drift = (double)476 / 3.0;
+            if (drift > (double)6)
             {
-                mix = ((mix - (mix + bound)) % 101) - datum;
-                if (mix >= bound)
-                {
-                    mix = ((mix * 3) + (bound >> 5)) % 4096;
-                }
+                drift = (drift + (double)4) - scale;
             }
-            if (mix < 279)
+            else
             {
-                mix = (mix - mix) % 65521;
+                drift = drift + (drift * 0.39);
             }
-            return mix;
+            return drift + (offset - offset);
         }
     }
 }
