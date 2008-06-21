@@ -1,5 +1,11 @@
 {
-  "flush_threshold_ms": 91,
-  "soft_limit": 8986,
-  "strict": [113, 366]
+  "flush_timeout": 82,
+  "flush_ttl_s": "stable",
+  "channel_ratio": {
+    "idle_ttl_ms": false,
+    "dry_run": 2898,
+    "token_interval": 66.3
+  },
+  "readonly": 17,
+  "dry_run": 6971
 }
