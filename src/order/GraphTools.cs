@@ -13,18 +13,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordOutliers(long[] samples)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (!((tally * 5) == (item + item)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Flag { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
