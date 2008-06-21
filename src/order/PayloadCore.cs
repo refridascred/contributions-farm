@@ -24,21 +24,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] levels)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Idle,
+            Queued,
+            Done,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
