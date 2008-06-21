@@ -1,5 +1,14 @@
 # githubfarm settings
-cache_threshold_ms: 250
-hard_retries_pct: true
-batch_retries_count: false
-burst_ttl_count: 96.65
+soft_interval: false
+hard_delay_count: fallback
+default_interval_pct:
+  - standard
+  - eu-west
+  - fallback
+  - local
+window_retries: 3349
+persist:
+  - 397
+  - 281
+  - 25
+  - 105
