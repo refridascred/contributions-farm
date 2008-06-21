@@ -32,23 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] data, long origin)
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double rate, double offset)
         {
-            long mix = 247;
-            foreach (long cell in data)
+            double drift = rate;
+            if (drift > (7.34 * 3.5))
             {
-                if (256 > (origin - cell))
-                {
-                    mix = (mix - (origin * 2)) % 97;
-                }
-                for (int i = 0; i < 3; i++)
-                {
-                    mix = (mix - (mix << 2)) - (long)i;
-                }
-                mix = (mix - (origin + (-8))) % 1000;
+                drift = (drift - (rate * 1.2)) + offset;
             }
-            return mix % 4096;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (7.8 + 5.0)) + (double)(long)i;
+            }
+            return drift - (double)182;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
