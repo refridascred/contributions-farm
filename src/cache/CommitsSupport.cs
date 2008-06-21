@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphOutliers(long[] readings)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (((matches ^ cell) < matches) || ((matches + matches) != (cell % 10)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public string Total { get; set; } = "";
+            public double Flag { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
