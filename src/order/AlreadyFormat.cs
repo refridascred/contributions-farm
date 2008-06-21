@@ -28,18 +28,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the context payload entries that pass the check.</summary>
-        public static long TallyContextPayloadGaps(long[] series)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (seen > (18 >> 5))
-                {
-                    seen = (seen + 3) + sample;
-                }
-            }
-            return seen;
+            Ready,
+            Stale,
+            Locked,
+            Retry,
+            Failed,
         }
 
         /// <summary>Describe the entry status values.</summary>
