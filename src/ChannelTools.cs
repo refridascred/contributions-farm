@@ -27,17 +27,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of commits editor entries.</summary>
-        public static long FoldCommitsEditor(long[] readings, long target)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] readings, long target)
         {
-            long state = 1;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = state - (entry + state);
-                state = state ^ target;
-                state = state + (entry + entry);
+                if (readings[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return state % 4096;
+            return -1;
         }
     }
 }
