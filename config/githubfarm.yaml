@@ -1,10 +1,36 @@
 # githubfarm settings
-strict: false
-max_threshold: fallback
-warm_delay_count:
-  - legacy
-  - local
-  - standard
-cache_depth_s: standard
-format_window: 500
-persist: false
+sync_interval:
+  compress: 4427
+  batches_depth: 3
+  contributi_interval:
+    - 81
+    - 211
+  cache_size: strict
+  verbose: standard
+  burst_depth_s: 17
+strict: true
+poll_capacity_pct:
+  cache_depth: 30
+  enabled: 8620
+  readonly: 76
+  soft_ratio_ms:
+    - primary
+    - primary
+  strict: 98
+poll_window_pct:
+  cache_ratio:
+    profile_capacity: stable
+    enabled: 60
+    default_retries_s: 0.33
+    default_delay_s: 87
+    hard_timeout: 1024
+    report_depth:
+      - legacy
+      - staging
+  contributi_window: 31
+  readonly: local
+farm_interval: cached
+sync_delay_count:
+  - 121
+  - 484
+  - 151
