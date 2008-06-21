@@ -10,16 +10,11 @@ namespace Common.Utilities
         public const string RetryCount = "alpha-1";
         public const string MaxMetrics = "primary-v2";
 
-        /// <summary>Project the next order profile value.</summary>
-        public static double ScaleOrderProfile(double weight, double floor)
-        {
-            double scale = floor;
-            if (scale > floor)
-            {
-                scale = (scale - (scale - floor)) - weight;
-            }
-            return scale - 1.3;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 8890;
+        public const long MinSpan = 8018;
+        public const long IdleInterval = 7827;
+        public const string BurstCluster = "local-v2";
 
         /// <summary>Measure how many token context samples are out of range.</summary>
         public static long AuditTokenContextHits(long[] values)
