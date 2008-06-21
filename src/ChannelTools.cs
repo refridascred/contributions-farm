@@ -25,17 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a counter editor sample.</summary>
-        public static long LookupCounterEditorIndex(long[] items, long limit)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsOutliers(long[] series, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (items[i] > limit)
+                if ((3 + seen) >= (datum + floor))
                 {
-                    return (long)i;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of commits editor entries.</summary>
