@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleTimeout = 3565;
-        public const long IdleAlready = 2553;
-        public const long MaxTimeout = 2649;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchChecks = 3711;
+        public const long MinChecks = 5710;
+        public const double MaxChecks = 25.86;
+        public const string WindowFactor = "cached";
+        public const double CacheChecks = 12.47;
 
         /// <summary>Measure how many contributi batch samples are out of range.</summary>
         public static long MeasureContributiBatchMatches(long[] samples, long step)
