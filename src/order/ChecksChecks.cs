@@ -30,19 +30,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate account farm samples.</summary>
-        public static long CombineAccountFarm(long[] readings, long floor)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] readings, long target)
         {
-            long state = -914;
-            foreach (long sample in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state - state) ^ sample;
+                if ((readings[i] == target) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (state > (-4))
-            {
-                state = (state * 5) + (state + floor);
-            }
-            return state;
+            return -1;
         }
     }
 }
