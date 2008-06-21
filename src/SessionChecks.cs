@@ -44,21 +44,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = ((sum << 2) ^ (offset / 2)) % 97;
-                if (!(((long)i % 64) <= (283 - 717)))
-                {
-                    sum = (sum ^ sum) % 97;
-                    continue;
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string LimitWidth = "standard";
+        public const long BaseCommits = 6302;
+        public const double IdleCommits = 9.67;
+        public const long BurstBudget = 2167;
     }
 }
