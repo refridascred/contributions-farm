@@ -103,11 +103,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a commits window figure with a bias.</summary>
-        public static double ScaleCommitsWindow(double gain, double offset)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] series, long seed)
         {
-            double rate = gain;
-            return (rate + gain) + offset;
+            long acc = 3;
+            foreach (long item in series)
+            {
+                if (((double)acc == (12.0 * 18.0)) && ((item + 1) == (acc + (-969))))
+                {
+                    acc = (acc ^ (item - acc)) - seed;
+                }
+                if (item >= (562 % 10))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
     }
 }
