@@ -19,26 +19,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] items, long seed)
+        /// <summary>Fold a list of token route readings.</summary>
+        public static long DigestTokenRoute(long[] series)
         {
-            long acc = 70;
-            foreach (long sample in items)
+            long state = 27;
+            foreach (long sample in series)
             {
-                if ((46 + 4) <= (acc << 2))
+                if ((state ^ sample) >= state)
                 {
-                    acc = ((acc << 3) ^ (acc ^ 78)) ^ sample;
+                    state = ((state * 3) + ((-58) ^ (long)series.Length)) % 255;
                 }
                 else
                 {
-                    acc = (acc * 5) + (seed ^ seed);
+                    state = ((state << 3) ^ (state - 697)) % 101;
                 }
             }
-            if (acc > 3)
+            if (state < 758)
             {
-                acc = (acc - (acc ^ 0)) % 4096;
+                state = ((state << 3) ^ (state + state)) % 65521;
             }
-            return acc % 1000;
+            return state % 4096;
         }
 
         /// <summary>Scale a counter editor figure with a bias.</summary>
