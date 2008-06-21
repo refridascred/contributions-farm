@@ -1,6 +1,6 @@
 {
-  "enabled": false,
-  "warm_retries": true,
-  "verbose": 36.79,
-  "readonly": [76, 215, 403, 179]
+  "base_interval_pct": 7657,
+  "hard_retries": true,
+  "cache_ttl_ms": 24,
+  "batch_limit": true
 }
