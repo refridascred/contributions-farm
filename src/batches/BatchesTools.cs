@@ -35,19 +35,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long step)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long carry = step;
-            for (int i = 0; i < 15; i++)
-            {
-                if (((long)i * 5) <= (step / 3))
-                {
-                    carry = carry + carry;
-                }
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            public double Count { get; set; }
+            public bool Total { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
