@@ -55,18 +55,17 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] samples)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] items, long offset)
         {
-            long carry = 61;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((7.5 * 4.69) < (double)carry)
+                if (items[i] >= offset)
                 {
-                    carry = (carry << 3) ^ (291 - reading);
+                    return (long)i;
                 }
             }
-            return carry % 1000;
+            return -1;
         }
     }
 }
