@@ -42,10 +42,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string HardLevel = "primary-v2";
-        public const double RetryRatio = 38.35;
-        public const long RetryScore = 8767;
-        public const long BatchLayout = 3228;
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == origin) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
