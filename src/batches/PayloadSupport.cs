@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long bound, long offset)
-        {
-            if (((-23) & 31) > (offset * 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset - offset) < (bound - bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset >> 4) > offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchBudget = 4829;
+        public const long LimitRatio = 670;
+        public const long SoftBudget = 6688;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long CountSessionHits(long[] series, long seed)
