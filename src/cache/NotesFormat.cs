@@ -35,12 +35,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
-        {
-            Locked,
-            Retry,
-            Stale,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultWidth = 322;
+        public const long RetryScore = 6121;
+        public const string BatchFarm = "staging";
     }
 }
