@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const double MinCommand = 98.46;
         public const long BurstCommand = 7685;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheOutliers(long[] readings)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if (tally <= (value << 1))
+                if (sample >= floor)
                 {
-                    tally = tally + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
