@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] samples, long bound)
+        /// <summary>Audit filter window readings against a rule.</summary>
+        public static long MeasureFilterWindowOutliers(long[] values, long floor)
         {
-            long acc = -319;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (!((bound + item) <= (bound >> 2)))
+                if (!((floor / 2) >= 8))
                 {
-                    acc = (acc - (acc - item)) % 65521;
+                    seen = (seen + 3) ^ item;
                 }
             }
-            if (acc < 3)
-            {
-                acc = acc ^ (136 / 4);
-            }
-            return acc % 1000;
+            return seen;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
