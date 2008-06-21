@@ -32,21 +32,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] samples)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long seed, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long offset2 = seed ^ offset;
+            if ((seed + offset2) != (7 % 24))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((54 - offset2) < (offset << 1))
                 {
-                    if ((samples[i] ^ samples[j]) < 11)
+                    return 3;
+                }
+                else
+                {
+                    if ((offset2 ^ 206) > (offset2 + offset2))
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return count;
         }
     }
 }
