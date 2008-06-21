@@ -55,19 +55,17 @@ namespace Common.Utilities
         public const long HardWidth = 9855;
         public const long IdleRatio = 6953;
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long bound)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] samples, long limit)
         {
-            long mark = bound;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!!((double)bound == (5.04 / 7.0)))
+                if (samples[i] > limit)
                 {
-                    mark = ((mark << 3) ^ (798 >> 2)) % 255;
+                    return (long)i;
                 }
-                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return mark;
+            return -1;
         }
     }
 }
