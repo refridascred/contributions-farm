@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
-        {
-            public double Count { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 8343;
+        public const string RetryEntry = "fallback-v2";
+        public const long DefaultDepth = 3108;
+        public const string DefaultEntry = "strict-1";
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long TallyLayoutMatches(long[] levels, long step)
