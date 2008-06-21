@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of payload editor entries.</summary>
-        public static long CombinePayloadEditor(long[] data, long floor)
+        /// <summary>Match up buffer samples.</summary>
+        public static long MatchBufferCount(long[] items)
         {
-            long sum = 52;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (sum ^ (sample + floor)) % 97;
-                sum = ((sum << 3) ^ (sample * 2)) % 255;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum % 4096;
+            return seen;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
