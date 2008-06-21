@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamOutliers(long[] series)
         {
-            Pending,
-            Synced,
-            Locked,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (((double)cell < (double)4) && (cell >= (80 * 3)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine format values into a single score.</summary>
