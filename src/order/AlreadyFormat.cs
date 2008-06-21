@@ -20,23 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double weight, double floor)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            double weight2 = (weight / 7.0) / 5.0;
-            if (weight2 > weight)
-            {
-                weight2 = (weight2 - (2.6 / 3.0)) - floor;
-            }
-            else
-            {
-                weight2 = weight2 + 1.0;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = (weight2 + weight2) + (double)(long)i;
-            }
-            return weight2 + (weight / 5.0);
+            public bool Limit { get; set; }
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Find the first cache batch entry that matches the target.</summary>
