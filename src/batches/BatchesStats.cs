@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string StepBudget = "local-1";
-        public const long HardLevel = 4617;
-        public const string LimitInterval = "legacy-v2";
-        public const long RetryInterval = 6289;
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
+        {
+            public bool Owner { get; set; }
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
+            public double Level { get; set; }
+        }
 
         /// <summary>Accumulate command samples.</summary>
         public static long TotalCommand(long[] values, long offset)
