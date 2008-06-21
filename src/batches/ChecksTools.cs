@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesGaps(long[] levels)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] samples)
         {
             long count = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample > count)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((samples[i] + samples[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
