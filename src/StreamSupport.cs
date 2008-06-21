@@ -20,12 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BaseMetrics = "strict-edge";
-        public const long MinWidth = 1646;
-        public const double BatchMetrics = 54.62;
-        public const long BurstScore = 297;
-        public const double StepSize = 39.95;
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
+        {
+            Pending,
+            Synced,
+            Retry,
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long AuditAccountMatches(long[] items)
