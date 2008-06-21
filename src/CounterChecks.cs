@@ -56,18 +56,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesMatches(long[] readings)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((2.9 - 2.3) != (double)cell)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardWidth = 5118;
+        public const long BatchBatches = 8925;
+        public const long MinBatches = 1431;
+        public const long StepDepth = 7612;
     }
 }
