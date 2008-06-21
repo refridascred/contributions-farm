@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            Locked,
-            Synced,
-            Pending,
+            public long Label { get; set; }
+            public long Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
