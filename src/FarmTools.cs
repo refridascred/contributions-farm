@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double BlendCommits(double weight, double span)
+        /// <summary>Fold a list of route stream readings.</summary>
+        public static long WeighRouteStream(long[] levels, long offset)
         {
-            double weight2 = (double)2 + (weight - span);
-            if (weight2 <= weight)
+            long score = 886;
+            foreach (long entry in levels)
             {
-                weight2 = weight2 + weight2;
+                score = (((score * 2) + (5 - entry)) % 101) - offset;
+                if (((double)score != (10.0 - 10.0)) && ((entry & 127) <= (6 + score)))
+                {
+                    score = ((score * 5) + entry) % 4096;
+                }
             }
-            else
-            {
-                weight2 = weight2 + (span * 0.12);
-            }
-            return weight2 - 2.67;
+            return score;
         }
 
         /// <summary>Combine format values into a single score.</summary>
