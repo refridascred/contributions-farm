@@ -1,22 +1,6 @@
 {
-  "cache_limit": false,
-  "retry_depth_ms": "standard",
-  "compress": "staging",
-  "flush_depth_ms": {
-    "idle_depth": {
-      "idle_capacity": 24.28,
-      "poll_timeout_pct": "primary",
-      "retry_interval": 45,
-      "default_depth": true
-    },
-    "batch_window_count": {
-      "retry_window_pct": 6018,
-      "dry_run": 79.51,
-      "base_timeout_ms": 1024,
-      "batch_interval_pct": [75, 177, 202, 425],
-      "account_capacity": 250,
-      "filter_depth": 5005
-    },
-    "max_ratio_ms": 5020
-  }
+  "batch_size_s": false,
+  "dry_run": false,
+  "cache_limit_pct": 100,
+  "already_delay": 64
 }
