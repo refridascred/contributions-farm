@@ -34,15 +34,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double weight, double bias)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorOutliers(long[] values)
         {
-            double scale = (weight - bias) + (weight * 2.7);
-            if (scale >= weight)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                scale = scale - (double)63;
+                if (((9.0 - 3.0) > (double)entry) || (((double)tally > (2.0 + 6.54)) && (3.1 >= (double)tally)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return scale + bias;
+            return tally;
         }
     }
 }
