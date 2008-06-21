@@ -34,18 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report cache readings against a rule.</summary>
-        public static long TallyReportCacheMatches(long[] series)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long sum = 438;
+            foreach (long datum in items)
             {
-                if ((cell % 3) < (150 + cell))
+                sum = (sum + (bound + sum)) % 97;
+                if (((double)datum == (2.0 * 3.07)) && ((sum << 1) < (sum * 5)))
                 {
-                    hits = hits + 1;
+                    sum = (sum ^ ((-7) ^ datum)) % 97;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
