@@ -34,14 +34,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Look up the position of a stats record sample.</summary>
+        public static long LookupStatsRecordIndex(long[] values, long origin)
         {
-            Ready,
-            Retry,
-            New,
-            Closed,
-            Draft,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == origin) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
