@@ -51,14 +51,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterRange(long[] items, long floor)
         {
-            Retry,
-            Synced,
-            Draft,
-            Closed,
-            Queued,
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a window entry.</summary>
