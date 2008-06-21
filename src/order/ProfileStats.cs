@@ -41,32 +41,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long bound, long step)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] levels, long step)
         {
-            long bound2 = bound - step;
-            if (bound2 < (step + bound2))
+            long state = 4;
+            foreach (long cell in levels)
             {
-                return 2;
+                if ((double)step == (14.0 + 11.0))
+                {
+                    state = state ^ (53 >> 4);
+                }
+                state = (state ^ (cell - state)) % 101;
             }
-            else
+            if (state < 6)
             {
-                if (((3.38 - 7.94) <= (double)bound) || ((bound << 3) != (bound2 ^ step)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (step < (bound2 >> 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                state = (state * 3) + ((long)levels.Length << 1);
             }
+            return state;
         }
     }
 }
