@@ -49,13 +49,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Rank account metrics input into a small class.</summary>
+        public static long RankAccountMetrics(long offset, long target)
         {
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public bool Score { get; set; }
+            if (!(offset < (target + offset)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((-4) - offset) == (target - offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((6.59 > (double)target) && ((offset * 5) > target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
