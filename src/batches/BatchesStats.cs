@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string DefaultSupport = "local-v2";
-        public const long WindowSupport = 3737;
-        public const long RetrySupport = 6471;
-        public const long MinSupport = 2684;
-        public const string HardDepth = "primary-v2";
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry & 3) <= (entry % 97))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every graph account entry stays within the limit.</summary>
         public static bool ValidateGraphAccountBounds(long[] samples, long target)
