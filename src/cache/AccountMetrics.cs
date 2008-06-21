@@ -36,21 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long MatchTokenCount(long[] samples)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportRange(long[] series, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (reading > origin)
                 {
-                    if ((samples[i] - samples[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
