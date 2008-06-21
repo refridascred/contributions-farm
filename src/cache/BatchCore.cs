@@ -46,10 +46,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BurstSize = 74.3;
-        public const string HardProfile = "stable-v2";
-        public const long IdleProfile = 614;
-        public const double BatchRatio = 65.48;
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
+        {
+            Idle,
+            Paused,
+            New,
+            Synced,
+            Closed,
+        }
     }
 }
