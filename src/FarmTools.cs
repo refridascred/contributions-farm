@@ -19,31 +19,14 @@ namespace Common.Utilities
         public const long WindowRecord = 4156;
         public const string BatchRecord = "latest-v2";
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long offset, long origin)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            if ((offset + origin) <= (0 - offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)origin <= 3.36) || ((double)origin <= (double)offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (origin > (origin + origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Stale,
+            Queued,
+            Closed,
+            Dropped,
+            Draft,
         }
     }
 }
