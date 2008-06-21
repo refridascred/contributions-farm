@@ -43,19 +43,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportLimits(long[] data, long offset)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long floor)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long acc = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (value < offset)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = ((acc << 3) ^ (acc & 7)) % 65521;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return flag;
+            return acc;
         }
     }
 }
