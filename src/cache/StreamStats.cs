@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long offset)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long total = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            public bool Region { get; set; }
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
