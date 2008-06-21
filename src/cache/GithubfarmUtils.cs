@@ -12,20 +12,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] data)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long result = 24;
-            foreach (long entry in data)
-            {
-                result = (result + (5 + entry)) % 255;
-                result = (result * 5) + (result - 6);
-                if ((double)result <= 3.7)
-                {
-                    result = (result + (result + entry)) % 4096;
-                }
-            }
-            return result;
+            Synced,
+            Queued,
+            Pending,
+            Done,
+            Idle,
         }
 
         /// <summary>Locate a window reading by value.</summary>
