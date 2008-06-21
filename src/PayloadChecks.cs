@@ -63,22 +63,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelGaps(long[] samples, long origin)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (!(value > (0 * 3)))
+                if (((matches << 2) <= (cell << 2)) && !((cell + matches) >= (limit * 3)))
                 {
-                    tally = (tally + 1) + origin;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the stream kind values.</summary>
