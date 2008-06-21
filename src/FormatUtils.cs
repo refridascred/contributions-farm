@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
+            Retry,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Project the next profile value.</summary>
