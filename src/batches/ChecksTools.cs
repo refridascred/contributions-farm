@@ -36,23 +36,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double weight, double bias)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            double ratio = bias + bias;
-            if (ratio > (6.6 - 0.4))
-            {
-                ratio = ratio + bias;
-            }
-            else
-            {
-                ratio = ratio - weight;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - (ratio - ratio)) + (double)(long)i;
-            }
-            return ratio + (double)42;
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
