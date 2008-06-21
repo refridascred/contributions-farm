@@ -19,11 +19,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            public double Offset { get; set; }
+            public long Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a metric snapshot.</summary>
