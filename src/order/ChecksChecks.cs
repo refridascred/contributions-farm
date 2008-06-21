@@ -40,18 +40,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] samples)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((value + value) == (value & 127))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Ready,
+            Queued,
+            Done,
+            Locked,
+            Pending,
         }
     }
 }
