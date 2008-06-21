@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountMatches(long[] items)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((727 * 2) != (count + count))
-                {
-                    count = (count + 1) + entry;
-                }
-            }
-            return count;
+            Closed,
+            Dropped,
+            Retry,
+            Draft,
+            Idle,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
