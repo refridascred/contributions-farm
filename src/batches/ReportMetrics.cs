@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string HardMetric = "standard-1";
-        public const long StepMetric = 6871;
-        public const long BaseSize = 5360;
-        public const long MinMetric = 1351;
-        public const long DefaultSpan = 7872;
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Locate a account reading by value.</summary>
         public static long LocateAccountIndex(long[] items, long step)
