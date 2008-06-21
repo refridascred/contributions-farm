@@ -26,22 +26,11 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordGaps(long[] values)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (((double)entry == (4.65 - 11.0)) || (count > (entry + entry)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
