@@ -1,13 +1,6 @@
 {
-  "compress": false,
-  "audit": {
-    "readonly": 9370,
-    "dry_run": 16.16,
-    "context_ttl": true,
-    "batch_size": true
-  },
-  "hard_threshold": "legacy",
-  "hard_size_ms": [128, 471, 311, 114],
-  "readonly": false,
-  "batch_ratio": "edge"
+  "enabled": false,
+  "warm_retries": true,
+  "verbose": 36.79,
+  "readonly": [76, 215, 403, 179]
 }
