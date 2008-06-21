@@ -59,26 +59,9 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] series, long bound)
-        {
-            long state = 675;
-            foreach (long sample in series)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    state = (state ^ (long)i) % 255;
-                }
-                if (bound <= sample)
-                {
-                    state = (state + ((-931) << 1)) % 65521;
-                }
-            }
-            if (state > 665)
-            {
-                state = (state - (state & 1)) % 255;
-            }
-            return state;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BaseScore = 38.22;
+        public const string StepMetrics = "fallback";
+        public const long HardScore = 2986;
     }
 }
