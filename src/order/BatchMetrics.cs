@@ -71,19 +71,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double scale, double span)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchBounds(long[] values, long bound)
         {
-            double gain = scale + (double)2;
-            if (gain < (8.67 * 2.4))
+            bool ok = true;
+            foreach (long datum in values)
             {
-                gain = gain + (span + scale);
+                if (datum < bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + gain;
-            }
-            return gain - (span - span);
+            return ok;
         }
     }
 }
