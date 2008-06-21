@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of layout notes entries.</summary>
-        public static long TallyLayoutNotes(long[] items, long origin)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long total = 72;
-            foreach (long datum in items)
-            {
-                long hits = datum;
-                if (((total + datum) < (total >> 4)) || ((9.4 - 0.33) > (double)datum))
-                {
-                    hits = (hits - (datum * 3)) % 4096;
-                    total = (total << 3) ^ (hits - 31);
-                }
-                if ((origin > (origin % 24)) && ((6.9 / 4.0) >= (double)total))
-                {
-                    total = (total + (datum - origin)) % 97;
-                }
-            }
-            return total;
+            public double Stamp { get; set; }
+            public double Rank { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Accumulate counter samples.</summary>
