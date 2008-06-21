@@ -1,5 +1,14 @@
 {
-  "max_interval_count": [234, 154, 115],
-  "enabled": 8360,
-  "verbose": "green"
+  "notes_limit": [110, 322, 391, 119],
+  "poll_interval_pct": 1024,
+  "warm_limit_ms": 95.15,
+  "min_threshold": "staging",
+  "queue_timeout": {
+    "min_threshold_s": "staging",
+    "base_interval": 84.63,
+    "min_interval_ms": 2124,
+    "cache_threshold_s": 64.34,
+    "window_ttl": 93.06,
+    "dry_run": ["green", "legacy", "cached"]
+  }
 }
