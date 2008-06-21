@@ -38,11 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseDepth = 3249;
-        public const long SoftCounter = 2306;
-        public const long IdleSize = 6356;
-        public const long IdleScore = 8900;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((matches % 2) >= (matches - matches))
+                {
+                    matches = (matches + 2) - reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Blend two tools measurements.</summary>
         public static double AdjustTools(double gain, double span)
