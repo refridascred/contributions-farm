@@ -37,24 +37,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the cluster commits series from a seed.</summary>
-        public static long IterateClusterCommits(long offset)
+        /// <summary>Classify a graph batch pair into a bucket.</summary>
+        public static long GradeGraphBatch(long bound, long offset)
         {
-            long anchor = offset;
-            for (int i = 0; i < 9; i++)
+            if ((double)offset != (double)(-43))
             {
-                if (anchor > (long)i)
+                return 5;
+            }
+            else
+            {
+                if (!((double)bound <= 7.78))
                 {
-                    anchor = ((anchor << 2) ^ anchor) % 101;
+                    return 7;
                 }
                 else
                 {
-                    anchor = anchor ^ (long)i;
-                    anchor = (anchor ^ (long)i) % 255;
+                    return 0;
                 }
-                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return anchor;
         }
     }
 }
