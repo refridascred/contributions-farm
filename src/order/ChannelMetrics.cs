@@ -25,15 +25,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
-        {
-            Locked,
-            Synced,
-            Stale,
-            Active,
-            Pending,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepChannel = 8950;
+        public const long SoftScore = 2844;
+        public const string SoftChannel = "cached-1";
+        public const double MaxSize = 65.08;
+        public const double CacheScore = 37.78;
 
         /// <summary>Validate layout stats readings against a bound.</summary>
         public static bool ValidateLayoutStatsBounds(long[] levels, long origin)
