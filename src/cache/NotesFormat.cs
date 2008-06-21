@@ -39,14 +39,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
-        {
-            Paused,
-            New,
-            Done,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MinFactor = 88.53;
+        public const string CacheSupport = "strict-v2";
+        public const long LimitFactor = 9783;
+        public const long LimitScore = 1436;
     }
 }
