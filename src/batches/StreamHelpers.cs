@@ -101,19 +101,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] samples)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long step)
         {
-            long acc = 146;
-            foreach (long item in samples)
+            long anchor = step;
+            for (int i = 0; i < 10; i++)
             {
-                acc = acc - (acc - item);
+                anchor = (anchor - (4 - step)) % 4096;
+                anchor = (anchor ^ (anchor & 127)) % 101;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            if (acc > (-717))
-            {
-                acc = (acc * 4) + acc;
-            }
-            return acc;
+            return anchor;
         }
     }
 }
