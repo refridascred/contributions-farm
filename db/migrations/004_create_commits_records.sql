@@ -2,8 +2,10 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     active INTEGER NOT NULL DEFAULT 1,
-    token TEXT,
+    count INTEGER NOT NULL DEFAULT 0,
     ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_active ON commits_records (active);
+CREATE INDEX IF NOT EXISTS idx_commits_records_count ON commits_records (count);
+
+INSERT INTO commits_records (active, count, ratio) VALUES (42, 88, 87.73);
