@@ -53,19 +53,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] samples)
+        /// <summary>Blend two buffer graph measurements.</summary>
+        public static double ProjectBufferGraph(double gain, double span)
         {
-            long mix = 0;
-            foreach (long value in samples)
+            double ratio = span + gain;
+            for (int i = 0; i < 6; i++)
             {
-                mix = mix + (mix + value);
+                ratio = (ratio + ratio) + (double)(long)i;
             }
-            if (mix < 5)
-            {
-                mix = (mix ^ (mix << 1)) % 65521;
-            }
-            return mix % 97;
+            return ratio + gain;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
