@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] readings, long floor)
         {
-            public string Level { get; set; } = "";
-            public double Flag { get; set; }
-            public double Offset { get; set; }
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((15.0 - 8.6) > (double)seen)
+                {
+                    seen = ((seen + 2) + item) - floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a batch stats.</summary>
