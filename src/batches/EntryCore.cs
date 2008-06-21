@@ -50,12 +50,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Look up the position of a metrics checks sample.</summary>
+        public static long SeekMetricsChecksIndex(long[] readings, long limit)
         {
-            public bool Offset { get; set; }
-            public double Size { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < limit) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
