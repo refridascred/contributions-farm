@@ -84,12 +84,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            Locked,
-            Paused,
             Idle,
+            Closed,
+            Synced,
         }
     }
 }
