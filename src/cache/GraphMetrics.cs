@@ -39,12 +39,13 @@ namespace Common.Utilities
         public const string StepSpan = "cached-1";
         public const long RetrySupport = 6613;
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            public long Total { get; set; }
-            public double Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            Stale,
+            Done,
+            Queued,
+            New,
         }
 
         /// <summary>Hold a filter info.</summary>
