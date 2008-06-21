@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Scale a report route figure with a bias.</summary>
+        public static double ScaleReportRoute(double scale, double span)
         {
-            New,
-            Dropped,
-            Active,
-            Idle,
-            Stale,
+            double bias = span;
+            if (bias > bias)
+            {
+                bias = (bias + (bias - bias)) + scale;
+            }
+            else
+            {
+                bias = bias + (bias + span);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias + (double)96;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
