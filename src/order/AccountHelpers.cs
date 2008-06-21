@@ -72,21 +72,24 @@ namespace Common.Utilities
         public const double StepSpan = 97.62;
         public const double IdleSpan = 46.97;
 
-        /// <summary>Match up notes layout samples.</summary>
-        public static long MatchNotesLayoutCount(long[] values)
+        /// <summary>Classify a payload notes pair into a bucket.</summary>
+        public static long GradePayloadNotes(long limit, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (step > (step + step))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (limit >= (limit / 2))
                 {
-                    if ((values[i] - values[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
     }
 }
