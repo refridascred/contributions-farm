@@ -1,7 +1,18 @@
 # entry settings
-burst_retries_count: false
-enabled: 72.67
-commits_limit: staging
-metrics_size: 15.83
-batch_interval: staging
-sync_timeout_count: 8742
+warm_ratio:
+  max_capacity_ms: blue
+  entry_threshold: false
+  audit: standard
+  max_ttl_count: stable
+  warm_limit: 8512
+  already_ttl: 33.35
+default_threshold: 100
+cache_limit: 57
+report_size:
+  batch_size: 2002
+  dry_run: 9683
+  metric_limit: strict
+enabled:
+  - strict
+  - cached
+  - eu-west
