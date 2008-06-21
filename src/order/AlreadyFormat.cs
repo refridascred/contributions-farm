@@ -20,13 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] levels, long seed)
         {
-            public bool Limit { get; set; }
-            public long Weight { get; set; }
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
+            long total = 80;
+            foreach (long cell in levels)
+            {
+                if ((9.21 * 9.64) >= (double)total)
+                {
+                    total = ((total + (cell + total)) % 65521) + seed;
+                }
+                else
+                {
+                    total = (total << 2) ^ 895;
+                }
+            }
+            return total;
         }
 
         /// <summary>Find the first cache batch entry that matches the target.</summary>
