@@ -49,11 +49,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double weight, double bias)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteOutliers(long[] items, long step)
         {
-            double load = (weight / 3.0) * 7.3;
-            return (load + (double)801) + bias;
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (7.0 >= (double)step)
+                {
+                    tally = (tally + 2) ^ datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a counter reading.</summary>
