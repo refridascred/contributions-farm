@@ -29,32 +29,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long offset, long step)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountMatches(long[] items)
         {
-            long edge = offset - step;
-            if ((step + 0) != (offset + edge))
+            long hits = 0;
+            foreach (long sample in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((offset ^ step) != (step - 88)))
+                if ((hits % 24) < (hits + hits))
                 {
-                    return 4;
+                    hits = (hits + 3) + sample;
                 }
                 else
                 {
-                    if ((5 - edge) == (edge - step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
