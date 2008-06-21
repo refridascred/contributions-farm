@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 8343;
-        public const string RetryEntry = "fallback-v2";
-        public const long DefaultDepth = 3108;
-        public const string DefaultEntry = "strict-1";
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Ready,
+            Done,
+            Pending,
+            Closed,
+            New,
+        }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long TallyLayoutMatches(long[] levels, long step)
