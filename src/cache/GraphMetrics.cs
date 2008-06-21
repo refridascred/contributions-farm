@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorMatches(long[] series, long target)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double scale, double offset)
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((9.54 * 15.0) >= (double)target)
-                {
-                    count = (count + 3) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            double load = (double)(644 + 10);
+            return (load + (7.9 + scale)) + offset;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
