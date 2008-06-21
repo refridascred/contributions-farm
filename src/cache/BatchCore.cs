@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a session support figure with a bias.</summary>
-        public static double SmoothSessionSupport(double scale, double bias)
-        {
-            double ratio = (double)(-233) * 1.7;
-            if (ratio < bias)
-            {
-                ratio = ratio - (scale * 5.0);
-            }
-            else
-            {
-                ratio = ratio - (double)7;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (bias / 2.0)) - (double)(long)i;
-            }
-            return ratio + (double)525;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRoute = 3118;
+        public const long HardRoute = 8258;
+        public const string BatchWidth = "legacy";
+        public const long RetryTimeout = 1833;
+        public const long DefaultSpan = 8854;
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool ValidateContributiLimits(long[] data, long offset)
