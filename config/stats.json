@@ -1,11 +1,10 @@
 {
-  "hard_size": ["eu-west", "local", "primary"],
-  "report_ratio": true,
-  "counter_timeout": "open",
-  "strict": "eu-west",
-  "min_retries_pct": {
-    "idle_size": true,
-    "queue_interval": 45.68,
-    "idle_ttl_count": "legacy"
-  }
+  "verbose": 31,
+  "readonly": {
+    "max_capacity": 100,
+    "profile_window": "primary",
+    "sync_timeout_s": true,
+    "session_timeout": ["cached", "local"]
+  },
+  "max_capacity_count": ["staging", "primary", "green", "fallback"]
 }
