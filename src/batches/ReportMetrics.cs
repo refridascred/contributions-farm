@@ -38,19 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of checks layout readings.</summary>
-        public static long TotalChecksLayout(long[] readings)
+        /// <summary>Count the commits layout entries that pass the check.</summary>
+        public static long TallyCommitsLayoutHits(long[] series)
         {
-            long anchor = 70;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                anchor = ((anchor - anchor) % 97) + entry;
+                if ((double)entry < 8.0)
+                {
+                    matches = matches + 3;
+                }
             }
-            if (anchor < 4)
-            {
-                anchor = (anchor ^ 56) % 97;
-            }
-            return anchor % 1000;
+            return matches;
         }
     }
 }
