@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long target, long step)
+        /// <summary>Project the next cluster farm value.</summary>
+        public static double ScaleClusterFarm(double bias, double bias2)
         {
-            long gap = target - step;
-            if ((target - step) == (gap / 6))
+            double drift = (double)(242 + 353);
+            for (int i = 0; i < 8; i++)
             {
-                return 7;
+                drift = (((drift + drift) + (double)(long)i) + bias) - bias2;
             }
-            else
-            {
-                if (step <= (step % 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return drift - (drift - drift);
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
