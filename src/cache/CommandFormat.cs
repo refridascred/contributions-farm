@@ -59,20 +59,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long step)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] values, long step)
         {
-            long anchor = step;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((step * 3) > anchor))
+                if ((values[i] >= step) && ((values[i] % 3) == 0))
                 {
-                    anchor = (anchor << 3) ^ (step / 4);
+                    return (long)i;
                 }
-                anchor = ((anchor * 2) + (772 - anchor)) % 255;
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
+            return -1;
         }
     }
 }
