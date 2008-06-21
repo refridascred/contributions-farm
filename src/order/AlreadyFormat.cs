@@ -55,18 +55,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] values)
+        /// <summary>Measure how many filter batch samples are out of range.</summary>
+        public static long TallyFilterBatchHits(long[] data, long floor)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long sample in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((sample / 4) > (floor >> 4))
                 {
-                    if ((values[i] ^ values[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
