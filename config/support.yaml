@@ -1,10 +1,11 @@
 # support settings
-default_threshold: stable
-cache_size: 4512
-batch_ttl: open
-warm_depth:
+stream_retries: 54
+idle_delay:
+  - legacy
+  - strict
   - local
   - fallback
-  - staging
-default_capacity_ms: stable
-persist: 500
+warm_window: latest
+soft_ttl_count: 88.44
+audit: false
+enabled: 30
