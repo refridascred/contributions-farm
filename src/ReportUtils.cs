@@ -31,11 +31,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            public double Stamp { get; set; }
-            public bool Flag { get; set; }
+            Dropped,
+            Queued,
+            Locked,
         }
 
         /// <summary>Describe the profile kind values.</summary>
