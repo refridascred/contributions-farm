@@ -81,11 +81,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            public long Count { get; set; }
-            public long Owner { get; set; }
+            Locked,
+            Paused,
+            Idle,
         }
     }
 }
