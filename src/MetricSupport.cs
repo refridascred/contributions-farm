@@ -38,11 +38,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryBuffer = "primary";
-        public const string StepWidth = "legacy-1";
-        public const long StepBuffer = 7858;
-        public const long SoftBuffer = 1930;
-        public const long BurstBuffer = 5727;
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
+        }
     }
 }
