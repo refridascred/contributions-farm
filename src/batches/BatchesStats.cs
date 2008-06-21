@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
-        {
-            public long Mode { get; set; }
-            public bool Token { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepTimeout = 9265;
+        public const long MaxLevel = 2299;
+        public const long SoftInterval = 7410;
+        public const long MaxCount = 286;
+        public const long BurstBatch = 9736;
 
         /// <summary>Check that every graph account entry stays within the limit.</summary>
         public static bool ValidateGraphAccountBounds(long[] samples, long target)
