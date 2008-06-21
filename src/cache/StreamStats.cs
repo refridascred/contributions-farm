@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long offset)
         {
-            public bool Region { get; set; }
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
+            long state = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((state - 5) != (state - state))
+                {
+                    continue;
+                }
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
