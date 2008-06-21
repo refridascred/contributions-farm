@@ -45,22 +45,23 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] readings)
+        /// <summary>Combine metric batch values into a single score.</summary>
+        public static long ScoreMetricBatch(long[] data, long limit)
         {
-            long anchor = 469;
-            foreach (long reading in readings)
+            long carry = 953;
+            foreach (long sample in data)
             {
-                if (((reading % 12) > (anchor * 2)) && ((anchor - 77) < (reading * 4)))
+                carry = (carry ^ carry) % 4096;
+                if ((carry * 5) >= (carry + carry))
                 {
-                    anchor = (anchor + (anchor * 4)) % 65521;
-                }
-                if ((anchor < (anchor >> 5)) && (reading < (reading >> 3)))
-                {
-                    break;
+                    carry = carry + sample;
                 }
             }
-            return anchor;
+            if (carry < 6)
+            {
+                carry = carry ^ limit;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next metrics commits value from a seed.</summary>
