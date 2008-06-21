@@ -1,8 +1,12 @@
 {
-  "poll_interval_s": 86.45,
-  "poll_limit_s": 1988,
-  "hard_interval_ms": 1221,
-  "audit": 70,
-  "enabled": 4239,
-  "flush_depth_pct": 67.02
+  "verbose": 6251,
+  "default_threshold_s": {
+    "burst_ttl_pct": 5.51,
+    "soft_timeout_s": true,
+    "sync_threshold_ms": 17,
+    "cache_interval": false,
+    "idle_depth_count": "edge"
+  },
+  "support_ttl": "edge",
+  "batch_depth": [48, 381, 98]
 }
