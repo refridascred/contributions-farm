@@ -73,18 +73,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] series, long bound)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsLimits(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                if (((((-6) + seen) < (sample - sample)) || ((0 + sample) >= (bound * 5))) && ((11.0 < (double)seen) || (471 > (sample ^ sample))))
+                if (value >= bound)
                 {
-                    seen = seen + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
