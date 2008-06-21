@@ -42,20 +42,17 @@ namespace Common.Utilities
         public const long RetryLevel = 8379;
         public const long WindowSpan = 1367;
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long offset)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] items, long offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (items[i] > offset)
                 {
-                    sum = ((sum - offset) % 101) ^ (long)i2;
+                    return (long)i;
                 }
-                sum = ((sum << 2) ^ offset) % 4096;
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Accumulate tools report samples.</summary>
