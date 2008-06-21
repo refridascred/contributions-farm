@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
+            public double Size { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the command kind values.</summary>
