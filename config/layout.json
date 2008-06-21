@@ -1,21 +1,5 @@
 {
-  "retry_size_s": "cached",
-  "tools_ttl": {
-    "compress": {
-      "schema_interval": "cached",
-      "soft_limit_ms": [412, 455, 188],
-      "farm_limit": false
-    },
-    "hard_size_s": {
-      "editor_ratio": 6,
-      "warm_retries_s": 2,
-      "dry_run": "eu-west",
-      "verbose": [123, 7]
-    },
-    "retry_timeout_ms": "local"
-  },
-  "base_capacity_count": 7024,
-  "base_interval_ms": ["green", "stable", "local", "blue"],
-  "already_capacity": "local",
-  "order_ttl": ["primary", "primary"]
+  "dry_run": 14,
+  "cache_delay_pct": ["open", "legacy"],
+  "enabled": true
 }
