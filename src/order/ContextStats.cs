@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long floor, long origin)
+        /// <summary>Fold a list of format layout readings.</summary>
+        public static long TotalFormatLayout(long[] readings)
         {
-            if ((origin - floor) <= (origin + floor))
+            long anchor = 631;
+            foreach (long item in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor + origin) < origin)
+                anchor = anchor ^ item;
+                if ((double)item > (double)anchor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((2 % 97) >= (floor % 64)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    break;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Grade a stream format value against two limits.</summary>
