@@ -36,11 +36,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 4261;
-        public const long BurstDepth = 5438;
-        public const long RetryLevel = 8379;
-        public const long WindowSpan = 1367;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 235;
+        public const long IdleRatio = 515;
+        public const long BatchBatches = 6167;
 
         /// <summary>Locate a record reading by value.</summary>
         public static long SeekRecordIndex(long[] items, long offset)
