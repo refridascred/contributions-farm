@@ -14,12 +14,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Locate a support editor reading by value.</summary>
-        public static long LocateSupportEditorIndex(long[] data, long offset)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] levels, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (data[i] <= offset)
+                if ((levels[i] >= seed) && ((levels[i] % 2) != 0))
                 {
                     return (long)i;
                 }
