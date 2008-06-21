@@ -39,11 +39,18 @@ namespace Common.Utilities
             return weight2 + (weight / 5.0);
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstSpan = 5002;
-        public const long MinLevel = 3036;
-        public const long BurstStream = 7623;
-        public const long HardWidth = 4062;
+        /// <summary>Find the first cache batch entry that matches the target.</summary>
+        public static long SeekCacheBatchIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
