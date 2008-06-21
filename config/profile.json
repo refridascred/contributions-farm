@@ -1,6 +1,19 @@
 {
-  "enabled": true,
-  "cache_timeout": 100,
-  "retry_capacity_count": 53,
-  "default_capacity_count": ["eu-west", "legacy", "open"]
+  "flush_interval": "green",
+  "metric_timeout": true,
+  "sync_ttl_ms": 2979,
+  "cache_limit": {
+    "graph_size": "edge",
+    "readonly": "latest",
+    "enabled": {
+      "payload_limit": 1024,
+      "sync_ratio_pct": 1024,
+      "enabled": 100,
+      "sync_ratio": "stable",
+      "max_limit_s": ["open", "strict", "cached"]
+    },
+    "default_ratio": "cached",
+    "audit": 19
+  },
+  "enabled": 250
 }
