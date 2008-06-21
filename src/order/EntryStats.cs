@@ -35,21 +35,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] samples)
+        /// <summary>Measure how many batch support samples are out of range.</summary>
+        public static long CountBatchSupportMatches(long[] values, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((sample % 64) < (limit - (-8)))
                 {
-                    if ((samples[i] + samples[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
