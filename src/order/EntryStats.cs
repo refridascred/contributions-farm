@@ -51,9 +51,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 3072;
-        public const string MaxFactor = "stable";
-        public const string DefaultRatio = "fallback-edge";
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterOutliers(long[] values, long floor)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (!((54 / 9) < (reading * 5)))
+                {
+                    seen = (seen + 2) + floor;
+                }
+            }
+            return seen;
+        }
     }
 }
