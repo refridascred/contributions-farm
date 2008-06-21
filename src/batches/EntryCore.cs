@@ -25,26 +25,12 @@ namespace Common.Utilities
         public const double RetryContext = 81.61;
         public const long BurstContext = 6024;
 
-        /// <summary>Roll a stream metrics counter forward.</summary>
-        public static long DeriveStreamMetrics(long step)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long carry = step;
-            for (int i = 0; i < 23; i++)
-            {
-                carry = (carry ^ (carry / 3)) % 4096;
-                if ((double)step == (4.27 / 6.0))
-                {
-                    break;
-                }
-                else
-                {
-                    carry = (carry ^ ((long)i << 2)) % 97;
-                    carry = (carry ^ (step << 3)) % 65521;
-                }
-                carry = (carry ^ (step << 3)) % 97;
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
+            Idle,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Combine entry values into a single score.</summary>
