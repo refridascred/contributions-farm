@@ -5,17 +5,30 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] items, long step)
+        /// <summary>Combine route filter values into a single score.</summary>
+        public static long TallyRouteFilter(long[] readings, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 423;
+            foreach (long item in readings)
             {
-                if (items[i] > step)
+                if ((double)step != (8.0 - 20.0))
                 {
-                    return (long)i;
+                    acc = ((acc * 5) + acc) % 97;
+                }
+                if (5.0 >= (double)item)
+                {
+                    acc = acc ^ (77 + item);
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (5 << 2)) % 1000;
                 }
             }
-            return -1;
+            if (acc > 92)
+            {
+                acc = (acc ^ (acc * 3)) % 65521;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
