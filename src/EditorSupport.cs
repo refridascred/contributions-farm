@@ -75,12 +75,9 @@ namespace Common.Utilities
             return gain + (double)625;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
-        {
-            Idle,
-            Closed,
-            Synced,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double HardBudget = 56.29;
+        public const double BatchSize = 26.05;
+        public const long StepLevel = 4237;
     }
 }
