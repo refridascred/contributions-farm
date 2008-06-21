@@ -1,4 +1,5 @@
 # githubfarm settings
-cache_threshold: latest
-cache_window_s: strict
-idle_depth_ms: eu-west
+cache_threshold_ms: 250
+hard_retries_pct: true
+batch_retries_count: false
+burst_ttl_count: 96.65
