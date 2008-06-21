@@ -20,15 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next commits session value from a seed.</summary>
-        public static long IterateCommitsSession(long offset)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheOutliers(long[] series)
         {
-            long result = offset;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                result = ((result * 5) + (long)i) % 4093;
+                if ((8.94 - 6.3) > (double)tally)
+                {
+                    tally = (tally + 3) ^ item;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
