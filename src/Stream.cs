@@ -57,28 +57,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] series, long offset)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountOutliers(long[] levels)
         {
-            long carry = 474;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((double)offset != (5.8 * 0.8))
+                if ((datum << 1) < datum)
                 {
-                    carry = (carry + (2 + carry)) % 65521;
-                    carry = carry + (entry * 5);
-                    continue;
+                    count = count + 3;
                 }
-                if (offset <= entry)
+                else
                 {
-                    carry = ((carry << 2) ^ ((-98) ^ entry)) % 101;
+                    count = count - 1;
                 }
             }
-            if (carry > 918)
-            {
-                carry = carry - (offset + offset);
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Describe the metrics class values.</summary>
