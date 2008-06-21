@@ -22,12 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            public bool Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Size { get; set; }
+            Stale,
+            Done,
+            Pending,
+            Draft,
+            Queued,
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
