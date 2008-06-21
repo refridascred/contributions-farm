@@ -45,13 +45,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Adjust a cluster account reading.</summary>
+        public static double ProjectClusterAccount(double ratio, double floor)
         {
-            public bool Rank { get; set; }
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
+            double rate = floor / 8.0;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - (rate + 3.77)) - (double)(long)i;
+            }
+            return rate - (ratio - floor);
         }
     }
 }
