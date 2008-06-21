@@ -23,18 +23,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] samples)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportRange(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if (((65 ^ (long)samples.Length) != (hits + hits)) || (hits < (cell ^ cell)))
+                if (reading < offset)
                 {
-                    hits = hits + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Classify a record filter pair into a bucket.</summary>
