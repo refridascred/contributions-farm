@@ -56,24 +56,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long limit, long limit2)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsGaps(long[] readings, long origin)
         {
-            if (((2.0 - 2.65) > (double)limit2) || ((limit * 4) <= (limit2 % 2)))
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit2 + limit2) >= limit)
+                if ((((962 & 3) == (matches % 12)) && ((16.0 + 4.8) != (double)matches)) && !((entry + entry) < matches))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    matches = (matches + 1) + origin;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the schema level values.</summary>
