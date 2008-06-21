@@ -22,16 +22,31 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next filter profile value from a seed.</summary>
-        public static long DeriveFilterProfile(long step)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long offset, long origin)
         {
-            long carry = step;
-            for (int i = 0; i < 20; i++)
+            if ((offset + origin) <= (0 - offset))
             {
-                carry = ((carry << 3) ^ ((long)i - carry)) % 1000;
-                carry = ((carry * 5) + (long)i) % 97;
+                return 8;
             }
-            return carry;
+            else
+            {
+                if (((double)origin <= 3.36) || ((double)origin <= (double)offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (origin > (origin + origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
