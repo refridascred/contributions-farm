@@ -1,5 +1,6 @@
 {
-  "idle_limit_ms": [191, 128, 369],
-  "base_size_count": 100,
-  "compress": [409, 235]
+  "enabled": ["open", "green"],
+  "persist": true,
+  "already_threshold": false,
+  "contributi_window": [287, 344, 250, 255]
 }
