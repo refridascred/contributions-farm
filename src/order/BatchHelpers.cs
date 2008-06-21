@@ -29,17 +29,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a stats record sample.</summary>
-        public static long LookupStatsRecordIndex(long[] values, long origin)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((values[i] == origin) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                score = ((score << 2) ^ (score & 3)) % 101;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
     }
 }
