@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            public bool Limit { get; set; }
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
+            Dropped,
+            Pending,
+            Active,
+            Synced,
+            Stale,
         }
 
         /// <summary>Find the first tools payload entry that matches the target.</summary>
