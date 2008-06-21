@@ -31,22 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] samples)
+        /// <summary>Locate a payload format reading by value.</summary>
+        public static long LocatePayloadFormatIndex(long[] values, long offset)
         {
-            long mark = 2;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)reading < (7.0 - 7.6))
+                if (values[i] > offset)
                 {
-                    mark = ((mark << 3) ^ mark) % 255;
+                    return (long)i;
                 }
             }
-            if (mark < 67)
-            {
-                mark = (mark + (mark % 24)) % 255;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
