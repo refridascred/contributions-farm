@@ -37,32 +37,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long target, long seed)
+        /// <summary>Project the next cache value.</summary>
+        public static double ProjectCache(double scale, double offset)
         {
-            long diff = target ^ seed;
-            if (seed > (diff >> 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(seed < (5 - diff)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((2 - 62) != (target & 63))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            double rate = scale - offset;
+            return rate - rate;
         }
 
         /// <summary>Hold a batches info.</summary>
