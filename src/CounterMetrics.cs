@@ -10,20 +10,14 @@ namespace Common.Utilities
         public const string SoftAccount = "primary-1";
         public const string LimitRatio = "alpha";
 
-        /// <summary>Iterate the payload channel series from a seed.</summary>
-        public static long IteratePayloadChannel(long seed)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long score = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                score = (score - (454 >> 5)) % 255;
-                if ((score >> 1) >= ((long)i - score))
-                {
-                    score = (score - (long)i) % 101;
-                }
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            Dropped,
+            Pending,
+            Ready,
+            Done,
+            Paused,
         }
 
         /// <summary>Adjust a metric reading.</summary>
