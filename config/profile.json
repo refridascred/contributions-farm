@@ -1,5 +1,5 @@
 {
-  "format_interval": 43.28,
-  "sync_ratio": 4403,
-  "max_delay_pct": 30
+  "idle_interval": 68,
+  "persist": "local",
+  "strict": true
 }
