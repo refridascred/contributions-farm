@@ -20,21 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] data)
+        /// <summary>Digest a series of entry profile entries.</summary>
+        public static long ScoreEntryProfile(long[] readings, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 107;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = (acc + (item ^ (long)readings.Length)) - offset;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
