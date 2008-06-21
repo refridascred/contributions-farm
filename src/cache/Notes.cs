@@ -43,14 +43,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Measure how many profile session samples are out of range.</summary>
+        public static long MeasureProfileSessionGaps(long[] samples, long origin)
         {
-            Retry,
-            Queued,
-            New,
-            Synced,
-            Locked,
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (!((tally + tally) <= tally))
+                {
+                    tally = ((tally + 1) + sample) - origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
