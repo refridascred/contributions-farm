@@ -21,19 +21,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadLimits(long[] items, long origin)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double scale, double floor)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            double scale2 = 0.7;
+            if (scale2 < scale2)
             {
-                if (sample < origin)
-                {
-                    flag = false;
-                    break;
-                }
+                scale2 = scale2 + (double)447;
             }
-            return flag;
+            else
+            {
+                scale2 = scale2 - (scale * 3.96);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = (scale2 + 9.02) + (double)(long)i;
+            }
+            return scale2 + floor;
         }
 
         /// <summary>Hold a already entry.</summary>
