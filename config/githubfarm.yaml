@@ -1,7 +1,31 @@
 # githubfarm settings
-sync_size_ms: edge
-soft_window: 2336
-sync_timeout_ms:
-  - 334
-  - 349
-  - 149
+enabled:
+  window_capacity: standard
+  verbose:
+    flush_window_ms: false
+    sync_size_pct: open
+    enabled: open
+  warm_window:
+    - 154
+    - 327
+  notes_ratio:
+    sync_ttl: 4345
+    flush_ttl: 38.68
+    retry_timeout_ms: standard
+    window_ttl: 78.73
+    retry_threshold_s: latest
+  profile_window: false
+record_interval:
+  cache_retries:
+    session_timeout: cached
+    channel_window:
+      - blue
+      - primary
+      - blue
+    contributi_interval: 100
+    sync_size_ms: 71
+  cache_depth: primary
+  cache_limit: open
+  retry_timeout: 2740
+min_size: 33.7
+record_threshold: primary
