@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long target)
         {
-            public double Ratio { get; set; }
-            public double Token { get; set; }
-            public string Level { get; set; } = "";
-            public long Limit { get; set; }
+            long score = target;
+            for (int i = 0; i < 14; i++)
+            {
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Accumulate counter samples.</summary>
