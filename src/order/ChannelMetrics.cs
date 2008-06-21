@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the githubfarm batches entries that pass the check.</summary>
-        public static long CountGithubfarmBatchesOutliers(long[] items, long seed)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmMatches(long[] levels)
         {
             long hits = 0;
-            foreach (long datum in items)
+            foreach (long sample in levels)
             {
-                if (hits < (datum - seed))
+                if (((sample >> 2) < (hits ^ sample)) && (hits > sample))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = hits + 3;
                 }
             }
             return hits;
