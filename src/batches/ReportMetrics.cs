@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyOutliers(long[] series, long offset)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long item in items)
             {
-                if (entry >= 757)
+                if (item != limit)
                 {
-                    hits = (hits + 1) + offset;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Locate a account reading by value.</summary>
