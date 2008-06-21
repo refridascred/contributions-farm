@@ -34,18 +34,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordGaps(long[] items, long origin)
-        {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (origin < (53 ^ item))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BaseChannel = 90.49;
+        public const long BaseInterval = 9401;
+        public const double BurstChannel = 82.49;
+        public const double BatchChannel = 38.07;
+        public const double MaxChannel = 97.9;
     }
 }
