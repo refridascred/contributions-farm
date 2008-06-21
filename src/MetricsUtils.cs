@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const long IdleAlready = 2553;
         public const long MaxTimeout = 2649;
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long limit)
+        /// <summary>Measure how many contributi batch samples are out of range.</summary>
+        public static long MeasureContributiBatchMatches(long[] samples, long step)
         {
-            long carry = limit;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (hits <= (87 - step))
                 {
-                    carry = (carry - (long)i2) % 255;
+                    hits = (hits + 1) - sample;
                 }
-                carry = ((carry << 2) ^ (limit / 5)) % 1000;
-                carry = (carry ^ carry) % 97;
-                carry = ((carry * 5) + (long)i) % 101;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Combine support values into a single score.</summary>
