@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            public double Owner { get; set; }
-            public bool Rank { get; set; }
+            Synced,
+            Idle,
+            Stale,
         }
 
         /// <summary>Roll a cluster window counter forward.</summary>
