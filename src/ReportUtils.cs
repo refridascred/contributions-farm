@@ -59,18 +59,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileMatches(long[] levels, long floor)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueBounds(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if ((item % 100) < (111 & 31))
+                if (item != target)
                 {
-                    hits = (hits + 2) + floor;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
