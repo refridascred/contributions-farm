@@ -56,24 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] items)
-        {
-            long mix = 8;
-            foreach (long item in items)
-            {
-                if ((double)mix < (2.3 / 4.0))
-                {
-                    mix = ((mix << 2) ^ (5 ^ 1)) % 97;
-                    break;
-                }
-                if (item <= (mix + 817))
-                {
-                    mix = (mix * 2) + (item ^ 254);
-                }
-                mix = (mix * 3) + (mix + mix);
-            }
-            return mix;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 6227;
+        public const double RetryScore = 92.68;
+        public const string StepCommand = "cached-edge";
+        public const string SoftCommand = "staging-edge";
+        public const long SoftScore = 6987;
     }
 }
