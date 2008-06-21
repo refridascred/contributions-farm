@@ -21,21 +21,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] values)
+        /// <summary>Look up the position of a stats cache sample.</summary>
+        public static long SeekStatsCacheIndex(long[] items, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (items[i] <= bound)
                 {
-                    if ((values[i] - values[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
