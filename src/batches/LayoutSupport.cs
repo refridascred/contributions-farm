@@ -22,12 +22,19 @@ namespace Common.Utilities
             return rate + (double)339;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 8549;
-        public const long HardBudget = 9986;
-        public const long StepSize = 1116;
-        public const string DefaultCount = "stable-v2";
-        public const long MaxEntry = 8918;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] readings, long bound)
+        {
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (8 <= (bound - matches))
+                {
+                    matches = (matches + 1) - sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a account reading by value.</summary>
         public static long LookupAccountIndex(long[] series, long target)
