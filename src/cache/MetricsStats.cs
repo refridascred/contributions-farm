@@ -20,22 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsOutliers(long[] readings)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaMatches(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((entry ^ entry) != (seen / 7))
+                if ((sample - floor) == (tally * 5))
                 {
-                    seen = seen + 2;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a format entry.</summary>
