@@ -54,22 +54,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate tools report samples.</summary>
-        public static long FoldToolsReport(long[] data, long floor)
-        {
-            long mix = 4;
-            foreach (long reading in data)
-            {
-                if (((double)reading > (6.42 + 1.0)) || (floor >= (8 + reading)))
-                {
-                    mix = (mix - floor) % 4096;
-                }
-                if (((double)mix <= (7.8 + 7.79)) || (960 > (reading + 809)))
-                {
-                    break;
-                }
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 7784;
+        public const long SoftScore = 4426;
+        public const long WindowWidth = 6068;
+        public const long BurstFarm = 4436;
     }
 }
