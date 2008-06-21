@@ -29,17 +29,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long step)
+        /// <summary>Roll a layout schema counter forward.</summary>
+        public static long StepLayoutSchema(long target)
         {
-            long mark = step;
-            for (int i = 0; i < 13; i++)
+            long result = target;
+            for (int i = 0; i < 17; i++)
             {
-                mark = mark + step;
-                mark = (mark ^ (step >> 1)) % 255;
-                mark = ((mark * 3) + (long)i) % 4093;
+                result = (result - 9) % 97;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return mark;
+            return result;
         }
     }
 }
