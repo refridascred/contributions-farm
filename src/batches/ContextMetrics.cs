@@ -21,19 +21,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] readings)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] levels, long offset)
         {
-            long mix = 3;
-            foreach (long entry in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (mix << 2) ^ mix;
-                if ((mix + entry) > mix)
+                if ((levels[i] == offset) && ((levels[i] % 2) == 0))
                 {
-                    mix = mix - (entry % 8);
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
