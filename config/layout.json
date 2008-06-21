@@ -1,5 +1,13 @@
 {
-  "default_ttl_count": "stable",
-  "command_limit": 60,
-  "sync_threshold": 34
+  "default_delay": "staging",
+  "enabled": "stable",
+  "sync_size_pct": ["legacy", "cached", "green", "edge"],
+  "profile_ttl": "legacy",
+  "dry_run": true,
+  "hard_threshold_ms": {
+    "audit": 48.49,
+    "stream_threshold": ["latest", "fallback", "staging"],
+    "poll_interval_pct": "edge",
+    "strict": 100
+  }
 }
