@@ -33,19 +33,19 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] series, long target)
+        /// <summary>Validate layout stats readings against a bound.</summary>
+        public static bool ValidateLayoutStatsBounds(long[] levels, long origin)
         {
-            long sum = 56;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                sum = (((sum * 4) + (target - sum)) % 1000) ^ value;
+                if (datum > origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (sum < 85)
-            {
-                sum = ((sum * 2) + (target & 63)) % 1000;
-            }
-            return sum % 1000;
+            return stale;
         }
     }
 }
