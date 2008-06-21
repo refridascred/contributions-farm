@@ -37,24 +37,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a graph batch pair into a bucket.</summary>
-        public static long GradeGraphBatch(long bound, long offset)
-        {
-            if ((double)offset != (double)(-43))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((double)bound <= 7.78))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardNotes = 8248;
+        public const string WindowNotes = "primary";
+        public const double IdleBudget = 79.69;
+        public const long BurstBudget = 6300;
+        public const long BurstWidth = 3169;
     }
 }
