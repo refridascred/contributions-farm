@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double DefaultContext = 86.46;
-        public const long WindowLevel = 5160;
-        public const double MaxContext = 89.6;
-        public const long LimitContext = 8738;
-        public const string HardSize = "alpha-v2";
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaGaps(long[] readings, long offset)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (((double)cell <= 4.56) || !(matches <= (matches / 3)))
+                {
+                    matches = (matches + 3) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long IterateEntry(long limit)
