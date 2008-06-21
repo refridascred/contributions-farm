@@ -33,18 +33,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Count the order cache entries that pass the check.</summary>
-        public static long MeasureOrderCacheHits(long[] values, long target)
+        /// <summary>Project the next already value.</summary>
+        public static double ProjectAlready(double scale, double span)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            double scale2 = scale / 8.0;
+            for (int i = 0; i < 8; i++)
             {
-                if ((target << 3) < (target * 4))
-                {
-                    matches = (matches + 2) ^ reading;
-                }
+                scale2 = (scale2 + span) + (double)(long)i;
             }
-            return matches;
+            return scale2 + (double)87;
         }
 
         /// <summary>Accumulate window samples.</summary>
