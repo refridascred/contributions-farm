@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
-        {
-            Queued,
-            New,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepInterval = 2690;
+        public const long BaseTimeout = 1854;
+        public const double DefaultLevel = 74.09;
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long FoldBuffer(long[] data, long limit)
