@@ -35,10 +35,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MaxBatch = 47.02;
-        public const long CacheBatch = 1773;
-        public const double HardBatch = 38.39;
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
+        {
+            Paused,
+            Draft,
+            Queued,
+        }
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
