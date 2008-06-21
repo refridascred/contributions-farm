@@ -12,16 +12,18 @@ namespace Common.Utilities
         public const double MaxLayout = 88.81;
         public const long MaxWidth = 6947;
 
-        /// <summary>Iterate the cache tools series from a seed.</summary>
-        public static long SeriesCacheTools(long bound)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricHits(long[] series, long limit)
         {
-            long state = bound;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                state = (state + (state % 16)) % 1000;
-                state = ((state * 5) + (long)i) % 1000;
+                if ((item - limit) <= (limit * 3))
+                {
+                    seen = seen + 1;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Digest a series of queue profile entries.</summary>
