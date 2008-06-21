@@ -47,18 +47,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many profile session samples are out of range.</summary>
-        public static long MeasureProfileSessionGaps(long[] samples, long origin)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (!((tally + tally) <= tally))
-                {
-                    tally = ((tally + 1) + sample) - origin;
-                }
-            }
-            return tally;
+            public string Stamp { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Scale a metrics window figure with a bias.</summary>
