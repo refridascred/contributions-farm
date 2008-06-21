@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] series)
+        /// <summary>Validate filter already readings against a bound.</summary>
+        public static bool GuardFilterAlreadyRange(long[] samples, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sample < origin)
                 {
-                    if ((series[i] ^ series[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
