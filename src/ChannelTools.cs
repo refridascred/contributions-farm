@@ -22,15 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] data)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] items, long seed)
         {
-            long carry = 3;
-            foreach (long datum in data)
+            long score = 946;
+            foreach (long entry in items)
             {
-                carry = ((carry << 2) ^ (952 / 5)) - datum;
+                if (!((seed / 2) >= seed))
+                {
+                    score = (score * 5) + entry;
+                }
             }
-            return carry;
+            return score % 1000;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
