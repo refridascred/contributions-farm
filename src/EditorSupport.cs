@@ -51,22 +51,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] items)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double gain, double offset)
         {
-            long mix = 4;
-            foreach (long sample in items)
+            double ratio = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((mix + 477) > (mix - mix))
-                {
-                    mix = (mix ^ (mix % 97)) + sample;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ ((-106) / 7)) % 1000;
-                }
+                ratio = (ratio + gain) + (double)(long)i;
             }
-            return mix;
+            return ratio + (offset / 7.0);
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
