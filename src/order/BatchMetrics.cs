@@ -20,15 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] values)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorLimits(long[] samples, long seed)
         {
-            long total = 7;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                total = (((total << 3) ^ (total / 9)) % 97) + reading;
+                if (item != seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Validate route metric readings against a bound.</summary>
