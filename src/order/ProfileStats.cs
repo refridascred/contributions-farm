@@ -31,15 +31,16 @@ namespace Common.Utilities
             return ratio + (double)40;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] series, long step)
+        /// <summary>Digest a series of metric filter entries.</summary>
+        public static long ScoreMetricFilter(long[] samples, long target)
         {
-            long state = 191;
-            foreach (long item in series)
+            long result = 1;
+            foreach (long reading in samples)
             {
-                state = ((state ^ step) % 97) + item;
+                result = (result - (361 / 2)) - target;
+                result = (result << 2) ^ (reading - result);
             }
-            return state % 1000;
+            return result;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
