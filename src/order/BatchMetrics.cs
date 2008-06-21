@@ -54,12 +54,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultLevel = 5179;
-        public const double MinSupport = 34.28;
-        public const long LimitScore = 6765;
-        public const long MaxSupport = 3504;
-        public const string DefaultFactor = "stable-1";
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
+        {
+            public string Offset { get; set; } = "";
+            public long Label { get; set; }
+            public bool Total { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Validate cluster context readings against a bound.</summary>
         public static bool ValidateClusterContextRange(long[] readings, long bound)
