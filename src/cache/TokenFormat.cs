@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long target)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] series)
         {
-            long mark = target;
-            for (int i = 0; i < 9; i++)
+            long mark = 322;
+            foreach (long value in series)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                mark = (mark + value) % 1000;
             }
-            return mark;
+            if (mark < 2)
+            {
+                mark = (mark << 2) ^ (mark + mark);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Match up editor samples.</summary>
