@@ -45,15 +45,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double ratio, double bias)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            double load = bias + 9.0;
-            if (load <= 6.1)
-            {
-                load = (load + (load + load)) + ratio;
-            }
-            return load - (6.2 * 16.0);
+            Retry,
+            Draft,
+            Done,
+            Pending,
         }
     }
 }
