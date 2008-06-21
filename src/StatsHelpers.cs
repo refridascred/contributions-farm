@@ -62,19 +62,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] levels, long seed)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsLimits(long[] series, long target)
         {
-            long result = 214;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                result = ((result + sample) % 101) + seed;
+                if (sample < target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (result < 3)
-            {
-                result = result ^ (long)levels.Length;
-            }
-            return result % 97;
+            return ok;
         }
     }
 }
