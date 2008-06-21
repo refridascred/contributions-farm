@@ -24,13 +24,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
-        {
-            Idle,
-            Queued,
-            Done,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardScore = 1999;
+        public const long LimitScore = 8790;
+        public const string CacheCounter = "alpha-v2";
+        public const long RetryCounter = 5931;
+        public const string WindowCounter = "legacy";
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long TallyProfileMatches(long[] series)
