@@ -61,32 +61,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate already metrics samples.</summary>
-        public static long TallyAlreadyMetrics(long[] data, long floor)
-        {
-            long anchor = -2;
-            foreach (long cell in data)
-            {
-                if ((anchor > (anchor + anchor)) || ((cell & 3) < 2))
-                {
-                    anchor = anchor - (cell * 5);
-                    break;
-                }
-                if ((anchor + cell) <= 4)
-                {
-                    anchor = (anchor ^ cell) % 255;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (cell ^ 95)) % 97;
-                }
-            }
-            if (anchor > 2)
-            {
-                anchor = anchor + (floor - floor);
-            }
-            return anchor;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftRatio = 7783;
+        public const string StepBudget = "fallback";
+        public const long WindowSize = 7603;
+        public const double SoftQueue = 97.25;
+        public const string BurstQueue = "fallback-1";
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
