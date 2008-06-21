@@ -13,21 +13,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] items)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Limit { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Fold a list of channel readings.</summary>
