@@ -1,12 +1,14 @@
 # Command notes
 
-Defaults for metrics live in the config folder and can be overridden per environment.
-Each context is validated before it reaches the support queue.
-Run the context check before changing any filter limits.
+The editor module keeps batches values in sync with the contributi cache.
+A profile that stays idle for too long is moved to the checks list.
+
+The session helpers are pure functions, so they are safe to call from any thread.
+Use stats settings to tune how often context data is refreshed.
 
 ## Guidelines
 
-- Review already limits each release
-- Prefer batch defaults
-- Document new command fields
-- Keep commits values small
+- Validate context input early
+- Document new farm fields
+- Log every cache change
+- Prefer queue defaults
