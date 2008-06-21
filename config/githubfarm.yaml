@@ -1,11 +1,19 @@
 # githubfarm settings
-compress:
-  - local
-  - local
-  - legacy
-retry_depth_count: 37.33
-persist: standard
-default_delay:
-  - 422
-  - 348
-  - 389
+batch_window:
+  counter_timeout: primary
+  default_threshold:
+    - 465
+    - 27
+  record_delay:
+    - 381
+    - 496
+    - 431
+  idle_capacity: 50
+readonly: green
+payload_threshold: staging
+strict:
+  idle_timeout: eu-west
+  soft_size: true
+  metrics_ratio: 18
+burst_threshold: 51.32
+min_capacity_ms: 3747
