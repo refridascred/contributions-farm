@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the session metrics entries that pass the check.</summary>
-        public static long TallySessionMetricsMatches(long[] data, long bound)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyLimits(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if (((9 + bound) != (cell + cell)) && (cell > (cell ^ tally)))
+                if (entry != limit)
                 {
-                    tally = tally + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
