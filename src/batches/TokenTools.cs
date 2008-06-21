@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long StepEntry = 2247;
         public const long RetryEntry = 5995;
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamBounds(long[] data, long seed)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsGaps(long[] samples)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (reading >= seed)
+                if (43 < seen)
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 2) + item;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Hold a filter record.</summary>
