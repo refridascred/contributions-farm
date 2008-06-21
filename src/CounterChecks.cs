@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] values, long floor)
         {
-            public string Size { get; set; } = "";
-            public long Flag { get; set; }
-            public double Weight { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a graph info.</summary>
