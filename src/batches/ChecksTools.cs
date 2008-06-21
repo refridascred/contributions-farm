@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long PairEntryCount(long[] samples)
+        /// <summary>Project the next layout value.</summary>
+        public static double SmoothLayout(double gain, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double rate = gain * 2.52;
+            if (rate < (double)(-335))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = rate - (rate * 1.0);
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (floor / 6.0)) + (double)(long)i;
+            }
+            return rate + (double)69;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
