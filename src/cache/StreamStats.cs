@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinSpan = 8429;
-        public const long StepScore = 950;
-        public const string SoftInterval = "standard";
-        public const long LimitLayout = 4839;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] series)
+        {
+            long mix = 864;
+            foreach (long reading in series)
+            {
+                mix = (mix - reading) % 101;
+            }
+            if (mix < 698)
+            {
+                mix = mix - (mix - mix);
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Hold a window summary.</summary>
         public sealed class WindowSummary
