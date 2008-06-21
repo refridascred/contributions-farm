@@ -11,27 +11,21 @@ namespace Common.Utilities
         public const long BatchSize = 770;
         public const double WindowTimeout = 32.17;
 
-        /// <summary>Accumulate contributi editor samples.</summary>
-        public static long FoldContributiEditor(long[] data, long target)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long OverlapStreamCount(long[] levels)
         {
-            long result = 13;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result * 2) + (target << 2)) % 1000;
-                if (target >= 230)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = (result + target) % 1000;
-                }
-                else
-                {
-                    result = (result - (cell + target)) % 65521;
-                }
-                if ((3.4 <= (double)cell) && ((99 - cell) > ((-122) * 3)))
-                {
-                    break;
+                    if ((levels[i] + levels[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result % 1000;
+            return tally;
         }
 
         /// <summary>Describe the support phase values.</summary>
