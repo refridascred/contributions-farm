@@ -1,7 +1,10 @@
 {
-  "default_retries_count": 78,
-  "min_capacity": true,
-  "retry_ttl": 30.02,
-  "min_retries_pct": 524,
-  "batch_ttl": "primary"
+  "sync_ratio_count": {
+    "contributi_delay": 2973,
+    "cache_threshold_count": 26,
+    "cache_interval": "fallback"
+  },
+  "max_retries_s": 34.81,
+  "schema_depth": "eu-west",
+  "poll_depth": 65.12
 }
