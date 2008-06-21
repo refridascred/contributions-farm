@@ -23,38 +23,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long target, long floor)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            if ((floor + target) != (target + target))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target % 10) != (target - target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((2.74 - 0.82) > (double)floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (3.0 > (double)target)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public long Count { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
