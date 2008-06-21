@@ -79,26 +79,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] items)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] samples)
         {
-            long acc = 5;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((datum >> 3) < datum)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = (acc + datum) % 101;
-                }
-                else
-                {
-                    acc = acc + (acc * 5);
+                    if ((samples[i] ^ samples[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (acc < 52)
-            {
-                acc = (acc ^ acc) % 65521;
-            }
-            return acc;
+            return seen;
         }
     }
 }
