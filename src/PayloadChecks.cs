@@ -53,11 +53,19 @@ namespace Common.Utilities
         public const long LimitSize = 4544;
         public const long SoftSpan = 7704;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 2862;
-        public const double CacheSpan = 8.56;
-        public const long WindowTimeout = 4099;
-        public const long HardSupport = 8822;
-        public const double CacheRatio = 47.08;
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double rate, double offset)
+        {
+            double load = offset - offset;
+            if (load > (double)(-68))
+            {
+                load = load + (double)807;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (double)10) + (double)(long)i;
+            }
+            return load + (rate / 7.0);
+        }
     }
 }
