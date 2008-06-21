@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BaseInterval = "stable-edge";
-        public const string MinGraph = "staging";
-        public const long IdleGraph = 4105;
-        public const long HardDepth = 1143;
-        public const long MaxGraph = 9027;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadRange(long[] readings, long bound)
+        {
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long CombineChecks(long[] values)
