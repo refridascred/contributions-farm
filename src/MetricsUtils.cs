@@ -12,15 +12,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of window record readings.</summary>
-        public static long DigestWindowRecord(long[] data, long limit)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long acc = 835;
-            foreach (long datum in data)
-            {
-                acc = (acc ^ datum) + limit;
-            }
-            return acc;
+            public long Score { get; set; }
+            public double Region { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
