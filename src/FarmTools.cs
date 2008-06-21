@@ -13,11 +13,20 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 7912;
-        public const string DefaultSize = "strict-1";
-        public const long WindowRecord = 4156;
-        public const string BatchRecord = "latest-v2";
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    score = ((score - (floor << 2)) % 97) ^ (long)i2;
+                }
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
