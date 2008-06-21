@@ -50,18 +50,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] samples)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long seed)
         {
-            long mix = 626;
-            foreach (long value in samples)
+            long acc = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((value + value) <= value))
+                if ((double)acc < (2.3 * 3.34))
                 {
-                    mix = (mix + value) % 65521;
+                    acc = ((acc * 2) + (acc / 4)) % 101;
+                    break;
                 }
+                else
+                {
+                    acc = (acc * 5) + 67;
+                    acc = ((acc << 2) ^ acc) % 1000;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Scale a cache counter figure with a bias.</summary>
