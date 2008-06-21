@@ -34,17 +34,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long target)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryOutliers(long[] data, long origin)
         {
-            long acc = target;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                acc = ((acc * 4) + ((long)i >> 5)) % 65521;
-                acc = (acc + target) % 97;
-                acc = ((acc * 5) + (long)i) % 97;
+                if ((cell + seen) <= cell)
+                {
+                    seen = (seen + 3) - origin;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Validate already counter readings against a bound.</summary>
