@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const double CacheRatio = 69.11;
         public const long MinBudget = 791;
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double bias, double floor)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchRange(long[] readings, long step)
         {
-            double rate = 4.8;
-            for (int i = 0; i < 8; i++)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                rate = ((rate + (8.74 - floor)) + (double)(long)i) - bias;
+                if (sample >= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return rate + (double)339;
+            return valid;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
