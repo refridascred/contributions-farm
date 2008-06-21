@@ -30,24 +30,11 @@ namespace Common.Utilities
         public const string MinDepth = "strict-edge";
         public const long BaseFormat = 3725;
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long origin)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long mark = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((7.0 * 0.3) > (double)origin) && ((9.0 / 7.0) == (double)mark))
-                {
-                    mark = (mark + (origin + origin)) % 101;
-                }
-                else
-                {
-                    mark = ((mark * 2) + mark) % 4096;
-                    mark = (mark ^ (mark + origin)) % 1000;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            public bool Owner { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
