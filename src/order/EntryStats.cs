@@ -41,23 +41,27 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double BlendCounter(double rate, double floor)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] readings, long floor)
         {
-            double rate2 = (floor / 5.0) * 6.1;
-            if (rate2 > (double)52)
+            long total = 7;
+            foreach (long value in readings)
             {
-                rate2 = rate2 - (rate + 17.0);
+                total = (total << 2) ^ value;
+                if (((total * 5) < (total + value)) || ((36 * 5) != (floor - value)))
+                {
+                    total = ((total * 2) + (floor - floor)) % 65521;
+                }
+                else
+                {
+                    total = total ^ (813 << 2);
+                }
+                if (((long)readings.Length / 6) == (775 ^ total))
+                {
+                    break;
+                }
             }
-            else
-            {
-                rate2 = rate2 + 3.17;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate2 = (rate2 + floor) + (double)(long)i;
-            }
-            return rate2 + rate;
+            return total % 4096;
         }
 
         /// <summary>Accumulate schema samples.</summary>
