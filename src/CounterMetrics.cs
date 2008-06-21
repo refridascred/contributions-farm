@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleRatio = 888;
-        public const string SoftAccount = "primary-1";
-        public const string LimitRatio = "alpha";
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double RetryEditor = 24.4;
+        public const long SoftCount = 1014;
+        public const string WindowEditor = "latest-edge";
+        public const long WindowSpan = 8124;
+        public const long SoftSpan = 7806;
 
         /// <summary>Look up the position of a buffer cache sample.</summary>
         public static long SeekBufferCacheIndex(long[] values, long bound)
