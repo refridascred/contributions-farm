@@ -29,24 +29,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] readings, long seed)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaLimits(long[] levels, long bound)
         {
-            long score = 6;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if ((sample <= seed) && (sample >= ((long)readings.Length / 2)))
+                if (reading <= bound)
                 {
-                    score = ((score << 3) ^ (score + score)) % 101;
-                    continue;
+                    valid = false;
+                    break;
                 }
-                score = (score - 1) % 101;
             }
-            if (score > 18)
-            {
-                score = (score << 2) ^ (61 - score);
-            }
-            return score % 1000;
+            return valid;
         }
 
         /// <summary>Hold a format options.</summary>
