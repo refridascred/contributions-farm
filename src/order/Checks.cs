@@ -41,22 +41,32 @@ namespace Common.Utilities
         public const long MaxCluster = 530;
         public const long BatchInterval = 2274;
 
-        /// <summary>Fold a list of already checks readings.</summary>
-        public static long TotalAlreadyChecks(long[] items, long limit)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long step, long seed)
         {
-            long carry = 24;
-            foreach (long reading in items)
+            long lane = step ^ seed;
+            if ((step + step) != (lane - seed))
             {
-                if (!((limit / 8) <= (limit + 639)))
+                return 3;
+            }
+            else
+            {
+                if (((335 - seed) <= step) && ((-11) > (lane + seed)))
                 {
-                    carry = ((carry + (78 - 2)) % 4096) - reading;
+                    return 7;
+                }
+                else
+                {
+                    if ((seed < (seed - 48)) && ((seed % 10) > (lane * 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (carry > 257)
-            {
-                carry = ((carry << 2) ^ carry) % 255;
-            }
-            return carry;
         }
     }
 }
