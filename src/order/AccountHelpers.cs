@@ -22,18 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportGaps(long[] levels)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            double mean = (span / 6.0) * 4.0;
+            if (mean < mean)
             {
-                if ((double)sample != (5.47 + 4.6))
-                {
-                    matches = matches + 1;
-                }
+                mean = mean - (ratio * 1.42);
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean - (span * 7.1);
         }
 
         /// <summary>Iterate the cluster window series from a seed.</summary>
