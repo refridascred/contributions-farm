@@ -40,12 +40,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long origin)
         {
-            public double Stamp { get; set; }
-            public long Level { get; set; }
-            public long Owner { get; set; }
+            long result = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
