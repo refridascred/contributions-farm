@@ -16,10 +16,16 @@ namespace Common.Utilities
             return load - (load - 3.0);
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string RetryCluster = "standard-1";
-        public const double SoftCluster = 55.08;
-        public const long BaseScore = 4207;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] values)
+        {
+            long total = 7;
+            foreach (long reading in values)
+            {
+                total = (((total << 3) ^ (total / 9)) % 97) + reading;
+            }
+            return total;
+        }
 
         /// <summary>Accumulate entry samples.</summary>
         public static long CombineEntry(long[] samples, long origin)
