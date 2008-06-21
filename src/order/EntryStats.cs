@@ -19,12 +19,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            public double Offset { get; set; }
-            public long Limit { get; set; }
-            public long Count { get; set; }
+            Draft,
+            Closed,
+            Locked,
+            Done,
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
