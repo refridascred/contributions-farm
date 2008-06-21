@@ -26,22 +26,22 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Count the cluster batch entries that pass the check.</summary>
-        public static long AuditClusterBatchHits(long[] readings)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordGaps(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (5.47 < (double)datum)
+                if (((double)entry == (4.65 - 11.0)) || (count > (entry + entry)))
                 {
-                    tally = tally + 3;
+                    count = count + 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
