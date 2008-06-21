@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            Stale,
             Active,
-            Locked,
-            Idle,
-            Paused,
+            Queued,
+            Retry,
         }
 
         /// <summary>Hold a cache snapshot.</summary>
