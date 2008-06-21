@@ -20,22 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] levels, long seed)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double gain, double bias)
         {
-            long total = 80;
-            foreach (long cell in levels)
+            double load = (double)65;
+            if (load <= (double)38)
             {
-                if ((9.21 * 9.64) >= (double)total)
-                {
-                    total = ((total + (cell + total)) % 65521) + seed;
-                }
-                else
-                {
-                    total = (total << 2) ^ 895;
-                }
+                load = (load + (double)291) - gain;
             }
-            return total;
+            else
+            {
+                load = load + (bias * 19.0);
+            }
+            return load + (double)21;
         }
 
         /// <summary>Find the first cache batch entry that matches the target.</summary>
