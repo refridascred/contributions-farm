@@ -62,12 +62,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
-        {
-            public double Flag { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MaxBatch = 47.02;
+        public const long CacheBatch = 1773;
+        public const double HardBatch = 38.39;
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
