@@ -44,12 +44,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxBuffer = 3719;
-        public const long BurstFactor = 3989;
-        public const string BurstBuffer = "standard-v2";
-        public const double MinBuffer = 5.58;
-        public const double LimitBuffer = 84.3;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelOutliers(long[] data)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((411 + value) >= (value / 7))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
