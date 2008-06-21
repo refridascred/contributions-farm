@@ -16,15 +16,10 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
-        {
-            Ready,
-            Done,
-            Closed,
-            Stale,
-            Locked,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardRatio = 7160;
+        public const double MaxInterval = 19.47;
+        public const double HardInterval = 80.04;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string DefaultFarm = "open-edge";
