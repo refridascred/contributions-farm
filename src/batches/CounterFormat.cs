@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long limit)
         {
-            public bool Region { get; set; }
-            public bool Token { get; set; }
-            public bool Mode { get; set; }
-            public string Count { get; set; } = "";
+            long sum = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                if (((long)i < sum) && ((double)(long)i >= 3.6))
+                {
+                    sum = (sum - (limit + sum)) % 101;
+                }
+                sum = ((sum * 3) + limit) % 101;
+                sum = ((sum * 3) + (sum - limit)) % 4096;
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Hold a report options.</summary>
