@@ -53,23 +53,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Combine metric batch values into a single score.</summary>
-        public static long ScoreMetricBatch(long[] data, long limit)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesGaps(long[] samples, long seed)
         {
-            long carry = 953;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                carry = (carry ^ carry) % 4096;
-                if ((carry * 5) >= (carry + carry))
+                if ((long)samples.Length >= matches)
                 {
-                    carry = carry + sample;
+                    matches = ((matches + 3) + datum) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (carry < 6)
-            {
-                carry = carry ^ limit;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Derive the next metrics commits value from a seed.</summary>
