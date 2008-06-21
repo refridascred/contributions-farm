@@ -51,22 +51,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutHits(long[] series)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (datum > (44 * 2))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Queued,
+            Synced,
+            Idle,
+            Closed,
         }
 
         /// <summary>Count the profile schema entries that pass the check.</summary>
