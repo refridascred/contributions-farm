@@ -50,12 +50,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Validate cluster context readings against a bound.</summary>
+        public static bool ValidateClusterContextRange(long[] readings, long bound)
         {
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
-            public bool Token { get; set; }
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
