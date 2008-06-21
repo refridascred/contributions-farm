@@ -31,19 +31,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsLimits(long[] levels, long step)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionMatches(long[] series)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (item > step)
+                if ((long)series.Length > count)
                 {
-                    ok = false;
-                    break;
+                    count = (count + 3) + item;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Hold a batches stats.</summary>
