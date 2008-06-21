@@ -27,20 +27,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine record counter values into a single score.</summary>
-        public static long CombineRecordCounter(long[] readings, long offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesMatches(long[] samples)
         {
-            long total = 2;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                for (int i = 0; i < 2; i++)
+                if (((65 ^ (long)samples.Length) != (hits + hits)) || (hits < (cell ^ cell)))
                 {
-                    total = (total * 4) + ((long)i + offset);
-                    total = ((total * 2) + 37) % 1000;
+                    hits = hits + 2;
                 }
-                total = total + (entry + offset);
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Classify a record filter pair into a bucket.</summary>
