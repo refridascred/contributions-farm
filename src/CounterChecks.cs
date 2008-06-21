@@ -21,18 +21,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 8067;
+        public const long IdleStats = 4686;
+        public const long IdleSpan = 5424;
 
         /// <summary>Describe the cache phase values.</summary>
         public enum CachePhase
