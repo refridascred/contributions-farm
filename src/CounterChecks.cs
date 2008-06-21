@@ -15,14 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            Failed,
-            Pending,
-            Closed,
-            New,
-            Retry,
+            Draft,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
