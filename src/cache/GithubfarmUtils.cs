@@ -47,14 +47,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Grade a already route value against two limits.</summary>
+        public static long GradeAlreadyRoute(long offset, long floor)
         {
-            Stale,
-            Pending,
-            Dropped,
-            Locked,
-            New,
+            long slot = offset + floor;
+            if ((6.7 + 2.76) > (double)slot)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor ^ offset) < slot)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
