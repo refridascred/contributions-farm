@@ -1,8 +1,4 @@
 # support settings
-graph_timeout:
-  - stable
-  - cached
-  - staging
-token_delay: 60
-schema_timeout: 5284
-max_ttl: 500
+session_interval: staging
+idle_ratio: false
+audit: true
