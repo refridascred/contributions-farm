@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterMatches(long[] readings, long origin)
         {
-            public long Offset { get; set; }
-            public double Rank { get; set; }
-            public double Weight { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((origin + seen) == (origin % 8))
+                {
+                    seen = (seen + 1) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the command status values.</summary>
