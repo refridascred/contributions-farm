@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double gain, double offset)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            double weight = (double)5 * 6.07;
-            return (weight - (gain + weight)) + offset;
+            public long Flag { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Adjust a tools editor reading.</summary>
