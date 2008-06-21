@@ -43,12 +43,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardScore = 1999;
-        public const long LimitScore = 8790;
-        public const string CacheCounter = "alpha-v2";
-        public const long RetryCounter = 5931;
-        public const string WindowCounter = "legacy";
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
+        {
+            public bool Total { get; set; }
+            public bool Count { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long SeekFilterIndex(long[] data, long limit)
