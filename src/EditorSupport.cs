@@ -65,26 +65,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long floor)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] data)
         {
-            long acc = floor;
-            for (int i = 0; i < 20; i++)
+            long carry = -6;
+            foreach (long sample in data)
             {
-                long step = acc;
-                if (((4.01 * 0.23) >= (double)step) && ((double)step < (5.0 + 4.0)))
-                {
-                    acc = (acc + (380 + 62)) % 1000;
-                    acc = ((acc << 2) ^ (step & 15)) % 1000;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ step) % 97;
-                    step = ((step * 3) + floor) % 1000;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
+                carry = (carry ^ carry) ^ sample;
             }
-            return acc;
+            if (carry < 9)
+            {
+                carry = ((carry << 2) ^ carry) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Describe the queue class values.</summary>
