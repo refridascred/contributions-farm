@@ -38,39 +38,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long target, long step)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long offset = target - step;
-            if (((offset >> 2) >= (step % 64)) || ((11.0 * 8.0) != (double)target))
-            {
-                return 4;
-            }
-            else
-            {
-                if (target < (step ^ 263))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target >= (step & 127)) && ((offset ^ step) > offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (target > (target / 7))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Queued,
+            Ready,
         }
 
         /// <summary>Roll a already counter forward.</summary>
