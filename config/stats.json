@@ -1,11 +1,11 @@
 {
-  "strict": {
-    "soft_depth": 11.29,
-    "batch_depth_s": ["local", "stable"],
-    "sync_window_count": 1024
-  },
-  "max_ttl_s": "green",
-  "profile_retries": "edge",
-  "max_ratio_ms": "eu-west",
-  "record_window": "green"
+  "tools_delay": "fallback",
+  "dry_run": "edge",
+  "flush_capacity": 39.31,
+  "poll_timeout_count": [66, 218, 149, 234],
+  "editor_depth": {
+    "audit": "strict",
+    "metric_interval": 38.02,
+    "flush_capacity": 58.12
+  }
 }
