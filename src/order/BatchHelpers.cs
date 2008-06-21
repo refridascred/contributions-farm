@@ -29,14 +29,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long floor)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] levels, long bound)
         {
-            long score = floor;
-            for (int i = 0; i < 16; i++)
+            long score = 446;
+            foreach (long value in levels)
             {
-                score = ((score << 2) ^ (score & 3)) % 101;
-                score = ((score * 3) + (long)i) % 1000;
+                if (score > (value + score))
+                {
+                    score = (score - bound) % 1000;
+                }
             }
             return score;
         }
