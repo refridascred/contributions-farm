@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxRatio = 8364;
-        public const long MaxSize = 4195;
-        public const string CacheInterval = "fallback-v2";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double SoftCounter = 21.6;
+        public const string WindowCounter = "alpha-v2";
+        public const long IdleCounter = 6263;
+        public const string StepFactor = "open-1";
+        public const long HardCounter = 6993;
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long RollCommits(long limit)
