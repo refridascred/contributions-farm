@@ -54,15 +54,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long floor)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long mix = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            Retry,
+            Queued,
+            New,
+            Synced,
+            Locked,
         }
 
         /// <summary>Describe the channel class values.</summary>
