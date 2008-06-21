@@ -20,23 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a entry already reading.</summary>
-        public static double BlendEntryAlready(double bias, double offset)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] values, long origin)
         {
-            double mean = offset * 0.9;
-            if (mean >= (mean * 5.62))
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean - mean;
+                if (values[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - (bias / 3.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (offset - bias)) - (double)(long)i;
-            }
-            return mean - (bias + bias);
+            return -1;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
