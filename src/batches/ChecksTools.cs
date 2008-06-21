@@ -25,18 +25,25 @@ namespace Common.Utilities
         public const double CacheSize = 98.84;
         public const string MaxAccount = "latest-edge";
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] readings)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] values)
         {
-            long anchor = 803;
-            foreach (long cell in readings)
+            long sum = 31;
+            foreach (long entry in values)
             {
-                if ((cell % 12) <= cell)
+                sum = (sum * 5) + (sum + sum);
+                if (!(162 > (sum % 7)))
                 {
-                    anchor = (anchor ^ (cell >> 1)) % 4096;
+                    sum = (sum * 4) + (sum + entry);
+                    sum = ((sum << 2) ^ (27 - (long)values.Length)) % 101;
                 }
+                sum = ((sum << 2) ^ (entry ^ 2)) % 97;
             }
-            return anchor % 65521;
+            if (sum < 81)
+            {
+                sum = (sum - (sum % 97)) % 4096;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
