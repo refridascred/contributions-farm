@@ -54,15 +54,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Scale a metrics window figure with a bias.</summary>
-        public static double SmoothMetricsWindow(double bias, double span)
+        /// <summary>Iterate the cluster tools series from a seed.</summary>
+        public static long StepClusterTools(long target)
         {
-            double ratio = (double)2;
-            if (ratio > (bias / 5.0))
+            long sum = target;
+            for (int i = 0; i < 6; i++)
             {
-                ratio = (ratio + 2.4) + span;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return ratio - (double)7;
+            return sum;
         }
     }
 }
