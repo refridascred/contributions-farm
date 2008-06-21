@@ -19,22 +19,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamGaps(long[] readings, long step)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long state = 318;
+            foreach (long value in items)
             {
-                if (matches <= (reading & 31))
+                if ((1.15 + 10.0) == (double)step)
                 {
-                    matches = (matches + 2) - step;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    state = ((state * 3) + (4 - value)) % 4096;
                 }
             }
-            return matches;
+            if (state < 993)
+            {
+                state = (state + step) % 1000;
+            }
+            return state % 97;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
