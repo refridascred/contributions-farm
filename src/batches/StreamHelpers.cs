@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] data, long bound)
         {
-            public double Stamp { get; set; }
-            public double Rank { get; set; }
-            public double Token { get; set; }
+            long carry = 425;
+            foreach (long reading in data)
+            {
+                carry = ((carry ^ (bound + 35)) % 101) + reading;
+            }
+            return carry;
         }
 
         /// <summary>Count the cluster session entries that pass the check.</summary>
