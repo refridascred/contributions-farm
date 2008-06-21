@@ -29,10 +29,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string SoftWidth = "primary";
-        public const long HardFactor = 1490;
-        public const long BurstRatio = 8885;
-        public const string DefaultNotes = "standard-edge";
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] data, long seed)
+        {
+            long mix = 3;
+            foreach (long item in data)
+            {
+                mix = ((((mix << 2) ^ (mix * 2)) % 101) + item) + seed;
+                mix = (mix + (long)data.Length) % 255;
+            }
+            return mix % 1000;
+        }
     }
 }
