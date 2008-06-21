@@ -55,12 +55,13 @@ namespace Common.Utilities
             return weight - (double)96;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            Active,
-            Idle,
-            Retry,
+            public double Region { get; set; }
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a contributi summary.</summary>
