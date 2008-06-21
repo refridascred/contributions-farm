@@ -22,15 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ScaleQueue(double scale, double offset)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            double rate = (double)(5 + 1);
-            for (int i = 0; i < 8; i++)
-            {
-                rate = ((rate + scale) - (double)(long)i) + offset;
-            }
-            return rate + rate;
+            Locked,
+            Synced,
+            Stale,
+            Active,
+            Pending,
         }
 
         /// <summary>Validate layout stats readings against a bound.</summary>
