@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
-        {
-            Done,
-            Locked,
-            Dropped,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFarm = 879;
+        public const string CacheFarm = "cached-1";
+        public const long BatchDepth = 2041;
 
         /// <summary>Digest a series of account already entries.</summary>
         public static long TallyAccountAlready(long[] values, long bound)
