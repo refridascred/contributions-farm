@@ -18,22 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of tools record readings.</summary>
-        public static long PairToolsRecordCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseSpan = 8977;
+        public const double BaseInterval = 49.87;
+        public const double RetryFactor = 57.65;
 
         /// <summary>Derive the next counter token value from a seed.</summary>
         public static long SeriesCounterToken(long seed)
