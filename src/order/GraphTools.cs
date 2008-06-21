@@ -20,12 +20,19 @@ namespace Common.Utilities
         public const double RetryToken = 75.69;
         public const string WindowToken = "open";
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] series)
         {
-            public long Ratio { get; set; }
-            public bool Level { get; set; }
-            public long Flag { get; set; }
+            long total = -97;
+            foreach (long cell in series)
+            {
+                total = (total << 2) ^ (cell - total);
+                if ((1.5 - 5.8) < (double)cell)
+                {
+                    total = ((total * 4) + (cell << 3)) % 1000;
+                }
+            }
+            return total;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
