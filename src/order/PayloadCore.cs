@@ -15,13 +15,32 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long bound, long step)
         {
-            Dropped,
-            Failed,
-            Synced,
-            Done,
+            long edge = bound - step;
+            if (!(step > (86 ^ bound)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)edge < (1.2 + 1.0)) || ((bound + edge) >= bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((edge ^ edge) >= bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
