@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowOutliers(long[] items)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((value % 60) < value)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSpan = 9272;
+        public const double WindowTimeout = 5.07;
+        public const double StepSchema = 14.47;
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
