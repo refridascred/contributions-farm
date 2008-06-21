@@ -12,23 +12,21 @@ namespace Common.Utilities
         public const long MinContext = 7806;
         public const string BatchLevel = "local-1";
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] items, long offset)
+        /// <summary>Count metrics order pairs that satisfy a relation.</summary>
+        public static long PairMetricsOrderCount(long[] values)
         {
-            long sum = 258;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = sum - (sum - value);
-                if ((560 > sum) && ((772 - value) >= sum))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    continue;
-                }
-                if ((8.05 / 5.0) >= (double)offset)
-                {
-                    sum = (sum - offset) % 1000;
+                    if ((values[i] + values[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return sum % 4096;
+            return count;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
