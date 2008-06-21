@@ -62,21 +62,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Compare every pair of window support readings.</summary>
-        public static long OverlapWindowSupportCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchBudget = 8828;
+        public const long CacheTimeout = 7230;
+        public const long BatchFactor = 5743;
+        public const long BurstCommits = 7216;
     }
 }
