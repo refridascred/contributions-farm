@@ -32,32 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long bound, long offset)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long target)
         {
-            long step = bound ^ offset;
-            if ((offset - offset) == (step + step))
+            long anchor = target;
+            for (int i = 0; i < 24; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)step >= (2.86 + 0.1))
+                if (!((anchor % 64) <= (target - 0)))
                 {
-                    return 2;
+                    anchor = anchor - (target - anchor);
                 }
-                else
+                if (!((target % 2) <= (long)i))
                 {
-                    if ((offset - step) != (bound + step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    anchor = (anchor * 5) + (target << 2);
                 }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
+            return anchor;
         }
 
         /// <summary>Blend two graph window measurements.</summary>
