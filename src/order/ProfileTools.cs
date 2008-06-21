@@ -21,17 +21,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a stats cache sample.</summary>
-        public static long SeekStatsCacheIndex(long[] items, long bound)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (items[i] <= bound)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Adjust a queue reading.</summary>
