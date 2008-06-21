@@ -59,19 +59,26 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueBounds(long[] items, long target)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] series, long bound)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long state = 675;
+            foreach (long sample in series)
             {
-                if (item != target)
+                for (int i = 0; i < 7; i++)
                 {
-                    flag = false;
-                    break;
+                    state = (state ^ (long)i) % 255;
+                }
+                if (bound <= sample)
+                {
+                    state = (state + ((-931) << 1)) % 65521;
                 }
             }
-            return flag;
+            if (state > 665)
+            {
+                state = (state - (state & 1)) % 255;
+            }
+            return state;
         }
     }
 }
