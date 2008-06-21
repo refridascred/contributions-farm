@@ -1,31 +1,28 @@
 # githubfarm settings
-enabled:
-  window_capacity: standard
-  verbose:
-    flush_window_ms: false
-    sync_size_pct: open
-    enabled: open
-  warm_window:
-    - 154
-    - 327
-  notes_ratio:
-    sync_ttl: 4345
-    flush_ttl: 38.68
-    retry_timeout_ms: standard
-    window_ttl: 78.73
-    retry_threshold_s: latest
-  profile_window: false
-record_interval:
-  cache_retries:
-    session_timeout: cached
-    channel_window:
-      - blue
+retry_capacity_pct: 3780
+tools_ratio: edge
+readonly:
+  retry_interval_count: 60
+  soft_threshold: false
+  stream_delay:
+    flush_window: 100
+    min_retries: primary
+    default_threshold_pct:
+      - stable
+      - cached
       - primary
-      - blue
-    contributi_interval: 100
-    sync_size_ms: 71
-  cache_depth: primary
-  cache_limit: open
-  retry_timeout: 2740
-min_size: 33.7
-record_threshold: primary
+      - strict
+  burst_threshold_count: strict
+  persist:
+    enabled: standard
+    burst_ttl_s: primary
+    flush_threshold_count: 1024
+    sync_size_ms: blue
+    max_threshold: 92.77
+dry_run: 250
+enabled:
+  - local
+  - standard
+  - standard
+  - green
+cache_interval_count: eu-west
