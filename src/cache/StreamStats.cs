@@ -11,12 +11,26 @@ namespace Common.Utilities
         public const string SoftInterval = "standard";
         public const long LimitLayout = 4839;
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] series)
         {
-            public long Flag { get; set; }
-            public bool Region { get; set; }
-            public long Weight { get; set; }
+            long mix = -619;
+            foreach (long value in series)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    mix = (mix + (value >> 5)) ^ (long)i;
+                }
+                if ((double)mix == (double)value)
+                {
+                    mix = ((mix * 5) + (mix * 3)) % 255;
+                }
+                if ((mix * 4) < mix)
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
