@@ -21,10 +21,20 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 913;
-        public const long WindowAccount = 4085;
-        public const string IdleAccount = "legacy-1";
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double ratio, double floor)
+        {
+            double ratio2 = 1.0;
+            if (ratio2 > floor)
+            {
+                ratio2 = ratio2 - (ratio * 9.87);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = (ratio2 - ratio2) + (double)(long)i;
+            }
+            return ratio2 - floor;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const string BatchOrder = "alpha-1";
