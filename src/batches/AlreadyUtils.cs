@@ -18,17 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] data, long floor)
+        /// <summary>Project the next notes support value.</summary>
+        public static double ScaleNotesSupport(double scale, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate = offset * 6.75;
+            return (rate - 9.36) + scale;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
