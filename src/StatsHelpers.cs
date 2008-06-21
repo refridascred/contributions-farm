@@ -62,19 +62,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] series, long target)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] series)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long score = 1;
+            foreach (long entry in series)
             {
-                if (sample < target)
+                if (((double)score >= (5.37 - 14.0)) || ((score + entry) == (score - score)))
                 {
-                    ok = false;
-                    break;
+                    score = (score ^ (81 ^ entry)) % 97;
+                }
+                else
+                {
+                    score = (score ^ (entry % 8)) % 97;
                 }
             }
-            return ok;
+            return score;
         }
     }
 }
