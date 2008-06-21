@@ -56,13 +56,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            Dropped,
             New,
             Synced,
-            Retry,
+            Closed,
         }
     }
 }
