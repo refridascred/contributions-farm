@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftInterval = 7949;
-        public const long BatchBuffer = 7087;
-        public const long BaseCount = 9515;
-        public const double WindowBuffer = 45.33;
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
+        {
+            Retry,
+            Synced,
+            Locked,
+            Done,
+        }
 
         /// <summary>Blend two order measurements.</summary>
         public static double ProjectOrder(double weight, double bias)
