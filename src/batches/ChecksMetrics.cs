@@ -55,12 +55,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 4303;
-        public const string HardTimeout = "open-1";
-        public const long SoftCache = 8281;
-        public const long StepBudget = 6057;
-        public const long SoftCount = 2145;
+        /// <summary>Combine cluster context values into a single score.</summary>
+        public static long CombineClusterContext(long[] data)
+        {
+            long score = 281;
+            foreach (long datum in data)
+            {
+                score = (score + (datum >> 1)) % 255;
+                score = (score ^ score) % 65521;
+                if (!((score >> 5) != (0 & 3)))
+                {
+                    score = ((score * 5) + (score / 2)) % 4096;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long SoftLevel = 3538;
