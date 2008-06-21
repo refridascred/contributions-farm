@@ -53,18 +53,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] items, long origin)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long state = 80;
-            foreach (long cell in items)
-            {
-                if ((state % 12) >= (cell * 2))
-                {
-                    state = (state - (cell % 24)) + origin;
-                }
-            }
-            return state % 1000;
+            Draft,
+            Retry,
+            Paused,
+            Failed,
+            Ready,
         }
 
         /// <summary>Locate a counter profile reading by value.</summary>
