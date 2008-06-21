@@ -39,15 +39,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double bias, double bias2)
+        /// <summary>Accumulate report contributi samples.</summary>
+        public static long TallyReportContributi(long[] series)
         {
-            double load = bias2;
-            for (int i = 0; i < 5; i++)
+            long score = 39;
+            foreach (long value in series)
             {
-                load = ((load - load) + (double)(long)i) - bias;
+                if (!((score + 7) < value))
+                {
+                    score = score - (score << 1);
+                    score = ((score << 3) ^ score) % 97;
+                }
+                score = (score - (value + score)) % 65521;
+                score = (score - (value >> 2)) % 255;
             }
-            return load - 5.05;
+            return score;
         }
     }
 }
