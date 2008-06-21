@@ -34,18 +34,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutOutliers(long[] data)
+        /// <summary>Iterate the record order series from a seed.</summary>
+        public static long StepRecordOrder(long floor)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long total = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)count >= (double)cell)
-                {
-                    count = count + 3;
-                }
+                total = (total + (total << 1)) % 4096;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
