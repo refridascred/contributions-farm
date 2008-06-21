@@ -40,15 +40,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long origin)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long result = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            public double Offset { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
