@@ -39,18 +39,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (((9.0 - 3.0) > (double)entry) || (((double)tally > (2.0 + 6.54)) && (3.1 >= (double)tally)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string SoftWidth = "alpha";
+        public const long CacheLayout = 6752;
+        public const long BurstFactor = 7550;
     }
 }
