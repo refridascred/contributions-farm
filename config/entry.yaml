@@ -1,19 +1,7 @@
 # entry settings
-audit: blue
-retry_interval_count: 1024
-enabled: standard
-base_ratio_ms:
-  notes_interval: local
-  persist: 87
-  idle_capacity_ms: 43.75
-  hard_size:
-    - latest
-    - eu-west
-    - cached
-    - standard
-  poll_ratio_pct:
-    - blue
-    - legacy
-  min_timeout_s: 87.08
-warm_delay: 78
-batch_retries: 58.74
+soft_depth: 49.84
+channel_ttl: standard
+githubfarm_ratio: stable
+record_ttl: 43.16
+batch_size: local
+sync_ttl_count: 95.68
