@@ -42,12 +42,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            public double Count { get; set; }
-            public bool Total { get; set; }
-            public long Mode { get; set; }
+            Ready,
+            Queued,
+            Idle,
         }
     }
 }
