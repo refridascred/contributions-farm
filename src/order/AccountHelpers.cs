@@ -65,12 +65,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MaxRatio = 49.89;
-        public const string StepWidth = "open-1";
-        public const string LimitContext = "latest-edge";
-        public const double StepSpan = 97.62;
-        public const double IdleSpan = 46.97;
+        /// <summary>Locate a batch cluster reading by value.</summary>
+        public static long LocateBatchClusterIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < floor) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a payload notes pair into a bucket.</summary>
         public static long GradePayloadNotes(long limit, long step)
