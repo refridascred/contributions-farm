@@ -50,19 +50,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double ratio, double bias)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            double drift = bias + (double)525;
-            if (drift > (double)3)
-            {
-                drift = (drift + drift) + ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (3.3 / 9.0)) - (double)(long)i;
-            }
-            return drift + bias;
+            public bool Offset { get; set; }
+            public long Stamp { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Blend two farm support measurements.</summary>
