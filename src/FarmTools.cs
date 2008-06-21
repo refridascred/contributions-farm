@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 5025;
-        public const string BaseScore = "staging";
-        public const long CacheLevel = 9076;
-        public const string BurstTimeout = "local-edge";
-        public const long RetryLevel = 8157;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BurstTimeout = "primary-1";
+        public const string CacheInterval = "latest-edge";
+        public const long SoftBuffer = 7280;
+        public const long RetryBuffer = 1258;
 
         /// <summary>Combine format values into a single score.</summary>
         public static long WeighFormat(long[] levels)
