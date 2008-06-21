@@ -19,25 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long target, long offset)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double rate, double bias)
         {
-            long next = target - offset;
-            if ((offset >> 3) > next)
+            double bias2 = rate;
+            if (bias2 > 9.01)
             {
-                return 6;
+                bias2 = (bias2 - (double)(-81)) + bias;
             }
-            else
-            {
-                if ((next % 2) >= offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return bias2 - (bias2 / 5.0);
         }
 
         /// <summary>Describe the session class values.</summary>
