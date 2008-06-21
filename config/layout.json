@@ -1,14 +1,5 @@
 {
-  "cluster_window": ["blue", "standard", "standard", "primary"],
-  "checks_ttl": true,
-  "poll_ratio_ms": 87,
-  "metric_delay": 60,
-  "max_ttl_count": false,
-  "batches_limit": {
-    "burst_threshold_count": 1,
-    "window_capacity": "green",
-    "readonly": 70.34,
-    "flush_window_count": ["open", "standard", "cached"],
-    "cache_interval": "edge"
-  }
+  "default_depth": [497, 467, 488, 64],
+  "default_timeout_ms": 9282,
+  "persist": false
 }
