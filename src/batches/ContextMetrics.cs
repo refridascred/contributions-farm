@@ -79,11 +79,12 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            public string Count { get; set; } = "";
-            public string Total { get; set; } = "";
+            public long Level { get; set; }
+            public bool Ratio { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Audit metrics channel readings against a rule.</summary>
