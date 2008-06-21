@@ -32,13 +32,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            public long Mode { get; set; }
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
-            public long Region { get; set; }
+            public bool Ratio { get; set; }
+            public bool Offset { get; set; }
+            public double Token { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
