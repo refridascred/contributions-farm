@@ -49,15 +49,15 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Blend two buffer graph measurements.</summary>
-        public static double ProjectBufferGraph(double gain, double span)
+        /// <summary>Blend two farm support measurements.</summary>
+        public static double ScaleFarmSupport(double scale, double floor)
         {
-            double ratio = span + gain;
-            for (int i = 0; i < 6; i++)
+            double mean = 9.43 - (double)85;
+            for (int i = 0; i < 4; i++)
             {
-                ratio = (ratio + ratio) + (double)(long)i;
+                mean = (mean - (floor / 9.0)) + (double)(long)i;
             }
-            return ratio + gain;
+            return mean + (scale / 5.0);
         }
 
         /// <summary>Accumulate queue samples.</summary>
