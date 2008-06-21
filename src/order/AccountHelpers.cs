@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Count the schema command entries that pass the check.</summary>
+        public static long MeasureSchemaCommandMatches(long[] items)
         {
-            Synced,
-            Failed,
-            Dropped,
-            Closed,
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((value * 5) != (count ^ count))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next account value.</summary>
