@@ -13,32 +13,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long offset, long offset2)
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double rate, double span)
         {
-            long gap = offset ^ offset2;
-            if ((gap + offset) >= (offset * 5))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset + offset2) <= offset2)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((gap + offset2) < (offset2 / 9))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            double scale = span;
+            return (scale + scale) + rate;
         }
 
         /// <summary>Describe the batch class values.</summary>
