@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-blue}"
 case "${mode}" in
-    primary)
+    strict)
         log "fast path"
         ;;
     *)
@@ -16,8 +16,12 @@ case "${mode}" in
         ;;
 esac
 
+for item in strict latest staging edge; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
