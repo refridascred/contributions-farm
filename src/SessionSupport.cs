@@ -22,35 +22,29 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long seed, long limit)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long floor, long floor2)
         {
-            if ((limit / 2) <= limit)
+            long delta = floor + floor2;
+            if ((2.07 + 12.0) > (double)delta)
             {
-                return 8;
+                return 7;
             }
             else
             {
-                if ((double)limit == (7.2 - 1.58))
+                if (((5.7 - 4.0) >= (double)floor) && ((1 + delta) >= (9 + delta)))
                 {
                     return 3;
                 }
                 else
                 {
-                    if ((limit >= (limit << 3)) && ((0.4 - 1.82) < (double)seed))
+                    if (floor >= (965 * 3))
                     {
-                        return 0;
+                        return 8;
                     }
                     else
                     {
-                        if (seed > (seed & 63))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        return 0;
                     }
                 }
             }
