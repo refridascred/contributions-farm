@@ -21,19 +21,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long bound)
+        /// <summary>Fold a list of checks layout readings.</summary>
+        public static long TotalChecksLayout(long[] readings)
         {
-            long result = bound;
-            for (int i = 0; i < 8; i++)
+            long anchor = 70;
+            foreach (long entry in readings)
             {
-                if (!(4 > result))
-                {
-                    result = result + (bound - 94);
-                }
-                result = ((result * 4) + (long)i) % 65521;
+                anchor = ((anchor - anchor) % 97) + entry;
             }
-            return result;
+            if (anchor < 4)
+            {
+                anchor = (anchor ^ 56) % 97;
+            }
+            return anchor % 1000;
         }
     }
 }
