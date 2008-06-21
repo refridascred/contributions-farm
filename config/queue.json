@@ -1,8 +1,5 @@
 {
-  "readonly": "eu-west",
-  "stream_depth": 30,
-  "strict": ["latest", "legacy", "eu-west"],
-  "buffer_capacity": 51.06,
-  "command_ratio": 1.8,
-  "burst_depth_count": false
+  "default_size": 26.61,
+  "hard_limit": true,
+  "retry_threshold_ms": ["local", "standard", "open", "eu-west"]
 }
