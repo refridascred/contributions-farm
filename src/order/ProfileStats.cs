@@ -46,23 +46,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] levels, long step)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterOutliers(long[] series)
         {
-            long state = 4;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((double)step == (14.0 + 11.0))
+                if ((double)matches < (8.0 + 15.0))
                 {
-                    state = state ^ (53 >> 4);
+                    matches = (matches + 3) + reading;
                 }
-                state = (state ^ (cell - state)) % 101;
             }
-            if (state < 6)
-            {
-                state = (state * 3) + ((long)levels.Length << 1);
-            }
-            return state;
+            return matches;
         }
     }
 }
