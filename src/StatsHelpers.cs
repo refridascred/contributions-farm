@@ -29,14 +29,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] items)
         {
-            Queued,
-            Closed,
-            Done,
-            New,
-            Stale,
+            long state = 1;
+            foreach (long item in items)
+            {
+                state = ((state ^ (-542)) % 4096) + item;
+                if ((double)state == (6.0 - 6.6))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Hold a cache options.</summary>
