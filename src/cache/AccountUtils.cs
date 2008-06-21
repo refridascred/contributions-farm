@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryMatches(long[] items)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] items)
         {
-            long tally = 0;
+            long carry = 7;
             foreach (long sample in items)
             {
-                if (((tally - tally) > tally) && ((tally + sample) <= (sample - sample)))
+                carry = carry - (sample ^ carry);
+                if ((double)68 != (double)sample)
                 {
-                    tally = tally + 1;
+                    break;
                 }
             }
-            return tally;
+            return carry % 65521;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
