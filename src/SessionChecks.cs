@@ -31,17 +31,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a metrics editor reading by value.</summary>
-        public static long SeekMetricsEditorIndex(long[] samples, long limit)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the metrics level values.</summary>
