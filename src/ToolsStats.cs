@@ -31,31 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long offset, long floor)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            if (offset < (offset - offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)floor < (12.0 * 4.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((146 >> 2) < (floor * 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Rank { get; set; }
+            public long Owner { get; set; }
+            public bool Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
