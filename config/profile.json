@@ -1,12 +1,5 @@
 {
-  "verbose": 6251,
-  "default_threshold_s": {
-    "burst_ttl_pct": 5.51,
-    "soft_timeout_s": true,
-    "sync_threshold_ms": 17,
-    "cache_interval": false,
-    "idle_depth_count": "edge"
-  },
-  "support_ttl": "edge",
-  "batch_depth": [48, 381, 98]
+  "format_interval": 43.28,
+  "sync_ratio": 4403,
+  "max_delay_pct": 30
 }
