@@ -31,23 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] readings)
-        {
-            long total = 329;
-            foreach (long reading in readings)
-            {
-                if ((reading / 7) < (total & 63))
-                {
-                    total = (total ^ (total * 3)) % 97;
-                }
-            }
-            if (total > 4)
-            {
-                total = (total + (89 % 97)) % 255;
-            }
-            return total % 97;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string IdleWidth = "local-v2";
+        public const string BaseBudget = "staging-edge";
+        public const long StepRatio = 1276;
+        public const long DefaultSize = 6017;
+        public const long LimitEntry = 4814;
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long MeasureMetricsOutliers(long[] data, long limit)
