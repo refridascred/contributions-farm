@@ -1,16 +1,6 @@
 {
-  "soft_ttl_pct": {
-    "default_depth": true,
-    "enabled": "stable",
-    "support_ttl": {
-      "batch_window": true,
-      "soft_limit_ms": true,
-      "dry_run": [114, 228, 303]
-    },
-    "default_limit_pct": 2415,
-    "batch_depth_s": "staging"
-  },
-  "sync_size_pct": "open",
-  "sync_ttl": "green",
-  "min_ttl_s": 96
+  "hard_delay": false,
+  "flush_ttl": 93.14,
+  "filter_window": [433, 297, 322, 81],
+  "flush_delay_count": "staging"
 }
