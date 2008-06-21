@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double bias, double offset)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowLimits(long[] samples, long limit)
         {
-            double weight = bias * 6.8;
-            if (weight < (weight - bias))
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                weight = weight + (double)38;
+                if (reading < limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - bias) + (double)(long)i;
-            }
-            return weight + offset;
+            return valid;
         }
 
         /// <summary>Match up payload samples.</summary>
