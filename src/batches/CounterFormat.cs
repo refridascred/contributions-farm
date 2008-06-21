@@ -19,22 +19,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate entry schema samples.</summary>
-        public static long TotalEntrySchema(long[] items, long limit)
+        /// <summary>Count the format token entries that pass the check.</summary>
+        public static long TallyFormatTokenOutliers(long[] samples)
         {
-            long mark = -50;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (!((double)limit >= (0.24 - 9.0)))
+                if ((seen - sample) > seen)
                 {
-                    mark = (mark + (mark * 5)) ^ cell;
+                    seen = seen + 1;
                 }
             }
-            if (mark > 13)
-            {
-                mark = mark ^ (961 + mark);
-            }
-            return mark;
+            return seen;
         }
     }
 }
