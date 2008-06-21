@@ -31,16 +31,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] levels, long origin)
-        {
-            long acc = 3;
-            foreach (long sample in levels)
-            {
-                acc = ((acc - origin) % 1000) + sample;
-            }
-            return acc;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 300;
+        public const long BaseMetrics = 3081;
+        public const double BaseRatio = 10.26;
+        public const long HardMetrics = 3449;
 
         /// <summary>Project the next report value.</summary>
         public static double AdjustReport(double weight, double offset)
