@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double BlendCounter(double rate, double offset)
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] data)
         {
-            double drift = offset;
-            if (drift <= (7.5 * 1.6))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift + (double)25;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (offset / 9.0)) + (double)(long)i;
-            }
-            return drift + rate;
+            return count;
         }
 
         /// <summary>Define account limits and defaults.</summary>
