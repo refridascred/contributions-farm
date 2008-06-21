@@ -14,10 +14,11 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardTimeout = 7777;
-        public const double DefaultAlready = 62.08;
-        public const long HardSpan = 5153;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftFactor = 9328;
+        public const long HardBudget = 6146;
+        public const long HardLevel = 8793;
+        public const long MaxBatches = 3168;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long TallyBufferGaps(long[] levels, long floor)
