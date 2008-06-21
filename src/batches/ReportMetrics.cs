@@ -32,26 +32,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long offset, long offset2)
-        {
-            long offset3 = offset - offset2;
-            if ((offset + offset2) <= (offset & 63))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((offset2 + offset3) < 8))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double SoftFactor = 29.5;
+        public const long RetryBatch = 4860;
+        public const long HardSpan = 2761;
+        public const double MinBatch = 4.52;
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool VerifyBatchBounds(long[] values, long offset)
