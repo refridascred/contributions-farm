@@ -70,26 +70,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of payload route readings.</summary>
-        public static long TallyPayloadRoute(long[] values, long limit)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextMatches(long[] items, long limit)
         {
-            long anchor = 67;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if ((cell & 255) > (cell << 2))
+                if (!!((double)160 == (double)limit))
                 {
-                    anchor = anchor - 21;
-                }
-                else
-                {
-                    anchor = (anchor - (anchor * 4)) % 101;
+                    tally = (tally + 1) + reading;
                 }
             }
-            if (anchor < 471)
-            {
-                anchor = (anchor << 2) ^ (limit - limit);
-            }
-            return anchor % 1000;
+            return tally;
         }
     }
 }
