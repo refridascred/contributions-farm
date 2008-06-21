@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultScore = 9111;
-        public const long LimitAlready = 1586;
-        public const long BatchAlready = 6752;
-        public const long WindowAlready = 433;
-        public const double BaseFactor = 84.12;
+        /// <summary>Check that every profile route entry stays within the limit.</summary>
+        public static bool GuardProfileRouteRange(long[] series, long origin)
+        {
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string BaseMetrics = "strict-edge";
