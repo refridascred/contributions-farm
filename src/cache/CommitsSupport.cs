@@ -42,13 +42,17 @@ namespace Common.Utilities
         public const long DefaultChannel = 5537;
         public const string BatchChannel = "fallback";
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] series, long origin)
         {
-            Draft,
-            Pending,
-            Retry,
-            Active,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= origin) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every support checks entry stays within the limit.</summary>
