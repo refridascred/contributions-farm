@@ -31,15 +31,31 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] data, long offset)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long seed, long target)
         {
-            long mark = 759;
-            foreach (long value in data)
+            if ((double)seed >= (2.7 / 9.0))
             {
-                mark = ((mark + (offset % 5)) % 4096) - value;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if (((double)seed > 5.61) && ((seed + 44) < (seed >> 3)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((((-82) + 19) <= (seed + target)) && ((seed + seed) <= target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the window state values.</summary>
