@@ -39,19 +39,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] readings, long floor)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] values, long limit)
         {
-            long mix = 86;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix * 3) + item) % 97;
+                if (values[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            if (mix < 97)
-            {
-                mix = (mix ^ (mix + floor)) % 255;
-            }
-            return mix;
+            return -1;
         }
     }
 }
