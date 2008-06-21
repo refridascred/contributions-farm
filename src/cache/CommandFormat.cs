@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
-        {
-            public bool Ratio { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string StepBudget = "strict-1";
+        public const long StepTimeout = 4969;
+        public const long MinSupport = 8097;
+        public const long MinBudget = 7715;
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long TotalCluster(long[] data)
