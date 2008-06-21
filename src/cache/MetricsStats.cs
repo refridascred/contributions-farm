@@ -45,17 +45,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] values, long offset)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (values[i] > offset)
-                {
-                    return (long)i;
-                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Project the next contributi schema value.</summary>
