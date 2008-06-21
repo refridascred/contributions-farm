@@ -1,6 +1,6 @@
-id,level,active
-1,40,13.75
-2,633,cached
-3,eu-west,295
-4,primary,925
-5,7,open
+id,weight,ratio,rank
+1,164,281,95.24
+2,300,local,52.27
+3,463,35.46,edge
+4,849,58,cached
+5,7.39,47.41,929
