@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenRange(long[] items, long offset)
         {
-            Idle,
-            Active,
-            Locked,
-            Synced,
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
