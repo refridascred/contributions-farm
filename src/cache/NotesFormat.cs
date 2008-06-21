@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryGaps(long[] readings)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadHits(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (((tally << 1) > (tally - reading)) || ((reading + reading) >= (tally >> 5)))
+                if ((double)cell <= (2.6 * 3.41))
                 {
-                    tally = tally + 2;
+                    seen = (seen + 2) + target;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
