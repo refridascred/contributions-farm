@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportMatches(long[] levels, long floor)
-        {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (((long)levels.Length - count) <= (count * 2))
-                {
-                    count = ((count + 3) + entry) + floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryTimeout = 739;
+        public const long CacheSize = 3913;
+        public const double DefaultAccount = 7.88;
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long FoldBatches(long[] data, long target)
