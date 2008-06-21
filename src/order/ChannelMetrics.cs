@@ -38,14 +38,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            Retry,
-            Pending,
-            Idle,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string WindowRoute = "legacy";
+        public const long RetryRoute = 2389;
+        public const long LimitScore = 7141;
+        public const long HardRoute = 1728;
+        public const long WindowSize = 2233;
     }
 }
