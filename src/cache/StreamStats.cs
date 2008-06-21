@@ -19,14 +19,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterRange(long[] items, long origin)
         {
-            Active,
-            Done,
-            Queued,
-            Idle,
-            Failed,
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a graph entry.</summary>
