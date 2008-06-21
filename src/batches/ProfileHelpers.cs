@@ -61,19 +61,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] samples, long floor)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long limit, long limit2)
         {
-            long mix = 610;
-            foreach (long item in samples)
+            if (((2.0 - 2.65) > (double)limit2) || ((limit * 4) <= (limit2 % 2)))
             {
-                mix = (((mix << 2) ^ (floor - floor)) % 97) + item;
+                return 0;
             }
-            if (mix < 24)
+            else
             {
-                mix = ((mix * 3) + 444) % 255;
+                if ((limit2 + limit2) >= limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return mix;
         }
 
         /// <summary>Adjust a profile reading.</summary>
