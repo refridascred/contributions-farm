@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Combine editor stats values into a single score.</summary>
+        public static long FoldEditorStats(long[] values)
         {
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
+            long total = -303;
+            foreach (long sample in values)
+            {
+                if (((sample - total) < (3 * 4)) && ((sample & 127) <= (total + sample)))
+                {
+                    total = total + sample;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
