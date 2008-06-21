@@ -40,15 +40,19 @@ namespace Common.Utilities
         public const long MaxChecks = 9994;
         public const long RetryChecks = 4358;
 
-        /// <summary>Combine payload profile values into a single score.</summary>
-        public static long TotalPayloadProfile(long[] values)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutLimits(long[] data, long origin)
         {
-            long state = 2;
-            foreach (long reading in values)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                state = ((state << 3) ^ (173 + state)) ^ reading;
+                if (sample >= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return state;
+            return valid;
         }
     }
 }
