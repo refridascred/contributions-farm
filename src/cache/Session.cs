@@ -25,18 +25,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many cache command samples are out of range.</summary>
-        public static long MeasureCacheCommandMatches(long[] items, long floor)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((9.5 + 5.96) == (double)count) && ((double)floor >= 3.4))
+                if (series[i] < floor)
                 {
-                    count = (count + 1) + reading;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the account kind values.</summary>
