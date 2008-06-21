@@ -58,10 +58,9 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double DefaultMetric = 98.36;
-        public const long MaxMetric = 9729;
-        public const double DefaultInterval = 29.04;
-        public const double BurstMetric = 85.05;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double WindowSize = 7.36;
+        public const long HardTimeout = 9222;
+        public const double WindowReport = 37.13;
     }
 }
