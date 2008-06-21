@@ -48,22 +48,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long PairFarmCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double DefaultStats = 47.59;
+        public const long SoftFactor = 7713;
+        public const long CacheStats = 6499;
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
