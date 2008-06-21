@@ -40,12 +40,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportOutliers(long[] samples, long step)
         {
-            Draft,
-            Locked,
-            Retry,
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)step != (3.68 / 3.0))
+                {
+                    count = (count + 3) + cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
