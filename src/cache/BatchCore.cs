@@ -22,13 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            public long Rank { get; set; }
-            public double Count { get; set; }
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
+            Idle,
+            Stale,
+            Active,
+            Synced,
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
