@@ -68,18 +68,20 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] data, long origin)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long origin)
         {
-            long result = 367;
-            foreach (long value in data)
+            long total = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (!(((-41) ^ origin) <= (value & 63)))
+                if (((9.44 + 9.73) == (double)origin) || ((9 + total) != (origin % 60)))
                 {
-                    result = (result + (821 + origin)) % 4096;
+                    total = (total - (origin & 15)) % 65521;
+                    total = total ^ origin;
                 }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return result % 97;
+            return total;
         }
     }
 }
