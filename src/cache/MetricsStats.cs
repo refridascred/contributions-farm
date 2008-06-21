@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterOutliers(long[] levels, long floor)
+        /// <summary>Validate schema stats readings against a bound.</summary>
+        public static bool CheckSchemaStatsBounds(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if (!((19.0 - 6.0) > (double)floor))
+                if (sample > step)
                 {
-                    matches = (matches + 2) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Audit notes batches readings against a rule.</summary>
