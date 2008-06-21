@@ -36,18 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] items)
+        /// <summary>Blend two batch command measurements.</summary>
+        public static double ProjectBatchCommand(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long cell in items)
+            double weight = bias / 4.0;
+            if (weight > ratio)
             {
-                if (((-77) + cell) >= count)
-                {
-                    count = count + 1;
-                }
+                weight = weight - (double)948;
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - (ratio * 2.9)) - (double)(long)i;
+            }
+            return weight - bias;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
