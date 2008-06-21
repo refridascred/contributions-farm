@@ -34,28 +34,29 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long limit, long seed)
+        /// <summary>Grade a metric batch value against two limits.</summary>
+        public static long BucketMetricBatch(long floor, long seed)
         {
-            if ((double)seed > (8.8 - 4.0))
+            long cur = floor ^ seed;
+            if ((6 - seed) == (floor - cur))
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if (((limit % 97) == (seed - seed)) || ((seed & 1) > (limit * 4)))
+                if (!((cur + (-734)) > cur))
                 {
-                    return 0;
+                    return 7;
                 }
                 else
                 {
-                    if ((1.3 - 9.82) != (double)limit)
+                    if (((-96) + (-55)) < (seed & 127))
                     {
-                        return 2;
+                        return 1;
                     }
                     else
                     {
-                        return 6;
+                        return 8;
                     }
                 }
             }
