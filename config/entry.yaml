@@ -1,7 +1,15 @@
 # entry settings
-record_ratio: 96
-flush_size_ms: 9614
-warm_ratio: 80.75
-strict: true
-schema_limit: false
-idle_interval_s: 83.83
+idle_ttl:
+  - cached
+  - open
+  - blue
+layout_window: strict
+compress:
+  idle_depth_count:
+    enabled: 1024
+    soft_retries: local
+    counter_capacity: 100
+    warm_threshold_ms: fallback
+    retry_interval_count: 7478
+  burst_ratio_s: 60
+  base_ratio_ms: 1024
