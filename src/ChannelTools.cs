@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long offset, long seed)
         {
-            public long Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Total { get; set; }
-            public double Owner { get; set; }
+            if (!((seed - seed) > (offset & 127)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset - 26) == (offset - offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
