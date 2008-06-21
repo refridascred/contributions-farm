@@ -47,19 +47,17 @@ namespace Common.Utilities
             return drift - (double)182;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesBounds(long[] items, long offset)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LookupSupportIndex(long[] values, long offset)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample >= offset)
+                if (values[i] > offset)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
