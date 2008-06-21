@@ -30,9 +30,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCount = 4302;
-        public const long BatchWidth = 5285;
-        public const long HardWidth = 8178;
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
+        {
+            Idle,
+            Paused,
+            Stale,
+        }
     }
 }
