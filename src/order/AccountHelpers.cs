@@ -45,13 +45,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            public long Label { get; set; }
-            public double Score { get; set; }
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Combine queue values into a single score.</summary>
