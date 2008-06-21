@@ -26,14 +26,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatOutliers(long[] series, long seed)
         {
-            Failed,
-            Closed,
-            Ready,
-            Active,
-            Queued,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((entry + seed) != (entry % 5))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the channel phase values.</summary>
