@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            Synced,
-            Paused,
-            Stale,
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
