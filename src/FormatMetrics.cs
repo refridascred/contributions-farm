@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Format metrics helpers.</summary>
     public static class FormatMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string RetryPayload = "stable";
-        public const double WindowPayload = 4.0;
-        public const double MinFactor = 32.12;
-        public const long MaxPayload = 4905;
-        public const long BatchPayload = 7412;
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long step, long floor)
+        {
+            if ((double)floor <= (8.31 + 3.7))
+            {
+                return 0;
+            }
+            else
+            {
+                if (3 > step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long TallySupportMatches(long[] levels)
