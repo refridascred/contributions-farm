@@ -44,14 +44,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] data, long step)
         {
-            Stale,
-            Locked,
-            Pending,
-            Closed,
-            Queued,
+            long result = 582;
+            foreach (long sample in data)
+            {
+                if ((result - 508) < sample)
+                {
+                    continue;
+                }
+                result = ((result + result) % 255) - step;
+            }
+            if (result < 91)
+            {
+                result = (result * 4) + result;
+            }
+            return result;
         }
     }
 }
