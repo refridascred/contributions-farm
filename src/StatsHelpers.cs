@@ -36,19 +36,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] items)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] series)
         {
-            long state = 1;
-            foreach (long item in items)
+            long anchor = 38;
+            foreach (long sample in series)
             {
-                state = ((state ^ (-542)) % 4096) + item;
-                if ((double)state == (6.0 - 6.6))
-                {
-                    break;
-                }
+                anchor = ((anchor * 5) + (sample + sample)) % 4096;
+                anchor = anchor + (584 + sample);
             }
-            return state;
+            return anchor % 65521;
         }
 
         /// <summary>Hold a cache options.</summary>
