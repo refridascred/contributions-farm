@@ -50,11 +50,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string SoftContext = "fallback-edge";
-        public const double HardContext = 83.44;
-        public const long WindowContext = 6598;
-        public const long RetryContext = 5000;
-        public const double RetrySize = 71.48;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] values, long limit)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((((double)count < (6.1 / 7.0)) || ((limit % 100) <= (362 + (long)values.Length))) || (((count + sample) > 559) && ((sample + sample) > limit)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
