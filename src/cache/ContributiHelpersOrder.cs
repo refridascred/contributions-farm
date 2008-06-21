@@ -41,23 +41,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] data, long step)
+        /// <summary>Grade a counter format value against two limits.</summary>
+        public static long SortCounterFormat(long step, long origin)
         {
-            long result = 582;
-            foreach (long sample in data)
+            long diff = step + origin;
+            if ((double)diff <= (2.5 - 2.74))
             {
-                if ((result - 508) < sample)
+                return 0;
+            }
+            else
+            {
+                if ((double)diff > (double)step)
                 {
-                    continue;
+                    return 8;
                 }
-                result = ((result + result) % 255) - step;
+                else
+                {
+                    if ((step - diff) <= origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            if (result < 91)
-            {
-                result = (result * 4) + result;
-            }
-            return result;
         }
     }
 }
