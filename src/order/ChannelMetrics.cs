@@ -19,25 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a order entry value against two limits.</summary>
-        public static long BucketOrderEntry(long step, long seed)
-        {
-            if (((double)seed > (13.0 - 7.0)) || ((seed + step) >= (step % 5)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (step < (seed + (-993)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleLevel = 4496;
+        public const double HardDepth = 87.3;
+        public const long LimitTimeout = 2663;
+        public const double MinScore = 20.55;
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long SeekReportIndex(long[] samples, long limit)
