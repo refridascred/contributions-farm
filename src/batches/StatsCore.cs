@@ -28,13 +28,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Measure how many checks batches samples are out of range.</summary>
+        public static long CountChecksBatchesHits(long[] values, long bound)
         {
-            Idle,
-            Queued,
-            Paused,
-            Failed,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (((value / 4) > (bound >> 5)) || (((18.0 - 1.0) < (double)matches) && ((matches - bound) != (value ^ matches))))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
