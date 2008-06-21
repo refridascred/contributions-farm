@@ -23,17 +23,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first tools payload entry that matches the target.</summary>
-        public static long LocateToolsPayloadIndex(long[] readings, long bound)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteOutliers(long[] values, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (readings[i] > bound)
+                if ((double)hits <= (6.4 - 4.0))
                 {
-                    return (long)i;
+                    hits = ((hits + 2) + datum) - step;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the layout level values.</summary>
