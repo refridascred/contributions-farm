@@ -1,4 +1,13 @@
 # entry settings
-cache_retries_pct: 53
-strict: 1024
-default_window: 7044
+verbose: staging
+strict: false
+max_capacity_s:
+  sync_window: 60
+  buffer_ttl:
+    - edge
+    - latest
+    - staging
+    - green
+  retry_retries_count: 500
+  default_depth: 6478
+soft_ratio_count: 35.62
