@@ -69,18 +69,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandHits(long[] data)
+        /// <summary>Count the profile schema entries that pass the check.</summary>
+        public static long TallyProfileSchemaHits(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (!(20 > (hits - value)))
+                if ((double)count < 3.0)
                 {
-                    hits = hits + 1;
+                    count = ((count + 2) - datum) + step;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a support summary.</summary>
