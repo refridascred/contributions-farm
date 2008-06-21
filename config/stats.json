@@ -1,8 +1,13 @@
 {
-  "base_size": "cached",
-  "poll_interval_count": 78,
-  "min_depth_pct": "open",
-  "verbose": 30.24,
-  "base_delay_ms": "strict",
-  "schema_depth": false
+  "min_ratio_count": true,
+  "contributi_ttl": {
+    "persist": ["green", "eu-west"],
+    "cache_limit_pct": false,
+    "sync_interval_ms": 60,
+    "flush_size_pct": false
+  },
+  "dry_run": 3019,
+  "token_threshold": 6655,
+  "burst_window_count": true,
+  "audit": "latest"
 }
