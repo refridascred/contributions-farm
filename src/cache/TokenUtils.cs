@@ -23,14 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            Failed,
-            Queued,
-            New,
             Draft,
-            Paused,
+            Pending,
+            Ready,
+            Failed,
         }
 
         /// <summary>Match up command samples.</summary>
