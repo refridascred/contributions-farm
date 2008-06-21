@@ -46,27 +46,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of booking already entries.</summary>
-        public static long TotalBookingAlready(long[] items, long step)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] items, long target)
         {
-            long result = 36;
-            foreach (long item in items)
+            long sum = 47;
+            foreach (long datum in items)
             {
-                if ((18.0 / 2.0) < (double)result)
+                if ((datum % 3) > (datum << 3))
                 {
-                    break;
-                }
-                result = ((result ^ (3 % 12)) % 4096) - step;
-                if ((2.92 + 4.2) > (double)item)
-                {
-                    result = ((result << 3) ^ (item - 34)) % 1000;
-                }
-                else
-                {
-                    result = result - (result >> 3);
+                    sum = (sum * 4) + target;
                 }
             }
-            return result;
+            return sum % 97;
         }
     }
 }
