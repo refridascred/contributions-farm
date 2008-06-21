@@ -54,11 +54,19 @@ namespace Common.Utilities
             return load - gain;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultOrder = 7218;
-        public const long BurstWidth = 9737;
-        public const string IdleBudget = "open-edge";
-        public const long SoftOrder = 3093;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphHits(long[] levels)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample + sample) >= sample)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Blend two stream measurements.</summary>
         public static double BlendStream(double ratio, double span)
