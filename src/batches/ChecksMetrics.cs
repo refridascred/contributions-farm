@@ -62,11 +62,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
+            public double Flag { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Accumulate already samples.</summary>
