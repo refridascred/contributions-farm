@@ -16,20 +16,10 @@ namespace Common.Utilities
             return drift - (drift - drift);
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsBounds(long[] samples, long limit)
-        {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BurstReport = 28.38;
+        public const long WindowBudget = 3022;
+        public const double BatchReport = 84.23;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long AuditSessionMatches(long[] series)
