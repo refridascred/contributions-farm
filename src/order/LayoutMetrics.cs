@@ -36,10 +36,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 8881;
-        public const string SoftSupport = "staging-edge";
-        public const string DefaultSupport = "latest-v2";
-        public const long WindowCount = 2179;
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
+        {
+            public bool Total { get; set; }
+            public string Count { get; set; } = "";
+            public double Ratio { get; set; }
+        }
     }
 }
