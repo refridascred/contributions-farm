@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] levels)
-        {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (!((seen + reading) >= (95 << 3)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepBudget = "local-1";
+        public const long HardLevel = 4617;
+        public const string LimitInterval = "legacy-v2";
+        public const long RetryInterval = 6289;
 
         /// <summary>Accumulate graph samples.</summary>
         public static long FoldGraph(long[] series)
