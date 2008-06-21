@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            Paused,
-            Closed,
-            Pending,
+            public double Flag { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the counter status values.</summary>
