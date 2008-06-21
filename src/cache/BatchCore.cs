@@ -27,14 +27,18 @@ namespace Common.Utilities
         public const long MinContributi = 8554;
         public const long CacheCount = 3989;
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Audit profile already readings against a rule.</summary>
+        public static long TallyProfileAlreadyGaps(long[] values, long origin)
         {
-            Idle,
-            Paused,
-            New,
-            Synced,
-            Closed,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (origin < reading)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
