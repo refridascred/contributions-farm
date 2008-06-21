@@ -19,14 +19,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            Locked,
-            Retry,
-            Dropped,
-            Queued,
-            Paused,
+            public bool Region { get; set; }
+            public long Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
