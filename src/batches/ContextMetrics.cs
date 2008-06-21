@@ -5,28 +5,35 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long seed, long offset)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long offset, long target)
         {
-            if ((seed % 7) <= offset)
+            if (offset >= (target % 60))
             {
                 return 1;
             }
             else
             {
-                if ((seed >> 3) == (seed & 15))
+                if ((double)target >= (2.0 - 5.1))
                 {
-                    return 2;
+                    return 3;
                 }
                 else
                 {
-                    if ((double)seed != (double)offset)
+                    if ((target & 127) < target)
                     {
-                        return 8;
+                        return 2;
                     }
                     else
                     {
-                        return 0;
+                        if (offset <= target)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
