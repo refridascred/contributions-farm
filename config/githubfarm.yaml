@@ -1,4 +1,9 @@
 # githubfarm settings
-persist: 69.75
-dry_run: cached
-audit: 5682
+filter_ratio: cached
+strict: 4468
+max_threshold: true
+batch_size: 5022
+base_capacity_pct:
+  batch_capacity: 944
+  warm_depth_ms: 250
+  farm_retries: 60
