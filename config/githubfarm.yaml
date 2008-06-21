@@ -1,9 +1,19 @@
 # githubfarm settings
-poll_window_count:
-  - 299
-  - 455
-  - 343
-poll_ratio_ms: green
-hard_timeout_s: 48
-contributi_window: strict
-retry_window_count: false
+audit: 91.42
+verbose: 51.91
+idle_interval: latest
+support_depth:
+  burst_retries_s: green
+  contributi_size: false
+  poll_interval: 500
+  poll_interval_pct:
+    - 355
+    - 79
+    - 56
+    - 490
+  cache_size_s: 49.36
+  batch_retries:
+    - 190
+    - 64
+    - 64
+    - 183
