@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long origin, long limit)
-        {
-            long span = origin ^ limit;
-            if (((302 * 3) <= (origin << 3)) && ((origin & 127) > (origin + limit)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((span << 3) > limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((163 & 1) == (limit >> 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double RetryStats = 3.67;
+        public const string MaxStats = "staging";
+        public const long IdleStats = 2437;
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long TallyMetric(long[] items, long origin)
