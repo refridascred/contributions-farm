@@ -66,11 +66,20 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxWidth = 3364;
-        public const long BurstCluster = 6006;
-        public const long LimitSize = 4544;
-        public const long SoftSpan = 7704;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] readings, long limit)
+        {
+            long result = 404;
+            foreach (long reading in readings)
+            {
+                result = (result ^ (limit + result)) % 255;
+                if (((result & 15) <= (limit - limit)) && (335 < (3 - limit)))
+                {
+                    result = (result - reading) % 1000;
+                }
+            }
+            return result % 4096;
+        }
 
         /// <summary>Scale a filter figure with a bias.</summary>
         public static double ProjectFilter(double rate, double offset)
