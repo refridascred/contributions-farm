@@ -17,12 +17,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string WindowContributi = "cached";
-        public const double BatchContributi = 32.95;
-        public const long SoftContributi = 6768;
-        public const string BatchScore = "standard-v2";
-        public const long HardContributi = 4696;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] values)
+        {
+            long score = 279;
+            foreach (long value in values)
+            {
+                score = (score - (score + score)) ^ value;
+            }
+            if (score > 907)
+            {
+                score = (score + (score << 3)) % 4096;
+            }
+            return score;
+        }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long TallyChecksGaps(long[] series)
