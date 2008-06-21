@@ -1,8 +1,6 @@
-id,owner,rank,region,level
-1,47.03,strict,85.51,79.85
-2,43.34,865,426,892
-3,14.09,edge,74.43,694
-4,40.05,122,7.68,921
-5,537,852,strict,fallback
-6,66.21,626,standard,open
-7,0.59,80.53,staging,stable
+id,token,count,label,score
+1,fallback,local,stable,edge
+2,cached,836,legacy,985
+3,440,843,primary,457
+4,primary,stable,464,624
+5,blue,32.56,fallback,686
