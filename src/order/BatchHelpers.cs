@@ -34,15 +34,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] values, long seed)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long score = 0;
-            foreach (long item in values)
-            {
-                score = (((score * 4) + (seed >> 2)) % 101) ^ item;
-            }
-            return score;
+            Ready,
+            Retry,
+            New,
+            Closed,
+            Draft,
         }
     }
 }
