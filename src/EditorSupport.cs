@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long limit)
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public long Owner { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate command samples.</summary>
