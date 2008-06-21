@@ -20,19 +20,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate channel record readings against a bound.</summary>
-        public static bool ValidateChannelRecordBounds(long[] items, long step)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionHits(long[] levels)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (sample != step)
+                if ((((long)levels.Length << 2) >= (seen >> 1)) || (((double)seen >= 8.0) || ((seen - entry) > entry)))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
