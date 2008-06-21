@@ -1,9 +1,8 @@
-id,weight,rank,count,owner
-1,50.8,2.15,99,46.04
-2,590,primary,285,712
-3,latest,483,31.3,254
-4,strict,162,911,blue
-5,local,340,657,stable
-6,482,69.56,27.67,85.58
-7,fallback,359,58.46,fallback
-8,166,305,30.34,0.26
+id,count,active,rank
+1,46.53,731,89
+2,578,238,17.88
+3,734,150,266
+4,strict,271,993
+5,490,612,primary
+6,blue,fallback,645
+7,54.28,blue,453
