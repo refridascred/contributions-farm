@@ -13,22 +13,31 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricGaps(long[] data, long origin)
+        /// <summary>Rank window graph input into a small class.</summary>
+        public static long GradeWindowGraph(long origin, long step)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            if (step > (step ^ 59))
             {
-                if (((hits + sample) <= (origin << 1)) && ((17.0 * 4.3) < (double)hits))
+                return 4;
+            }
+            else
+            {
+                if ((origin + step) == (step / 7))
                 {
-                    hits = hits + 1;
+                    return 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((double)origin < (6.1 / 6.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
