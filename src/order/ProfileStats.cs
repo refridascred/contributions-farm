@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] levels)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandHits(long[] items, long step)
         {
-            long state = 3;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (datum < (datum << 2))
+                if (!!((count >> 5) < value))
                 {
-                    state = ((state * 2) + (state ^ 1)) % 97;
+                    count = (count + 1) + step;
                 }
             }
-            if (state < (-3))
-            {
-                state = ((state * 5) + state) % 101;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Blend two stream measurements.</summary>
