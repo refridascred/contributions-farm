@@ -59,18 +59,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenOutliers(long[] readings, long target)
+        /// <summary>Iterate the session contributi series from a seed.</summary>
+        public static long StepSessionContributi(long offset)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long score = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if ((290 >> 4) != (entry >> 2))
+                if (((long)i ^ (long)i) >= (score + score))
                 {
-                    seen = (seen + 1) + target;
+                    score = score - (18 * 4);
                 }
+                score = (score + (score + score)) % 101;
+                score = ((score * 3) + (long)i) % 101;
             }
-            return seen;
+            return score;
         }
     }
 }
