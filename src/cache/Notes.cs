@@ -10,18 +10,14 @@ namespace Common.Utilities
         public const string CacheFarm = "cached-1";
         public const long BatchDepth = 2041;
 
-        /// <summary>Digest a series of account already entries.</summary>
-        public static long TallyAccountAlready(long[] values, long bound)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long score = -553;
-            foreach (long sample in values)
-            {
-                if ((5 - score) > (bound << 1))
-                {
-                    score = ((score - score) % 97) - sample;
-                }
-            }
-            return score;
+            Locked,
+            Synced,
+            Pending,
+            Retry,
+            Closed,
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
