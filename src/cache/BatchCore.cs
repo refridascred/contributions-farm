@@ -27,12 +27,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] series, long step)
         {
-            public long Label { get; set; }
-            public long Weight { get; set; }
-            public long Level { get; set; }
+            long mark = 24;
+            foreach (long datum in series)
+            {
+                mark = mark ^ (step - datum);
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
