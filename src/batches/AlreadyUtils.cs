@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of window queue entries.</summary>
-        public static long DigestWindowQueue(long[] samples, long step)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] values, long floor)
         {
-            long carry = 341;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((((carry * 2) + (175 & 255)) % 65521) + reading) + step;
+                if (values[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
