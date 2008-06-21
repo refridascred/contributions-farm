@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double rate, double span)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            double mean = (double)(61 * 4);
-            return ((mean + 2.0) + rate) + span;
+            public string Size { get; set; } = "";
+            public double Mode { get; set; }
+            public double Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Project the next stats value.</summary>
