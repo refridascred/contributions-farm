@@ -31,19 +31,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double scale, double span)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long ClassifySchema(long offset, long floor)
         {
-            double load = scale;
-            if (load >= (load / 3.0))
+            if (offset < (offset - offset))
             {
-                load = load - 2.44;
+                return 7;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                load = (load + scale) + (double)(long)i;
+                if ((double)floor < (12.0 * 4.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((146 >> 2) < (floor * 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return load - span;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
