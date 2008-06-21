@@ -1,7 +1,14 @@
 {
-  "payload_ratio": "primary",
-  "commits_window": [149, 478],
-  "burst_delay_count": false,
-  "soft_ratio_s": "eu-west",
-  "batch_ratio_pct": "strict"
+  "default_delay": {
+    "enabled": 9281,
+    "soft_threshold": [409, 43, 59],
+    "poll_retries": ["staging", "strict"],
+    "idle_delay_pct": 71,
+    "already_threshold": true
+  },
+  "max_capacity_pct": 3.04,
+  "base_retries_ms": 71.02,
+  "editor_limit": "edge",
+  "sync_depth_pct": "primary",
+  "batch_delay_ms": 40
 }
