@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the schema command entries that pass the check.</summary>
-        public static long MeasureSchemaCommandMatches(long[] items)
+        /// <summary>Iterate the stream cache series from a seed.</summary>
+        public static long SeriesStreamCache(long step)
         {
-            long count = 0;
-            foreach (long value in items)
+            long score = step;
+            for (int i = 0; i < 21; i++)
             {
-                if ((value * 5) != (count ^ count))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
