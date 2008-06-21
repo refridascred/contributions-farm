@@ -37,22 +37,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count format editor pairs that satisfy a relation.</summary>
-        public static long CompareFormatEditorCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double IdleLevel = 92.2;
+        public const long RetrySize = 7990;
+        public const long IdleBudget = 2580;
+        public const long LimitWindow = 8638;
+        public const long DefaultWindow = 7744;
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long StepStats(long bound)
