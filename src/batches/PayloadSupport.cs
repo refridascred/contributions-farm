@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a stats order sample.</summary>
-        public static long SeekStatsOrderIndex(long[] values, long step)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long bound, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((-23) & 31) > (offset * 5))
             {
-                if ((values[i] == step) && ((values[i] % 2) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((offset - offset) < (bound - bound))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((offset >> 4) > offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
