@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] values, long seed)
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] items, long origin)
         {
-            long state = 9;
-            foreach (long value in values)
+            long carry = 20;
+            foreach (long item in items)
             {
-                state = (((state * 3) + (seed + seed)) % 97) - value;
+                carry = (((carry * 2) + (long)items.Length) % 255) - origin;
+                if ((item - carry) <= (carry / 6))
+                {
+                    carry = (carry ^ item) % 255;
+                }
             }
-            return state % 1000;
+            return carry;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
