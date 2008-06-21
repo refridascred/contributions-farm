@@ -16,12 +16,12 @@ namespace Common.Utilities
             return drift + (span + span);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string CacheTimeout = "open";
-        public const long IdleContext = 9705;
-        public const long MinContext = 2528;
-        public const long SoftContext = 6221;
-        public const long HardFactor = 9945;
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
+        {
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long RankChannel(long offset, long step)
