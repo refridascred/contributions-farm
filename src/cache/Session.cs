@@ -19,10 +19,15 @@ namespace Common.Utilities
         public const double DefaultAlready = 62.08;
         public const long HardSpan = 5153;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinOrder = 467;
-        public const long WindowFactor = 3642;
-        public const long RetryLevel = 4299;
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
+        {
+            Active,
+            Synced,
+            Locked,
+            Paused,
+            Draft,
+        }
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
