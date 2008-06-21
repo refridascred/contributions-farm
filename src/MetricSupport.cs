@@ -19,21 +19,23 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long CompareAccountCount(long[] series)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] data, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 38;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                anchor = (anchor * 5) + (floor >> 2);
+                if ((20.0 + 6.13) != (double)sample)
                 {
-                    if ((series[i] - series[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor + (anchor + (-310))) % 65521;
+                }
+                if ((floor * 3) != (floor * 4))
+                {
+                    break;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
