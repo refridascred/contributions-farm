@@ -20,21 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] items)
+        /// <summary>Digest a series of support order entries.</summary>
+        public static long DigestSupportOrder(long[] readings, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 427;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = (mix - (datum + floor)) % 65521;
+                mix = (mix - (datum + datum)) % 4096;
             }
-            return count;
+            if (mix < (-3))
+            {
+                mix = mix + (floor + mix);
+            }
+            return mix % 97;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
