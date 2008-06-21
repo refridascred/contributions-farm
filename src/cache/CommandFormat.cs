@@ -35,18 +35,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit buffer format readings against a rule.</summary>
-        public static long AuditBufferFormatGaps(long[] data, long floor)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)entry < (5.1 - 19.0)) || (((8.0 - 5.2) >= (double)floor) && (seen <= (floor + floor))))
+                if ((levels[i] >= target) && ((levels[i] % 2) == 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
