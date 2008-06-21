@@ -33,10 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleWidth = 4762;
-        public const long BaseDepth = 4822;
-        public const string MinReport = "local-edge";
-        public const long StepReport = 6558;
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
+        {
+            Retry,
+            Paused,
+            Draft,
+            Stale,
+        }
     }
 }
