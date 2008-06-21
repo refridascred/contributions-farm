@@ -32,10 +32,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MinFactor = 88.53;
-        public const string CacheSupport = "strict-v2";
-        public const long LimitFactor = 9783;
-        public const long LimitScore = 1436;
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
+        {
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
