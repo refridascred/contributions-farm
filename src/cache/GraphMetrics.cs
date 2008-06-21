@@ -37,11 +37,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ProjectCache(double scale, double offset)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            double rate = scale - offset;
-            return rate - rate;
+            Active,
+            New,
+            Queued,
+            Idle,
         }
 
         /// <summary>Hold a batches info.</summary>
