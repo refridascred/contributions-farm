@@ -25,10 +25,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 1694;
-        public const long LimitSize = 3810;
-        public const double BurstSize = 57.49;
-        public const double MaxFormat = 15.16;
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
+        {
+            Dropped,
+            Draft,
+            Failed,
+        }
     }
 }
