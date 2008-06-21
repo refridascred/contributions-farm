@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 5256;
-        public const string BatchDepth = "alpha-edge";
-        public const double IdleInterval = 69.79;
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long target, long offset)
+        {
+            long offset2 = target + offset;
+            if (609 < offset)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset2 - offset2) < target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((offset + target) > 24) || ((target - 33) < (4 / 2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long TallyReportMatches(long[] values)
