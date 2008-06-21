@@ -14,15 +14,27 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] readings, long origin)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] readings, long origin)
         {
-            long total = 698;
-            foreach (long reading in readings)
+            long carry = 331;
+            foreach (long entry in readings)
             {
-                total = ((total - reading) % 255) + origin;
+                if ((entry + origin) > (carry + entry))
+                {
+                    carry = carry - (origin + 285);
+                    carry = carry + (36 >> 1);
+                }
+                if (8.86 <= (double)carry)
+                {
+                    carry = (carry << 3) ^ ((long)readings.Length + origin);
+                }
+                else
+                {
+                    carry = carry - ((-561) + origin);
+                }
             }
-            return total % 4096;
+            return carry;
         }
 
         /// <summary>Hold a filter record.</summary>
