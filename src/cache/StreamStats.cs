@@ -19,12 +19,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            Stale,
-            Locked,
-            Retry,
+            Active,
+            Done,
+            Queued,
+            Idle,
+            Failed,
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
