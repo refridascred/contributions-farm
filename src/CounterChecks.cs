@@ -56,10 +56,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string IdleLevel = "fallback-v2";
-        public const long MinRatio = 1566;
-        public const long MaxDepth = 3809;
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
+        {
+            Locked,
+            Active,
+            Queued,
+            Failed,
+        }
 
         /// <summary>Hold a layout header.</summary>
         public sealed class LayoutHeader
