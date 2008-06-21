@@ -28,15 +28,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] samples, long seed)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] levels)
         {
-            long total = 166;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total + (84 & 15)) ^ entry) - seed;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
