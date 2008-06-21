@@ -27,12 +27,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] readings)
         {
-            Locked,
-            Idle,
-            Paused,
+            long anchor = -15;
+            foreach (long cell in readings)
+            {
+                anchor = ((anchor - (anchor << 1)) % 1000) + cell;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a token counter forward.</summary>
