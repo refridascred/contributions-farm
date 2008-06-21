@@ -1,5 +1,9 @@
 # entry settings
-poll_threshold_ms: true
-cache_threshold_count: 9290
-base_capacity_s: 45.71
-default_retries_s: green
+strict:
+  - 439
+  - 260
+  - 372
+  - 39
+flush_depth: 500
+min_depth_s: local
+default_interval_s: 60
