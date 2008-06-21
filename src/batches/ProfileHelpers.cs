@@ -61,10 +61,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 4975;
-        public const long StepRatio = 7693;
-        public const long MaxFormat = 1650;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] samples, long floor)
+        {
+            long mix = 610;
+            foreach (long item in samples)
+            {
+                mix = (((mix << 2) ^ (floor - floor)) % 97) + item;
+            }
+            if (mix < 24)
+            {
+                mix = ((mix * 3) + 444) % 255;
+            }
+            return mix;
+        }
 
         /// <summary>Adjust a profile reading.</summary>
         public static double ScaleProfile(double gain, double span)
