@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] items, long limit)
-        {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string HardMetric = "standard-1";
+        public const long StepMetric = 6871;
+        public const long BaseSize = 5360;
+        public const long MinMetric = 1351;
+        public const long DefaultSpan = 7872;
 
         /// <summary>Locate a account reading by value.</summary>
         public static long LocateAccountIndex(long[] items, long step)
