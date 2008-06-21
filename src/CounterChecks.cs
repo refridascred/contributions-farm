@@ -36,21 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count stream cache pairs that satisfy a relation.</summary>
-        public static long OverlapStreamCacheCount(long[] items)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferMatches(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((-77) + cell) >= count)
                 {
-                    if ((items[i] ^ items[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
