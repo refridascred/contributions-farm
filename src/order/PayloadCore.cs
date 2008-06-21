@@ -10,20 +10,19 @@ namespace Common.Utilities
         public const string DefaultInterval = "local-edge";
         public const long RetryChecks = 2181;
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] samples, long target)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteLimits(long[] levels, long limit)
         {
-            long mark = 0;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                mark = (((mark * 3) + (0 + mark)) % 1000) + target;
-                mark = (mark + (entry / 5)) % 65521;
-                if (!(43 >= (entry + mark)))
+                if (cell < limit)
                 {
-                    mark = (mark - mark) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Accumulate entry samples.</summary>
