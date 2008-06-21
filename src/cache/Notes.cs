@@ -38,39 +38,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long offset, long seed)
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double ratio, double floor)
         {
-            long cur = offset - seed;
-            if (!((offset / 2) > (cur >> 3)))
+            double rate = ratio;
+            if (rate >= (double)6)
             {
-                return 7;
+                rate = (rate + 0.73) - floor;
             }
             else
             {
-                if (((2 - offset) < seed) || (cur <= (64 - seed)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset + 6) <= offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((4.4 * 9.6) == (double)cur) || (cur > (cur ^ seed)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                rate = rate + 19.0;
             }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (double)(-141)) + (double)(long)i;
+            }
+            return rate + (1.64 - ratio);
         }
 
         /// <summary>Iterate the cluster tools series from a seed.</summary>
