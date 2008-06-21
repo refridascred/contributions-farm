@@ -37,21 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] levels)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsOutliers(long[] readings, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (origin < ((long)readings.Length - origin))
                 {
-                    if ((levels[i] + levels[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 3) + sample;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
