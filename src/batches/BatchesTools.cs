@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double DefaultWidth = 20.42;
-        public const double RetryCommits = 36.75;
-        public const string RetryBudget = "stable-v2";
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
+        {
+            Paused,
+            Closed,
+            Pending,
+        }
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
