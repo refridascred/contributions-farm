@@ -61,10 +61,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 9582;
-        public const double MinInterval = 12.07;
-        public const string BurstWindow = "strict-1";
+        /// <summary>Match up already tools samples.</summary>
+        public static long MatchAlreadyToolsCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
