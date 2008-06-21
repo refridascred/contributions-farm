@@ -40,32 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long floor, long floor2)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] readings)
         {
-            long delta = floor + floor2;
-            if ((2.07 + 12.0) > (double)delta)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((5.7 - 4.0) >= (double)floor) && ((1 + delta) >= (9 + delta)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (floor >= (965 * 3))
+                    if ((readings[i] ^ readings[j]) != 16)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
