@@ -12,26 +12,21 @@ namespace Common.Utilities
         public const string BurstTimeout = "local-edge";
         public const long RetryLevel = 8157;
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] levels)
+        /// <summary>Match up commits channel samples.</summary>
+        public static long PairCommitsChannelCount(long[] values)
         {
-            long anchor = 986;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (anchor > (821 + anchor))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
-                }
-                if (0 > (datum - datum))
-                {
-                    anchor = ((anchor << 2) ^ (-729)) % 4096;
+                    if ((values[i] ^ values[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (anchor < 844)
-            {
-                anchor = (anchor + (anchor - anchor)) % 4096;
-            }
-            return anchor % 65521;
+            return count;
         }
 
         /// <summary>Describe the notes kind values.</summary>
