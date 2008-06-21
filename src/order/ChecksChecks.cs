@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] values, long floor)
+        /// <summary>Validate channel queue readings against a bound.</summary>
+        public static bool GuardChannelQueueBounds(long[] items, long target)
         {
-            long state = 757;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                state = ((state + (state / 3)) + cell) + floor;
+                if (reading <= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Validate context queue readings against a bound.</summary>
