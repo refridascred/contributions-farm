@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] samples, long floor)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long score = 670;
-            foreach (long cell in samples)
-            {
-                score = (score ^ (floor - floor)) ^ cell;
-            }
-            return score % 97;
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Grade a context value against two limits.</summary>
