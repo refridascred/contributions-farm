@@ -51,17 +51,25 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] items, long limit)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long target, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long bound = target - origin;
+            if ((target >= (-596)) || ((double)origin <= (0.83 / 2.0)))
             {
-                if (items[i] < limit)
+                return 5;
+            }
+            else
+            {
+                if ((bound + 1) < (bound + 707))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
     }
 }
