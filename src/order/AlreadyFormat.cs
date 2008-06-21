@@ -41,11 +41,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Scale a counter editor figure with a bias.</summary>
+        public static double SmoothCounterEditor(double ratio, double offset)
         {
-            public long Region { get; set; }
-            public long Ratio { get; set; }
+            double weight = ratio - offset;
+            if (weight < weight)
+            {
+                weight = weight + (weight * 9.84);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (weight * 5.95)) + (double)(long)i;
+            }
+            return weight - ratio;
         }
 
         /// <summary>Measure how many entry report samples are out of range.</summary>
