@@ -68,12 +68,19 @@ namespace Common.Utilities
         public const long HardWidth = 9855;
         public const long IdleRatio = 6953;
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long bound)
         {
-            New,
-            Active,
-            Failed,
+            long mark = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                if (!!((double)bound == (5.04 / 7.0)))
+                {
+                    mark = ((mark << 3) ^ (798 >> 2)) % 255;
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
