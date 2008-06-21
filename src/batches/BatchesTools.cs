@@ -32,22 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] readings)
+        /// <summary>Audit profile commits readings against a rule.</summary>
+        public static long TallyProfileCommitsHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (!(sample < (sample - seen)))
+                if ((double)datum > (6.0 * 1.31))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
