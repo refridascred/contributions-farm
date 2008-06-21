@@ -12,38 +12,20 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long offset, long seed)
+        /// <summary>Roll a cluster window counter forward.</summary>
+        public static long IterateClusterWindow(long seed)
         {
-            if (((double)offset > 8.1) || ((0 + offset) == (203 / 4)))
+            long result = seed;
+            for (int i = 0; i < 21; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (offset >= (offset + offset))
+                result = (result << 2) ^ (result + (long)i);
+                if (!(((result - 30) > ((long)i & 127)) || ((result + result) < (long)i)))
                 {
-                    return 4;
+                    result = (result ^ (result + seed)) % 1000;
                 }
-                else
-                {
-                    if (offset > (offset / 9))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((seed % 60) == (0 << 2)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                result = ((result * 4) + (long)i) % 1000;
             }
+            return result;
         }
 
         /// <summary>Describe the batch class values.</summary>
