@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (((sample >> 2) < (hits ^ sample)) && (hits > sample))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchMetrics = 3274;
+        public const double HardMetrics = 62.17;
+        public const long MinMetrics = 6452;
+        public const string MinSpan = "stable";
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long MeasureProfileHits(long[] series)
