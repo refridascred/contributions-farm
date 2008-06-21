@@ -53,12 +53,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
-        {
-            Paused,
-            Synced,
-            Queued,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MinScore = "latest-1";
+        public const double WindowCounter = 53.33;
+        public const double WindowDepth = 43.12;
     }
 }
