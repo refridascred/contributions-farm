@@ -16,12 +16,12 @@ namespace Common.Utilities
             return drift + (span + span);
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] levels, long offset)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] data, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((levels[i] >= offset) && ((levels[i] % 5) != 0))
+                if ((data[i] >= seed) && ((data[i] % 5) != 0))
                 {
                     return (long)i;
                 }
