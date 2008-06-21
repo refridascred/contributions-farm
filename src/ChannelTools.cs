@@ -25,22 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelOutliers(long[] readings, long offset)
+        /// <summary>Look up the position of a counter editor sample.</summary>
+        public static long LookupCounterEditorIndex(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (offset >= datum)
+                if (items[i] > limit)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
