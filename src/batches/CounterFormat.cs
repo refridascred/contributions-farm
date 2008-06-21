@@ -15,17 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a batches metrics reading by value.</summary>
-        public static long LookupBatchesMetricsIndex(long[] data, long target)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsRange(long[] readings, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                if (data[i] == target)
+                if (entry != target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Describe the schema kind values.</summary>
