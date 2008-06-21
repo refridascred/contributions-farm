@@ -20,13 +20,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamRange(long[] series, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public string Region { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
