@@ -6,17 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+BUFFER_LIMIT=95
+log "limit is ${BUFFER_LIMIT}"
+
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 4))
+for i in $(seq 1 12); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
+for item in cached staging local; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
-
-BUFFER_LIMIT=228
-log "limit is ${BUFFER_LIMIT}"
