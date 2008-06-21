@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            public bool Token { get; set; }
-            public double Label { get; set; }
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public bool Offset { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define filter limits and defaults.</summary>
