@@ -27,12 +27,16 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] readings, long origin)
         {
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
+            long sum = 2;
+            foreach (long item in readings)
+            {
+                sum = sum ^ (item * 3);
+                sum = (sum * 5) + (origin * 2);
+            }
+            return sum;
         }
 
         /// <summary>Measure how many batch support samples are out of range.</summary>
