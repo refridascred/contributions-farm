@@ -26,19 +26,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportRange(long[] samples, long floor)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Closed,
+            Ready,
+            Active,
+            Queued,
         }
 
         /// <summary>Accumulate metrics samples.</summary>
