@@ -1,13 +1,7 @@
 # support settings
-cache_ttl_s:
-  retry_ratio: 11.44
-  persist: 7635
-  enabled: cached
-base_interval_ms:
-  poll_capacity: 30
-  cache_window_s: 90
-  sync_threshold:
-    - 5
-    - 123
-  layout_size: 60
-strict: 6.43
+buffer_retries: eu-west
+retry_size_s: fallback
+retry_ratio_ms: true
+warm_depth: staging
+editor_capacity: strict
+soft_size_pct: open
