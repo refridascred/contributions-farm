@@ -65,9 +65,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleProfile = 1059;
-        public const string MaxProfile = "strict-edge";
-        public const string DefaultProfile = "alpha-edge";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 906;
+        public const long MaxCounter = 589;
+        public const double LimitRatio = 6.44;
+        public const long IdleCounter = 793;
+        public const string MaxWidth = "legacy-edge";
     }
 }
