@@ -1,5 +1,5 @@
 {
-  "batch_threshold": 29,
-  "default_timeout_ms": "stable",
-  "sync_depth_count": 7177
+  "max_interval_count": [234, 154, 115],
+  "enabled": 8360,
+  "verbose": "green"
 }
