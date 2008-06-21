@@ -32,24 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long seed)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] samples)
         {
-            long acc = seed;
-            for (int i = 0; i < 4; i++)
+            long sum = 44;
+            foreach (long entry in samples)
             {
-                if (((acc + acc) <= (seed - seed)) || ((10.0 / 4.0) <= (double)seed))
+                sum = sum + (14 * 5);
+                if (((3 + entry) >= (entry ^ sum)) && ((sum + sum) > sum))
                 {
-                    continue;
+                    break;
                 }
-                if ((acc - acc) > (4 & 127))
-                {
-                    acc = (acc << 3) ^ seed;
-                    acc = (acc ^ (8 + seed)) % 4096;
-                }
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return sum % 65521;
         }
 
         /// <summary>Describe the layout phase values.</summary>
