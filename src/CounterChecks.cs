@@ -43,20 +43,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long origin)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double scale, double floor)
         {
-            long state = origin;
-            for (int i = 0; i < 13; i++)
+            double weight = floor;
+            if (weight <= 12.0)
             {
-                if (!((origin ^ 45) < (origin - (long)i)))
-                {
-                    state = state + origin;
-                    state = ((state << 2) ^ (state * 2)) % 255;
-                }
-                state = ((state * 3) + (long)i) % 4093;
+                weight = (weight - (double)1) - scale;
             }
-            return state;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight - (floor / 8.0);
         }
 
         /// <summary>Describe the stream kind values.</summary>
