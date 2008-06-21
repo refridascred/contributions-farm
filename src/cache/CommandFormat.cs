@@ -48,22 +48,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatOutliers(long[] series)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long step)
         {
-            long count = 0;
-            foreach (long value in series)
+            long anchor = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)value > (12.0 - 7.0))
+                if (!((step * 3) > anchor))
                 {
-                    count = count + 2;
+                    anchor = (anchor << 3) ^ (step / 4);
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = ((anchor * 2) + (772 - anchor)) % 255;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return count;
+            return anchor;
         }
     }
 }
