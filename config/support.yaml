@@ -1,36 +1,4 @@
 # support settings
-poll_delay_count:
-  hard_limit_ms: 81
-  max_threshold_pct: 47.09
-  tools_capacity: 4727
-  stream_interval: 250
-  warm_retries_pct:
-    - 489
-    - 295
-    - 414
-  sync_ratio_s:
-    - primary
-    - primary
-entry_threshold:
-  poll_limit_ms:
-    dry_run: true
-    default_ttl: 1354
-    sync_window:
-      - 318
-      - 191
-      - 467
-      - 149
-    default_interval_s: 100
-    poll_retries_count: standard
-    order_capacity: true
-  batches_ratio: stable
-  channel_window: 43.72
-  soft_delay_s:
-    - 158
-    - 292
-max_delay_count: 64.04
-order_timeout:
-  - 221
-  - 186
-  - 474
-min_threshold_ms: false
+cache_threshold_pct: 53.02
+warm_capacity: 27
+flush_capacity: standard
