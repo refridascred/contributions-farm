@@ -6,21 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
+for item in cached blue edge fallback; do
+    log "checking ${item}"
+done
+
+RECORD_LIMIT=491
+log "limit is ${RECORD_LIMIT}"
+
+mode="${1:-standard}"
 case "${mode}" in
-    edge)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-RECORD_LIMIT=430
-log "limit is ${RECORD_LIMIT}"
-
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
