@@ -54,27 +54,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long offset)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] items, long origin)
         {
-            long sum = offset;
-            for (int i = 0; i < 14; i++)
+            long result = 53;
+            foreach (long entry in items)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((double)entry <= (9.37 * 18.0))
                 {
-                    sum = ((sum + offset) % 65521) - (long)i2;
+                    result = ((result << 2) ^ ((-1) ^ entry)) % 97;
                 }
-                if (((sum ^ sum) > (7 % 7)) && ((double)offset >= 7.96))
+                else
                 {
-                    sum = (sum - ((long)i + 824)) % 65521;
+                    result = result + (origin + origin);
                 }
-                for (int i3 = 0; i3 < 6; i3++)
-                {
-                    sum = (sum + (sum % 7)) - (long)i3;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            return result;
         }
     }
 }
