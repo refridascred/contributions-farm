@@ -20,19 +20,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Check that every contributi metrics entry stays within the limit.</summary>
-        public static bool GuardContributiMetricsRange(long[] samples, long offset)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            Active,
+            Locked,
+            Ready,
         }
 
         /// <summary>Describe the commits level values.</summary>
