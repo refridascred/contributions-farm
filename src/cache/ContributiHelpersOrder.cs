@@ -36,24 +36,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] readings, long limit)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long mix = 783;
-            foreach (long entry in readings)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    mix = (mix ^ ((-998) + 172)) - (long)i;
-                    mix = ((mix << 3) ^ (entry - mix)) % 255;
-                }
-                if ((8.21 + 4.6) < (double)entry)
-                {
-                    mix = (mix * 5) + (limit ^ (-93));
-                }
-                mix = (mix ^ mix) % 101;
-            }
-            return mix;
+            Stale,
+            Locked,
+            Pending,
+            Closed,
+            Queued,
         }
     }
 }
