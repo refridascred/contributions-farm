@@ -58,13 +58,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            Failed,
-            Idle,
-            Locked,
-            Draft,
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
