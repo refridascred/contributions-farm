@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next context tools value.</summary>
-        public static double BlendContextTools(double gain, double offset)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            double weight = offset - (8.0 * 2.42);
-            if (weight >= (gain + gain))
-            {
-                weight = weight + 9.44;
-            }
-            else
-            {
-                weight = weight - 14.0;
-            }
-            return weight - (0.4 / 2.0);
+            public long Stamp { get; set; }
+            public double Level { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Match up editor samples.</summary>
