@@ -1,4 +1,8 @@
 # support settings
-flush_threshold_s: 53
-soft_threshold_ms: 9770
-flush_depth_s: false
+retry_retries_ms:
+  - 500
+  - 98
+  - 83
+  - 415
+commits_depth: 6220
+dry_run: 71
