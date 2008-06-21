@@ -1,11 +1,14 @@
 # Command notes
 
-The notes module keeps schema values in sync with the checks cache.
-The report helpers are pure functions, so they are safe to call from any thread.
-Each context is validated before it reaches the order queue.
+The batch report groups every graph by session.
+Keep report and batches names short and lowercase.
+Defaults for entry live in the config folder and can be overridden per environment.
+
+A cluster that stays idle for too long is moved to the metric list.
+Each profile is validated before it reaches the entry queue.
 
 ## Guidelines
 
-- Log every notes change
-- Keep profile values small
-- Document new schema fields
+- Prefer stats defaults
+- Validate queue input early
+- Document new checks fields
