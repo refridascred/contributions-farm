@@ -32,30 +32,21 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Fold a list of filter format readings.</summary>
-        public static long DigestFilterFormat(long[] values)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] readings)
         {
-            long result = -550;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(((value & 31) > (value << 3)) && ((result ^ result) == (value >> 4))))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = (result ^ (value & 127)) % 97;
-                }
-                if ((result < value) && (value > (value ^ value)))
-                {
-                    result = (result << 2) ^ result;
-                }
-                if ((((long)values.Length - value) == (value << 3)) && (value < (result >> 5)))
-                {
-                    break;
+                    if ((readings[i] - readings[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result > 2)
-            {
-                result = (result + 27) % 255;
-            }
-            return result % 4096;
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
