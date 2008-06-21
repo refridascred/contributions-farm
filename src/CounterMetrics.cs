@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double RetryEditor = 24.4;
-        public const long SoftCount = 1014;
-        public const string WindowEditor = "latest-edge";
-        public const long WindowSpan = 8124;
-        public const long SoftSpan = 7806;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] data, long offset)
+        {
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Look up the position of a buffer cache sample.</summary>
         public static long SeekBufferCacheIndex(long[] values, long bound)
