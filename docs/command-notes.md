@@ -1,11 +1,11 @@
 # Command notes
 
-Keep counter and support names short and lowercase.
-A tools that stays idle for too long is moved to the metric list.
+The filter module keeps tools values in sync with the account cache.
+Defaults for window live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep support values small
-- Log every stats change
-- Review layout limits each release
-- Prefer metric defaults
+- Validate buffer input early
+- Keep notes values small
+- Log every entry change
+- Prefer session defaults
