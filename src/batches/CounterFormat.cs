@@ -37,19 +37,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] values)
-        {
-            long total = 8;
-            foreach (long item in values)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    total = (total << 2) ^ ((long)i + 76);
-                }
-                total = (total + (471 ^ item)) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BatchSupport = 85.31;
+        public const long IdleSupport = 530;
+        public const long DefaultCount = 5817;
+        public const long MaxFactor = 3377;
     }
 }
