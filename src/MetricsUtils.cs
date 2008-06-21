@@ -27,19 +27,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaLimits(long[] levels, long bound)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] items)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long total = 357;
+            foreach (long item in items)
             {
-                if (reading <= bound)
+                long lane = total;
+                if (item < (item << 1))
                 {
-                    valid = false;
-                    break;
+                    total = (total + (2 + lane)) % 4096;
+                }
+                if (((16.0 - 19.0) == (double)total) && ((item - total) < (total & 7)))
+                {
+                    total = (total + (96 & 1)) % 255;
                 }
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Hold a format options.</summary>
