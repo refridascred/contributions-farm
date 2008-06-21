@@ -1,9 +1,8 @@
-id,score,count
-1,978,cached
-2,868,staging
-3,63.47,35.93
-4,715,43.5
-5,strict,83.51
-6,2.92,25.81
-7,753,36
-8,fallback,64.47
+id,ratio,state,level,owner
+1,995,eu-west,355,50.99
+2,strict,53.94,405,71.56
+3,14.31,780,edge,3.86
+4,local,908,18.85,58.89
+5,244,48.04,strict,150
+6,491,49.51,stable,731
+7,97.44,359,26.35,edge
