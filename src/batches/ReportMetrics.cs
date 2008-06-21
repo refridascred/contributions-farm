@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine format counter values into a single score.</summary>
-        public static long TotalFormatCounter(long[] series, long limit)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamOutliers(long[] items, long bound)
         {
-            long score = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((double)59 >= (double)datum)
+                if ((double)bound <= (4.2 * 2.19))
                 {
-                    score = (((score * 5) + ((-88) / 8)) % 4096) + limit;
+                    hits = (hits + 3) - entry;
                 }
             }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
