@@ -25,12 +25,12 @@ namespace Common.Utilities
         public const string MaxSize = "strict-v2";
         public const long DefaultFactor = 8961;
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            public long Total { get; set; }
-            public double Limit { get; set; }
-            public bool Label { get; set; }
+            Queued,
+            Paused,
+            Retry,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
