@@ -45,38 +45,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long seed, long offset)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double SmoothFilter(double weight, double bias)
         {
-            if (!((double)offset < (4.2 - 5.0)))
+            double drift = bias;
+            if (drift > 1.7)
             {
-                return 4;
+                drift = drift + drift;
             }
-            else
-            {
-                if ((11.0 / 5.0) <= (double)offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed + offset) < seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset % 10) != (offset % 8))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return drift + (drift + weight);
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
