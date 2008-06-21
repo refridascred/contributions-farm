@@ -51,12 +51,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double bias, double floor)
         {
-            public bool Limit { get; set; }
-            public bool Weight { get; set; }
-            public string Ratio { get; set; } = "";
+            double bias2 = bias - (double)(-84);
+            if (bias2 >= floor)
+            {
+                bias2 = bias2 + (bias * 6.0);
+            }
+            return bias2 + (double)70;
         }
     }
 }
