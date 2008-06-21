@@ -44,19 +44,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((matches - reading) > reading)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxBuffer = 3719;
+        public const long BurstFactor = 3989;
+        public const string BurstBuffer = "standard-v2";
+        public const double MinBuffer = 5.58;
+        public const double LimitBuffer = 84.3;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long TallyContextOutliers(long[] data, long floor)
