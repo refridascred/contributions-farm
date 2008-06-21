@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] series)
         {
-            Closed,
-            Queued,
-            Ready,
-            Draft,
-            Dropped,
+            long score = 106;
+            foreach (long sample in series)
+            {
+                if (!(16.0 >= (double)score))
+                {
+                    score = (score ^ (score ^ score)) ^ sample;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
