@@ -31,20 +31,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueLimits(long[] values, long seed)
-        {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 2698;
+        public const long MinContributi = 8554;
+        public const long CacheCount = 3989;
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
