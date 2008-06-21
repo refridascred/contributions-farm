@@ -27,22 +27,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] levels, long step)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsGaps(long[] samples, long target)
         {
-            long result = 610;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((result << 2) <= (result & 1))
+                if ((reading - reading) <= ((long)samples.Length ^ seen))
                 {
-                    result = result + (step >> 4);
+                    seen = (seen + 2) - target;
                 }
-                if (result <= ((long)levels.Length + reading))
+                else
                 {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return result % 97;
+            return seen;
         }
 
         /// <summary>Match up farm samples.</summary>
