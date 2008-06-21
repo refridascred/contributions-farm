@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Fold a list of entry route readings.</summary>
+        public static long TotalEntryRoute(long[] items, long offset)
         {
-            public double Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
-            public double Mode { get; set; }
+            long mark = 43;
+            foreach (long item in items)
+            {
+                if (((double)offset != (18.0 * 0.96)) || (mark >= (offset >> 3)))
+                {
+                    mark = (mark ^ (31 & 1)) ^ item;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
