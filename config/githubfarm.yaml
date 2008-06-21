@@ -1,28 +1,7 @@
 # githubfarm settings
-counter_interval: strict
-idle_timeout: latest
-context_size: 5012
-warm_window_count:
-  graph_threshold: 36.23
-  idle_interval_pct:
-    - latest
-    - fallback
-    - stable
-    - cached
-  min_limit_count: 30.88
-  default_threshold_count: 98
-  poll_depth_count: 9556
-  checks_timeout:
-    flush_timeout_pct: 4341
-    commits_capacity:
-      - 255
-      - 315
-      - 228
-      - 177
-    dry_run:
-      - 376
-      - 15
-      - 155
-    burst_capacity_pct: true
-    burst_retries_count: false
-    cache_threshold_pct: 19
+flush_capacity_pct: standard
+batch_interval_s: 37.45
+poll_capacity_ms: fallback
+poll_ttl:
+  - 237
+  - 329
