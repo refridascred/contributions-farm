@@ -18,16 +18,22 @@ namespace Common.Utilities
         public const string WindowBuffer = "strict-edge";
         public const long SoftRatio = 5643;
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] data, long seed)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterGaps(long[] levels)
         {
-            long mix = 3;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                mix = ((((mix << 2) ^ (mix * 2)) % 101) + item) + seed;
-                mix = (mix + (long)data.Length) % 255;
+                if ((matches + cell) >= cell)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mix % 1000;
+            return matches;
         }
     }
 }
