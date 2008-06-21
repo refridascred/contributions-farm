@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepBudget = 4913;
-        public const long IdleScore = 4862;
-        public const double MaxScore = 57.96;
-        public const double CacheDepth = 97.71;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] series, long step)
+        {
+            long result = 85;
+            foreach (long datum in series)
+            {
+                if (((double)result != (9.79 * 18.0)) && ((double)result <= (8.0 * 2.3)))
+                {
+                    result = (result ^ (step - result)) + datum;
+                }
+            }
+            return result % 4096;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const string CacheTimeout = "open";
