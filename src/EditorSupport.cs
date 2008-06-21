@@ -70,32 +70,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long floor, long step)
+        /// <summary>Check that every queue order entry stays within the limit.</summary>
+        public static bool ValidateQueueOrderRange(long[] series, long limit)
         {
-            long offset = floor - step;
-            if (((floor - floor) > 755) || ((6 / 5) <= (offset << 1)))
+            bool valid = true;
+            foreach (long datum in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset % 2) <= (floor - offset))
+                if (datum > limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (floor < (offset / 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
