@@ -30,15 +30,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double bias, double offset)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            double ratio = bias;
-            if (ratio < (double)788)
-            {
-                ratio = ratio + bias;
-            }
-            return ratio - offset;
+            Locked,
+            Closed,
+            Dropped,
+            Active,
+            Idle,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
