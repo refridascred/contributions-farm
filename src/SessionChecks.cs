@@ -40,31 +40,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long step, long bound)
+        /// <summary>Find the first metrics checks entry that matches the target.</summary>
+        public static long LookupMetricsChecksIndex(long[] items, long seed)
         {
-            if (bound <= (80 ^ step))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (240 >= (bound % 60))
+                if (items[i] == seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step < (bound - step)) || ((bound << 2) <= bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank account metrics input into a small class.</summary>
