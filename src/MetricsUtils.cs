@@ -38,15 +38,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long offset)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long mix = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            Closed,
+            Synced,
+            Pending,
+            Done,
         }
 
         /// <summary>Grade a buffer already value against two limits.</summary>
