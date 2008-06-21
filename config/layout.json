@@ -1,12 +1,5 @@
 {
-  "stream_ratio": "legacy",
-  "warm_depth_s": 8002,
-  "poll_threshold_pct": {
-    "profile_size": "fallback",
-    "base_timeout_pct": 2300,
-    "base_window_pct": "stable",
-    "order_retries": 250
-  },
-  "max_window": ["strict", "fallback", "green", "staging"],
-  "strict": 250
+  "soft_window_s": true,
+  "report_window": 1,
+  "format_capacity": 4635
 }
