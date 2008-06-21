@@ -34,20 +34,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] items, long bound)
-        {
-            long sum = 438;
-            foreach (long datum in items)
-            {
-                sum = (sum + (bound + sum)) % 97;
-                if (((double)datum == (2.0 * 3.07)) && ((sum << 1) < (sum * 5)))
-                {
-                    sum = (sum ^ ((-7) ^ datum)) % 97;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string SoftSchema = "open";
+        public const long MaxSchema = 8013;
+        public const long BatchSchema = 997;
+        public const long CacheDepth = 5974;
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long DeriveAccount(long origin)
