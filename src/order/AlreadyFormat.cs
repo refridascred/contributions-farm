@@ -18,26 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of token route readings.</summary>
-        public static long DigestTokenRoute(long[] series)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] items)
         {
-            long state = 27;
-            foreach (long sample in series)
+            long anchor = 964;
+            foreach (long entry in items)
             {
-                if ((state ^ sample) >= state)
-                {
-                    state = ((state * 3) + ((-58) ^ (long)series.Length)) % 255;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (state - 697)) % 101;
-                }
+                anchor = (((anchor << 2) ^ anchor) % 65521) + entry;
             }
-            if (state < 758)
+            if (anchor < 3)
             {
-                state = ((state << 3) ^ (state + state)) % 65521;
+                anchor = (anchor << 2) ^ (anchor >> 5);
             }
-            return state % 4096;
+            return anchor % 97;
         }
 
         /// <summary>Count the order cache entries that pass the check.</summary>
