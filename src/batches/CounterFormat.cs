@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long limit)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long mix = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            Closed,
+            New,
+            Ready,
+            Stale,
+            Synced,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
