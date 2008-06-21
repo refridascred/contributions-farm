@@ -40,18 +40,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batch support samples are out of range.</summary>
-        public static long CountBatchSupportMatches(long[] values, long limit)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((sample % 64) < (limit - (-8)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Done,
+            Retry,
+            Closed,
+            Locked,
+            Stale,
         }
 
         /// <summary>Define context limits and defaults.</summary>
