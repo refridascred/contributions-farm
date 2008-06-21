@@ -58,18 +58,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools metric entries that pass the check.</summary>
-        public static long CountToolsMetricOutliers(long[] series)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (!(((entry + entry) != (tally ^ entry)) && ((0.4 + 14.0) <= (double)tally)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
