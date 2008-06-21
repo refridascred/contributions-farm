@@ -6,21 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
+for item in staging edge; do
+    log "checking ${item}"
+done
+
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-primary}"
 case "${mode}" in
-    standard)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-CHANNEL_LIMIT=180
-log "limit is ${CHANNEL_LIMIT}"
