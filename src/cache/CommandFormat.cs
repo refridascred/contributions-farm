@@ -45,17 +45,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] values, long step)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= step) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Ratio { get; set; }
+            public bool Region { get; set; }
+            public long Count { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
