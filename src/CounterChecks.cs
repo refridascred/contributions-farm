@@ -43,20 +43,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double scale, double floor)
-        {
-            double weight = floor;
-            if (weight <= 12.0)
-            {
-                weight = (weight - (double)1) - scale;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight - (floor / 8.0);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string IdleLevel = "fallback-v2";
+        public const long MinRatio = 1566;
+        public const long MaxDepth = 3809;
 
         /// <summary>Accumulate format samples.</summary>
         public static long CombineFormat(long[] samples, long target)
