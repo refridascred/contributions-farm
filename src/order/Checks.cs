@@ -33,13 +33,10 @@ namespace Common.Utilities
         public const long LimitDepth = 8869;
         public const long BurstDepth = 965;
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
-        {
-            Retry,
-            Stale,
-            Ready,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinSize = 9597;
+        public const long SoftWidth = 4449;
+        public const long MaxStats = 973;
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long SortToken(long step, long seed)
