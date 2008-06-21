@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamHits(long[] readings, long seed)
+        /// <summary>Digest a series of commits record entries.</summary>
+        public static long FoldCommitsRecord(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long total = 436;
+            foreach (long item in readings)
             {
-                if ((hits & 31) <= ((-67) + entry))
+                if (!(item > (2 * 5)))
                 {
-                    hits = (hits + 3) - seed;
+                    total = (total - (item - 6)) % 1000;
+                }
+                if ((total % 97) == (item * 4))
+                {
+                    total = ((total << 3) ^ (77 & 15)) % 255;
                 }
             }
-            return hits;
+            if (total > 7)
+            {
+                total = ((total * 4) + (total * 5)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Hold a graph header.</summary>
