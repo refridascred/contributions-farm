@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MaxInterval = "local";
-        public const string RetryCount = "alpha-1";
-        public const string MaxMetrics = "primary-v2";
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
+        {
+            public bool Ratio { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long WindowCluster = 8890;
