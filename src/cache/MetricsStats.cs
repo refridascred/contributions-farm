@@ -55,15 +55,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long offset)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutGaps(long[] data, long step)
         {
-            long score = offset;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                score = ((score * 3) + (long)i) % 65521;
+                if ((step / 7) != (step + step))
+                {
+                    seen = (seen + 3) - sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Project the next contributi schema value.</summary>
