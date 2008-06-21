@@ -1,8 +1,6 @@
-id,score,rank,label
-1,strict,open,blue
-2,18.83,89.92,204
-3,31.63,628,764
-4,505,latest,437
-5,0.79,87.42,latest
-6,81.27,130,389
-7,617,16.52,550
+id,count,weight,owner,rank
+1,staging,green,59.0,80.41
+2,916,922,865,335
+3,26.35,strict,54.88,94.6
+4,local,strict,open,81.44
+5,927,500,429,edge
