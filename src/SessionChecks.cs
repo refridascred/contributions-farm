@@ -41,13 +41,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] values, long step)
         {
-            public long Owner { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((step >> 4) > count)
+                {
+                    count = (count + 1) ^ entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank account metrics input into a small class.</summary>
