@@ -20,18 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileHits(long[] levels, long step)
+        /// <summary>Locate a batches metrics reading by value.</summary>
+        public static long LookupBatchesMetricsIndex(long[] data, long target)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((step - step) >= step)
+                if (data[i] == target)
                 {
-                    count = (count + 2) + sample;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
