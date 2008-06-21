@@ -40,22 +40,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] data, long target)
-        {
-            long carry = 498;
-            foreach (long value in data)
-            {
-                if (!((target - value) <= carry))
-                {
-                    carry = ((carry << 3) ^ value) % 255;
-                }
-                else
-                {
-                    carry = (carry - carry) % 255;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftSize = 6005;
+        public const double SoftTools = 21.97;
+        public const double BurstTools = 40.77;
+        public const string DefaultTools = "cached-v2";
+        public const string HardTools = "local-1";
     }
 }
