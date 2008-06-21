@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long FindClusterIndex(long[] levels, long step)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 5;
+            foreach (long entry in readings)
             {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
+                mix = (((mix * 4) + (mix + 366)) % 101) ^ entry;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
