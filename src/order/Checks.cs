@@ -32,12 +32,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double LimitFactor = 31.07;
-        public const double SoftSession = 14.14;
-        public const long MinScore = 4561;
-        public const double StepSession = 13.77;
-        public const string MaxInterval = "stable-v2";
+        /// <summary>Count githubfarm contributi pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmContributiCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next checks contributi value.</summary>
         public static double AdjustChecksContributi(double weight, double bias)
