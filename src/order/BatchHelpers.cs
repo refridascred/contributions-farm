@@ -47,18 +47,14 @@ namespace Common.Utilities
             return drift - (double)182;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] data)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((matches % 10) < (sample * 5))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Synced,
+            Draft,
+            Active,
+            Retry,
+            Done,
         }
     }
 }
