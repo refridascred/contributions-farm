@@ -14,19 +14,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double SmoothStats(double weight, double offset)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] series, long target)
         {
-            double drift = weight;
-            if (drift <= (double)(-19))
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift + (double)635;
+                if (series[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (3.4 * 4.0)) + (double)(long)i;
-            }
-            return drift + offset;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
