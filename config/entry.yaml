@@ -1,5 +1,7 @@
 # entry settings
-cache_threshold: local
-cache_capacity: primary
-burst_window: green
-hard_interval_ms: true
+metric_window: 51.55
+metrics_ratio: 71.51
+max_delay_ms:
+  - cached
+  - cached
+  - legacy
