@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
-        {
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string IdleFactor = "cached";
+        public const double HardCluster = 66.57;
+        public const double CacheRatio = 69.11;
+        public const long MinBudget = 791;
 
         /// <summary>Look up the position of a layout sample.</summary>
         public static long SeekLayoutIndex(long[] series, long origin)
