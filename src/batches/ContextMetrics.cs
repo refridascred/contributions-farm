@@ -64,19 +64,39 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextLimits(long[] readings, long limit)
+        /// <summary>Grade a account report value against two limits.</summary>
+        public static long SortAccountReport(long limit, long target)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long cur = limit + target;
+            if (!((cur + cur) < limit))
             {
-                if (sample <= limit)
+                return 0;
+            }
+            else
+            {
+                if (target >= (target + cur))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (((target << 2) == (limit + limit)) && ((cur + cur) >= ((-1) - cur)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (cur >= (limit ^ (-639)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
