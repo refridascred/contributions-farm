@@ -11,20 +11,15 @@ namespace Common.Utilities
         public const double CacheRatio = 69.11;
         public const long MinBudget = 791;
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] data)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double bias, double floor)
         {
-            long score = 4;
-            foreach (long item in data)
+            double rate = 4.8;
+            for (int i = 0; i < 8; i++)
             {
-                score = (score + 3) % 1000;
-                score = (score ^ item) % 97;
+                rate = ((rate + (8.74 - floor)) + (double)(long)i) - bias;
             }
-            if (score > 707)
-            {
-                score = score ^ (score * 3);
-            }
-            return score;
+            return rate + (double)339;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
