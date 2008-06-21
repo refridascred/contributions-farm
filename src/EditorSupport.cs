@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            public bool Score { get; set; }
-            public long Count { get; set; }
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Accumulate command samples.</summary>
