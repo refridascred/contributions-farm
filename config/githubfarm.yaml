@@ -1,4 +1,14 @@
 # githubfarm settings
-window_interval: 45.58
-cache_timeout: 500
-already_delay: 1024
+flush_interval_s:
+  compress: 41.91
+  max_depth: strict
+  enabled:
+    idle_retries_count: edge
+    max_window_count: 250
+    batch_capacity: 60
+    max_threshold: blue
+  default_limit_pct: false
+cache_depth_count: cached
+metric_interval: latest
+cache_interval_ms: true
+batch_depth: 63.46
