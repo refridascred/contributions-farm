@@ -1,27 +1,5 @@
 # entry settings
-metrics_ttl: 89.65
-idle_depth: 8638
-tools_window:
-  - 425
-  - 131
-max_ratio_ms: blue
-buffer_ttl:
-  default_interval_count:
-    sync_threshold:
-      - green
-      - local
-      - blue
-      - edge
-    entry_depth: fallback
-    sync_ratio: 787
-    cache_capacity: standard
-    compress: 10.21
-    flush_interval: 15
-  report_limit: 30
-  idle_ttl:
-    - 278
-    - 260
-  readonly: 30
-verbose:
-  - latest
-  - eu-west
+cache_threshold: local
+cache_capacity: primary
+burst_window: green
+hard_interval_ms: true
