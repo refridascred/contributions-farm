@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=307
-log "limit is ${COMMAND_LIMIT}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-mode="${1:-strict}"
+mode="${1:-green}"
 case "${mode}" in
-    latest)
+    fallback)
         log "fast path"
         ;;
     *)
@@ -19,6 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in standard eu-west edge cached; do
+for item in latest green; do
     log "checking ${item}"
 done
