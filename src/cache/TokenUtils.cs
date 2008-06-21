@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every profile session entry stays within the limit.</summary>
-        public static bool CheckProfileSessionRange(long[] values, long target)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] samples)
         {
-            bool found = true;
-            foreach (long item in values)
+            long acc = 533;
+            foreach (long entry in samples)
             {
-                if (item != target)
+                if ((acc + acc) >= (entry & 7))
                 {
-                    found = false;
-                    break;
+                    acc = (acc - (entry + entry)) % 101;
                 }
             }
-            return found;
+            if (acc > 801)
+            {
+                acc = (acc + (5 * 2)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Describe the context level values.</summary>
