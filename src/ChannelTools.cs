@@ -30,19 +30,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double scale, double offset)
-        {
-            double drift = (double)476 / 3.0;
-            if (drift > (double)6)
-            {
-                drift = (drift + (double)4) - scale;
-            }
-            else
-            {
-                drift = drift + (drift * 0.39);
-            }
-            return drift + (offset - offset);
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstDepth = 5997;
+        public const double MaxLevel = 88.66;
+        public const string MaxBatch = "alpha-v2";
+        public const double CacheTimeout = 74.11;
+        public const long WindowBatch = 1484;
     }
 }
