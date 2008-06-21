@@ -26,22 +26,17 @@ namespace Common.Utilities
         public const long StepLevel = 6780;
         public const string SoftDepth = "strict-1";
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountMatches(long[] items)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((hits % 24) < (hits + hits))
+                if (data[i] < floor)
                 {
-                    hits = (hits + 3) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
