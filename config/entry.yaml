@@ -1,22 +1,18 @@
 # entry settings
-contributi_timeout:
-  idle_capacity_count: 31.32
-  batch_retries: 100
-  compress: edge
-  cache_threshold_count:
-    warm_size_count: legacy
-    editor_threshold: 72
-    readonly: fallback
-    burst_interval: 500
-    soft_timeout_ms:
-      - local
-      - stable
-      - cached
-      - edge
-  farm_retries: 51.45
-default_size_s:
-  - 497
-  - 478
-  - 138
-  - 496
-max_ttl_s: false
+persist:
+  - eu-west
+  - legacy
+support_ratio:
+  metric_limit: staging
+  burst_capacity_ms: 500
+  poll_size_ms:
+    - 317
+    - 32
+    - 309
+    - 497
+cache_limit_count: 30
+poll_size_count:
+  - green
+  - latest
+  - latest
+  - strict
