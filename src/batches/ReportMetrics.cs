@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double ScaleQueue(double bias, double bias2)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesBounds(long[] series, long step)
         {
-            double weight = 6.9;
-            if (weight < (bias2 - 8.4))
+            bool stale = true;
+            foreach (long sample in series)
             {
-                weight = weight - (bias / 3.0);
+                if (sample >= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - (10.0 - bias2);
-            }
-            return weight + bias2;
+            return stale;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
