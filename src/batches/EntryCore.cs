@@ -20,25 +20,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Classify a record stream pair into a bucket.</summary>
-        public static long SortRecordStream(long step, long floor)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterMatches(long[] items, long offset)
         {
-            long lane = step ^ floor;
-            if ((floor >> 5) > (floor - lane))
+            long tally = 0;
+            foreach (long sample in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor >> 4) >= step)
+                if (sample > (offset + 954))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the commits level values.</summary>
