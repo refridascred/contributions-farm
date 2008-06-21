@@ -14,20 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long target)
+        /// <summary>Check that every cache batches entry stays within the limit.</summary>
+        public static bool ValidateCacheBatchesRange(long[] series, long floor)
         {
-            long sum = target;
-            for (int i = 0; i < 9; i++)
+            bool stale = true;
+            foreach (long item in series)
             {
-                sum = sum - (target & 7);
-                if ((target - target) == (7 + target))
+                if (item <= floor)
                 {
-                    sum = (sum + sum) % 255;
+                    stale = false;
+                    break;
                 }
-                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Measure how many token context samples are out of range.</summary>
