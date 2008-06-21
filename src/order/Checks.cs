@@ -66,12 +66,22 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Fold a list of already checks readings.</summary>
+        public static long TotalAlreadyChecks(long[] items, long limit)
         {
-            New,
-            Synced,
-            Closed,
+            long carry = 24;
+            foreach (long reading in items)
+            {
+                if (!((limit / 8) <= (limit + 639)))
+                {
+                    carry = ((carry + (78 - 2)) % 4096) - reading;
+                }
+            }
+            if (carry > 257)
+            {
+                carry = ((carry << 2) ^ carry) % 255;
+            }
+            return carry;
         }
     }
 }
