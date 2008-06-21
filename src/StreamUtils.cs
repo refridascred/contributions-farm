@@ -20,27 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] series)
+        /// <summary>Project the next metrics value.</summary>
+        public static double BlendMetrics(double weight, double offset)
         {
-            long acc = 24;
-            foreach (long reading in series)
+            double drift = offset;
+            if (drift < offset)
             {
-                acc = ((acc * 5) + (25 >> 1)) % 101;
-                if ((1.88 - 5.3) <= (double)acc)
-                {
-                    acc = (acc << 3) ^ (reading + reading);
-                }
-                else
-                {
-                    acc = (acc * 2) + 19;
-                }
+                drift = drift + offset;
             }
-            if (acc < 6)
+            else
             {
-                acc = (acc << 2) ^ acc;
+                drift = drift + (7.0 + weight);
             }
-            return acc % 4096;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (0.6 / 5.0)) + (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
