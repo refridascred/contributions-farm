@@ -22,25 +22,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long seed, long step)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long lane = seed ^ step;
-            if (lane <= seed)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((lane & 127) >= (lane - lane))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Pending,
+            Done,
+            Active,
         }
     }
 }
