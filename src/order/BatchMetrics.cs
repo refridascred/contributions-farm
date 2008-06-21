@@ -48,14 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
-        {
-            public string Offset { get; set; } = "";
-            public long Label { get; set; }
-            public bool Total { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleDepth = 3055;
+        public const string StepSize = "standard-edge";
+        public const double StepFactor = 91.67;
+        public const string CacheSpan = "cached";
 
         /// <summary>Validate cluster context readings against a bound.</summary>
         public static bool ValidateClusterContextRange(long[] readings, long bound)
