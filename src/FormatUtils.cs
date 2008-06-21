@@ -14,17 +14,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] items, long limit)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double gain, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias2 = bias;
+            if (bias2 < gain)
             {
-                if (items[i] > limit)
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 + gain;
             }
-            return -1;
+            return bias2 + (10.0 / 5.0);
         }
 
         /// <summary>Hold a farm summary.</summary>
