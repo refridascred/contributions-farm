@@ -14,32 +14,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long floor, long seed)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long bound = floor - seed;
-            if ((6.0 + 3.47) != (double)seed)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed < bound) || ((floor & 1) == (323 & 255)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((4.94 * 14.0) >= (double)bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Combine format values into a single score.</summary>
