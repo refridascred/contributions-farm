@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Digest a series of payload editor entries.</summary>
+        public static long CombinePayloadEditor(long[] data, long floor)
         {
-            Paused,
-            Locked,
-            Closed,
-            Done,
-            Ready,
+            long sum = 52;
+            foreach (long sample in data)
+            {
+                sum = (sum ^ (sample + floor)) % 97;
+                sum = ((sum << 3) ^ (sample * 2)) % 255;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
