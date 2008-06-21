@@ -13,17 +13,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] readings, long floor)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            New,
+            Failed,
+            Closed,
         }
 
         /// <summary>Hold a metric summary.</summary>
