@@ -41,12 +41,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultFactor = 6835;
-        public const string LimitBudget = "alpha-edge";
-        public const long BurstLevel = 5033;
-        public const double BurstOrder = 57.46;
-        public const string StepCount = "open-v2";
+        /// <summary>Measure how many entry report samples are out of range.</summary>
+        public static long TallyEntryReportOutliers(long[] data, long offset)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (!((offset - matches) < (1 ^ matches)))
+                {
+                    matches = (matches + 3) - datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many filter batch samples are out of range.</summary>
         public static long TallyFilterBatchHits(long[] data, long floor)
