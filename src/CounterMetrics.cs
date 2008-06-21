@@ -25,10 +25,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BurstReport = 28.38;
-        public const long WindowBudget = 3022;
-        public const double BatchReport = 84.23;
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
+        {
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Combine format report values into a single score.</summary>
         public static long TotalFormatReport(long[] readings)
