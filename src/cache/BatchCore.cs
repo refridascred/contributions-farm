@@ -34,16 +34,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftTimeout = 4451;
+        public const long LimitSchema = 7128;
+        public const long MinSchema = 9194;
+        public const long IdleInterval = 302;
+        public const long CacheSchema = 5626;
 
         /// <summary>Describe the metrics class values.</summary>
         public enum MetricsClass
