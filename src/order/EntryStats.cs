@@ -27,16 +27,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] readings, long origin)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] samples, long seed)
         {
-            long sum = 2;
-            foreach (long item in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = sum ^ (item * 3);
-                sum = (sum * 5) + (origin * 2);
+                if ((samples[i] < seed) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Measure how many batch support samples are out of range.</summary>
