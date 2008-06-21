@@ -32,19 +32,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long floor)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long state = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                if (((long)i + floor) >= (floor + floor))
-                {
-                    state = ((state * 2) + floor) % 65521;
-                }
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            Queued,
+            Dropped,
+            Synced,
+            Closed,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
