@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] items)
+        /// <summary>Iterate the filter session series from a seed.</summary>
+        public static long IterateFilterSession(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = step;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Hold a channel header.</summary>
