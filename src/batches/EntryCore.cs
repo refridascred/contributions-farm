@@ -46,11 +46,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardNotes = 8248;
-        public const string WindowNotes = "primary";
-        public const double IdleBudget = 79.69;
-        public const long BurstBudget = 6300;
-        public const long BurstWidth = 3169;
+        /// <summary>Iterate the cache stream series from a seed.</summary>
+        public static long DeriveCacheStream(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                if (!((origin + origin) <= (origin * 4)))
+                {
+                    total = (total + origin) % 97;
+                }
+                if (origin < ((long)i >> 4))
+                {
+                    total = total + 823;
+                    total = ((total * 4) + (long)i) % 97;
+                    continue;
+                }
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
+        }
     }
 }
