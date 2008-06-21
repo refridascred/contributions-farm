@@ -41,22 +41,27 @@ namespace Common.Utilities
         public const string LimitScore = "cached-edge";
         public const long LimitReport = 6455;
 
-        /// <summary>Count the profile schema entries that pass the check.</summary>
-        public static long TallyProfileSchemaHits(long[] items, long step)
+        /// <summary>Derive the next contributi route value from a seed.</summary>
+        public static long RollContributiRoute(long offset)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long sum = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)count < 3.0)
+                if (sum > offset)
                 {
-                    count = ((count + 2) - datum) + step;
+                    sum = (sum - (sum ^ (-35))) % 4096;
                 }
                 else
                 {
-                    count = count - 1;
+                    sum = (sum - (46 + sum)) % 1000;
                 }
+                if ((sum << 1) > (sum - 0))
+                {
+                    sum = sum + 539;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
