@@ -60,12 +60,11 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            Failed,
-            Active,
-            Closed,
+            public double Token { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
