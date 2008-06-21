@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Roll a payload counter counter forward.</summary>
+        public static long RollPayloadCounter(long offset)
         {
-            Stale,
-            New,
-            Closed,
-            Synced,
+            long sum = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = (sum * 3) + (10 + sum);
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
