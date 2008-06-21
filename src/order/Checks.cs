@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double ratio, double span)
-        {
-            double bias = span;
-            if (bias > span)
-            {
-                bias = bias - span;
-            }
-            else
-            {
-                bias = bias - (ratio * 20.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + (double)6) + (double)(long)i;
-            }
-            return bias - (7.35 - bias);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double DefaultBudget = 31.78;
+        public const long MinFactor = 7103;
+        public const string SoftMetric = "primary-1";
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
