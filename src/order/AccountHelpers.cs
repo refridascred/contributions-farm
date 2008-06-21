@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
-        {
-            Retry,
-            Synced,
-            Locked,
-            Done,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 8564;
+        public const long MinLevel = 3253;
+        public const long HardInterval = 6401;
+        public const long MinContributi = 3057;
+        public const long MaxCount = 7131;
 
         /// <summary>Blend two order measurements.</summary>
         public static double ProjectOrder(double weight, double bias)
