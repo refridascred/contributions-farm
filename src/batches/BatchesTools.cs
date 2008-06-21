@@ -20,18 +20,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionHits(long[] levels)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheOutliers(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if ((((long)levels.Length << 2) >= (seen >> 1)) || (((double)seen >= 8.0) || ((seen - entry) > entry)))
+                if ((double)value == (19.0 * 1.0))
                 {
-                    seen = seen + 2;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
