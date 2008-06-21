@@ -95,21 +95,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] series)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long target, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long delta = target - limit;
+            if (target < (target << 2))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((delta - limit) >= (delta % 3))
                 {
-                    if ((series[i] - series[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
     }
 }
