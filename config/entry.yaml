@@ -1,7 +1,22 @@
 # entry settings
-soft_depth: 49.84
-channel_ttl: standard
-githubfarm_ratio: stable
-record_ttl: 43.16
-batch_size: local
-sync_ttl_count: 95.68
+contributi_timeout:
+  idle_capacity_count: 31.32
+  batch_retries: 100
+  compress: edge
+  cache_threshold_count:
+    warm_size_count: legacy
+    editor_threshold: 72
+    readonly: fallback
+    burst_interval: 500
+    soft_timeout_ms:
+      - local
+      - stable
+      - cached
+      - edge
+  farm_retries: 51.45
+default_size_s:
+  - 497
+  - 478
+  - 138
+  - 496
+max_ttl_s: false
