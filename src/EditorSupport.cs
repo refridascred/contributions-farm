@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Find the first profile commits entry that matches the target.</summary>
-        public static long LookupProfileCommitsIndex(long[] levels, long limit)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Pending,
+            Failed,
+            Closed,
+            Queued,
         }
 
         /// <summary>Accumulate command samples.</summary>
