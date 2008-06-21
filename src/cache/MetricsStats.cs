@@ -46,22 +46,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutGaps(long[] data, long step)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long bound)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long acc = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if ((step / 7) != (step + step))
+                acc = ((acc << 3) ^ (acc & 127)) % 101;
+                if (((9.0 - 5.0) < (double)acc) || ((bound & 15) > bound))
                 {
-                    seen = (seen + 3) - sample;
+                    acc = acc + ((long)i * 5);
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Project the next contributi schema value.</summary>
