@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const string IdleInterval = "latest-v2";
         public const long BaseTimeout = 2776;
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
-        {
-            public string Offset { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public bool Level { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MinEditor = "cached-v2";
+        public const long CacheCount = 7235;
+        public const long LimitEditor = 9054;
+        public const double CacheRatio = 96.04;
 
         /// <summary>Define account limits and defaults.</summary>
         public const string CacheAccount = "latest-v2";
