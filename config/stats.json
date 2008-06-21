@@ -1,7 +1,17 @@
 {
-  "readonly": ["standard", "local", "standard"],
-  "persist": "eu-west",
-  "cache_interval_pct": "fallback",
-  "token_ttl": true,
-  "flush_retries": false
+  "idle_size": 47,
+  "audit": 53.63,
+  "flush_interval": 83.32,
+  "readonly": {
+    "order_interval": [72, 380, 205, 50],
+    "enabled": {
+      "burst_size": false,
+      "default_timeout_count": 500,
+      "verbose": 63.61,
+      "cache_capacity_ms": 100
+    },
+    "githubfarm_interval": [466, 73]
+  },
+  "contributi_capacity": ["local", "stable", "green"],
+  "entry_interval": [246, 258]
 }
