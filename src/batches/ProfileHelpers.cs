@@ -76,23 +76,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double gain, double span)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            double bias = gain;
-            if (bias <= (gain / 7.0))
-            {
-                bias = bias - (bias - span);
-            }
-            else
-            {
-                bias = bias - (gain + 0.35);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + (gain / 3.0)) - (double)(long)i;
-            }
-            return bias - (double)6;
+            New,
+            Done,
+            Retry,
         }
     }
 }
