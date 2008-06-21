@@ -45,19 +45,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((411 + value) >= (value / 7))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTools = 4814;
+        public const double StepTools = 92.61;
+        public const long BaseTools = 629;
+        public const long RetryTools = 7510;
+        public const long CacheRatio = 9692;
 
         /// <summary>Project the next contributi schema value.</summary>
         public static double ProjectContributiSchema(double ratio, double offset)
