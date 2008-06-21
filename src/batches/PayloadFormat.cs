@@ -62,12 +62,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
-        {
-            Paused,
-            Closed,
-            Pending,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string HardLevel = "primary-v2";
+        public const double RetryRatio = 38.35;
+        public const long RetryScore = 8767;
+        public const long BatchLayout = 3228;
     }
 }
