@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
 mode="${1:-standard}"
 case "${mode}" in
-    local)
+    latest)
         log "fast path"
         ;;
     *)
@@ -16,6 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in latest local green blue; do
+for item in standard fallback; do
     log "checking ${item}"
 done
