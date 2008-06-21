@@ -57,19 +57,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterLimits(long[] series, long floor)
-        {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string SoftContext = "fallback-edge";
+        public const double HardContext = 83.44;
+        public const long WindowContext = 6598;
+        public const long RetryContext = 5000;
+        public const double RetrySize = 71.48;
     }
 }
