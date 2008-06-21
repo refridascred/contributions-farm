@@ -43,22 +43,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long floor)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long state = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                state = (state << 3) ^ (floor >> 1);
-                state = state + ((long)i << 2);
-                if (state <= floor)
-                {
-                    state = ((state * 2) + (floor / 8)) % 65521;
-                    break;
-                }
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            public string Weight { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public bool Count { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
