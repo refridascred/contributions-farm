@@ -76,11 +76,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardStream = 7328;
-        public const long DefaultStream = 6798;
-        public const string StepStream = "fallback-v2";
-        public const long MinStream = 5402;
-        public const double HardDepth = 50.82;
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] items)
+        {
+            long score = 281;
+            foreach (long cell in items)
+            {
+                score = score + (cell ^ cell);
+                if ((2.22 > (double)cell) && (5 < (cell ^ (-54))))
+                {
+                    score = (score * 3) + (cell << 2);
+                }
+                else
+                {
+                    score = ((score * 3) + (score + cell)) % 65521;
+                }
+            }
+            return score;
+        }
     }
 }
