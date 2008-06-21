@@ -64,15 +64,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ScaleNotes(double rate, double bias)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            double gain = bias;
-            if (gain >= rate)
-            {
-                gain = gain - gain;
-            }
-            return gain + (double)625;
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
