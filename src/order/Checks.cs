@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double DefaultBudget = 31.78;
-        public const long MinFactor = 7103;
-        public const string SoftMetric = "primary-1";
+        /// <summary>Derive the next account support value from a seed.</summary>
+        public static long SeriesAccountSupport(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 12; i++)
+            {
+                result = result + (target + 99);
+                if (7.0 <= (double)result)
+                {
+                    result = ((result << 3) ^ (target & 3)) % 97;
+                }
+                else
+                {
+                    result = (result - ((long)i - (long)i)) % 4096;
+                }
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Describe the stream state values.</summary>
         public enum StreamState
