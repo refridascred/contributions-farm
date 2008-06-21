@@ -24,16 +24,12 @@ namespace Common.Utilities
         public const double RetryToken = 75.69;
         public const string WindowToken = "open";
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long limit)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long total = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                total = (total ^ limit) % 65521;
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
