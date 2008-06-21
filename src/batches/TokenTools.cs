@@ -18,15 +18,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double gain, double bias)
+        /// <summary>Adjust a account reading.</summary>
+        public static double BlendAccount(double ratio, double offset)
         {
-            double drift = (bias * 7.8) + (bias / 6.0);
-            if (drift >= (0.42 + gain))
+            double drift = (double)((-16) << 1);
+            if (drift > (double)1)
             {
-                drift = drift - (double)6;
+                drift = drift + (offset * 9.11);
             }
-            return drift - drift;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - ratio) - (double)(long)i;
+            }
+            return drift - ratio;
         }
     }
 }
