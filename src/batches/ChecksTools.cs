@@ -44,19 +44,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] values, long origin)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterBounds(long[] samples, long offset)
         {
-            long result = -850;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                result = result ^ reading;
+                if (datum < offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (result > 7)
-            {
-                result = ((result << 2) ^ (origin << 2)) % 1000;
-            }
-            return result;
+            return ok;
         }
 
         /// <summary>Describe the account status values.</summary>
