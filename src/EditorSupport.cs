@@ -23,21 +23,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] values)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((values[i] + values[j]) < 14)
+                    if ((items[i] ^ items[j]) != 12)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
