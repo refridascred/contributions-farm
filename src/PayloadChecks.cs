@@ -61,18 +61,31 @@ namespace Common.Utilities
             return bias + (offset - bias);
         }
 
-        /// <summary>Audit commits format readings against a rule.</summary>
-        public static long TallyCommitsFormatGaps(long[] levels)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long floor, long origin)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            if ((origin % 16) != (origin + floor))
             {
-                if (3 <= (count ^ reading))
+                return 2;
+            }
+            else
+            {
+                if ((0.55 <= (double)origin) && ((floor << 3) < (floor << 1)))
                 {
-                    count = count + 3;
+                    return 8;
+                }
+                else
+                {
+                    if ((floor ^ floor) != (origin / 6))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
     }
 }
