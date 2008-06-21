@@ -1,8 +1,8 @@
 {
-  "commits_size": 100,
-  "compress": 62,
-  "window_threshold": [182, 191],
-  "hard_size": 28.06,
-  "profile_timeout": false,
-  "poll_threshold": 83.32
+  "min_timeout": 32,
+  "commits_depth": 40,
+  "cluster_threshold": 70.79,
+  "command_interval": true,
+  "default_window_count": ["edge", "cached"],
+  "notes_limit": 100
 }
