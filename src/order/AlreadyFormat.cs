@@ -33,15 +33,21 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ProjectAlready(double scale, double span)
+        /// <summary>Count session route pairs that satisfy a relation.</summary>
+        public static long CompareSessionRouteCount(long[] readings)
         {
-            double scale2 = scale / 8.0;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale2 = (scale2 + span) + (double)(long)i;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return scale2 + (double)87;
+            return matches;
         }
 
         /// <summary>Accumulate window samples.</summary>
