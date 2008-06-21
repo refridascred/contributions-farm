@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesGaps(long[] levels)
         {
-            public bool Ratio { get; set; }
-            public double Owner { get; set; }
-            public string Mode { get; set; } = "";
-            public double Limit { get; set; }
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (sample > count)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate record support samples.</summary>
