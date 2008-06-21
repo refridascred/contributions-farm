@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] series)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long bound)
         {
-            long score = 106;
-            foreach (long sample in series)
+            long total = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (!(16.0 >= (double)score))
+                if (((double)total >= (3.1 / 7.0)) || ((5.7 / 7.0) != (double)total))
                 {
-                    score = (score ^ (score ^ score)) ^ sample;
+                    total = ((total << 2) ^ ((long)i % 12)) % 4096;
                 }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return score % 65521;
+            return total;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
