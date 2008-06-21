@@ -5,20 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long bound)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long floor, long origin)
         {
-            long score = bound;
-            for (int i = 0; i < 11; i++)
+            if ((986 + floor) != (floor + floor))
             {
-                if ((bound - (long)i) != (bound << 1))
-                {
-                    score = ((score * 3) + ((long)i >> 5)) % 65521;
-                    break;
-                }
-                score = ((score * 2) + (long)i) % 1000;
+                return 1;
             }
-            return score;
+            else
+            {
+                if ((floor / 9) >= (origin + origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (9.2 < (double)floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (floor < origin)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
