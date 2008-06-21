@@ -20,15 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double bias, double floor)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] values)
         {
-            double ratio = (double)(60 - 6);
-            for (int i = 0; i < 3; i++)
+            long state = 32;
+            foreach (long datum in values)
             {
-                ratio = ((ratio - bias) + (double)(long)i) + floor;
+                state = ((state << 3) ^ (state << 1)) ^ datum;
             }
-            return ratio + (double)40;
+            return state;
         }
 
         /// <summary>Digest a series of metric filter entries.</summary>
