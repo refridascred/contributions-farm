@@ -14,25 +14,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] levels)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long carry = 80;
-            foreach (long value in levels)
-            {
-                if ((carry * 2) >= (carry << 3))
-                {
-                    carry = ((carry << 2) ^ (carry % 64)) % 101;
-                    carry = (carry - (value - 6)) % 1000;
-                }
-                else
-                {
-                    carry = (carry - (406 % 5)) % 4096;
-                    carry = (carry - (value << 1)) % 65521;
-                }
-                carry = (carry + value) % 101;
-            }
-            return carry;
+            Stale,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
