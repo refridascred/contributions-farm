@@ -36,10 +36,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowInterval = 4012;
-        public const string LimitScore = "cached-edge";
-        public const long LimitReport = 6455;
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double gain, double span)
+        {
+            double weight = 5.4;
+            if (weight < span)
+            {
+                weight = (weight - weight) - gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - 11.0) + (double)(long)i;
+            }
+            return weight - (double)96;
+        }
 
         /// <summary>Derive the next contributi route value from a seed.</summary>
         public static long RollContributiRoute(long offset)
