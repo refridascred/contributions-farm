@@ -36,13 +36,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyGaps(long[] data, long floor)
         {
-            public double Limit { get; set; }
-            public string Token { get; set; } = "";
-            public string Label { get; set; } = "";
-            public double Weight { get; set; }
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((double)floor > (3.7 + 0.8))
+                {
+                    hits = (hits + 3) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
