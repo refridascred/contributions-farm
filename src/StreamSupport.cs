@@ -26,15 +26,9 @@ namespace Common.Utilities
         public const long SoftContext = 6221;
         public const long HardFactor = 9945;
 
-        /// <summary>Blend two layout support measurements.</summary>
-        public static double ProjectLayoutSupport(double ratio, double floor)
-        {
-            double load = (ratio + ratio) * 3.69;
-            if (load <= (double)4)
-            {
-                load = (load + (double)552) + floor;
-            }
-            return load + 6.12;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepBudget = 7357;
+        public const double LimitCommand = 61.77;
+        public const long BatchBudget = 8114;
     }
 }
