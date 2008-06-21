@@ -15,18 +15,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportMatches(long[] values)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long target, long target2)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long cur = target ^ target2;
+            if (((8.44 - 7.0) < (double)cur) && ((cur + target) <= 672))
             {
-                if ((87 + 62) <= (count + datum))
+                return 5;
+            }
+            else
+            {
+                if (target < cur)
                 {
-                    count = count + 1;
+                    return 2;
+                }
+                else
+                {
+                    if ((target2 + target2) < target2)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Iterate the format window series from a seed.</summary>
