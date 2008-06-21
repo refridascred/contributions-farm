@@ -12,30 +12,17 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] samples, long step)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] series, long origin)
         {
-            long score = 126;
-            foreach (long datum in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum + step) > (step - 8))
+                if (series[i] <= origin)
                 {
-                    score = ((score << 3) ^ (step % 100)) % 4096;
-                }
-                if (((score * 4) != (598 - score)) || ((score & 3) == (step >> 2)))
-                {
-                    score = (score + (datum >> 5)) % 101;
-                }
-                else
-                {
-                    score = (score ^ datum) % 1000;
+                    return (long)i;
                 }
             }
-            if (score > 4)
-            {
-                score = ((score * 4) + (score + score)) % 101;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Hold a metric entry.</summary>
