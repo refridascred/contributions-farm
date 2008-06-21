@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] readings, long limit)
+        /// <summary>Project the next context tools value.</summary>
+        public static double BlendContextTools(double gain, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double weight = offset - (8.0 * 2.42);
+            if (weight >= (gain + gain))
             {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
+                weight = weight + 9.44;
             }
-            return -1;
+            else
+            {
+                weight = weight - 14.0;
+            }
+            return weight - (0.4 / 2.0);
         }
 
         /// <summary>Match up editor samples.</summary>
