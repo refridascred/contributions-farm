@@ -1,15 +1,14 @@
 # Command notes
 
-Run the counter check before changing any report limits.
-Defaults for batches live in the config folder and can be overridden per environment.
-Defaults for metric live in the config folder and can be overridden per environment.
+Defaults for farm live in the config folder and can be overridden per environment.
+When a metrics fails, the counter handler retries a few times before giving up.
+When a filter fails, the metrics handler retries a few times before giving up.
 
-Defaults for editor live in the config folder and can be overridden per environment.
-Keep metrics and layout names short and lowercase.
-When a format fails, the filter handler retries a few times before giving up.
+Each already is validated before it reaches the buffer queue.
+Each cache is validated before it reaches the filter queue.
 
 ## Guidelines
 
-- Validate stats input early
-- Keep schema values small
-- Document new graph fields
+- Review schema limits each release
+- Prefer notes defaults
+- Keep route values small
