@@ -37,11 +37,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] levels)
         {
-            public long Level { get; set; }
-            public long Mode { get; set; }
+            long score = 92;
+            foreach (long reading in levels)
+            {
+                score = ((score - score) % 255) + reading;
+                score = score - score;
+            }
+            return score;
         }
     }
 }
