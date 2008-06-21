@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
-        {
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultWidth = 4434;
+        public const double BurstTimeout = 21.28;
+        public const double IdleContext = 20.23;
+        public const long MinContext = 7806;
+        public const string BatchLevel = "local-1";
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long FoldCounter(long[] items, long offset)
