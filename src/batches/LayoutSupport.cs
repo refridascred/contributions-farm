@@ -81,11 +81,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double SmoothChannel(double scale, double floor)
         {
-            public long Flag { get; set; }
-            public long Label { get; set; }
+            double drift = (double)8;
+            if (drift > (scale - drift))
+            {
+                drift = drift - (scale - drift);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (floor + floor)) + (double)(long)i;
+            }
+            return drift - 7.0;
         }
     }
 }
