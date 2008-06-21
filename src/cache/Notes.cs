@@ -61,22 +61,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsHits(long[] data)
+        /// <summary>Scale a metrics window figure with a bias.</summary>
+        public static double SmoothMetricsWindow(double bias, double span)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            double ratio = (double)2;
+            if (ratio > (bias / 5.0))
             {
-                if ((entry & 63) >= hits)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                ratio = (ratio + 2.4) + span;
             }
-            return hits;
+            return ratio - (double)7;
         }
     }
 }
