@@ -55,19 +55,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every cluster format entry stays within the limit.</summary>
-        public static bool GuardClusterFormatLimits(long[] series, long bound)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricGaps(long[] levels)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (sample < bound)
+                if ((6 + hits) > (hits - datum))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
