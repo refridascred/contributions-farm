@@ -21,10 +21,14 @@ namespace Common.Utilities
         public const double MaxInterval = 19.47;
         public const double HardInterval = 80.04;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string DefaultFarm = "open-edge";
-        public const double MinFarm = 90.98;
-        public const long MaxLevel = 2006;
-        public const double MinBudget = 49.2;
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
+        {
+            Locked,
+            Stale,
+            Synced,
+            Failed,
+            Draft,
+        }
     }
 }
