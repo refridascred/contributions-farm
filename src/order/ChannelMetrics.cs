@@ -23,11 +23,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
+            public double Total { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
