@@ -1,6 +1,11 @@
-id,state,region,level
-1,52.03,174,450
-2,3.6,37.66,stable
-3,686,53.98,84.63
-4,189,edge,116
-5,358,70.67,blue
+id,token,state
+1,local,58.58
+2,local,strict
+3,52.16,397
+4,open,935
+5,73.26,strict
+6,201,edge
+7,legacy,15.01
+8,20.32,blue
+9,464,green
+10,445,47.52
