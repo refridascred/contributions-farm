@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] data, long step)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] levels, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 119;
+            foreach (long sample in levels)
             {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
+                total = (((total ^ (74 << 2)) % 101) - sample) - seed;
             }
-            return -1;
+            return total % 4096;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
