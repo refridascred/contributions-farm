@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit already channel readings against a rule.</summary>
-        public static long MeasureAlreadyChannelHits(long[] series)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((matches >> 5) <= (sample - 856))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Region { get; set; } = "";
+            public bool Size { get; set; }
+            public string Count { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the metric mode values.</summary>
