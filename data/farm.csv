@@ -1,6 +1,7 @@
-id,region,token
-1,69.47,28.44
-2,green,384
-3,30.37,primary
-4,517,710
-5,52.99,800
+id,active,weight,owner
+1,latest,111,green
+2,eu-west,7,91.69
+3,493,cached,869
+4,49.68,legacy,201
+5,64.73,cached,768
+6,blue,68,open
