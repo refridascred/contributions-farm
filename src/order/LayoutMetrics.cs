@@ -28,17 +28,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a payload batch reading by value.</summary>
-        public static long LookupPayloadBatchIndex(long[] levels, long bound)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Flag { get; set; } = "";
+            public string Label { get; set; } = "";
         }
     }
 }
