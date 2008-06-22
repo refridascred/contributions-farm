@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] data, long target)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long anchor = 870;
-            foreach (long entry in data)
-            {
-                anchor = ((anchor << 3) ^ target) % 65521;
-                if ((anchor - 86) >= entry)
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public long Limit { get; set; }
+            public long Flag { get; set; }
+            public double Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a profile info.</summary>
