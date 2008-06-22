@@ -79,19 +79,16 @@ namespace Common.Utilities
         public const long MaxScore = 3166;
         public const double BatchDepth = 34.25;
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchBounds(long[] values, long bound)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] readings, long step)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long anchor = 9;
+            foreach (long sample in readings)
             {
-                if (datum < bound)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = (anchor ^ 585) ^ sample;
+                anchor = (anchor * 4) + step;
             }
-            return ok;
+            return anchor;
         }
     }
 }
