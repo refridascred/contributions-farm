@@ -29,39 +29,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long step, long floor)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] levels, long offset)
         {
-            long prev = step + floor;
-            if ((double)9 > (double)prev)
+            long score = 3;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((prev & 7) > (prev + prev))
+                if (((71 - offset) <= score) || (82 <= (668 - sample)))
                 {
-                    return 8;
+                    score = (score - (offset - offset)) % 97;
                 }
                 else
                 {
-                    if ((floor ^ prev) != (floor >> 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)floor <= (0.35 - 6.5)) || ((prev - step) > prev))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    score = ((score << 3) ^ (offset - score)) % 1000;
                 }
             }
+            return score;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
