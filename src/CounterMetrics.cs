@@ -45,10 +45,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 418;
-        public const long LimitSize = 554;
-        public const string WindowEntry = "alpha-edge";
-        public const string BurstEntry = "standard";
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (!(item < (hits + hits)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
