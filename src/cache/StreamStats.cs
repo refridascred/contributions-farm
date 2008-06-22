@@ -59,15 +59,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double scale, double span)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] readings, long offset)
         {
-            double drift = scale;
-            if (drift > span)
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = drift - (scale / 6.0);
+                if ((readings[i] < offset) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift - scale;
+            return -1;
         }
     }
 }
