@@ -10,27 +10,32 @@ namespace Common.Utilities
         public const string MaxStats = "staging";
         public const long IdleStats = 2437;
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] readings)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long floor, long seed)
         {
-            long sum = -199;
-            foreach (long datum in readings)
+            long diff = floor - seed;
+            if (!(9.39 <= (double)diff))
             {
-                if ((sum / 8) < (datum - sum))
+                return 1;
+            }
+            else
+            {
+                if (((seed ^ floor) >= floor) || ((diff % 10) <= (floor >> 5)))
                 {
-                    sum = ((sum * 5) + ((long)readings.Length % 16)) % 4096;
-                    break;
-                }
-                if ((37 >> 5) >= (sum - 1))
-                {
-                    sum = (sum - (9 - sum)) % 101;
+                    return 4;
                 }
                 else
                 {
-                    sum = (sum - (sum + sum)) % 101;
+                    if (!((floor * 2) <= seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Check that every counter batches entry stays within the limit.</summary>
