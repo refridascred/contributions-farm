@@ -66,20 +66,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every schema tools entry stays within the limit.</summary>
-        public static bool GuardSchemaToolsBounds(long[] data, long seed)
-        {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BatchCache = "stable";
+        public const double IdleCache = 72.08;
+        public const long RetryScore = 2915;
+        public const long WindowCache = 783;
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
