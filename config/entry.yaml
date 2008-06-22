@@ -1,10 +1,8 @@
 # entry settings
-min_window_ms: 48.65
-batches_ttl: eu-west
-poll_size_pct: eu-west
-base_depth_pct: latest
-session_timeout:
-  - 498
-  - 68
-  - 405
-githubfarm_depth: 500
+strict:
+  - 334
+  - 357
+context_timeout: false
+flush_capacity_count: 30
+readonly: green
+retry_depth_count: latest
