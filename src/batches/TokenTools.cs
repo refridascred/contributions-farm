@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchMatches(long[] samples)
         {
-            New,
-            Retry,
-            Pending,
-            Synced,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((tally ^ tally) < ((long)samples.Length % 10))
+                {
+                    tally = (tally + 2) ^ item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the route mode values.</summary>
