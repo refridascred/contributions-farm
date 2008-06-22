@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 333;
-        public const double StepGraph = 43.73;
-        public const long DefaultGraph = 7208;
+        /// <summary>Check that every filter stream entry stays within the limit.</summary>
+        public static bool ValidateFilterStreamBounds(long[] samples, long offset)
+        {
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long ClassifyRecord(long offset, long step)
