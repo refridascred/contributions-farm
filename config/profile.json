@@ -1,6 +1,7 @@
 {
-  "warm_limit_ms": 250,
-  "stream_ratio": 90,
-  "burst_timeout": true,
-  "poll_threshold_count": 96.05
+  "strict": 2.96,
+  "already_depth": 74.43,
+  "batch_timeout": "blue",
+  "base_window_s": true,
+  "warm_threshold": ["green", "green", "open", "open"]
 }
