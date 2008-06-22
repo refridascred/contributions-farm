@@ -23,25 +23,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long origin, long limit)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] series, long target)
         {
-            long next = origin ^ limit;
-            if (((limit % 97) <= next) || (limit >= next))
+            long matches = 0;
+            foreach (long reading in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit & 15) <= (origin / 3))
+                if ((target >> 5) > matches)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    matches = (matches + 3) + reading;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the layout level values.</summary>
