@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string StepGraph = "strict";
-        public const long SoftFactor = 8621;
-        public const long BaseFactor = 7556;
-        public const long RetryGraph = 8349;
-        public const string StepCount = "stable-edge";
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsLimits(long[] items, long floor)
+        {
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long LookupChecksIndex(long[] values, long seed)
