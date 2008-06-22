@@ -38,11 +38,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstLevel = 714;
-        public const long RetryLevel = 5195;
-        public const long WindowScore = 2614;
-        public const double RetryCount = 70.3;
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
