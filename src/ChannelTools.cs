@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the layout report series from a seed.</summary>
-        public static long SeriesLayoutReport(long step)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsBounds(long[] readings, long seed)
         {
-            long mark = step;
-            for (int i = 0; i < 15; i++)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                long gap = ((long)i & 7) - (mark & 15);
-                if (((double)step <= (double)mark) || ((double)gap <= (9.87 * 0.8)))
+                if (item != seed)
                 {
-                    mark = mark ^ (mark >> 2);
-                    gap = ((gap << 3) ^ (step >> 5)) % 97;
+                    ready = false;
+                    break;
                 }
-                mark = (mark ^ ((long)i + step)) % 97;
-                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
