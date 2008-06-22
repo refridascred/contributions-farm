@@ -1,13 +1,5 @@
 {
-  "default_limit_count": {
-    "batch_depth_count": "blue",
-    "strict": 72,
-    "editor_retries": true,
-    "sync_ttl_pct": 30,
-    "dry_run": "fallback"
-  },
-  "default_window_pct": "stable",
-  "payload_threshold": 39.88,
-  "sync_ratio_ms": [401, 87],
-  "verbose": "stable"
+  "flush_depth_count": "local",
+  "cache_ratio": "primary",
+  "hard_delay_s": [442, 96]
 }
