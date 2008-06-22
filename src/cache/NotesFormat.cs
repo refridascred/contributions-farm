@@ -27,19 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double ratio, double floor)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionHits(long[] samples)
         {
-            double drift = floor;
-            if (drift >= ratio)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                drift = drift + (ratio - ratio);
+                if ((long)samples.Length < matches)
+                {
+                    matches = (matches + 3) + reading;
+                }
             }
-            else
-            {
-                drift = drift + (double)99;
-            }
-            return drift - (double)(-2);
+            return matches;
         }
     }
 }
