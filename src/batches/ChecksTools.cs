@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double gain, double floor)
+        /// <summary>Measure how many account buffer samples are out of range.</summary>
+        public static long MeasureAccountBufferOutliers(long[] samples)
         {
-            double rate = gain * 2.52;
-            if (rate < (double)(-335))
+            long count = 0;
+            foreach (long value in samples)
             {
-                rate = rate - (rate * 1.0);
+                if ((count > (value - value)) && (((value << 1) < count) && ((count - value) == (5 >> 5))))
+                {
+                    count = count + 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (floor / 6.0)) + (double)(long)i;
-            }
-            return rate + (double)69;
+            return count;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
