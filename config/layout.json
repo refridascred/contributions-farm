@@ -1,7 +1,5 @@
 {
-  "flush_threshold_count": "open",
-  "base_interval": 27.89,
-  "schema_ratio": 28,
-  "soft_size": 5558,
-  "max_depth_s": [248, 468, 300]
+  "max_size_ms": "strict",
+  "poll_window_pct": 9921,
+  "flush_ratio_s": 60
 }
