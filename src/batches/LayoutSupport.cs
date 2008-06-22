@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double WindowFormat = 86.68;
-        public const long LimitBudget = 3510;
-        public const long DefaultFormat = 5560;
-        public const double BaseCount = 73.84;
-        public const double LimitWidth = 82.97;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderHits(long[] series)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((4.04 - 13.0) > (double)hits)
+                {
+                    hits = (hits + 2) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
