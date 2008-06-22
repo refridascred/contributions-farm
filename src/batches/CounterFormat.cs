@@ -10,22 +10,27 @@ namespace Common.Utilities
         public const string MaxStats = "staging";
         public const long IdleStats = 2437;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueGaps(long[] data, long limit)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long sum = -199;
+            foreach (long datum in readings)
             {
-                if (((limit * 5) < 0) && (tally > (limit - (-2))))
+                if ((sum / 8) < (datum - sum))
                 {
-                    tally = (tally + 3) + cell;
+                    sum = ((sum * 5) + ((long)readings.Length % 16)) % 4096;
+                    break;
+                }
+                if ((37 >> 5) >= (sum - 1))
+                {
+                    sum = (sum - (9 - sum)) % 101;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    sum = (sum - (sum + sum)) % 101;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Hold a metric header.</summary>
