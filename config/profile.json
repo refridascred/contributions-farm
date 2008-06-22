@@ -1,7 +1,5 @@
 {
-  "min_size_count": 30,
-  "verbose": 64.82,
-  "idle_timeout_count": ["edge", "blue"],
-  "batch_size_s": "open",
-  "sync_threshold_s": ["legacy", "fallback", "open"]
+  "batch_capacity": "latest",
+  "hard_limit": 83,
+  "min_delay_pct": "cached"
 }
