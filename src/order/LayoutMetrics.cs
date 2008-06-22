@@ -44,18 +44,12 @@ namespace Common.Utilities
             return scale2 + floor;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportMatches(long[] samples)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((((entry - entry) < (tally + entry)) || ((double)2 < (double)tally)) || ((tally - tally) < (entry % 60)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Region { get; set; }
+            public string Total { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
