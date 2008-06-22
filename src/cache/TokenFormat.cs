@@ -23,18 +23,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == floor) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinWidth = 8721;
+        public const long WindowBudget = 964;
+        public const double SoftChecks = 12.64;
+        public const long BaseChecks = 5179;
+        public const long HardFactor = 7892;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double HardTimeout = 22.07;
