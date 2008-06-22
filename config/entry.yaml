@@ -1,4 +1,29 @@
 # entry settings
-burst_threshold: open
-dry_run: 82.28
-hard_threshold: eu-west
+poll_depth_pct: 32
+poll_ttl_count:
+  batch_window_ms: fallback
+  warm_delay_ms: strict
+  editor_threshold: 500
+  base_interval: 6436
+  stats_limit: stable
+  command_delay:
+    - 134
+    - 427
+farm_interval:
+  base_interval:
+    sync_capacity_pct: 873
+    soft_ratio_pct:
+      - 61
+      - 280
+    hard_timeout_pct: true
+    contributi_interval: 39.46
+    record_delay: 50.4
+    soft_limit_pct: 250
+  cache_window_pct: 7
+  hard_timeout_pct: true
+retry_interval_ms:
+  poll_retries: 100
+  hard_limit_count: 55.11
+  max_delay_ms: legacy
+already_size: 1024
+cache_ttl: 1
