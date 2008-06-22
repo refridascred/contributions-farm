@@ -81,12 +81,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            Retry,
-            Done,
-            Active,
+            Draft,
+            Stale,
+            Dropped,
+            Ready,
         }
     }
 }
