@@ -29,24 +29,21 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] values, long origin)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long CompareFormatCount(long[] values)
         {
-            long result = 408;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result * 5) + (origin & 1)) % 1000;
-                result = ((result << 3) ^ entry) % 255;
-                if ((entry >> 5) < 558)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = ((result << 3) ^ (532 * 4)) % 4096;
-                }
-                if ((9 - entry) > entry)
-                {
-                    break;
+                    if ((values[i] + values[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
