@@ -1,5 +1,7 @@
 {
-  "idle_threshold_s": 244,
-  "graph_capacity": 7071,
-  "default_limit_pct": 74.77
+  "strict": "fallback",
+  "dry_run": "open",
+  "retry_ttl": 86.48,
+  "verbose": true,
+  "profile_size": false
 }
