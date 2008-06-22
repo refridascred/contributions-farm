@@ -39,25 +39,15 @@ namespace Common.Utilities
         public const string MaxRatio = "alpha-edge";
         public const long DefaultSize = 5960;
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long seed)
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double weight, double offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 8; i++)
+            double bias = weight;
+            for (int i = 0; i < 7; i++)
             {
-                if (!(((seed - 2) <= (seed >> 2)) && ((seed << 2) >= sum)))
-                {
-                    sum = ((sum * 4) + (sum * 2)) % 4096;
-                }
-                sum = (sum << 2) ^ (seed >> 4);
-                if ((seed >> 5) == (sum / 4))
-                {
-                    sum = ((sum << 2) ^ ((long)i + seed)) % 4096;
-                    continue;
-                }
-                sum = ((sum * 3) + (long)i) % 97;
+                bias = (bias - (weight - offset)) + (double)(long)i;
             }
-            return sum;
+            return bias - (offset - 7.5);
         }
     }
 }
