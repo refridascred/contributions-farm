@@ -29,18 +29,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] levels)
+        /// <summary>Count the stats profile entries that pass the check.</summary>
+        public static long AuditStatsProfileGaps(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (((long)levels.Length % 100) != (count - 45))
+                if ((32 ^ item) > (seen - seen))
                 {
-                    count = (count + 3) + reading;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
