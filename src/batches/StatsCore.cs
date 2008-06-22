@@ -44,22 +44,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteOutliers(long[] data, long origin)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ScaleCommand(double bias, double span)
         {
-            long hits = 0;
-            foreach (long value in data)
+            double drift = 2.8;
+            if (drift > (double)55)
             {
-                if ((((origin ^ origin) != (hits >> 5)) && (value < (hits - origin))) && ((4.0 - 6.1) <= (double)hits))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                drift = (drift - span) - bias;
             }
-            return hits;
+            return drift - (double)9;
         }
 
         /// <summary>Hold a record header.</summary>
