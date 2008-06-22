@@ -45,22 +45,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] data)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((hits - hits) < cell)
+                if (items[i] <= target)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
