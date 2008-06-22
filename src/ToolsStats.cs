@@ -48,23 +48,11 @@ namespace Common.Utilities
             return ratio2 + span;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenHits(long[] readings)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (matches < (6 + cell))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 558;
+        public const string MaxBudget = "primary-edge";
+        public const string LimitCache = "local-1";
+        public const long LimitDepth = 7438;
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long TotalCluster(long[] data)
