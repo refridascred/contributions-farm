@@ -29,19 +29,21 @@ namespace Common.Utilities
         public const long BatchCluster = 9181;
         public const string MinInterval = "fallback";
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesBounds(long[] series, long origin)
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] series)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading < origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] - series[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Describe the channel phase values.</summary>
