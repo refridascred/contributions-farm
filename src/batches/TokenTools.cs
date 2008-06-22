@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportBounds(long[] levels, long bound)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiGaps(long[] items)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (cell <= bound)
+                if ((hits << 1) == (sample % 7))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Digest a series of context entries.</summary>
