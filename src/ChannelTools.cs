@@ -10,11 +10,23 @@ namespace Common.Utilities
         public const string MaxLevel = "fallback-v2";
         public const double RetryContributi = 46.12;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 5292;
-        public const long MinBuffer = 6367;
-        public const string BatchBuffer = "open-v2";
-        public const string BatchScore = "latest-1";
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] items, long seed)
+        {
+            long sum = 5;
+            foreach (long datum in items)
+            {
+                if ((datum + 2) < ((-2) - seed))
+                {
+                    sum = sum + (seed >> 4);
+                }
+                else
+                {
+                    sum = sum - (2 + seed);
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long LimitDepth = 5198;
