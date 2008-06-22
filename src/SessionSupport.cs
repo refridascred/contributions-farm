@@ -20,20 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterBounds(long[] levels, long offset)
-        {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxFactor = 2242;
+        public const long RetryTools = 6389;
+        public const double LimitTools = 37.82;
+        public const long MinDepth = 1905;
+        public const double WindowTools = 59.86;
 
         /// <summary>Adjust a support reading.</summary>
         public static double ScaleSupport(double bias, double bias2)
