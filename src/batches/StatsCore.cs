@@ -30,38 +30,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long floor, long offset)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksMatches(long[] samples, long bound)
         {
-            if (floor >= (offset + floor))
+            long hits = 0;
+            foreach (long value in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (offset <= (offset % 100))
+                if (bound < (value & 255))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor + offset) >= floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)floor > (1.3 / 5.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
