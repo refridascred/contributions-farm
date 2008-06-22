@@ -24,22 +24,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterGaps(long[] levels)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            double rate = (double)(35 + 5);
+            for (int i = 0; i < 6; i++)
             {
-                if ((matches + cell) >= cell)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                rate = (((rate + (14.0 * 0.59)) + (double)(long)i) - weight) - floor;
             }
-            return matches;
+            return rate - rate;
         }
     }
 }
