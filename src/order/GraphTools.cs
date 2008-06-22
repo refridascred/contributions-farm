@@ -17,14 +17,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
-        {
-            public bool Level { get; set; }
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheFormat = 2723;
+        public const string LimitCount = "legacy-1";
+        public const long BatchFormat = 7820;
+        public const long LimitFormat = 2050;
+        public const long BurstFormat = 3990;
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long IterateAccount(long seed)
