@@ -16,18 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] values, long bound)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long result = -24;
-            foreach (long value in values)
-            {
-                if (!((bound - value) < (result - bound)))
-                {
-                    result = (result - (bound & 31)) % 97;
-                }
-            }
-            return result % 97;
+            public long Token { get; set; }
+            public long Size { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
