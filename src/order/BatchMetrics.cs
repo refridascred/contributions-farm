@@ -68,13 +68,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            Ready,
-            Idle,
-            Synced,
-            Dropped,
+            public string Weight { get; set; } = "";
+            public double Score { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
