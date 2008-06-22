@@ -1,7 +1,6 @@
 {
-  "compress": "staging",
-  "base_threshold": ["local", "primary"],
-  "format_ratio": ["stable", "open", "eu-west", "staging"],
-  "soft_delay_count": 77.55,
-  "githubfarm_ttl": [250, 253]
+  "stream_window": "open",
+  "default_ratio": 7859,
+  "persist": 3775,
+  "soft_capacity_count": "cached"
 }
