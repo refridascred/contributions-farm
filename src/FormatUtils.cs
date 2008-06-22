@@ -19,13 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long floor)
         {
-            public bool Size { get; set; }
-            public double Region { get; set; }
-            public double Score { get; set; }
-            public bool Token { get; set; }
+            long state = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                if (floor >= ((long)i + state))
+                {
+                    state = ((state * 5) + floor) % 101;
+                }
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
