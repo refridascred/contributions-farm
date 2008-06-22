@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] series, long offset)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Draft,
+            New,
+            Idle,
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
