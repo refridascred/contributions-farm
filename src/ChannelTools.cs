@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] readings, long floor)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] levels, long target)
         {
-            long anchor = 436;
-            foreach (long entry in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (floor <= (entry / 3))
+                if ((levels[i] >= target) && ((levels[i] % 5) == 0))
                 {
-                    anchor = anchor - (7 - entry);
-                }
-                if (((floor >> 3) == (6 / 7)) || ((anchor + floor) != (347 ^ floor)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (anchor > 1)
-            {
-                anchor = ((anchor * 5) + floor) % 101;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
