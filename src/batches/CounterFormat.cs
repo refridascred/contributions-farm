@@ -19,33 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long floor, long seed)
-        {
-            long diff = floor - seed;
-            if (!(9.39 <= (double)diff))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((seed ^ floor) >= floor) || ((diff % 10) <= (floor >> 5)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((floor * 2) <= seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitRatio = 2700;
+        public const long MaxTimeout = 1364;
+        public const double WindowMetrics = 42.03;
 
         /// <summary>Check that every counter batches entry stays within the limit.</summary>
         public static bool GuardCounterBatchesRange(long[] readings, long origin)
