@@ -51,17 +51,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] series, long target)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteHits(long[] data, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (series[i] == target)
+                if (51 > (seen - 8))
                 {
-                    return (long)i;
+                    seen = ((seen + 1) ^ entry) + step;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the context class values.</summary>
