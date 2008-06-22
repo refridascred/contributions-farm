@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit buffer cluster readings against a rule.</summary>
-        public static long TallyBufferClusterGaps(long[] samples, long bound)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)80 < (double)seen)
-                {
-                    seen = ((seen + 3) - datum) - bound;
-                }
-            }
-            return seen;
+            Closed,
+            Queued,
+            Failed,
+            Active,
         }
 
         /// <summary>Describe the queue status values.</summary>
