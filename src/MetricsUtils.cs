@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] readings, long step)
         {
-            Stale,
-            New,
-            Pending,
-            Idle,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((step & 31) < (-540))
+                {
+                    matches = (matches + 1) + entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every token command entry stays within the limit.</summary>
