@@ -57,22 +57,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count the stream window entries that pass the check.</summary>
-        public static long AuditStreamWindowOutliers(long[] data)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ProjectGraph(double weight, double span)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            double load = span;
+            if (load > (weight * 7.0))
             {
-                if (!(((hits % 5) != (datum - datum)) || (datum > hits)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                load = load - load;
             }
-            return hits;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - (double)640) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Scale a batches tools figure with a bias.</summary>
