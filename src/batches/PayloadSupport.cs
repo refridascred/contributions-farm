@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] items, long step)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsOutliers(long[] data, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((items[i] >= step) && ((items[i] % 3) == 0))
+                if ((double)(-518) >= (double)entry)
                 {
-                    return (long)i;
+                    tally = (tally + 2) + floor;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
