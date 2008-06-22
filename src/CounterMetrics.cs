@@ -23,13 +23,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] values, long seed)
         {
-            public double Stamp { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Region { get; set; }
-            public string Label { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
