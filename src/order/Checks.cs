@@ -43,25 +43,12 @@ namespace Common.Utilities
         public const long MinEditor = 3628;
         public const string LimitEditor = "cached";
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long bound, long target)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long gap = bound ^ target;
-            if ((target <= (target - (-908))) || ((bound + target) <= (bound >> 3)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((983 + gap) > (2 & 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Closed,
+            Retry,
+            Locked,
         }
     }
 }
