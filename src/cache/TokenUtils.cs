@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepTimeout = 4626;
-        public const long MinSize = 2918;
-        public const string BatchBudget = "stable-edge";
-        public const long StepBuffer = 8093;
-        public const double RetryFactor = 25.36;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphOutliers(long[] levels, long step)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((double)step < (7.4 - 6.0))
+                {
+                    count = (count + 1) + value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
