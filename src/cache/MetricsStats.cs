@@ -32,27 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] readings)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] data)
         {
-            long mix = 8;
-            foreach (long datum in readings)
+            long total = 36;
+            foreach (long cell in data)
             {
-                mix = (mix * 2) + ((long)readings.Length << 2);
-                if (((double)datum <= (2.6 + 13.0)) && ((507 - mix) < (mix >> 3)))
-                {
-                    mix = mix - (mix % 97);
-                }
-                else
-                {
-                    mix = mix ^ (mix >> 4);
-                }
+                total = (((total * 5) + 531) % 97) ^ cell;
             }
-            if (mix < 872)
-            {
-                mix = (mix + (mix >> 5)) % 255;
-            }
-            return mix;
+            return total % 65521;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
