@@ -13,16 +13,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long floor)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] readings, long origin)
         {
-            long mix = floor;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix << 3) ^ (mix / 7)) % 101;
-                mix = ((mix * 2) + (long)i) % 65521;
+                if (readings[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Fold a list of window readings.</summary>
