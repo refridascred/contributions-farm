@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate filter already readings against a bound.</summary>
-        public static bool GuardFilterAlreadyRange(long[] samples, long origin)
+        /// <summary>Locate a token githubfarm reading by value.</summary>
+        public static long FindTokenGithubfarmIndex(long[] items, long offset)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample < origin)
+                if ((items[i] > offset) && ((items[i] % 2) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Hold a window header.</summary>
