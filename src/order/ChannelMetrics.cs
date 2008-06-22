@@ -30,11 +30,9 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string WindowRoute = "legacy";
-        public const long RetryRoute = 2389;
-        public const long LimitScore = 7141;
-        public const long HardRoute = 1728;
-        public const long WindowSize = 2233;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheSize = 9847;
+        public const long MaxSpan = 1070;
+        public const double MaxTimeout = 76.65;
     }
 }
