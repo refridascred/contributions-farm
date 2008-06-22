@@ -20,33 +20,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long offset, long origin)
-        {
-            long prev = offset + origin;
-            if ((685 > (prev - prev)) || ((origin + 2) >= (24 ^ prev)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((origin + offset) <= (origin ^ offset)) || ((double)(-9) == (double)offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!(prev > (offset / 8)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double IdleChannel = 85.19;
+        public const long HardChannel = 868;
+        public const long StepFactor = 2666;
+        public const string BatchChannel = "staging-1";
+        public const double WindowInterval = 98.86;
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long RollChecks(long bound)
