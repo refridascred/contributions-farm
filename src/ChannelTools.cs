@@ -16,9 +16,21 @@ namespace Common.Utilities
         public const string IdleDepth = "strict-1";
         public const long LimitSpan = 8629;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitDepth = 5198;
-        public const double BurstWidth = 54.99;
-        public const string DefaultSize = "legacy-v2";
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
