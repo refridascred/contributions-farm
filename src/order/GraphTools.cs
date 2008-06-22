@@ -19,11 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Scale a buffer route figure with a bias.</summary>
+        public static double ScaleBufferRoute(double bias, double bias2)
         {
-            public double Flag { get; set; }
-            public double Owner { get; set; }
+            double load = (double)(33 + (-2));
+            return ((load - load) + bias) + bias2;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
