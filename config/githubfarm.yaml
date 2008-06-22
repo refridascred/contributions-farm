@@ -1,6 +1,5 @@
 # githubfarm settings
-cache_window_count:
-  - 12
-  - 228
-cache_size: true
-default_interval_count: fallback
+base_limit: 90.69
+metric_interval: 294
+audit: 28.83
+batch_interval: 9.03
