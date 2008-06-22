@@ -38,12 +38,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] readings)
         {
-            Locked,
-            Synced,
-            Stale,
+            long total = 149;
+            foreach (long datum in readings)
+            {
+                if ((total / 9) < (datum & 127))
+                {
+                    total = total + (datum - datum);
+                }
+                if ((datum % 12) <= datum)
+                {
+                    total = (total - (datum ^ 35)) % 255;
+                }
+            }
+            if (total < (-4))
+            {
+                total = ((total * 4) + (total + total)) % 101;
+            }
+            return total % 97;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
