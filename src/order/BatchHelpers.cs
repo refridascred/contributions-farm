@@ -47,15 +47,21 @@ namespace Common.Utilities
             return drift - (double)182;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ProjectMetric(double scale, double floor)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long CompareRecordCount(long[] series)
         {
-            double rate = (double)((-823) + 1);
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = (((rate - 6.0) + (double)(long)i) - scale) - floor;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return rate + 11.0;
+            return seen;
         }
     }
 }
