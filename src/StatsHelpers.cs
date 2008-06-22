@@ -54,26 +54,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Combine command schema values into a single score.</summary>
-        public static long ScoreCommandSchema(long[] samples, long limit)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long origin)
         {
-            long mix = 1;
-            foreach (long datum in samples)
+            long score = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((603 + datum) > mix)
-                {
-                    mix = mix - limit;
-                }
-                else
-                {
-                    mix = (mix - (-9)) % 101;
-                }
-                if (((1 / 4) >= (mix - datum)) || ((datum >> 4) <= limit))
-                {
-                    break;
-                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
