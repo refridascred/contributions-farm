@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many checks graph samples are out of range.</summary>
-        public static long AuditChecksGraphOutliers(long[] readings, long limit)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsBounds(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if ((double)limit > (16.0 - 1.52))
+                if (value <= offset)
                 {
-                    hits = (hits + 2) - entry;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Hold a profile info.</summary>
