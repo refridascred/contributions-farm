@@ -48,20 +48,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long target)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] levels, long target)
         {
-            long state = target;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state << 3) ^ 36) % 101;
-                for (int i2 = 0; i2 < 2; i2++)
+                if (levels[i] < target)
                 {
-                    state = (((state << 2) ^ target) % 1000) - (long)i2;
+                    return (long)i;
                 }
-                state = ((state * 5) + (long)i) % 101;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a record header.</summary>
