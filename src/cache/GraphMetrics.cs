@@ -34,21 +34,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                if (!((8.57 + 1.0) >= (double)seed))
-                {
-                    state = (state * 3) + (seed << 2);
-                    state = state + (long)i;
-                }
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheCount = 1126;
+        public const long BurstGraph = 273;
+        public const long BatchGraph = 4648;
+        public const long DefaultRatio = 3806;
 
         /// <summary>Accumulate graph samples.</summary>
         public static long TallyGraph(long[] items, long limit)
