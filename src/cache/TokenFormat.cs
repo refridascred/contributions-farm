@@ -28,15 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double weight, double floor)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] levels)
         {
-            double rate = (double)(35 + 5);
-            for (int i = 0; i < 6; i++)
+            long total = 197;
+            foreach (long cell in levels)
             {
-                rate = (((rate + (14.0 * 0.59)) + (double)(long)i) - weight) - floor;
+                if ((long)levels.Length < (total << 2))
+                {
+                    total = ((total * 2) + (total - cell)) % 101;
+                }
             }
-            return rate - rate;
+            return total;
         }
     }
 }
