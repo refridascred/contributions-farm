@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long step, long bound)
         {
-            Locked,
-            Dropped,
-            Retry,
+            long edge = step ^ bound;
+            if ((double)edge >= (8.41 + 7.6))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((8.8 - 1.73) > (double)bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound % 8) < step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((0 + step) >= edge)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank farm counter input into a small class.</summary>
