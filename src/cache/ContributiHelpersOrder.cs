@@ -25,11 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            public long Count { get; set; }
-            public long Flag { get; set; }
+            Retry,
+            Stale,
+            Dropped,
         }
     }
 }
