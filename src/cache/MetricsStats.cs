@@ -54,20 +54,24 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long limit)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long target, long seed)
         {
-            long score = limit;
-            for (int i = 0; i < 13; i++)
+            if ((double)seed <= (9.0 / 9.0))
             {
-                score = score - (score + limit);
-                if (!((19.0 * 14.0) != (double)limit))
-                {
-                    score = (score + 41) % 65521;
-                }
-                score = ((score * 4) + (long)i) % 4093;
+                return 7;
             }
-            return score;
+            else
+            {
+                if ((-848) >= (target ^ seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a cache summary.</summary>
