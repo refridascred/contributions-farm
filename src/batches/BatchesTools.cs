@@ -14,12 +14,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public string Mode { get; set; } = "";
-            public bool Score { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultWidth = 868;
+        public const long StepNotes = 2716;
+        public const long MinWidth = 2641;
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long AuditFormatGaps(long[] items, long offset)
