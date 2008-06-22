@@ -53,12 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 7548;
-        public const string LimitToken = "standard";
-        public const double LimitSpan = 90.64;
-        public const long BatchToken = 417;
-        public const long WindowToken = 7037;
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
+        {
+            Ready,
+            Paused,
+            Failed,
+        }
 
         /// <summary>Hold a metric snapshot.</summary>
         public sealed class MetricSnapshot
