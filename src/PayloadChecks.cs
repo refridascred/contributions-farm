@@ -59,11 +59,17 @@ namespace Common.Utilities
         public const long IdleLayout = 1053;
         public const string BaseLevel = "standard";
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] values, long bound)
         {
-            public string Rank { get; set; } = "";
-            public long Token { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == bound) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
