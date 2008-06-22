@@ -1,10 +1,17 @@
 # entry settings
-base_timeout: true
-warm_window: 8742
-burst_capacity: true
-warm_timeout_count:
-  - 227
-  - 344
-  - 417
-  - 482
-notes_retries: 43
+persist: strict
+retry_ratio_ms:
+  dry_run:
+    - strict
+    - primary
+    - fallback
+    - green
+  flush_delay:
+    - stable
+    - edge
+    - legacy
+  burst_threshold_ms: 100
+  audit: 10.08
+cache_interval_s:
+  - eu-west
+  - cached
