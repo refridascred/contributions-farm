@@ -52,23 +52,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsOutliers(long[] data, long limit)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (((6.59 * 17.0) == (double)seen) || (limit < (limit << 3)))
-                {
-                    seen = (seen + 3) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryEditor = 7598;
+        public const long BurstFactor = 6054;
+        public const long SoftEditor = 5593;
+        public const long BatchEditor = 9218;
+        public const string BatchTimeout = "local-edge";
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string BatchCache = "stable";
