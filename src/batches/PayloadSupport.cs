@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            Synced,
-            Queued,
-            Dropped,
+            Paused,
+            Retry,
+            Stale,
         }
 
         /// <summary>Adjust a contributi reading.</summary>
