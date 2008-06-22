@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesOutliers(long[] series, long origin)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((((5.12 + 5.97) == (double)origin) || ((origin - tally) > tally)) || (((4 >> 5) < (origin % 10)) || ((tally - tally) == (cell << 3))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Token { get; set; }
+            public string Region { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
