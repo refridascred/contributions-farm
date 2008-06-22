@@ -1,19 +1,25 @@
 # entry settings
-min_retries_s: 97
-base_limit_pct:
-  dry_run: 1024
-  base_delay_s: latest
-  idle_window_count: 36.57
-  enabled:
-    - local
-    - primary
-    - strict
-    - legacy
-  schema_ratio: green
-hard_timeout_pct:
-  - 409
-  - 319
-  - 431
-queue_depth: local
-verbose: 34
-audit: 81
+order_interval: 49.71
+dry_run: cached
+layout_retries:
+  filter_limit:
+    enabled:
+      - 243
+      - 316
+      - 348
+    metrics_retries: false
+    warm_ratio_count: 250
+    dry_run: 2
+  session_ratio: true
+  warm_timeout:
+    buffer_ratio: green
+    cluster_ttl: 30.02
+    enabled: 100
+    base_limit_s: 87
+  hard_threshold_count: 84.09
+  buffer_depth: false
+readonly:
+  - 331
+  - 366
+  - 425
+  - 241
