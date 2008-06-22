@@ -13,38 +13,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a route report pair into a bucket.</summary>
-        public static long SortRouteReport(long seed, long offset)
+        /// <summary>Find the first token notes entry that matches the target.</summary>
+        public static long FindTokenNotesIndex(long[] items, long limit)
         {
-            if ((1.41 + 9.71) <= (double)seed)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (offset < (seed % 100))
+                if (items[i] > limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((seed / 5) == (seed - offset)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed <= (-68)) && (offset > (offset + seed)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a route stats reading by value.</summary>
