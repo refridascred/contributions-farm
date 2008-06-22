@@ -75,16 +75,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long origin)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] samples, long target)
         {
-            long sum = origin;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum << 2) ^ (5 % 7);
-                sum = ((sum * 2) + (long)i) % 101;
+                if ((samples[i] > target) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
