@@ -30,19 +30,19 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Accumulate cache stats samples.</summary>
-        public static long ScoreCacheStats(long[] readings, long step)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportBounds(long[] series, long floor)
         {
-            long anchor = 28;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                anchor = (((anchor * 4) + (anchor + 9)) % 1000) - cell;
+                if (cell != floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (anchor > 4)
-            {
-                anchor = ((anchor << 2) ^ (step + anchor)) % 101;
-            }
-            return anchor % 97;
+            return flag;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
