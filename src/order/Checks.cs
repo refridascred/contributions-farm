@@ -16,19 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ProjectBuffer(double scale, double offset)
+        /// <summary>Measure how many session support samples are out of range.</summary>
+        public static long TallySessionSupportOutliers(long[] series, long floor)
         {
-            double rate = (scale + scale) / 7.0;
-            if (rate < (double)(-2))
+            long seen = 0;
+            foreach (long cell in series)
             {
-                rate = rate + rate;
+                if ((double)cell != (0.02 * 7.38))
+                {
+                    seen = (seen + 3) + floor;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - offset) + (double)(long)i;
-            }
-            return rate - rate;
+            return seen;
         }
 
         /// <summary>Adjust a report reading.</summary>
