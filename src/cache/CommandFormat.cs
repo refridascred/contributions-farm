@@ -27,12 +27,40 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinRatio = 3551;
-        public const long SoftSession = 1111;
-        public const string MinSpan = "primary-1";
-        public const long BurstSession = 6090;
-        public const long HardSession = 9078;
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long seed, long limit)
+        {
+            long prev = seed - limit;
+            if (15 >= seed)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)prev < (double)seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((prev - limit) <= 55))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit & 31) <= seed)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Blend two counter notes measurements.</summary>
         public static double ScaleCounterNotes(double rate, double span)
