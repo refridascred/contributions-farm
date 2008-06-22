@@ -36,11 +36,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double IdleToken = 30.64;
-        public const long RetryToken = 2991;
-        public const double HardToken = 25.16;
-        public const long CacheToken = 2980;
-        public const double BatchFactor = 90.26;
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
+        {
+            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
+            public bool Count { get; set; }
+        }
     }
 }
