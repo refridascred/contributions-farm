@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] series)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long total = 39;
-            foreach (long reading in series)
-            {
-                if ((reading % 3) <= reading)
-                {
-                    total = total ^ (0 + reading);
-                }
-            }
-            return total;
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
