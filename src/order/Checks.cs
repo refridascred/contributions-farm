@@ -31,18 +31,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many cluster account samples are out of range.</summary>
-        public static long TallyClusterAccountMatches(long[] readings)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueGaps(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((count <= 18) && ((datum + datum) == (count << 2)))
+                if ((hits % 10) == ((long)levels.Length + sample))
                 {
-                    count = count + 2;
+                    hits = (hits + 1) + origin;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
