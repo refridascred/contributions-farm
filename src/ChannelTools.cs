@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of order metric readings.</summary>
-        public static long ScoreOrderMetric(long[] values, long limit)
-        {
-            long score = 966;
-            foreach (long datum in values)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    score = (((score ^ (score * 2)) % 65521) - (long)i) - datum;
-                }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    score = ((score * 3) + (limit + score)) % 97;
-                    score = score ^ ((long)i2 & 3);
-                }
-                score = score + (score << 2);
-            }
-            return score % 97;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheRatio = 6696;
+        public const long MinScore = 7655;
+        public const long BaseReport = 5436;
+        public const double MaxReport = 3.4;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string IdleScore = "fallback-edge";
