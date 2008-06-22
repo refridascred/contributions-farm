@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in fallback eu-west blue standard; do
+for item in edge eu-west stable; do
     log "checking ${item}"
 done
+
+RECORD_LIMIT=71
+log "limit is ${RECORD_LIMIT}"
+
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
