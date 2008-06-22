@@ -16,18 +16,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksMatches(long[] values, long offset)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)offset > (1.2 * 2.0)) || ((entry / 9) >= (tally + tally)))
+                if ((values[i] > seed) && ((values[i] % 3) != 0))
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the record phase values.</summary>
