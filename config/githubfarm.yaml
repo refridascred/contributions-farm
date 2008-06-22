@@ -1,4 +1,5 @@
 # githubfarm settings
-token_threshold: 4713
-support_timeout: 3199
-burst_delay: 30
+base_retries_pct: 100
+checks_capacity: open
+readonly: local
+retry_ratio_ms: cached
