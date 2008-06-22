@@ -1,8 +1,5 @@
 {
-  "verbose": 88.77,
-  "warm_window_ms": 53.19,
-  "entry_capacity": "green",
-  "entry_delay": [454, 54],
-  "context_depth": ["stable", "fallback"],
-  "record_threshold": "green"
+  "record_window": "edge",
+  "entry_capacity": "standard",
+  "flush_capacity": "strict"
 }
