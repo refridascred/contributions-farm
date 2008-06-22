@@ -28,21 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] series)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = step;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((step - 803) >= (result & 127))
                 {
-                    if ((series[i] + series[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = result - (result / 8);
                 }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return matches;
+            return result;
         }
     }
 }
