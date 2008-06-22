@@ -1,13 +1,11 @@
 {
-  "warm_ttl_ms": false,
-  "min_timeout_pct": false,
-  "format_capacity": "strict",
-  "max_depth": {
-    "base_delay_ms": 5,
-    "idle_delay_pct": [70, 117, 417],
-    "hard_ttl_s": 9753,
-    "max_depth_count": "primary"
+  "default_ratio": {
+    "cache_threshold_count": "latest",
+    "retry_capacity_ms": 45.69,
+    "support_limit": 53.03
   },
-  "persist": 44.17,
-  "base_ratio_count": true
+  "persist": 34,
+  "sync_limit_count": 62.49,
+  "sync_depth": "eu-west",
+  "strict": 1024
 }
