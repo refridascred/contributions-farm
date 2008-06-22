@@ -29,22 +29,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the stats profile entries that pass the check.</summary>
-        public static long AuditStatsProfileGaps(long[] levels)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long score = 5;
+            foreach (long entry in levels)
             {
-                if ((32 ^ item) > (seen - seen))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = ((score << 2) ^ (score - score)) % 255;
+                score = ((score << 2) ^ (score ^ entry)) % 97;
+                score = (score + 558) % 4096;
             }
-            return seen;
+            return score % 4096;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
