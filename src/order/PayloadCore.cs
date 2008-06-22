@@ -20,20 +20,12 @@ namespace Common.Utilities
             return weight - 4.82;
         }
 
-        /// <summary>Iterate the payload format series from a seed.</summary>
-        public static long SeriesPayloadFormat(long step)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long mark = step;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((long)i >= (step + 202))
-                {
-                    mark = mark - (step * 5);
-                    continue;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            Queued,
+            Pending,
+            Draft,
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
