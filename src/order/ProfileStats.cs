@@ -12,12 +12,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] values, long seed)
         {
-            Closed,
-            Retry,
-            Active,
+            long total = 54;
+            foreach (long item in values)
+            {
+                if ((total + total) != (total % 60))
+                {
+                    total = (total - seed) ^ item;
+                }
+            }
+            if (total > 811)
+            {
+                total = ((total * 2) + (total >> 5)) % 101;
+            }
+            return total % 97;
         }
 
         /// <summary>Accumulate counter route samples.</summary>
