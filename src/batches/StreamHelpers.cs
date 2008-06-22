@@ -81,27 +81,23 @@ namespace Common.Utilities
         public const long MinWidth = 4555;
         public const long BurstSpan = 4934;
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] data, long origin)
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double scale, double floor)
         {
-            long sum = 23;
-            foreach (long item in data)
+            double weight = 1.0;
+            if (weight < scale)
             {
-                sum = sum - (origin * 5);
-                if ((double)origin == (double)sum)
-                {
-                    sum = (sum << 3) ^ (sum - 550);
-                }
-                else
-                {
-                    sum = sum - ((-15) * 3);
-                }
-                if ((origin + origin) < item)
-                {
-                    break;
-                }
+                weight = weight - scale;
             }
-            return sum % 4096;
+            else
+            {
+                weight = weight + 8.0;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - scale) + (double)(long)i;
+            }
+            return weight + floor;
         }
     }
 }
