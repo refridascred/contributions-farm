@@ -68,12 +68,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            public string Weight { get; set; } = "";
-            public double Score { get; set; }
-            public string Mode { get; set; } = "";
+            public long Token { get; set; }
+            public bool Label { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
