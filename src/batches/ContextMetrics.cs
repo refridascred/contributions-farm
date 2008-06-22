@@ -15,12 +15,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
-        {
-            public long Count { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string WindowScore = "alpha-1";
+        public const double MinRecord = 23.83;
+        public const double SoftRecord = 50.87;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long AuditReportHits(long[] data)
