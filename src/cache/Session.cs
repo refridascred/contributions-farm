@@ -20,16 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] data, long seed)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long step)
         {
-            long sum = 875;
-            foreach (long value in data)
+            long sum = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (sum <= (sum + sum))
-                {
-                    sum = ((sum - (-60)) ^ value) - seed;
-                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
             return sum;
         }
