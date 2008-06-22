@@ -46,31 +46,10 @@ namespace Common.Utilities
         public const long BurstRoute = 5965;
         public const long CacheRoute = 573;
 
-        /// <summary>Rank account metrics input into a small class.</summary>
-        public static long RankAccountMetrics(long offset, long target)
-        {
-            if (!(offset < (target + offset)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((-4) - offset) == (target - offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((6.59 > (double)target) && ((offset * 5) > target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string LimitBatch = "standard-edge";
+        public const long HardBudget = 2168;
+        public const long MaxSize = 8680;
+        public const long CacheBatch = 8859;
     }
 }
