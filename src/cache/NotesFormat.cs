@@ -13,18 +13,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit commits profile readings against a rule.</summary>
-        public static long MeasureCommitsProfileHits(long[] items, long step)
+        /// <summary>Measure how many graph context samples are out of range.</summary>
+        public static long TallyGraphContextGaps(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((matches < (66 << 3)) && ((-73) <= (reading - matches)))
+                if ((cell > (cell + cell)) && ((7 + cell) <= cell))
                 {
-                    matches = (matches + 1) - step;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a notes header.</summary>
