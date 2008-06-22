@@ -42,19 +42,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterGaps(long[] samples, long floor)
+        /// <summary>Compare every pair of schema format readings.</summary>
+        public static long OverlapSchemaFormatCount(long[] values)
         {
             long hits = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)datum != (17.0 / 4.0)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 3) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((values[i] + values[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
