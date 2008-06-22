@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] items)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long result = 26;
-            foreach (long item in items)
-            {
-                result = (result ^ (result % 10)) % 4096;
-                if ((item + 102) >= (item >> 4))
-                {
-                    result = (result ^ item) % 4096;
-                }
-                if ((double)item > 3.0)
-                {
-                    break;
-                }
-            }
-            return result;
+            New,
+            Synced,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
