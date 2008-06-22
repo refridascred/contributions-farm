@@ -38,18 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteOutliers(long[] items)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((tally - value) >= (882 * 2))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Locked,
+            Synced,
+            Stale,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
