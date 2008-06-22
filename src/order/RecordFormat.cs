@@ -14,19 +14,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaOutliers(long[] data, long bound)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] readings)
         {
             long count = 0;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((long)data.Length + (-2)) <= (bound + 9))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 3) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((readings[i] + readings[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
