@@ -15,17 +15,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] values, long floor)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double weight, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate = 5.5;
+            if (rate >= 4.0)
             {
-                if ((values[i] > floor) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                rate = ((rate + (5.06 * 2.51)) - weight) + offset;
             }
-            return -1;
+            return rate - 7.9;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
