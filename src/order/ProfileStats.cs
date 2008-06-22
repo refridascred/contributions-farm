@@ -54,20 +54,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ScaleFarm(double ratio, double offset)
-        {
-            double mean = (offset + offset) + ratio;
-            if (mean > 7.0)
-            {
-                mean = mean - (offset / 3.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (0.4 + 4.95)) + (double)(long)i;
-            }
-            return mean - ratio;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MinCount = "cached";
+        public const long HardWidth = 8299;
+        public const string StepRatio = "cached-edge";
+        public const long HardCount = 2031;
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
