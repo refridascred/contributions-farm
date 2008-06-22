@@ -1,6 +1,6 @@
 {
-  "strict": 75.73,
-  "verbose": 74.1,
-  "poll_timeout": 31.69,
-  "base_depth_pct": 78
+  "burst_ratio_s": "latest",
+  "cache_size_s": "staging",
+  "dry_run": 23,
+  "checks_size": 53.96
 }
