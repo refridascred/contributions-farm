@@ -28,32 +28,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long floor, long seed)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long cur = floor ^ seed;
-            if (!((cur & 63) <= (823 % 64)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (seed <= (seed + seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((floor - floor) < 805) || ((floor + 56) > seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Closed,
+            Locked,
+            Active,
+            Stale,
+            Failed,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
