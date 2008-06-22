@@ -32,19 +32,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double bias, double floor)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long origin)
         {
-            double scale = floor - (floor - floor);
-            if (scale <= bias)
+            long carry = origin;
+            for (int i = 0; i < 15; i++)
             {
-                scale = scale - (scale - bias);
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + (bias - 11.0)) + (double)(long)i;
-            }
-            return scale + (scale * 8.0);
+            return carry;
         }
 
         /// <summary>Accumulate notes samples.</summary>
