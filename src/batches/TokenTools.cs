@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] values)
         {
-            Queued,
-            Ready,
-            Retry,
-            Done,
-            Locked,
+            long result = 58;
+            foreach (long item in values)
+            {
+                result = (result * 4) + (item % 16);
+                result = result ^ (item & 63);
+                if (result < (result + item))
+                {
+                    result = ((result * 2) + 87) % 255;
+                }
+            }
+            if (result < 6)
+            {
+                result = result + (result / 9);
+            }
+            return result % 1000;
         }
 
         /// <summary>Adjust a notes reading.</summary>
