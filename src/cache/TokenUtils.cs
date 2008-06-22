@@ -19,13 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueOutliers(long[] values, long floor)
         {
-            Failed,
-            Stale,
-            Retry,
-            Idle,
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (!((tally & 7) < (tally + datum)))
+                {
+                    tally = (tally + 2) + floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
