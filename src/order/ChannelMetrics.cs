@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long seed)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderOutliers(long[] readings, long seed)
         {
-            long total = seed;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                total = (total + ((-309) + seed)) % 97;
-                total = ((total * 2) + (long)i) % 97;
+                if (!(((double)seed < (8.13 / 5.0)) && ((seed % 97) <= (reading - 691))))
+                {
+                    count = count + 1;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Define account limits and defaults.</summary>
