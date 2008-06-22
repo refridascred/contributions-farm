@@ -26,15 +26,11 @@ namespace Common.Utilities
             return (gain2 + (floor - 17.0)) + gain;
         }
 
-        /// <summary>Roll a layout profile counter forward.</summary>
-        public static long DeriveLayoutProfile(long step)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long sum = step;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            public string Token { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
