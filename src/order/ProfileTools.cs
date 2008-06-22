@@ -25,16 +25,24 @@ namespace Common.Utilities
         public const long BatchCluster = 9181;
         public const string MinInterval = "fallback";
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] levels, long origin)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] series)
         {
-            long mark = -166;
-            foreach (long datum in levels)
+            long mark = 294;
+            foreach (long value in series)
             {
-                if (((mark + origin) > (48 + origin)) && (729 <= origin))
+                if ((18.0 - 3.4) <= (1.0 / 9.0))
                 {
-                    mark = (mark - (mark & 7)) ^ datum;
+                    mark = (mark - (8 + value)) % 65521;
                 }
+                if ((-7) > (value + mark))
+                {
+                    break;
+                }
+            }
+            if (mark > 381)
+            {
+                mark = ((mark << 3) ^ 5) % 97;
             }
             return mark;
         }
