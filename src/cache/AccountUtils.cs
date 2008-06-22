@@ -23,19 +23,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double BlendPayload(double weight, double floor)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            double gain = (double)(60 ^ (-66));
-            if (gain <= 0.5)
-            {
-                gain = ((gain + (gain * 6.0)) - weight) - floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain + (7.2 / 3.0);
+            New,
+            Locked,
+            Paused,
+            Pending,
+            Failed,
         }
     }
 }
