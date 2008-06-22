@@ -31,18 +31,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueGaps(long[] levels, long origin)
+        /// <summary>Validate record already readings against a bound.</summary>
+        public static bool ValidateRecordAlreadyRange(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long item in series)
             {
-                if ((hits % 10) == ((long)levels.Length + sample))
+                if (item > limit)
                 {
-                    hits = (hits + 1) + origin;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
