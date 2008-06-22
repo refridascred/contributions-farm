@@ -28,21 +28,18 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] values)
+        /// <summary>Count the already buffer entries that pass the check.</summary>
+        public static long MeasureAlreadyBufferGaps(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((reading << 1) >= 97) && ((329 * 4) < reading))
                 {
-                    if ((values[i] + values[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
