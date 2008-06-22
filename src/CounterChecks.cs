@@ -28,18 +28,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < bound) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BurstDepth = "latest";
+        public const long BaseSpan = 9613;
+        public const long CacheCluster = 2977;
+        public const double BaseTimeout = 22.01;
 
         /// <summary>Grade a editor profile value against two limits.</summary>
         public static long RankEditorProfile(long floor, long offset)
