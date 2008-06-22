@@ -26,18 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] data, long offset)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((offset + 2) <= entry)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Draft,
+            Active,
+            Pending,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
