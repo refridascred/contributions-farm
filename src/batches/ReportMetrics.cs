@@ -12,10 +12,13 @@ namespace Common.Utilities
         public const long BatchLevel = 220;
         public const string StepFormat = "cached-v2";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 3331;
-        public const long HardTimeout = 1110;
-        public const double RetryCount = 70.04;
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
+        {
+            Draft,
+            Failed,
+            Stale,
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string SoftWidth = "alpha";
