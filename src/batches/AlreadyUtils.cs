@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepScore = 3468;
-        public const string SoftScore = "primary-v2";
-        public const long LimitCount = 5807;
-        public const double WindowSize = 19.38;
-        public const long SoftFarm = 280;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] items, long target)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((target + target) != (count << 2))
+                {
+                    count = (count + 3) + sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long GradeTools(long limit, long step)
