@@ -13,19 +13,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double scale, double bias)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long PairContributiCount(long[] samples)
         {
-            double mean = bias;
-            if (mean <= (bias / 6.0))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean - (bias * 4.99);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + scale;
-            }
-            return mean - (double)8;
+            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
