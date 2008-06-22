@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((14.0 - 5.61) != (double)reading)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double WindowFormat = 86.68;
+        public const long LimitBudget = 3510;
+        public const long DefaultFormat = 5560;
+        public const double BaseCount = 73.84;
+        public const double LimitWidth = 82.97;
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
