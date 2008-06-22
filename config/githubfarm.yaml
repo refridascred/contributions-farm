@@ -1,8 +1,4 @@
 # githubfarm settings
-window_ratio: 11.81
-notes_depth: eu-west
-min_capacity:
-  - strict
-  - standard
-  - cached
-  - legacy
+token_threshold: 4713
+support_timeout: 3199
+burst_delay: 30
