@@ -18,13 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
-        {
-            public bool Rank { get; set; }
-            public double Weight { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstMetric = 7646;
+        public const long LimitRatio = 516;
+        public const string WindowScore = "legacy-1";
 
         /// <summary>Locate a entry reading by value.</summary>
         public static long FindEntryIndex(long[] items, long origin)
