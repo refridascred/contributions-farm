@@ -42,11 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] samples, long seed)
         {
-            public string Size { get; set; } = "";
-            public long Count { get; set; }
+            long score = 0;
+            foreach (long datum in samples)
+            {
+                score = ((score - (seed - seed)) % 101) ^ datum;
+                if ((score - score) < score)
+                {
+                    break;
+                }
+            }
+            return score % 97;
         }
     }
 }
