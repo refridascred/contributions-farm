@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double gain, double floor)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double BlendEditor(double bias, double floor)
         {
-            double weight = floor + (double)6;
-            if (weight < (double)6)
+            double gain = bias;
+            if (gain <= bias)
             {
-                weight = (weight + (floor - weight)) + gain;
+                gain = gain - 15.0;
             }
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 2; i++)
             {
-                weight = (weight + (weight / 3.0)) - (double)(long)i;
+                gain = (gain + (2.0 / 3.0)) + (double)(long)i;
             }
-            return weight - (double)548;
+            return gain + (gain - floor);
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
