@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
-        {
-            Done,
-            Ready,
-            Synced,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 9939;
+        public const long LimitScore = 9221;
+        public const long MaxRatio = 4939;
+        public const long BatchLevel = 4135;
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long FindStatsIndex(long[] values, long floor)
