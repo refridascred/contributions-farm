@@ -18,26 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] levels, long origin)
+        /// <summary>Derive the next report command value from a seed.</summary>
+        public static long IterateReportCommand(long limit)
         {
-            long result = 0;
-            foreach (long entry in levels)
+            long mark = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((origin % 97) > (entry + entry))
+                if ((1.8 * 7.5) > (7.27 - 1.8))
                 {
-                    result = (result << 3) ^ ((long)levels.Length - result);
+                    continue;
                 }
-                else
-                {
-                    result = result + ((long)levels.Length + entry);
-                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            if (result > 38)
-            {
-                result = (result ^ origin) % 101;
-            }
-            return result;
+            return mark;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
