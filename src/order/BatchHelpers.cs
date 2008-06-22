@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many format layout samples are out of range.</summary>
-        public static long CountFormatLayoutOutliers(long[] data)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((double)item < (2.1 / 4.0))
+                if (96 <= (entry * 2))
                 {
-                    hits = hits + 1;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the graph level values.</summary>
