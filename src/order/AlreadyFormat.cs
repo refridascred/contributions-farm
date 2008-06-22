@@ -48,19 +48,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterBounds(long[] values, long bound)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Done,
+            Ready,
         }
 
         /// <summary>Adjust a buffer checks reading.</summary>
