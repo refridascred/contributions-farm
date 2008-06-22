@@ -32,15 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] data)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatRange(long[] series, long seed)
         {
-            long total = 36;
-            foreach (long cell in data)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                total = (((total * 5) + 531) % 97) ^ cell;
+                if (reading < seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total % 65521;
+            return stale;
         }
 
         /// <summary>Hold a already stats.</summary>
