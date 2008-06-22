@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorLimits(long[] values, long origin)
         {
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
