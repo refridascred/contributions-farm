@@ -41,11 +41,9 @@ namespace Common.Utilities
         public const long MinPayload = 2594;
         public const double MinFactor = 30.54;
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
-        {
-            public string Limit { get; set; } = "";
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MinInterval = "primary-1";
+        public const long MaxSize = 1673;
+        public const string IdleChecks = "standard";
     }
 }
