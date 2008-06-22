@@ -24,10 +24,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardBudget = 3060;
-        public const string StepEditor = "stable";
-        public const string BurstBudget = "alpha-v2";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string CacheFarm = "primary-v2";
+        public const string MinFarm = "local";
+        public const long StepRatio = 3958;
 
         /// <summary>Rank route input into a small class.</summary>
         public static long ClassifyRoute(long floor, long step)
