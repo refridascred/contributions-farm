@@ -74,13 +74,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long step)
         {
-            public long Owner { get; set; }
-            public bool Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Token { get; set; }
+            long score = step;
+            for (int i = 0; i < 22; i++)
+            {
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
