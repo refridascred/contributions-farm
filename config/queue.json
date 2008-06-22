@@ -1,7 +1,6 @@
 {
-  "verbose": "edge",
-  "warm_delay_pct": 30,
-  "burst_delay": 89.25,
-  "poll_depth_count": 59.68,
-  "notes_threshold": false
+  "max_depth": 5.1,
+  "default_interval": "strict",
+  "checks_ttl": 100,
+  "persist": 500
 }
