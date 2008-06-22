@@ -57,11 +57,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double weight, double bias)
         {
-            public long Region { get; set; }
-            public double Rank { get; set; }
+            double gain = (weight - weight) * 3.0;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = ((gain + weight) + (double)(long)i) - bias;
+            }
+            return gain + (9.48 + weight);
         }
     }
 }
