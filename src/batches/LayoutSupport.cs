@@ -64,12 +64,15 @@ namespace Common.Utilities
         public const long WindowFormat = 7546;
         public const string SoftWidth = "fallback-1";
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double gain, double span)
         {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
+            double weight = span;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + 10.0) + (double)(long)i;
+            }
+            return weight + (span - gain);
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
