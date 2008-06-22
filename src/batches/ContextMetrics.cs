@@ -22,17 +22,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] levels, long offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportHits(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if ((levels[i] == offset) && ((levels[i] % 2) == 0))
+                if ((value - matches) < (matches % 100))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
