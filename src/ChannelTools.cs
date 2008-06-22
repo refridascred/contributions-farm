@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsBounds(long[] readings, long seed)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionMatches(long[] levels)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (item != seed)
+                if (((matches / 2) < (matches >> 5)) && (((matches + entry) > (matches / 7)) || ((matches - 5) < entry)))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
