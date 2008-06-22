@@ -41,13 +41,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Check that every githubfarm session entry stays within the limit.</summary>
+        public static bool GuardGithubfarmSessionRange(long[] samples, long floor)
         {
-            Idle,
-            Locked,
-            Closed,
-            Stale,
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
