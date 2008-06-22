@@ -20,18 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many editor order samples are out of range.</summary>
-        public static long TallyEditorOrderHits(long[] values, long limit)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if (!((limit > count) && ((limit * 4) >= count)))
+                if (entry < limit)
                 {
-                    count = (count + 2) - reading;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
