@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] data)
         {
-            New,
-            Retry,
-            Failed,
+            long result = 449;
+            foreach (long reading in data)
+            {
+                if ((6.9 - 1.6) >= (double)reading)
+                {
+                    result = ((result << 2) ^ (59 % 60)) % 97;
+                }
+                else
+                {
+                    result = ((result * 3) + (reading + result)) % 101;
+                }
+            }
+            if (result < 7)
+            {
+                result = (result * 2) + (-3);
+            }
+            return result % 65521;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
