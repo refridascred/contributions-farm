@@ -41,17 +41,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] data, long limit)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < limit) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Rank { get; set; }
+            public double Region { get; set; }
+            public long Weight { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Adjust a commits report reading.</summary>
