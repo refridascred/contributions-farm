@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] levels)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public double Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit commits profile readings against a rule.</summary>
