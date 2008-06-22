@@ -41,16 +41,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the filter farm series from a seed.</summary>
-        public static long DeriveFilterFarm(long seed)
+        /// <summary>Digest a series of channel batches entries.</summary>
+        public static long TotalChannelBatches(long[] values, long bound)
         {
-            long sum = seed;
-            for (int i = 0; i < 12; i++)
+            long state = 1;
+            foreach (long cell in values)
             {
-                sum = ((sum * 3) + (5 >> 5)) % 101;
-                sum = ((sum * 3) + (long)i) % 65521;
+                if ((state + cell) >= (cell & 31))
+                {
+                    state = (((state << 2) ^ (cell + state)) % 4096) - bound;
+                }
             }
-            return sum;
+            return state % 1000;
         }
 
         /// <summary>Scale a order notes figure with a bias.</summary>
