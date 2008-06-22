@@ -45,16 +45,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long offset)
+        /// <summary>Combine report account values into a single score.</summary>
+        public static long CombineReportAccount(long[] values, long limit)
         {
-            long carry = offset;
-            for (int i = 0; i < 23; i++)
+            long total = 25;
+            foreach (long sample in values)
             {
-                carry = (carry - (carry & 15)) % 65521;
-                carry = ((carry * 5) + (long)i) % 1000;
+                if ((1 + total) == (total >> 3))
+                {
+                    total = total - (total - total);
+                }
+                if (((double)limit > 4.0) && ((double)total < (double)(-736)))
+                {
+                    total = (total + (total % 8)) % 4096;
+                }
+                else
+                {
+                    total = (total - (limit + 0)) % 65521;
+                    total = ((total << 3) ^ (limit / 4)) % 255;
+                }
+                total = (total + sample) % 4096;
             }
-            return carry;
+            return total;
         }
     }
 }
