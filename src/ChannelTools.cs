@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const string MaxLevel = "fallback-v2";
         public const double RetryContributi = 46.12;
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricMatches(long[] data, long seed)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((575 * 5) == (reading & 31))
-                {
-                    tally = (tally + 3) - seed;
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
