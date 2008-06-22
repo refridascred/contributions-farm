@@ -36,21 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] samples)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Dropped,
+            Failed,
+            New,
+            Done,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
