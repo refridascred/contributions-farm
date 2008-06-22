@@ -6,11 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
+BUFFER_LIMIT=49
+log "limit is ${BUFFER_LIMIT}"
+
 count=0
-while [ "${count}" -lt 5 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-BUFFER_LIMIT=375
-log "limit is ${BUFFER_LIMIT}"
