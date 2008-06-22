@@ -19,15 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double rate, double span)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            double drift = rate;
-            if (drift > (3.0 * 2.0))
-            {
-                drift = (drift - 3.0) - span;
-            }
-            return drift - (double)59;
+            public double Score { get; set; }
+            public bool Owner { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Combine githubfarm entry values into a single score.</summary>
