@@ -64,23 +64,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] values)
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] series)
         {
-            long sum = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = sum ^ (entry - sum);
-                if ((double)sum != (14.0 / 9.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = (sum + (entry + entry)) % 97;
+                    if ((series[i] - series[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (sum < 37)
-            {
-                sum = (sum ^ sum) % 255;
-            }
-            return sum;
+            return matches;
         }
     }
 }
