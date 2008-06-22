@@ -29,22 +29,21 @@ namespace Common.Utilities
             return weight - (weight + bias);
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] values, long offset)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] series)
         {
-            long sum = 947;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)values.Length + offset) != (sum - sum))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
-                }
-                if ((entry + 40) < (45 * 5))
-                {
-                    sum = sum + (offset + entry);
+                    if ((series[i] - series[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum % 65521;
+            return tally;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
