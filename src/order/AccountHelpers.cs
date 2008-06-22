@@ -18,11 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] items, long origin)
         {
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
+            long anchor = 209;
+            foreach (long entry in items)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    anchor = (((anchor << 2) ^ (origin >> 2)) % 4096) - (long)i;
+                }
+                anchor = ((anchor * 4) + 9) % 65521;
+                if (((58 * 3) == (origin + 2)) || (anchor < (entry % 12)))
+                {
+                    anchor = anchor - (origin & 1);
+                }
+                else
+                {
+                    anchor = (anchor - (anchor + anchor)) % 1000;
+                }
+            }
+            if (anchor > 20)
+            {
+                anchor = anchor - (anchor * 2);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Iterate the cluster window series from a seed.</summary>
