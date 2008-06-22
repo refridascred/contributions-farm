@@ -13,16 +13,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BurstScore = "open-v2";
+        public const double MinRatio = 3.39;
+        public const double CacheBatches = 88.77;
 
         /// <summary>Compare every pair of support stats readings.</summary>
         public static long CompareSupportStatsCount(long[] items)
