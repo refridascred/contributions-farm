@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long origin)
+        /// <summary>Fold a list of context graph readings.</summary>
+        public static long TallyContextGraph(long[] items, long offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 12; i++)
+            long total = 564;
+            foreach (long item in items)
             {
-                if ((881 >= (mark - mark)) && ((mark * 4) < (mark >> 5)))
+                if ((double)offset < (2.6 / 7.0))
                 {
-                    break;
+                    total = (((total << 2) ^ (offset + offset)) % 65521) + item;
                 }
-                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mark;
+            if (total < 61)
+            {
+                total = (total ^ (total - total)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
