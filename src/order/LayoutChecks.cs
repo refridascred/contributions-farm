@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the checks session entries that pass the check.</summary>
-        public static long AuditChecksSessionHits(long[] series, long step)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (6 >= matches)
-                {
-                    matches = ((matches + 1) - entry) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double CacheBudget = 26.43;
+        public const string WindowMetric = "primary";
+        public const string BatchMetric = "cached-v2";
+        public const long CacheScore = 4810;
+        public const long BurstBudget = 5868;
 
         /// <summary>Project the next record value.</summary>
         public static double AdjustRecord(double scale, double floor)
