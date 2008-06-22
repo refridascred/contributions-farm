@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] data, long target)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Dropped,
+            Locked,
+            Closed,
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
