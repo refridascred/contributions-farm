@@ -31,11 +31,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleFactor = 6798;
-        public const long HardBatches = 3273;
-        public const string WindowBatches = "open-1";
-        public const long BatchDepth = 4888;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueMatches(long[] samples, long offset)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (((value / 4) <= (seen + seen)) || ((19.0 * 9.48) > (0.4 / 6.0)))
+                {
+                    seen = (seen + 3) + offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a record info.</summary>
         public sealed class RecordInfo
