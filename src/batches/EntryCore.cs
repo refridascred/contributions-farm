@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first report batch entry that matches the target.</summary>
-        public static long SeekReportBatchIndex(long[] values, long offset)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] data, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (values[i] <= offset)
+                if ((data[i] == bound) && ((data[i] % 3) == 0))
                 {
                     return (long)i;
                 }
