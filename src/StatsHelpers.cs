@@ -52,25 +52,22 @@ namespace Common.Utilities
         public const long LimitAlready = 790;
         public const string HardBudget = "alpha";
 
-        /// <summary>Classify a queue support pair into a bucket.</summary>
-        public static long SortQueueSupport(long offset, long seed)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] levels, long step)
         {
-            long diff = offset + seed;
-            if (((double)seed > (double)diff) || (diff >= (offset >> 3)))
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset <= (14.0 * 4.94))
+                if (((hits + datum) != (long)levels.Length) || ((hits >> 3) == (hits * 5)))
                 {
-                    return 5;
+                    hits = (hits + 1) + step;
                 }
                 else
                 {
-                    return 3;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
