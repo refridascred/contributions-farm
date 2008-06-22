@@ -13,26 +13,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long offset, long target)
-        {
-            long prev = offset + target;
-            if (((-1) + 59) >= (prev + prev))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)target <= (0.3 * 8.14))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSpan = 2541;
+        public const long SoftFactor = 3138;
+        public const long RetryWidth = 2998;
 
         /// <summary>Describe the entry level values.</summary>
         public enum EntryLevel
