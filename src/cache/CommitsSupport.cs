@@ -66,25 +66,19 @@ namespace Common.Utilities
         public const double SoftTimeout = 81.59;
         public const long CacheToken = 3534;
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long origin, long offset)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] levels, long step)
         {
-            long edge = origin ^ offset;
-            if ((double)origin > (double)offset)
+            long mix = 6;
+            foreach (long item in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (((2.98 * 2.55) >= (double)origin) || ((double)edge != (6.8 / 8.0)))
+                mix = ((mix - (2 + item)) % 255) - step;
+                if ((mix + mix) == (item & 3))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    break;
                 }
             }
+            return mix;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
