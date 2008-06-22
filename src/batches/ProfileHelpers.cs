@@ -35,12 +35,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 7598;
-        public const long BurstFactor = 6054;
-        public const long SoftEditor = 5593;
-        public const long BatchEditor = 9218;
-        public const string BatchTimeout = "local-edge";
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordLimits(long[] readings, long step)
+        {
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string BatchCache = "stable";
