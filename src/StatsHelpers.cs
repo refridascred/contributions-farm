@@ -55,13 +55,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
-        {
-            Retry,
-            Dropped,
-            Stale,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string CacheRatio = "open-1";
+        public const long LimitAlready = 790;
+        public const string HardBudget = "alpha";
 
         /// <summary>Classify a queue support pair into a bucket.</summary>
         public static long SortQueueSupport(long offset, long seed)
