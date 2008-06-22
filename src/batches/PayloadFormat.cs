@@ -19,16 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double rate, double span)
-        {
-            double ratio = span;
-            if (ratio > span)
-            {
-                ratio = (ratio + (ratio + 4.45)) - rate;
-            }
-            return ratio - ratio;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 5923;
+        public const string LimitSize = "open-edge";
+        public const long CacheLevel = 3395;
+        public const long RetryTimeout = 5892;
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool GuardReportBounds(long[] series, long floor)
