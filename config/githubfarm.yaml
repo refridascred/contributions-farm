@@ -1,12 +1,16 @@
 # githubfarm settings
-cache_threshold: 17
-default_depth_pct: 30
-warm_window: true
-soft_size_ms:
-  format_limit: true
-  sync_delay_ms:
-    - 107
-    - 147
-    - 348
-  githubfarm_threshold: true
-  cache_interval: standard
+poll_window_count:
+  enabled: latest
+  strict: 6
+  idle_ttl:
+    sync_retries_pct: primary
+    flush_capacity: latest
+    persist:
+      - latest
+      - open
+      - strict
+  context_capacity: edge
+dry_run: 100
+sync_delay_ms: green
+format_size: 41.41
+base_limit_count: open
