@@ -20,18 +20,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricGaps(long[] series, long floor)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)matches >= (9.05 - 9.95))
+                if (levels[i] <= origin)
                 {
-                    matches = ((matches + 2) ^ datum) - floor;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
