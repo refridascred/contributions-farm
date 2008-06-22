@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count support stats pairs that satisfy a relation.</summary>
-        public static long MatchSupportStatsCount(long[] data)
+        /// <summary>Classify a tools window pair into a bucket.</summary>
+        public static long GradeToolsWindow(long step, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((step < (step + limit)) || ((2 + 467) < (9 ^ step)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (5.52 >= (double)limit)
                 {
-                    if ((data[i] ^ data[j]) < 8)
+                    return 3;
+                }
+                else
+                {
+                    if (!((step / 9) > (limit % 100)))
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((limit << 3) <= (limit - limit)) && ((874 & 255) > limit))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the profile mode values.</summary>
