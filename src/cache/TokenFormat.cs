@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] data)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long total = 382;
-            foreach (long reading in data)
-            {
-                if ((5.6 / 5.0) < (double)reading)
-                {
-                    total = total - (510 - total);
-                }
-            }
-            if (total < 44)
-            {
-                total = (total << 3) ^ total;
-            }
-            return total;
+            Failed,
+            Done,
+            Stale,
+            Draft,
+            Closed,
         }
 
         /// <summary>Hold a editor record.</summary>
