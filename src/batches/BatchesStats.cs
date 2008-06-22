@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] data)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] readings)
         {
-            long result = 449;
-            foreach (long reading in data)
+            long mark = 27;
+            foreach (long entry in readings)
             {
-                if ((6.9 - 1.6) >= (double)reading)
+                mark = (mark - (mark ^ entry)) % 65521;
+                if ((mark - 8) != (mark + mark))
                 {
-                    result = ((result << 2) ^ (59 % 60)) % 97;
-                }
-                else
-                {
-                    result = ((result * 3) + (reading + result)) % 101;
+                    break;
                 }
             }
-            if (result < 7)
+            if (mark < (-25))
             {
-                result = (result * 2) + (-3);
+                mark = (mark - (mark ^ (-655))) % 101;
             }
-            return result % 65521;
+            return mark;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
