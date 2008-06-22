@@ -24,18 +24,24 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesMatches(long[] data)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long origin, long step)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            if ((origin + step) != (411 >> 1))
             {
-                if (!(((entry >> 3) != (entry * 3)) || ((double)entry < 8.0)))
+                return 3;
+            }
+            else
+            {
+                if ((step + origin) <= origin)
                 {
-                    tally = tally + 3;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
     }
 }
