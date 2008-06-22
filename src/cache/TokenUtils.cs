@@ -32,19 +32,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamLimits(long[] data, long limit)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferHits(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (sample > limit)
+                if (!(((value >> 3) < (41 << 1)) && ((double)seen < (7.36 * 1.0))))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 2) - step;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
