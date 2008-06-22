@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a account cache counter forward.</summary>
-        public static long SeriesAccountCache(long bound)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long limit, long floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 15; i++)
+            long gap = limit + floor;
+            if ((limit / 9) <= limit)
             {
-                if (carry <= ((long)i * 2))
-                {
-                    carry = ((carry << 3) ^ (carry % 12)) % 255;
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
+                return 7;
             }
-            return carry;
+            else
+            {
+                if ((gap + 143) >= gap)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((floor + limit) > limit) || ((floor - limit) > floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((5.19 * 14.0) >= (double)gap)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
