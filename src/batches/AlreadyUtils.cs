@@ -53,20 +53,19 @@ namespace Common.Utilities
         public const long BatchCommits = 5277;
         public const long HardCommits = 6093;
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] data, long seed)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamBounds(long[] values, long limit)
         {
-            long sum = 815;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long item in values)
             {
-                sum = sum - (seed % 3);
-                if ((seed > reading) || ((reading + reading) > 904))
+                if (item > limit)
                 {
-                    sum = (sum ^ (seed >> 2)) % 1000;
+                    stale = false;
+                    break;
                 }
-                sum = (sum * 5) + 143;
             }
-            return sum % 4096;
+            return stale;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
