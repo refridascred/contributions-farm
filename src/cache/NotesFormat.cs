@@ -43,18 +43,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesMatches(long[] readings)
+        /// <summary>Accumulate channel report samples.</summary>
+        public static long ScoreChannelReport(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long result = -61;
+            foreach (long cell in readings)
             {
-                if ((3.49 + 3.87) <= (double)value)
+                if ((floor >> 4) == (result % 5))
                 {
-                    count = count + 1;
+                    result = ((result - (result << 2)) % 97) ^ cell;
+                }
+                if (!(result <= (result - 5)))
+                {
+                    break;
                 }
             }
-            return count;
+            return result % 4096;
         }
     }
 }
