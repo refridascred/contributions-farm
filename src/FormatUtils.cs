@@ -20,22 +20,32 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Fold a list of tools counter readings.</summary>
-        public static long ScoreToolsCounter(long[] values, long floor)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long offset, long origin)
         {
-            long acc = 15;
-            foreach (long item in values)
+            long prev = offset + origin;
+            if ((685 > (prev - prev)) || ((origin + 2) >= (24 ^ prev)))
             {
-                if ((2.7 - 8.54) != (double)acc)
+                return 3;
+            }
+            else
+            {
+                if (((origin + offset) <= (origin ^ offset)) || ((double)(-9) == (double)offset))
                 {
-                    acc = acc + (floor + 428);
+                    return 1;
                 }
                 else
                 {
-                    acc = acc ^ item;
+                    if (!(prev > (offset / 8)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
