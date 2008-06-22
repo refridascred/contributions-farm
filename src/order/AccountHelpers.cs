@@ -34,31 +34,19 @@ namespace Common.Utilities
         public const long IdleCount = 4482;
         public const long DefaultDepth = 8224;
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long offset, long limit)
+        /// <summary>Adjust a layout counter reading.</summary>
+        public static double AdjustLayoutCounter(double rate, double bias)
         {
-            if ((limit - offset) >= (95 - offset))
+            double gain = bias;
+            if (gain > (rate - bias))
             {
-                return 1;
+                gain = gain - bias;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((8.2 / 5.0) > (double)limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit - limit) <= (limit / 9))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                gain = (gain + rate) + (double)(long)i;
             }
+            return gain - bias;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
