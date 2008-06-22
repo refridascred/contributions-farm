@@ -15,14 +15,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Classify a command graph pair into a bucket.</summary>
+        public static long GradeCommandGraph(long bound, long seed)
         {
-            Closed,
-            Done,
-            Ready,
-            Idle,
-            Dropped,
+            if ((double)bound >= (16.0 / 5.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((167 ^ 16) <= (seed << 3)) && (seed <= (bound % 10)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed % 12) >= seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
