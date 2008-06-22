@@ -26,12 +26,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string SoftRoute = "cached-edge";
-        public const long StepFactor = 86;
-        public const double HardRoute = 73.45;
-        public const double SoftFactor = 80.2;
-        public const long BurstTimeout = 8207;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseScore = 5983;
+        public const string DefaultRatio = "fallback-v2";
+        public const long DefaultDepth = 1461;
+        public const string StepMetrics = "legacy";
+        public const string IdleCount = "stable";
 
         /// <summary>Digest a series of checks farm entries.</summary>
         public static long CombineChecksFarm(long[] samples, long seed)
