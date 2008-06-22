@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            Done,
-            Pending,
+            Closed,
+            Retry,
+            Queued,
+            Dropped,
             New,
-            Draft,
         }
 
         /// <summary>Hold a metrics summary.</summary>
