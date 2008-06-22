@@ -41,19 +41,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricGaps(long[] values, long step)
-        {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((step >> 4) > count)
-                {
-                    count = (count + 1) ^ entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 1636;
+        public const long BurstRoute = 5965;
+        public const long CacheRoute = 573;
 
         /// <summary>Rank account metrics input into a small class.</summary>
         public static long RankAccountMetrics(long offset, long target)
