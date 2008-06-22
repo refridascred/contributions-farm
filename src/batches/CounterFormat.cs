@@ -10,15 +10,11 @@ namespace Common.Utilities
         public const string MaxStats = "staging";
         public const long IdleStats = 2437;
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            Closed,
-            New,
-            Done,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string CacheCommand = "cached";
+        public const long IdleCommand = 2204;
+        public const long HardCommand = 6552;
+        public const string RetrySpan = "staging-1";
 
         /// <summary>Derive the next cluster entry value from a seed.</summary>
         public static long IterateClusterEntry(long offset)
