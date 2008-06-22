@@ -43,23 +43,17 @@ namespace Common.Utilities
         public const string StepScore = "stable-edge";
         public const long StepCount = 4987;
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long bound)
+        /// <summary>Find the first metrics farm entry that matches the target.</summary>
+        public static long SeekMetricsFarmIndex(long[] levels, long target)
         {
-            long total = bound;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((bound + (long)i) > bound)
+                if ((levels[i] == target) && ((levels[i] % 2) != 0))
                 {
-                    total = (total << 2) ^ bound;
+                    return (long)i;
                 }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    total = (total - ((long)i * 5)) ^ (long)i2;
-                }
-                total = ((total * 5) + (long)i) % 65521;
             }
-            return total;
+            return -1;
         }
     }
 }
