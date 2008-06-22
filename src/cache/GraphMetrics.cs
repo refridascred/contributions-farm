@@ -72,12 +72,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
-        {
-            Dropped,
-            Synced,
-            Queued,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 8844;
+        public const string MaxMetric = "staging-v2";
+        public const double BatchMetric = 5.71;
+        public const double BurstMetric = 18.78;
     }
 }
