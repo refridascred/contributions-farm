@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowLimits(long[] samples, long limit)
-        {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultScore = 9403;
+        public const long MinSize = 3524;
+        public const long DefaultBudget = 1404;
+        public const long CacheSpan = 9118;
 
         /// <summary>Match up notes githubfarm samples.</summary>
         public static long CompareNotesGithubfarmCount(long[] data)
