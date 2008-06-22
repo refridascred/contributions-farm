@@ -19,22 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] levels)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double gain, double floor)
         {
-            long mark = 442;
-            foreach (long value in levels)
-            {
-                if ((mark ^ (long)levels.Length) > (mark << 1))
-                {
-                    mark = (((mark * 3) + (0 + 400)) % 101) + value;
-                }
-                else
-                {
-                    mark = mark - mark;
-                }
-            }
-            return mark;
+            double gain2 = (double)701;
+            return (gain2 + (floor - 17.0)) + gain;
         }
 
         /// <summary>Define window limits and defaults.</summary>
