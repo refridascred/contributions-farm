@@ -33,17 +33,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] data, long seed)
+        /// <summary>Digest a series of record stream entries.</summary>
+        public static long TotalRecordStream(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 6;
+            foreach (long cell in readings)
             {
-                if (data[i] == seed)
+                carry = ((carry << 3) ^ (carry + 1)) % 1000;
+                if ((4.1 / 7.0) <= (double)carry)
                 {
-                    return (long)i;
+                    carry = (carry << 2) ^ (cell * 5);
                 }
             }
-            return -1;
+            return carry % 4096;
         }
 
         /// <summary>Match up context cluster samples.</summary>
