@@ -37,15 +37,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit counter support readings against a rule.</summary>
-        public static long AuditCounterSupportOutliers(long[] series)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] levels, long offset)
         {
             long seen = 0;
-            foreach (long reading in series)
+            foreach (long entry in levels)
             {
-                if ((((32 + seen) < (reading % 7)) || ((3.2 / 7.0) != (double)reading)) || (((double)reading >= (4.34 * 6.0)) && ((7.2 - 3.8) < (double)reading)))
+                if ((double)seen != (double)offset)
                 {
-                    seen = seen + 2;
+                    seen = (seen + 1) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
