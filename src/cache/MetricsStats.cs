@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit layout record readings against a rule.</summary>
-        public static long AuditLayoutRecordMatches(long[] data, long target)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountRange(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if ((item * 2) == (item - 68))
+                if (reading < origin)
                 {
-                    count = (count + 2) - target;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Blend two entry measurements.</summary>
