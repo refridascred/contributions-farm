@@ -27,19 +27,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ProjectOrder(double rate, double offset)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] levels, long target)
         {
-            double weight = (7.0 - rate) / 4.0;
-            if (weight > weight)
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight - offset;
+                if (levels[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - 7.2) + (double)(long)i;
-            }
-            return weight - weight;
+            return -1;
         }
     }
 }
