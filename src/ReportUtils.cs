@@ -14,11 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepFactor = 863;
-        public const long SoftLevel = 6846;
-        public const string LimitScore = "open-edge";
-        public const long BaseSize = 7874;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamOutliers(long[] series)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((seen - (-56)) > seen)
+                {
+                    seen = (seen + 3) ^ cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of session readings.</summary>
         public static long DigestSession(long[] items, long limit)
