@@ -28,24 +28,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long limit, long target)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] series)
         {
-            if ((5 > limit) || ((target << 3) <= (42 >> 2)))
+            long seen = 0;
+            foreach (long reading in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)target <= (13.0 * 4.9)) || ((double)3 < (double)limit))
+                if (reading <= (518 ^ reading))
                 {
-                    return 6;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    return 7;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the tools state values.</summary>
