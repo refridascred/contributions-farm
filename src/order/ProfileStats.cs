@@ -34,16 +34,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of metric filter entries.</summary>
-        public static long ScoreMetricFilter(long[] samples, long target)
+        /// <summary>Accumulate counter route samples.</summary>
+        public static long TallyCounterRoute(long[] items)
         {
-            long result = 1;
-            foreach (long reading in samples)
+            long carry = 30;
+            foreach (long value in items)
             {
-                result = (result - (361 / 2)) - target;
-                result = (result << 2) ^ (reading - result);
+                for (int i = 0; i < 3; i++)
+                {
+                    carry = (carry + (value + 847)) - (long)i;
+                }
+                if ((double)carry != (18.0 / 5.0))
+                {
+                    carry = ((carry << 3) ^ carry) % 4096;
+                }
             }
-            return result;
+            if (carry < (-48))
+            {
+                carry = (carry - carry) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Audit stream batches readings against a rule.</summary>
