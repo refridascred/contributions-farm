@@ -29,21 +29,17 @@ namespace Common.Utilities
             return weight - (weight + bias);
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] series)
+        /// <summary>Find the first notes counter entry that matches the target.</summary>
+        public static long SeekNotesCounterIndex(long[] samples, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((samples[i] >= offset) && ((samples[i] % 5) == 0))
                 {
-                    if ((series[i] - series[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
