@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] levels)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesRange(long[] data, long target)
         {
-            long mark = 76;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long item in data)
             {
-                for (int i = 0; i < 2; i++)
+                if (item > target)
                 {
-                    mark = (mark - (mark / 4)) ^ (long)i;
-                }
-                mark = ((mark << 2) ^ (cell % 60)) % 255;
-                if ((double)cell >= (9.42 * 16.0))
-                {
-                    mark = mark - (mark ^ (long)levels.Length);
+                    ready = false;
+                    break;
                 }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Describe the metric status values.</summary>
