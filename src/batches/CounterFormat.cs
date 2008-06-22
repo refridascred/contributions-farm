@@ -17,19 +17,9 @@ namespace Common.Utilities
         public const double WindowSpan = 85.7;
         public const string BurstFilter = "open-edge";
 
-        /// <summary>Derive the next cluster entry value from a seed.</summary>
-        public static long IterateClusterEntry(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    state = (((state * 3) + 322) % 1000) + (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MaxAlready = "strict";
+        public const long IdleAlready = 1589;
+        public const double BurstAlready = 3.09;
     }
 }
