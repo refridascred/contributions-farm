@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] data, long seed)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] values)
         {
-            long state = 610;
-            foreach (long sample in data)
+            long result = 50;
+            foreach (long entry in values)
             {
-                state = (state << 2) ^ (7 ^ sample);
+                if (((4.0 + 9.94) <= (double)result) || ((result & 15) > (result * 3)))
+                {
+                    result = (result + (entry + entry)) % 101;
+                }
+                else
+                {
+                    result = result - (172 - entry);
+                }
             }
-            if (state < 9)
-            {
-                state = (state ^ seed) % 101;
-            }
-            return state;
+            return result;
         }
 
         /// <summary>Locate a token session reading by value.</summary>
