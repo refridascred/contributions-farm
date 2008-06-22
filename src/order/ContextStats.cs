@@ -94,11 +94,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleWidth = 4859;
-        public const double DefaultLayout = 78.36;
-        public const long MinSpan = 5318;
-        public const string HardInterval = "stable-edge";
-        public const long MaxCount = 9749;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] series, long seed)
+        {
+            long carry = 76;
+            foreach (long cell in series)
+            {
+                if ((double)seed < (3.6 / 6.0))
+                {
+                    carry = (((carry * 2) + (seed + 959)) % 1000) ^ cell;
+                }
+            }
+            if (carry > 26)
+            {
+                carry = (carry + (seed * 2)) % 65521;
+            }
+            return carry % 65521;
+        }
     }
 }
