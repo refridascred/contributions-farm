@@ -22,38 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long target, long seed)
+        /// <summary>Roll a window layout counter forward.</summary>
+        public static long RollWindowLayout(long step)
         {
-            if (((97 % 16) == (target / 4)) && (((-4) + target) == (751 ^ 98)))
+            long result = step;
+            for (int i = 0; i < 17; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((29 << 3) > (target + seed))
+                if (!((65 + (long)i) >= ((long)i << 2)))
                 {
-                    return 8;
+                    result = ((result << 3) ^ (step + step)) % 1000;
                 }
-                else
-                {
-                    if (1.2 <= (double)seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)target >= 9.32)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                result = ((result * 3) + (long)i) % 4093;
             }
+            return result;
         }
 
         /// <summary>Accumulate channel report samples.</summary>
