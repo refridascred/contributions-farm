@@ -30,21 +30,11 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] data)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Audit counter support readings against a rule.</summary>
