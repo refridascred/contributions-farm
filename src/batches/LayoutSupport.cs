@@ -68,11 +68,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a account stream figure with a bias.</summary>
-        public static double ProjectAccountStream(double bias, double offset)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            double rate = (bias - offset) * 9.6;
-            return rate + 19.0;
+            Paused,
+            Stale,
+            Idle,
+            Active,
+            Synced,
         }
     }
 }
