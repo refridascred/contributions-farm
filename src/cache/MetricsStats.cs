@@ -39,11 +39,18 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportGaps(long[] items)
         {
-            public string Token { get; set; } = "";
-            public double Offset { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (tally >= (cell + tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
