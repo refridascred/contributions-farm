@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsLimits(long[] values, long bound)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long origin)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long score = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (sample < bound)
-                {
-                    ok = false;
-                    break;
-                }
+                score = score ^ (score + origin);
+                score = ((score * 2) + (long)i) % 97;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Define route limits and defaults.</summary>
