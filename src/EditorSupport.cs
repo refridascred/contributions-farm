@@ -24,19 +24,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long step)
+        /// <summary>Match up profile report samples.</summary>
+        public static long PairProfileReportCount(long[] data)
         {
-            long mix = step;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((mix > (step ^ (long)i)) || ((double)(long)i <= (3.2 + 1.08)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = (mix ^ (step + 738)) % 4096;
+                    if ((data[i] - data[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
                 }
-                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Count format session pairs that satisfy a relation.</summary>
