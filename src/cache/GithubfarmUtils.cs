@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double weight, double bias)
         {
-            Closed,
-            Queued,
-            Failed,
-            Active,
+            double ratio = bias;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + bias) + (double)(long)i;
+            }
+            return ratio - weight;
         }
 
         /// <summary>Describe the queue status values.</summary>
