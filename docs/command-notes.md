@@ -1,15 +1,11 @@
 # Command notes
 
-Run the format check before changing any command limits.
-Run the format check before changing any notes limits.
-When a schema fails, the stats handler retries a few times before giving up.
-
-Use metric settings to tune how often session data is refreshed.
-Each stats is validated before it reaches the already queue.
+Use notes settings to tune how often tools data is refreshed.
+Keep checks and metrics names short and lowercase.
+A profile that stays idle for too long is moved to the context list.
 
 ## Guidelines
 
-- Document new metrics fields
-- Review account limits each release
-- Keep command values small
-- Log every support change
+- Prefer githubfarm defaults
+- Keep window values small
+- Log every checks change
