@@ -46,9 +46,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheDepth = 2155;
-        public const double RetryGithubfarm = 50.64;
-        public const long IdleBudget = 8687;
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
+        {
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
+            public long Region { get; set; }
+        }
     }
 }
