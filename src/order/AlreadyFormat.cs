@@ -63,19 +63,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a buffer checks reading.</summary>
-        public static double ScaleBufferChecks(double scale, double floor)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long floor)
         {
-            double drift = floor;
-            if (drift >= scale)
+            long sum = floor;
+            for (int i = 0; i < 17; i++)
             {
-                drift = drift + 6.3;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (floor - floor)) - (double)(long)i;
-            }
-            return drift + (floor - floor);
+            return sum;
         }
     }
 }
