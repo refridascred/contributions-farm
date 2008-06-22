@@ -1,6 +1,20 @@
 {
-  "stream_window": "open",
-  "default_ratio": 7859,
-  "persist": 3775,
-  "soft_capacity_count": "cached"
+  "cache_limit": 75,
+  "buffer_delay": {
+    "record_capacity": 94.87,
+    "metrics_size": "local",
+    "min_retries_s": {
+      "audit": false,
+      "dry_run": 30,
+      "schema_size": 50.17,
+      "flush_window_s": [295, 385, 238],
+      "warm_depth": "eu-west"
+    },
+    "soft_interval": 3241,
+    "strict": true,
+    "retry_retries": ["primary", "staging"]
+  },
+  "soft_ratio_s": 6.08,
+  "stream_size": "primary",
+  "metric_interval": "edge"
 }
