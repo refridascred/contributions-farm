@@ -61,22 +61,13 @@ namespace Common.Utilities
         public const long LimitBuffer = 6966;
         public const long DefaultBuffer = 4728;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphMatches(long[] data, long offset)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (((matches - cell) >= (matches * 4)) || ((offset & 127) == (cell << 3)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a notes entry.</summary>
