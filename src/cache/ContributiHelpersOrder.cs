@@ -42,19 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] samples, long seed)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] items, long floor)
         {
-            long score = 0;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long item in items)
             {
-                score = ((score - (seed - seed)) % 101) ^ datum;
-                if ((score - score) < score)
+                if (item != floor)
                 {
+                    stale = false;
                     break;
                 }
             }
-            return score % 97;
+            return stale;
         }
     }
 }
