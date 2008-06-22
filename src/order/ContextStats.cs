@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of format layout readings.</summary>
-        public static long TotalFormatLayout(long[] readings)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long offset, long step)
         {
-            long anchor = 631;
-            foreach (long item in readings)
+            if ((offset << 2) != (offset % 100))
             {
-                anchor = anchor ^ item;
-                if ((double)item > (double)anchor)
+                return 6;
+            }
+            else
+            {
+                if ((double)offset != (3.7 - 6.0))
                 {
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((step + offset) > (step + step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
