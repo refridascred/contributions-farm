@@ -1,5 +1,8 @@
 {
-  "audit": false,
-  "base_delay": "legacy",
-  "compress": 500
+  "retry_limit_s": "blue",
+  "context_size": false,
+  "support_capacity": [336, 301, 451, 337],
+  "token_depth": 60,
+  "support_ttl": 3223,
+  "batch_capacity": ["edge", "latest", "staging", "blue"]
 }
