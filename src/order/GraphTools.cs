@@ -55,21 +55,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] items)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ProjectFormat(double scale, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double mean = scale;
+            if (mean > (double)713)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = mean - offset;
             }
-            return count;
+            else
+            {
+                mean = mean - (mean + offset);
+            }
+            return mean + (double)73;
         }
     }
 }
