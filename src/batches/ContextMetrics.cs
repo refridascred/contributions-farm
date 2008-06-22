@@ -30,18 +30,19 @@ namespace Common.Utilities
         public const long StepQueue = 6898;
         public const long DefaultWidth = 9023;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsHits(long[] samples)
+        /// <summary>Validate tools stats readings against a bound.</summary>
+        public static bool CheckToolsStatsLimits(long[] data, long step)
         {
-            long count = 0;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if ((item >> 1) >= count)
+                if (reading != step)
                 {
-                    count = count + 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
