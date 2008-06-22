@@ -59,21 +59,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] levels)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long origin, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((8.74 - 6.38) != (double)seed)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((579 & 31) < seed)
                 {
-                    if ((levels[i] - levels[j]) > 10)
+                    return 0;
+                }
+                else
+                {
+                    if ((origin % 97) > (seed << 1))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return matches;
         }
     }
 }
