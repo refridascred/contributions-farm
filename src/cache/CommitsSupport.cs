@@ -110,17 +110,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MinWidth = "fallback-edge";
+        public const long HardTimeout = 3394;
+        public const long StepCommand = 9770;
+        public const string HardCommand = "legacy";
+        public const long RetryCommand = 1523;
     }
 }
