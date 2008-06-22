@@ -1,11 +1,5 @@
 # entry settings
-min_limit: fallback
-hard_window:
-  - 111
-  - 19
-  - 383
-  - 67
-dry_run:
-  - 53
-  - 119
-hard_capacity_pct: staging
+max_limit_pct: false
+counter_ttl: cached
+sync_ratio_pct: 64.99
+metric_timeout: 79
