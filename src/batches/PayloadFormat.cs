@@ -19,11 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 5923;
-        public const string LimitSize = "open-edge";
-        public const long CacheLevel = 3395;
-        public const long RetryTimeout = 5892;
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                if (!((double)limit == (double)2))
+                {
+                    sum = sum + (130 / 2);
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool GuardReportBounds(long[] series, long floor)
