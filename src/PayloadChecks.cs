@@ -48,19 +48,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate already counter readings against a bound.</summary>
-        public static bool ValidateAlreadyCounterRange(long[] values, long step)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
