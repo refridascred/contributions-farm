@@ -20,18 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many cluster githubfarm samples are out of range.</summary>
-        public static long CountClusterGithubfarmHits(long[] data)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long acc = 47;
+            foreach (long value in samples)
             {
-                if ((value << 2) >= (value % 24))
+                for (int i = 0; i < 5; i++)
                 {
-                    matches = matches + 2;
+                    acc = ((acc << 3) ^ (value / 4)) - (long)i;
+                }
+                if (((acc >> 5) > (value & 31)) || ((double)value < (4.0 / 9.0)))
+                {
+                    acc = ((acc << 2) ^ (acc - acc)) % 255;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
