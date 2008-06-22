@@ -47,26 +47,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metrics account values into a single score.</summary>
-        public static long ScoreMetricsAccount(long[] levels)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long result = -950;
-            foreach (long cell in levels)
-            {
-                if ((4.69 > (double)result) || ((result ^ result) >= (cell ^ result)))
-                {
-                    result = result ^ (result ^ cell);
-                }
-                if ((0.73 + 0.7) >= (double)result)
-                {
-                    result = (result << 3) ^ (result % 10);
-                }
-                if (cell > (result * 4))
-                {
-                    result = ((result * 3) + (result << 1)) % 1000;
-                }
-            }
-            return result % 97;
+            public string Size { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
