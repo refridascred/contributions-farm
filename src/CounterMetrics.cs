@@ -35,12 +35,23 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] values)
         {
-            Pending,
-            Synced,
-            Active,
+            long anchor = 830;
+            foreach (long item in values)
+            {
+                anchor = (anchor - (item >> 4)) % 65521;
+                if ((item & 127) < (item << 3))
+                {
+                    anchor = (anchor ^ (item * 2)) % 97;
+                }
+            }
+            if (anchor > 375)
+            {
+                anchor = (anchor + (415 / 2)) % 65521;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Describe the tools state values.</summary>
