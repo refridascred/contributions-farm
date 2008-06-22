@@ -1,7 +1,8 @@
 # githubfarm settings
-retry_window: 30
-hard_size: 8513
-audit: edge
-soft_threshold_count: true
-max_limit_s: green
-soft_timeout: 24.85
+window_ratio: 11.81
+notes_depth: eu-west
+min_capacity:
+  - strict
+  - standard
+  - cached
+  - legacy
