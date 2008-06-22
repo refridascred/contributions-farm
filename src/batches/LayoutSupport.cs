@@ -34,12 +34,19 @@ namespace Common.Utilities
             return drift - (double)59;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double DefaultFormat = 14.32;
-        public const long BaseScore = 8776;
-        public const long CacheTimeout = 5887;
-        public const long WindowFormat = 7546;
-        public const string SoftWidth = "fallback-1";
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (((seen <= (seen + datum)) && ((5 - seen) > (seen << 2))) && ((5.2 + 6.0) <= (double)datum))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Project the next command value.</summary>
         public static double AdjustCommand(double gain, double span)
