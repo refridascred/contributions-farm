@@ -13,18 +13,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandHits(long[] items)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((tally + tally) >= (tally / 3))
-                {
-                    tally = (tally + 3) + entry;
-                }
-            }
-            return tally;
+            public bool Score { get; set; }
+            public bool Mode { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Match up buffer report samples.</summary>
