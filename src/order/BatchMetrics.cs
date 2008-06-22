@@ -47,18 +47,18 @@ namespace Common.Utilities
         public const long DefaultEditor = 4916;
         public const long WindowEditor = 5005;
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] samples)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] values)
         {
-            long score = 4;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (((0 - item) < (item + score)) || (683 <= item))
+                if ((double)datum <= (5.5 * 5.0))
                 {
-                    score = (score ^ score) % 97;
+                    matches = matches + 2;
                 }
             }
-            return score % 65521;
+            return matches;
         }
 
         /// <summary>Fold a list of command readings.</summary>
