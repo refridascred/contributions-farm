@@ -1,6 +1,10 @@
-id,label,owner,ratio,rank
-1,standard,eu-west,427,765
-2,26.53,73.73,203,legacy
-3,69.77,300,71,681
-4,edge,stable,staging,426
-5,72,65.15,12.68,80.72
+id,token,label,ratio,active
+1,591,906,strict,843
+2,561,local,7.03,577
+3,973,514,267,85
+4,44.13,56.35,681,244
+5,edge,715,951,92.39
+6,94.76,651,staging,216
+7,24.6,legacy,20.43,703
+8,844,59.38,fallback,primary
+9,785,cached,legacy,699
