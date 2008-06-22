@@ -29,13 +29,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double scale, double span)
         {
-            Active,
-            Stale,
-            Synced,
-            Idle,
+            double rate = span;
+            if (rate <= scale)
+            {
+                rate = rate - (double)(-84);
+            }
+            else
+            {
+                rate = rate - (span * 7.7);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + span) - (double)(long)i;
+            }
+            return rate - span;
         }
     }
 }
