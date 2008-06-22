@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
-        {
-            Done,
-            Active,
-            Failed,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryScore = 4622;
+        public const string MinWidth = "local-edge";
+        public const long BatchInterval = 6473;
 
         /// <summary>Hold a cache snapshot.</summary>
         public sealed class CacheSnapshot
