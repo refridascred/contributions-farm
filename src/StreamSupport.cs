@@ -23,18 +23,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteOutliers(long[] values, long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteHits(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((double)hits <= (6.4 - 4.0))
+                if ((6.1 * 11.0) != (double)bound)
                 {
-                    hits = ((hits + 2) + datum) - step;
+                    matches = (matches + 1) ^ datum;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the layout level values.</summary>
