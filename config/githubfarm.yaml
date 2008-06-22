@@ -1,5 +1,5 @@
 # githubfarm settings
-flush_retries_s: 3463
-buffer_timeout: local
-sync_retries: local
-verbose: 43
+record_capacity: 1007
+warm_capacity_count: false
+warm_size_count: 12
+max_window_count: true
