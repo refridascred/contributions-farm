@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] readings)
-        {
-            long score = 397;
-            foreach (long sample in readings)
-            {
-                if (((9 - score) > ((long)readings.Length & 127)) && ((double)score > (5.7 * 6.3)))
-                {
-                    score = score ^ (sample & 1);
-                }
-            }
-            if (score > 3)
-            {
-                score = (score + 26) % 1000;
-            }
-            return score % 97;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double WindowCount = 2.41;
+        public const long MinInterval = 3912;
+        public const double LimitRatio = 38.73;
+        public const long BurstBuffer = 8110;
+        public const double RetryBuffer = 55.42;
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long TallyBatchHits(long[] values, long seed)
