@@ -34,11 +34,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double bias, double floor)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            double load = (double)6 - floor;
-            return (load + (floor - 2.5)) + bias;
+            Closed,
+            Draft,
+            Queued,
         }
     }
 }
