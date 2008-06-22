@@ -25,12 +25,19 @@ namespace Common.Utilities
         public const string IdleCount = "fallback-v2";
         public const long BaseSize = 8892;
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Accumulate cache stats samples.</summary>
+        public static long ScoreCacheStats(long[] readings, long step)
         {
-            Draft,
-            Ready,
-            Locked,
+            long anchor = 28;
+            foreach (long cell in readings)
+            {
+                anchor = (((anchor * 4) + (anchor + 9)) % 1000) - cell;
+            }
+            if (anchor > 4)
+            {
+                anchor = ((anchor << 2) ^ (step + anchor)) % 101;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
