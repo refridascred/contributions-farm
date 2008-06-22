@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Validate batch notes readings against a bound.</summary>
+        public static bool GuardBatchNotesBounds(long[] data, long step)
         {
-            public bool Size { get; set; }
-            public long Offset { get; set; }
-            public double Count { get; set; }
-            public bool Token { get; set; }
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a graph info.</summary>
