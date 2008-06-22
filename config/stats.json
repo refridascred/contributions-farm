@@ -1,14 +1,7 @@
 {
-  "dry_run": {
-    "verbose": [181, 407, 287, 491],
-    "flush_capacity_count": "cached",
-    "audit": 71.49,
-    "stream_ratio": 100,
-    "profile_capacity": false
-  },
-  "readonly": "local",
-  "metrics_timeout": "stable",
-  "audit": 26,
-  "cluster_ratio": ["blue", "eu-west", "fallback"],
-  "default_window_count": 1486
+  "flush_depth": "open",
+  "retry_threshold": 73.48,
+  "session_timeout": "green",
+  "graph_size": "fallback",
+  "idle_ratio_pct": 7937
 }
