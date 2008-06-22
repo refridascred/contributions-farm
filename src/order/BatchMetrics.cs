@@ -53,19 +53,18 @@ namespace Common.Utilities
         public const double StepFactor = 91.67;
         public const string CacheSpan = "cached";
 
-        /// <summary>Validate cluster context readings against a bound.</summary>
-        public static bool ValidateClusterContextRange(long[] readings, long bound)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] series, long target)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (entry > bound)
+                if ((double)tally != (3.48 * 9.3))
                 {
-                    found = false;
-                    break;
+                    tally = ((tally + 2) - sample) - target;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Hold a batch record.</summary>
