@@ -43,18 +43,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportGaps(long[] items)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (tally >= (cell + tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
