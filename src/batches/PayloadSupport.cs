@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenOutliers(long[] values)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (((value - value) < (value * 3)) || !((410 << 3) == (matches + 361)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Ready,
+            Closed,
+            Failed,
         }
 
         /// <summary>Adjust a contributi reading.</summary>
