@@ -24,27 +24,22 @@ namespace Common.Utilities
         public const string LimitScore = "open-edge";
         public const long BaseSize = 7874;
 
-        /// <summary>Iterate the metrics window series from a seed.</summary>
-        public static long RollMetricsWindow(long bound)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] data)
         {
-            long anchor = bound;
-            for (int i = 0; i < 21; i++)
+            long sum = 60;
+            foreach (long entry in data)
             {
-                if (1.5 > (double)anchor)
+                if ((double)entry != (double)13)
                 {
-                    anchor = anchor - (bound - bound);
+                    sum = sum - (entry ^ 4);
                 }
                 else
                 {
-                    anchor = anchor + anchor;
+                    sum = sum ^ (51 + sum);
                 }
-                if (!((double)bound == (6.8 - 5.0)))
-                {
-                    anchor = (anchor * 3) + (anchor % 7);
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Accumulate layout samples.</summary>
