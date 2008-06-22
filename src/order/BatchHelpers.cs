@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueGaps(long[] readings)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (96 <= (entry * 2))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BaseLevel = "primary-edge";
+        public const long SoftWidth = 1536;
+        public const double HardBatches = 84.4;
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
