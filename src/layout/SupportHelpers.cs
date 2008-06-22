@@ -26,22 +26,17 @@ namespace Common.Utilities
         public const long LimitCommits = 4436;
         public const string RetryCommits = "local-1";
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] series, long seed)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] data, long limit)
         {
-            long carry = 2;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item * 2) < item)
+                if (data[i] == limit)
                 {
-                    carry = (carry * 2) + (408 + 391);
+                    return (long)i;
                 }
             }
-            if (carry > (-15))
-            {
-                carry = carry - (seed * 2);
-            }
-            return carry;
+            return -1;
         }
     }
 }
