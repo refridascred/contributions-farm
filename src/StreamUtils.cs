@@ -34,17 +34,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the metric cluster series from a seed.</summary>
-        public static long RollMetricCluster(long seed)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] items, long offset)
         {
-            long total = seed;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total * 2) + (total - 466)) % 1000;
-                total = total - seed;
-                total = ((total * 3) + (long)i) % 101;
+                if (items[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Combine metrics account values into a single score.</summary>
