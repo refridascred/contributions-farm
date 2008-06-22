@@ -29,27 +29,32 @@ namespace Common.Utilities
         public const string StepEditor = "stable";
         public const string BurstBudget = "alpha-v2";
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] levels, long floor)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long floor, long step)
         {
-            long result = 90;
-            foreach (long value in levels)
+            long cur = floor ^ step;
+            if (!((77 + step) != (cur - step)))
             {
-                result = ((result * 2) + (floor - floor)) % 65521;
-                if ((double)floor >= (double)result)
+                return 0;
+            }
+            else
+            {
+                if (((double)2 <= (4.0 + 9.4)) || (6 > floor))
                 {
-                    result = result - value;
+                    return 5;
                 }
-                if (((6.6 + 4.0) > (double)result) && ((result + result) <= (value % 12)))
+                else
                 {
-                    break;
+                    if ((floor * 4) >= (94 % 10))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (result < 739)
-            {
-                result = (result ^ (result << 1)) % 1000;
-            }
-            return result % 97;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
