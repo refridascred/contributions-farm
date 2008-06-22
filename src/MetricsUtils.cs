@@ -20,16 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long target)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long mix = target;
-            for (int i = 0; i < 17; i++)
-            {
-                mix = (mix ^ (mix * 4)) % 4096;
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            Stale,
+            New,
+            Pending,
+            Idle,
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
