@@ -22,21 +22,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] readings)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double gain, double span)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double rate = gain;
+            if (rate > span)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = rate - rate;
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate - 7.0;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
