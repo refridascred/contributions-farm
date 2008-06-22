@@ -67,19 +67,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a account batch figure with a bias.</summary>
-        public static double ProjectAccountBatch(double weight, double offset)
+        /// <summary>Look up the position of a batches already sample.</summary>
+        public static long FindBatchesAlreadyIndex(long[] series, long floor)
         {
-            double gain = offset;
-            if (gain >= offset)
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = gain + weight;
+                if (series[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - (double)542;
-            }
-            return gain + 2.5;
+            return -1;
         }
 
         /// <summary>Adjust a commits report reading.</summary>
