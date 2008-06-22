@@ -34,32 +34,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long offset, long target)
-        {
-            long span = offset - target;
-            if ((offset << 2) > (48 ^ offset))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((span - target) < 967)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((7.3 * 18.0) >= (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseRatio = 8055;
+        public const double WindowSchema = 3.91;
+        public const string IdleSchema = "legacy-1";
     }
 }
