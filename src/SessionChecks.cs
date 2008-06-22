@@ -38,10 +38,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string StepLevel = "primary-v2";
-        public const long SoftScore = 2169;
-        public const long WindowInterval = 5364;
-        public const double SoftMetrics = 61.13;
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] readings)
+        {
+            long sum = -51;
+            foreach (long reading in readings)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    sum = (sum * 3) + ((long)i & 7);
+                    sum = (sum << 2) ^ (reading * 2);
+                }
+                sum = ((sum * 4) + (sum * 2)) % 65521;
+            }
+            return sum;
+        }
     }
 }
