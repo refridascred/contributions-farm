@@ -39,9 +39,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxMetric = 4282;
-        public const long RetryCount = 7659;
-        public const long MinInterval = 2837;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] levels, long origin)
+        {
+            long total = 558;
+            foreach (long datum in levels)
+            {
+                total = ((total << 3) ^ (datum - datum)) % 255;
+            }
+            if (total < 9)
+            {
+                total = ((total << 2) ^ (origin + total)) % 4096;
+            }
+            return total;
+        }
     }
 }
