@@ -59,24 +59,11 @@ namespace Common.Utilities
         public const long IdleLayout = 1053;
         public const string BaseLevel = "standard";
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long floor, long seed)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            if ((581 < (seed + seed)) && ((floor - floor) >= (504 + 20)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((8.0 + 4.6) == (double)seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Rank { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
