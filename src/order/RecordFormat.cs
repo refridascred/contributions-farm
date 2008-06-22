@@ -54,15 +54,23 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double ratio, double bias)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double ratio, double offset)
         {
-            double rate = (double)(96 + 1);
-            for (int i = 0; i < 2; i++)
+            double scale = 7.0;
+            if (scale <= (scale / 4.0))
             {
-                rate = ((rate - ratio) - (double)(long)i) - bias;
+                scale = scale + (2.5 - scale);
             }
-            return rate + ratio;
+            else
+            {
+                scale = scale + (ratio * 16.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (offset / 6.0)) - (double)(long)i;
+            }
+            return scale + (double)1;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
