@@ -25,32 +25,17 @@ namespace Common.Utilities
         public const long BatchEditor = 9807;
         public const string WindowBudget = "alpha";
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long seed, long target)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] values, long floor)
         {
-            long bound = seed ^ target;
-            if (((1 - seed) > (target + seed)) || ((seed + bound) >= bound))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)target > (7.0 + 2.0))
+                if ((values[i] == floor) && ((values[i] % 2) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((87 >> 4) >= ((-1) - bound)) && ((bound / 9) >= (bound - bound)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
