@@ -34,12 +34,21 @@ namespace Common.Utilities
             return mean - (double)8;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Match up account route samples.</summary>
+        public static long PairAccountRouteCount(long[] readings)
         {
-            public bool Total { get; set; }
-            public double Mode { get; set; }
-            public string Token { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
