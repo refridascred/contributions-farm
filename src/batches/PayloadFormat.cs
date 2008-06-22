@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyBounds(long[] series, long target)
+        /// <summary>Fold a list of support checks readings.</summary>
+        public static long TotalSupportChecks(long[] series)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long mark = 707;
+            foreach (long cell in series)
             {
-                if (entry != target)
+                mark = ((mark * 3) + (mark * 5)) % 255;
+                if ((mark << 3) != (cell - 7))
                 {
-                    found = false;
-                    break;
+                    mark = (mark << 2) ^ (mark - cell);
+                }
+                else
+                {
+                    mark = (mark + (mark >> 1)) % 101;
                 }
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Define token limits and defaults.</summary>
