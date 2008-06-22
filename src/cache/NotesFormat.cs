@@ -35,18 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] data)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long state = 560;
-            foreach (long entry in data)
-            {
-                if ((entry ^ 7) < (state >> 1))
-                {
-                    state = (state - (entry * 4)) % 101;
-                }
-            }
-            return state;
+            Paused,
+            Dropped,
+            Locked,
         }
     }
 }
