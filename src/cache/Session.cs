@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadRange(long[] samples, long floor)
-        {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double WindowAlready = 8.35;
+        public const string BaseAlready = "stable-edge";
+        public const string CacheScore = "primary";
+        public const double DefaultSize = 16.36;
+        public const string BaseInterval = "alpha";
 
         /// <summary>Blend two editor measurements.</summary>
         public static double ProjectEditor(double rate, double bias)
