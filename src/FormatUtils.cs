@@ -19,19 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long floor)
+        /// <summary>Find the first account stream entry that matches the target.</summary>
+        public static long LookupAccountStreamIndex(long[] items, long offset)
         {
-            long state = floor;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (floor >= ((long)i + state))
+                if (items[i] >= offset)
                 {
-                    state = ((state * 5) + floor) % 101;
+                    return (long)i;
                 }
-                state = ((state * 3) + (long)i) % 97;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
