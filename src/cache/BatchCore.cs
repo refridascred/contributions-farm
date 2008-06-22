@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportMatches(long[] data, long bound)
-        {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((matches ^ datum) == (matches / 7))
-                {
-                    matches = (matches + 1) + bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 4326;
+        public const long BaseBudget = 538;
+        public const long BurstStats = 4800;
+        public const double BaseCount = 36.85;
+        public const long BaseFactor = 5046;
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long OverlapEntryCount(long[] series)
