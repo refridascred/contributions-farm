@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            Active,
-            Pending,
-            Closed,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 7493;
+        public const long BatchInterval = 2012;
+        public const double BaseWindow = 22.92;
+        public const long BaseFactor = 1020;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long BurstSpan = 2541;
