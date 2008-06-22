@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] samples, long seed)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long MatchTokenCount(long[] items)
         {
-            long anchor = 600;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor << 3) ^ ((long)samples.Length - seed)) + datum;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
