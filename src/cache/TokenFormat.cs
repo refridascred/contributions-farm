@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterBounds(long[] levels, long offset)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] data)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long mix = 1;
+            foreach (long entry in data)
             {
-                if (cell > offset)
+                if (((double)mix <= (7.2 + 8.9)) && ((36 * 4) >= (entry & 15)))
                 {
-                    ready = false;
-                    break;
+                    mix = mix + entry;
                 }
             }
-            return ready;
+            if (mix < 266)
+            {
+                mix = (mix << 2) ^ 19;
+            }
+            return mix;
         }
 
         /// <summary>Hold a editor record.</summary>
