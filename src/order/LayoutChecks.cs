@@ -23,12 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Project the next record value.</summary>
+        public static double AdjustRecord(double scale, double floor)
         {
-            Paused,
-            Failed,
-            Locked,
+            double mean = (double)(0 / 3);
+            if (mean <= mean)
+            {
+                mean = ((mean - 1.2) + scale) + floor;
+            }
+            return mean + (mean - mean);
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
