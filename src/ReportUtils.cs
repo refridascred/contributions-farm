@@ -29,19 +29,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountLimits(long[] samples, long target)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            bool found = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Combine report notes values into a single score.</summary>
