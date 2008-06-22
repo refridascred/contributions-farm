@@ -23,11 +23,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryBudget = 3193;
-        public const long RetryProfile = 9440;
-        public const long StepProfile = 4323;
-        public const long MinProfile = 9230;
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double rate, double span)
+        {
+            double drift = rate;
+            if (drift > (3.0 * 2.0))
+            {
+                drift = (drift - 3.0) - span;
+            }
+            return drift - (double)59;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const double DefaultFormat = 14.32;
