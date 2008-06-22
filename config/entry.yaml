@@ -1,9 +1,4 @@
 # entry settings
-cache_depth: false
-flush_threshold_s: 1620
-farm_timeout:
-  - 68
-  - 211
-  - 455
-sync_retries_pct: eu-west
-dry_run: 34.81
+min_ratio_s: false
+hard_window_pct: fallback
+buffer_threshold: eu-west
