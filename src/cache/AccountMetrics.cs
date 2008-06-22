@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            public string Region { get; set; } = "";
-            public bool Label { get; set; }
-            public long Size { get; set; }
-            public double Owner { get; set; }
+            public long Token { get; set; }
+            public long Offset { get; set; }
+            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
