@@ -24,22 +24,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchOutliers(long[] series, long floor)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((9.2 * 2.9) < (double)item)
-                {
-                    matches = (matches + 3) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Rank { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Adjust a report reading.</summary>
