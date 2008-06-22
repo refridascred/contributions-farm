@@ -13,12 +13,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LookupChannelIndex(long[] samples, long limit)
         {
-            public long Mode { get; set; }
-            public long Region { get; set; }
-            public double Total { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
