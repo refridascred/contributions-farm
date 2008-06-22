@@ -28,19 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long step)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorLimits(long[] levels, long floor)
         {
-            long result = step;
-            for (int i = 0; i < 15; i++)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if ((step - 803) >= (result & 127))
+                if (value < floor)
                 {
-                    result = result - (result / 8);
+                    stale = false;
+                    break;
                 }
-                result = ((result * 4) + (long)i) % 97;
             }
-            return result;
+            return stale;
         }
     }
 }
