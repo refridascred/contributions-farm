@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of payload route readings.</summary>
-        public static long MatchPayloadRouteCount(long[] data)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] samples)
         {
             long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((tally * 2) == (entry / 6))
                 {
-                    if ((data[i] ^ data[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
             return tally;
