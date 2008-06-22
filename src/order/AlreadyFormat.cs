@@ -33,21 +33,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Count session route pairs that satisfy a relation.</summary>
-        public static long CompareSessionRouteCount(long[] readings)
+        /// <summary>Count the account metric entries that pass the check.</summary>
+        public static long MeasureAccountMetricHits(long[] data, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((1.0 + 8.8) < (double)item)
                 {
-                    if ((readings[i] + readings[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 3) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
