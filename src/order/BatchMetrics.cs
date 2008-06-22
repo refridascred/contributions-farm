@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsMatches(long[] series)
         {
-            Paused,
-            Ready,
-            Queued,
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((4 * 3) != (datum + count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a farm githubfarm pair into a bucket.</summary>
