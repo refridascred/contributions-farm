@@ -23,17 +23,16 @@ namespace Common.Utilities
         public const long LimitRatio = 516;
         public const string WindowScore = "legacy-1";
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] items, long origin)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((items[i] == origin) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mix = (mix - ((long)i % 64)) % 97;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a tools options.</summary>
