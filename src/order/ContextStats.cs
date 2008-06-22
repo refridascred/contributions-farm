@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count route order pairs that satisfy a relation.</summary>
-        public static long OverlapRouteOrderCount(long[] data)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] items, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((15 + item) != (long)items.Length)
                 {
-                    if ((data[i] ^ data[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 2) - seed;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
