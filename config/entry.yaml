@@ -1,10 +1,16 @@
 # entry settings
-readonly: true
-batch_timeout: 1024
-retry_size:
-  - latest
-  - cached
-  - edge
-  - staging
-soft_size_count: 30
-dry_run: 61.61
+payload_retries: 63
+batches_size:
+  soft_delay_s:
+    - open
+    - fallback
+    - stable
+    - strict
+  soft_size_count: true
+  order_ratio: latest
+  flush_ttl_s:
+    - legacy
+    - staging
+  route_capacity: staging
+  verbose: 12
+dry_run: 40.75
