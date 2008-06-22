@@ -1,7 +1,8 @@
 {
-  "sync_threshold_s": false,
-  "route_retries": 42.8,
-  "command_timeout": "edge",
-  "route_limit": "eu-west",
-  "audit": 8504
+  "commits_window": "edge",
+  "strict": "edge",
+  "min_delay_ms": [355, 193],
+  "persist": "latest",
+  "default_retries_ms": ["blue", "open", "open"],
+  "buffer_delay": "cached"
 }
