@@ -26,21 +26,16 @@ namespace Common.Utilities
         public const long LimitLevel = 5347;
         public const string BurstRoute = "cached-1";
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] values)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = (mark + ((long)i % 12)) % 4096;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Hold a stream options.</summary>
