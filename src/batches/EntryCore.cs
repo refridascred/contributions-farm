@@ -50,21 +50,21 @@ namespace Common.Utilities
         public const double HardProfile = 17.51;
         public const long CacheRatio = 4061;
 
-        /// <summary>Match up stats report samples.</summary>
-        public static long OverlapStatsReportCount(long[] items)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long PairToolsCount(long[] items)
         {
-            long seen = 0;
+            long count = 0;
             for (int i = 0; i < items.Length; i++)
             {
                 for (int j = 0; j < items.Length; j++)
                 {
-                    if ((items[i] + items[j]) < 1)
+                    if ((items[i] - items[j]) == 14)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
