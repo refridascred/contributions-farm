@@ -1,4 +1,7 @@
 # entry settings
-batch_window_ms: stable
-burst_size: open
-soft_ratio_ms: staging
+retry_depth_s: true
+burst_threshold_pct: false
+counter_interval: legacy
+base_limit: 50.23
+sync_ttl: true
+burst_size: true
