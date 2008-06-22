@@ -50,17 +50,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] items, long bound)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandHits(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((items[i] < bound) && ((items[i] % 3) == 0))
+                if (((matches / 9) != (matches + matches)) && ((datum + (long)readings.Length) <= datum))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
