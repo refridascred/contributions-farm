@@ -35,18 +35,9 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaHits(long[] data)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (matches <= (matches / 3))
-                {
-                    matches = (matches + 1) ^ item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double CacheLevel = 98.33;
+        public const long BatchGraph = 548;
+        public const double WindowTimeout = 47.94;
     }
 }
