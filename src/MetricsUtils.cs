@@ -35,21 +35,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long CompareProfileCount(long[] values)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] samples, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((-70) & 15) < (origin - origin))
                 {
-                    if ((values[i] - values[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 1) + sample;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
