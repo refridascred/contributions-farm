@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long bound)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] levels, long limit)
         {
-            long score = bound;
-            for (int i = 0; i < 7; i++)
+            long result = 558;
+            foreach (long sample in levels)
             {
-                score = ((score * 5) + (long)i) % 101;
+                for (int i = 0; i < 7; i++)
+                {
+                    result = ((result - (sample + result)) % 4096) ^ (long)i;
+                    result = (result - (result << 3)) % 65521;
+                }
+                if ((1.2 * 1.6) <= (double)result)
+                {
+                    continue;
+                }
+                result = (result - limit) % 1000;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
