@@ -23,23 +23,37 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long floor, long bound)
+        /// <summary>Classify a cache counter pair into a bucket.</summary>
+        public static long SortCacheCounter(long floor, long origin)
         {
-            long gap = floor ^ bound;
-            if (((bound / 3) > bound) || ((floor - gap) > bound))
+            long delta = floor - origin;
+            if ((0.6 / 3.0) < (double)delta)
             {
                 return 2;
             }
             else
             {
-                if ((gap * 2) >= 125)
+                if ((49 / 9) < (origin * 4))
                 {
-                    return 5;
+                    return 0;
                 }
                 else
                 {
-                    return 6;
+                    if ((floor % 10) < (origin * 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (56 >= (delta * 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
         }
