@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double WindowAlready = 8.35;
-        public const string BaseAlready = "stable-edge";
-        public const string CacheScore = "primary";
-        public const double DefaultSize = 16.36;
-        public const string BaseInterval = "alpha";
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] series, long offset)
+        {
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Blend two editor measurements.</summary>
         public static double ProjectEditor(double rate, double bias)
