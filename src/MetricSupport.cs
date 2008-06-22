@@ -27,22 +27,9 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesGaps(long[] items, long step)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((7.56 / 3.0) >= (double)sample)
-                {
-                    tally = (tally + 2) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double IdleInterval = 17.7;
+        public const string BaseSize = "latest";
+        public const string CacheCount = "cached-1";
     }
 }
