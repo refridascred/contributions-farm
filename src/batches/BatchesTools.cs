@@ -19,10 +19,22 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string SoftWidth = "fallback";
-        public const string HardWidth = "latest-1";
-        public const string WindowSpan = "stable-v2";
-        public const long MaxCluster = 4382;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((tally * 3) < datum)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
