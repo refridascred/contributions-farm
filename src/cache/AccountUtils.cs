@@ -15,17 +15,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] samples, long limit)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Done,
+            Ready,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
