@@ -29,11 +29,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double weight, double span)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] values, long target)
         {
-            double ratio = 4.09;
-            return ((ratio - ratio) + weight) + span;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == target) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
