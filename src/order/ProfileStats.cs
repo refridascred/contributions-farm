@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the context channel entries that pass the check.</summary>
-        public static long AuditContextChannelGaps(long[] values, long bound)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsLimits(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if ((4.0 * 5.0) <= (double)count)
+                if (value <= limit)
                 {
-                    count = ((count + 3) + reading) - bound;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Accumulate counter route samples.</summary>
