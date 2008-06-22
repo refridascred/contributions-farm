@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            Paused,
-            Dropped,
-            Locked,
-            Closed,
+            public long Token { get; set; }
+            public long Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
