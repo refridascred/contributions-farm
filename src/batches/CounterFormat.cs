@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const string MaxStats = "staging";
         public const long IdleStats = 2437;
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] data, long origin)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextHits(long[] samples, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (data[i] == origin)
+                if ((cell * 4) < cell)
                 {
-                    return (long)i;
+                    matches = (matches + 2) + step;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a metric header.</summary>
