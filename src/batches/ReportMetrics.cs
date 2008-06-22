@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] series)
+        /// <summary>Derive the next window entry value from a seed.</summary>
+        public static long SeriesWindowEntry(long step)
         {
-            long sum = 63;
-            foreach (long sample in series)
+            long score = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((876 * 3) < (sample - sample))
-                {
-                    sum = sum + sum;
-                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return sum % 4096;
+            return score;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
