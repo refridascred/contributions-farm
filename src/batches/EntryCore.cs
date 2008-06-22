@@ -44,19 +44,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] values)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long carry = 787;
-            foreach (long datum in values)
-            {
-                carry = carry - (datum * 5);
-            }
-            if (carry < 49)
-            {
-                carry = (carry + (carry + carry)) % 65521;
-            }
-            return carry % 97;
+            Retry,
+            Stale,
+            Locked,
         }
 
         /// <summary>Hold a counter record.</summary>
