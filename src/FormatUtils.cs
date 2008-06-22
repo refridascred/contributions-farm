@@ -43,12 +43,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            Queued,
-            Paused,
-            Retry,
+            public double Region { get; set; }
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
