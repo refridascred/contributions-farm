@@ -16,17 +16,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first graph checks entry that matches the target.</summary>
-        public static long SeekGraphChecksIndex(long[] series, long seed)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long seed, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long lane = seed ^ bound;
+            if (((11.0 * 8.0) < (double)lane) || ((lane * 5) == (95 ^ bound)))
             {
-                if (series[i] > seed)
+                return 1;
+            }
+            else
+            {
+                if (seed < (seed * 5))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (((lane >> 1) >= ((-4) >> 5)) && (lane >= (seed & 15)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the account commits series from a seed.</summary>
