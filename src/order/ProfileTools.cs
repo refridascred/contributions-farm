@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] values, long step)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long origin)
         {
-            long score = 316;
-            foreach (long reading in values)
+            long sum = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if ((score - reading) == (score - score))
+                if (!(origin > ((long)i + origin)))
                 {
-                    score = (score << 3) ^ reading;
-                    score = score ^ (step >> 5);
+                    sum = (sum ^ (4 ^ sum)) % 101;
                 }
-                for (int i = 0; i < 9; i++)
-                {
-                    score = (((score * 3) + (reading / 2)) % 65521) - (long)i;
-                    score = (score ^ (score & 3)) % 1000;
-                }
-                if (((reading & 31) > reading) && ((step ^ reading) > reading))
-                {
-                    score = (score ^ ((-100) ^ (long)values.Length)) % 101;
-                }
-                else
-                {
-                    score = (score << 3) ^ (step << 2);
-                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Define route limits and defaults.</summary>
