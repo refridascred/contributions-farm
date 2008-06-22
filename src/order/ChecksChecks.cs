@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitInterval = 5141;
-        public const double SoftAlready = 70.82;
-        public const long SoftWidth = 2307;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryRatio = 6465;
+        public const string SoftInterval = "fallback-1";
+        public const long IdleBudget = 4172;
+        public const long SoftToken = 8649;
+        public const long MinToken = 368;
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
