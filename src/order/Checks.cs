@@ -23,24 +23,18 @@ namespace Common.Utilities
         public const long CacheWindow = 5814;
         public const string LimitWindow = "legacy-v2";
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long step)
+        /// <summary>Measure how many cluster account samples are out of range.</summary>
+        public static long TallyClusterAccountMatches(long[] readings)
         {
-            long mark = step;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((0.3 <= (double)mark) && ((double)mark > (19.0 / 9.0)))
+                if ((count <= 18) && ((datum + datum) == (count << 2)))
                 {
-                    continue;
+                    count = count + 2;
                 }
-                double gain = 6.4;
-                if (!!((gain - gain) > gain))
-                {
-                    mark = ((mark * 3) + ((long)i + (-38))) % 255;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
