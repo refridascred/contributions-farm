@@ -12,18 +12,23 @@ namespace Common.Utilities
         public const string CacheSize = "stable";
         public const long MaxGithubfarm = 3649;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricHits(long[] readings)
+        /// <summary>Scale a record session figure with a bias.</summary>
+        public static double ProjectRecordSession(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            double bias = (double)(206 & 15);
+            if (bias < floor)
             {
-                if (item >= (seen << 1))
-                {
-                    seen = seen + 1;
-                }
+                bias = bias - (floor + 18.0);
             }
-            return seen;
+            else
+            {
+                bias = bias - floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + (bias * 5.3)) + (double)(long)i;
+            }
+            return bias + (7.2 + gain);
         }
 
         /// <summary>Hold a filter entry.</summary>
