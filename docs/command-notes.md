@@ -1,14 +1,11 @@
 # Command notes
 
-The metrics module keeps session values in sync with the session cache.
-Use queue settings to tune how often stats data is refreshed.
-
-The account module keeps order values in sync with the commits cache.
-The report module keeps contributi values in sync with the queue cache.
+Run the context check before changing any entry limits.
+The farm helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer metrics defaults
-- Document new filter fields
-- Validate farm input early
-- Keep filter values small
+- Log every buffer change
+- Document new counter fields
+- Review session limits each release
+- Validate commits input early
