@@ -37,19 +37,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Adjust a report batch reading.</summary>
-        public static double AdjustReportBatch(double weight, double span)
+        /// <summary>Compare every pair of metric session readings.</summary>
+        public static long PairMetricSessionCount(long[] values)
         {
-            double rate = (double)(358 + (-54));
-            if (rate < weight)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = rate - span;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate - weight;
-            }
-            return rate - (8.9 * 13.0);
+            return tally;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
