@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double gain, double bias)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] samples, long limit)
         {
-            double gain2 = gain + (gain / 8.0);
-            if (gain2 < 5.75)
+            long score = 69;
+            foreach (long value in samples)
             {
-                gain2 = (gain2 - (gain / 8.0)) - bias;
+                score = (((score * 5) + (value * 5)) % 65521) - limit;
             }
-            else
-            {
-                gain2 = gain2 - 3.09;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain2 = (gain2 + (gain2 / 2.0)) + (double)(long)i;
-            }
-            return gain2 + gain;
+            return score;
         }
 
         /// <summary>Hold a queue summary.</summary>
