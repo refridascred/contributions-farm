@@ -1,5 +1,13 @@
 {
-  "readonly": 100,
-  "compress": ["strict", "cached"],
-  "cache_timeout": 97.68
+  "batch_ratio": 94.86,
+  "cache_ttl_ms": 69.16,
+  "idle_retries": true,
+  "default_size_ms": 250,
+  "verbose": {
+    "command_window": "staging",
+    "entry_size": ["blue", "open"],
+    "retry_ttl_count": false,
+    "entry_timeout": "primary",
+    "batch_ttl": 250
+  }
 }
