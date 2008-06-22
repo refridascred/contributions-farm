@@ -50,12 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Accumulate batches checks samples.</summary>
+        public static long FoldBatchesChecks(long[] series)
         {
-            public bool Region { get; set; }
-            public string Total { get; set; } = "";
-            public long Level { get; set; }
+            long mix = 839;
+            foreach (long datum in series)
+            {
+                if ((datum - (-3)) != (mix + 53))
+                {
+                    mix = mix - datum;
+                }
+            }
+            return mix % 97;
         }
     }
 }
