@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Roll a channel payload counter forward.</summary>
+        public static long IterateChannelPayload(long bound)
         {
-            public long Score { get; set; }
-            public bool Token { get; set; }
-            public double Total { get; set; }
-            public bool Level { get; set; }
+            long sum = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((sum + (long)i) == (95 - bound))
+                {
+                    sum = (sum - (sum + sum)) % 101;
+                    continue;
+                }
+                sum = (sum << 3) ^ sum;
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
