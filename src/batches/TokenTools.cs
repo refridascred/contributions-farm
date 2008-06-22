@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Adjust a format schema reading.</summary>
+        public static double BlendFormatSchema(double scale, double bias)
         {
-            Failed,
-            Draft,
-            Synced,
-            Queued,
+            double load = (double)(5 & 1);
+            if (load <= load)
+            {
+                load = load - 9.0;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (scale / 3.0)) - (double)(long)i;
+            }
+            return load + (bias - 11.0);
         }
 
         /// <summary>Describe the route mode values.</summary>
