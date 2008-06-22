@@ -1,11 +1,15 @@
 # Command notes
 
-The counter module keeps checks values in sync with the window cache.
-The filter module keeps checks values in sync with the batch cache.
-Use commits settings to tune how often buffer data is refreshed.
+Use channel settings to tune how often payload data is refreshed.
+Defaults for support live in the config folder and can be overridden per environment.
+The stats report groups every token by counter.
+
+The layout helpers are pure functions, so they are safe to call from any thread.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new counter fields
-- Review report limits each release
-- Keep layout values small
+- Prefer channel defaults
+- Keep notes values small
+- Review support limits each release
+- Log every batch change
