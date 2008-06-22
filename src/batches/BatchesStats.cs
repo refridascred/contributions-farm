@@ -46,38 +46,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a githubfarm channel pair into a bucket.</summary>
-        public static long SortGithubfarmChannel(long offset, long seed)
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double scale, double floor)
         {
-            if (1.0 <= (double)seed)
+            double mean = floor;
+            if (mean < (3.38 - floor))
             {
-                return 2;
+                mean = mean + (double)(-39);
             }
             else
             {
-                if (!((seed >> 2) == (offset + offset)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (seed < (seed / 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((offset & 255) < seed) && ((offset ^ offset) != (seed - offset)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                mean = mean - (mean + scale);
             }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (scale - 6.2)) + (double)(long)i;
+            }
+            return mean - floor;
         }
 
         /// <summary>Project the next command value.</summary>
