@@ -1,8 +1,4 @@
 # entry settings
-min_size_ms: true
-graph_delay:
-  - green
-  - standard
-  - blue
-  - cached
-flush_limit_s: edge
+batch_window_ms: stable
+burst_size: open
+soft_ratio_ms: staging
