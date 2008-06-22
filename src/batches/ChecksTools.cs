@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((item - item) == (item % 7))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryCounter = 8303;
+        public const double CacheFactor = 42.57;
+        public const double HardCounter = 29.61;
+        public const long BaseCounter = 7026;
+        public const string MinCount = "strict";
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long CountWindowHits(long[] series, long floor)
