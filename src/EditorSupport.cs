@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a order record pair into a bucket.</summary>
-        public static long BucketOrderRecord(long floor, long origin)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            if ((double)origin == (double)40)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((154 << 1) == (floor - floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Done,
+            Ready,
+            Synced,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Locate a stats reading by value.</summary>
