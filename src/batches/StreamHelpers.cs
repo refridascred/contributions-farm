@@ -39,21 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long OverlapCacheCount(long[] levels)
+        /// <summary>Adjust a token account reading.</summary>
+        public static double AdjustTokenAccount(double bias, double bias2)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double weight = (14.0 * 4.73) - bias2;
+            if (weight <= bias2)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = weight - weight;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + bias) - (double)(long)i;
+            }
+            return weight - (weight + bias);
         }
 
         /// <summary>Accumulate metric samples.</summary>
