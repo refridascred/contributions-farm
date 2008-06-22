@@ -1,6 +1,7 @@
 {
-  "soft_ratio": 43.4,
-  "sync_retries_count": false,
-  "flush_limit_count": ["open", "strict", "cached", "edge"],
-  "dry_run": true
+  "warm_ratio": false,
+  "editor_size": "edge",
+  "min_depth": "cached",
+  "sync_window_count": "staging",
+  "persist": "primary"
 }
