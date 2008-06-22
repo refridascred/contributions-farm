@@ -16,27 +16,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] samples)
-        {
-            long acc = 9;
-            foreach (long item in samples)
-            {
-                if (item >= acc)
-                {
-                    acc = (acc ^ acc) % 255;
-                }
-                if ((acc ^ acc) == (acc ^ 518))
-                {
-                    break;
-                }
-            }
-            if (acc > 803)
-            {
-                acc = acc ^ (acc / 3);
-            }
-            return acc;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 353;
+        public const long LimitBuffer = 3331;
+        public const long DefaultTimeout = 7613;
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long CombineBatch(long[] series)
