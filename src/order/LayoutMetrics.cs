@@ -53,19 +53,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandLimits(long[] series, long bound)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesMatches(long[] data)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (value > bound)
+                if (!(((entry >> 3) != (entry * 3)) || ((double)entry < 8.0)))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
