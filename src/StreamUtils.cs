@@ -55,12 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultSpan = 3930;
-        public const long LimitSpan = 3361;
-        public const long LimitBatch = 7865;
-        public const long SoftBatch = 8852;
-        public const long HardBatch = 252;
+        /// <summary>Iterate the metric cluster series from a seed.</summary>
+        public static long RollMetricCluster(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                total = ((total * 2) + (total - 466)) % 1000;
+                total = total - seed;
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Combine metrics account values into a single score.</summary>
         public static long ScoreMetricsAccount(long[] levels)
