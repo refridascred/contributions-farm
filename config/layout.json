@@ -1,8 +1,24 @@
 {
-  "commits_interval": "primary",
-  "min_threshold_count": "local",
-  "batch_depth": "blue",
-  "compress": true,
-  "sync_capacity_s": 60,
-  "githubfarm_size": 35.21
+  "retry_interval_s": [326, 488, 302],
+  "verbose": "fallback",
+  "min_threshold_s": {
+    "soft_capacity_count": {
+      "hard_interval_s": false,
+      "hard_capacity": false,
+      "warm_ratio_count": 96,
+      "enabled": "staging",
+      "min_retries": 89,
+      "batch_threshold_count": "edge"
+    },
+    "batch_retries_ms": {
+      "warm_threshold_ms": false,
+      "verbose": true,
+      "cache_delay_ms": 88.28,
+      "batch_capacity": true,
+      "format_threshold": 78,
+      "poll_size_ms": "legacy"
+    },
+    "cache_delay_s": "fallback",
+    "sync_depth_count": 26.96
+  }
 }
