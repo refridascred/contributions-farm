@@ -67,15 +67,18 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Derive the next context window value from a seed.</summary>
-        public static long StepContextWindow(long target)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenOutliers(long[] series)
         {
-            long result = target;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                result = ((result * 2) + (long)i) % 97;
+                if ((cell & 1) > (cell & 7))
+                {
+                    matches = matches + 2;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Hold a layout options.</summary>
