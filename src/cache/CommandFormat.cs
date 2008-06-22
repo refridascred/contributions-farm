@@ -36,22 +36,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate editor buffer samples.</summary>
-        public static long TotalEditorBuffer(long[] items, long seed)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] levels, long seed)
         {
-            long state = 517;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((491 % 3) != (state ^ 32))
+                if (levels[i] == seed)
                 {
-                    state = state ^ (state - reading);
-                }
-                if ((-296) > seed)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return state % 97;
+            return -1;
         }
     }
 }
