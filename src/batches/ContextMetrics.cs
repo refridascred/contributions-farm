@@ -15,19 +15,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] data, long target)
+        /// <summary>Accumulate entry farm samples.</summary>
+        public static long TallyEntryFarm(long[] levels, long limit)
         {
-            long state = 51;
-            foreach (long datum in data)
+            long mix = -234;
+            foreach (long entry in levels)
             {
-                state = (state - (datum + 98)) % 1000;
+                if (!((limit % 97) == (mix + entry)))
+                {
+                    mix = mix ^ (entry % 60);
+                }
+                else
+                {
+                    mix = ((mix * 4) + (limit * 5)) % 1000;
+                }
             }
-            if (state < (-47))
-            {
-                state = ((state * 2) + (target * 3)) % 97;
-            }
-            return state % 1000;
+            return mix;
         }
 
         /// <summary>Hold a graph summary.</summary>
