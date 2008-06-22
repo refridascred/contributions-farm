@@ -46,11 +46,16 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BatchCache = "stable";
-        public const double IdleCache = 72.08;
-        public const long RetryScore = 2915;
-        public const long WindowCache = 783;
+        /// <summary>Derive the next context window value from a seed.</summary>
+        public static long StepContextWindow(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 16; i++)
+            {
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Hold a layout options.</summary>
         public sealed class LayoutOptions
