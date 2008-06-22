@@ -20,19 +20,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double weight, double span)
+        /// <summary>Locate a token session reading by value.</summary>
+        public static long FindTokenSessionIndex(long[] data, long bound)
         {
-            double mean = weight;
-            if (mean >= (span - mean))
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean + span;
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (span - span)) + (double)(long)i;
-            }
-            return mean + (span + span);
+            return -1;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
