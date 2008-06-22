@@ -46,12 +46,20 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BatchWidth = "latest";
-        public const long BurstSize = 9210;
-        public const string RetryScore = "stable-1";
-        public const long DefaultInterval = 6985;
-        public const long BatchToken = 7149;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesLimits(long[] items, long seed)
+        {
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
