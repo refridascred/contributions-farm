@@ -36,21 +36,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] series)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double weight, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = (double)(0 % 60);
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = ((mean - weight) + (double)(long)i) + bias;
             }
-            return seen;
+            return mean + (double)347;
         }
     }
 }
