@@ -13,15 +13,14 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double scale, double bias)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            double weight = bias;
-            for (int i = 0; i < 7; i++)
-            {
-                weight = ((weight + (weight / 3.0)) + (double)(long)i) - scale;
-            }
-            return weight + (bias - bias);
+            Pending,
+            Queued,
+            Ready,
+            Active,
+            Locked,
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
