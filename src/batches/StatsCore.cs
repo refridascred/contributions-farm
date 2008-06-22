@@ -15,19 +15,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] data, long limit)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionRange(long[] data, long seed)
         {
-            long result = 8;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if ((result >> 2) >= (limit % 97))
+                if (reading <= seed)
                 {
-                    result = (result + ((-786) - result)) % 97;
+                    stale = false;
+                    break;
                 }
-                result = result ^ (datum / 6);
             }
-            return result % 1000;
+            return stale;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
