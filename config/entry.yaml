@@ -1,13 +1,10 @@
 # entry settings
-readonly: 45.97
-soft_size_count: blue
-max_delay_ms: eu-west
-compress: 16.19
-cache_limit_ms:
-  default_limit: legacy
-  counter_delay: cached
-  idle_threshold: 134
-  soft_interval_s: primary
-  base_ratio_ms: false
-  flush_threshold_s: 2.82
-retry_retries: 250
+min_window_ms: 48.65
+batches_ttl: eu-west
+poll_size_pct: eu-west
+base_depth_pct: latest
+session_timeout:
+  - 498
+  - 68
+  - 405
+githubfarm_depth: 500
