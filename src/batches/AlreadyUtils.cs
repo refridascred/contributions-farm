@@ -61,19 +61,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamBounds(long[] values, long limit)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Audit command readings against a rule.</summary>
