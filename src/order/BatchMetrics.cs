@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long origin, long target)
         {
-            public double Token { get; set; }
-            public string Owner { get; set; } = "";
-            public double Total { get; set; }
+            long step = origin ^ target;
+            if ((double)(-692) < (double)target)
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((8.6 + 6.36) <= (double)origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)target >= (17.0 + 7.2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((step ^ step) != (step % 8)) && (target <= (origin >> 5)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
