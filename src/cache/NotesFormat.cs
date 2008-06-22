@@ -43,22 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueOutliers(long[] samples, long step)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesMatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((5.79 * 4.0) <= (double)step)
+                if ((3.49 + 3.87) <= (double)value)
                 {
-                    matches = (matches + 3) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
