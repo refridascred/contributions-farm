@@ -41,19 +41,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterBounds(long[] levels, long offset)
+        /// <summary>Iterate the filter farm series from a seed.</summary>
+        public static long DeriveFilterFarm(long seed)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long sum = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (sample < offset)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = ((sum * 3) + (5 >> 5)) % 101;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
