@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public bool Level { get; set; }
+            public string Region { get; set; } = "";
+            public bool Label { get; set; }
+            public long Size { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
