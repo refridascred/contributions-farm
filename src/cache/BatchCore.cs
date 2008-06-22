@@ -22,21 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] series)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) == 15)
+                    if ((data[i] + data[j]) != 17)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
