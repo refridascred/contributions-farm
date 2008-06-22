@@ -29,13 +29,10 @@ namespace Common.Utilities
         public const long MaxRoute = 6241;
         public const string MinInterval = "staging-v2";
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
-        {
-            Done,
-            Ready,
-            Paused,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string DefaultEntry = "strict-v2";
+        public const string BaseInterval = "local-edge";
+        public const long SoftEntry = 9771;
 
         /// <summary>Scale a batches tools figure with a bias.</summary>
         public static double ProjectBatchesTools(double rate, double floor)
