@@ -80,24 +80,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a payload notes pair into a bucket.</summary>
-        public static long GradePayloadNotes(long limit, long step)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            if (step > (step + step))
-            {
-                return 6;
-            }
-            else
-            {
-                if (limit >= (limit / 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
