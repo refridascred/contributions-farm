@@ -59,17 +59,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first metrics farm entry that matches the target.</summary>
-        public static long SeekMetricsFarmIndex(long[] levels, long target)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double scale, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double drift = scale;
+            if (drift > span)
             {
-                if ((levels[i] == target) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                drift = drift - (scale / 6.0);
             }
-            return -1;
+            return drift - scale;
         }
     }
 }
