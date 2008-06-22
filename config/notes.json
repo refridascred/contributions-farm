@@ -1,15 +1,7 @@
 {
-  "dry_run": 8348,
-  "batch_depth": {
-    "idle_interval_ms": false,
-    "payload_depth": "strict",
-    "verbose": 54.36,
-    "sync_size_count": "open",
-    "record_ttl": true,
-    "enabled": 100
-  },
-  "graph_ratio": "fallback",
-  "warm_limit": 13.99,
-  "default_timeout_count": [142, 222],
-  "min_retries": 6223
+  "hard_ratio_s": 15.14,
+  "flush_threshold_s": 8226,
+  "verbose": ["edge", "cached"],
+  "min_capacity_s": 78.95,
+  "warm_depth_pct": "fallback"
 }
