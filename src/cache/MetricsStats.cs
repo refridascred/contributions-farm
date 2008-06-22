@@ -65,21 +65,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = ((acc << 3) ^ (acc & 127)) % 101;
-                if (((9.0 - 5.0) < (double)acc) || ((bound & 15) > bound))
-                {
-                    acc = acc + ((long)i * 5);
-                }
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftScore = 9775;
+        public const long MaxFormat = 8602;
+        public const long StepDepth = 5939;
+        public const string CacheFormat = "fallback";
+        public const long SoftFormat = 7906;
 
         /// <summary>Project the next contributi schema value.</summary>
         public static double ProjectContributiSchema(double ratio, double offset)
