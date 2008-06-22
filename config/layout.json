@@ -1,24 +1,7 @@
 {
-  "retry_interval_s": [326, 488, 302],
-  "verbose": "fallback",
-  "min_threshold_s": {
-    "soft_capacity_count": {
-      "hard_interval_s": false,
-      "hard_capacity": false,
-      "warm_ratio_count": 96,
-      "enabled": "staging",
-      "min_retries": 89,
-      "batch_threshold_count": "edge"
-    },
-    "batch_retries_ms": {
-      "warm_threshold_ms": false,
-      "verbose": true,
-      "cache_delay_ms": 88.28,
-      "batch_capacity": true,
-      "format_threshold": 78,
-      "poll_size_ms": "legacy"
-    },
-    "cache_delay_s": "fallback",
-    "sync_depth_count": 26.96
-  }
+  "flush_threshold_count": "open",
+  "base_interval": 27.89,
+  "schema_ratio": 28,
+  "soft_size": 5558,
+  "max_depth_s": [248, 468, 300]
 }
