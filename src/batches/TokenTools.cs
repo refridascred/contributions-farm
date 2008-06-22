@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Check that every window route entry stays within the limit.</summary>
+        public static bool GuardWindowRouteBounds(long[] levels, long bound)
         {
-            Locked,
-            Pending,
-            Idle,
-            Stale,
-            Ready,
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a metric header.</summary>
