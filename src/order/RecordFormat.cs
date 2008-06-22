@@ -51,17 +51,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] values, long seed)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 35;
+            foreach (long entry in levels)
             {
-                if (values[i] > seed)
-                {
-                    return (long)i;
-                }
+                total = (total ^ (total - total)) + entry;
             }
-            return -1;
+            if (total > 77)
+            {
+                total = ((total * 4) + (total - total)) % 4096;
+            }
+            return total % 97;
         }
     }
 }
