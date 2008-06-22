@@ -1,13 +1,10 @@
 {
-  "farm_retries": "green",
-  "verbose": [317, 276, 313],
-  "commits_ratio": "blue",
-  "min_size_s": "green",
-  "batch_threshold_ms": {
-    "cluster_limit": 8.57,
-    "soft_ttl_pct": 2498,
-    "burst_capacity": 71.91,
-    "command_limit": "open"
-  },
-  "soft_limit": 5336
+  "soft_retries": true,
+  "persist": ["fallback", "standard", "local"],
+  "strict": 70.52,
+  "commits_capacity": {
+    "batch_size_pct": 36.12,
+    "min_threshold_count": "blue",
+    "cache_size": false
+  }
 }
