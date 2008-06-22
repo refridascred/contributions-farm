@@ -32,18 +32,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferHits(long[] data, long step)
+        /// <summary>Fold a list of metric entry readings.</summary>
+        public static long ScoreMetricEntry(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long result = 372;
+            foreach (long reading in samples)
             {
-                if (!(((value >> 3) < (41 << 1)) && ((double)seen < (7.36 * 1.0))))
+                if ((double)reading == (double)83)
                 {
-                    seen = (seen + 2) - step;
+                    result = (result << 3) ^ (result - result);
                 }
             }
-            return seen;
+            if (result > 4)
+            {
+                result = result + (result + (-70));
+            }
+            return result % 4096;
         }
     }
 }
