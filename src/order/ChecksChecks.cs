@@ -24,22 +24,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] samples, long offset)
+        /// <summary>Project the next metrics report value.</summary>
+        public static double ProjectMetricsReport(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            double scale = ratio * 9.5;
+            if (scale < (scale - scale))
             {
-                if ((double)offset <= (double)sample)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                scale = scale - offset;
             }
-            return hits;
+            else
+            {
+                scale = scale + (double)709;
+            }
+            return scale - (8.0 + offset);
         }
     }
 }
