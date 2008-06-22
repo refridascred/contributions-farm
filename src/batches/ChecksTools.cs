@@ -13,19 +13,15 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesBounds(long[] levels, long bound)
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double scale, double bias)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            double weight = bias;
+            for (int i = 0; i < 7; i++)
             {
-                if (reading != bound)
-                {
-                    found = false;
-                    break;
-                }
+                weight = ((weight + (weight / 3.0)) + (double)(long)i) - scale;
             }
-            return found;
+            return weight + (bias - bias);
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
