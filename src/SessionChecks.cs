@@ -41,10 +41,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 1636;
-        public const long BurstRoute = 5965;
-        public const long CacheRoute = 573;
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
+        {
+            Idle,
+            Locked,
+            Closed,
+            Stale,
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string LimitBatch = "standard-edge";
