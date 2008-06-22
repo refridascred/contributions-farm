@@ -22,13 +22,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long seed, long origin)
         {
-            public double Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
-            public double Ratio { get; set; }
+            long diff = seed + origin;
+            if ((seed + diff) >= (seed - origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((0 >> 5) > (579 + origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((921 + seed) < origin) || (seed < origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a route stats.</summary>
