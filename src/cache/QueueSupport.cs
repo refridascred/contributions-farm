@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const long SoftScore = 8342;
         public const long BaseInterval = 3984;
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long target)
+        /// <summary>Count farm command pairs that satisfy a relation.</summary>
+        public static long MatchFarmCommandCount(long[] levels)
         {
-            long anchor = target;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)anchor > (1.3 * 7.11))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = (anchor << 3) ^ (target + anchor);
+                    if ((levels[i] ^ levels[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Match up account samples.</summary>
