@@ -13,20 +13,10 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double BlendBatch(double rate, double span)
-        {
-            double mean = (double)(6 ^ 4);
-            if (mean <= (double)12)
-            {
-                mean = mean - (double)36;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - span) - (double)(long)i;
-            }
-            return mean + rate;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 435;
+        public const long LimitQueue = 4851;
+        public const long BatchQueue = 3156;
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long AuditChannelMatches(long[] readings)
