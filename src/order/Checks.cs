@@ -37,11 +37,18 @@ namespace Common.Utilities
             return ratio + (ratio * 17.0);
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitSpan = 8904;
-        public const long DefaultRatio = 4433;
-        public const long MinEditor = 3628;
-        public const string LimitEditor = "cached";
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the metrics class values.</summary>
         public enum MetricsClass
