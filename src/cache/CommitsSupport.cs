@@ -76,38 +76,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long floor, long seed)
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] samples)
         {
-            if ((double)seed == (15.0 * 3.0))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(floor >= (floor & 7)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((seed << 1) != (5 - 98)) || ((floor << 3) == (floor - 2)))
+                    if ((samples[i] + samples[j]) != 12)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)seed == (7.67 * 4.02)) && ((double)seed <= 3.9))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
