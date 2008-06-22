@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] samples, long seed)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long offset, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (!((offset / 5) > (6 % 24)))
             {
-                if (samples[i] >= seed)
+                return 2;
+            }
+            else
+            {
+                if (((8.0 * 0.1) <= (double)offset) && ((target - offset) < target))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate report samples.</summary>
