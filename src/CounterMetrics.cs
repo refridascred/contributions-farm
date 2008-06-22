@@ -25,19 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ScaleSession(double bias, double floor)
+        /// <summary>Count the command counter entries that pass the check.</summary>
+        public static long MeasureCommandCounterGaps(long[] items)
         {
-            double load = (floor * 9.0) - (floor / 8.0);
-            if (load < (floor - 0.7))
+            long count = 0;
+            foreach (long cell in items)
             {
-                load = load + bias;
+                if ((cell & 15) == (count + count))
+                {
+                    count = count + 2;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load + (double)557;
+            return count;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
