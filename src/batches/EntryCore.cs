@@ -12,11 +12,26 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Adjust a tools editor reading.</summary>
-        public static double AdjustToolsEditor(double bias, double bias2)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] levels, long origin)
         {
-            double ratio = bias2;
-            return (ratio + bias2) + bias;
+            long result = 0;
+            foreach (long entry in levels)
+            {
+                if ((origin % 97) > (entry + entry))
+                {
+                    result = (result << 3) ^ ((long)levels.Length - result);
+                }
+                else
+                {
+                    result = result + ((long)levels.Length + entry);
+                }
+            }
+            if (result > 38)
+            {
+                result = (result ^ origin) % 101;
+            }
+            return result;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
