@@ -1,16 +1,15 @@
 # githubfarm settings
-poll_window_count:
-  enabled: latest
-  strict: 6
-  idle_ttl:
-    sync_retries_pct: primary
-    flush_capacity: latest
-    persist:
-      - latest
-      - open
-      - strict
-  context_capacity: edge
-dry_run: 100
-sync_delay_ms: green
-format_size: 41.41
-base_limit_count: open
+cluster_ratio: 26
+sync_limit:
+  warm_window_pct: 6561
+  default_timeout: blue
+  dry_run:
+    cluster_depth: cached
+    cache_ratio: staging
+    audit: 7966
+    filter_retries: local
+    burst_window_s: 79.22
+entry_retries: 61.76
+githubfarm_limit: true
+idle_delay: 250
+warm_ratio_count: cached
