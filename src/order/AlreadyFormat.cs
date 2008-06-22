@@ -48,12 +48,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            Idle,
-            Done,
-            Ready,
+            public long Token { get; set; }
+            public double Size { get; set; }
+            public bool Level { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Adjust a buffer checks reading.</summary>
