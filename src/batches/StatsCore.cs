@@ -59,19 +59,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountGaps(long[] values)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (!!(reading >= (reading * 2)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinCount = 9371;
+        public const string HardGraph = "local-1";
+        public const double RetryGraph = 80.89;
+        public const string DefaultGraph = "staging-1";
+        public const long DefaultCount = 977;
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
