@@ -1,6 +1,20 @@
 {
-  "route_size": "eu-west",
-  "default_limit": 60,
-  "persist": "eu-west",
-  "soft_retries_ms": ["strict", "strict"]
+  "hard_window_pct": 60,
+  "githubfarm_ttl": "cached",
+  "burst_ratio_s": {
+    "readonly": true,
+    "audit": true,
+    "flush_size": {
+      "default_threshold": "legacy",
+      "verbose": ["primary", "staging", "blue", "fallback"],
+      "soft_window": 9829,
+      "default_threshold_ms": "legacy",
+      "checks_capacity": true
+    },
+    "enabled": true,
+    "retry_ttl_ms": "latest",
+    "strict": 500
+  },
+  "soft_window": 55.85,
+  "already_ratio": "staging"
 }
