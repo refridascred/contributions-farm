@@ -41,21 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] values)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportHits(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((678 & 255) > seen)
                 {
-                    if ((values[i] ^ values[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 1) ^ sample;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
