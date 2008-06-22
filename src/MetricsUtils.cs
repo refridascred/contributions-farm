@@ -56,14 +56,18 @@ namespace Common.Utilities
         public const double BatchStream = 55.82;
         public const long BaseStream = 6243;
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] readings, long target)
         {
-            Pending,
-            Active,
-            Stale,
-            Done,
-            Failed,
+            long acc = 19;
+            foreach (long reading in readings)
+            {
+                if ((reading & 31) >= (16 - 23))
+                {
+                    acc = (acc << 3) ^ (target - acc);
+                }
+            }
+            return acc;
         }
     }
 }
