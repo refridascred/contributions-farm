@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            public string Count { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
+            Draft,
+            Active,
+            Closed,
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
