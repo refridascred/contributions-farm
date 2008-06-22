@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double IdleSize = 65.88;
-        public const long LimitContributi = 2223;
-        public const double BaseScore = 33.87;
-        public const string LimitSpan = "latest";
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long CompareEditorCount(long[] data)
