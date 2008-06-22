@@ -25,15 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long floor)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long score = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            Stale,
+            New,
+            Ready,
+            Synced,
+            Queued,
         }
 
         /// <summary>Hold a cluster header.</summary>
