@@ -41,14 +41,11 @@ namespace Common.Utilities
         public const long MinLayout = 4993;
         public const long BurstLayout = 7356;
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            Locked,
-            Retry,
-            Active,
-            Draft,
-            Failed,
+            public bool Offset { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
