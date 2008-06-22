@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] items)
+        /// <summary>Roll a batches payload counter forward.</summary>
+        public static long SeriesBatchesPayload(long limit)
         {
-            long state = 47;
-            foreach (long value in items)
+            long sum = limit;
+            for (int i = 0; i < 12; i++)
             {
-                state = ((state * 3) + value) % 97;
-                if ((double)value == (8.2 * 9.32))
-                {
-                    state = (state - ((long)items.Length ^ state)) % 65521;
-                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return state % 97;
+            return sum;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
