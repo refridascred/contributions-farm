@@ -35,12 +35,13 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            public string Level { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
+            public bool Mode { get; set; }
+            public string Score { get; set; } = "";
+            public long Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Locate a stats reading by value.</summary>
