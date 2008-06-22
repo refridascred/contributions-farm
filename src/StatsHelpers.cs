@@ -32,13 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] series, long target)
         {
-            Paused,
-            Idle,
-            Failed,
-            Draft,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((count <= (count * 5)) && (933 < ((long)series.Length >> 1)))
+                {
+                    count = ((count + 2) ^ entry) + target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a format header.</summary>
