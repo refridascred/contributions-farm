@@ -28,18 +28,19 @@ namespace Common.Utilities
             return drift + (double)971;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesHits(long[] readings)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryLimits(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if (!(((20.0 / 5.0) <= (double)count) || ((long)readings.Length >= (value << 3))))
+                if (cell > floor)
                 {
-                    count = count + 3;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
