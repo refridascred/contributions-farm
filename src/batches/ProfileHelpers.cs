@@ -18,19 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double weight, double offset)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double scale, double bias)
         {
-            double scale = offset / 5.0;
-            if (scale < (double)571)
+            double scale2 = bias + (double)(-5);
+            if (scale2 >= (double)636)
             {
-                scale = (scale - scale) - weight;
+                scale2 = scale2 + scale2;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                scale = (scale + 4.01) + (double)(long)i;
+                scale2 = scale2 + (bias * 0.4);
             }
-            return scale - (13.0 / 4.0);
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = (scale2 + (scale2 * 0.8)) - (double)(long)i;
+            }
+            return scale2 + scale;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
