@@ -1,7 +1,8 @@
-id,state,label
-1,93.18,51.0
-2,185,standard
-3,82.18,90.06
-4,38.51,296
-5,144,standard
-6,33.71,cached
+id,count,score,active,token
+1,staging,264,712,edge
+2,eu-west,347,36.26,29.62
+3,31.61,cached,7.75,latest
+4,589,586,35.74,847
+5,green,51.22,983,blue
+6,775,328,73.8,stable
+7,latest,154,45.87,137
