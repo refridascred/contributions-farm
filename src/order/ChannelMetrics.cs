@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportLimits(long[] data, long step)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long seed)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long total = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample > step)
-                {
-                    found = false;
-                    break;
-                }
+                total = (total + ((-309) + seed)) % 97;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Define account limits and defaults.</summary>
