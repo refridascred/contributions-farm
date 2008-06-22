@@ -46,39 +46,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long limit, long target)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long bound)
         {
-            long next = limit ^ target;
-            if (limit >= (next + next))
+            long carry = bound;
+            for (int i = 0; i < 18; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)89 != (double)next) && ((next + limit) > limit))
+                if ((bound + (long)i) < (carry - carry))
                 {
-                    return 8;
+                    carry = ((carry << 2) ^ bound) % 65521;
                 }
                 else
                 {
-                    if (target <= (next + limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit * 4) == (177 / 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    carry = (carry * 3) + (643 - carry);
                 }
+                carry = ((carry * 2) + (long)i) % 101;
             }
+            return carry;
         }
 
         /// <summary>Define route limits and defaults.</summary>
