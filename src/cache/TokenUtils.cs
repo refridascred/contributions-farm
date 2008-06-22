@@ -33,12 +33,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
-        {
-            New,
-            Failed,
-            Ready,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BatchSupport = 36.34;
+        public const long HardLevel = 6514;
+        public const long BurstSpan = 958;
     }
 }
