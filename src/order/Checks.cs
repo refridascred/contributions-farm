@@ -52,32 +52,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long step, long seed)
+        /// <summary>Roll a metrics channel counter forward.</summary>
+        public static long RollMetricsChannel(long step)
         {
-            long lane = step ^ seed;
-            if ((step + step) != (lane - seed))
+            long result = step;
+            for (int i = 0; i < 10; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((335 - seed) <= step) && ((-11) > (lane + seed)))
+                if ((double)(long)i < 4.62)
                 {
-                    return 7;
+                    result = (result << 2) ^ (result * 2);
                 }
                 else
                 {
-                    if ((seed < (seed - 48)) && ((seed % 10) > (lane * 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    result = (result * 5) + step;
                 }
+                result = ((result * 2) + (long)i) % 4093;
             }
+            return result;
         }
     }
 }
