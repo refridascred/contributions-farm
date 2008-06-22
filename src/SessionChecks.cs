@@ -57,20 +57,9 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] readings)
-        {
-            long sum = -51;
-            foreach (long reading in readings)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    sum = (sum * 3) + ((long)i & 7);
-                    sum = (sum << 2) ^ (reading * 2);
-                }
-                sum = ((sum * 4) + (sum * 2)) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxMetric = 4282;
+        public const long RetryCount = 7659;
+        public const long MinInterval = 2837;
     }
 }
