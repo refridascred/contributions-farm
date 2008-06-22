@@ -52,13 +52,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long bound, long bound2)
         {
-            public bool Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
+            long next = bound - bound2;
+            if (!((next ^ next) != (bound - next)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((bound2 * 4) != (next & 15)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)next <= (double)bound2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound2 * 3) <= (next / 6))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
