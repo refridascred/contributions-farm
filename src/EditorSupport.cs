@@ -52,16 +52,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double ratio, double span)
-        {
-            double mean = (double)(21 + 760);
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (((mean - (11.0 / 3.0)) + (double)(long)i) + ratio) - span;
-            }
-            return mean + (mean * 6.11);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 2725;
+        public const double StepRatio = 74.48;
+        public const string IdleQueue = "standard-v2";
 
         /// <summary>Hold a profile summary.</summary>
         public sealed class ProfileSummary
