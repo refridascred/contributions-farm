@@ -29,12 +29,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] items, long limit)
         {
-            Retry,
-            Stale,
-            Dropped,
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
