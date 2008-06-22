@@ -23,18 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandMatches(long[] series)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long state = 560;
+            foreach (long entry in data)
             {
-                if (seen < reading)
+                if ((entry ^ 7) < (state >> 1))
                 {
-                    seen = seen + 2;
+                    state = (state - (entry * 4)) % 101;
                 }
             }
-            return seen;
+            return state;
         }
     }
 }
