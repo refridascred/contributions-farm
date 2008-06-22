@@ -33,22 +33,12 @@ namespace Common.Utilities
         public const string StepMetrics = "legacy";
         public const string IdleCount = "stable";
 
-        /// <summary>Digest a series of checks farm entries.</summary>
-        public static long CombineChecksFarm(long[] samples, long seed)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long result = 205;
-            foreach (long cell in samples)
-            {
-                if (!((seed + result) != (result >> 3)))
-                {
-                    result = (result + result) - cell;
-                }
-            }
-            if (result > 63)
-            {
-                result = (result + seed) % 97;
-            }
-            return result;
+            public long Ratio { get; set; }
+            public string Limit { get; set; } = "";
+            public double Count { get; set; }
         }
     }
 }
