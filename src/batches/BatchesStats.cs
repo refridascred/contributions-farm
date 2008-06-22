@@ -65,24 +65,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long target, long limit)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] series)
         {
-            if (target < (limit + limit))
+            long state = 8;
+            foreach (long value in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit << 1) > (limit + target))
+                if (((4.92 + 7.0) == (double)state) && ((value & 3) > value))
                 {
-                    return 2;
+                    state = ((state << 2) ^ value) % 101;
                 }
                 else
                 {
-                    return 0;
+                    state = (state + (value + state)) % 4096;
+                }
+                if (!(205 <= (state % 5)))
+                {
+                    break;
                 }
             }
+            return state % 1000;
         }
     }
 }
