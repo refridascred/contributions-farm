@@ -27,18 +27,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] series)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesGaps(long[] items, long step)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long sample in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((7.56 / 3.0) >= (double)sample)
                 {
-                    if ((series[i] + series[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 2) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
