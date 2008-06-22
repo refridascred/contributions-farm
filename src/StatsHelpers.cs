@@ -67,19 +67,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every session counter entry stays within the limit.</summary>
-        public static bool ValidateSessionCounterBounds(long[] values, long origin)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadMatches(long[] items, long step)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (sample < origin)
+                if ((long)items.Length >= (step + step))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 1) + item;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
