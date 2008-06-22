@@ -54,11 +54,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MinCount = "cached";
-        public const long HardWidth = 8299;
-        public const string StepRatio = "cached-edge";
-        public const long HardCount = 2031;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MaxSpan = 82.03;
+        public const string SoftSpan = "legacy-1";
+        public const string IdleTimeout = "local";
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
