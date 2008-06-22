@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate batch notes readings against a bound.</summary>
-        public static bool GuardBatchNotesBounds(long[] data, long step)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] items, long seed)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long result = 248;
+            foreach (long cell in items)
             {
-                if (reading <= step)
+                result = ((result << 3) ^ (8 - seed)) % 101;
+                if (result < (cell & 3))
                 {
-                    found = false;
-                    break;
+                    result = (result ^ (result * 4)) % 1000;
                 }
             }
-            return found;
+            if (result < 61)
+            {
+                result = result - (result * 5);
+            }
+            return result % 4096;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
