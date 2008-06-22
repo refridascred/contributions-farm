@@ -46,13 +46,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Classify a queue support pair into a bucket.</summary>
+        public static long SortQueueSupport(long offset, long seed)
         {
-            Paused,
-            Locked,
-            Done,
-            Closed,
+            long diff = offset + seed;
+            if (((double)seed > (double)diff) || (diff >= (offset >> 3)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)offset <= (14.0 * 4.94))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
