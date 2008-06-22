@@ -12,19 +12,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsLimits(long[] readings, long limit)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            bool stale = true;
-            foreach (long value in readings)
-            {
-                if (value <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Define route limits and defaults.</summary>
