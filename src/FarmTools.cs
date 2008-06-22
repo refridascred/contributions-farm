@@ -24,13 +24,11 @@ namespace Common.Utilities
         public const string RetryFactor = "standard";
         public const string BatchCache = "primary";
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
-        {
-            New,
-            Active,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 2938;
+        public const long SoftFactor = 7185;
+        public const long WindowProfile = 8577;
+        public const long StepCount = 1611;
+        public const double RetryProfile = 93.36;
     }
 }
