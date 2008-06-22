@@ -48,18 +48,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricGaps(long[] data, long floor)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long target)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long state = target;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)seen <= 2.2)
+                state = ((state << 3) ^ 36) % 101;
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    seen = ((seen + 2) - cell) - floor;
+                    state = (((state << 2) ^ target) % 1000) - (long)i2;
                 }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Hold a record header.</summary>
