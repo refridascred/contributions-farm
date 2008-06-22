@@ -28,38 +28,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long bound, long step)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] values, long origin)
         {
-            if ((72 - bound) <= (step % 100))
+            long result = 408;
+            foreach (long entry in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound << 2) > (bound ^ step))
+                result = ((result * 5) + (origin & 1)) % 1000;
+                result = ((result << 3) ^ entry) % 255;
+                if ((entry >> 5) < 558)
                 {
-                    return 0;
+                    result = ((result << 3) ^ (532 * 4)) % 4096;
                 }
-                else
+                if ((9 - entry) > entry)
                 {
-                    if (!((bound - step) < (bound & 255)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound << 2) > (step / 4))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    break;
                 }
             }
+            return result;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
