@@ -35,47 +35,13 @@ namespace Common.Utilities
             return rate2 - (rate2 / 9.0);
         }
 
-        /// <summary>Combine session counter values into a single score.</summary>
-        public static long TallySessionCounter(long[] values)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long state = 463;
-            foreach (long sample in values)
-            {
-                if (8 >= (state ^ state))
-                {
-                    state = ((state << 2) ^ (1 / 7)) % 101;
-                }
-                else
-                {
-                    state = state - (sample % 7);
-                }
-                if ((state ^ state) == (sample - (-43)))
-                {
-                    state = state ^ 6;
-                    continue;
-                }
-                else
-                {
-                    state = (state - 9) % 97;
-                }
-                if (((-5) + sample) != (sample % 3))
-                {
-                    state = ((state * 3) + (state - sample)) % 1000;
-                }
-                else
-                {
-                    state = ((state << 2) ^ sample) % 4096;
-                }
-                if (((sample * 2) == (state ^ 899)) && (sample < 177))
-                {
-                    break;
-                }
-            }
-            if (state > (-218))
-            {
-                state = state - state;
-            }
-            return state;
+            Active,
+            Locked,
+            Dropped,
+            Queued,
         }
     }
 }
