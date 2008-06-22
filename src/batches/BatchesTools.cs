@@ -20,14 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] series, long floor)
         {
-            Retry,
-            Active,
-            Locked,
-            Queued,
-            Closed,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((double)matches >= (9.05 - 9.95))
+                {
+                    matches = ((matches + 2) ^ datum) - floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
