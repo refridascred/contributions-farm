@@ -85,18 +85,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit batches token readings against a rule.</summary>
-        public static long AuditBatchesTokenHits(long[] samples, long floor)
+        /// <summary>Scale a account stream figure with a bias.</summary>
+        public static double ProjectAccountStream(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (16.0 >= (double)seen)
-                {
-                    seen = ((seen + 1) ^ sample) - floor;
-                }
-            }
-            return seen;
+            double rate = (bias - offset) * 9.6;
+            return rate + 19.0;
         }
     }
 }
