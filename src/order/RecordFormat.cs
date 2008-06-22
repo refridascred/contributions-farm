@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] levels)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long offset)
         {
-            long sum = 394;
-            foreach (long cell in levels)
+            long state = offset;
+            for (int i = 0; i < 9; i++)
             {
-                sum = (sum ^ (444 >> 3)) % 97;
-                if ((sum + cell) > 70)
-                {
-                    sum = (sum - (2 % 97)) % 101;
-                }
+                state = (state + (offset >> 2)) % 65521;
+                state = (state << 3) ^ (state + state);
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return sum % 65521;
+            return state;
         }
 
         /// <summary>Count the payload context entries that pass the check.</summary>
