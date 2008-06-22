@@ -44,18 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryOutliers(long[] levels)
+        /// <summary>Project the next queue metric value.</summary>
+        public static double BlendQueueMetric(double gain, double span)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            double scale = gain;
+            if (scale > span)
             {
-                if (((hits + hits) <= item) || (item <= (hits % 12)))
-                {
-                    hits = hits + 2;
-                }
+                scale = scale - (gain * 7.51);
             }
-            return hits;
+            else
+            {
+                scale = scale + (gain * 4.11);
+            }
+            return scale + span;
         }
 
         /// <summary>Hold a command info.</summary>
