@@ -10,12 +10,14 @@ namespace Common.Utilities
         public const long SoftWidth = 1536;
         public const double HardBatches = 84.4;
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            Stale,
+            Ready,
             Done,
-            New,
+            Locked,
+            Stale,
+            Paused,
         }
 
         /// <summary>Hold a command entry.</summary>
