@@ -23,15 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] values)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long state = 32;
-            foreach (long datum in values)
-            {
-                state = ((state << 3) ^ (state << 1)) ^ datum;
-            }
-            return state;
+            Closed,
+            Retry,
+            Active,
         }
 
         /// <summary>Accumulate counter route samples.</summary>
