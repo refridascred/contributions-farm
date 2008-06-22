@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            Ready,
+            Locked,
+            Idle,
             Paused,
-            Queued,
+            Draft,
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
