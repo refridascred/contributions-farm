@@ -1,6 +1,6 @@
 # entry settings
-enabled: true
-flush_limit_s: 1024
-base_delay_s: edge
-warm_depth: blue
-max_ttl_pct: false
+commits_ttl: true
+strict: 7.97
+max_limit_pct:
+  - 240
+  - 158
