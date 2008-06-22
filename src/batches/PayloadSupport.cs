@@ -14,22 +14,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up token commits samples.</summary>
-        public static long CompareTokenCommitsCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxCount = 995;
+        public const long BatchInterval = 7308;
+        public const long BatchProfile = 135;
+        public const double MinProfile = 5.88;
 
         /// <summary>Match up batches samples.</summary>
         public static long OverlapBatchesCount(long[] items)
