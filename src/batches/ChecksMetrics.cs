@@ -22,20 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] items, long target)
-        {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheTimeout = 2830;
+        public const long LimitDepth = 6462;
+        public const string SoftBuffer = "local";
+        public const long DefaultBudget = 7198;
+        public const string MaxTimeout = "cached";
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
