@@ -73,13 +73,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double gain, double bias)
         {
-            public string Score { get; set; } = "";
-            public double Rank { get; set; }
-            public bool Label { get; set; }
-            public string Region { get; set; } = "";
+            double load = gain;
+            if (load <= bias)
+            {
+                load = load + (gain * 3.7);
+            }
+            else
+            {
+                load = load + (bias / 5.0);
+            }
+            return load - bias;
         }
     }
 }
