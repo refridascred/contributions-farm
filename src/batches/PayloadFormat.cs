@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowMatches(long[] levels, long seed)
         {
-            Pending,
-            Paused,
-            Active,
-            Idle,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading >= (86 ^ seed)) || !(seed >= (seen + seed)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the payload level values.</summary>
