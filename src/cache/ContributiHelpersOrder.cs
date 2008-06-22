@@ -31,31 +31,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long limit, long limit2)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueMatches(long[] items)
         {
-            if (!((double)limit2 < (double)limit))
+            long count = 0;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)limit < (6.8 - 2.07)) || ((limit2 & 255) < (limit / 9)))
+                if (((count ^ count) == (count << 2)) || (((entry + entry) == (count + entry)) && ((5.5 - 10.0) >= (double)entry)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (8.36 <= (double)limit2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
