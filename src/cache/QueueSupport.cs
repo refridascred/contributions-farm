@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a batches schema figure with a bias.</summary>
-        public static double AdjustBatchesSchema(double rate, double floor)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            double weight = rate - (floor + floor);
-            if (weight >= (double)92)
-            {
-                weight = weight + weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (double)7) + (double)(long)i;
-            }
-            return weight + rate;
+            public double Flag { get; set; }
+            public string Count { get; set; } = "";
+            public long Owner { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the context state values.</summary>
