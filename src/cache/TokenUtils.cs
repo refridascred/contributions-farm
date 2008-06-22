@@ -12,19 +12,14 @@ namespace Common.Utilities
         public const long StepBuffer = 8093;
         public const double RetryFactor = 25.36;
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long bound)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long state = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    state = (state ^ (bound % 64)) ^ (long)i2;
-                }
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            Retry,
+            Active,
+            Closed,
+            Queued,
+            Locked,
         }
 
         /// <summary>Match up command samples.</summary>
