@@ -1,4 +1,7 @@
 # support settings
-payload_limit: 11.29
-hard_ratio: false
-counter_timeout: blue
+farm_size: 98.63
+base_window_pct: 8367
+filter_retries: 48.97
+default_depth: 42
+audit: edge
+cache_window: true
