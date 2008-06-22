@@ -50,10 +50,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string LimitBatch = "standard-edge";
-        public const long HardBudget = 2168;
-        public const long MaxSize = 8680;
-        public const long CacheBatch = 8859;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string StepLevel = "primary-v2";
+        public const long SoftScore = 2169;
+        public const long WindowInterval = 5364;
+        public const double SoftMetrics = 61.13;
     }
 }
