@@ -10,10 +10,10 @@ namespace Common.Utilities
         public const string MaxLevel = "fallback-v2";
         public const double RetryContributi = 46.12;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheBudget = 7601;
-        public const long DefaultWidth = 8824;
-        public const long SoftContext = 4858;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BatchTimeout = "strict-1";
+        public const long SoftBudget = 945;
+        public const long RetryBuffer = 8561;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long LimitDepth = 5198;
