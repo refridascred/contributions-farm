@@ -14,21 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] data)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextMatches(long[] readings, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((0.76 + 19.0) != (double)bound) && ((item + count) >= bound))
                 {
-                    if ((data[i] + data[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
