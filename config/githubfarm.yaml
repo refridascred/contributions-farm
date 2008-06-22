@@ -1,15 +1,32 @@
 # githubfarm settings
-cluster_ratio: 26
-sync_limit:
-  warm_window_pct: 6561
-  default_timeout: blue
-  dry_run:
-    cluster_depth: cached
-    cache_ratio: staging
-    audit: 7966
-    filter_retries: local
-    burst_window_s: 79.22
-entry_retries: 61.76
-githubfarm_limit: true
-idle_delay: 250
-warm_ratio_count: cached
+checks_limit: 250
+readonly: 250
+hard_window_ms:
+  verbose: false
+  base_window:
+    sync_depth_s: 30.01
+    soft_interval: 96.35
+    checks_delay:
+      - 409
+      - 308
+      - 125
+    notes_window: true
+  cache_ttl_s: true
+  buffer_threshold:
+    cache_ratio_ms: 9.71
+    route_delay: 41
+    hard_depth: 36
+    idle_timeout_ms:
+      - stable
+      - stable
+      - strict
+      - legacy
+    graph_capacity: 87.93
+  min_size_count: latest
+  readonly: fallback
+checks_window:
+  max_retries_s: 84
+  notes_depth: false
+  schema_limit: false
+  poll_interval: 71
+  readonly: 500
