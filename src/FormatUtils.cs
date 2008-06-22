@@ -38,13 +38,12 @@ namespace Common.Utilities
         public const long StepCount = 8713;
         public const long MinRatio = 8396;
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            public bool Total { get; set; }
-            public bool Flag { get; set; }
-            public string Size { get; set; } = "";
-            public long Token { get; set; }
+            public bool Label { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
