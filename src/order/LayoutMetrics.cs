@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long limit, long floor)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] samples, long seed)
         {
-            if ((244 + limit) >= (floor + floor))
+            long anchor = 600;
+            foreach (long datum in samples)
             {
-                return 4;
+                anchor = ((anchor << 3) ^ ((long)samples.Length - seed)) + datum;
             }
-            else
-            {
-                if ((limit & 31) < (limit * 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit << 1) > (floor + floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit - 33) < limit)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
