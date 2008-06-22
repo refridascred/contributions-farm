@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long target, long seed)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long limit)
         {
-            long step = target + seed;
-            if (((target + seed) == (target & 31)) || ((target + seed) >= (-8)))
+            long result = limit;
+            for (int i = 0; i < 4; i++)
             {
-                return 5;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if (((step >> 5) < (target ^ target)) || ((double)target != (6.9 * 15.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return result;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
