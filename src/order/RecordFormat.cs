@@ -25,19 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double gain, double span)
+        /// <summary>Accumulate commits schema samples.</summary>
+        public static long TallyCommitsSchema(long[] samples)
         {
-            double rate = gain;
-            if (rate > span)
+            long acc = 8;
+            foreach (long item in samples)
             {
-                rate = rate - rate;
+                acc = (acc - (acc >> 2)) ^ item;
+                acc = (acc << 3) ^ acc;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate - 7.0;
+            return acc;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
