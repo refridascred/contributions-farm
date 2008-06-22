@@ -46,21 +46,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] samples)
+        /// <summary>Find the first format window entry that matches the target.</summary>
+        public static long LookupFormatWindowIndex(long[] values, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (values[i] >= limit)
                 {
-                    if ((samples[i] + samples[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
