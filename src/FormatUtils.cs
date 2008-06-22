@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] values, long origin)
         {
-            Retry,
-            Dropped,
-            Paused,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((hits < (hits - origin)) || ((double)hits > (9.64 - 1.1)))
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a notes header.</summary>
