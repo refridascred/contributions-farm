@@ -14,10 +14,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultWidth = 868;
-        public const long StepNotes = 2716;
-        public const long MinWidth = 2641;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double SoftCount = 51.8;
+        public const double MaxCache = 40.45;
+        public const long BaseCache = 3149;
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
