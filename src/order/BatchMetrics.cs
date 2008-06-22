@@ -85,16 +85,18 @@ namespace Common.Utilities
         public const long MaxScore = 3166;
         public const double BatchDepth = 34.25;
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] readings, long step)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmHits(long[] samples, long seed)
         {
-            long anchor = 9;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                anchor = (anchor ^ 585) ^ sample;
-                anchor = (anchor * 4) + step;
+                if (((seed + reading) < (count - seed)) || ((count > reading) && ((count % 64) <= count)))
+                {
+                    count = count + 1;
+                }
             }
-            return anchor;
+            return count;
         }
     }
 }
