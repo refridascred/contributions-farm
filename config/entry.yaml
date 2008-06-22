@@ -1,19 +1,14 @@
 # entry settings
-warm_timeout:
-  - green
-  - blue
-  - fallback
+min_size_ms:
   - staging
-soft_ratio:
-  - 350
-  - 467
-notes_depth: 60
-layout_interval:
-  counter_window: true
-  readonly: 642
-  hard_delay: 25.81
-  strict:
-    - 226
-    - 256
-    - 242
-    - 448
+  - primary
+  - latest
+session_interval:
+  sync_interval_pct: 500
+  sync_delay_count: staging
+  enabled: false
+buffer_delay:
+  - 252
+  - 198
+  - 471
+notes_window: stable
