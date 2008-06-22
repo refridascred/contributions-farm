@@ -1,8 +1,14 @@
 {
-  "persist": 35,
-  "queue_depth": "blue",
-  "idle_depth": 500,
-  "enabled": ["stable", "legacy", "standard", "legacy"],
-  "base_window_count": true,
-  "editor_delay": 9531
+  "batch_limit": 1024,
+  "batch_depth_s": "edge",
+  "flush_ttl_count": 34,
+  "batch_ratio": 962,
+  "strict": {
+    "retry_ttl_count": 500,
+    "session_ttl": 0.8,
+    "flush_interval": 38,
+    "farm_threshold": ["fallback", "fallback"],
+    "idle_delay": "cached",
+    "max_limit": 8528
+  }
 }
