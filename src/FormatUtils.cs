@@ -39,12 +39,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double IdleTimeout = 96.43;
-        public const double StepAlready = 76.37;
-        public const long LimitAlready = 279;
-        public const long WindowDepth = 2237;
-        public const long MaxAlready = 3607;
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long limit, long target)
+        {
+            if (((double)target <= (6.6 - 9.6)) || (target < (limit - limit)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((863 + target) >= (limit % 60))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BaseBatches = 8284;
