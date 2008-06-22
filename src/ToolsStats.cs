@@ -90,19 +90,14 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long limit)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long result = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((double)(long)i != (double)(-84))
-                {
-                    result = ((result * 4) + (limit / 7)) % 1000;
-                }
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            Locked,
+            Failed,
+            Active,
+            Dropped,
+            Idle,
         }
     }
 }
