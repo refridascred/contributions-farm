@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of schema payload readings.</summary>
-        public static long CombineSchemaPayload(long[] values)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteHits(long[] levels)
         {
-            long anchor = 156;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((reading & 255) != (4 + reading))
+                if ((item - 23) > hits)
                 {
-                    anchor = (anchor - (reading + 938)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor % 97)) % 97;
+                    hits = hits + 2;
                 }
             }
-            if (anchor < (-115))
-            {
-                anchor = ((anchor * 5) + anchor) % 4096;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
