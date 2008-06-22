@@ -16,17 +16,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LookupAccountIndex(long[] items, long origin)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaOutliers(long[] data, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((items[i] > origin) && ((items[i] % 2) == 0))
+                if (((long)data.Length + (-2)) <= (bound + 9))
                 {
-                    return (long)i;
+                    count = (count + 3) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
