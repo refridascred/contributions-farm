@@ -23,12 +23,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinSize = 5801;
-        public const long MinWidth = 1886;
-        public const long HardOrder = 9141;
-        public const long StepOrder = 9696;
-        public const double RetryOrder = 46.04;
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
+        {
+            Draft,
+            Idle,
+            Paused,
+            Queued,
+        }
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
