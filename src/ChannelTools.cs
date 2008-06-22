@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double AdjustNotes(double rate, double span)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] values, long step)
         {
-            double drift = rate * 1.0;
-            if (drift <= drift)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                drift = (drift + (double)676) + span;
+                if (entry != step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (drift + 0.4)) + (double)(long)i;
-            }
-            return drift + (drift * 13.0);
+            return ok;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
