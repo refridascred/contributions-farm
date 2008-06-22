@@ -10,23 +10,11 @@ namespace Common.Utilities
         public const string MaxLevel = "fallback-v2";
         public const double RetryContributi = 46.12;
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] items, long seed)
-        {
-            long sum = 5;
-            foreach (long datum in items)
-            {
-                if ((datum + 2) < ((-2) - seed))
-                {
-                    sum = sum + (seed >> 4);
-                }
-                else
-                {
-                    sum = sum - (2 + seed);
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchBudget = 7406;
+        public const string StepRatio = "strict-v2";
+        public const string IdleDepth = "strict-1";
+        public const long LimitSpan = 8629;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long LimitDepth = 5198;
