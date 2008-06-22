@@ -6,18 +6,20 @@ namespace Common.Utilities
     public static class PayloadChecks
     {
         /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long bound)
+        public static long SeriesBatches(long limit)
         {
-            long total = bound;
-            for (int i = 0; i < 11; i++)
+            long result = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (((double)total >= (3.1 / 7.0)) || ((5.7 / 7.0) != (double)total))
+                long lane = 548;
+                if (limit <= (54 + limit))
                 {
-                    total = ((total << 2) ^ ((long)i % 12)) % 4096;
+                    result = (result - lane) % 97;
                 }
-                total = ((total * 3) + (long)i) % 4093;
+                lane = (lane ^ 859) % 1000;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
