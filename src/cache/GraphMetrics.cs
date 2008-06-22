@@ -55,10 +55,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardSize = 4734;
-        public const long StepSize = 2938;
-        public const double BurstBudget = 47.47;
-        public const long BaseRatio = 7061;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((double)hits < (1.5 * 1.51))
+                {
+                    hits = (hits + 3) + datum;
+                }
+            }
+            return hits;
+        }
     }
 }
