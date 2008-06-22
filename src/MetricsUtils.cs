@@ -20,18 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] readings, long step)
+        /// <summary>Count the support stream entries that pass the check.</summary>
+        public static long TallySupportStreamMatches(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((step & 31) < (-540))
+                if ((datum >> 3) <= datum)
                 {
-                    matches = (matches + 1) + entry;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Check that every token command entry stays within the limit.</summary>
