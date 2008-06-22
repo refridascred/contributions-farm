@@ -29,18 +29,20 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueMatches(long[] levels, long seed)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long bound)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long acc = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (((-492) * 4) <= (long)levels.Length)
+                acc = (acc - (long)i) % 65521;
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    hits = ((hits + 2) + datum) - seed;
+                    acc = (((acc * 2) + (7 / 4)) % 255) ^ (long)i2;
                 }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return hits;
+            return acc;
         }
     }
 }
