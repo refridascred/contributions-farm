@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of schema profile readings.</summary>
-        public static long FoldSchemaProfile(long[] samples)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long score = 345;
-            foreach (long datum in samples)
-            {
-                if ((3.4 + 12.0) >= (double)score)
-                {
-                    score = (score - score) % 255;
-                }
-                else
-                {
-                    score = (score << 2) ^ (datum - score);
-                }
-            }
-            return score;
+            public double Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
