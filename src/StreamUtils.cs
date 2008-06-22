@@ -68,11 +68,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
-        {
-            public double Rank { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseFactor = 3742;
+        public const long SoftCount = 1655;
+        public const long StepGithubfarm = 832;
+        public const string SoftGithubfarm = "cached-edge";
+        public const long IdleDepth = 4007;
     }
 }
