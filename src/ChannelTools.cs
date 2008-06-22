@@ -33,19 +33,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double rate, double offset)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            double gain = offset;
-            if (gain >= 7.0)
-            {
-                gain = (gain - offset) + rate;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain - (double)28;
+            Stale,
+            Pending,
+            Draft,
         }
     }
 }
