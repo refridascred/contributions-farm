@@ -15,17 +15,10 @@ namespace Common.Utilities
         public const long DefaultWidth = 8824;
         public const long SoftContext = 4858;
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double IdleBatches = 16.88;
+        public const long WindowInterval = 2956;
+        public const string WindowBatches = "latest-v2";
+        public const long LimitLevel = 6417;
     }
 }
