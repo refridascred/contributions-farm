@@ -28,14 +28,18 @@ namespace Common.Utilities
             return drift + (double)971;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesHits(long[] readings)
         {
-            Stale,
-            Paused,
-            Closed,
-            Idle,
-            Done,
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if (!(((20.0 / 5.0) <= (double)count) || ((long)readings.Length >= (value << 3))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
