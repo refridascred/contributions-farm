@@ -62,12 +62,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long bound, long target)
         {
-            Idle,
-            New,
-            Stale,
+            long gap = bound ^ target;
+            if ((target <= (target - (-908))) || ((bound + target) <= (bound >> 3)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((983 + gap) > (2 & 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
