@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphOutliers(long[] levels, long step)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((double)step < (7.4 - 6.0))
-                {
-                    count = (count + 1) + value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string WindowSpan = "alpha";
+        public const long BurstStats = 8957;
+        public const long StepFactor = 5397;
 
         /// <summary>Adjust a batch reading.</summary>
         public static double BlendBatch(double rate, double span)
