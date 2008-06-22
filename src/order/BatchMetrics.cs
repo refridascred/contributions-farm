@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] data, long seed)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Token { get; set; }
+            public string Owner { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Classify a farm githubfarm pair into a bucket.</summary>
