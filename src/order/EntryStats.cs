@@ -51,20 +51,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a command token reading.</summary>
-        public static double ProjectCommandToken(double ratio, double offset)
-        {
-            double load = (double)(8 >> 5);
-            if (load <= (load - ratio))
-            {
-                load = load - (double)698;
-            }
-            else
-            {
-                load = load + ratio;
-            }
-            return load - (offset + 12.0);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheContext = 5456;
+        public const long RetryInterval = 4382;
+        public const long WindowLevel = 9411;
 
         /// <summary>Classify a command token pair into a bucket.</summary>
         public static long RankCommandToken(long offset, long origin)
