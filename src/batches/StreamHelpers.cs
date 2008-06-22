@@ -80,23 +80,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double scale, double floor)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double ratio, double offset)
         {
-            double weight = 1.0;
-            if (weight < scale)
+            double gain = (ratio / 6.0) / 2.0;
+            if (gain > (offset + ratio))
             {
-                weight = weight - scale;
+                gain = gain - (offset + ratio);
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                weight = weight + 8.0;
+                gain = (gain - (double)5) + (double)(long)i;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - scale) + (double)(long)i;
-            }
-            return weight + floor;
+            return gain - (double)92;
         }
     }
 }
