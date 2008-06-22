@@ -42,11 +42,21 @@ namespace Common.Utilities
         public const long MinLayout = 4993;
         public const long BurstLayout = 7356;
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Match up filter route samples.</summary>
+        public static long CompareFilterRouteCount(long[] readings)
         {
-            public bool Offset { get; set; }
-            public string Level { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
