@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string HardWidth = "latest";
+        public const long BaseInterval = 7374;
+        public const long MaxCluster = 311;
+        public const double WindowSpan = 61.96;
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
