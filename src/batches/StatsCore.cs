@@ -73,13 +73,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Check that every checks schema entry stays within the limit.</summary>
+        public static bool CheckChecksSchemaBounds(long[] samples, long step)
         {
-            public string Level { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Stamp { get; set; }
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
