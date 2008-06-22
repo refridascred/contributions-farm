@@ -24,10 +24,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BurstRoute = 48.54;
-        public const long BatchFactor = 7618;
-        public const long LimitRoute = 1624;
-        public const string DefaultSpan = "legacy-v2";
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmOutliers(long[] levels)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (!(count <= 694))
+                {
+                    count = (count + 1) ^ item;
+                }
+            }
+            return count;
+        }
     }
 }
