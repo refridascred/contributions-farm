@@ -46,13 +46,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long OverlapEntryCount(long[] items)
         {
-            public long Token { get; set; }
-            public double Size { get; set; }
-            public bool Level { get; set; }
-            public double Weight { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a buffer checks reading.</summary>
