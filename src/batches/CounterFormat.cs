@@ -19,21 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] readings)
+        /// <summary>Roll a commits graph counter forward.</summary>
+        public static long SeriesCommitsGraph(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = step;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
