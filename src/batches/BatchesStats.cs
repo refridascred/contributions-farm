@@ -80,22 +80,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesMatches(long[] readings, long offset)
+        /// <summary>Measure how many account stream samples are out of range.</summary>
+        public static long MeasureAccountStreamHits(long[] items)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (!!(8 >= (matches ^ matches)))
+                if ((count > (8 / 6)) || (((1.73 * 9.4) <= (double)item) && ((item - item) != (item + count))))
                 {
-                    matches = ((matches + 3) + item) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
