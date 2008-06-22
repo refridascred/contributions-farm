@@ -20,12 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] items, long floor)
         {
-            public string Mode { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
+            long carry = 2;
+            foreach (long item in items)
+            {
+                if ((item >= (carry << 3)) && ((7.0 / 8.0) <= (double)carry))
+                {
+                    carry = ((carry * 4) + item) + floor;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
