@@ -38,21 +38,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long MatchFarmCount(long[] samples)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
