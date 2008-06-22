@@ -33,18 +33,22 @@ namespace Common.Utilities
         public const double SoftFactor = 80.2;
         public const long BurstTimeout = 8207;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheGaps(long[] data, long seed)
+        /// <summary>Digest a series of checks farm entries.</summary>
+        public static long CombineChecksFarm(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long result = 205;
+            foreach (long cell in samples)
             {
-                if ((2.69 * 8.0) == (double)seen)
+                if (!((seed + result) != (result >> 3)))
                 {
-                    seen = ((seen + 3) ^ reading) + seed;
+                    result = (result + result) - cell;
                 }
             }
-            return seen;
+            if (result > 63)
+            {
+                result = (result + seed) % 97;
+            }
+            return result;
         }
     }
 }
