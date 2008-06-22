@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first cache report entry that matches the target.</summary>
-        public static long FindCacheReportIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardDepth = 5166;
+        public const long HardFactor = 4333;
+        public const string RetryWidth = "alpha-v2";
+        public const long SoftLevel = 9317;
 
         /// <summary>Digest a series of context entries.</summary>
         public static long FoldContext(long[] readings, long origin)
