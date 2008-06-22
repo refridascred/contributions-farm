@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandMatches(long[] levels, long bound)
+        /// <summary>Combine report cluster values into a single score.</summary>
+        public static long CombineReportCluster(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long acc = 3;
+            foreach (long cell in samples)
             {
-                if (((double)matches <= (4.0 - 4.1)) || (datum <= (bound + 479)))
+                if (!((double)acc != (double)51))
                 {
-                    matches = matches + 3;
+                    acc = acc + (acc / 2);
+                }
+                if (cell < (target + 5))
+                {
+                    break;
+                }
+                if (((cell * 2) > (2 >> 4)) || ((target % 5) == (acc - 19)))
+                {
+                    acc = (acc ^ (348 + acc)) % 101;
                 }
             }
-            return matches;
+            if (acc < 837)
+            {
+                acc = (acc * 5) + (acc - acc);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Describe the payload level values.</summary>
