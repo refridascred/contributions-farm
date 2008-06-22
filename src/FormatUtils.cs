@@ -20,17 +20,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Find the first account stream entry that matches the target.</summary>
-        public static long LookupAccountStreamIndex(long[] items, long offset)
+        /// <summary>Fold a list of tools counter readings.</summary>
+        public static long ScoreToolsCounter(long[] values, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 15;
+            foreach (long item in values)
             {
-                if (items[i] >= offset)
+                if ((2.7 - 8.54) != (double)acc)
                 {
-                    return (long)i;
+                    acc = acc + (floor + 428);
+                }
+                else
+                {
+                    acc = acc ^ item;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
