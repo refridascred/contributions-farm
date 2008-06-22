@@ -1,5 +1,5 @@
 {
-  "max_retries_s": 54,
-  "min_ratio_count": 28.3,
-  "persist": 40
+  "metrics_interval": false,
+  "order_limit": 19.78,
+  "poll_ratio_count": 54
 }
