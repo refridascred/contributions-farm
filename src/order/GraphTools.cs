@@ -17,16 +17,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a notes buffer counter forward.</summary>
-        public static long SeriesNotesBuffer(long floor)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsGaps(long[] samples)
         {
-            long result = floor;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                result = (result - (result / 6)) % 255;
-                result = ((result * 3) + (long)i) % 65521;
+                if ((item + item) < (tally - item))
+                {
+                    tally = tally + 3;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
