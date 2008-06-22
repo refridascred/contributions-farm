@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many account buffer samples are out of range.</summary>
-        public static long MeasureAccountBufferOutliers(long[] samples)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricGaps(long[] data)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((count > (value - value)) && (((value << 1) < count) && ((count - value) == (5 >> 5))))
+                if ((item - item) == (item % 7))
                 {
-                    count = count + 1;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
