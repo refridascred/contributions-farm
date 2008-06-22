@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] samples)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double rate, double floor)
         {
-            long acc = 533;
-            foreach (long entry in samples)
-            {
-                if ((acc + acc) >= (entry & 7))
-                {
-                    acc = (acc - (entry + entry)) % 101;
-                }
-            }
-            if (acc > 801)
-            {
-                acc = (acc + (5 * 2)) % 4096;
-            }
-            return acc;
+            double ratio = (floor / 5.0) * 8.47;
+            return (ratio + (ratio * 6.0)) + rate;
         }
 
         /// <summary>Describe the context level values.</summary>
