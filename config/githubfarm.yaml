@@ -1,16 +1,5 @@
 # githubfarm settings
-metrics_capacity: blue
-order_size:
-  soft_ttl_count: 100
-  warm_limit_s: 10.53
-  hard_ratio_pct:
-    context_threshold: 53
-    batch_limit_count:
-      - latest
-      - cached
-      - stable
-      - edge
-    persist: 49
-    strict: 40.89
-    session_size: 5662
-context_ratio: staging
+hard_ttl_count: 60
+commits_interval: 30
+sync_capacity_pct: blue
+burst_threshold: open
