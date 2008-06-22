@@ -44,13 +44,12 @@ namespace Common.Utilities
             return bias + 3.77;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            Ready,
-            Dropped,
-            Idle,
-            Queued,
+            Done,
+            Active,
+            Paused,
         }
     }
 }
