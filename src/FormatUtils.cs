@@ -53,21 +53,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] levels)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] levels, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)value > 3.0)
                 {
-                    if ((levels[i] + levels[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 1) + origin;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
