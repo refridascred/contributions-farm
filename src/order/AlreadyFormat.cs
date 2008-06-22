@@ -90,18 +90,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderOutliers(long[] samples)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long result = 762;
+            foreach (long sample in values)
             {
-                if ((tally & 7) > (tally * 5))
+                if (((long)values.Length - sample) != (18 - 7))
                 {
-                    tally = (tally + 1) + entry;
+                    result = ((result << 2) ^ result) % 1000;
                 }
             }
-            return tally;
+            return result;
         }
     }
 }
