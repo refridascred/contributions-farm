@@ -33,12 +33,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] values)
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public double Label { get; set; }
+            long total = 813;
+            foreach (long datum in values)
+            {
+                total = (((total << 3) ^ (total & 127)) % 101) + datum;
+                total = total - 34;
+            }
+            return total % 1000;
         }
 
         /// <summary>Adjust a cluster account reading.</summary>
