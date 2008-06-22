@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            Synced,
             New,
+            Locked,
+            Pending,
             Stale,
-            Ready,
-            Failed,
         }
 
         /// <summary>Adjust a context reading.</summary>
