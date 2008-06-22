@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] items)
         {
-            public bool Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Mode { get; set; }
-            public long Total { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
