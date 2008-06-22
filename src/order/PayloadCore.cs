@@ -58,12 +58,16 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long offset)
         {
-            Locked,
-            Dropped,
-            Queued,
+            long carry = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = (carry - (carry & 15)) % 65521;
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
