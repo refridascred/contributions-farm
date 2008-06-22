@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatOutliers(long[] items)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (4.27 <= 5.0)
+                if (116 < entry)
                 {
-                    matches = (matches + 2) - entry;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Blend two editor report measurements.</summary>
