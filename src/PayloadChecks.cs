@@ -13,21 +13,16 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] series)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = ((mix << 3) ^ (mix / 7)) % 101;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Fold a list of window readings.</summary>
