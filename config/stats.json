@@ -1,9 +1,8 @@
 {
-  "retry_ttl_ms": {
-    "dry_run": "stable",
-    "idle_ttl_s": 70,
-    "enabled": "latest"
-  },
-  "enabled": "green",
-  "layout_delay": "eu-west"
+  "verbose": 88.77,
+  "warm_window_ms": 53.19,
+  "entry_capacity": "green",
+  "entry_delay": [454, 54],
+  "context_depth": ["stable", "fallback"],
+  "record_threshold": "green"
 }
