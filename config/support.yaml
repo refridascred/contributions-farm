@@ -1,5 +1,11 @@
 # support settings
-hard_window_count: green
-cache_retries: 8601
-verbose: 30
-batch_window_count: 6729
+idle_ttl_s: 87.6
+default_timeout_s: blue
+metric_depth: eu-west
+flush_capacity_s: 91
+token_interval:
+  - 207
+  - 248
+  - 398
+  - 494
+hard_retries_ms: 10.02
