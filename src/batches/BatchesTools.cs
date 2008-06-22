@@ -20,18 +20,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamHits(long[] items)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (!!((tally >> 2) == (entry + entry)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Draft,
+            Paused,
+            Active,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Fold a list of counter readings.</summary>
