@@ -1,16 +1,6 @@
 # githubfarm settings
-flush_depth: 6516
-retry_limit_ms:
-  - strict
-  - latest
-enabled:
-  command_timeout:
-    report_ttl: edge
-    strict: 42.25
-    checks_capacity: 47
-    token_threshold: 500
-  hard_threshold_count: false
-  hard_timeout_s:
-    - staging
-    - edge
-    - primary
+cache_window_count:
+  - 12
+  - 228
+cache_size: true
+default_interval_count: fallback
