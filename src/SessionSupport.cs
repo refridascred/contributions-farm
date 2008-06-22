@@ -20,19 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] items, long limit)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterBounds(long[] levels, long offset)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if (entry < limit)
+                if (item < offset)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Adjust a support reading.</summary>
