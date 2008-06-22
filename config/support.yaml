@@ -1,7 +1,6 @@
 # support settings
-farm_size: 98.63
-base_window_pct: 8367
-filter_retries: 48.97
-default_depth: 42
-audit: edge
-cache_window: true
+retry_ttl: 12.22
+command_size: false
+base_threshold_count: false
+hard_limit_count: 30
+default_limit_pct: edge
