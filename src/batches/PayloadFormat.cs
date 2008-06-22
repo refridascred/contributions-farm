@@ -21,11 +21,15 @@ namespace Common.Utilities
         public const double BaseNotes = 2.93;
         public const double LimitNotes = 29.44;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleSize = 4703;
-        public const long DefaultWidth = 1128;
-        public const long BurstEditor = 1757;
-        public const long LimitEditor = 6608;
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
+        {
+            Dropped,
+            Closed,
+            Active,
+            Synced,
+            Draft,
+        }
 
         /// <summary>Scale a command figure with a bias.</summary>
         public static double AdjustCommand(double gain, double span)
