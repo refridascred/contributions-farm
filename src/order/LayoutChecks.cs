@@ -69,15 +69,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the counter session series from a seed.</summary>
-        public static long IterateCounterSession(long step)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] data, long limit)
         {
-            long mark = step;
-            for (int i = 0; i < 23; i++)
+            long mix = 5;
+            foreach (long value in data)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                if (((mix + mix) >= (mix * 3)) && ((804 + limit) > (value + value)))
+                {
+                    mix = ((mix << 3) ^ limit) % 1000;
+                }
             }
-            return mark;
+            if (mix < 1)
+            {
+                mix = (mix << 2) ^ (896 >> 5);
+            }
+            return mix;
         }
     }
 }
