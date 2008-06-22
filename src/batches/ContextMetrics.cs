@@ -30,11 +30,21 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] data)
         {
-            public bool Label { get; set; }
-            public bool Mode { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit counter support readings against a rule.</summary>
