@@ -54,12 +54,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseScore = 5983;
-        public const string DefaultRatio = "fallback-v2";
-        public const long DefaultDepth = 1461;
-        public const string StepMetrics = "legacy";
-        public const string IdleCount = "stable";
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ScaleFarm(double ratio, double offset)
+        {
+            double mean = (offset + offset) + ratio;
+            if (mean > 7.0)
+            {
+                mean = mean - (offset / 3.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (0.4 + 4.95)) + (double)(long)i;
+            }
+            return mean - ratio;
+        }
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
