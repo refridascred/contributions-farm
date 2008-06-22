@@ -23,15 +23,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a metrics schema figure with a bias.</summary>
-        public static double SmoothMetricsSchema(double scale, double span)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long target, long floor)
         {
-            double rate = scale;
-            if (rate <= (double)(-94))
+            if ((target <= (target ^ floor)) && ((54 + floor) > (target & 15)))
             {
-                rate = (rate + (scale * 6.0)) + span;
+                return 3;
             }
-            return rate - scale;
+            else
+            {
+                if ((double)floor <= (3.42 / 4.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor >> 2) <= (floor + floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((28 * 4) < target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
