@@ -20,19 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordRange(long[] readings, long step)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Score { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Digest a series of stats session entries.</summary>
