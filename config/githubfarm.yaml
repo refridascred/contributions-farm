@@ -1,5 +1,12 @@
 # githubfarm settings
-base_retries_pct: 100
-checks_capacity: open
-readonly: local
-retry_ratio_ms: cached
+cache_threshold: 17
+default_depth_pct: 30
+warm_window: true
+soft_size_ms:
+  format_limit: true
+  sync_delay_ms:
+    - 107
+    - 147
+    - 348
+  githubfarm_threshold: true
+  cache_interval: standard
