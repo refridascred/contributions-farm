@@ -38,12 +38,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            public double Rank { get; set; }
-            public long Owner { get; set; }
-            public bool Size { get; set; }
+            public double Label { get; set; }
+            public long Size { get; set; }
             public long Weight { get; set; }
         }
 
