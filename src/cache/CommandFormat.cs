@@ -55,12 +55,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
-            public long Region { get; set; }
+            Retry,
+            Pending,
+            Paused,
         }
     }
 }
