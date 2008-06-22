@@ -23,12 +23,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinWidth = 8721;
-        public const long WindowBudget = 964;
-        public const double SoftChecks = 12.64;
-        public const long BaseChecks = 5179;
-        public const long HardFactor = 7892;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] samples, long offset)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((4.48 + 3.63) == (double)offset)
+                {
+                    hits = (hits + 1) ^ entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long MeasureQueueMatches(long[] levels, long seed)
