@@ -39,19 +39,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Validate cache session readings against a bound.</summary>
-        public static bool VerifyCacheSessionRange(long[] values, long step)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterRange(long[] data, long target)
         {
-            bool found = true;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if (cell != step)
+                if (reading > target)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Rank record input into a small class.</summary>
