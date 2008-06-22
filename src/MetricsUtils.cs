@@ -42,13 +42,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] values, long step)
         {
-            public bool Mode { get; set; }
-            public string Score { get; set; } = "";
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a support counter forward.</summary>
