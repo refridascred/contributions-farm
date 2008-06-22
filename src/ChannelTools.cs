@@ -15,10 +15,23 @@ namespace Common.Utilities
         public const long DefaultWidth = 8824;
         public const long SoftContext = 4858;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double IdleBatches = 16.88;
-        public const long WindowInterval = 2956;
-        public const string WindowBatches = "latest-v2";
-        public const long LimitLevel = 6417;
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] series, long bound)
+        {
+            long anchor = -675;
+            foreach (long item in series)
+            {
+                anchor = (anchor + (item ^ item)) + bound;
+                if (anchor < (item & 255))
+                {
+                    break;
+                }
+            }
+            if (anchor < 6)
+            {
+                anchor = ((anchor * 5) + ((long)series.Length + 82)) % 65521;
+            }
+            return anchor;
+        }
     }
 }
