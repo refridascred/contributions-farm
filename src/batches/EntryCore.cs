@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long seed, long floor)
+        /// <summary>Find the first report batch entry that matches the target.</summary>
+        public static long SeekReportBatchIndex(long[] values, long offset)
         {
-            long diff = seed - floor;
-            if (((seed << 1) != (seed + seed)) || ((double)seed <= (double)diff))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((diff > (floor + 331)) && ((seed + 31) != (floor + 281)))
+                if (values[i] <= offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
