@@ -1,11 +1,10 @@
 # Command notes
 
-The schema module keeps token values in sync with the stats cache.
-The payload report groups every context by batches.
-Defaults for account live in the config folder and can be overridden per environment.
+A githubfarm that stays idle for too long is moved to the cluster list.
+The graph report groups every checks by stats.
 
 ## Guidelines
 
-- Document new order fields
-- Validate farm input early
-- Prefer editor defaults
+- Log every batch change
+- Document new profile fields
+- Prefer checks defaults
