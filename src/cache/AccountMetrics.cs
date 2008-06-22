@@ -62,13 +62,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] series, long offset)
         {
-            public double Region { get; set; }
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
-            public double Count { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
