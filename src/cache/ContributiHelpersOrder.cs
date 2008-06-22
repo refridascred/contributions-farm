@@ -25,16 +25,21 @@ namespace Common.Utilities
         public const long MaxFilter = 7462;
         public const string IdleFilter = "legacy-1";
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] levels)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long PairFormatCount(long[] levels)
         {
-            long result = 8;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (result + (57 << 2)) % 97;
-                result = ((result * 5) + (sample % 97)) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result;
+            return matches;
         }
     }
 }
