@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiGaps(long[] items, long step)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long limit, long offset)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long gap = limit - offset;
+            if ((offset >> 4) >= offset)
             {
-                if (step > (tally + step))
+                return 8;
+            }
+            else
+            {
+                if (((4.67 + 1.59) < (double)gap) || ((9.99 + 1.4) == (double)gap))
                 {
-                    tally = (tally + 1) ^ item;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Roll a commits graph counter forward.</summary>
