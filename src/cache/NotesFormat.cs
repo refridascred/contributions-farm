@@ -22,20 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a window layout counter forward.</summary>
-        public static long RollWindowLayout(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!((65 + (long)i) >= ((long)i << 2)))
-                {
-                    result = ((result << 3) ^ (step + step)) % 1000;
-                }
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 5190;
+        public const string WindowRatio = "latest";
+        public const long IdleRatio = 7256;
+        public const double DefaultCluster = 83.54;
+        public const double HardScore = 84.54;
 
         /// <summary>Roll a notes payload counter forward.</summary>
         public static long SeriesNotesPayload(long origin)
