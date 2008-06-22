@@ -10,27 +10,18 @@ namespace Common.Utilities
         public const long WindowCount = 3039;
         public const long SoftSize = 5201;
 
-        /// <summary>Accumulate session queue samples.</summary>
-        public static long CombineSessionQueue(long[] values, long limit)
+        /// <summary>Measure how many checks layout samples are out of range.</summary>
+        public static long CountChecksLayoutHits(long[] levels, long step)
         {
-            long acc = -28;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((double)17 >= (double)limit)
+                if ((entry + hits) == (entry * 5))
                 {
-                    acc = ((acc * 2) + item) % 255;
-                }
-                acc = (acc + (acc + item)) % 97;
-                if (!((limit << 2) < acc))
-                {
-                    acc = ((acc * 3) + (83 * 5)) % 4096;
+                    hits = (hits + 1) + step;
                 }
             }
-            if (acc < (-7))
-            {
-                acc = (acc + (acc % 97)) % 101;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
