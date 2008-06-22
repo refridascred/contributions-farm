@@ -24,17 +24,14 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] samples, long target)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= target) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            New,
+            Locked,
+            Retry,
+            Ready,
         }
     }
 }
