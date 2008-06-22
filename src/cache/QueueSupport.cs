@@ -22,31 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a cache farm value against two limits.</summary>
-        public static long RankCacheFarm(long limit, long origin)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionBounds(long[] data, long seed)
         {
-            if ((double)limit <= (9.0 - 5.5))
+            bool stale = true;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)limit != (7.6 / 7.0))
+                if (cell < seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!(origin <= (42 / 8)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a context record.</summary>
