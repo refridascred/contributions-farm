@@ -1,6 +1,4 @@
 # support settings
-retry_ttl: 12.22
-command_size: false
-base_threshold_count: false
-hard_limit_count: 30
-default_limit_pct: edge
+batch_delay: 100
+enabled: false
+poll_limit: 58
