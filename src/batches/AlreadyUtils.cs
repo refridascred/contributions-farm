@@ -53,13 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
-        {
-            New,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 7548;
+        public const string LimitToken = "standard";
+        public const double LimitSpan = 90.64;
+        public const long BatchToken = 417;
+        public const long WindowToken = 7037;
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
