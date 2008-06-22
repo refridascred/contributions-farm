@@ -46,9 +46,21 @@ namespace Common.Utilities
         public const long MinPayload = 2594;
         public const double MinFactor = 30.54;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MinInterval = "primary-1";
-        public const long MaxSize = 1673;
-        public const string IdleChecks = "standard";
+        /// <summary>Compare every pair of stream githubfarm readings.</summary>
+        public static long PairStreamGithubfarmCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
