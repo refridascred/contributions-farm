@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Locate a command reading by value.</summary>
-        public static long FindCommandIndex(long[] readings, long target)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (readings[i] > target)
-                {
-                    return (long)i;
-                }
+                mark = ((mark << 3) ^ (step + step)) % 4096;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a session info.</summary>
