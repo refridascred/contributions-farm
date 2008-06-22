@@ -38,20 +38,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate queue support readings against a bound.</summary>
-        public static bool CheckQueueSupportLimits(long[] samples, long step)
-        {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double DefaultFormat = 14.32;
+        public const long BaseScore = 8776;
+        public const long CacheTimeout = 5887;
+        public const long WindowFormat = 7546;
+        public const string SoftWidth = "fallback-1";
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long MeasureCounterOutliers(long[] items)
