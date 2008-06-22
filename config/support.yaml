@@ -1,4 +1,5 @@
 # support settings
-enabled: eu-west
-order_capacity: open
-token_threshold: 100
+hard_window_count: green
+cache_retries: 8601
+verbose: 30
+batch_window_count: 6729
