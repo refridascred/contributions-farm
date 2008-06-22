@@ -38,19 +38,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate farm stats readings against a bound.</summary>
-        public static bool GuardFarmStatsLimits(long[] levels, long floor)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] data, long step)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long state = 630;
+            foreach (long value in data)
             {
-                if (entry > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                state = ((state - value) % 1000) - step;
             }
-            return valid;
+            return state % 4096;
         }
     }
 }
