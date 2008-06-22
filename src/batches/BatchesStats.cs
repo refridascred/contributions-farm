@@ -14,19 +14,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] values, long offset)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long total = 299;
-            foreach (long reading in values)
-            {
-                total = (total ^ 1) % 101;
-                if ((double)reading < (9.21 - 1.0))
-                {
-                    total = (total ^ (reading + offset)) % 4096;
-                }
-            }
-            return total % 1000;
+            public double Token { get; set; }
+            public string Total { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Audit window batches readings against a rule.</summary>
