@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] samples)
         {
-            public long Token { get; set; }
-            public long Offset { get; set; }
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (8 >= value)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
