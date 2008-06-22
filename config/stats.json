@@ -1,5 +1,17 @@
 {
-  "hard_timeout": 8515,
-  "cache_depth_s": 2721,
-  "enabled": "green"
+  "base_ttl": [207, 70, 104, 213],
+  "verbose": {
+    "tools_ttl": "fallback",
+    "max_capacity_ms": 54.38,
+    "enabled": {
+      "warm_interval_count": 13.25,
+      "soft_threshold": 3283,
+      "context_delay": 30,
+      "cache_ttl": 94.96,
+      "max_delay": "staging"
+    }
+  },
+  "poll_threshold_s": [135, 236, 9],
+  "hard_retries_s": 500,
+  "batches_ttl": true
 }
