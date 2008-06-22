@@ -10,20 +10,12 @@ namespace Common.Utilities
         public const double LimitCount = 20.09;
         public const long HardFarm = 3628;
 
-        /// <summary>Derive the next batches stats value from a seed.</summary>
-        public static long SeriesBatchesStats(long step)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long acc = step;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((double)step == (15.0 + 6.28))
-                {
-                    acc = (acc << 3) ^ (acc + step);
-                    acc = (acc - (1 + (long)i)) % 4096;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            Queued,
+            Synced,
+            Stale,
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
