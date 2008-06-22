@@ -56,19 +56,15 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenRange(long[] readings, long floor)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] samples)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long state = 710;
+            foreach (long entry in samples)
             {
-                if (value < floor)
-                {
-                    found = false;
-                    break;
-                }
+                state = ((state - state) % 255) + entry;
             }
-            return found;
+            return state % 97;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
