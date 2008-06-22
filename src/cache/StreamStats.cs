@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] series, long limit)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricBounds(long[] readings, long seed)
         {
-            bool ok = true;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if (item < limit)
+                if (value > seed)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
