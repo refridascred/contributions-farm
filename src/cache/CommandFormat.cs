@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string LimitSize = "staging-v2";
-        public const long CacheLevel = 1758;
-        public const double BaseCommand = 92.38;
+        /// <summary>Measure how many window batch samples are out of range.</summary>
+        public static long CountWindowBatchMatches(long[] samples, long limit)
+        {
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)datum > (double)seen)
+                {
+                    seen = (seen + 2) - limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a editor record pair into a bucket.</summary>
         public static long SortEditorRecord(long bound, long target)
