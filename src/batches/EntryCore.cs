@@ -28,15 +28,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long origin)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long carry = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            Draft,
+            Failed,
+            Done,
+            Paused,
         }
 
         /// <summary>Describe the schema mode values.</summary>
