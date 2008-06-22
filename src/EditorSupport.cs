@@ -58,11 +58,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double ratio, double span)
         {
-            public double Token { get; set; }
-            public bool Owner { get; set; }
+            double mean = (double)(21 + 760);
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (((mean - (11.0 / 3.0)) + (double)(long)i) + ratio) - span;
+            }
+            return mean + (mean * 6.11);
         }
 
         /// <summary>Compare every pair of already readings.</summary>
