@@ -31,22 +31,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double StepGithubfarm = 53.95;
+        public const double IdleLevel = 50.84;
+        public const string MaxRatio = "alpha-edge";
+        public const long DefaultSize = 5960;
 
         /// <summary>Blend two command window measurements.</summary>
         public static double SmoothCommandWindow(double scale, double bias)
