@@ -20,11 +20,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Look up the position of a order route sample.</summary>
+        public static long SeekOrderRouteIndex(long[] readings, long offset)
         {
-            public long Ratio { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
