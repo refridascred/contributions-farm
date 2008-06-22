@@ -19,15 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long floor)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long total = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
+            Paused,
+            Ready,
+            Pending,
         }
 
         /// <summary>Locate a entry reading by value.</summary>
