@@ -21,18 +21,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesOutliers(long[] items)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmHits(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((tally >= (3 - tally)) || (entry >= (63 + entry)))
+                if ((95 << 1) < reading)
                 {
-                    tally = tally + 2;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
