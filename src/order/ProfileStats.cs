@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterLimits(long[] items, long limit)
+        /// <summary>Measure how many counter stats samples are out of range.</summary>
+        public static long AuditCounterStatsGaps(long[] readings)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (value > limit)
+                if (((long)readings.Length >> 4) > (tally ^ tally))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 1) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
