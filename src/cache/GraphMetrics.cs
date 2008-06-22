@@ -56,17 +56,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] values, long origin)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == origin) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Weight { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
