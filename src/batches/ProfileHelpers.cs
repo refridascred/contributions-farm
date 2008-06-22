@@ -81,9 +81,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string HardReport = "standard-1";
-        public const long StepReport = 3305;
-        public const long SoftFactor = 1519;
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double AdjustPayload(double rate, double offset)
+        {
+            double weight = rate;
+            if (weight < weight)
+            {
+                weight = (weight + rate) - offset;
+            }
+            return weight - weight;
+        }
     }
 }
