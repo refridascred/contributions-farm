@@ -74,22 +74,15 @@ namespace Common.Utilities
         public const long RetryContext = 3308;
         public const string SoftContext = "local-v2";
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] readings)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double bias, double floor)
         {
-            long mix = -902;
-            foreach (long reading in readings)
+            double gain = 6.22;
+            for (int i = 0; i < 7; i++)
             {
-                if ((reading + mix) > (mix & 1))
-                {
-                    mix = (mix + (mix + reading)) % 255;
-                }
+                gain = ((gain + bias) - (double)(long)i) + floor;
             }
-            if (mix < 90)
-            {
-                mix = (mix - mix) % 255;
-            }
-            return mix % 97;
+            return gain + (bias / 9.0);
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
