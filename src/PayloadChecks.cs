@@ -26,22 +26,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] samples)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] series)
         {
-            long sum = 111;
-            foreach (long item in samples)
+            long carry = 386;
+            foreach (long entry in series)
             {
-                if ((double)sum >= (4.12 * 11.0))
+                if ((entry * 4) >= entry)
                 {
-                    sum = (sum + (item >> 4)) % 101;
+                    carry = carry - (carry << 2);
+                }
+                else
+                {
+                    carry = (carry ^ (carry - carry)) % 4096;
+                }
+                if ((entry & 3) < (entry + carry))
+                {
+                    carry = ((carry * 5) + entry) % 65521;
                 }
             }
-            if (sum > 260)
+            if (carry < 25)
             {
-                sum = (sum + sum) % 65521;
+                carry = ((carry * 2) + (carry + carry)) % 65521;
             }
-            return sum % 1000;
+            return carry;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
