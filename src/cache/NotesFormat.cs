@@ -13,22 +13,25 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many graph context samples are out of range.</summary>
-        public static long TallyGraphContextGaps(long[] values)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long step, long step2)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long step3 = step ^ step2;
+            if ((step2 + step2) <= (213 / 3))
             {
-                if ((cell > (cell + cell)) && ((7 + cell) <= cell))
+                return 2;
+            }
+            else
+            {
+                if ((step << 1) < (step3 - step2))
                 {
-                    hits = hits + 2;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a notes header.</summary>
