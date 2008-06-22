@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] data)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((datum / 2) == (seen - datum))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Paused,
+            Ready,
+            Done,
+            New,
+            Failed,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
