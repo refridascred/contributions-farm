@@ -36,18 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] levels, long target)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ScaleSession(double bias, double floor)
         {
-            long carry = 370;
-            foreach (long entry in levels)
+            double load = (floor * 9.0) - (floor / 8.0);
+            if (load < (floor - 0.7))
             {
-                if ((target - target) == (346 % 5))
-                {
-                    carry = ((carry << 2) ^ (entry + target)) % 65521;
-                }
+                load = load + bias;
             }
-            return carry;
+            for (int i = 0; i < 6; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load + (double)557;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
