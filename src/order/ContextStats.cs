@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterMatches(long[] series, long origin)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((seen - seen) >= cell)
-                {
-                    seen = (seen + 3) + origin;
-                }
-            }
-            return seen;
+            Synced,
+            New,
+            Closed,
+            Draft,
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
