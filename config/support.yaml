@@ -1,17 +1,15 @@
 # support settings
-persist: 250
-hard_ttl_s: 963
-token_delay: false
-sync_delay_count: 40
-githubfarm_capacity:
-  flush_size:
-    warm_threshold: blue
-    verbose:
-      - 119
-      - 67
-      - 349
-      - 254
-    default_size_pct: open
-    queue_capacity: 7809
-  max_size: 60
-  idle_threshold: 60
+cache_timeout_pct:
+  - 354
+  - 489
+  - 369
+account_depth:
+  - 336
+  - 45
+min_retries_s: local
+githubfarm_depth:
+  batch_window: true
+  default_size_count: 30
+  soft_delay: edge
+idle_capacity: 6426
+readonly: blue
