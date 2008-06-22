@@ -23,39 +23,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long step, long target)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] readings, long limit)
         {
-            long span = step - target;
-            if ((span + span) > (step + 94))
+            long score = 60;
+            foreach (long value in readings)
             {
-                return 8;
+                score = (((score * 3) + value) % 1000) - limit;
             }
-            else
-            {
-                if (((span / 6) != (target + step)) || ((step & 7) != (8 >> 1)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target * 2) >= (49 + target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((span << 2) != (span + step)) && ((step - step) == (target & 31)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return score;
         }
     }
 }
