@@ -1,19 +1,21 @@
 # githubfarm settings
-cache_window:
-  min_ttl_count: stable
-  queue_delay:
-    base_retries_pct:
-      - 436
-      - 73
-      - 15
-    compress: latest
-    poll_delay: fallback
-    max_ttl: primary
-  strict: false
-  batch_retries_count: local
-  warm_capacity_s: 11.15
-queue_ttl: blue
-retry_window: primary
-strict: false
-farm_window: fallback
-max_ttl: true
+readonly: 4736
+profile_delay: cached
+default_delay_pct: 11.46
+soft_size_pct: 500
+warm_capacity_ms:
+  persist: 100
+  session_ttl:
+    - 241
+    - 440
+    - 438
+    - 402
+  batch_limit: 68.94
+  cache_capacity_count:
+    - edge
+    - cached
+compress:
+  command_window: 9507
+  burst_interval: staging
+  warm_window_pct: strict
+  soft_ratio_ms: legacy
