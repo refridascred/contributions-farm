@@ -1,7 +1,16 @@
 {
-  "enabled": [439, 414, 488, 300],
-  "sync_ratio_count": 60,
-  "batch_threshold_pct": 24,
-  "hard_interval_count": false,
-  "support_timeout": 1159
+  "poll_interval_ms": "blue",
+  "dry_run": 79,
+  "account_depth": {
+    "cache_ttl_pct": 250,
+    "readonly": 1024,
+    "retry_window_ms": ["cached", "eu-west", "cached", "cached"],
+    "commits_depth": {
+      "flush_ratio": false,
+      "metric_threshold": 32,
+      "base_ttl_s": 60
+    },
+    "buffer_depth": 7999,
+    "verbose": "green"
+  }
 }
