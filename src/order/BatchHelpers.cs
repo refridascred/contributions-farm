@@ -18,15 +18,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double weight, double bias)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            double mean = (double)(0 % 60);
-            for (int i = 0; i < 7; i++)
-            {
-                mean = ((mean - weight) + (double)(long)i) + bias;
-            }
-            return mean + (double)347;
+            public long Label { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
