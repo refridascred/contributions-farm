@@ -39,22 +39,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] data, long bound)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long result = 566;
-            foreach (long reading in data)
-            {
-                if ((double)reading != (double)bound)
-                {
-                    result = (result ^ (result & 3)) % 65521;
-                }
-            }
-            if (result > 9)
-            {
-                result = ((result * 2) + (790 % 16)) % 97;
-            }
-            return result % 1000;
+            public bool Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
