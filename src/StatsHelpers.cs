@@ -52,22 +52,19 @@ namespace Common.Utilities
         public const long LimitAlready = 790;
         public const string HardBudget = "alpha";
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenMatches(long[] levels, long step)
+        /// <summary>Check that every session counter entry stays within the limit.</summary>
+        public static bool ValidateSessionCounterBounds(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if (((hits + datum) != (long)levels.Length) || ((hits >> 3) == (hits * 5)))
+                if (sample < origin)
                 {
-                    hits = (hits + 1) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
