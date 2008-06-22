@@ -30,17 +30,38 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] items, long limit)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long floor, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (floor >= (offset + floor))
             {
-                if ((items[i] > limit) && ((items[i] % 3) == 0))
+                return 2;
+            }
+            else
+            {
+                if (offset <= (offset % 100))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((floor + offset) >= floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)floor > (1.3 / 5.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
