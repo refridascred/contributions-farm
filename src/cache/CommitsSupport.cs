@@ -59,32 +59,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long origin, long target)
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] readings)
         {
-            long step = origin ^ target;
-            if ((double)origin == (double)step)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step & 63) < (origin ^ (-4)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)target != (8.12 + 9.94)))
+                    if ((readings[i] + readings[j]) > 15)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
