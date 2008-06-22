@@ -30,13 +30,11 @@ namespace Common.Utilities
             return rate2 - (rate2 / 9.0);
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            Active,
-            Locked,
-            Dropped,
-            Queued,
+            public string Size { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
