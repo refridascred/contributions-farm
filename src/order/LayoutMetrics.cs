@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double rate, double floor)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long limit, long floor)
         {
-            double gain = floor;
-            if (gain >= (floor / 6.0))
+            if ((244 + limit) >= (floor + floor))
             {
-                gain = gain - (double)133;
+                return 4;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                gain = (gain + rate) + (double)(long)i;
+                if ((limit & 31) < (limit * 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit << 1) > (floor + floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit - 33) < limit)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return gain + 20.0;
         }
 
         /// <summary>Count the graph schema entries that pass the check.</summary>
