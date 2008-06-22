@@ -13,12 +13,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long target)
         {
-            public bool Score { get; set; }
-            public bool Mode { get; set; }
-            public bool Region { get; set; }
+            long state = target;
+            for (int i = 0; i < 17; i++)
+            {
+                state = (state ^ (target % 16)) % 4096;
+                state = state ^ (state - target);
+                state = (state - (state / 3)) % 101;
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
