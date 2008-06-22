@@ -1,14 +1,16 @@
 # Command notes
 
-Defaults for report live in the config folder and can be overridden per environment.
-Use layout settings to tune how often channel data is refreshed.
+Keep stats and tools names short and lowercase.
+Run the counter check before changing any command limits.
+The notes module keeps stream values in sync with the contributi cache.
 
-Defaults for format live in the config folder and can be overridden per environment.
-Keep account and account names short and lowercase.
+Keep payload and contributi names short and lowercase.
+Each batch is validated before it reaches the record queue.
+The route helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every counter change
-- Document new support fields
-- Validate token input early
-- Keep metrics values small
+- Prefer batches defaults
+- Document new entry fields
+- Review queue limits each release
+- Keep graph values small
