@@ -39,10 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseWidth = 5205;
-        public const long WindowWidth = 1201;
-        public const long BurstContributi = 7301;
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < bound) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BaseMetric = 7982;
