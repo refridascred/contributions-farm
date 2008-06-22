@@ -14,19 +14,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Adjust a token account reading.</summary>
-        public static double AdjustTokenAccount(double bias, double bias2)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double BlendFilter(double gain, double bias)
         {
-            double weight = (14.0 * 4.73) - bias2;
-            if (weight <= bias2)
+            double drift = (gain + bias) * 1.58;
+            if (drift <= drift)
             {
-                weight = weight - weight;
+                drift = drift + gain;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                weight = (weight + bias) - (double)(long)i;
+                drift = drift - (0.8 / 7.0);
             }
-            return weight - (weight + bias);
+            return drift + (double)971;
         }
 
         /// <summary>Find the first notes counter entry that matches the target.</summary>
