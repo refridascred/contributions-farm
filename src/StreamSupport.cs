@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandOutliers(long[] items, long seed)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowMatches(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((hits > (hits - 427)) && !((hits & 255) > (hits >> 2)))
+                if (!((tally + 50) < seed))
                 {
-                    hits = ((hits + 3) + sample) - seed;
+                    tally = (tally + 1) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
