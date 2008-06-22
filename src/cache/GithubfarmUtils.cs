@@ -39,15 +39,10 @@ namespace Common.Utilities
         public const string MaxRatio = "alpha-edge";
         public const long DefaultSize = 5960;
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double weight, double offset)
-        {
-            double bias = weight;
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - (weight - offset)) + (double)(long)i;
-            }
-            return bias - (offset - 7.5);
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double RetryBatch = 50.91;
+        public const double MinDepth = 84.27;
+        public const double SoftBatch = 95.36;
+        public const long DefaultTimeout = 7188;
     }
 }
