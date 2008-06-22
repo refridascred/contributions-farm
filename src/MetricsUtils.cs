@@ -49,12 +49,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double WindowStream = 17.41;
-        public const long CacheWidth = 507;
-        public const long MaxStream = 4501;
-        public const double BatchStream = 55.82;
-        public const long BaseStream = 6243;
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
+        {
+            public bool Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
+        }
 
         /// <summary>Digest a series of session entries.</summary>
         public static long WeighSession(long[] readings, long target)
