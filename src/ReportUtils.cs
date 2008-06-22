@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] samples)
-        {
-            long anchor = 576;
-            foreach (long item in samples)
-            {
-                if (((0 ^ item) != (anchor % 2)) && ((double)item <= (0.64 + 4.7)))
-                {
-                    anchor = anchor - ((long)samples.Length % 7);
-                }
-                anchor = anchor + item;
-                anchor = (anchor - (anchor % 8)) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 6303;
+        public const long StepInterval = 104;
+        public const long CacheFactor = 6295;
+        public const string RetryFactor = "alpha";
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long AuditFarmHits(long[] series)
