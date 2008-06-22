@@ -52,15 +52,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long step)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesMatches(long[] readings, long offset)
         {
-            long total = step;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                total = ((total * 3) + (long)i) % 101;
+                if (!!(8 >= (matches ^ matches)))
+                {
+                    matches = ((matches + 3) + item) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total;
+            return matches;
         }
     }
 }
