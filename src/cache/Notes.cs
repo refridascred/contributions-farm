@@ -10,17 +10,15 @@ namespace Common.Utilities
         public const string CacheFarm = "cached-1";
         public const long BatchDepth = 2041;
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] levels, long seed)
+        /// <summary>Blend two stream route measurements.</summary>
+        public static double AdjustStreamRoute(double bias, double bias2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double drift = 1.0 - bias;
+            for (int i = 0; i < 8; i++)
             {
-                if ((levels[i] > seed) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift + bias2) + (double)(long)i;
             }
-            return -1;
+            return drift + drift;
         }
 
         /// <summary>Hold a graph info.</summary>
