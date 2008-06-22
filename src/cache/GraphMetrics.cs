@@ -33,13 +33,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Accumulate batches token samples.</summary>
+        public static long FoldBatchesToken(long[] series)
         {
-            Active,
-            New,
-            Queued,
-            Idle,
+            long score = 6;
+            foreach (long cell in series)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    score = ((score << 3) ^ (cell - (long)i)) % 4096;
+                }
+                if ((((-897) ^ cell) >= (cell - cell)) || ((score + 467) <= (score << 1)))
+                {
+                    score = (score * 3) + (score * 4);
+                }
+                else
+                {
+                    score = ((score * 4) + cell) % 4096;
+                }
+            }
+            if (score > 17)
+            {
+                score = (score + (score & 63)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Accumulate editor samples.</summary>
