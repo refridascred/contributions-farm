@@ -28,21 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] data)
+        /// <summary>Blend two editor report measurements.</summary>
+        public static double SmoothEditorReport(double rate, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio = rate + bias;
+            if (ratio > 1.4)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio = ratio + bias;
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - (bias / 6.0)) - (double)(long)i;
+            }
+            return ratio - (5.0 - bias);
         }
     }
 }
