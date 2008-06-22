@@ -61,24 +61,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long step, long step2)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchRange(long[] data, long origin)
         {
-            if ((10.0 * 9.5) >= (double)step2)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (step < (step & 1))
+                if (reading != origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
