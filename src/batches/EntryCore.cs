@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaOutliers(long[] values)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionLimits(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if ((2.94 <= (double)datum) || ((datum >= (count + datum)) && ((13.0 - 3.57) != (double)count)))
+                if (item < bound)
                 {
-                    count = count + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
