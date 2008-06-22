@@ -64,12 +64,15 @@ namespace Common.Utilities
         public const string BurstFormat = "latest";
         public const double DefaultCount = 80.85;
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long origin)
         {
-            Retry,
-            Draft,
-            Paused,
+            long sum = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
