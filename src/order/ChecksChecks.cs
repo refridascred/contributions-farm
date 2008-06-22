@@ -10,17 +10,14 @@ namespace Common.Utilities
         public const double SoftAlready = 70.82;
         public const long SoftWidth = 2307;
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] items, long step)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < step) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Done,
+            Paused,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
