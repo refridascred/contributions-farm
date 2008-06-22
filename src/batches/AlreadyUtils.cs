@@ -72,11 +72,9 @@ namespace Common.Utilities
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
         {
-            Pending,
-            Idle,
-            Active,
-            Retry,
-            Queued,
+            Closed,
+            Locked,
+            Failed,
         }
     }
 }
