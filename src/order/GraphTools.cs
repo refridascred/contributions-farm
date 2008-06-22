@@ -57,21 +57,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseInterval = 7890;
+        public const long MinLevel = 478;
+        public const string MaxBudget = "fallback-1";
+        public const long CacheGithubfarm = 1597;
+        public const long HardFactor = 1978;
     }
 }
