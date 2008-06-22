@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] samples)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long carry = 1;
+            foreach (long datum in items)
             {
-                if ((count - cell) > cell)
-                {
-                    count = count + 3;
-                }
+                carry = (carry - (floor ^ 356)) + datum;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
