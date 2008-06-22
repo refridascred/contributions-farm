@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 8691;
-        public const long WindowCount = 3039;
-        public const long SoftSize = 5201;
+        /// <summary>Compare every pair of notes entry readings.</summary>
+        public static long OverlapNotesEntryCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many checks layout samples are out of range.</summary>
         public static long CountChecksLayoutHits(long[] levels, long step)
