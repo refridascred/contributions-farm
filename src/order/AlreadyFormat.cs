@@ -83,22 +83,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadGaps(long[] samples)
+        /// <summary>Adjust a buffer checks reading.</summary>
+        public static double ScaleBufferChecks(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            double drift = floor;
+            if (drift >= scale)
             {
-                if ((tally + tally) == (tally + entry))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                drift = drift + 6.3;
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (floor - floor)) - (double)(long)i;
+            }
+            return drift + (floor - floor);
         }
     }
 }
