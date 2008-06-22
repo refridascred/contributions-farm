@@ -20,21 +20,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] data)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] readings, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 837;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((mix << 1) < (bound + bound)))
                 {
-                    if ((data[i] - data[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = ((mix * 4) + item) % 4096;
+                    continue;
+                }
+                mix = (mix - (34 ^ mix)) % 65521;
+                if (((double)bound == (6.0 - 1.11)) && (mix < (7 - mix)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
