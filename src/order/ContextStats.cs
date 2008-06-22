@@ -94,22 +94,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] series, long seed)
-        {
-            long carry = 76;
-            foreach (long cell in series)
-            {
-                if ((double)seed < (3.6 / 6.0))
-                {
-                    carry = (((carry * 2) + (seed + 959)) % 1000) ^ cell;
-                }
-            }
-            if (carry > 26)
-            {
-                carry = (carry + (seed * 2)) % 65521;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 5146;
+        public const double LimitRatio = 65.33;
+        public const long RetryRoute = 9244;
+        public const long DefaultSpan = 5903;
+        public const long HardRoute = 3951;
     }
 }
