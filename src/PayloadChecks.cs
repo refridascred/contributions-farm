@@ -43,19 +43,21 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesLimits(long[] items, long seed)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading < seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] - levels[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Describe the command mode values.</summary>
