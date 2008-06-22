@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] items, long target)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((target + target) != (count << 2))
-                {
-                    count = (count + 3) + sample;
-                }
-            }
-            return count;
+            public bool Mode { get; set; }
+            public long Score { get; set; }
+            public string Owner { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
