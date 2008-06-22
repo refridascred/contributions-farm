@@ -1,7 +1,12 @@
 {
-  "notes_ttl": 5264,
-  "entry_retries": 100,
-  "base_threshold": 1024,
-  "readonly": true,
-  "base_ratio_ms": 1024
+  "audit": 44,
+  "format_size": 72.66,
+  "sync_capacity_count": {
+    "token_threshold": 2246,
+    "base_ttl_s": "eu-west",
+    "order_size": 37,
+    "strict": 5423,
+    "report_ttl": "primary",
+    "batch_ttl_pct": 100
+  }
 }
