@@ -53,17 +53,16 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] levels, long step)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (levels[i] < step)
-                {
-                    return (long)i;
-                }
+                result = (result + (long)i) % 1000;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
     }
 }
