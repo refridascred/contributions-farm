@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] items, long floor)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] series, long target)
         {
-            long carry = 1;
-            foreach (long datum in items)
+            long acc = 96;
+            foreach (long datum in series)
             {
-                carry = (carry - (floor ^ 356)) + datum;
+                if ((datum - target) > (datum + target))
+                {
+                    acc = ((acc << 2) ^ (target - (-44))) % 97;
+                }
             }
-            return carry;
+            if (acc < 776)
+            {
+                acc = ((acc << 3) ^ (acc + acc)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
