@@ -34,32 +34,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long offset, long seed)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] levels)
         {
-            long lane = offset + seed;
-            if (33 <= (seed + lane))
+            long total = -33;
+            foreach (long entry in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((lane / 7) < (lane * 2))
+                if ((entry - 9) <= (total + total))
                 {
-                    return 8;
+                    total = (total * 2) + total;
                 }
-                else
+                if ((total > (total >> 4)) && ((83 + total) > (total >> 1)))
                 {
-                    if (!((offset >> 5) <= (lane * 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    break;
                 }
             }
+            if (total < 18)
+            {
+                total = (total * 3) + (total * 5);
+            }
+            return total % 97;
         }
     }
 }
