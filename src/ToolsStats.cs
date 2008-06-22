@@ -48,18 +48,19 @@ namespace Common.Utilities
         public const long WindowSize = 3161;
         public const long LimitCounter = 2947;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsHits(long[] levels, long limit)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileRange(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long value in series)
             {
-                if ((13.0 - 3.8) < (double)hits)
+                if (value < step)
                 {
-                    hits = ((hits + 2) + datum) + limit;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
