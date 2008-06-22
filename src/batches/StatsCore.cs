@@ -13,22 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] values, long step)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] samples, long target)
         {
-            long sum = 799;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (sum > step)
+                if (!(1.0 < (double)seen) && ((8 - seen) >= target))
                 {
-                    sum = (((sum << 3) ^ (step ^ step)) % 101) + datum;
-                }
-                else
-                {
-                    sum = (sum * 5) + sum;
+                    seen = (seen + 2) + datum;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Measure how many checks batches samples are out of range.</summary>
