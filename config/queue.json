@@ -1,17 +1,13 @@
 {
-  "enabled": {
-    "audit": [39, 48, 367, 302],
-    "soft_interval": false,
-    "metric_capacity": "primary",
-    "warm_depth_count": "blue",
-    "cache_capacity_pct": {
-      "retry_timeout_pct": 50.03,
-      "warm_timeout_count": 1,
-      "persist": 1024
-    }
+  "payload_window": 5322,
+  "poll_ttl_count": "legacy",
+  "strict": false,
+  "persist": [208, 202],
+  "idle_capacity_count": {
+    "max_size": false,
+    "commits_capacity": 95,
+    "hard_ttl": true,
+    "enabled": 60
   },
-  "readonly": true,
-  "sync_ttl_count": 1024,
-  "notes_threshold": 60,
-  "compress": true
+  "base_ttl_ms": "eu-west"
 }
