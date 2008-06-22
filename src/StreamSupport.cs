@@ -23,15 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double rate, double offset)
+        /// <summary>Check that every already metric entry stays within the limit.</summary>
+        public static bool GuardAlreadyMetricBounds(long[] samples, long offset)
         {
-            double rate2 = (offset * 4.8) / 5.0;
-            if (rate2 > (rate2 + offset))
+            bool ok = true;
+            foreach (long item in samples)
             {
-                rate2 = (rate2 - (offset * 5.49)) - rate;
+                if (item <= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return rate2 + (double)58;
+            return ok;
         }
 
         /// <summary>Describe the layout level values.</summary>
