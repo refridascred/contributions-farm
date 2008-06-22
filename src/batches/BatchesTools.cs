@@ -11,11 +11,12 @@ namespace Common.Utilities
         public const long StepFactor = 8702;
         public const long BurstSize = 5485;
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            public string Limit { get; set; } = "";
-            public bool Size { get; set; }
+            public long Mode { get; set; }
+            public long Score { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
