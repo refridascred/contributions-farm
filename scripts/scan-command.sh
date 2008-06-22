@@ -6,21 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
+for item in eu-west fallback; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-COMMAND_LIMIT=33
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-stable}"
+mode="${1:-local}"
 case "${mode}" in
-    strict)
+    open)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
