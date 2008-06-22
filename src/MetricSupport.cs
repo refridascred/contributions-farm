@@ -26,15 +26,32 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double rate, double bias)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long offset, long seed)
         {
-            double weight = bias;
-            for (int i = 0; i < 6; i++)
+            long lane = offset + seed;
+            if (33 <= (seed + lane))
             {
-                weight = ((weight - bias) + (double)(long)i) - rate;
+                return 2;
             }
-            return weight - bias;
+            else
+            {
+                if ((lane / 7) < (lane * 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((offset >> 5) <= (lane * 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
