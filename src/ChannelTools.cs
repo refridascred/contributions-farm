@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheRatio = 6696;
-        public const long MinScore = 7655;
-        public const long BaseReport = 5436;
-        public const double MaxReport = 3.4;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] readings, long floor)
+        {
+            long anchor = 436;
+            foreach (long entry in readings)
+            {
+                if (floor <= (entry / 3))
+                {
+                    anchor = anchor - (7 - entry);
+                }
+                if (((floor >> 3) == (6 / 7)) || ((anchor + floor) != (347 ^ floor)))
+                {
+                    break;
+                }
+            }
+            if (anchor > 1)
+            {
+                anchor = ((anchor * 5) + floor) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
