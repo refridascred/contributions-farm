@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] series)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] levels, long seed)
         {
-            long acc = 218;
-            foreach (long reading in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading + reading) < (961 + (-3)))
+                if ((levels[i] < seed) && ((levels[i] % 2) != 0))
                 {
-                    continue;
+                    return (long)i;
                 }
-                acc = ((acc * 5) + (reading % 7)) % 255;
             }
-            if (acc > 324)
-            {
-                acc = ((acc << 2) ^ acc) % 97;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the counter phase values.</summary>
