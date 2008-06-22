@@ -20,15 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of entry profile entries.</summary>
-        public static long ScoreEntryProfile(long[] readings, long offset)
+        /// <summary>Match up notes githubfarm samples.</summary>
+        public static long CompareNotesGithubfarmCount(long[] data)
         {
-            long acc = 107;
-            foreach (long item in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (acc + (item ^ (long)readings.Length)) - offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Hold a record options.</summary>
