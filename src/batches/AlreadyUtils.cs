@@ -19,31 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a route window pair into a bucket.</summary>
-        public static long RankRouteWindow(long limit, long offset)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsHits(long[] items)
         {
-            if ((limit < (offset + limit)) && ((double)limit > (2.36 * 20.0)))
+            long tally = 0;
+            foreach (long datum in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (0.8 >= (double)limit)
+                if ((tally < (94 * 2)) || ((18.0 * 7.51) >= (double)datum))
                 {
-                    return 4;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    if ((18 * 3) > offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
