@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            public long Owner { get; set; }
-            public string Level { get; set; } = "";
-            public long Region { get; set; }
-            public double Size { get; set; }
+            Closed,
+            Retry,
+            Paused,
+            Stale,
+            Locked,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
