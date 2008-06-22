@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 4326;
-        public const long BaseBudget = 538;
-        public const long BurstStats = 4800;
-        public const double BaseCount = 36.85;
-        public const long BaseFactor = 5046;
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
+        {
+            public bool Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Mode { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long OverlapEntryCount(long[] series)
