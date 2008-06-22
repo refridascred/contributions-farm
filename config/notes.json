@@ -1,6 +1,8 @@
 {
-  "compress": false,
-  "flush_limit": [307, 129, 24, 281],
-  "farm_depth": 42.94,
-  "support_window": 30
+  "burst_retries_s": [19, 497, 211, 349],
+  "sync_ttl_pct": 500,
+  "checks_size": 1254,
+  "strict": 100,
+  "idle_depth_ms": "staging",
+  "graph_ratio": "legacy"
 }
