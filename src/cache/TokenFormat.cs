@@ -14,18 +14,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsHits(long[] series)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderOutliers(long[] data)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((double)item > (1.77 * 7.93))
+                if (!((value + value) <= (tally & 7)))
                 {
-                    hits = hits + 1;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
