@@ -1,26 +1,7 @@
 {
-  "base_retries_ms": [29, 96],
-  "retry_delay": false,
-  "strict": {
-    "account_delay": {
-      "cache_window_s": "stable",
-      "default_interval": ["staging", "cached"],
-      "poll_retries": true,
-      "compress": 91,
-      "burst_limit": [289, 186, 260, 191]
-    },
-    "verbose": false,
-    "soft_timeout_s": {
-      "idle_depth": 4909,
-      "route_ratio": [320, 305, 387, 488],
-      "hard_delay_s": ["standard", "green", "latest", "legacy"],
-      "verbose": true
-    },
-    "burst_timeout": {
-      "schema_size": "primary",
-      "command_size": 81.56,
-      "strict": true
-    },
-    "buffer_capacity": 6132
-  }
+  "min_size_count": 30,
+  "verbose": 64.82,
+  "idle_timeout_count": ["edge", "blue"],
+  "batch_size_s": "open",
+  "sync_threshold_s": ["legacy", "fallback", "open"]
 }
