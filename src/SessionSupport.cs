@@ -18,24 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long step)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsOutliers(long[] values, long target)
         {
-            long total = step;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((step << 3) > total)
+                if ((double)seen > (5.7 + 1.89))
                 {
-                    total = (total + (2 & 1)) % 97;
-                    break;
+                    seen = ((seen + 2) ^ entry) + target;
                 }
-                for (int i2 = 0; i2 < 3; i2++)
+                else
                 {
-                    total = ((total - (559 - 60)) % 97) ^ (long)i2;
+                    seen = seen - 1;
                 }
-                total = ((total * 4) + (long)i) % 101;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
