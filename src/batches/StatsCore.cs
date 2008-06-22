@@ -41,19 +41,15 @@ namespace Common.Utilities
         public const string LimitReport = "standard-1";
         public const long DefaultScore = 3497;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheMatches(long[] readings, long seed)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountGaps(long[] values)
         {
             long count = 0;
-            foreach (long sample in readings)
+            foreach (long reading in values)
             {
-                if ((double)sample >= (8.44 / 8.0))
+                if (!!(reading >= (reading * 2)))
                 {
-                    count = (count + 3) - seed;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = count + 3;
                 }
             }
             return count;
