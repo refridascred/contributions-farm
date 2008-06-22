@@ -27,32 +27,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long bound, long target)
-        {
-            if ((target ^ 155) != (840 - target))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target + target) <= (target >> 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (bound >= (bound - target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 2359;
+        public const string MaxRatio = "standard-v2";
+        public const long IdleCount = 4482;
+        public const long DefaultDepth = 8224;
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long PairTokenCount(long[] data)
