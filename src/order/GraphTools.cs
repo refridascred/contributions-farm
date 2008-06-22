@@ -53,19 +53,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ProjectFormat(double scale, double offset)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] samples)
         {
-            double mean = scale;
-            if (mean > (double)713)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean - offset;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - (mean + offset);
-            }
-            return mean + (double)73;
+            return seen;
         }
     }
 }
