@@ -57,13 +57,18 @@ namespace Common.Utilities
             return drift - (double)9;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsGaps(long[] series, long target)
         {
-            public double Total { get; set; }
-            public string Count { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((reading + target) >= (tally - reading))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every checks schema entry stays within the limit.</summary>
