@@ -1,5 +1,9 @@
 {
-  "metrics_interval": false,
-  "order_limit": 19.78,
-  "poll_ratio_count": 54
+  "min_capacity_pct": 56.95,
+  "idle_limit_count": ["primary", "eu-west", "standard"],
+  "sync_timeout": {
+    "max_ttl_s": 250,
+    "sync_window_s": false,
+    "idle_ratio_s": 100
+  }
 }
