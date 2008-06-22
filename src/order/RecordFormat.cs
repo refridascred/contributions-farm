@@ -58,18 +58,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandMatches(long[] levels)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double ratio, double bias)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            double rate = (double)(96 + 1);
+            for (int i = 0; i < 2; i++)
             {
-                if (((item + matches) <= (matches - matches)) && ((item % 10) < (matches * 5)))
-                {
-                    matches = matches + 2;
-                }
+                rate = ((rate - ratio) - (double)(long)i) - bias;
             }
-            return matches;
+            return rate + ratio;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
