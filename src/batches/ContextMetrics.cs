@@ -47,21 +47,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] series)
+        /// <summary>Audit counter support readings against a rule.</summary>
+        public static long AuditCounterSupportOutliers(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((((32 + seen) < (reading % 7)) || ((3.2 / 7.0) != (double)reading)) || (((double)reading >= (4.34 * 6.0)) && ((7.2 - 3.8) < (double)reading)))
                 {
-                    if ((series[i] ^ series[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
