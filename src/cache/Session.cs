@@ -31,20 +31,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long floor)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] series)
         {
-            long result = floor;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)i / 3) <= result)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = result ^ (result * 4);
-                    result = result + (16 * 5);
+                    if ((series[i] - series[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
                 }
-                result = ((result * 4) + (long)i) % 1000;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Project the next profile value.</summary>
