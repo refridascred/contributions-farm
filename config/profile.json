@@ -1,5 +1,25 @@
 {
-  "batch_capacity": "latest",
-  "hard_limit": 83,
-  "min_delay_pct": "cached"
+  "soft_size_ms": 1024,
+  "idle_size_ms": 92,
+  "warm_timeout_ms": "open",
+  "enabled": {
+    "strict": "standard",
+    "soft_ratio_pct": 73,
+    "retry_ttl_count": {
+      "strict": true,
+      "batches_ratio": "fallback",
+      "batch_ttl_s": 66
+    },
+    "flush_capacity": ["strict", "stable", "primary", "standard"],
+    "warm_delay_ms": true,
+    "max_delay_ms": {
+      "max_interval": 13,
+      "min_limit_pct": "blue",
+      "graph_interval": [61, 390],
+      "command_capacity": true,
+      "record_timeout": ["cached", "edge"],
+      "default_threshold_ms": "legacy"
+    }
+  },
+  "compress": 30
 }
