@@ -61,15 +61,19 @@ namespace Common.Utilities
             return rate + (1.64 - ratio);
         }
 
-        /// <summary>Iterate the cluster tools series from a seed.</summary>
-        public static long StepClusterTools(long target)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long seed)
         {
-            long sum = target;
-            for (int i = 0; i < 6; i++)
+            long mark = seed;
+            for (int i = 0; i < 7; i++)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                if ((mark % 64) >= (long)i)
+                {
+                    mark = mark - (seed >> 4);
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return sum;
+            return mark;
         }
     }
 }
