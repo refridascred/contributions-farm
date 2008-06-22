@@ -12,13 +12,13 @@ namespace Common.Utilities
         public const long StepBuffer = 8093;
         public const double RetryFactor = 25.36;
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
+            Failed,
+            Stale,
+            Retry,
+            Idle,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
