@@ -24,9 +24,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstChannel = 6523;
-        public const long MinChannel = 1907;
-        public const long WindowChannel = 6624;
+        /// <summary>Audit metrics order readings against a rule.</summary>
+        public static long AuditMetricsOrderMatches(long[] samples, long limit)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (cell > (cell + cell))
+                {
+                    tally = (tally + 2) - limit;
+                }
+            }
+            return tally;
+        }
     }
 }
