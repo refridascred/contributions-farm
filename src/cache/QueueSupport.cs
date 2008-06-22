@@ -14,22 +14,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] levels)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long sum = 797;
-            foreach (long reading in levels)
-            {
-                if (!((reading & 7) <= (reading ^ reading)))
-                {
-                    sum = (sum + (sum + reading)) % 255;
-                }
-            }
-            if (sum > 23)
-            {
-                sum = (sum ^ (298 & 31)) % 65521;
-            }
-            return sum;
+            Stale,
+            Done,
+            Queued,
+            Closed,
+            Idle,
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
