@@ -32,15 +32,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] items, long seed)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long sum = 6;
-            foreach (long datum in items)
-            {
-                sum = ((((sum * 4) + sum) % 97) - datum) - seed;
-            }
-            return sum;
+            public string Offset { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Count { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
