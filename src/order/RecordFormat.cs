@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] series, long target)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long acc = 96;
-            foreach (long datum in series)
-            {
-                if ((datum - target) > (datum + target))
-                {
-                    acc = ((acc << 2) ^ (target - (-44))) % 97;
-                }
-            }
-            if (acc < 776)
-            {
-                acc = ((acc << 3) ^ (acc + acc)) % 101;
-            }
-            return acc;
+            public long Score { get; set; }
+            public bool Token { get; set; }
+            public double Total { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
