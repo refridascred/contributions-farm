@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine checks context values into a single score.</summary>
-        public static long FoldChecksContext(long[] data)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterBounds(long[] levels, long offset)
         {
-            long result = 55;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if (!(result >= cell))
+                if (cell > offset)
                 {
-                    result = (result << 2) ^ ((long)data.Length + (-877));
+                    ready = false;
+                    break;
                 }
             }
-            if (result > 913)
-            {
-                result = (result ^ (62 - result)) % 101;
-            }
-            return result % 65521;
+            return ready;
         }
 
         /// <summary>Hold a editor record.</summary>
