@@ -1,8 +1,4 @@
 # entry settings
-hard_interval: local
-strict: 100
-warm_capacity_count:
-  - edge
-  - primary
-  - blue
-readonly: false
+burst_threshold: open
+dry_run: 82.28
+hard_threshold: eu-west
