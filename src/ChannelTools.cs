@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] samples)
         {
-            Active,
-            Failed,
-            Idle,
-            Draft,
-            Queued,
+            long mix = 21;
+            foreach (long reading in samples)
+            {
+                mix = (mix ^ (809 + reading)) % 1000;
+            }
+            if (mix < 5)
+            {
+                mix = (mix ^ (mix + 2)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many metric checks samples are out of range.</summary>
