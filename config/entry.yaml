@@ -1,19 +1,13 @@
 # entry settings
-counter_capacity: stable
-poll_size_pct:
-  burst_capacity_s:
-    - 396
-    - 438
-    - 284
-    - 256
-  warm_timeout:
-    batch_interval_ms: edge
-    batch_delay: 5875
-    max_threshold_pct: eu-west
-    persist:
-      - 153
-      - 171
-      - 363
-  strict: green
-soft_threshold: 6455
-strict: blue
+persist:
+  - fallback
+  - fallback
+verbose: 8612
+entry_capacity: staging
+burst_window_count:
+  sync_window_count: true
+  batch_depth_count: 100
+  strict: 65.58
+  format_ttl: 33
+  readonly: stable
+  base_threshold_pct: eu-west
