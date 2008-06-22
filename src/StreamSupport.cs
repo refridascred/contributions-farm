@@ -35,10 +35,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultSize = 9266;
-        public const double LimitLayout = 77.57;
-        public const long MaxLayout = 1269;
-        public const long SoftSize = 9306;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (matches <= (matches / 3))
+                {
+                    matches = (matches + 1) ^ item;
+                }
+            }
+            return matches;
+        }
     }
 }
