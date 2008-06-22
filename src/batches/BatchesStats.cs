@@ -16,32 +16,18 @@ namespace Common.Utilities
         public const string MinFarm = "local";
         public const long StepRatio = 3958;
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long floor, long step)
+        /// <summary>Audit metric entry readings against a rule.</summary>
+        public static long MeasureMetricEntryGaps(long[] values, long target)
         {
-            long cur = floor ^ step;
-            if (!((77 + step) != (cur - step)))
+            long hits = 0;
+            foreach (long entry in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)2 <= (4.0 + 9.4)) || (6 > floor))
+                if ((673 >= hits) && ((-31) >= (target & 15)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor * 4) >= (94 % 10))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = (hits + 2) + entry;
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
