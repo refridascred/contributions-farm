@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a tools window pair into a bucket.</summary>
-        public static long GradeToolsWindow(long step, long limit)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            if ((step < (step + limit)) || ((2 + 467) < (9 ^ step)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (5.52 >= (double)limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((step / 9) > (limit % 100)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((limit << 3) <= (limit - limit)) && ((874 & 255) > limit))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public bool Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the profile mode values.</summary>
