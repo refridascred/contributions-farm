@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long origin, long bound)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double rate, double floor)
         {
-            long offset = origin + bound;
-            if (offset < (49 >> 1))
+            double gain = floor;
+            if (gain >= (floor / 6.0))
             {
-                return 1;
+                gain = gain - (double)133;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((bound << 1) <= (630 - origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
+                gain = (gain + rate) + (double)(long)i;
             }
+            return gain + 20.0;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
