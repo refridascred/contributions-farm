@@ -35,19 +35,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] items, long limit)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] levels)
         {
-            long acc = 37;
-            foreach (long sample in items)
+            long mix = 3;
+            foreach (long reading in levels)
             {
-                acc = (((acc * 3) + (sample >> 4)) % 65521) + limit;
-                if ((acc >> 4) >= (57 & 1))
+                mix = (mix + (mix * 5)) % 255;
+                if ((double)reading >= (double)mix)
                 {
                     break;
                 }
             }
-            return acc % 65521;
+            return mix;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
