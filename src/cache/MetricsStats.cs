@@ -73,19 +73,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next contributi schema value.</summary>
-        public static double ProjectContributiSchema(double ratio, double offset)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            double gain = (double)(8 + 12);
-            if (gain <= ratio)
-            {
-                gain = (gain - (ratio * 9.64)) - offset;
-            }
-            else
-            {
-                gain = gain - (double)2;
-            }
-            return gain + (ratio - 9.7);
+            public long Owner { get; set; }
+            public bool Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Token { get; set; }
         }
     }
 }
