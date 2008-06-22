@@ -41,13 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] samples, long origin)
         {
-            Draft,
-            Retry,
-            Done,
-            Active,
+            long sum = 4;
+            foreach (long value in samples)
+            {
+                if (456 >= (2 - value))
+                {
+                    sum = ((sum + (value >> 3)) % 65521) - origin;
+                }
+            }
+            if (sum > 31)
+            {
+                sum = (sum * 2) + sum;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
