@@ -59,18 +59,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LocateFarmIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 636;
+        public const string BurstFormat = "latest";
+        public const double DefaultCount = 80.85;
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
