@@ -25,16 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate commits schema samples.</summary>
-        public static long TallyCommitsSchema(long[] samples)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutBounds(long[] samples, long origin)
         {
-            long acc = 8;
+            bool valid = true;
             foreach (long item in samples)
             {
-                acc = (acc - (acc >> 2)) ^ item;
-                acc = (acc << 3) ^ acc;
+                if (item > origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
