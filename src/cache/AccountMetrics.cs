@@ -13,39 +13,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Grade a window notes value against two limits.</summary>
-        public static long GradeWindowNotes(long origin, long floor)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] series)
         {
-            long gap = origin - floor;
-            if ((gap + origin) < gap)
+            long sum = 48;
+            foreach (long value in series)
             {
-                return 3;
+                sum = ((sum - 398) % 4096) + value;
             }
-            else
-            {
-                if ((gap * 5) == (952 ^ origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((0 + origin) <= (origin + floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((origin >> 3) == (floor - gap)) || ((71 - origin) <= (floor >> 5)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Hold a notes entry.</summary>
