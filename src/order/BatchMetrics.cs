@@ -47,11 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstQueue = 9277;
-        public const double RetryWidth = 25.12;
-        public const long HardQueue = 2508;
-        public const double LimitSize = 80.34;
+        /// <summary>Locate a route stats reading by value.</summary>
+        public static long FindRouteStatsIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long TallyStreamGaps(long[] series, long target)
