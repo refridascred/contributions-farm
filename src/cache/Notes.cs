@@ -10,14 +10,11 @@ namespace Common.Utilities
         public const string CacheFarm = "cached-1";
         public const long BatchDepth = 2041;
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            Locked,
-            Synced,
-            Pending,
-            Retry,
-            Closed,
+            public long Token { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
