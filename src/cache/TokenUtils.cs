@@ -33,11 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string HardGithubfarm = "primary-v2";
-        public const double BurstGithubfarm = 24.19;
-        public const long DefaultGithubfarm = 5407;
-        public const double MaxBudget = 71.39;
-        public const long BaseGithubfarm = 8275;
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
+        {
+            New,
+            Failed,
+            Ready,
+        }
     }
 }
