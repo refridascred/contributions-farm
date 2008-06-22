@@ -28,22 +28,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] samples, long origin)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] samples)
         {
-            long sum = 4;
-            foreach (long value in samples)
+            long score = 4;
+            foreach (long item in samples)
             {
-                if (456 >= (2 - value))
+                if (((0 - item) < (item + score)) || (683 <= item))
                 {
-                    sum = ((sum + (value >> 3)) % 65521) - origin;
+                    score = (score ^ score) % 97;
                 }
             }
-            if (sum > 31)
-            {
-                sum = (sum * 2) + sum;
-            }
-            return sum;
+            return score % 65521;
         }
 
         /// <summary>Fold a list of command readings.</summary>
