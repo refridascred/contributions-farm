@@ -73,38 +73,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long seed, long target)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long floor)
         {
-            if (!((target & 127) <= (681 + (-20))))
+            long state = floor;
+            for (int i = 0; i < 16; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target >> 1) != (45 - seed))
+                long diff = (7 - 564) / 5;
+                state = (state * 3) + diff;
+                if ((state & 1) > (diff + floor))
                 {
-                    return 3;
+                    state = (state ^ (long)i) % 4096;
+                    diff = ((diff * 2) + (state ^ state)) % 65521;
                 }
                 else
                 {
-                    if (!((target - seed) > 548))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target / 5) <= (seed + seed))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    diff = (diff - (floor >> 1)) % 101;
                 }
+                state = ((state * 5) + (long)i) % 4093;
             }
+            return state;
         }
     }
 }
