@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
-        {
-            public bool Limit { get; set; }
-            public double Region { get; set; }
-            public bool Rank { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFormat = 7584;
+        public const long HardFactor = 3818;
+        public const long SoftTimeout = 7133;
+        public const long BatchLevel = 220;
+        public const string StepFormat = "cached-v2";
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
