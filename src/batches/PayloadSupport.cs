@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryHits(long[] items, long floor)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((1.0 * 5.4) > (double)datum)
-                {
-                    matches = (matches + 2) + floor;
-                }
-            }
-            return matches;
+            Failed,
+            Active,
+            Done,
+            Synced,
         }
 
         /// <summary>Match up token commits samples.</summary>
