@@ -18,31 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] items, long origin)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] samples)
         {
-            long anchor = 209;
-            foreach (long entry in items)
+            long acc = 7;
+            foreach (long datum in samples)
             {
-                for (int i = 0; i < 5; i++)
+                if ((double)datum >= (20.0 / 9.0))
                 {
-                    anchor = (((anchor << 2) ^ (origin >> 2)) % 4096) - (long)i;
-                }
-                anchor = ((anchor * 4) + 9) % 65521;
-                if (((58 * 3) == (origin + 2)) || (anchor < (entry % 12)))
-                {
-                    anchor = anchor - (origin & 1);
+                    acc = (acc ^ (datum % 5)) % 101;
                 }
                 else
                 {
-                    anchor = (anchor - (anchor + anchor)) % 1000;
+                    acc = (acc ^ (acc - (-496))) % 97;
                 }
             }
-            if (anchor > 20)
-            {
-                anchor = anchor - (anchor * 2);
-            }
-            return anchor % 1000;
+            return acc;
         }
 
         /// <summary>Iterate the cluster window series from a seed.</summary>
