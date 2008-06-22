@@ -46,9 +46,24 @@ namespace Common.Utilities
         public const long MinPayload = 2594;
         public const double MinFactor = 30.54;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string SoftProfile = "alpha-1";
-        public const string StepProfile = "cached-edge";
-        public const long MinScore = 3222;
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long origin, long target)
+        {
+            if ((target + origin) <= target)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target % 60) > (origin & 255))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
