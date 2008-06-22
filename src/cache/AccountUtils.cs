@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
-        {
-            Done,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MaxMetric = 4.95;
+        public const long RetryScore = 1236;
+        public const string MinBudget = "cached-1";
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long LookupChannelIndex(long[] samples, long limit)
