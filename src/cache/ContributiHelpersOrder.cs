@@ -29,19 +29,31 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] items, long limit)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long limit, long limit2)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            if (!((double)limit2 < (double)limit))
             {
-                if (sample > limit)
+                return 3;
+            }
+            else
+            {
+                if (((double)limit < (6.8 - 2.07)) || ((limit2 & 255) < (limit / 9)))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (8.36 <= (double)limit2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
