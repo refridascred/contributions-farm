@@ -12,24 +12,22 @@ namespace Common.Utilities
             return (ratio + (ratio * 6.0)) + rate;
         }
 
-        /// <summary>Derive the next route format value from a seed.</summary>
-        public static long RollRouteFormat(long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamMatches(long[] values)
         {
-            long mix = origin;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (686 > (tally >> 4))
                 {
-                    mix = (mix * 5) + ((long)i2 + origin);
-                    mix = mix - (long)i2;
+                    tally = (tally + 1) - value;
                 }
-                if (!((double)mix == (8.0 / 9.0)))
+                else
                 {
-                    mix = mix ^ (origin + (long)i);
+                    tally = tally - 1;
                 }
-                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Match up command samples.</summary>
