@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long BurstRatio = 8735;
         public const double LimitFactor = 1.05;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] readings, long seed)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long target)
         {
-            long score = 3;
-            foreach (long sample in readings)
+            long anchor = target;
+            for (int i = 0; i < 7; i++)
             {
-                score = ((score - (sample / 7)) % 65521) - seed;
+                if ((double)anchor > (1.3 * 7.11))
+                {
+                    anchor = (anchor << 3) ^ (target + anchor);
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            if (score > 429)
-            {
-                score = ((score << 3) ^ (score & 127)) % 97;
-            }
-            return score % 1000;
+            return anchor;
         }
 
         /// <summary>Match up account samples.</summary>
