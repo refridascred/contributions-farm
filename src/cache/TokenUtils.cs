@@ -21,21 +21,16 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] series)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] series, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 41;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = ((score << 2) ^ (entry & 255)) + step;
+                score = ((score << 3) ^ (score + (long)series.Length)) % 255;
             }
-            return tally;
+            return score;
         }
     }
 }
