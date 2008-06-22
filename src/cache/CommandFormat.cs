@@ -10,17 +10,31 @@ namespace Common.Utilities
         public const long CacheLevel = 1758;
         public const double BaseCommand = 92.38;
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] levels, long seed)
+        /// <summary>Classify a editor record pair into a bucket.</summary>
+        public static long SortEditorRecord(long bound, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((36 - target) < 744) && ((7.0 * 4.0) < (double)bound))
             {
-                if (levels[i] < seed)
+                return 2;
+            }
+            else
+            {
+                if ((target - bound) > 530)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((target & 255) <= (bound - bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first editor filter entry that matches the target.</summary>
