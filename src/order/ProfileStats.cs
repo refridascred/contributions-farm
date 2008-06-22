@@ -12,12 +12,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheMatches(long[] series)
         {
-            Draft,
-            Dropped,
-            Paused,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((594 + cell) == (matches / 7))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define route limits and defaults.</summary>
