@@ -40,17 +40,22 @@ namespace Common.Utilities
             return rate - 7.0;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] levels, long limit)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] readings, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 552;
+            foreach (long value in readings)
             {
-                if (levels[i] >= limit)
+                if ((8.0 + 5.01) <= (double)value)
                 {
-                    return (long)i;
+                    anchor = (anchor + (value ^ value)) % 65521;
                 }
             }
-            return -1;
+            if (anchor < 28)
+            {
+                anchor = (anchor * 3) + offset;
+            }
+            return anchor;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
