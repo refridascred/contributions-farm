@@ -1,8 +1,4 @@
 # support settings
-retry_timeout_pct:
-  - 497
-  - 335
-cache_depth_pct: false
-cache_timeout: eu-west
-persist: true
-account_ttl: 87
+payload_limit: 11.29
+hard_ratio: false
+counter_timeout: blue
