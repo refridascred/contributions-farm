@@ -23,15 +23,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] levels)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long floor, long bound)
         {
-            long mark = 9;
-            foreach (long item in levels)
+            long gap = floor ^ bound;
+            if (((bound / 3) > bound) || ((floor - gap) > bound))
             {
-                mark = ((mark << 2) ^ mark) + item;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if ((gap * 2) >= 125)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
