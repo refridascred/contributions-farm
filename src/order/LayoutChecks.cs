@@ -46,12 +46,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmBounds(long[] samples, long origin)
         {
-            Locked,
-            Queued,
-            Ready,
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Roll a already counter forward.</summary>
