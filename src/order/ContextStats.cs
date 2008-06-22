@@ -65,15 +65,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] values, long target)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphGaps(long[] levels)
         {
-            long result = 231;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                result = ((((result * 2) + (result & 3)) % 97) - item) - target;
+                if ((5.0 - 8.2) >= (double)value)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result % 1000;
+            return hits;
         }
     }
 }
