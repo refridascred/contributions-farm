@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] data, long step)
         {
-            public string Limit { get; set; } = "";
-            public string Flag { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank context input into a small class.</summary>
