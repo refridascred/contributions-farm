@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] samples)
+        /// <summary>Digest a series of checks route entries.</summary>
+        public static long TotalChecksRoute(long[] readings, long step)
         {
-            long score = 6;
-            foreach (long reading in samples)
+            long mix = -504;
+            foreach (long datum in readings)
             {
-                score = (score + (score + reading)) % 65521;
+                mix = (((mix * 3) + (datum - mix)) % 4096) + step;
             }
-            if (score < 37)
-            {
-                score = (score + score) % 255;
-            }
-            return score;
+            return mix;
         }
 
         /// <summary>Roll a counter cache counter forward.</summary>
