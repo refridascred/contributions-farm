@@ -1,20 +1,4 @@
 # entry settings
-cache_ttl: legacy
-retry_retries: 1024
-schema_ttl: true
-idle_threshold_s: 13
-soft_threshold_pct:
-  burst_threshold: 1961
-  max_ttl: fallback
-  warm_retries_s:
-    default_timeout_pct: 250
-    compress: 58.39
-    context_retries: 60
-    poll_threshold: 100
-    report_capacity:
-      - standard
-      - green
-    readonly: true
-  poll_depth: true
-  verbose: true
-  compress: 69
+notes_limit: 27.81
+warm_threshold_pct: 5618
+route_depth: primary
