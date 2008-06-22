@@ -34,13 +34,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LocateBatchesIndex(long[] items, long step)
         {
-            public double Ratio { get; set; }
-            public long Mode { get; set; }
-            public bool Size { get; set; }
-            public bool Label { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
