@@ -27,21 +27,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long OverlapMetricsCount(long[] values)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long CompareProfileCount(long[] values)
         {
-            long hits = 0;
+            long matches = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] - values[j]) > 6)
+                    if ((values[i] - values[j]) == 17)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a payload entry.</summary>
