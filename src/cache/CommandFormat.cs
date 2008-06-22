@@ -13,10 +13,20 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double LimitReport = 86.14;
-        public const long HardReport = 9885;
-        public const double MaxReport = 50.51;
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandLimits(long[] data, long bound)
+        {
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Find the first editor filter entry that matches the target.</summary>
         public static long LookupEditorFilterIndex(long[] readings, long step)
