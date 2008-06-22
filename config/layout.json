@@ -1,5 +1,9 @@
 {
-  "hard_timeout_pct": [416, 63],
-  "profile_ttl": 83.84,
-  "audit": true
+  "session_size": {
+    "persist": 14.62,
+    "profile_limit": 6981,
+    "graph_ttl": 1024
+  },
+  "persist": 48.61,
+  "strict": 65.49
 }
