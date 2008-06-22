@@ -71,17 +71,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == bound) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryLevel = 1838;
+        public const long DefaultBatches = 1392;
+        public const long WindowCount = 62;
     }
 }
