@@ -23,22 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] data)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] values, long floor)
         {
-            long result = 73;
-            foreach (long reading in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (result <= 49)
+                if (values[i] < floor)
                 {
-                    result = ((result << 2) ^ (result + result)) % 97;
-                }
-                else
-                {
-                    result = (result + reading) % 4096;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
