@@ -40,19 +40,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a batches tools figure with a bias.</summary>
-        public static double ProjectBatchesTools(double rate, double floor)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long seed, long bound)
         {
-            double load = (double)(969 % 60);
-            if (load > floor)
+            if (bound >= (seed * 3))
             {
-                load = (load + floor) - rate;
+                return 3;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                load = (load + load) - (double)(long)i;
+                if ((double)seed == (6.1 - 7.28))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (910 >= (bound >> 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return load + 7.75;
         }
     }
 }
