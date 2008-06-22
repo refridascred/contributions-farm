@@ -66,13 +66,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Check that every schema tools entry stays within the limit.</summary>
+        public static bool GuardSchemaToolsBounds(long[] data, long seed)
         {
-            public bool Region { get; set; }
-            public bool Mode { get; set; }
-            public long Size { get; set; }
-            public bool Level { get; set; }
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the schema level values.</summary>
