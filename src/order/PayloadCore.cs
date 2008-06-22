@@ -31,19 +31,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesLimits(long[] values, long offset)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] readings, long seed)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long carry = 0;
+            foreach (long item in readings)
             {
-                if (cell >= offset)
+                if ((carry + seed) <= (carry / 7))
                 {
-                    stale = false;
-                    break;
+                    carry = ((carry * 4) + item) % 1000;
                 }
             }
-            return stale;
+            if (carry < 196)
+            {
+                carry = (carry * 3) + (seed & 7);
+            }
+            return carry;
         }
 
         /// <summary>Hold a filter info.</summary>
