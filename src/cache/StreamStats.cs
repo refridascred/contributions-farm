@@ -52,18 +52,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesGaps(long[] data)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (((count + datum) != (count / 8)) || ((count + count) == (count << 1)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Count { get; set; }
+            public double Level { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
