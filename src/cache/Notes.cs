@@ -20,11 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitLevel = 2336;
-        public const long BaseCount = 937;
-        public const long RetryProfile = 9256;
-        public const long StepLevel = 4095;
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
+        {
+            public double Region { get; set; }
+            public double Weight { get; set; }
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
