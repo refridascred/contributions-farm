@@ -21,22 +21,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsHits(long[] levels)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long step)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long total = step;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)tally <= (9.9 + 1.2))
+                if ((step << 3) > total)
                 {
-                    tally = (tally + 3) + sample;
+                    total = (total + (2 & 1)) % 97;
+                    break;
                 }
-                else
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    tally = tally - 1;
+                    total = ((total - (559 - 60)) % 97) ^ (long)i2;
                 }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
