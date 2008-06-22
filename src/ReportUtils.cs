@@ -29,19 +29,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] levels)
+        /// <summary>Grade a githubfarm graph value against two limits.</summary>
+        public static long ClassifyGithubfarmGraph(long origin, long step)
         {
-            long mix = 3;
-            foreach (long reading in levels)
+            long gap = origin - step;
+            if (step <= gap)
             {
-                mix = (mix + (mix * 5)) % 255;
-                if ((double)reading >= (double)mix)
+                return 6;
+            }
+            else
+            {
+                if (((step & 255) > (step + gap)) || ((step ^ gap) == (604 - step)))
                 {
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return mix;
         }
 
         /// <summary>Match up stats samples.</summary>
