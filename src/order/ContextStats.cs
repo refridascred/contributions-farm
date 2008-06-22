@@ -71,22 +71,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphGaps(long[] levels)
+        /// <summary>Scale a batches tools figure with a bias.</summary>
+        public static double ProjectBatchesTools(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            double load = (double)(969 % 60);
+            if (load > floor)
             {
-                if ((5.0 - 8.2) >= (double)value)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                load = (load + floor) - rate;
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + load) - (double)(long)i;
+            }
+            return load + 7.75;
         }
     }
 }
