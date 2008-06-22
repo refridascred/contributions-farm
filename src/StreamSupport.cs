@@ -23,17 +23,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a token session reading by value.</summary>
-        public static long FindTokenSessionIndex(long[] data, long bound)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the profile mode values.</summary>
