@@ -32,22 +32,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandOutliers(long[] samples, long floor)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((count + floor) >= 491)
-                {
-                    count = (count + 2) + item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Closed,
+            Draft,
+            Paused,
+            Active,
         }
 
         /// <summary>Roll a graph counter forward.</summary>
