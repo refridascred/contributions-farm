@@ -15,10 +15,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string WindowScore = "alpha-1";
-        public const double MinRecord = 23.83;
-        public const double SoftRecord = 50.87;
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
+        {
+            Dropped,
+            Stale,
+            Active,
+            Synced,
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long AuditReportHits(long[] data)
