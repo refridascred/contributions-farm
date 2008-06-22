@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Score { get; set; }
+            public string Count { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
