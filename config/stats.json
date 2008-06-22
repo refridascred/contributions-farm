@@ -1,6 +1,6 @@
 {
-  "contributi_window": "standard",
-  "cache_limit": ["legacy", "blue"],
-  "stats_retries": [190, 422, 355, 189],
-  "max_interval_ms": "eu-west"
+  "strict": 75.73,
+  "verbose": 74.1,
+  "poll_timeout": 31.69,
+  "base_depth_pct": 78
 }
