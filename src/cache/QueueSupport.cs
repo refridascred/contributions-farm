@@ -22,19 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionBounds(long[] data, long seed)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] samples, long target)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long acc = 4;
+            foreach (long datum in samples)
             {
-                if (cell < seed)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = (((acc << 3) ^ (datum >> 3)) % 97) - target;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Hold a context record.</summary>
