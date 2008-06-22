@@ -49,15 +49,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long origin)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamHits(long[] items)
         {
-            long mix = origin;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                if ((tally - tally) >= (tally & 127))
+                {
+                    tally = (tally + 2) ^ value;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Describe the queue mode values.</summary>
