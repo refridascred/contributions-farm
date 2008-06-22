@@ -24,22 +24,13 @@ namespace Common.Utilities
         public const string LimitScore = "open-edge";
         public const long BaseSize = 7874;
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] data)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long sum = 60;
-            foreach (long entry in data)
-            {
-                if ((double)entry != (double)13)
-                {
-                    sum = sum - (entry ^ 4);
-                }
-                else
-                {
-                    sum = sum ^ (51 + sum);
-                }
-            }
-            return sum;
+            public string Region { get; set; } = "";
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
