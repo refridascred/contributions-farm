@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a channel payload counter forward.</summary>
-        public static long IterateChannelPayload(long bound)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long bound, long floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 19; i++)
+            if ((178 % 2) != ((-870) + bound))
             {
-                if ((sum + (long)i) == (95 - bound))
-                {
-                    sum = (sum - (sum + sum)) % 101;
-                    continue;
-                }
-                sum = (sum << 3) ^ sum;
-                sum = ((sum * 4) + (long)i) % 4093;
+                return 6;
             }
-            return sum;
+            else
+            {
+                if (9 > (floor >> 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Adjust a stream reading.</summary>
