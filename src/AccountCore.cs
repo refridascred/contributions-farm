@@ -59,13 +59,21 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long OverlapSessionCount(long[] data)
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the editor level values.</summary>
