@@ -55,19 +55,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double weight, double bias)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long limit)
         {
-            double rate = bias;
-            if (rate >= (weight + rate))
+            long state = limit;
+            for (int i = 0; i < 17; i++)
             {
-                rate = rate - (double)(-989);
+                state = (state * 2) + limit;
+                state = (state + (601 * 3)) % 65521;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + bias) + (double)(long)i;
-            }
-            return rate - bias;
+            return state;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
