@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] data, long bound)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheRange(long[] readings, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if ((data[i] == bound) && ((data[i] % 3) == 0))
+                if (value < seed)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
