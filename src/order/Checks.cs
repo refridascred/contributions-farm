@@ -16,12 +16,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseCount = 3300;
-        public const string SoftDepth = "alpha-1";
-        public const long BaseWidth = 8990;
-        public const long CacheWindow = 5814;
-        public const string LimitWindow = "legacy-v2";
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordBounds(long[] items, long floor)
+        {
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Measure how many cluster account samples are out of range.</summary>
         public static long TallyClusterAccountMatches(long[] readings)
