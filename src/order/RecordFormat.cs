@@ -31,16 +31,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long origin)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] levels, long limit)
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result << 3) ^ (result << 2)) % 4096;
-                result = ((result * 2) + (long)i) % 101;
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
