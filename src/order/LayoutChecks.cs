@@ -37,22 +37,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long target)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] series, long origin)
         {
-            long state = target;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                double mean = (double)(target >> 4);
-                if ((mean * 3.0) != (mean - mean))
+                if ((series[i] < origin) && ((series[i] % 3) == 0))
                 {
-                    state = (state ^ 8) % 97;
-                    break;
+                    return (long)i;
                 }
-                state = (state << 3) ^ state;
-                state = ((state * 3) + (long)i) % 1000;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Accumulate record samples.</summary>
