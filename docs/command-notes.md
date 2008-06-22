@@ -1,15 +1,10 @@
 # Command notes
 
-Use support settings to tune how often context data is refreshed.
-Keep queue and metric names short and lowercase.
-
-The session module keeps tools values in sync with the notes cache.
-The channel module keeps report values in sync with the tools cache.
-Use profile settings to tune how often editor data is refreshed.
+Each token is validated before it reaches the batch queue.
+The schema helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer counter defaults
-- Review batch limits each release
-- Log every context change
-- Document new stats fields
+- Log every command change
+- Review route limits each release
+- Keep stats values small
