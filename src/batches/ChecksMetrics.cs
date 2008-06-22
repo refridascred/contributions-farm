@@ -49,20 +49,21 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Combine cluster context values into a single score.</summary>
-        public static long CombineClusterContext(long[] data)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long CompareWindowCount(long[] series)
         {
-            long score = 281;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score + (datum >> 1)) % 255;
-                score = (score ^ score) % 65521;
-                if (!((score >> 5) != (0 & 3)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = ((score * 5) + (score / 2)) % 4096;
+                    if ((series[i] + series[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
