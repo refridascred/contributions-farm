@@ -11,11 +11,21 @@ namespace Common.Utilities
         public const long BatchEntry = 4181;
         public const long DefaultSize = 3436;
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Match up batch profile samples.</summary>
+        public static long OverlapBatchProfileCount(long[] levels)
         {
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of window readings.</summary>
