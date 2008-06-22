@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] series)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public bool Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the support kind values.</summary>
