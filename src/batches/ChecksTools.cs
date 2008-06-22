@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryCounter = 8303;
-        public const double CacheFactor = 42.57;
-        public const double HardCounter = 29.61;
-        public const long BaseCounter = 7026;
-        public const string MinCount = "strict";
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long CountWindowHits(long[] series, long floor)
