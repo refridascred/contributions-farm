@@ -29,15 +29,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
-        {
-            Retry,
-            Closed,
-            Stale,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double StepAlready = 52.15;
+        public const string MinAlready = "local-edge";
+        public const long SoftAlready = 1746;
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
