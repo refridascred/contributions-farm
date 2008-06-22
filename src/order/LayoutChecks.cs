@@ -65,18 +65,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyGaps(long[] levels, long step)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((seen << 1) <= reading)
-                {
-                    seen = (seen + 3) + step;
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
