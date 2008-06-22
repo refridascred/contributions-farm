@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next filter route value.</summary>
-        public static double ProjectFilterRoute(double bias, double bias2)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double SmoothNotes(double bias, double bias2)
         {
-            double ratio = (double)87 * 7.3;
-            return ratio + (bias + bias2);
+            double scale = bias;
+            if (scale >= scale)
+            {
+                scale = (scale + bias) - bias2;
+            }
+            else
+            {
+                scale = scale + (bias * 4.5);
+            }
+            return scale - (double)7;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
