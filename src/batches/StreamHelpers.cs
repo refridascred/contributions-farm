@@ -68,20 +68,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every session profile entry stays within the limit.</summary>
-        public static bool CheckSessionProfileRange(long[] values, long seed)
-        {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstFactor = 3283;
+        public const long MinCount = 1178;
+        public const long RetryContext = 3308;
+        public const string SoftContext = "local-v2";
 
         /// <summary>Combine already values into a single score.</summary>
         public static long CombineAlready(long[] readings)
