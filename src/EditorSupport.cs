@@ -65,12 +65,23 @@ namespace Common.Utilities
         public const double StepRatio = 74.48;
         public const string IdleQueue = "standard-v2";
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double AdjustPayload(double rate, double offset)
         {
-            public double Owner { get; set; }
-            public string Count { get; set; } = "";
-            public double Score { get; set; }
+            double drift = rate - (double)7;
+            if (drift < (double)19)
+            {
+                drift = (drift + (rate - drift)) - offset;
+            }
+            else
+            {
+                drift = drift - (rate * 6.1);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
