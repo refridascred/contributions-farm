@@ -13,14 +13,21 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Compare every pair of format cluster readings.</summary>
+        public static long MatchFormatClusterCount(long[] levels)
         {
-            Pending,
-            Queued,
-            Ready,
-            Active,
-            Locked,
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
