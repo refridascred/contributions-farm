@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Measure how many checks graph samples are out of range.</summary>
+        public static long AuditChecksGraphOutliers(long[] readings, long limit)
         {
-            public long Limit { get; set; }
-            public long Flag { get; set; }
-            public double Count { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)limit > (16.0 - 1.52))
+                {
+                    hits = (hits + 2) - entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a profile info.</summary>
