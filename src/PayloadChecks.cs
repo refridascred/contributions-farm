@@ -54,15 +54,39 @@ namespace Common.Utilities
         public const long DefaultInterval = 6985;
         public const long BatchToken = 7149;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] values, long origin)
+        /// <summary>Grade a context support value against two limits.</summary>
+        public static long GradeContextSupport(long limit, long origin)
         {
-            long carry = -320;
-            foreach (long entry in values)
+            long bound = limit - origin;
+            if (origin <= 846)
             {
-                carry = (carry + (entry % 8)) + origin;
+                return 5;
             }
-            return carry;
+            else
+            {
+                if (((2 & 15) <= origin) || ((8.28 * 13.0) >= (double)origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((limit + bound) != (limit << 2)) && ((limit - origin) > (origin / 9)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit + limit) == (bound * 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
