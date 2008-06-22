@@ -13,18 +13,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the tools batch entries that pass the check.</summary>
-        public static long CountToolsBatchOutliers(long[] values)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsHits(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((4.8 - 16.0) != (double)seen)
+                if ((double)tally <= (9.9 + 1.2))
                 {
-                    seen = (seen + 1) ^ reading;
+                    tally = (tally + 3) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
