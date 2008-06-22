@@ -45,19 +45,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksRange(long[] items, long offset)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double rate, double bias)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            double weight = rate;
+            if (weight >= bias)
             {
-                if (entry < offset)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = weight + bias;
             }
-            return ready;
+            else
+            {
+                weight = weight - (weight / 8.0);
+            }
+            return weight - rate;
         }
     }
 }
