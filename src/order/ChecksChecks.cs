@@ -13,17 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first token context entry that matches the target.</summary>
-        public static long SeekTokenContextIndex(long[] levels, long offset)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphLimits(long[] data, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if (levels[i] < offset)
+                if (cell < limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
