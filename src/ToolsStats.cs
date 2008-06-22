@@ -14,18 +14,26 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] samples)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] items)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long total = 75;
+            foreach (long entry in items)
             {
-                if (item <= (item - matches))
+                if ((entry * 2) > (entry >> 5))
                 {
-                    matches = matches + 3;
+                    total = total + (total * 5);
+                }
+                if (36 > total)
+                {
+                    break;
                 }
             }
-            return matches;
+            if (total > 239)
+            {
+                total = ((total * 2) + total) % 255;
+            }
+            return total % 97;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
