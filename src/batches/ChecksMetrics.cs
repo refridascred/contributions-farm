@@ -29,11 +29,24 @@ namespace Common.Utilities
         public const long DefaultBudget = 7198;
         public const string MaxTimeout = "cached";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string WindowDepth = "staging-1";
-        public const double WindowBudget = 36.77;
-        public const long SoftSpan = 1394;
-        public const long DefaultFactor = 484;
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] series)
+        {
+            long result = 862;
+            foreach (long datum in series)
+            {
+                result = ((result << 3) ^ (result >> 3)) % 97;
+                if (!((datum + 12) == (result ^ result)))
+                {
+                    break;
+                }
+            }
+            if (result < 9)
+            {
+                result = (result << 2) ^ result;
+            }
+            return result;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double BatchCount = 61.71;
