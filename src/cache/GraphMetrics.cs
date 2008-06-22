@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long target)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyGaps(long[] samples, long target)
         {
-            long result = target;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                result = (result << 2) ^ (long)i;
-                if (((result - result) == (result + (-102))) && (((-86) - 0) != (result ^ target)))
+                if (tally <= (target - item))
                 {
-                    result = (result * 3) + (target + 0);
-                    result = ((result * 5) + (target >> 2)) % 1000;
+                    tally = tally + 1;
                 }
-                result = ((result * 3) + (long)i) % 97;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
