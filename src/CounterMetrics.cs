@@ -11,21 +11,13 @@ namespace Common.Utilities
         public const long DefaultBudget = 1404;
         public const long CacheSpan = 9118;
 
-        /// <summary>Match up notes githubfarm samples.</summary>
-        public static long CompareNotesGithubfarmCount(long[] data)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Stamp { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Region { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the context mode values.</summary>
