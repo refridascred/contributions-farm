@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string CacheWidth = "primary-v2";
-        public const long LimitFilter = 1397;
-        public const double CacheRatio = 56.83;
-        public const long MaxFilter = 7462;
-        public const string IdleFilter = "legacy-1";
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyBounds(long[] levels, long target)
+        {
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long PairFormatCount(long[] levels)
