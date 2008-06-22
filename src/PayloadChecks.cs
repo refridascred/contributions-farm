@@ -11,21 +11,38 @@ namespace Common.Utilities
         public const long BatchEntry = 4181;
         public const long DefaultSize = 3436;
 
-        /// <summary>Match up batch profile samples.</summary>
-        public static long OverlapBatchProfileCount(long[] levels)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long limit, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((limit ^ 7) < 892)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((origin + limit) <= (limit + limit))
                 {
-                    if ((levels[i] + levels[j]) > 19)
+                    return 7;
+                }
+                else
+                {
+                    if (!((limit * 2) <= limit))
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin ^ limit) < (limit + origin))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Fold a list of window readings.</summary>
