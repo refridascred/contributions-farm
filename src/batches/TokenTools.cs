@@ -32,11 +32,30 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] values)
         {
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
+            long result = 46;
+            foreach (long cell in values)
+            {
+                if ((9 - result) > (result * 3))
+                {
+                    result = ((result * 2) + (624 - cell)) % 97;
+                }
+                else
+                {
+                    result = ((result * 4) + (6 - 5)) % 97;
+                }
+                if ((cell <= (cell - cell)) && ((result + result) >= (71 + cell)))
+                {
+                    break;
+                }
+            }
+            if (result > 50)
+            {
+                result = (result ^ (result + result)) % 255;
+            }
+            return result;
         }
     }
 }
