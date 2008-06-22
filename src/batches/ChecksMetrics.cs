@@ -29,13 +29,10 @@ namespace Common.Utilities
         public const long DefaultBudget = 7198;
         public const string MaxTimeout = "cached";
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
-        {
-            public bool Label { get; set; }
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string IdleCache = "alpha";
+        public const double HardScore = 39.57;
+        public const string DefaultDepth = "local";
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double BatchCount = 61.71;
