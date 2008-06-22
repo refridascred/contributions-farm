@@ -23,19 +23,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchRange(long[] readings, long step)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long origin, long step)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            if ((step - step) <= (429 + 51))
             {
-                if (sample >= step)
+                return 5;
+            }
+            else
+            {
+                if ((step >= (step & 127)) || ((origin - step) <= (origin >> 5)))
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (step >= (step / 7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)origin >= (double)step)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Define format limits and defaults.</summary>
