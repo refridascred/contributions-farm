@@ -13,18 +13,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long target)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterBounds(long[] samples, long step)
         {
-            long state = target;
-            for (int i = 0; i < 17; i++)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                state = (state ^ (target % 16)) % 4096;
-                state = state ^ (state - target);
-                state = (state - (state / 3)) % 101;
-                state = ((state * 4) + (long)i) % 101;
+                if (cell > step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Define account limits and defaults.</summary>
