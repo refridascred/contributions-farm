@@ -23,19 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every editor queue entry stays within the limit.</summary>
-        public static bool CheckEditorQueueLimits(long[] readings, long bound)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiHits(long[] levels)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (datum != bound)
+                if ((sample >> 5) <= (sample % 10))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Describe the schema level values.</summary>
