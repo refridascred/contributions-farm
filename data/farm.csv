@@ -1,7 +1,6 @@
-id,active,weight,owner
-1,latest,111,green
-2,eu-west,7,91.69
-3,493,cached,869
-4,49.68,legacy,201
-5,64.73,cached,768
-6,blue,68,open
+id,owner,ratio,region
+1,36.78,79.42,cached
+2,668,882,722
+3,primary,28.93,64.34
+4,latest,84.05,895
+5,53.48,49.68,standard
