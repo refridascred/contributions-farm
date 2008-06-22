@@ -45,18 +45,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] items)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((tally - tally) >= (tally & 127))
-                {
-                    tally = (tally + 2) ^ value;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Match up queue samples.</summary>
