@@ -27,11 +27,25 @@ namespace Common.Utilities
         public const long BurstWidth = 7570;
         public const long BurstTimeout = 3052;
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long limit, long offset)
         {
-            public double Owner { get; set; }
-            public long Weight { get; set; }
+            long cur = limit ^ offset;
+            if ((limit * 2) != (cur * 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if (671 < (cur + 67))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Adjust a layout stream reading.</summary>
