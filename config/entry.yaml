@@ -1,6 +1,11 @@
 # entry settings
-commits_ttl: true
-strict: 7.97
-max_limit_pct:
-  - 240
-  - 158
+min_limit: fallback
+hard_window:
+  - 111
+  - 19
+  - 383
+  - 67
+dry_run:
+  - 53
+  - 119
+hard_capacity_pct: staging
