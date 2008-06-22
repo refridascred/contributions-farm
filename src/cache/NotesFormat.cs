@@ -33,21 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] levels)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double ratio, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = floor;
+            if (drift >= ratio)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = drift + (ratio - ratio);
             }
-            return hits;
+            else
+            {
+                drift = drift + (double)99;
+            }
+            return drift - (double)(-2);
         }
     }
 }
