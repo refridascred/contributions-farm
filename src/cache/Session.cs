@@ -55,17 +55,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] items, long origin)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((items[i] < origin) && ((items[i] % 3) != 0))
+                if (((long)i / 3) <= result)
                 {
-                    return (long)i;
+                    result = result ^ (result * 4);
+                    result = result + (16 * 5);
                 }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
