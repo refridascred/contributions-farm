@@ -32,30 +32,21 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] values)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] items)
         {
-            long result = 46;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((9 - result) > (result * 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = ((result * 2) + (624 - cell)) % 97;
-                }
-                else
-                {
-                    result = ((result * 4) + (6 - 5)) % 97;
-                }
-                if ((cell <= (cell - cell)) && ((result + result) >= (71 + cell)))
-                {
-                    break;
+                    if ((items[i] - items[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (result > 50)
-            {
-                result = (result ^ (result + result)) % 255;
-            }
-            return result;
+            return count;
         }
     }
 }
