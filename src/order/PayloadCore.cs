@@ -18,19 +18,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (count >= (97 & 15))
-                {
-                    count = (count + 2) ^ reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MinEditor = "standard-v2";
+        public const string BurstTimeout = "primary";
+        public const string BatchTimeout = "alpha-v2";
+        public const long BatchEditor = 9807;
+        public const string WindowBudget = "alpha";
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long GradeTools(long seed, long target)
