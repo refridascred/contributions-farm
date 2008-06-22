@@ -62,14 +62,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long origin, long target)
         {
-            Draft,
-            Retry,
-            Paused,
-            Failed,
-            Ready,
+            long step = origin ^ target;
+            if ((double)origin == (double)step)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step & 63) < (origin ^ (-4)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)target != (8.12 + 9.94)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
