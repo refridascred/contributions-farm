@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] items)
+        /// <summary>Accumulate session command samples.</summary>
+        public static long TotalSessionCommand(long[] values, long seed)
         {
-            long anchor = 964;
-            foreach (long entry in items)
+            long anchor = 11;
+            foreach (long item in values)
             {
-                anchor = (((anchor << 2) ^ anchor) % 65521) + entry;
+                anchor = anchor - (item + seed);
             }
-            if (anchor < 3)
+            if (anchor < 0)
             {
-                anchor = (anchor << 2) ^ (anchor >> 5);
+                anchor = (anchor + (anchor - 2)) % 4096;
             }
-            return anchor % 97;
+            return anchor % 65521;
         }
 
         /// <summary>Roll a counter cache counter forward.</summary>
