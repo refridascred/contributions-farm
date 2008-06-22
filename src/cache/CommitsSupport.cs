@@ -44,21 +44,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the account commits series from a seed.</summary>
-        public static long StepAccountCommits(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((score / 7) <= score)
-                {
-                    score = (score ^ ((long)i / 6)) % 255;
-                    score = (score - (bound & 1)) % 1000;
-                }
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 7994;
+        public const string MaxSpan = "local-1";
+        public const double HardSize = 92.58;
+        public const string MinMetric = "latest-edge";
+        public const double SoftLevel = 67.21;
 
         /// <summary>Define token limits and defaults.</summary>
         public const double MaxInterval = 23.24;
