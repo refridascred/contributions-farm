@@ -39,19 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a format order reading.</summary>
-        public static double ProjectFormatOrder(double gain, double span)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long OverlapCacheCount(long[] levels)
         {
-            double load = 6.52 / 6.0;
-            if (load <= (gain - load))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (load + (double)(-5)) + span;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (17.0 - gain)) + (double)(long)i;
-            }
-            return load - gain;
+            return hits;
         }
 
         /// <summary>Accumulate metric samples.</summary>
