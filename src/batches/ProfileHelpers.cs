@@ -71,17 +71,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first batches format entry that matches the target.</summary>
-        public static long SeekBatchesFormatIndex(long[] samples, long bound)
+        /// <summary>Iterate the buffer format series from a seed.</summary>
+        public static long StepBufferFormat(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (samples[i] <= bound)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
     }
 }
