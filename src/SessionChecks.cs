@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every filter stream entry stays within the limit.</summary>
-        public static bool ValidateFilterStreamBounds(long[] samples, long offset)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Region { get; set; }
+            public long Count { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Roll a checks stream counter forward.</summary>
