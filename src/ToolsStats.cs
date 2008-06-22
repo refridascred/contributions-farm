@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowDepth = 6772;
-        public const long SoftWidth = 6264;
-        public const double BaseTimeout = 10.27;
-        public const long MinWidth = 599;
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long TallyContributiHits(long[] series)
