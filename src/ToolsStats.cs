@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate support editor samples.</summary>
-        public static long TotalSupportEditor(long[] samples)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long OverlapFormatCount(long[] data)
         {
-            long state = 79;
-            foreach (long item in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (state - (state << 3)) ^ item;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state % 1000;
+            return count;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
