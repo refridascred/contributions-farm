@@ -28,31 +28,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long step, long limit)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            if (((limit & 7) != (5 & 255)) && (limit > step))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step * 4) < limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit % 24) == (step + step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the context state values.</summary>
