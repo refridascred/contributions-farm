@@ -72,11 +72,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            public bool Rank { get; set; }
-            public long Score { get; set; }
+            Dropped,
+            Synced,
+            Queued,
         }
     }
 }
