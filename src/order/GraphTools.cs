@@ -59,18 +59,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] values, long limit)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] samples, long seed)
         {
-            long score = 501;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (score > (limit << 2))
+                if ((samples[i] >= seed) && ((samples[i] % 3) != 0))
                 {
-                    score = (score * 4) + item;
+                    return (long)i;
                 }
             }
-            return score % 1000;
+            return -1;
         }
     }
 }
