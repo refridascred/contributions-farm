@@ -46,18 +46,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] items)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatHits(long[] items, long seed)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((seed & 31) != (seed / 3))
                 {
-                    if ((items[i] + items[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 3) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
