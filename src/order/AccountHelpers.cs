@@ -31,18 +31,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= target) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string LimitSpan = "standard-1";
+        public const long SoftRecord = 5332;
+        public const long BurstRecord = 9250;
+        public const long StepScore = 9237;
+        public const long DefaultRecord = 8539;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long StepTimeout = 8645;
