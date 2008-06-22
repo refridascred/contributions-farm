@@ -59,18 +59,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] samples)
+        /// <summary>Measure how many route entry samples are out of range.</summary>
+        public static long AuditRouteEntryHits(long[] items)
         {
-            long anchor = 4;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((anchor ^ value) >= value)
+                if (!((entry / 2) <= (entry / 8)) || ((9.7 - 8.0) > (double)hits))
                 {
-                    anchor = (anchor + 120) % 101;
+                    hits = hits + 2;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Accumulate graph samples.</summary>
