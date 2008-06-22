@@ -1,5 +1,5 @@
 # support settings
-retry_interval_s: stable
-idle_capacity: 83.76
-cache_ratio: 7765
-soft_size_s: true
+githubfarm_capacity: 41.32
+sync_size_count: true
+contributi_depth: green
+strict: 28.49
