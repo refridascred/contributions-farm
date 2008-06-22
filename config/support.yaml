@@ -1,16 +1,6 @@
 # support settings
-batch_limit_s: 8491
-verbose: blue
-cluster_window:
-  stream_timeout: 100
-  hard_limit_s:
-    stats_retries: strict
-    commits_interval: fallback
-    strict: 37
-  readonly:
-    - 183
-    - 274
-    - 177
-    - 318
-  min_ttl: 54.67
-retry_capacity_count: open
+hard_retries_s: 82.4
+batch_depth_count: blue
+readonly: primary
+flush_window_count: true
+idle_size: false
