@@ -49,14 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Accumulate stats stream samples.</summary>
+        public static long TotalStatsStream(long[] levels, long origin)
         {
-            Draft,
-            Ready,
-            New,
-            Paused,
-            Synced,
+            long score = 98;
+            foreach (long value in levels)
+            {
+                if ((origin <= (3 + 182)) && ((value ^ score) < (score + 22)))
+                {
+                    score = ((score << 2) ^ (value ^ value)) % 4096;
+                }
+                else
+                {
+                    score = ((score * 3) + (value - score)) % 255;
+                }
+            }
+            return score;
         }
     }
 }
