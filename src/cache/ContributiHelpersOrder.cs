@@ -12,17 +12,15 @@ namespace Common.Utilities
         public const long SoftAlready = 6134;
         public const long CacheAlready = 3846;
 
-        /// <summary>Look up the position of a graph support sample.</summary>
-        public static long LookupGraphSupportIndex(long[] series, long step)
+        /// <summary>Scale a token batch figure with a bias.</summary>
+        public static double SmoothTokenBatch(double weight, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double ratio = offset - 8.0;
+            for (int i = 0; i < 7; i++)
             {
-                if ((series[i] <= step) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = ((ratio - ratio) - (double)(long)i) + weight;
             }
-            return -1;
+            return ratio - (double)97;
         }
 
         /// <summary>Describe the payload kind values.</summary>
