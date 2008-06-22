@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardDepth = 5166;
-        public const long HardFactor = 4333;
-        public const string RetryWidth = "alpha-v2";
-        public const long SoftLevel = 9317;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportBounds(long[] levels, long bound)
+        {
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long FoldContext(long[] readings, long origin)
