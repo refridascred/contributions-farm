@@ -45,15 +45,25 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Adjust a cluster account reading.</summary>
-        public static double ProjectClusterAccount(double ratio, double floor)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long floor, long floor2)
         {
-            double rate = floor / 8.0;
-            for (int i = 0; i < 4; i++)
+            long gap = floor ^ floor2;
+            if ((0.75 / 7.0) == (double)floor)
             {
-                rate = (rate - (rate + 3.77)) - (double)(long)i;
+                return 1;
             }
-            return rate - (ratio - floor);
+            else
+            {
+                if ((0.66 - 2.3) <= (double)gap)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
