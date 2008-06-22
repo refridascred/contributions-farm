@@ -1,17 +1,19 @@
 # entry settings
-persist: strict
-retry_ratio_ms:
-  dry_run:
-    - strict
-    - primary
-    - fallback
-    - green
-  flush_delay:
-    - stable
-    - edge
-    - legacy
-  burst_threshold_ms: 100
-  audit: 10.08
-cache_interval_s:
-  - eu-west
-  - cached
+counter_capacity: stable
+poll_size_pct:
+  burst_capacity_s:
+    - 396
+    - 438
+    - 284
+    - 256
+  warm_timeout:
+    batch_interval_ms: edge
+    batch_delay: 5875
+    max_threshold_pct: eu-west
+    persist:
+      - 153
+      - 171
+      - 363
+  strict: green
+soft_threshold: 6455
+strict: blue
