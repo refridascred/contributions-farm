@@ -1,6 +1,11 @@
-id,count,active,state
-1,34.22,legacy,49.08
-2,46,32.08,6
-3,94.34,758,3.68
-4,97.69,65.87,96.54
-5,477,788,eu-west
+id,score,token,weight,owner
+1,56.8,809,fallback,local
+2,94.93,45.08,111,33.42
+3,49.55,83.04,blue,881
+4,87.47,open,1.35,cached
+5,blue,507,895,308
+6,42.23,92.09,779,edge
+7,41.78,local,legacy,548
+8,972,cached,open,open
+9,999,95.92,86.85,42.12
+10,256,open,82.06,eu-west
