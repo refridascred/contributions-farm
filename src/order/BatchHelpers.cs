@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every tools stats entry stays within the limit.</summary>
-        public static bool ValidateToolsStatsBounds(long[] values, long origin)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public bool Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the metric status values.</summary>
