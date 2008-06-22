@@ -38,17 +38,17 @@ namespace Common.Utilities
             return mean + (span + span);
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] series, long floor)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((series[i] == floor) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mark = (mark - (offset ^ (long)i)) % 1000;
+                mark = ((mark * 5) + mark) % 65521;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
     }
 }
