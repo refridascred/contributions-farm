@@ -25,22 +25,15 @@ namespace Common.Utilities
         public const long DefaultAccount = 6511;
         public const string RetrySpan = "alpha-1";
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] data)
+        /// <summary>Fold a list of layout route readings.</summary>
+        public static long DigestLayoutRoute(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long total = 1;
+            foreach (long sample in samples)
             {
-                if (!((tally >> 3) >= item))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = (total ^ (total - sample)) - step;
             }
-            return tally;
+            return total;
         }
     }
 }
