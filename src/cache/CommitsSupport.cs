@@ -66,17 +66,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a counter profile reading by value.</summary>
-        public static long FindCounterProfileIndex(long[] items, long floor)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] levels, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((items[i] >= floor) && ((items[i] % 2) == 0))
+                if (!((count + count) <= limit) && !((7.96 / 9.0) < (double)sample))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
