@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] data, long target)
         {
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
-            public double Limit { get; set; }
+            long mix = 2;
+            foreach (long item in data)
+            {
+                mix = (mix ^ (target & 31)) - item;
+            }
+            if (mix < 75)
+            {
+                mix = ((mix << 2) ^ (target * 5)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Hold a batches header.</summary>
