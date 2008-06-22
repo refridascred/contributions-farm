@@ -19,35 +19,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long limit, long step)
+        /// <summary>Classify a route window pair into a bucket.</summary>
+        public static long RankRouteWindow(long limit, long offset)
         {
-            if (97 > limit)
+            if ((limit < (offset + limit)) && ((double)limit > (2.36 * 20.0)))
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if (((step << 3) >= (step + step)) || ((step + limit) == (limit + step)))
+                if (0.8 >= (double)limit)
                 {
-                    return 1;
+                    return 4;
                 }
                 else
                 {
-                    if (((double)step == (double)limit) && (step <= (step % 8)))
+                    if ((18 * 3) > offset)
                     {
-                        return 3;
+                        return 1;
                     }
                     else
                     {
-                        if (((double)step >= 8.61) || ((limit + step) != (step % 97)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        return 2;
                     }
                 }
             }
