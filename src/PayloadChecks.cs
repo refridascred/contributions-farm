@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleTimeout = 4024;
-        public const long StepEntry = 7657;
-        public const long BatchEntry = 4181;
-        public const long DefaultSize = 3436;
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
+        {
+            public bool Level { get; set; }
+            public long Flag { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Match up counter samples.</summary>
         public static long OverlapCounterCount(long[] series)
