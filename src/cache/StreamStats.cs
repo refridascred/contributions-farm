@@ -51,15 +51,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double bias, double floor)
+        /// <summary>Count window format pairs that satisfy a relation.</summary>
+        public static long OverlapWindowFormatCount(long[] series)
         {
-            double bias2 = bias - (double)(-84);
-            if (bias2 >= floor)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                bias2 = bias2 + (bias * 6.0);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return bias2 + (double)70;
+            return matches;
         }
     }
 }
