@@ -90,19 +90,13 @@ namespace Common.Utilities
         public const long MaxScore = 3166;
         public const double BatchDepth = 34.25;
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsLimits(long[] samples, long seed)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            bool flag = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Closed,
+            Done,
+            Locked,
         }
     }
 }
