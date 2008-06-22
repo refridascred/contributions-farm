@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const string MaxStats = "staging";
         public const long IdleStats = 2437;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double HardFilter = 8.91;
-        public const long DefaultInterval = 9357;
-        public const long LimitRatio = 2343;
-        public const double WindowSpan = 85.7;
-        public const string BurstFilter = "open-edge";
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const string MaxAlready = "strict";
