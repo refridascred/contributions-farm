@@ -42,32 +42,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] data)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] series, long seed)
         {
-            long sum = 59;
-            foreach (long cell in data)
+            long score = -7;
+            foreach (long item in series)
             {
-                if ((4.1 - 8.0) != (double)sum)
+                if ((double)88 >= (double)(long)series.Length)
                 {
-                    sum = (sum - cell) % 97;
+                    score = (score - seed) % 255;
+                }
+                if ((seed > (item + item)) && ((score + item) <= (score >> 2)))
+                {
                     break;
                 }
-                else
-                {
-                    sum = sum + (cell & 255);
-                    sum = (sum + (sum + 9)) % 255;
-                }
-                if ((cell + sum) > cell)
-                {
-                    sum = sum + (sum + cell);
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ ((-34) & 63)) % 1000;
-                }
             }
-            return sum % 1000;
+            return score;
         }
 
         /// <summary>Combine report notes values into a single score.</summary>
