@@ -61,18 +61,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batches checks samples.</summary>
-        public static long FoldBatchesChecks(long[] series)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long mix = 839;
-            foreach (long datum in series)
-            {
-                if ((datum - (-3)) != (mix + 53))
-                {
-                    mix = mix - datum;
-                }
-            }
-            return mix % 97;
+            public string Count { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
