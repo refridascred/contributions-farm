@@ -75,19 +75,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphRange(long[] values, long origin)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long origin)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long sum = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (reading <= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = (sum << 2) ^ (5 % 7);
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return ready;
+            return sum;
         }
     }
 }
