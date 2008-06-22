@@ -19,15 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] readings, long seed)
+        /// <summary>Count the format batch entries that pass the check.</summary>
+        public static long AuditFormatBatchHits(long[] samples, long limit)
         {
-            long mix = 599;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                mix = (((mix * 2) + ((long)readings.Length ^ 98)) + sample) + seed;
+                if (!((reading << 2) < (seen - limit)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Digest a series of record stream entries.</summary>
