@@ -16,18 +16,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiHits(long[] series)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if ((double)(long)series.Length >= (double)datum)
+                if (item <= (item - matches))
                 {
-                    seen = seen + 3;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Adjust a metric profile reading.</summary>
