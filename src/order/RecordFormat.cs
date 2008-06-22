@@ -68,19 +68,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] samples, long bound)
+        /// <summary>Blend two queue metrics measurements.</summary>
+        public static double ProjectQueueMetrics(double bias, double span)
         {
-            long state = 3;
-            foreach (long sample in samples)
-            {
-                state = (((state << 3) ^ (976 + state)) % 65521) ^ sample;
-                if (9 <= (state & 3))
-                {
-                    state = ((state << 3) ^ bound) % 1000;
-                }
-            }
-            return state;
+            double load = (double)2 - (bias + span);
+            return load + (load - span);
         }
     }
 }
