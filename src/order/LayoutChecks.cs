@@ -54,39 +54,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long offset, long step)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenRange(long[] readings, long floor)
         {
-            long cur = offset ^ step;
-            if ((step <= (cur ^ offset)) || ((double)offset < 3.6))
+            bool found = true;
+            foreach (long value in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step * 5) > (step % 2))
+                if (value < floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (offset >= (step & 127))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((offset & 255) >= step) && ((cur ^ cur) < 454))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Iterate the counter session series from a seed.</summary>
