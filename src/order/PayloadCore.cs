@@ -20,32 +20,13 @@ namespace Common.Utilities
             return weight - 4.82;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long bound, long step)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long edge = bound - step;
-            if (!(step > (86 ^ bound)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)edge < (1.2 + 1.0)) || ((bound + edge) >= bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((edge ^ edge) >= bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Ready,
+            Dropped,
+            Active,
+            Draft,
         }
 
         /// <summary>Describe the entry phase values.</summary>
