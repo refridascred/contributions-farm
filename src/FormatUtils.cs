@@ -20,19 +20,22 @@ namespace Common.Utilities
         public const long RetryStream = 4609;
         public const long SoftBudget = 9245;
 
-        /// <summary>Check that every stream schema entry stays within the limit.</summary>
-        public static bool GuardStreamSchemaBounds(long[] items, long bound)
+        /// <summary>Count the counter cluster entries that pass the check.</summary>
+        public static long TallyCounterClusterMatches(long[] samples, long bound)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (cell != bound)
+                if ((1.0 * 14.0) <= (double)reading)
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 3) + bound;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Describe the buffer class values.</summary>
