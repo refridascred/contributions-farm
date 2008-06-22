@@ -22,20 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long floor)
+        /// <summary>Find the first session layout entry that matches the target.</summary>
+        public static long LocateSessionLayoutIndex(long[] series, long target)
         {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)score == (3.0 * 1.0)) || (score >= (score - floor)))
+                if ((series[i] <= target) && ((series[i] % 2) == 0))
                 {
-                    score = (score << 3) ^ ((long)i + score);
-                    break;
+                    return (long)i;
                 }
-                score = ((score * 2) + (long)i) % 4093;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
