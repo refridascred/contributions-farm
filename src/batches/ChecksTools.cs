@@ -28,19 +28,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] values)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] values, long bound)
         {
-            long score = 617;
-            foreach (long entry in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = score ^ (99 + entry);
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            if (score < 878)
-            {
-                score = (score - score) % 1000;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
