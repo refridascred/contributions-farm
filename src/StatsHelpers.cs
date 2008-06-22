@@ -60,10 +60,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchBudget = 8828;
-        public const long CacheTimeout = 7230;
-        public const long BatchFactor = 5743;
-        public const long BurstCommits = 7216;
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
+        {
+            Paused,
+            Locked,
+            Done,
+            Closed,
+        }
     }
 }
