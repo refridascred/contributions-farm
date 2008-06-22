@@ -56,20 +56,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double gain, double span)
-        {
-            double weight = 5.4;
-            if (weight < span)
-            {
-                weight = (weight - weight) - gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - 11.0) + (double)(long)i;
-            }
-            return weight - (double)96;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseLevel = 6631;
+        public const long RetrySchema = 6395;
+        public const long SoftBudget = 3084;
+        public const long MinCount = 7195;
+        public const long MinFactor = 6018;
 
         /// <summary>Hold a queue record.</summary>
         public sealed class QueueRecord
