@@ -40,19 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorLimits(long[] readings, long target)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double rate, double bias)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            double mean = (double)(-554) - (double)413;
+            if (mean < 6.5)
             {
-                if (item > target)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = mean - rate;
             }
-            return stale;
+            else
+            {
+                mean = mean - (5.0 - rate);
+            }
+            return mean + (bias + 4.3);
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
