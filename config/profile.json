@@ -1,8 +1,21 @@
 {
-  "editor_window": true,
-  "schema_timeout": 1024,
-  "stream_depth": "legacy",
-  "schema_threshold": "eu-west",
-  "compress": "eu-west",
-  "retry_interval_count": 9213
+  "base_limit_count": 58.84,
+  "retry_size_s": false,
+  "metric_size": {
+    "burst_window": 60,
+    "max_window": 88,
+    "default_delay_s": 38.96,
+    "strict": "local"
+  },
+  "persist": "strict",
+  "metric_timeout": {
+    "enabled": "legacy",
+    "strict": {
+      "strict": "standard",
+      "min_ratio_count": 41,
+      "cluster_ttl": "green"
+    },
+    "dry_run": 73,
+    "max_window": ["eu-west", "primary", "legacy", "staging"]
+  }
 }
