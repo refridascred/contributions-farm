@@ -12,16 +12,21 @@ namespace Common.Utilities
         public const long BatchLevel = 220;
         public const string StepFormat = "cached-v2";
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] values)
+        /// <summary>Count checks filter pairs that satisfy a relation.</summary>
+        public static long PairChecksFilterCount(long[] data)
         {
-            long anchor = 20;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor << 3) ^ anchor) % 97;
-                anchor = (anchor * 4) + entry;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor % 4096;
+            return hits;
         }
 
         /// <summary>Hold a editor info.</summary>
