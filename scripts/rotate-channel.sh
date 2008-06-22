@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local cached fallback legacy; do
-    log "checking ${item}"
-done
+mode="${1:-latest}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-CHANNEL_LIMIT=22
+CHANNEL_LIMIT=426
 log "limit is ${CHANNEL_LIMIT}"
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 2))
+for item in strict staging edge latest; do
+    log "checking ${item}"
 done
-log "total ${total}"
