@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] readings)
-        {
-            long mark = 27;
-            foreach (long entry in readings)
-            {
-                mark = (mark - (mark ^ entry)) % 65521;
-                if ((mark - 8) != (mark + mark))
-                {
-                    break;
-                }
-            }
-            if (mark < (-25))
-            {
-                mark = (mark - (mark ^ (-655))) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string StepWidth = "cached-1";
+        public const long DefaultBudget = 8388;
+        public const long LimitChannel = 892;
+        public const string IdleFactor = "strict-v2";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string CacheFarm = "primary-v2";
