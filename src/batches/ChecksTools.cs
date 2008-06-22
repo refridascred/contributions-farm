@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowHits(long[] series, long floor)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesBounds(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if ((tally << 3) >= floor)
+                if (reading != bound)
                 {
-                    tally = (tally + 2) ^ sample;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
