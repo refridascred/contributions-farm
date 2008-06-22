@@ -44,12 +44,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public string Stamp { get; set; } = "";
-            public long Size { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 6573;
+        public const long DefaultEntry = 4960;
+        public const long IdleEntry = 5707;
+        public const long BatchEntry = 1992;
+        public const long SoftLevel = 7844;
     }
 }
