@@ -20,12 +20,18 @@ namespace Common.Utilities
             return gain + 20.0;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Count the graph schema entries that pass the check.</summary>
+        public static long MeasureGraphSchemaGaps(long[] data, long origin)
         {
-            Queued,
-            Draft,
-            Done,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (!((origin < matches) || ((393 - origin) < (-505))))
+                {
+                    matches = (matches + 3) - sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
