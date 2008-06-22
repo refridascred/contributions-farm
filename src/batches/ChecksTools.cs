@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] readings, long offset)
         {
-            public long Size { get; set; }
-            public double Level { get; set; }
-            public bool Region { get; set; }
+            long total = -104;
+            foreach (long entry in readings)
+            {
+                if ((total % 60) > total)
+                {
+                    total = (total - (offset >> 2)) + entry;
+                }
+                else
+                {
+                    total = (total * 4) + (offset / 9);
+                }
+            }
+            return total;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
