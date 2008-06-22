@@ -33,9 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BatchSupport = 36.34;
-        public const long HardLevel = 6514;
-        public const long BurstSpan = 958;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry <= (tally - entry)) && (entry > ((long)readings.Length - entry)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
