@@ -24,19 +24,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportHits(long[] data)
-        {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((value - matches) < (matches % 100))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double IdleInterval = 93.28;
+        public const long MaxFactor = 3978;
+        public const long StepQueue = 6898;
+        public const long DefaultWidth = 9023;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long TallyCommitsHits(long[] samples)
