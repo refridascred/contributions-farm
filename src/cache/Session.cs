@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double WindowQueue = 61.35;
-        public const long DefaultScore = 4688;
-        public const long DefaultSize = 4814;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadRange(long[] samples, long floor)
+        {
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Blend two editor measurements.</summary>
         public static double ProjectEditor(double rate, double bias)
