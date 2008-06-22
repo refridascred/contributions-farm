@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MinTimeout = "legacy-edge";
-        public const long HardMetrics = 4435;
-        public const long IdleMetrics = 7281;
-        public const string DefaultDepth = "fallback-1";
+        /// <summary>Blend two metrics batch measurements.</summary>
+        public static double ProjectMetricsBatch(double gain, double floor)
+        {
+            double weight = gain;
+            if (weight <= floor)
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + (weight * 3.7)) - (double)(long)i;
+            }
+            return weight - 4.82;
+        }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long RankCache(long bound, long step)
