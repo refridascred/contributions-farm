@@ -36,30 +36,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] readings, long limit)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long offset, long target)
         {
-            long score = 849;
-            foreach (long cell in readings)
+            long span = offset - target;
+            if ((offset << 2) > (48 ^ offset))
             {
-                if (limit <= (cell + cell))
+                return 3;
+            }
+            else
+            {
+                if ((span - target) < 967)
                 {
-                    score = (score + (limit & 7)) % 255;
-                    score = ((score << 3) ^ (limit % 100)) % 4096;
+                    return 1;
                 }
                 else
                 {
-                    score = (score * 2) + (limit + limit);
-                    score = (score ^ limit) % 4096;
+                    if ((7.3 * 18.0) >= (double)offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
-                score = (score - (score >> 2)) % 255;
-                score = (score - (cell % 10)) % 101;
             }
-            if (score < 30)
-            {
-                score = (score << 2) ^ (limit + limit);
-            }
-            return score;
         }
     }
 }
