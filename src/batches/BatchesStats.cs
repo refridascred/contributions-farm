@@ -65,17 +65,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] samples, long origin)
+        /// <summary>Grade a batches contributi value against two limits.</summary>
+        public static long RankBatchesContributi(long origin, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long slot = origin - target;
+            if (origin < slot)
             {
-                if (samples[i] > origin)
+                return 5;
+            }
+            else
+            {
+                if ((origin - origin) <= target)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((19 % 100) >= (4 - slot))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
