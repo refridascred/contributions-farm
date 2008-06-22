@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long offset, long step)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterMatches(long[] series, long origin)
         {
-            if ((offset << 2) != (offset % 100))
+            long seen = 0;
+            foreach (long cell in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset != (3.7 - 6.0))
+                if ((seen - seen) >= cell)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((step + offset) > (step + step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = (seen + 3) + origin;
                 }
             }
+            return seen;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
