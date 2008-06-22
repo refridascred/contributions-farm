@@ -27,12 +27,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] values)
         {
-            public bool Region { get; set; }
-            public long Rank { get; set; }
-            public bool Size { get; set; }
+            long score = 617;
+            foreach (long entry in values)
+            {
+                score = score ^ (99 + entry);
+            }
+            if (score < 878)
+            {
+                score = (score - score) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
