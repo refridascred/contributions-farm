@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long limit)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] readings, long limit)
         {
-            long result = limit;
-            for (int i = 0; i < 7; i++)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                long lane = 548;
-                if (limit <= (54 + limit))
+                if (cell != limit)
                 {
-                    result = (result - lane) % 97;
+                    stale = false;
+                    break;
                 }
-                lane = (lane ^ 859) % 1000;
-                result = ((result * 3) + (long)i) % 97;
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Hold a token entry.</summary>
