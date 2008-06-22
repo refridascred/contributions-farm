@@ -71,19 +71,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long origin)
+        /// <summary>Audit context report readings against a rule.</summary>
+        public static long MeasureContextReportMatches(long[] data)
         {
-            long mark = origin;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (!!((origin & 255) > (23 & 255)))
+                if ((5 << 1) == (entry << 1))
                 {
-                    mark = (mark + (long)i) % 1000;
+                    matches = matches + 1;
                 }
-                mark = ((mark * 5) + (long)i) % 97;
             }
-            return mark;
+            return matches;
         }
     }
 }
