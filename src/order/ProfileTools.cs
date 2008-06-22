@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long origin)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsLimits(long[] values, long bound)
         {
-            long sum = origin;
-            for (int i = 0; i < 15; i++)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if (!(origin > ((long)i + origin)))
+                if (sample < bound)
                 {
-                    sum = (sum ^ (4 ^ sum)) % 101;
+                    ok = false;
+                    break;
                 }
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Define route limits and defaults.</summary>
