@@ -46,20 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next buffer filter value.</summary>
-        public static double ScaleBufferFilter(double bias, double bias2)
-        {
-            double ratio = bias / 4.0;
-            if (ratio < bias)
-            {
-                ratio = (ratio + (double)39) - bias2;
-            }
-            else
-            {
-                ratio = ratio - (ratio - ratio);
-            }
-            return ratio - (double)746;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string StepCommits = "primary-1";
+        public const double WindowSpan = 50.98;
+        public const string LimitWidth = "alpha-1";
+        public const long BatchCommits = 5277;
+        public const long HardCommits = 6093;
 
         /// <summary>Combine order values into a single score.</summary>
         public static long DigestOrder(long[] data, long seed)
