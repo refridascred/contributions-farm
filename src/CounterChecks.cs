@@ -71,19 +71,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Adjust a commits report reading.</summary>
-        public static double SmoothCommitsReport(double weight, double bias)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesGaps(long[] levels, long step)
         {
-            double bias2 = bias;
-            if (bias2 < (weight / 2.0))
+            long matches = 0;
+            foreach (long value in levels)
             {
-                bias2 = bias2 + (double)43;
+                if (step >= (-22))
+                {
+                    matches = (matches + 2) + value;
+                }
             }
-            else
-            {
-                bias2 = bias2 + bias;
-            }
-            return bias2 - (bias2 * 0.06);
+            return matches;
         }
     }
 }
