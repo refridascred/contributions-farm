@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterHits(long[] series)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] series)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)item == (2.5 + 0.28))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((series[i] + series[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a cache summary.</summary>
