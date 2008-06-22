@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a filter token pair into a bucket.</summary>
-        public static long SortFilterToken(long seed, long target)
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] values)
         {
-            if (target > seed)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((46 % 8) >= (seed + seed)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    if ((values[i] + values[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a cluster summary.</summary>
