@@ -65,19 +65,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the layout filter series from a seed.</summary>
-        public static long RollLayoutFilter(long seed)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] samples, long origin)
         {
-            long state = seed;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((seed % 64) < (long)i))
+                if (samples[i] > origin)
                 {
-                    continue;
+                    return (long)i;
                 }
-                state = ((state * 2) + (long)i) % 101;
             }
-            return state;
+            return -1;
         }
     }
 }
