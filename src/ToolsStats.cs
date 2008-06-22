@@ -93,13 +93,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Limit { get; set; } = "";
+            public double Ratio { get; set; }
+            public double Size { get; set; }
         }
     }
 }
