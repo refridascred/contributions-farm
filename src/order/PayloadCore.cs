@@ -45,28 +45,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine report account values into a single score.</summary>
-        public static long CombineReportAccount(long[] values, long limit)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long seed, long target)
         {
-            long total = 25;
-            foreach (long sample in values)
+            long bound = seed ^ target;
+            if (((1 - seed) > (target + seed)) || ((seed + bound) >= bound))
             {
-                if ((1 + total) == (total >> 3))
+                return 8;
+            }
+            else
+            {
+                if ((double)target > (7.0 + 2.0))
                 {
-                    total = total - (total - total);
-                }
-                if (((double)limit > 4.0) && ((double)total < (double)(-736)))
-                {
-                    total = (total + (total % 8)) % 4096;
+                    return 5;
                 }
                 else
                 {
-                    total = (total - (limit + 0)) % 65521;
-                    total = ((total << 3) ^ (limit / 4)) % 255;
+                    if (((87 >> 4) >= ((-1) - bound)) && ((bound / 9) >= (bound - bound)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
-                total = (total + sample) % 4096;
             }
-            return total;
         }
     }
 }
