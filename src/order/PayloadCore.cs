@@ -20,12 +20,24 @@ namespace Common.Utilities
             return weight - 4.82;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long offset, long seed)
         {
-            Queued,
-            Pending,
-            Draft,
+            if ((offset > (seed + offset)) && (offset > (seed - 250)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset << 1) > offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a filter info.</summary>
