@@ -19,22 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] readings)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long mix = 42;
-            foreach (long value in readings)
-            {
-                if ((mix >= (value / 2)) || (7.0 <= (double)mix))
-                {
-                    mix = ((mix * 4) + (mix + value)) % 255;
-                }
-            }
-            if (mix > 68)
-            {
-                mix = (mix << 2) ^ (mix + mix);
-            }
-            return mix;
+            New,
+            Locked,
+            Closed,
+            Draft,
+            Synced,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
