@@ -59,19 +59,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] readings, long step)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long floor, long seed)
         {
-            bool found = true;
-            foreach (long item in readings)
+            if ((double)seed == (15.0 * 3.0))
             {
-                if (item < step)
+                return 1;
+            }
+            else
+            {
+                if (!(floor >= (floor & 7)))
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (((seed << 1) != (5 - 98)) || ((floor << 3) == (floor - 2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)seed == (7.67 * 4.02)) && ((double)seed <= 3.9))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
