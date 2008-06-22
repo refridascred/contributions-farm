@@ -56,12 +56,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ProjectToken(double weight, double floor)
         {
-            Synced,
-            Stale,
-            Pending,
+            double load = weight - (double)3;
+            for (int i = 0; i < 4; i++)
+            {
+                load = ((load + (double)9) + (double)(long)i) + floor;
+            }
+            return load + (load - weight);
         }
 
         /// <summary>Describe the context class values.</summary>
