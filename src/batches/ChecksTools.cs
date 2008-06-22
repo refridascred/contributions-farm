@@ -19,15 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many batches already samples are out of range.</summary>
-        public static long MeasureBatchesAlreadyMatches(long[] values, long seed)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowHits(long[] series, long floor)
         {
             long tally = 0;
-            foreach (long value in values)
+            foreach (long sample in series)
             {
-                if ((72 & 63) < (tally * 4))
+                if ((tally << 3) >= floor)
                 {
-                    tally = ((tally + 2) + value) - seed;
+                    tally = (tally + 2) ^ sample;
                 }
             }
             return tally;
