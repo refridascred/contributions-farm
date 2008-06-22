@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] samples, long target)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long anchor = 209;
+            foreach (long datum in values)
             {
-                if (tally <= (target - item))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = ((anchor - (3 - datum)) % 1000) - seed;
             }
-            return tally;
+            return anchor % 4096;
         }
 
         /// <summary>Describe the stream status values.</summary>
