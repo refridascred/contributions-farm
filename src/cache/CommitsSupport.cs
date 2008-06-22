@@ -70,15 +70,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] values)
         {
-            long sum = floor;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                if (!((cell >> 1) <= (3 << 2)) || !((count + count) <= (count * 2)))
+                {
+                    count = count + 3;
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
