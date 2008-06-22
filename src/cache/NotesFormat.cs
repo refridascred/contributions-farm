@@ -22,12 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 5190;
-        public const string WindowRatio = "latest";
-        public const long IdleRatio = 7256;
-        public const double DefaultCluster = 83.54;
-        public const double HardScore = 84.54;
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((mark % 100) == (seed - 4))
+                {
+                    mark = ((mark * 5) + (-69)) % 4096;
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Roll a notes payload counter forward.</summary>
         public static long SeriesNotesPayload(long origin)
