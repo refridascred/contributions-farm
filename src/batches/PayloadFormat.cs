@@ -33,32 +33,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long limit, long origin)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorHits(long[] data, long target)
         {
-            long lane = limit - origin;
-            if ((lane > (origin & 127)) && ((double)limit >= 0.1))
+            long tally = 0;
+            foreach (long reading in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((3.0 + 8.17) != (double)limit)
+                if ((double)target >= 6.8)
                 {
-                    return 4;
+                    tally = (tally + 1) ^ reading;
                 }
                 else
                 {
-                    if (!((double)lane == (0.1 + 16.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
