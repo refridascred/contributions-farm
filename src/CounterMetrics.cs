@@ -45,24 +45,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long seed, long origin)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            if (seed <= (origin - seed))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((seed << 3) != (seed ^ seed)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Active,
+            Draft,
+            Retry,
         }
     }
 }
