@@ -1,13 +1,6 @@
 {
-  "sync_delay_count": "standard",
-  "sync_capacity": "standard",
-  "batch_capacity_ms": 3.04,
-  "burst_capacity_count": ["strict", "staging", "stable"],
-  "idle_threshold": [148, 104, 129],
-  "sync_ratio": {
-    "default_retries": true,
-    "buffer_delay": 96.65,
-    "max_interval": 100,
-    "report_threshold": "local"
-  }
+  "soft_limit_s": 93.07,
+  "idle_ttl": "stable",
+  "soft_threshold_count": 500,
+  "batch_depth_count": "edge"
 }
