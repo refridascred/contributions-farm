@@ -45,31 +45,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Rank contributi metric input into a small class.</summary>
-        public static long BucketContributiMetric(long bound, long bound2)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksRange(long[] items, long offset)
         {
-            if ((3.5 / 3.0) >= (double)bound2)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound2 ^ bound2) < (bound2 >> 2))
+                if (entry < offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (bound < (bound2 * 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
