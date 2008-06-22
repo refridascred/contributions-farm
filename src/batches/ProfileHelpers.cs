@@ -48,12 +48,17 @@ namespace Common.Utilities
         public const long RetryScore = 2915;
         public const long WindowCache = 783;
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Accumulate token schema samples.</summary>
+        public static long DigestTokenSchema(long[] readings, long offset)
         {
-            New,
-            Done,
-            Retry,
+            long mix = 0;
+            foreach (long reading in readings)
+            {
+                mix = (mix ^ (reading + mix)) % 97;
+                mix = (mix ^ (mix / 2)) % 101;
+                mix = ((mix << 3) ^ (offset * 3)) % 101;
+            }
+            return mix;
         }
     }
 }
