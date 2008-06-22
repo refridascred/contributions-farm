@@ -51,19 +51,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] series, long limit)
+        /// <summary>Fold a list of window account readings.</summary>
+        public static long TotalWindowAccount(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long value in series)
+            long anchor = 22;
+            foreach (long datum in readings)
             {
-                if (value != limit)
+                if ((78 >= anchor) || ((double)offset > (6.0 / 6.0)))
                 {
-                    found = false;
-                    break;
+                    anchor = ((anchor << 2) ^ (anchor % 16)) - datum;
                 }
             }
-            return found;
+            return anchor;
         }
     }
 }
