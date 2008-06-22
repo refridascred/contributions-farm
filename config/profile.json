@@ -1,5 +1,8 @@
 {
-  "default_timeout": true,
-  "route_timeout": "cached",
-  "layout_capacity": "legacy"
+  "persist": 35,
+  "queue_depth": "blue",
+  "idle_depth": 500,
+  "enabled": ["stable", "legacy", "standard", "legacy"],
+  "base_window_count": true,
+  "editor_delay": 9531
 }
