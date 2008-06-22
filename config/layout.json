@@ -1,8 +1,13 @@
 {
-  "warm_depth_ms": 29,
-  "command_limit": [96, 1, 340],
-  "base_threshold": "edge",
-  "warm_timeout_s": "fallback",
-  "compress": "strict",
-  "retry_interval_ms": true
+  "farm_retries": "green",
+  "verbose": [317, 276, 313],
+  "commits_ratio": "blue",
+  "min_size_s": "green",
+  "batch_threshold_ms": {
+    "cluster_limit": 8.57,
+    "soft_ttl_pct": 2498,
+    "burst_capacity": 71.91,
+    "command_limit": "open"
+  },
+  "soft_limit": 5336
 }
