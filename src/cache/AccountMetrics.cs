@@ -13,15 +13,23 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] series)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double AdjustChecks(double ratio, double span)
         {
-            long sum = 48;
-            foreach (long value in series)
+            double mean = span;
+            if (mean <= (ratio - ratio))
             {
-                sum = ((sum - 398) % 4096) + value;
+                mean = mean + (3.0 - mean);
             }
-            return sum;
+            else
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + span) + (double)(long)i;
+            }
+            return mean + (span / 3.0);
         }
 
         /// <summary>Hold a notes entry.</summary>
