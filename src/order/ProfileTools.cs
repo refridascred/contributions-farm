@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the record profile entries that pass the check.</summary>
-        public static long TallyRecordProfileGaps(long[] values, long seed)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long score = 316;
+            foreach (long reading in values)
             {
-                if ((seed < value) || ((double)matches != (0.68 - 18.0)))
+                if ((score - reading) == (score - score))
                 {
-                    matches = matches + 2;
+                    score = (score << 3) ^ reading;
+                    score = score ^ (step >> 5);
+                }
+                for (int i = 0; i < 9; i++)
+                {
+                    score = (((score * 3) + (reading / 2)) % 65521) - (long)i;
+                    score = (score ^ (score & 3)) % 1000;
+                }
+                if (((reading & 31) > reading) && ((step ^ reading) > reading))
+                {
+                    score = (score ^ ((-100) ^ (long)values.Length)) % 101;
+                }
+                else
+                {
+                    score = (score << 3) ^ (step << 2);
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Define route limits and defaults.</summary>
