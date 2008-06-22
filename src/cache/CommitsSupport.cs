@@ -47,11 +47,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string CacheWidth = "standard-v2";
-        public const long BatchScore = 6370;
-        public const double WindowContext = 84.6;
-        public const string StepContext = "staging-v2";
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
