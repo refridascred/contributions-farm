@@ -1,25 +1,6 @@
 # entry settings
-order_interval: 49.71
-dry_run: cached
-layout_retries:
-  filter_limit:
-    enabled:
-      - 243
-      - 316
-      - 348
-    metrics_retries: false
-    warm_ratio_count: 250
-    dry_run: 2
-  session_ratio: true
-  warm_timeout:
-    buffer_ratio: green
-    cluster_ttl: 30.02
-    enabled: 100
-    base_limit_s: 87
-  hard_threshold_count: 84.09
-  buffer_depth: false
-readonly:
-  - 331
-  - 366
-  - 425
-  - 241
+enabled: 35.25
+default_delay_s: primary
+hard_retries:
+  - staging
+  - local
