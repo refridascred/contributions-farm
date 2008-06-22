@@ -13,22 +13,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many profile checks samples are out of range.</summary>
-        public static long AuditProfileChecksHits(long[] values)
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long value in values)
+            double scale = 2.62;
+            if (scale >= (double)2)
             {
-                if (93 < (value + hits))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                scale = (scale - bias) - rate;
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (double)82) - (double)(long)i;
+            }
+            return scale + bias;
         }
 
         /// <summary>Describe the farm class values.</summary>
