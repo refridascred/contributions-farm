@@ -1,4 +1,13 @@
 # entry settings
-min_ratio_s: false
-hard_window_pct: fallback
-buffer_threshold: eu-west
+account_retries: latest
+warm_ttl: 80.01
+cache_limit: true
+notes_limit:
+  - 486
+  - 354
+contributi_window: standard
+session_depth:
+  - 38
+  - 417
+  - 225
+  - 353
