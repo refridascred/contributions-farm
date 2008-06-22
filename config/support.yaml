@@ -1,11 +1,11 @@
 # support settings
-idle_ttl_s: 87.6
-default_timeout_s: blue
-metric_depth: eu-west
-flush_capacity_s: 91
-token_interval:
-  - 207
-  - 248
-  - 398
-  - 494
-hard_retries_ms: 10.02
+retry_size: false
+poll_ratio: 60
+stats_threshold:
+  - eu-west
+  - green
+base_limit:
+  - fallback
+  - standard
+  - stable
+enabled: 94
