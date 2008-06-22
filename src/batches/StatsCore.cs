@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] data)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long mix = 104;
-            foreach (long datum in data)
-            {
-                mix = mix + datum;
-            }
-            if (mix > 22)
-            {
-                mix = (mix - 926) % 101;
-            }
-            return mix % 4096;
+            Idle,
+            New,
+            Closed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
