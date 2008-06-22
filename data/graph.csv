@@ -1,7 +1,10 @@
-id,region,count,score,ratio
-1,53.43,492,608,409
-2,18.08,577,54.72,269
-3,926,967,open,56
-4,474,primary,fallback,916
-5,staging,local,local,382
-6,fallback,629,95.56,563
+id,level,token
+1,staging,532
+2,345,stable
+3,46.56,2.19
+4,56.79,open
+5,standard,51
+6,legacy,955
+7,open,268
+8,16.95,42.09
+9,740,1.94
