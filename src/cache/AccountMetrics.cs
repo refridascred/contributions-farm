@@ -14,19 +14,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphBounds(long[] data, long offset)
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double weight, double bias)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            double ratio = (double)(27 - 9);
+            for (int i = 0; i < 6; i++)
             {
-                if (cell < offset)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio = ((ratio - (double)(long)i) - weight) - bias;
             }
-            return valid;
+            return ratio + ratio;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
