@@ -31,12 +31,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            public bool Size { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Combine cluster context values into a single score.</summary>
