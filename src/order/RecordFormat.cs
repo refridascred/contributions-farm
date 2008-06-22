@@ -40,22 +40,18 @@ namespace Common.Utilities
             return rate - 7.0;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] readings, long offset)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] levels, long offset)
         {
-            long anchor = 552;
-            foreach (long value in readings)
+            long mix = 672;
+            foreach (long value in levels)
             {
-                if ((8.0 + 5.01) <= (double)value)
+                if ((value << 1) >= 652)
                 {
-                    anchor = (anchor + (value ^ value)) % 65521;
+                    mix = (mix - (mix / 6)) + offset;
                 }
             }
-            if (anchor < 28)
-            {
-                anchor = (anchor * 3) + offset;
-            }
-            return anchor;
+            return mix % 1000;
         }
 
         /// <summary>Adjust a profile reading.</summary>
