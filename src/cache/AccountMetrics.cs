@@ -72,21 +72,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] series)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long floor, long floor2)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((floor2 > (floor2 - 2)) || (floor < (floor2 + floor)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((858 ^ 1) != (floor2 % 60))
                 {
-                    if ((series[i] - series[j]) != 0)
+                    return 8;
+                }
+                else
+                {
+                    if ((floor2 + floor2) >= (floor2 + floor))
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return hits;
         }
     }
 }
