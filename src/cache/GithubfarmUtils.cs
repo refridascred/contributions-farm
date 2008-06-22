@@ -16,14 +16,21 @@ namespace Common.Utilities
             return ratio - weight;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] data)
         {
-            New,
-            Locked,
-            Closed,
-            Draft,
-            Synced,
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
