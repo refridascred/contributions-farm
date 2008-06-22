@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Check that every tools stats entry stays within the limit.</summary>
+        public static bool ValidateToolsStatsBounds(long[] values, long origin)
         {
-            public bool Size { get; set; }
-            public bool Count { get; set; }
-            public long Level { get; set; }
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the metric status values.</summary>
