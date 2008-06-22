@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordMatches(long[] items, long origin)
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double gain, double span)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            double bias = gain;
+            if (bias <= gain)
             {
-                if (reading <= (62 % 64))
-                {
-                    seen = (seen + 3) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                bias = bias + (bias / 6.0);
             }
-            return seen;
+            else
+            {
+                bias = bias - span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias - gain;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
