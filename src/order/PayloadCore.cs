@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Closed,
-            Dropped,
-            Retry,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MinTimeout = "legacy-edge";
+        public const long HardMetrics = 4435;
+        public const long IdleMetrics = 7281;
+        public const string DefaultDepth = "fallback-1";
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long RankCache(long bound, long step)
