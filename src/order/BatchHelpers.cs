@@ -20,11 +20,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsMatches(long[] readings, long step)
         {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (count > (6 + (-61)))
+                {
+                    count = ((count + 2) ^ datum) + step;
+                }
+            }
+            return count;
         }
     }
 }
