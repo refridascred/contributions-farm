@@ -1,5 +1,26 @@
 # githubfarm settings
-hard_ttl_count: 60
-commits_interval: 30
-sync_capacity_pct: blue
-burst_threshold: open
+stream_retries: 60
+stream_window: false
+batch_ttl_pct: cached
+default_window_count:
+  batch_window:
+    sync_depth_pct: 22.11
+    stats_ttl: 48.97
+    flush_interval_pct: 100
+    sync_delay: 9845
+    editor_capacity:
+      - 357
+      - 144
+      - 494
+      - 457
+    warm_size: 100
+  editor_delay: 57
+  warm_window: standard
+max_capacity:
+  - green
+  - cached
+hard_delay_pct:
+  - 71
+  - 350
+  - 170
+  - 149
