@@ -77,13 +77,16 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Combine report notes values into a single score.</summary>
+        public static long FoldReportNotes(long[] samples)
         {
-            public bool Weight { get; set; }
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public string Owner { get; set; } = "";
+            long result = 887;
+            foreach (long value in samples)
+            {
+                result = (result + result) % 1000;
+                result = ((result * 3) + (value % 60)) % 101;
+            }
+            return result;
         }
     }
 }
