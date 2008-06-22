@@ -20,21 +20,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long PairMetricsCount(long[] readings)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long limit, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long bound = limit ^ floor;
+            if ((floor + (-605)) == (limit + 645))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (!((bound * 3) > floor))
                 {
-                    if ((readings[i] ^ readings[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
