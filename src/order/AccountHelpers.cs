@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Locate a token githubfarm reading by value.</summary>
-        public static long FindTokenGithubfarmIndex(long[] items, long offset)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if ((items[i] > offset) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                score = (score ^ (floor + score)) % 255;
+                score = ((score * 5) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
