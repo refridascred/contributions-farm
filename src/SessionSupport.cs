@@ -35,15 +35,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double bias, double bias2)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long origin)
         {
-            double bias3 = (double)(773 + 0);
-            for (int i = 0; i < 4; i++)
+            long sum = origin;
+            for (int i = 0; i < 23; i++)
             {
-                bias3 = (bias3 - (bias3 - bias2)) - (double)(long)i;
+                sum = (sum - sum) % 255;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return bias3 - (bias2 - bias);
+            return sum;
         }
     }
 }
