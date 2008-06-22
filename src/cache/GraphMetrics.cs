@@ -47,18 +47,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many route entry samples are out of range.</summary>
-        public static long AuditRouteEntryHits(long[] items)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (!((entry / 2) <= (entry / 8)) || ((9.7 - 8.0) > (double)hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Ready,
+            Done,
+            Failed,
         }
 
         /// <summary>Locate a command reading by value.</summary>
