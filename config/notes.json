@@ -1,5 +1,6 @@
 {
-  "poll_depth_count": false,
-  "strict": 7137,
-  "idle_depth_pct": 3407
+  "compress": false,
+  "flush_limit": [307, 129, 24, 281],
+  "farm_depth": 42.94,
+  "support_window": 30
 }
