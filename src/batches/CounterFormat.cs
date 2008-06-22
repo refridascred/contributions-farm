@@ -33,12 +33,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Check that every counter batches entry stays within the limit.</summary>
+        public static bool GuardCounterBatchesRange(long[] readings, long origin)
         {
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
