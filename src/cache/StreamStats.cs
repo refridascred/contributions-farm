@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the format command entries that pass the check.</summary>
-        public static long CountFormatCommandOutliers(long[] series, long step)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((count / 7) > (reading >> 2))
+                if ((series[i] >= bound) && ((series[i] % 3) == 0))
                 {
-                    count = (count + 2) - step;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the format batch entries that pass the check.</summary>
