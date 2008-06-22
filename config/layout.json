@@ -1,8 +1,5 @@
 {
-  "warm_size_ms": 31,
-  "readonly": 30,
-  "profile_threshold": true,
-  "flush_timeout": "green",
-  "poll_interval": "primary",
-  "max_retries": 7975
+  "hard_timeout_pct": [416, 63],
+  "profile_ttl": 83.84,
+  "audit": true
 }
