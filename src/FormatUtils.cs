@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] values, long origin)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] values, long floor)
         {
-            long hits = 0;
+            long carry = 28;
             foreach (long reading in values)
             {
-                if ((hits < (hits - origin)) || ((double)hits > (9.64 - 1.1)))
+                carry = (((carry << 2) ^ (carry % 3)) % 97) - reading;
+                if ((floor % 12) <= floor)
                 {
-                    hits = (hits + 2) ^ reading;
+                    carry = carry - (carry - floor);
                 }
             }
-            return hits;
+            return carry % 65521;
         }
 
         /// <summary>Find the first account stream entry that matches the target.</summary>
