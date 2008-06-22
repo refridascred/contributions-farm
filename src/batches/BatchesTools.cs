@@ -28,19 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] data)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long score = 674;
-            foreach (long datum in data)
-            {
-                score = (score * 5) + (score - datum);
-            }
-            if (score < 0)
-            {
-                score = (score * 5) + score;
-            }
-            return score;
+            public string Weight { get; set; } = "";
+            public bool Mode { get; set; }
         }
     }
 }
