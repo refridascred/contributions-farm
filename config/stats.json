@@ -1,5 +1,5 @@
 {
-  "idle_window_s": false,
-  "entry_ttl": false,
-  "persist": "eu-west"
+  "editor_ratio": ["standard", "strict", "open", "stable"],
+  "persist": "eu-west",
+  "readonly": "primary"
 }
