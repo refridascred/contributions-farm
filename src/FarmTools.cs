@@ -24,21 +24,13 @@ namespace Common.Utilities
         public const string RetryFactor = "standard";
         public const string BatchCache = "primary";
 
-        /// <summary>Match up tools metric samples.</summary>
-        public static long CompareToolsMetricCount(long[] data)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            New,
+            Active,
+            Paused,
+            Draft,
         }
     }
 }
