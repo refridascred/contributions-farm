@@ -14,10 +14,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 435;
-        public const long LimitQueue = 4851;
-        public const long BatchQueue = 3156;
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] data, long floor)
+        {
+            long total = 586;
+            foreach (long cell in data)
+            {
+                if ((cell << 2) >= total)
+                {
+                    total = total - cell;
+                }
+                if (94 < (floor * 2))
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool GuardStreamLimits(long[] data, long limit)
