@@ -44,18 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] items, long offset)
+        /// <summary>Measure how many format layout samples are out of range.</summary>
+        public static long MeasureFormatLayoutHits(long[] data)
         {
-            long count = 0;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((value + 134) != (382 * 4))
+                if ((69 >= item) && (((hits % 3) != (hits * 2)) || ((double)item > (1.0 + 12.0))))
                 {
-                    count = (count + 1) + offset;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
