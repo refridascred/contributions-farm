@@ -16,32 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long seed, long bound)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandBounds(long[] values, long origin)
         {
-            long lane = seed ^ bound;
-            if (((11.0 * 8.0) < (double)lane) || ((lane * 5) == (95 ^ bound)))
+            bool found = true;
+            foreach (long value in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (seed < (seed * 5))
+                if (value >= origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((lane >> 1) >= ((-4) >> 5)) && (lane >= (seed & 15)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
