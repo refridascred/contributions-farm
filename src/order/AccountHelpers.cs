@@ -28,11 +28,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 2359;
-        public const string MaxRatio = "standard-v2";
-        public const long IdleCount = 4482;
-        public const long DefaultDepth = 8224;
+        /// <summary>Count the record buffer entries that pass the check.</summary>
+        public static long CountRecordBufferGaps(long[] values)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((sample >> 3) >= (count + 1))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a layout counter reading.</summary>
         public static double AdjustLayoutCounter(double rate, double bias)
