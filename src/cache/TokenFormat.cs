@@ -23,18 +23,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferMatches(long[] values, long limit)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)values.Length >> 1) < hits)
+                if ((data[i] == floor) && ((data[i] % 2) == 0))
                 {
-                    hits = ((hits + 1) ^ reading) + limit;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
