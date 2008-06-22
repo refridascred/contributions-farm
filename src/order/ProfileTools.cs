@@ -36,15 +36,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] levels)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long acc = 925;
-            foreach (long item in levels)
-            {
-                acc = (acc << 2) ^ (acc - item);
-            }
-            return acc % 1000;
+            Ready,
+            Dropped,
+            Idle,
+            Queued,
         }
     }
 }
