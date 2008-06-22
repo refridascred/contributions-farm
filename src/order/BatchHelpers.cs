@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long SoftWidth = 1536;
         public const double HardBatches = 84.4;
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] levels)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)reading < (15.0 * 3.45))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Stale,
+            Done,
+            New,
         }
 
         /// <summary>Hold a command entry.</summary>
