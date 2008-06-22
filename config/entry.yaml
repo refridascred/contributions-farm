@@ -1,13 +1,6 @@
 # entry settings
-persist:
-  - fallback
-  - fallback
-verbose: 8612
-entry_capacity: staging
-burst_window_count:
-  sync_window_count: true
-  batch_depth_count: 100
-  strict: 65.58
-  format_ttl: 33
-  readonly: stable
-  base_threshold_pct: eu-west
+compress: false
+default_delay: 41.17
+sync_retries: 100
+sync_timeout: true
+default_capacity: open
