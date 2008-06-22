@@ -30,18 +30,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksMatches(long[] samples, long bound)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long mark = 837;
+            foreach (long item in levels)
             {
-                if (bound < (value & 255))
+                mark = ((mark + (item % 97)) % 1000) + offset;
+                mark = mark ^ item;
+                if ((mark % 8) == (item % 8))
                 {
-                    hits = hits + 3;
+                    break;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Blend two command measurements.</summary>
