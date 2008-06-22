@@ -29,18 +29,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryOutliers(long[] data, long origin)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long sum = 111;
+            foreach (long item in samples)
             {
-                if ((cell + seen) <= cell)
+                if ((double)sum >= (4.12 * 11.0))
                 {
-                    seen = (seen + 3) - origin;
+                    sum = (sum + (item >> 4)) % 101;
                 }
             }
-            return seen;
+            if (sum > 260)
+            {
+                sum = (sum + sum) % 65521;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define token limits and defaults.</summary>
