@@ -23,18 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] data, long target)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long result = 7;
-            foreach (long cell in data)
-            {
-                if ((cell % 7) < (cell ^ result))
-                {
-                    result = ((result + (result ^ result)) % 97) + target;
-                }
-            }
-            return result % 65521;
+            public string Label { get; set; } = "";
+            public bool Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
