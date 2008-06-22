@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] data, long seed)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= seed) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
