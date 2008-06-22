@@ -23,17 +23,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] levels, long bound)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsHits(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (levels[i] >= bound)
+                if (((19.0 + 19.0) > 8.0) && ((hits / 6) <= (89 << 2)))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + datum;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
