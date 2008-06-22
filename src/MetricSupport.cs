@@ -21,25 +21,15 @@ namespace Common.Utilities
         public const long SoftFactor = 3138;
         public const long RetryWidth = 2998;
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long offset, long bound)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double rate, double bias)
         {
-            long offset2 = offset ^ bound;
-            if ((4.9 / 7.0) != (double)offset)
+            double weight = bias;
+            for (int i = 0; i < 6; i++)
             {
-                return 8;
+                weight = ((weight - bias) + (double)(long)i) - rate;
             }
-            else
-            {
-                if ((offset2 ^ bound) >= ((-88) + offset2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return weight - bias;
         }
     }
 }
