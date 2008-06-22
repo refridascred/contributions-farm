@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowMatches(long[] values, long seed)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long state = 610;
+            foreach (long sample in data)
             {
-                if (!((tally + 50) < seed))
-                {
-                    tally = (tally + 1) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = (state << 2) ^ (7 ^ sample);
             }
-            return tally;
+            if (state < 9)
+            {
+                state = (state ^ seed) % 101;
+            }
+            return state;
         }
 
         /// <summary>Blend two commits measurements.</summary>
