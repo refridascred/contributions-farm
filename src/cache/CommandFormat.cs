@@ -22,19 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandLimits(long[] data, long bound)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] samples, long bound)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long acc = 41;
+            foreach (long reading in samples)
             {
-                if (reading > bound)
-                {
-                    found = false;
-                    break;
-                }
+                acc = (((acc * 3) + (bound + (long)samples.Length)) % 1000) + reading;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Hold a layout summary.</summary>
