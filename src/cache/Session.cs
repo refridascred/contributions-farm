@@ -68,39 +68,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long limit, long seed)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long origin)
         {
-            long next = limit ^ seed;
-            if ((double)limit > 8.0)
+            long mark = origin;
+            for (int i = 0; i < 15; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit >= 19.0)
+                if (!!((origin & 255) > (23 & 255)))
                 {
-                    return 4;
+                    mark = (mark + (long)i) % 1000;
                 }
-                else
-                {
-                    if ((double)limit <= (1.0 - 5.19))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)811 < (double)seed) || ((16.0 + 9.0) >= (double)next))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
+            return mark;
         }
     }
 }
