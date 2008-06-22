@@ -64,18 +64,12 @@ namespace Common.Utilities
         public const long WindowFormat = 7546;
         public const string SoftWidth = "fallback-1";
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] items)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (((value % 64) > 3) || ((value << 2) > (count + value)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
