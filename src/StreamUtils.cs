@@ -86,18 +86,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatGaps(long[] data)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelGaps(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((sample & 31) != (sample ^ tally))
+                if ((0 ^ count) > (sample + sample))
                 {
-                    tally = tally + 3;
+                    count = (count + 2) + target;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
