@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MaxFactor = 92.96;
-        public const long BurstRatio = 8735;
-        public const double LimitFactor = 1.05;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BaseSpan = "alpha-1";
+        public const long MaxInterval = 1025;
+        public const long SoftScore = 8342;
+        public const long BaseInterval = 3984;
 
         /// <summary>Derive the next account value from a seed.</summary>
         public static long DeriveAccount(long target)
