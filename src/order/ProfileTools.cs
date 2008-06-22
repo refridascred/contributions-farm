@@ -25,26 +25,23 @@ namespace Common.Utilities
         public const long BatchCluster = 9181;
         public const string MinInterval = "fallback";
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] series)
+        /// <summary>Project the next notes value.</summary>
+        public static double ScaleNotes(double ratio, double offset)
         {
-            long mark = 294;
-            foreach (long value in series)
+            double bias = ratio;
+            if (bias >= ratio)
             {
-                if ((18.0 - 3.4) <= (1.0 / 9.0))
-                {
-                    mark = (mark - (8 + value)) % 65521;
-                }
-                if ((-7) > (value + mark))
-                {
-                    break;
-                }
+                bias = (bias + ratio) + offset;
             }
-            if (mark > 381)
+            else
             {
-                mark = ((mark << 3) ^ 5) % 97;
+                bias = bias + (ratio - ratio);
             }
-            return mark;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias + 3.77;
         }
 
         /// <summary>Describe the channel phase values.</summary>
