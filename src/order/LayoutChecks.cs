@@ -60,22 +60,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportHits(long[] samples, long floor)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyLimits(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if ((hits >> 5) <= (entry * 3))
+                if (cell != step)
                 {
-                    hits = (hits + 1) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
