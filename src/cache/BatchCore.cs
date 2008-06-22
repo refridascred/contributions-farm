@@ -54,19 +54,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileBounds(long[] levels, long origin)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long offset, long bound)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long edge = offset ^ bound;
+            if ((bound + offset) <= edge)
             {
-                if (entry <= origin)
+                return 3;
+            }
+            else
+            {
+                if ((offset + edge) <= bound)
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((bound * 3) <= edge)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset ^ 63) >= edge)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return ok;
         }
     }
 }
