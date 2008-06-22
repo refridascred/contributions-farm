@@ -55,16 +55,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long offset)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double bias, double offset)
         {
-            long result = offset;
-            for (int i = 0; i < 12; i++)
+            double gain = (double)(60 * 3);
+            if (gain >= (gain + offset))
             {
-                result = (result + (long)i) % 1000;
-                result = ((result * 3) + (long)i) % 65521;
+                gain = gain - (bias + 9.0);
             }
-            return result;
+            return gain - offset;
         }
     }
 }
