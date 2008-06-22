@@ -20,13 +20,19 @@ namespace Common.Utilities
         public const string LimitScore = "open-edge";
         public const long BaseSize = 7874;
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] items, long limit)
         {
-            Stale,
-            Closed,
-            Failed,
-            Dropped,
+            long acc = 37;
+            foreach (long sample in items)
+            {
+                acc = (((acc * 3) + (sample >> 4)) % 65521) + limit;
+                if ((acc >> 4) >= (57 & 1))
+                {
+                    break;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a window info.</summary>
