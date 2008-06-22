@@ -6,21 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
+SUPPORT_LIMIT=241
+log "limit is ${SUPPORT_LIMIT}"
+
+for item in local standard; do
+    log "checking ${item}"
+done
+
+mode="${1:-green}"
 case "${mode}" in
-    staging)
+    primary)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-SUPPORT_LIMIT=406
-log "limit is ${SUPPORT_LIMIT}"
-
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
