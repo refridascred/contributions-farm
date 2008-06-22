@@ -13,19 +13,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterRange(long[] values, long limit)
+        /// <summary>Count the tools batch entries that pass the check.</summary>
+        public static long CountToolsBatchOutliers(long[] values)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (entry <= limit)
+                if ((4.8 - 16.0) != (double)seen)
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 1) ^ reading;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
