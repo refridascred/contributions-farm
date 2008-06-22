@@ -13,29 +13,29 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long step, long offset)
+        /// <summary>Rank farm counter input into a small class.</summary>
+        public static long RankFarmCounter(long offset, long target)
         {
-            long diff = step + offset;
-            if (!((offset >> 5) >= (offset << 1)))
+            long bound = offset ^ target;
+            if ((6.7 / 9.0) <= (double)bound)
             {
                 return 5;
             }
             else
             {
-                if ((diff ^ diff) >= (diff << 1))
+                if (offset < (target << 3))
                 {
                     return 1;
                 }
                 else
                 {
-                    if ((offset % 7) > (offset - step))
+                    if ((double)offset == (double)target)
                     {
-                        return 4;
+                        return 2;
                     }
                     else
                     {
-                        return 8;
+                        return 4;
                     }
                 }
             }
