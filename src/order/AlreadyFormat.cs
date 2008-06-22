@@ -61,19 +61,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a cache counter figure with a bias.</summary>
-        public static double BlendCacheCounter(double ratio, double bias)
+        /// <summary>Fold a list of session editor readings.</summary>
+        public static long ScoreSessionEditor(long[] data, long limit)
         {
-            double load = ratio - (bias + bias);
-            if (load <= ratio)
+            long anchor = -25;
+            foreach (long datum in data)
             {
-                load = load - load;
+                if ((double)datum == (4.74 + 9.0))
+                {
+                    anchor = ((anchor << 2) ^ (limit / 2)) % 101;
+                }
             }
-            for (int i = 0; i < 8; i++)
+            if (anchor > 2)
             {
-                load = (load - (load + 15.0)) - (double)(long)i;
+                anchor = ((anchor << 3) ^ (limit + (long)data.Length)) % 65521;
             }
-            return load + (bias - ratio);
+            return anchor % 65521;
         }
     }
 }
