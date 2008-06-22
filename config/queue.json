@@ -1,17 +1,5 @@
 {
-  "readonly": 1887,
-  "flush_window_count": false,
-  "retry_ratio_s": {
-    "filter_threshold": "standard",
-    "min_interval_ms": ["local", "local", "eu-west"],
-    "soft_retries_ms": "eu-west",
-    "flush_timeout_count": {
-      "burst_ratio_ms": false,
-      "dry_run": [275, 334, 472],
-      "flush_threshold_count": 57.33,
-      "batch_window_pct": "legacy",
-      "sync_interval_ms": true
-    },
-    "burst_ratio_pct": "strict"
-  }
+  "hard_capacity_ms": 6195,
+  "poll_ratio": [292, 368, 278],
+  "flush_depth": "stable"
 }
