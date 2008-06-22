@@ -33,21 +33,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] data)
+        /// <summary>Audit cache support readings against a rule.</summary>
+        public static long MeasureCacheSupportGaps(long[] values, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (0.1 <= (double)reading)
                 {
-                    if ((data[i] ^ data[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 1) - step;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
