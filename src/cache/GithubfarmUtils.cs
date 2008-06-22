@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a payload counter counter forward.</summary>
-        public static long RollPayloadCounter(long offset)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long sum = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = (sum * 3) + (10 + sum);
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            Synced,
+            Failed,
+            Paused,
         }
 
         /// <summary>Combine payload values into a single score.</summary>
