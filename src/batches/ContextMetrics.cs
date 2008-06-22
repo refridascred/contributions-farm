@@ -30,21 +30,21 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Count profile buffer pairs that satisfy a relation.</summary>
-        public static long CompareProfileBufferCount(long[] values)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) < 17)
+                    if ((items[i] ^ items[j]) < 20)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
