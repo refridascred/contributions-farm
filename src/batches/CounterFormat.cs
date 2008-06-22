@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate commits buffer readings against a bound.</summary>
-        public static bool ValidateCommitsBufferRange(long[] readings, long origin)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiBounds(long[] values, long floor)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if (item > origin)
+                if (item < floor)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Measure how many cluster githubfarm samples are out of range.</summary>
