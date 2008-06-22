@@ -21,14 +21,19 @@ namespace Common.Utilities
         public const double BaseNotes = 2.93;
         public const double LimitNotes = 29.44;
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterBounds(long[] levels, long offset)
         {
-            Dropped,
-            Closed,
-            Active,
-            Synced,
-            Draft,
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
