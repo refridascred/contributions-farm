@@ -30,18 +30,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] levels, long offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] readings, long seed)
         {
-            long mix = 672;
-            foreach (long value in levels)
+            long mix = 2;
+            foreach (long sample in readings)
             {
-                if ((value << 1) >= 652)
+                mix = (((mix << 3) ^ mix) % 1000) + sample;
+                if (((seed % 8) > (687 / 5)) || ((seed >> 4) <= mix))
                 {
-                    mix = (mix - (mix / 6)) + offset;
+                    mix = (mix ^ ((long)readings.Length * 4)) % 97;
                 }
             }
-            return mix % 1000;
+            return mix % 4096;
         }
 
         /// <summary>Define window limits and defaults.</summary>
