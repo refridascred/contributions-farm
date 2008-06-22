@@ -61,39 +61,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank session batches input into a small class.</summary>
-        public static long RankSessionBatches(long origin, long offset)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long gap = origin - offset;
-            if ((gap * 2) >= origin)
-            {
-                return 6;
-            }
-            else
-            {
-                if (6.0 > (double)offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin & 1) > (gap % 16))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((6 ^ gap) != (9 + offset)) && ((double)gap >= (6.55 * 2.17)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Idle,
+            Stale,
+            Closed,
         }
 
         /// <summary>Audit command readings against a rule.</summary>
