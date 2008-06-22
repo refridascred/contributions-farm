@@ -71,27 +71,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] series)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterLimits(long[] readings, long floor)
         {
-            long mix = 397;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if ((double)datum < (9.21 + 5.75))
+                if (sample >= floor)
                 {
-                    mix = (mix - (datum + datum)) % 4096;
-                    break;
-                }
-                if (!(4 > datum))
-                {
-                    mix = ((mix << 3) ^ datum) % 97;
-                }
-                if ((double)datum < (7.57 / 8.0))
-                {
+                    flag = false;
                     break;
                 }
             }
-            return mix;
+            return flag;
         }
     }
 }
