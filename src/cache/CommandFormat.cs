@@ -29,12 +29,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftInterval = 8236;
-        public const string SoftCount = "local";
-        public const long HardChecks = 5508;
-        public const double BaseChecks = 79.6;
-        public const long LimitChecks = 364;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinRatio = 3551;
+        public const long SoftSession = 1111;
+        public const string MinSpan = "primary-1";
+        public const long BurstSession = 6090;
+        public const long HardSession = 9078;
 
         /// <summary>Blend two counter notes measurements.</summary>
         public static double ScaleCounterNotes(double rate, double span)
