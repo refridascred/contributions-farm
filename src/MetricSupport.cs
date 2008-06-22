@@ -27,15 +27,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double bias, double bias2)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] series)
         {
-            double rate = (double)0 - bias2;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = (rate - bias2) + (double)(long)i;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return rate - bias;
+            return tally;
         }
     }
 }
