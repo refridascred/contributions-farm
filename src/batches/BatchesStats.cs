@@ -80,18 +80,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many account stream samples are out of range.</summary>
-        public static long MeasureAccountStreamHits(long[] items)
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double rate, double span)
         {
-            long count = 0;
-            foreach (long item in items)
+            double load = (rate / 6.0) + (double)31;
+            if (load >= rate)
             {
-                if ((count > (8 / 6)) || (((1.73 * 9.4) <= (double)item) && ((item - item) != (item + count))))
-                {
-                    count = count + 2;
-                }
+                load = load + (span + load);
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - (rate / 9.0)) + (double)(long)i;
+            }
+            return load + 1.4;
         }
     }
 }
