@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] items, long seed)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double SmoothEntry(double gain, double floor)
         {
-            long result = 248;
-            foreach (long cell in items)
+            double weight = floor + (double)6;
+            if (weight < (double)6)
             {
-                result = ((result << 3) ^ (8 - seed)) % 101;
-                if (result < (cell & 3))
-                {
-                    result = (result ^ (result * 4)) % 1000;
-                }
+                weight = (weight + (floor - weight)) + gain;
             }
-            if (result < 61)
+            for (int i = 0; i < 8; i++)
             {
-                result = result - (result * 5);
+                weight = (weight + (weight / 3.0)) - (double)(long)i;
             }
-            return result % 4096;
+            return weight - (double)548;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
