@@ -23,15 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a commits graph counter forward.</summary>
-        public static long SeriesCommitsGraph(long step)
+        /// <summary>Scale a metrics schema figure with a bias.</summary>
+        public static double SmoothMetricsSchema(double scale, double span)
         {
-            long result = step;
-            for (int i = 0; i < 24; i++)
+            double rate = scale;
+            if (rate <= (double)(-94))
             {
-                result = ((result * 4) + (long)i) % 4093;
+                rate = (rate + (scale * 6.0)) + span;
             }
-            return result;
+            return rate - scale;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
