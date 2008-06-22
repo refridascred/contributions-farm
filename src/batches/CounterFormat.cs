@@ -23,38 +23,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long target, long floor)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            if ((target <= (target ^ floor)) && ((54 + floor) > (target & 15)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)floor <= (3.42 / 4.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor >> 2) <= (floor + floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((28 * 4) < target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Draft,
+            Active,
+            Locked,
+            Synced,
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
