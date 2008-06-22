@@ -69,12 +69,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandMatches(long[] values, long origin)
         {
-            Closed,
-            Locked,
-            Failed,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((origin + cell) >= cell)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
