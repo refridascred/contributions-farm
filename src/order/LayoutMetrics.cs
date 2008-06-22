@@ -53,15 +53,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double rate, double span)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandLimits(long[] series, long bound)
         {
-            double mean = 6.77;
-            for (int i = 0; i < 2; i++)
+            bool stale = true;
+            foreach (long value in series)
             {
-                mean = (((mean - (mean / 3.0)) + (double)(long)i) + rate) - span;
+                if (value > bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mean - 8.84;
+            return stale;
         }
     }
 }
