@@ -41,11 +41,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultBatch = 8853;
-        public const long HardCount = 8542;
-        public const long StepBatch = 2457;
-        public const long BatchLevel = 8806;
-        public const long CacheBudget = 1631;
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
+        {
+            Draft,
+            Ready,
+            New,
+            Paused,
+            Synced,
+        }
     }
 }
