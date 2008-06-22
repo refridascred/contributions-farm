@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
             Paused,
-            Closed,
-            Draft,
-            Locked,
+            Ready,
+            Queued,
         }
 
         /// <summary>Classify a route report pair into a bucket.</summary>
