@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BaseSpan = "alpha-1";
-        public const long MaxInterval = 1025;
-        public const long SoftScore = 8342;
-        public const long BaseInterval = 3984;
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
+        {
+            Paused,
+            Ready,
+            Locked,
+            Queued,
+        }
 
         /// <summary>Count farm command pairs that satisfy a relation.</summary>
         public static long MatchFarmCommandCount(long[] levels)
