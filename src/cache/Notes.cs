@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesLimits(long[] levels, long seed)
-        {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 8691;
+        public const long WindowCount = 3039;
+        public const long SoftSize = 5201;
 
         /// <summary>Accumulate session queue samples.</summary>
         public static long CombineSessionQueue(long[] values, long limit)
