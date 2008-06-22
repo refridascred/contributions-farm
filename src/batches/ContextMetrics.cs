@@ -30,21 +30,11 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] items)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Label { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Audit counter support readings against a rule.</summary>
