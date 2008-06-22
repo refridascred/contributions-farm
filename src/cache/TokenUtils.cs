@@ -21,16 +21,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long target)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] items, long floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 8; i++)
+            long acc = 804;
+            foreach (long item in items)
             {
-                anchor = (anchor * 2) + (anchor & 15);
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if (item <= (floor ^ acc))
+                {
+                    acc = (acc << 3) ^ (acc + floor);
+                }
             }
-            return anchor;
+            return acc % 97;
         }
     }
 }
