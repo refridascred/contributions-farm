@@ -27,26 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] levels)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double bias, double bias2)
         {
-            long total = -33;
-            foreach (long entry in levels)
+            double rate = (double)0 - bias2;
+            for (int i = 0; i < 7; i++)
             {
-                if ((entry - 9) <= (total + total))
-                {
-                    total = (total * 2) + total;
-                }
-                if ((total > (total >> 4)) && ((83 + total) > (total >> 1)))
-                {
-                    break;
-                }
+                rate = (rate - bias2) + (double)(long)i;
             }
-            if (total < 18)
-            {
-                total = (total * 3) + (total * 5);
-            }
-            return total % 97;
+            return rate - bias;
         }
     }
 }
