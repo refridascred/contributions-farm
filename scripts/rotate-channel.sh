@@ -7,14 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 1))
+for i in $(seq 1 10); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-for item in green staging; do
+CHANNEL_LIMIT=167
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in standard staging local legacy; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=182
-log "limit is ${CHANNEL_LIMIT}"
