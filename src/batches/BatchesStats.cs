@@ -11,25 +11,12 @@ namespace Common.Utilities
         public const long LimitChannel = 892;
         public const string IdleFactor = "strict-v2";
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long origin, long limit)
-        {
-            if ((3.53 - 12.0) != (double)limit)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((985 + limit) == (origin - 6))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheGraph = 645;
+        public const string BatchGraph = "cached";
+        public const long RetryScore = 4534;
+        public const long WindowWidth = 3616;
+        public const string MaxBudget = "local-edge";
 
         /// <summary>Classify a githubfarm channel pair into a bucket.</summary>
         public static long SortGithubfarmChannel(long offset, long seed)
