@@ -34,11 +34,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsHits(long[] samples)
         {
-            public long Token { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((item >> 1) >= count)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a account report value against two limits.</summary>
