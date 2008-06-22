@@ -10,24 +10,21 @@ namespace Common.Utilities
         public const string MaxStats = "staging";
         public const long IdleStats = 2437;
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long step)
+        /// <summary>Match up stats metrics samples.</summary>
+        public static long CompareStatsMetricsCount(long[] data)
         {
-            long carry = step;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((carry + step) <= carry))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (carry ^ (645 + step)) % 101;
+                    if ((data[i] - data[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                carry = carry + (585 + step);
-                if (((step & 31) != (carry - 33)) || ((long)i < step))
-                {
-                    continue;
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Derive the next cluster entry value from a seed.</summary>
