@@ -24,12 +24,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
-        {
-            public string Total { get; set; } = "";
-            public double Offset { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 359;
+        public const long CacheTimeout = 5745;
+        public const long MinGraph = 2959;
+        public const long BatchSize = 6431;
+        public const long BurstGraph = 2293;
     }
 }
