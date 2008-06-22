@@ -34,22 +34,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string HardScore = "alpha-v2";
+        public const string DefaultFactor = "stable";
+        public const long SoftStream = 4618;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long CacheContext = 5456;
