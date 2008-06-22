@@ -19,31 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a editor record pair into a bucket.</summary>
-        public static long SortEditorRecord(long bound, long target)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            if (((36 - target) < 744) && ((7.0 * 4.0) < (double)bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target - bound) > 530)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target & 255) <= (bound - bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Stale,
+            Pending,
+            Ready,
+            Idle,
         }
 
         /// <summary>Find the first editor filter entry that matches the target.</summary>
