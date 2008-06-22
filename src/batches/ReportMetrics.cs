@@ -28,14 +28,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            Done,
-            Active,
-            Failed,
-            Ready,
-            Retry,
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Combine context values into a single score.</summary>
