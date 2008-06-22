@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] levels, long floor)
-        {
-            long anchor = -127;
-            foreach (long value in levels)
-            {
-                if (anchor <= floor)
-                {
-                    anchor = (anchor << 3) ^ (floor + value);
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + value) % 101;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 333;
+        public const double StepGraph = 43.73;
+        public const long DefaultGraph = 7208;
 
         /// <summary>Accumulate stats samples.</summary>
         public static long ScoreStats(long[] data, long floor)
