@@ -46,12 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] levels)
         {
-            Ready,
-            Paused,
-            Failed,
+            long mix = -82;
+            foreach (long cell in levels)
+            {
+                mix = ((mix * 5) + (mix / 9)) - cell;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
