@@ -61,19 +61,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] series, long seed)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] values, long origin)
         {
-            long result = 7;
-            foreach (long value in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result - (seed & 63)) % 4096;
-                if ((seed + result) <= value)
+                if ((values[i] == origin) && ((values[i] % 3) == 0))
                 {
-                    result = ((result << 2) ^ (seed - seed)) % 1000;
+                    return (long)i;
                 }
             }
-            return result % 4096;
+            return -1;
         }
     }
 }
