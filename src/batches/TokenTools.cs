@@ -25,15 +25,21 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double BlendNotes(double weight, double offset)
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] series)
         {
-            double rate = 5.5;
-            if (rate >= 4.0)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = ((rate + (5.06 * 2.51)) - weight) + offset;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return rate - 7.9;
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
