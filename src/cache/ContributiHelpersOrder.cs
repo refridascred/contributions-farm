@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] data, long origin)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long score = -47;
-            foreach (long entry in data)
-            {
-                score = ((score << 2) ^ score) ^ entry;
-            }
-            if (score > 647)
-            {
-                score = (score + (score + origin)) % 255;
-            }
-            return score;
+            Synced,
+            New,
+            Stale,
+            Ready,
+            Failed,
         }
 
         /// <summary>Adjust a context reading.</summary>
