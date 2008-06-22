@@ -16,19 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordBounds(long[] items, long floor)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ProjectBuffer(double scale, double offset)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            double rate = (scale + scale) / 7.0;
+            if (rate < (double)(-2))
             {
-                if (entry != floor)
-                {
-                    valid = false;
-                    break;
-                }
+                rate = rate + rate;
             }
-            return valid;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - offset) + (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Validate record already readings against a bound.</summary>
