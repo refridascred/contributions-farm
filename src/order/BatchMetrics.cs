@@ -41,17 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a route stats reading by value.</summary>
-        public static long FindRouteStatsIndex(long[] levels, long limit)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Retry,
+            Done,
+            Active,
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
