@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardFarm = 879;
-        public const string CacheFarm = "cached-1";
-        public const long BatchDepth = 2041;
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                result = result - result;
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long LimitLevel = 2336;
