@@ -59,17 +59,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] levels, long step)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long limit, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long next = limit ^ target;
+            if (limit >= (next + next))
             {
-                if ((levels[i] > step) && ((levels[i] % 3) == 0))
+                return 2;
+            }
+            else
+            {
+                if (((double)89 != (double)next) && ((next + limit) > limit))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (target <= (next + limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit * 4) == (177 / 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
