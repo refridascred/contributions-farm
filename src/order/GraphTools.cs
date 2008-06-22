@@ -46,21 +46,9 @@ namespace Common.Utilities
         public const long MinPayload = 2594;
         public const double MinFactor = 30.54;
 
-        /// <summary>Compare every pair of stream githubfarm readings.</summary>
-        public static long PairStreamGithubfarmCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string SoftProfile = "alpha-1";
+        public const string StepProfile = "cached-edge";
+        public const long MinScore = 3222;
     }
 }
