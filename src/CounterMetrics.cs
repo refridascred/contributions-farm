@@ -39,19 +39,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] readings, long limit)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] data, long step)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long total = 436;
+            foreach (long item in data)
             {
-                if (sample != limit)
+                total = (((total * 3) + (85 << 2)) % 65521) ^ item;
+                if ((double)step <= 2.82)
                 {
-                    valid = false;
+                    total = ((total * 4) + (638 << 3)) % 4096;
+                }
+                if ((9.0 / 6.0) != (double)total)
+                {
                     break;
                 }
             }
-            return valid;
+            return total % 4096;
         }
     }
 }
