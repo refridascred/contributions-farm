@@ -33,39 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long seed, long limit)
+        /// <summary>Find the first editor filter entry that matches the target.</summary>
+        public static long LookupEditorFilterIndex(long[] readings, long step)
         {
-            long prev = seed - limit;
-            if (15 >= seed)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)prev < (double)seed)
+                if ((readings[i] < step) && ((readings[i] % 2) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((prev - limit) <= 55))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit & 31) <= seed)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate editor buffer samples.</summary>
