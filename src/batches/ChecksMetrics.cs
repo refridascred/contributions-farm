@@ -37,20 +37,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double bias, double span)
-        {
-            double ratio = bias;
-            if (ratio > (ratio - 5.15))
-            {
-                ratio = ratio + bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + span) + (double)(long)i;
-            }
-            return ratio - (span + span);
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BatchCount = 61.71;
+        public const long DefaultScore = 8701;
+        public const long DefaultLayout = 9086;
+        public const long MinLayout = 4993;
+        public const long BurstLayout = 7356;
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long CompareWindowCount(long[] series)
