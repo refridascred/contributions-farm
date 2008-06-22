@@ -21,15 +21,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double gain, double floor)
-        {
-            double mean = gain;
-            if (mean < (floor + 7.0))
-            {
-                mean = mean - floor;
-            }
-            return mean + gain;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string HardGithubfarm = "primary-v2";
+        public const double BurstGithubfarm = 24.19;
+        public const long DefaultGithubfarm = 5407;
+        public const double MaxBudget = 71.39;
+        public const long BaseGithubfarm = 8275;
     }
 }
