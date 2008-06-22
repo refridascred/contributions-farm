@@ -40,20 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsBounds(long[] items, long seed)
-        {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultTimeout = 5876;
+        public const string DefaultWidth = "primary-1";
+        public const long LimitEditor = 7533;
+        public const long DefaultEditor = 4916;
+        public const long WindowEditor = 5005;
 
         /// <summary>Digest a series of record entries.</summary>
         public static long TotalRecord(long[] samples)
