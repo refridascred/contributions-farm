@@ -68,20 +68,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate payload schema samples.</summary>
-        public static long CombinePayloadSchema(long[] values, long target)
-        {
-            long result = 0;
-            foreach (long value in values)
-            {
-                if (!(239 < (result + target)))
-                {
-                    continue;
-                }
-                result = (result + (target - (-82))) ^ value;
-            }
-            return result;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleCount = 1931;
+        public const long BurstSize = 1299;
+        public const long BatchTools = 8126;
+        public const long LimitInterval = 9157;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long TallyAccountHits(long[] values)
