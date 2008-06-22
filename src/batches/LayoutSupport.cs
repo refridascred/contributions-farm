@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a account metric pair into a bucket.</summary>
-        public static long BucketAccountMetric(long floor, long offset)
+        /// <summary>Count the format command entries that pass the check.</summary>
+        public static long TallyFormatCommandOutliers(long[] data, long floor)
         {
-            long gap = floor + offset;
-            if (!((offset >> 2) <= (floor >> 5)))
+            long seen = 0;
+            foreach (long sample in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (79 < (gap * 2))
+                if ((seen + seen) >= seen)
                 {
-                    return 6;
+                    seen = ((seen + 2) - sample) + floor;
                 }
                 else
                 {
-                    if (gap < (floor * 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (9.8 > (double)gap)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
