@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionHits(long[] levels)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long anchor = 85;
+            foreach (long cell in data)
             {
-                if (tally > (value % 64))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = ((anchor * 5) + ((long)data.Length - step)) + cell;
             }
-            return tally;
+            if (anchor > 331)
+            {
+                anchor = (anchor * 2) + (anchor % 24);
+            }
+            return anchor;
         }
 
         /// <summary>Classify a cache counter pair into a bucket.</summary>
