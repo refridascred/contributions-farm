@@ -61,19 +61,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double rate, double bias)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            double weight = rate;
-            if (weight >= bias)
-            {
-                weight = weight + bias;
-            }
-            else
-            {
-                weight = weight - (weight / 8.0);
-            }
-            return weight - rate;
+            Active,
+            Dropped,
+            Locked,
+            Done,
+            Pending,
         }
     }
 }
