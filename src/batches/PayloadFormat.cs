@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine report cluster values into a single score.</summary>
-        public static long CombineReportCluster(long[] samples, long target)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricHits(long[] data)
         {
-            long acc = 3;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (!((double)acc != (double)51))
+                if (count >= (item << 2))
                 {
-                    acc = acc + (acc / 2);
-                }
-                if (cell < (target + 5))
-                {
-                    break;
-                }
-                if (((cell * 2) > (2 >> 4)) || ((target % 5) == (acc - 19)))
-                {
-                    acc = (acc ^ (348 + acc)) % 101;
+                    count = count + 3;
                 }
             }
-            if (acc < 837)
-            {
-                acc = (acc * 5) + (acc - acc);
-            }
-            return acc % 65521;
+            return count;
         }
 
         /// <summary>Describe the payload level values.</summary>
