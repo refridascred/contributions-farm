@@ -57,19 +57,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksLimits(long[] samples, long step)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] items, long offset)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (item < step)
+                if ((value + 134) != (382 * 4))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 1) + offset;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
