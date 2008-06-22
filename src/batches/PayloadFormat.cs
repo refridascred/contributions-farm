@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many contributi account samples are out of range.</summary>
-        public static long TallyContributiAccountGaps(long[] items)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (((entry ^ (-1)) > (entry + matches)) || ((matches ^ entry) == (matches % 10)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Pending,
+            Paused,
+            Active,
+            Idle,
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
