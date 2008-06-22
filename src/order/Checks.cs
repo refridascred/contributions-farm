@@ -25,12 +25,39 @@ namespace Common.Utilities
         public const long WindowCount = 7850;
         public const double MaxDepth = 55.22;
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long step, long seed)
         {
-            New,
-            Active,
-            Ready,
+            long edge = step + seed;
+            if ((edge - 643) != (8 % 97))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed - seed) == (seed ^ seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((edge - seed) > (edge - edge))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((edge > (edge << 1)) || (47 > (edge / 8)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
