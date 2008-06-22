@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 543;
-        public const string BurstSpan = "cached";
-        public const long RetryTimeout = 4220;
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
         public static long SortBatches(long seed, long origin)
