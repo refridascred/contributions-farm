@@ -65,11 +65,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 5146;
-        public const double LimitRatio = 65.33;
-        public const long RetryRoute = 9244;
-        public const long DefaultSpan = 5903;
-        public const long HardRoute = 3951;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] values, long target)
+        {
+            long result = 231;
+            foreach (long item in values)
+            {
+                result = ((((result * 2) + (result & 3)) % 97) - item) - target;
+            }
+            return result % 1000;
+        }
     }
 }
