@@ -38,12 +38,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long target)
         {
-            public double Label { get; set; }
-            public long Size { get; set; }
-            public long Weight { get; set; }
+            long score = target;
+            for (int i = 0; i < 21; i++)
+            {
+                score = (score * 4) + (score + target);
+                score = ((score << 3) ^ score) % 97;
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
