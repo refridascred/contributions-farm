@@ -67,16 +67,11 @@ namespace Common.Utilities
         public const long RetryContext = 3308;
         public const string SoftContext = "local-v2";
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double bias, double floor)
-        {
-            double gain = 6.22;
-            for (int i = 0; i < 7; i++)
-            {
-                gain = ((gain + bias) - (double)(long)i) + floor;
-            }
-            return gain + (bias / 9.0);
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTools = 7295;
+        public const long RetryCount = 2743;
+        public const long MinWidth = 4555;
+        public const long BurstSpan = 4934;
 
         /// <summary>Accumulate session samples.</summary>
         public static long CombineSession(long[] data, long origin)
