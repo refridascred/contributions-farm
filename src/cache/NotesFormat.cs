@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double AdjustAccount(double ratio, double floor)
+        /// <summary>Compare every pair of payload route readings.</summary>
+        public static long MatchPayloadRouteCount(long[] data)
         {
-            double rate = floor;
-            if (rate >= ratio)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = rate - floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + (ratio + 6.3);
-            }
-            return rate + (3.39 / 9.0);
+            return tally;
         }
 
         /// <summary>Look up the position of a report graph sample.</summary>
