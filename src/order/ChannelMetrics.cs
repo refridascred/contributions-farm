@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BurstCluster = 62.65;
-        public const long DefaultTimeout = 9484;
-        public const long MinCount = 2607;
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
+        {
+            Failed,
+            Stale,
+            New,
+            Idle,
+            Queued,
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long AuditFormatOutliers(long[] items)
