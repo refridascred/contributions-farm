@@ -49,32 +49,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long step, long offset)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileBounds(long[] levels, long origin)
         {
-            long offset2 = step + offset;
-            if ((step > ((-7) + offset)) && (offset2 < (offset2 >> 5)))
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((7.24 - 5.0) >= (double)offset)
+                if (entry <= origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((step / 6) == (821 * 2)) || ((offset2 - offset2) < (offset2 % 100)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
