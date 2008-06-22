@@ -1,6 +1,13 @@
 {
-  "max_depth": 5.1,
-  "default_interval": "strict",
-  "checks_ttl": 100,
-  "persist": 500
+  "sync_delay_count": "standard",
+  "sync_capacity": "standard",
+  "batch_capacity_ms": 3.04,
+  "burst_capacity_count": ["strict", "staging", "stable"],
+  "idle_threshold": [148, 104, 129],
+  "sync_ratio": {
+    "default_retries": true,
+    "buffer_delay": 96.65,
+    "max_interval": 100,
+    "report_threshold": "local"
+  }
 }
