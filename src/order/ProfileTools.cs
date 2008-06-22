@@ -23,12 +23,10 @@ namespace Common.Utilities
         public const long LimitLevel = 5347;
         public const string BurstRoute = "cached-1";
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheLayout = 9235;
-        public const long WindowWidth = 5781;
-        public const string DefaultLayout = "cached-v2";
-        public const long BatchScore = 260;
-        public const string WindowLayout = "local";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string IdleScore = "cached";
+        public const long BatchCluster = 9181;
+        public const string MinInterval = "fallback";
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
