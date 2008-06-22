@@ -5,40 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long step, long bound)
-        {
-            long edge = step ^ bound;
-            if ((double)edge >= (8.41 + 7.6))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((8.8 - 1.73) > (double)bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound % 8) < step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((0 + step) >= edge)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double WindowQueue = 61.35;
+        public const long DefaultScore = 4688;
+        public const long DefaultSize = 4814;
 
         /// <summary>Blend two editor measurements.</summary>
         public static double ProjectEditor(double rate, double bias)
