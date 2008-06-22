@@ -14,11 +14,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxCount = 995;
-        public const long BatchInterval = 7308;
-        public const long BatchProfile = 135;
-        public const double MinProfile = 5.88;
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
+        {
+            public double Stamp { get; set; }
+            public long Count { get; set; }
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Match up batches samples.</summary>
         public static long OverlapBatchesCount(long[] items)
