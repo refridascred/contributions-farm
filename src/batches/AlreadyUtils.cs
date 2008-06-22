@@ -69,18 +69,14 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatOutliers(long[] levels, long step)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum >> 3) <= (tally & 31))
-                {
-                    tally = (tally + 3) - step;
-                }
-            }
-            return tally;
+            Pending,
+            Idle,
+            Active,
+            Retry,
+            Queued,
         }
     }
 }
