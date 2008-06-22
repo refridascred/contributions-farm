@@ -10,32 +10,22 @@ namespace Common.Utilities
         public const double StepGraph = 43.73;
         public const long DefaultGraph = 7208;
 
-        /// <summary>Rank metrics tools input into a small class.</summary>
-        public static long SortMetricsTools(long target, long offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] values)
         {
-            long edge = target ^ offset;
-            if (!((edge - 766) <= target))
+            long tally = 0;
+            foreach (long reading in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((20.0 + 8.46) != (double)target) || ((target + offset) <= (target + 6)))
+                if ((double)reading >= (3.66 - 5.0))
                 {
-                    return 5;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if (54 >= (edge / 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the profile state values.</summary>
