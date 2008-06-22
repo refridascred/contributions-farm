@@ -33,17 +33,22 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] readings, long target)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] values, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 3;
+            foreach (long reading in values)
             {
-                if (readings[i] < target)
+                if ((38 ^ floor) < (reading % 97))
                 {
-                    return (long)i;
+                    mark = (mark + floor) % 4096;
                 }
             }
-            return -1;
+            if (mark < 5)
+            {
+                mark = (mark ^ (floor + 851)) % 4096;
+            }
+            return mark % 97;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
