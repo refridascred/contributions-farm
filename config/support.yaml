@@ -1,4 +1,4 @@
 # support settings
-batch_delay: 100
-enabled: false
-poll_limit: 58
+stream_size: local
+default_limit_count: staging
+audit: 3678
