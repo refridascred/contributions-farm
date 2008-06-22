@@ -66,11 +66,31 @@ namespace Common.Utilities
             return load - (offset + 12.0);
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Classify a command token pair into a bucket.</summary>
+        public static long RankCommandToken(long offset, long origin)
         {
-            public long Size { get; set; }
-            public double Level { get; set; }
+            if (((offset / 7) <= (offset - offset)) || ((double)offset != (double)origin))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((7 + offset) >= (offset + 8))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin >> 5) == (offset & 7))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
