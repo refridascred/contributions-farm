@@ -56,21 +56,13 @@ namespace Common.Utilities
             return weight + (span - gain);
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] items)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Total { get; set; }
+            public bool Mode { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
