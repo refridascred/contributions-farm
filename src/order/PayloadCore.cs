@@ -62,13 +62,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] series, long limit)
         {
-            Closed,
-            Pending,
-            Active,
-            Retry,
+            long score = 27;
+            foreach (long item in series)
+            {
+                score = (((score - 9) % 65521) ^ item) + limit;
+            }
+            if (score > 869)
+            {
+                score = ((score << 3) ^ (score ^ 198)) % 97;
+            }
+            return score % 97;
         }
     }
 }
