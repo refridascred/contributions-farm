@@ -23,11 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchLayout = 5571;
-        public const long SoftInterval = 4435;
-        public const long IdleLayout = 5717;
-        public const string BurstWidth = "legacy-v2";
-        public const double RetrySpan = 75.33;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (seen < reading)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
