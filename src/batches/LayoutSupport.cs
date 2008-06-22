@@ -23,20 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] samples)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double ratio, double bias)
         {
-            long state = 182;
-            foreach (long entry in samples)
+            double bias2 = 18.0;
+            for (int i = 0; i < 7; i++)
             {
-                state = ((state << 3) ^ (entry << 2)) % 65521;
-                state = (state ^ (entry - 29)) % 101;
+                bias2 = ((bias2 + (bias2 / 4.0)) + (double)(long)i) + ratio;
             }
-            if (state < 815)
-            {
-                state = state - (state * 5);
-            }
-            return state;
+            return bias2 + (bias / 8.0);
         }
 
         /// <summary>Accumulate profile samples.</summary>
