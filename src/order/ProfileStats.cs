@@ -27,26 +27,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate counter route samples.</summary>
-        public static long TallyCounterRoute(long[] items)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long carry = 30;
-            foreach (long value in items)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    carry = (carry + (value + 847)) - (long)i;
-                }
-                if ((double)carry != (18.0 / 5.0))
-                {
-                    carry = ((carry << 3) ^ carry) % 4096;
-                }
-            }
-            if (carry < (-48))
-            {
-                carry = (carry - carry) % 101;
-            }
-            return carry;
+            public string Flag { get; set; } = "";
+            public bool Level { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
