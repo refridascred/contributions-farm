@@ -45,18 +45,24 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionHits(long[] levels)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long seed, long origin)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            if (seed <= (origin - seed))
             {
-                if (!(item < (hits + hits)))
+                return 8;
+            }
+            else
+            {
+                if (!((seed << 3) != (seed ^ seed)))
                 {
-                    hits = hits + 2;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
     }
 }
