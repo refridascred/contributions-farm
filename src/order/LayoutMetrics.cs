@@ -25,23 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ScaleNotes(double scale, double floor)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            double scale2 = 0.7;
-            if (scale2 < scale2)
-            {
-                scale2 = scale2 + (double)447;
-            }
-            else
-            {
-                scale2 = scale2 - (scale * 3.96);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 + 9.02) + (double)(long)i;
-            }
-            return scale2 + floor;
+            New,
+            Dropped,
+            Locked,
+            Draft,
+            Retry,
         }
 
         /// <summary>Hold a route stats.</summary>
