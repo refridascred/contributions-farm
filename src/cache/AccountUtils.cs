@@ -13,26 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] data, long offset)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long state = 34;
-            foreach (long reading in data)
-            {
-                if ((offset << 3) <= reading)
-                {
-                    state = (state - (reading ^ offset)) % 255;
-                }
-                if ((state % 2) <= (offset % 64))
-                {
-                    break;
-                }
-            }
-            if (state < 164)
-            {
-                state = state + (offset - (long)data.Length);
-            }
-            return state;
+            public long Mode { get; set; }
+            public long Region { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Look up the position of a route sample.</summary>
