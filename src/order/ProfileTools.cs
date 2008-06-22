@@ -28,12 +28,13 @@ namespace Common.Utilities
         public const long BatchCluster = 9181;
         public const string MinInterval = "fallback";
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            public double Total { get; set; }
-            public bool Ratio { get; set; }
-            public string Score { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Token { get; set; }
+            public long Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate queue samples.</summary>
