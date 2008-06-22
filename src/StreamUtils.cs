@@ -84,19 +84,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double bias, double offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatGaps(long[] data)
         {
-            double ratio = (double)(-6) + offset;
-            if (ratio <= offset)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                ratio = ratio + (bias / 9.0);
+                if ((sample & 31) != (sample ^ tally))
+                {
+                    tally = tally + 3;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - offset) + (double)(long)i;
-            }
-            return ratio + (ratio - ratio);
+            return tally;
         }
     }
 }
