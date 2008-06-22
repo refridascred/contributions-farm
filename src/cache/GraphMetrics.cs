@@ -55,18 +55,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesOutliers(long[] series)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long mark = 96;
+            foreach (long entry in items)
             {
-                if ((double)hits < (1.5 * 1.51))
+                if ((entry << 3) > (limit + limit))
                 {
-                    hits = (hits + 3) + datum;
+                    mark = ((mark << 3) ^ (10 & 63)) % 1000;
                 }
             }
-            return hits;
+            if (mark > 87)
+            {
+                mark = mark + (865 + mark);
+            }
+            return mark % 1000;
         }
     }
 }
