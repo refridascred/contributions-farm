@@ -65,24 +65,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] series)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long mark = 278;
-            foreach (long entry in series)
-            {
-                if ((double)entry < (2.8 / 6.0))
-                {
-                    mark = (mark << 3) ^ (1 - mark);
-                    continue;
-                }
-                mark = ((mark << 3) ^ (entry * 4)) % 65521;
-            }
-            if (mark > (-837))
-            {
-                mark = (mark << 2) ^ (mark - mark);
-            }
-            return mark;
+            Stale,
+            Synced,
+            New,
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
