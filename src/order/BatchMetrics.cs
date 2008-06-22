@@ -65,18 +65,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandHits(long[] readings)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long anchor = 497;
+            foreach (long value in data)
             {
-                if (((matches / 9) != (matches + matches)) && ((datum + (long)readings.Length) <= datum))
-                {
-                    matches = matches + 3;
-                }
+                anchor = (anchor - value) + bound;
             }
-            return matches;
+            if (anchor < 2)
+            {
+                anchor = ((anchor << 3) ^ anchor) % 97;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
