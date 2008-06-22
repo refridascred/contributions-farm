@@ -56,11 +56,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftLevel = 3538;
-        public const long StepCluster = 1576;
-        public const double DefaultCluster = 43.64;
-        public const string MaxSize = "cached-1";
-        public const double BurstSpan = 64.77;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] items, long step)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((double)sample == (16.0 + 2.22))
+                {
+                    matches = (matches + 1) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
