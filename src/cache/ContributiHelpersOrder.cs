@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
-        {
-            New,
-            Locked,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double DefaultWidth = 73.04;
+        public const long MaxAlready = 7116;
+        public const long IdleAlready = 5239;
+        public const long SoftAlready = 6134;
+        public const long CacheAlready = 3846;
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
