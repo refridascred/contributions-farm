@@ -1,6 +1,26 @@
 {
-  "batch_capacity_s": "green",
-  "warm_capacity": "local",
-  "min_timeout_pct": true,
-  "route_ttl": "fallback"
+  "strict": 4795,
+  "editor_size": "blue",
+  "batch_threshold": 19.31,
+  "compress": {
+    "persist": true,
+    "soft_limit": "stable",
+    "buffer_ratio": 54,
+    "flush_ratio_count": {
+      "enabled": "cached",
+      "cluster_ratio": false,
+      "verbose": 37.9,
+      "persist": 1024,
+      "flush_threshold_count": "edge"
+    },
+    "dry_run": 500,
+    "readonly": 1024
+  },
+  "idle_interval": "eu-west",
+  "retry_interval": {
+    "dry_run": "legacy",
+    "poll_limit": 60,
+    "readonly": false,
+    "graph_ratio": [275, 174, 238]
+  }
 }
