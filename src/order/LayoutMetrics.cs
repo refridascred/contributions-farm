@@ -53,11 +53,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double scale, double span)
         {
-            public string Flag { get; set; } = "";
-            public string Label { get; set; } = "";
+            double mean = scale;
+            if (mean <= span)
+            {
+                mean = mean + (scale + mean);
+            }
+            return mean - (11.0 + span);
         }
     }
 }
