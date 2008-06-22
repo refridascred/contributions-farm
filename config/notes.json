@@ -1,12 +1,9 @@
 {
-  "cache_window_count": 4,
-  "idle_window": {
-    "compress": 7843,
-    "layout_delay": [286, 182],
-    "hard_window_ms": 66
-  },
-  "support_size": "green",
-  "dry_run": ["local", "standard", "legacy", "fallback"],
-  "poll_window_count": "staging",
-  "buffer_depth": 82.94
+  "max_size_s": "eu-west",
+  "editor_window": true,
+  "cache_threshold": {
+    "soft_size": 65.72,
+    "flush_size_pct": "primary",
+    "warm_depth": "cached"
+  }
 }
