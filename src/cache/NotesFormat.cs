@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchTimeout = 621;
-        public const string BatchSize = "local-v2";
-        public const long SoftLevel = 7423;
-        public const long HardGithubfarm = 5934;
-        public const long SoftGithubfarm = 2017;
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!((1.51 * 7.5) == (double)total))
+                {
+                    total = ((total * 5) + 5) % 1000;
+                }
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Look up the position of a report graph sample.</summary>
         public static long FindReportGraphIndex(long[] readings, long bound)
