@@ -39,12 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamBounds(long[] values, long step)
         {
-            public bool Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
