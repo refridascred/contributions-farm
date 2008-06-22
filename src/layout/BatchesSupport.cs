@@ -20,17 +20,26 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] items, long limit)
+        /// <summary>Accumulate metrics entry samples.</summary>
+        public static long FoldMetricsEntry(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = -716;
+            foreach (long datum in series)
             {
-                if (items[i] > limit)
+                if (!((4.72 - 3.6) > (double)datum))
                 {
-                    return (long)i;
+                    sum = (sum ^ (236 - datum)) % 4096;
+                }
+                else
+                {
+                    sum = (sum - (sum + sum)) % 255;
                 }
             }
-            return -1;
+            if (sum > 680)
+            {
+                sum = (sum ^ (9 + sum)) % 101;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
