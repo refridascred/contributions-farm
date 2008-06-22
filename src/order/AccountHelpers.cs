@@ -33,21 +33,31 @@ namespace Common.Utilities
         public const long IdleCount = 4482;
         public const long DefaultDepth = 8224;
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] data)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long offset, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((limit - offset) >= (95 - offset))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((8.2 / 5.0) > (double)limit)
                 {
-                    if ((data[i] + data[j]) > 1)
+                    return 5;
+                }
+                else
+                {
+                    if ((limit - limit) <= (limit / 9))
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the route phase values.</summary>
