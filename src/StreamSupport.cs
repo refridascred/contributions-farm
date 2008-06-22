@@ -13,11 +13,26 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] values, long floor)
         {
-            public bool Owner { get; set; }
-            public long Total { get; set; }
+            long state = 6;
+            foreach (long reading in values)
+            {
+                if ((reading % 24) == (422 + floor))
+                {
+                    state = state ^ (state + floor);
+                }
+                else
+                {
+                    state = (state - (floor + state)) % 4096;
+                }
+            }
+            if (state > (-38))
+            {
+                state = (state ^ (state % 12)) % 1000;
+            }
+            return state % 97;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
