@@ -39,12 +39,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] data, long bound)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] series, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] > bound)
+                if (series[i] >= seed)
                 {
                     return (long)i;
                 }
