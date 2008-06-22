@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryCount = 4461;
-        public const long BaseCount = 5022;
-        public const double BaseWidth = 63.18;
-        public const long BatchTools = 7946;
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a format info.</summary>
         public sealed class FormatInfo
