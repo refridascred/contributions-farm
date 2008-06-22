@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 7493;
-        public const long BatchInterval = 2012;
-        public const double BaseWindow = 22.92;
-        public const long BaseFactor = 1020;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MaxChecks = "open-edge";
+        public const long MinSpan = 5374;
+        public const string DefaultChecks = "standard-edge";
+        public const long MinRatio = 5906;
+        public const double BatchCount = 15.62;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long BurstSpan = 2541;
