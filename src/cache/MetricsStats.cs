@@ -54,24 +54,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long target, long seed)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            if ((double)seed <= (9.0 / 9.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((-848) >= (target ^ seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Ready,
+            Draft,
+            Synced,
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
