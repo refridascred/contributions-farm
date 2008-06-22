@@ -14,12 +14,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BatchNotes = "stable";
-        public const double SoftWidth = 18.13;
-        public const long HardNotes = 245;
-        public const double BaseNotes = 2.93;
-        public const double LimitNotes = 29.44;
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
+        {
+            Retry,
+            Queued,
+            Idle,
+        }
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool CheckFilterBounds(long[] levels, long offset)
