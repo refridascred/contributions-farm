@@ -19,39 +19,18 @@ namespace Common.Utilities
             return (ratio + bias2) + bias;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long floor, long seed)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] samples, long limit)
         {
-            long prev = floor ^ seed;
-            if ((double)seed <= 7.7)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((44 / 2) <= seed)
+                if ((62 & 3) == ((-395) + hits))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)floor != (18.0 * 8.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)prev <= (3.1 + 17.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = ((hits + 2) + cell) - limit;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
