@@ -46,21 +46,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] readings)
+        /// <summary>Grade a editor profile value against two limits.</summary>
+        public static long RankEditorProfile(long floor, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long slot = floor - offset;
+            if ((double)slot < (0.9 * 18.0))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((slot % 100) == (92 - floor))
                 {
-                    if ((readings[i] + readings[j]) > 12)
+                    return 0;
+                }
+                else
+                {
+                    if (!(slot <= (-9)))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
