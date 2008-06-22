@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchMatches(long[] samples)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((tally ^ tally) < ((long)samples.Length % 10))
-                {
-                    tally = (tally + 2) ^ item;
-                }
-            }
-            return tally;
+            Queued,
+            Ready,
+            Retry,
+            Done,
+            Locked,
         }
 
         /// <summary>Fold a list of support readings.</summary>
