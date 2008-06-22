@@ -38,14 +38,18 @@ namespace Common.Utilities
             return mean + (span + span);
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportMatches(long[] series)
         {
-            Synced,
-            Idle,
-            Queued,
-            New,
-            Failed,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((seen - datum) <= (seen + seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
