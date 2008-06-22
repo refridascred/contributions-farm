@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] levels, long seed)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterOutliers(long[] series)
         {
-            long total = 119;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                total = (((total ^ (74 << 2)) % 101) - sample) - seed;
+                if ((seen - datum) == (datum >> 1))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total % 4096;
+            return seen;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
