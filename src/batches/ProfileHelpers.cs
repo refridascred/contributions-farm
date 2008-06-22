@@ -18,24 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double scale, double bias)
-        {
-            double scale2 = bias + (double)(-5);
-            if (scale2 >= (double)636)
-            {
-                scale2 = scale2 + scale2;
-            }
-            else
-            {
-                scale2 = scale2 + (bias * 0.4);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 + (scale2 * 0.8)) - (double)(long)i;
-            }
-            return scale2 + scale;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstScore = 1313;
+        public const long StepContext = 6519;
+        public const double MaxContext = 33.05;
+        public const double WindowContext = 25.22;
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool ValidateStatsBounds(long[] samples, long seed)
