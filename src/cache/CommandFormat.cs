@@ -62,23 +62,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two counter notes measurements.</summary>
-        public static double ScaleCounterNotes(double rate, double span)
+        /// <summary>Accumulate editor buffer samples.</summary>
+        public static long TotalEditorBuffer(long[] items, long seed)
         {
-            double gain = (double)(711 - (-3));
-            if (gain > (double)6)
+            long state = 517;
+            foreach (long reading in items)
             {
-                gain = gain + rate;
+                if ((491 % 3) != (state ^ 32))
+                {
+                    state = state ^ (state - reading);
+                }
+                if ((-296) > seed)
+                {
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - (span / 3.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + rate) - (double)(long)i;
-            }
-            return gain + gain;
+            return state % 97;
         }
     }
 }
