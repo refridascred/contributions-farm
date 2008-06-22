@@ -68,11 +68,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two queue metrics measurements.</summary>
-        public static double ProjectQueueMetrics(double bias, double span)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] values, long seed)
         {
-            double load = (double)2 - (bias + span);
-            return load + (load - span);
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
