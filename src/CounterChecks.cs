@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double BlendEditor(double bias, double floor)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterBounds(long[] items, long bound)
         {
-            double gain = bias;
-            if (gain <= bias)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                gain = gain - 15.0;
+                if (reading <= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + (2.0 / 3.0)) + (double)(long)i;
-            }
-            return gain + (gain - floor);
+            return flag;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
