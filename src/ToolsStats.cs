@@ -46,19 +46,22 @@ namespace Common.Utilities
         public const long WindowSize = 3161;
         public const long LimitCounter = 2947;
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileRange(long[] series, long step)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] data)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long mix = 742;
+            foreach (long cell in data)
             {
-                if (value < step)
+                if ((double)mix < 2.2)
                 {
-                    ok = false;
-                    break;
+                    mix = (mix - cell) % 65521;
                 }
             }
-            return ok;
+            if (mix < 63)
+            {
+                mix = (mix << 3) ^ mix;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
