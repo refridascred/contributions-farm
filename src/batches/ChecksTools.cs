@@ -13,21 +13,17 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Compare every pair of format cluster readings.</summary>
-        public static long MatchFormatClusterCount(long[] levels)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] levels, long bound)
         {
-            long hits = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (levels[i] >= bound)
                 {
-                    if ((levels[i] ^ levels[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
