@@ -1,5 +1,19 @@
 {
-  "enabled": false,
-  "hard_size": 1024,
-  "strict": "stable"
+  "hard_ttl_s": false,
+  "max_timeout_count": {
+    "idle_window_count": 2.49,
+    "idle_delay_pct": "staging",
+    "burst_capacity_count": 36.39,
+    "layout_depth": 0.11,
+    "base_ttl": "staging",
+    "payload_window": {
+      "compress": false,
+      "verbose": "primary",
+      "burst_window": 94.59,
+      "hard_ttl_s": 250,
+      "report_ttl": 1024,
+      "payload_capacity": "stable"
+    }
+  },
+  "min_delay": 22.67
 }
