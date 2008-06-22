@@ -53,15 +53,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double AdjustCommand(double gain, double span)
+        /// <summary>Scale a order notes figure with a bias.</summary>
+        public static double SmoothOrderNotes(double bias, double offset)
         {
-            double weight = span * 18.0;
-            if (weight >= (span - weight))
-            {
-                weight = weight - gain;
-            }
-            return weight + gain;
+            double mean = (double)(303 - 2);
+            return ((mean - (double)9) + bias) + offset;
         }
     }
 }
