@@ -42,12 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] data, long seed)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] levels, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (data[i] < seed)
+                if ((levels[i] >= floor) && ((levels[i] % 5) != 0))
                 {
                     return (long)i;
                 }
