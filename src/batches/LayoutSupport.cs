@@ -53,19 +53,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowRange(long[] readings, long floor)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] items)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (item > floor)
+                if (((value % 64) > 3) || ((value << 2) > (count + value)))
                 {
-                    flag = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
