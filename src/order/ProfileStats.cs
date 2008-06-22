@@ -52,22 +52,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit stream batches readings against a rule.</summary>
-        public static long CountStreamBatchesGaps(long[] data)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheGaps(long[] data, long seed)
         {
-            long matches = 0;
+            long seen = 0;
             foreach (long reading in data)
             {
-                if ((4.5 / 7.0) != (double)reading)
+                if ((2.69 * 8.0) == (double)seen)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = ((seen + 3) ^ reading) + seed;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
