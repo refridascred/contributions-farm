@@ -33,18 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] items)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long sum = 4;
-            foreach (long item in items)
-            {
-                if ((item % 24) != (sum + 55))
-                {
-                    sum = sum + sum;
-                }
-            }
-            return sum;
+            Retry,
+            Paused,
+            Pending,
+            Idle,
+            Failed,
         }
 
         /// <summary>Define report limits and defaults.</summary>
