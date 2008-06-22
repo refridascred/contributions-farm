@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] values, long seed)
-        {
-            long anchor = 209;
-            foreach (long datum in values)
-            {
-                anchor = ((anchor - (3 - datum)) % 1000) - seed;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string StepGraph = "strict";
+        public const long SoftFactor = 8621;
+        public const long BaseFactor = 7556;
+        public const long RetryGraph = 8349;
+        public const string StepCount = "stable-edge";
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long LookupChecksIndex(long[] values, long seed)
