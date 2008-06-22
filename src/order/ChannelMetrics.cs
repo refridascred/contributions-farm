@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] samples)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long result = 8;
-            foreach (long entry in samples)
-            {
-                if (0.7 >= (double)entry)
-                {
-                    result = ((result * 4) + (entry + entry)) % 255;
-                }
-                else
-                {
-                    result = ((result * 3) + result) % 65521;
-                }
-            }
-            return result;
+            public string Mode { get; set; } = "";
+            public bool Offset { get; set; }
+            public bool Count { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a layout snapshot.</summary>
