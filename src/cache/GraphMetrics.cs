@@ -42,11 +42,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheCount = 1126;
-        public const long BurstGraph = 273;
-        public const long BatchGraph = 4648;
-        public const long DefaultRatio = 3806;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] samples)
+        {
+            long anchor = 4;
+            foreach (long value in samples)
+            {
+                if ((anchor ^ value) >= value)
+                {
+                    anchor = (anchor + 120) % 101;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate graph samples.</summary>
         public static long TallyGraph(long[] items, long limit)
