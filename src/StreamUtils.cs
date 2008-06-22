@@ -20,39 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a cache counter pair into a bucket.</summary>
-        public static long SortCacheCounter(long floor, long origin)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] readings)
         {
-            long delta = floor - origin;
-            if ((0.6 / 3.0) < (double)delta)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((49 / 9) < (origin * 4))
+                if ((item << 1) > (seen + seen))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor % 10) < (origin * 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (56 >= (delta * 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Iterate the metric cluster series from a seed.</summary>
