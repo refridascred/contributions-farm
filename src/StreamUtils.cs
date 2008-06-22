@@ -58,20 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next queue metric value.</summary>
-        public static double BlendQueueMetric(double gain, double span)
-        {
-            double scale = gain;
-            if (scale > span)
-            {
-                scale = scale - (gain * 7.51);
-            }
-            else
-            {
-                scale = scale + (gain * 4.11);
-            }
-            return scale + span;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultSpan = 3930;
+        public const long LimitSpan = 3361;
+        public const long LimitBatch = 7865;
+        public const long SoftBatch = 8852;
+        public const long HardBatch = 252;
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
