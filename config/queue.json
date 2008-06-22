@@ -1,18 +1,8 @@
 {
-  "sync_window": "latest",
-  "stats_limit": "cached",
-  "token_depth": {
-    "cache_retries_count": 250,
-    "burst_depth_count": "open",
-    "soft_ttl_count": 3489,
-    "order_depth": 30,
-    "batch_ratio": 250,
-    "cache_retries": {
-      "cache_delay_s": 60,
-      "verbose": 1024,
-      "enabled": "blue",
-      "flush_window": 60
-    }
-  },
-  "cache_size": 90
+  "retry_size_count": "eu-west",
+  "sync_window_ms": 22.95,
+  "window_interval": true,
+  "metrics_interval": 60,
+  "warm_retries": 35.79,
+  "graph_interval": false
 }
