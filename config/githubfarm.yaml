@@ -1,19 +1,16 @@
 # githubfarm settings
-soft_capacity_ms:
-  - 185
-  - 414
-min_depth: 29.82
-batch_delay_s: eu-west
-burst_size_count:
-  batch_depth_pct: 6707
-  enabled: strict
-  soft_ttl_pct: legacy
-  max_size_s: cached
-  min_ttl: 6
-  dry_run:
-    - 17
-    - 193
-    - 275
-    - 483
-cluster_delay: 8616
-persist: 31
+metrics_capacity: blue
+order_size:
+  soft_ttl_count: 100
+  warm_limit_s: 10.53
+  hard_ratio_pct:
+    context_threshold: 53
+    batch_limit_count:
+      - latest
+      - cached
+      - stable
+      - edge
+    persist: 49
+    strict: 40.89
+    session_size: 5662
+context_ratio: staging
