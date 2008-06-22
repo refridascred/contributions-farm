@@ -69,12 +69,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] values, long origin)
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public double Rank { get; set; }
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
