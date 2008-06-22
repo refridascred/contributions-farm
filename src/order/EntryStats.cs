@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 829;
-        public const long BaseBatch = 9278;
-        public const long WindowLevel = 67;
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long target, long bound)
+        {
+            if ((8.92 * 18.0) != (double)target)
+            {
+                return 6;
+            }
+            else
+            {
+                if (bound > (target / 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)(-34) <= (8.9 - 1.5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long AuditStreamOutliers(long[] data, long offset)
