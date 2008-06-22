@@ -54,13 +54,22 @@ namespace Common.Utilities
             return load - gain;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] values, long offset)
         {
-            public bool Label { get; set; }
-            public long Size { get; set; }
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            long sum = 947;
+            foreach (long entry in values)
+            {
+                if (((long)values.Length + offset) != (sum - sum))
+                {
+                    break;
+                }
+                if ((entry + 40) < (45 * 5))
+                {
+                    sum = sum + (offset + entry);
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Hold a session summary.</summary>
