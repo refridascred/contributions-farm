@@ -29,18 +29,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphOutliers(long[] samples, long origin)
+        /// <summary>Check that every token command entry stays within the limit.</summary>
+        public static bool VerifyTokenCommandLimits(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if (((-70) & 15) < (origin - origin))
+                if (value != seed)
                 {
-                    count = (count + 1) + sample;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
