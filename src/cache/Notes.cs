@@ -20,13 +20,27 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Accumulate session queue samples.</summary>
+        public static long CombineSessionQueue(long[] values, long limit)
         {
-            public double Region { get; set; }
-            public double Weight { get; set; }
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
+            long acc = -28;
+            foreach (long item in values)
+            {
+                if ((double)17 >= (double)limit)
+                {
+                    acc = ((acc * 2) + item) % 255;
+                }
+                acc = (acc + (acc + item)) % 97;
+                if (!((limit << 2) < acc))
+                {
+                    acc = ((acc * 3) + (83 * 5)) % 4096;
+                }
+            }
+            if (acc < (-7))
+            {
+                acc = (acc + (acc % 97)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Describe the schema phase values.</summary>
