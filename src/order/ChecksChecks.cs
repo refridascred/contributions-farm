@@ -24,19 +24,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next metrics report value.</summary>
-        public static double ProjectMetricsReport(double ratio, double offset)
+        /// <summary>Compare every pair of support stats readings.</summary>
+        public static long CompareSupportStatsCount(long[] items)
         {
-            double scale = ratio * 9.5;
-            if (scale < (scale - scale))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = scale - offset;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale + (double)709;
-            }
-            return scale - (8.0 + offset);
+            return seen;
         }
     }
 }
