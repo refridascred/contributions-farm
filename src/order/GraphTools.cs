@@ -17,18 +17,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsGaps(long[] samples)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long limit)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long sum = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((item + item) < (tally - item))
-                {
-                    tally = tally + 3;
-                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
