@@ -28,25 +28,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a filter stats value against two limits.</summary>
-        public static long RankFilterStats(long offset, long offset2)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmHits(long[] readings)
         {
-            long edge = offset - offset2;
-            if ((edge >> 5) >= (offset2 * 3))
+            long count = 0;
+            foreach (long reading in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (((edge % 7) <= (-290)) || ((14.0 * 8.8) != (double)offset2))
+                if (count >= (97 & 15))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    count = (count + 2) ^ reading;
                 }
             }
+            return count;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
