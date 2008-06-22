@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportBounds(long[] values, long bound)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long bound)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long score = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (sample < bound)
-                {
-                    ready = false;
-                    break;
-                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
