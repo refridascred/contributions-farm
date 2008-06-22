@@ -1,7 +1,13 @@
 {
-  "warm_timeout_ms": 65,
-  "base_threshold": 53.88,
-  "poll_limit_pct": 20,
-  "channel_delay": 30,
-  "tools_size": [337, 71, 384, 273]
+  "default_limit_count": {
+    "batch_depth_count": "blue",
+    "strict": 72,
+    "editor_retries": true,
+    "sync_ttl_pct": 30,
+    "dry_run": "fallback"
+  },
+  "default_window_pct": "stable",
+  "payload_threshold": 39.88,
+  "sync_ratio_ms": [401, 87],
+  "verbose": "stable"
 }
