@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard local open blue; do
+for item in local green stable; do
     log "checking ${item}"
 done
 
