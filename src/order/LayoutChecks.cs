@@ -86,18 +86,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenGaps(long[] values)
+        /// <summary>Iterate the counter session series from a seed.</summary>
+        public static long IterateCounterSession(long step)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long mark = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (datum < (48 / 6))
-                {
-                    tally = tally + 1;
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return tally;
+            return mark;
         }
     }
 }
