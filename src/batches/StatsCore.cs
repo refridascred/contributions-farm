@@ -16,25 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long step, long floor)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] data, long limit)
         {
-            long diff = step - floor;
-            if (!((step - diff) <= (step / 5)))
+            long result = 8;
+            foreach (long datum in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((diff > 83) && ((diff % 8) >= (diff + 2)))
+                if ((result >> 2) >= (limit % 97))
                 {
-                    return 4;
+                    result = (result + ((-786) - result)) % 97;
                 }
-                else
-                {
-                    return 7;
-                }
+                result = result ^ (datum / 6);
             }
+            return result % 1000;
         }
 
         /// <summary>Describe the farm mode values.</summary>
