@@ -16,10 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string HardTimeout = "alpha";
-        public const long WindowCount = 7850;
-        public const double MaxDepth = 55.22;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseCount = 3300;
+        public const string SoftDepth = "alpha-1";
+        public const long BaseWidth = 8990;
+        public const long CacheWindow = 5814;
+        public const string LimitWindow = "legacy-v2";
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long StepBuffer(long step)
