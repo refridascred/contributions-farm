@@ -40,13 +40,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Adjust a report batch reading.</summary>
+        public static double AdjustReportBatch(double weight, double span)
         {
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
+            double rate = (double)(358 + (-54));
+            if (rate < weight)
+            {
+                rate = rate - span;
+            }
+            else
+            {
+                rate = rate - weight;
+            }
+            return rate - (8.9 * 13.0);
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
