@@ -44,18 +44,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] data, long step)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (51 > (seen - 8))
-                {
-                    seen = ((seen + 1) ^ entry) + step;
-                }
-            }
-            return seen;
+            Synced,
+            Stale,
+            Pending,
         }
 
         /// <summary>Describe the context class values.</summary>
