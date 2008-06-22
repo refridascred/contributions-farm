@@ -53,38 +53,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Rank commits metrics input into a small class.</summary>
-        public static long ClassifyCommitsMetrics(long offset, long limit)
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double rate, double span)
         {
-            if (13.0 > (double)limit)
+            double mean = 6.77;
+            for (int i = 0; i < 2; i++)
             {
-                return 2;
+                mean = (((mean - (mean / 3.0)) + (double)(long)i) + rate) - span;
             }
-            else
-            {
-                if (limit >= (limit + 9))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((limit * 3) < (-412)) && ((1.08 - 4.17) >= (double)limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((offset + offset) <= (offset * 2)) || ((double)limit <= (0.6 / 9.0)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return mean - 8.84;
         }
     }
 }
