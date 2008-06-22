@@ -19,10 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitRatio = 2700;
-        public const long MaxTimeout = 1364;
-        public const double WindowMetrics = 42.03;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepInterval = 6007;
+        public const long SoftLevel = 7068;
+        public const double RetryWidth = 20.51;
+        public const long CacheRatio = 9000;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long SoftWidth = 3873;
