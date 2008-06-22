@@ -33,12 +33,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutBounds(long[] values, long step)
         {
-            public double Label { get; set; }
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Blend two counter measurements.</summary>
