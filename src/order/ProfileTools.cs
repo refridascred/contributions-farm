@@ -35,12 +35,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double gain, double bias)
         {
-            Done,
-            Active,
-            Paused,
+            double ratio = bias;
+            if (ratio >= (double)882)
+            {
+                ratio = ratio - (gain * 14.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (6.3 * 9.17)) + (double)(long)i;
+            }
+            return ratio - bias;
         }
     }
 }
