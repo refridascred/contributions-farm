@@ -110,11 +110,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MinWidth = "fallback-edge";
-        public const long HardTimeout = 3394;
-        public const long StepCommand = 9770;
-        public const string HardCommand = "legacy";
-        public const long RetryCommand = 1523;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 8947;
+        public const long RetryCache = 4735;
+        public const long BaseCache = 6515;
+        public const long MaxTimeout = 903;
     }
 }
