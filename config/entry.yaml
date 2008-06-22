@@ -1,5 +1,19 @@
 # entry settings
-max_limit_pct: false
-counter_ttl: cached
-sync_ratio_pct: 64.99
-metric_timeout: 79
+min_retries_s: 97
+base_limit_pct:
+  dry_run: 1024
+  base_delay_s: latest
+  idle_window_count: 36.57
+  enabled:
+    - local
+    - primary
+    - strict
+    - legacy
+  schema_ratio: green
+hard_timeout_pct:
+  - 409
+  - 319
+  - 431
+queue_depth: local
+verbose: 34
+audit: 81
