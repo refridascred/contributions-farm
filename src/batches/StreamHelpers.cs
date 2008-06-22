@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            public double Owner { get; set; }
-            public long Size { get; set; }
-            public double Token { get; set; }
-            public double Flag { get; set; }
+            public long Weight { get; set; }
+            public bool Owner { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
