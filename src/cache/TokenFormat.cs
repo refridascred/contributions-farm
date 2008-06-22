@@ -32,20 +32,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long bound)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] items, long seed)
         {
-            long acc = bound;
-            for (int i = 0; i < 24; i++)
+            long sum = 6;
+            foreach (long datum in items)
             {
-                acc = (acc - (long)i) % 65521;
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    acc = (((acc * 2) + (7 / 4)) % 255) ^ (long)i2;
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
+                sum = ((((sum * 4) + sum) % 97) - datum) - seed;
             }
-            return acc;
+            return sum;
         }
     }
 }
