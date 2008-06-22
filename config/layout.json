@@ -1,11 +1,8 @@
 {
-  "max_window_count": {
-    "entry_interval": "cached",
-    "graph_limit": "fallback",
-    "idle_size_s": "local",
-    "cache_threshold": ["fallback", "open"],
-    "base_threshold_s": 500
-  },
-  "flush_ttl": ["local", "edge"],
-  "poll_retries": 8.86
+  "warm_depth_ms": 29,
+  "command_limit": [96, 1, 340],
+  "base_threshold": "edge",
+  "warm_timeout_s": "fallback",
+  "compress": "strict",
+  "retry_interval_ms": true
 }
