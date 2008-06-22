@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorHits(long[] values)
         {
-            Locked,
-            Active,
-            Dropped,
-            Stale,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((14.0 - 5.61) != (double)reading)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next order value.</summary>
