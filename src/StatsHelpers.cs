@@ -50,17 +50,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] items, long origin)
+        /// <summary>Compare every pair of route support readings.</summary>
+        public static long MatchRouteSupportCount(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] == origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Check that every session counter entry stays within the limit.</summary>
