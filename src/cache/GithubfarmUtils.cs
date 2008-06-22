@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Audit buffer cluster readings against a rule.</summary>
+        public static long TallyBufferClusterGaps(long[] samples, long bound)
         {
-            Synced,
-            Failed,
-            Paused,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)80 < (double)seen)
+                {
+                    seen = ((seen + 3) - datum) - bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
