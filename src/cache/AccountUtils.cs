@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardGithubfarm = 8909;
-        public const string BaseTimeout = "local-edge";
-        public const long BaseSpan = 2935;
-        public const string CacheSize = "stable";
-        public const long MaxGithubfarm = 3649;
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
+        {
+            Active,
+            Dropped,
+            Locked,
+        }
 
         /// <summary>Scale a record session figure with a bias.</summary>
         public static double ProjectRecordSession(double gain, double floor)
