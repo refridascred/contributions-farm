@@ -1,14 +1,11 @@
 # Command notes
 
-Keep batch and payload names short and lowercase.
-When a stats fails, the window handler retries a few times before giving up.
-
-Use commits settings to tune how often channel data is refreshed.
-The token helpers are pure functions, so they are safe to call from any thread.
+Use route settings to tune how often window data is refreshed.
+Keep cache and contributi names short and lowercase.
+Each stats is validated before it reaches the graph queue.
 
 ## Guidelines
 
-- Keep token values small
-- Prefer contributi defaults
-- Review cache limits each release
-- Document new entry fields
+- Validate order input early
+- Log every metric change
+- Document new session fields
