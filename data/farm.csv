@@ -1,6 +1,6 @@
-id,weight,count,rank,label
-1,391,173,707,50.19
-2,latest,open,229,496
-3,393,463,standard,fallback
-4,cached,50.04,primary,34
-5,226,458,398,902
+id,ratio,region
+1,388,838
+2,stable,779
+3,strict,local
+4,blue,legacy
+5,224,732
