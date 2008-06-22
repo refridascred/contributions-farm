@@ -1,4 +1,5 @@
 # support settings
-stream_size: local
-default_limit_count: staging
-audit: 3678
+retry_interval_s: stable
+idle_capacity: 83.76
+cache_ratio: 7765
+soft_size_s: true
