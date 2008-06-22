@@ -61,18 +61,39 @@ namespace Common.Utilities
         public const long BatchTools = 8126;
         public const long LimitInterval = 9157;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountHits(long[] values)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long limit, long seed)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long next = limit ^ seed;
+            if ((double)limit > 8.0)
             {
-                if ((value * 3) < (3 & 255))
+                return 6;
+            }
+            else
+            {
+                if ((double)limit >= 19.0)
                 {
-                    hits = hits + 3;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)limit <= (1.0 - 5.19))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)811 < (double)seed) || ((16.0 + 9.0) >= (double)next))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
