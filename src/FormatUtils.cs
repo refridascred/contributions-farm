@@ -38,12 +38,10 @@ namespace Common.Utilities
         public const long StepCount = 8713;
         public const long MinRatio = 8396;
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
-        {
-            public bool Label { get; set; }
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 8284;
+        public const double CacheWidth = 46.13;
+        public const double BatchWidth = 74.35;
+        public const string BatchScore = "primary-v2";
     }
 }
