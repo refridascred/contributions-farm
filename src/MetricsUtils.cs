@@ -49,18 +49,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double WindowStream = 17.41;
+        public const long CacheWidth = 507;
+        public const long MaxStream = 4501;
+        public const double BatchStream = 55.82;
+        public const long BaseStream = 6243;
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
