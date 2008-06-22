@@ -19,21 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long target)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long mark = target;
-            for (int i = 0; i < 9; i++)
-            {
-                mark = (mark - (mark / 6)) % 65521;
-                if ((target <= (mark + (long)i)) || ((493 / 6) <= (mark % 2)))
-                {
-                    mark = ((mark * 2) + (mark % 8)) % 65521;
-                    mark = (mark + (43 + mark)) % 101;
-                }
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            Synced,
+            Pending,
+            Ready,
+            Draft,
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
