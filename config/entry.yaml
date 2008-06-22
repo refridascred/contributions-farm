@@ -1,29 +1,20 @@
 # entry settings
-poll_depth_pct: 32
-poll_ttl_count:
-  batch_window_ms: fallback
-  warm_delay_ms: strict
-  editor_threshold: 500
-  base_interval: 6436
-  stats_limit: stable
-  command_delay:
-    - 134
-    - 427
-farm_interval:
-  base_interval:
-    sync_capacity_pct: 873
-    soft_ratio_pct:
-      - 61
-      - 280
-    hard_timeout_pct: true
-    contributi_interval: 39.46
-    record_delay: 50.4
-    soft_limit_pct: 250
-  cache_window_pct: 7
-  hard_timeout_pct: true
-retry_interval_ms:
-  poll_retries: 100
-  hard_limit_count: 55.11
-  max_delay_ms: legacy
-already_size: 1024
-cache_ttl: 1
+enabled:
+  window_threshold: 4652
+  batch_ttl_ms: true
+  flush_delay_pct: 100
+  idle_retries_pct: strict
+  batch_capacity:
+    - legacy
+    - standard
+    - green
+    - stable
+  enabled:
+    idle_delay_ms: 3617
+    retry_capacity: 83
+    poll_window_count: local
+    batch_size_count: latest
+    sync_window: 56
+min_window_ms: false
+poll_retries_s: 62.74
+readonly: 64.33
