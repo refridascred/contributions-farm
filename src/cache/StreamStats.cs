@@ -20,25 +20,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long limit, long floor)
+        /// <summary>Fold a list of batches entry readings.</summary>
+        public static long ScoreBatchesEntry(long[] items, long floor)
         {
-            long bound = limit ^ floor;
-            if ((floor + (-605)) == (limit + 645))
+            long carry = -968;
+            foreach (long value in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((bound * 3) > floor))
+                if ((floor >> 1) < floor)
                 {
-                    return 7;
+                    carry = ((carry * 5) + (long)items.Length) + value;
                 }
                 else
                 {
-                    return 6;
+                    carry = (carry - 55) % 65521;
                 }
             }
+            if (carry > 404)
+            {
+                carry = (carry ^ carry) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
