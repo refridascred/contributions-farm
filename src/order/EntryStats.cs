@@ -36,12 +36,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long seed, long floor)
         {
-            Ready,
-            Idle,
-            Failed,
+            long diff = seed ^ floor;
+            if ((double)seed >= 4.0)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((diff + diff) <= seed) || ((double)floor < 13.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((20.0 * 3.49) != (double)floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the commits mode values.</summary>
