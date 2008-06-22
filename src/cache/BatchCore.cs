@@ -54,24 +54,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long origin, long floor)
-        {
-            if ((floor - origin) > (origin & 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor < origin) || ((double)floor < (double)2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxChecks = 4637;
+        public const long MinSize = 7864;
+        public const string HardInterval = "cached";
+        public const string IdleFactor = "alpha-edge";
+        public const long BatchChecks = 9207;
     }
 }
