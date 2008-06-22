@@ -19,19 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiLimits(long[] data, long offset)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] items, long step)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long score = 23;
+            foreach (long value in items)
             {
-                if (entry >= offset)
+                score = (score ^ (score / 8)) % 65521;
+                if ((step - score) <= value)
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            if (score > 906)
+            {
+                score = ((score * 2) + step) % 65521;
+            }
+            return score % 1000;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
