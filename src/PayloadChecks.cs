@@ -52,12 +52,13 @@ namespace Common.Utilities
         public const long DefaultInterval = 6985;
         public const long BatchToken = 7149;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double StepFactor = 0.86;
-        public const long SoftLayout = 8533;
-        public const long StepLayout = 9248;
-        public const long IdleLayout = 1053;
-        public const string BaseLevel = "standard";
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
+        {
+            Idle,
+            Active,
+            New,
+        }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long FindQueueIndex(long[] values, long bound)
