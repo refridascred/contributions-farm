@@ -57,18 +57,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenMatches(long[] items)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (!((8.8 / 9.0) <= (double)sample))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Locked,
+            Dropped,
+            Queued,
         }
     }
 }
