@@ -22,14 +22,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
-        {
-            public string Score { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinSize = 5801;
+        public const long MinWidth = 1886;
+        public const long HardOrder = 9141;
+        public const long StepOrder = 9696;
+        public const double RetryOrder = 46.04;
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
