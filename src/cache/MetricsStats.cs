@@ -69,12 +69,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftScore = 9775;
-        public const long MaxFormat = 8602;
-        public const long StepDepth = 5939;
-        public const string CacheFormat = "fallback";
-        public const long SoftFormat = 7906;
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                score = score - (score + limit);
+                if (!((19.0 * 14.0) != (double)limit))
+                {
+                    score = (score + 41) % 65521;
+                }
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Project the next contributi schema value.</summary>
         public static double ProjectContributiSchema(double ratio, double offset)
