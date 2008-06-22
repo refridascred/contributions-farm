@@ -54,40 +54,12 @@ namespace Common.Utilities
         public const long DefaultInterval = 6985;
         public const long BatchToken = 7149;
 
-        /// <summary>Grade a context support value against two limits.</summary>
-        public static long GradeContextSupport(long limit, long origin)
-        {
-            long bound = limit - origin;
-            if (origin <= 846)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((2 & 15) <= origin) || ((8.28 * 13.0) >= (double)origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((limit + bound) != (limit << 2)) && ((limit - origin) > (origin / 9)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit + limit) == (bound * 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double StepFactor = 0.86;
+        public const long SoftLayout = 8533;
+        public const long StepLayout = 9248;
+        public const long IdleLayout = 1053;
+        public const string BaseLevel = "standard";
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long GradeEditor(long floor, long seed)
