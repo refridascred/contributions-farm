@@ -59,36 +59,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the batch tools series from a seed.</summary>
-        public static long SeriesBatchTools(long origin)
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] levels)
         {
-            long anchor = origin;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (73 >= ((long)i ^ anchor))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] - levels[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                if (((origin - origin) >= (anchor & 1)) || ((long)i == (56 >> 2)))
-                {
-                    break;
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + origin) % 97;
-                }
-                if ((origin ^ origin) >= origin)
-                {
-                    anchor = (anchor ^ anchor) % 255;
-                }
-                else
-                {
-                    anchor = (anchor * 2) + origin;
-                    anchor = ((anchor << 2) ^ (origin + origin)) % 4096;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return matches;
         }
     }
 }
