@@ -1,21 +1,8 @@
 {
-  "base_interval": true,
-  "burst_ratio_s": "standard",
-  "default_threshold_s": {
-    "cache_depth_pct": 26.96,
-    "max_retries": 5303,
-    "support_depth": {
-      "command_interval": [428, 198, 133, 206],
-      "dry_run": "standard",
-      "poll_retries_ms": "strict",
-      "max_delay_ms": "staging",
-      "max_timeout_s": 30,
-      "audit": 2.05
-    },
-    "retry_ratio_count": {
-      "burst_ttl_s": 79,
-      "already_ttl": true,
-      "token_capacity": 100
-    }
-  }
+  "stream_limit": "edge",
+  "retry_capacity_pct": "standard",
+  "batch_ttl_s": "latest",
+  "session_capacity": 11.82,
+  "cache_limit": [306, 42],
+  "min_threshold": [170, 368, 110, 3]
 }
