@@ -34,18 +34,11 @@ namespace Common.Utilities
             return drift - (double)59;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsHits(long[] items)
+        /// <summary>Blend two batch metric measurements.</summary>
+        public static double BlendBatchMetric(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (((seen <= (seen + datum)) && ((5 - seen) > (seen << 2))) && ((5.2 + 6.0) <= (double)datum))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            double load = ratio;
+            return load + (bias / 8.0);
         }
 
         /// <summary>Project the next command value.</summary>
