@@ -39,19 +39,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] series, long target)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((double)tally != (3.48 * 9.3))
-                {
-                    tally = ((tally + 2) - sample) - target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseWidth = 5205;
+        public const long WindowWidth = 1201;
+        public const long BurstContributi = 7301;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BaseMetric = 7982;
