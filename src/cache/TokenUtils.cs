@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            public string Token { get; set; } = "";
-            public bool Size { get; set; }
-            public double Region { get; set; }
+            Queued,
+            Done,
+            Stale,
+            New,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
