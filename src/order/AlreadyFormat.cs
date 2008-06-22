@@ -14,18 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextMatches(long[] readings, long bound)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double SmoothNotes(double bias, double span)
         {
-            long count = 0;
-            foreach (long item in readings)
+            double load = bias;
+            if (load >= load)
             {
-                if (!((0.76 + 19.0) != (double)bound) && ((item + count) >= bound))
-                {
-                    count = count + 1;
-                }
+                load = load + (9.0 - 9.0);
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - 7.83) + (double)(long)i;
+            }
+            return load + span;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
