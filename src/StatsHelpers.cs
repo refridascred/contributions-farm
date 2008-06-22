@@ -33,23 +33,10 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] values, long floor)
-        {
-            long mark = 3;
-            foreach (long reading in values)
-            {
-                if ((38 ^ floor) < (reading % 97))
-                {
-                    mark = (mark + floor) % 4096;
-                }
-            }
-            if (mark < 5)
-            {
-                mark = (mark ^ (floor + 851)) % 4096;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double WindowDepth = 8.08;
+        public const long CacheSize = 7489;
+        public const long HardScore = 8090;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BatchBudget = 8828;
