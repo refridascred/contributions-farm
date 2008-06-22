@@ -52,19 +52,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] series, long floor)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long origin)
         {
-            long state = 743;
-            foreach (long cell in series)
+            long carry = origin;
+            for (int i = 0; i < 20; i++)
             {
-                state = (((state ^ 7) % 65521) + cell) - floor;
+                if ((4.0 + 4.8) < (double)(long)i)
+                {
+                    carry = (carry * 5) + (origin - 783);
+                    break;
+                }
+                if ((origin / 7) > ((long)i + 366))
+                {
+                    carry = ((carry << 2) ^ ((long)i + origin)) % 65521;
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            if (state < 1)
-            {
-                state = ((state << 3) ^ (96 << 1)) % 97;
-            }
-            return state;
+            return carry;
         }
 
         /// <summary>Measure how many metrics metric samples are out of range.</summary>
