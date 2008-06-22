@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long offset)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] series, long limit)
         {
-            long state = offset;
-            for (int i = 0; i < 15; i++)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if ((state - 5) != (state - state))
+                if (item < limit)
                 {
-                    continue;
+                    ok = false;
+                    break;
                 }
-                state = ((state * 2) + (long)i) % 101;
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
