@@ -14,21 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] values)
+        /// <summary>Check that every buffer support entry stays within the limit.</summary>
+        public static bool ValidateBufferSupportRange(long[] values, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item != bound)
                 {
-                    if ((values[i] + values[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
