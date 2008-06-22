@@ -56,12 +56,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinWidth = 4083;
-        public const long HardContext = 6307;
-        public const long StepContext = 8941;
-        public const long WindowSize = 8331;
-        public const long BatchBudget = 8197;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchInterval = 94;
+        public const long HardToken = 6767;
+        public const double BurstTimeout = 57.42;
 
         /// <summary>Hold a format stats.</summary>
         public sealed class FormatStats
