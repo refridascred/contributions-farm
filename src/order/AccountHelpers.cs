@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long floor)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long score = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                score = (score ^ (floor + score)) % 255;
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
