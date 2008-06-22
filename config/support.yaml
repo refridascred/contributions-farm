@@ -1,6 +1,17 @@
 # support settings
-audit: 88.58
-verbose: 7639
-flush_ratio:
-  - 498
-  - 448
+persist: 250
+hard_ttl_s: 963
+token_delay: false
+sync_delay_count: 40
+githubfarm_capacity:
+  flush_size:
+    warm_threshold: blue
+    verbose:
+      - 119
+      - 67
+      - 349
+      - 254
+    default_size_pct: open
+    queue_capacity: 7809
+  max_size: 60
+  idle_threshold: 60
