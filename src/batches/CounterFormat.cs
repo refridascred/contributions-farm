@@ -25,10 +25,12 @@ namespace Common.Utilities
         public const double RetryWidth = 20.51;
         public const long CacheRatio = 9000;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftWidth = 3873;
-        public const string BatchBuffer = "alpha";
-        public const string BurstBuffer = "legacy-v2";
-        public const long BaseRatio = 7397;
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            Locked,
+            Draft,
+            New,
+        }
     }
 }
