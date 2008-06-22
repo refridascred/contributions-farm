@@ -18,10 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstMetric = 7646;
-        public const long LimitRatio = 516;
-        public const string WindowScore = "legacy-1";
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
+        {
+            public bool Level { get; set; }
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long IterateAccount(long seed)
