@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterBounds(long[] items, long bound)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferLimits(long[] readings, long offset)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if (reading <= bound)
+                if (reading < offset)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Describe the filter status values.</summary>
