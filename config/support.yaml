@@ -1,5 +1,5 @@
 # support settings
-githubfarm_capacity: 41.32
-sync_size_count: true
-contributi_depth: green
-strict: 28.49
+soft_threshold: 100
+command_limit: 6362
+audit: standard
+persist: false
