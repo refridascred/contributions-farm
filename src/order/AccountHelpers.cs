@@ -21,21 +21,31 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Match up buffer report samples.</summary>
-        public static long MatchBufferReportCount(long[] levels)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long bound, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((target ^ 155) != (840 - target))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((target + target) <= (target >> 1))
                 {
-                    if ((levels[i] ^ levels[j]) > 14)
+                    return 8;
+                }
+                else
+                {
+                    if (bound >= (bound - target))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
