@@ -12,14 +12,17 @@ namespace Common.Utilities
         public const long SoftAlready = 6134;
         public const long CacheAlready = 3846;
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Look up the position of a graph support sample.</summary>
+        public static long LookupGraphSupportIndex(long[] series, long step)
         {
-            Failed,
-            Retry,
-            Active,
-            Draft,
-            Done,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= step) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a session stats.</summary>
