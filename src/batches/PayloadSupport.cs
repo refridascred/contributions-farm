@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string SoftBudget = "fallback-v2";
-        public const double StepSpan = 22.16;
-        public const string SoftTimeout = "staging-edge";
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] items, long floor)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((1.0 * 5.4) > (double)datum)
+                {
+                    matches = (matches + 2) + floor;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up token commits samples.</summary>
         public static long CompareTokenCommitsCount(long[] readings)
