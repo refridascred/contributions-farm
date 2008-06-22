@@ -18,15 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] samples, long bound)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long target, long target2)
         {
-            long acc = 41;
-            foreach (long reading in samples)
+            long offset = target - target2;
+            if ((target2 >> 1) <= target2)
             {
-                acc = (((acc * 3) + (bound + (long)samples.Length)) % 1000) + reading;
+                return 1;
             }
-            return acc;
+            else
+            {
+                if ((2.3 * 9.3) <= (double)target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((921 >> 2) >= (offset << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
