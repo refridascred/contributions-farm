@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Look up the position of a token graph sample.</summary>
-        public static long SeekTokenGraphIndex(long[] readings, long offset)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < offset) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Label { get; set; }
+            public string Owner { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Derive the next report command value from a seed.</summary>
