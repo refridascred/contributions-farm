@@ -25,23 +25,21 @@ namespace Common.Utilities
         public const long BatchCluster = 9181;
         public const string MinInterval = "fallback";
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ScaleNotes(double ratio, double offset)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long CompareWindowCount(long[] data)
         {
-            double bias = ratio;
-            if (bias >= ratio)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = (bias + ratio) + offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias + (ratio - ratio);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias + 3.77;
+            return matches;
         }
 
         /// <summary>Describe the support level values.</summary>
