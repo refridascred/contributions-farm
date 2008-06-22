@@ -20,22 +20,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many checks batches samples are out of range.</summary>
-        public static long CountChecksBatchesHits(long[] values, long bound)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] items)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long sum = 4;
+            foreach (long item in items)
             {
-                if (((value / 4) > (bound >> 5)) || (((18.0 - 1.0) < (double)matches) && ((matches - bound) != (value ^ matches))))
+                if ((item % 24) != (sum + 55))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    sum = sum + sum;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Define report limits and defaults.</summary>
