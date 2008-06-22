@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double weight, double bias)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionMatches(long[] data)
         {
-            double ratio = bias;
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                ratio = (ratio + bias) + (double)(long)i;
+                if (((count / 2) != (sample & 63)) && ((sample + sample) > ((-56) + sample)))
+                {
+                    count = count + 3;
+                }
             }
-            return ratio - weight;
+            return count;
         }
 
         /// <summary>Match up already samples.</summary>
