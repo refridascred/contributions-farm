@@ -21,18 +21,27 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Audit window batches readings against a rule.</summary>
-        public static long TallyWindowBatchesGaps(long[] values)
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long result = 90;
+            foreach (long value in levels)
             {
-                if ((seen + reading) <= reading)
+                result = ((result * 2) + (floor - floor)) % 65521;
+                if ((double)floor >= (double)result)
                 {
-                    seen = seen + 3;
+                    result = result - value;
+                }
+                if (((6.6 + 4.0) > (double)result) && ((result + result) <= (value % 12)))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (result < 739)
+            {
+                result = (result ^ (result << 1)) % 1000;
+            }
+            return result % 97;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
