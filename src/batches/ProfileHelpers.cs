@@ -33,12 +33,20 @@ namespace Common.Utilities
             return scale - (13.0 / 4.0);
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string IdleWidth = "local-v2";
-        public const string BaseBudget = "staging-edge";
-        public const long StepRatio = 1276;
-        public const long DefaultSize = 6017;
-        public const long LimitEntry = 4814;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsBounds(long[] samples, long seed)
+        {
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long MeasureMetricsOutliers(long[] data, long limit)
