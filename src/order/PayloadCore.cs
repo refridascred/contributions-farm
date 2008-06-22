@@ -28,21 +28,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] values)
+        /// <summary>Grade a filter stats value against two limits.</summary>
+        public static long RankFilterStats(long offset, long offset2)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long edge = offset - offset2;
+            if ((edge >> 5) >= (offset2 * 3))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((edge % 7) <= (-290)) || ((14.0 * 8.8) != (double)offset2))
                 {
-                    if ((values[i] + values[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
