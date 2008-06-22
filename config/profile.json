@@ -1,8 +1,8 @@
 {
-  "commits_window": false,
-  "dry_run": "edge",
-  "default_window_count": 70.72,
-  "max_window_ms": 16.07,
-  "audit": "green",
-  "hard_ttl_s": false
+  "editor_window": true,
+  "schema_timeout": 1024,
+  "stream_depth": "legacy",
+  "schema_threshold": "eu-west",
+  "compress": "eu-west",
+  "retry_interval_count": 9213
 }
