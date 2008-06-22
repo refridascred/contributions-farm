@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] series)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] readings, long origin)
         {
-            long mix = 6;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                mix = (((mix << 3) ^ 1) % 255) ^ item;
+                if ((datum << 3) > datum)
+                {
+                    count = (count + 1) + origin;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
