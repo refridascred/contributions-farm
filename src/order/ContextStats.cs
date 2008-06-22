@@ -29,19 +29,25 @@ namespace Common.Utilities
         public const long MaxRoute = 6241;
         public const string MinInterval = "staging-v2";
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueLimits(long[] series, long bound)
+        /// <summary>Classify a support record pair into a bucket.</summary>
+        public static long GradeSupportRecord(long floor, long floor2)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long slot = floor + floor2;
+            if (((slot - slot) < (27 / 8)) && ((slot >> 1) >= (slot + slot)))
             {
-                if (datum > bound)
+                return 8;
+            }
+            else
+            {
+                if ((0.53 * 9.78) == (double)floor)
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return stale;
         }
 
         /// <summary>Scale a batches tools figure with a bias.</summary>
