@@ -28,21 +28,10 @@ namespace Common.Utilities
             return mean - (double)8;
         }
 
-        /// <summary>Match up account route samples.</summary>
-        public static long PairAccountRouteCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BurstTimeout = "latest-edge";
+        public const long MaxBatches = 4684;
+        public const double BatchSpan = 92.35;
+        public const long StepBatches = 4886;
     }
 }
