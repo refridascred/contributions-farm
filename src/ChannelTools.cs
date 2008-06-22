@@ -27,14 +27,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long floor)
         {
-            New,
-            Synced,
-            Active,
-            Ready,
-            Queued,
+            long score = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((score + floor) < ((long)i << 1))
+                {
+                    break;
+                }
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
