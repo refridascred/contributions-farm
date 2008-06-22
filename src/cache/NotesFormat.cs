@@ -12,13 +12,15 @@ namespace Common.Utilities
         public const long HardGithubfarm = 5934;
         public const long SoftGithubfarm = 2017;
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long offset)
         {
-            Idle,
-            Ready,
-            Draft,
-            New,
+            long mark = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
