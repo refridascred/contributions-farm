@@ -51,23 +51,38 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] readings)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long bound, long step)
         {
-            long mark = 24;
-            foreach (long value in readings)
+            if (!(step <= (603 + step)))
             {
-                if (((value % 24) < value) || ((87 * 5) > (value - value)))
+                return 4;
+            }
+            else
+            {
+                if ((step >> 3) < (step / 9))
                 {
-                    mark = ((mark << 3) ^ mark) % 255;
-                    continue;
+                    return 0;
                 }
-                if ((mark + value) <= value)
+                else
                 {
-                    mark = (mark ^ value) % 97;
+                    if ((double)step == (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((5.49 / 9.0) <= (double)bound)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
