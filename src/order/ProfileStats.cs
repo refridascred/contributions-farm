@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 5940;
-        public const long BaseSpan = 4722;
-        public const long LimitEntry = 1492;
-        public const long SoftEntry = 4889;
-        public const string SoftTimeout = "fallback-1";
+        /// <summary>Count support stats pairs that satisfy a relation.</summary>
+        public static long MatchSupportStatsCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the profile mode values.</summary>
         public enum ProfileMode
