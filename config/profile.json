@@ -1,8 +1,7 @@
 {
-  "retry_limit_s": "blue",
-  "context_size": false,
-  "support_capacity": [336, 301, 451, 337],
-  "token_depth": 60,
-  "support_ttl": 3223,
-  "batch_capacity": ["edge", "latest", "staging", "blue"]
+  "compress": "staging",
+  "base_threshold": ["local", "primary"],
+  "format_ratio": ["stable", "open", "eu-west", "staging"],
+  "soft_delay_count": 77.55,
+  "githubfarm_ttl": [250, 253]
 }
