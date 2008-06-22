@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many window batch samples are out of range.</summary>
-        public static long CountWindowBatchMatches(long[] samples, long limit)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)datum > (double)seen)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 2) - limit;
+                    if ((series[i] ^ series[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the support kind values.</summary>
