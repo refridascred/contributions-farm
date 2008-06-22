@@ -35,24 +35,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long target, long floor)
+        /// <summary>Digest a series of stats session entries.</summary>
+        public static long ScoreStatsSession(long[] samples)
         {
-            if ((target % 100) < (target << 1))
+            long total = 27;
+            foreach (long item in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor & 63) >= 471)
+                if (!((double)total > 20.0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    total = (total ^ ((long)samples.Length + item)) % 101;
                 }
             }
+            return total % 97;
         }
 
         /// <summary>Describe the window state values.</summary>
