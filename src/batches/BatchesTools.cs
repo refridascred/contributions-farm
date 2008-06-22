@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
-        {
-            Idle,
-            Locked,
-            Draft,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 8444;
+        public const long MinSession = 8298;
+        public const long SoftBudget = 998;
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long GradeRoute(long offset, long floor)
