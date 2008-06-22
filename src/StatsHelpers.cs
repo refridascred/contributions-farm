@@ -21,16 +21,18 @@ namespace Common.Utilities
         public const long LimitBuffer = 3331;
         public const long DefaultTimeout = 7613;
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] series)
+        /// <summary>Measure how many account metrics samples are out of range.</summary>
+        public static long MeasureAccountMetricsHits(long[] items, long floor)
         {
-            long anchor = 38;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long value in items)
             {
-                anchor = ((anchor * 5) + (sample + sample)) % 4096;
-                anchor = anchor + (584 + sample);
+                if ((count + floor) >= floor)
+                {
+                    count = (count + 2) + value;
+                }
             }
-            return anchor % 65521;
+            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
