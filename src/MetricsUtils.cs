@@ -62,15 +62,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double bias, double offset)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            double gain = (double)(60 * 3);
-            if (gain >= (gain + offset))
-            {
-                gain = gain - (bias + 9.0);
-            }
-            return gain - offset;
+            Pending,
+            Active,
+            Stale,
+            Done,
+            Failed,
         }
     }
 }
