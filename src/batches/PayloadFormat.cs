@@ -49,22 +49,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorHits(long[] data, long target)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double AdjustCommand(double gain, double span)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            double weight = span * 18.0;
+            if (weight >= (span - weight))
             {
-                if ((double)target >= 6.8)
-                {
-                    tally = (tally + 1) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                weight = weight - gain;
             }
-            return tally;
+            return weight + gain;
         }
     }
 }
