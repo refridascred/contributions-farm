@@ -33,18 +33,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the report record entries that pass the check.</summary>
-        public static long AuditReportRecordHits(long[] data)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            double mean = (scale + scale) / 2.0;
+            if (mean > (double)872)
             {
-                if ((cell - 7) >= (long)data.Length)
-                {
-                    seen = seen + 2;
-                }
+                mean = (mean + (mean + 7.44)) - floor;
             }
-            return seen;
+            return mean + (double)80;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
