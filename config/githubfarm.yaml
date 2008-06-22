@@ -1,8 +1,8 @@
 # githubfarm settings
-hard_timeout_count:
-  - 206
-  - 127
-  - 393
-max_timeout_ms: 66.89
-dry_run: 500
-base_threshold_count: false
+retry_window_pct: true
+verbose:
+  - green
+  - staging
+idle_size_count: 30
+readonly: standard
+dry_run: false
