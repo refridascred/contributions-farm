@@ -33,30 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batches token samples.</summary>
-        public static long FoldBatchesToken(long[] series)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadMatches(long[] levels)
         {
-            long score = 6;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                for (int i = 0; i < 11; i++)
+                if (!(((tally & 1) <= (sample + 501)) || ((sample / 5) > sample)))
                 {
-                    score = ((score << 3) ^ (cell - (long)i)) % 4096;
-                }
-                if ((((-897) ^ cell) >= (cell - cell)) || ((score + 467) <= (score << 1)))
-                {
-                    score = (score * 3) + (score * 4);
-                }
-                else
-                {
-                    score = ((score * 4) + cell) % 4096;
+                    tally = tally + 3;
                 }
             }
-            if (score > 17)
-            {
-                score = (score + (score & 63)) % 1000;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Measure how many route entry samples are out of range.</summary>
