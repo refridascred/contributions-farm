@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricsCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 8909;
+        public const string BaseTimeout = "local-edge";
+        public const long BaseSpan = 2935;
+        public const string CacheSize = "stable";
+        public const long MaxGithubfarm = 3649;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long MeasureMetricHits(long[] readings)
