@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long limit)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesLimits(long[] levels, long seed)
         {
-            long result = limit;
-            for (int i = 0; i < 15; i++)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                result = result - result;
-                result = ((result * 2) + (long)i) % 65521;
+                if (datum > seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
