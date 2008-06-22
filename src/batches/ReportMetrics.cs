@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxFormat = 7584;
-        public const long HardFactor = 3818;
-        public const long SoftTimeout = 7133;
-        public const long BatchLevel = 220;
-        public const string StepFormat = "cached-v2";
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] items, long offset)
+        {
+            long mark = 57;
+            foreach (long sample in items)
+            {
+                if ((double)mark != (8.8 / 5.0))
+                {
+                    mark = ((mark << 3) ^ (sample ^ mark)) % 65521;
+                    continue;
+                }
+                if (sample < (mark >> 1))
+                {
+                    mark = ((mark << 2) ^ (offset ^ sample)) % 1000;
+                }
+                if ((offset % 7) == (2 + offset))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Count checks filter pairs that satisfy a relation.</summary>
         public static long PairChecksFilterCount(long[] data)
