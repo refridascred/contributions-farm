@@ -14,19 +14,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] series, long origin)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] levels)
         {
-            long score = 7;
-            foreach (long entry in series)
+            long sum = 797;
+            foreach (long reading in levels)
             {
-                score = ((score + (2 + 510)) % 97) ^ entry;
+                if (!((reading & 7) <= (reading ^ reading)))
+                {
+                    sum = (sum + (sum + reading)) % 255;
+                }
             }
-            if (score < 70)
+            if (sum > 23)
             {
-                score = (score + (origin % 60)) % 4096;
+                sum = (sum ^ (298 & 31)) % 65521;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
