@@ -38,10 +38,22 @@ namespace Common.Utilities
         public const long StepScore = 9237;
         public const long DefaultRecord = 8539;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepTimeout = 8645;
-        public const long LimitStream = 478;
-        public const double WindowStream = 95.02;
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long TallyToken(long[] series)
