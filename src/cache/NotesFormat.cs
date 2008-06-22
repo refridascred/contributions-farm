@@ -12,15 +12,17 @@ namespace Common.Utilities
         public const long HardGithubfarm = 5934;
         public const long SoftGithubfarm = 2017;
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long offset)
+        /// <summary>Look up the position of a report graph sample.</summary>
+        public static long FindReportGraphIndex(long[] readings, long bound)
         {
-            long mark = offset;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark * 4) + (long)i) % 101;
+                if ((readings[i] > bound) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Accumulate session samples.</summary>
