@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionLimits(long[] series, long bound)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            Locked,
+            Done,
+            Idle,
+            Pending,
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
