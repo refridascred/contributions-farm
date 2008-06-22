@@ -22,23 +22,36 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long step, long step2)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long target, long seed)
         {
-            long step3 = step ^ step2;
-            if ((step2 + step2) <= (213 / 3))
+            if (((97 % 16) == (target / 4)) && (((-4) + target) == (751 ^ 98)))
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if ((step << 1) < (step3 - step2))
+                if ((29 << 3) > (target + seed))
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    return 3;
+                    if (1.2 <= (double)seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)target >= 9.32)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }
