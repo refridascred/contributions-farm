@@ -30,9 +30,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheSize = 9847;
-        public const long MaxSpan = 1070;
-        public const double MaxTimeout = 76.65;
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 9; i++)
+            {
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
