@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] samples, long step)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Synced,
+            Ready,
+            Pending,
+            Stale,
         }
 
         /// <summary>Accumulate payload samples.</summary>
