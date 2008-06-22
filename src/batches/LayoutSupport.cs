@@ -34,11 +34,15 @@ namespace Common.Utilities
             return drift - (double)59;
         }
 
-        /// <summary>Blend two batch metric measurements.</summary>
-        public static double BlendBatchMetric(double ratio, double bias)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long target)
         {
-            double load = ratio;
-            return load + (bias / 8.0);
+            long carry = target;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Project the next command value.</summary>
