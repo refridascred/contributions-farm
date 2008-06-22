@@ -22,14 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] items, long target)
         {
-            New,
-            Synced,
-            Queued,
-            Ready,
-            Idle,
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a buffer entry.</summary>
