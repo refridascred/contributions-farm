@@ -18,18 +18,19 @@ namespace Common.Utilities
         public const long LimitQueue = 4851;
         public const long BatchQueue = 3156;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelMatches(long[] readings)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamLimits(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if ((entry <= (tally - entry)) && (entry > ((long)readings.Length - entry)))
+                if (sample > limit)
                 {
-                    tally = tally + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
