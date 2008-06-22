@@ -1,15 +1,14 @@
 # Command notes
 
-Use channel settings to tune how often payload data is refreshed.
-Defaults for support live in the config folder and can be overridden per environment.
-The stats report groups every token by counter.
+Keep batch and payload names short and lowercase.
+When a stats fails, the window handler retries a few times before giving up.
 
-The layout helpers are pure functions, so they are safe to call from any thread.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
+Use commits settings to tune how often channel data is refreshed.
+The token helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer channel defaults
-- Keep notes values small
-- Review support limits each release
-- Log every batch change
+- Keep token values small
+- Prefer contributi defaults
+- Review cache limits each release
+- Document new entry fields
