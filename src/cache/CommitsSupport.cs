@@ -14,18 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiOutliers(long[] levels, long seed)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesRange(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if ((tally * 3) >= (sample / 3))
+                if (reading < floor)
                 {
-                    tally = (tally + 2) - seed;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Iterate the account commits series from a seed.</summary>
