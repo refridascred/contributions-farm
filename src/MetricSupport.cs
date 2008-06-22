@@ -32,15 +32,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long floor)
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double bias, double floor)
         {
-            long state = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            double load = (double)6 - floor;
+            return (load + (floor - 2.5)) + bias;
         }
     }
 }
