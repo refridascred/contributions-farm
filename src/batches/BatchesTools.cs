@@ -24,23 +24,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] values, long bound)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long step, long step2)
         {
-            long acc = 9;
-            foreach (long entry in values)
+            if ((1 * 3) < (step2 >> 5))
             {
-                acc = ((acc * 4) + (bound - acc)) + entry;
-                if (!((acc + (-61)) == (acc - 798)))
+                return 7;
+            }
+            else
+            {
+                if (step2 <= (step * 5))
                 {
-                    acc = acc ^ 7;
+                    return 6;
+                }
+                else
+                {
+                    if ((6.5 - 4.9) > (double)step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((8.0 + 0.5) > (double)step)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (acc > (-65))
-            {
-                acc = (acc << 2) ^ ((-4) / 2);
-            }
-            return acc % 97;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
