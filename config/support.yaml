@@ -1,10 +1,22 @@
 # support settings
-sync_size: false
-retry_retries_ms: 55.74
-flush_retries_pct: 9564
-base_timeout_pct: edge
-batch_interval: latest
-soft_timeout_ms:
-  editor_depth: 500
-  soft_ratio_ms: 38
-  readonly: 19
+burst_depth:
+  readonly: 24.57
+  context_interval: 14.11
+  idle_size_ms: 46
+  base_depth:
+    - edge
+    - latest
+    - cached
+    - cached
+editor_size: 32.24
+hard_ttl_count:
+  - 185
+  - 62
+  - 341
+  - 47
+flush_ttl_s: cached
+dry_run:
+  - latest
+  - stable
+  - legacy
+  - local
