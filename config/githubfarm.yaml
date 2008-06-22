@@ -1,8 +1,19 @@
 # githubfarm settings
-retry_window_pct: true
-verbose:
-  - green
-  - staging
-idle_size_count: 30
-readonly: standard
-dry_run: false
+cache_window:
+  min_ttl_count: stable
+  queue_delay:
+    base_retries_pct:
+      - 436
+      - 73
+      - 15
+    compress: latest
+    poll_delay: fallback
+    max_ttl: primary
+  strict: false
+  batch_retries_count: local
+  warm_capacity_s: 11.15
+queue_ttl: blue
+retry_window: primary
+strict: false
+farm_window: fallback
+max_ttl: true
