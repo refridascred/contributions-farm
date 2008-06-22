@@ -28,15 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long target)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderRange(long[] values, long seed)
         {
-            long total = target;
-            for (int i = 0; i < 9; i++)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                total = ((total * 4) + (long)i) % 1000;
+                if (datum <= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
     }
 }
