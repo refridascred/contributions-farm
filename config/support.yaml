@@ -1,4 +1,8 @@
 # support settings
-githubfarm_ttl: 66
-warm_threshold_s: 39.66
-burst_capacity_count: 30
+retry_timeout_pct:
+  - 497
+  - 335
+cache_depth_pct: false
+cache_timeout: eu-west
+persist: true
+account_ttl: 87
