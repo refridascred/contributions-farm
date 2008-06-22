@@ -42,11 +42,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterLimits(long[] items, long origin)
         {
-            public string Weight { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
