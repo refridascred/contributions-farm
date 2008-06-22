@@ -62,12 +62,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinCount = 9371;
-        public const string HardGraph = "local-1";
-        public const double RetryGraph = 80.89;
-        public const string DefaultGraph = "staging-1";
-        public const long DefaultCount = 977;
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
+        {
+            public double Total { get; set; }
+            public string Count { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
