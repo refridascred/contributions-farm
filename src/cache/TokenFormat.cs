@@ -14,18 +14,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderOutliers(long[] data)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (!((value + value) <= (tally & 7)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Digest a series of channel entries.</summary>
