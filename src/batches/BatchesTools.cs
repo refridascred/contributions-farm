@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] readings)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 26;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                result = (result ^ (result % 10)) % 4096;
+                if ((item + 102) >= (item >> 4))
                 {
-                    if ((readings[i] - readings[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result ^ item) % 4096;
+                }
+                if ((double)item > 3.0)
+                {
+                    break;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Scale a filter entry figure with a bias.</summary>
