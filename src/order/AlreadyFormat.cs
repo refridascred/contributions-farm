@@ -64,15 +64,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftSpan = 1076;
+        public const long RetrySize = 7567;
+        public const long StepWidth = 9383;
+        public const long BurstDepth = 2902;
     }
 }
