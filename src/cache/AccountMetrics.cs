@@ -28,31 +28,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long floor, long bound)
+        /// <summary>Count the entry tools entries that pass the check.</summary>
+        public static long MeasureEntryToolsGaps(long[] readings, long bound)
         {
-            if ((floor << 3) >= bound)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)bound >= (2.81 * 8.4)) || ((floor << 1) >= (bound & 255)))
+                if (value >= tally)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!(12.0 > (double)floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    tally = (tally + 2) - bound;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
