@@ -1,7 +1,18 @@
 {
-  "warm_ratio": false,
-  "editor_size": "edge",
-  "min_depth": "cached",
-  "sync_window_count": "staging",
-  "persist": "primary"
+  "min_delay_pct": [157, 294, 359],
+  "flush_interval": [17, 337, 480, 307],
+  "persist": [363, 325],
+  "max_limit": 250,
+  "batch_window": {
+    "batch_interval": {
+      "persist": [300, 432, 128, 373],
+      "max_limit_ms": false,
+      "schema_interval": 3128,
+      "strict": "blue",
+      "poll_ratio_s": 57.78
+    },
+    "strict": "edge",
+    "cluster_window": "strict"
+  },
+  "base_delay": true
 }
