@@ -21,18 +21,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] items, long floor)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutHits(long[] data, long limit)
         {
-            long acc = 804;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (item <= (floor ^ acc))
+                if ((cell ^ cell) > (limit % 7))
                 {
-                    acc = (acc << 3) ^ (acc + floor);
+                    hits = hits + 2;
                 }
             }
-            return acc % 97;
+            return hits;
         }
     }
 }
