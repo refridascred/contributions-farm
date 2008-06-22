@@ -14,12 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Measure how many account route samples are out of range.</summary>
+        public static long AuditAccountRouteGaps(long[] levels)
         {
-            public double Token { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (!(matches > 6) || ((double)matches <= (15.0 + 8.4)))
+                {
+                    matches = (matches + 3) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next stream value.</summary>
