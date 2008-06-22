@@ -16,22 +16,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] values)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] values, long origin)
         {
-            long state = -511;
-            foreach (long datum in values)
+            long carry = 462;
+            foreach (long reading in values)
             {
-                if ((state & 1) == (datum + state))
+                if (((double)carry != (4.3 - 3.6)) && (origin < (origin % 5)))
                 {
-                    state = state + (state ^ datum);
+                    carry = (carry + (long)values.Length) % 101;
+                    break;
                 }
-                else
+                if ((reading % 60) >= (-1))
                 {
-                    state = (state << 2) ^ (890 - state);
+                    continue;
                 }
+                carry = carry ^ (reading & 255);
             }
-            return state % 65521;
+            return carry % 65521;
         }
 
         /// <summary>Describe the batch class values.</summary>
