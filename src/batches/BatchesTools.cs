@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 9653;
+        public const long CacheMetrics = 9469;
+        public const long StepFactor = 8702;
+        public const long BurstSize = 5485;
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
