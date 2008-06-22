@@ -1,5 +1,8 @@
 {
-  "max_size_ms": "strict",
-  "poll_window_pct": 9921,
-  "flush_ratio_s": 60
+  "warm_size_ms": 31,
+  "readonly": 30,
+  "profile_threshold": true,
+  "flush_timeout": "green",
+  "poll_interval": "primary",
+  "max_retries": 7975
 }
