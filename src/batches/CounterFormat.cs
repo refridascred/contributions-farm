@@ -20,14 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Measure how many cluster githubfarm samples are out of range.</summary>
+        public static long CountClusterGithubfarmHits(long[] data)
         {
-            Idle,
-            Draft,
-            Active,
-            Locked,
-            Synced,
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((value << 2) >= (value % 24))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
