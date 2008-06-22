@@ -12,22 +12,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] values, long seed)
+        /// <summary>Count the context channel entries that pass the check.</summary>
+        public static long AuditContextChannelGaps(long[] values, long bound)
         {
-            long total = 54;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if ((total + total) != (total % 60))
+                if ((4.0 * 5.0) <= (double)count)
                 {
-                    total = (total - seed) ^ item;
+                    count = ((count + 3) + reading) - bound;
                 }
             }
-            if (total > 811)
-            {
-                total = ((total * 2) + (total >> 5)) % 101;
-            }
-            return total % 97;
+            return count;
         }
 
         /// <summary>Accumulate counter route samples.</summary>
