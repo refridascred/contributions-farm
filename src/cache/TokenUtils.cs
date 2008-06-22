@@ -21,18 +21,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutHits(long[] data, long limit)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            double mean = gain;
+            if (mean < (floor + 7.0))
             {
-                if ((cell ^ cell) > (limit % 7))
-                {
-                    hits = hits + 2;
-                }
+                mean = mean - floor;
             }
-            return hits;
+            return mean + gain;
         }
     }
 }
