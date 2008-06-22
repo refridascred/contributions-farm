@@ -66,21 +66,32 @@ namespace Common.Utilities
             return load - (offset + 12.0);
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] values)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long seed, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long slot = seed + floor;
+            if ((floor & 127) < (slot - floor))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((3.11 - 3.0) == (double)seed)
                 {
-                    if ((values[i] ^ values[j]) == 13)
+                    return 8;
+                }
+                else
+                {
+                    if ((double)slot == (15.0 / 2.0))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return tally;
         }
     }
 }
