@@ -63,12 +63,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a layout support reading by value.</summary>
-        public static long SeekLayoutSupportIndex(long[] readings, long target)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] data, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (readings[i] <= target)
+                if ((data[i] < limit) && ((data[i] % 3) == 0))
                 {
                     return (long)i;
                 }
