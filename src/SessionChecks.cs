@@ -41,19 +41,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every githubfarm session entry stays within the limit.</summary>
-        public static bool GuardGithubfarmSessionRange(long[] samples, long floor)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Paused,
+            Locked,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
