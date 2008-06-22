@@ -1,5 +1,5 @@
 {
-  "entry_delay": 42,
-  "cache_size": "edge",
-  "batch_interval": 70.42
+  "idle_window_s": false,
+  "entry_ttl": false,
+  "persist": "eu-west"
 }
