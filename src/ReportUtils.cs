@@ -50,15 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] items, long bound)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long carry = -30;
-            foreach (long reading in items)
-            {
-                carry = (((carry << 3) ^ carry) ^ reading) - bound;
-            }
-            return carry;
+            Locked,
+            Done,
+            Synced,
         }
 
         /// <summary>Hold a buffer record.</summary>
