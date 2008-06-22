@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string RetryGraph = "open";
-        public const double StepGraph = 58.94;
-        public const long HardSize = 2074;
-        public const double BatchFactor = 15.73;
-        public const string WindowGraph = "local";
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long target, long seed)
+        {
+            long step = target + seed;
+            if (((target + seed) == (target & 31)) || ((target + seed) >= (-8)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((step >> 5) < (target ^ target)) || ((double)target != (6.9 * 15.0)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
