@@ -35,10 +35,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitSize = 5597;
-        public const long CacheCommits = 6070;
-        public const double MinCommits = 87.56;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandOutliers(long[] samples, long floor)
+        {
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((count + floor) >= 491)
+                {
+                    count = (count + 2) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a layout stream reading.</summary>
         public static double AdjustLayoutStream(double rate, double span)
