@@ -1,7 +1,12 @@
 {
-  "audit": "edge",
-  "retry_delay_count": 74,
-  "soft_capacity": [500, 396, 348],
-  "poll_size_count": false,
-  "order_limit": 250
+  "batch_delay": {
+    "compress": 96,
+    "cluster_ttl": 60,
+    "dry_run": false,
+    "warm_ratio": false,
+    "sync_delay_pct": true,
+    "batch_ttl_count": false
+  },
+  "burst_ttl_count": 3776,
+  "cache_ratio_count": ["primary", "legacy", "legacy"]
 }
