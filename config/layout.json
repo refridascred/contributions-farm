@@ -1,5 +1,6 @@
 {
-  "soft_window_s": true,
-  "report_window": 1,
-  "format_capacity": 4635
+  "retry_delay_ms": ["staging", "edge"],
+  "format_ratio": "blue",
+  "warm_threshold": 100,
+  "burst_interval_s": 8274
 }
