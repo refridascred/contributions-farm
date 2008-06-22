@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const long SoftAlready = 6134;
         public const long CacheAlready = 3846;
 
-        /// <summary>Scale a token batch figure with a bias.</summary>
-        public static double SmoothTokenBatch(double weight, double offset)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            double ratio = offset - 8.0;
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = ((ratio - ratio) - (double)(long)i) + weight;
-            }
-            return ratio - (double)97;
+            Closed,
+            Ready,
+            Draft,
+            Locked,
         }
 
         /// <summary>Describe the payload kind values.</summary>
