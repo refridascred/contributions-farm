@@ -20,18 +20,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (((count ^ count) == (count << 2)) || (((entry + entry) == (count + entry)) && ((5.5 - 10.0) >= (double)entry)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardRatio = 4686;
+        public const long MinCommand = 5381;
+        public const long CacheLevel = 5929;
     }
 }
