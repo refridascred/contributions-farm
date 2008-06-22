@@ -33,12 +33,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Count the report record entries that pass the check.</summary>
+        public static long AuditReportRecordHits(long[] data)
         {
-            Idle,
-            Paused,
-            Queued,
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((cell - 7) >= (long)data.Length)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
