@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double CacheBudget = 26.43;
-        public const string WindowMetric = "primary";
-        public const string BatchMetric = "cached-v2";
-        public const long CacheScore = 4810;
-        public const long BurstBudget = 5868;
+        /// <summary>Check that every queue command entry stays within the limit.</summary>
+        public static bool GuardQueueCommandLimits(long[] series, long target)
+        {
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Project the next record value.</summary>
         public static double AdjustRecord(double scale, double floor)
