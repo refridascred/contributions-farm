@@ -18,14 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] values, long seed)
         {
-            Queued,
-            Locked,
-            Done,
-            Idle,
-            Pending,
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
