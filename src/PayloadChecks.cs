@@ -73,13 +73,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long floor, long seed)
         {
-            Draft,
-            Stale,
-            Dropped,
-            Ready,
+            if ((581 < (seed + seed)) && ((floor - floor) >= (504 + 20)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((8.0 + 4.6) == (double)seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
