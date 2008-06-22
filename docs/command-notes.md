@@ -1,11 +1,14 @@
 # Command notes
 
-Run the context check before changing any entry limits.
-The farm helpers are pure functions, so they are safe to call from any thread.
+Keep contributi and commits names short and lowercase.
+Each format is validated before it reaches the notes queue.
+Each record is validated before it reaches the route queue.
+
+Run the contributi check before changing any channel limits.
+The window module keeps filter values in sync with the stats cache.
 
 ## Guidelines
 
-- Log every buffer change
-- Document new counter fields
-- Review session limits each release
-- Validate commits input early
+- Prefer route defaults
+- Review editor limits each release
+- Log every commits change
