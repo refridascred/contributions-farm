@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorGaps(long[] series, long step)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandOutliers(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (datum > (46 - datum))
+                if ((hits > (hits - 427)) && !((hits & 255) > (hits >> 2)))
                 {
-                    seen = (seen + 1) - step;
+                    hits = ((hits + 3) + sample) - seed;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
