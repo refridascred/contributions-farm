@@ -60,11 +60,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitLayout = 1550;
-        public const long WindowFactor = 2313;
-        public const long DefaultDepth = 8289;
-        public const string DefaultRatio = "cached-v2";
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsHits(long[] levels, long limit)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((13.0 - 3.8) < (double)hits)
+                {
+                    hits = ((hits + 2) + datum) + limit;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate session samples.</summary>
         public static long TallySession(long[] levels, long bound)
