@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long limit, long step)
         {
-            Closed,
-            Retry,
-            Paused,
-            Stale,
-            Locked,
+            if (((double)limit != (3.0 + 5.61)) && ((1.22 - 18.0) < (double)limit))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)step <= 1.9)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)step == (3.0 * 13.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
