@@ -12,18 +12,6 @@ while [ "${count}" -lt 5 ]; do
 done
 log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 2))
+for item in fallback eu-west blue standard; do
+    log "checking ${item}"
 done
-log "total ${total}"
-
-mode="${1:-primary}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
