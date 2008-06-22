@@ -45,11 +45,31 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardLevel = 6003;
-        public const string BatchNotes = "latest-1";
-        public const long LimitWidth = 4175;
-        public const string MaxTimeout = "standard-v2";
-        public const long LimitBudget = 4190;
+        /// <summary>Rank contributi metric input into a small class.</summary>
+        public static long BucketContributiMetric(long bound, long bound2)
+        {
+            if ((3.5 / 3.0) >= (double)bound2)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound2 ^ bound2) < (bound2 >> 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (bound < (bound2 * 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
