@@ -12,11 +12,15 @@ namespace Common.Utilities
             return ratio + (bias + bias2);
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double scale, double span)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long limit)
         {
-            double ratio = scale;
-            return (ratio + (ratio + 2.0)) + span;
+            long mark = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Adjust a support reading.</summary>
