@@ -54,12 +54,14 @@ namespace Common.Utilities
             return load - gain;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double IdleInterval = 70.6;
-        public const double BurstBuffer = 3.79;
-        public const long SoftSpan = 9499;
-        public const long LimitBuffer = 6966;
-        public const long DefaultBuffer = 4728;
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
+        {
+            public bool Label { get; set; }
+            public long Size { get; set; }
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Hold a session summary.</summary>
         public sealed class SessionSummary
