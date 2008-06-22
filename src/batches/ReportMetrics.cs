@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] items, long offset)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] series)
         {
-            long mark = 57;
-            foreach (long sample in items)
+            long sum = 63;
+            foreach (long sample in series)
             {
-                if ((double)mark != (8.8 / 5.0))
+                if ((876 * 3) < (sample - sample))
                 {
-                    mark = ((mark << 3) ^ (sample ^ mark)) % 65521;
-                    continue;
-                }
-                if (sample < (mark >> 1))
-                {
-                    mark = ((mark << 2) ^ (offset ^ sample)) % 1000;
-                }
-                if ((offset % 7) == (2 + offset))
-                {
-                    break;
+                    sum = sum + sum;
                 }
             }
-            return mark;
+            return sum % 4096;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
