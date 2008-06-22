@@ -20,18 +20,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many metric checks samples are out of range.</summary>
-        public static long AuditMetricChecksMatches(long[] items, long step)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long seed, long target)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long span = seed ^ target;
+            if ((3.7 >= (double)seed) || (seed >= 8))
             {
-                if ((item ^ hits) == (962 - hits))
+                return 2;
+            }
+            else
+            {
+                if (((target & 127) != (target ^ span)) || ((seed - seed) != (8 + 20)))
                 {
-                    hits = (hits + 3) + step;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Adjust a payload reading.</summary>
