@@ -46,10 +46,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double SoftMetric = 38.88;
-        public const long RetryLevel = 55;
-        public const string SoftWidth = "local-edge";
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 5251;
+        public const double MaxSpan = 90.24;
+        public const double RetrySpan = 22.0;
+        public const long MinBuffer = 6268;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long LimitLayout = 1550;
