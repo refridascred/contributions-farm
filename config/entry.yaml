@@ -1,14 +1,9 @@
 # entry settings
-min_size_ms:
-  - staging
-  - primary
-  - latest
-session_interval:
-  sync_interval_pct: 500
-  sync_delay_count: staging
-  enabled: false
-buffer_delay:
-  - 252
-  - 198
-  - 471
-notes_window: stable
+poll_delay_ms: 1024
+profile_size: 100
+stats_limit:
+  flush_ratio_s: false
+  retry_size: 17
+  burst_threshold: 348
+  profile_ratio: blue
+  max_capacity_ms: primary
