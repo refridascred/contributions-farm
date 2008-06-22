@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double gain, double span)
-        {
-            double bias = gain;
-            if (bias <= gain)
-            {
-                bias = bias + (bias / 6.0);
-            }
-            else
-            {
-                bias = bias - span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias - gain;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowDepth = 6772;
+        public const long SoftWidth = 6264;
+        public const double BaseTimeout = 10.27;
+        public const long MinWidth = 599;
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long TallyContributiHits(long[] series)
