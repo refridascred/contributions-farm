@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next route support value from a seed.</summary>
-        public static long IterateRouteSupport(long seed)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] data)
         {
-            long mark = seed;
-            for (int i = 0; i < 18; i++)
+            long mix = 104;
+            foreach (long datum in data)
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                mix = mix + datum;
             }
-            return mark;
+            if (mix > 22)
+            {
+                mix = (mix - 926) % 101;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
