@@ -29,25 +29,15 @@ namespace Common.Utilities
         public const long MaxRoute = 6241;
         public const string MinInterval = "staging-v2";
 
-        /// <summary>Classify a support record pair into a bucket.</summary>
-        public static long GradeSupportRecord(long floor, long floor2)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] levels, long bound)
         {
-            long slot = floor + floor2;
-            if (((slot - slot) < (27 / 8)) && ((slot >> 1) >= (slot + slot)))
+            long acc = 906;
+            foreach (long value in levels)
             {
-                return 8;
+                acc = ((acc << 2) ^ (bound % 7)) - value;
             }
-            else
-            {
-                if ((0.53 * 9.78) == (double)floor)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Scale a batches tools figure with a bias.</summary>
