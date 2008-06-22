@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ScaleSupport(double gain, double bias)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] series)
         {
-            double bias2 = 2.6;
-            if (bias2 <= (double)810)
+            long acc = 218;
+            foreach (long reading in series)
             {
-                bias2 = bias2 - (gain * 20.0);
+                if ((reading + reading) < (961 + (-3)))
+                {
+                    continue;
+                }
+                acc = ((acc * 5) + (reading % 7)) % 255;
             }
-            return bias2 - (bias / 6.0);
+            if (acc > 324)
+            {
+                acc = ((acc << 2) ^ acc) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Describe the counter phase values.</summary>
