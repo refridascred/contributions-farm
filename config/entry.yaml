@@ -1,4 +1,8 @@
 # entry settings
-dry_run: latest
-idle_ttl: 17.01
-batch_interval_ms: primary
+retry_ttl_pct:
+  - standard
+  - open
+  - local
+verbose: 19
+readonly: 30
+burst_retries: edge
