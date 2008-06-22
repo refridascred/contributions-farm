@@ -13,10 +13,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BurstScore = "open-v2";
-        public const double MinRatio = 3.39;
-        public const double CacheBatches = 88.77;
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public double Total { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Compare every pair of support stats readings.</summary>
         public static long CompareSupportStatsCount(long[] items)
