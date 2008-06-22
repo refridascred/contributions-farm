@@ -27,12 +27,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string LimitSpan = "standard-1";
-        public const long SoftRecord = 5332;
-        public const long BurstRecord = 9250;
-        public const long StepScore = 9237;
-        public const long DefaultRecord = 8539;
+        /// <summary>Match up buffer report samples.</summary>
+        public static long MatchBufferReportCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long PairTokenCount(long[] data)
