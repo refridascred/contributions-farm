@@ -1,15 +1,7 @@
 # support settings
-cache_timeout_pct:
-  - 354
-  - 489
-  - 369
-account_depth:
-  - 336
-  - 45
-min_retries_s: local
-githubfarm_depth:
-  batch_window: true
-  default_size_count: 30
-  soft_delay: edge
-idle_capacity: 6426
-readonly: blue
+flush_threshold_pct: 40.57
+buffer_capacity: fallback
+filter_capacity: 250
+notes_interval: 58.0
+idle_ttl: 7769
+batch_capacity_count: true
