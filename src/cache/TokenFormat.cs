@@ -30,10 +30,18 @@ namespace Common.Utilities
         public const long BaseChecks = 5179;
         public const long HardFactor = 7892;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double HardTimeout = 22.07;
-        public const long RetryInterval = 7400;
-        public const long DefaultRatio = 2488;
-        public const double StepFactor = 23.01;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueMatches(long[] levels, long seed)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if (((-492) * 4) <= (long)levels.Length)
+                {
+                    hits = ((hits + 2) + datum) - seed;
+                }
+            }
+            return hits;
+        }
     }
 }
