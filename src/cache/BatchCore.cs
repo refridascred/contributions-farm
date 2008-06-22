@@ -31,22 +31,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] levels, long offset)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] data, long bound)
         {
-            long score = 3;
-            foreach (long sample in levels)
+            long result = 566;
+            foreach (long reading in data)
             {
-                if (((71 - offset) <= score) || (82 <= (668 - sample)))
+                if ((double)reading != (double)bound)
                 {
-                    score = (score - (offset - offset)) % 97;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (offset - score)) % 1000;
+                    result = (result ^ (result & 3)) % 65521;
                 }
             }
-            return score;
+            if (result > 9)
+            {
+                result = ((result * 2) + (790 % 16)) % 97;
+            }
+            return result % 1000;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
