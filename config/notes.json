@@ -1,15 +1,5 @@
 {
-  "retry_limit_pct": {
-    "base_threshold_pct": 3304,
-    "verbose": {
-      "base_delay": "standard",
-      "hard_retries_count": ["latest", "fallback", "stable"],
-      "layout_ratio": 21.36
-    },
-    "order_window": true,
-    "retry_interval": [370, 247]
-  },
-  "default_interval_pct": 30,
-  "notes_ttl": 8,
-  "metric_depth": false
+  "poll_depth_count": false,
+  "strict": 7137,
+  "idle_depth_pct": 3407
 }
