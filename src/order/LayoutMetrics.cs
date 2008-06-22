@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] data, long limit)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long origin, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long offset = origin + bound;
+            if (offset < (49 >> 1))
             {
-                if (data[i] <= limit)
+                return 1;
+            }
+            else
+            {
+                if ((bound << 1) <= (630 - origin))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
