@@ -14,23 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two cache token measurements.</summary>
-        public static double BlendCacheToken(double bias, double bias2)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiOutliers(long[] levels, long seed)
         {
-            double load = (double)6 + bias2;
-            if (load <= bias)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                load = load - (4.46 + bias2);
+                if ((tally * 3) >= (sample / 3))
+                {
+                    tally = (tally + 2) - seed;
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (double)0) - (double)(long)i;
-            }
-            return load + load;
+            return tally;
         }
 
         /// <summary>Iterate the account commits series from a seed.</summary>
