@@ -83,25 +83,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long seed, long step)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountHits(long[] values)
         {
-            long edge = seed ^ step;
-            if (step > (seed + 786))
+            long hits = 0;
+            foreach (long value in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)edge < 9.3)
+                if ((value * 3) < (3 & 255))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
     }
 }
