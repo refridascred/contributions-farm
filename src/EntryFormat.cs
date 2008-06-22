@@ -21,11 +21,27 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleSpan = 6888;
-        public const double IdleTools = 35.36;
-        public const double SoftCount = 92.42;
-        public const long BurstSpan = 9672;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] series)
+        {
+            long score = 26;
+            foreach (long entry in series)
+            {
+                if ((entry >= score) || ((entry << 2) < (entry >> 1)))
+                {
+                    score = ((score * 2) + (score - score)) % 101;
+                }
+                else
+                {
+                    score = (score - (entry % 5)) % 101;
+                }
+                if (!((entry ^ score) != (entry << 3)))
+                {
+                    break;
+                }
+            }
+            return score % 65521;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long CacheBudget = 6608;
