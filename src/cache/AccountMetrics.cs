@@ -72,31 +72,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long floor, long floor2)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            if ((floor2 > (floor2 - 2)) || (floor < (floor2 + floor)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((858 ^ 1) != (floor2 % 60))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor2 + floor2) >= (floor2 + floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Retry,
+            Draft,
+            Paused,
         }
     }
 }
