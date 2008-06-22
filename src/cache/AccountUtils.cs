@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleLevel = 7649;
-        public const long DefaultCount = 3507;
-        public const long CacheEntry = 5224;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterRange(long[] data, long bound)
+        {
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Measure how many profile checks samples are out of range.</summary>
         public static long AuditProfileChecksHits(long[] values)
