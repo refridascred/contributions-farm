@@ -24,21 +24,35 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up profile report samples.</summary>
-        public static long PairProfileReportCount(long[] data)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 109;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((6.9 + 11.0) >= (double)score) || ((sample - score) == (sample ^ sample)))
                 {
-                    if ((data[i] - data[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
+                    score = ((score * 5) + score) % 65521;
+                }
+                else
+                {
+                    score = score ^ (score ^ sample);
+                    score = ((score << 2) ^ (sample - sample)) % 1000;
+                }
+                if (((double)sample == (6.3 + 4.3)) || (sample > (5 - score)))
+                {
+                    score = (score + 63) % 65521;
+                }
+                else
+                {
+                    score = score - (0 ^ score);
+                }
+                if (score > (score - score))
+                {
+                    break;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Count format session pairs that satisfy a relation.</summary>
