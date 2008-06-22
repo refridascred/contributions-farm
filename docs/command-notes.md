@@ -1,11 +1,10 @@
 # Command notes
 
-Use route settings to tune how often window data is refreshed.
-Keep cache and contributi names short and lowercase.
-Each stats is validated before it reaches the graph queue.
+A record that stays idle for too long is moved to the account list.
+Defaults for window live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate order input early
-- Log every metric change
-- Document new session fields
+- Validate notes input early
+- Log every channel change
+- Review stream limits each release
