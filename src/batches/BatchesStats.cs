@@ -65,9 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string WindowSize = "alpha-edge";
-        public const long LimitGithubfarm = 8817;
-        public const long BaseTimeout = 1892;
+        /// <summary>Iterate the layout filter series from a seed.</summary>
+        public static long RollLayoutFilter(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                if (!((seed % 64) < (long)i))
+                {
+                    continue;
+                }
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
+        }
     }
 }
