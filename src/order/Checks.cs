@@ -37,21 +37,24 @@ namespace Common.Utilities
             return ratio + (ratio * 17.0);
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] readings)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long offset, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)offset > (double)72)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (2 <= (offset / 3))
                 {
-                    if ((readings[i] - readings[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
