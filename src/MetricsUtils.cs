@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            Paused,
-            Idle,
-            Done,
-            Active,
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Measure how many account route samples are out of range.</summary>
