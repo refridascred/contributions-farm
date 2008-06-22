@@ -60,13 +60,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
-        {
-            public long Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MaxInterval = 23.24;
+        public const long BurstInterval = 1781;
+        public const double SoftTimeout = 81.59;
+        public const long CacheToken = 3534;
 
         /// <summary>Match up queue samples.</summary>
         public static long PairQueueCount(long[] readings)
