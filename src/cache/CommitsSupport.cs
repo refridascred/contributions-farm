@@ -14,21 +14,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] series)
+        /// <summary>Blend two cache token measurements.</summary>
+        public static double BlendCacheToken(double bias, double bias2)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double load = (double)6 + bias2;
+            if (load <= bias)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load - (4.46 + bias2);
             }
-            return seen;
+            else
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (double)0) - (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Iterate the account commits series from a seed.</summary>
