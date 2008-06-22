@@ -31,18 +31,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadGaps(long[] values)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordRange(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                if (!((3.7 * 5.76) > (double)sample))
+                if (reading >= bound)
                 {
-                    seen = seen + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
