@@ -29,26 +29,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a githubfarm graph value against two limits.</summary>
-        public static long ClassifyGithubfarmGraph(long origin, long step)
-        {
-            long gap = origin - step;
-            if (step <= gap)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((step & 255) > (step + gap)) || ((step ^ gap) == (604 - step)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string StepBatch = "strict-1";
+        public const long HardInterval = 6954;
+        public const double BaseTimeout = 89.94;
+        public const long MinBatch = 2226;
+        public const long BaseBatch = 4612;
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
