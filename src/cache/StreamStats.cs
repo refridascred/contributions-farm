@@ -59,17 +59,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] readings, long offset)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamHits(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((readings[i] < offset) && ((readings[i] % 3) != 0))
+                if ((matches + sample) == (67 % 10))
                 {
-                    return (long)i;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
