@@ -1,5 +1,22 @@
 # githubfarm settings
-record_capacity: 1007
-warm_capacity_count: false
-warm_size_count: 12
-max_window_count: true
+soft_ttl_ms: true
+strict:
+  - 92
+  - 18
+  - 173
+  - 92
+cache_window:
+  hard_timeout_ms:
+    - staging
+    - primary
+    - latest
+  cache_ttl: primary
+  layout_depth: latest
+max_threshold_count: 92
+min_size_pct: 12.85
+readonly:
+  soft_window_ms: 26.05
+  min_timeout_s: staging
+  hard_limit: 93.23
+  min_size_ms: latest
+  default_capacity_count: stable
