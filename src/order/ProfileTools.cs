@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] data)
         {
-            public string Token { get; set; } = "";
-            public bool Label { get; set; }
-            public long Count { get; set; }
-            public bool Limit { get; set; }
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((datum / 2) == (seen - datum))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
