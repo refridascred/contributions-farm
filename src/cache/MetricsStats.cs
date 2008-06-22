@@ -19,12 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double weight, double floor)
         {
-            Closed,
-            Idle,
-            Synced,
+            double gain = weight;
+            if (gain <= (weight + 0.89))
+            {
+                gain = (gain - (weight + gain)) + floor;
+            }
+            else
+            {
+                gain = gain - (gain / 9.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - (gain + 7.0)) + (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Hold a tools options.</summary>
