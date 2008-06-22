@@ -20,18 +20,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = (anchor << 3) ^ (target >> 5);
-                anchor = anchor ^ anchor;
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string IdleScore = "fallback-edge";
+        public const long SoftTools = 1198;
+        public const string BatchTools = "alpha-1";
+        public const long HardSpan = 9607;
 
         /// <summary>Adjust a payload reading.</summary>
         public static double SmoothPayload(double scale, double span)
