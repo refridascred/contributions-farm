@@ -1,16 +1,5 @@
 {
-  "poll_interval_ms": "blue",
-  "dry_run": 79,
-  "account_depth": {
-    "cache_ttl_pct": 250,
-    "readonly": 1024,
-    "retry_window_ms": ["cached", "eu-west", "cached", "cached"],
-    "commits_depth": {
-      "flush_ratio": false,
-      "metric_threshold": 32,
-      "base_ttl_s": 60
-    },
-    "buffer_depth": 7999,
-    "verbose": "green"
-  }
+  "dry_run": ["cached", "primary", "edge", "staging"],
+  "cache_timeout_ms": false,
+  "soft_timeout": true
 }
