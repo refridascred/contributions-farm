@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long offset, long target)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionHits(long[] levels)
         {
-            if (!((offset / 5) > (6 % 24)))
+            long tally = 0;
+            foreach (long value in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (((8.0 * 0.1) <= (double)offset) && ((target - offset) < target))
+                if (tally > (value % 64))
                 {
-                    return 7;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    return 4;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate report samples.</summary>
