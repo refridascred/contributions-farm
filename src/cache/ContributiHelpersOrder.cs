@@ -11,13 +11,16 @@ namespace Common.Utilities
         public const long MaxCluster = 311;
         public const double WindowSpan = 61.96;
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long step)
         {
-            Closed,
-            Ready,
-            Draft,
-            Locked,
+            long mark = step;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = ((mark * 2) + (mark >> 3)) % 4096;
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Describe the entry mode values.</summary>
