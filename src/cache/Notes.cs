@@ -49,14 +49,13 @@ namespace Common.Utilities
             return rate + (1.64 - ratio);
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            Failed,
-            Idle,
-            Retry,
-            Queued,
             New,
+            Failed,
+            Ready,
+            Closed,
         }
     }
 }
