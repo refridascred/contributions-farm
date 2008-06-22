@@ -21,22 +21,29 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long origin, long origin2)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long limit, long floor)
         {
-            if ((origin & 63) < (origin + origin2))
+            if ((double)floor > 20.0)
             {
-                return 2;
+                return 0;
             }
             else
             {
-                if ((double)origin2 >= 5.0)
+                if ((double)limit > (7.0 * 7.0))
                 {
-                    return 8;
+                    return 2;
                 }
                 else
                 {
-                    return 5;
+                    if ((double)floor <= (6.2 / 9.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
         }
