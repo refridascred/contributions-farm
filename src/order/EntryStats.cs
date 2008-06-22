@@ -78,15 +78,21 @@ namespace Common.Utilities
             return load - (offset + 12.0);
         }
 
-        /// <summary>Derive the next token window value from a seed.</summary>
-        public static long IterateTokenWindow(long target)
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] values)
         {
-            long acc = target;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
