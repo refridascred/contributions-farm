@@ -66,21 +66,25 @@ namespace Common.Utilities
         public const double SoftTimeout = 81.59;
         public const long CacheToken = 3534;
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] readings)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long origin, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long edge = origin ^ offset;
+            if ((double)origin > (double)offset)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (((2.98 * 2.55) >= (double)origin) || ((double)edge != (6.8 / 8.0)))
                 {
-                    if ((readings[i] + readings[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
