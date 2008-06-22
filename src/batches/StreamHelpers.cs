@@ -75,11 +75,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 7295;
-        public const long RetryCount = 2743;
-        public const long MinWidth = 4555;
-        public const long BurstSpan = 4934;
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
+        {
+            public long Offset { get; set; }
+            public double Level { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Project the next notes value.</summary>
         public static double SmoothNotes(double scale, double floor)
