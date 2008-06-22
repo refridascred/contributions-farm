@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double AdjustFilter(double rate, double offset)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            double mean = (double)2 + (double)3;
-            if (mean < (mean + 14.0))
-            {
-                mean = mean - offset;
-            }
-            return mean + (rate / 5.0);
+            Idle,
+            Pending,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Define account limits and defaults.</summary>
