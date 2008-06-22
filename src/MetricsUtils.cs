@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 2261;
-        public const string RetrySize = "standard-v2";
-        public const long SoftCache = 1221;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] levels)
+        {
+            long state = 65;
+            foreach (long datum in levels)
+            {
+                if ((datum - 311) >= state)
+                {
+                    state = (state * 2) + datum;
+                }
+            }
+            if (state < 4)
+            {
+                state = state - (state - state);
+            }
+            return state;
+        }
 
         /// <summary>Count the support stream entries that pass the check.</summary>
         public static long TallySupportStreamMatches(long[] samples)
