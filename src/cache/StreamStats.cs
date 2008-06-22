@@ -41,24 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long offset, long bound)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterGaps(long[] samples, long floor)
         {
-            if ((offset / 8) <= 907)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((bound + offset) <= (offset + offset)))
+                if (!((double)datum != (17.0 / 4.0)))
                 {
-                    return 3;
+                    hits = (hits + 3) + floor;
                 }
                 else
                 {
-                    return 5;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Find the first metrics farm entry that matches the target.</summary>
