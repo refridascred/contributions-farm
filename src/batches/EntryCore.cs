@@ -47,12 +47,20 @@ namespace Common.Utilities
             return scale + (scale * 8.0);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstProfile = 5046;
-        public const long LimitProfile = 4944;
-        public const double StepRatio = 44.78;
-        public const double HardProfile = 17.51;
-        public const long CacheRatio = 4061;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] values)
+        {
+            long carry = 787;
+            foreach (long datum in values)
+            {
+                carry = carry - (datum * 5);
+            }
+            if (carry < 49)
+            {
+                carry = (carry + (carry + carry)) % 65521;
+            }
+            return carry % 97;
+        }
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
