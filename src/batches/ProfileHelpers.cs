@@ -81,11 +81,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
-        {
-            public long Size { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string HardReport = "standard-1";
+        public const long StepReport = 3305;
+        public const long SoftFactor = 1519;
     }
 }
