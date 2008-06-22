@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterRange(long[] data, long bound)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordHits(long[] series)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (value <= bound)
+                if ((double)value != (2.8 / 5.0))
                 {
-                    ready = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Measure how many profile checks samples are out of range.</summary>
