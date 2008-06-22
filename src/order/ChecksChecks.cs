@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long limit)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long carry = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            Closed,
+            Locked,
+            Synced,
         }
 
         /// <summary>Find the first token context entry that matches the target.</summary>
