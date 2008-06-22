@@ -23,18 +23,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 2584;
+        public const string StepSpan = "standard";
+        public const long WindowAlready = 3245;
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long RankPayload(long seed, long floor)
