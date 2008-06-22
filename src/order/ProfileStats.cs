@@ -54,10 +54,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MaxSpan = 82.03;
-        public const string SoftSpan = "legacy-1";
-        public const string IdleTimeout = "local";
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheDepth = 8656;
+        public const double BurstRatio = 0.13;
+        public const string CacheSize = "stable-v2";
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
