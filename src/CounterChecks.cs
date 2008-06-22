@@ -34,32 +34,11 @@ namespace Common.Utilities
         public const long CacheCluster = 2977;
         public const double BaseTimeout = 22.01;
 
-        /// <summary>Grade a editor profile value against two limits.</summary>
-        public static long RankEditorProfile(long floor, long offset)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long slot = floor - offset;
-            if ((double)slot < (0.9 * 18.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((slot % 100) == (92 - floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(slot <= (-9)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
