@@ -39,15 +39,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine githubfarm entry values into a single score.</summary>
-        public static long CombineGithubfarmEntry(long[] values)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] levels, long target)
         {
-            long sum = 973;
-            foreach (long entry in values)
+            long anchor = -610;
+            foreach (long cell in levels)
             {
-                sum = ((sum << 2) ^ (entry / 5)) % 101;
+                if (((anchor + target) > (anchor + cell)) || ((35 % 12) >= (target >> 5)))
+                {
+                    anchor = anchor + (cell ^ cell);
+                }
             }
-            return sum;
+            return anchor % 65521;
         }
 
         /// <summary>Project the next command value.</summary>
