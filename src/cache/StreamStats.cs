@@ -60,14 +60,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] series, long step)
         {
-            New,
-            Pending,
-            Done,
-            Ready,
-            Draft,
+            long state = 8;
+            foreach (long datum in series)
+            {
+                if (!(step < (step + state)))
+                {
+                    state = state ^ (datum ^ (-6));
+                }
+                else
+                {
+                    state = (state + (state - step)) % 1000;
+                }
+            }
+            return state % 65521;
         }
     }
 }
