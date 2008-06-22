@@ -1,10 +1,18 @@
 {
-  "soft_threshold": 15.14,
-  "sync_limit_ms": "fallback",
-  "poll_delay_s": ["edge", "strict", "primary"],
-  "soft_ratio_ms": {
-    "soft_threshold": "staging",
-    "checks_window": 67,
-    "poll_size_ms": 43.66
-  }
+  "min_retries": 74,
+  "warm_retries_ms": "latest",
+  "verbose": 303,
+  "burst_threshold_s": {
+    "contributi_depth": {
+      "poll_ttl": false,
+      "channel_ratio": 35.58,
+      "session_retries": 15
+    },
+    "audit": "edge",
+    "poll_ratio_ms": true,
+    "idle_depth_ms": "blue",
+    "flush_interval_pct": "legacy"
+  },
+  "cache_threshold_s": "standard",
+  "audit": "stable"
 }
