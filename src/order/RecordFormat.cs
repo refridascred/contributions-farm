@@ -59,28 +59,28 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long origin, long seed)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long offset, long floor)
         {
-            if ((8.74 - 6.38) != (double)seed)
+            if ((offset / 9) <= (57 % 24))
             {
                 return 8;
             }
             else
             {
-                if ((579 & 31) < seed)
+                if ((offset + floor) <= offset)
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    if ((origin % 97) > (seed << 1))
+                    if ((double)floor >= 6.8)
                     {
-                        return 7;
+                        return 3;
                     }
                     else
                     {
-                        return 5;
+                        return 2;
                     }
                 }
             }
