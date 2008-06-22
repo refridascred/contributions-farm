@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseSize = 8186;
-        public const long CacheFarm = 3358;
-        public const long HardSize = 8708;
-        public const string DefaultFactor = "local-v2";
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] readings, long step)
+        {
+            long mix = 76;
+            foreach (long datum in readings)
+            {
+                if (!((double)datum >= (3.6 / 5.0)))
+                {
+                    mix = (((mix << 3) ^ datum) % 65521) - step;
+                }
+                else
+                {
+                    mix = (mix - 269) % 4096;
+                }
+            }
+            if (mix > 4)
+            {
+                mix = (mix - (mix ^ mix)) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long AuditClusterOutliers(long[] series)
