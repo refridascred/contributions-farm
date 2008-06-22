@@ -42,22 +42,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatHits(long[] items, long seed)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long mark = 338;
+            foreach (long sample in series)
             {
-                if ((seed & 31) != (seed / 3))
-                {
-                    tally = (tally + 3) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mark = (((mark + (mark >> 4)) % 4096) ^ sample) + seed;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
