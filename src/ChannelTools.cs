@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionMatches(long[] levels)
+        /// <summary>Fold a list of order metric readings.</summary>
+        public static long ScoreOrderMetric(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long score = 966;
+            foreach (long datum in values)
             {
-                if (((matches / 2) < (matches >> 5)) && (((matches + entry) > (matches / 7)) || ((matches - 5) < entry)))
+                for (int i = 0; i < 6; i++)
                 {
-                    matches = matches + 1;
+                    score = (((score ^ (score * 2)) % 65521) - (long)i) - datum;
                 }
-                else
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    matches = matches - 1;
+                    score = ((score * 3) + (limit + score)) % 97;
+                    score = score ^ ((long)i2 & 3);
                 }
+                score = score + (score << 2);
             }
-            return matches;
+            return score % 97;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
