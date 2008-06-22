@@ -68,21 +68,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] series)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double bias, double bias2)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain = bias + (5.34 + bias2);
+            if (gain >= bias)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = gain + (bias / 8.0);
             }
-            return matches;
+            else
+            {
+                gain = gain - gain;
+            }
+            return gain - (gain * 1.8);
         }
     }
 }
