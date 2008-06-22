@@ -11,11 +11,15 @@ namespace Common.Utilities
         public const long BaseReport = 5436;
         public const double MaxReport = 3.4;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string IdleScore = "fallback-edge";
-        public const long SoftTools = 1198;
-        public const string BatchTools = "alpha-1";
-        public const long HardSpan = 9607;
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
+        {
+            New,
+            Synced,
+            Active,
+            Ready,
+            Queued,
+        }
 
         /// <summary>Adjust a payload reading.</summary>
         public static double SmoothPayload(double scale, double span)
