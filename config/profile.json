@@ -1,6 +1,14 @@
 {
-  "commits_capacity": false,
-  "base_timeout": 2888,
-  "idle_size_ms": "strict",
-  "session_threshold": false
+  "base_window_s": {
+    "batch_timeout_pct": 5803,
+    "audit": "green",
+    "hard_timeout_ms": "stable",
+    "max_window_s": 6273,
+    "idle_ttl_ms": true,
+    "max_limit_ms": "cached"
+  },
+  "schema_ttl": "legacy",
+  "default_capacity_ms": "stable",
+  "cache_limit_count": ["legacy", "legacy", "edge", "local"],
+  "base_window": 100
 }
