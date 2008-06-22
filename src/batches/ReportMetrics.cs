@@ -29,11 +29,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Match up order counter samples.</summary>
+        public static long MatchOrderCounterCount(long[] values)
         {
-            public string Size { get; set; } = "";
-            public double Offset { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
