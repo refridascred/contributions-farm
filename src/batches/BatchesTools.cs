@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine editor stats values into a single score.</summary>
-        public static long FoldEditorStats(long[] values)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteGaps(long[] items, long floor)
         {
-            long total = -303;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (((sample - total) < (3 * 4)) && ((sample & 127) <= (total + sample)))
+                if ((double)floor != (double)datum)
                 {
-                    total = total + sample;
+                    tally = tally + 3;
                 }
             }
-            return total % 1000;
+            return tally;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
