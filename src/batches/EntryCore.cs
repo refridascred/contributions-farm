@@ -54,11 +54,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiGaps(long[] items)
         {
-            public double Ratio { get; set; }
-            public string Offset { get; set; } = "";
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (!(8.5 <= (double)tally))
+                {
+                    tally = (tally + 3) - item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
