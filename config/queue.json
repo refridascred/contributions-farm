@@ -1,22 +1,6 @@
 {
-  "filter_threshold": 35.43,
-  "persist": {
-    "base_ttl_ms": ["staging", "open", "stable"],
-    "order_window": "local",
-    "flush_size_pct": "cached",
-    "min_threshold": 53.84,
-    "command_delay": "cached"
-  },
-  "account_size": true,
-  "batches_size": {
-    "burst_timeout_count": {
-      "sync_depth_ms": 17,
-      "cluster_retries": 948,
-      "contributi_delay": 4807,
-      "command_window": false,
-      "idle_ratio": 4790
-    },
-    "burst_capacity_s": "staging",
-    "retry_ratio": 77.94
-  }
+  "soft_ratio": 43.4,
+  "sync_retries_count": false,
+  "flush_limit_count": ["open", "strict", "cached", "edge"],
+  "dry_run": true
 }
