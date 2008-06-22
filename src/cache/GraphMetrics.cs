@@ -46,13 +46,38 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Grade a notes queue value against two limits.</summary>
+        public static long SortNotesQueue(long seed, long floor)
         {
-            public long Size { get; set; }
-            public bool Level { get; set; }
-            public string Rank { get; set; } = "";
-            public string Mode { get; set; } = "";
+            if (floor <= (seed - seed))
+            {
+                return 8;
+            }
+            else
+            {
+                if (seed < (floor + floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((12.0 + 5.4) >= (double)floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor - 6) <= seed)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a filter info.</summary>
