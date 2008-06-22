@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long seed, long floor)
         {
-            public double Label { get; set; }
-            public string Owner { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long diff = seed - floor;
+            if (((seed << 1) != (seed + seed)) || ((double)seed <= (double)diff))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((diff > (floor + 331)) && ((seed + 31) != (floor + 281)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
