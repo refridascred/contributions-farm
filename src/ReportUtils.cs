@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxCount = 7817;
-        public const string HardScore = "staging";
-        public const long IdleNotes = 8322;
-        public const long BatchLevel = 7058;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryCount = 4461;
+        public const long BaseCount = 5022;
+        public const double BaseWidth = 63.18;
+        public const long BatchTools = 7946;
 
         /// <summary>Hold a format info.</summary>
         public sealed class FormatInfo
