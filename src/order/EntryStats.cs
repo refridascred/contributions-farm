@@ -52,13 +52,15 @@ namespace Common.Utilities
             return load + (load - weight);
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Derive the next token window value from a seed.</summary>
+        public static long IterateTokenWindow(long target)
         {
-            Active,
-            Dropped,
-            Paused,
-            Idle,
+            long acc = target;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
