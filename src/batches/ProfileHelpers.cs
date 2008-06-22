@@ -35,19 +35,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordLimits(long[] readings, long step)
+        /// <summary>Adjust a layout stream reading.</summary>
+        public static double AdjustLayoutStream(double rate, double span)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            double drift = (span - 0.96) - (span / 9.0);
+            for (int i = 0; i < 5; i++)
             {
-                if (sample < step)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = ((drift + (0.5 * 1.6)) - (double)(long)i) - rate;
             }
-            return ready;
+            return drift - span;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
