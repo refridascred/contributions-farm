@@ -14,10 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double SoftCount = 51.8;
-        public const double MaxCache = 40.45;
-        public const long BaseCache = 3149;
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
+        {
+            public string Limit { get; set; } = "";
+            public bool Size { get; set; }
+        }
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
