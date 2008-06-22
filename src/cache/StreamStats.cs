@@ -45,21 +45,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count editor format pairs that satisfy a relation.</summary>
-        public static long OverlapEditorFormatCount(long[] levels)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesGaps(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((count + datum) != (count / 8)) || ((count + count) == (count << 1)))
                 {
-                    if ((levels[i] + levels[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
