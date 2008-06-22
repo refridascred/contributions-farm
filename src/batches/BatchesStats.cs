@@ -31,18 +31,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metric entry readings against a rule.</summary>
-        public static long MeasureMetricEntryGaps(long[] values, long target)
+        /// <summary>Classify a githubfarm channel pair into a bucket.</summary>
+        public static long SortGithubfarmChannel(long offset, long seed)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            if (1.0 <= (double)seed)
             {
-                if ((673 >= hits) && ((-31) >= (target & 15)))
+                return 2;
+            }
+            else
+            {
+                if (!((seed >> 2) == (offset + offset)))
                 {
-                    hits = (hits + 2) + entry;
+                    return 6;
+                }
+                else
+                {
+                    if (seed < (seed / 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((offset & 255) < seed) && ((offset ^ offset) != (seed - offset)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
