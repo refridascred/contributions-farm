@@ -54,21 +54,11 @@ namespace Common.Utilities
         public const double HardProfile = 17.51;
         public const long CacheRatio = 4061;
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] values)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Ratio { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
