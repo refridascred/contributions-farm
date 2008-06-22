@@ -60,10 +60,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 636;
-        public const string BurstFormat = "latest";
-        public const double DefaultCount = 80.85;
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
+        {
+            Draft,
+            Ready,
+            Retry,
+            Queued,
+            Closed,
+        }
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long IterateRecord(long origin)
