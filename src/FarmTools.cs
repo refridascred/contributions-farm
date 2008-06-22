@@ -25,19 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metric report readings against a bound.</summary>
-        public static bool GuardMetricReportBounds(long[] readings, long origin)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteLimits(long[] readings, long step)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if (cell <= origin)
+                if (sample > step)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Define token limits and defaults.</summary>
