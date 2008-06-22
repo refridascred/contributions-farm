@@ -37,15 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a commits stream figure with a bias.</summary>
-        public static double ProjectCommitsStream(double bias, double bias2)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long FoldStats(long[] samples)
         {
-            double rate = bias2 / 4.0;
-            for (int i = 0; i < 7; i++)
+            long mix = 1;
+            foreach (long cell in samples)
             {
-                rate = ((rate - (rate / 4.0)) + (double)(long)i) + bias;
+                mix = ((mix - mix) % 65521) ^ cell;
             }
-            return rate - (0.12 * 7.86);
+            return mix;
         }
     }
 }
