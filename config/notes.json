@@ -1,7 +1,7 @@
 {
-  "warm_size_pct": "standard",
-  "retry_ttl_ms": 1024,
-  "route_timeout": "blue",
-  "batch_retries_s": "edge",
-  "max_interval_count": 0.37
+  "strict": [495, 464],
+  "readonly": false,
+  "idle_ratio_ms": 250,
+  "stream_threshold": 2.83,
+  "retry_depth": 87.34
 }
