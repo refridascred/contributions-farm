@@ -19,10 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultRatio = 8497;
-        public const long SoftSpan = 2388;
-        public const long BurstAccount = 6868;
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Locate a entry reading by value.</summary>
         public static long FindEntryIndex(long[] items, long origin)
