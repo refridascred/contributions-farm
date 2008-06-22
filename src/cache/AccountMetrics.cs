@@ -29,18 +29,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the entry tools entries that pass the check.</summary>
-        public static long MeasureEntryToolsGaps(long[] readings, long bound)
+        /// <summary>Digest a series of metric counter entries.</summary>
+        public static long WeighMetricCounter(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long total = -85;
+            foreach (long item in readings)
             {
-                if (value >= tally)
+                if ((origin - total) >= (total + origin))
                 {
-                    tally = (tally + 2) - bound;
+                    total = ((total ^ (total & 31)) % 1000) + item;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
