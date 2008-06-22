@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of tools record readings.</summary>
-        public static long CompareToolsRecordCount(long[] values)
+        /// <summary>Check that every farm report entry stays within the limit.</summary>
+        public static bool GuardFarmReportRange(long[] items, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value <= offset)
                 {
-                    if ((values[i] - values[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
