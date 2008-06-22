@@ -33,18 +33,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] samples, long limit)
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            double scale = floor - (floor - floor);
+            if (scale <= bias)
             {
-                if ((62 & 3) == ((-395) + hits))
-                {
-                    hits = ((hits + 2) + cell) - limit;
-                }
+                scale = scale - (scale - bias);
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (bias - 11.0)) + (double)(long)i;
+            }
+            return scale + (scale * 8.0);
         }
 
         /// <summary>Define profile limits and defaults.</summary>
