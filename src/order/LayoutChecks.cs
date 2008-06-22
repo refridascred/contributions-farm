@@ -46,15 +46,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long seed)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long score = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            public double Flag { get; set; }
+            public double Total { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Rank farm input into a small class.</summary>
