@@ -23,12 +23,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] samples)
         {
-            public double Score { get; set; }
-            public bool Owner { get; set; }
-            public string Size { get; set; } = "";
+            long state = 182;
+            foreach (long entry in samples)
+            {
+                state = ((state << 3) ^ (entry << 2)) % 65521;
+                state = (state ^ (entry - 29)) % 101;
+            }
+            if (state < 815)
+            {
+                state = state - (state * 5);
+            }
+            return state;
         }
 
         /// <summary>Combine githubfarm entry values into a single score.</summary>
