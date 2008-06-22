@@ -34,22 +34,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmGaps(long[] readings)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (!(((datum + datum) > 174) && ((16.0 / 8.0) >= (double)datum)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Grade a account report value against two limits.</summary>
