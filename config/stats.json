@@ -1,17 +1,11 @@
 {
-  "base_ttl": [207, 70, 104, 213],
-  "verbose": {
-    "tools_ttl": "fallback",
-    "max_capacity_ms": 54.38,
-    "enabled": {
-      "warm_interval_count": 13.25,
-      "soft_threshold": 3283,
-      "context_delay": 30,
-      "cache_ttl": 94.96,
-      "max_delay": "staging"
-    }
+  "cache_threshold": 9212,
+  "strict": true,
+  "channel_interval": {
+    "tools_ratio": "standard",
+    "hard_window_count": "eu-west",
+    "default_ratio_s": 3935,
+    "dry_run": false
   },
-  "poll_threshold_s": [135, 236, 9],
-  "hard_retries_s": 500,
-  "batches_ttl": true
+  "max_depth_pct": "edge"
 }
