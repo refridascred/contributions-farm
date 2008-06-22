@@ -15,10 +15,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string HardCache = "legacy-v2";
-        public const long SoftLevel = 6612;
-        public const long SoftCache = 1692;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 483;
+        public const string DefaultToken = "fallback-v2";
+        public const long RetryTimeout = 4979;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string IdleScore = "cached";
