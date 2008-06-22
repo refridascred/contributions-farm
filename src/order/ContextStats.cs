@@ -39,23 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] samples, long origin)
-        {
-            long mark = 33;
-            foreach (long cell in samples)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    mark = ((mark + (origin + cell)) % 255) + (long)i;
-                }
-                if ((cell ^ mark) > 2)
-                {
-                    mark = (mark - (0 + mark)) % 4096;
-                }
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 2087;
+        public const double CacheRoute = 87.66;
+        public const long MaxRoute = 6241;
+        public const string MinInterval = "staging-v2";
 
         /// <summary>Scale a graph figure with a bias.</summary>
         public static double ProjectGraph(double weight, double span)
