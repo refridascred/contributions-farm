@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            Pending,
-            Failed,
-            Active,
-            Closed,
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Rank context input into a small class.</summary>
