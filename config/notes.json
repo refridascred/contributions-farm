@@ -1,13 +1,10 @@
 {
-  "soft_delay": "latest",
-  "channel_timeout": 93,
-  "session_size": "local",
-  "retry_delay": 98,
-  "compress": 355,
-  "graph_retries": {
-    "poll_ratio": "fallback",
-    "soft_depth": 1024,
-    "batch_size_pct": 74.76,
-    "hard_size_ms": [293, 233]
-  }
+  "warm_window": {
+    "max_threshold_ms": 4899,
+    "idle_interval_count": [467, 103, 225],
+    "hard_size": 33,
+    "strict": "edge"
+  },
+  "warm_retries_ms": 96.76,
+  "dry_run": 65.46
 }
