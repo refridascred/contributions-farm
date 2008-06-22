@@ -15,21 +15,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of session commits readings.</summary>
-        public static long OverlapSessionCommitsCount(long[] series)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] data, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 51;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = (state - (datum + 98)) % 1000;
             }
-            return hits;
+            if (state < (-47))
+            {
+                state = ((state * 2) + (target * 3)) % 97;
+            }
+            return state % 1000;
         }
 
         /// <summary>Count profile buffer pairs that satisfy a relation.</summary>
