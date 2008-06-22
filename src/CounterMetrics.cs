@@ -28,13 +28,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
-        {
-            public string Flag { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double IdleQueue = 68.15;
+        public const long WindowQueue = 1185;
+        public const long BaseQueue = 4585;
 
         /// <summary>Describe the tools state values.</summary>
         public enum ToolsState
