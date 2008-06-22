@@ -38,12 +38,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long target, long floor)
         {
-            Idle,
-            Failed,
-            Paused,
+            if ((target % 100) < (target << 1))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor & 63) >= 471)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a account header.</summary>
