@@ -1,32 +1,5 @@
 # githubfarm settings
-checks_limit: 250
-readonly: 250
-hard_window_ms:
-  verbose: false
-  base_window:
-    sync_depth_s: 30.01
-    soft_interval: 96.35
-    checks_delay:
-      - 409
-      - 308
-      - 125
-    notes_window: true
-  cache_ttl_s: true
-  buffer_threshold:
-    cache_ratio_ms: 9.71
-    route_delay: 41
-    hard_depth: 36
-    idle_timeout_ms:
-      - stable
-      - stable
-      - strict
-      - legacy
-    graph_capacity: 87.93
-  min_size_count: latest
-  readonly: fallback
-checks_window:
-  max_retries_s: 84
-  notes_depth: false
-  schema_limit: false
-  poll_interval: 71
-  readonly: 500
+flush_retries_s: 3463
+buffer_timeout: local
+sync_retries: local
+verbose: 43
