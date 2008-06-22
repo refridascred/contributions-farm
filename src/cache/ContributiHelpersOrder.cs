@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string HardWidth = "latest";
-        public const long BaseInterval = 7374;
-        public const long MaxCluster = 311;
-        public const double WindowSpan = 61.96;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] data, long origin)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (!((datum << 3) != (datum & 3)))
+                {
+                    hits = (hits + 3) + origin;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Derive the next farm value from a seed.</summary>
         public static long StepFarm(long step)
