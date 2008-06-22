@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] values, long floor)
-        {
-            long carry = 28;
-            foreach (long reading in values)
-            {
-                carry = (((carry << 2) ^ (carry % 3)) % 97) - reading;
-                if ((floor % 12) <= floor)
-                {
-                    carry = carry - (carry - floor);
-                }
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 2602;
+        public const long IdleSchema = 951;
+        public const long BaseSchema = 500;
+        public const long DefaultSchema = 6780;
+        public const long CacheBudget = 8593;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double IdleChannel = 85.19;
