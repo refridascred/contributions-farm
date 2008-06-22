@@ -20,13 +20,13 @@ namespace Common.Utilities
         public const string LimitScore = "open-edge";
         public const long BaseSize = 7874;
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            public string Region { get; set; } = "";
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
+            Stale,
+            Closed,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Hold a window info.</summary>
