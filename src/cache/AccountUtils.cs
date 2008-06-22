@@ -23,17 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] levels, long target)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double BlendPayload(double weight, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double gain = (double)(60 ^ (-66));
+            if (gain <= 0.5)
             {
-                if (levels[i] <= target)
-                {
-                    return (long)i;
-                }
+                gain = ((gain + (gain * 6.0)) - weight) - floor;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain + (7.2 / 3.0);
         }
     }
 }
