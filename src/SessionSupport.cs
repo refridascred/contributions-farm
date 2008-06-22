@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long limit)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long offset)
         {
-            long anchor = limit;
-            for (int i = 0; i < 20; i++)
+            long total = offset;
+            for (int i = 0; i < 23; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                total = (total + ((long)i & 7)) % 65521;
+                if (!((double)offset < (double)total))
+                {
+                    total = total + (8 + total);
+                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
