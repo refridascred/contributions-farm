@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many metric context samples are out of range.</summary>
-        public static long MeasureMetricContextMatches(long[] items)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderLimits(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if (!((hits % 100) < (hits / 8)))
+                if (cell != step)
                 {
-                    hits = (hits + 1) - value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
