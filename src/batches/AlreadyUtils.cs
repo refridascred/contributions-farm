@@ -53,12 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string StepCommits = "primary-1";
-        public const double WindowSpan = 50.98;
-        public const string LimitWidth = "alpha-1";
-        public const long BatchCommits = 5277;
-        public const long HardCommits = 6093;
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
+        {
+            New,
+            Synced,
+            Pending,
+        }
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool VerifyStreamBounds(long[] values, long limit)
