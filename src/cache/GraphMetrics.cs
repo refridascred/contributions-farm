@@ -16,13 +16,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksMatches(long[] values, long offset)
         {
-            Draft,
-            Idle,
-            Paused,
-            Queued,
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (((double)offset > (1.2 * 2.0)) || ((entry / 9) >= (tally + tally)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the record phase values.</summary>
