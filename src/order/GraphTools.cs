@@ -18,12 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a buffer route figure with a bias.</summary>
-        public static double ScaleBufferRoute(double bias, double bias2)
-        {
-            double load = (double)(33 + (-2));
-            return ((load - load) + bias) + bias2;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultRatio = 8497;
+        public const long SoftSpan = 2388;
+        public const long BurstAccount = 6868;
 
         /// <summary>Locate a entry reading by value.</summary>
         public static long FindEntryIndex(long[] items, long origin)
