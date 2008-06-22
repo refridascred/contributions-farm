@@ -23,18 +23,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiHits(long[] levels)
+        /// <summary>Accumulate payload tools samples.</summary>
+        public static long CombinePayloadTools(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long mix = -45;
+            foreach (long reading in series)
             {
-                if ((sample >> 5) <= (sample % 10))
+                if ((reading >> 2) == (8 >> 3))
                 {
-                    matches = matches + 1;
+                    mix = (mix - (mix + 39)) % 4096;
+                    mix = ((mix << 3) ^ mix) % 255;
+                }
+                if ((8 - reading) > ((-2) / 9))
+                {
+                    mix = ((mix << 3) ^ (mix % 12)) % 1000;
                 }
             }
-            return matches;
+            if (mix < 60)
+            {
+                mix = mix ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Describe the schema level values.</summary>
