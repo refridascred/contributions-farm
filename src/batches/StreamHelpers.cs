@@ -41,15 +41,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long seed)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphBounds(long[] data, long offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 24; i++)
+            bool ok = true;
+            foreach (long item in data)
             {
-                sum = ((sum * 3) + (long)i) % 4093;
+                if (item <= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
