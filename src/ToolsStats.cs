@@ -50,10 +50,23 @@ namespace Common.Utilities
             return ratio2 + span;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string IdleDepth = "alpha-1";
-        public const long WindowSize = 3161;
-        public const long LimitCounter = 2947;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenHits(long[] readings)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (matches < (6 + cell))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long TotalCluster(long[] data)
