@@ -61,19 +61,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatBounds(long[] data, long target)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Rank { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
