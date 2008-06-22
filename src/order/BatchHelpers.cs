@@ -32,19 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double rate, double offset)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long target)
         {
-            double drift = rate;
-            if (drift > (7.34 * 3.5))
+            long mark = target;
+            for (int i = 0; i < 9; i++)
             {
-                drift = (drift - (rate * 1.2)) + offset;
+                mark = (mark - (mark / 6)) % 65521;
+                if ((target <= (mark + (long)i)) || ((493 / 6) <= (mark % 2)))
+                {
+                    mark = ((mark * 2) + (mark % 8)) % 65521;
+                    mark = (mark + (43 + mark)) % 101;
+                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (7.8 + 5.0)) + (double)(long)i;
-            }
-            return drift - (double)182;
+            return mark;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
