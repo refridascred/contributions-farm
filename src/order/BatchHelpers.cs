@@ -20,18 +20,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsMatches(long[] readings, long step)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long mix = 96;
+            foreach (long item in data)
             {
-                if (count > (6 + (-61)))
+                if (!((limit >> 2) == ((long)data.Length / 4)))
                 {
-                    count = ((count + 2) ^ datum) + step;
+                    mix = mix ^ item;
                 }
             }
-            return count;
+            return mix;
         }
     }
 }
