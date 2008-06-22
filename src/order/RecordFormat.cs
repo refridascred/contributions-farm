@@ -20,15 +20,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long bound)
+        /// <summary>Count the payload context entries that pass the check.</summary>
+        public static long AuditPayloadContextHits(long[] samples, long floor)
         {
-            long result = bound;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                result = ((result * 4) + (long)i) % 4093;
+                if ((reading & 63) <= (floor - 734))
+                {
+                    matches = matches + 3;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
