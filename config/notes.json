@@ -1,11 +1,6 @@
 {
-  "audit": 500,
-  "burst_window_pct": false,
-  "burst_limit": {
-    "batch_depth": [125, 457],
-    "contributi_size": "stable",
-    "dry_run": "edge",
-    "payload_retries": 69,
-    "idle_threshold_count": "fallback"
-  }
+  "flush_threshold": "primary",
+  "batch_limit_count": "fallback",
+  "warm_ratio_s": 30,
+  "soft_delay": true
 }
