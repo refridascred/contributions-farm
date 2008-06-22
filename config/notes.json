@@ -1,7 +1,10 @@
 {
-  "hard_ratio_s": 15.14,
-  "flush_threshold_s": 8226,
-  "verbose": ["edge", "cached"],
-  "min_capacity_s": 78.95,
-  "warm_depth_pct": "fallback"
+  "soft_threshold": 15.14,
+  "sync_limit_ms": "fallback",
+  "poll_delay_s": ["edge", "strict", "primary"],
+  "soft_ratio_ms": {
+    "soft_threshold": "staging",
+    "checks_window": 67,
+    "poll_size_ms": 43.66
+  }
 }
