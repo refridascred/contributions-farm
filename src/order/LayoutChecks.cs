@@ -23,27 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate payload tools samples.</summary>
-        public static long CombinePayloadTools(long[] series)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long mix = -45;
-            foreach (long reading in series)
-            {
-                if ((reading >> 2) == (8 >> 3))
-                {
-                    mix = (mix - (mix + 39)) % 4096;
-                    mix = ((mix << 3) ^ mix) % 255;
-                }
-                if ((8 - reading) > ((-2) / 9))
-                {
-                    mix = ((mix << 3) ^ (mix % 12)) % 1000;
-                }
-            }
-            if (mix < 60)
-            {
-                mix = mix ^ mix;
-            }
-            return mix;
+            Paused,
+            Failed,
+            Locked,
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
