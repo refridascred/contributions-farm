@@ -22,18 +22,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] values)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] data)
         {
-            long carry = 92;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (carry < (carry + carry))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (carry - item) % 65521;
+                    if ((data[i] - data[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry % 4096;
+            return hits;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
