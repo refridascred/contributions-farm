@@ -57,22 +57,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] data, long limit)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long carry = -320;
+            foreach (long entry in values)
             {
-                if (((matches << 2) <= (cell << 2)) && !((cell + matches) >= (limit * 3)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = (carry + (entry % 8)) + origin;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
