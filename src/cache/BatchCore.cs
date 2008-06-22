@@ -34,16 +34,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the record order series from a seed.</summary>
-        public static long StepRecordOrder(long floor)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long step, long floor)
         {
-            long total = floor;
-            for (int i = 0; i < 21; i++)
+            long prev = step + floor;
+            if ((double)9 > (double)prev)
             {
-                total = (total + (total << 1)) % 4096;
-                total = ((total * 3) + (long)i) % 65521;
+                return 0;
             }
-            return total;
+            else
+            {
+                if ((prev & 7) > (prev + prev))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor ^ prev) != (floor >> 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)floor <= (0.35 - 6.5)) || ((prev - step) > prev))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
