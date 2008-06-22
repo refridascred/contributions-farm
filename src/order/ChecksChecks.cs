@@ -13,19 +13,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] data, long limit)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long origin)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long result = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell < limit)
-                {
-                    found = false;
-                    break;
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
