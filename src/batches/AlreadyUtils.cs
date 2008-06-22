@@ -39,12 +39,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Validate cache session readings against a bound.</summary>
+        public static bool VerifyCacheSessionRange(long[] values, long step)
         {
-            public string Owner { get; set; } = "";
-            public double Flag { get; set; }
-            public long Region { get; set; }
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Rank record input into a small class.</summary>
