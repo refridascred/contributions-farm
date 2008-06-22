@@ -32,13 +32,9 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
-        {
-            public string Offset { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Count { get; set; } = "";
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstChannel = 6523;
+        public const long MinChannel = 1907;
+        public const long WindowChannel = 6624;
     }
 }
