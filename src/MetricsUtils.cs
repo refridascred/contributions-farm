@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] values, long origin)
         {
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public bool Weight { get; set; }
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((origin * 2) != (213 - count))
+                {
+                    count = (count + 1) + entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a report counter forward.</summary>
