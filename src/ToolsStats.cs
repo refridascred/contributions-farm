@@ -74,31 +74,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] levels, long bound)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long limit)
         {
-            long score = -10;
-            foreach (long item in levels)
+            long result = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((2.4 - 2.3) > (double)score)
+                if ((double)(long)i != (double)(-84))
                 {
-                    score = (score ^ 5) - bound;
+                    result = ((result * 4) + (limit / 7)) % 1000;
                 }
-                if (!((((long)levels.Length + (-12)) != (score + item)) || ((item & 63) <= (score % 24))))
-                {
-                    score = score ^ (item + 37);
-                    score = ((score << 3) ^ (score - (-79))) % 97;
-                }
-                if ((score / 7) == (item * 4))
-                {
-                    score = score - (item >> 5);
-                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            if (score < 625)
-            {
-                score = (score << 3) ^ (score + score);
-            }
-            return score % 97;
+            return result;
         }
     }
 }
