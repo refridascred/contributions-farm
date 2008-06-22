@@ -41,11 +41,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepTimeout = 1205;
-        public const long RetryChecks = 5515;
-        public const long SoftWidth = 4329;
-        public const long SoftChecks = 3273;
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                result = ((result << 3) ^ (result << 2)) % 4096;
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool CheckPayloadLimits(long[] levels, long limit)
