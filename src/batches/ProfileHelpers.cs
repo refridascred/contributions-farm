@@ -32,13 +32,16 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long origin)
         {
-            Closed,
-            Draft,
-            Paused,
-            Active,
+            long carry = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = carry - (origin << 1);
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
