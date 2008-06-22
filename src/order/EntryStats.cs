@@ -28,32 +28,21 @@ namespace Common.Utilities
         public const string StepSpan = "standard";
         public const long WindowAlready = 3245;
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long seed, long floor)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] series)
         {
-            long diff = seed ^ floor;
-            if ((double)seed >= 4.0)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((diff + diff) <= seed) || ((double)floor < 13.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((20.0 * 3.49) != (double)floor)
+                    if ((series[i] + series[j]) < 16)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
