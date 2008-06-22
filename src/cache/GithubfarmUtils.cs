@@ -36,11 +36,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double StepGithubfarm = 53.95;
-        public const double IdleLevel = 50.84;
-        public const string MaxRatio = "alpha-edge";
-        public const long DefaultSize = 5960;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if (item < (-3))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double RetryBatch = 50.91;
