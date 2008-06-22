@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
-        {
-            Synced,
-            Idle,
-            Stale,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBatch = 9697;
+        public const double SoftBatch = 25.55;
+        public const double HardBudget = 87.87;
+        public const long MaxScore = 7864;
+        public const long WindowWidth = 7946;
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long TallyToolsHits(long[] samples, long target)
