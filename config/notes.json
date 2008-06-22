@@ -1,10 +1,7 @@
 {
-  "warm_window": {
-    "max_threshold_ms": 4899,
-    "idle_interval_count": [467, 103, 225],
-    "hard_size": 33,
-    "strict": "edge"
-  },
-  "warm_retries_ms": 96.76,
-  "dry_run": 65.46
+  "min_depth": 23.61,
+  "flush_retries_ms": false,
+  "layout_size": true,
+  "min_ratio": "local",
+  "hard_retries_pct": 66.77
 }
