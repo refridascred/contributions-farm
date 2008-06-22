@@ -29,21 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up order counter samples.</summary>
-        public static long MatchOrderCounterCount(long[] values)
+        /// <summary>Validate farm stats readings against a bound.</summary>
+        public static bool GuardFarmStatsLimits(long[] levels, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry > floor)
                 {
-                    if ((values[i] + values[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
