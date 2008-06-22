@@ -51,38 +51,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long bound, long step)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] levels)
         {
-            if (!(step <= (603 + step)))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step >> 3) < (step / 9))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)step == (double)bound)
+                    if ((levels[i] + levels[j]) == 9)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((5.49 / 9.0) <= (double)bound)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
