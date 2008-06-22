@@ -40,19 +40,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double AdjustGithubfarm(double rate, double span)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            double drift = rate;
-            if (drift > (9.59 / 5.0))
-            {
-                drift = drift - drift;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (span + drift)) + (double)(long)i;
-            }
-            return drift - 9.0;
+            Failed,
+            Retry,
+            New,
+            Locked,
         }
 
         /// <summary>Grade a record value against two limits.</summary>
