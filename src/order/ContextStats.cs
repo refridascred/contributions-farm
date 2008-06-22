@@ -28,13 +28,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Count the stream window entries that pass the check.</summary>
+        public static long AuditStreamWindowOutliers(long[] data)
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (!(((hits % 5) != (datum - datum)) || (datum > hits)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
