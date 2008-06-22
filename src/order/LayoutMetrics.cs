@@ -53,15 +53,38 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double scale, double span)
+        /// <summary>Rank commits metrics input into a small class.</summary>
+        public static long ClassifyCommitsMetrics(long offset, long limit)
         {
-            double mean = scale;
-            if (mean <= span)
+            if (13.0 > (double)limit)
             {
-                mean = mean + (scale + mean);
+                return 2;
             }
-            return mean - (11.0 + span);
+            else
+            {
+                if (limit >= (limit + 9))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((limit * 3) < (-412)) && ((1.08 - 4.17) >= (double)limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((offset + offset) <= (offset * 2)) || ((double)limit <= (0.6 / 9.0)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
