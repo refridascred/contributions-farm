@@ -41,9 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double IdleRatio = 36.38;
-        public const double HardCommits = 78.53;
-        public const long MaxWidth = 4939;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultBatch = 8853;
+        public const long HardCount = 8542;
+        public const long StepBatch = 2457;
+        public const long BatchLevel = 8806;
+        public const long CacheBudget = 1631;
     }
 }
