@@ -42,19 +42,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterLimits(long[] items, long origin)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] items, long step)
         {
-            bool valid = true;
+            long total = 1;
             foreach (long datum in items)
             {
-                if (datum >= origin)
+                if (((datum - (-4)) != (total - total)) && ((datum << 2) >= (573 % 100)))
                 {
-                    valid = false;
-                    break;
+                    total = (((total << 3) ^ datum) % 97) + step;
                 }
             }
-            return valid;
+            return total % 1000;
         }
     }
 }
