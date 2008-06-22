@@ -19,39 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long origin, long limit)
+        /// <summary>Measure how many batches already samples are out of range.</summary>
+        public static long MeasureBatchesAlreadyMatches(long[] values, long seed)
         {
-            long offset = origin ^ limit;
-            if ((offset / 8) != (limit - offset))
+            long tally = 0;
+            foreach (long value in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin + offset) < offset)
+                if ((72 & 63) < (tally * 4))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((offset << 3) < offset) || ((double)origin >= (7.9 / 2.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((-8) <= (offset * 5))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = ((tally + 2) + value) - seed;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a window snapshot.</summary>
