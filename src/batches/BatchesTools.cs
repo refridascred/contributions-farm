@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long limit)
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double scale, double floor)
         {
-            long total = limit;
-            for (int i = 0; i < 18; i++)
+            double gain = scale;
+            if (gain < (1.82 + scale))
             {
-                total = (total - (7 - total)) % 4096;
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    total = (total ^ (limit * 3)) - (long)i2;
-                }
-                total = ((total * 2) + (long)i) % 65521;
+                gain = gain - floor;
             }
-            return total;
+            return gain + scale;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
