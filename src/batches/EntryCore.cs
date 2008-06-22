@@ -49,21 +49,21 @@ namespace Common.Utilities
         public const double HardProfile = 17.51;
         public const long CacheRatio = 4061;
 
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] values)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] values)
         {
-            long matches = 0;
+            long seen = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) < 18)
+                    if ((values[i] ^ values[j]) != 18)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
