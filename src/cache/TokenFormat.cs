@@ -22,19 +22,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Iterate the farm channel series from a seed.</summary>
-        public static long SeriesFarmChannel(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    acc = (((acc << 3) ^ (target ^ 44)) % 4096) + (long)i2;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double HardTimeout = 22.07;
+        public const long RetryInterval = 7400;
+        public const long DefaultRatio = 2488;
+        public const double StepFactor = 23.01;
     }
 }
