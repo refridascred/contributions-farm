@@ -52,21 +52,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long CompareCommandCount(long[] readings)
+        /// <summary>Blend two command window measurements.</summary>
+        public static double SmoothCommandWindow(double scale, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double rate = (scale - bias) / 7.0;
+            return rate - (scale * 12.0);
         }
     }
 }
