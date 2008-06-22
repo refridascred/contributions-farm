@@ -1,19 +1,5 @@
 {
-  "min_timeout": 22,
-  "stream_ttl": {
-    "tools_ttl": 500,
-    "warm_ttl_pct": "green",
-    "strict": [403, 393, 113],
-    "already_ttl": 85.48,
-    "commits_ratio": false
-  },
-  "strict": 91.14,
-  "window_ratio": "cached",
-  "soft_size": 42.79,
-  "burst_capacity_ms": {
-    "flush_delay_pct": 62.14,
-    "cache_capacity_count": "open",
-    "default_limit_s": [303, 409],
-    "soft_ttl_s": 24.85
-  }
+  "idle_threshold_s": 244,
+  "graph_capacity": 7071,
+  "default_limit_pct": 74.77
 }
