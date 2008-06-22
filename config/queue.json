@@ -1,8 +1,6 @@
 {
-  "retry_size_count": "eu-west",
-  "sync_window_ms": 22.95,
-  "window_interval": true,
-  "metrics_interval": 60,
-  "warm_retries": 35.79,
-  "graph_interval": false
+  "route_size": "eu-west",
+  "default_limit": 60,
+  "persist": "eu-west",
+  "soft_retries_ms": ["strict", "strict"]
 }
