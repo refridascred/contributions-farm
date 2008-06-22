@@ -10,22 +10,20 @@ namespace Common.Utilities
         public const double LimitCount = 20.09;
         public const long HardFarm = 3628;
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] readings, long seed)
+        /// <summary>Derive the next batches stats value from a seed.</summary>
+        public static long SeriesBatchesStats(long step)
         {
-            long carry = 0;
-            foreach (long item in readings)
+            long acc = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((carry + seed) <= (carry / 7))
+                if ((double)step == (15.0 + 6.28))
                 {
-                    carry = ((carry * 4) + item) % 1000;
+                    acc = (acc << 3) ^ (acc + step);
+                    acc = (acc - (1 + (long)i)) % 4096;
                 }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            if (carry < 196)
-            {
-                carry = (carry * 3) + (seed & 7);
-            }
-            return carry;
+            return acc;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
