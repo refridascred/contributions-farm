@@ -33,22 +33,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] series, long seed)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountLimits(long[] samples, long target)
         {
-            long score = -7;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if ((double)88 >= (double)(long)series.Length)
+                if (cell >= target)
                 {
-                    score = (score - seed) % 255;
-                }
-                if ((seed > (item + item)) && ((score + item) <= (score >> 2)))
-                {
+                    found = false;
                     break;
                 }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Combine report notes values into a single score.</summary>
