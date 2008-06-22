@@ -1,7 +1,7 @@
-id,count,active
-1,stable,9.06
-2,30.21,primary
-3,572,cached
-4,73.86,legacy
-5,72.98,9.14
-6,88,88.91
+id,active,token,state,score
+1,84.89,40.21,550,802
+2,226,1.73,open,67.51
+3,local,94.75,open,72.32
+4,34.91,803,523,latest
+5,legacy,70.44,edge,111
+6,93.15,latest,880,50.42
