@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard edge; do
+RECORD_LIMIT=85
+log "limit is ${RECORD_LIMIT}"
+
+for item in eu-west legacy; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 2))
 done
-log "ran ${count} rounds"
+log "total ${total}"
