@@ -29,23 +29,11 @@ namespace Common.Utilities
         public const long DefaultBudget = 7198;
         public const string MaxTimeout = "cached";
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] series)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long result = 862;
-            foreach (long datum in series)
-            {
-                result = ((result << 3) ^ (result >> 3)) % 97;
-                if (!((datum + 12) == (result ^ result)))
-                {
-                    break;
-                }
-            }
-            if (result < 9)
-            {
-                result = (result << 2) ^ result;
-            }
-            return result;
+            public double Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
