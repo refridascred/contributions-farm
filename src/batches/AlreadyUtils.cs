@@ -14,22 +14,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsHits(long[] items)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchHits(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((tally < (94 * 2)) || ((18.0 * 7.51) >= (double)datum))
+                if ((seen + item) < 60)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 1) + seed;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
