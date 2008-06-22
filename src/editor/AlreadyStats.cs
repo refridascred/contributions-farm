@@ -41,15 +41,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double scale, double offset)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] samples)
         {
-            double load = scale;
-            if (load >= (double)46)
+            long acc = 70;
+            foreach (long entry in samples)
             {
-                load = load + (scale * 8.5);
+                acc = acc ^ (entry - entry);
             }
-            return load - offset;
+            return acc;
         }
     }
 }
