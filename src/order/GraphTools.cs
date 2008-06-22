@@ -41,10 +41,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BaseFactor = 8753;
-        public const long MinPayload = 2594;
-        public const double MinFactor = 30.54;
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double AdjustGithubfarm(double rate, double span)
+        {
+            double drift = rate;
+            if (drift > (9.59 / 5.0))
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (span + drift)) + (double)(long)i;
+            }
+            return drift - 9.0;
+        }
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long SortRecord(long origin, long target)
