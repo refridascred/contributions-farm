@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatMatches(long[] readings)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((double)count < (double)8)
-                {
-                    count = (count + 1) ^ item;
-                }
-            }
-            return count;
+            Stale,
+            Locked,
+            New,
+            Ready,
+            Pending,
         }
 
         /// <summary>Find the first graph checks entry that matches the target.</summary>
