@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
-        {
-            public long Stamp { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitInterval = 5141;
+        public const double SoftAlready = 70.82;
+        public const long SoftWidth = 2307;
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long CompareSchemaCount(long[] readings)
