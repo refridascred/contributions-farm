@@ -39,19 +39,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] levels, long origin)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long total = 558;
-            foreach (long datum in levels)
-            {
-                total = ((total << 3) ^ (datum - datum)) % 255;
-            }
-            if (total < 9)
-            {
-                total = ((total << 2) ^ (origin + total)) % 4096;
-            }
-            return total;
+            Pending,
+            Queued,
+            Done,
+            Synced,
         }
     }
 }
