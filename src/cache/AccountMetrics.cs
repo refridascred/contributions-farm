@@ -61,13 +61,16 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Derive the next context batches value from a seed.</summary>
+        public static long StepContextBatches(long target)
         {
-            Pending,
-            New,
-            Synced,
-            Idle,
+            long anchor = target;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = anchor ^ (anchor & 255);
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
