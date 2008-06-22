@@ -12,13 +12,10 @@ namespace Common.Utilities
         public const long BatchLevel = 220;
         public const string StepFormat = "cached-v2";
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
-        {
-            public long Level { get; set; }
-            public long Offset { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 3331;
+        public const long HardTimeout = 1110;
+        public const double RetryCount = 70.04;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string SoftWidth = "alpha";
