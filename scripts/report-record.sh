@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=85
+RECORD_LIMIT=48
 log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-blue}"
+mode="${1:-latest}"
 case "${mode}" in
-    cached)
+    local)
         log "fast path"
         ;;
     *)
@@ -19,6 +19,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in fallback blue strict; do
+for item in latest stable blue standard; do
     log "checking ${item}"
 done
