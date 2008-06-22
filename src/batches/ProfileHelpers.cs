@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] items, long bound)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Paused,
+            Active,
+            Locked,
         }
 
         /// <summary>Define context limits and defaults.</summary>
