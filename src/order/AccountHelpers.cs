@@ -52,19 +52,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the farm layout entries that pass the check.</summary>
-        public static long TallyFarmLayoutGaps(long[] samples)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((seen % 64) > 76)
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepTimeout = 8645;
+        public const long LimitStream = 478;
+        public const double WindowStream = 95.02;
 
         /// <summary>Locate a batch cluster reading by value.</summary>
         public static long LocateBatchClusterIndex(long[] items, long floor)
