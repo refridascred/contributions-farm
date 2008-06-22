@@ -52,32 +52,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batches contributi value against two limits.</summary>
-        public static long RankBatchesContributi(long origin, long target)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long step)
         {
-            long slot = origin - target;
-            if (origin < slot)
+            long total = step;
+            for (int i = 0; i < 19; i++)
             {
-                return 5;
+                total = ((total * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((origin - origin) <= target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((19 % 100) >= (4 - slot))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return total;
         }
     }
 }
