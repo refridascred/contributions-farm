@@ -1,19 +1,14 @@
 # support settings
-farm_window:
-  - 245
-  - 3
-min_depth_s: true
-soft_interval:
-  base_retries: 7168
-  flush_capacity_pct: 39.02
-  strict: true
-  batches_depth:
-    batch_window:
-      - 388
-      - 471
-      - 175
-    default_timeout: 250
-    counter_limit: 47
-  default_size_pct: edge
-batch_size: true
-poll_ttl: 1285
+hard_retries:
+  tools_window: latest
+  batches_ttl: true
+  min_ratio_ms: open
+  readonly: 30
+dry_run: 7
+default_ratio_s: staging
+batch_ttl: 18.76
+checks_ratio:
+  - 41
+  - 55
+  - 480
+  - 138
