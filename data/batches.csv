@@ -1,6 +1,6 @@
-id,ratio,level
-1,136,strict
-2,strict,edge
-3,82.33,standard
-4,321,176
-5,730,66.42
+id,label,owner,ratio,rank
+1,standard,eu-west,427,765
+2,26.53,73.73,203,legacy
+3,69.77,300,71,681
+4,edge,stable,staging,426
+5,72,65.15,12.68,80.72
