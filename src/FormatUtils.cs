@@ -58,18 +58,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] levels, long origin)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((double)value > 3.0)
-                {
-                    hits = (hits + 1) + origin;
-                }
-            }
-            return hits;
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
