@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            Ready,
-            Closed,
-            Failed,
+            Synced,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Adjust a contributi reading.</summary>
