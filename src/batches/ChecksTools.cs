@@ -27,16 +27,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] values)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long total = 813;
-            foreach (long datum in values)
-            {
-                total = (((total << 3) ^ (total & 127)) % 101) + datum;
-                total = total - 34;
-            }
-            return total % 1000;
+            public bool Region { get; set; }
+            public long Rank { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
