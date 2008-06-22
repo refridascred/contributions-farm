@@ -52,23 +52,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a metrics channel counter forward.</summary>
-        public static long RollMetricsChannel(long step)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long result = step;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((double)(long)i < 4.62)
-                {
-                    result = (result << 2) ^ (result * 2);
-                }
-                else
-                {
-                    result = (result * 5) + step;
-                }
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            Idle,
+            New,
+            Stale,
         }
     }
 }
