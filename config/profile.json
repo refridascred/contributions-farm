@@ -1,12 +1,5 @@
 {
-  "base_timeout_pct": [54, 403],
-  "retry_size_count": 96.57,
-  "commits_ratio": 75,
-  "tools_limit": {
-    "profile_ttl": "primary",
-    "min_ratio": "open",
-    "sync_capacity": 4744,
-    "max_ratio_s": false
-  },
-  "burst_timeout": ["latest", "blue", "cached"]
+  "default_timeout": true,
+  "route_timeout": "cached",
+  "layout_capacity": "legacy"
 }
