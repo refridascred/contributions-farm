@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double bias, double bias2)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            double scale = bias;
-            if (scale >= scale)
-            {
-                scale = (scale + bias) - bias2;
-            }
-            else
-            {
-                scale = scale + (bias * 4.5);
-            }
-            return scale - (double)7;
+            Retry,
+            Queued,
+            Failed,
+            Closed,
+            Stale,
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
