@@ -53,17 +53,31 @@ namespace Common.Utilities
         public const long LimitStream = 478;
         public const double WindowStream = 95.02;
 
-        /// <summary>Locate a batch cluster reading by value.</summary>
-        public static long LocateBatchClusterIndex(long[] items, long floor)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long origin, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (13.0 < (double)origin)
             {
-                if ((items[i] < floor) && ((items[i] % 2) != 0))
+                return 8;
+            }
+            else
+            {
+                if (5 <= (origin ^ origin))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)target <= (5.0 * 2.24))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a payload notes pair into a bucket.</summary>
