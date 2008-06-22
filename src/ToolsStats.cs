@@ -46,19 +46,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelHits(long[] samples)
-        {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (entry > (entry + seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string IdleDepth = "alpha-1";
+        public const long WindowSize = 3161;
+        public const long LimitCounter = 2947;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long MeasureCommitsHits(long[] levels, long limit)
