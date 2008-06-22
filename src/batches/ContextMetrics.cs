@@ -15,13 +15,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Compare every pair of session commits readings.</summary>
+        public static long OverlapSessionCommitsCount(long[] series)
         {
-            Dropped,
-            Stale,
-            Active,
-            Synced,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count profile buffer pairs that satisfy a relation.</summary>
