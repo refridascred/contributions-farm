@@ -44,25 +44,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long floor, long floor2)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryRange(long[] series, long step)
         {
-            long gap = floor ^ floor2;
-            if ((0.75 / 7.0) == (double)floor)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((0.66 - 2.3) <= (double)gap)
+                if (entry < step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
