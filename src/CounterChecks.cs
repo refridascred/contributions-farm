@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderHits(long[] readings, long offset)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (((cell <= (6 >> 3)) || ((double)matches <= (0.97 - 9.1))) || (((9.93 + 1.5) == (double)offset) || ((double)cell == (7.94 / 5.0))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Size { get; set; }
+            public long Offset { get; set; }
+            public double Count { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a graph info.</summary>
