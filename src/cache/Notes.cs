@@ -52,13 +52,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionRange(long[] samples, long target)
         {
-            New,
-            Failed,
-            Ready,
-            Closed,
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
