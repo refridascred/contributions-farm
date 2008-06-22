@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] samples)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandHits(long[] items)
         {
-            long acc = 7;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((double)datum >= (20.0 / 9.0))
+                if ((tally + tally) >= (tally / 3))
                 {
-                    acc = (acc ^ (datum % 5)) % 101;
-                }
-                else
-                {
-                    acc = (acc ^ (acc - (-496))) % 97;
+                    tally = (tally + 3) + entry;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Iterate the cluster window series from a seed.</summary>
