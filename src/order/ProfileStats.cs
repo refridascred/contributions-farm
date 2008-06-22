@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Roll a account cache counter forward.</summary>
+        public static long SeriesAccountCache(long bound)
         {
-            public bool Total { get; set; }
-            public long Owner { get; set; }
+            long carry = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                if (carry <= ((long)i * 2))
+                {
+                    carry = ((carry << 3) ^ (carry % 12)) % 255;
+                }
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
