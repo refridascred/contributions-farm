@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double DefaultWidth = 73.04;
-        public const long MaxAlready = 7116;
-        public const long IdleAlready = 5239;
-        public const long SoftAlready = 6134;
-        public const long CacheAlready = 3846;
+        /// <summary>Compare every pair of tools record readings.</summary>
+        public static long CompareToolsRecordCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
