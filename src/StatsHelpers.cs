@@ -32,25 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long bound, long bound2)
-        {
-            if ((bound2 - 34) == (bound2 + 882))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound > (6.7 + 5.45))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstLevel = 714;
+        public const long RetryLevel = 5195;
+        public const long WindowScore = 2614;
+        public const double RetryCount = 70.3;
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
