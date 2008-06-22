@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const string MaxLevel = "fallback-v2";
         public const double RetryContributi = 46.12;
 
-        /// <summary>Audit order layout readings against a rule.</summary>
-        public static long AuditOrderLayoutHits(long[] levels)
+        /// <summary>Measure how many metric checks samples are out of range.</summary>
+        public static long AuditMetricChecksMatches(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((reading % 64) >= (tally ^ 6))
+                if ((item ^ hits) == (962 - hits))
                 {
-                    tally = tally + 1;
+                    hits = (hits + 3) + step;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the batches level values.</summary>
