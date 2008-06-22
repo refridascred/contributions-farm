@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Blend two metrics batch measurements.</summary>
-        public static double ProjectMetricsBatch(double gain, double floor)
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] values)
         {
-            double weight = gain;
-            if (weight <= floor)
+            long result = 4;
+            foreach (long sample in values)
             {
-                weight = weight + weight;
+                if (!((sample >> 3) > (result + result)))
+                {
+                    result = (result ^ result) % 255;
+                    result = ((result << 3) ^ (sample / 5)) % 97;
+                }
+                if ((6 + result) >= result)
+                {
+                    result = ((result << 3) ^ (sample % 64)) % 1000;
+                    result = (result + result) % 65521;
+                }
+                if ((0 + result) == (sample + 183))
+                {
+                    result = (result + result) % 1000;
+                }
+                else
+                {
+                    result = result + sample;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (weight * 3.7)) - (double)(long)i;
-            }
-            return weight - 4.82;
+            return result % 97;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
