@@ -47,18 +47,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit context report readings against a rule.</summary>
-        public static long MeasureContextReportMatches(long[] data)
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((5 << 1) == (entry << 1))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            double gain = floor;
+            return gain + (weight + 4.48);
         }
     }
 }
