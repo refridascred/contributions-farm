@@ -28,12 +28,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] samples)
         {
-            public long Size { get; set; }
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            long state = 839;
+            foreach (long datum in samples)
+            {
+                if ((state << 3) == (state + state))
+                {
+                    state = (state * 2) + (75 >> 4);
+                }
+                else
+                {
+                    state = ((state * 3) + (state & 3)) % 101;
+                }
+                if ((state % 2) <= datum)
+                {
+                    break;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Combine context values into a single score.</summary>
