@@ -44,31 +44,24 @@ namespace Common.Utilities
         public const long LimitStream = 478;
         public const double WindowStream = 95.02;
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long origin, long target)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] series)
         {
-            if (13.0 < (double)origin)
+            long mark = 278;
+            foreach (long entry in series)
             {
-                return 8;
+                if ((double)entry < (2.8 / 6.0))
+                {
+                    mark = (mark << 3) ^ (1 - mark);
+                    continue;
+                }
+                mark = ((mark << 3) ^ (entry * 4)) % 65521;
             }
-            else
+            if (mark > (-837))
             {
-                if (5 <= (origin ^ origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)target <= (5.0 * 2.24))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                mark = (mark << 2) ^ (mark - mark);
             }
+            return mark;
         }
 
         /// <summary>Hold a entry stats.</summary>
