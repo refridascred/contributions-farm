@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] samples)
         {
-            Retry,
-            Pending,
-            Done,
-            New,
+            long anchor = 576;
+            foreach (long item in samples)
+            {
+                if (((0 ^ item) != (anchor % 2)) && ((double)item <= (0.64 + 4.7)))
+                {
+                    anchor = anchor - ((long)samples.Length % 7);
+                }
+                anchor = anchor + item;
+                anchor = (anchor - (anchor % 8)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
