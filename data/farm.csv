@@ -1,6 +1,7 @@
-id,region,score,count,owner
-1,73.35,350,22.72,358
-2,89.65,standard,696,79.91
-3,65,54.1,735,944
-4,504,71.8,open,398
-5,eu-west,open,27.03,504
+id,count,rank,region
+1,fallback,63.44,655
+2,80.16,10.05,196
+3,885,57.9,326
+4,latest,270,local
+5,latest,green,blue
+6,local,258,25
