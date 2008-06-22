@@ -36,16 +36,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine report notes values into a single score.</summary>
-        public static long FoldReportNotes(long[] samples)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long result = 887;
-            foreach (long value in samples)
-            {
-                result = (result + result) % 1000;
-                result = ((result * 3) + (value % 60)) % 101;
-            }
-            return result;
+            Pending,
+            Locked,
+            Stale,
+            New,
+            Draft,
         }
     }
 }
