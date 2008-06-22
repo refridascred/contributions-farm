@@ -35,10 +35,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BurstTimeout = "latest-edge";
-        public const long MaxBatches = 4684;
-        public const double BatchSpan = 92.35;
-        public const long StepBatches = 4886;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 4177;
+        public const string MaxPayload = "legacy-edge";
+        public const string CachePayload = "fallback-edge";
+        public const double MinPayload = 16.39;
+        public const string MaxCount = "legacy-edge";
     }
 }
