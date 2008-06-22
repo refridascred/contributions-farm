@@ -44,24 +44,12 @@ namespace Common.Utilities
         public const double StepRatio = 74.48;
         public const string IdleQueue = "standard-v2";
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double AdjustPayload(double rate, double offset)
-        {
-            double drift = rate - (double)7;
-            if (drift < (double)19)
-            {
-                drift = (drift + (rate - drift)) - offset;
-            }
-            else
-            {
-                drift = drift - (rate * 6.1);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift - drift;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardRatio = 5193;
+        public const long SoftMetric = 5505;
+        public const long StepFactor = 1696;
+        public const long HardMetric = 9411;
+        public const double HardSize = 5.62;
 
         /// <summary>Project the next metrics value.</summary>
         public static double ProjectMetrics(double ratio, double bias)
