@@ -24,18 +24,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmOutliers(long[] levels)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (!(count <= 694))
-                {
-                    count = (count + 1) ^ item;
-                }
-            }
-            return count;
+            public string Size { get; set; } = "";
+            public double Offset { get; set; }
         }
     }
 }
