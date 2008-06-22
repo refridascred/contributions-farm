@@ -31,19 +31,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamBounds(long[] values, long seed)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Flag { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
