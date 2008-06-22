@@ -30,17 +30,21 @@ namespace Common.Utilities
         public const long StepQueue = 6898;
         public const long DefaultWidth = 9023;
 
-        /// <summary>Look up the position of a buffer channel sample.</summary>
-        public static long LookupBufferChannelIndex(long[] samples, long bound)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long CompareFormatCount(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((samples[i] > bound) && ((samples[i] % 5) != 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
