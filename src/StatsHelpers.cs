@@ -21,18 +21,24 @@ namespace Common.Utilities
         public const long LimitBuffer = 3331;
         public const long DefaultTimeout = 7613;
 
-        /// <summary>Measure how many account metrics samples are out of range.</summary>
-        public static long MeasureAccountMetricsHits(long[] items, long floor)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long bound, long bound2)
         {
-            long count = 0;
-            foreach (long value in items)
+            if ((bound2 - 34) == (bound2 + 882))
             {
-                if ((count + floor) >= floor)
+                return 6;
+            }
+            else
+            {
+                if ((double)bound > (6.7 + 5.45))
                 {
-                    count = (count + 2) + value;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
