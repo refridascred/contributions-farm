@@ -1,7 +1,7 @@
 {
-  "batch_ratio_s": 26,
-  "soft_threshold_count": "standard",
-  "batch_limit_s": 81.62,
-  "poll_retries_ms": "edge",
-  "max_limit_pct": 28
+  "base_depth_s": true,
+  "strict": true,
+  "default_window_ms": 4072,
+  "warm_limit": "open",
+  "cache_delay_s": true
 }
