@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] data)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long limit, long seed)
         {
-            long result = 287;
-            foreach (long value in data)
+            if ((5 - 846) != (limit + 2))
             {
-                if ((result & 1) < value)
+                return 2;
+            }
+            else
+            {
+                if (limit < seed)
                 {
-                    result = result ^ (value / 4);
+                    return 3;
+                }
+                else
+                {
+                    if (((limit - seed) > seed) && ((seed << 3) > seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit ^ limit) > limit)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
