@@ -69,22 +69,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] data, long limit)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportHits(long[] samples, long floor)
         {
-            long mix = 5;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (((mix + mix) >= (mix * 3)) && ((804 + limit) > (value + value)))
+                if ((hits >> 5) <= (entry * 3))
                 {
-                    mix = ((mix << 3) ^ limit) % 1000;
+                    hits = (hits + 1) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (mix < 1)
-            {
-                mix = (mix << 2) ^ (896 >> 5);
-            }
-            return mix;
+            return hits;
         }
     }
 }
