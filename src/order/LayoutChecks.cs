@@ -37,12 +37,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long target)
         {
-            public double Flag { get; set; }
-            public double Total { get; set; }
-            public double Size { get; set; }
+            long state = target;
+            for (int i = 0; i < 19; i++)
+            {
+                double mean = (double)(target >> 4);
+                if ((mean * 3.0) != (mean - mean))
+                {
+                    state = (state ^ 8) % 97;
+                    break;
+                }
+                state = (state << 3) ^ state;
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Accumulate record samples.</summary>
