@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
             public long Size { get; set; }
-            public long Token { get; set; }
+            public double Level { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
