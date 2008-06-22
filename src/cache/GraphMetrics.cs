@@ -39,38 +39,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a notes queue value against two limits.</summary>
-        public static long SortNotesQueue(long seed, long floor)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            if (floor <= (seed - seed))
-            {
-                return 8;
-            }
-            else
-            {
-                if (seed < (floor + floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((12.0 + 5.4) >= (double)floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor - 6) <= seed)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public bool Label { get; set; }
+            public double Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
