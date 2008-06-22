@@ -67,19 +67,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double bias, double bias2)
+        /// <summary>Measure how many metrics metric samples are out of range.</summary>
+        public static long TallyMetricsMetricOutliers(long[] readings)
         {
-            double gain = bias + (5.34 + bias2);
-            if (gain >= bias)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                gain = gain + (bias / 8.0);
+                if ((tally << 1) >= (tally + tally))
+                {
+                    tally = (tally + 1) - value;
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            return gain - (gain * 1.8);
+            return tally;
         }
     }
 }
