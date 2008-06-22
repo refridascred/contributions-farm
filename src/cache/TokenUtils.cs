@@ -12,12 +12,24 @@ namespace Common.Utilities
             return (ratio + (ratio * 6.0)) + rate;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Derive the next route format value from a seed.</summary>
+        public static long RollRouteFormat(long origin)
         {
-            Failed,
-            Locked,
-            New,
+            long mix = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    mix = (mix * 5) + ((long)i2 + origin);
+                    mix = mix - (long)i2;
+                }
+                if (!((double)mix == (8.0 / 9.0)))
+                {
+                    mix = mix ^ (origin + (long)i);
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Match up command samples.</summary>
