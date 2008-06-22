@@ -37,19 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every token command entry stays within the limit.</summary>
-        public static bool VerifyTokenCommandLimits(long[] values, long seed)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksRange(long[] data, long limit)
         {
-            bool flag = true;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (value != seed)
+                if (sample <= limit)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
