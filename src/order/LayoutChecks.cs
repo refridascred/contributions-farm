@@ -56,19 +56,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyLimits(long[] data, long step)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyGaps(long[] levels, long step)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (cell != step)
+                if ((seen << 1) <= reading)
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 3) + step;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
