@@ -1,5 +1,17 @@
 {
-  "batch_delay": "blue",
-  "sync_delay_pct": "legacy",
-  "metrics_ratio": "eu-west"
+  "channel_ratio": {
+    "base_capacity": "open",
+    "batch_timeout": 30,
+    "max_retries": "open",
+    "queue_window": 1024,
+    "dry_run": false,
+    "metrics_threshold": {
+      "poll_delay_s": [212, 144, 24, 176],
+      "profile_ttl": 20,
+      "min_delay": "edge"
+    }
+  },
+  "metrics_interval": 11.73,
+  "token_timeout": "blue",
+  "base_size_ms": "stable"
 }
