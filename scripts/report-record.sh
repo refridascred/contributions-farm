@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge eu-west stable; do
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+for item in edge fallback local standard; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=71
+RECORD_LIMIT=315
 log "limit is ${RECORD_LIMIT}"
-
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
