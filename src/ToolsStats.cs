@@ -25,24 +25,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long step, long limit)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] series, long seed)
         {
-            if ((double)limit < (double)step)
+            long carry = 18;
+            foreach (long datum in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((0 ^ step) > limit)
+                if ((seed + (long)series.Length) < (carry / 2))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    carry = (carry - datum) % 97;
                 }
             }
+            if (carry > 60)
+            {
+                carry = ((carry << 2) ^ (seed + seed)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
