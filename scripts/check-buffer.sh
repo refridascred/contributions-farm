@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+BUFFER_LIMIT=351
+log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-eu-west}"
+mode="${1:-edge}"
 case "${mode}" in
-    green)
+    standard)
         log "fast path"
         ;;
     *)
@@ -22,6 +19,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in legacy latest strict; do
+for item in eu-west strict open; do
     log "checking ${item}"
 done
