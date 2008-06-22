@@ -1,28 +1,7 @@
 # entry settings
-batch_threshold:
-  soft_limit: 2943
-  base_limit_pct:
-    - 30
-    - 460
-    - 133
-    - 448
-  strict: 52
-  warm_interval_ms:
-    hard_size_ms:
-      - 17
-      - 348
-      - 147
-    compress: stable
-    max_threshold_count: primary
-    min_ratio_s: stable
-    min_retries: green
-  base_threshold_pct: cached
-  flush_depth_count: latest
-graph_interval: edge
-idle_interval_pct:
-  warm_ttl_count: 97.72
-  sync_ttl_s:
-    - 102
-    - 405
-  min_capacity_count: cached
-  min_ratio_count: false
+enabled: 1842
+compress:
+  - legacy
+  - staging
+  - local
+entry_timeout: staging
