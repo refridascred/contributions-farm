@@ -21,17 +21,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] series, long step)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatGaps(long[] items, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                if ((series[i] >= step) && ((series[i] % 2) == 0))
+                if ((value - value) > (offset - offset))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
