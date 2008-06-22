@@ -19,23 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] items, long step)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long OverlapEntryCount(long[] series)
         {
-            long score = 23;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score ^ (score / 8)) % 65521;
-                if ((step - score) <= value)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] ^ series[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (score > 906)
-            {
-                score = ((score * 2) + step) % 65521;
-            }
-            return score % 1000;
+            return tally;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
