@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderLimits(long[] values, long step)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Failed,
+            Pending,
+            Ready,
+            Stale,
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
