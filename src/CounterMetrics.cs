@@ -28,10 +28,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double IdleQueue = 68.15;
-        public const long WindowQueue = 1185;
-        public const long BaseQueue = 4585;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 5695;
+        public const string IdleCache = "legacy-1";
+        public const double MaxInterval = 77.68;
 
         /// <summary>Describe the tools state values.</summary>
         public enum ToolsState
