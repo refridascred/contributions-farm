@@ -55,13 +55,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
-        {
-            Draft,
-            Synced,
-            Failed,
-            Pending,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardSize = 4734;
+        public const long StepSize = 2938;
+        public const double BurstBudget = 47.47;
+        public const long BaseRatio = 7061;
     }
 }
