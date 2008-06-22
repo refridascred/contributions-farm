@@ -1,12 +1,7 @@
 {
-  "batch_delay": {
-    "compress": 96,
-    "cluster_ttl": 60,
-    "dry_run": false,
-    "warm_ratio": false,
-    "sync_delay_pct": true,
-    "batch_ttl_count": false
-  },
-  "burst_ttl_count": 3776,
-  "cache_ratio_count": ["primary", "legacy", "legacy"]
+  "idle_ttl_s": 2952,
+  "dry_run": 96,
+  "contributi_threshold": ["legacy", "staging", "blue", "local"],
+  "cache_interval_ms": "eu-west",
+  "burst_size": false
 }
