@@ -54,19 +54,12 @@ namespace Common.Utilities
             return load - gain;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphHits(long[] levels)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample + sample) >= sample)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double IdleInterval = 70.6;
+        public const double BurstBuffer = 3.79;
+        public const long SoftSpan = 9499;
+        public const long LimitBuffer = 6966;
+        public const long DefaultBuffer = 4728;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long BurstFactor = 3283;
