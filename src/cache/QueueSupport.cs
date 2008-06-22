@@ -49,22 +49,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stats stream samples.</summary>
-        public static long TotalStatsStream(long[] levels, long origin)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long score = 98;
-            foreach (long value in levels)
-            {
-                if ((origin <= (3 + 182)) && ((value ^ score) < (score + 22)))
-                {
-                    score = ((score << 2) ^ (value ^ value)) % 4096;
-                }
-                else
-                {
-                    score = ((score * 3) + (value - score)) % 255;
-                }
-            }
-            return score;
+            public double Ratio { get; set; }
+            public long Owner { get; set; }
+            public double Offset { get; set; }
+            public double Level { get; set; }
         }
     }
 }
