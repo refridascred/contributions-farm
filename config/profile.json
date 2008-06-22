@@ -1,9 +1,5 @@
 {
-  "min_capacity_pct": 56.95,
-  "idle_limit_count": ["primary", "eu-west", "standard"],
-  "sync_timeout": {
-    "max_ttl_s": 250,
-    "sync_window_s": false,
-    "idle_ratio_s": 100
-  }
+  "readonly": 25,
+  "filter_delay": 84.5,
+  "stream_ratio": ["edge", "strict"]
 }
