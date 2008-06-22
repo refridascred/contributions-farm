@@ -11,10 +11,25 @@ namespace Common.Utilities
         public const long LimitChannel = 892;
         public const string IdleFactor = "strict-v2";
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string CacheFarm = "primary-v2";
-        public const string MinFarm = "local";
-        public const long StepRatio = 3958;
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long origin, long limit)
+        {
+            if ((3.53 - 12.0) != (double)limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((985 + limit) == (origin - 6))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Audit metric entry readings against a rule.</summary>
         public static long MeasureMetricEntryGaps(long[] values, long target)
