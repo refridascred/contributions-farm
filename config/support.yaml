@@ -1,14 +1,4 @@
 # support settings
-batch_limit: staging
-soft_limit_pct: 42
-retry_ttl_pct: fallback
-burst_window: strict
-order_capacity:
-  max_interval:
-    verbose: 60
-    warm_depth_s: 98.44
-    dry_run: primary
-  batch_size: open
-  persist: 906
-  max_delay: 9
-idle_interval: 94.58
+verbose: strict
+soft_delay: 26.88
+hard_limit: open
