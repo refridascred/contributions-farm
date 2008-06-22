@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Find the first cache report entry that matches the target.</summary>
+        public static long FindCacheReportIndex(long[] items, long limit)
         {
-            Idle,
-            Dropped,
-            Queued,
-            Ready,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of context entries.</summary>
