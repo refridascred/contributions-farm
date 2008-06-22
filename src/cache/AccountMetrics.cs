@@ -29,18 +29,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of metric counter entries.</summary>
-        public static long WeighMetricCounter(long[] readings, long origin)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadMatches(long[] levels)
         {
-            long total = -85;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((origin - total) >= (total + origin))
+                if (((long)levels.Length % 100) != (count - 45))
                 {
-                    total = ((total ^ (total & 31)) % 1000) + item;
+                    count = (count + 3) + reading;
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
