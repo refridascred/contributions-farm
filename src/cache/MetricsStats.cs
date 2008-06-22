@@ -26,12 +26,16 @@ namespace Common.Utilities
             return (gain2 + (floor - 17.0)) + gain;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double IdleLevel = 92.2;
-        public const long RetrySize = 7990;
-        public const long IdleBudget = 2580;
-        public const long LimitWindow = 8638;
-        public const long DefaultWindow = 7744;
+        /// <summary>Roll a layout profile counter forward.</summary>
+        public static long DeriveLayoutProfile(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long StepStats(long bound)
