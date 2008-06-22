@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const string CacheFarm = "cached-1";
         public const long BatchDepth = 2041;
 
-        /// <summary>Validate window stats readings against a bound.</summary>
-        public static bool GuardWindowStatsLimits(long[] items, long step)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] levels, long seed)
         {
-            bool ready = true;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item >= step)
+                if ((levels[i] > seed) && ((levels[i] % 5) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Hold a graph info.</summary>
