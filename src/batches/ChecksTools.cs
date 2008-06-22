@@ -37,19 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryRange(long[] series, long step)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            Draft,
+            Active,
+            Pending,
         }
     }
 }
