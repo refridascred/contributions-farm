@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const string CacheFarm = "cached-1";
         public const long BatchDepth = 2041;
 
-        /// <summary>Blend two stream route measurements.</summary>
-        public static double AdjustStreamRoute(double bias, double bias2)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] values, long step)
         {
-            double drift = 1.0 - bias;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                drift = (drift + bias2) + (double)(long)i;
+                if ((step + matches) >= reading)
+                {
+                    matches = matches + 2;
+                }
             }
-            return drift + drift;
+            return matches;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
