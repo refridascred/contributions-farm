@@ -68,18 +68,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandMatches(long[] values, long origin)
+        /// <summary>Fold a list of entry batch readings.</summary>
+        public static long WeighEntryBatch(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long score = 90;
+            foreach (long sample in series)
             {
-                if ((origin + cell) >= cell)
+                if (5.4 >= (double)sample)
                 {
-                    tally = tally + 2;
+                    score = ((score - score) % 101) - target;
                 }
             }
-            return tally;
+            if (score < 459)
+            {
+                score = (score * 3) + (score / 8);
+            }
+            return score;
         }
     }
 }
