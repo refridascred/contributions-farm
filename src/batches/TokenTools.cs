@@ -24,12 +24,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            public string Weight { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Region { get; set; }
+            public string Total { get; set; } = "";
+            public double Offset { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
