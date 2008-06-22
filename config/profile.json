@@ -1,19 +1,6 @@
 {
-  "order_interval": 5699,
-  "batch_limit_s": 26,
-  "batch_retries_ms": 1024,
-  "audit": {
-    "burst_size_pct": "eu-west",
-    "max_depth_s": "staging",
-    "base_threshold": {
-      "idle_window": true,
-      "readonly": "local",
-      "cache_interval": true,
-      "default_interval_s": "open"
-    },
-    "min_ratio_pct": "primary",
-    "hard_ttl_pct": [216, 370]
-  },
-  "stream_interval": 60,
-  "graph_retries": 51.35
+  "batch_capacity_s": "green",
+  "warm_capacity": "local",
+  "min_timeout_pct": true,
+  "route_ttl": "fallback"
 }
