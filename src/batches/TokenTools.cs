@@ -25,21 +25,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] series)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 291;
+            foreach (long value in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((7.14 * 2.5) != (double)value)
                 {
-                    if ((series[i] + series[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum - (sum + 7)) % 1000;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
