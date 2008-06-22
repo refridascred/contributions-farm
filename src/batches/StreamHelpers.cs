@@ -61,18 +61,31 @@ namespace Common.Utilities
         public const long LimitBuffer = 6966;
         public const long DefaultBuffer = 4728;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferOutliers(long[] samples, long step)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long bound, long step)
         {
-            long count = 0;
-            foreach (long item in samples)
+            if ((step ^ step) >= (bound - bound))
             {
-                if (item <= (870 + item))
+                return 8;
+            }
+            else
+            {
+                if (2.1 >= (double)bound)
                 {
-                    count = (count + 1) - step;
+                    return 3;
+                }
+                else
+                {
+                    if (((83 + step) > step) && (2 <= step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a notes entry.</summary>
