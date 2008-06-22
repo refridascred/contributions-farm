@@ -13,13 +13,28 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] readings)
         {
-            Dropped,
-            Done,
-            Active,
-            Queued,
+            long mark = 57;
+            foreach (long cell in readings)
+            {
+                mark = ((mark << 3) ^ (mark - mark)) % 97;
+                if ((98 & 7) <= (mark << 3))
+                {
+                    mark = ((mark << 2) ^ (mark - cell)) % 97;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ cell) % 1000;
+                }
+                mark = (mark + (mark >> 5)) % 1000;
+            }
+            if (mark < (-15))
+            {
+                mark = (mark ^ mark) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
