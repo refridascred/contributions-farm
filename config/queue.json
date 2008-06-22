@@ -1,8 +1,7 @@
 {
-  "stream_limit": "edge",
-  "retry_capacity_pct": "standard",
-  "batch_ttl_s": "latest",
-  "session_capacity": 11.82,
-  "cache_limit": [306, 42],
-  "min_threshold": [170, 368, 110, 3]
+  "warm_timeout_ms": 65,
+  "base_threshold": 53.88,
+  "poll_limit_pct": 20,
+  "channel_delay": 30,
+  "tools_size": [337, 71, 384, 273]
 }
