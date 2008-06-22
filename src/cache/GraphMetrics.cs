@@ -47,19 +47,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate payload tools readings against a bound.</summary>
-        public static bool GuardPayloadToolsLimits(long[] items, long limit)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            Idle,
+            Retry,
+            Pending,
         }
 
         /// <summary>Locate a command reading by value.</summary>
