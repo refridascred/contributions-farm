@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
-        {
-            Active,
-            Failed,
-            Pending,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string LimitSize = "staging-v2";
+        public const long CacheLevel = 1758;
+        public const double BaseCommand = 92.38;
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long SeekChannelIndex(long[] levels, long seed)
