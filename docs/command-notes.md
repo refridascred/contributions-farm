@@ -1,10 +1,12 @@
 # Command notes
 
-A githubfarm that stays idle for too long is moved to the cluster list.
-The graph report groups every checks by stats.
+Run the profile check before changing any window limits.
+The notes helpers are pure functions, so they are safe to call from any thread.
+The checks helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every batch change
-- Document new profile fields
-- Prefer checks defaults
+- Keep batches values small
+- Validate session input early
+- Log every contributi change
+- Prefer filter defaults
