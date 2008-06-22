@@ -31,12 +31,12 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowFormat = 8103;
-        public const long BaseFormat = 7124;
-        public const double RetryFormat = 30.2;
-        public const double RetrySize = 48.18;
-        public const long LimitFactor = 5593;
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double rate, double bias)
+        {
+            double ratio = (bias + rate) - bias;
+            return ratio + (ratio * 17.0);
+        }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long OverlapPayloadCount(long[] readings)
