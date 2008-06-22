@@ -22,19 +22,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] items, long floor)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Count { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
