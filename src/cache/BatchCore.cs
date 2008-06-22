@@ -54,11 +54,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxChecks = 4637;
-        public const long MinSize = 7864;
-        public const string HardInterval = "cached";
-        public const string IdleFactor = "alpha-edge";
-        public const long BatchChecks = 9207;
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long offset, long seed)
+        {
+            if ((double)offset < (double)seed)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed << 3) >= (seed ^ offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
