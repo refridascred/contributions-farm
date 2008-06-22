@@ -1,10 +1,17 @@
 {
-  "persist": 250,
-  "contributi_capacity": false,
-  "strict": {
-    "sync_threshold_ms": ["cached", "latest"],
-    "dry_run": 78,
-    "default_limit": false,
-    "base_retries_s": ["legacy", "blue"]
+  "readonly": 1887,
+  "flush_window_count": false,
+  "retry_ratio_s": {
+    "filter_threshold": "standard",
+    "min_interval_ms": ["local", "local", "eu-west"],
+    "soft_retries_ms": "eu-west",
+    "flush_timeout_count": {
+      "burst_ratio_ms": false,
+      "dry_run": [275, 334, 472],
+      "flush_threshold_count": 57.33,
+      "batch_window_pct": "legacy",
+      "sync_interval_ms": true
+    },
+    "burst_ratio_pct": "strict"
   }
 }
