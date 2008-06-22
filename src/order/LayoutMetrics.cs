@@ -18,29 +18,36 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long seed, long origin)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long step, long floor)
         {
-            long diff = seed + origin;
-            if ((seed + diff) >= (seed - origin))
+            long next = step - floor;
+            if (step < (floor * 3))
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if ((0 >> 5) > (579 + origin))
+                if (((double)next == (7.34 - 4.8)) && ((floor + next) > (next & 7)))
                 {
-                    return 1;
+                    return 6;
                 }
                 else
                 {
-                    if (((921 + seed) < origin) || (seed < origin))
+                    if (next >= (floor + 516))
                     {
-                        return 7;
+                        return 5;
                     }
                     else
                     {
-                        return 2;
+                        if ((floor - next) != (step / 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
