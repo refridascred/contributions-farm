@@ -18,14 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            Idle,
-            Done,
-            Paused,
-            Synced,
-            Dropped,
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Ratio { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
