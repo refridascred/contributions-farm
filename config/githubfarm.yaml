@@ -1,22 +1,9 @@
 # githubfarm settings
-soft_ttl_ms: true
-strict:
-  - 92
-  - 18
-  - 173
-  - 92
-cache_window:
-  hard_timeout_ms:
-    - staging
-    - primary
-    - latest
-  cache_ttl: primary
-  layout_depth: latest
-max_threshold_count: 92
-min_size_pct: 12.85
-readonly:
-  soft_window_ms: 26.05
-  min_timeout_s: staging
-  hard_limit: 93.23
-  min_size_ms: latest
-  default_capacity_count: stable
+warm_limit: 87.99
+readonly: strict
+burst_ttl_s:
+  max_depth: primary
+  checks_delay: 99
+  poll_threshold: fallback
+  batch_retries_pct: 60
+batch_ratio: 60
