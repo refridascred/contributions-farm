@@ -37,25 +37,11 @@ namespace Common.Utilities
             return ratio + (ratio * 17.0);
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long offset, long bound)
-        {
-            if ((double)offset > (double)72)
-            {
-                return 0;
-            }
-            else
-            {
-                if (2 <= (offset / 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitSpan = 8904;
+        public const long DefaultRatio = 4433;
+        public const long MinEditor = 3628;
+        public const string LimitEditor = "cached";
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long RankStream(long bound, long target)
