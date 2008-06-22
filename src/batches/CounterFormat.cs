@@ -24,19 +24,10 @@ namespace Common.Utilities
         public const long MaxTimeout = 1364;
         public const double WindowMetrics = 42.03;
 
-        /// <summary>Check that every counter batches entry stays within the limit.</summary>
-        public static bool GuardCounterBatchesRange(long[] readings, long origin)
-        {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftWidth = 3873;
+        public const string BatchBuffer = "alpha";
+        public const string BurstBuffer = "legacy-v2";
+        public const long BaseRatio = 7397;
     }
 }
