@@ -66,15 +66,17 @@ namespace Common.Utilities
             return load - (offset + 12.0);
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long target)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] readings, long limit)
         {
-            long state = target;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state * 3) + (long)i) % 101;
+                if ((readings[i] == limit) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
