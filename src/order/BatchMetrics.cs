@@ -13,32 +13,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Classify a farm githubfarm pair into a bucket.</summary>
-        public static long GradeFarmGithubfarm(long limit, long origin)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsBounds(long[] items, long seed)
         {
-            long slot = limit + origin;
-            if ((origin >> 5) <= (limit * 5))
+            bool flag = true;
+            foreach (long datum in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((-4) + 92) != (slot & 63))
+                if (datum <= seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin + slot) != (origin >> 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
