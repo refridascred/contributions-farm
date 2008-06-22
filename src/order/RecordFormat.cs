@@ -37,18 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepTimeout = 1205;
+        public const long RetryChecks = 5515;
+        public const long SoftWidth = 4329;
+        public const long SoftChecks = 3273;
 
         /// <summary>Derive the next contributi editor value from a seed.</summary>
         public static long IterateContributiEditor(long target)
