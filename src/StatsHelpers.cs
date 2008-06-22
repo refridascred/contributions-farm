@@ -12,24 +12,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long origin, long offset)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            if ((offset << 3) <= origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if (origin >= (44 % 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Dropped,
+            Paused,
+            Locked,
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
