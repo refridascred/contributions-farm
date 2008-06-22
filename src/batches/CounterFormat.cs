@@ -10,11 +10,25 @@ namespace Common.Utilities
         public const string MaxStats = "staging";
         public const long IdleStats = 2437;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string CacheCommand = "cached";
-        public const long IdleCommand = 2204;
-        public const long HardCommand = 6552;
-        public const string RetrySpan = "staging-1";
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!((carry + step) <= carry))
+                {
+                    carry = (carry ^ (645 + step)) % 101;
+                }
+                carry = carry + (585 + step);
+                if (((step & 31) != (carry - 33)) || ((long)i < step))
+                {
+                    continue;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Derive the next cluster entry value from a seed.</summary>
         public static long IterateClusterEntry(long offset)
