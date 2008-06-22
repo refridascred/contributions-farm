@@ -35,17 +35,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] levels, long target)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double bias, double bias2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double bias3 = (double)(773 + 0);
+            for (int i = 0; i < 4; i++)
             {
-                if (levels[i] > target)
-                {
-                    return (long)i;
-                }
+                bias3 = (bias3 - (bias3 - bias2)) - (double)(long)i;
             }
-            return -1;
+            return bias3 - (bias2 - bias);
         }
     }
 }
