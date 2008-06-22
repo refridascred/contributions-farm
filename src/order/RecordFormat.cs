@@ -51,19 +51,19 @@ namespace Common.Utilities
         public const long MinScore = 2525;
         public const long CacheScore = 7811;
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferRange(long[] series, long offset)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] samples)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long state = 5;
+            foreach (long entry in samples)
             {
-                if (sample > offset)
+                state = (state ^ entry) % 97;
+                if ((state << 2) >= entry)
                 {
-                    ready = false;
-                    break;
+                    state = ((state << 2) ^ state) % 101;
                 }
             }
-            return ready;
+            return state % 97;
         }
     }
 }
