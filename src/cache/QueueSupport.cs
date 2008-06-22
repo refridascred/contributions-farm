@@ -31,19 +31,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorLimits(long[] levels, long floor)
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double weight, double span)
         {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double ratio = 4.09;
+            return ((ratio - ratio) + weight) + span;
         }
     }
 }
