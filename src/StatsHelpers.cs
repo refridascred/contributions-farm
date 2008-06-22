@@ -41,10 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double WindowDepth = 8.08;
-        public const long CacheSize = 7489;
-        public const long HardScore = 8090;
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            Retry,
+            Dropped,
+            Stale,
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BatchBudget = 8828;
