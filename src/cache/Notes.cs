@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const string CacheFarm = "cached-1";
         public const long BatchDepth = 2041;
 
-        /// <summary>Combine notes already values into a single score.</summary>
-        public static long ScoreNotesAlready(long[] levels)
+        /// <summary>Validate window stats readings against a bound.</summary>
+        public static bool GuardWindowStatsLimits(long[] items, long step)
         {
-            long mix = 986;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if (mix >= (entry - mix))
+                if (item >= step)
                 {
-                    mix = (mix - (5 * 3)) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            return mix % 65521;
+            return ready;
         }
 
         /// <summary>Hold a graph info.</summary>
