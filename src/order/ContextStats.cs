@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long seed, long seed2)
         {
-            Synced,
-            New,
-            Closed,
-            Draft,
+            if ((double)seed2 < (double)seed)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((2 < (seed2 % 60)) || (((-53) - seed2) <= 89))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((0.8 - 3.7) == (double)seed2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)seed2 >= (10.0 + 20.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
