@@ -13,18 +13,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSession = 1338;
+        public const double BatchSession = 31.42;
+        public const double MinSession = 30.74;
+        public const double BurstSession = 74.85;
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long CombineStream(long[] series)
