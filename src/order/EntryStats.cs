@@ -10,10 +10,19 @@ namespace Common.Utilities
         public const long BaseBatch = 9278;
         public const long WindowLevel = 67;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 2584;
-        public const string StepSpan = "standard";
-        public const long WindowAlready = 3245;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] data, long offset)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((offset + 2) <= entry)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long OverlapFilterCount(long[] series)
