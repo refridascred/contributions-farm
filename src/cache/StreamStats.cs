@@ -48,21 +48,10 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Match up context cluster samples.</summary>
-        public static long MatchContextClusterCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BurstDepth = "latest-edge";
+        public const long WindowFactor = 7569;
+        public const long BaseSchema = 1241;
+        public const long IdleWidth = 4103;
     }
 }
