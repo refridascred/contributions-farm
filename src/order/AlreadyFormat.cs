@@ -33,22 +33,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Count the account metric entries that pass the check.</summary>
-        public static long MeasureAccountMetricHits(long[] data, long floor)
+        /// <summary>Roll a counter cache counter forward.</summary>
+        public static long IterateCounterCache(long floor)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long sum = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((1.0 + 8.8) < (double)item)
-                {
-                    tally = (tally + 3) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
