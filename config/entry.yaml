@@ -1,8 +1,4 @@
 # entry settings
-strict:
-  - 334
-  - 357
-context_timeout: false
-flush_capacity_count: 30
-readonly: green
-retry_depth_count: latest
+dry_run: latest
+idle_ttl: 17.01
+batch_interval_ms: primary
