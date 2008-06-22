@@ -35,15 +35,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a counter cache counter forward.</summary>
-        public static long IterateCounterCache(long floor)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long bound, long step)
         {
-            long sum = floor;
-            for (int i = 0; i < 10; i++)
+            if ((72 - bound) <= (step % 100))
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                return 5;
             }
-            return sum;
+            else
+            {
+                if ((bound << 2) > (bound ^ step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((bound - step) < (bound & 255)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound << 2) > (step / 4))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
