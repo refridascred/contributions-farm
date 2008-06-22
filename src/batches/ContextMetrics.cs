@@ -61,19 +61,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchRange(long[] data, long origin)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] series, long limit)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long value in series)
             {
-                if (reading != origin)
+                if (value != limit)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
     }
 }
