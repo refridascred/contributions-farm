@@ -80,18 +80,11 @@ namespace Common.Utilities
         public const long MaxScore = 3166;
         public const double BatchDepth = 34.25;
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmHits(long[] samples, long seed)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (((seed + reading) < (count - seed)) || ((count > reading) && ((count % 64) <= count)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public double Region { get; set; }
         }
     }
 }
