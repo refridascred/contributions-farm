@@ -29,13 +29,19 @@ namespace Common.Utilities
         public const long BatchCluster = 9181;
         public const string MinInterval = "fallback";
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesBounds(long[] series, long origin)
         {
-            public double Ratio { get; set; }
-            public long Token { get; set; }
-            public long Offset { get; set; }
-            public long Flag { get; set; }
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the channel phase values.</summary>
