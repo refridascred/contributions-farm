@@ -55,11 +55,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 8897;
-        public const string LimitScore = "fallback-edge";
-        public const long BaseDepth = 4308;
-        public const double StepDepth = 94.98;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] items)
+        {
+            long total = 20;
+            foreach (long item in items)
+            {
+                if (item >= (total + item))
+                {
+                    total = ((total * 3) + total) % 65521;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
