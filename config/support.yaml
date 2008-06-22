@@ -1,5 +1,30 @@
 # support settings
-soft_threshold: 100
-command_limit: 6362
-audit: standard
-persist: false
+queue_threshold: 1674
+strict: 100
+entry_interval:
+  persist: cached
+  batches_ratio:
+    - stable
+    - open
+  flush_ttl:
+    farm_limit: false
+    poll_ttl: true
+    default_depth: 6935
+    retry_interval:
+      - staging
+      - cached
+      - primary
+  retry_interval:
+    - 436
+    - 256
+    - 74
+  soft_ratio:
+    - 263
+    - 469
+  retry_timeout_ms:
+    enabled: primary
+    min_size_pct: strict
+    tools_limit: 12.64
+    idle_ttl: 250
+    cache_capacity_s: local
+    poll_retries_pct: 37.9
