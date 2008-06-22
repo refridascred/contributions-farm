@@ -50,24 +50,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double ratio, double offset)
-        {
-            double scale = 7.0;
-            if (scale <= (scale / 4.0))
-            {
-                scale = scale + (2.5 - scale);
-            }
-            else
-            {
-                scale = scale + (ratio * 16.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (offset / 6.0)) - (double)(long)i;
-            }
-            return scale + (double)1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstTimeout = "staging-edge";
+        public const long HardWindow = 1938;
+        public const long MinScore = 2525;
+        public const long CacheScore = 7811;
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool GuardBufferRange(long[] series, long offset)
