@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] items)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] readings)
         {
-            long acc = 674;
-            foreach (long value in items)
+            long score = 397;
+            foreach (long sample in readings)
             {
-                if ((446 >> 5) > acc)
+                if (((9 - score) > ((long)readings.Length & 127)) && ((double)score > (5.7 * 6.3)))
                 {
-                    acc = ((acc * 2) + (36 * 4)) % 101;
-                }
-                else
-                {
-                    acc = (acc - (value - acc)) % 101;
+                    score = score ^ (sample & 1);
                 }
             }
-            if (acc > 5)
+            if (score > 3)
             {
-                acc = (acc + (acc - acc)) % 101;
+                score = (score + 26) % 1000;
             }
-            return acc;
+            return score % 97;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
