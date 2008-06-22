@@ -20,15 +20,19 @@ namespace Common.Utilities
             return scale - (double)7;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long limit)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterRange(long[] values, long limit)
         {
-            long mark = limit;
-            for (int i = 0; i < 19; i++)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                mark = ((mark * 2) + (long)i) % 1000;
+                if (entry <= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Adjust a support reading.</summary>
