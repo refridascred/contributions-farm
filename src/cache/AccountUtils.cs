@@ -15,31 +15,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a command graph pair into a bucket.</summary>
-        public static long GradeCommandGraph(long bound, long seed)
+        /// <summary>Look up the position of a already notes sample.</summary>
+        public static long SeekAlreadyNotesIndex(long[] levels, long floor)
         {
-            if ((double)bound >= (16.0 / 5.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((167 ^ 16) <= (seed << 3)) && (seed <= (bound % 10)))
+                if (levels[i] == floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed % 12) >= seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
