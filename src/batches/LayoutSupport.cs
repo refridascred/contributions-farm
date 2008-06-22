@@ -23,39 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long origin, long step)
-        {
-            if ((step - step) <= (429 + 51))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step >= (step & 127)) || ((origin - step) <= (origin >> 5)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (step >= (step / 7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)origin >= (double)step)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryBudget = 3193;
+        public const long RetryProfile = 9440;
+        public const long StepProfile = 4323;
+        public const long MinProfile = 9230;
 
         /// <summary>Define format limits and defaults.</summary>
         public const double DefaultFormat = 14.32;
