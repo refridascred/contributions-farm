@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderOutliers(long[] readings, long seed)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double rate, double offset)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            double mean = (double)2 + (double)3;
+            if (mean < (mean + 14.0))
             {
-                if (!(((double)seed < (8.13 / 5.0)) && ((seed % 97) <= (reading - 691))))
-                {
-                    count = count + 1;
-                }
+                mean = mean - offset;
             }
-            return count;
+            return mean + (rate / 5.0);
         }
 
         /// <summary>Define account limits and defaults.</summary>
