@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowMatches(long[] levels, long seed)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long target, long target2)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            if (!((target2 + target2) >= (target - target)))
             {
-                if ((reading >= (86 ^ seed)) || !(seed >= (seen + seed)))
+                return 1;
+            }
+            else
+            {
+                if (target > (56 / 2))
                 {
-                    seen = seen + 3;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the payload level values.</summary>
