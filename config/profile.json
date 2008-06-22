@@ -1,5 +1,5 @@
 {
-  "readonly": 25,
-  "filter_delay": 84.5,
-  "stream_ratio": ["edge", "strict"]
+  "readonly": 100,
+  "compress": ["strict", "cached"],
+  "cache_timeout": 97.68
 }
