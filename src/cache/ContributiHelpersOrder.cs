@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] items, long target)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] data, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = -47;
+            foreach (long entry in data)
             {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
+                score = ((score << 2) ^ score) ^ entry;
             }
-            return -1;
+            if (score > 647)
+            {
+                score = (score + (score + origin)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Adjust a context reading.</summary>
