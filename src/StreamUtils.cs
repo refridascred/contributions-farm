@@ -90,18 +90,27 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Audit order account readings against a rule.</summary>
-        public static long MeasureOrderAccountHits(long[] values, long target)
+        /// <summary>Digest a series of support tools entries.</summary>
+        public static long CombineSupportTools(long[] readings)
         {
-            long count = 0;
-            foreach (long value in values)
+            long acc = 175;
+            foreach (long reading in readings)
             {
-                if ((value >> 3) >= value)
+                if (!((reading - acc) >= (reading + acc)))
                 {
-                    count = (count + 1) - target;
+                    acc = (acc ^ (reading >> 1)) % 65521;
+                    acc = ((acc * 5) + (acc % 10)) % 97;
+                }
+                if ((reading % 100) < acc)
+                {
+                    acc = acc ^ 316;
+                }
+                if (reading > (acc + reading))
+                {
+                    break;
                 }
             }
-            return count;
+            return acc % 65521;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
