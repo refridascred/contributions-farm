@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadOutliers(long[] items, long seed)
+        /// <summary>Classify a order record pair into a bucket.</summary>
+        public static long BucketOrderRecord(long floor, long origin)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            if ((double)origin == (double)40)
             {
-                if ((double)sample >= (double)tally)
+                return 1;
+            }
+            else
+            {
+                if ((154 << 1) == (floor - floor))
                 {
-                    tally = (tally + 3) + seed;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
