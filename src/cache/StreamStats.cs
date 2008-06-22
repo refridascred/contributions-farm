@@ -37,11 +37,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstMetric = 371;
-        public const long LimitScore = 4786;
-        public const string StepScore = "stable-edge";
-        public const long StepCount = 4987;
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long offset, long bound)
+        {
+            if ((offset / 8) <= 907)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((bound + offset) <= (offset + offset)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Find the first metrics farm entry that matches the target.</summary>
         public static long SeekMetricsFarmIndex(long[] levels, long target)
