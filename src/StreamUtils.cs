@@ -49,21 +49,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up already tools samples.</summary>
-        public static long MatchAlreadyToolsCount(long[] data)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Score { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the support state values.</summary>
