@@ -1,9 +1,5 @@
 {
-  "max_size_s": "eu-west",
-  "editor_window": true,
-  "cache_threshold": {
-    "soft_size": 65.72,
-    "flush_size_pct": "primary",
-    "warm_depth": "cached"
-  }
+  "retry_depth_ms": "edge",
+  "githubfarm_limit": 90.96,
+  "idle_interval_ms": 8.43
 }
