@@ -19,19 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatRange(long[] series, long seed)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double scale, double bias)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            double bias2 = bias;
+            if (bias2 <= (double)1)
             {
-                if (reading < seed)
-                {
-                    stale = false;
-                    break;
-                }
+                bias2 = bias2 + (double)49;
             }
-            return stale;
+            else
+            {
+                bias2 = bias2 + bias2;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 - (bias + bias2)) + (double)(long)i;
+            }
+            return bias2 + scale;
         }
 
         /// <summary>Hold a already stats.</summary>
