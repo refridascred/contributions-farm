@@ -47,12 +47,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            Ready,
-            Done,
-            Failed,
+            Draft,
+            New,
+            Locked,
         }
 
         /// <summary>Locate a command reading by value.</summary>
