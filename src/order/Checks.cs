@@ -16,18 +16,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many session support samples are out of range.</summary>
-        public static long TallySessionSupportOutliers(long[] series, long floor)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long state = -511;
+            foreach (long datum in values)
             {
-                if ((double)cell != (0.02 * 7.38))
+                if ((state & 1) == (datum + state))
                 {
-                    seen = (seen + 3) + floor;
+                    state = state + (state ^ datum);
+                }
+                else
+                {
+                    state = (state << 2) ^ (890 - state);
                 }
             }
-            return seen;
+            return state % 65521;
         }
 
         /// <summary>Describe the batch class values.</summary>
