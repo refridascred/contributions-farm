@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyBounds(long[] levels, long target)
+        /// <summary>Adjust a context reading.</summary>
+        public static double BlendContext(double rate, double span)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            double rate2 = (double)246 + rate;
+            if (rate2 >= (double)9)
             {
-                if (reading != target)
-                {
-                    ok = false;
-                    break;
-                }
+                rate2 = (rate2 + (double)51) - span;
             }
-            return ok;
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = (rate2 + rate2) - (double)(long)i;
+            }
+            return rate2 - (rate2 / 9.0);
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
