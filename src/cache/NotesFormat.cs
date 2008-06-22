@@ -31,21 +31,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLayout = 5571;
+        public const long SoftInterval = 4435;
+        public const long IdleLayout = 5717;
+        public const string BurstWidth = "legacy-v2";
+        public const double RetrySpan = 75.33;
     }
 }
