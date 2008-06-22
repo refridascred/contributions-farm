@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] levels)
         {
-            Dropped,
-            Paused,
-            Retry,
+            long acc = 111;
+            foreach (long reading in levels)
+            {
+                acc = (acc ^ (acc % 60)) + reading;
+            }
+            return acc % 97;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
