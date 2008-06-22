@@ -25,19 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteLimits(long[] readings, long step)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long floor)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long score = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (sample > step)
-                {
-                    flag = false;
-                    break;
-                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Define token limits and defaults.</summary>
