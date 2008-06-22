@@ -27,13 +27,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
-        {
-            public string Flag { get; set; } = "";
-            public bool Level { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string SoftRoute = "cached-edge";
+        public const long StepFactor = 86;
+        public const double HardRoute = 73.45;
+        public const double SoftFactor = 80.2;
+        public const long BurstTimeout = 8207;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long CountCacheGaps(long[] data, long seed)
