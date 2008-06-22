@@ -1,13 +1,11 @@
 {
-  "batch_ratio": 94.86,
-  "cache_ttl_ms": 69.16,
-  "idle_retries": true,
-  "default_size_ms": 250,
-  "verbose": {
-    "command_window": "staging",
-    "entry_size": ["blue", "open"],
-    "retry_ttl_count": false,
-    "entry_timeout": "primary",
-    "batch_ttl": 250
-  }
+  "retry_capacity_s": 84.47,
+  "enabled": {
+    "sync_retries_count": true,
+    "batch_ttl_count": ["edge", "open", "stable", "strict"],
+    "verbose": 100
+  },
+  "burst_depth_pct": 98.79,
+  "batch_size": false,
+  "compress": "staging"
 }
