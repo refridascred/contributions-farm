@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
+            Dropped,
+            Paused,
             Retry,
-            Queued,
-            Failed,
-            Closed,
-            Stale,
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
