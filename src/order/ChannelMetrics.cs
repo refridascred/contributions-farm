@@ -16,22 +16,21 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] samples)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (116 < entry)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((levels[i] ^ levels[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Blend two editor report measurements.</summary>
