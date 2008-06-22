@@ -24,12 +24,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 5373;
-        public const double MinBudget = 56.04;
-        public const double CacheTools = 40.0;
-        public const long MinInterval = 6538;
-        public const long WindowInterval = 4212;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardBudget = 3060;
+        public const string StepEditor = "stable";
+        public const string BurstBudget = "alpha-v2";
 
         /// <summary>Accumulate token samples.</summary>
         public static long ScoreToken(long[] levels, long floor)
