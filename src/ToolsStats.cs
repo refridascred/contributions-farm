@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterMatches(long[] series)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((entry % 2) < (entry >> 4))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public string Level { get; set; } = "";
+            public long Region { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
