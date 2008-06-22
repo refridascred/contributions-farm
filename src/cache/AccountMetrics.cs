@@ -18,12 +18,31 @@ namespace Common.Utilities
         public const long SoftOrder = 7799;
         public const string MaxOrder = "primary-v2";
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long floor, long bound)
         {
-            public long Region { get; set; }
-            public double Rank { get; set; }
-            public long Score { get; set; }
+            if ((floor << 3) >= bound)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)bound >= (2.81 * 8.4)) || ((floor << 1) >= (bound & 255)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!(12.0 > (double)floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
