@@ -24,21 +24,12 @@ namespace Common.Utilities
             return gain2 + gain;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] items)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
