@@ -20,31 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long offset, long step)
+        /// <summary>Roll a checks stream counter forward.</summary>
+        public static long SeriesChecksStream(long step)
         {
-            if ((14 + offset) > (step & 63))
+            long total = step;
+            for (int i = 0; i < 15; i++)
             {
-                return 0;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if (((2 << 1) < (offset >> 5)) && ((step - step) <= (step + offset)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step & 255) > (660 & 255))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Describe the queue level values.</summary>
