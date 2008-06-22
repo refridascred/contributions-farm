@@ -73,19 +73,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double gain, double bias)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long step, long offset)
         {
-            double load = gain;
-            if (load <= bias)
+            long offset2 = step + offset;
+            if ((step > ((-7) + offset)) && (offset2 < (offset2 >> 5)))
             {
-                load = load + (gain * 3.7);
+                return 5;
             }
             else
             {
-                load = load + (bias / 5.0);
+                if ((7.24 - 5.0) >= (double)offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((step / 6) == (821 * 2)) || ((offset2 - offset2) < (offset2 % 100)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return load - bias;
         }
     }
 }
