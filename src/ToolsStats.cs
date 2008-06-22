@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] samples, long origin)
+        /// <summary>Accumulate support editor samples.</summary>
+        public static long TotalSupportEditor(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 79;
+            foreach (long item in samples)
             {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
+                state = (state - (state << 3)) ^ item;
             }
-            return -1;
+            return state % 1000;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
