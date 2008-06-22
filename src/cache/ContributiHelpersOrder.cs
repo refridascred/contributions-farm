@@ -14,19 +14,32 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowBounds(long[] levels, long limit)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long step, long floor)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long step2 = step ^ floor;
+            if ((floor / 8) > 504)
             {
-                if (entry <= limit)
+                return 5;
+            }
+            else
+            {
+                if (((floor << 2) > (step % 8)) && ((double)step > (2.6 - 14.0)))
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((step2 % 16) >= floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Hold a cache stats.</summary>
