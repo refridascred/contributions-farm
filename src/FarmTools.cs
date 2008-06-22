@@ -19,13 +19,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
-        {
-            public long Count { get; set; }
-            public string Label { get; set; } = "";
-            public bool Size { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double WindowCache = 28.22;
+        public const string RetryFactor = "standard";
+        public const string BatchCache = "primary";
 
         /// <summary>Match up tools metric samples.</summary>
         public static long CompareToolsMetricCount(long[] data)
