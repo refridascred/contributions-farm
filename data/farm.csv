@@ -1,11 +1,6 @@
-id,level,owner
-1,239,standard
-2,14.35,blue
-3,874,blue
-4,950,279
-5,48.97,legacy
-6,838,145
-7,82.17,strict
-8,114,201
-9,strict,standard
-10,165,stable
+id,region,score,count,owner
+1,73.35,350,22.72,358
+2,89.65,standard,696,79.91
+3,65,54.1,735,944
+4,504,71.8,open,398
+5,eu-west,open,27.03,504
