@@ -1,6 +1,19 @@
 # entry settings
-enabled: 35.25
-default_delay_s: primary
-hard_retries:
+warm_timeout:
+  - green
+  - blue
+  - fallback
   - staging
-  - local
+soft_ratio:
+  - 350
+  - 467
+notes_depth: 60
+layout_interval:
+  counter_window: true
+  readonly: 642
+  hard_delay: 25.81
+  strict:
+    - 226
+    - 256
+    - 242
+    - 448
