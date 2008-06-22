@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long target, long bound)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionLimits(long[] series, long step)
         {
-            if ((8.92 * 18.0) != (double)target)
+            bool valid = true;
+            foreach (long item in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (bound > (target / 3))
+                if (item > step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)(-34) <= (8.9 - 1.5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
