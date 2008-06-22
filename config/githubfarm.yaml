@@ -1,5 +1,7 @@
 # githubfarm settings
-base_limit: 90.69
-metric_interval: 294
-audit: 28.83
-batch_interval: 9.03
+enabled: legacy
+format_limit: 62.0
+notes_size:
+  - edge
+  - stable
+  - stable
