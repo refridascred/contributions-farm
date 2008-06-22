@@ -1,14 +1,6 @@
 {
-  "batch_limit": 1024,
-  "batch_depth_s": "edge",
-  "flush_ttl_count": 34,
-  "batch_ratio": 962,
-  "strict": {
-    "retry_ttl_count": 500,
-    "session_ttl": 0.8,
-    "flush_interval": 38,
-    "farm_threshold": ["fallback", "fallback"],
-    "idle_delay": "cached",
-    "max_limit": 8528
-  }
+  "commits_capacity": false,
+  "base_timeout": 2888,
+  "idle_size_ms": "strict",
+  "session_threshold": false
 }
