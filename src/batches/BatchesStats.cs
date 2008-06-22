@@ -44,18 +44,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many format layout samples are out of range.</summary>
-        public static long MeasureFormatLayoutHits(long[] data)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long target, long limit)
         {
-            long hits = 0;
-            foreach (long item in data)
+            if (target < (limit + limit))
             {
-                if ((69 >= item) && (((hits % 3) != (hits * 2)) || ((double)item > (1.0 + 12.0))))
+                return 4;
+            }
+            else
+            {
+                if ((limit << 1) > (limit + target))
                 {
-                    hits = hits + 3;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
     }
 }
