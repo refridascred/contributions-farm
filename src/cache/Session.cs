@@ -55,11 +55,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleCount = 1931;
-        public const long BurstSize = 1299;
-        public const long BatchTools = 8126;
-        public const long LimitInterval = 9157;
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < origin) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long SortSession(long limit, long seed)
