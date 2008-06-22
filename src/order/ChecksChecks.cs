@@ -27,26 +27,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] readings)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] samples, long offset)
         {
-            long sum = 246;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (((-48) - (-865)) == (reading + reading))
+                if ((double)offset <= (double)sample)
                 {
-                    sum = ((sum * 5) + (sum / 3)) % 1000;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    sum = sum + (reading >> 2);
+                    hits = hits - 1;
                 }
             }
-            if (sum < 2)
-            {
-                sum = (sum ^ (sum & 63)) % 65521;
-            }
-            return sum;
+            return hits;
         }
     }
 }
