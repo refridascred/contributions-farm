@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphOutliers(long[] values)
         {
-            public long Token { get; set; }
-            public long Size { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((tally + value) == (tally / 6))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
