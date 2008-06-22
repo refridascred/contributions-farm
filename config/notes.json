@@ -1,8 +1,13 @@
 {
-  "burst_retries_s": [19, 497, 211, 349],
-  "sync_ttl_pct": 500,
-  "checks_size": 1254,
-  "strict": 100,
-  "idle_depth_ms": "staging",
-  "graph_ratio": "legacy"
+  "soft_delay": "latest",
+  "channel_timeout": 93,
+  "session_size": "local",
+  "retry_delay": 98,
+  "compress": 355,
+  "graph_retries": {
+    "poll_ratio": "fallback",
+    "soft_depth": 1024,
+    "batch_size_pct": 74.76,
+    "hard_size_ms": [293, 233]
+  }
 }
