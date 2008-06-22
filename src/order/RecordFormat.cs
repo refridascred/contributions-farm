@@ -20,15 +20,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ProjectFormat(double bias, double floor)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] items)
         {
-            double scale = bias;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = (scale + (double)(long)i) + floor;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return scale - (double)367;
+            return count;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
