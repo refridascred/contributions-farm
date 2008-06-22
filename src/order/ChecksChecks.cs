@@ -20,14 +20,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            Closed,
-            Queued,
-            Retry,
-            Ready,
-            Failed,
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
+            public double Size { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
