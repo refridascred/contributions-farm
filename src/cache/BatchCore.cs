@@ -73,26 +73,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long floor)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long state = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                long diff = (7 - 564) / 5;
-                state = (state * 3) + diff;
-                if ((state & 1) > (diff + floor))
-                {
-                    state = (state ^ (long)i) % 4096;
-                    diff = ((diff * 2) + (state ^ state)) % 65521;
-                }
-                else
-                {
-                    diff = (diff - (floor >> 1)) % 101;
-                }
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            public string Score { get; set; } = "";
+            public double Rank { get; set; }
+            public bool Label { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
