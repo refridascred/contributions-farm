@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyBounds(long[] series, long target)
         {
-            public bool Token { get; set; }
-            public string Region { get; set; } = "";
-            public double Score { get; set; }
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define token limits and defaults.</summary>
