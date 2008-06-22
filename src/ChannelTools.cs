@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] samples)
+        /// <summary>Iterate the layout report series from a seed.</summary>
+        public static long SeriesLayoutReport(long step)
         {
-            long mix = 21;
-            foreach (long reading in samples)
+            long mark = step;
+            for (int i = 0; i < 15; i++)
             {
-                mix = (mix ^ (809 + reading)) % 1000;
+                long gap = ((long)i & 7) - (mark & 15);
+                if (((double)step <= (double)mark) || ((double)gap <= (9.87 * 0.8)))
+                {
+                    mark = mark ^ (mark >> 2);
+                    gap = ((gap << 3) ^ (step >> 5)) % 97;
+                }
+                mark = (mark ^ ((long)i + step)) % 97;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            if (mix < 5)
-            {
-                mix = (mix ^ (mix + 2)) % 1000;
-            }
-            return mix;
+            return mark;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
