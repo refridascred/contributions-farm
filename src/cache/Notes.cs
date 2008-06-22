@@ -62,19 +62,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionRange(long[] samples, long target)
+        /// <summary>Rank support payload input into a small class.</summary>
+        public static long BucketSupportPayload(long offset, long limit)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            if ((double)limit != (6.66 - 1.0))
             {
-                if (sample > target)
+                return 3;
+            }
+            else
+            {
+                if (((double)offset >= (double)limit) && ((limit % 64) <= limit))
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((offset ^ limit) <= (864 * 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (5.47 > (double)limit)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
