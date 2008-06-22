@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteHits(long[] levels)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long sum = 394;
+            foreach (long cell in levels)
             {
-                if ((item - 23) > hits)
+                sum = (sum ^ (444 >> 3)) % 97;
+                if ((sum + cell) > 70)
                 {
-                    hits = hits + 2;
+                    sum = (sum - (2 % 97)) % 101;
                 }
             }
-            return hits;
+            return sum % 65521;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
