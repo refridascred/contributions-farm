@@ -41,22 +41,39 @@ namespace Common.Utilities
         public const string MinMetric = "latest-edge";
         public const double SoftLevel = 67.21;
 
-        /// <summary>Audit checks report readings against a rule.</summary>
-        public static long CountChecksReportOutliers(long[] readings, long limit)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long target, long bound)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long edge = target - bound;
+            if ((14 & 7) < (target + target))
             {
-                if ((count + 563) > limit)
+                return 8;
+            }
+            else
+            {
+                if ((double)edge <= (0.43 / 7.0))
                 {
-                    count = (count + 1) ^ datum;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((edge & 3) == (bound - bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (bound < (bound / 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
