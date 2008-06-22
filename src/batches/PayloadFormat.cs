@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long target, long target2)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandMatches(long[] levels, long bound)
         {
-            if (!((target2 + target2) >= (target - target)))
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (target > (56 / 2))
+                if (((double)matches <= (4.0 - 4.1)) || (datum <= (bound + 479)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the payload level values.</summary>
