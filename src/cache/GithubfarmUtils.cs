@@ -35,21 +35,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up checks contributi samples.</summary>
-        public static long MatchChecksContributiCount(long[] samples)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) != 1)
+                    if ((readings[i] ^ readings[j]) < 19)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
