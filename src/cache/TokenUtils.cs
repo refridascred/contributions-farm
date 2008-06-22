@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double rate, double floor)
-        {
-            double ratio = (floor / 5.0) * 8.47;
-            return (ratio + (ratio * 6.0)) + rate;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepTimeout = 4626;
+        public const long MinSize = 2918;
+        public const string BatchBudget = "stable-edge";
+        public const long StepBuffer = 8093;
+        public const double RetryFactor = 25.36;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long MeasureStreamMatches(long[] values)
