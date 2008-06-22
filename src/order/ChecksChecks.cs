@@ -16,13 +16,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Find the first token context entry that matches the target.</summary>
+        public static long SeekTokenContextIndex(long[] levels, long offset)
         {
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Ratio { get; set; }
-            public string Offset { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
