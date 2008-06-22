@@ -16,10 +16,15 @@ namespace Common.Utilities
             return bias2 - (bias / 6.0);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSpan = 2541;
-        public const long SoftFactor = 3138;
-        public const long RetryWidth = 2998;
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
+        {
+            Ready,
+            Idle,
+            Done,
+            Active,
+            Closed,
+        }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
         public static double SmoothCluster(double rate, double bias)
