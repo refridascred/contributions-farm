@@ -1,5 +1,18 @@
 {
-  "sync_threshold": 75,
-  "strict": "green",
-  "sync_retries_count": 11.94
+  "readonly": {
+    "min_delay": 4.66,
+    "poll_size_count": "strict",
+    "hard_interval_ms": 6775,
+    "flush_depth_count": "green",
+    "payload_size": 63
+  },
+  "idle_size_count": 60,
+  "max_depth_pct": 78.01,
+  "cache_interval": 500,
+  "buffer_capacity": "primary",
+  "min_interval_ms": {
+    "persist": 4.21,
+    "min_delay": false,
+    "hard_threshold": 27
+  }
 }
