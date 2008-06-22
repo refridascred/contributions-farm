@@ -27,18 +27,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] samples)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((long)samples.Length < matches)
-                {
-                    matches = (matches + 3) + reading;
-                }
-            }
-            return matches;
+            public double Ratio { get; set; }
+            public long Mode { get; set; }
+            public bool Size { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
