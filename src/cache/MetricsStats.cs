@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountRange(long[] data, long origin)
-        {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string DefaultCount = "local";
+        public const double DefaultBatches = 48.8;
+        public const long MinBatches = 8290;
 
         /// <summary>Blend two entry measurements.</summary>
         public static double BlendEntry(double weight, double floor)
