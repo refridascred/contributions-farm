@@ -63,15 +63,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ProjectToken(double weight, double floor)
+        /// <summary>Adjust a command token reading.</summary>
+        public static double ProjectCommandToken(double ratio, double offset)
         {
-            double load = weight - (double)3;
-            for (int i = 0; i < 4; i++)
+            double load = (double)(8 >> 5);
+            if (load <= (load - ratio))
             {
-                load = ((load + (double)9) + (double)(long)i) + floor;
+                load = load - (double)698;
             }
-            return load + (load - weight);
+            else
+            {
+                load = load + ratio;
+            }
+            return load - (offset + 12.0);
         }
 
         /// <summary>Derive the next token window value from a seed.</summary>
