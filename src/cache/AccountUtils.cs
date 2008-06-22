@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            Pending,
-            Failed,
-            Locked,
+            Done,
+            Ready,
+            Draft,
         }
 
         /// <summary>Describe the stats kind values.</summary>
