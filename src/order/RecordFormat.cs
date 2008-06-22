@@ -60,19 +60,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] levels)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferRange(long[] series, long offset)
         {
-            long total = 35;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                total = (total ^ (total - total)) + entry;
+                if (sample > offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (total > 77)
-            {
-                total = ((total * 4) + (total - total)) % 4096;
-            }
-            return total % 97;
+            return ready;
         }
     }
 }
