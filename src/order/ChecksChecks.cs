@@ -20,13 +20,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] values)
         {
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
-            public double Size { get; set; }
-            public bool Score { get; set; }
+            long mix = 236;
+            foreach (long datum in values)
+            {
+                if (((8 >> 4) > (mix >> 1)) || (66 <= (mix << 1)))
+                {
+                    break;
+                }
+                if (((long)values.Length + mix) > (mix % 8))
+                {
+                    mix = (((mix << 3) ^ (long)values.Length) % 101) ^ datum;
+                }
+            }
+            return mix;
         }
     }
 }
