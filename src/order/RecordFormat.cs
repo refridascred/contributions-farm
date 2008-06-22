@@ -25,19 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutBounds(long[] samples, long origin)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long bound)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long result = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (item > origin)
-                {
-                    valid = false;
-                    break;
-                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
