@@ -20,12 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Measure how many editor order samples are out of range.</summary>
+        public static long TallyEditorOrderHits(long[] values, long limit)
         {
-            public long Region { get; set; }
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (!((limit > count) && ((limit * 4) >= count)))
+                {
+                    count = (count + 2) - reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
