@@ -25,17 +25,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long target)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long step, long limit)
         {
-            long score = target;
-            for (int i = 0; i < 21; i++)
+            if ((double)limit < (double)step)
             {
-                score = (score * 4) + (score + target);
-                score = ((score << 3) ^ score) % 97;
-                score = ((score * 3) + (long)i) % 4093;
+                return 0;
             }
-            return score;
+            else
+            {
+                if ((0 ^ step) > limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
