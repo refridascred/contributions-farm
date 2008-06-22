@@ -40,12 +40,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first metric session entry that matches the target.</summary>
-        public static long FindMetricSessionIndex(long[] series, long target)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] values, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((series[i] < target) && ((series[i] % 3) != 0))
+                if ((values[i] < seed) && ((values[i] % 5) != 0))
                 {
                     return (long)i;
                 }
