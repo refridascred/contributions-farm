@@ -59,13 +59,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] values, long bound)
         {
-            Synced,
-            Closed,
-            Paused,
-            Dropped,
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (((bound % 7) > (hits - (long)values.Length)) && ((hits & 255) >= (entry % 2)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
