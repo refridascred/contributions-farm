@@ -30,11 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double rate, double bias)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            double ratio = (bias + rate) - bias;
-            return ratio + (ratio * 17.0);
+            Paused,
+            Locked,
+            Retry,
+            Closed,
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
