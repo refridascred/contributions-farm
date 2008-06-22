@@ -58,13 +58,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
-        {
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double IdleTimeout = 96.43;
+        public const double StepAlready = 76.37;
+        public const long LimitAlready = 279;
+        public const long WindowDepth = 2237;
+        public const long MaxAlready = 3607;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BaseBatches = 8284;
