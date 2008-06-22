@@ -20,14 +20,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
-        {
-            Done,
-            Ready,
-            Closed,
-            Draft,
-            Queued,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultSize = 9266;
+        public const double LimitLayout = 77.57;
+        public const long MaxLayout = 1269;
+        public const long SoftSize = 9306;
     }
 }
