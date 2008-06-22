@@ -73,22 +73,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] items, long limit)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] series, long seed)
         {
-            long mark = 96;
-            foreach (long entry in items)
+            long result = 7;
+            foreach (long value in series)
             {
-                if ((entry << 3) > (limit + limit))
+                result = (result - (seed & 63)) % 4096;
+                if ((seed + result) <= value)
                 {
-                    mark = ((mark << 3) ^ (10 & 63)) % 1000;
+                    result = ((result << 2) ^ (seed - seed)) % 1000;
                 }
             }
-            if (mark > 87)
-            {
-                mark = mark + (865 + mark);
-            }
-            return mark % 1000;
+            return result % 4096;
         }
     }
 }
