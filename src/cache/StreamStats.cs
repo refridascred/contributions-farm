@@ -37,19 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] data, long seed)
-        {
-            long state = 65;
-            foreach (long reading in data)
-            {
-                if ((double)seed < (double)reading)
-                {
-                    state = (state ^ (seed << 1)) % 4096;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstMetric = 371;
+        public const long LimitScore = 4786;
+        public const string StepScore = "stable-edge";
+        public const long StepCount = 4987;
 
         /// <summary>Count window format pairs that satisfy a relation.</summary>
         public static long OverlapWindowFormatCount(long[] series)
