@@ -13,17 +13,32 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first token notes entry that matches the target.</summary>
-        public static long FindTokenNotesIndex(long[] items, long limit)
+        /// <summary>Classify a farm githubfarm pair into a bucket.</summary>
+        public static long GradeFarmGithubfarm(long limit, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long slot = limit + origin;
+            if ((origin >> 5) <= (limit * 5))
             {
-                if (items[i] > limit)
+                return 4;
+            }
+            else
+            {
+                if (((-4) + 92) != (slot & 63))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((origin + slot) != (origin >> 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a route stats reading by value.</summary>
