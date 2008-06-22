@@ -54,15 +54,17 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long origin)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] readings, long target)
         {
-            long score = origin;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score * 2) + (long)i) % 4093;
+                if (readings[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
