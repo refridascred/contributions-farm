@@ -43,17 +43,11 @@ namespace Common.Utilities
         public const long MinPayload = 2594;
         public const double MinFactor = 30.54;
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] samples, long seed)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= seed) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Limit { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
     }
 }
