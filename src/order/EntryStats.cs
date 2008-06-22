@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionLimits(long[] series, long step)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long origin, long step)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long slot = origin + step;
+            if ((slot & 63) == (slot % 12))
             {
-                if (item > step)
+                return 2;
+            }
+            else
+            {
+                if ((slot * 5) != (799 + 77))
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return valid;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
