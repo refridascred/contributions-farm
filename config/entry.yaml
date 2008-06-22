@@ -1,4 +1,26 @@
 # entry settings
-notes_limit: 27.81
-warm_threshold_pct: 5618
-route_depth: primary
+default_limit: true
+burst_window: legacy
+default_capacity:
+  flush_threshold: 58.72
+  retry_size:
+    - staging
+    - latest
+    - legacy
+  cache_interval_pct:
+    max_limit_count: 94.38
+    burst_interval_count: primary
+    commits_retries: 500
+    account_limit: 30
+    strict: true
+  compress:
+    - 281
+    - 364
+poll_depth: 94.94
+readonly:
+  batch_capacity_count: 46.51
+  warm_ratio: 31
+  max_depth_ms:
+    - open
+    - stable
+  max_ttl: 48.52
