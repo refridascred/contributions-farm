@@ -53,10 +53,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseWidth = 3796;
-        public const long StepCount = 8713;
-        public const long MinRatio = 8396;
+        /// <summary>Project the next entry value.</summary>
+        public static double AdjustEntry(double scale, double offset)
+        {
+            double scale2 = scale;
+            if (scale2 < scale)
+            {
+                scale2 = (scale2 + (double)(-6)) + offset;
+            }
+            else
+            {
+                scale2 = scale2 - scale2;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = (scale2 + scale2) + (double)(long)i;
+            }
+            return scale2 + scale;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BaseBatches = 8284;
