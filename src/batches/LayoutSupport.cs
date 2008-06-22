@@ -25,15 +25,15 @@ namespace Common.Utilities
             return drift - (double)59;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long target)
+        /// <summary>Combine githubfarm entry values into a single score.</summary>
+        public static long CombineGithubfarmEntry(long[] values)
         {
-            long carry = target;
-            for (int i = 0; i < 23; i++)
+            long sum = 973;
+            foreach (long entry in values)
             {
-                carry = ((carry * 3) + (long)i) % 97;
+                sum = ((sum << 2) ^ (entry / 5)) % 101;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Project the next command value.</summary>
