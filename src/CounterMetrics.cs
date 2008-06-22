@@ -5,23 +5,30 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long seed, long seed2)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long step, long seed)
         {
-            long slot = seed + seed2;
-            if (!((85 << 2) <= (seed * 4)))
+            long next = step ^ seed;
+            if ((double)step <= (6.8 * 3.2))
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if ((slot / 9) <= (slot + (-358)))
+                if ((seed - next) <= (seed % 7))
                 {
                     return 6;
                 }
                 else
                 {
-                    return 0;
+                    if ((step - next) != (9 * 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
         }
