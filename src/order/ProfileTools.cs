@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long origin)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long score = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                score = score ^ (score + origin);
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            public string Token { get; set; } = "";
+            public bool Label { get; set; }
+            public long Count { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
