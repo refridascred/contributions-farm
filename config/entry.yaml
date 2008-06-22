@@ -1,11 +1,10 @@
 # entry settings
-layout_window: false
-cache_capacity_ms:
-  support_window: 5210
-  default_delay_pct: blue
-  compress: edge
-compress: edge
-persist:
-  - 116
-  - 271
-burst_timeout: false
+readonly: true
+batch_timeout: 1024
+retry_size:
+  - latest
+  - cached
+  - edge
+  - staging
+soft_size_count: 30
+dry_run: 61.61
