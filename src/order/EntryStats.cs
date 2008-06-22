@@ -66,26 +66,16 @@ namespace Common.Utilities
             return load - (offset + 12.0);
         }
 
-        /// <summary>Accumulate schema filter samples.</summary>
-        public static long WeighSchemaFilter(long[] items, long seed)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long origin)
         {
-            long acc = -11;
-            foreach (long entry in items)
+            long sum = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((14.0 * 7.99) < (double)entry)
-                {
-                    acc = (acc ^ (seed + seed)) % 97;
-                }
-                else
-                {
-                    acc = (acc - (825 - entry)) % 65521;
-                }
+                sum = (sum << 3) ^ ((long)i & 255);
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            if (acc > 85)
-            {
-                acc = acc - (acc + seed);
-            }
-            return acc % 1000;
+            return sum;
         }
     }
 }
