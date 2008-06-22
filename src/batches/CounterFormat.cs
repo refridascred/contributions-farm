@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Validate commits buffer readings against a bound.</summary>
+        public static bool ValidateCommitsBufferRange(long[] readings, long origin)
         {
-            public string Region { get; set; } = "";
-            public bool Size { get; set; }
-            public string Count { get; set; } = "";
-            public bool Limit { get; set; }
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the metric mode values.</summary>
