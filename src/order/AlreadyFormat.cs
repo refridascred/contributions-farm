@@ -83,18 +83,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] values)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] samples)
         {
-            long result = 762;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (((long)values.Length - sample) != (18 - 7))
+                if ((tally + tally) == (tally + entry))
                 {
-                    result = ((result << 2) ^ result) % 1000;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return result;
+            return tally;
         }
     }
 }
