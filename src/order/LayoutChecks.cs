@@ -61,15 +61,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long bound)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long seed)
         {
-            long total = bound;
-            for (int i = 0; i < 23; i++)
+            long score = seed;
+            for (int i = 0; i < 22; i++)
             {
-                total = ((total * 5) + (long)i) % 97;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
