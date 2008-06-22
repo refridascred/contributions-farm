@@ -31,16 +31,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a counter account counter forward.</summary>
-        public static long IterateCounterAccount(long offset)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterBounds(long[] data, long floor)
         {
-            long mix = offset;
-            for (int i = 0; i < 9; i++)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                mix = ((mix * 4) + (long)i) % 65521;
-                mix = ((mix * 5) + (long)i) % 101;
+                if (cell != floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
