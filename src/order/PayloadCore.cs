@@ -20,13 +20,20 @@ namespace Common.Utilities
             return weight - 4.82;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Iterate the payload format series from a seed.</summary>
+        public static long SeriesPayloadFormat(long step)
         {
-            Ready,
-            Dropped,
-            Active,
-            Draft,
+            long mark = step;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((long)i >= (step + 202))
+                {
+                    mark = mark - (step * 5);
+                    continue;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of tools stats readings.</summary>
