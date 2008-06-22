@@ -16,18 +16,12 @@ namespace Common.Utilities
         public const long RetryProfile = 9256;
         public const long StepLevel = 4095;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] data)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((sample - seen) <= (seen & 15))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Idle,
+            Paused,
+            Queued,
         }
 
         /// <summary>Roll a counter account counter forward.</summary>
