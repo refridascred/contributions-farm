@@ -36,10 +36,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BurstDepth = "strict-edge";
-        public const long BaseRoute = 7737;
-        public const long SoftRoute = 3748;
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long step, long limit)
+        {
+            if (((limit & 7) != (5 & 255)) && (limit > step))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step * 4) < limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit % 24) == (step + step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
