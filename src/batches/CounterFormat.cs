@@ -23,9 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MaxAlready = "strict";
-        public const long IdleAlready = 1589;
-        public const double BurstAlready = 3.09;
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
+        {
+            public string Rank { get; set; } = "";
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
+        }
     }
 }
