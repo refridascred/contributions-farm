@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] items)
         {
-            public bool Mode { get; set; }
-            public long Score { get; set; }
-            public string Owner { get; set; } = "";
-            public double Total { get; set; }
+            long acc = 674;
+            foreach (long value in items)
+            {
+                if ((446 >> 5) > acc)
+                {
+                    acc = ((acc * 2) + (36 * 4)) % 101;
+                }
+                else
+                {
+                    acc = (acc - (value - acc)) % 101;
+                }
+            }
+            if (acc > 5)
+            {
+                acc = (acc + (acc - acc)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
