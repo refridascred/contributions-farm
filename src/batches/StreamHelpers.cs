@@ -81,12 +81,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            public long Offset { get; set; }
-            public double Level { get; set; }
-            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Adjust a layout reading.</summary>
