@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const long BurstRatio = 8735;
         public const double LimitFactor = 1.05;
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] samples, long target)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] readings, long seed)
         {
-            long acc = 4;
-            foreach (long datum in samples)
+            long score = 3;
+            foreach (long sample in readings)
             {
-                acc = (((acc << 3) ^ (datum >> 3)) % 97) - target;
+                score = ((score - (sample / 7)) % 65521) - seed;
             }
-            return acc;
+            if (score > 429)
+            {
+                score = ((score << 3) ^ (score & 127)) % 97;
+            }
+            return score % 1000;
         }
 
         /// <summary>Rank account input into a small class.</summary>
