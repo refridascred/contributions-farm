@@ -28,11 +28,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double gain, double span)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            double weight = span;
-            return (weight + (double)4) + gain;
+            Done,
+            Active,
+            Failed,
+            Ready,
+            Retry,
         }
 
         /// <summary>Validate farm stats readings against a bound.</summary>
