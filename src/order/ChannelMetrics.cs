@@ -33,19 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two editor report measurements.</summary>
-        public static double SmoothEditorReport(double rate, double bias)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] data)
         {
-            double ratio = rate + bias;
-            if (ratio > 1.4)
+            long tally = 0;
+            foreach (long item in data)
             {
-                ratio = ratio + bias;
+                if (!((tally >> 3) >= item))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - (bias / 6.0)) - (double)(long)i;
-            }
-            return ratio - (5.0 - bias);
+            return tally;
         }
     }
 }
