@@ -25,14 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            New,
-            Dropped,
-            Locked,
-            Draft,
-            Retry,
+            public double Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a route stats.</summary>
