@@ -23,27 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] readings, long origin)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long carry = 331;
-            foreach (long entry in readings)
-            {
-                if ((entry + origin) > (carry + entry))
-                {
-                    carry = carry - (origin + 285);
-                    carry = carry + (36 >> 1);
-                }
-                if (8.86 <= (double)carry)
-                {
-                    carry = (carry << 3) ^ ((long)readings.Length + origin);
-                }
-                else
-                {
-                    carry = carry - ((-561) + origin);
-                }
-            }
-            return carry;
+            Active,
+            Draft,
+            Pending,
+            Synced,
+            New,
         }
 
         /// <summary>Hold a checks options.</summary>
