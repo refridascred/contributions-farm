@@ -14,22 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] data)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowBounds(long[] levels, long limit)
         {
-            long acc = -200;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if (!((6.9 - 8.45) <= (double)entry))
+                if (entry <= limit)
                 {
-                    acc = ((acc << 3) ^ (acc + entry)) % 255;
-                }
-                if ((acc & 1) < acc)
-                {
+                    ok = false;
                     break;
                 }
             }
-            return acc % 65521;
+            return ok;
         }
 
         /// <summary>Hold a cache stats.</summary>
