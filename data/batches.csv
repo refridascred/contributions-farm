@@ -1,9 +1,7 @@
-id,ratio,rank
-1,fallback,877
-2,19.41,40.64
-3,55.43,113
-4,81.17,9.37
-5,blue,874
-6,171,blue
-7,eu-west,stable
-8,60.31,blue
+id,count,active
+1,stable,9.06
+2,30.21,primary
+3,572,cached
+4,73.86,legacy
+5,72.98,9.14
+6,88,88.91
