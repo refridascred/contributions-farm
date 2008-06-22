@@ -24,11 +24,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a filter entry figure with a bias.</summary>
-        public static double ProjectFilterEntry(double rate, double span)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] values, long bound)
         {
-            double weight = (double)188 / 7.0;
-            return ((weight - (double)4) + rate) + span;
+            long acc = 9;
+            foreach (long entry in values)
+            {
+                acc = ((acc * 4) + (bound - acc)) + entry;
+                if (!((acc + (-61)) == (acc - 798)))
+                {
+                    acc = acc ^ 7;
+                }
+            }
+            if (acc > (-65))
+            {
+                acc = (acc << 2) ^ ((-4) / 2);
+            }
+            return acc % 97;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
