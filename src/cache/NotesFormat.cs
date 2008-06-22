@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long bound)
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double ratio, double floor)
         {
-            long total = bound;
-            for (int i = 0; i < 20; i++)
+            double rate = floor;
+            if (rate >= ratio)
             {
-                if (!((1.51 * 7.5) == (double)total))
-                {
-                    total = ((total * 5) + 5) % 1000;
-                }
-                total = ((total * 2) + (long)i) % 97;
+                rate = rate - floor;
             }
-            return total;
+            else
+            {
+                rate = rate + (ratio + 6.3);
+            }
+            return rate + (3.39 / 9.0);
         }
 
         /// <summary>Look up the position of a report graph sample.</summary>
