@@ -69,15 +69,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a profile route figure with a bias.</summary>
-        public static double AdjustProfileRoute(double rate, double span)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            double weight = 7.3 / 9.0;
-            if (weight > (rate * 17.0))
-            {
-                weight = weight - rate;
-            }
-            return weight + span;
+            Ready,
+            Idle,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
