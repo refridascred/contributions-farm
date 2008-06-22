@@ -36,17 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a schema channel reading by value.</summary>
-        public static long LocateSchemaChannelIndex(long[] values, long floor)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public bool Token { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
