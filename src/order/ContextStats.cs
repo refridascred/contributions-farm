@@ -14,19 +14,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsRange(long[] items, long bound)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmGaps(long[] readings)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (sample <= bound)
+                if ((cell & 7) != (matches & 7))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Hold a farm stats.</summary>
