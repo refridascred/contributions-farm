@@ -68,18 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsHits(long[] readings)
+        /// <summary>Accumulate payload schema samples.</summary>
+        public static long CombinePayloadSchema(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long result = 0;
+            foreach (long value in values)
             {
-                if ((-9) <= value)
+                if (!(239 < (result + target)))
                 {
-                    seen = seen + 1;
+                    continue;
                 }
+                result = (result + (target - (-82))) ^ value;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
