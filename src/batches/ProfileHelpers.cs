@@ -20,19 +20,11 @@ namespace Common.Utilities
         public const double MaxContext = 33.05;
         public const double WindowContext = 25.22;
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsBounds(long[] samples, long seed)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Validate record readings against a bound.</summary>
