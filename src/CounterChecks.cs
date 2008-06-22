@@ -20,18 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] items, long floor)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] data, long floor)
         {
-            long carry = 2;
-            foreach (long item in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item >= (carry << 3)) && ((7.0 / 8.0) <= (double)carry))
+                if ((data[i] <= floor) && ((data[i] % 5) == 0))
                 {
-                    carry = ((carry * 4) + item) + floor;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
