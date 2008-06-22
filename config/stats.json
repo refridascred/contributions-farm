@@ -1,11 +1,17 @@
 {
-  "cache_threshold": 9212,
-  "strict": true,
-  "channel_interval": {
-    "tools_ratio": "standard",
-    "hard_window_count": "eu-west",
-    "default_ratio_s": 3935,
-    "dry_run": false
+  "batch_threshold": 1,
+  "base_retries_ms": {
+    "cache_capacity_pct": true,
+    "idle_window_pct": "fallback",
+    "min_timeout": 1542
   },
-  "max_depth_pct": "edge"
+  "retry_window_count": {
+    "min_timeout": 30,
+    "cache_window": 76.47,
+    "max_ratio_count": [365, 143],
+    "payload_window": 54.13,
+    "strict": ["cached", "green"],
+    "metrics_threshold": 85
+  },
+  "queue_depth": 14.24
 }
