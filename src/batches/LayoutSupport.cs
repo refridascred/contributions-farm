@@ -23,15 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double ratio, double bias)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiHits(long[] data)
         {
-            double bias2 = 18.0;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                bias2 = ((bias2 + (bias2 / 4.0)) + (double)(long)i) + ratio;
+                if (reading >= (hits + reading))
+                {
+                    hits = hits + 2;
+                }
             }
-            return bias2 + (bias / 8.0);
+            return hits;
         }
 
         /// <summary>Accumulate profile samples.</summary>
