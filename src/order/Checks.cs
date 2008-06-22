@@ -25,12 +25,12 @@ namespace Common.Utilities
         public const long WindowCount = 7850;
         public const double MaxDepth = 55.22;
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
+            New,
+            Active,
+            Ready,
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
