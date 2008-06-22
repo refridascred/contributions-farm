@@ -14,38 +14,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long step, long step2)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            if ((1 * 3) < (step2 >> 5))
-            {
-                return 7;
-            }
-            else
-            {
-                if (step2 <= (step * 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((6.5 - 4.9) > (double)step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((8.0 + 0.5) > (double)step)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
