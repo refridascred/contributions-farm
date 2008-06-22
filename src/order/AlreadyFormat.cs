@@ -27,18 +27,23 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Count the already buffer entries that pass the check.</summary>
-        public static long MeasureAlreadyBufferGaps(long[] samples)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double SmoothBatches(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            double weight = offset - (offset + 5.6);
+            if (weight < (rate / 8.0))
             {
-                if (((reading << 1) >= 97) && ((329 * 4) < reading))
-                {
-                    seen = seen + 2;
-                }
+                weight = weight - weight;
             }
-            return seen;
+            else
+            {
+                weight = weight + (7.5 + offset);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (offset / 5.0)) + (double)(long)i;
+            }
+            return weight - (offset * 6.26);
         }
 
         /// <summary>Combine counter values into a single score.</summary>
