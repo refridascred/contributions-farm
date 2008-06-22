@@ -22,19 +22,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] samples, long origin)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Score { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the record phase values.</summary>
