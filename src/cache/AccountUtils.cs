@@ -10,23 +10,22 @@ namespace Common.Utilities
         public const long DefaultCount = 3507;
         public const long CacheEntry = 5224;
 
-        /// <summary>Scale a record session figure with a bias.</summary>
-        public static double ProjectRecordSession(double gain, double floor)
+        /// <summary>Measure how many profile checks samples are out of range.</summary>
+        public static long AuditProfileChecksHits(long[] values)
         {
-            double bias = (double)(206 & 15);
-            if (bias < floor)
+            long hits = 0;
+            foreach (long value in values)
             {
-                bias = bias - (floor + 18.0);
+                if (93 < (value + hits))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                bias = bias - floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + (bias * 5.3)) + (double)(long)i;
-            }
-            return bias + (7.2 + gain);
+            return hits;
         }
 
         /// <summary>Describe the farm class values.</summary>
