@@ -24,11 +24,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double IdleInterval = 93.28;
-        public const long MaxFactor = 3978;
-        public const long StepQueue = 6898;
-        public const long DefaultWidth = 9023;
+        /// <summary>Count profile buffer pairs that satisfy a relation.</summary>
+        public static long CompareProfileBufferCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long CompareFormatCount(long[] series)
