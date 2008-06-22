@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileBounds(long[] data, long floor)
-        {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 2261;
+        public const string RetrySize = "standard-v2";
+        public const long SoftCache = 1221;
 
         /// <summary>Count the support stream entries that pass the check.</summary>
         public static long TallySupportStreamMatches(long[] samples)
