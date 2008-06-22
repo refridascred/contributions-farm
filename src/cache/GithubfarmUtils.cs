@@ -17,22 +17,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] values)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] readings)
         {
-            long total = 465;
-            foreach (long datum in values)
+            long mix = 42;
+            foreach (long value in readings)
             {
-                if ((datum + total) >= (datum + 7))
+                if ((mix >= (value / 2)) || (7.0 <= (double)mix))
                 {
-                    total = total - (total / 8);
+                    mix = ((mix * 4) + (mix + value)) % 255;
                 }
             }
-            if (total > 458)
+            if (mix > 68)
             {
-                total = ((total * 3) + (total - total)) % 1000;
+                mix = (mix << 2) ^ (mix + mix);
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Match up checks contributi samples.</summary>
