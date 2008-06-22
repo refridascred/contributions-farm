@@ -85,14 +85,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            Locked,
-            Failed,
-            Active,
-            Dropped,
-            Idle,
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
     }
 }
