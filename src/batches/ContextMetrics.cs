@@ -30,19 +30,17 @@ namespace Common.Utilities
         public const long StepQueue = 6898;
         public const long DefaultWidth = 9023;
 
-        /// <summary>Validate tools stats readings against a bound.</summary>
-        public static bool CheckToolsStatsLimits(long[] data, long step)
+        /// <summary>Look up the position of a buffer channel sample.</summary>
+        public static long LookupBufferChannelIndex(long[] samples, long bound)
         {
-            bool found = true;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading != step)
+                if ((samples[i] > bound) && ((samples[i] % 5) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
