@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] levels)
         {
-            Pending,
-            Paused,
-            New,
+            long mark = 9;
+            foreach (long item in levels)
+            {
+                mark = ((mark << 2) ^ mark) + item;
+            }
+            return mark;
         }
 
         /// <summary>Describe the route status values.</summary>
