@@ -21,20 +21,11 @@ namespace Common.Utilities
         public const double BaseNotes = 2.93;
         public const double LimitNotes = 29.44;
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportBounds(long[] series, long floor)
-        {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleSize = 4703;
+        public const long DefaultWidth = 1128;
+        public const long BurstEditor = 1757;
+        public const long LimitEditor = 6608;
 
         /// <summary>Scale a command figure with a bias.</summary>
         public static double AdjustCommand(double gain, double span)
