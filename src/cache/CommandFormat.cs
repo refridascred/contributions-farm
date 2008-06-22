@@ -29,19 +29,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of stats session entries.</summary>
-        public static long ScoreStatsSession(long[] samples)
-        {
-            long total = 27;
-            foreach (long item in samples)
-            {
-                if (!((double)total > 20.0))
-                {
-                    total = (total ^ ((long)samples.Length + item)) % 101;
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftInterval = 8236;
+        public const string SoftCount = "local";
+        public const long HardChecks = 5508;
+        public const double BaseChecks = 79.6;
+        public const long LimitChecks = 364;
 
         /// <summary>Blend two counter notes measurements.</summary>
         public static double ScaleCounterNotes(double rate, double span)
