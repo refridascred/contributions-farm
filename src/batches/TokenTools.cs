@@ -15,19 +15,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] levels, long floor)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long carry = -78;
-            foreach (long datum in levels)
-            {
-                if (((long)levels.Length ^ 1) <= floor)
-                {
-                    carry = (((carry << 2) ^ (89 + floor)) % 4096) + datum;
-                }
-                carry = (carry ^ (floor - carry)) % 1000;
-            }
-            return carry;
+            Active,
+            Queued,
+            Failed,
+            Paused,
         }
 
         /// <summary>Hold a notes header.</summary>
