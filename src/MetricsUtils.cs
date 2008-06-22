@@ -13,18 +13,16 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyGaps(long[] readings)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long target)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long mix = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (((seen + seen) < seen) && ((seen << 3) < (seen >> 5)))
-                {
-                    seen = (seen + 2) + reading;
-                }
+                mix = (mix ^ (mix * 4)) % 4096;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
