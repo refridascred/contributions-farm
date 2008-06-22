@@ -1,7 +1,10 @@
 # entry settings
-retry_depth_s: true
-burst_threshold_pct: false
-counter_interval: legacy
-base_limit: 50.23
-sync_ttl: true
-burst_size: true
+base_timeout: true
+warm_window: 8742
+burst_capacity: true
+warm_timeout_count:
+  - 227
+  - 344
+  - 417
+  - 482
+notes_retries: 43
