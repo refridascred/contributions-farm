@@ -23,17 +23,12 @@ namespace Common.Utilities
         public const long LimitLevel = 5347;
         public const string BurstRoute = "cached-1";
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = (mark + ((long)i % 12)) % 4096;
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheLayout = 9235;
+        public const long WindowWidth = 5781;
+        public const string DefaultLayout = "cached-v2";
+        public const long BatchScore = 260;
+        public const string WindowLayout = "local";
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
