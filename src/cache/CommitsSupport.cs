@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterRange(long[] data, long bound)
         {
-            Locked,
-            Failed,
-            Idle,
-            Stale,
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Find the first graph checks entry that matches the target.</summary>
