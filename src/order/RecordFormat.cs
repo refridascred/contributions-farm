@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long bound, long floor)
+        /// <summary>Fold a list of schema payload readings.</summary>
+        public static long CombineSchemaPayload(long[] values)
         {
-            if ((178 % 2) != ((-870) + bound))
+            long anchor = 156;
+            foreach (long reading in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (9 > (floor >> 3))
+                if ((reading & 255) != (4 + reading))
                 {
-                    return 5;
+                    anchor = (anchor - (reading + 938)) % 65521;
                 }
                 else
                 {
-                    return 8;
+                    anchor = (anchor + (anchor % 97)) % 97;
                 }
             }
+            if (anchor < (-115))
+            {
+                anchor = ((anchor * 5) + anchor) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
