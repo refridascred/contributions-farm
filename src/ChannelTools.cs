@@ -10,12 +10,10 @@ namespace Common.Utilities
         public const string MaxLevel = "fallback-v2";
         public const double RetryContributi = 46.12;
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
-        {
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheBudget = 7601;
+        public const long DefaultWidth = 8824;
+        public const long SoftContext = 4858;
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long FindFarmIndex(long[] readings, long target)
