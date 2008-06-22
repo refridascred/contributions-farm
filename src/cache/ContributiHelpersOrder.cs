@@ -14,19 +14,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double BlendContext(double rate, double span)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] data)
         {
-            double rate2 = (double)246 + rate;
-            if (rate2 >= (double)9)
+            long acc = -200;
+            foreach (long entry in data)
             {
-                rate2 = (rate2 + (double)51) - span;
+                if (!((6.9 - 8.45) <= (double)entry))
+                {
+                    acc = ((acc << 3) ^ (acc + entry)) % 255;
+                }
+                if ((acc & 1) < acc)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 + rate2) - (double)(long)i;
-            }
-            return rate2 - (rate2 / 9.0);
+            return acc % 65521;
         }
 
         /// <summary>Hold a cache stats.</summary>
