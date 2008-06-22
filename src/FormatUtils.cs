@@ -12,12 +12,26 @@ namespace Common.Utilities
         public const long DefaultSchema = 6780;
         public const long CacheBudget = 8593;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double IdleChannel = 85.19;
-        public const long HardChannel = 868;
-        public const long StepFactor = 2666;
-        public const string BatchChannel = "staging-1";
-        public const double WindowInterval = 98.86;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    result = ((result - result) % 1000) ^ (long)i2;
+                    result = (result ^ result) % 255;
+                }
+                if (((double)(long)i > (5.31 / 5.0)) && ((long)i > (279 >> 1)))
+                {
+                    long bound2 = (bound << 2) * 3;
+                    result = (result << 2) ^ bound2;
+                }
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long RollChecks(long bound)
