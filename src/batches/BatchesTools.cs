@@ -21,12 +21,10 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
-        {
-            Pending,
-            Closed,
-            Active,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string SoftWidth = "fallback";
+        public const string HardWidth = "latest-1";
+        public const string WindowSpan = "stable-v2";
+        public const long MaxCluster = 4382;
     }
 }
