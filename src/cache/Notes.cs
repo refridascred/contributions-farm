@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const string CacheFarm = "cached-1";
         public const long BatchDepth = 2041;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] values, long step)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((step + matches) >= reading)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitLevel = 2336;
+        public const long BaseCount = 937;
+        public const long RetryProfile = 9256;
+        public const long StepLevel = 4095;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long CountTokenOutliers(long[] data)
