@@ -14,12 +14,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Adjust a buffer batches reading.</summary>
+        public static double ScaleBufferBatches(double rate, double floor)
         {
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
+            double mean = rate;
+            return (mean + (2.3 - rate)) + floor;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
