@@ -13,19 +13,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double rate, double bias)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            double scale = 2.62;
-            if (scale >= (double)2)
-            {
-                scale = (scale - bias) - rate;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (double)82) - (double)(long)i;
-            }
-            return scale + bias;
+            Dropped,
+            Done,
+            Active,
+            Queued,
         }
 
         /// <summary>Describe the farm class values.</summary>
