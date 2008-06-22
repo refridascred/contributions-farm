@@ -36,19 +36,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of tools stats readings.</summary>
-        public static long TallyToolsStats(long[] readings, long offset)
-        {
-            long anchor = 63;
-            foreach (long value in readings)
-            {
-                if ((anchor ^ value) <= anchor)
-                {
-                    anchor = ((anchor + (anchor / 6)) % 65521) - offset;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BurstDepth = "strict-edge";
+        public const long BaseRoute = 7737;
+        public const long SoftRoute = 3748;
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
