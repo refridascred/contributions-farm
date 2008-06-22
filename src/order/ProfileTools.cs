@@ -20,10 +20,22 @@ namespace Common.Utilities
         public const string DefaultToken = "fallback-v2";
         public const long RetryTimeout = 4979;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string IdleScore = "cached";
-        public const long BatchCluster = 9181;
-        public const string MinInterval = "fallback";
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
