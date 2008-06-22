@@ -14,12 +14,31 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Grade a cache farm value against two limits.</summary>
+        public static long RankCacheFarm(long limit, long origin)
         {
-            Stale,
-            Dropped,
-            Failed,
+            if ((double)limit <= (9.0 - 5.5))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)limit != (7.6 / 7.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(origin <= (42 / 8)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up account samples.</summary>
