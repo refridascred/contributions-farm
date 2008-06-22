@@ -31,20 +31,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the cluster window series from a seed.</summary>
-        public static long StepClusterWindow(long offset)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long result = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    result = (((result * 4) + (59 << 2)) % 255) + (long)i2;
-                    result = (result ^ (14 & 3)) % 255;
-                }
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
