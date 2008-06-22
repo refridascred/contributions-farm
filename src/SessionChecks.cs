@@ -10,22 +10,31 @@ namespace Common.Utilities
         public const double StepGraph = 43.73;
         public const long DefaultGraph = 7208;
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheMatches(long[] values)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long offset, long step)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            if ((14 + offset) > (step & 63))
             {
-                if ((double)reading >= (3.66 - 5.0))
+                return 0;
+            }
+            else
+            {
+                if (((2 << 1) < (offset >> 5)) && ((step - step) <= (step + offset)))
                 {
-                    tally = tally + 1;
+                    return 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((step & 255) > (660 & 255))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the queue level values.</summary>
