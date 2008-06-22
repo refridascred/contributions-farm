@@ -42,23 +42,21 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] values)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] samples)
         {
-            long anchor = 830;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor - (item >> 4)) % 65521;
-                if ((item & 127) < (item << 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor ^ (item * 2)) % 97;
+                    if ((samples[i] + samples[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (anchor > 375)
-            {
-                anchor = (anchor + (415 / 2)) % 65521;
-            }
-            return anchor % 97;
+            return hits;
         }
 
         /// <summary>Describe the tools state values.</summary>
