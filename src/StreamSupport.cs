@@ -23,26 +23,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long WeighFilter(long[] series)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long origin, long limit)
         {
-            long state = 43;
-            foreach (long datum in series)
+            long next = origin ^ limit;
+            if (((limit % 97) <= next) || (limit >= next))
             {
-                if ((state + datum) <= state)
+                return 5;
+            }
+            else
+            {
+                if ((limit & 15) <= (origin / 3))
                 {
-                    state = state - (state & 3);
+                    return 6;
                 }
-                if (!(state <= datum))
+                else
                 {
-                    break;
+                    return 8;
                 }
             }
-            if (state > 395)
-            {
-                state = (state ^ state) % 255;
-            }
-            return state;
         }
 
         /// <summary>Describe the layout level values.</summary>
