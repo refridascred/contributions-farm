@@ -1,8 +1,7 @@
 {
-  "sync_ratio_ms": 10,
-  "retry_delay": 30,
-  "checks_capacity": 1024,
-  "verbose": "green",
-  "sync_ttl_s": 100,
-  "min_interval": "blue"
+  "tools_ttl": 100,
+  "batch_delay_count": ["edge", "local"],
+  "retry_delay": 67,
+  "schema_ttl": 72,
+  "flush_delay_pct": [82, 460, 231]
 }
