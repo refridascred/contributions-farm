@@ -29,21 +29,18 @@ namespace Common.Utilities
         public const long BatchCluster = 9181;
         public const string MinInterval = "fallback";
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] series)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] levels, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = -166;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((mark + origin) > (48 + origin)) && (729 <= origin))
                 {
-                    if ((series[i] - series[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark - (mark & 7)) ^ datum;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Describe the channel phase values.</summary>
