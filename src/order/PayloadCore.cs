@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const double LimitCount = 20.09;
         public const long HardFarm = 3628;
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
-        {
-            Queued,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepRatio = 2109;
+        public const long IdleTimeout = 7468;
+        public const long BurstCounter = 8661;
+        public const double StepTimeout = 87.49;
+        public const long BaseCounter = 6600;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string MinEditor = "standard-v2";
