@@ -19,10 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BurstToken = "stable-edge";
-        public const string IdleCount = "fallback-v2";
-        public const long BaseSize = 8892;
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double rate, double span)
+        {
+            double ratio = span;
+            if (ratio > span)
+            {
+                ratio = (ratio + (ratio + 4.45)) - rate;
+            }
+            return ratio - ratio;
+        }
 
         /// <summary>Accumulate cache stats samples.</summary>
         public static long ScoreCacheStats(long[] readings, long step)
