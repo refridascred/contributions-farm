@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] items, long step)
+        /// <summary>Combine checks context values into a single score.</summary>
+        public static long FoldChecksContext(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 55;
+            foreach (long cell in data)
             {
-                if (items[i] > step)
+                if (!(result >= cell))
                 {
-                    return (long)i;
+                    result = (result << 2) ^ ((long)data.Length + (-877));
                 }
             }
-            return -1;
+            if (result > 913)
+            {
+                result = (result ^ (62 - result)) % 101;
+            }
+            return result % 65521;
         }
 
         /// <summary>Hold a buffer stats.</summary>
