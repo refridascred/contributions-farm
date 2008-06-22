@@ -1,8 +1,6 @@
 {
-  "readonly": 30,
-  "dry_run": "eu-west",
-  "hard_limit_ms": "eu-west",
-  "burst_threshold_count": true,
-  "base_timeout": "cached",
-  "audit": 54.18
+  "hard_ratio": false,
+  "persist": 500,
+  "retry_depth_ms": 81.03,
+  "sync_window": 9444
 }
