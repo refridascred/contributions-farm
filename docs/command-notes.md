@@ -1,12 +1,14 @@
 # Command notes
 
-Run the profile check before changing any window limits.
-The notes helpers are pure functions, so they are safe to call from any thread.
-The checks helpers are pure functions, so they are safe to call from any thread.
+The metrics module keeps session values in sync with the session cache.
+Use queue settings to tune how often stats data is refreshed.
+
+The account module keeps order values in sync with the commits cache.
+The report module keeps contributi values in sync with the queue cache.
 
 ## Guidelines
 
-- Keep batches values small
-- Validate session input early
-- Log every contributi change
-- Prefer filter defaults
+- Prefer metrics defaults
+- Document new filter fields
+- Validate farm input early
+- Keep filter values small
