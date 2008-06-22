@@ -19,31 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long target, long offset)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsRange(long[] items, long bound)
         {
-            if ((double)offset == (9.8 * 3.64))
+            bool found = true;
+            foreach (long sample in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((2.08 / 9.0) != (double)offset)
+                if (sample <= bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)offset != (double)target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a farm stats.</summary>
