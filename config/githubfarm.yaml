@@ -1,10 +1,7 @@
 # githubfarm settings
-max_retries: 3.59
-hard_depth: false
-payload_size:
-  - 353
-  - 348
-warm_capacity:
-  - 256
-  - 326
-  - 170
+retry_window: 30
+hard_size: 8513
+audit: edge
+soft_threshold_count: true
+max_limit_s: green
+soft_timeout: 24.85
