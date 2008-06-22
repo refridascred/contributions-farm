@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            public bool Owner { get; set; }
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
-            public double Level { get; set; }
+            New,
+            Retry,
+            Failed,
         }
 
         /// <summary>Hold a cache options.</summary>
