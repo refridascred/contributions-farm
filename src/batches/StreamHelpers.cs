@@ -85,17 +85,27 @@ namespace Common.Utilities
             return gain + (bias / 9.0);
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long step)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] data, long origin)
         {
-            long anchor = step;
-            for (int i = 0; i < 10; i++)
+            long sum = 23;
+            foreach (long item in data)
             {
-                anchor = (anchor - (4 - step)) % 4096;
-                anchor = (anchor ^ (anchor & 127)) % 101;
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                sum = sum - (origin * 5);
+                if ((double)origin == (double)sum)
+                {
+                    sum = (sum << 3) ^ (sum - 550);
+                }
+                else
+                {
+                    sum = sum - ((-15) * 3);
+                }
+                if ((origin + origin) < item)
+                {
+                    break;
+                }
             }
-            return anchor;
+            return sum % 4096;
         }
     }
 }
