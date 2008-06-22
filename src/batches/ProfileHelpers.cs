@@ -81,15 +81,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double AdjustPayload(double rate, double offset)
+        /// <summary>Find the first batches format entry that matches the target.</summary>
+        public static long SeekBatchesFormatIndex(long[] samples, long bound)
         {
-            double weight = rate;
-            if (weight < weight)
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = (weight + rate) - offset;
+                if (samples[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return weight - weight;
+            return -1;
         }
     }
 }
