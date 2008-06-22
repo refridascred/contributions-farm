@@ -33,24 +33,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long offset, long seed)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] values, long offset)
         {
-            if ((offset > (seed + offset)) && (offset > (seed - 250)))
+            bool stale = true;
+            foreach (long cell in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset << 1) > offset)
+                if (cell >= offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a filter info.</summary>
