@@ -24,14 +24,10 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
-        {
-            Synced,
-            New,
-            Locked,
-            Retry,
-            Ready,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BurstRoute = 48.54;
+        public const long BatchFactor = 7618;
+        public const long LimitRoute = 1624;
+        public const string DefaultSpan = "legacy-v2";
     }
 }
