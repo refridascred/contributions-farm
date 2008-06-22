@@ -28,19 +28,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderRange(long[] values, long seed)
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] data)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum <= seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] + data[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
