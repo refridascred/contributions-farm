@@ -64,17 +64,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] series, long offset)
+        /// <summary>Measure how many graph stats samples are out of range.</summary>
+        public static long TallyGraphStatsMatches(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (series[i] >= offset)
+                if (count <= (count * 2))
                 {
-                    return (long)i;
+                    count = (count + 2) + sample;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
