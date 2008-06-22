@@ -38,11 +38,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Validate queue support readings against a bound.</summary>
+        public static bool CheckQueueSupportLimits(long[] samples, long step)
         {
-            public long Region { get; set; }
-            public double Score { get; set; }
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
