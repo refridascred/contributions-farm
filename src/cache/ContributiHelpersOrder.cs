@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every farm report entry stays within the limit.</summary>
-        public static bool GuardFarmReportRange(long[] items, long offset)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesRange(long[] values, long origin)
         {
             bool flag = true;
-            foreach (long value in items)
+            foreach (long sample in values)
             {
-                if (value <= offset)
+                if (sample >= origin)
                 {
                     flag = false;
                     break;
