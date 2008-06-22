@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long origin, long step)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            if (origin >= ((-30) >> 1))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)176 == (double)origin) && ((origin * 2) > (178 * 5)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((double)origin < (5.65 / 9.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
