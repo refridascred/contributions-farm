@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterRange(long[] data, long bound)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] readings)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (cell <= bound)
+                if ((double)count < (double)8)
                 {
-                    stale = false;
-                    break;
+                    count = (count + 1) ^ item;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Find the first graph checks entry that matches the target.</summary>
