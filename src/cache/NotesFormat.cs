@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] samples)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] levels)
         {
             long tally = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((tally * 2) == (entry / 6))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((levels[i] ^ levels[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
