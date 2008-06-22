@@ -46,21 +46,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] items)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long seed, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (!((target & 127) <= (681 + (-20))))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((target >> 1) != (45 - seed))
                 {
-                    if ((items[i] ^ items[j]) != 11)
+                    return 3;
+                }
+                else
+                {
+                    if (!((target - seed) > 548))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target / 5) <= (seed + seed))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return tally;
         }
     }
 }
