@@ -20,12 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowMatches(long[] samples, long seed)
         {
-            Active,
-            Failed,
-            Locked,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((tally / 7) > tally)
+                {
+                    tally = ((tally + 2) - item) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
