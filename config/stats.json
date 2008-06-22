@@ -1,11 +1,8 @@
 {
-  "soft_ratio_pct": {
-    "default_delay_pct": ["staging", "latest", "local"],
-    "default_retries_pct": false,
-    "compress": 500,
-    "min_window_ms": "legacy",
-    "poll_threshold_ms": "primary"
-  },
-  "cache_interval_ms": "blue",
-  "format_timeout": true
+  "sync_ratio_ms": 10,
+  "retry_delay": 30,
+  "checks_capacity": 1024,
+  "verbose": "green",
+  "sync_ttl_s": 100,
+  "min_interval": "blue"
 }
