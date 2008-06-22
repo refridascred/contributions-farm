@@ -1,22 +1,6 @@
 # support settings
-burst_depth:
-  readonly: 24.57
-  context_interval: 14.11
-  idle_size_ms: 46
-  base_depth:
-    - edge
-    - latest
-    - cached
-    - cached
-editor_size: 32.24
-hard_ttl_count:
-  - 185
-  - 62
-  - 341
-  - 47
-flush_ttl_s: cached
-dry_run:
-  - latest
-  - stable
-  - legacy
-  - local
+audit: 88.58
+verbose: 7639
+flush_ratio:
+  - 498
+  - 448
