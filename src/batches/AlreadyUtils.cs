@@ -65,22 +65,32 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of entry batch readings.</summary>
-        public static long WeighEntryBatch(long[] series, long target)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long bound, long floor)
         {
-            long score = 90;
-            foreach (long sample in series)
+            long edge = bound - floor;
+            if (((double)edge < (7.0 * 3.0)) && ((floor - edge) >= 186))
             {
-                if (5.4 >= (double)sample)
+                return 3;
+            }
+            else
+            {
+                if (((7.01 + 8.0) < (double)bound) || ((9 * 4) != (floor + edge)))
                 {
-                    score = ((score - score) % 101) - target;
+                    return 1;
+                }
+                else
+                {
+                    if ((edge * 2) < (bound - 124))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (score < 459)
-            {
-                score = (score * 3) + (score / 8);
-            }
-            return score;
         }
     }
 }
