@@ -40,32 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank farm counter input into a small class.</summary>
-        public static long RankFarmCounter(long offset, long target)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorLimits(long[] readings, long target)
         {
-            long bound = offset ^ target;
-            if ((6.7 / 9.0) <= (double)bound)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (offset < (target << 3))
+                if (item > target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)offset == (double)target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
