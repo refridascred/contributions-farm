@@ -50,19 +50,14 @@ namespace Common.Utilities
             return rate + (1.64 - ratio);
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long seed)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long mark = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((mark % 64) >= (long)i)
-                {
-                    mark = mark - (seed >> 4);
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            Failed,
+            Idle,
+            Retry,
+            Queued,
+            New,
         }
     }
 }
