@@ -55,19 +55,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterRange(long[] readings, long bound)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Region { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Validate window readings against a bound.</summary>
