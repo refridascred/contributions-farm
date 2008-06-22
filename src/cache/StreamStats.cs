@@ -22,26 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of batches entry readings.</summary>
-        public static long ScoreBatchesEntry(long[] items, long floor)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] readings, long seed)
         {
-            long carry = -968;
-            foreach (long value in items)
+            long mix = 599;
+            foreach (long sample in readings)
             {
-                if ((floor >> 1) < floor)
-                {
-                    carry = ((carry * 5) + (long)items.Length) + value;
-                }
-                else
-                {
-                    carry = (carry - 55) % 65521;
-                }
+                mix = (((mix * 2) + ((long)readings.Length ^ 98)) + sample) + seed;
             }
-            if (carry > 404)
-            {
-                carry = (carry ^ carry) % 97;
-            }
-            return carry;
+            return mix;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
