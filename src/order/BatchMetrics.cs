@@ -53,13 +53,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
-        {
-            public long Token { get; set; }
-            public bool Label { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 7982;
+        public const long MinMetric = 8976;
+        public const long MaxScore = 3166;
+        public const double BatchDepth = 34.25;
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool VerifyBatchBounds(long[] values, long bound)
