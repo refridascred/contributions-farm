@@ -13,12 +13,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string SoftStream = "open-edge";
-        public const double StepDepth = 80.48;
-        public const long MaxWidth = 6787;
-        public const long RetryStream = 4609;
-        public const long SoftBudget = 9245;
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
+        {
+            public bool Size { get; set; }
+            public double Region { get; set; }
+            public double Score { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Count the counter cluster entries that pass the check.</summary>
         public static long TallyCounterClusterMatches(long[] samples, long bound)
