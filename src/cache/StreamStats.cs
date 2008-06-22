@@ -42,21 +42,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of schema format readings.</summary>
-        public static long OverlapSchemaFormatCount(long[] values)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] data, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (data[i] == seed)
                 {
-                    if ((values[i] + values[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
