@@ -1,10 +1,12 @@
 # Command notes
 
-Each token is validated before it reaches the batch queue.
-The schema helpers are pure functions, so they are safe to call from any thread.
+The entry helpers are pure functions, so they are safe to call from any thread.
+Keep format and notes names short and lowercase.
+The queue module keeps metric values in sync with the editor cache.
 
 ## Guidelines
 
-- Log every command change
-- Review route limits each release
-- Keep stats values small
+- Document new cache fields
+- Review buffer limits each release
+- Log every counter change
+- Prefer token defaults
