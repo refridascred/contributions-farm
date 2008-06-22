@@ -53,11 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandMatches(long[] levels)
         {
-            public double Score { get; set; }
-            public double Stamp { get; set; }
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (((item + matches) <= (matches - matches)) && ((item % 10) < (matches * 5)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
