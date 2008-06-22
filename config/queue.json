@@ -1,19 +1,11 @@
 {
-  "retry_ttl": 8497,
-  "burst_depth_s": true,
-  "idle_depth": {
-    "hard_size": false,
-    "session_interval": 250,
-    "editor_capacity": {
-      "session_window": 81,
-      "poll_depth": 65,
-      "format_threshold": 2980
-    },
-    "format_size": [270, 476, 303],
-    "window_depth": "legacy",
-    "base_retries_count": [461, 158, 13, 178]
-  },
-  "commits_ttl": true,
-  "hard_limit_s": 250,
-  "flush_threshold_ms": ["stable", "stable", "staging", "edge"]
+  "sync_depth_pct": 68.59,
+  "base_depth_count": "standard",
+  "base_timeout_s": 60,
+  "cache_depth": {
+    "verbose": "primary",
+    "warm_retries_s": "strict",
+    "compress": true,
+    "report_ratio": 2.78
+  }
 }
