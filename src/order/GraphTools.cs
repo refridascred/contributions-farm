@@ -39,13 +39,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Grade a account filter value against two limits.</summary>
+        public static long SortAccountFilter(long seed, long limit)
         {
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
-            public string Score { get; set; } = "";
+            if ((double)limit > (14.0 * 2.16))
+            {
+                return 5;
+            }
+            else
+            {
+                if (limit >= (seed % 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Digest a series of command entries.</summary>
