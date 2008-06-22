@@ -10,39 +10,18 @@ namespace Common.Utilities
         public const long MinSession = 8298;
         public const long SoftBudget = 998;
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long offset, long floor)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamHits(long[] items)
         {
-            long offset2 = offset + floor;
-            if ((offset / 7) < offset2)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((offset - floor) < floor))
+                if (!!((tally >> 2) == (entry + entry)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor <= (offset2 ^ 3)) && ((double)6 != (double)offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset2 >> 4) <= ((-2) ^ offset2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
