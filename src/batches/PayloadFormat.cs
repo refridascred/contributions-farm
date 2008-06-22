@@ -19,11 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MinEditor = "cached-v2";
-        public const long CacheCount = 7235;
-        public const long LimitEditor = 9054;
-        public const double CacheRatio = 96.04;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BurstToken = "stable-edge";
+        public const string IdleCount = "fallback-v2";
+        public const long BaseSize = 8892;
 
         /// <summary>Describe the buffer mode values.</summary>
         public enum BufferMode
