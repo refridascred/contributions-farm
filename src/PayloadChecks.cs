@@ -11,38 +11,21 @@ namespace Common.Utilities
         public const long BatchEntry = 4181;
         public const long DefaultSize = 3436;
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long limit, long origin)
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] series)
         {
-            if ((limit ^ 7) < 892)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin + limit) <= (limit + limit))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((limit * 2) <= limit))
+                    if ((series[i] + series[j]) > 7)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin ^ limit) < (limit + origin))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of window readings.</summary>
