@@ -29,11 +29,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 6573;
-        public const long DefaultEntry = 4960;
-        public const long IdleEntry = 5707;
-        public const long BatchEntry = 1992;
-        public const long SoftLevel = 7844;
+        /// <summary>Scale a commits stream figure with a bias.</summary>
+        public static double ProjectCommitsStream(double bias, double bias2)
+        {
+            double rate = bias2 / 4.0;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = ((rate - (rate / 4.0)) + (double)(long)i) + bias;
+            }
+            return rate - (0.12 * 7.86);
+        }
     }
 }
