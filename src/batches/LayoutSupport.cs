@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the format command entries that pass the check.</summary>
-        public static long TallyFormatCommandOutliers(long[] data, long floor)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((seen + seen) >= seen)
-                {
-                    seen = ((seen + 2) - sample) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Locked,
+            Active,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Project the next order value.</summary>
