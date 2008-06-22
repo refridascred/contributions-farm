@@ -31,20 +31,12 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Validate record already readings against a bound.</summary>
-        public static bool ValidateRecordAlreadyRange(long[] series, long limit)
-        {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowFormat = 8103;
+        public const long BaseFormat = 7124;
+        public const double RetryFormat = 30.2;
+        public const double RetrySize = 48.18;
+        public const long LimitFactor = 5593;
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long OverlapPayloadCount(long[] readings)
