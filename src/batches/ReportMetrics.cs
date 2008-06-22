@@ -24,9 +24,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string SoftWidth = "alpha";
-        public const long CacheLayout = 6752;
-        public const long BurstFactor = 7550;
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= target) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
