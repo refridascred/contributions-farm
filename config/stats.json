@@ -1,8 +1,6 @@
 {
-  "batch_retries_count": ["cached", "legacy"],
-  "retry_limit_ms": 32.75,
-  "warm_depth_count": true,
-  "editor_limit": 2857,
-  "sync_delay_ms": "eu-west",
-  "warm_capacity": 984
+  "contributi_window": "standard",
+  "cache_limit": ["legacy", "blue"],
+  "stats_retries": [190, 422, 355, 189],
+  "max_interval_ms": "eu-west"
 }
