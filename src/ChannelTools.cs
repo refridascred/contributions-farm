@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueLimits(long[] values, long step)
-        {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 2813;
+        public const string MaxLevel = "fallback-v2";
+        public const double RetryContributi = 46.12;
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long MeasureMetricMatches(long[] data, long seed)
