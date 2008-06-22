@@ -68,18 +68,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesGaps(long[] levels, long step)
+        /// <summary>Count counter buffer pairs that satisfy a relation.</summary>
+        public static long OverlapCounterBufferCount(long[] series)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (step >= (-22))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 2) + value;
+                    if ((series[i] ^ series[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
