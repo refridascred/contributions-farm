@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseSize = 8186;
+        public const long CacheFarm = 3358;
+        public const long HardSize = 8708;
+        public const string DefaultFactor = "local-v2";
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long AuditClusterOutliers(long[] series)
