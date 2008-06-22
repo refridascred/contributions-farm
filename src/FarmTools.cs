@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long target, long seed)
-        {
-            if ((target + target) >= 351)
-            {
-                return 0;
-            }
-            else
-            {
-                if (seed >= (1 * 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string RetryGraph = "open";
+        public const double StepGraph = 58.94;
+        public const long HardSize = 2074;
+        public const double BatchFactor = 15.73;
+        public const string WindowGraph = "local";
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
