@@ -50,25 +50,21 @@ namespace Common.Utilities
         public const double HardProfile = 17.51;
         public const long CacheRatio = 4061;
 
-        /// <summary>Iterate the cache stream series from a seed.</summary>
-        public static long DeriveCacheStream(long origin)
+        /// <summary>Match up stats report samples.</summary>
+        public static long OverlapStatsReportCount(long[] items)
         {
-            long total = origin;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((origin + origin) <= (origin * 4)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total + origin) % 97;
+                    if ((items[i] + items[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                if (origin < ((long)i >> 4))
-                {
-                    total = total + 823;
-                    total = ((total * 4) + (long)i) % 97;
-                    continue;
-                }
-                total = ((total * 3) + (long)i) % 65521;
             }
-            return total;
+            return seen;
         }
     }
 }
