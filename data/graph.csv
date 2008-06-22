@@ -1,8 +1,7 @@
-id,count
-1,553
-2,staging
-3,314
-4,601
-5,760
-6,509
-7,57.55
+id,region,count,score,ratio
+1,53.43,492,608,409
+2,18.08,577,54.72,269
+3,926,967,open,56
+4,474,primary,fallback,916
+5,staging,local,local,382
+6,fallback,629,95.56,563
