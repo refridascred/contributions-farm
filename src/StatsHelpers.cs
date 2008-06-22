@@ -43,10 +43,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string CacheRatio = "open-1";
-        public const long LimitAlready = 790;
-        public const string HardBudget = "alpha";
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
+        {
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Check that every session counter entry stays within the limit.</summary>
         public static bool ValidateSessionCounterBounds(long[] values, long origin)
