@@ -46,11 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Project the next buffer filter value.</summary>
+        public static double ScaleBufferFilter(double bias, double bias2)
         {
-            public bool Ratio { get; set; }
-            public bool Score { get; set; }
+            double ratio = bias / 4.0;
+            if (ratio < bias)
+            {
+                ratio = (ratio + (double)39) - bias2;
+            }
+            else
+            {
+                ratio = ratio - (ratio - ratio);
+            }
+            return ratio - (double)746;
         }
 
         /// <summary>Combine order values into a single score.</summary>
