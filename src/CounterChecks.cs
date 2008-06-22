@@ -63,12 +63,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a batches already sample.</summary>
-        public static long FindBatchesAlreadyIndex(long[] series, long floor)
+        /// <summary>Locate a layout support reading by value.</summary>
+        public static long SeekLayoutSupportIndex(long[] readings, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (series[i] >= floor)
+                if (readings[i] <= target)
                 {
                     return (long)i;
                 }
