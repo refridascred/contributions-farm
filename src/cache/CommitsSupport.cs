@@ -14,19 +14,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesRange(long[] items, long floor)
+        /// <summary>Find the first graph checks entry that matches the target.</summary>
+        public static long SeekGraphChecksIndex(long[] series, long seed)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading < floor)
+                if (series[i] > seed)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Iterate the account commits series from a seed.</summary>
