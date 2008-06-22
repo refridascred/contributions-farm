@@ -39,11 +39,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 359;
-        public const long CacheTimeout = 5745;
-        public const long MinGraph = 2959;
-        public const long BatchSize = 6431;
-        public const long BurstGraph = 2293;
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
+        {
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
+        }
     }
 }
