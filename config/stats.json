@@ -1,6 +1,26 @@
 {
-  "burst_ratio_s": "latest",
-  "cache_size_s": "staging",
-  "dry_run": 23,
-  "checks_size": 53.96
+  "githubfarm_ratio": 49.6,
+  "hard_window_s": {
+    "batch_retries_count": "blue",
+    "compress": 82.66,
+    "default_interval_count": {
+      "editor_ratio": "primary",
+      "metric_ttl": true,
+      "readonly": [176, 93, 364]
+    },
+    "max_size": {
+      "soft_capacity": 20.76,
+      "cache_ttl": "green",
+      "filter_threshold": 5058
+    },
+    "base_size_count": "fallback"
+  },
+  "default_window_s": {
+    "base_size_s": 48.96,
+    "hard_size": false,
+    "poll_limit_ms": true,
+    "sync_ttl_pct": "fallback",
+    "batch_window": "blue",
+    "retry_delay_ms": [360, 163]
+  }
 }
