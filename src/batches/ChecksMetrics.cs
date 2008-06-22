@@ -10,12 +10,14 @@ namespace Common.Utilities
         public const string MinWidth = "local-edge";
         public const long BatchInterval = 6473;
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
-            public double Limit { get; set; }
+            New,
+            Synced,
+            Queued,
+            Ready,
+            Idle,
         }
 
         /// <summary>Hold a buffer entry.</summary>
