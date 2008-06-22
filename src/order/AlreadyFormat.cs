@@ -90,18 +90,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit commits entry readings against a rule.</summary>
-        public static long MeasureCommitsEntryGaps(long[] levels)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderOutliers(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (cell <= (cell ^ hits))
+                if ((tally & 7) > (tally * 5))
                 {
-                    hits = hits + 1;
+                    tally = (tally + 1) + entry;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
