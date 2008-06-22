@@ -47,19 +47,19 @@ namespace Common.Utilities
         public const long SoftWidth = 4329;
         public const long SoftChecks = 3273;
 
-        /// <summary>Derive the next contributi editor value from a seed.</summary>
-        public static long IterateContributiEditor(long target)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadLimits(long[] levels, long limit)
         {
-            long total = target;
-            for (int i = 0; i < 8; i++)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if (!((total * 5) > (total >> 1)))
+                if (cell != limit)
                 {
-                    total = ((total << 2) ^ 604) % 4096;
+                    valid = false;
+                    break;
                 }
-                total = ((total * 3) + (long)i) % 65521;
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
