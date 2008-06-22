@@ -21,11 +21,18 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] data)
         {
-            public string Rank { get; set; } = "";
-            public double Region { get; set; }
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((sample - seen) <= (seen & 15))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a report reading.</summary>
