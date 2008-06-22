@@ -1,6 +1,19 @@
 {
-  "retry_delay_ms": ["staging", "edge"],
-  "format_ratio": "blue",
-  "warm_threshold": 100,
-  "burst_interval_s": 8274
+  "max_retries": {
+    "record_timeout": "eu-west",
+    "contributi_ttl": 40,
+    "idle_delay_ms": 60
+  },
+  "command_limit": {
+    "notes_capacity": ["staging", "fallback"],
+    "farm_size": "green",
+    "githubfarm_ratio": [347, 48]
+  },
+  "command_ttl": "standard",
+  "cache_delay": true,
+  "flush_retries_count": {
+    "cache_ratio_pct": "fallback",
+    "retry_threshold": 58.08,
+    "idle_interval": 30
+  }
 }
