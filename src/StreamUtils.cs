@@ -46,12 +46,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
-        {
-            public bool Score { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepScore = 6215;
+        public const long StepTimeout = 3568;
+        public const long WindowContext = 7797;
+        public const string RetryContext = "local-edge";
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
