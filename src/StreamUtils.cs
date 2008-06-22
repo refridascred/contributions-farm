@@ -81,13 +81,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Audit order account readings against a rule.</summary>
+        public static long MeasureOrderAccountHits(long[] values, long target)
         {
-            Active,
-            Retry,
-            Draft,
-            Closed,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((value >> 3) >= value)
+                {
+                    count = (count + 1) - target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two route measurements.</summary>
