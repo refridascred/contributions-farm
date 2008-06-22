@@ -29,10 +29,20 @@ namespace Common.Utilities
         public const long MaxRoute = 6241;
         public const string MinInterval = "staging-v2";
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string DefaultEntry = "strict-v2";
-        public const string BaseInterval = "local-edge";
-        public const long SoftEntry = 9771;
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueLimits(long[] series, long bound)
+        {
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Scale a batches tools figure with a bias.</summary>
         public static double ProjectBatchesTools(double rate, double floor)
