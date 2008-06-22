@@ -29,12 +29,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string StepBatch = "strict-1";
-        public const long HardInterval = 6954;
-        public const double BaseTimeout = 89.94;
-        public const long MinBatch = 2226;
-        public const long BaseBatch = 4612;
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
+        {
+            Retry,
+            Closed,
+            Stale,
+            Queued,
+            Failed,
+        }
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
