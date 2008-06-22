@@ -65,21 +65,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] data)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 327;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (acc < (acc + acc))
                 {
-                    if ((data[i] ^ data[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = ((acc - 356) % 65521) ^ sample;
                 }
             }
-            return matches;
+            return acc % 1000;
         }
 
         /// <summary>Hold a format stats.</summary>
