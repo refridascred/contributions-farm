@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            public bool Owner { get; set; }
-            public long Flag { get; set; }
+            public bool Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the profile mode values.</summary>
