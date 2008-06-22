@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] values, long origin)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphBounds(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if ((origin * 2) != (213 - count))
+                if (sample < floor)
                 {
-                    count = (count + 1) + entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Roll a report counter forward.</summary>
