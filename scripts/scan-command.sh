@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
+mode="${1:-stable}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in cached local blue green; do
+for item in eu-west fallback green; do
     log "checking ${item}"
 done
+
+COMMAND_LIMIT=308
+log "limit is ${COMMAND_LIMIT}"
