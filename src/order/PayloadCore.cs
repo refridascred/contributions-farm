@@ -29,13 +29,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Fold a list of tools stats readings.</summary>
+        public static long TallyToolsStats(long[] readings, long offset)
         {
-            Idle,
-            Queued,
-            Ready,
-            Paused,
+            long anchor = 63;
+            foreach (long value in readings)
+            {
+                if ((anchor ^ value) <= anchor)
+                {
+                    anchor = ((anchor + (anchor / 6)) % 65521) - offset;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the context state values.</summary>
