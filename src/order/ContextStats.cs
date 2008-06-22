@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long seed, long seed2)
+        /// <summary>Count route order pairs that satisfy a relation.</summary>
+        public static long OverlapRouteOrderCount(long[] data)
         {
-            if ((double)seed2 < (double)seed)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((2 < (seed2 % 60)) || (((-53) - seed2) <= 89))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((0.8 - 3.7) == (double)seed2)
+                    if ((data[i] ^ data[j]) < 10)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)seed2 >= (10.0 + 20.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
