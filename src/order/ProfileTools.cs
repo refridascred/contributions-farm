@@ -19,16 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 3416;
+        public const long BatchRoute = 7074;
+        public const long LimitLevel = 5347;
+        public const string BurstRoute = "cached-1";
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
