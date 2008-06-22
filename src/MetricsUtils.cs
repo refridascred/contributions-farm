@@ -13,18 +13,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Measure how many account route samples are out of range.</summary>
-        public static long AuditAccountRouteGaps(long[] levels)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyGaps(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (!(matches > 6) || ((double)matches <= (15.0 + 8.4)))
+                if (((seen + seen) < seen) && ((seen << 3) < (seen >> 5)))
                 {
-                    matches = (matches + 3) + datum;
+                    seen = (seen + 2) + reading;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
