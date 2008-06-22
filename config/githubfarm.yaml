@@ -1,7 +1,19 @@
 # githubfarm settings
-enabled: legacy
-format_limit: 62.0
-notes_size:
-  - edge
-  - stable
-  - stable
+soft_capacity_ms:
+  - 185
+  - 414
+min_depth: 29.82
+batch_delay_s: eu-west
+burst_size_count:
+  batch_depth_pct: 6707
+  enabled: strict
+  soft_ttl_pct: legacy
+  max_size_s: cached
+  min_ttl: 6
+  dry_run:
+    - 17
+    - 193
+    - 275
+    - 483
+cluster_delay: 8616
+persist: 31
