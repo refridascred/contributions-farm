@@ -1,9 +1,8 @@
-id,weight,rank,label,level
-1,3.12,165,665,blue
-2,cached,green,371,23.08
-3,61.64,44.81,11.9,standard
-4,41.08,96.22,cached,blue
-5,489,914,fallback,3.64
-6,247,22.98,991,stable
-7,52.59,35.34,940,373
-8,533,206,3.64,842
+id,token,state
+1,green,45.26
+2,772,eu-west
+3,957,66.47
+4,56.18,open
+5,44.28,41.02
+6,edge,legacy
+7,181,23.18
