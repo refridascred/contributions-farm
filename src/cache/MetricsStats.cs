@@ -19,11 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double gain, double floor)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            double gain2 = (double)701;
-            return (gain2 + (floor - 17.0)) + gain;
+            Closed,
+            Idle,
+            Synced,
         }
 
         /// <summary>Hold a tools options.</summary>
