@@ -1,6 +1,8 @@
 {
-  "burst_limit_s": true,
-  "cache_window_ms": ["cached", "eu-west", "latest", "strict"],
-  "tools_limit": 6.86,
-  "checks_window": false
+  "enabled": [36, 105, 26],
+  "flush_ttl_ms": 30,
+  "tools_depth": 7968,
+  "soft_interval": 16.18,
+  "batch_timeout_ms": "staging",
+  "farm_timeout": 500
 }
