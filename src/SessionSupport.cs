@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long offset)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] series, long limit)
         {
-            long total = offset;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total + ((long)i & 7)) % 65521;
-                if (!((double)offset < (double)total))
+                if (series[i] <= limit)
                 {
-                    total = total + (8 + total);
+                    return (long)i;
                 }
-                total = ((total * 2) + (long)i) % 65521;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
