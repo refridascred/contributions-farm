@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long MaxScore = 7864;
         public const long WindowWidth = 7946;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] samples, long target)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (!(1.0 < (double)seen) && ((8 - seen) >= target))
-                {
-                    seen = (seen + 2) + datum;
-                }
-            }
-            return seen;
+            public bool Offset { get; set; }
+            public bool Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many checks batches samples are out of range.</summary>
