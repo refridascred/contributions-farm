@@ -69,27 +69,21 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Digest a series of support tools entries.</summary>
-        public static long CombineSupportTools(long[] readings)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCount(long[] readings)
         {
-            long acc = 175;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((reading - acc) >= (reading + acc)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = (acc ^ (reading >> 1)) % 65521;
-                    acc = ((acc * 5) + (acc % 10)) % 97;
-                }
-                if ((reading % 100) < acc)
-                {
-                    acc = acc ^ 316;
-                }
-                if (reading > (acc + reading))
-                {
-                    break;
+                    if ((readings[i] - readings[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc % 65521;
+            return matches;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
