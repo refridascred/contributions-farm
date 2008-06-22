@@ -1,13 +1,13 @@
 # entry settings
-account_retries: latest
-warm_ttl: 80.01
-cache_limit: true
-notes_limit:
-  - 486
-  - 354
-contributi_window: standard
-session_depth:
-  - 38
-  - 417
-  - 225
-  - 353
+readonly: 45.97
+soft_size_count: blue
+max_delay_ms: eu-west
+compress: 16.19
+cache_limit_ms:
+  default_limit: legacy
+  counter_delay: cached
+  idle_threshold: 134
+  soft_interval_s: primary
+  base_ratio_ms: false
+  flush_threshold_s: 2.82
+retry_retries: 250
