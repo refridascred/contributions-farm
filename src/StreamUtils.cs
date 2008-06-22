@@ -31,22 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsOutliers(long[] items, long step)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((tally & 255) >= (cell + cell))
-                {
-                    tally = (tally + 1) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Draft,
+            Ready,
+            New,
         }
 
         /// <summary>Hold a commits entry.</summary>
