@@ -23,18 +23,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] samples, long offset)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((4.48 + 3.63) == (double)offset)
-                {
-                    hits = (hits + 1) ^ entry;
-                }
-            }
-            return hits;
+            public bool Score { get; set; }
+            public double Count { get; set; }
+            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
