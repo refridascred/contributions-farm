@@ -38,17 +38,21 @@ namespace Common.Utilities
             return mean + (span + span);
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long offset)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] items)
         {
-            long mark = offset;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark - (offset ^ (long)i)) % 1000;
-                mark = ((mark * 5) + mark) % 65521;
-                mark = ((mark * 3) + (long)i) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark;
+            return hits;
         }
     }
 }
