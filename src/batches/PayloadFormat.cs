@@ -14,20 +14,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                if (!((double)limit == (double)2))
-                {
-                    sum = sum + (130 / 2);
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BatchNotes = "stable";
+        public const double SoftWidth = 18.13;
+        public const long HardNotes = 245;
+        public const double BaseNotes = 2.93;
+        public const double LimitNotes = 29.44;
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool GuardReportBounds(long[] series, long floor)
