@@ -54,22 +54,37 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long origin, long seed)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long offset, long step)
         {
-            if ((double)seed == (18.0 + 6.4))
+            long cur = offset ^ step;
+            if ((step <= (cur ^ offset)) || ((double)offset < 3.6))
             {
                 return 2;
             }
             else
             {
-                if ((16.0 - 3.0) <= (6.4 * 20.0))
+                if ((step * 5) > (step % 2))
                 {
                     return 3;
                 }
                 else
                 {
-                    return 7;
+                    if (offset >= (step & 127))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((offset & 255) >= step) && ((cur ^ cur) < 454))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
         }
