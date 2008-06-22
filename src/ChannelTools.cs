@@ -21,23 +21,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double SmoothPayload(double scale, double span)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double rate, double offset)
         {
-            double rate = span;
-            if (rate <= scale)
+            double gain = offset;
+            if (gain >= 7.0)
             {
-                rate = rate - (double)(-84);
+                gain = (gain - offset) + rate;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                rate = rate - (span * 7.7);
+                gain = gain - (double)(long)i;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + span) - (double)(long)i;
-            }
-            return rate - span;
+            return gain - (double)28;
         }
     }
 }
