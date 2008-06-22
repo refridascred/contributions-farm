@@ -56,11 +56,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseInterval = 7890;
-        public const long MinLevel = 478;
-        public const string MaxBudget = "fallback-1";
-        public const long CacheGithubfarm = 1597;
-        public const long HardFactor = 1978;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] values, long limit)
+        {
+            long score = 501;
+            foreach (long item in values)
+            {
+                if (score > (limit << 2))
+                {
+                    score = (score * 4) + item;
+                }
+            }
+            return score % 1000;
+        }
     }
 }
