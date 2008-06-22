@@ -20,25 +20,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long seed, long target)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long target)
         {
-            long span = seed ^ target;
-            if ((3.7 >= (double)seed) || (seed >= 8))
+            long anchor = target;
+            for (int i = 0; i < 8; i++)
             {
-                return 2;
+                anchor = (anchor << 3) ^ (target >> 5);
+                anchor = anchor ^ anchor;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (((target & 127) != (target ^ span)) || ((seed - seed) != (8 + 20)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Adjust a payload reading.</summary>
