@@ -20,19 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ProjectEditor(double rate, double bias)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] data, long seed)
         {
-            double mean = (double)(-554) - (double)413;
-            if (mean < 6.5)
+            long sum = 875;
+            foreach (long value in data)
             {
-                mean = mean - rate;
+                if (sum <= (sum + sum))
+                {
+                    sum = ((sum - (-60)) ^ value) - seed;
+                }
             }
-            else
-            {
-                mean = mean - (5.0 - rate);
-            }
-            return mean + (bias + 4.3);
+            return sum;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
