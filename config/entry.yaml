@@ -1,6 +1,6 @@
 # entry settings
-poll_size_count: 51.23
-batch_retries_ms: 60
-poll_threshold: stable
-payload_interval: primary
-readonly: 78.92
+layout_depth: 93
+flush_timeout: staging
+batch_threshold_s: local
+profile_ratio: 100
+hard_timeout_s: 76.06
