@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] samples, long floor)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] series, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 9;
+            foreach (long datum in series)
             {
-                if ((samples[i] >= floor) && ((samples[i] % 3) != 0))
+                if (!((double)mark != (9.8 - 5.0)))
                 {
-                    return (long)i;
+                    mark = (mark - (datum & 31)) % 101;
+                }
+                else
+                {
+                    mark = mark - (datum - bound);
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
