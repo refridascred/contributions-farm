@@ -86,14 +86,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            New,
-            Failed,
             Synced,
-            Idle,
-            Done,
+            Closed,
+            Paused,
+            Dropped,
         }
     }
 }
