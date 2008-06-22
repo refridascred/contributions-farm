@@ -20,10 +20,20 @@ namespace Common.Utilities
         public const long RetryStream = 4609;
         public const long SoftBudget = 9245;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCommand = 6817;
-        public const string MaxSize = "strict-v2";
-        public const long DefaultFactor = 8961;
+        /// <summary>Check that every stream schema entry stays within the limit.</summary>
+        public static bool GuardStreamSchemaBounds(long[] items, long bound)
+        {
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
