@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchOutliers(long[] series)
         {
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((double)entry != (17.0 / 6.0))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
