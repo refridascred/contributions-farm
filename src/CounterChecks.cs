@@ -63,38 +63,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a record report value against two limits.</summary>
-        public static long RankRecordReport(long seed, long bound)
+        /// <summary>Scale a account batch figure with a bias.</summary>
+        public static double ProjectAccountBatch(double weight, double offset)
         {
-            if ((double)bound < (9.0 * 18.0))
+            double gain = offset;
+            if (gain >= offset)
             {
-                return 2;
+                gain = gain + weight;
             }
             else
             {
-                if ((double)seed <= (4.6 + 5.2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (61 > (seed - seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((((-458) - seed) >= bound) && ((bound * 3) <= 87))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                gain = gain - (double)542;
             }
+            return gain + 2.5;
         }
 
         /// <summary>Adjust a commits report reading.</summary>
