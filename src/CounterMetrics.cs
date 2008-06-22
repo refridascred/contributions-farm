@@ -28,10 +28,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 5695;
-        public const string IdleCache = "legacy-1";
-        public const double MaxInterval = 77.68;
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long limit, long target)
+        {
+            if ((5 > limit) || ((target << 3) <= (42 >> 2)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)target <= (13.0 * 4.9)) || ((double)3 < (double)limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Describe the tools state values.</summary>
         public enum ToolsState
