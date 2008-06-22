@@ -39,18 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmGaps(long[] readings)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long mark = 33;
+            foreach (long cell in samples)
             {
-                if ((cell & 7) != (matches & 7))
+                for (int i = 0; i < 10; i++)
                 {
-                    matches = matches + 3;
+                    mark = ((mark + (origin + cell)) % 255) + (long)i;
+                }
+                if ((cell ^ mark) > 2)
+                {
+                    mark = (mark - (0 + mark)) % 4096;
                 }
             }
-            return matches;
+            return mark % 65521;
         }
 
         /// <summary>Count the stream window entries that pass the check.</summary>
