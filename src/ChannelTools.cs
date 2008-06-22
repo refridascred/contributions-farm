@@ -15,23 +15,9 @@ namespace Common.Utilities
         public const long DefaultWidth = 8824;
         public const long SoftContext = 4858;
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] series, long bound)
-        {
-            long anchor = -675;
-            foreach (long item in series)
-            {
-                anchor = (anchor + (item ^ item)) + bound;
-                if (anchor < (item & 255))
-                {
-                    break;
-                }
-            }
-            if (anchor < 6)
-            {
-                anchor = ((anchor * 5) + ((long)series.Length + 82)) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitDepth = 5198;
+        public const double BurstWidth = 54.99;
+        public const string DefaultSize = "legacy-v2";
     }
 }
