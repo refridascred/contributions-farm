@@ -1,20 +1,19 @@
 # entry settings
-enabled:
-  window_threshold: 4652
-  batch_ttl_ms: true
-  flush_delay_pct: 100
-  idle_retries_pct: strict
-  batch_capacity:
+idle_threshold: 81.45
+max_window_s: 58
+stats_ttl:
+  max_threshold: 24
+  min_limit_s: 87.9
+  soft_interval: stable
+  format_interval:
+    - edge
+    - eu-west
     - legacy
-    - standard
-    - green
-    - stable
-  enabled:
-    idle_delay_ms: 3617
-    retry_capacity: 83
-    poll_window_count: local
-    batch_size_count: latest
-    sync_window: 56
-min_window_ms: false
-poll_retries_s: 62.74
-readonly: 64.33
+    - eu-west
+  cache_delay: legacy
+  cluster_size:
+    - 442
+    - 427
+    - 376
+compress: stable
+schema_interval: latest
