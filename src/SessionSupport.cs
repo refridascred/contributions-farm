@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] levels)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long limit)
         {
-            long acc = 111;
-            foreach (long reading in levels)
+            long anchor = limit;
+            for (int i = 0; i < 20; i++)
             {
-                acc = (acc ^ (acc % 60)) + reading;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return acc % 97;
+            return anchor;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
