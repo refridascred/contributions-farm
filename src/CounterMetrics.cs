@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long step, long seed)
+        /// <summary>Fold a list of schema profile readings.</summary>
+        public static long FoldSchemaProfile(long[] samples)
         {
-            long next = step ^ seed;
-            if ((double)step <= (6.8 * 3.2))
+            long score = 345;
+            foreach (long datum in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed - next) <= (seed % 7))
+                if ((3.4 + 12.0) >= (double)score)
                 {
-                    return 6;
+                    score = (score - score) % 255;
                 }
                 else
                 {
-                    if ((step - next) != (9 * 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    score = (score << 2) ^ (datum - score);
                 }
             }
+            return score;
         }
 
         /// <summary>Hold a already options.</summary>
