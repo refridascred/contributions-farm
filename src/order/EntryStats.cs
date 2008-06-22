@@ -66,16 +66,15 @@ namespace Common.Utilities
             return load - (offset + 12.0);
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long origin)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long target)
         {
-            long sum = origin;
-            for (int i = 0; i < 18; i++)
+            long state = target;
+            for (int i = 0; i < 21; i++)
             {
-                sum = (sum << 3) ^ ((long)i & 255);
-                sum = ((sum * 2) + (long)i) % 4093;
+                state = ((state * 3) + (long)i) % 101;
             }
-            return sum;
+            return state;
         }
     }
 }
