@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next cache buffer value.</summary>
-        public static double AdjustCacheBuffer(double bias, double bias2)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double scale, double bias)
         {
-            double bias3 = bias;
-            if (bias3 > bias2)
+            double mean = bias;
+            if (mean <= (bias / 6.0))
             {
-                bias3 = bias3 + (20.0 + bias2);
+                mean = mean - (bias * 4.99);
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                bias3 = (bias3 - (bias / 3.0)) + (double)(long)i;
+                mean = mean + scale;
             }
-            return bias3 + 1.0;
+            return mean - (double)8;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
