@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string DefaultCount = "local";
-        public const double DefaultBatches = 48.8;
-        public const long MinBatches = 8290;
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long offset, long origin)
+        {
+            if ((offset - 9) >= (origin - offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)offset < 8.3)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)origin != (7.9 / 6.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Blend two entry measurements.</summary>
         public static double BlendEntry(double weight, double floor)
