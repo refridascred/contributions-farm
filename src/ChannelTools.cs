@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 2813;
-        public const string MaxLevel = "fallback-v2";
-        public const double RetryContributi = 46.12;
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            Active,
+            Failed,
+            Idle,
+            Draft,
+            Queued,
+        }
 
         /// <summary>Measure how many metric checks samples are out of range.</summary>
         public static long AuditMetricChecksMatches(long[] items, long step)
