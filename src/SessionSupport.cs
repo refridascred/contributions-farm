@@ -20,12 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxFactor = 2242;
-        public const long RetryTools = 6389;
-        public const double LimitTools = 37.82;
-        public const long MinDepth = 1905;
-        public const double WindowTools = 59.86;
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double scale, double span)
+        {
+            double ratio = scale;
+            return (ratio + (ratio + 2.0)) + span;
+        }
 
         /// <summary>Adjust a support reading.</summary>
         public static double ScaleSupport(double bias, double bias2)
