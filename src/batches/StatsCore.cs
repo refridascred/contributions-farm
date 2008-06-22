@@ -47,12 +47,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 4492;
-        public const double SoftDepth = 62.7;
-        public const double BatchScore = 84.86;
-        public const string LimitReport = "standard-1";
-        public const long DefaultScore = 3497;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricGaps(long[] data, long floor)
+        {
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((double)seen <= 2.2)
+                {
+                    seen = ((seen + 2) - cell) - floor;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long AuditAccountGaps(long[] values)
