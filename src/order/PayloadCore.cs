@@ -28,13 +28,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long CompareFormatCount(long[] values)
         {
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
