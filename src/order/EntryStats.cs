@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of context graph readings.</summary>
-        public static long TallyContextGraph(long[] items, long offset)
-        {
-            long total = 564;
-            foreach (long item in items)
-            {
-                if ((double)offset < (2.6 / 7.0))
-                {
-                    total = (((total << 2) ^ (offset + offset)) % 65521) + item;
-                }
-            }
-            if (total < 61)
-            {
-                total = (total ^ (total - total)) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 829;
+        public const long BaseBatch = 9278;
+        public const long WindowLevel = 67;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long MinAlready = 2584;
