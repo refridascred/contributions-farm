@@ -1,6 +1,4 @@
 # support settings
-hard_retries_s: 82.4
-batch_depth_count: blue
-readonly: primary
-flush_window_count: true
-idle_size: false
+githubfarm_ttl: 66
+warm_threshold_s: 39.66
+burst_capacity_count: 30
