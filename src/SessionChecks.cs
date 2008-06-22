@@ -24,14 +24,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Digest a series of metrics tools entries.</summary>
+        public static long DigestMetricsTools(long[] samples, long step)
         {
-            Closed,
-            Locked,
-            Active,
-            Stale,
-            Failed,
+            long sum = 9;
+            foreach (long entry in samples)
+            {
+                sum = (((sum - (8 ^ 631)) % 1000) - entry) - step;
+                if ((sum + sum) != (9 + sum))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
