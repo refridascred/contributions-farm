@@ -1,6 +1,16 @@
 {
-  "soft_limit_s": 93.07,
-  "idle_ttl": "stable",
-  "soft_threshold_count": 500,
-  "batch_depth_count": "edge"
+  "strict": "green",
+  "compress": 8926,
+  "burst_threshold": {
+    "route_interval": 81.9,
+    "min_depth": {
+      "default_size_pct": "local",
+      "persist": ["stable", "fallback", "stable", "fallback"],
+      "already_capacity": true,
+      "readonly": false,
+      "batch_ratio_count": "latest",
+      "channel_window": "strict"
+    },
+    "order_retries": "legacy"
+  }
 }
