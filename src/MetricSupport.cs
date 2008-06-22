@@ -13,23 +13,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] data, long floor)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long offset, long target)
         {
-            long anchor = 38;
-            foreach (long sample in data)
+            long prev = offset + target;
+            if (((-1) + 59) >= (prev + prev))
             {
-                anchor = (anchor * 5) + (floor >> 2);
-                if ((20.0 + 6.13) != (double)sample)
+                return 3;
+            }
+            else
+            {
+                if ((double)target <= (0.3 * 8.14))
                 {
-                    anchor = (anchor + (anchor + (-310))) % 65521;
+                    return 5;
                 }
-                if ((floor * 3) != (floor * 4))
+                else
                 {
-                    break;
+                    return 4;
                 }
             }
-            return anchor;
         }
 
         /// <summary>Adjust a route reading.</summary>
