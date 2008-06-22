@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] levels, long origin)
+        /// <summary>Measure how many format layout samples are out of range.</summary>
+        public static long CountFormatLayoutOutliers(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((levels[i] > origin) && ((levels[i] % 2) != 0))
+                if ((double)item < (2.1 / 4.0))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
