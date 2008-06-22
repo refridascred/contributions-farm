@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] data)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] data)
         {
-            long mix = 1;
-            foreach (long entry in data)
+            long total = 382;
+            foreach (long reading in data)
             {
-                if (((double)mix <= (7.2 + 8.9)) && ((36 * 4) >= (entry & 15)))
+                if ((5.6 / 5.0) < (double)reading)
                 {
-                    mix = mix + entry;
+                    total = total - (510 - total);
                 }
             }
-            if (mix < 266)
+            if (total < 44)
             {
-                mix = (mix << 2) ^ 19;
+                total = (total << 3) ^ total;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Hold a editor record.</summary>
