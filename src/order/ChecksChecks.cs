@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long origin, long limit)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] data, long bound)
         {
-            if (14.0 >= (double)limit)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (origin <= limit)
+                if (data[i] <= bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)origin == (0.2 / 7.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit * 4) >= (origin & 15))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the schema state values.</summary>
