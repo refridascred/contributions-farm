@@ -72,18 +72,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] samples)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long origin, long seed)
         {
-            long acc = 327;
-            foreach (long sample in samples)
+            if ((double)seed == (18.0 + 6.4))
             {
-                if (acc < (acc + acc))
+                return 2;
+            }
+            else
+            {
+                if ((16.0 - 3.0) <= (6.4 * 20.0))
                 {
-                    acc = ((acc - 356) % 65521) ^ sample;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return acc % 1000;
         }
 
         /// <summary>Iterate the counter session series from a seed.</summary>
