@@ -47,11 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleDepth = 3055;
-        public const string StepSize = "standard-edge";
-        public const double StepFactor = 91.67;
-        public const string CacheSpan = "cached";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstQueue = 9277;
+        public const double RetryWidth = 25.12;
+        public const long HardQueue = 2508;
+        public const double LimitSize = 80.34;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long TallyStreamGaps(long[] series, long target)
