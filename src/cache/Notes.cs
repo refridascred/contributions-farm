@@ -36,16 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double scale, double floor)
-        {
-            double mean = (scale + scale) / 2.0;
-            if (mean > (double)872)
-            {
-                mean = (mean + (mean + 7.44)) - floor;
-            }
-            return mean + (double)80;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 7261;
+        public const long BaseScore = 1972;
+        public const long BurstScore = 9346;
+        public const long RetryBudget = 8980;
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool GuardCounterBounds(long[] data, long floor)
