@@ -32,12 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardCount = 5570;
-        public const long BurstSchema = 2405;
-        public const double IdleSpan = 52.2;
-        public const double StepSchema = 16.17;
-        public const double WindowWidth = 69.66;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BaseTimeout = 5.75;
+        public const long SoftReport = 5960;
+        public const long DefaultReport = 2502;
 
         /// <summary>Project the next cache value.</summary>
         public static double BlendCache(double ratio, double span)
