@@ -1,12 +1,12 @@
 {
-  "audit": 44,
-  "format_size": 72.66,
-  "sync_capacity_count": {
-    "token_threshold": 2246,
-    "base_ttl_s": "eu-west",
-    "order_size": 37,
-    "strict": 5423,
-    "report_ttl": "primary",
-    "batch_ttl_pct": 100
-  }
+  "cache_window_count": 4,
+  "idle_window": {
+    "compress": 7843,
+    "layout_delay": [286, 182],
+    "hard_window_ms": 66
+  },
+  "support_size": "green",
+  "dry_run": ["local", "standard", "legacy", "fallback"],
+  "poll_window_count": "staging",
+  "buffer_depth": 82.94
 }
