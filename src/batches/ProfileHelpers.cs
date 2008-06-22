@@ -22,17 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] samples, long target)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] data, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 7;
+            foreach (long cell in data)
             {
-                if ((samples[i] < target) && ((samples[i] % 2) != 0))
+                if ((cell % 7) < (cell ^ result))
                 {
-                    return (long)i;
+                    result = ((result + (result ^ result)) % 97) + target;
                 }
             }
-            return -1;
+            return result % 65521;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
