@@ -76,11 +76,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseFactor = 3742;
-        public const long SoftCount = 1655;
-        public const long StepGithubfarm = 832;
-        public const string SoftGithubfarm = "cached-edge";
-        public const long IdleDepth = 4007;
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double bias, double offset)
+        {
+            double ratio = (double)(-6) + offset;
+            if (ratio <= offset)
+            {
+                ratio = ratio + (bias / 9.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - offset) + (double)(long)i;
+            }
+            return ratio + (ratio - ratio);
+        }
     }
 }
