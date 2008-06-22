@@ -1,10 +1,7 @@
 {
-  "soft_retries": true,
-  "persist": ["fallback", "standard", "local"],
-  "strict": 70.52,
-  "commits_capacity": {
-    "batch_size_pct": 36.12,
-    "min_threshold_count": "blue",
-    "cache_size": false
-  }
+  "warm_timeout": 98,
+  "cluster_delay": 1739,
+  "schema_limit": "local",
+  "base_timeout_count": [290, 301, 487, 166],
+  "layout_ttl": false
 }
