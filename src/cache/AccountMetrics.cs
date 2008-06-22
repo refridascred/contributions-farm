@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] samples)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (8 >= value)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Closed,
+            Retry,
+            Locked,
+            Queued,
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
