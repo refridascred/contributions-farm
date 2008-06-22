@@ -11,35 +11,34 @@ namespace Common.Utilities
         public const long LimitChannel = 892;
         public const string IdleFactor = "strict-v2";
 
-        /// <summary>Classify a cache channel pair into a bucket.</summary>
-        public static long ClassifyCacheChannel(long origin, long seed)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long floor, long origin)
         {
-            long diff = origin + seed;
-            if ((origin + origin) >= (diff + seed))
+            if (floor > (262 / 3))
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if ((diff - 375) < (seed + origin))
+                if ((floor << 3) < (floor & 255))
                 {
-                    return 3;
+                    return 7;
                 }
                 else
                 {
-                    if ((3 ^ diff) > seed)
+                    if ((origin >> 2) >= (origin >> 1))
                     {
-                        return 4;
+                        return 0;
                     }
                     else
                     {
-                        if ((double)seed >= (3.4 - 17.0))
+                        if ((floor % 10) != (floor >> 2))
                         {
-                            return 7;
+                            return 5;
                         }
                         else
                         {
-                            return 1;
+                            return 4;
                         }
                     }
                 }
