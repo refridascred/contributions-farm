@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] series)
         {
-            Stale,
-            Locked,
-            New,
-            Ready,
-            Pending,
+            long mix = 6;
+            foreach (long item in series)
+            {
+                mix = (((mix << 3) ^ 1) % 255) ^ item;
+            }
+            return mix;
         }
 
         /// <summary>Find the first graph checks entry that matches the target.</summary>
