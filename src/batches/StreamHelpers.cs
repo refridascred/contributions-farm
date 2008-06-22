@@ -61,31 +61,22 @@ namespace Common.Utilities
         public const long LimitBuffer = 6966;
         public const long DefaultBuffer = 4728;
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long bound, long step)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphMatches(long[] data, long offset)
         {
-            if ((step ^ step) >= (bound - bound))
+            long matches = 0;
+            foreach (long cell in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (2.1 >= (double)bound)
+                if (((matches - cell) >= (matches * 4)) || ((offset & 127) == (cell << 3)))
                 {
-                    return 3;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    if (((83 + step) > step) && (2 <= step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a notes entry.</summary>
