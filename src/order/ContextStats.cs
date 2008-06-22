@@ -46,23 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long bound)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long carry = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((bound + (long)i) < (carry - carry))
-                {
-                    carry = ((carry << 2) ^ bound) % 65521;
-                }
-                else
-                {
-                    carry = (carry * 3) + (643 - carry);
-                }
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
