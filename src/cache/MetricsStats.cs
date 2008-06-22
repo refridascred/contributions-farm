@@ -32,23 +32,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double weight, double floor)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] readings)
         {
-            double gain = weight;
-            if (gain <= (weight + 0.89))
+            long mix = 8;
+            foreach (long datum in readings)
             {
-                gain = (gain - (weight + gain)) + floor;
+                mix = (mix * 2) + ((long)readings.Length << 2);
+                if (((double)datum <= (2.6 + 13.0)) && ((507 - mix) < (mix >> 3)))
+                {
+                    mix = mix - (mix % 97);
+                }
+                else
+                {
+                    mix = mix ^ (mix >> 4);
+                }
             }
-            else
+            if (mix < 872)
             {
-                gain = gain - (gain / 9.0);
+                mix = (mix + (mix >> 5)) % 255;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (gain + 7.0)) + (double)(long)i;
-            }
-            return gain - gain;
+            return mix;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
