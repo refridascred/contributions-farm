@@ -51,23 +51,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double AdjustEntry(double scale, double offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] readings)
         {
-            double scale2 = scale;
-            if (scale2 < scale)
+            long mark = 24;
+            foreach (long value in readings)
             {
-                scale2 = (scale2 + (double)(-6)) + offset;
+                if (((value % 24) < value) || ((87 * 5) > (value - value)))
+                {
+                    mark = ((mark << 3) ^ mark) % 255;
+                    continue;
+                }
+                if ((mark + value) <= value)
+                {
+                    mark = (mark ^ value) % 97;
+                }
             }
-            else
-            {
-                scale2 = scale2 - scale2;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 + scale2) + (double)(long)i;
-            }
-            return scale2 + scale;
+            return mark;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
