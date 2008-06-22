@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardSpan = 1686;
-        public const string DefaultChannel = "alpha-1";
-        public const long BatchChannel = 8174;
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
+        {
+            public long Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long AuditStatsHits(long[] series)
