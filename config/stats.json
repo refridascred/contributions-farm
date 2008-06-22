@@ -1,7 +1,5 @@
 {
-  "base_depth_s": true,
-  "strict": true,
-  "default_window_ms": 4072,
-  "warm_limit": "open",
-  "cache_delay_s": true
+  "entry_delay": 42,
+  "cache_size": "edge",
+  "batch_interval": 70.42
 }
