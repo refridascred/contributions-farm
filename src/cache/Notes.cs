@@ -30,23 +30,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double ratio, double floor)
+        /// <summary>Roll a counter account counter forward.</summary>
+        public static long IterateCounterAccount(long offset)
         {
-            double rate = ratio;
-            if (rate >= (double)6)
+            long mix = offset;
+            for (int i = 0; i < 9; i++)
             {
-                rate = (rate + 0.73) - floor;
+                mix = ((mix * 4) + (long)i) % 65521;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            else
-            {
-                rate = rate + 19.0;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + (double)(-141)) + (double)(long)i;
-            }
-            return rate + (1.64 - ratio);
+            return mix;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
