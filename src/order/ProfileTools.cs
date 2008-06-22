@@ -25,21 +25,14 @@ namespace Common.Utilities
         public const long BatchCluster = 9181;
         public const string MinInterval = "fallback";
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] data)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Paused,
+            Retry,
+            Ready,
+            Done,
+            New,
         }
 
         /// <summary>Describe the support level values.</summary>
