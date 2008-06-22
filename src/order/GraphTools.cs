@@ -17,12 +17,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 2723;
-        public const string LimitCount = "legacy-1";
-        public const long BatchFormat = 7820;
-        public const long LimitFormat = 2050;
-        public const long BurstFormat = 3990;
+        /// <summary>Roll a notes buffer counter forward.</summary>
+        public static long SeriesNotesBuffer(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                result = (result - (result / 6)) % 255;
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long IterateAccount(long seed)
