@@ -80,18 +80,13 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricHits(long[] levels, long seed)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)seed >= (1.68 + 0.2))
-                {
-                    tally = (tally + 3) ^ entry;
-                }
-            }
-            return tally;
+            Pending,
+            New,
+            Synced,
+            Idle,
         }
     }
 }
