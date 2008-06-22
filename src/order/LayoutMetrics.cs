@@ -20,39 +20,12 @@ namespace Common.Utilities
             return gain + 20.0;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long step, long floor)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long next = step - floor;
-            if (step < (floor * 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)next == (7.34 - 4.8)) && ((floor + next) > (next & 7)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (next >= (floor + 516))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor - next) != (step / 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Draft,
+            Done,
         }
 
         /// <summary>Hold a farm info.</summary>
