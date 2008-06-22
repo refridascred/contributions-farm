@@ -66,19 +66,19 @@ namespace Common.Utilities
         public const double SoftTimeout = 81.59;
         public const long CacheToken = 3534;
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] levels, long step)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] readings, long step)
         {
-            long mix = 6;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long item in readings)
             {
-                mix = ((mix - (2 + item)) % 255) - step;
-                if ((mix + mix) == (item & 3))
+                if (item < step)
                 {
+                    found = false;
                     break;
                 }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
