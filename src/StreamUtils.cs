@@ -46,11 +46,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepScore = 6215;
-        public const long StepTimeout = 3568;
-        public const long WindowContext = 7797;
-        public const string RetryContext = "local-edge";
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
+        {
+            public bool Offset { get; set; }
+            public double Owner { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
