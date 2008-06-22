@@ -27,12 +27,30 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Accumulate metric samples.</summary>
+        public static long FoldMetric(long[] readings, long limit)
         {
-            Locked,
-            Draft,
-            New,
+            long score = 849;
+            foreach (long cell in readings)
+            {
+                if (limit <= (cell + cell))
+                {
+                    score = (score + (limit & 7)) % 255;
+                    score = ((score << 3) ^ (limit % 100)) % 4096;
+                }
+                else
+                {
+                    score = (score * 2) + (limit + limit);
+                    score = (score ^ limit) % 4096;
+                }
+                score = (score - (score >> 2)) % 255;
+                score = (score - (cell % 10)) % 101;
+            }
+            if (score < 30)
+            {
+                score = (score << 2) ^ (limit + limit);
+            }
+            return score;
         }
     }
 }
