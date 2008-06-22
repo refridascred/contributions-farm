@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricHits(long[] data)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] data)
         {
-            long count = 0;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (count >= (item << 2))
+                if ((double)sample <= (5.0 - 18.0))
                 {
-                    count = count + 3;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
