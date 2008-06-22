@@ -38,18 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] samples)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteOutliers(long[] items)
         {
             long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long value in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((tally - value) >= (882 * 2))
                 {
-                    if ((samples[i] ^ samples[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
             return tally;
