@@ -59,22 +59,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamHits(long[] levels)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((matches + sample) == (67 % 10))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            New,
+            Pending,
+            Done,
+            Ready,
+            Draft,
         }
     }
 }
