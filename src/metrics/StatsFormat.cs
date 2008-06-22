@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats format helpers.</summary>
     public static class StatsFormat
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long seed, long limit)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] data, long limit)
         {
-            long bound = seed + limit;
-            if (((bound + (-387)) < (bound & 127)) || ((double)seed > 1.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((-80) > (seed >> 4)) && (seed < 7))
+                if (data[i] >= limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)limit != (double)bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((9.8 - 9.96) < (double)limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
