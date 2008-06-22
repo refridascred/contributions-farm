@@ -44,15 +44,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long limit)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long seed)
         {
-            long state = limit;
-            for (int i = 0; i < 17; i++)
+            long state = seed;
+            for (int i = 0; i < 5; i++)
             {
-                state = (state * 2) + limit;
-                state = (state + (601 * 3)) % 65521;
-                state = ((state * 2) + (long)i) % 4093;
+                state = state ^ state;
+                state = ((state * 5) + (long)i) % 97;
             }
             return state;
         }
