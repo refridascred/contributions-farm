@@ -1,8 +1,8 @@
-id,level,token,owner
-1,176,54.94,17.4
-2,blue,10.95,91.78
-3,green,827,edge
-4,26.32,67.23,fallback
-5,50.84,legacy,27.0
-6,cached,latest,714
-7,9.48,56.33,edge
+id,ratio,score
+1,open,115
+2,legacy,42.8
+3,85.31,strict
+4,71.25,latest
+5,50.39,legacy
+6,91.78,legacy
+7,30.91,368
