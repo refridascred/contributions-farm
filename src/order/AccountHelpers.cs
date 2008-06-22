@@ -61,14 +61,19 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Validate window token readings against a bound.</summary>
+        public static bool GuardWindowTokenBounds(long[] items, long target)
         {
-            Failed,
-            Idle,
-            Locked,
-            Draft,
-            Ready,
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
