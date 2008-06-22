@@ -1,8 +1,6 @@
 {
-  "commits_window": "edge",
-  "strict": "edge",
-  "min_delay_ms": [355, 193],
-  "persist": "latest",
-  "default_retries_ms": ["blue", "open", "open"],
-  "buffer_delay": "cached"
+  "persist": true,
+  "hard_ratio_count": false,
+  "soft_depth_pct": 67.14,
+  "burst_ratio_ms": 54
 }
