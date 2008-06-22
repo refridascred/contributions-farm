@@ -1,7 +1,17 @@
 {
-  "idle_ttl_s": 2952,
-  "dry_run": 96,
-  "contributi_threshold": ["legacy", "staging", "blue", "local"],
-  "cache_interval_ms": "eu-west",
-  "burst_size": false
+  "min_limit": {
+    "stream_threshold": "local",
+    "max_interval": "fallback",
+    "schema_ttl": "standard",
+    "max_timeout_s": [89, 384],
+    "min_timeout": {
+      "soft_window_pct": "edge",
+      "poll_retries": 22,
+      "poll_threshold_count": [161, 76, 175]
+    }
+  },
+  "readonly": [123, 47, 4, 120],
+  "hard_timeout": "blue",
+  "payload_retries": 95.34,
+  "hard_timeout_count": 250
 }
