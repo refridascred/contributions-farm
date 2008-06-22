@@ -28,26 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] readings)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long SeriesProfile(long step)
         {
-            long total = 149;
-            foreach (long datum in readings)
+            long mix = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((total / 9) < (datum & 127))
+                if ((mix > (step ^ (long)i)) || ((double)(long)i <= (3.2 + 1.08)))
                 {
-                    total = total + (datum - datum);
+                    mix = (mix ^ (step + 738)) % 4096;
                 }
-                if ((datum % 12) <= datum)
-                {
-                    total = (total - (datum ^ 35)) % 255;
-                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            if (total < (-4))
-            {
-                total = ((total * 4) + (total + total)) % 101;
-            }
-            return total % 97;
+            return mix;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
