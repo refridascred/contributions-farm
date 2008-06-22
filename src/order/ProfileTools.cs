@@ -17,11 +17,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 3416;
-        public const long BatchRoute = 7074;
-        public const long LimitLevel = 5347;
-        public const string BurstRoute = "cached-1";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string HardCache = "legacy-v2";
+        public const long SoftLevel = 6612;
+        public const long SoftCache = 1692;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string IdleScore = "cached";
