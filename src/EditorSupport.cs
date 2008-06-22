@@ -86,10 +86,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitPayload = 411;
-        public const long BurstFactor = 3597;
-        public const long LimitSize = 4042;
-        public const string BaseTimeout = "staging-v2";
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
+        {
+            New,
+            Failed,
+            Synced,
+            Idle,
+            Done,
+        }
     }
 }
