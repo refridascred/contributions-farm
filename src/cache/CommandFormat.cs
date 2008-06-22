@@ -13,14 +13,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
-        {
-            Stale,
-            Pending,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double LimitReport = 86.14;
+        public const long HardReport = 9885;
+        public const double MaxReport = 50.51;
 
         /// <summary>Find the first editor filter entry that matches the target.</summary>
         public static long LookupEditorFilterIndex(long[] readings, long step)
