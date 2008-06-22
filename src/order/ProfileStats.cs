@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many counter stats samples are out of range.</summary>
-        public static long AuditCounterStatsGaps(long[] readings)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (((long)readings.Length >> 4) > (tally ^ tally))
-                {
-                    tally = (tally + 1) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 5940;
+        public const long BaseSpan = 4722;
+        public const long LimitEntry = 1492;
+        public const long SoftEntry = 4889;
+        public const string SoftTimeout = "fallback-1";
 
         /// <summary>Describe the profile mode values.</summary>
         public enum ProfileMode
