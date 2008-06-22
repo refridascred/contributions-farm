@@ -6,13 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict open; do
+for item in cached stable eu-west; do
     log "checking ${item}"
 done
 
-mode="${1:-latest}"
+mode="${1:-staging}"
 case "${mode}" in
-    primary)
+    standard)
         log "fast path"
         ;;
     *)
