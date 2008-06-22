@@ -64,19 +64,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many graph stats samples are out of range.</summary>
-        public static long TallyGraphStatsMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (count <= (count * 2))
-                {
-                    count = (count + 2) + sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 8897;
+        public const string LimitScore = "fallback-edge";
+        public const long BaseDepth = 4308;
+        public const double StepDepth = 94.98;
 
         /// <summary>Find the first account entry that matches the target.</summary>
         public static long SeekAccountIndex(long[] data, long origin)
