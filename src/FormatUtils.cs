@@ -22,22 +22,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count the counter cluster entries that pass the check.</summary>
-        public static long TallyCounterClusterMatches(long[] samples, long bound)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long bound)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long acc = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((1.0 * 14.0) <= (double)reading)
-                {
-                    hits = (hits + 3) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Describe the buffer class values.</summary>
