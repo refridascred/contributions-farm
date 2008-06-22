@@ -25,31 +25,21 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long limit, long floor)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] series)
         {
-            if ((double)floor > 20.0)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit > (7.0 * 7.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)floor <= (6.2 / 9.0))
+                    if ((series[i] + series[j]) != 19)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
