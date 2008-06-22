@@ -43,12 +43,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            public double Region { get; set; }
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
+            Retry,
+            Dropped,
+            Closed,
+            Queued,
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
