@@ -62,31 +62,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long offset, long floor)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] samples, long bound)
         {
-            if ((offset / 9) <= (57 % 24))
+            long state = 3;
+            foreach (long sample in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset + floor) <= offset)
+                state = (((state << 3) ^ (976 + state)) % 65521) ^ sample;
+                if (9 <= (state & 3))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)floor >= 6.8)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    state = ((state << 3) ^ bound) % 1000;
                 }
             }
+            return state;
         }
     }
 }
