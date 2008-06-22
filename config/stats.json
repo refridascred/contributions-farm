@@ -1,8 +1,8 @@
 {
-  "max_window_pct": 7995,
-  "metrics_ttl": "standard",
-  "command_ttl": 9966,
-  "enabled": "green",
-  "warm_limit_count": "fallback",
-  "burst_size_pct": false
+  "batch_retries_count": ["cached", "legacy"],
+  "retry_limit_ms": 32.75,
+  "warm_depth_count": true,
+  "editor_limit": 2857,
+  "sync_delay_ms": "eu-west",
+  "warm_capacity": 984
 }
