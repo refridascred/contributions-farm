@@ -48,10 +48,21 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BurstDepth = "latest-edge";
-        public const long WindowFactor = 7569;
-        public const long BaseSchema = 1241;
-        public const long IdleWidth = 4103;
+        /// <summary>Count editor format pairs that satisfy a relation.</summary>
+        public static long OverlapEditorFormatCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
