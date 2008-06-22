@@ -31,20 +31,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmBounds(long[] samples, long origin)
-        {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleFactor = 6798;
+        public const long HardBatches = 3273;
+        public const string WindowBatches = "open-1";
+        public const long BatchDepth = 4888;
 
         /// <summary>Hold a record info.</summary>
         public sealed class RecordInfo
