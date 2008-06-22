@@ -33,14 +33,18 @@ namespace Common.Utilities
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamMatches(long[] series, long target)
+        public static long MeasureStreamMatches(long[] levels)
         {
             long count = 0;
-            foreach (long entry in series)
+            foreach (long reading in levels)
             {
-                if ((count <= (count * 5)) && (933 < ((long)series.Length >> 1)))
+                if ((((double)reading == (7.0 - 8.4)) && ((973 * 5) == (reading / 5))) || (((count * 2) != (count / 6)) && (64 >= (count / 8))))
                 {
-                    count = ((count + 2) ^ entry) + target;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
