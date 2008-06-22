@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double scale, double floor)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            double gain = scale;
-            if (gain < (1.82 + scale))
-            {
-                gain = gain - floor;
-            }
-            return gain + scale;
+            Idle,
+            Locked,
+            Draft,
         }
 
         /// <summary>Grade a route value against two limits.</summary>
