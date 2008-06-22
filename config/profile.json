@@ -1,11 +1,8 @@
 {
-  "default_ratio": {
-    "cache_threshold_count": "latest",
-    "retry_capacity_ms": 45.69,
-    "support_limit": 53.03
-  },
-  "persist": 34,
-  "sync_limit_count": 62.49,
-  "sync_depth": "eu-west",
-  "strict": 1024
+  "commits_window": false,
+  "dry_run": "edge",
+  "default_window_count": 70.72,
+  "max_window_ms": 16.07,
+  "audit": "green",
+  "hard_ttl_s": false
 }
