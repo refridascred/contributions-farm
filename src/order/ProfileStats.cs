@@ -59,12 +59,10 @@ namespace Common.Utilities
         public const double BurstRatio = 0.13;
         public const string CacheSize = "stable-v2";
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
-        {
-            public long Ratio { get; set; }
-            public string Limit { get; set; } = "";
-            public double Count { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSpan = 4636;
+        public const string IdleFactor = "primary-v2";
+        public const long WindowDepth = 3554;
+        public const string MinSpan = "standard-v2";
     }
 }
