@@ -21,13 +21,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long origin, long origin2)
         {
-            public double Ratio { get; set; }
-            public long Owner { get; set; }
-            public double Offset { get; set; }
-            public double Level { get; set; }
+            if ((origin & 63) < (origin + origin2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)origin2 >= 5.0)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
