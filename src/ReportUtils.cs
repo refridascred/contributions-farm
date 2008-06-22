@@ -50,21 +50,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] values)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] items, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = -30;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = (((carry << 3) ^ carry) ^ reading) - bound;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Hold a buffer record.</summary>
