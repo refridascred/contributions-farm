@@ -18,21 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] series)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Rank { get; set; }
+            public double Weight { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Locate a entry reading by value.</summary>
