@@ -13,24 +13,10 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double AdjustChecks(double ratio, double span)
-        {
-            double mean = span;
-            if (mean <= (ratio - ratio))
-            {
-                mean = mean + (3.0 - mean);
-            }
-            else
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + span) + (double)(long)i;
-            }
-            return mean + (span / 3.0);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MinBudget = 30.25;
+        public const long SoftOrder = 7799;
+        public const string MaxOrder = "primary-v2";
 
         /// <summary>Hold a notes entry.</summary>
         public sealed class NotesEntry
