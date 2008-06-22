@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] readings)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenOutliers(long[] values)
         {
-            long mix = 5;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long value in values)
             {
-                mix = (((mix * 4) + (mix + 366)) % 101) ^ entry;
+                if (((value - value) < (value * 3)) || !((410 << 3) == (matches + 361)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Project the next cache buffer value.</summary>
