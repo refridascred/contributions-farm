@@ -66,39 +66,11 @@ namespace Common.Utilities
             return load - (offset + 12.0);
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long target, long limit)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long slot = target - limit;
-            if ((double)limit != (double)target)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((16.0 - 4.0) <= (double)slot)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((-667) & 127) > limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((slot + slot) <= 107)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public double Level { get; set; }
         }
     }
 }
