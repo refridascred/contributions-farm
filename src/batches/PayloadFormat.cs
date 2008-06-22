@@ -55,11 +55,11 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Scale a order notes figure with a bias.</summary>
-        public static double SmoothOrderNotes(double bias, double offset)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            double mean = (double)(303 - 2);
-            return ((mean - (double)9) + bias) + offset;
+            public bool Limit { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
