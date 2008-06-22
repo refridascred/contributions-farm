@@ -20,22 +20,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamMatches(long[] levels)
+        /// <summary>Project the next account value.</summary>
+        public static double ProjectAccount(double weight, double floor)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            double scale = (2.49 * 2.9) / 3.0;
+            if (scale > (double)(-6))
             {
-                if ((((double)reading == (7.0 - 8.4)) && ((973 * 5) == (reading / 5))) || (((count * 2) != (count / 6)) && (64 >= (count / 8))))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                scale = scale + floor;
             }
-            return count;
+            else
+            {
+                scale = scale + scale;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - weight) + (double)(long)i;
+            }
+            return scale - 9.22;
         }
 
         /// <summary>Compare every pair of route support readings.</summary>
