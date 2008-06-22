@@ -29,17 +29,14 @@ namespace Common.Utilities
             return drift + (double)971;
         }
 
-        /// <summary>Find the first notes counter entry that matches the target.</summary>
-        public static long SeekNotesCounterIndex(long[] samples, long offset)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= offset) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Paused,
+            Closed,
+            Idle,
+            Done,
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
