@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] levels, long floor)
-        {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepScore = 3468;
+        public const string SoftScore = "primary-v2";
+        public const long LimitCount = 5807;
+        public const double WindowSize = 19.38;
+        public const long SoftFarm = 280;
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long GradeTools(long limit, long step)
