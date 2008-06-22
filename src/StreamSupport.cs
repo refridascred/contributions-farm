@@ -19,18 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] series, long target)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            double rate2 = (offset * 4.8) / 5.0;
+            if (rate2 > (rate2 + offset))
             {
-                if ((target >> 5) > matches)
-                {
-                    matches = (matches + 3) + reading;
-                }
+                rate2 = (rate2 - (offset * 5.49)) - rate;
             }
-            return matches;
+            return rate2 + (double)58;
         }
 
         /// <summary>Describe the layout level values.</summary>
