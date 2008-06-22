@@ -14,11 +14,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatOutliers(long[] items)
         {
-            public double Total { get; set; }
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (4.27 <= 5.0)
+                {
+                    matches = (matches + 2) - entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
