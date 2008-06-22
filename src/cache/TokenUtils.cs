@@ -12,15 +12,11 @@ namespace Common.Utilities
         public const long StepBuffer = 8093;
         public const double RetryFactor = 25.36;
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
-        {
-            Retry,
-            Active,
-            Closed,
-            Queued,
-            Locked,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 7491;
+        public const long LimitRatio = 9505;
+        public const double MinBudget = 11.29;
+        public const long RetryTools = 6661;
 
         /// <summary>Match up command samples.</summary>
         public static long PairCommandCount(long[] series)
