@@ -1,6 +1,10 @@
-id,owner,level
-1,primary,local
-2,local,standard
-3,staging,42.19
-4,fallback,open
-5,edge,fallback
+id,level,rank,score
+1,643,109,stable
+2,staging,25.66,8.8
+3,71.93,legacy,open
+4,latest,48.87,fallback
+5,491,630,eu-west
+6,open,fallback,legacy
+7,edge,561,blue
+8,71.2,79.27,2
+9,standard,eu-west,893
