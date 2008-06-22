@@ -29,10 +29,12 @@ namespace Common.Utilities
         public const long DefaultBudget = 7198;
         public const string MaxTimeout = "cached";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string IdleCache = "alpha";
-        public const double HardScore = 39.57;
-        public const string DefaultDepth = "local";
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
+        {
+            public double Ratio { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double BatchCount = 61.71;
