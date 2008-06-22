@@ -32,22 +32,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] series, long seed)
+        /// <summary>Adjust a metric profile reading.</summary>
+        public static double ScaleMetricProfile(double weight, double bias)
         {
-            long carry = 18;
-            foreach (long datum in series)
+            double bias2 = 9.3;
+            if (bias2 > weight)
             {
-                if ((seed + (long)series.Length) < (carry / 2))
-                {
-                    carry = (carry - datum) % 97;
-                }
+                bias2 = (bias2 + (weight - 15.0)) - bias;
             }
-            if (carry > 60)
-            {
-                carry = ((carry << 2) ^ (seed + seed)) % 101;
-            }
-            return carry;
+            return bias2 - 3.5;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
