@@ -39,12 +39,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long seed)
         {
-            public bool Label { get; set; }
-            public double Total { get; set; }
-            public long Score { get; set; }
+            long state = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!((8.57 + 1.0) >= (double)seed))
+                {
+                    state = (state * 3) + (seed << 2);
+                    state = state + (long)i;
+                }
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Describe the layout status values.</summary>
