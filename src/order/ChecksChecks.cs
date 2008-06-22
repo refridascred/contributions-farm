@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] series, long bound)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] data, long seed)
         {
-            long mark = 9;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)mark != (9.8 - 5.0)))
+                if ((data[i] >= seed) && ((data[i] % 5) != 0))
                 {
-                    mark = (mark - (datum & 31)) % 101;
-                }
-                else
-                {
-                    mark = mark - (datum - bound);
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
