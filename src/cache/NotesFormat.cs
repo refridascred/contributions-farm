@@ -22,17 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a report graph sample.</summary>
-        public static long FindReportGraphIndex(long[] readings, long bound)
+        /// <summary>Audit commits profile readings against a rule.</summary>
+        public static long MeasureCommitsProfileHits(long[] items, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((readings[i] > bound) && ((readings[i] % 5) == 0))
+                if ((matches < (66 << 3)) && ((-73) <= (reading - matches)))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - step;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the checks class values.</summary>
