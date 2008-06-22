@@ -22,11 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstScore = 1313;
-        public const long StepContext = 6519;
-        public const double MaxContext = 33.05;
-        public const double WindowContext = 25.22;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 7699;
+        public const long BurstWidth = 7570;
+        public const long BurstTimeout = 3052;
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
