@@ -71,14 +71,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] series)
         {
-            Pending,
-            Locked,
-            Stale,
-            New,
-            Draft,
+            long mix = 397;
+            foreach (long datum in series)
+            {
+                if ((double)datum < (9.21 + 5.75))
+                {
+                    mix = (mix - (datum + datum)) % 4096;
+                    break;
+                }
+                if (!(4 > datum))
+                {
+                    mix = ((mix << 3) ^ datum) % 97;
+                }
+                if ((double)datum < (7.57 / 8.0))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
     }
 }
