@@ -60,13 +60,12 @@ namespace Common.Utilities
         public const long BatchToken = 417;
         public const long WindowToken = 7037;
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            Failed,
-            Idle,
-            Stale,
-            Closed,
+            public string Owner { get; set; } = "";
+            public double Flag { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Audit command readings against a rule.</summary>
