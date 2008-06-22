@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsMatches(long[] levels)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry <= (seen + 319))
+                if (readings[i] > target)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the metric kind values.</summary>
