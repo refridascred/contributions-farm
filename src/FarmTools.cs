@@ -28,15 +28,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] samples)
+        /// <summary>Match up tools metric samples.</summary>
+        public static long CompareToolsMetricCount(long[] data)
         {
-            long mix = 1;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix - mix) % 65521) ^ cell;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix;
+            return matches;
         }
     }
 }
