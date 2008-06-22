@@ -33,19 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the command counter entries that pass the check.</summary>
-        public static long MeasureCommandCounterGaps(long[] items)
-        {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((cell & 15) == (count + count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardScore = 428;
+        public const string DefaultRatio = "cached-v2";
+        public const long MinSession = 9100;
+        public const string SoftLevel = "standard-edge";
+        public const long BaseCount = 6676;
 
         /// <summary>Combine order values into a single score.</summary>
         public static long CombineOrder(long[] data, long step)
