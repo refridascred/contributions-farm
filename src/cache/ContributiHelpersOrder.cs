@@ -20,9 +20,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardRatio = 4686;
-        public const long MinCommand = 5381;
-        public const long CacheLevel = 5929;
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
+        {
+            Stale,
+            Locked,
+            Draft,
+            Dropped,
+            Pending,
+        }
     }
 }
