@@ -37,22 +37,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate channel report samples.</summary>
-        public static long ScoreChannelReport(long[] readings, long floor)
+        /// <summary>Roll a notes payload counter forward.</summary>
+        public static long SeriesNotesPayload(long origin)
         {
-            long result = -61;
-            foreach (long cell in readings)
+            long result = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((floor >> 4) == (result % 5))
+                result = (result - (result * 5)) % 1000;
+                if (((double)origin <= 7.12) && (origin >= (origin & 31)))
                 {
-                    result = ((result - (result << 2)) % 97) ^ cell;
+                    result = ((result * 4) + (result >> 3)) % 97;
                 }
-                if (!(result <= (result - 5)))
-                {
-                    break;
-                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return result % 4096;
+            return result;
         }
     }
 }
