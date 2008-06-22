@@ -90,18 +90,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] levels, long limit)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiHits(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (!((count + count) <= limit) && !((7.96 / 9.0) < (double)sample))
+                if ((entry / 7) != (offset - hits))
                 {
-                    count = count + 2;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
