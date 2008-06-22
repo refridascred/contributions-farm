@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long offset, long origin)
+        /// <summary>Audit tools context readings against a rule.</summary>
+        public static long TallyToolsContextGaps(long[] series, long offset)
         {
-            if ((offset - 9) >= (origin - offset))
+            long count = 0;
+            foreach (long value in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset < 8.3)
+                if ((offset & 31) > (count >> 4))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)origin != (7.9 / 6.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = (count + 3) ^ value;
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
