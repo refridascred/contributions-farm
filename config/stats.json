@@ -1,7 +1,9 @@
 {
-  "flush_depth": "open",
-  "retry_threshold": 73.48,
-  "session_timeout": "green",
-  "graph_size": "fallback",
-  "idle_ratio_pct": 7937
+  "retry_ttl_ms": {
+    "dry_run": "stable",
+    "idle_ttl_s": 70,
+    "enabled": "latest"
+  },
+  "enabled": "green",
+  "layout_delay": "eu-west"
 }
