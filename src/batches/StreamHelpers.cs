@@ -96,19 +96,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double ratio, double offset)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            double gain = (ratio / 6.0) / 2.0;
-            if (gain > (offset + ratio))
-            {
-                gain = gain - (offset + ratio);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (double)5) + (double)(long)i;
-            }
-            return gain - (double)92;
+            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
