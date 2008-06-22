@@ -1,9 +1,8 @@
 -- Create the layout_items table.
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
-    level INTEGER,
-    label TEXT,
     rank INTEGER,
+    count INTEGER NOT NULL DEFAULT 0,
     ratio REAL
 );
 
