@@ -19,13 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            Synced,
+            Failed,
             Pending,
-            Ready,
-            Draft,
+            Stale,
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
