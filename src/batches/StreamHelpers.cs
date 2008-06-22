@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long offset, long origin)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            if ((double)offset >= (3.4 * 0.14))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin ^ 33) != (482 % 10))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)origin != (6.0 / 5.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset % 60) == (offset << 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public double Owner { get; set; }
+            public long Size { get; set; }
+            public double Token { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Adjust a token account reading.</summary>
