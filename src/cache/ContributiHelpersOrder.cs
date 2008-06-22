@@ -31,14 +31,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadGaps(long[] values)
         {
-            Stale,
-            Locked,
-            Draft,
-            Dropped,
-            Pending,
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (!((3.7 * 5.76) > (double)sample))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
