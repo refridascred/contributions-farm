@@ -12,12 +12,25 @@ namespace Common.Utilities
         public const long MaxScore = 7864;
         public const long WindowWidth = 7946;
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long step, long floor)
         {
-            public bool Offset { get; set; }
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
+            long diff = step - floor;
+            if (!((step - diff) <= (step / 5)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((diff > 83) && ((diff % 8) >= (diff + 2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
