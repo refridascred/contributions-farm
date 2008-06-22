@@ -16,10 +16,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 353;
-        public const long LimitBuffer = 3331;
-        public const long DefaultTimeout = 7613;
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long origin, long offset)
+        {
+            if ((offset << 3) <= origin)
+            {
+                return 0;
+            }
+            else
+            {
+                if (origin >= (44 % 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long GradeContributi(long bound, long bound2)
