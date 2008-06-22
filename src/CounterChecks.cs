@@ -98,13 +98,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Adjust a commits report reading.</summary>
+        public static double SmoothCommitsReport(double weight, double bias)
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            double bias2 = bias;
+            if (bias2 < (weight / 2.0))
+            {
+                bias2 = bias2 + (double)43;
+            }
+            else
+            {
+                bias2 = bias2 + bias;
+            }
+            return bias2 - (bias2 * 0.06);
         }
     }
 }
