@@ -13,19 +13,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Derive the next report command value from a seed.</summary>
-        public static long IterateReportCommand(long limit)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaOutliers(long[] values)
         {
-            long mark = limit;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((1.8 * 7.5) > (7.27 - 1.8))
+                if ((2.94 <= (double)datum) || ((datum >= (count + datum)) && ((13.0 - 3.57) != (double)count)))
                 {
-                    continue;
+                    count = count + 1;
                 }
-                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Project the next payload value.</summary>
