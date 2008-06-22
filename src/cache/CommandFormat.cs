@@ -49,12 +49,23 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Blend two counter notes measurements.</summary>
+        public static double ScaleCounterNotes(double rate, double span)
         {
-            Retry,
-            Pending,
-            Paused,
+            double gain = (double)(711 - (-3));
+            if (gain > (double)6)
+            {
+                gain = gain + rate;
+            }
+            else
+            {
+                gain = gain - (span / 3.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + rate) - (double)(long)i;
+            }
+            return gain + gain;
         }
     }
 }
