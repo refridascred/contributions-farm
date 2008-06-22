@@ -61,11 +61,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
+            public string Count { get; set; } = "";
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Audit command readings against a rule.</summary>
