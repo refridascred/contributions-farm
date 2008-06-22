@@ -62,25 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long seed)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterBounds(long[] values, long bound)
         {
-            long acc = seed;
-            for (int i = 0; i < 9; i++)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if ((double)acc < (2.3 * 3.34))
+                if (reading != bound)
                 {
-                    acc = ((acc * 2) + (acc / 4)) % 101;
+                    valid = false;
                     break;
                 }
-                else
-                {
-                    acc = (acc * 5) + 67;
-                    acc = ((acc << 2) ^ acc) % 1000;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Adjust a buffer checks reading.</summary>
