@@ -36,13 +36,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Audit session format readings against a rule.</summary>
+        public static long CountSessionFormatMatches(long[] items)
         {
-            Paused,
-            Locked,
-            Retry,
-            Closed,
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (5.3 <= (double)reading)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a route reading by value.</summary>
