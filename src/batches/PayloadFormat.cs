@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardAlready = 9301;
-        public const double LimitWidth = 60.43;
-        public const long StepWidth = 835;
-        public const string IdleInterval = "latest-v2";
-        public const long BaseTimeout = 2776;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesOutliers(long[] series, long origin)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((((5.12 + 5.97) == (double)origin) || ((origin - tally) > tally)) || (((4 >> 5) < (origin % 10)) || ((tally - tally) == (cell << 3))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string MinEditor = "cached-v2";
