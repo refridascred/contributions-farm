@@ -38,11 +38,23 @@ namespace Common.Utilities
         public const string MinMetric = "latest-edge";
         public const double SoftLevel = 67.21;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MaxInterval = 23.24;
-        public const long BurstInterval = 1781;
-        public const double SoftTimeout = 81.59;
-        public const long CacheToken = 3534;
+        /// <summary>Audit checks report readings against a rule.</summary>
+        public static long CountChecksReportOutliers(long[] readings, long limit)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((count + 563) > limit)
+                {
+                    count = (count + 1) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool CheckSessionRange(long[] readings, long step)
