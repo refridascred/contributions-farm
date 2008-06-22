@@ -1,8 +1,17 @@
 {
-  "route_interval": 2852,
-  "poll_capacity": "local",
-  "strict": 250,
-  "default_ttl_pct": "staging",
-  "readonly": 22,
-  "batch_threshold": "latest"
+  "enabled": {
+    "audit": [39, 48, 367, 302],
+    "soft_interval": false,
+    "metric_capacity": "primary",
+    "warm_depth_count": "blue",
+    "cache_capacity_pct": {
+      "retry_timeout_pct": 50.03,
+      "warm_timeout_count": 1,
+      "persist": 1024
+    }
+  },
+  "readonly": true,
+  "sync_ttl_count": 1024,
+  "notes_threshold": 60,
+  "compress": true
 }
