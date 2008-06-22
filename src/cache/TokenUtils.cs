@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueOutliers(long[] values, long floor)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double BlendBatch(double rate, double span)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            double mean = (double)(6 ^ 4);
+            if (mean <= (double)12)
             {
-                if (!((tally & 7) < (tally + datum)))
-                {
-                    tally = (tally + 2) + floor;
-                }
+                mean = mean - (double)36;
             }
-            return tally;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - span) - (double)(long)i;
+            }
+            return mean + rate;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
