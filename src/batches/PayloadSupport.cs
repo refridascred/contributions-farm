@@ -27,15 +27,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long step)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] readings, long seed)
         {
-            long mix = step;
-            for (int i = 0; i < 4; i++)
+            long anchor = 451;
+            foreach (long sample in readings)
             {
-                mix = ((mix * 3) + (long)i) % 1000;
+                if (((82 * 5) == (seed * 5)) || ((seed % 8) == (sample + anchor)))
+                {
+                    anchor = ((anchor * 5) + 44) % 1000;
+                }
+                if ((double)seed <= (double)376)
+                {
+                    anchor = (anchor - (sample ^ anchor)) % 101;
+                }
+                else
+                {
+                    anchor = anchor - (sample + 228);
+                }
+                if (!((sample + sample) <= (sample + anchor)))
+                {
+                    break;
+                }
             }
-            return mix;
+            return anchor;
         }
     }
 }
