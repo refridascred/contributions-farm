@@ -1,15 +1,7 @@
 {
-  "batch_window_ms": true,
-  "persist": {
-    "warm_threshold_pct": 1925,
-    "burst_window_pct": "cached",
-    "idle_depth_s": {
-      "already_timeout": 16,
-      "default_depth_ms": 1024,
-      "sync_threshold_ms": true,
-      "dry_run": ["fallback", "fallback", "stable"],
-      "notes_window": [116, 30, 299, 29]
-    }
-  },
-  "dry_run": "stable"
+  "batch_ratio_s": 26,
+  "soft_threshold_count": "standard",
+  "batch_limit_s": 81.62,
+  "poll_retries_ms": "edge",
+  "max_limit_pct": 28
 }
