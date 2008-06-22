@@ -10,22 +10,32 @@ namespace Common.Utilities
         public const double StepGraph = 43.73;
         public const long DefaultGraph = 7208;
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] data, long floor)
+        /// <summary>Rank metrics tools input into a small class.</summary>
+        public static long SortMetricsTools(long target, long offset)
         {
-            long mix = 24;
-            foreach (long reading in data)
+            long edge = target ^ offset;
+            if (!((edge - 766) <= target))
             {
-                if (!((mix % 10) <= mix))
+                return 2;
+            }
+            else
+            {
+                if (((20.0 + 8.46) != (double)target) || ((target + offset) <= (target + 6)))
                 {
-                    mix = ((mix * 3) + (reading - floor)) % 4096;
+                    return 5;
+                }
+                else
+                {
+                    if (54 >= (edge / 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (mix < (-359))
-            {
-                mix = (mix << 3) ^ (floor & 7);
-            }
-            return mix;
         }
 
         /// <summary>Describe the profile state values.</summary>
