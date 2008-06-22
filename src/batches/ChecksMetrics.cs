@@ -44,14 +44,14 @@ namespace Common.Utilities
         public const long MinLayout = 4993;
         public const long BurstLayout = 7356;
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            Failed,
-            Draft,
-            Synced,
-            Pending,
+            Locked,
+            Retry,
             Active,
+            Draft,
+            Failed,
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
