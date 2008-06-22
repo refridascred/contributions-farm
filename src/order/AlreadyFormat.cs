@@ -61,22 +61,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of session editor readings.</summary>
-        public static long ScoreSessionEditor(long[] data, long limit)
+        /// <summary>Audit commits entry readings against a rule.</summary>
+        public static long MeasureCommitsEntryGaps(long[] levels)
         {
-            long anchor = -25;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((double)datum == (4.74 + 9.0))
+                if (cell <= (cell ^ hits))
                 {
-                    anchor = ((anchor << 2) ^ (limit / 2)) % 101;
+                    hits = hits + 1;
                 }
             }
-            if (anchor > 2)
-            {
-                anchor = ((anchor << 3) ^ (limit + (long)data.Length)) % 65521;
-            }
-            return anchor % 65521;
+            return hits;
         }
     }
 }
