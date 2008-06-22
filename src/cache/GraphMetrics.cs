@@ -47,12 +47,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Validate payload tools readings against a bound.</summary>
+        public static bool GuardPayloadToolsLimits(long[] items, long limit)
         {
-            Draft,
-            New,
-            Locked,
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Locate a command reading by value.</summary>
