@@ -16,12 +16,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] items)
         {
-            public long Token { get; set; }
-            public long Size { get; set; }
-            public bool Mode { get; set; }
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
