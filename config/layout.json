@@ -1,7 +1,6 @@
 {
-  "warm_timeout": 98,
-  "cluster_delay": 1739,
-  "schema_limit": "local",
-  "base_timeout_count": [290, 301, 487, 166],
-  "layout_ttl": false
+  "burst_limit_s": true,
+  "cache_window_ms": ["cached", "eu-west", "latest", "strict"],
+  "tools_limit": 6.86,
+  "checks_window": false
 }
