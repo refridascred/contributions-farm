@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] samples)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 287;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((result & 1) < value)
                 {
-                    if ((samples[i] ^ samples[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = result ^ (value / 4);
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
