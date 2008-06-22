@@ -47,10 +47,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 8844;
-        public const string MaxMetric = "staging-v2";
-        public const double BatchMetric = 5.71;
-        public const double BurstMetric = 18.78;
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
+        {
+            Draft,
+            Synced,
+            Failed,
+            Pending,
+        }
     }
 }
