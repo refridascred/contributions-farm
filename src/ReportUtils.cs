@@ -21,18 +21,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamOutliers(long[] series)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((seen - (-56)) > seen)
+                if ((tally >= (3 - tally)) || (entry >= (63 + entry)))
                 {
-                    seen = (seen + 3) ^ cell;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
