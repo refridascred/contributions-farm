@@ -20,15 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double scale, double floor)
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] data)
         {
-            double mean = (double)(0 / 3);
-            if (mean <= mean)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = ((mean - 1.2) + scale) + floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mean + (mean - mean);
+            return seen;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
