@@ -45,12 +45,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseLevel = 6631;
-        public const long RetrySchema = 6395;
-        public const long SoftBudget = 3084;
-        public const long MinCount = 7195;
-        public const long MinFactor = 6018;
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long MatchWindowCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a queue record.</summary>
         public sealed class QueueRecord
