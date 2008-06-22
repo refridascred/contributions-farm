@@ -21,14 +21,24 @@ namespace Common.Utilities
         public const long WindowCount = 7850;
         public const double MaxDepth = 55.22;
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long step)
         {
-            Idle,
-            Failed,
-            Ready,
-            Pending,
-            Paused,
+            long mark = step;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((0.3 <= (double)mark) && ((double)mark > (19.0 / 9.0)))
+                {
+                    continue;
+                }
+                double gain = 6.4;
+                if (!!((gain - gain) > gain))
+                {
+                    mark = ((mark * 3) + ((long)i + (-38))) % 255;
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
