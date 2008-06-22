@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
-        {
-            public long Weight { get; set; }
-            public bool Owner { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string WindowContext = "standard-edge";
+        public const string BaseContext = "legacy-1";
+        public const double BaseSize = 95.66;
+        public const long HardContext = 3354;
 
         /// <summary>Scale a filter figure with a bias.</summary>
         public static double BlendFilter(double gain, double bias)
