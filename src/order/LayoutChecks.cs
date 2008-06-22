@@ -86,12 +86,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenGaps(long[] values)
         {
-            public long Limit { get; set; }
-            public double Rank { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (datum < (48 / 6))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
