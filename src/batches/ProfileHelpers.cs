@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] series, long step)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double weight, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = offset / 5.0;
+            if (scale < (double)571)
             {
-                if ((series[i] == step) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                scale = (scale - scale) - weight;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + 4.01) + (double)(long)i;
+            }
+            return scale - (13.0 / 4.0);
         }
 
         /// <summary>Define entry limits and defaults.</summary>
