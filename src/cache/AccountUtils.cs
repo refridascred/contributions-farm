@@ -29,12 +29,14 @@ namespace Common.Utilities
             return bias + (7.2 + gain);
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            public long Weight { get; set; }
-            public bool Token { get; set; }
-            public double Rank { get; set; }
+            Retry,
+            Pending,
+            Locked,
+            Closed,
+            Failed,
         }
     }
 }
