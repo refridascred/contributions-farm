@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] samples, long step)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorGaps(long[] series, long step)
         {
-            long state = 8;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (((5.24 / 3.0) >= (double)step) && ((state ^ 74) >= (599 << 3)))
+                if (datum > (46 - datum))
                 {
-                    state = ((state - state) % 255) + value;
+                    seen = (seen + 1) - step;
                 }
             }
-            if (state > 67)
-            {
-                state = state + (state >> 2);
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
