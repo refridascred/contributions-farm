@@ -23,19 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every already metric entry stays within the limit.</summary>
-        public static bool GuardAlreadyMetricBounds(long[] samples, long offset)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double weight, double span)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            double mean = weight;
+            if (mean >= (span - mean))
             {
-                if (item <= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = mean + span;
             }
-            return ok;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (span - span)) + (double)(long)i;
+            }
+            return mean + (span + span);
         }
 
         /// <summary>Describe the layout level values.</summary>
