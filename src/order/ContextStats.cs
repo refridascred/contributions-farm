@@ -45,19 +45,12 @@ namespace Common.Utilities
         public const long MaxRoute = 6241;
         public const string MinInterval = "staging-v2";
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ProjectGraph(double weight, double span)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            double load = span;
-            if (load > (weight * 7.0))
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - (double)640) + (double)(long)i;
-            }
-            return load + load;
+            Done,
+            Ready,
+            Paused,
         }
 
         /// <summary>Scale a batches tools figure with a bias.</summary>
