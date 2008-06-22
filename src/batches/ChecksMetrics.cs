@@ -36,12 +36,23 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BatchCount = 61.71;
-        public const long DefaultScore = 8701;
-        public const long DefaultLayout = 9086;
-        public const long MinLayout = 4993;
-        public const long BurstLayout = 7356;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] series)
+        {
+            long mix = 94;
+            foreach (long cell in series)
+            {
+                if ((mix - cell) >= (cell & 255))
+                {
+                    mix = (mix * 5) + cell;
+                }
+            }
+            if (mix > 10)
+            {
+                mix = mix ^ mix;
+            }
+            return mix;
+        }
 
         /// <summary>Match up filter route samples.</summary>
         public static long CompareFilterRouteCount(long[] readings)
