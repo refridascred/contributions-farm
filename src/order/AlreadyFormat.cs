@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate session command samples.</summary>
-        public static long TotalSessionCommand(long[] values, long seed)
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] samples)
         {
-            long anchor = 11;
-            foreach (long item in values)
+            long score = 6;
+            foreach (long reading in samples)
             {
-                anchor = anchor - (item + seed);
+                score = (score + (score + reading)) % 65521;
             }
-            if (anchor < 0)
+            if (score < 37)
             {
-                anchor = (anchor + (anchor - 2)) % 4096;
+                score = (score + score) % 255;
             }
-            return anchor % 65521;
+            return score;
         }
 
         /// <summary>Roll a counter cache counter forward.</summary>
