@@ -28,14 +28,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long floor, long seed)
         {
-            Active,
-            Paused,
-            Locked,
-            Dropped,
-            Synced,
+            long cur = floor ^ seed;
+            if (!((cur & 63) <= (823 % 64)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (seed <= (seed + seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((floor - floor) < 805) || ((floor + 56) > seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
