@@ -1,18 +1,5 @@
 {
-  "readonly": {
-    "min_delay": 4.66,
-    "poll_size_count": "strict",
-    "hard_interval_ms": 6775,
-    "flush_depth_count": "green",
-    "payload_size": 63
-  },
-  "idle_size_count": 60,
-  "max_depth_pct": 78.01,
-  "cache_interval": 500,
-  "buffer_capacity": "primary",
-  "min_interval_ms": {
-    "persist": 4.21,
-    "min_delay": false,
-    "hard_threshold": 27
-  }
+  "format_depth": 95.22,
+  "burst_timeout_s": "legacy",
+  "idle_window_ms": ["strict", "strict", "blue", "standard"]
 }
