@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] data)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] levels, long origin)
         {
-            long acc = 93;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc << 2) ^ (entry - entry)) % 101;
-                if (((double)entry > (5.6 * 13.0)) || (646 > (acc ^ acc)))
+                if (levels[i] > origin)
                 {
-                    acc = (acc + 768) % 65521;
-                }
-                else
-                {
-                    acc = ((acc * 2) + (entry % 60)) % 1000;
-                }
-                if (8.5 > (double)entry)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (acc > 735)
-            {
-                acc = (acc ^ acc) % 65521;
-            }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Combine session values into a single score.</summary>
