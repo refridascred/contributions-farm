@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long offset)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long acc = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            public bool Limit { get; set; }
+            public double Region { get; set; }
+            public bool Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a graph stats.</summary>
