@@ -1,6 +1,15 @@
 {
-  "flush_threshold": "primary",
-  "batch_limit_count": "fallback",
-  "warm_ratio_s": 30,
-  "soft_delay": true
+  "dry_run": 8348,
+  "batch_depth": {
+    "idle_interval_ms": false,
+    "payload_depth": "strict",
+    "verbose": 54.36,
+    "sync_size_count": "open",
+    "record_ttl": true,
+    "enabled": 100
+  },
+  "graph_ratio": "fallback",
+  "warm_limit": 13.99,
+  "default_timeout_count": [142, 222],
+  "min_retries": 6223
 }
