@@ -14,32 +14,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long step, long floor)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long step2 = step ^ floor;
-            if ((floor / 8) > 504)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((floor << 2) > (step % 8)) && ((double)step > (2.6 - 14.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step2 % 16) >= floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Failed,
+            Retry,
+            Active,
+            Draft,
+            Done,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
