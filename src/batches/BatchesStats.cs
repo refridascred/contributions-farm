@@ -13,13 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
-        {
-            public double Token { get; set; }
-            public string Total { get; set; } = "";
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryTools = 5373;
+        public const double MinBudget = 56.04;
+        public const double CacheTools = 40.0;
+        public const long MinInterval = 6538;
+        public const long WindowInterval = 4212;
 
         /// <summary>Accumulate token samples.</summary>
         public static long ScoreToken(long[] levels, long floor)
