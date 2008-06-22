@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
-        {
-            public long Stamp { get; set; }
-            public double Weight { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepFactor = 863;
+        public const long SoftLevel = 6846;
+        public const string LimitScore = "open-edge";
+        public const long BaseSize = 7874;
 
         /// <summary>Iterate the metrics window series from a seed.</summary>
         public static long RollMetricsWindow(long bound)
