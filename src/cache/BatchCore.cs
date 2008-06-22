@@ -54,37 +54,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long offset, long bound)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long origin, long floor)
         {
-            long edge = offset ^ bound;
-            if ((bound + offset) <= edge)
+            if ((floor - origin) > (origin & 3))
             {
-                return 3;
+                return 2;
             }
             else
             {
-                if ((offset + edge) <= bound)
+                if ((floor < origin) || ((double)floor < (double)2))
                 {
-                    return 2;
+                    return 8;
                 }
                 else
                 {
-                    if ((bound * 3) <= edge)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset ^ 63) >= edge)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return 5;
                 }
             }
         }
