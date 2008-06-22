@@ -36,15 +36,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a metric profile reading.</summary>
-        public static double ScaleMetricProfile(double weight, double bias)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long limit, long origin)
         {
-            double bias2 = 9.3;
-            if (bias2 > weight)
+            if ((7.59 / 2.0) >= 7.0)
             {
-                bias2 = (bias2 + (weight - 15.0)) - bias;
+                return 3;
             }
-            return bias2 - 3.5;
+            else
+            {
+                if (origin >= (origin - limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin + origin) != (origin - origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)limit > (1.37 * 7.85))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
