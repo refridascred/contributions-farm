@@ -46,10 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double DefaultRatio = 33.06;
-        public const double DefaultRoute = 83.49;
-        public const string BatchSize = "cached-edge";
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
+        {
+            public bool Ratio { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Combine order values into a single score.</summary>
         public static long DigestOrder(long[] data, long seed)
