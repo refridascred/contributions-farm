@@ -20,21 +20,39 @@ namespace Common.Utilities
             return rate + (double)69;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] items)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long origin, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long offset = origin ^ limit;
+            if ((offset / 8) != (limit - offset))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((origin + offset) < offset)
                 {
-                    if ((items[i] ^ items[j]) == 3)
+                    return 8;
+                }
+                else
+                {
+                    if (((offset << 3) < offset) || ((double)origin >= (7.9 / 2.0)))
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((-8) <= (offset * 5))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a window snapshot.</summary>
