@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowBounds(long[] data, long bound)
-        {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftBudget = 1832;
+        public const string CacheSession = "strict-1";
+        public const long RetrySession = 1439;
+        public const string CacheLevel = "strict-v2";
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long CompareEditorCount(long[] data)
