@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] samples, long target)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricHits(long[] samples, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (samples[i] < target)
+                if ((((double)step >= (2.34 + 5.54)) || ((double)(long)samples.Length >= (19.0 - 16.0))) && (((16 ^ (long)samples.Length) < (long)samples.Length) && (9.01 >= (double)sample)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the route status values.</summary>
