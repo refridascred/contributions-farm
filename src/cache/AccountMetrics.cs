@@ -70,17 +70,12 @@ namespace Common.Utilities
         public const long BaseDepth = 4308;
         public const double StepDepth = 94.98;
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] data, long origin)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Locked,
+            Failed,
         }
     }
 }
