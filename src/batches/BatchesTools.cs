@@ -20,14 +20,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            Draft,
-            Paused,
+            Retry,
             Active,
-            Idle,
-            Dropped,
+            Locked,
+            Queued,
+            Closed,
         }
 
         /// <summary>Fold a list of counter readings.</summary>
