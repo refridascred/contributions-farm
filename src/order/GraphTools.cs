@@ -38,25 +38,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a account filter value against two limits.</summary>
-        public static long SortAccountFilter(long seed, long limit)
-        {
-            if ((double)limit > (14.0 * 2.16))
-            {
-                return 5;
-            }
-            else
-            {
-                if (limit >= (seed % 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BaseFactor = 8753;
+        public const long MinPayload = 2594;
+        public const double MinFactor = 30.54;
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long SeekBufferIndex(long[] samples, long seed)
