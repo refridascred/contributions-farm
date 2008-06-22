@@ -36,38 +36,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long limit, long origin)
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double ratio, double span)
         {
-            if ((7.59 / 2.0) >= 7.0)
+            double ratio2 = (8.0 + span) + span;
+            if (ratio2 < span)
             {
-                return 3;
+                ratio2 = (ratio2 + (double)90) - ratio;
             }
-            else
-            {
-                if (origin >= (origin - limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin + origin) != (origin - origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)limit > (1.37 * 7.85))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return ratio2 + span;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
