@@ -50,38 +50,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank support payload input into a small class.</summary>
-        public static long BucketSupportPayload(long offset, long limit)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            if ((double)limit != (6.66 - 1.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)offset >= (double)limit) && ((limit % 64) <= limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset ^ limit) <= (864 * 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (5.47 > (double)limit)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
