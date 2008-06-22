@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] readings, long limit)
-        {
-            bool stale = true;
-            foreach (long cell in readings)
-            {
-                if (cell != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleTimeout = 4024;
+        public const long StepEntry = 7657;
+        public const long BatchEntry = 4181;
+        public const long DefaultSize = 3436;
 
         /// <summary>Hold a token entry.</summary>
         public sealed class TokenEntry
