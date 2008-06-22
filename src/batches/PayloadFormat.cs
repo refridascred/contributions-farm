@@ -19,12 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] data)
         {
-            Retry,
-            Queued,
-            Idle,
+            long result = 0;
+            foreach (long datum in data)
+            {
+                if ((result + result) > (datum % 3))
+                {
+                    result = result - (result << 2);
+                }
+                else
+                {
+                    result = (result ^ result) % 4096;
+                }
+            }
+            return result;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
