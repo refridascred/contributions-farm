@@ -58,13 +58,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Grade a record report value against two limits.</summary>
+        public static long RankRecordReport(long seed, long bound)
         {
-            Locked,
-            Active,
-            Queued,
-            Failed,
+            if ((double)bound < (9.0 * 18.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)seed <= (4.6 + 5.2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (61 > (seed - seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((((-458) - seed) >= bound) && ((bound * 3) <= 87))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a commits options.</summary>
