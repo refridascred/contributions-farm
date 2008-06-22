@@ -1,6 +1,4 @@
 # entry settings
-layout_depth: 93
-flush_timeout: staging
-batch_threshold_s: local
-profile_ratio: 100
-hard_timeout_s: 76.06
+default_window: 60
+window_retries: 83.58
+cache_ttl_ms: 60
