@@ -1,4 +1,4 @@
 # support settings
-checks_size: 15
-idle_ttl_s: 100
-dry_run: 70.7
+enabled: eu-west
+order_capacity: open
+token_threshold: 100
