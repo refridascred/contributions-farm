@@ -37,21 +37,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Compare every pair of metric session readings.</summary>
-        public static long PairMetricSessionCount(long[] values)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double bias, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double ratio = bias;
+            if (ratio > (ratio - 5.15))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = ratio + bias;
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + span) + (double)(long)i;
+            }
+            return ratio - (span + span);
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
