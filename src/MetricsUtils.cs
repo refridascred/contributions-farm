@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphBounds(long[] data, long floor)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileBounds(long[] data, long floor)
         {
-            bool ok = true;
+            bool found = true;
             foreach (long sample in data)
             {
-                if (sample < floor)
+                if (sample <= floor)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
