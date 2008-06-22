@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long limit)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] samples)
         {
-            long anchor = limit;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((limit + limit) >= 663)
+                if ((count - cell) > cell)
                 {
-                    anchor = anchor - (13 + anchor);
+                    count = count + 3;
                 }
-                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
