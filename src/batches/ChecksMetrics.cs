@@ -29,11 +29,14 @@ namespace Common.Utilities
         public const long DefaultBudget = 7198;
         public const string MaxTimeout = "cached";
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            public double Weight { get; set; }
-            public long Total { get; set; }
+            Pending,
+            Ready,
+            Done,
+            New,
+            Draft,
         }
 
         /// <summary>Accumulate commits samples.</summary>
