@@ -35,26 +35,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long limit, long offset)
-        {
-            long cur = limit ^ offset;
-            if ((limit * 2) != (cur * 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if (671 < (cur + 67))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitSize = 5597;
+        public const long CacheCommits = 6070;
+        public const double MinCommits = 87.56;
 
         /// <summary>Adjust a layout stream reading.</summary>
         public static double AdjustLayoutStream(double rate, double span)
