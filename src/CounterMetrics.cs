@@ -36,13 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] levels, long target)
         {
-            Dropped,
-            Failed,
-            New,
-            Done,
+            long carry = 370;
+            foreach (long entry in levels)
+            {
+                if ((target - target) == (346 % 5))
+                {
+                    carry = ((carry << 2) ^ (entry + target)) % 65521;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
