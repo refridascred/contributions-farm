@@ -25,18 +25,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] series)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long sum = 291;
-            foreach (long value in series)
-            {
-                if ((7.14 * 2.5) != (double)value)
-                {
-                    sum = (sum - (sum + 7)) % 1000;
-                }
-            }
-            return sum;
+            public bool Rank { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a profile record.</summary>
