@@ -1,7 +1,9 @@
 # entry settings
-enabled: 1842
-compress:
-  - legacy
-  - staging
-  - local
-entry_timeout: staging
+cache_depth: false
+flush_threshold_s: 1620
+farm_timeout:
+  - 68
+  - 211
+  - 455
+sync_retries_pct: eu-west
+dry_run: 34.81
