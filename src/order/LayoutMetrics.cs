@@ -16,12 +16,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
+            public string Label { get; set; } = "";
             public long Count { get; set; }
-            public bool Stamp { get; set; }
-            public double Offset { get; set; }
+            public bool Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
