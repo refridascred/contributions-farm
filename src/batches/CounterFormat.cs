@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long limit, long offset)
+        /// <summary>Audit already channel readings against a rule.</summary>
+        public static long MeasureAlreadyChannelHits(long[] series)
         {
-            long gap = limit - offset;
-            if ((offset >> 4) >= offset)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (((4.67 + 1.59) < (double)gap) || ((9.99 + 1.4) == (double)gap))
+                if ((matches >> 5) <= (sample - 856))
                 {
-                    return 2;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    return 5;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Roll a commits graph counter forward.</summary>
