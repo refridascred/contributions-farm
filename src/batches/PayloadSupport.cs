@@ -27,30 +27,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] readings, long seed)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long anchor = 451;
-            foreach (long sample in readings)
-            {
-                if (((82 * 5) == (seed * 5)) || ((seed % 8) == (sample + anchor)))
-                {
-                    anchor = ((anchor * 5) + 44) % 1000;
-                }
-                if ((double)seed <= (double)376)
-                {
-                    anchor = (anchor - (sample ^ anchor)) % 101;
-                }
-                else
-                {
-                    anchor = anchor - (sample + 228);
-                }
-                if (!((sample + sample) <= (sample + anchor)))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public double Mode { get; set; }
+            public bool Total { get; set; }
+            public bool Offset { get; set; }
+            public long Label { get; set; }
         }
     }
 }
