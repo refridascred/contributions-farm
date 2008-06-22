@@ -20,13 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            public string Score { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
+            public double Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
