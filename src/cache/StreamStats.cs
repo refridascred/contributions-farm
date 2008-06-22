@@ -55,22 +55,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] series, long step)
+        /// <summary>Match up context cluster samples.</summary>
+        public static long MatchContextClusterCount(long[] levels)
         {
-            long state = 8;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(step < (step + state)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = state ^ (datum ^ (-6));
-                }
-                else
-                {
-                    state = (state + (state - step)) % 1000;
+                    if ((levels[i] + levels[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state % 65521;
+            return tally;
         }
     }
 }
