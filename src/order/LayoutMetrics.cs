@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double AdjustPayload(double scale, double span)
+        /// <summary>Classify a filter token pair into a bucket.</summary>
+        public static long SortFilterToken(long seed, long target)
         {
-            double mean = (double)(87 - 6);
-            if (mean >= (double)783)
+            if (target > seed)
             {
-                mean = mean - scale;
+                return 1;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                mean = (mean + span) + (double)(long)i;
+                if (!((46 % 8) >= (seed + seed)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return mean - (double)19;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
