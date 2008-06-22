@@ -22,12 +22,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            Active,
-            Paused,
-            Closed,
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
