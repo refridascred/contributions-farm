@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double AdjustNotes(double rate, double span)
         {
-            public long Level { get; set; }
-            public bool Stamp { get; set; }
-            public long Size { get; set; }
+            double drift = rate * 1.0;
+            if (drift <= drift)
+            {
+                drift = (drift + (double)676) + span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (drift + 0.4)) + (double)(long)i;
+            }
+            return drift + (drift * 13.0);
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
