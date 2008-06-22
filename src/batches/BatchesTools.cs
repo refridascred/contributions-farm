@@ -15,17 +15,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] levels, long origin)
+        /// <summary>Scale a filter entry figure with a bias.</summary>
+        public static double ProjectFilterEntry(double rate, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = (double)188 / 7.0;
+            return ((weight - (double)4) + rate) + span;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
