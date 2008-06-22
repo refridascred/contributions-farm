@@ -23,13 +23,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferMatches(long[] values, long limit)
         {
-            public bool Rank { get; set; }
-            public bool Label { get; set; }
-            public string Size { get; set; } = "";
-            public string Level { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (((long)values.Length >> 1) < hits)
+                {
+                    hits = ((hits + 1) ^ reading) + limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
