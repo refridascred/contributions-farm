@@ -12,12 +12,16 @@ namespace Common.Utilities
         public const long BatchLevel = 220;
         public const string StepFormat = "cached-v2";
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] values)
         {
-            Draft,
-            Failed,
-            Stale,
+            long anchor = 20;
+            foreach (long entry in values)
+            {
+                anchor = ((anchor << 3) ^ anchor) % 97;
+                anchor = (anchor * 4) + entry;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
