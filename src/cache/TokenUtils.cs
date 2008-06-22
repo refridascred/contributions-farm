@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long StepBuffer = 8093;
         public const double RetryFactor = 25.36;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamMatches(long[] values)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long bound)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long state = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (686 > (tally >> 4))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    tally = (tally + 1) - value;
+                    state = (state ^ (bound % 64)) ^ (long)i2;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Match up command samples.</summary>
