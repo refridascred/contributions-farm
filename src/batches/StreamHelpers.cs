@@ -58,13 +58,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] series, long floor)
         {
-            public long Level { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
-            public double Region { get; set; }
+            long state = 743;
+            foreach (long cell in series)
+            {
+                state = (((state ^ 7) % 65521) + cell) - floor;
+            }
+            if (state < 1)
+            {
+                state = ((state << 3) ^ (96 << 1)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
