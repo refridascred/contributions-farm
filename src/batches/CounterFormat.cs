@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const string MaxStats = "staging";
         public const long IdleStats = 2437;
 
-        /// <summary>Match up stats metrics samples.</summary>
-        public static long CompareStatsMetricsCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double HardFilter = 8.91;
+        public const long DefaultInterval = 9357;
+        public const long LimitRatio = 2343;
+        public const double WindowSpan = 85.7;
+        public const string BurstFilter = "open-edge";
 
         /// <summary>Derive the next cluster entry value from a seed.</summary>
         public static long IterateClusterEntry(long offset)
