@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 9697;
-        public const double SoftBatch = 25.55;
-        public const double HardBudget = 87.87;
-        public const long MaxScore = 7864;
-        public const long WindowWidth = 7946;
+        /// <summary>Derive the next route support value from a seed.</summary>
+        public static long IterateRouteSupport(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long GradeMetric(long step, long floor)
