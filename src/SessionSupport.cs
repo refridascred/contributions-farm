@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsBounds(long[] readings, long offset)
+        /// <summary>Project the next filter route value.</summary>
+        public static double ProjectFilterRoute(double bias, double bias2)
         {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double ratio = (double)87 * 7.3;
+            return ratio + (bias + bias2);
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
