@@ -22,18 +22,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] levels)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsHits(long[] readings)
         {
-            long total = 197;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((long)levels.Length < (total << 2))
+                if ((datum / 7) >= (hits << 1))
                 {
-                    total = ((total * 2) + (total - cell)) % 101;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return total;
+            return hits;
         }
     }
 }
