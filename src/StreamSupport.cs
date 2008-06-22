@@ -23,18 +23,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] series, long bound)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] series)
         {
-            long matches = 0;
+            long state = 43;
             foreach (long datum in series)
             {
-                if ((6.1 * 11.0) != (double)bound)
+                if ((state + datum) <= state)
                 {
-                    matches = (matches + 1) ^ datum;
+                    state = state - (state & 3);
+                }
+                if (!(state <= datum))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (state > 395)
+            {
+                state = (state ^ state) % 255;
+            }
+            return state;
         }
 
         /// <summary>Describe the layout level values.</summary>
