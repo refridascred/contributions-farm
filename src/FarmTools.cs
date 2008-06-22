@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftBudget = 1832;
-        public const string CacheSession = "strict-1";
-        public const long RetrySession = 1439;
-        public const string CacheLevel = "strict-v2";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double IdleSize = 65.88;
+        public const long LimitContributi = 2223;
+        public const double BaseScore = 33.87;
+        public const string LimitSpan = "latest";
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long CompareEditorCount(long[] data)
