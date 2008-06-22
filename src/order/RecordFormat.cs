@@ -44,19 +44,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadLimits(long[] levels, long limit)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            bool valid = true;
-            foreach (long cell in levels)
-            {
-                if (cell != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Score { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
