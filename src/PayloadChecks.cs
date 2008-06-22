@@ -50,12 +50,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
-        {
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BatchWidth = "latest";
+        public const long BurstSize = 9210;
+        public const string RetryScore = "stable-1";
+        public const long DefaultInterval = 6985;
+        public const long BatchToken = 7149;
 
         /// <summary>Digest a series of window entries.</summary>
         public static long WeighWindow(long[] values, long origin)
