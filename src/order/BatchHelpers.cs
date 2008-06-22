@@ -14,14 +14,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Validate record cluster readings against a bound.</summary>
+        public static bool VerifyRecordClusterBounds(long[] series, long offset)
         {
-            Ready,
-            Done,
-            Locked,
-            Stale,
-            Paused,
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Accumulate stats samples.</summary>
