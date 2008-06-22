@@ -47,19 +47,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Validate token schema readings against a bound.</summary>
-        public static bool VerifyTokenSchemaLimits(long[] items, long bound)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long seed)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long sum = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (entry != bound)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Hold a window header.</summary>
