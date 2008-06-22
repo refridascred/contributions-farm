@@ -39,18 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the graph schema entries that pass the check.</summary>
-        public static long MeasureGraphSchemaGaps(long[] data, long origin)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long result = -24;
+            foreach (long value in values)
             {
-                if (!((origin < matches) || ((393 - origin) < (-505))))
+                if (!((bound - value) < (result - bound)))
                 {
-                    matches = (matches + 3) - sample;
+                    result = (result - (bound & 31)) % 97;
                 }
             }
-            return matches;
+            return result % 97;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
