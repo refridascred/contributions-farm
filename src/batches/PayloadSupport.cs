@@ -23,21 +23,39 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long OverlapBatchesCount(long[] items)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long step, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long span = step - target;
+            if ((span + span) > (step + 94))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((span / 6) != (target + step)) || ((step & 7) != (8 >> 1)))
                 {
-                    if ((items[i] ^ items[j]) > 19)
+                    return 1;
+                }
+                else
+                {
+                    if ((target * 2) >= (49 + target))
                     {
-                        hits = hits + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((span << 2) != (span + step)) && ((step - step) == (target & 31)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
