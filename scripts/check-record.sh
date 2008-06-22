@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in fallback legacy; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 11); do
+for i in $(seq 1 3); do
     total=$((total + i * 3))
 done
 log "total ${total}"
-
-RECORD_LIMIT=92
-log "limit is ${RECORD_LIMIT}"
-
-for item in staging stable; do
-    log "checking ${item}"
-done
