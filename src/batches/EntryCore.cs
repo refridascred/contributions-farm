@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteLimits(long[] values, long seed)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandLimits(long[] series, long limit)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if (sample < seed)
+                if (datum <= limit)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
