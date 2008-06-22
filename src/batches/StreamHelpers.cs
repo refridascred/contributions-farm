@@ -72,13 +72,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Validate token schema readings against a bound.</summary>
+        public static bool VerifyTokenSchemaLimits(long[] items, long bound)
         {
-            public double Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Total { get; set; }
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a window header.</summary>
