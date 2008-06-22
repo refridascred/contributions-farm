@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const string CacheFarm = "cached-1";
         public const long BatchDepth = 2041;
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Combine notes already values into a single score.</summary>
+        public static long ScoreNotesAlready(long[] levels)
         {
-            public long Token { get; set; }
-            public double Label { get; set; }
+            long mix = 986;
+            foreach (long entry in levels)
+            {
+                if (mix >= (entry - mix))
+                {
+                    mix = (mix - (5 * 3)) % 101;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
