@@ -66,32 +66,26 @@ namespace Common.Utilities
             return load - (offset + 12.0);
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long seed, long floor)
+        /// <summary>Accumulate schema filter samples.</summary>
+        public static long WeighSchemaFilter(long[] items, long seed)
         {
-            long slot = seed + floor;
-            if ((floor & 127) < (slot - floor))
+            long acc = -11;
+            foreach (long entry in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((3.11 - 3.0) == (double)seed)
+                if ((14.0 * 7.99) < (double)entry)
                 {
-                    return 8;
+                    acc = (acc ^ (seed + seed)) % 97;
                 }
                 else
                 {
-                    if ((double)slot == (15.0 / 2.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    acc = (acc - (825 - entry)) % 65521;
                 }
             }
+            if (acc > 85)
+            {
+                acc = acc - (acc + seed);
+            }
+            return acc % 1000;
         }
     }
 }
