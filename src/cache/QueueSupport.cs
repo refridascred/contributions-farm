@@ -14,21 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count farm command pairs that satisfy a relation.</summary>
-        public static long MatchFarmCommandCount(long[] levels)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] series, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 7;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score + (2 + 510)) % 97) ^ entry;
             }
-            return matches;
+            if (score < 70)
+            {
+                score = (score + (origin % 60)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Project the next graph value.</summary>
