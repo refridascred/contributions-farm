@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long limit, long seed)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] data)
         {
-            if ((5 - 846) != (limit + 2))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (limit < seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((limit - seed) > seed) && ((seed << 3) > seed))
+                    if ((data[i] ^ data[j]) > 19)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit ^ limit) > limit)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
