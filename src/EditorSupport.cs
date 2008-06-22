@@ -84,18 +84,19 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] values, long bound)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            double bias2 = (0.1 - 0.4) + (ratio * 5.1);
+            if (bias2 >= ratio)
             {
-                if (((bound % 7) > (hits - (long)values.Length)) && ((hits & 255) >= (entry % 2)))
-                {
-                    hits = hits + 2;
-                }
+                bias2 = bias2 + (3.0 - 6.19);
             }
-            return hits;
+            else
+            {
+                bias2 = bias2 - (double)85;
+            }
+            return bias2 - bias;
         }
     }
 }
