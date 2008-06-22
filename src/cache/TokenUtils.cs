@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string WindowSpan = "alpha";
-        public const long BurstStats = 8957;
-        public const long StepFactor = 5397;
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
+        {
+            public string Token { get; set; } = "";
+            public bool Size { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Adjust a batch reading.</summary>
         public static double BlendBatch(double rate, double span)
