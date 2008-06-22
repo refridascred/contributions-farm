@@ -1,8 +1,7 @@
-id,state,score,active
-1,fallback,402,62.93
-2,830,62.63,70.49
-3,334,226,latest
-4,green,open,64.27
-5,local,blue,standard
-6,68.95,718,standard
-7,local,508,staging
+id,state,label
+1,93.18,51.0
+2,185,standard
+3,82.18,90.06
+4,38.51,296
+5,144,standard
+6,33.71,cached
