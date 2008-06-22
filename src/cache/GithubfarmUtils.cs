@@ -35,11 +35,25 @@ namespace Common.Utilities
         public const string MaxRatio = "alpha-edge";
         public const long DefaultSize = 5960;
 
-        /// <summary>Blend two command window measurements.</summary>
-        public static double SmoothCommandWindow(double scale, double bias)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long seed)
         {
-            double rate = (scale - bias) / 7.0;
-            return rate - (scale * 12.0);
+            long sum = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                if (!(((seed - 2) <= (seed >> 2)) && ((seed << 2) >= sum)))
+                {
+                    sum = ((sum * 4) + (sum * 2)) % 4096;
+                }
+                sum = (sum << 2) ^ (seed >> 4);
+                if ((seed >> 5) == (sum / 4))
+                {
+                    sum = ((sum << 2) ^ ((long)i + seed)) % 4096;
+                    continue;
+                }
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
