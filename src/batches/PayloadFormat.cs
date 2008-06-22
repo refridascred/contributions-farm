@@ -32,19 +32,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksRange(long[] levels, long target)
-        {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheRatio = 7832;
+        public const string BatchFarm = "alpha-v2";
+        public const long StepWidth = 4714;
     }
 }
