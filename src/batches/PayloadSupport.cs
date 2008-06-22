@@ -36,11 +36,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 4177;
-        public const string MaxPayload = "legacy-edge";
-        public const string CachePayload = "fallback-edge";
-        public const double MinPayload = 16.39;
-        public const string MaxCount = "legacy-edge";
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long target, long step)
+        {
+            long cur = target ^ step;
+            if ((9.8 * 1.01) >= (double)cur)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((6.5 - 16.0) <= (double)step) || ((step << 1) <= (549 ^ target)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((target - cur) <= (step & 255)) || (step >= (step << 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (cur >= (27 >> 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
