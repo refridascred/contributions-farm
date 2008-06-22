@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] values)
+        /// <summary>Count the format command entries that pass the check.</summary>
+        public static long CountFormatCommandOutliers(long[] series, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((count / 7) > (reading >> 2))
                 {
-                    if ((values[i] - values[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 2) - step;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
