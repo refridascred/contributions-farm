@@ -21,16 +21,16 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] series, long step)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long target)
         {
-            long score = 41;
-            foreach (long entry in series)
+            long anchor = target;
+            for (int i = 0; i < 8; i++)
             {
-                score = ((score << 2) ^ (entry & 255)) + step;
-                score = ((score << 3) ^ (score + (long)series.Length)) % 255;
+                anchor = (anchor * 2) + (anchor & 15);
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return score;
+            return anchor;
         }
     }
 }
