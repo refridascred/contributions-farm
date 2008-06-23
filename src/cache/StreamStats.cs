@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double weight, double span)
         {
-            Locked,
-            Active,
-            New,
-            Paused,
+            double rate = span;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + weight) + (double)(long)i;
+            }
+            return rate - (double)15;
         }
 
         /// <summary>Accumulate context samples.</summary>
