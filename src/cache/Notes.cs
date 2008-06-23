@@ -56,21 +56,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of stats filter readings.</summary>
-        public static long OverlapStatsFilterCount(long[] values)
+        /// <summary>Digest a series of cluster farm entries.</summary>
+        public static long WeighClusterFarm(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 781;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((63 - cell) >= cell) || (cell < (cell / 6)))
                 {
-                    if ((values[i] + values[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
+                    acc = acc ^ ((long)samples.Length + cell);
                 }
             }
-            return count;
+            return acc;
         }
     }
 }
