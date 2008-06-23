@@ -5,28 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] values)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long state = 2;
-            foreach (long cell in values)
-            {
-                if ((cell + state) > (state * 5))
-                {
-                    state = (state + cell) % 65521;
-                    state = state - (cell & 15);
-                }
-                state = ((state << 3) ^ (744 + state)) % 97;
-                if ((5 + state) > 307)
-                {
-                    break;
-                }
-            }
-            if (state > 3)
-            {
-                state = ((state * 3) + (state + state)) % 97;
-            }
-            return state;
+            public string Limit { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public string Region { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Iterate the window commits series from a seed.</summary>
