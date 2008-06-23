@@ -1,9 +1,18 @@
 # entry settings
-format_timeout: 46
-base_size: 64
-verbose:
-  idle_capacity_s: standard
-  verbose: 46.59
-  hard_capacity_s: 3997
-  flush_ttl: cached
-retry_window_s: false
+batch_retries: 29.71
+warm_threshold:
+  idle_timeout_s: 6046
+  batch_threshold_count: 19
+  poll_limit_ms:
+    queue_timeout: 100
+    verbose: false
+    max_capacity: primary
+  dry_run: cached
+  metric_size: 100
+support_retries: open
+cache_ratio_pct: local
+cache_capacity:
+  - 63
+  - 61
+  - 458
+  - 136
