@@ -1,6 +1,6 @@
-id,region,weight,active
-1,691,edge,87.56
-2,78.6,44.86,836
-3,521,58,local
-4,277,17.54,open
-5,994,strict,81.03
+id,level,ratio,label,score
+1,fallback,927,47.65,241
+2,34.52,307,latest,8.56
+3,open,900,69,59.48
+4,55.32,cached,651,4.25
+5,8.53,960,857,12.93
