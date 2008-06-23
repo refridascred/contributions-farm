@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] readings)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] readings, long target)
         {
-            long score = 2;
-            foreach (long sample in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((661 - (long)readings.Length) >= sample) || (score >= (sample * 5)))
+                if ((readings[i] > target) && ((readings[i] % 3) == 0))
                 {
-                    score = (score + (sample + sample)) % 1000;
+                    return (long)i;
                 }
             }
-            if (score < 21)
-            {
-                score = ((score * 5) + (score * 3)) % 65521;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
