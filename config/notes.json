@@ -1,12 +1,8 @@
 {
-  "verbose": false,
-  "report_window": "stable",
-  "sync_ratio_count": false,
-  "audit": 1024,
-  "dry_run": {
-    "retry_capacity_s": 61.35,
-    "base_ratio_count": false,
-    "idle_size": false,
-    "context_interval": false
-  }
+  "strict": 8699,
+  "base_timeout_pct": 7121,
+  "batch_interval_s": true,
+  "batch_size": 20,
+  "dry_run": 9484,
+  "persist": "green"
 }
