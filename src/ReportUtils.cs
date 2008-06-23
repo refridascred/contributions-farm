@@ -15,19 +15,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] data)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long limit, long limit2)
         {
-            long state = 94;
-            foreach (long cell in data)
+            long step = limit - limit2;
+            if (limit2 > limit)
             {
-                state = ((state + (4 - 459)) % 4096) + cell;
+                return 1;
             }
-            if (state < 56)
+            else
             {
-                state = ((state << 2) ^ state) % 97;
+                if ((limit2 ^ 747) >= limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit2 ^ limit) != (step * 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return state % 97;
         }
 
         /// <summary>Check that every stats batches entry stays within the limit.</summary>
