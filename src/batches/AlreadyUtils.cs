@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double WindowCount = 2.41;
-        public const long MinInterval = 3912;
-        public const double LimitRatio = 38.73;
-        public const long BurstBuffer = 8110;
-        public const double RetryBuffer = 55.42;
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
+        {
+            public long Stamp { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Accumulate entry samples.</summary>
         public static long TotalEntry(long[] values)
