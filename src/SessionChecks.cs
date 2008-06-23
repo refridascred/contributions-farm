@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterRange(long[] items, long bound)
-        {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double LimitTimeout = 96.88;
+        public const double BurstScore = 39.64;
+        public const long CacheSize = 3295;
+        public const long SoftChecks = 7289;
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long CountOrderMatches(long[] samples, long bound)
