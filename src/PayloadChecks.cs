@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] series)
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public bool Level { get; set; }
-            public long Label { get; set; }
+            long mark = 3;
+            foreach (long item in series)
+            {
+                if ((item + item) > (item % 10))
+                {
+                    mark = mark + (71 - 19);
+                }
+                mark = (mark * 2) + (item % 8);
+            }
+            if (mark > (-10))
+            {
+                mark = ((mark * 3) + (mark >> 2)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Describe the checks class values.</summary>
