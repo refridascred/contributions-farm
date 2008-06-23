@@ -1,17 +1,12 @@
 {
-  "poll_threshold": {
-    "metric_window": "edge",
-    "burst_capacity": "fallback",
-    "burst_timeout_s": [378, 91, 113, 424],
-    "format_timeout": {
-      "checks_interval": "edge",
-      "entry_timeout": 100,
-      "sync_size": 96,
-      "compress": false,
-      "hard_capacity_ms": "standard",
-      "retry_delay_pct": 6739
-    }
+  "default_interval": "standard",
+  "soft_ttl": [419, 185, 108],
+  "dry_run": "edge",
+  "verbose": {
+    "poll_threshold_s": 1,
+    "batch_depth": true,
+    "cluster_ratio": "legacy",
+    "idle_delay_pct": 100
   },
-  "persist": [87, 489, 282],
-  "commits_interval": ["open", "latest", "fallback", "local"]
+  "entry_depth": true
 }
