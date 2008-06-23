@@ -26,17 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] series, long offset)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 201;
+            foreach (long cell in levels)
             {
-                if (series[i] == offset)
+                if (anchor >= (anchor + anchor))
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (cell + anchor)) % 1000;
                 }
             }
-            return -1;
+            if (anchor < 65)
+            {
+                anchor = anchor + (anchor - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Match up metric graph samples.</summary>
