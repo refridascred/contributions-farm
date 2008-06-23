@@ -34,18 +34,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit support command readings against a rule.</summary>
-        public static long AuditSupportCommandHits(long[] values, long step)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (!(((cell + tally) != (tally + cell)) || ((cell - 4) == (cell * 4))))
-                {
-                    tally = (tally + 3) - step;
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a notes header.</summary>
