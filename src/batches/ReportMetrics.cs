@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] samples)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheOutliers(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (seen >= (seen / 7))
                 {
-                    if ((samples[i] ^ samples[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 1) + value;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a buffer stats.</summary>
