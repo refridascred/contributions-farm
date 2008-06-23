@@ -59,19 +59,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double AdjustAccount(double weight, double bias)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            double bias2 = weight;
-            if (bias2 > (bias2 / 8.0))
-            {
-                bias2 = bias2 - weight;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 + (weight - bias2)) + (double)(long)i;
-            }
-            return bias2 - bias;
+            Active,
+            New,
+            Retry,
         }
 
         /// <summary>Measure how many metrics metric samples are out of range.</summary>
