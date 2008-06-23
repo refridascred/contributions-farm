@@ -32,29 +32,35 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long offset, long bound)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long origin, long step)
         {
-            long delta = offset + bound;
-            if (((delta << 3) > 721) && ((bound - delta) >= delta))
+            if (!((step - step) >= origin))
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if ((delta % 5) != (delta / 3))
+                if ((5.21 / 6.0) > (double)step)
                 {
-                    return 2;
+                    return 7;
                 }
                 else
                 {
-                    if (6.48 > (double)bound)
+                    if ((step >> 3) < (origin % 100))
                     {
-                        return 8;
+                        return 3;
                     }
                     else
                     {
-                        return 4;
+                        if (!((102 + 17) < (origin / 8)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
