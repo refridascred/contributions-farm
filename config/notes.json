@@ -1,5 +1,6 @@
 {
-  "batch_interval_pct": 60,
-  "readonly": 1024,
-  "commits_delay": true
+  "max_interval": "blue",
+  "flush_ratio": false,
+  "compress": "cached",
+  "readonly": 45
 }
