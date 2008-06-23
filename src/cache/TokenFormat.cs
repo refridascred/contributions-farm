@@ -24,18 +24,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit metrics order readings against a rule.</summary>
-        public static long AuditMetricsOrderMatches(long[] samples, long limit)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaMatches(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (cell > (cell + cell))
+                if (((long)series.Length / 7) < (cell - matches))
                 {
-                    tally = (tally + 2) - limit;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
