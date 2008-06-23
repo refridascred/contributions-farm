@@ -45,10 +45,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BatchLevel = 55.87;
-        public const long DefaultRoute = 8095;
-        public const string BaseSpan = "standard-v2";
-        public const long IdleScore = 8646;
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            Closed,
+            Failed,
+            Paused,
+        }
     }
 }
