@@ -21,20 +21,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double bias, double span)
-        {
-            double mean = bias;
-            if (mean <= mean)
-            {
-                mean = (mean - (7.3 - bias)) - span;
-            }
-            else
-            {
-                mean = mean + (bias - bias);
-            }
-            return mean - (bias / 7.0);
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double DefaultScore = 3.8;
+        public const long StepFactor = 7157;
+        public const long HardSchema = 1281;
+        public const long RetryLevel = 6093;
 
         /// <summary>Locate a account reading by value.</summary>
         public static long LocateAccountIndex(long[] levels, long floor)
