@@ -22,12 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheTimeout = 2830;
-        public const long LimitDepth = 6462;
-        public const string SoftBuffer = "local";
-        public const long DefaultBudget = 7198;
-        public const string MaxTimeout = "cached";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string IdleStream = "fallback-1";
+        public const long BaseScore = 796;
+        public const string HardStream = "legacy";
+        public const string SoftStream = "staging-v2";
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
