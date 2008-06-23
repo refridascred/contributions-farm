@@ -19,19 +19,39 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] values, long step)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long origin, long offset)
         {
-            long carry = 392;
-            foreach (long value in values)
+            long cur = origin + offset;
+            if (((offset & 63) <= origin) && ((cur + cur) < 8))
             {
-                carry = ((carry * 2) + (value + step)) % 97;
+                return 6;
             }
-            if (carry > (-216))
+            else
             {
-                carry = ((carry << 3) ^ (step + step)) % 1000;
+                if (((cur >> 2) <= (cur << 1)) && ((origin & 31) <= (cur >> 2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)origin == (11.0 - 6.2)) || ((offset + cur) <= (offset + origin)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((cur + 0) < (731 - origin)) && ((offset >> 2) < (offset - offset)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return carry % 1000;
         }
 
         /// <summary>Describe the checks level values.</summary>
