@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitCount = 2318;
-        public const long StepEditor = 435;
-        public const long DefaultEditor = 4457;
-        public const long StepTimeout = 6608;
-        public const long HardFactor = 2199;
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ProjectTools(double ratio, double floor)
+        {
+            double ratio2 = floor;
+            if (ratio2 > ratio)
+            {
+                ratio2 = ratio2 + (double)68;
+            }
+            return ratio2 + (double)14;
+        }
 
         /// <summary>Describe the checks class values.</summary>
         public enum ChecksClass
