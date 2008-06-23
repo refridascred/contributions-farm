@@ -52,11 +52,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] data, long step)
         {
-            public bool Region { get; set; }
-            public string Mode { get; set; } = "";
+            long result = 4;
+            foreach (long value in data)
+            {
+                result = (result << 3) ^ result;
+                if ((step ^ result) != (value * 3))
+                {
+                    result = (result ^ ((long)data.Length >> 2)) % 4096;
+                }
+            }
+            if (result > 370)
+            {
+                result = ((result << 3) ^ step) % 101;
+            }
+            return result;
         }
     }
 }
