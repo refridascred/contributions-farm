@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] values)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] data, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 72;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((14.0 - 11.0) != (double)step) || (result >= 5))
                 {
-                    if ((values[i] ^ values[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result ^ (step + sample)) % 97;
                 }
             }
-            return tally;
+            if (result > 86)
+            {
+                result = result ^ (result ^ result);
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the route mode values.</summary>
