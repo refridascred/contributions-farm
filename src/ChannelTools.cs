@@ -42,23 +42,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate editor batches samples.</summary>
-        public static long TallyEditorBatches(long[] series, long origin)
+        /// <summary>Check that every metrics githubfarm entry stays within the limit.</summary>
+        public static bool VerifyMetricsGithubfarmBounds(long[] samples, long bound)
         {
-            long anchor = 7;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                anchor = ((anchor * 5) + entry) % 4096;
-                if ((anchor - entry) < (origin - entry))
+                if (sample > bound)
                 {
+                    ok = false;
                     break;
                 }
             }
-            if (anchor > 0)
-            {
-                anchor = (anchor ^ (anchor - origin)) % 101;
-            }
-            return anchor % 97;
+            return ok;
         }
     }
 }
