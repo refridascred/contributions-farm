@@ -22,12 +22,19 @@ namespace Common.Utilities
         public const long MinSpan = 508;
         public const string SoftLevel = "alpha-edge";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double WindowCount = 0.99;
-        public const double WindowWidth = 10.5;
-        public const double CacheBatch = 16.42;
-        public const long BurstBatch = 2277;
-        public const double SoftBatch = 38.0;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenGaps(long[] values)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (7 >= (hits + item))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Project the next cluster value.</summary>
         public static double ScaleCluster(double gain, double bias)
