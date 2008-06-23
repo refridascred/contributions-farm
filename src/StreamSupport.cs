@@ -39,29 +39,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Derive the next notes layout value from a seed.</summary>
-        public static long IterateNotesLayout(long step)
+        /// <summary>Look up the position of a commits format sample.</summary>
+        public static long SeekCommitsFormatIndex(long[] values, long step)
         {
-            long mark = step;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)step != (4.0 - 1.17))
+                if (values[i] <= step)
                 {
-                    mark = (mark * 5) + ((long)i - step);
-                    continue;
+                    return (long)i;
                 }
-                if ((mark + (long)i) <= step)
-                {
-                    mark = ((mark << 3) ^ (step & 15)) % 4096;
-                    break;
-                }
-                if (mark < (step - step))
-                {
-                    mark = mark - (step << 2);
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return mark;
+            return -1;
         }
     }
 }
