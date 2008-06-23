@@ -34,22 +34,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count the farm editor entries that pass the check.</summary>
-        public static long TallyFarmEditorOutliers(long[] items, long seed)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long OverlapContributiCount(long[] items)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(value > matches))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 1) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((items[i] - items[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Digest a series of format entries.</summary>
