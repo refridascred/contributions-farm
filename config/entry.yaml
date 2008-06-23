@@ -1,11 +1,9 @@
 # entry settings
-cluster_retries: 43.42
-persist:
-  - 62
-  - 411
-  - 382
-strict:
-  - 118
-  - 322
-  - 297
-  - 173
+enabled: 62.3
+poll_ttl_count: 2228
+burst_depth: 100
+hard_interval_pct: cached
+flush_depth:
+  - cached
+  - primary
+  - cached
