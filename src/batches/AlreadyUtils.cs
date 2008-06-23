@@ -33,20 +33,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long offset)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] samples)
         {
-            long score = offset;
-            for (int i = 0; i < 15; i++)
+            long carry = 560;
+            foreach (long reading in samples)
             {
-                double bias = (double)(728 * 4);
-                if (((84 ^ score) <= ((long)i + score)) || (bias <= 11.0))
-                {
-                    continue;
-                }
-                score = ((score * 4) + (long)i) % 4093;
+                carry = ((carry * 3) + (-92)) ^ reading;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
