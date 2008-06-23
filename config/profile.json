@@ -1,11 +1,7 @@
 {
-  "verbose": 64.56,
-  "filter_limit": {
-    "batch_delay_s": true,
-    "enabled": 30,
-    "strict": 2087,
-    "batch_timeout_ms": false,
-    "poll_threshold_s": 55.4
-  },
-  "enabled": 1024
+  "payload_ratio": 71.79,
+  "batch_threshold_s": true,
+  "default_size": 74,
+  "flush_depth_pct": false,
+  "min_timeout_ms": ["primary", "legacy", "edge", "open"]
 }
