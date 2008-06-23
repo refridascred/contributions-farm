@@ -1,10 +1,4 @@
 # entry settings
-audit: 100
-idle_capacity_pct: false
-compress:
-  - blue
-  - legacy
-  - local
-  - strict
-min_timeout_pct: false
-readonly: standard
+burst_interval_pct: 3654
+enabled: latest
+base_depth_count: primary
