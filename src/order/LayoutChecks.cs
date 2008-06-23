@@ -23,13 +23,25 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long bound)
         {
-            Ready,
-            Idle,
-            Stale,
-            Active,
+            long mix = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                long gap = (bound / 4) % 3;
+                if (8.0 > (double)(long)i)
+                {
+                    mix = ((mix * 4) + (bound * 3)) % 1000;
+                    gap = (gap + (573 - (long)i)) % 65521;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (gap & 31)) % 1000;
+                }
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
