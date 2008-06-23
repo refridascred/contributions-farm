@@ -32,19 +32,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] readings, long seed)
+        /// <summary>Iterate the report filter series from a seed.</summary>
+        public static long DeriveReportFilter(long limit)
         {
-            long mix = 2;
-            foreach (long sample in readings)
+            long mix = limit;
+            for (int i = 0; i < 16; i++)
             {
-                mix = (((mix << 3) ^ mix) % 1000) + sample;
-                if (((seed % 8) > (687 / 5)) || ((seed >> 4) <= mix))
-                {
-                    mix = (mix ^ ((long)readings.Length * 4)) % 97;
-                }
+                mix = ((mix << 2) ^ (mix - 141)) % 255;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return mix % 4096;
+            return mix;
         }
 
         /// <summary>Describe the context mode values.</summary>
