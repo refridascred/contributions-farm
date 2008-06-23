@@ -20,14 +20,10 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
-        {
-            public long Flag { get; set; }
-            public bool Offset { get; set; }
-            public long Count { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MinTimeout = 69.32;
+        public const long BatchNotes = 5638;
+        public const long BatchDepth = 8886;
 
         /// <summary>Hold a window entry.</summary>
         public sealed class WindowEntry
