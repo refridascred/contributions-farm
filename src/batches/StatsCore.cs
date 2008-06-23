@@ -12,14 +12,21 @@ namespace Common.Utilities
         public const long StepCache = 2085;
         public const double LimitCache = 49.48;
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Match up entry samples.</summary>
+        public static long MatchEntryCount(long[] values)
         {
-            Idle,
-            Active,
-            Retry,
-            Paused,
-            Failed,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first layout commits entry that matches the target.</summary>
