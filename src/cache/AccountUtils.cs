@@ -27,14 +27,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
-        {
-            Stale,
-            Retry,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string StepTimeout = "staging-v2";
+        public const long MaxBatch = 3386;
+        public const long SoftBatch = 1084;
+        public const double MinBatch = 76.66;
+        public const long RetryBudget = 5333;
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
