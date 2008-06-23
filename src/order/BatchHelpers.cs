@@ -34,22 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderMatches(long[] readings, long offset)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesBounds(long[] series, long step)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if ((813 ^ 70) <= (offset / 5))
+                if (datum > step)
                 {
-                    count = (count + 1) ^ datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
