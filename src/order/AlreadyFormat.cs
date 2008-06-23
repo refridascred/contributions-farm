@@ -56,38 +56,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a checks commits value against two limits.</summary>
-        public static long ClassifyChecksCommits(long floor, long step)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsHits(long[] values, long seed)
         {
-            if (!((step ^ 82) <= floor))
+            long tally = 0;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor + step) >= (477 * 5))
+                if ((tally + seed) > (seed >> 3))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((420 + step) < (step + floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)floor == (double)(-7))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = (tally + 2) + datum;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
