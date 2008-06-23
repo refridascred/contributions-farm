@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterMatches(long[] levels)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample > count) && ((sample / 8) >= (count + count)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string CacheTimeout = "fallback";
+        public const long BaseSession = 1952;
+        public const long SoftInterval = 7733;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long MeasureToolsOutliers(long[] data, long offset)
