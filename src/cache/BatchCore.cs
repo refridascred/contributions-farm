@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double weight, double span)
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double weight, double span)
         {
-            double ratio = (double)(568 >> 2);
-            if (ratio > (span * 0.2))
-            {
-                ratio = (ratio + (ratio + span)) - weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio + (ratio - span);
+            double ratio = span;
+            return ratio + weight;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
