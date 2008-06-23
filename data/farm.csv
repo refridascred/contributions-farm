@@ -1,7 +1,9 @@
-id,token,owner,count,active
-1,green,216,251,legacy
-2,405,688,964,fallback
-3,788,635,latest,local
-4,green,green,170,184
-5,96.26,25.43,72.49,875
-6,279,794,staging,primary
+id,state,level,token
+1,302,blue,blue
+2,cached,57.77,790
+3,legacy,0.59,715
+4,28.0,open,green
+5,fallback,71.9,legacy
+6,53.34,185,standard
+7,269,90.5,25.44
+8,41.9,82.15,246
