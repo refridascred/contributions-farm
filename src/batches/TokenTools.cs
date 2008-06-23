@@ -18,10 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftCount = 478;
-        public const long RetryLevel = 7008;
-        public const long DefaultSpan = 4950;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterOutliers(long[] data, long origin)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((origin >> 3) != (origin ^ tally))
+                {
+                    tally = (tally + 1) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
