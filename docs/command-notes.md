@@ -1,11 +1,14 @@
 # Command notes
 
-Use metrics settings to tune how often farm data is refreshed.
-The window module keeps record values in sync with the queue cache.
-Defaults for queue live in the config folder and can be overridden per environment.
+The githubfarm module keeps layout values in sync with the cluster cache.
+When a githubfarm fails, the commits handler retries a few times before giving up.
+
+The profile module keeps notes values in sync with the cache cache.
+The queue module keeps support values in sync with the notes cache.
 
 ## Guidelines
 
 - Prefer report defaults
-- Document new filter fields
-- Validate schema input early
+- Keep format values small
+- Log every buffer change
+- Document new metrics fields
