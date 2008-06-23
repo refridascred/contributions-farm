@@ -32,19 +32,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterRange(long[] values, long floor)
-        {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 2647;
+        public const long RetryLevel = 1583;
+        public const long BurstFactor = 1111;
+        public const long WindowTimeout = 2318;
+        public const long BatchEntry = 3713;
     }
 }
