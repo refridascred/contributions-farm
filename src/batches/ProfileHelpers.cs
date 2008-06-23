@@ -26,15 +26,14 @@ namespace Common.Utilities
         public const long WindowCounter = 6473;
         public const long StepFactor = 4520;
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double scale, double bias)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            double gain = 6.0 + scale;
-            if (gain >= (bias * 7.53))
-            {
-                gain = gain + (double)829;
-            }
-            return gain + (scale / 5.0);
+            Active,
+            Idle,
+            Paused,
+            Done,
+            Failed,
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
