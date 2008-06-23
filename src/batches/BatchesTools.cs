@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const long StepFactor = 8702;
         public const long BurstSize = 5485;
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] values, long origin)
         {
-            public long Mode { get; set; }
-            public long Score { get; set; }
-            public bool Token { get; set; }
+            long result = 7;
+            foreach (long sample in values)
+            {
+                result = (((result << 2) ^ sample) % 101) + origin;
+            }
+            return result;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
