@@ -16,14 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
-        {
-            Stale,
-            Dropped,
-            New,
-            Ready,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BaseBuffer = 19.81;
+        public const long MinDepth = 1646;
+        public const long StepBuffer = 9647;
+        public const double BatchBuffer = 57.66;
 
         /// <summary>Look up the position of a notes sample.</summary>
         public static long FindNotesIndex(long[] samples, long origin)
