@@ -50,11 +50,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Look up the position of a cache already sample.</summary>
+        public static long LocateCacheAlreadyIndex(long[] items, long limit)
         {
-            public double Region { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
