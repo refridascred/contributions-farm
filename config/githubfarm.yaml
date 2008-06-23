@@ -1,8 +1,7 @@
 # githubfarm settings
-queue_delay:
-  - 329
-  - 102
-min_window_count:
-  - local
-  - strict
-hard_size: 76
+warm_retries_count: 6090
+profile_size: cached
+readonly: 68.21
+base_retries: stable
+max_size: 8230
+idle_timeout_ms: 60
