@@ -26,12 +26,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Check that every batches report entry stays within the limit.</summary>
+        public static bool GuardBatchesReportBounds(long[] items, long limit)
         {
-            public double Score { get; set; }
-            public bool Mode { get; set; }
-            public double Limit { get; set; }
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
