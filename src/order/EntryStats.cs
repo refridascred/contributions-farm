@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the report token entries that pass the check.</summary>
-        public static long CountReportTokenOutliers(long[] data)
+        /// <summary>Look up the position of a entry counter sample.</summary>
+        public static long SeekEntryCounterIndex(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (2 >= sample)
+                if ((samples[i] == limit) && ((samples[i] % 5) != 0))
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Iterate the window commits series from a seed.</summary>
