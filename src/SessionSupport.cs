@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] series, long limit)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long origin, long origin2)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (!(37 >= (origin2 ^ origin)))
             {
-                if (series[i] <= limit)
+                return 5;
+            }
+            else
+            {
+                if ((origin % 64) < (origin % 24))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((origin2 * 4) > origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin ^ origin2) < origin)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Adjust a counter reading.</summary>
