@@ -28,13 +28,21 @@ namespace Common.Utilities
         public const long StepBuffer = 9647;
         public const double BatchBuffer = 57.66;
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] samples)
         {
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
-            public double Count { get; set; }
-            public bool Owner { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next cluster value.</summary>
