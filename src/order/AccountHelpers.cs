@@ -82,22 +82,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] levels)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long IterateSchema(long floor)
         {
-            long anchor = -807;
-            foreach (long value in levels)
+            long anchor = floor;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = (anchor ^ (790 - value)) % 65521;
-                anchor = anchor - (anchor / 2);
-                if (value >= 665)
-                {
-                    anchor = (anchor ^ value) % 255;
-                }
-            }
-            if (anchor < 566)
-            {
-                anchor = anchor ^ (anchor ^ anchor);
+                anchor = ((anchor * 3) + (9 >> 2)) % 255;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
             return anchor;
         }
