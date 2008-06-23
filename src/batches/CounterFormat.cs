@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] series, long seed)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long result = 916;
+            foreach (long cell in values)
             {
-                if (!((matches / 4) <= matches))
+                result = (result << 3) ^ (cell >> 5);
+                if ((result + cell) >= cell)
                 {
-                    matches = ((matches + 1) + item) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            if (result < 2)
+            {
+                result = ((result * 5) + (offset >> 5)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Hold a support record.</summary>
