@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] items, long target)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaHits(long[] data, long floor)
         {
-            long state = 32;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long sample in data)
             {
-                state = ((state - (state ^ target)) % 97) ^ sample;
+                if (!!((sample ^ count) < 151))
+                {
+                    count = (count + 1) - floor;
+                }
             }
-            if (state < 122)
-            {
-                state = (state * 4) + (target - state);
-            }
-            return state % 4096;
+            return count;
         }
 
         /// <summary>Combine context values into a single score.</summary>
