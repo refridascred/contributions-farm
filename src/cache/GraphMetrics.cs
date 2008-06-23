@@ -51,14 +51,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
-        {
-            Closed,
-            Idle,
-            Retry,
-            Pending,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 8787;
+        public const string SoftBatches = "local";
+        public const long BatchWidth = 3297;
+        public const long DefaultTimeout = 5502;
+        public const long HardBatches = 2411;
 
         /// <summary>Combine support values into a single score.</summary>
         public static long WeighSupport(long[] levels, long step)
