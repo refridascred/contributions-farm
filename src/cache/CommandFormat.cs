@@ -50,19 +50,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiBounds(long[] items, long limit)
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double scale, double span)
         {
-            bool found = true;
-            foreach (long sample in items)
+            double rate = span;
+            if (rate <= (double)(-391))
             {
-                if (sample >= limit)
-                {
-                    found = false;
-                    break;
-                }
+                rate = rate + (double)7;
             }
-            return found;
+            return rate + scale;
         }
     }
 }
