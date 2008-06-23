@@ -43,18 +43,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] readings)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (item < (32 % 24))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Closed,
+            Failed,
+            Draft,
+            Pending,
         }
 
         /// <summary>Define already limits and defaults.</summary>
