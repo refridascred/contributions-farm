@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double weight, double offset)
+        /// <summary>Find the first notes session entry that matches the target.</summary>
+        public static long FindNotesSessionIndex(long[] levels, long origin)
         {
-            double ratio = offset;
-            if (ratio >= 1.94)
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ratio - weight;
+                if (levels[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio - (7.0 * 15.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - (ratio + weight)) + (double)(long)i;
-            }
-            return ratio - (ratio / 4.0);
+            return -1;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
