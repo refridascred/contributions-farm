@@ -60,20 +60,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] items)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterOutliers(long[] readings)
         {
-            long anchor = 26;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                anchor = ((anchor - 76) % 65521) - datum;
-                anchor = (anchor + anchor) % 97;
+                if ((double)cell != (5.5 / 6.0))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (anchor > 459)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 65521;
-            }
-            return anchor % 4096;
+            return hits;
         }
     }
 }
