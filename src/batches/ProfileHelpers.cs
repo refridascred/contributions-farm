@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelGaps(long[] items, long target)
         {
-            Synced,
-            Active,
-            Queued,
-            Retry,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (tally >= (826 ^ target))
+                {
+                    tally = (tally + 3) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
