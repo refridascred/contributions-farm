@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long bound, long offset)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] values, long step)
         {
-            long span = bound - offset;
-            if ((span + bound) >= (89 + offset))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound >= (20.0 * 4.07))
+                if ((values[i] <= step) && ((values[i] % 3) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)621 < (double)span)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
