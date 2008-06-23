@@ -21,22 +21,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many editor metric samples are out of range.</summary>
-        public static long AuditEditorMetricHits(long[] readings)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] series)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long acc = 0;
+            foreach (long item in series)
             {
-                if ((cell / 7) <= (count << 3))
+                if (((2.47 * 4.88) == (double)item) || ((0.4 + 3.2) >= (double)item))
                 {
-                    count = count + 2;
+                    acc = (acc - acc) % 101;
+                    acc = (acc * 3) + (item - 37);
                 }
-                else
+                if (6.65 < (double)acc)
                 {
-                    count = count - 1;
+                    acc = (acc ^ (acc / 8)) % 101;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Define order limits and defaults.</summary>
