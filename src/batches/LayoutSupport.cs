@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderHits(long[] series)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamOutliers(long[] items)
         {
             long hits = 0;
-            foreach (long cell in series)
+            foreach (long datum in items)
             {
-                if ((4.04 - 13.0) > (double)hits)
+                if (3.0 >= (double)datum)
                 {
-                    hits = (hits + 2) + cell;
+                    hits = hits + 3;
                 }
                 else
                 {
