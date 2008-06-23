@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double rate, double span)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchLimits(long[] levels, long origin)
         {
-            double mean = (4.0 / 7.0) + rate;
-            if (mean > (rate + rate))
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                mean = (mean - (1.85 * 12.0)) + span;
+                if (entry >= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mean + (mean + rate);
+            return flag;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
