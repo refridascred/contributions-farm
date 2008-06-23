@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] items)
         {
-            Done,
-            Paused,
-            Idle,
+            long state = 105;
+            foreach (long reading in items)
+            {
+                state = ((state * 3) + state) % 255;
+                state = ((state << 2) ^ (reading % 97)) % 1000;
+                if ((reading * 5) >= (state & 15))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Blend two context measurements.</summary>
