@@ -60,32 +60,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long origin, long floor)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] items)
         {
-            long slot = origin + floor;
-            if (origin <= floor)
+            long anchor = 26;
+            foreach (long datum in items)
             {
-                return 7;
+                anchor = ((anchor - 76) % 65521) - datum;
+                anchor = (anchor + anchor) % 97;
             }
-            else
+            if (anchor > 459)
             {
-                if ((double)slot >= (double)origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((floor ^ floor) < (origin + slot)) || ((floor - slot) != (9 >> 1)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                anchor = ((anchor << 3) ^ anchor) % 65521;
             }
+            return anchor % 4096;
         }
     }
 }
