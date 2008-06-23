@@ -16,18 +16,38 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] items)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long floor, long seed)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            if (seed >= 1)
             {
-                if ((seen >> 2) == (entry & 3))
+                return 4;
+            }
+            else
+            {
+                if ((seed << 2) == (3 >> 3))
                 {
-                    seen = seen + 3;
+                    return 6;
+                }
+                else
+                {
+                    if ((floor & 15) != (seed * 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((88 % 97) < (seed + floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the already level values.</summary>
