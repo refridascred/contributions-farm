@@ -23,10 +23,23 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MaxAlready = "latest-edge";
-        public const long BurstLevel = 8769;
-        public const long IdleSize = 9088;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiMatches(long[] items, long offset)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((seen & 255) <= (offset % 12))
+                {
+                    seen = (seen + 3) - value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const string BaseFormat = "primary-v2";
