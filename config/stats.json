@@ -1,10 +1,11 @@
 {
-  "default_retries_count": 78,
-  "flush_depth_ms": ["cached", "standard", "primary"],
-  "cluster_delay": {
-    "notes_capacity": false,
-    "retry_capacity": false,
-    "dry_run": "green"
+  "profile_ratio": ["open", "standard", "local"],
+  "queue_retries": {
+    "notes_threshold": 18.3,
+    "batch_window_count": 98.57,
+    "verbose": 3861
   },
-  "batch_depth": 1024
+  "default_size_count": ["legacy", "primary"],
+  "cache_retries_count": true,
+  "base_delay": false
 }
