@@ -47,18 +47,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenOutliers(long[] series)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaGaps(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((cell & 1) > (cell & 7))
+                if ((count - count) >= (640 - datum))
                 {
-                    matches = matches + 2;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
