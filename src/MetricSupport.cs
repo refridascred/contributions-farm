@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long offset)
         {
-            public long Region { get; set; }
-            public double Level { get; set; }
-            public double Size { get; set; }
-            public long Flag { get; set; }
+            long score = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
