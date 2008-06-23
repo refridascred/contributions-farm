@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BaseEntry = "fallback-v2";
-        public const long DefaultEntry = 8023;
-        public const double RetryScore = 66.77;
-        public const long WindowEntry = 2444;
-        public const long StepScore = 2535;
+        /// <summary>Find the first route command entry that matches the target.</summary>
+        public static long LookupRouteCommandIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine route values into a single score.</summary>
         public static long CombineRoute(long[] series)
