@@ -38,11 +38,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two tools metric measurements.</summary>
-        public static double BlendToolsMetric(double gain, double offset)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            double scale = offset / 8.0;
-            return (scale - offset) + gain;
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Blend two command measurements.</summary>
