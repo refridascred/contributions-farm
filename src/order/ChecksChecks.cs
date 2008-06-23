@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many editor order samples are out of range.</summary>
-        public static long AuditEditorOrderOutliers(long[] values)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] items, long limit)
         {
             long tally = 0;
-            foreach (long datum in values)
+            foreach (long cell in items)
             {
-                if (tally > (2 ^ tally))
+                if ((limit - cell) < (tally + tally))
                 {
-                    tally = (tally + 3) - datum;
+                    tally = tally + 3;
                 }
             }
             return tally;
