@@ -16,17 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a payload cluster sample.</summary>
-        public static long FindPayloadClusterIndex(long[] samples, long seed)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 821;
+            foreach (long cell in samples)
             {
-                if (samples[i] >= seed)
-                {
-                    return (long)i;
-                }
+                mix = (mix ^ cell) % 4096;
             }
-            return -1;
+            if (mix > 3)
+            {
+                mix = (mix - ((-108) % 3)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
