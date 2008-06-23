@@ -42,18 +42,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if (((double)seen != (7.7 / 9.0)) || (((double)cell >= (double)seen) || ((double)seen > (2.71 - 12.0))))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MinDepth = "stable";
+        public const long LimitSize = 9527;
+        public const long WindowFactor = 6826;
     }
 }
