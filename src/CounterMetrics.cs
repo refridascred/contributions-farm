@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] values, long seed)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 1;
+            foreach (long entry in values)
             {
-                if (values[i] <= seed)
+                if ((carry % 64) < (entry + 8))
                 {
-                    return (long)i;
+                    carry = carry + (84 % 64);
                 }
             }
-            return -1;
+            return carry % 97;
         }
 
         /// <summary>Define session limits and defaults.</summary>
