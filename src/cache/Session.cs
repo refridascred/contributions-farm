@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitInterval = 2876;
-        public const double WindowSize = 53.6;
-        public const string LimitQueue = "legacy";
-        public const string BurstLevel = "local";
-        public const double IdleQueue = 40.12;
+        /// <summary>Compare every pair of support githubfarm readings.</summary>
+        public static long OverlapSupportGithubfarmCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const string MaxContext = "alpha-v2";
