@@ -31,18 +31,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] series)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryGaps(long[] series)
         {
-            long result = 610;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((datum - result) > (result + datum))
+                if (entry < (count * 3))
                 {
-                    result = ((result << 2) ^ (result - 657)) % 65521;
+                    count = count + 2;
                 }
             }
-            return result;
+            return count;
         }
     }
 }
