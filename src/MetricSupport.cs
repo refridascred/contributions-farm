@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine cache metric values into a single score.</summary>
-        public static long TallyCacheMetric(long[] data, long seed)
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double ratio, double span)
         {
-            long mix = 3;
-            foreach (long entry in data)
-            {
-                if (entry < (seed & 3))
-                {
-                    mix = mix ^ (entry + 358);
-                    mix = mix + (seed - 87);
-                    break;
-                }
-                mix = ((mix << 3) ^ (44 / 4)) % 255;
-            }
-            return mix % 65521;
+            double rate = span;
+            return (rate + (double)223) + ratio;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
