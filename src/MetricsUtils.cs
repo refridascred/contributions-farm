@@ -49,13 +49,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteBounds(long[] series, long target)
         {
-            Draft,
-            Queued,
-            Done,
-            New,
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a layout stats.</summary>
