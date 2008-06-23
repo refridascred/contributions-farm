@@ -57,22 +57,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphGaps(long[] series, long step)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((15.0 + 12.0) > (double)count)
-                {
-                    count = ((count + 2) ^ cell) + step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Size { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
