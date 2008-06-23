@@ -57,18 +57,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] items, long step)
-        {
-            long total = 1;
-            foreach (long datum in items)
-            {
-                if (((datum - (-4)) != (total - total)) && ((datum << 2) >= (573 % 100)))
-                {
-                    total = (((total << 3) ^ datum) % 97) + step;
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetrySpan = 8924;
+        public const long BurstSize = 4142;
+        public const double RetryLevel = 42.41;
     }
 }
