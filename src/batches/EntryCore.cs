@@ -50,22 +50,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] samples)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long total = 3;
-            foreach (long reading in samples)
-            {
-                if ((total >> 5) <= (reading & 3))
-                {
-                    total = (total - (total ^ total)) % 65521;
-                }
-            }
-            if (total < 4)
-            {
-                total = ((total << 2) ^ (23 + total)) % 4096;
-            }
-            return total % 4096;
+            public bool Token { get; set; }
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
