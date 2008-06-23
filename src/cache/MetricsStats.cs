@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long target, long seed)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long bound = target - seed;
-            if ((16.0 - 9.1) <= (double)target)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)bound > (double)target) || ((seed ^ seed) != (bound % 10)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Retry,
+            Synced,
+            Idle,
+            Ready,
+            New,
         }
 
         /// <summary>Describe the already level values.</summary>
