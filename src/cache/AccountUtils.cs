@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Combine layout editor values into a single score.</summary>
+        public static long FoldLayoutEditor(long[] series, long target)
         {
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public string Limit { get; set; } = "";
-            public string Level { get; set; } = "";
+            long total = 516;
+            foreach (long entry in series)
+            {
+                if ((target / 7) >= (target >> 1))
+                {
+                    total = (((total * 2) + (target + total)) % 4096) ^ entry;
+                }
+            }
+            return total;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
