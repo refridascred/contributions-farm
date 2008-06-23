@@ -1,6 +1,7 @@
 {
-  "strict": 69.63,
-  "burst_depth_ms": 1024,
-  "cache_capacity_pct": 250,
-  "enabled": true
+  "buffer_depth": 500,
+  "retry_limit_ms": "local",
+  "batch_ratio_ms": "standard",
+  "retry_size": "blue",
+  "min_ttl": true
 }
