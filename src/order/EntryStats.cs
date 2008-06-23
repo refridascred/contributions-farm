@@ -35,19 +35,11 @@ namespace Common.Utilities
         public const string DefaultFactor = "stable";
         public const long SoftStream = 4618;
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryMatches(long[] items, long origin)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((75 % 2) >= origin)
-                {
-                    hits = (hits + 2) ^ sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftCount = 1643;
+        public const long IdleSpan = 2583;
+        public const string LimitGithubfarm = "fallback-edge";
+        public const long BurstGithubfarm = 2890;
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long AuditGithubfarmGaps(long[] samples, long offset)
