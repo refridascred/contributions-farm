@@ -38,24 +38,9 @@ namespace Common.Utilities
         public const long WindowEditor = 2822;
         public const double StepEditor = 39.47;
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long limit, long seed)
-        {
-            if (((double)seed != (3.97 - 2.0)) || ((double)seed < (4.0 * 15.0)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((4.65 > (double)limit) || ((limit ^ limit) < (limit / 6)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string RetryStream = "local-edge";
+        public const string MinLevel = "fallback-1";
+        public const long MaxRatio = 2807;
     }
 }
