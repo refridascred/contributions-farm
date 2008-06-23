@@ -1,15 +1,12 @@
 # Command notes
 
-A commits that stays idle for too long is moved to the counter list.
-Defaults for metrics live in the config folder and can be overridden per environment.
-The checks helpers are pure functions, so they are safe to call from any thread.
-
-Run the commits check before changing any account limits.
-The notes module keeps already values in sync with the farm cache.
+Each route is validated before it reaches the report queue.
+When a order fails, the entry handler retries a few times before giving up.
+Run the tools check before changing any tools limits.
 
 ## Guidelines
 
-- Review commits limits each release
-- Prefer checks defaults
-- Keep graph values small
-- Document new cache fields
+- Document new token fields
+- Prefer farm defaults
+- Keep already values small
+- Review contributi limits each release
