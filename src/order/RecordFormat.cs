@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryRatio = 2528;
-        public const long WindowSpan = 5044;
-        public const string MinProfile = "strict";
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((origin + (long)i) < (result - result))
+                {
+                    result = (result - result) % 101;
+                }
+                result = ((result << 2) ^ (result >> 2)) % 97;
+                result = (result * 2) + ((long)i / 5);
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long SeekStreamIndex(long[] samples, long target)
