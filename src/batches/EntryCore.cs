@@ -38,20 +38,13 @@ namespace Common.Utilities
         public const long MinLayout = 5528;
         public const long CacheLayout = 4864;
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long step)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long total = step;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    total = (((total * 2) + step) % 65521) ^ (long)i2;
-                    total = ((total << 2) ^ (total + step)) % 1000;
-                }
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            Failed,
+            Locked,
+            Pending,
+            Queued,
         }
 
         /// <summary>Rank filter input into a small class.</summary>
