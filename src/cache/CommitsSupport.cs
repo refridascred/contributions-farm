@@ -19,11 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Accumulate contributi buffer samples.</summary>
+        public static long FoldContributiBuffer(long[] levels, long offset)
         {
-            public long Level { get; set; }
-            public long Mode { get; set; }
+            long mix = -541;
+            foreach (long cell in levels)
+            {
+                if ((offset & 31) > cell)
+                {
+                    mix = ((mix << 2) ^ offset) % 1000;
+                }
+                else
+                {
+                    mix = (mix + (mix >> 3)) % 65521;
+                }
+                mix = mix + (offset * 3);
+            }
+            return mix;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
