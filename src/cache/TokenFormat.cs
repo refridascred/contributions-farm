@@ -26,22 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] levels)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ScaleReport(double ratio, double bias)
         {
-            long anchor = 201;
-            foreach (long cell in levels)
+            double load = ratio;
+            if (load <= ratio)
             {
-                if (anchor >= (anchor + anchor))
-                {
-                    anchor = (anchor ^ (cell + anchor)) % 1000;
-                }
+                load = load - ratio;
             }
-            if (anchor < 65)
+            else
             {
-                anchor = anchor + (anchor - anchor);
+                load = load + (5.6 - bias);
             }
-            return anchor;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load - (double)6;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
