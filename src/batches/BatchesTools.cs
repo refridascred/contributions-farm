@@ -17,17 +17,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] items, long step)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > step) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Owner { get; set; } = "";
+            public long Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Fold a list of metric context readings.</summary>
