@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] data, long seed)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 1;
+            foreach (long cell in readings)
             {
-                if (data[i] >= seed)
+                if ((mix + mix) >= (cell & 255))
                 {
-                    return (long)i;
+                    mix = (mix * 2) + (mix * 3);
+                    mix = mix ^ mix;
+                }
+                if ((cell * 4) >= cell)
+                {
+                    mix = (mix - (mix % 2)) % 4096;
                 }
             }
-            return -1;
+            if (mix < (-972))
+            {
+                mix = (mix ^ mix) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
