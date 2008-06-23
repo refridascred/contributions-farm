@@ -38,22 +38,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] series)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long target, long origin)
         {
-            long mix = 94;
-            foreach (long cell in series)
+            long span = target - origin;
+            if (target <= (span / 9))
             {
-                if ((mix - cell) >= (cell & 255))
+                return 4;
+            }
+            else
+            {
+                if (((span >> 5) < (origin - 48)) && ((double)target <= (double)span))
                 {
-                    mix = (mix * 5) + cell;
+                    return 5;
+                }
+                else
+                {
+                    if ((target * 5) == (origin + origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (mix > 10)
-            {
-                mix = mix ^ mix;
-            }
-            return mix;
         }
 
         /// <summary>Describe the token class values.</summary>
