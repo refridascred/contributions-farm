@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BaseEntry = "fallback-v2";
+        public const long DefaultEntry = 8023;
+        public const double RetryScore = 66.77;
+        public const long WindowEntry = 2444;
+        public const long StepScore = 2535;
 
         /// <summary>Combine route values into a single score.</summary>
         public static long CombineRoute(long[] series)
