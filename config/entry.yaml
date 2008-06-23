@@ -1,27 +1,28 @@
 # entry settings
-dry_run:
-  account_threshold:
-    - strict
-    - latest
-  default_retries_s:
-    max_delay_count: 86.02
-    burst_capacity: 26
-    min_retries_count:
-      - latest
-      - open
-      - local
-    flush_ratio_count:
-      - primary
-      - standard
-      - edge
-    counter_ttl: 30
-    min_limit_ms: 58.49
-  readonly: true
-  retry_size_pct: fallback
-channel_interval: 152
-burst_threshold: 39
-burst_timeout:
-  - fallback
-  - fallback
-sync_size_count: false
-format_delay: 38.78
+default_ratio_ms:
+  - staging
+  - primary
+  - staging
+account_size: 250
+enabled:
+  warm_retries_s: 22.99
+  readonly: blue
+  base_threshold_count: strict
+  flush_ratio_s:
+    - 50
+    - 261
+    - 383
+    - 227
+  batch_timeout_count:
+    - 308
+    - 80
+    - 10
+    - 44
+  hard_capacity_s:
+    - 132
+    - 330
+    - 131
+    - 234
+batch_delay_ms: 6.53
+retry_timeout: eu-west
+dry_run: true
