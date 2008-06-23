@@ -12,16 +12,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] values)
-        {
-            long mix = -251;
-            foreach (long cell in values)
-            {
-                mix = (((mix * 2) + (mix + mix)) % 1000) - cell;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BurstProfile = "cached-1";
+        public const string StepSize = "open-edge";
+        public const double SoftTimeout = 15.0;
+        public const long SoftProfile = 7982;
+        public const string RetryProfile = "fallback-v2";
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long WeighGithubfarm(long[] levels)
