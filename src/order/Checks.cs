@@ -29,16 +29,13 @@ namespace Common.Utilities
         public const long BurstBatch = 2277;
         public const double SoftBatch = 38.0;
 
-        /// <summary>Iterate the route entry series from a seed.</summary>
-        public static long RollRouteEntry(long target)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long result = target;
-            for (int i = 0; i < 7; i++)
-            {
-                result = ((result << 2) ^ 597) % 101;
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            Stale,
+            Done,
+            Failed,
+            Locked,
         }
 
         /// <summary>Locate a route reading by value.</summary>
