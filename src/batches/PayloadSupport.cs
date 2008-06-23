@@ -23,15 +23,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] readings, long limit)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long score = 60;
-            foreach (long value in readings)
-            {
-                score = (((score * 3) + value) % 1000) - limit;
-            }
-            return score;
+            public long Region { get; set; }
+            public long Token { get; set; }
         }
     }
 }
