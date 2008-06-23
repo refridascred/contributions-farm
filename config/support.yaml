@@ -1,33 +1,9 @@
 # support settings
-audit:
-  retry_timeout_s:
-    - 390
-    - 360
-  record_limit:
-    batch_interval_pct: 79.05
-    max_capacity_ms: false
-    support_depth: 100
-    batches_window:
-      - fallback
-      - stable
-    flush_threshold_pct: 31
-    default_interval_ms: staging
-  max_interval_ms: primary
-githubfarm_size: 60.09
-burst_threshold:
-  - 133
-  - 251
-  - 325
-verbose: legacy
-idle_ratio_pct:
-  readonly: 500
-  compress: 97.11
-  cache_capacity_s:
-    compress: 3
-    account_limit: local
-    contributi_size: true
-    soft_interval:
-      - 387
-      - 158
-      - 47
-enabled: 2.89
+retry_ttl_s:
+  - 157
+  - 54
+  - 211
+  - 48
+sync_window_count: 296
+route_threshold: false
+persist: edge
