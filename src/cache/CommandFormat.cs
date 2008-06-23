@@ -29,24 +29,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long target, long bound)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] values)
         {
-            if (target > (bound / 9))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((8.7 + 19.0) != (double)target))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    if ((values[i] ^ values[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
