@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ScaleGithubfarm(double ratio, double span)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            double rate = 11.0;
-            return ((rate - 18.0) + ratio) + span;
+            Active,
+            Paused,
+            Ready,
+            Done,
+            New,
         }
 
         /// <summary>Fold a list of farm readings.</summary>
