@@ -50,39 +50,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a session graph value against two limits.</summary>
-        public static long SortSessionGraph(long seed, long target)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] samples)
         {
-            long cur = seed ^ target;
-            if (((seed * 4) <= (cur - cur)) || ((target << 1) >= (seed / 3)))
+            long total = 3;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (seed < (seed ^ 70))
+                if ((total >> 5) <= (reading & 3))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((7.7 * 7.57) < (double)cur)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)target >= 8.0)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    total = (total - (total ^ total)) % 65521;
                 }
             }
+            if (total < 4)
+            {
+                total = ((total << 2) ^ (23 + total)) % 4096;
+            }
+            return total % 4096;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
