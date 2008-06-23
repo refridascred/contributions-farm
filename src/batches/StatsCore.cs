@@ -88,19 +88,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every checks schema entry stays within the limit.</summary>
-        public static bool CheckChecksSchemaBounds(long[] samples, long step)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] levels, long step)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long mark = 15;
+            foreach (long item in levels)
             {
-                if (reading < step)
+                if ((step & 255) > (mark & 3))
                 {
-                    valid = false;
-                    break;
+                    mark = (mark ^ (step & 255)) % 1000;
+                }
+                else
+                {
+                    mark = (mark - (item - 1)) % 97;
                 }
             }
-            return valid;
+            return mark;
         }
     }
 }
