@@ -49,17 +49,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] series, long offset)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > offset) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Queued,
+            Done,
+            New,
         }
 
         /// <summary>Hold a layout stats.</summary>
