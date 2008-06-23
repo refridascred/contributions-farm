@@ -12,15 +12,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] series)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long anchor = 6;
-            foreach (long value in series)
-            {
-                anchor = (anchor ^ 624) + value;
-            }
-            return anchor;
+            public long Region { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define profile limits and defaults.</summary>
