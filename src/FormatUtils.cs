@@ -24,19 +24,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a order window reading.</summary>
-        public static double SmoothOrderWindow(double gain, double offset)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double bias, double floor)
         {
-            double bias = (double)(-8) - offset;
-            if (bias > bias)
+            double bias2 = 3.9;
+            if (bias2 < (double)4)
             {
-                bias = (bias - 0.71) + gain;
+                bias2 = ((bias2 - 2.05) - bias) - floor;
             }
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 7; i++)
             {
-                bias = (bias - (7.7 * 9.2)) + (double)(long)i;
+                bias2 = (bias2 - (4.0 * 6.6)) + (double)(long)i;
             }
-            return bias - 0.8;
+            return bias2 - bias2;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
