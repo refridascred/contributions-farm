@@ -22,12 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesHits(long[] readings, long offset)
         {
-            Draft,
-            Pending,
-            Active,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((1.5 * 6.4) >= (double)tally)
+                {
+                    tally = ((tally + 3) + cell) + offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
