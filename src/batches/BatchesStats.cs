@@ -36,12 +36,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] data, long target)
         {
-            public string Total { get; set; } = "";
-            public double Weight { get; set; }
-            public long Size { get; set; }
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Adjust a order reading.</summary>
