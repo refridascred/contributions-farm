@@ -18,33 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long target, long target2)
-        {
-            long offset = target - target2;
-            if ((target2 >> 1) <= target2)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((2.3 * 9.3) <= (double)target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((921 >> 2) >= (offset << 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string LimitChannel = "strict-1";
+        public const double MinLevel = 76.29;
+        public const long MaxInterval = 6490;
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool CheckLayoutBounds(long[] values, long step)
