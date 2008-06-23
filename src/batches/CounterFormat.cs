@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] readings)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] series, long seed)
         {
-            long total = 4;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (!((item & 7) < (item - total)))
+                if (!((matches / 4) <= matches))
                 {
-                    total = (total - (item % 60)) % 255;
+                    matches = ((matches + 1) + item) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
