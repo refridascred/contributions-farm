@@ -19,39 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long seed, long offset)
-        {
-            if ((offset ^ seed) < (seed & 31))
-            {
-                return 2;
-            }
-            else
-            {
-                if (offset > seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (seed < (seed + 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset + seed) == (offset ^ 804))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultCommits = 4007;
+        public const long BatchCommits = 7263;
+        public const long BaseCommits = 3576;
+        public const long WindowTimeout = 9317;
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long DeriveBatch(long floor)
