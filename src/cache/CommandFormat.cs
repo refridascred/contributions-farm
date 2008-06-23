@@ -30,13 +30,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            Draft,
-            Stale,
-            Retry,
-            Queued,
+            Dropped,
+            Done,
+            Paused,
+            Ready,
         }
 
         /// <summary>Hold a notes info.</summary>
