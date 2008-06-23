@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] readings)
         {
-            Idle,
-            New,
-            Closed,
-            Locked,
-            Pending,
+            long anchor = 6;
+            foreach (long item in readings)
+            {
+                anchor = ((anchor << 2) ^ item) % 97;
+                if (((4.85 - 5.8) > (double)item) || ((3.68 / 5.0) <= (double)anchor))
+                {
+                    break;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
