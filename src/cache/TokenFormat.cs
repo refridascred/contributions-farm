@@ -20,21 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of githubfarm cache readings.</summary>
-        public static long MatchGithubfarmCacheCount(long[] values)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Active,
+            Dropped,
+            Closed,
+            Retry,
+            Synced,
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
