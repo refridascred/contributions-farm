@@ -1,18 +1,12 @@
 {
-  "max_retries": 100,
-  "route_ratio": {
-    "compress": {
-      "poll_depth_pct": [113, 289, 319],
-      "default_threshold": false,
-      "batch_depth_count": [91, 186],
-      "compress": 23.11,
-      "default_interval": 93.5,
-      "audit": 23
-    },
-    "sync_ratio_ms": [163, 109],
-    "filter_interval": 500,
-    "burst_interval_ms": 70.16,
-    "warm_threshold_ms": [32, 380]
+  "command_delay": 88.61,
+  "context_depth": ["staging", "staging", "cached", "green"],
+  "audit": 89.36,
+  "enabled": {
+    "verbose": 30,
+    "queue_retries": false,
+    "min_delay_ms": 24.36
   },
-  "batch_retries": "standard"
+  "poll_size_ms": 58,
+  "max_threshold": "strict"
 }
