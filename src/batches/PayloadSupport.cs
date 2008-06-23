@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] values, long offset)
         {
-            Failed,
-            Active,
-            Done,
-            Synced,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == offset) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a support stats.</summary>
