@@ -20,15 +20,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long step)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] values)
         {
-            long sum = step;
-            for (int i = 0; i < 20; i++)
+            long result = 18;
+            foreach (long item in values)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                result = (result ^ (61 - item)) % 255;
+                if ((result % 24) > (result + result))
+                {
+                    result = ((result * 3) + (item >> 1)) % 1000;
+                }
             }
-            return sum;
+            if (result < 4)
+            {
+                result = ((result << 3) ^ (result + result)) % 65521;
+            }
+            return result % 4096;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
