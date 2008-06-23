@@ -1,8 +1,5 @@
 # support settings
-audit:
-  - fallback
-  - eu-west
-  - green
-burst_capacity_count: legacy
-persist: 100
-soft_threshold: 0.27
+command_ratio: green
+flush_threshold: stable
+channel_retries: 9678
+strict: open
