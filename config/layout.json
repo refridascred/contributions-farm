@@ -1,12 +1,6 @@
 {
-  "default_interval": "standard",
-  "soft_ttl": [419, 185, 108],
-  "dry_run": "edge",
-  "verbose": {
-    "poll_threshold_s": 1,
-    "batch_depth": true,
-    "cluster_ratio": "legacy",
-    "idle_delay_pct": 100
-  },
-  "entry_depth": true
+  "record_size": 64,
+  "min_size_ms": 92,
+  "sync_retries_s": ["blue", "strict", "cached", "staging"],
+  "strict": 500
 }
