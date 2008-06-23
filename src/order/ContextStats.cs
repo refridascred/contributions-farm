@@ -13,20 +13,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long bound)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long result = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                result = ((result << 2) ^ bound) % 255;
-                if (((-64) * 4) >= ((long)i + 0))
-                {
-                    result = (result ^ (long)i) % 255;
-                }
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            public string Flag { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the layout class values.</summary>
