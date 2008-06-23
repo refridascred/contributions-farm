@@ -58,11 +58,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string CacheRoute = "latest-1";
-        public const long StepSize = 1723;
-        public const long IdleRoute = 6732;
-        public const double BaseRoute = 90.11;
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LocateBatchesIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > offset) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
