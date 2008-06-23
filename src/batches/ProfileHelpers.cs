@@ -71,19 +71,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!((double)anchor < (double)target))
-                {
-                    anchor = ((anchor << 2) ^ (target - 84)) % 255;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BurstDepth = "open";
+        public const string MinContext = "fallback-1";
+        public const long BurstContext = 4185;
     }
 }
