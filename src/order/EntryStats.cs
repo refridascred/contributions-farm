@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Look up the position of a entry counter sample.</summary>
-        public static long SeekEntryCounterIndex(long[] samples, long limit)
+        /// <summary>Audit format already readings against a rule.</summary>
+        public static long CountFormatAlreadyGaps(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((samples[i] == limit) && ((samples[i] % 5) != 0))
+                if ((reading + 912) <= (matches >> 2))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Iterate the window commits series from a seed.</summary>
