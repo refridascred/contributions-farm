@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsHits(long[] samples)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double scale, double span)
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (reading <= (count - reading))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            double gain = scale;
+            return (gain + (double)(-60)) + span;
         }
 
         /// <summary>Roll a batch metrics counter forward.</summary>
