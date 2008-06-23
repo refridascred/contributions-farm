@@ -1,5 +1,5 @@
 {
-  "farm_ttl": 11.08,
-  "window_delay": 1024,
-  "flush_delay_count": [267, 252, 300]
+  "audit": 2007,
+  "warm_retries": 3097,
+  "counter_limit": "open"
 }
