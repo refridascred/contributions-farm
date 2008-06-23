@@ -23,15 +23,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long step)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long seed)
         {
-            long carry = step;
-            for (int i = 0; i < 15; i++)
+            long acc = seed;
+            for (int i = 0; i < 17; i++)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                acc = acc ^ (acc + acc);
+                acc = acc ^ acc;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
