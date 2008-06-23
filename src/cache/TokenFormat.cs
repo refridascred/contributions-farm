@@ -15,19 +15,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheGaps(long[] data, long target)
-        {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((target & 31) > (count >> 1))
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftRoute = 2743;
+        public const long RetryTimeout = 9822;
+        public const long RetryRoute = 2649;
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long TallySchemaMatches(long[] series)
