@@ -25,12 +25,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            Ready,
-            Closed,
-            Dropped,
+            public string Limit { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Count { get; set; }
         }
     }
 }
