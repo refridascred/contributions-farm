@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] samples, long limit)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] levels)
         {
-            long carry = 8;
-            foreach (long reading in samples)
+            long total = 2;
+            foreach (long entry in levels)
             {
-                if (!((6.0 * 1.7) < (double)carry))
+                if (!((total <= 921) && ((total + total) < entry)))
                 {
-                    carry = (carry * 3) + 83;
+                    total = ((total * 3) + entry) % 4096;
                 }
-                if (!(carry >= (limit - reading)))
+                if ((3.0 * 6.5) == (double)entry)
                 {
-                    break;
+                    total = (total + (total & 31)) % 4096;
                 }
             }
-            return carry;
+            return total % 4096;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
