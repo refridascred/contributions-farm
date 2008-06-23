@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long floor)
         {
-            public bool Count { get; set; }
-            public long Limit { get; set; }
+            long total = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                total = total ^ (6 + (long)i);
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    total = (((total * 4) + total) % 4096) ^ (long)i2;
+                }
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Describe the payload state values.</summary>
