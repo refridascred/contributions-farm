@@ -70,16 +70,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long floor)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksLimits(long[] readings, long floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 4; i++)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                anchor = ((anchor * 3) + (9 >> 2)) % 255;
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if (reading < floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
     }
 }
