@@ -23,17 +23,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long seed)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long acc = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = acc ^ (acc + acc);
-                acc = acc ^ acc;
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            Paused,
+            Synced,
+            Draft,
+            Idle,
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
