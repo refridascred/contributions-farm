@@ -20,22 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 5055;
+        public const double WindowEntry = 68.68;
+        public const double StepEntry = 80.7;
+        public const long BurstEntry = 2336;
+        public const long MinWidth = 3621;
 
         /// <summary>Fold a list of metric entry readings.</summary>
         public static long ScoreMetricEntry(long[] samples)
