@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the stats account entries that pass the check.</summary>
-        public static long MeasureStatsAccountHits(long[] series)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((value & 63) <= value)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Mode { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a buffer stats.</summary>
