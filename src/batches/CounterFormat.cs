@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchLevel = 1458;
-        public const string WindowRecord = "primary";
-        public const long SoftBudget = 8469;
-        public const long IdleRecord = 9069;
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
+        {
+            public long Weight { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long DigestContributi(long[] samples)
