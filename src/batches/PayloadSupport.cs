@@ -20,19 +20,13 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterRange(long[] data, long seed)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Flag { get; set; }
+            public string Total { get; set; } = "";
+            public long Level { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Match up cluster samples.</summary>
