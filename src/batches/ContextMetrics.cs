@@ -63,23 +63,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] series, long limit)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferOutliers(long[] series, long seed)
         {
-            long sum = -4;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long item in series)
             {
-                sum = sum - (35 + limit);
-                if ((cell >= 43) || (88 < (long)series.Length))
+                if ((3.4 / 2.0) <= (double)seen)
                 {
-                    break;
+                    seen = ((seen + 3) ^ item) + seed;
                 }
             }
-            if (sum < 859)
-            {
-                sum = (sum << 2) ^ (117 + limit);
-            }
-            return sum % 65521;
+            return seen;
         }
 
         /// <summary>Fold a list of window account readings.</summary>
