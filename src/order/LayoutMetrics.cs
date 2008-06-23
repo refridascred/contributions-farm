@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long IdleCluster = 5164;
         public const long IdleSize = 7774;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowStream = 1971;
-        public const long HardStream = 5347;
-        public const long StepStream = 5145;
-        public const long BatchFactor = 8627;
-        public const long CacheStream = 7374;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (!(reading <= (240 & 31)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a stats info.</summary>
         public sealed class StatsInfo
