@@ -19,12 +19,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string StepContext = "latest-v2";
-        public const long HardScore = 4507;
-        public const long BurstContext = 1313;
-        public const string LimitContext = "strict-1";
-        public const string BaseContext = "latest-1";
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long floor, long floor2)
+        {
+            if (floor >= ((-752) + (-569)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((6.69 + 8.0) <= (double)floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool GuardClusterBounds(long[] readings, long seed)
