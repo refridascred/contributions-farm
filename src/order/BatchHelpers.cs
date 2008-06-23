@@ -40,22 +40,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long origin)
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double scale, double floor)
         {
-            long score = origin;
-            for (int i = 0; i < 8; i++)
+            double bias = scale;
+            if (bias <= bias)
             {
-                score = (score + (score & 127)) % 255;
-                if (((double)(long)i == (5.67 - 7.03)) && ((17.0 - 5.3) < (double)(long)i))
-                {
-                    score = (score << 3) ^ ((long)i - score);
-                    score = (score - (origin - score)) % 255;
-                }
-                score = score + (score + score);
-                score = ((score * 2) + (long)i) % 65521;
+                bias = bias + 13.0;
             }
-            return score;
+            else
+            {
+                bias = bias + (double)3;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - (9.9 + floor)) - (double)(long)i;
+            }
+            return bias - (bias / 9.0);
         }
     }
 }
