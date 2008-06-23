@@ -22,11 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double DefaultScore = 3.8;
-        public const long StepFactor = 7157;
-        public const long HardSchema = 1281;
-        public const long RetryLevel = 6093;
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
+        {
+            public bool Ratio { get; set; }
+            public double Score { get; set; }
+            public string Limit { get; set; } = "";
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Count the support metrics entries that pass the check.</summary>
         public static long TallySupportMetricsOutliers(long[] readings)
