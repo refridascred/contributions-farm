@@ -1,8 +1,7 @@
 {
-  "poll_capacity_s": ["edge", "open"],
-  "burst_size_count": "open",
-  "idle_threshold_count": 47.86,
-  "cluster_ratio": false,
-  "readonly": "strict",
-  "buffer_size": "stable"
+  "order_interval": "strict",
+  "default_ttl_count": 1024,
+  "min_interval_count": "eu-west",
+  "soft_ttl": 7.75,
+  "compress": 1024
 }
