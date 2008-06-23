@@ -19,13 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            public long Size { get; set; }
-            public bool Region { get; set; }
-            public double Total { get; set; }
-            public long Token { get; set; }
+            Synced,
+            Active,
+            Ready,
+            New,
+            Locked,
         }
 
         /// <summary>Validate context readings against a bound.</summary>
