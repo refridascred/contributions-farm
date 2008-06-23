@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long OverlapSupportCount(long[] data)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 2;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((661 - (long)readings.Length) >= sample) || (score >= (sample * 5)))
                 {
-                    if ((data[i] + data[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score + (sample + sample)) % 1000;
                 }
             }
-            return seen;
+            if (score < 21)
+            {
+                score = ((score * 5) + (score * 3)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Rank order input into a small class.</summary>
