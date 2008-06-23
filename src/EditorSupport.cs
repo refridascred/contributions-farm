@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinContext = 9939;
-        public const long LimitScore = 9221;
-        public const long MaxRatio = 4939;
-        public const long BatchLevel = 4135;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchRange(long[] values, long floor)
+        {
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the metric level values.</summary>
         public enum MetricLevel
