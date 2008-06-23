@@ -41,11 +41,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 1303;
-        public const long BatchContext = 4470;
-        public const long MaxLevel = 6684;
-        public const double BaseRatio = 64.32;
-        public const long RetryTimeout = 9803;
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
+        {
+            public double Limit { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
