@@ -36,17 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] readings, long floor)
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double weight, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = 18.0 * 4.81;
+            if (drift <= floor)
             {
-                if (readings[i] > floor)
-                {
-                    return (long)i;
-                }
+                drift = (drift - (double)(-28)) - weight;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + 17.0) + (double)(long)i;
+            }
+            return drift - (4.3 - floor);
         }
 
         /// <summary>Hold a schema stats.</summary>
