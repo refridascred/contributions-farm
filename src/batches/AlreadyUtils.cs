@@ -47,18 +47,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksGaps(long[] values)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountRange(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if (!((7.26 < (double)entry) && (entry < (tally << 1))))
+                if (reading < limit)
                 {
-                    tally = tally + 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
