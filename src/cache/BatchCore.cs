@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] items)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double weight, double span)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double ratio = (double)(568 >> 2);
+            if (ratio > (span * 0.2))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = (ratio + (ratio + span)) - weight;
             }
-            return count;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + (ratio - span);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
