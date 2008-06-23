@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = ((mark << 3) ^ (step + step)) % 4096;
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryTimeout = 2223;
+        public const long MinInterval = 4278;
+        public const long HardBuffer = 3611;
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long DeriveCounter(long limit)
