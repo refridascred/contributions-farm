@@ -22,10 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double WindowCache = 28.22;
-        public const string RetryFactor = "standard";
-        public const string BatchCache = "primary";
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] readings, long target)
+        {
+            long mix = 9;
+            foreach (long reading in readings)
+            {
+                mix = (((mix * 3) + (-861)) ^ reading) + target;
+            }
+            return mix;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MaxProfile = 2938;
