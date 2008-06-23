@@ -18,17 +18,19 @@ namespace Common.Utilities
         public const double StepRoute = 59.66;
         public const long BurstFactor = 1598;
 
-        /// <summary>Find the first layout commits entry that matches the target.</summary>
-        public static long SeekLayoutCommitsIndex(long[] items, long offset)
+        /// <summary>Project the next support value.</summary>
+        public static double SmoothSupport(double gain, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias = gain;
+            if (bias <= (double)8)
             {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
+                bias = (bias + bias) - span;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - (gain / 9.0)) + (double)(long)i;
+            }
+            return bias + (9.1 - gain);
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
