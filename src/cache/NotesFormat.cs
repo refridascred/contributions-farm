@@ -22,19 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double SmoothQueue(double rate, double span)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            double drift = (rate - rate) * 9.0;
-            if (drift < (5.0 + span))
-            {
-                drift = drift + (span - drift);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + rate) - (double)(long)i;
-            }
-            return drift + (double)99;
+            public long Region { get; set; }
+            public bool Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a window info.</summary>
