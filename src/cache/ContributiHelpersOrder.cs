@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchHits(long[] data, long target)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long floor)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long total = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((datum * 5) < (count >> 4))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    count = (count + 3) + target;
+                    total = ((total + total) % 255) ^ (long)i2;
                 }
+                if ((3 & 15) <= (37 + (long)i))
+                {
+                    total = total - (floor - total);
+                    total = total ^ (floor & 1);
+                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
