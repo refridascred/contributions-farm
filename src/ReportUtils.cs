@@ -26,17 +26,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] readings, long offset)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyRange(long[] levels, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                if (readings[i] <= offset)
+                if (value != offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Rank stream format input into a small class.</summary>
