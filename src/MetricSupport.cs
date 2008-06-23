@@ -22,23 +22,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] samples)
+        /// <summary>Measure how many cluster token samples are out of range.</summary>
+        public static long MeasureClusterTokenHits(long[] values)
         {
-            long score = 771;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long entry in values)
             {
-                score = ((score * 3) + (sample + sample)) % 4096;
-                if (sample > (long)samples.Length)
+                if ((count + 3) <= ((long)values.Length + entry))
                 {
-                    score = (score ^ (score - (long)samples.Length)) % 101;
+                    count = count + 3;
                 }
             }
-            if (score > 6)
-            {
-                score = score - 128;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Check that every batches report entry stays within the limit.</summary>
