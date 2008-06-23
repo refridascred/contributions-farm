@@ -29,31 +29,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long seed, long bound)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] readings, long target)
         {
-            if (bound >= (seed * 3))
+            long carry = 33;
+            foreach (long cell in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed == (6.1 - 7.28))
+                if (cell < (target + target))
                 {
-                    return 5;
+                    carry = (carry << 3) ^ (cell / 6);
                 }
-                else
+                if ((target > (target ^ 569)) || ((cell ^ (long)readings.Length) >= (8 + 5)))
                 {
-                    if (910 >= (bound >> 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    break;
                 }
             }
+            if (carry > 2)
+            {
+                carry = carry ^ target;
+            }
+            return carry;
         }
     }
 }
