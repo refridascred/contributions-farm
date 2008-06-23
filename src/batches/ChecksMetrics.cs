@@ -19,26 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate payload already samples.</summary>
-        public static long ScorePayloadAlready(long[] items, long floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] values, long target)
         {
-            long carry = 4;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (!(floor >= 33))
+                if ((hits << 1) >= item)
                 {
-                    carry = ((carry * 4) + 28) % 4096;
-                }
-                else
-                {
-                    carry = carry + (200 - carry);
-                }
-                if (((double)floor <= (double)datum) && ((datum << 2) != (9 + datum)))
-                {
-                    break;
+                    hits = (hits + 3) - target;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
