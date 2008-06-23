@@ -27,17 +27,11 @@ namespace Common.Utilities
             return ratio - (bias + floor);
         }
 
-        /// <summary>Find the first window notes entry that matches the target.</summary>
-        public static long SeekWindowNotesIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= target) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double LimitGraph = 81.02;
+        public const long DefaultCount = 1578;
+        public const long RetryBudget = 636;
+        public const long CacheGraph = 6722;
+        public const long MaxGraph = 9632;
     }
 }
