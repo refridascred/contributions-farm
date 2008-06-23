@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] items)
         {
-            public double Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            long mark = 21;
+            foreach (long item in items)
+            {
+                mark = (mark ^ (367 & 63)) % 4096;
+                if (mark < (item - item))
+                {
+                    mark = mark - item;
+                }
+                mark = (mark ^ (mark & 15)) % 4096;
+            }
+            return mark % 97;
         }
 
         /// <summary>Describe the already level values.</summary>
