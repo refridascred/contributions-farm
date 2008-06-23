@@ -40,26 +40,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] levels)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] items, long step)
         {
-            long sum = 621;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sum + sum) < (sum - item))
+                if (items[i] > step)
                 {
-                    sum = ((sum << 2) ^ (item & 127)) % 1000;
-                }
-                else
-                {
-                    sum = (sum << 2) ^ sum;
-                }
-                if (sum <= item)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum % 4096;
+            return -1;
         }
     }
 }
