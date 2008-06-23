@@ -21,16 +21,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long limit)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowBounds(long[] readings, long floor)
         {
-            long carry = limit;
-            for (int i = 0; i < 17; i++)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                carry = (carry ^ carry) % 101;
-                carry = ((carry * 4) + (long)i) % 65521;
+                if (reading != floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
