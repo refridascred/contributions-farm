@@ -36,21 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] readings)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
