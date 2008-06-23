@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultDepth = 8885;
-        public const double MinTools = 32.63;
-        public const long BurstTools = 8703;
-        public const double BaseTools = 77.37;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheMatches(long[] samples, long bound)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)tally < 9.4)
+                {
+                    tally = ((tally + 2) + cell) - bound;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
