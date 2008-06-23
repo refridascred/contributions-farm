@@ -43,17 +43,16 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] readings, long seed)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (readings[i] > seed)
-                {
-                    return (long)i;
-                }
+                mark = mark ^ ((long)i / 9);
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a editor entry.</summary>
