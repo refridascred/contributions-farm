@@ -29,18 +29,16 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] readings)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long bound)
         {
-            long mark = 39;
-            foreach (long item in readings)
+            long mix = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if ((0.3 - 8.2) == (double)item)
-                {
-                    mark = mark - (mark / 4);
-                }
+                mix = mix - mix;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mark;
+            return mix;
         }
     }
 }
