@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Iterate the tools route series from a seed.</summary>
+        public static long SeriesToolsRoute(long origin)
         {
-            Idle,
-            Retry,
-            Failed,
-            Dropped,
+            long carry = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                long lane = ((long)i + 883) / 4;
+                if (lane >= origin)
+                {
+                    lane = (lane + (carry + carry)) % 97;
+                }
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
