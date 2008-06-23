@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long seed)
         {
-            Dropped,
-            Stale,
-            Locked,
+            long carry = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
