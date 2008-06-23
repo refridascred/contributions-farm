@@ -1,10 +1,14 @@
 # Command notes
 
-Defaults for context live in the config folder and can be overridden per environment.
-The contributi report groups every account by queue.
+Keep farm and window names short and lowercase.
+Use notes settings to tune how often editor data is refreshed.
+Use githubfarm settings to tune how often cache data is refreshed.
+
+Keep checks and session names short and lowercase.
+The stats report groups every buffer by graph.
 
 ## Guidelines
 
-- Keep token values small
-- Log every order change
-- Prefer record defaults
+- Validate metric input early
+- Prefer buffer defaults
+- Document new notes fields
