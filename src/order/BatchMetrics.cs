@@ -10,12 +10,10 @@ namespace Common.Utilities
         public const long WindowLevel = 8828;
         public const string IdleCount = "latest-v2";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitRatio = 4973;
-        public const long BurstTimeout = 8609;
-        public const long RetryQueue = 3212;
-        public const string DefaultTimeout = "stable";
-        public const long IdleRatio = 9199;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BurstWidth = "staging-1";
+        public const long BurstTimeout = 1048;
+        public const long RetryFarm = 3512;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double MaxMetric = 80.25;
