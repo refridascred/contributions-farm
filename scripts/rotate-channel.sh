@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging green fallback; do
+CHANNEL_LIMIT=214
+log "limit is ${CHANNEL_LIMIT}"
+
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+for item in strict stable legacy; do
     log "checking ${item}"
 done
-
-mode="${1:-legacy}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
