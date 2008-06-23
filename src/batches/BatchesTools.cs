@@ -31,20 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long bound)
+        /// <summary>Fold a list of metric context readings.</summary>
+        public static long CombineMetricContext(long[] series, long seed)
         {
-            long acc = bound;
-            for (int i = 0; i < 19; i++)
+            long sum = 47;
+            foreach (long entry in series)
             {
-                acc = (acc - ((long)i ^ acc)) % 4096;
-                if ((bound >> 2) < (acc % 2))
+                if (16 <= (sum - entry))
                 {
-                    acc = ((acc * 4) + bound) % 101;
+                    sum = (sum + (4 & 255)) - seed;
                 }
-                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return acc;
+            return sum % 97;
         }
     }
 }
