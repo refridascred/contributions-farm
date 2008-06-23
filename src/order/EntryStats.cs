@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long origin, long step)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamGaps(long[] series)
         {
-            long slot = origin + step;
-            if ((slot & 63) == (slot % 12))
+            long count = 0;
+            foreach (long value in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((slot * 5) != (799 + 77))
+                if ((78 ^ count) >= 15)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    count = (count + 3) - value;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the checks status values.</summary>
