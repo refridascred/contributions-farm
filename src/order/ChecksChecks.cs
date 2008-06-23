@@ -31,22 +31,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheHits(long[] data)
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            double mean = (double)(-50) * 4.0;
+            if (mean > (double)710)
             {
-                if ((entry - seen) <= seen)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = ((mean - (double)1) + weight) - floor;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + (double)39) - (double)(long)i;
+            }
+            return mean + mean;
         }
     }
 }
