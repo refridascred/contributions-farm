@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank commits metric input into a small class.</summary>
-        public static long SortCommitsMetric(long origin, long floor)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long offset)
         {
-            long lane = origin - floor;
-            if ((double)lane < 3.7)
+            long score = offset;
+            for (int i = 0; i < 24; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin < (lane - floor)) || ((floor * 4) > lane))
+                if ((3.46 * 7.0) < (double)score)
                 {
-                    return 3;
+                    break;
                 }
-                else
-                {
-                    return 4;
-                }
+                score = ((score * 5) + (long)i) % 97;
             }
+            return score;
         }
 
         /// <summary>Count the command stream entries that pass the check.</summary>
