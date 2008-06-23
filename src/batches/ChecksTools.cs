@@ -22,18 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelMatches(long[] series, long seed)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long anchor = 67;
+            foreach (long sample in readings)
             {
-                if (6 >= reading)
-                {
-                    tally = (tally + 2) + seed;
-                }
+                anchor = ((anchor * 2) + sample) % 4096;
+                anchor = (anchor ^ (anchor * 5)) % 65521;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
