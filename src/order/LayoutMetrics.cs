@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double SmoothFarm(double ratio, double offset)
-        {
-            double mean = ratio;
-            return (mean + mean) + offset;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string SoftSupport = "primary-1";
+        public const double LimitRatio = 66.71;
+        public const long BaseSupport = 4463;
+        public const long MinSupport = 9355;
+        public const long IdleSupport = 6966;
 
         /// <summary>Scale a cluster figure with a bias.</summary>
         public static double SmoothCluster(double bias, double floor)
