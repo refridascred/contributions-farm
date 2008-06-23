@@ -1,5 +1,12 @@
 {
-  "max_timeout_count": [224, 167, 312],
-  "idle_timeout_ms": 7.44,
-  "cache_timeout_ms": ["open", "local", "edge"]
+  "sync_limit": 30,
+  "default_ratio_pct": {
+    "readonly": [156, 447, 95],
+    "verbose": 6744,
+    "filter_timeout": "latest",
+    "max_limit_count": "local",
+    "default_retries_count": 4579,
+    "format_threshold": 90.99
+  },
+  "sync_window_pct": 80.91
 }
