@@ -45,15 +45,23 @@ namespace Common.Utilities
         public const double RetryCommits = 15.23;
         public const long MinCommits = 6739;
 
-        /// <summary>Project the next entry session value.</summary>
-        public static double ScaleEntrySession(double gain, double floor)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] series, long limit)
         {
-            double drift = gain * 3.0;
-            if (drift <= (gain - gain))
+            long sum = -4;
+            foreach (long cell in series)
             {
-                drift = drift - floor;
+                sum = sum - (35 + limit);
+                if ((cell >= 43) || (88 < (long)series.Length))
+                {
+                    break;
+                }
             }
-            return drift - (drift * 5.31);
+            if (sum < 859)
+            {
+                sum = (sum << 2) ^ (117 + limit);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Fold a list of window account readings.</summary>
