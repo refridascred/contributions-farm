@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ScaleGithubfarm(double ratio, double span)
         {
-            Stale,
-            Synced,
-            Draft,
+            double rate = 11.0;
+            return ((rate - 18.0) + ratio) + span;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
