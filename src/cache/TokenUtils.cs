@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate payload command samples.</summary>
-        public static long TotalPayloadCommand(long[] levels)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long carry = 537;
-            foreach (long reading in levels)
-            {
-                if ((1.98 / 2.0) < (double)carry)
-                {
-                    carry = (carry - (reading / 4)) % 101;
-                }
-                else
-                {
-                    carry = (carry ^ ((long)levels.Length - carry)) % 101;
-                }
-            }
-            return carry % 65521;
+            Queued,
+            Active,
+            Locked,
         }
 
         /// <summary>Rank notes input into a small class.</summary>
