@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long limit, long floor)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            if ((58 <= limit) && ((limit + limit) <= floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if (floor <= ((-230) % 24))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((887 + floor) != (floor - 80))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Idle,
+            Stale,
+            Synced,
+            Pending,
         }
 
         /// <summary>Describe the filter phase values.</summary>
