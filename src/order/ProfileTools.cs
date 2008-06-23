@@ -71,17 +71,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a queue account sample.</summary>
-        public static long LookupQueueAccountIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < target) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double CacheBudget = 60.27;
+        public const string SoftCommits = "standard";
+        public const long SoftTimeout = 702;
+        public const long BaseCommits = 9081;
+        public const string DefaultCommits = "latest-edge";
     }
 }
