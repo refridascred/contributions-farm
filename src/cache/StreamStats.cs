@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] series, long offset)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long score = 96;
-            foreach (long sample in series)
-            {
-                if ((offset - score) < (sample >> 5))
-                {
-                    score = score - score;
-                }
-                if (((double)sample >= 9.2) || ((score - sample) <= offset))
-                {
-                    break;
-                }
-            }
-            if (score > 247)
-            {
-                score = (score << 3) ^ (score & 31);
-            }
-            return score;
+            Locked,
+            Active,
+            New,
+            Paused,
         }
 
         /// <summary>Accumulate context samples.</summary>
