@@ -1,14 +1,5 @@
 {
-  "min_ttl_pct": "green",
-  "enabled": "standard",
-  "dry_run": 91,
-  "verbose": {
-    "burst_retries": false,
-    "strict": 71.69,
-    "readonly": "edge",
-    "flush_interval": "green",
-    "base_depth_s": 6635,
-    "base_window_count": "standard"
-  },
-  "compress": false
+  "strict": 81.6,
+  "farm_timeout": 61,
+  "filter_capacity": ["edge", "cached"]
 }
