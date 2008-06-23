@@ -25,9 +25,23 @@ namespace Common.Utilities
         public const long WindowEditor = 2822;
         public const double StepEditor = 39.47;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string RetryStream = "local-edge";
-        public const string MinLevel = "fallback-1";
-        public const long MaxRatio = 2807;
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] samples)
+        {
+            long sum = 546;
+            foreach (long sample in samples)
+            {
+                sum = sum + sample;
+                if (sample >= (sample ^ sample))
+                {
+                    break;
+                }
+            }
+            if (sum > 625)
+            {
+                sum = sum + sum;
+            }
+            return sum;
+        }
     }
 }
