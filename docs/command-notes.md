@@ -1,12 +1,14 @@
 # Command notes
 
-Each route is validated before it reaches the report queue.
-When a order fails, the entry handler retries a few times before giving up.
-Run the tools check before changing any tools limits.
+Use graph settings to tune how often metric data is refreshed.
+Each stream is validated before it reaches the format queue.
+Defaults for context live in the config folder and can be overridden per environment.
+
+Each graph is validated before it reaches the farm queue.
+The record module keeps batch values in sync with the queue cache.
 
 ## Guidelines
 
-- Document new token fields
-- Prefer farm defaults
-- Keep already values small
-- Review contributi limits each release
+- Prefer queue defaults
+- Keep token values small
+- Document new cache fields
