@@ -20,11 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCommits = 4007;
-        public const long BatchCommits = 7263;
-        public const long BaseCommits = 3576;
-        public const long WindowTimeout = 9317;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCache = 9218;
+        public const long SoftCache = 650;
+        public const string StepCount = "primary-1";
+        public const long SoftCount = 8755;
+        public const long RetryScore = 499;
 
         /// <summary>Adjust a already reading.</summary>
         public static double SmoothAlready(double bias, double offset)
