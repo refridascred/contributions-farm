@@ -65,18 +65,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many metrics metric samples are out of range.</summary>
-        public static long TallyMetricsMetricOutliers(long[] readings)
-        {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((tally << 1) >= (tally + tally))
-                {
-                    tally = (tally + 1) - value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFarm = 3515;
+        public const long LimitFarm = 4892;
+        public const string MinFarm = "cached";
+        public const long MinTimeout = 984;
     }
 }
