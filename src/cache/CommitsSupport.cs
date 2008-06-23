@@ -75,18 +75,22 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelHits(long[] items, long origin)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricOutliers(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (hits <= 632)
+                if ((7.4 + 0.74) > (double)bound)
                 {
-                    hits = ((hits + 1) + item) + origin;
+                    seen = (seen + 3) - sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
