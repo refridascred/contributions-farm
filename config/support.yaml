@@ -1,4 +1,9 @@
 # support settings
-persist: 100
-token_window: fallback
-idle_limit: 1201
+compress: 3722
+min_delay_ms:
+  - blue
+  - fallback
+  - green
+dry_run: 65
+burst_ttl_count: green
+verbose: edge
