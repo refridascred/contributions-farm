@@ -33,11 +33,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
+            Done,
+            Dropped,
+            Ready,
+            Paused,
+            Draft,
         }
 
         /// <summary>Audit session readings against a rule.</summary>
