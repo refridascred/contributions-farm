@@ -55,12 +55,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Validate payload token readings against a bound.</summary>
+        public static bool CheckPayloadTokenLimits(long[] samples, long limit)
         {
-            Idle,
-            Active,
-            Stale,
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a window info.</summary>
