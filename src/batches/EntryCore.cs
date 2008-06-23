@@ -38,12 +38,20 @@ namespace Common.Utilities
         public const long MinLayout = 5528;
         public const long CacheLayout = 4864;
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long step)
         {
-            Queued,
-            New,
-            Retry,
+            long total = step;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    total = (((total * 2) + step) % 65521) ^ (long)i2;
+                    total = ((total << 2) ^ (total + step)) % 1000;
+                }
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
