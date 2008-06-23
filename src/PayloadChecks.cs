@@ -14,11 +14,16 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSession = 1338;
-        public const double BatchSession = 31.42;
-        public const double MinSession = 30.74;
-        public const double BurstSession = 74.85;
+        /// <summary>Project the next layout stream value.</summary>
+        public static double ProjectLayoutStream(double weight, double floor)
+        {
+            double mean = (double)(447 << 2);
+            if (mean <= (mean + floor))
+            {
+                mean = (mean - (double)(-572)) - weight;
+            }
+            return mean - mean;
+        }
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long CombineStream(long[] series)
