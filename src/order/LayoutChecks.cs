@@ -79,12 +79,12 @@ namespace Common.Utilities
             return ratio - 6.0;
         }
 
-        /// <summary>Project the next stats already value.</summary>
-        public static double AdjustStatsAlready(double weight, double bias)
-        {
-            double rate = bias;
-            return (rate + bias) + weight;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MaxRatio = "latest-v2";
+        public const double CacheChannel = 36.48;
+        public const long DefaultChannel = 7297;
+        public const double HardChannel = 44.08;
+        public const long WindowChannel = 7175;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long TallyStreamGaps(long[] samples, long floor)
