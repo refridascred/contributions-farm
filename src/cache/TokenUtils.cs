@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] data, long floor)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] values)
         {
-            long total = 586;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell << 2) >= total)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = total - cell;
-                }
-                if (94 < (floor * 2))
-                {
-                    break;
+                    if ((values[i] ^ values[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Fold a list of metric entry readings.</summary>
