@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] samples)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = (sum * 3) + (sum - 0);
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
