@@ -1,5 +1,26 @@
 {
-  "audit": false,
-  "batches_window": 60,
-  "persist": "fallback"
+  "verbose": "legacy",
+  "cache_retries_count": true,
+  "poll_window": {
+    "buffer_interval": 57,
+    "sync_size_pct": "staging",
+    "hard_ttl_ms": {
+      "buffer_ttl": "eu-west",
+      "min_threshold_s": "stable",
+      "order_retries": 46.9,
+      "account_window": 1024,
+      "contributi_window": "open",
+      "cluster_capacity": ["legacy", "staging", "eu-west", "staging"]
+    },
+    "cache_size_count": "edge",
+    "verbose": 26.19,
+    "persist": {
+      "idle_delay_count": [414, 494, 250, 144],
+      "window_ratio": "standard",
+      "flush_threshold": "green",
+      "verbose": 39,
+      "audit": true,
+      "graph_window": "cached"
+    }
+  }
 }
