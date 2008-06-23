@@ -10,32 +10,19 @@ namespace Common.Utilities
         public const string HardStream = "primary";
         public const double HardCount = 43.72;
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long limit, long limit2)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordLimits(long[] levels, long limit)
         {
-            long step = limit - limit2;
-            if (limit2 > limit)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit2 ^ 747) >= limit)
+                if (reading < limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit2 ^ limit) != (step * 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Measure how many token editor samples are out of range.</summary>
