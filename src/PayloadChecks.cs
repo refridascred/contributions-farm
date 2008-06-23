@@ -25,15 +25,13 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ProjectContext(double weight, double offset)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            double gain = offset;
-            if (gain <= (double)173)
-            {
-                gain = gain - offset;
-            }
-            return gain - (8.3 - weight);
+            Done,
+            Synced,
+            Idle,
+            Pending,
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
