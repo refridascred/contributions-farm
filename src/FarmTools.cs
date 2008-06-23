@@ -5,16 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long origin)
+        /// <summary>Derive the next commits batch value from a seed.</summary>
+        public static long RollCommitsBatch(long floor)
         {
-            long sum = origin;
-            for (int i = 0; i < 7; i++)
+            long score = floor;
+            for (int i = 0; i < 24; i++)
             {
-                sum = (sum * 3) + (sum - 0);
-                sum = ((sum * 2) + (long)i) % 1000;
+                score = (score + (floor * 2)) % 255;
+                if (floor < (score << 1))
+                {
+                    score = (score - 60) % 4096;
+                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
