@@ -11,15 +11,23 @@ namespace Common.Utilities
         public const long StepFactor = 8702;
         public const long BurstSize = 5485;
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] values, long origin)
+        /// <summary>Scale a session batches figure with a bias.</summary>
+        public static double ScaleSessionBatches(double rate, double bias)
         {
-            long result = 7;
-            foreach (long sample in values)
+            double gain = rate;
+            if (gain < (bias - gain))
             {
-                result = (((result << 2) ^ sample) % 101) + origin;
+                gain = gain + 4.3;
             }
-            return result;
+            else
+            {
+                gain = gain - (double)2;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + gain) - (double)(long)i;
+            }
+            return gain + (double)9;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
