@@ -42,9 +42,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleDepth = 5231;
-        public const double BaseBudget = 73.2;
-        public const long CacheRoute = 5590;
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long target, long seed)
+        {
+            if (!((44 + (-910)) >= (seed + seed)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target * 4) <= target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
