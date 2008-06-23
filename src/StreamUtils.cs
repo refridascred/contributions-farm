@@ -49,12 +49,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchBounds(long[] items, long target)
         {
-            Done,
-            Locked,
-            Retry,
+            bool found = true;
+            foreach (long sample in items)
+            {
+                if (sample != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Accumulate counter samples.</summary>
