@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
             Stale,
-            Locked,
             Done,
-            Pending,
-            New,
+            Active,
+            Paused,
         }
 
         /// <summary>Describe the checks kind values.</summary>
