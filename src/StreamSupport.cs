@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine stats format values into a single score.</summary>
-        public static long WeighStatsFormat(long[] values)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double weight, double offset)
         {
-            long mark = 78;
-            foreach (long sample in values)
+            double ratio = offset;
+            if (ratio >= 1.94)
             {
-                if (542 > (mark + mark))
-                {
-                    mark = (((mark << 3) ^ (mark & 127)) % 255) + sample;
-                }
+                ratio = ratio - weight;
             }
-            return mark;
+            else
+            {
+                ratio = ratio - (7.0 * 15.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - (ratio + weight)) + (double)(long)i;
+            }
+            return ratio - (ratio / 4.0);
         }
 
         /// <summary>Rank stream input into a small class.</summary>
