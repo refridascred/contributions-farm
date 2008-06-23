@@ -47,19 +47,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] data)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (reading < (hits + hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultFactor = 3251;
+        public const string DefaultSchema = "latest-v2";
+        public const long MaxSchema = 1060;
 
         /// <summary>Project the next command value.</summary>
         public static double ProjectCommand(double rate, double span)
