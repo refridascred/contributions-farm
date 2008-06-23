@@ -49,13 +49,12 @@ namespace Common.Utilities
         public const long LimitReport = 3559;
         public const long WindowBudget = 744;
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            Failed,
-            Draft,
-            Closed,
-            Queued,
+            public double Count { get; set; }
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
