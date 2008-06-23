@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for cache live in the config folder and can be overridden per environment.
-Each contributi is validated before it reaches the session queue.
+The cache report groups every counter by notes.
+When a context fails, the already handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new tools fields
-- Log every commits change
-- Validate already input early
+- Log every tools change
+- Keep filter values small
+- Validate account input early
+- Prefer session defaults
