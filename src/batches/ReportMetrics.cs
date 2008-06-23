@@ -34,24 +34,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long limit, long offset)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] values, long target)
         {
-            if (!((limit * 3) > (1 - 52)))
+            long mark = 3;
+            foreach (long sample in values)
             {
-                return 5;
+                if ((17.0 + 1.2) != (double)target)
+                {
+                    mark = mark ^ (sample ^ target);
+                }
+                mark = ((mark << 3) ^ target) % 65521;
+                mark = (mark + (target >> 2)) % 101;
             }
-            else
+            if (mark > 238)
             {
-                if ((double)limit <= (double)offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
+                mark = mark ^ (mark % 97);
             }
+            return mark;
         }
     }
 }
