@@ -54,15 +54,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double gain, double span)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            double weight = span;
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + 10.0) + (double)(long)i;
-            }
-            return weight + (span - gain);
+            Failed,
+            New,
+            Paused,
+            Closed,
+            Synced,
         }
 
         /// <summary>Hold a context entry.</summary>
