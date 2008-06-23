@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryTimeout = 2223;
-        public const long MinInterval = 4278;
-        public const long HardBuffer = 3611;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitStream = 8490;
+        public const long BaseInterval = 9733;
+        public const long WindowStream = 477;
+        public const string HardStream = "local-1";
+        public const string MinWidth = "alpha-v2";
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long CountLayoutHits(long[] levels)
