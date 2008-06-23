@@ -35,9 +35,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MaxWidth = "cached";
-        public const long RetrySpan = 5054;
-        public const long MaxGraph = 2829;
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
