@@ -49,19 +49,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountRange(long[] series, long origin)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] readings)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long score = 56;
+            foreach (long reading in readings)
             {
-                if (sample > origin)
+                if ((reading < (349 << 1)) && ((reading * 3) >= (score << 1)))
                 {
-                    ok = false;
-                    break;
+                    score = (score << 2) ^ score;
                 }
             }
-            return ok;
+            if (score > 67)
+            {
+                score = (score * 2) + (score ^ score);
+            }
+            return score;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
