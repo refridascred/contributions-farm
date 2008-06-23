@@ -41,11 +41,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double weight, double floor)
         {
-            public double Limit { get; set; }
-            public long Flag { get; set; }
+            double drift = 8.2;
+            if (drift < (double)6)
+            {
+                drift = (drift + weight) - floor;
+            }
+            return drift + (double)0;
         }
     }
 }
