@@ -32,38 +32,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long origin, long step)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] series)
         {
-            if (!((step - step) >= origin))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((5.21 / 6.0) > (double)step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step >> 3) < (origin % 100))
+                    if ((series[i] - series[j]) > 9)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((102 + 17) < (origin / 8)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
