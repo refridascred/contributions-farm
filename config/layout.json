@@ -1,8 +1,10 @@
 {
-  "max_timeout": "cached",
-  "batch_ttl_pct": 0.72,
-  "batches_ratio": "stable",
-  "flush_capacity_pct": "open",
-  "retry_delay": "eu-west",
-  "default_depth": 36
+  "base_depth_pct": "open",
+  "audit": 1024,
+  "default_window_s": {
+    "compress": false,
+    "context_window": "latest",
+    "commits_size": 76.78
+  },
+  "poll_ratio_pct": "eu-west"
 }
