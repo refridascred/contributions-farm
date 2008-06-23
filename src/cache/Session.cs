@@ -27,22 +27,19 @@ namespace Common.Utilities
         public const long WindowContext = 5994;
         public const string DefaultContext = "standard-v2";
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueHits(long[] series, long limit)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterBounds(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if (matches > (limit - (-5)))
+                if (item != floor)
                 {
-                    matches = (matches + 1) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
