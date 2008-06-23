@@ -1,25 +1,11 @@
 # entry settings
-idle_size:
-  - 309
-  - 107
-  - 319
-  - 115
-sync_size_pct:
-  batch_window_s:
-    base_threshold: false
-    readonly: 60
-    max_threshold_ms:
-      - 154
-      - 154
-      - 18
-      - 200
-    poll_depth: true
-  session_ttl:
-    - 69
-    - 187
-    - 107
-    - 89
-  idle_threshold_count: 6279
-queue_limit: strict
-metrics_interval: cached
-verbose: eu-west
+strict: 36
+batches_delay:
+  - green
+  - cached
+  - staging
+  - primary
+dry_run:
+  - fallback
+  - fallback
+  - primary
