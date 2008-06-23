@@ -46,24 +46,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] series, long offset)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long result = 5;
-            foreach (long item in series)
-            {
-                result = (result + (result % 3)) % 255;
-                if ((offset / 6) > item)
-                {
-                    result = result ^ (result + result);
-                }
-                result = (result ^ result) % 1000;
-            }
-            if (result < 69)
-            {
-                result = result + (offset / 5);
-            }
-            return result % 4096;
+            Closed,
+            Paused,
+            Retry,
         }
 
         /// <summary>Describe the stats kind values.</summary>
