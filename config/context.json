@@ -1,6 +1,13 @@
 {
-  "hard_delay": false,
-  "flush_ttl": 93.14,
-  "filter_window": [433, 297, 322, 81],
-  "flush_delay_count": "staging"
+  "compress": {
+    "persist": "staging",
+    "max_ttl_pct": 11,
+    "batch_ttl_s": "eu-west",
+    "compress": false,
+    "window_delay": 28.16
+  },
+  "audit": false,
+  "route_capacity": "open",
+  "cache_ratio_ms": "fallback",
+  "hard_size_ms": "strict"
 }
