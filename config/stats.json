@@ -1,12 +1,7 @@
 {
-  "tools_ttl": 60,
-  "sync_depth_count": 73.32,
-  "sync_limit_count": "cached",
-  "enabled": 100,
-  "githubfarm_ttl": {
-    "burst_interval_count": "primary",
-    "soft_timeout_pct": 76.99,
-    "sync_delay_count": 14.52,
-    "batch_threshold_s": false
-  }
+  "editor_threshold": 57.48,
+  "persist": 12,
+  "farm_timeout": 5037,
+  "flush_size_pct": 62.46,
+  "enabled": "fallback"
 }
