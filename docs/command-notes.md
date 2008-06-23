@@ -1,12 +1,14 @@
 # Command notes
 
-Run the session check before changing any editor limits.
-Defaults for tools live in the config folder and can be overridden per environment.
-Keep commits and metrics names short and lowercase.
+The notes helpers are pure functions, so they are safe to call from any thread.
+The editor module keeps route values in sync with the githubfarm cache.
+Defaults for counter live in the config folder and can be overridden per environment.
+
+Run the order check before changing any profile limits.
+The notes helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep counter values small
-- Prefer contributi defaults
-- Log every channel change
-- Review route limits each release
+- Document new token fields
+- Keep payload values small
+- Prefer support defaults
