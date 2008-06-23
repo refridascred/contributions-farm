@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] levels)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long origin, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((bound - origin) > (origin & 63))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((bound >> 1) > bound)
                 {
-                    if ((levels[i] + levels[j]) < 3)
+                    return 8;
+                }
+                else
+                {
+                    if (((bound ^ origin) > (origin * 5)) && ((double)bound == (double)origin))
                     {
-                        tally = tally + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
