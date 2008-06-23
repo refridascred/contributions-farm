@@ -36,12 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BurstRatio = 84.59;
-        public const string BurstBudget = "local";
-        public const string SoftDepth = "local";
-        public const long BaseSchema = 6935;
-        public const double BurstSchema = 46.67;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphMatches(long[] data)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((5.4 + 4.23) <= (double)seen)
+                {
+                    seen = (seen + 2) + item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double RetryBatch = 50.91;
