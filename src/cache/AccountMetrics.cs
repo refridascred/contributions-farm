@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long seed)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long mark = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = ((mark * 2) + mark) % 1000;
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            public string Rank { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public bool Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
