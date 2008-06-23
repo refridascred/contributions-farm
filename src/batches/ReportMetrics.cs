@@ -23,13 +23,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double bias, double floor)
         {
-            Paused,
-            Synced,
-            Draft,
-            Idle,
+            double ratio = (double)(41 - 4);
+            if (ratio < (floor * 2.84))
+            {
+                ratio = ratio - (floor / 5.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (bias * 2.71)) + (double)(long)i;
+            }
+            return ratio - (bias + floor);
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
