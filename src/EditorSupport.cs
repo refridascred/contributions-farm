@@ -16,13 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
-            public long Mode { get; set; }
+            public double Region { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Blend two tools route measurements.</summary>
