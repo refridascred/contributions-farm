@@ -1,7 +1,7 @@
 # githubfarm settings
-warm_retries_count: 6090
-profile_size: cached
-readonly: 68.21
-base_retries: stable
-max_size: 8230
-idle_timeout_ms: 60
+sync_size_ms: 53
+tools_size: 7466
+cache_interval:
+  - 259
+  - 188
+dry_run: 51.68
