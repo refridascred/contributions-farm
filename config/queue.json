@@ -1,8 +1,7 @@
 {
-  "base_capacity_pct": 30,
-  "hard_limit_s": 60,
-  "min_depth": "stable",
-  "compress": [95, 24, 212],
-  "idle_window_count": 28.36,
-  "editor_threshold": 14.79
+  "flush_delay": 52,
+  "audit": true,
+  "burst_capacity_pct": true,
+  "default_delay_ms": ["edge", "latest", "legacy", "legacy"],
+  "cache_ttl_ms": "open"
 }
