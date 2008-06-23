@@ -50,11 +50,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a editor tools reading.</summary>
-        public static double SmoothEditorTools(double bias, double offset)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            double gain = bias;
-            return (gain + (1.0 * 8.0)) + offset;
+            Pending,
+            Closed,
+            Failed,
+            Paused,
+            Ready,
         }
 
         /// <summary>Hold a tools snapshot.</summary>
