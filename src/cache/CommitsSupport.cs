@@ -14,24 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of token filter entries.</summary>
-        public static long CombineTokenFilter(long[] data, long target)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double scale, double span)
         {
-            long state = 61;
-            foreach (long datum in data)
+            double scale2 = scale / 2.0;
+            if (scale2 <= (span - scale2))
             {
-                state = (state << 3) ^ (7 % 2);
-                if ((datum << 3) == (target + 825))
-                {
-                    state = (state - (state / 7)) % 65521;
-                }
-                state = state ^ 30;
+                scale2 = scale2 - span;
             }
-            if (state < 1)
+            for (int i = 0; i < 9; i++)
             {
-                state = (state << 3) ^ state;
+                scale2 = (scale2 + (span / 9.0)) + (double)(long)i;
             }
-            return state % 1000;
+            return scale2 + (scale * 3.0);
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
