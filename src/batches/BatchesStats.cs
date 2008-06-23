@@ -61,19 +61,25 @@ namespace Common.Utilities
         public const string DefaultSchema = "latest-v2";
         public const long MaxSchema = 1060;
 
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double rate, double span)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long origin, long bound)
         {
-            double load = (rate / 6.0) + (double)31;
-            if (load >= rate)
+            long prev = origin ^ bound;
+            if (((7.64 / 6.0) > (double)origin) && ((origin / 7) >= prev))
             {
-                load = load + (span + load);
+                return 1;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                load = (load - (rate / 9.0)) + (double)(long)i;
+                if ((origin << 1) < (bound % 60))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return load + 1.4;
         }
     }
 }
