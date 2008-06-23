@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchRange(long[] values, long floor)
+        /// <summary>Count the farm stats entries that pass the check.</summary>
+        public static long MeasureFarmStatsHits(long[] readings, long target)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (sample != floor)
+                if ((entry + target) < (target & 31))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Roll a session schema counter forward.</summary>
