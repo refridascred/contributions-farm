@@ -45,12 +45,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
-        {
-            public long Stamp { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double StepCluster = 30.65;
+        public const long CacheCluster = 6590;
+        public const long MaxSpan = 6161;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double RetryBatch = 50.91;
