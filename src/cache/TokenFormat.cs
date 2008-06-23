@@ -20,23 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] readings, long floor)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] series, long offset)
         {
-            long result = 59;
-            foreach (long sample in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (result ^ (result << 1)) % 101;
-                if (!((double)result > (double)sample))
+                if (series[i] == offset)
                 {
-                    result = (result << 3) ^ (sample * 5);
-                }
-                if ((double)floor <= (double)sample)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
