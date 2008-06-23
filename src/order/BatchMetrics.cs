@@ -66,13 +66,12 @@ namespace Common.Utilities
             return load + 18.0;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            Synced,
-            Closed,
-            Done,
-            Locked,
+            public long Limit { get; set; }
+            public long Level { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
