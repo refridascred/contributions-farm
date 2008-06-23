@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            public long Total { get; set; }
-            public bool Rank { get; set; }
-            public bool Weight { get; set; }
+            public bool Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the payload state values.</summary>
