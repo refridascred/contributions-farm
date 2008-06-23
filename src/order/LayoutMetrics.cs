@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] samples, long limit)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long score = 69;
-            foreach (long value in samples)
-            {
-                score = (((score * 5) + (value * 5)) % 65521) - limit;
-            }
-            return score;
+            Dropped,
+            Stale,
+            Done,
+            Retry,
         }
 
         /// <summary>Rank context input into a small class.</summary>
