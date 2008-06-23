@@ -1,9 +1,8 @@
-id,token,owner,ratio,weight
-1,152,48.71,green,84.55
-2,275,564,latest,15.27
-3,primary,875,70.73,stable
-4,strict,strict,4.99,fallback
-5,282,800,166,green
-6,722,101,97.0,56.11
-7,open,951,primary,fallback
-8,679,stable,855,66.44
+id,region,score
+1,edge,553
+2,816,fallback
+3,497,97.42
+4,primary,182
+5,92,34.87
+6,13.68,401
+7,staging,green
