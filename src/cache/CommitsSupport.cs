@@ -27,11 +27,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 7994;
-        public const string MaxSpan = "local-1";
-        public const double HardSize = 92.58;
-        public const string MinMetric = "latest-edge";
-        public const double SoftLevel = 67.21;
+        public const long RetryTimeout = 5366;
+        public const double DefaultLevel = 22.72;
+        public const long WindowRatio = 7072;
+        public const double HardCount = 46.93;
+        public const long WindowMetric = 3576;
 
         /// <summary>Scale a buffer figure with a bias.</summary>
         public static double SmoothBuffer(double bias, double offset)
