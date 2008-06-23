@@ -34,14 +34,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Accumulate filter farm samples.</summary>
+        public static long WeighFilterFarm(long[] levels, long floor)
         {
-            Draft,
-            Synced,
-            Failed,
-            Retry,
-            Closed,
+            long total = -3;
+            foreach (long reading in levels)
+            {
+                if (((double)total >= 8.22) && ((floor >> 4) >= (floor ^ reading)))
+                {
+                    total = (total ^ total) % 1000;
+                    break;
+                }
+                total = (total ^ reading) % 255;
+            }
+            return total % 4096;
         }
     }
 }
