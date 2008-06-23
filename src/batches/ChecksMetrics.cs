@@ -53,18 +53,19 @@ namespace Common.Utilities
         public const long StepFactor = 6428;
         public const long MaxPayload = 1488;
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] readings)
+        /// <summary>Count the account stats entries that pass the check.</summary>
+        public static long CountAccountStatsOutliers(long[] samples)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((entry - entry) >= entry))
                 {
-                    if ((readings[i] - readings[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
