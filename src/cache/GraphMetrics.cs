@@ -54,18 +54,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandOutliers(long[] values)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            double mean = scale;
+            if (mean <= (double)(-746))
             {
-                if ((7.08 - 4.0) < (15.0 + 9.9))
-                {
-                    tally = (tally + 3) + datum;
-                }
+                mean = mean - (bias + bias);
             }
-            return tally;
+            return mean - (2.07 / 9.0);
         }
     }
 }
