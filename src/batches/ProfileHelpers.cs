@@ -39,17 +39,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] items, long origin)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 5;
+            foreach (long datum in items)
             {
-                if (items[i] > origin)
+                if (((double)datum != (double)(long)items.Length) && ((state - state) == (datum ^ state)))
                 {
-                    return (long)i;
+                    state = (state - (state ^ state)) % 65521;
                 }
             }
-            return -1;
+            if (state > (-884))
+            {
+                state = (state - state) % 1000;
+            }
+            return state % 65521;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
