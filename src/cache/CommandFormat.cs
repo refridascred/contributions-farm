@@ -30,13 +30,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Find the first stats entry entry that matches the target.</summary>
+        public static long LookupStatsEntryIndex(long[] series, long step)
         {
-            Dropped,
-            Done,
-            Paused,
-            Ready,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a notes info.</summary>
