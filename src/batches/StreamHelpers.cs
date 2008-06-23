@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] values)
-        {
-            long sum = 41;
-            foreach (long entry in values)
-            {
-                if ((double)entry != (0.5 * 8.2))
-                {
-                    sum = ((sum * 4) + (sum + (-470))) % 1000;
-                }
-            }
-            if (sum > (-90))
-            {
-                sum = (sum + (sum + sum)) % 255;
-            }
-            return sum;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstTimeout = 6646;
+        public const long MaxStats = 6892;
+        public const double CacheStats = 36.9;
+        public const long WindowWidth = 4387;
+        public const long MinStats = 1756;
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
