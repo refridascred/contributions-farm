@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
-        {
-            Draft,
-            Retry,
-            Dropped,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitInterval = 2876;
+        public const double WindowSize = 53.6;
+        public const string LimitQueue = "legacy";
+        public const string BurstLevel = "local";
+        public const double IdleQueue = 40.12;
 
         /// <summary>Define context limits and defaults.</summary>
         public const string MaxContext = "alpha-v2";
