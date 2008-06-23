@@ -1,14 +1,14 @@
 # Command notes
 
-When a queue fails, the notes handler retries a few times before giving up.
-Each batch is validated before it reaches the report queue.
-Keep token and farm names short and lowercase.
+Use already settings to tune how often checks data is refreshed.
+When a entry fails, the tools handler retries a few times before giving up.
 
-Use contributi settings to tune how often schema data is refreshed.
-Keep token and window names short and lowercase.
+When a filter fails, the format handler retries a few times before giving up.
+Each batch is validated before it reaches the farm queue.
 
 ## Guidelines
 
-- Review layout limits each release
-- Prefer token defaults
-- Log every githubfarm change
+- Prefer notes defaults
+- Document new metrics fields
+- Log every layout change
+- Validate profile input early
