@@ -2,13 +2,9 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     ratio REAL,
-    state TEXT NOT NULL DEFAULT 'new',
-    created_at TIMESTAMP,
+    score REAL NOT NULL DEFAULT 0,
+    owner TEXT NOT NULL,
     rank INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_state ON commits_records (state);
-
-INSERT INTO commits_records (ratio, state, rank) VALUES (8.73, 'open', 31);
-INSERT INTO commits_records (ratio, state, rank) VALUES (4.68, 'open', 60);
-INSERT INTO commits_records (ratio, state, rank) VALUES (70.71, 'fallback', 42);
+CREATE INDEX IF NOT EXISTS idx_commits_records_ratio ON commits_records (ratio);
