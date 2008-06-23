@@ -64,12 +64,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] samples, long offset)
         {
-            Idle,
-            Active,
-            New,
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading & 255) == (seen - seen))
+                {
+                    seen = (seen + 1) + offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a account summary.</summary>
