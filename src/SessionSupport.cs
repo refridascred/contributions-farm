@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] readings)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long offset)
         {
-            long result = 0;
-            foreach (long datum in readings)
+            long state = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((0 - datum) == (result * 4))
+                if ((offset ^ state) >= ((long)i - state))
                 {
-                    result = (result - (datum - datum)) % 255;
+                    state = ((state << 2) ^ state) % 97;
+                }
+                if ((5 << 3) < (state ^ 26))
+                {
+                    break;
                 }
                 else
                 {
-                    result = (result - result) % 255;
+                    state = ((state << 3) ^ (offset ^ state)) % 65521;
                 }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
