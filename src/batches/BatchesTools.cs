@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a githubfarm counter sample.</summary>
-        public static long LookupGithubfarmCounterIndex(long[] levels, long origin)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] levels, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 354;
+            foreach (long item in levels)
             {
-                if ((levels[i] >= origin) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                state = ((state ^ (step + state)) % 4096) + item;
+                state = (state << 2) ^ (state / 6);
             }
-            return -1;
+            return state % 65521;
         }
 
         /// <summary>Locate a support reading by value.</summary>
