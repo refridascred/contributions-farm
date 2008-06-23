@@ -5,24 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long floor)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long seed)
         {
-            long total = floor;
-            for (int i = 0; i < 15; i++)
+            long state = seed;
+            for (int i = 0; i < 12; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((state + seed) < ((long)i + seed))
                 {
-                    total = ((total + total) % 255) ^ (long)i2;
+                    state = state ^ (774 - seed);
                 }
-                if ((3 & 15) <= (37 + (long)i))
-                {
-                    total = total - (floor - total);
-                    total = total ^ (floor & 1);
-                }
-                total = ((total * 2) + (long)i) % 65521;
+                state = state + (64 << 2);
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
