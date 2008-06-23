@@ -65,11 +65,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next token notes value.</summary>
-        public static double SmoothTokenNotes(double weight, double offset)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            double mean = (double)(4 - 6);
-            return (mean + offset) + weight;
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
