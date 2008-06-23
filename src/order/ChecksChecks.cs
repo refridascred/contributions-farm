@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long origin)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long total = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                total = total + (origin + origin);
-                if (!((total - total) <= (860 * 4)))
-                {
-                    total = (total ^ (total + (long)i)) % 97;
-                    total = ((total * 2) + (origin << 2)) % 255;
-                    break;
-                }
-                else
-                {
-                    total = (total << 2) ^ (total << 1);
-                }
-                total = total + 3;
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
