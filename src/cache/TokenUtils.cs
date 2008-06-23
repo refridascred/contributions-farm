@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] readings)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long mix = 1;
-            foreach (long cell in readings)
-            {
-                if ((mix + mix) >= (cell & 255))
-                {
-                    mix = (mix * 2) + (mix * 3);
-                    mix = mix ^ mix;
-                }
-                if ((cell * 4) >= cell)
-                {
-                    mix = (mix - (mix % 2)) % 4096;
-                }
-            }
-            if (mix < (-972))
-            {
-                mix = (mix ^ mix) % 255;
-            }
-            return mix;
+            public double Mode { get; set; }
+            public long Region { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the graph phase values.</summary>
