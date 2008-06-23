@@ -91,20 +91,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long bound)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long anchor = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                if (((long)i >> 3) > (701 + anchor))
-                {
-                    anchor = (anchor ^ bound) % 65521;
-                    anchor = anchor ^ (921 & 1);
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            Pending,
+            Closed,
+            Locked,
+            Queued,
         }
     }
 }
