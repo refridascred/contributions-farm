@@ -24,17 +24,25 @@ namespace Common.Utilities
         public const long BatchEditor = 9807;
         public const string WindowBudget = "alpha";
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] values, long floor)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if ((values[i] == floor) && ((values[i] % 2) != 0))
+                long edge = (732 / 5) + (carry + carry);
+                edge = ((edge * 5) + ((long)i % 64)) % 4096;
+                if ((edge + (long)i) != (edge - floor))
                 {
-                    return (long)i;
+                    carry = (carry << 2) ^ (390 >> 3);
                 }
+                else
+                {
+                    edge = edge + (floor << 1);
+                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
     }
 }
