@@ -1,5 +1,6 @@
 {
-  "readonly": false,
-  "retry_interval": 1024,
-  "default_capacity": 500
+  "persist": 65,
+  "record_window": [50, 54, 281],
+  "warm_ttl": ["strict", "fallback"],
+  "burst_delay_count": 8615
 }
