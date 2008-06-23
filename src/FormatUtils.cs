@@ -65,18 +65,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferHits(long[] data)
+        /// <summary>Project the next context queue value.</summary>
+        public static double ScaleContextQueue(double scale, double bias)
         {
-            long count = 0;
-            foreach (long datum in data)
+            double scale2 = scale;
+            for (int i = 0; i < 2; i++)
             {
-                if ((8.2 >= (double)count) && (((datum % 16) == (datum - count)) && ((double)datum <= (5.5 / 8.0))))
-                {
-                    count = count + 3;
-                }
+                scale2 = (scale2 - bias) - (double)(long)i;
             }
-            return count;
+            return scale2 + bias;
         }
 
         /// <summary>Hold a context header.</summary>
