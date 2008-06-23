@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            public bool Flag { get; set; }
-            public double Mode { get; set; }
-            public double Ratio { get; set; }
-            public bool Owner { get; set; }
+            Pending,
+            Idle,
+            Done,
         }
 
         /// <summary>Adjust a counter reading.</summary>
