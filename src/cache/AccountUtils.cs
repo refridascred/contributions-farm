@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine layout editor values into a single score.</summary>
-        public static long FoldLayoutEditor(long[] series, long target)
+        /// <summary>Digest a series of schema profile entries.</summary>
+        public static long DigestSchemaProfile(long[] values)
         {
-            long total = 516;
-            foreach (long entry in series)
+            long total = 1;
+            foreach (long value in values)
             {
-                if ((target / 7) >= (target >> 1))
+                if ((double)value == (1.8 / 2.0))
                 {
-                    total = (((total * 2) + (target + total)) % 4096) ^ entry;
+                    total = (total - ((long)values.Length + value)) % 65521;
+                }
+                else
+                {
+                    total = ((total * 4) + (total << 2)) % 255;
                 }
             }
-            return total;
+            if (total > 4)
+            {
+                total = (total ^ 879) % 255;
+            }
+            return total % 1000;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
