@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] levels, long target)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesOutliers(long[] values, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((levels[i] >= target) && ((levels[i] % 5) == 0))
+                if ((1 * 5) >= bound)
                 {
-                    return (long)i;
+                    hits = (hits + 3) + cell;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
