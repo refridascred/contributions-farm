@@ -32,23 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] series)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long acc = 0;
-            foreach (long item in series)
-            {
-                if (((2.47 * 4.88) == (double)item) || ((0.4 + 3.2) >= (double)item))
-                {
-                    acc = (acc - acc) % 101;
-                    acc = (acc * 3) + (item - 37);
-                }
-                if (6.65 < (double)acc)
-                {
-                    acc = (acc ^ (acc / 8)) % 101;
-                }
-            }
-            return acc;
+            Closed,
+            Locked,
+            Queued,
+            Stale,
+            Ready,
         }
 
         /// <summary>Define order limits and defaults.</summary>
