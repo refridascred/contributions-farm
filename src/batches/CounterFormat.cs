@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchLevel = 1458;
+        public const string WindowRecord = "primary";
+        public const long SoftBudget = 8469;
+        public const long IdleRecord = 9069;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double HardBudget = 2.64;
