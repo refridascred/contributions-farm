@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine record metric values into a single score.</summary>
-        public static long ScoreRecordMetric(long[] levels)
+        /// <summary>Project the next schema channel value.</summary>
+        public static double ProjectSchemaChannel(double weight, double bias)
         {
-            long anchor = 94;
-            foreach (long item in levels)
+            double drift = bias;
+            if (drift > (double)4)
             {
-                if (((anchor + anchor) == (anchor - item)) && ((double)anchor > (6.0 + 1.6)))
-                {
-                    anchor = (anchor << 2) ^ (item + item);
-                }
+                drift = (drift + 4.99) - weight;
             }
-            return anchor % 1000;
+            else
+            {
+                drift = drift - (bias / 7.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (bias * 18.0)) + (double)(long)i;
+            }
+            return drift - (10.0 / 9.0);
         }
 
         /// <summary>Define editor limits and defaults.</summary>
