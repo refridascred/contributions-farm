@@ -19,10 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MinLayout = 68.33;
-        public const long SoftSpan = 2353;
-        public const string RetryTimeout = "primary-v2";
+        /// <summary>Audit contributi token readings against a rule.</summary>
+        public static long TallyContributiTokenMatches(long[] levels, long target)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (((target > (item << 1)) || ((double)item < (8.0 * 13.0))) && ((target & 1) <= (item + 70)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long TallyReportOutliers(long[] series, long floor)
