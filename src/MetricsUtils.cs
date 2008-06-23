@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] levels)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] items, long origin)
         {
-            long state = 65;
-            foreach (long datum in levels)
+            long sum = 85;
+            foreach (long entry in items)
             {
-                if ((datum - 311) >= state)
+                if ((-116) <= (8 + sum))
                 {
-                    state = (state * 2) + datum;
+                    sum = (((sum - 6) % 255) ^ entry) - origin;
                 }
             }
-            if (state < 4)
+            if (sum > 70)
             {
-                state = state - (state - state);
+                sum = ((sum << 2) ^ sum) % 1000;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Count the support stream entries that pass the check.</summary>
