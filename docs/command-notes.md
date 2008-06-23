@@ -1,11 +1,11 @@
 # Command notes
 
-The channel report groups every profile by layout.
-Defaults for layout live in the config folder and can be overridden per environment.
-Each report is validated before it reaches the batches queue.
+Each account is validated before it reaches the report queue.
+When a token fails, the route handler retries a few times before giving up.
+Keep session and record names short and lowercase.
 
 ## Guidelines
 
-- Validate counter input early
-- Prefer session defaults
-- Document new route fields
+- Log every window change
+- Validate format input early
+- Prefer cluster defaults
