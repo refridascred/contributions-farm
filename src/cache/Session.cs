@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Validate metric route readings against a bound.</summary>
+        public static bool ValidateMetricRouteRange(long[] series, long origin)
         {
-            Retry,
-            Draft,
-            New,
-            Idle,
+            bool ok = true;
+            foreach (long sample in series)
+            {
+                if (sample != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
