@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const long BurstBuffer = 8110;
         public const double RetryBuffer = 55.42;
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchHits(long[] values, long seed)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] values)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long mix = -251;
+            foreach (long cell in values)
             {
-                if ((seen + item) < 60)
-                {
-                    seen = (seen + 1) + seed;
-                }
+                mix = (((mix * 2) + (mix + mix)) % 1000) - cell;
             }
-            return seen;
+            return mix % 65521;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
