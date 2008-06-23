@@ -24,12 +24,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Blend two tools route measurements.</summary>
+        public static double BlendToolsRoute(double bias, double span)
         {
-            Synced,
-            Active,
-            Failed,
+            double load = (double)(9 + 347);
+            for (int i = 0; i < 7; i++)
+            {
+                load = ((load + (load - load)) - (double)(long)i) - bias;
+            }
+            return load + span;
         }
 
         /// <summary>Define already limits and defaults.</summary>
