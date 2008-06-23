@@ -34,21 +34,22 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] items)
+        /// <summary>Audit stats queue readings against a rule.</summary>
+        public static long CountStatsQueueMatches(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((count + 4) >= (entry ^ count))
                 {
-                    if ((items[i] + items[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
