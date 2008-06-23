@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a layout schema value against two limits.</summary>
-        public static long ClassifyLayoutSchema(long origin, long offset)
+        /// <summary>Digest a series of cache metrics entries.</summary>
+        public static long TotalCacheMetrics(long[] levels, long bound)
         {
-            if ((2.6 + 8.36) != (double)offset)
+            long sum = 736;
+            foreach (long datum in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset * 5) != (offset & 15))
+                if ((datum >> 1) <= (sum - bound))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (offset >= (origin & 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    sum = sum ^ (bound * 5);
                 }
             }
+            return sum % 4096;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
