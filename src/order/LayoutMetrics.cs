@@ -18,24 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long limit)
+        /// <summary>Derive the next batches support value from a seed.</summary>
+        public static long DeriveBatchesSupport(long target)
         {
-            long anchor = limit;
-            for (int i = 0; i < 20; i++)
+            long total = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((long)i > (limit - limit))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    anchor = (anchor ^ (anchor - 9)) % 97;
-                    anchor = anchor ^ anchor;
+                    total = ((total * 2) + (57 & 255)) + (long)i2;
                 }
-                else
+                for (int i3 = 0; i3 < 6; i3++)
                 {
-                    anchor = anchor - (long)i;
+                    total = (total - target) - (long)i3;
                 }
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Hold a commits record.</summary>
