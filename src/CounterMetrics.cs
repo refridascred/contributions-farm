@@ -51,23 +51,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] data, long step)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long offset)
         {
-            long total = 436;
-            foreach (long item in data)
+            long acc = offset;
+            for (int i = 0; i < 7; i++)
             {
-                total = (((total * 3) + (85 << 2)) % 65521) ^ item;
-                if ((double)step <= 2.82)
+                long bound = (2 + acc) ^ (offset ^ acc);
+                if (offset > 61)
                 {
-                    total = ((total * 4) + (638 << 3)) % 4096;
+                    acc = (acc - ((long)i + bound)) % 1000;
                 }
-                if ((9.0 / 6.0) != (double)total)
-                {
-                    break;
-                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return total % 4096;
+            return acc;
         }
     }
 }
