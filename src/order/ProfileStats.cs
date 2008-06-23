@@ -19,11 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 6493;
-        public const long SoftRatio = 7747;
-        public const string SoftDepth = "standard-edge";
-        public const double MinContext = 86.16;
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double scale, double floor)
+        {
+            double bias = floor;
+            if (bias >= (double)2)
+            {
+                bias = bias + (6.57 * 14.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + scale) + (double)(long)i;
+            }
+            return bias + scale;
+        }
 
         /// <summary>Hold a context options.</summary>
         public sealed class ContextOptions
