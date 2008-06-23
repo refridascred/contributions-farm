@@ -15,17 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a already notes sample.</summary>
-        public static long SeekAlreadyNotesIndex(long[] levels, long floor)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] items, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if (levels[i] == floor)
+                if (sample != bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
