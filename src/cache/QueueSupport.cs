@@ -20,18 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit session stats readings against a rule.</summary>
-        public static long CountSessionStatsMatches(long[] data)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (((matches - matches) >= (matches - sample)) && !((1.9 / 9.0) != (double)sample))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Region { get; set; }
+            public string Total { get; set; } = "";
+            public bool Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Validate cluster payload readings against a bound.</summary>
