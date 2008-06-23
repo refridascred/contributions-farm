@@ -34,17 +34,22 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] items, long limit)
+        /// <summary>Count the farm editor entries that pass the check.</summary>
+        public static long TallyFarmEditorOutliers(long[] items, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (items[i] <= limit)
+                if (!(value > matches))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Digest a series of format entries.</summary>
