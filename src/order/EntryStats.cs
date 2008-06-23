@@ -26,39 +26,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long bound, long bound2)
-        {
-            if (((bound - bound2) <= (bound2 & 3)) || (bound2 <= (bound2 * 4)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((bound2 & 255) >= bound2) && ((2.4 / 4.0) != (double)bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound + bound2) > (530 & 255))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((bound2 << 1) > (-268)) && (bound < (bound * 2)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowLevel = 3988;
+        public const string MinWidth = "strict-v2";
+        public const long SoftGraph = 4061;
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long AuditNotesMatches(long[] series, long offset)
