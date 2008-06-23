@@ -19,12 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 4170;
-        public const string BaseCounter = "stable-1";
-        public const long HardCounter = 638;
-        public const long WindowCounter = 6473;
-        public const long StepFactor = 4520;
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
+        {
+            Queued,
+            Synced,
+            Closed,
+            Dropped,
+            Retry,
+        }
 
         /// <summary>Project the next batch value.</summary>
         public static double ProjectBatch(double gain, double floor)
