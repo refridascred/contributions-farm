@@ -50,19 +50,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double gain, double bias)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] series)
         {
-            double ratio = 5.5;
-            if (ratio < ratio)
+            long score = 7;
+            foreach (long cell in series)
             {
-                ratio = ratio - gain;
+                score = score ^ cell;
             }
-            for (int i = 0; i < 4; i++)
+            if (score > 9)
             {
-                ratio = (ratio + (bias * 4.5)) + (double)(long)i;
+                score = ((score << 2) ^ 0) % 1000;
             }
-            return ratio - 4.0;
+            return score % 97;
         }
 
         /// <summary>Roll a session counter forward.</summary>
