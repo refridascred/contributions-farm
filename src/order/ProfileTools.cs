@@ -56,12 +56,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MaxMetrics = "latest-v2";
-        public const double StepMetrics = 19.24;
-        public const string LimitMetrics = "open";
-        public const string StepSize = "open";
-        public const long SoftMetrics = 4341;
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelRange(long[] series, long seed)
+        {
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Look up the position of a queue account sample.</summary>
         public static long LookupQueueAccountIndex(long[] series, long target)
