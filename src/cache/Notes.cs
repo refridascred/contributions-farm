@@ -55,17 +55,11 @@ namespace Common.Utilities
         public const long CacheSpan = 3378;
         public const long BatchSpan = 2590;
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] data, long step)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
