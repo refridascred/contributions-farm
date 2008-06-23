@@ -41,22 +41,10 @@ namespace Common.Utilities
         public const long MinStream = 4548;
         public const long HardStream = 6266;
 
-        /// <summary>Iterate the command payload series from a seed.</summary>
-        public static long IterateCommandPayload(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                if (!((mark & 63) != (377 + seed)))
-                {
-                    mark = mark - ((long)i + 1);
-                    mark = ((mark * 4) + seed) % 97;
-                }
-                mark = ((mark * 3) + (seed * 2)) % 255;
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheEditor = 3031;
+        public const long DefaultInterval = 2525;
+        public const string HardTimeout = "legacy";
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool CheckGraphRange(long[] series, long step)
