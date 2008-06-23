@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const string RetrySize = "primary";
         public const long SoftFactor = 153;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileHits(long[] readings, long bound)
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)(long)readings.Length != (double)771)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = ((hits + 3) + item) + bound;
+                    if ((samples[i] + samples[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
