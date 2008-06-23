@@ -34,11 +34,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
-        {
-            public long Level { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftBudget = 3893;
+        public const double DefaultSchema = 18.77;
+        public const long IdleDepth = 7392;
+        public const long LimitLevel = 6976;
     }
 }
