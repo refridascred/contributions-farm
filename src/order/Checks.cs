@@ -60,14 +60,15 @@ namespace Common.Utilities
             return ratio - 4.0;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long offset)
         {
-            New,
-            Dropped,
-            Stale,
-            Ready,
-            Active,
+            long acc = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
