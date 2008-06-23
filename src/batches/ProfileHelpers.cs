@@ -71,9 +71,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BurstDepth = "open";
-        public const string MinContext = "fallback-1";
-        public const long BurstContext = 4185;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BurstOrder = "primary";
+        public const long MinOrder = 8712;
+        public const long BurstRatio = 4527;
+        public const double WindowScore = 37.14;
     }
 }
