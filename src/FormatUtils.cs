@@ -27,20 +27,12 @@ namespace Common.Utilities
         public const long StepInterval = 4566;
         public const string StepSize = "open";
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double bias, double floor)
-        {
-            double bias2 = 3.9;
-            if (bias2 < (double)4)
-            {
-                bias2 = ((bias2 - 2.05) - bias) - floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 - (4.0 * 6.6)) + (double)(long)i;
-            }
-            return bias2 - bias2;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 2597;
+        public const double LimitChannel = 16.6;
+        public const long BurstChannel = 9439;
+        public const long HardBudget = 7443;
+        public const long RetryChannel = 9376;
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long RollBatches(long target)
