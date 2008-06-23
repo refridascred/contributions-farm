@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            New,
-            Paused,
-            Draft,
-            Stale,
+            Synced,
+            Active,
+            Queued,
+            Retry,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
