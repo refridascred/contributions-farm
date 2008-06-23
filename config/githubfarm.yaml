@@ -1,4 +1,7 @@
 # githubfarm settings
-stream_window: 54
-strict: 1024
-poll_depth_pct: standard
+schema_delay: blue
+verbose: 500
+persist: 49.71
+idle_interval_s: blue
+retry_limit_pct: legacy
+default_capacity: 19
