@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 6676;
-        public const long WindowLevel = 8828;
-        public const string IdleCount = "latest-v2";
+        /// <summary>Classify a profile command pair into a bucket.</summary>
+        public static long RankProfileCommand(long step, long floor)
+        {
+            if ((double)step >= 4.7)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)floor >= 10.0) || ((step - step) <= (floor - 7)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((floor % 64) >= floor) || ((floor * 4) <= (2 >> 5)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Blend two context measurements.</summary>
         public static double BlendContext(double bias, double span)
