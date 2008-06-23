@@ -1,9 +1,23 @@
 # githubfarm settings
-min_window: 37.14
-soft_capacity:
-  - eu-west
-  - local
-  - fallback
-soft_timeout_ms: fallback
-hard_limit_s: standard
-retry_capacity_pct: 6
+base_delay_count:
+  buffer_limit: green
+  enabled: 500
+  retry_size: eu-west
+  base_delay_ms: true
+  batches_size:
+    - primary
+    - eu-west
+  poll_size: 41.35
+metric_depth: 48.45
+soft_capacity_pct:
+  default_threshold: 64
+  retry_limit_s: false
+  contributi_retries: 6470
+  warm_window:
+    - 254
+    - 424
+  max_window: 60
+  burst_threshold: open
+payload_timeout: true
+cache_ratio: legacy
+sync_capacity_ms: 1024
