@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const long BurstTools = 8703;
         public const double BaseTools = 77.37;
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            public string Owner { get; set; } = "";
-            public long Token { get; set; }
-            public long Score { get; set; }
+            public long Size { get; set; }
+            public double Token { get; set; }
+            public bool Score { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
