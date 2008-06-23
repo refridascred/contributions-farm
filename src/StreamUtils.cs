@@ -22,23 +22,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] levels, long floor)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long target, long offset)
         {
-            long carry = -76;
-            foreach (long sample in levels)
+            long prev = target - offset;
+            if ((prev > (88 >> 5)) || ((target >> 4) == (37 << 1)))
             {
-                carry = carry ^ (sample - sample);
-                if ((carry + floor) < (sample + (-882)))
+                return 0;
+            }
+            else
+            {
+                if (target <= offset)
                 {
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((50 ^ offset) < (target << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset - prev) < (2 - offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (carry < (-9))
-            {
-                carry = carry ^ floor;
-            }
-            return carry % 1000;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
