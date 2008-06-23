@@ -5,23 +5,30 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank cluster batches input into a small class.</summary>
-        public static long BucketClusterBatches(long origin, long bound)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long bound, long offset)
         {
-            long edge = origin + bound;
-            if ((bound + bound) != (origin + (-74)))
+            long span = bound - offset;
+            if ((span + bound) >= (89 + offset))
             {
                 return 5;
             }
             else
             {
-                if (origin > (origin - edge))
+                if ((double)bound >= (20.0 * 4.07))
                 {
-                    return 7;
+                    return 8;
                 }
                 else
                 {
-                    return 6;
+                    if ((double)621 < (double)span)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
         }
