@@ -22,10 +22,40 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MaxContext = "alpha-v2";
-        public const long WindowContext = 5994;
-        public const string DefaultContext = "standard-v2";
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long target, long origin)
+        {
+            long diff = target - origin;
+            if ((diff + target) <= (target + diff))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((14.0 * 6.0) == (double)diff) && ((3.75 * 2.0) <= (double)target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((93 - target) > target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (diff < (origin - target))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool GuardCounterBounds(long[] items, long floor)
