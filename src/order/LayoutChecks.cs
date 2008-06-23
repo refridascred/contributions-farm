@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphHits(long[] values)
         {
-            Queued,
-            Retry,
-            Dropped,
-            Idle,
-            Locked,
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (((value > (883 ^ value)) || ((5.54 * 0.8) == (double)value)) || ((value >> 1) > (value + value)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
