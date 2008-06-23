@@ -18,31 +18,17 @@ namespace Common.Utilities
         public const long IdleSize = 8574;
         public const long BatchScore = 7149;
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long origin, long bound)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] values, long bound)
         {
-            if (((166 << 3) != (origin + 432)) || ((origin - bound) != (origin % 3)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound + origin) <= (origin + origin))
+                if (values[i] < bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((bound % 97) == (bound << 2)) || ((double)bound == (2.55 / 7.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
