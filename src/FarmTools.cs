@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] readings, long seed)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long mark = -363;
-            foreach (long entry in readings)
-            {
-                mark = ((mark - (1 * 4)) - entry) - seed;
-            }
-            if (mark < 806)
-            {
-                mark = (mark ^ (501 / 3)) % 255;
-            }
-            return mark;
+            Idle,
+            Stale,
+            New,
+            Draft,
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
