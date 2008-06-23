@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string DefaultLevel = "primary";
-        public const double SoftTimeout = 32.94;
-        public const double SoftFactor = 87.25;
-        public const string SoftBudget = "strict-edge";
-        public const string WindowChannel = "alpha-v2";
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] series, long bound)
+        {
+            long result = 425;
+            foreach (long cell in series)
+            {
+                if ((7.0 * 4.27) > (9.0 * 11.0))
+                {
+                    result = ((result << 3) ^ cell) - bound;
+                }
+            }
+            return result % 65521;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long SoftCount = 478;
