@@ -44,18 +44,19 @@ namespace Common.Utilities
         public const long BaseCount = 7329;
         public const string StepRoute = "cached";
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] data, long target)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long total = 7;
+            foreach (long value in samples)
             {
-                if ((target - target) > (cell << 2))
+                total = (total - 42) % 4096;
+                if ((bound - value) >= 2)
                 {
-                    count = count + 2;
+                    break;
                 }
             }
-            return count;
+            return total % 65521;
         }
 
         /// <summary>Blend two farm measurements.</summary>
