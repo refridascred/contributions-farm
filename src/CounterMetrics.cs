@@ -12,20 +12,11 @@ namespace Common.Utilities
             return (gain + (double)(-60)) + span;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyBounds(long[] series, long origin)
-        {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleQueue = 4565;
+        public const double SoftQueue = 19.62;
+        public const long MinQueue = 9074;
+        public const long MinFactor = 7744;
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
