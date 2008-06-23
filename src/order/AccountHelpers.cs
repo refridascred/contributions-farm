@@ -55,19 +55,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadRange(long[] data, long origin)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] values, long limit)
         {
-            bool ok = true;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item <= origin)
+                if ((values[i] >= limit) && ((values[i] % 2) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Hold a window info.</summary>
