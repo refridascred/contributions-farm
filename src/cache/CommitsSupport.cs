@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] readings, long origin)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long limit, long floor)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            if ((58 <= limit) && ((limit + limit) <= floor))
             {
-                if ((datum << 3) > datum)
+                return 6;
+            }
+            else
+            {
+                if (floor <= ((-230) % 24))
                 {
-                    count = (count + 1) + origin;
+                    return 1;
+                }
+                else
+                {
+                    if ((887 + floor) != (floor - 80))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the filter phase values.</summary>
