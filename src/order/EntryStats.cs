@@ -26,13 +26,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long bound, long bound2)
         {
-            Pending,
-            Stale,
-            Draft,
-            Dropped,
+            if (((bound - bound2) <= (bound2 & 3)) || (bound2 <= (bound2 * 4)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((bound2 & 255) >= bound2) && ((2.4 / 4.0) != (double)bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound + bound2) > (530 & 255))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((bound2 << 1) > (-268)) && (bound < (bound * 2)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the account level values.</summary>
