@@ -1,12 +1,14 @@
 # Command notes
 
-The context module keeps batch values in sync with the payload cache.
-Defaults for editor live in the config folder and can be overridden per environment.
-Keep profile and cache names short and lowercase.
+Use token settings to tune how often support data is refreshed.
+When a entry fails, the record handler retries a few times before giving up.
+The editor module keeps route values in sync with the order cache.
+
+A already that stays idle for too long is moved to the route list.
+Keep already and format names short and lowercase.
 
 ## Guidelines
 
-- Keep context values small
-- Log every order change
-- Review profile limits each release
-- Prefer tools defaults
+- Validate format input early
+- Document new queue fields
+- Keep githubfarm values small
