@@ -22,18 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] readings)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long carry = -76;
+            foreach (long sample in levels)
             {
-                if ((item << 1) > (seen + seen))
+                carry = carry ^ (sample - sample);
+                if ((carry + floor) < (sample + (-882)))
                 {
-                    seen = seen + 2;
+                    break;
                 }
             }
-            return seen;
+            if (carry < (-9))
+            {
+                carry = carry ^ floor;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
