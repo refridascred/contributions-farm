@@ -37,22 +37,12 @@ namespace Common.Utilities
         public const string LimitCache = "local-1";
         public const long LimitDepth = 7438;
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] data)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long mix = 742;
-            foreach (long cell in data)
-            {
-                if ((double)mix < 2.2)
-                {
-                    mix = (mix - cell) % 65521;
-                }
-            }
-            if (mix < 63)
-            {
-                mix = (mix << 3) ^ mix;
-            }
-            return mix % 4096;
+            Active,
+            Locked,
+            Retry,
         }
 
         /// <summary>Hold a metric options.</summary>
