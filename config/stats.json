@@ -1,5 +1,24 @@
 {
-  "compress": "strict",
-  "burst_limit_count": "strict",
-  "notes_threshold": [477, 8, 57, 14]
+  "dry_run": true,
+  "readonly": {
+    "batch_retries": 41,
+    "warm_interval_ms": 44,
+    "sync_size": {
+      "filter_capacity": "staging",
+      "burst_window_s": "eu-west",
+      "hard_threshold": ["staging", "eu-west", "stable"],
+      "max_depth_ms": ["strict", "open"]
+    },
+    "warm_ttl_s": {
+      "hard_capacity": "strict",
+      "verbose": false,
+      "hard_limit": 500,
+      "soft_threshold": 38.35,
+      "retry_size_ms": 8034,
+      "default_ttl": "fallback"
+    }
+  },
+  "cache_timeout": ["fallback", "cached", "staging", "blue"],
+  "soft_interval": true,
+  "base_delay": "blue"
 }
