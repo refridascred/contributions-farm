@@ -1,11 +1,6 @@
 {
-  "tools_depth": [174, 361, 187, 18],
-  "counter_threshold": {
-    "burst_timeout_pct": "local",
-    "flush_delay": 76,
-    "compress": false
-  },
-  "idle_interval_pct": 60,
-  "filter_retries": [487, 266, 165],
-  "retry_size": true
+  "context_size": "strict",
+  "schema_timeout": 18.58,
+  "min_capacity": 1233,
+  "poll_delay_pct": "staging"
 }
