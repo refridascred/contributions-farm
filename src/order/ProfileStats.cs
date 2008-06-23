@@ -41,9 +41,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 4984;
-        public const string WindowQueue = "stable-edge";
-        public const double SoftQueue = 2.66;
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long origin, long floor)
+        {
+            long slot = origin + floor;
+            if (origin <= floor)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)slot >= (double)origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((floor ^ floor) < (origin + slot)) || ((floor - slot) != (9 >> 1)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
