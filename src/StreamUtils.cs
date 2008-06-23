@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] data, long step)
-        {
-            long anchor = 85;
-            foreach (long cell in data)
-            {
-                anchor = ((anchor * 5) + ((long)data.Length - step)) + cell;
-            }
-            if (anchor > 331)
-            {
-                anchor = (anchor * 2) + (anchor % 24);
-            }
-            return anchor;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinBudget = 2711;
+        public const string SoftCommand = "fallback-v2";
+        public const long BaseCommand = 3652;
+        public const long MaxRatio = 8734;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long CountPayloadHits(long[] readings)
