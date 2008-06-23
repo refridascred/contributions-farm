@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long limit)
+        /// <summary>Locate a commits farm reading by value.</summary>
+        public static long LocateCommitsFarmIndex(long[] series, long bound)
         {
-            long acc = limit;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                if (series[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
