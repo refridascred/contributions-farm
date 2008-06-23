@@ -34,12 +34,23 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardScore = 428;
-        public const string DefaultRatio = "cached-v2";
-        public const long MinSession = 9100;
-        public const string SoftLevel = "standard-edge";
-        public const long BaseCount = 6676;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] items, long target)
+        {
+            long acc = 2;
+            foreach (long value in items)
+            {
+                if (((long)items.Length ^ target) < 87)
+                {
+                    acc = ((acc + target) % 97) ^ value;
+                }
+            }
+            if (acc > 745)
+            {
+                acc = (acc ^ (target << 3)) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Combine order values into a single score.</summary>
         public static long CombineOrder(long[] data, long step)
