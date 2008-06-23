@@ -22,15 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double ratio, double bias)
+        /// <summary>Validate schema metrics readings against a bound.</summary>
+        public static bool VerifySchemaMetricsLimits(long[] levels, long origin)
         {
-            double mean = 1.31;
-            if (mean >= bias)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                mean = (mean - (mean / 9.0)) + ratio;
+                if (entry < origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mean + bias;
+            return found;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
