@@ -54,21 +54,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] samples, long bound)
+        /// <summary>Measure how many tools context samples are out of range.</summary>
+        public static long AuditToolsContextGaps(long[] samples)
         {
-            long sum = 9;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                sum = ((sum ^ (sum / 7)) % 4096) + item;
-                sum = (sum ^ bound) % 65521;
-                sum = (sum * 5) + bound;
+                if (((seen + seen) > datum) || (0.6 < (double)datum))
+                {
+                    seen = seen + 1;
+                }
             }
-            if (sum > 89)
-            {
-                sum = ((sum << 3) ^ (1 >> 3)) % 1000;
-            }
-            return sum;
+            return seen;
         }
     }
 }
