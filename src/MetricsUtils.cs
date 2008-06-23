@@ -50,18 +50,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheHits(long[] values, long offset)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long limit, long floor)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long next = limit ^ floor;
+            if ((306 << 2) <= floor)
             {
-                if ((double)seen != (7.0 / 4.0))
+                return 8;
+            }
+            else
+            {
+                if (0 >= next)
                 {
-                    seen = ((seen + 2) ^ datum) + offset;
+                    return 1;
+                }
+                else
+                {
+                    if ((floor % 3) >= (floor - limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
