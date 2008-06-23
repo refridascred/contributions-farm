@@ -14,12 +14,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Locate a context editor reading by value.</summary>
+        public static long SeekContextEditorIndex(long[] series, long seed)
         {
-            Failed,
-            Done,
-            Synced,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
