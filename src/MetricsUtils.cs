@@ -42,21 +42,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long floor)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long sum = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((floor < (floor - floor)) || ((sum / 9) != (803 ^ sum)))
-                {
-                    sum = (sum ^ (sum ^ sum)) % 1000;
-                    sum = (sum ^ (6 ^ 16)) % 1000;
-                    break;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            public long Rank { get; set; }
+            public long Count { get; set; }
         }
     }
 }
