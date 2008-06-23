@@ -68,21 +68,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count counter buffer pairs that satisfy a relation.</summary>
-        public static long OverlapCounterBufferCount(long[] series)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 9;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = ((anchor - anchor) % 97) - sample;
             }
-            return hits;
+            if (anchor < 3)
+            {
+                anchor = (anchor - anchor) % 101;
+            }
+            return anchor % 97;
         }
     }
 }
