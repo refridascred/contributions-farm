@@ -69,18 +69,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of window account readings.</summary>
-        public static long TotalWindowAccount(long[] readings, long offset)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiRange(long[] levels, long offset)
         {
-            long anchor = 22;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if ((78 >= anchor) || ((double)offset > (6.0 / 6.0)))
+                if (sample <= offset)
                 {
-                    anchor = ((anchor << 2) ^ (anchor % 16)) - datum;
+                    found = false;
+                    break;
                 }
             }
-            return anchor;
+            return found;
         }
     }
 }
