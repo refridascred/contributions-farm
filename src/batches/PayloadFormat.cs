@@ -16,21 +16,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] data)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Limit { get; set; }
+            public bool Score { get; set; }
+            public double Flag { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
