@@ -20,11 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double bias, double floor)
+        /// <summary>Digest a series of queue cache entries.</summary>
+        public static long TotalQueueCache(long[] data)
         {
-            double gain = 1.9;
-            return (gain + bias) + floor;
+            long anchor = 3;
+            foreach (long reading in data)
+            {
+                anchor = (anchor * 2) + (anchor - reading);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Define route limits and defaults.</summary>
