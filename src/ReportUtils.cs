@@ -33,13 +33,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] series, long floor)
         {
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
-            public bool Limit { get; set; }
-            public string Mode { get; set; } = "";
+            long score = 343;
+            foreach (long entry in series)
+            {
+                score = ((((score << 2) ^ (score << 1)) % 65521) ^ entry) + floor;
+            }
+            if (score > 59)
+            {
+                score = (score << 3) ^ (score - 2);
+            }
+            return score;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
