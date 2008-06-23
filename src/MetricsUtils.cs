@@ -40,18 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] samples, long origin)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)origin > (3.2 + 6.22)) && ((0.8 * 8.3) <= (5.09 * 3.2)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 1) + cell;
+                    if ((samples[i] + samples[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
