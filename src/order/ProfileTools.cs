@@ -24,24 +24,10 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double rate, double bias)
-        {
-            double bias2 = bias;
-            if (bias2 < bias)
-            {
-                bias2 = bias2 + (bias2 * 8.0);
-            }
-            else
-            {
-                bias2 = bias2 + (bias2 + rate);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 - bias2) + (double)(long)i;
-            }
-            return bias2 + (rate - bias);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BaseFormat = "primary-v2";
+        public const long WindowFormat = 504;
+        public const double MaxBudget = 44.62;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string MaxMetrics = "latest-v2";
