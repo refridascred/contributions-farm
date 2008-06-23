@@ -19,23 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] levels, long offset)
-        {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (matches > (value - offset))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MinLayout = 68.33;
+        public const long SoftSpan = 2353;
+        public const string RetryTimeout = "primary-v2";
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long TallyReportOutliers(long[] series, long floor)
