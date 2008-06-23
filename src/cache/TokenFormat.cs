@@ -14,18 +14,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheMatches(long[] readings, long bound)
+        /// <summary>Blend two buffer metric measurements.</summary>
+        public static double SmoothBufferMetric(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            double gain = floor + (weight - floor);
+            if (gain > (gain + weight))
             {
-                if ((double)bound < 2.7)
-                {
-                    hits = (hits + 3) + cell;
-                }
+                gain = gain - (double)(-7);
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - floor) - (double)(long)i;
+            }
+            return gain + floor;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
