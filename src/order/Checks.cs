@@ -16,11 +16,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardTimeout = 8895;
-        public const long StepRatio = 5680;
-        public const long MinSpan = 508;
-        public const string SoftLevel = "alpha-edge";
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
+        {
+            Stale,
+            Dropped,
+            New,
+            Ready,
+        }
 
         /// <summary>Look up the position of a notes sample.</summary>
         public static long FindNotesIndex(long[] samples, long origin)
