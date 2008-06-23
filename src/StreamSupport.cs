@@ -53,12 +53,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderOutliers(long[] samples, long limit)
         {
-            Ready,
-            Retry,
-            Closed,
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (((limit + limit) > (matches / 9)) && ((limit - matches) != (matches + 63)))
+                {
+                    matches = (matches + 2) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
