@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long limit, long floor)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long floor)
         {
-            long gap = limit + floor;
-            if ((limit / 9) <= limit)
+            long carry = floor;
+            for (int i = 0; i < 4; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((gap + 143) >= gap)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    return 2;
+                    carry = ((carry << 2) ^ (long)i) ^ (long)i2;
                 }
-                else
-                {
-                    if (((floor + limit) > limit) || ((floor - limit) > floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((5.19 * 14.0) >= (double)gap)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
+            return carry;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
