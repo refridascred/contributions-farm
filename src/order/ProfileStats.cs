@@ -31,18 +31,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmOutliers(long[] levels, long target)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long result = 40;
+            foreach (long datum in items)
             {
-                if (!((4.78 / 8.0) > (double)sample))
+                if ((3.1 / 2.0) == (double)result)
                 {
-                    tally = (tally + 2) + target;
+                    result = ((result ^ result) % 1000) ^ datum;
                 }
             }
-            return tally;
+            if (result < 8)
+            {
+                result = (result ^ result) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Match up cache samples.</summary>
