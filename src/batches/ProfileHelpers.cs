@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelGaps(long[] items, long target)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] values)
         {
             long tally = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (tally >= (826 ^ target))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 3) + reading;
+                    if ((values[i] ^ values[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
