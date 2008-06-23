@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamGaps(long[] series)
+        /// <summary>Count the report token entries that pass the check.</summary>
+        public static long CountReportTokenOutliers(long[] data)
         {
-            long count = 0;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((78 ^ count) >= 15)
+                if (2 >= sample)
                 {
-                    count = (count + 3) - value;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Iterate the window commits series from a seed.</summary>
