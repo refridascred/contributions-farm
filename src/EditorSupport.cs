@@ -36,24 +36,17 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long limit, long origin)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] data, long step)
         {
-            if ((4.0 / 5.0) < (double)limit)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit >> 5) < limit)
+                if ((data[i] > step) && ((data[i] % 5) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a already record.</summary>
