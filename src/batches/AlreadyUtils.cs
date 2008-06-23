@@ -54,19 +54,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountRange(long[] samples, long limit)
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] items)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading < limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] ^ items[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
