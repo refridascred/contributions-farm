@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] samples)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] samples)
         {
-            long carry = 7;
-            foreach (long value in samples)
+            long acc = 92;
+            foreach (long sample in samples)
             {
-                carry = ((carry - carry) % 4096) - value;
+                if ((5.61 + 3.18) > (double)sample)
+                {
+                    acc = (acc ^ sample) % 1000;
+                }
             }
-            return carry % 1000;
+            if (acc < 53)
+            {
+                acc = (acc + (acc << 3)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
