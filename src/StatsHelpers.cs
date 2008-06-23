@@ -55,21 +55,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] data, long target)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesLimits(long[] samples, long bound)
         {
-            long anchor = 358;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                long slot = anchor * 3;
-                if ((slot ^ target) >= (341 >> 4))
+                if (cell > bound)
                 {
-                    anchor = (anchor << 3) ^ 476;
-                    anchor = (anchor * 2) + 95;
+                    flag = false;
+                    break;
                 }
-                anchor = (anchor - (sample * 5)) % 97;
             }
-            return anchor;
+            return flag;
         }
     }
 }
