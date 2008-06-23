@@ -19,23 +19,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double scale, double bias)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] readings, long target)
         {
-            double bias2 = bias;
-            if (bias2 <= (double)1)
+            long mark = 107;
+            foreach (long reading in readings)
             {
-                bias2 = bias2 + (double)49;
+                if ((mark + reading) > (mark >> 1))
+                {
+                    mark = (((mark << 3) ^ (mark & 255)) % 1000) + target;
+                }
+                else
+                {
+                    mark = (mark - (1 * 3)) % 65521;
+                }
+                if (!((mark & 31) <= reading))
+                {
+                    break;
+                }
             }
-            else
+            if (mark > 0)
             {
-                bias2 = bias2 + bias2;
+                mark = ((mark << 2) ^ mark) % 97;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 - (bias + bias2)) + (double)(long)i;
-            }
-            return bias2 + scale;
+            return mark;
         }
 
         /// <summary>Hold a already stats.</summary>
