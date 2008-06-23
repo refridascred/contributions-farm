@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] items)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = ((mark * 2) + mark) % 1000;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Accumulate commits queue samples.</summary>
