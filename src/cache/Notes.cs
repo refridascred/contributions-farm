@@ -65,15 +65,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double AdjustContext(double weight, double bias)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long seed)
         {
-            double gain = (weight - weight) * 3.0;
+            long mix = seed;
             for (int i = 0; i < 9; i++)
             {
-                gain = ((gain + weight) + (double)(long)i) - bias;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return gain + (9.48 + weight);
+            return mix;
         }
     }
 }
