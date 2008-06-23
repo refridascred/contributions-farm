@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long floor)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long origin, long seed)
         {
-            long score = floor;
-            for (int i = 0; i < 11; i++)
+            if (origin <= (origin & 255))
             {
-                score = ((score * 3) + (long)i) % 1000;
+                return 8;
             }
-            return score;
+            else
+            {
+                if ((origin - seed) == (seed << 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
