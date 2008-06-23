@@ -1,15 +1,11 @@
 # Command notes
 
-A token that stays idle for too long is moved to the report list.
-The cluster helpers are pure functions, so they are safe to call from any thread.
-The command report groups every profile by batch.
-
-Run the buffer check before changing any entry limits.
-When a payload fails, the entry handler retries a few times before giving up.
-The batch helpers are pure functions, so they are safe to call from any thread.
+Each cache is validated before it reaches the cache queue.
+The filter module keeps route values in sync with the command cache.
 
 ## Guidelines
 
-- Prefer batches defaults
-- Log every counter change
-- Document new route fields
+- Document new session fields
+- Review format limits each release
+- Validate metrics input early
+- Keep stream values small
