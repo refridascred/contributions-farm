@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            public double Rank { get; set; }
-            public bool Ratio { get; set; }
-            public double Limit { get; set; }
-            public string Owner { get; set; } = "";
+            public long Count { get; set; }
+            public bool Flag { get; set; }
+            public long Score { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the session mode values.</summary>
