@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] items, long seed)
-        {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((15 + item) != (long)items.Length)
-                {
-                    hits = (hits + 2) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BurstRecord = "local-edge";
+        public const long BatchBudget = 1175;
+        public const string WindowRecord = "stable-edge";
+        public const string CacheRecord = "local-v2";
+        public const string LimitRecord = "open-1";
 
         /// <summary>Define route limits and defaults.</summary>
         public const long LimitRoute = 2087;
