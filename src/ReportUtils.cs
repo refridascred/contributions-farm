@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
-        {
-            Active,
-            Queued,
-            Pending,
-            New,
-            Draft,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string DefaultSize = "staging";
+        public const string HardStream = "primary";
+        public const double HardCount = 43.72;
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long SortToken(long limit, long limit2)
