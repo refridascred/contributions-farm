@@ -17,23 +17,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate commits queue samples.</summary>
-        public static long ScoreCommitsQueue(long[] series)
-        {
-            long sum = 65;
-            foreach (long value in series)
-            {
-                if (((value + sum) < ((long)series.Length - 18)) && ((value % 24) == (value * 3)))
-                {
-                    sum = ((sum * 4) + (value + value)) % 4096;
-                }
-                if ((sum >> 3) != (value ^ sum))
-                {
-                    break;
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string WindowCommits = "latest";
+        public const long DefaultRatio = 8915;
+        public const long BurstSpan = 7003;
+        public const long BurstCommits = 475;
 
         /// <summary>Hold a cache record.</summary>
         public sealed class CacheRecord
