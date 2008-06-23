@@ -34,12 +34,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LookupPayloadIndex(long[] series, long step)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] levels, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((series[i] >= step) && ((series[i] % 2) == 0))
+                if (levels[i] <= floor)
                 {
                     return (long)i;
                 }
