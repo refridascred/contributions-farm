@@ -57,20 +57,9 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                long seen = origin;
-                if (!(origin < (seen ^ seen)))
-                {
-                    seen = seen + (origin + origin);
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BurstRatio = "stable";
+        public const double SoftSpan = 60.35;
+        public const string RetryWidth = "open-1";
     }
 }
