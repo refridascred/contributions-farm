@@ -47,18 +47,17 @@ namespace Common.Utilities
         public const long DefaultEditor = 4916;
         public const long WindowEditor = 5005;
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] values)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)datum <= (5.5 * 5.0))
+                if ((values[i] >= step) && ((values[i] % 3) == 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Fold a list of command readings.</summary>
