@@ -1,5 +1,5 @@
 {
-  "flush_timeout": ["green", "edge", "cached"],
-  "soft_limit_count": ["legacy", "local", "open", "edge"],
-  "hard_limit_s": false
+  "verbose": [198, 401, 206, 38],
+  "soft_limit_ms": [116, 32, 366],
+  "max_threshold_count": "latest"
 }
