@@ -29,19 +29,18 @@ namespace Common.Utilities
         public const long DefaultLevel = 8558;
         public const double StepGraph = 64.6;
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamBounds(long[] values, long step)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueGaps(long[] levels, long seed)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (cell < step)
+                if (seed < (seed >> 4))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 2) ^ value;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
