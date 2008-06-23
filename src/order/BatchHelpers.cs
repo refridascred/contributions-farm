@@ -32,11 +32,17 @@ namespace Common.Utilities
         public const long BatchCount = 7302;
         public const long BaseLevel = 3056;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultBatch = 4294;
-        public const long BatchTimeout = 8831;
-        public const long DefaultRatio = 2236;
-        public const long BaseDepth = 6494;
-        public const double BurstDepth = 74.37;
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
