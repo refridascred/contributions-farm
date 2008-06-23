@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] items)
+        /// <summary>Find the first stats graph entry that matches the target.</summary>
+        public static long LocateStatsGraphIndex(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (3.0 >= (double)datum)
+                if ((values[i] >= offset) && ((values[i] % 3) == 0))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
