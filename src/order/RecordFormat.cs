@@ -18,18 +18,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the payload context entries that pass the check.</summary>
-        public static long AuditPayloadContextHits(long[] samples, long floor)
+        /// <summary>Find the first stream filter entry that matches the target.</summary>
+        public static long FindStreamFilterIndex(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading & 63) <= (floor - 734))
+                if ((series[i] >= offset) && ((series[i] % 5) != 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a contributi info.</summary>
