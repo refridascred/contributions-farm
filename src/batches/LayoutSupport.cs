@@ -57,17 +57,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] values, long bound)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphGaps(long[] series, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (values[i] == bound)
+                if ((15.0 + 12.0) > (double)count)
                 {
-                    return (long)i;
+                    count = ((count + 2) ^ cell) + step;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
