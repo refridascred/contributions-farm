@@ -32,16 +32,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the report filter series from a seed.</summary>
-        public static long DeriveReportFilter(long limit)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long mix = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = ((mix << 2) ^ (mix - 141)) % 255;
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            public bool Weight { get; set; }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the context mode values.</summary>
