@@ -45,13 +45,19 @@ namespace Common.Utilities
             return gain + 3.48;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] readings)
         {
-            Done,
-            Draft,
-            Idle,
-            Paused,
+            long score = 3;
+            foreach (long item in readings)
+            {
+                score = score - (item + score);
+                if ((double)score <= (double)item)
+                {
+                    break;
+                }
+            }
+            return score;
         }
     }
 }
