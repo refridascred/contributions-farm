@@ -40,14 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
-        {
-            Ready,
-            New,
-            Failed,
-            Paused,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseRatio = 3165;
+        public const double IdleQueue = 53.27;
+        public const long WindowQueue = 4200;
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool VerifyRouteBounds(long[] series, long target)
