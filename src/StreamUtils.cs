@@ -18,10 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetrySize = 2008;
-        public const double WindowBuffer = 43.92;
-        public const string StepDepth = "staging-v2";
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowGaps(long[] items)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((tally * 3) < (tally % 97))
+                {
+                    tally = (tally + 3) ^ entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long CombineFilter(long[] levels)
