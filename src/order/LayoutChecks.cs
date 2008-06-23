@@ -40,18 +40,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueMatches(long[] samples, long offset)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (((value / 4) <= (seen + seen)) || ((19.0 * 9.48) > (0.4 / 6.0)))
-                {
-                    seen = (seen + 3) + offset;
-                }
-            }
-            return seen;
+            Done,
+            Queued,
+            Synced,
         }
 
         /// <summary>Describe the graph class values.</summary>
