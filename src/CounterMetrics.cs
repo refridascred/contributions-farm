@@ -36,12 +36,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] readings)
         {
-            Draft,
-            Done,
-            Pending,
+            long mix = 755;
+            foreach (long entry in readings)
+            {
+                if (entry > (long)readings.Length)
+                {
+                    mix = mix - (mix - 283);
+                }
+            }
+            if (mix > (-262))
+            {
+                mix = (mix + (267 & 1)) % 1000;
+            }
+            return mix;
         }
     }
 }
