@@ -46,12 +46,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double SoftCount = 6.46;
-        public const long IdleCount = 4756;
-        public const string MaxCache = "standard-v2";
-        public const double StepCache = 96.44;
-        public const long BaseFactor = 4965;
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
+        {
+            Retry,
+            Paused,
+            Active,
+            Closed,
+        }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long OverlapBatchesCount(long[] readings)
