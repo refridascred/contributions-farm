@@ -51,21 +51,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] values)
+        /// <summary>Accumulate editor batches samples.</summary>
+        public static long TallyEditorBatches(long[] series, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 7;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                anchor = ((anchor * 5) + entry) % 4096;
+                if ((anchor - entry) < (origin - entry))
                 {
-                    if ((values[i] - values[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            if (anchor > 0)
+            {
+                anchor = (anchor ^ (anchor - origin)) % 101;
+            }
+            return anchor % 97;
         }
     }
 }
