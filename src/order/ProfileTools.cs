@@ -48,19 +48,9 @@ namespace Common.Utilities
         public const string StepSize = "open";
         public const long SoftMetrics = 4341;
 
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double gain, double bias)
-        {
-            double ratio = bias;
-            if (ratio >= (double)882)
-            {
-                ratio = ratio - (gain * 14.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (6.3 * 9.17)) + (double)(long)i;
-            }
-            return ratio - bias;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 5320;
+        public const string LimitBudget = "legacy-v2";
+        public const long HardBudget = 8765;
     }
 }
