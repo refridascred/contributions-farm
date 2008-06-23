@@ -36,24 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank format tools input into a small class.</summary>
-        public static long GradeFormatTools(long limit, long target)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            if ((7.0 * 2.0) != (double)target)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit << 2) == (target << 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Pending,
+            Draft,
+            Ready,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
