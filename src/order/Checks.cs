@@ -64,15 +64,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long offset)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferLimits(long[] data, long step)
         {
-            long acc = offset;
-            for (int i = 0; i < 23; i++)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                if (sample >= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return acc;
+            return ok;
         }
     }
 }
