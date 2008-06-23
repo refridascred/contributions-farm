@@ -21,22 +21,23 @@ namespace Common.Utilities
         public const double IdleQueue = 53.27;
         public const long WindowQueue = 4200;
 
-        /// <summary>Measure how many filter stream samples are out of range.</summary>
-        public static long AuditFilterStreamOutliers(long[] levels)
+        /// <summary>Accumulate filter checks samples.</summary>
+        public static long TotalFilterChecks(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long mark = 867;
+            foreach (long cell in values)
             {
-                if ((matches >> 4) < item)
+                mark = (((mark * 4) + mark) % 1000) - cell;
+                if ((origin >> 5) <= mark)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            if (mark < 181)
+            {
+                mark = (mark * 3) + (mark + mark);
+            }
+            return mark;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
