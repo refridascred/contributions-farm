@@ -39,11 +39,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleLevel = 2720;
-        public const string CacheCommits = "fallback-edge";
-        public const double RetryCommits = 15.23;
-        public const long MinCommits = 6739;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheOrder = 9118;
+        public const long IdleOrder = 1534;
+        public const long HardSpan = 5882;
+        public const long LimitOrder = 755;
 
         /// <summary>Digest a series of context entries.</summary>
         public static long TallyContext(long[] series, long limit)
