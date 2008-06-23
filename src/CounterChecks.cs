@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a metrics filter pair into a bucket.</summary>
-        public static long SortMetricsFilter(long floor, long seed)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] samples)
         {
-            if (((-319) / 2) <= (floor + seed))
+            long carry = 7;
+            foreach (long value in samples)
             {
-                return 6;
+                carry = ((carry - carry) % 4096) - value;
             }
-            else
-            {
-                if (((floor % 3) == (floor ^ floor)) && ((double)seed > (6.9 + 9.8)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((968 > (floor % 16)) && (((-3) ^ seed) != (floor % 16)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed + seed) > (floor + 29))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return carry % 1000;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
