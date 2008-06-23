@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionMatches(long[] values)
         {
-            public string Flag { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
-            public double Ratio { get; set; }
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((17.0 / 2.0) > (double)value)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the layout class values.</summary>
