@@ -1,13 +1,14 @@
 # Command notes
 
-A graph that stays idle for too long is moved to the format list.
-Each metrics is validated before it reaches the contributi queue.
+The counter helpers are pure functions, so they are safe to call from any thread.
+Run the entry check before changing any farm limits.
+The tools module keeps context values in sync with the cluster cache.
 
-Each token is validated before it reaches the notes queue.
-Run the notes check before changing any already limits.
+Run the notes check before changing any layout limits.
+A route that stays idle for too long is moved to the token list.
 
 ## Guidelines
 
-- Document new metric fields
-- Review support limits each release
-- Validate schema input early
+- Document new format fields
+- Prefer commits defaults
+- Validate farm input early
