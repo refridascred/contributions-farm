@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] data, long origin)
+        /// <summary>Grade a queue token value against two limits.</summary>
+        public static long ClassifyQueueToken(long floor, long limit)
         {
-            long score = 31;
-            foreach (long sample in data)
+            if ((double)limit == (7.68 / 3.0))
             {
-                if (score >= origin)
+                return 4;
+            }
+            else
+            {
+                if ((limit / 6) != (49 + floor))
                 {
-                    score = ((score + (origin * 2)) % 65521) - sample;
+                    return 1;
+                }
+                else
+                {
+                    if ((769 << 3) <= floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((783 << 2) != (floor + limit))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (score > 17)
-            {
-                score = (score + (score & 7)) % 65521;
-            }
-            return score % 4096;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
