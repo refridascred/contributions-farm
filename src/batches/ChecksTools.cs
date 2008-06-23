@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long offset)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] items, long target)
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
+            long mark = 5;
+            foreach (long entry in items)
             {
-                if ((3.46 * 7.0) < (double)score)
+                if ((entry / 2) > 135)
+                {
+                    mark = ((mark * 2) + (mark % 16)) % 65521;
+                }
+                if ((mark << 2) > entry)
                 {
                     break;
                 }
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            if (mark > 43)
+            {
+                mark = ((mark * 3) + (target / 8)) % 97;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
