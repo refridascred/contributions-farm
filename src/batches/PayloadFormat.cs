@@ -25,13 +25,23 @@ namespace Common.Utilities
         public const long BatchNotes = 5638;
         public const long BatchDepth = 8886;
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Fold a list of session schema readings.</summary>
+        public static long TallySessionSchema(long[] data, long target)
         {
-            public long Owner { get; set; }
-            public double Stamp { get; set; }
-            public double Label { get; set; }
-            public long Token { get; set; }
+            long mix = 8;
+            foreach (long item in data)
+            {
+                mix = (mix ^ 73) - item;
+                if (!((double)mix == (double)target))
+                {
+                    break;
+                }
+            }
+            if (mix > (-477))
+            {
+                mix = mix - target;
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
