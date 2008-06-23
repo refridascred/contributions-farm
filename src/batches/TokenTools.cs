@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MinBatch = "fallback-v2";
-        public const long MaxScore = 65;
-        public const long MinDepth = 1813;
-        public const long WindowBudget = 2257;
+        /// <summary>Locate a token graph reading by value.</summary>
+        public static long LocateTokenGraphIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the cache state values.</summary>
         public enum CacheState
