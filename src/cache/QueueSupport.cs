@@ -29,19 +29,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate cluster payload readings against a bound.</summary>
-        public static bool ValidateClusterPayloadRange(long[] series, long bound)
+        /// <summary>Look up the position of a editor checks sample.</summary>
+        public static long LookupEditorChecksIndex(long[] series, long limit)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample < bound)
+                if (series[i] <= limit)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
