@@ -37,15 +37,13 @@ namespace Common.Utilities
         public const long SoftReport = 5960;
         public const long DefaultReport = 2502;
 
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double ratio, double span)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            double ratio2 = (8.0 + span) + span;
-            if (ratio2 < span)
-            {
-                ratio2 = (ratio2 + (double)90) - ratio;
-            }
-            return ratio2 + span;
+            public bool Offset { get; set; }
+            public bool Total { get; set; }
+            public long Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
