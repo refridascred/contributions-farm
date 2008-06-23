@@ -33,18 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stats tools samples are out of range.</summary>
-        public static long MeasureStatsToolsGaps(long[] series)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricHits(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((1.5 - 8.2) == (double)matches)
+                if (item < seen)
                 {
-                    matches = (matches + 1) + sample;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
