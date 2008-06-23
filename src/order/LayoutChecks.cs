@@ -13,17 +13,14 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] readings, long seed)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= seed) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Retry,
+            Dropped,
+            Idle,
+            Locked,
         }
 
         /// <summary>Describe the graph status values.</summary>
