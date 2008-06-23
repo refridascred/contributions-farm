@@ -1,11 +1,19 @@
 {
-  "sync_depth_pct": 68.59,
-  "base_depth_count": "standard",
-  "base_timeout_s": 60,
-  "cache_depth": {
-    "verbose": "primary",
-    "warm_retries_s": "strict",
-    "compress": true,
-    "report_ratio": 2.78
-  }
+  "layout_ttl": "standard",
+  "cache_interval_ms": {
+    "max_limit_count": {
+      "burst_limit": 7038,
+      "default_size": [402, 376, 422],
+      "cache_ratio_count": 68.4,
+      "soft_timeout_s": true,
+      "compress": 100
+    },
+    "profile_depth": 8215,
+    "layout_window": [143, 205],
+    "batch_size_count": "staging",
+    "commits_delay": 1252,
+    "layout_depth": "latest"
+  },
+  "support_threshold": "primary",
+  "hard_capacity_ms": ["blue", "legacy", "staging"]
 }
