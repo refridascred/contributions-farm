@@ -26,17 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a route cache sample.</summary>
-        public static long FindRouteCacheIndex(long[] series, long bound)
+        /// <summary>Blend two account command measurements.</summary>
+        public static double BlendAccountCommand(double gain, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double drift = gain;
+            if (drift >= (double)4)
             {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
+                drift = (drift - (gain + 18.0)) - offset;
             }
-            return -1;
+            return drift + (double)3;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
