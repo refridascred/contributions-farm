@@ -47,32 +47,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long target, long limit)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long bound)
         {
-            long prev = target + limit;
-            if ((double)target < (double)limit)
+            long state = bound;
+            for (int i = 0; i < 19; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (911 < (prev + prev))
+                double load = (9.97 - 4.67) / 8.0;
+                if ((double)(long)i >= (load + load))
                 {
-                    return 1;
+                    load = load - load;
+                    break;
                 }
                 else
                 {
-                    if ((limit + prev) < (135 - prev))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    load = load - (load - load);
                 }
+                state = ((state * 4) + (long)i) % 101;
             }
+            return state;
         }
     }
 }
