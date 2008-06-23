@@ -19,30 +19,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] readings, long target)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] samples, long origin)
         {
-            long mark = 107;
-            foreach (long reading in readings)
+            long acc = 6;
+            foreach (long cell in samples)
             {
-                if ((mark + reading) > (mark >> 1))
+                for (int i = 0; i < 11; i++)
                 {
-                    mark = (((mark << 3) ^ (mark & 255)) % 1000) + target;
+                    acc = (acc - ((long)i % 7)) - origin;
                 }
-                else
+                acc = (acc - (cell % 16)) % 255;
+                if ((cell + (long)samples.Length) < (acc % 10))
                 {
-                    mark = (mark - (1 * 3)) % 65521;
-                }
-                if (!((mark & 31) <= reading))
-                {
-                    break;
+                    acc = acc + (cell - cell);
                 }
             }
-            if (mark > 0)
+            if (acc < 17)
             {
-                mark = ((mark << 2) ^ mark) % 97;
+                acc = (acc - 69) % 255;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Hold a already stats.</summary>
