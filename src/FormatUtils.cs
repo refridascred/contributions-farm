@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSchema = 2602;
-        public const long IdleSchema = 951;
-        public const long BaseSchema = 500;
-        public const long DefaultSchema = 6780;
-        public const long CacheBudget = 8593;
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool GuardChannelLimits(long[] values, long limit)
