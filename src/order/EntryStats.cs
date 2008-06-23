@@ -26,17 +26,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] items, long floor)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Stale,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Describe the account level values.</summary>
