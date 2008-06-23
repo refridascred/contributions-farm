@@ -53,22 +53,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderOutliers(long[] samples, long limit)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((limit + limit) > (matches / 9)) && ((limit - matches) != (matches + 63)))
+                if ((series[i] >= step) && ((series[i] % 2) == 0))
                 {
-                    matches = (matches + 2) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
