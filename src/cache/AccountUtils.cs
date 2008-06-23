@@ -27,11 +27,26 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowCount = 192;
-        public const long HardSize = 5228;
-        public const long MaxCount = 3514;
-        public const string BatchLayout = "strict";
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long limit, long offset)
+        {
+            long offset2 = limit - offset;
+            if ((offset2 * 4) >= offset2)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((8.0 / 2.0) == (double)limit) && ((offset % 7) <= (offset2 - limit)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
