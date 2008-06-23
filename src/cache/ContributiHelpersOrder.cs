@@ -32,19 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long floor)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long acc = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((double)floor > (9.0 - 8.88))
-                {
-                    acc = acc + (long)i;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
+            public long Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
