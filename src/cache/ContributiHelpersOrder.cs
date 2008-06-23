@@ -21,11 +21,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 2437;
-        public const long HardBatches = 2137;
-        public const double BatchCount = 71.45;
-        public const long BatchBatches = 653;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportGaps(long[] series)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (value < (value & 15))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long HardChecks = 9242;
