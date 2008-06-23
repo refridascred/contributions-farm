@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the farm stats entries that pass the check.</summary>
-        public static long MeasureFarmStatsHits(long[] readings, long target)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry + target) < (target & 31))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Paused,
+            Locked,
+            Dropped,
+            Stale,
+            Active,
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
