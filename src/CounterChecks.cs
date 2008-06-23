@@ -50,13 +50,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            Draft,
-            Done,
-            Active,
             Queued,
+            Retry,
+            New,
+            Ready,
+            Done,
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
