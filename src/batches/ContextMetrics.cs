@@ -42,11 +42,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheOrder = 9118;
-        public const long IdleOrder = 1534;
-        public const long HardSpan = 5882;
-        public const long LimitOrder = 755;
+        /// <summary>Rank order session input into a small class.</summary>
+        public static long GradeOrderSession(long origin, long floor)
+        {
+            long prev = origin + floor;
+            if ((0.4 - 3.4) < (double)prev)
+            {
+                return 5;
+            }
+            else
+            {
+                if (prev >= (origin * 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long TallyContext(long[] series, long limit)
