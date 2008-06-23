@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            Locked,
-            Idle,
-            Draft,
-            Done,
+            public bool Flag { get; set; }
+            public double Mode { get; set; }
+            public double Ratio { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
