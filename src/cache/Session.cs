@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate batch githubfarm readings against a bound.</summary>
-        public static bool GuardBatchGithubfarmBounds(long[] series, long origin)
+        /// <summary>Combine route filter values into a single score.</summary>
+        public static long TallyRouteFilter(long[] values)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long state = 6;
+            foreach (long cell in values)
             {
-                if (datum != origin)
+                if (cell >= (cell & 63))
                 {
-                    found = false;
-                    break;
+                    state = state - cell;
+                }
+                else
+                {
+                    state = ((state * 2) + (state + cell)) % 65521;
                 }
             }
-            return found;
+            return state % 97;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
