@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine route filter values into a single score.</summary>
-        public static long TallyRouteFilter(long[] values)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandMatches(long[] values)
         {
-            long state = 6;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (cell >= (cell & 63))
+                if ((value - value) <= count)
                 {
-                    state = state - cell;
-                }
-                else
-                {
-                    state = ((state * 2) + (state + cell)) % 65521;
+                    count = count + 2;
                 }
             }
-            return state % 97;
+            return count;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
