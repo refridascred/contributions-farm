@@ -1,22 +1,18 @@
 # entry settings
-persist: 45.52
-burst_ratio:
-  poll_size:
-    - 21
-    - 12
-    - 213
-  cache_timeout: 250
-  cache_interval_pct: 2230
-  soft_window_count:
-    enabled: 86.86
-    warm_retries_pct: 25
-    min_size: 91.0
-idle_threshold_count: blue
-compress:
-  poll_interval: legacy
-  contributi_timeout: 16
-  flush_ratio:
-    persist: 30
-    batch_size: 60
-    base_retries: standard
-  persist: 2257
+poll_limit: 39.91
+audit:
+  - 231
+  - 398
+  - 242
+idle_depth:
+  account_window: eu-west
+  soft_capacity_count: true
+  idle_interval_count:
+    - 365
+    - 451
+    - 79
+metrics_size:
+  - fallback
+  - standard
+flush_ttl: true
+profile_ttl: 81.78
