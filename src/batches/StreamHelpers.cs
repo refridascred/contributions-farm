@@ -56,24 +56,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long origin)
+        /// <summary>Project the next account value.</summary>
+        public static double AdjustAccount(double weight, double bias)
         {
-            long carry = origin;
-            for (int i = 0; i < 20; i++)
+            double bias2 = weight;
+            if (bias2 > (bias2 / 8.0))
             {
-                if ((4.0 + 4.8) < (double)(long)i)
-                {
-                    carry = (carry * 5) + (origin - 783);
-                    break;
-                }
-                if ((origin / 7) > ((long)i + 366))
-                {
-                    carry = ((carry << 2) ^ ((long)i + origin)) % 65521;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
+                bias2 = bias2 - weight;
             }
-            return carry;
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 + (weight - bias2)) + (double)(long)i;
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Measure how many metrics metric samples are out of range.</summary>
