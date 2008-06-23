@@ -33,18 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphOutliers(long[] values, long origin)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if ((double)sample >= (1.0 - 5.7))
+                if (!(((seed >> 3) <= (seed >> 5)) || ((item - item) <= item)))
                 {
-                    matches = (matches + 1) + origin;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
