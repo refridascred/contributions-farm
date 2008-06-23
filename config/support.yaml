@@ -1,19 +1,22 @@
 # support settings
-stats_size:
-  enabled: 100
-  poll_limit_ms:
-    notes_capacity: 43
-    sync_depth_count: green
-    tools_retries: 10.64
-    default_capacity: 75.96
-  burst_interval_count: 7797
-  batch_retries_count: 19
-  dry_run: legacy
-burst_delay_count: 4888
-min_ratio_count: 29
-readonly:
-  - open
-  - edge
-  - local
-  - stable
-retry_delay_pct: 30
+min_threshold: 19.79
+support_depth:
+  cache_limit_count: local
+  buffer_ttl: false
+  stats_depth:
+    retry_window: edge
+    sync_limit_s: 3952
+    cache_capacity: 21.52
+    max_threshold: open
+    warm_timeout:
+      - 426
+      - 172
+  persist:
+    - edge
+    - primary
+    - blue
+    - strict
+  default_ratio_pct: staging
+max_depth_count: 100
+max_ratio_count: 92.53
+batch_limit: blue
