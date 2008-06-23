@@ -47,24 +47,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long step, long floor)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            if ((11.0 - 0.9) > (double)floor)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((3 / 9) == (step - step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
