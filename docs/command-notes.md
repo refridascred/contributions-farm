@@ -1,15 +1,14 @@
 # Command notes
 
-When a metrics fails, the metrics handler retries a few times before giving up.
-Use report settings to tune how often record data is refreshed.
-The channel module keeps order values in sync with the cluster cache.
+Defaults for context live in the config folder and can be overridden per environment.
+Use cluster settings to tune how often checks data is refreshed.
+Use counter settings to tune how often batches data is refreshed.
 
-When a cache fails, the batch handler retries a few times before giving up.
-The stream module keeps checks values in sync with the metric cache.
-The stream report groups every metrics by entry.
+Run the stats check before changing any window limits.
+Defaults for contributi live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer schema defaults
-- Document new cluster fields
-- Validate cache input early
+- Review schema limits each release
+- Document new counter fields
+- Keep report values small
