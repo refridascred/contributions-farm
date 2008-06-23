@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long target)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long bound, long bound2)
         {
-            long result = target;
-            for (int i = 0; i < 17; i++)
+            if (bound2 <= bound)
             {
-                result = ((result * 4) + (long)i) % 101;
+                return 4;
             }
-            return result;
+            else
+            {
+                if ((bound % 12) == (40 + (-20)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((bound2 - 28) <= (bound2 + bound)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound2 - bound) > bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a commits batches counter forward.</summary>
