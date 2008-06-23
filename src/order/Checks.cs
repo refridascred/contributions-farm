@@ -50,17 +50,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] series, long seed)
+        /// <summary>Iterate the route entry series from a seed.</summary>
+        public static long RollRouteEntry(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (series[i] >= seed)
-                {
-                    return (long)i;
-                }
+                result = ((result << 2) ^ 597) % 101;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the window status values.</summary>
