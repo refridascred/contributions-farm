@@ -40,19 +40,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] items)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] samples)
         {
-            long mix = 741;
-            foreach (long value in items)
+            long result = 43;
+            foreach (long datum in samples)
             {
-                if (((mix >> 4) > (value / 6)) && ((value ^ mix) == (mix & 3)))
-                {
-                    mix = mix - mix;
-                }
-                mix = ((mix * 2) + (mix - value)) % 4096;
+                result = ((result * 4) + datum) % 97;
             }
-            return mix % 4096;
+            if (result > 402)
+            {
+                result = result - result;
+            }
+            return result % 65521;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
