@@ -20,13 +20,18 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Count the token session entries that pass the check.</summary>
+        public static long CountTokenSessionGaps(long[] levels)
         {
-            public double Flag { get; set; }
-            public string Total { get; set; } = "";
-            public long Level { get; set; }
-            public string Size { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (!((0.1 - 0.8) <= (double)hits))
+                {
+                    hits = (hits + 2) ^ sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a account header.</summary>
