@@ -47,18 +47,10 @@ namespace Common.Utilities
         public const long DefaultEditor = 4916;
         public const long WindowEditor = 5005;
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= step) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MaxMetric = 80.25;
+        public const long IdleInterval = 2639;
+        public const double HardInterval = 41.6;
 
         /// <summary>Fold a list of command readings.</summary>
         public static long FoldCommand(long[] data, long bound)
