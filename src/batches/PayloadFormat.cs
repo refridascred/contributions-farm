@@ -33,19 +33,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate stream cache readings against a bound.</summary>
-        public static bool CheckStreamCacheRange(long[] series, long offset)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item > offset)
+                if ((series[i] < seed) && ((series[i] % 5) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
