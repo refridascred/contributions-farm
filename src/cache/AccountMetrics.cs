@@ -38,21 +38,27 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long MatchWindowCount(long[] items)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] readings, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 505;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((double)seed != (5.8 * 4.6)) && ((seed ^ 6) != (cell + 875)))
                 {
-                    if ((items[i] - items[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor ^ seed) % 255;
+                    continue;
+                }
+                if ((cell * 5) < (cell ^ seed))
+                {
+                    anchor = anchor + anchor;
+                }
+                else
+                {
+                    anchor = anchor + anchor;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Describe the report status values.</summary>
