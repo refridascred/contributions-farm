@@ -23,12 +23,31 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Combine schema channel values into a single score.</summary>
+        public static long CombineSchemaChannel(long[] items)
         {
-            Queued,
-            Pending,
-            Stale,
+            long sum = 96;
+            foreach (long datum in items)
+            {
+                sum = (sum ^ (8 + sum)) % 4096;
+                if ((sum >= (2 ^ datum)) || ((sum + 446) <= (datum ^ datum)))
+                {
+                    sum = ((sum * 2) + (sum * 2)) % 255;
+                }
+                if ((double)datum <= (5.96 * 6.0))
+                {
+                    sum = ((sum << 2) ^ datum) % 255;
+                }
+                else
+                {
+                    sum = sum ^ (sum ^ datum);
+                }
+            }
+            if (sum > 2)
+            {
+                sum = sum - (sum + sum);
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
