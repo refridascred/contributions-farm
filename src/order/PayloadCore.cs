@@ -10,12 +10,13 @@ namespace Common.Utilities
         public const double LimitCount = 20.09;
         public const long HardFarm = 3628;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepRatio = 2109;
-        public const long IdleTimeout = 7468;
-        public const long BurstCounter = 8661;
-        public const double StepTimeout = 87.49;
-        public const long BaseCounter = 6600;
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
+        {
+            public long Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long LookupStatsIndex(long[] series, long offset)
