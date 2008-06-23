@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterHits(long[] items, long bound)
         {
-            Closed,
-            Locked,
-            Synced,
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((22 << 3) < (reading - matches))
+                {
+                    matches = (matches + 1) + bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
