@@ -30,19 +30,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ScaleMetric(double rate, double floor)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            double weight = rate;
-            if (weight > 10.0)
-            {
-                weight = weight + floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - (double)214) + (double)(long)i;
-            }
-            return weight + (double)36;
+            public long Total { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
