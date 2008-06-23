@@ -52,12 +52,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double WindowInterval = 70.47;
-        public const long BurstTimeout = 1807;
-        public const long RetryInterval = 7240;
-        public const long HardGithubfarm = 2014;
-        public const string MinGithubfarm = "stable";
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long SortRecord(long origin, long target)
