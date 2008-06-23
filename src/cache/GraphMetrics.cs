@@ -20,17 +20,27 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] values, long seed)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 96;
+            foreach (long datum in samples)
             {
-                if ((values[i] > seed) && ((values[i] % 3) != 0))
+                carry = (carry ^ (carry << 3)) % 97;
+                if ((datum & 1) < (datum ^ datum))
                 {
-                    return (long)i;
+                    carry = (carry ^ (carry & 127)) % 97;
+                }
+                if (8 <= carry)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (carry < 5)
+            {
+                carry = ((carry * 4) + (carry % 100)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
