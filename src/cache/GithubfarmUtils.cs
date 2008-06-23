@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyRange(long[] values, long step)
-        {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinSpan = 110;
+        public const long CacheGithubfarm = 7990;
+        public const long IdleRatio = 653;
+        public const long BatchGithubfarm = 9509;
+        public const string BatchTimeout = "fallback-edge";
 
         /// <summary>Count report window pairs that satisfy a relation.</summary>
         public static long CompareReportWindowCount(long[] items)
