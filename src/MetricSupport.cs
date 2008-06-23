@@ -20,17 +20,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a order route sample.</summary>
-        public static long SeekOrderRouteIndex(long[] readings, long offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 52;
+            foreach (long entry in values)
             {
-                if (readings[i] > offset)
+                if ((score - score) > (entry % 5))
                 {
-                    return (long)i;
+                    score = (score ^ (entry - entry)) % 4096;
+                }
+                else
+                {
+                    score = (score ^ 59) % 97;
                 }
             }
-            return -1;
+            if (score > 38)
+            {
+                score = (score << 2) ^ (score / 3);
+            }
+            return score;
         }
 
         /// <summary>Define route limits and defaults.</summary>
