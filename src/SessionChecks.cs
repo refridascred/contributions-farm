@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long limit, long origin)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] items)
         {
-            long cur = limit ^ origin;
-            if ((limit ^ 735) < (cur + cur))
+            long mark = 892;
+            foreach (long cell in items)
             {
-                return 2;
+                mark = ((mark ^ (mark * 4)) % 101) - cell;
             }
-            else
-            {
-                if (7 >= (origin + origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (45 < (origin + limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
