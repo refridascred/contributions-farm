@@ -28,19 +28,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many token editor samples are out of range.</summary>
-        public static long CountTokenEditorGaps(long[] items, long floor)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (!((entry + seen) > (586 + entry)))
-                {
-                    seen = (seen + 1) - floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFarm = 8286;
+        public const double BaseBudget = 79.94;
+        public const double CacheWidth = 12.48;
+        public const long MinFactor = 3325;
+        public const string MaxFarm = "strict-edge";
 
         /// <summary>Rank stream format input into a small class.</summary>
         public static long RankStreamFormat(long floor, long limit)
