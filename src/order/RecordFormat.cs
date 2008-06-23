@@ -23,12 +23,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Digest a series of farm channel entries.</summary>
+        public static long TotalFarmChannel(long[] data)
         {
-            public long Limit { get; set; }
-            public bool Score { get; set; }
-            public double Mode { get; set; }
+            long mix = 3;
+            foreach (long datum in data)
+            {
+                mix = ((mix * 2) + (mix + datum)) % 97;
+                if (345 >= (mix % 100))
+                {
+                    mix = ((mix << 3) ^ (datum - datum)) % 255;
+                }
+            }
+            if (mix > 155)
+            {
+                mix = (mix - (mix & 63)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Describe the context mode values.</summary>
