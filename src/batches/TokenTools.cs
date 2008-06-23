@@ -20,18 +20,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmOutliers(long[] values)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorLimits(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                if ((sample >> 1) < hits)
+                if (datum != floor)
                 {
-                    hits = hits + 3;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
