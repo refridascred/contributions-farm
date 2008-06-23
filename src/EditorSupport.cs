@@ -20,12 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Roll a session schema counter forward.</summary>
+        public static long DeriveSessionSchema(long step)
         {
-            Queued,
-            Dropped,
-            Done,
+            long total = step;
+            for (int i = 0; i < 19; i++)
+            {
+                total = total - step;
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Describe the batches mode values.</summary>
