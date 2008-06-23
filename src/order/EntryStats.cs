@@ -19,12 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Iterate the window commits series from a seed.</summary>
+        public static long IterateWindowCommits(long offset)
         {
-            Draft,
-            Active,
-            Pending,
+            long mix = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
