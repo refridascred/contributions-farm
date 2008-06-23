@@ -34,22 +34,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandGaps(long[] levels)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] series)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (((cell * 3) == (count >> 5)) && ((count + cell) < 78))
+                if (item >= (item * 2))
                 {
-                    count = count + 3;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
