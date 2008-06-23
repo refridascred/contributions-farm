@@ -20,10 +20,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchDepth = 2338;
-        public const long StepInterval = 4566;
-        public const string StepSize = "open";
+        /// <summary>Check that every githubfarm order entry stays within the limit.</summary>
+        public static bool CheckGithubfarmOrderLimits(long[] data, long seed)
+        {
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Derive the next counter value from a seed.</summary>
         public static long SeriesCounter(long bound)
