@@ -43,12 +43,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            public string Region { get; set; } = "";
-            public double Ratio { get; set; }
-            public double Owner { get; set; }
+            Idle,
+            Synced,
+            Stale,
+            Paused,
         }
     }
 }
