@@ -36,21 +36,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] readings)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((cell - floor) == (floor * 3))
                 {
-                    if ((readings[i] + readings[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
