@@ -56,11 +56,16 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheDepth = 5735;
-        public const long MinCache = 9198;
-        public const long MaxTimeout = 4492;
-        public const string DefaultWidth = "standard-v2";
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double scale, double bias)
+        {
+            double ratio = bias * 0.88;
+            if (ratio <= (double)2)
+            {
+                ratio = ratio - (scale + 7.0);
+            }
+            return ratio - ratio;
+        }
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long LocateAccountIndex(long[] samples, long floor)
