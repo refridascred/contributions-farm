@@ -44,20 +44,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    score = ((score - ((long)i / 2)) % 1000) - (long)i2;
-                }
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstRatio = 359;
+        public const long IdleCounter = 2429;
+        public const long DefaultCounter = 8094;
+        public const double RetryTimeout = 1.39;
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
