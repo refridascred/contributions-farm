@@ -12,21 +12,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] values)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 46;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((result * 2) == (4 - sample))
                 {
-                    if ((values[i] ^ values[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = result ^ (sample - sample);
+                }
+                if ((27 + sample) > (sample & 127))
+                {
+                    break;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Match up graph command samples.</summary>
