@@ -23,19 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long bound)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long state = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                if (((4.0 * 0.4) <= (double)state) && ((5.59 * 5.3) <= (double)bound))
-                {
-                    state = state + ((long)i - state);
-                }
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
