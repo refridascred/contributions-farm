@@ -45,11 +45,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double weight, double floor)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesLimits(long[] readings, long bound)
         {
-            double gain = floor;
-            return gain + (weight + 4.48);
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
