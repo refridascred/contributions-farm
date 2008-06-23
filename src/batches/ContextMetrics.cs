@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long origin)
         {
-            Closed,
-            Retry,
-            Queued,
-            Dropped,
-            New,
+            long result = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((137 - result) != (result * 3))
+                {
+                    continue;
+                }
+                result = result ^ (origin * 3);
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Accumulate entry farm samples.</summary>
