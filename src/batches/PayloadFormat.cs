@@ -29,22 +29,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count the stats metric entries that pass the check.</summary>
-        public static long MeasureStatsMetricHits(long[] items, long seed)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (((long)items.Length - sample) > (66 + seed))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public double Stamp { get; set; }
+            public double Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
