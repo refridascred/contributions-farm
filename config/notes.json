@@ -1,8 +1,5 @@
 {
-  "default_capacity_pct": true,
-  "enabled": 26,
-  "default_timeout_pct": 98,
-  "max_size_count": false,
-  "flush_ttl_count": "cached",
-  "audit": 250
+  "batch_delay": true,
+  "retry_ratio_pct": [208, 307, 17],
+  "min_delay": 5810
 }
