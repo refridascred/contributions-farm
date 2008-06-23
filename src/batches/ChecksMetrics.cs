@@ -19,12 +19,19 @@ namespace Common.Utilities
         public const string HardStream = "legacy";
         public const string SoftStream = "staging-v2";
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutRange(long[] data, long step)
         {
-            public string Weight { get; set; } = "";
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
