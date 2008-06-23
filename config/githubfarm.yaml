@@ -1,7 +1,8 @@
 # githubfarm settings
-min_capacity: 9430
-strict:
-  - 399
-  - 27
-sync_interval_s: 85.37
-audit: 32
+queue_delay:
+  - 329
+  - 102
+min_window_count:
+  - local
+  - strict
+hard_size: 76
