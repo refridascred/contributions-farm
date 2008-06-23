@@ -25,17 +25,23 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] series, long seed)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] readings, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 903;
+            foreach (long cell in readings)
             {
-                if ((series[i] < seed) && ((series[i] % 5) != 0))
+                mark = (mark ^ (cell / 8)) % 65521;
+                if ((86 - mark) < (floor - mark))
                 {
-                    return (long)i;
+                    mark = (mark + (cell << 2)) % 255;
                 }
             }
-            return -1;
+            if (mark > 4)
+            {
+                mark = (mark + floor) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
