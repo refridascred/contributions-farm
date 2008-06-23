@@ -38,18 +38,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsHits(long[] values, long seed)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((tally + seed) > (seed >> 3))
-                {
-                    tally = (tally + 2) + datum;
-                }
-            }
-            return tally;
+            Failed,
+            Stale,
+            Idle,
+            Synced,
+            Paused,
         }
 
         /// <summary>Define format limits and defaults.</summary>
