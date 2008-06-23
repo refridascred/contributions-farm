@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] items)
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] series)
         {
-            long state = 105;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state * 3) + state) % 255;
-                state = ((state << 2) ^ (reading % 97)) % 1000;
-                if ((reading * 5) >= (state & 15))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] - series[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
