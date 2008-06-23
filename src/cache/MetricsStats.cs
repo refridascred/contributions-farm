@@ -35,21 +35,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] samples)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesRange(long[] levels, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item < step)
                 {
-                    if ((samples[i] - samples[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
