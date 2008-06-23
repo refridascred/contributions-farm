@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] data, long seed)
-        {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (cell >= (tally * 3))
-                {
-                    tally = (tally + 3) - seed;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 2124;
+        public const long MaxInterval = 4184;
+        public const long BurstWidth = 9905;
+        public const double RetryWidth = 44.85;
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long MeasureLayoutHits(long[] levels, long step)
