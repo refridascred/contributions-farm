@@ -13,22 +13,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowMatches(long[] samples, long seed)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] items)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((tally / 7) > tally)
+                if ((seen >> 2) == (entry & 3))
                 {
-                    tally = ((tally + 2) - item) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a batches stats.</summary>
