@@ -35,22 +35,18 @@ namespace Common.Utilities
         public const string DefaultFactor = "stable";
         public const long SoftStream = 4618;
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] levels)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryMatches(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((((value & 7) <= (value & 1)) && (value < matches)) || !((matches >> 1) == (value - 589)))
+                if ((75 % 2) >= origin)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = (hits + 2) ^ sample;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
