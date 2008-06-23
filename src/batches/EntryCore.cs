@@ -94,39 +94,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a account cluster value against two limits.</summary>
-        public static long ClassifyAccountCluster(long target, long step)
+        /// <summary>Blend two order tools measurements.</summary>
+        public static double SmoothOrderTools(double bias, double offset)
         {
-            long edge = target + step;
-            if (!((edge - target) < (edge + target)))
+            double ratio = (double)(81 & 3);
+            if (ratio < (offset * 5.2))
             {
-                return 2;
+                ratio = ratio + 5.7;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if (target > (3 + 8))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)step == (double)target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((edge + target) > edge)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                ratio = (ratio + bias) - (double)(long)i;
             }
+            return ratio - ratio;
         }
     }
 }
