@@ -10,12 +10,21 @@ namespace Common.Utilities
         public const string MinScore = "legacy";
         public const long RetrySize = 8914;
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long target)
         {
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
+            long total = target;
+            for (int i = 0; i < 4; i++)
+            {
+                if (!((454 * 5) == (target & 3)))
+                {
+                    total = total - target;
+                    continue;
+                }
+                total = total - (target / 3);
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Combine order values into a single score.</summary>
