@@ -24,21 +24,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] series)
+        /// <summary>Adjust a order window reading.</summary>
+        public static double SmoothOrderWindow(double gain, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias = (double)(-8) - offset;
+            if (bias > bias)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = (bias - 0.71) + gain;
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - (7.7 * 9.2)) + (double)(long)i;
+            }
+            return bias - 0.8;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
