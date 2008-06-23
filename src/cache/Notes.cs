@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelOutliers(long[] values)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long origin)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long sum = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)seen != (4.81 / 6.0))
+                if (3.07 > (double)sum)
                 {
-                    seen = (seen + 2) + sample;
+                    sum = sum - (sum / 9);
+                    break;
                 }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    sum = ((sum * 3) + ((-96) ^ sum)) ^ (long)i2;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
