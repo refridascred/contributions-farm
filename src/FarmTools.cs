@@ -14,19 +14,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] series, long seed)
-        {
-            long mix = 546;
-            foreach (long item in series)
-            {
-                if ((item - item) > (785 - seed))
-                {
-                    mix = ((mix * 4) + (89 * 5)) % 4096;
-                }
-            }
-            return mix % 97;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 6822;
+        public const long SoftCache = 3270;
+        public const long WindowCache = 2936;
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long OverlapCounterCount(long[] data)
