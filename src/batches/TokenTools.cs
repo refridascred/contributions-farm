@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
-        {
-            public long Size { get; set; }
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MinBatch = "fallback-v2";
+        public const long MaxScore = 65;
+        public const long MinDepth = 1813;
+        public const long WindowBudget = 2257;
 
         /// <summary>Describe the cache state values.</summary>
         public enum CacheState
