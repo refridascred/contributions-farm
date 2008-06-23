@@ -49,21 +49,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCount(long[] readings)
+        /// <summary>Accumulate payload record samples.</summary>
+        public static long TallyPayloadRecord(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 44;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = (mark * 2) + (sample + mark);
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
