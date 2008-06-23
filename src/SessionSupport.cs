@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsOutliers(long[] values, long target)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ScaleCounter(double scale, double span)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            double scale2 = scale;
+            if (scale2 > (double)97)
             {
-                if ((double)seen > (5.7 + 1.89))
-                {
-                    seen = ((seen + 2) ^ entry) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                scale2 = (scale2 - (scale - scale2)) - span;
             }
-            return seen;
+            else
+            {
+                scale2 = scale2 - (double)2;
+            }
+            return scale2 + (2.0 - scale2);
         }
 
         /// <summary>Rank report input into a small class.</summary>
