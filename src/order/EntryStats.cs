@@ -14,15 +14,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Iterate the window commits series from a seed.</summary>
-        public static long IterateWindowCommits(long offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferHits(long[] series)
         {
-            long mix = offset;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                mix = ((mix * 2) + (long)i) % 1000;
+                if (!((value % 10) >= (value + 8)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Audit stats notes readings against a rule.</summary>
