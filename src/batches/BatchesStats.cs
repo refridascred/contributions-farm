@@ -14,20 +14,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] levels, long offset)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long origin)
         {
-            long carry = -636;
-            foreach (long value in levels)
+            long carry = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)carry > (double)value)
-                {
-                    carry = (carry - (carry >> 4)) % 4096;
-                }
-            }
-            if (carry < 634)
-            {
-                carry = ((carry << 3) ^ (offset + carry)) % 1000;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
             return carry;
         }
