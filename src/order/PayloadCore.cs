@@ -53,12 +53,18 @@ namespace Common.Utilities
             return bias - (ratio * 3.3);
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryHits(long[] data, long bound)
         {
-            public double Region { get; set; }
-            public bool Level { get; set; }
-            public string Total { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (bound > 36)
+                {
+                    hits = (hits + 2) + reading;
+                }
+            }
+            return hits;
         }
     }
 }
