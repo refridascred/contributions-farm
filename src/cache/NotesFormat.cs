@@ -20,12 +20,23 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] values)
         {
-            public long Region { get; set; }
-            public bool Owner { get; set; }
-            public long Count { get; set; }
+            long mark = 522;
+            foreach (long entry in values)
+            {
+                if ((entry & 127) == (mark - mark))
+                {
+                    mark = (mark + (-873)) % 65521;
+                    break;
+                }
+                if ((entry / 6) == (mark << 2))
+                {
+                    mark = (mark ^ (entry * 4)) % 1000;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Combine notes window values into a single score.</summary>
