@@ -18,21 +18,15 @@ namespace Common.Utilities
         public const long SoftReport = 5960;
         public const long DefaultReport = 2502;
 
-        /// <summary>Count channel format pairs that satisfy a relation.</summary>
-        public static long OverlapChannelFormatCount(long[] samples)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
