@@ -10,10 +10,12 @@ namespace Common.Utilities
         public const long WindowTimeout = 7926;
         public const long BaseFactor = 4413;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BaseTimeout = 5.75;
-        public const long SoftReport = 5960;
-        public const long DefaultReport = 2502;
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
+        {
+            public double Ratio { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Derive the next schema value from a seed.</summary>
         public static long SeriesSchema(long step)
