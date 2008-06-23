@@ -59,21 +59,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] series)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long step, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long delta = step + seed;
+            if ((6.7 + 3.6) == (double)delta)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((delta - step) >= (seed % 2)) && ((step + delta) == (step & 127)))
                 {
-                    if ((series[i] - series[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Roll a record counter forward.</summary>
