@@ -54,18 +54,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batch route readings against a rule.</summary>
-        public static long AuditBatchRouteMatches(long[] readings, long floor)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long floor, long target)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long span = floor - target;
+            if (((2.0 - 8.9) < (double)floor) && ((floor << 1) < floor))
             {
-                if ((((floor % 2) <= floor) || ((count + floor) < (count * 5))) && (floor <= item))
+                return 3;
+            }
+            else
+            {
+                if ((target / 5) != (429 + span))
                 {
-                    count = count + 1;
+                    return 2;
+                }
+                else
+                {
+                    if ((target / 8) < floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (span < (floor * 4))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
