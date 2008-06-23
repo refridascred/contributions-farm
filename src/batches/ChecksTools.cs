@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksHits(long[] data)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((1.6 + 10.0) >= (double)entry)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double DefaultFactor = 24.55;
+        public const long MinRatio = 3993;
+        public const string BurstSize = "local";
+        public const long StepStream = 4266;
+        public const double MinStream = 95.48;
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
