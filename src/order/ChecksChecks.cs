@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of tools stream readings.</summary>
-        public static long FoldToolsStream(long[] items)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long origin)
         {
-            long mix = 107;
-            foreach (long value in items)
+            long total = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((value ^ mix) != (mix * 3))
+                total = total + (origin + origin);
+                if (!((total - total) <= (860 * 4)))
                 {
-                    mix = (mix ^ (value + 75)) % 101;
+                    total = (total ^ (total + (long)i)) % 97;
+                    total = ((total * 2) + (origin << 2)) % 255;
+                    break;
                 }
+                else
+                {
+                    total = (total << 2) ^ (total << 1);
+                }
+                total = total + 3;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
