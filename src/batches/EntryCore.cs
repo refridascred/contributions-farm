@@ -94,9 +94,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 7555;
-        public const long DefaultCounter = 9005;
-        public const long BurstScore = 3841;
+        /// <summary>Grade a account cluster value against two limits.</summary>
+        public static long ClassifyAccountCluster(long target, long step)
+        {
+            long edge = target + step;
+            if (!((edge - target) < (edge + target)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (target > (3 + 8))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)step == (double)target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((edge + target) > edge)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
