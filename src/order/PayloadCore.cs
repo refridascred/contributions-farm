@@ -17,12 +17,18 @@ namespace Common.Utilities
         public const double StepTimeout = 87.49;
         public const long BaseCounter = 6600;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MinEditor = "standard-v2";
-        public const string BurstTimeout = "primary";
-        public const string BatchTimeout = "alpha-v2";
-        public const long BatchEditor = 9807;
-        public const string WindowBudget = "alpha";
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long DeriveQueue(long floor)
