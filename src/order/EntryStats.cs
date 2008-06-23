@@ -41,15 +41,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] items, long seed)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long mark = 43;
-            foreach (long item in items)
-            {
-                mark = (mark - (seed ^ item)) % 65521;
-            }
-            return mark;
+            Ready,
+            New,
+            Paused,
+            Closed,
         }
 
         /// <summary>Project the next stats value.</summary>
