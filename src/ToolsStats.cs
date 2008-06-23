@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
-        {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftRatio = 2708;
+        public const long WindowTimeout = 7926;
+        public const long BaseFactor = 4413;
 
         /// <summary>Define report limits and defaults.</summary>
         public const double BaseTimeout = 5.75;
