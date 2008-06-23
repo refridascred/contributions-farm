@@ -40,19 +40,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] levels)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long mix = 613;
-            foreach (long item in levels)
-            {
-                mix = ((mix << 3) ^ (mix >> 3)) + item;
-            }
-            if (mix > 15)
-            {
-                mix = (mix + (mix << 3)) % 1000;
-            }
-            return mix % 65521;
+            Failed,
+            Queued,
+            Pending,
         }
     }
 }
