@@ -1,5 +1,4 @@
 # already settings
-metrics_delay: 5680
-base_retries: 3.62
-poll_delay: 19.45
-min_interval_s: latest
+commits_ratio: 98.55
+hard_interval_ms: 30
+schema_ttl: stable
