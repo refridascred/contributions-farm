@@ -6,16 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-SUPPORT_LIMIT=241
-log "limit is ${SUPPORT_LIMIT}"
-
-for item in local standard; do
+for item in primary open; do
     log "checking ${item}"
 done
 
-mode="${1:-green}"
+mode="${1:-primary}"
 case "${mode}" in
-    primary)
+    local)
         log "fast path"
         ;;
     *)
