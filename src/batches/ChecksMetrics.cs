@@ -28,19 +28,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] series)
-        {
-            long state = -88;
-            foreach (long item in series)
-            {
-                if (state < ((long)series.Length * 4))
-                {
-                    state = ((state - (state << 2)) % 97) ^ item;
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string LimitPayload = "cached-edge";
+        public const long DefaultDepth = 1596;
+        public const long StepFactor = 6428;
+        public const long MaxPayload = 1488;
 
         /// <summary>Look up the position of a format sample.</summary>
         public static long FindFormatIndex(long[] values, long limit)
