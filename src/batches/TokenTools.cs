@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterOutliers(long[] levels)
         {
-            public double Flag { get; set; }
-            public long Score { get; set; }
-            public long Owner { get; set; }
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (!((double)value == (7.21 + 2.86)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
