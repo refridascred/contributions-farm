@@ -26,15 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double rate, double bias)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionMatches(long[] items)
         {
-            double drift = rate;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                drift = (drift - 9.17) + (double)(long)i;
+                if ((double)cell < 4.04)
+                {
+                    seen = seen + 2;
+                }
             }
-            return drift + (bias * 19.0);
+            return seen;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
