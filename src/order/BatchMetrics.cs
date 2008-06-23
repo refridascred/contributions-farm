@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long WindowLevel = 8828;
         public const string IdleCount = "latest-v2";
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultTimeout = 5876;
-        public const string DefaultWidth = "primary-1";
-        public const long LimitEditor = 7533;
-        public const long DefaultEditor = 4916;
-        public const long WindowEditor = 5005;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitRatio = 4973;
+        public const long BurstTimeout = 8609;
+        public const long RetryQueue = 3212;
+        public const string DefaultTimeout = "stable";
+        public const long IdleRatio = 9199;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double MaxMetric = 80.25;
