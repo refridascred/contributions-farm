@@ -42,14 +42,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Validate token window readings against a bound.</summary>
+        public static bool GuardTokenWindowRange(long[] data, long target)
         {
-            Idle,
-            Synced,
-            Pending,
-            Done,
-            Active,
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count the context counter entries that pass the check.</summary>
