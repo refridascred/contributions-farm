@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFarm = 5976;
-        public const long MaxFarm = 3512;
-        public const long StepTimeout = 6868;
-        public const double DefaultFarm = 31.05;
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ProjectEditor(double gain, double span)
+        {
+            double bias = span;
+            if (bias <= (double)60)
+            {
+                bias = bias + (bias * 3.35);
+            }
+            return bias + gain;
+        }
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long DeriveOrder(long target)
