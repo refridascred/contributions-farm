@@ -19,24 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long floor, long floor2)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportOutliers(long[] readings, long seed)
         {
-            if (floor >= ((-752) + (-569)))
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((6.69 + 8.0) <= (double)floor)
+                if (((795 + reading) >= (654 * 2)) || (709 > (reading % 24)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    tally = (tally + 1) + seed;
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
