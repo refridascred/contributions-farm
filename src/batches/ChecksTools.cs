@@ -19,12 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double DefaultFactor = 24.55;
-        public const long MinRatio = 3993;
-        public const string BurstSize = "local";
-        public const long StepStream = 4266;
-        public const double MinStream = 95.48;
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
+        {
+            Paused,
+            Ready,
+            Done,
+        }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
         public static long SeekMetricsIndex(long[] samples, long bound)
