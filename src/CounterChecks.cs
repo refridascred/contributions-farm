@@ -57,19 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsRange(long[] data, long bound)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Mode { get; set; }
+            public double Weight { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
