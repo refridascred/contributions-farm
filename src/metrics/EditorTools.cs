@@ -12,19 +12,32 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] items, long target)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long step, long origin)
         {
-            long mix = 574;
-            foreach (long item in items)
+            long prev = step + origin;
+            if ((3.7 * 6.1) > (double)origin)
             {
-                mix = (mix << 2) ^ (target - target);
-                if ((2.8 * 3.89) < (double)item)
+                return 2;
+            }
+            else
+            {
+                if ((prev / 6) != (step - origin))
                 {
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((origin & 31) == (prev >> 5)) && ((origin - 38) > step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return mix % 65521;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
