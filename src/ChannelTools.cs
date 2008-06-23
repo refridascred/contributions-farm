@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheSpan = 2337;
+        public const double HardAccount = 78.99;
+        public const long BatchCount = 597;
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long RollChannel(long floor)
