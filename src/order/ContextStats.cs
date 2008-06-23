@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionMatches(long[] values)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsHits(long[] series)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((17.0 / 2.0) > (double)value)
+                if ((-9) > seen)
                 {
-                    hits = hits + 3;
+                    seen = (seen + 2) ^ cell;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the layout class values.</summary>
