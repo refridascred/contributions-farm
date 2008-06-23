@@ -1,8 +1,17 @@
 {
-  "soft_threshold_pct": 64.31,
-  "batch_window_ms": 14,
-  "stats_interval": 63.24,
-  "cache_timeout": "fallback",
-  "max_depth": "fallback",
-  "base_window_ms": "latest"
+  "flush_ratio": ["fallback", "local", "open", "strict"],
+  "base_timeout_s": {
+    "enabled": true,
+    "soft_depth_pct": ["open", "primary"],
+    "base_depth_ms": "local",
+    "compress": {
+      "persist": "legacy",
+      "record_ttl": "edge",
+      "batch_depth": "open",
+      "stats_size": 95.58
+    }
+  },
+  "githubfarm_ttl": 44.05,
+  "metrics_interval": false,
+  "base_capacity_s": [216, 294, 380]
 }
