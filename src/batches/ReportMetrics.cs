@@ -22,13 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            Dropped,
-            Pending,
-            Paused,
-            Active,
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
