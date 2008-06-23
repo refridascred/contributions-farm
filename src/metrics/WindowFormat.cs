@@ -49,14 +49,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            Closed,
-            Draft,
-            Ready,
+            Locked,
+            Done,
+            Idle,
             Failed,
-            Retry,
         }
 
         /// <summary>Project the next profile value.</summary>
