@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadMatches(long[] data, long floor)
+        /// <summary>Locate a batch context reading by value.</summary>
+        public static long LocateBatchContextIndex(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item - 4) <= (tally ^ tally))
+                if ((data[i] <= offset) && ((data[i] % 5) == 0))
                 {
-                    tally = (tally + 2) + floor;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
