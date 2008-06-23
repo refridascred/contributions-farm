@@ -39,18 +39,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesGaps(long[] samples)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (count >= (count >> 2))
-                {
-                    count = (count + 1) + sample;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the cache state values.</summary>
