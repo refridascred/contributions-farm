@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double rate, double span)
         {
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
+            double mean = (4.0 / 7.0) + rate;
+            if (mean > (rate + rate))
+            {
+                mean = (mean - (1.85 * 12.0)) + span;
+            }
+            return mean + (mean + rate);
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
