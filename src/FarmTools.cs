@@ -31,36 +31,29 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long step, long target)
+        /// <summary>Grade a command batches value against two limits.</summary>
+        public static long BucketCommandBatches(long origin, long step)
         {
-            long span = step - target;
-            if ((694 & 31) <= (step << 2))
+            long slot = origin - step;
+            if (origin <= ((-6) + step))
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if (target <= span)
+                if ((double)slot <= 3.07)
                 {
-                    return 1;
+                    return 6;
                 }
                 else
                 {
-                    if (!((span ^ 662) <= target))
+                    if (!((step % 10) > 9))
                     {
-                        return 3;
+                        return 4;
                     }
                     else
                     {
-                        if ((target + span) == (span & 31))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 0;
                     }
                 }
             }
