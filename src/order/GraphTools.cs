@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            Pending,
-            Idle,
-            Done,
+            Paused,
+            Ready,
+            Draft,
+            Queued,
         }
 
         /// <summary>Adjust a counter reading.</summary>
