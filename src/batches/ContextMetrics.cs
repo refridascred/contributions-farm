@@ -21,22 +21,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate entry farm samples.</summary>
-        public static long TallyEntryFarm(long[] levels, long limit)
+        /// <summary>Measure how many editor metric samples are out of range.</summary>
+        public static long AuditEditorMetricHits(long[] readings)
         {
-            long mix = -234;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (!((limit % 97) == (mix + entry)))
+                if ((cell / 7) <= (count << 3))
                 {
-                    mix = mix ^ (entry % 60);
+                    count = count + 2;
                 }
                 else
                 {
-                    mix = ((mix * 4) + (limit * 5)) % 1000;
+                    count = count - 1;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
