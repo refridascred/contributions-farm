@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionMatches(long[] data)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (((count / 2) != (sample & 63)) && ((sample + sample) > ((-56) + sample)))
+                if ((matches % 5) <= (matches >> 2))
                 {
-                    count = count + 3;
+                    matches = (matches + 2) - reading;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Match up already samples.</summary>
