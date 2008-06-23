@@ -35,12 +35,22 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string SoftCount = "strict-v2";
-        public const long BurstInterval = 7745;
-        public const double RetryBudget = 10.59;
-        public const long IdleEditor = 4375;
-        public const long StepEditor = 3363;
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long HardRatio = 5193;
