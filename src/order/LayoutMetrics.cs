@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Blend two farm measurements.</summary>
+        public static double SmoothFarm(double ratio, double offset)
         {
-            Dropped,
-            Stale,
-            Done,
-            Retry,
+            double mean = ratio;
+            return (mean + mean) + offset;
         }
 
         /// <summary>Rank context input into a small class.</summary>
