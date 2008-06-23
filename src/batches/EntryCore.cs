@@ -50,13 +50,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] levels)
         {
-            New,
-            Done,
-            Locked,
-            Draft,
+            long carry = 30;
+            foreach (long value in levels)
+            {
+                if (54 > value)
+                {
+                    carry = (carry * 5) + value;
+                }
+                carry = carry - (810 % 3);
+            }
+            if (carry < (-684))
+            {
+                carry = (carry * 2) + carry;
+            }
+            return carry;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
