@@ -58,9 +58,15 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BurstRatio = "stable";
-        public const double SoftSpan = 60.35;
-        public const string RetryWidth = "open-1";
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double weight, double offset)
+        {
+            double ratio = (offset + weight) / 6.0;
+            if (ratio < (double)601)
+            {
+                ratio = ratio - offset;
+            }
+            return ratio + (double)8;
+        }
     }
 }
