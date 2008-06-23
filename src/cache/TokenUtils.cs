@@ -49,12 +49,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            Draft,
-            Pending,
-            Ready,
+            Synced,
+            New,
+            Dropped,
         }
     }
 }
