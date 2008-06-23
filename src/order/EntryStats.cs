@@ -35,10 +35,23 @@ namespace Common.Utilities
         public const string DefaultFactor = "stable";
         public const long SoftStream = 4618;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheContext = 5456;
-        public const long RetryInterval = 4382;
-        public const long WindowLevel = 9411;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] levels)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((((value & 7) <= (value & 1)) && (value < matches)) || !((matches >> 1) == (value - 589)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long AuditGithubfarmGaps(long[] samples, long offset)
