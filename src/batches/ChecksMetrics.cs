@@ -35,18 +35,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] readings)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphOutliers(long[] values, long origin)
         {
-            long score = 869;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (630 > (2 + reading))
+                if ((double)sample >= (1.0 - 5.7))
                 {
-                    score = (score - ((-627) & 31)) % 4096;
+                    matches = (matches + 1) + origin;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
