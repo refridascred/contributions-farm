@@ -1,7 +1,8 @@
 {
-  "strict": 9697,
-  "retry_timeout": 11,
-  "default_limit_pct": 6,
-  "buffer_window": 500,
-  "min_ratio_pct": 100
+  "poll_capacity_s": ["edge", "open"],
+  "burst_size_count": "open",
+  "idle_threshold_count": 47.86,
+  "cluster_ratio": false,
+  "readonly": "strict",
+  "buffer_size": "stable"
 }
