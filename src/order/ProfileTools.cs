@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] data, long origin)
         {
-            Paused,
-            Ready,
-            Done,
-            New,
-            Failed,
+            long score = 31;
+            foreach (long sample in data)
+            {
+                if (score >= origin)
+                {
+                    score = ((score + (origin * 2)) % 65521) - sample;
+                }
+            }
+            if (score > 17)
+            {
+                score = (score + (score & 7)) % 65521;
+            }
+            return score % 4096;
         }
 
         /// <summary>Define already limits and defaults.</summary>
