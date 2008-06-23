@@ -38,30 +38,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] series)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] samples)
         {
-            long mix = 1;
-            foreach (long cell in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)mix >= (4.8 - 9.6))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (mix * 4) + (cell & 63);
-                }
-                else
-                {
-                    mix = (mix + (cell << 1)) % 4096;
-                }
-                if ((3.61 * 3.0) == (double)cell)
-                {
-                    mix = (mix << 3) ^ (83 >> 1);
-                }
-                if (((cell / 8) < (mix - cell)) && ((871 + (long)series.Length) <= (cell ^ cell)))
-                {
-                    break;
+                    if ((samples[i] ^ samples[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mix;
+            return hits;
         }
     }
 }
