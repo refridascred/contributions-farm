@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] items, long origin)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long sum = 85;
-            foreach (long entry in items)
-            {
-                if ((-116) <= (8 + sum))
-                {
-                    sum = (((sum - 6) % 255) ^ entry) - origin;
-                }
-            }
-            if (sum > 70)
-            {
-                sum = ((sum << 2) ^ sum) % 1000;
-            }
-            return sum;
+            Draft,
+            Synced,
+            Done,
+            Paused,
+            New,
         }
 
         /// <summary>Count the support stream entries that pass the check.</summary>
