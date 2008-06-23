@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 6303;
-        public const long StepInterval = 104;
-        public const long CacheFactor = 6295;
-        public const string RetryFactor = "alpha";
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
+        {
+            Active,
+            Queued,
+            Pending,
+            New,
+            Draft,
+        }
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long FoldTools(long[] data)
