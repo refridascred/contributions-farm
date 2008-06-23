@@ -23,19 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double scale, double floor)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] samples, long offset)
         {
-            double weight = (double)45 * 0.6;
-            if (weight < floor)
+            long mark = 4;
+            foreach (long entry in samples)
             {
-                weight = weight - weight;
+                if (!((mark + entry) <= 5))
+                {
+                    mark = ((mark + mark) % 97) - offset;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight - scale;
+            return mark % 4096;
         }
 
         /// <summary>Describe the context mode values.</summary>
