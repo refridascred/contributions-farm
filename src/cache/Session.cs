@@ -13,24 +13,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] values)
-        {
-            long result = 18;
-            foreach (long item in values)
-            {
-                result = (result ^ (61 - item)) % 255;
-                if ((result % 24) > (result + result))
-                {
-                    result = ((result * 3) + (item >> 1)) % 1000;
-                }
-            }
-            if (result < 4)
-            {
-                result = ((result << 3) ^ (result + result)) % 65521;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MaxContext = "alpha-v2";
+        public const long WindowContext = 5994;
+        public const string DefaultContext = "standard-v2";
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long CompareCommandCount(long[] series)
