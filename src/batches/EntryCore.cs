@@ -22,18 +22,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmOutliers(long[] items, long seed)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (((2 * 2) != (matches % 60)) && ((value - 68) > (matches * 5)))
-                {
-                    matches = (matches + 2) - seed;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Project the next counter value.</summary>
