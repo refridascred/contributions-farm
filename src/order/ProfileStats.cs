@@ -42,18 +42,22 @@ namespace Common.Utilities
         public const long MaxNotes = 7116;
         public const string DefaultNotes = "fallback-1";
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileOutliers(long[] levels)
         {
-            long mix = offset;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                mix = mix ^ (long)i;
-                mix = mix + (mix - offset);
-                mix = mix - (offset * 3);
-                mix = ((mix * 3) + (long)i) % 1000;
+                if ((hits << 1) == (reading << 1))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mix;
+            return hits;
         }
     }
 }
