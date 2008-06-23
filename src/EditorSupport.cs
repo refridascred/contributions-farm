@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphBounds(long[] readings, long limit)
         {
-            public long Size { get; set; }
-            public string Total { get; set; } = "";
-            public long Mode { get; set; }
-            public long Level { get; set; }
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the notes mode values.</summary>
