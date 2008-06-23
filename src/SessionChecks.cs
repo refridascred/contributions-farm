@@ -46,10 +46,10 @@ namespace Common.Utilities
         /// <summary>Hold a notes header.</summary>
         public sealed class NotesHeader
         {
-            public double Limit { get; set; }
-            public bool Region { get; set; }
-            public long Count { get; set; }
-            public double Mode { get; set; }
+            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Rank { get; set; }
+            public double Count { get; set; }
         }
     }
 }
