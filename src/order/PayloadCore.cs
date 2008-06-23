@@ -20,15 +20,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of command farm entries.</summary>
-        public static long WeighCommandFarm(long[] items, long offset)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long result = 6;
-            foreach (long datum in items)
-            {
-                result = (result + (result + offset)) + datum;
-            }
-            return result;
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Combine already values into a single score.</summary>
