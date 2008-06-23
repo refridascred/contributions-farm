@@ -45,20 +45,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long offset)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long acc = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                long bound = (2 + acc) ^ (offset ^ acc);
-                if (offset > 61)
-                {
-                    acc = (acc - ((long)i + bound)) % 1000;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            Draft,
+            Done,
+            Pending,
         }
     }
 }
