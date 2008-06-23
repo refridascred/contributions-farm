@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] items, long bound)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public bool Rank { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
