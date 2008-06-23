@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryGaps(long[] values)
         {
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if (!((double)seen > 6.89))
+                {
+                    seen = (seen + 3) ^ cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
