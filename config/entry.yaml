@@ -1,7 +1,9 @@
 # entry settings
-idle_capacity_s: fallback
-soft_timeout_s: true
-batch_capacity: open
-poll_depth: 34
-idle_threshold_count: 10.35
-buffer_window: 43
+format_timeout: 46
+base_size: 64
+verbose:
+  idle_capacity_s: standard
+  verbose: 46.59
+  hard_capacity_s: 3997
+  flush_ttl: cached
+retry_window_s: false
