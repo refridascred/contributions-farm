@@ -1,23 +1,8 @@
 {
-  "warm_capacity": "primary",
-  "cache_timeout_ms": 30,
-  "hard_ttl_pct": "green",
-  "strict": 4,
-  "verbose": {
-    "token_limit": "fallback",
-    "dry_run": 26.51,
-    "metric_retries": {
-      "min_depth_pct": ["open", "staging", "staging", "open"],
-      "queue_capacity": false,
-      "batch_threshold_ms": 7405
-    },
-    "soft_limit_ms": {
-      "token_interval": 93,
-      "audit": 1024,
-      "readonly": 90.35
-    },
-    "burst_ttl_ms": 1024,
-    "compress": "primary"
-  },
-  "format_threshold": true
+  "audit": 83.48,
+  "batch_depth_pct": ["blue", "cached", "blue"],
+  "default_capacity_pct": 6802,
+  "max_threshold": 53.96,
+  "flush_delay_s": [288, 178],
+  "warm_threshold_pct": false
 }
