@@ -52,14 +52,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsHits(long[] readings)
         {
-            Locked,
-            Queued,
-            Closed,
-            New,
-            Paused,
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample <= ((long)readings.Length - 59)) || ((hits << 1) >= (hits + 667)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
