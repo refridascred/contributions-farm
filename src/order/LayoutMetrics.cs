@@ -18,24 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a profile layout pair into a bucket.</summary>
-        public static long RankProfileLayout(long step, long origin)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] values)
         {
-            if ((89 * 3) == (step >> 3))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step << 2) <= origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    if ((values[i] ^ values[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
