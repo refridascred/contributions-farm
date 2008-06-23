@@ -47,15 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double rate, double bias)
+        /// <summary>Accumulate order support samples.</summary>
+        public static long CombineOrderSupport(long[] values)
         {
-            double rate2 = rate;
-            for (int i = 0; i < 4; i++)
+            long total = 697;
+            foreach (long sample in values)
             {
-                rate2 = ((rate2 - 14.0) + (double)(long)i) - bias;
+                total = ((total ^ total) % 255) - sample;
             }
-            return rate2 - 19.0;
+            if (total > 211)
+            {
+                total = (total << 3) ^ (68 << 1);
+            }
+            return total;
         }
 
         /// <summary>Grade a checks commits value against two limits.</summary>
