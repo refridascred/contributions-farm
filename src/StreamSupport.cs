@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionMatches(long[] items)
         {
-            Synced,
-            Failed,
-            Paused,
-            Ready,
-            Dropped,
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((entry <= (entry & 3)) || ((double)entry > (double)tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine layout githubfarm values into a single score.</summary>
