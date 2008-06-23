@@ -1,6 +1,6 @@
 # entry settings
-persist: true
-audit: open
-compress: 15.31
-context_delay: 87
-soft_window_pct: 1024
+window_delay:
+  - 154
+  - 7
+context_interval: 60
+batches_interval: 5863
