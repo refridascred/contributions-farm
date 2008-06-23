@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] readings, long target)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadMatches(long[] data, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((readings[i] > target) && ((readings[i] % 3) == 0))
+                if ((item - 4) <= (tally ^ tally))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + floor;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
