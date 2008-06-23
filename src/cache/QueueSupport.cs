@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] values)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] samples)
         {
-            long total = 9;
-            foreach (long entry in values)
+            long mark = 120;
+            foreach (long datum in samples)
             {
-                if (1 <= (entry + total))
+                if ((8.5 + 0.9) != (double)mark)
                 {
-                    total = ((total << 3) ^ (0 << 2)) % 1000;
+                    mark = ((mark * 5) + (datum & 31)) % 101;
                 }
                 else
                 {
-                    total = total + (total ^ entry);
-                }
-                if (((entry * 5) >= entry) && (2.2 >= (double)(long)values.Length))
-                {
-                    break;
+                    mark = (mark ^ (32 - 62)) % 255;
                 }
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
