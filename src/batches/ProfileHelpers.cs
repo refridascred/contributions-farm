@@ -65,15 +65,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the buffer format series from a seed.</summary>
-        public static long StepBufferFormat(long origin)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long target)
         {
-            long carry = origin;
-            for (int i = 0; i < 17; i++)
+            long anchor = target;
+            for (int i = 0; i < 4; i++)
             {
-                carry = ((carry * 5) + (long)i) % 65521;
+                if (!((double)anchor < (double)target))
+                {
+                    anchor = ((anchor << 2) ^ (target - 84)) % 255;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return carry;
+            return anchor;
         }
     }
 }
