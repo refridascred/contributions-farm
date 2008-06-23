@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long offset, long bound)
         {
-            public string Size { get; set; } = "";
-            public string Owner { get; set; } = "";
+            if (!((double)offset == (10.0 - 5.8)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)bound == (11.0 * 4.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Project the next cache value.</summary>
