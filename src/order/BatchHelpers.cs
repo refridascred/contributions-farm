@@ -26,11 +26,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinFactor = 7410;
-        public const double RetryCounter = 85.06;
-        public const double CacheCount = 54.65;
-        public const double HardCounter = 35.68;
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double rate, double bias)
+        {
+            double drift = rate;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - 9.17) + (double)(long)i;
+            }
+            return drift + (bias * 19.0);
+        }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
         public static long IterateMetrics(long origin)
