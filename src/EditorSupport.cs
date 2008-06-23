@@ -11,17 +11,12 @@ namespace Common.Utilities
         public const long MaxRatio = 4939;
         public const long BatchLevel = 4135;
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] values, long floor)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Dropped,
+            Done,
         }
 
         /// <summary>Describe the batches mode values.</summary>
