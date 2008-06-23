@@ -1,14 +1,10 @@
 {
-  "batch_ttl_ms": "fallback",
-  "default_threshold_s": {
-    "retry_retries": 88.89,
-    "idle_timeout": {
-      "burst_ttl_count": 49.95,
-      "checks_size": false,
-      "enabled": 24.85
-    },
-    "max_ratio_count": 81.76,
-    "farm_capacity": ["blue", "fallback", "standard"]
+  "default_timeout_ms": "open",
+  "warm_depth_pct": 5,
+  "flush_window": {
+    "idle_ratio": "staging",
+    "report_capacity": 18.53,
+    "warm_depth": true
   },
-  "poll_depth_ms": false
+  "sync_depth_s": "green"
 }
