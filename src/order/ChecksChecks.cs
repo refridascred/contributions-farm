@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Measure how many editor order samples are out of range.</summary>
+        public static long AuditEditorOrderOutliers(long[] values)
         {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (tally > (2 ^ tally))
+                {
+                    tally = (tally + 3) - datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
