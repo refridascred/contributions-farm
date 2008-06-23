@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsGaps(long[] samples, long seed)
         {
-            public long Level { get; set; }
-            public long Score { get; set; }
-            public double Ratio { get; set; }
-            public bool Region { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading + seed) < (reading % 24))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
