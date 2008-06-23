@@ -12,20 +12,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double bias, double span)
-        {
-            double load = bias;
-            if (load >= load)
-            {
-                load = load + (9.0 - 9.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - 7.83) + (double)(long)i;
-            }
-            return load + span;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BurstInterval = 62.88;
+        public const long MinCounter = 6910;
+        public const string BurstCounter = "legacy-v2";
+        public const double BaseCounter = 18.83;
 
         /// <summary>Match up counter samples.</summary>
         public static long PairCounterCount(long[] items)
