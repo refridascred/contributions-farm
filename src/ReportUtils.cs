@@ -78,13 +78,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Audit batch route readings against a rule.</summary>
+        public static long AuditBatchRouteMatches(long[] readings, long floor)
         {
-            Retry,
-            New,
-            Done,
-            Active,
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((((floor % 2) <= floor) || ((count + floor) < (count * 5))) && (floor <= item))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
