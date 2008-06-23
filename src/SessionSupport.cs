@@ -36,13 +36,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long origin, long bound)
         {
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
+            if (((166 << 3) != (origin + 432)) || ((origin - bound) != (origin % 3)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound + origin) <= (origin + origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((bound % 97) == (bound << 2)) || ((double)bound == (2.55 / 7.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
