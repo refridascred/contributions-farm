@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Find the first route command entry that matches the target.</summary>
-        public static long LookupRouteCommandIndex(long[] items, long bound)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (items[i] > bound)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return (long)i;
+                    mark = ((mark + (mark - mark)) % 101) ^ (long)i2;
+                    mark = mark + (seed ^ 89);
                 }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Combine route values into a single score.</summary>
