@@ -59,15 +59,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double weight, double offset)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            double load = (double)(66 + (-8));
-            if (load > (load + 12.0))
-            {
-                load = ((load - load) - weight) + offset;
-            }
-            return load + (double)120;
+            public long Score { get; set; }
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
