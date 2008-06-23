@@ -18,11 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Look up the position of a payload cluster sample.</summary>
+        public static long FindPayloadClusterIndex(long[] samples, long seed)
         {
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
