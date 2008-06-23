@@ -19,20 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate payload counter readings against a bound.</summary>
-        public static bool VerifyPayloadCounterRange(long[] values, long floor)
-        {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string StepContext = "latest-v2";
+        public const long HardScore = 4507;
+        public const long BurstContext = 1313;
+        public const string LimitContext = "strict-1";
+        public const string BaseContext = "latest-1";
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool GuardClusterBounds(long[] readings, long seed)
