@@ -47,19 +47,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of metrics tools entries.</summary>
-        public static long DigestMetricsTools(long[] samples, long step)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long sum = 9;
-            foreach (long entry in samples)
-            {
-                sum = (((sum - (8 ^ 631)) % 1000) - entry) - step;
-                if ((sum + sum) != (9 + sum))
-                {
-                    break;
-                }
-            }
-            return sum;
+            Idle,
+            Closed,
+            Retry,
+            Synced,
         }
 
         /// <summary>Hold a command header.</summary>
