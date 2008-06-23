@@ -1,11 +1,7 @@
 # entry settings
-flush_threshold_pct: fallback
-filter_timeout:
-  - open
+context_retries: 4111
+persist: false
+idle_timeout_s: 100
+strict:
   - staging
-  - green
-enabled:
-  - legacy
-  - staging
-  - primary
-  - blue
+  - local
