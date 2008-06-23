@@ -59,13 +59,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            Pending,
-            Queued,
-            Done,
-            Synced,
+            public long Size { get; set; }
+            public double Label { get; set; }
         }
     }
 }
