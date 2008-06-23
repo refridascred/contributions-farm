@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format batch entries that pass the check.</summary>
-        public static long AuditFormatBatchHits(long[] samples, long limit)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long result = -5;
+            foreach (long entry in data)
             {
-                if (!((reading << 2) < (seen - limit)))
+                if ((entry + seed) <= entry)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    result = (result ^ entry) % 65521;
                 }
             }
-            return seen;
+            if (result > 3)
+            {
+                result = (result - (result - result)) % 4096;
+            }
+            return result % 65521;
         }
 
         /// <summary>Digest a series of record stream entries.</summary>
