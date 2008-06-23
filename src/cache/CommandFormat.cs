@@ -33,19 +33,22 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutBounds(long[] values, long step)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchOutliers(long[] data, long offset)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (item < step)
+                if (!!(offset >= (value / 8)))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
