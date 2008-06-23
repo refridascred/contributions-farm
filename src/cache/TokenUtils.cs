@@ -13,39 +13,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long floor, long seed)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] readings)
         {
-            long prev = floor - seed;
-            if (!((9.1 - 3.45) == (double)seed))
+            long sum = 99;
+            foreach (long entry in readings)
             {
-                return 2;
+                sum = ((sum + (sum ^ sum)) % 101) ^ entry;
             }
-            else
+            if (sum > 6)
             {
-                if ((prev + seed) == (seed << 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor + prev) <= 0)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((5.34 / 3.0) > (double)seed) && ((7.0 * 2.11) > (double)floor))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                sum = (sum ^ (sum - 6)) % 101;
             }
+            return sum % 1000;
         }
 
         /// <summary>Describe the contributi status values.</summary>
