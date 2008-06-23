@@ -1,7 +1,11 @@
 # support settings
-max_delay_count: strict
-idle_timeout: 6.09
-schema_size: 17
-soft_depth: 6854
-compress: 78
-enabled: 75
+filter_ratio: legacy
+soft_delay_ms: cached
+payload_limit: false
+cache_threshold_ms:
+  record_timeout: false
+  contributi_timeout: 1794
+  retry_limit: 27.82
+  audit: 0.81
+min_depth: strict
+batch_size_pct: 93.78
