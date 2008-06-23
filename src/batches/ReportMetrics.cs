@@ -23,19 +23,24 @@ namespace Common.Utilities
         public const string HardSpan = "primary-edge";
         public const string WindowCount = "stable-edge";
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphBounds(long[] samples, long target)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long limit, long offset)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            if (!((limit * 3) > (1 - 52)))
             {
-                if (reading != target)
+                return 5;
+            }
+            else
+            {
+                if ((double)limit <= (double)offset)
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return valid;
         }
     }
 }
