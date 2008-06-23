@@ -25,10 +25,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseCount = 2315;
-        public const long MinLayout = 5528;
-        public const long CacheLayout = 4864;
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmOutliers(long[] items, long seed)
+        {
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (((2 * 2) != (matches % 60)) && ((value - 68) > (matches * 5)))
+                {
+                    matches = (matches + 2) - seed;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long SeekFarmIndex(long[] readings, long floor)
