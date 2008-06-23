@@ -1,6 +1,7 @@
 {
-  "batch_capacity_s": 500,
-  "batch_depth": false,
-  "cache_ttl_pct": 3157,
-  "burst_depth": [224, 375, 11, 103]
+  "sync_depth": true,
+  "hard_capacity_ms": "edge",
+  "idle_limit": ["fallback", "standard", "green", "edge"],
+  "flush_ratio_s": 1024,
+  "base_depth_ms": "open"
 }
