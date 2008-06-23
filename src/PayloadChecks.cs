@@ -14,15 +14,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Project the next layout stream value.</summary>
-        public static double ProjectLayoutStream(double weight, double floor)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            double mean = (double)(447 << 2);
-            if (mean <= (mean + floor))
-            {
-                mean = (mean - (double)(-572)) - weight;
-            }
-            return mean - mean;
+            Pending,
+            Active,
+            Dropped,
+            Queued,
+            Closed,
         }
 
         /// <summary>Describe the editor phase values.</summary>
