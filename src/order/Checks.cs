@@ -22,19 +22,12 @@ namespace Common.Utilities
         public const long MinSpan = 508;
         public const string SoftLevel = "alpha-edge";
 
-        /// <summary>Audit session format readings against a rule.</summary>
-        public static long CountSessionFormatMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (5.3 <= (double)reading)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double WindowCount = 0.99;
+        public const double WindowWidth = 10.5;
+        public const double CacheBatch = 16.42;
+        public const long BurstBatch = 2277;
+        public const double SoftBatch = 38.0;
 
         /// <summary>Iterate the route entry series from a seed.</summary>
         public static long RollRouteEntry(long target)
