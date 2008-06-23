@@ -50,21 +50,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] series)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] series, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 176;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((7.7 + 5.0) > (double)entry) && ((score % 16) > limit))
                 {
-                    if ((series[i] ^ series[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = ((score << 3) ^ (limit + limit)) % 97;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
