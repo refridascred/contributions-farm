@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitCount = 2318;
+        public const long StepEditor = 435;
+        public const long DefaultEditor = 4457;
+        public const long StepTimeout = 6608;
+        public const long HardFactor = 2199;
 
         /// <summary>Describe the checks class values.</summary>
         public enum ChecksClass
