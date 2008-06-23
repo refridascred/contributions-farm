@@ -57,13 +57,9 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
-        {
-            public long Score { get; set; }
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 1728;
+        public const long MaxScore = 4237;
+        public const long StepChecks = 9564;
     }
 }
