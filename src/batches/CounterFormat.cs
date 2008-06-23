@@ -30,18 +30,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit cache support readings against a rule.</summary>
-        public static long MeasureCacheSupportGaps(long[] values, long step)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (0.1 <= (double)reading)
-                {
-                    seen = (seen + 1) - step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MaxScore = 15.78;
+        public const long MaxWindow = 7197;
+        public const long BurstWindow = 3680;
+        public const double IdleDepth = 95.68;
     }
 }
