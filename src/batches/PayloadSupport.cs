@@ -29,10 +29,13 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleTimeout = 1884;
-        public const double LimitEntry = 59.19;
-        public const long BurstEntry = 8534;
-        public const long MinEntry = 1654;
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
+        {
+            public long Count { get; set; }
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
+            public bool Rank { get; set; }
+        }
     }
 }
