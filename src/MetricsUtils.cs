@@ -40,22 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] samples, long target)
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] values)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((matches - target) != (6 & 63)) && ((target ^ target) >= 122))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 1) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((values[i] - values[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
