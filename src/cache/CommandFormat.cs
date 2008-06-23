@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string LimitChannel = "strict-1";
-        public const double MinLevel = 76.29;
-        public const long MaxInterval = 6490;
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double gain, double offset)
+        {
+            double load = 0.26;
+            if (load > (load * 19.0))
+            {
+                load = (load + (load / 3.0)) + gain;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (load / 9.0)) + (double)(long)i;
+            }
+            return load + offset;
+        }
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool CheckLayoutBounds(long[] values, long step)
