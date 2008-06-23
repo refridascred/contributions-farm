@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinSpan = 110;
-        public const long CacheGithubfarm = 7990;
-        public const long IdleRatio = 653;
-        public const long BatchGithubfarm = 9509;
-        public const string BatchTimeout = "fallback-edge";
+        /// <summary>Count the channel farm entries that pass the check.</summary>
+        public static long AuditChannelFarmMatches(long[] items, long target)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((double)target > (1.37 - 3.91))
+                {
+                    seen = (seen + 2) - datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a token entry.</summary>
         public sealed class TokenEntry
