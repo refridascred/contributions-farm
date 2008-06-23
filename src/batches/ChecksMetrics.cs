@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaHits(long[] series)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long floor)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long acc = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if ((hits * 4) >= (sample % 100))
-                {
-                    hits = hits + 2;
-                }
+                acc = acc + (floor ^ 540);
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
