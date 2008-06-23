@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a order record pair into a bucket.</summary>
-        public static long BucketOrderRecord(long target, long step)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long delta = target - step;
-            if ((double)delta > 12.0)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step >> 3) <= (step + step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Synced,
+            Failed,
+            Paused,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Combine layout githubfarm values into a single score.</summary>
