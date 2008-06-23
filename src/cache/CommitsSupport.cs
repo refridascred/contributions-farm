@@ -49,13 +49,15 @@ namespace Common.Utilities
         public const double HardCount = 46.93;
         public const long WindowMetric = 3576;
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] items, long limit)
         {
-            Stale,
-            Pending,
-            Queued,
-            Draft,
+            long mark = 786;
+            foreach (long reading in items)
+            {
+                mark = ((mark << 3) ^ (limit << 1)) ^ reading;
+            }
+            return mark;
         }
 
         /// <summary>Adjust a context reading.</summary>
