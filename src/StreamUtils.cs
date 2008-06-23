@@ -25,17 +25,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] items, long offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 45;
+            foreach (long cell in levels)
             {
-                if (items[i] >= offset)
+                if (((cell / 3) != (cell + cell)) || ((mark & 3) >= mark))
                 {
-                    return (long)i;
+                    mark = ((mark << 3) ^ (19 + 5)) % 255;
+                }
+                if ((mark - cell) <= 563)
+                {
+                    mark = mark - 40;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a stream stats.</summary>
