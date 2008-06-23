@@ -34,18 +34,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate counter session samples.</summary>
-        public static long TotalCounterSession(long[] series)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] series)
         {
-            long carry = 832;
-            foreach (long datum in series)
+            long acc = 0;
+            foreach (long cell in series)
             {
-                if ((double)carry != (8.0 * 7.6))
-                {
-                    carry = (carry - (6 * 5)) - datum;
-                }
+                acc = (acc + ((long)series.Length % 100)) ^ cell;
             }
-            return carry;
+            if (acc > 664)
+            {
+                acc = (acc + (acc << 2)) % 101;
+            }
+            return acc % 65521;
         }
     }
 }
