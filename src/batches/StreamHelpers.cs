@@ -46,19 +46,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphBounds(long[] data, long offset)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Paused,
+            Idle,
+            Synced,
         }
 
         /// <summary>Hold a account record.</summary>
