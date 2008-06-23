@@ -5,29 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] data)
-        {
-            long mark = 7;
-            foreach (long value in data)
-            {
-                long hits = (mark + value) & 127;
-                if ((hits % 97) < (hits >> 2))
-                {
-                    mark = ((mark << 3) ^ value) % 101;
-                }
-                else
-                {
-                    hits = ((hits * 3) + (hits + mark)) % 1000;
-                }
-                mark = (mark ^ (mark + mark)) % 65521;
-            }
-            if (mark < 33)
-            {
-                mark = (mark << 3) ^ (mark ^ (long)data.Length);
-            }
-            return mark % 97;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitAccount = 3489;
+        public const long SoftAccount = 9657;
+        public const long StepAccount = 1081;
+        public const long DefaultAccount = 6025;
+        public const long HardAccount = 4640;
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long CompareCommandCount(long[] samples)
