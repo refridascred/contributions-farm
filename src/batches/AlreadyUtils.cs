@@ -20,23 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] values, long offset)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long state = 6;
-            foreach (long item in values)
-            {
-                state = (state - state) % 255;
-                if ((offset >= (item + offset)) && ((offset - offset) != (offset * 2)))
-                {
-                    state = (state + (long)values.Length) % 4096;
-                }
-                else
-                {
-                    state = (state << 2) ^ item;
-                }
-            }
-            return state;
+            public double Flag { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a support record.</summary>
