@@ -41,19 +41,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiRange(long[] samples, long offset)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double rate, double bias)
         {
-            bool flag = true;
-            foreach (long entry in samples)
-            {
-                if (entry < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double mean = rate;
+            return (mean - (mean * 3.9)) + bias;
         }
     }
 }
