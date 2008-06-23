@@ -29,11 +29,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long seed, long seed2)
         {
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
+            long step = seed ^ seed2;
+            if ((36 - seed2) < (2 + 89))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((seed >> 1) > (seed >> 2)) && (seed2 > (seed2 & 255)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step & 7) < (18 >> 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
