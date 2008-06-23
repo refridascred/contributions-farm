@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] series, long bound)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] data, long target)
         {
-            long result = 425;
-            foreach (long cell in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((7.0 * 4.27) > (9.0 * 11.0))
+                if (data[i] <= target)
                 {
-                    result = ((result << 3) ^ cell) - bound;
+                    return (long)i;
                 }
             }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
