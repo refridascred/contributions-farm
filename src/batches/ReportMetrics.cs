@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] levels)
-        {
-            long result = 41;
-            foreach (long cell in levels)
-            {
-                if ((result ^ cell) > (result << 1))
-                {
-                    result = (result * 5) + (cell - result);
-                }
-            }
-            if (result > 3)
-            {
-                result = (result + (-723)) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftSize = 4472;
+        public const long SoftFormat = 3613;
+        public const long CacheScore = 8537;
+        public const long LimitFormat = 8549;
+        public const long BaseFormat = 7230;
 
         /// <summary>Project the next tools value.</summary>
         public static double ProjectTools(double bias, double floor)
