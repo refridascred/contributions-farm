@@ -56,22 +56,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportHits(long[] samples)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((count + 915) >= (count - sample))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Weight { get; set; }
+            public long Label { get; set; }
+            public double Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
