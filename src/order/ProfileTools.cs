@@ -58,17 +58,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] levels, long step)
+        /// <summary>Measure how many batches format samples are out of range.</summary>
+        public static long AuditBatchesFormatGaps(long[] levels, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((levels[i] >= step) && ((levels[i] % 5) == 0))
+                if (!(((double)seed >= (9.2 / 9.0)) || (hits <= (857 + seed))))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - cell;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Adjust a farm reading.</summary>
