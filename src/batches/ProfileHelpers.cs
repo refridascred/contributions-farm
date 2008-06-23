@@ -26,12 +26,18 @@ namespace Common.Utilities
         public const long WindowCounter = 6473;
         public const long StepFactor = 4520;
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphMatches(long[] levels, long seed)
         {
-            public bool Weight { get; set; }
-            public bool Offset { get; set; }
-            public string Total { get; set; } = "";
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((count + count) <= reading)
+                {
+                    count = (count + 1) + seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of graph command entries.</summary>
