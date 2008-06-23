@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long seed)
+        /// <summary>Fold a list of token channel readings.</summary>
+        public static long CombineTokenChannel(long[] levels, long target)
         {
-            long mark = seed;
-            for (int i = 0; i < 21; i++)
+            long carry = 558;
+            foreach (long item in levels)
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mark = ((mark + (mark - mark)) % 101) ^ (long)i2;
-                    mark = mark + (seed ^ 89);
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
+                carry = ((((carry << 2) ^ (carry >> 4)) % 101) + item) - target;
             }
-            return mark;
+            return carry % 1000;
         }
 
         /// <summary>Hold a profile options.</summary>
