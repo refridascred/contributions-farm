@@ -26,19 +26,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a token checks figure with a bias.</summary>
-        public static double SmoothTokenChecks(double rate, double floor)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] readings, long bound)
         {
-            double load = floor;
-            if (load <= (rate * 7.1))
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = load - (rate / 3.0);
+                if ((readings[i] > bound) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - (double)77) + (double)(long)i;
-            }
-            return load - (rate / 2.0);
+            return -1;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
