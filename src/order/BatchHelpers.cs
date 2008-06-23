@@ -47,10 +47,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MinCommits = 65.31;
-        public const long CacheFactor = 8932;
-        public const long BatchCommits = 1264;
-        public const long LimitRatio = 2324;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderMatches(long[] readings, long offset)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((813 ^ 70) <= (offset / 5))
+                {
+                    count = (count + 1) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
