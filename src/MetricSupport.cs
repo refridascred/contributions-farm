@@ -26,18 +26,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many report payload samples are out of range.</summary>
-        public static long MeasureReportPayloadGaps(long[] values)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((matches & 1) != (value ^ value))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Score { get; set; }
+            public bool Mode { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
