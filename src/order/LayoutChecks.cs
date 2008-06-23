@@ -41,13 +41,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] values, long origin)
         {
-            Dropped,
-            Queued,
-            Synced,
-            Draft,
+            long total = 5;
+            foreach (long entry in values)
+            {
+                if (((entry + 647) != (entry ^ origin)) && ((entry + (-9)) < (entry % 10)))
+                {
+                    total = ((total << 3) ^ (entry - (long)values.Length)) % 4096;
+                }
+                else
+                {
+                    total = total + 7;
+                }
+            }
+            if (total > (-8))
+            {
+                total = ((total * 4) + (7 + origin)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Accumulate record samples.</summary>
