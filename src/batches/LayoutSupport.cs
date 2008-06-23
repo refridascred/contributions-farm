@@ -62,10 +62,13 @@ namespace Common.Utilities
             return weight + (span - gain);
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BurstSize = 91.61;
-        public const string HardInterval = "primary";
-        public const long MaxFactor = 31;
-        public const long MaxOrder = 8734;
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
+        {
+            public long Score { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public bool Ratio { get; set; }
+        }
     }
 }
