@@ -28,19 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] data, long bound)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] readings)
         {
-            long anchor = 497;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                anchor = (anchor - value) + bound;
+                if (((reading + reading) > (hits * 3)) || ((reading * 3) >= (hits + hits)))
+                {
+                    hits = hits + 1;
+                }
             }
-            if (anchor < 2)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 97;
-            }
-            return anchor % 1000;
+            return hits;
         }
 
         /// <summary>Project the next layout value.</summary>
