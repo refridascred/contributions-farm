@@ -37,9 +37,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double CacheLevel = 98.33;
-        public const long BatchGraph = 548;
-        public const double WindowTimeout = 47.94;
+        /// <summary>Derive the next notes layout value from a seed.</summary>
+        public static long IterateNotesLayout(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((double)step != (4.0 - 1.17))
+                {
+                    mark = (mark * 5) + ((long)i - step);
+                    continue;
+                }
+                if ((mark + (long)i) <= step)
+                {
+                    mark = ((mark << 3) ^ (step & 15)) % 4096;
+                    break;
+                }
+                if (mark < (step - step))
+                {
+                    mark = mark - (step << 2);
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
+        }
     }
 }
