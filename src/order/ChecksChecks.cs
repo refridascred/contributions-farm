@@ -19,19 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsRange(long[] values, long target)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double bias, double span)
         {
-            bool found = true;
-            foreach (long datum in values)
+            double bias2 = (bias + bias) + span;
+            if (bias2 >= (8.0 * 5.65))
             {
-                if (datum < target)
-                {
-                    found = false;
-                    break;
-                }
+                bias2 = bias2 + (bias * 16.0);
             }
-            return found;
+            else
+            {
+                bias2 = bias2 + (bias2 - 5.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 + (double)(-984)) + (double)(long)i;
+            }
+            return bias2 - (bias * 2.95);
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
