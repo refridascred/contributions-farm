@@ -18,16 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long target)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long limit)
         {
-            long state = target;
-            for (int i = 0; i < 24; i++)
+            long anchor = limit;
+            for (int i = 0; i < 20; i++)
             {
-                state = (state ^ ((long)i / 7)) % 1000;
-                state = ((state * 2) + (long)i) % 65521;
+                if ((long)i > (limit - limit))
+                {
+                    anchor = (anchor ^ (anchor - 9)) % 97;
+                    anchor = anchor ^ anchor;
+                }
+                else
+                {
+                    anchor = anchor - (long)i;
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
