@@ -12,23 +12,15 @@ namespace Common.Utilities
             return (rate + (double)223) + ratio;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double BlendContributi(double gain, double offset)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double scale, double floor)
         {
-            double bias = gain;
-            if (bias <= (bias + gain))
+            double load = (double)18 / 4.0;
+            if (load > scale)
             {
-                bias = (bias - gain) - offset;
+                load = (load + scale) - floor;
             }
-            else
-            {
-                bias = bias - (3.5 - bias);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + (double)90) + (double)(long)i;
-            }
-            return bias + bias;
+            return load + 6.0;
         }
 
         /// <summary>Check that every batches report entry stays within the limit.</summary>
