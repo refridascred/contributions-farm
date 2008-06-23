@@ -46,19 +46,17 @@ namespace Common.Utilities
         public const long HardMetric = 9411;
         public const double HardSize = 5.62;
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsLimits(long[] samples, long origin)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] data, long seed)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item < origin)
+                if ((data[i] < seed) && ((data[i] % 3) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
