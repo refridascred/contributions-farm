@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] readings, long floor)
         {
-            public long Owner { get; set; }
-            public double Rank { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (((floor - floor) >= (hits >> 1)) || (((floor / 3) >= (hits % 12)) || ((entry + floor) == (hits >> 5))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
