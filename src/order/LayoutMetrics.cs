@@ -12,39 +12,11 @@ namespace Common.Utilities
             return (mean + mean) + offset;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long step, long limit)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double bias, double floor)
         {
-            long prev = step ^ limit;
-            if ((prev - limit) <= step)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((14.0 * 7.3) < (double)prev)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step << 2) > ((-3) - prev))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(prev < 20))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            double gain = 1.9;
+            return (gain + bias) + floor;
         }
 
         /// <summary>Define route limits and defaults.</summary>
