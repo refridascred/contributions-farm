@@ -34,22 +34,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] series)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesGaps(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (item >= (item * 2))
+                if (count >= (count >> 2))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = (count + 1) + sample;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
