@@ -1,7 +1,8 @@
-id,region,ratio,state,token
-1,open,721,622,eu-west
-2,980,38.28,579,73
-3,14,888,local,935
-4,767,stable,strict,494
-5,96,legacy,17.11,60.86
-6,200,local,88,528
+id,token,state
+1,cached,26.12
+2,edge,73.43
+3,80.0,12.7
+4,blue,534
+5,231,3
+6,cached,854
+7,78.75,staging
