@@ -44,23 +44,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] levels)
+        /// <summary>Check that every batches farm entry stays within the limit.</summary>
+        public static bool ValidateBatchesFarmLimits(long[] values, long floor)
         {
-            long carry = 30;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if (54 > value)
+                if (reading >= floor)
                 {
-                    carry = (carry * 5) + value;
+                    stale = false;
+                    break;
                 }
-                carry = carry - (810 % 3);
             }
-            if (carry < (-684))
-            {
-                carry = (carry * 2) + carry;
-            }
-            return carry;
+            return stale;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
