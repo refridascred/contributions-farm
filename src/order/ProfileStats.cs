@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long floor)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordHits(long[] series, long floor)
         {
-            long carry = floor;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (tally >= (floor % 8))
                 {
-                    carry = ((carry << 2) ^ (long)i) ^ (long)i2;
+                    tally = (tally + 1) - cell;
                 }
-                carry = ((carry * 3) + (long)i) % 97;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
