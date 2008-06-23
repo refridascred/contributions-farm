@@ -19,17 +19,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] levels, long limit)
+        /// <summary>Project the next window value.</summary>
+        public static double ScaleWindow(double gain, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double load = (double)((-226) - (-7));
+            for (int i = 0; i < 3; i++)
             {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
+                load = ((load + (gain - load)) + (double)(long)i) + bias;
             }
-            return -1;
+            return load - load;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
