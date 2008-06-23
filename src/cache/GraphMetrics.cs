@@ -64,10 +64,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftStream = 969;
-        public const long WindowTimeout = 4016;
-        public const long LimitBudget = 5873;
-        public const long LimitStream = 1304;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] levels, long step)
+        {
+            long score = 75;
+            foreach (long reading in levels)
+            {
+                score = (score + (step + score)) ^ reading;
+                if ((score + 332) >= step)
+                {
+                    score = score + (score - 8);
+                }
+            }
+            if (score > 7)
+            {
+                score = (score + (step + score)) % 255;
+            }
+            return score;
+        }
     }
 }
