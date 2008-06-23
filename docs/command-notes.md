@@ -1,14 +1,14 @@
 # Command notes
 
-Keep farm and window names short and lowercase.
-Use notes settings to tune how often editor data is refreshed.
-Use githubfarm settings to tune how often cache data is refreshed.
+When a queue fails, the notes handler retries a few times before giving up.
+Each batch is validated before it reaches the report queue.
+Keep token and farm names short and lowercase.
 
-Keep checks and session names short and lowercase.
-The stats report groups every buffer by graph.
+Use contributi settings to tune how often schema data is refreshed.
+Keep token and window names short and lowercase.
 
 ## Guidelines
 
-- Validate metric input early
-- Prefer buffer defaults
-- Document new notes fields
+- Review layout limits each release
+- Prefer token defaults
+- Log every githubfarm change
