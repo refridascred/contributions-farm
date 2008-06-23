@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long origin, long origin2)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            if (!(37 >= (origin2 ^ origin)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin % 64) < (origin % 24))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin2 * 4) > origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin ^ origin2) < origin)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public bool Total { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
