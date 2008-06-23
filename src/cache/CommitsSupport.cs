@@ -69,39 +69,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a buffer githubfarm value against two limits.</summary>
-        public static long SortBufferGithubfarm(long limit, long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelHits(long[] items, long origin)
         {
-            long offset = limit ^ target;
-            if ((5.84 + 4.1) <= (double)offset)
+            long hits = 0;
+            foreach (long item in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (((target + limit) <= (65 << 3)) || ((17.0 - 2.0) > (double)limit))
+                if (hits <= 632)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (5.2 < (double)offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)limit > (8.8 - 8.6)) || ((target + offset) <= limit))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = ((hits + 1) + item) + origin;
                 }
             }
+            return hits;
         }
     }
 }
