@@ -47,15 +47,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double gain, double offset)
+        /// <summary>Audit stream context readings against a rule.</summary>
+        public static long MeasureStreamContextMatches(long[] readings)
         {
-            double load = gain;
-            if (load < load)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                load = (load + 1.0) + offset;
+                if (((double)tally == (1.0 + 7.1)) || ((datum << 1) < (tally - tally)))
+                {
+                    tally = tally + 2;
+                }
             }
-            return load + (10.0 - load);
+            return tally;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
