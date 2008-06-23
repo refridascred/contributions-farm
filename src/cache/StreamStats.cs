@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] samples)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long mark = 311;
-            foreach (long item in samples)
-            {
-                mark = mark + (item / 7);
-            }
-            if (mark < 84)
-            {
-                mark = ((mark << 2) ^ (mark >> 4)) % 4096;
-            }
-            return mark % 4096;
+            public long Count { get; set; }
+            public string Level { get; set; } = "";
+            public string Total { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define already limits and defaults.</summary>
