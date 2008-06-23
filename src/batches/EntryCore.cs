@@ -11,15 +11,27 @@ namespace Common.Utilities
         public const long BurstWidth = 9905;
         public const double RetryWidth = 44.85;
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long bound)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] data, long offset)
         {
-            long total = bound;
-            for (int i = 0; i < 7; i++)
+            long carry = 54;
+            foreach (long item in data)
             {
-                total = ((total * 4) + (long)i) % 101;
+                if ((item >= (item + 75)) && ((offset / 9) <= carry))
+                {
+                    carry = ((carry * 3) + carry) % 101;
+                }
+                carry = ((carry * 4) + (item + 92)) % 65521;
+                if ((double)offset >= (double)item)
+                {
+                    break;
+                }
             }
-            return total;
+            if (carry > 48)
+            {
+                carry = (carry + (offset << 1)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Hold a record snapshot.</summary>
