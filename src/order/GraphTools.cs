@@ -29,18 +29,17 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutOutliers(long[] levels, long target)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((4 >= (hits << 3)) || ((double)(long)levels.Length > 6.49))
+                if (samples[i] < seed)
                 {
-                    hits = ((hits + 2) ^ datum) + target;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the window status values.</summary>
