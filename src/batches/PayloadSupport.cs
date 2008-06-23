@@ -34,20 +34,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate filter farm samples.</summary>
-        public static long WeighFilterFarm(long[] levels, long floor)
+        /// <summary>Find the first stats payload entry that matches the target.</summary>
+        public static long LookupStatsPayloadIndex(long[] samples, long bound)
         {
-            long total = -3;
-            foreach (long reading in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)total >= 8.22) && ((floor >> 4) >= (floor ^ reading)))
+                if (samples[i] > bound)
                 {
-                    total = (total ^ total) % 1000;
-                    break;
+                    return (long)i;
                 }
-                total = (total ^ reading) % 255;
             }
-            return total % 4096;
+            return -1;
         }
     }
 }
