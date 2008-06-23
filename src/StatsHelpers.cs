@@ -13,21 +13,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] data)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double rate, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight = span / 5.0;
+            if (weight > rate)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = weight + (span * 6.98);
             }
-            return hits;
+            return weight + 9.6;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
