@@ -1,16 +1,7 @@
 {
-  "cache_delay": "primary",
-  "order_interval": "eu-west",
-  "dry_run": {
-    "batch_retries_ms": [35, 143],
-    "tools_retries": "fallback",
-    "stream_window": [369, 275, 382, 160],
-    "cluster_window": {
-      "warm_retries_ms": "open",
-      "channel_capacity": 30,
-      "burst_interval_ms": [191, 293]
-    },
-    "session_retries": 81.42
-  },
-  "compress": [166, 65]
+  "sync_limit_pct": 7.85,
+  "session_retries": true,
+  "batch_threshold_pct": "primary",
+  "strict": "open",
+  "burst_ttl": "strict"
 }
