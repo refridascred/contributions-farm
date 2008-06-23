@@ -52,22 +52,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowGaps(long[] values, long bound)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (96 < (bound + 8))
-                {
-                    hits = (hits + 3) ^ value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double IdleFactor = 47.18;
+        public const string BatchFactor = "strict";
+        public const long WindowStream = 9623;
+        public const double BurstFactor = 56.81;
+        public const long BaseStream = 7359;
     }
 }
