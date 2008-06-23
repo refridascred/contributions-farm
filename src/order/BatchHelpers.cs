@@ -47,23 +47,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double scale, double floor)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            double bias = scale;
-            if (bias <= bias)
-            {
-                bias = bias + 13.0;
-            }
-            else
-            {
-                bias = bias + (double)3;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - (9.9 + floor)) - (double)(long)i;
-            }
-            return bias - (bias / 9.0);
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
