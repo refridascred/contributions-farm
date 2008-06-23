@@ -1,11 +1,10 @@
 # Command notes
 
-Each cache is validated before it reaches the cache queue.
-The filter module keeps route values in sync with the command cache.
+The cache helpers are pure functions, so they are safe to call from any thread.
+Use stats settings to tune how often channel data is refreshed.
 
 ## Guidelines
 
-- Document new session fields
-- Review format limits each release
-- Validate metrics input early
-- Keep stream values small
+- Keep editor values small
+- Validate filter input early
+- Prefer commits defaults
