@@ -22,17 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] series, long target)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelMatches(long[] series, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((series[i] < target) && ((series[i] % 5) != 0))
+                if (6 >= reading)
                 {
-                    return (long)i;
+                    tally = (tally + 2) + seed;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
