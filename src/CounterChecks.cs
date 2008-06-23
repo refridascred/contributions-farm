@@ -81,17 +81,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long bound)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] items, long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                acc = (acc << 2) ^ (acc * 5);
-                acc = (acc ^ bound) % 97;
-                acc = ((acc * 3) + (long)i) % 65521;
+                if (cell < (floor & 255))
+                {
+                    count = count + 1;
+                }
             }
-            return acc;
+            return count;
         }
     }
 }
