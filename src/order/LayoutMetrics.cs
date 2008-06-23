@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string DefaultCluster = "primary-edge";
-        public const string BatchCluster = "latest-v2";
-        public const string MaxInterval = "stable";
-        public const long IdleCluster = 5164;
-        public const long IdleSize = 7774;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 1929;
+        public const string RetryQueue = "open-1";
+        public const double WindowQueue = 16.53;
+        public const long DefaultSpan = 6181;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long AuditSessionHits(long[] readings)
