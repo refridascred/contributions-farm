@@ -1,6 +1,9 @@
-id,score,token,state
-1,standard,783,90.71
-2,edge,73.9,695
-3,199,10.01,green
-4,299,584,71.39
-5,stable,825,267
+id,weight,ratio
+1,943,open
+2,stable,206
+3,edge,180
+4,36.98,standard
+5,963,local
+6,69.33,open
+7,110,11.57
+8,917,eu-west
