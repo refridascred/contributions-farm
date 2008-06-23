@@ -17,19 +17,14 @@ namespace Common.Utilities
         public const string MinMetric = "strict-edge";
         public const long DefaultWidth = 2849;
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountRange(long[] values, long origin)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Draft,
+            Paused,
+            Closed,
+            Pending,
         }
 
         /// <summary>Compare every pair of route support readings.</summary>
