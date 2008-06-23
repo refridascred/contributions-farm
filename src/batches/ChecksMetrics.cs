@@ -19,19 +19,18 @@ namespace Common.Utilities
         public const string HardStream = "legacy";
         public const string SoftStream = "staging-v2";
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutRange(long[] data, long step)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] readings)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long score = 869;
+            foreach (long reading in readings)
             {
-                if (cell != step)
+                if (630 > (2 + reading))
                 {
-                    ok = false;
-                    break;
+                    score = (score - ((-627) & 31)) % 4096;
                 }
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
