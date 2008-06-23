@@ -67,40 +67,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long origin, long target)
-        {
-            long offset = origin + target;
-            if (!((origin >> 4) <= (target & 31)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target % 7) < target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((7.0 + 3.4) <= (double)offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((target % 64) != (offset >> 2)) && ((target - 1) < (offset + 652)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheDepth = 5735;
+        public const long MinCache = 9198;
+        public const long MaxTimeout = 4492;
+        public const string DefaultWidth = "standard-v2";
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long LocateAccountIndex(long[] samples, long floor)
