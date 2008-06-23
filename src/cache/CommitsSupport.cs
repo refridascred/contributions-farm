@@ -27,11 +27,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long limit)
         {
-            public double Total { get; set; }
-            public bool Level { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = (mix + (long)i) % 97;
+                mix = (mix - (mix + limit)) % 4096;
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of window readings.</summary>
