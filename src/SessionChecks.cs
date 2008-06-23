@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double LimitTimeout = 96.88;
-        public const double BurstScore = 39.64;
-        public const long CacheSize = 3295;
-        public const long SoftChecks = 7289;
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
+        {
+            public long Mode { get; set; }
+            public string Level { get; set; } = "";
+            public double Ratio { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long CountOrderMatches(long[] samples, long bound)
