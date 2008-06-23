@@ -22,11 +22,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BaseBuffer = 19.81;
-        public const long MinDepth = 1646;
-        public const long StepBuffer = 9647;
-        public const double BatchBuffer = 57.66;
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double SmoothGithubfarm(double ratio, double bias)
+        {
+            double mean = 1.31;
+            if (mean >= bias)
+            {
+                mean = (mean - (mean / 9.0)) + ratio;
+            }
+            return mean + bias;
+        }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long OverlapFarmCount(long[] samples)
