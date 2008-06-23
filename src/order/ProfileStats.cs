@@ -37,18 +37,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorOutliers(long[] data)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((342 ^ hits) >= hits)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 1) ^ reading;
+                    if ((levels[i] + levels[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the counter phase values.</summary>
