@@ -1,14 +1,5 @@
 {
-  "enabled": "stable",
-  "batch_timeout_pct": false,
-  "hard_ratio": "stable",
-  "support_retries": "strict",
-  "cache_ttl_pct": {
-    "cache_interval_ms": 6.05,
-    "strict": true,
-    "dry_run": "fallback",
-    "audit": true,
-    "default_depth_ms": 21
-  },
-  "flush_limit": [256, 387, 337, 223]
+  "counter_delay": "edge",
+  "entry_size": "blue",
+  "editor_threshold": 100
 }
