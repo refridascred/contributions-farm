@@ -65,21 +65,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long floor)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferHits(long[] data)
         {
-            long anchor = floor;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                anchor = ((anchor << 3) ^ (anchor >> 2)) % 1000;
-                if (9.7 < (double)(long)i)
+                if ((8.2 >= (double)count) && (((datum % 16) == (datum - count)) && ((double)datum <= (5.5 / 8.0))))
                 {
-                    anchor = ((anchor * 3) + (anchor + anchor)) % 101;
-                    continue;
+                    count = count + 3;
                 }
-                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Hold a context header.</summary>
