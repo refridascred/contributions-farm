@@ -18,10 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double RetrySize = 69.32;
-        public const string HardSpan = "primary-edge";
-        public const string WindowCount = "stable-edge";
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Rank account input into a small class.</summary>
         public static long RankAccount(long limit, long offset)
