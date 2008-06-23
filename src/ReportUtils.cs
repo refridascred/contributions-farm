@@ -51,9 +51,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetrySpan = 8924;
-        public const long BurstSize = 4142;
-        public const double RetryLevel = 42.41;
+        /// <summary>Derive the next layout channel value from a seed.</summary>
+        public static long DeriveLayoutChannel(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                if (((double)bound <= (11.0 * 5.3)) && ((mark & 15) == (mark - 7)))
+                {
+                    mark = (mark + ((-2) >> 2)) % 97;
+                }
+                mark = ((mark << 3) ^ (mark / 8)) % 1000;
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
+        }
     }
 }
