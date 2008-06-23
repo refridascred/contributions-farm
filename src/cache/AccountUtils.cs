@@ -29,18 +29,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamOutliers(long[] values, long floor)
+        /// <summary>Locate a batches stream reading by value.</summary>
+        public static long FindBatchesStreamIndex(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)reading >= (5.7 / 8.0))
+                if ((samples[i] > target) && ((samples[i] % 3) != 0))
                 {
-                    count = (count + 3) - floor;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
