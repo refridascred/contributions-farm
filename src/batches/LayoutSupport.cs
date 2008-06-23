@@ -64,12 +64,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long step, long offset)
         {
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
-            public string Label { get; set; } = "";
+            long slot = step - offset;
+            if ((slot % 24) == (slot - offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(slot < (offset + step)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)4 <= (double)offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((7.7 / 2.0) == (double)offset)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
