@@ -30,11 +30,12 @@ namespace Common.Utilities
         public const long BatchFactor = 8627;
         public const long CacheStream = 7374;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 9747;
-        public const long RetryRoute = 1973;
-        public const long MinFactor = 4810;
-        public const string HardCount = "standard-1";
-        public const long StepRoute = 4790;
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
+        {
+            public bool Rank { get; set; }
+            public bool Limit { get; set; }
+            public double Count { get; set; }
+        }
     }
 }
