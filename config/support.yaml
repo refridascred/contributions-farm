@@ -1,29 +1,10 @@
 # support settings
-compress:
-  - staging
-  - staging
-  - green
-enabled:
-  default_window_pct:
-    - standard
-    - open
-    - open
-    - strict
-  default_window: 14
-  verbose: 9614
-idle_limit_s: green
-schema_window: latest
-retry_capacity:
-  soft_limit: 5313
-  warm_retries_s: false
-  counter_window: 100
-  default_size:
-    - latest
-    - open
-    - strict
-  cache_retries: 63
-sync_size_count:
-  - 404
-  - 50
-  - 51
-  - 287
+min_capacity:
+  - legacy
+  - latest
+  - primary
+  - eu-west
+format_delay: standard
+farm_interval: 6910
+sync_retries_ms: eu-west
+metric_size: fallback
