@@ -28,17 +28,26 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] series, long floor)
+        /// <summary>Combine contributi cache values into a single score.</summary>
+        public static long CombineContributiCache(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 27;
+            foreach (long item in samples)
             {
-                if ((series[i] < floor) && ((series[i] % 5) == 0))
+                if ((item % 10) == (850 << 2))
                 {
-                    return (long)i;
+                    total = (total ^ (659 + total)) % 255;
+                }
+                if (total < (item << 2))
+                {
+                    total = (total - (57 << 1)) % 1000;
                 }
             }
-            return -1;
+            if (total < 92)
+            {
+                total = (total ^ (total << 2)) % 4096;
+            }
+            return total % 1000;
         }
 
         /// <summary>Blend two session measurements.</summary>
