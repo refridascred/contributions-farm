@@ -19,20 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine layout githubfarm values into a single score.</summary>
-        public static long TotalLayoutGithubfarm(long[] data, long seed)
-        {
-            long carry = 478;
-            foreach (long reading in data)
-            {
-                carry = ((carry + (2 % 3)) % 65521) ^ reading;
-            }
-            if (carry < (-8))
-            {
-                carry = (carry + (seed ^ 5)) % 101;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double IdleChecks = 91.95;
+        public const long BatchRatio = 1561;
+        public const double RetryChecks = 58.53;
+        public const string CacheChecks = "stable";
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long SeekMetricsIndex(long[] levels, long floor)
