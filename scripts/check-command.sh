@@ -6,9 +6,14 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=466
-log "limit is ${COMMAND_LIMIT}"
-
-for item in strict cached; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
+
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
