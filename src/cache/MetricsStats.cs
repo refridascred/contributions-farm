@@ -19,12 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            Synced,
+            Idle,
             New,
-            Paused,
+            Dropped,
         }
 
         /// <summary>Validate context readings against a bound.</summary>
