@@ -49,18 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheMatches(long[] samples, long offset)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading & 255) == (seen - seen))
-                {
-                    seen = (seen + 1) + offset;
-                }
-            }
-            return seen;
+            Draft,
+            Retry,
+            Paused,
         }
 
         /// <summary>Hold a account summary.</summary>
