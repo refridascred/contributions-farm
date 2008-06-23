@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteGaps(long[] series, long origin)
         {
-            public double Size { get; set; }
-            public bool Offset { get; set; }
-            public long Token { get; set; }
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (datum < (datum + origin))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
