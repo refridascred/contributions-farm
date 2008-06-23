@@ -1,19 +1,12 @@
 # support settings
-hard_capacity_ms:
-  idle_ttl:
-    - 372
-    - 307
-    - 226
-    - 249
-  batch_retries_ms: local
-  soft_size_ms: legacy
-  flush_window_s: 4.02
-  verbose: 4731
-  readonly: local
-dry_run: green
-base_capacity_ms: strict
-idle_size_ms:
-  - cached
-  - staging
-  - strict
-sync_ratio_s: primary
+retry_window_ms:
+  - 312
+  - 53
+default_threshold_count:
+  - standard
+  - green
+  - latest
+base_interval_s: 8510
+flush_delay: 43.09
+flush_capacity_ms: 35
+payload_delay: latest
