@@ -18,21 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] values)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = target;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = (state ^ ((long)i / 7)) % 1000;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
