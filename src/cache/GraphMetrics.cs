@@ -56,11 +56,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandOutliers(long[] values)
         {
-            public bool Weight { get; set; }
-            public double Ratio { get; set; }
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((7.08 - 4.0) < (15.0 + 9.9))
+                {
+                    tally = (tally + 3) + datum;
+                }
+            }
+            return tally;
         }
     }
 }
