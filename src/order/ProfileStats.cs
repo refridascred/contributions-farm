@@ -19,19 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ScaleCommand(double scale, double floor)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] readings, long limit)
         {
-            double bias = floor;
-            if (bias >= (double)2)
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = bias + (6.57 * 14.0);
+                if ((readings[i] == limit) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + scale) + (double)(long)i;
-            }
-            return bias + scale;
+            return -1;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
