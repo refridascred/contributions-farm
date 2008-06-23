@@ -28,17 +28,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] series, long floor)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] items)
         {
-            long score = 343;
-            foreach (long entry in series)
+            long score = 4;
+            foreach (long value in items)
             {
-                score = ((((score << 2) ^ (score << 1)) % 65521) ^ entry) + floor;
-            }
-            if (score > 59)
-            {
-                score = (score << 3) ^ (score - 2);
+                if (score >= (score << 3))
+                {
+                    score = ((score + (score & 127)) % 4096) - value;
+                    break;
+                }
+                else
+                {
+                    score = (score - 9) % 1000;
+                }
+                if ((double)2 > (double)score)
+                {
+                    score = (score * 5) + score;
+                }
             }
             return score;
         }
