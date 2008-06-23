@@ -1,18 +1,6 @@
 {
-  "min_capacity_count": {
-    "default_retries_ms": true,
-    "burst_delay": true,
-    "poll_threshold_count": {
-      "default_ratio_count": true,
-      "payload_ttl": 100,
-      "soft_limit_count": 250,
-      "dry_run": false
-    },
-    "cluster_window": "fallback",
-    "default_capacity": 8140,
-    "checks_retries": "staging"
-  },
-  "batch_window": "local",
-  "sync_interval": ["legacy", "primary", "open"],
-  "sync_limit_s": 582
+  "batch_capacity_s": 500,
+  "batch_depth": false,
+  "cache_ttl_pct": 3157,
+  "burst_depth": [224, 375, 11, 103]
 }
