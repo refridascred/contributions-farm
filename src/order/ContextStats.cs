@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportRange(long[] levels, long bound)
         {
-            public double Token { get; set; }
-            public bool Size { get; set; }
-            public double Limit { get; set; }
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a metrics entry.</summary>
