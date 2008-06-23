@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double gain, double offset)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] series)
         {
-            double load = 0.26;
-            if (load > (load * 19.0))
+            long score = 374;
+            foreach (long value in series)
             {
-                load = (load + (load / 3.0)) + gain;
+                if ((value * 2) > (score - score))
+                {
+                    score = (score * 2) + (value / 6);
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (score > 7)
             {
-                load = (load - (load / 9.0)) + (double)(long)i;
+                score = (score + (score - 514)) % 255;
             }
-            return load + offset;
+            return score;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
