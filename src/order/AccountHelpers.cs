@@ -58,15 +58,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] readings, long step)
-        {
-            long result = 2;
-            foreach (long value in readings)
-            {
-                result = ((result - 4) - value) - step;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double IdleBudget = 8.27;
+        public const long BatchMetrics = 2277;
+        public const long BaseMetrics = 5583;
+        public const long SoftMetrics = 9228;
+        public const long MaxBudget = 9859;
     }
 }
