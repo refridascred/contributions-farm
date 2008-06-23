@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the buffer queue entries that pass the check.</summary>
-        public static long TallyBufferQueueGaps(long[] values, long origin)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (tally > (7 + tally))
-                {
-                    tally = ((tally + 2) - entry) - origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 8078;
+        public const string MinScore = "legacy";
+        public const long RetrySize = 8914;
 
         /// <summary>Digest a series of account entries.</summary>
         public static long WeighAccount(long[] readings)
