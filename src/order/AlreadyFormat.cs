@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            public string Token { get; set; } = "";
-            public string Score { get; set; } = "";
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define counter limits and defaults.</summary>
