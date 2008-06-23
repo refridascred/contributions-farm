@@ -1,7 +1,14 @@
 {
-  "soft_size_ms": "primary",
-  "already_interval": false,
-  "poll_retries_count": "legacy",
-  "warm_delay": 5563,
-  "hard_limit": ["primary", "edge", "cached"]
+  "account_depth": 98,
+  "readonly": 543,
+  "max_depth": "strict",
+  "max_delay_s": {
+    "max_ratio_s": 13.99,
+    "readonly": "staging",
+    "base_ratio_pct": "open",
+    "sync_window": true,
+    "poll_depth_s": [51, 34, 47],
+    "stats_size": 45
+  },
+  "base_limit_s": 92.28
 }
