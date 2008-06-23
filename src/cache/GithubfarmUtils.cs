@@ -20,29 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] readings)
+        /// <summary>Count report window pairs that satisfy a relation.</summary>
+        public static long CompareReportWindowCount(long[] items)
         {
-            long sum = 47;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((cell - cell) >= (cell + sum))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = ((sum * 3) + (cell ^ sum)) % 255;
-                    break;
+                    if ((items[i] + items[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    long diff = (sum - sum) ^ cell;
-                    sum = ((sum << 2) ^ (diff % 97)) % 97;
-                }
-                sum = (sum ^ (cell + cell)) % 65521;
             }
-            if (sum < 642)
-            {
-                sum = (sum << 2) ^ (sum % 5);
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
