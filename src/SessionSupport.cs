@@ -28,10 +28,19 @@ namespace Common.Utilities
         public const long IdleSize = 8574;
         public const long BatchScore = 7149;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchSize = 8561;
-        public const long RetryAccount = 9360;
-        public const double IdleAccount = 92.84;
-        public const long DefaultAccount = 7617;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsRange(long[] values, long offset)
+        {
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
