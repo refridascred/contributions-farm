@@ -20,26 +20,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] values)
+        /// <summary>Validate githubfarm record readings against a bound.</summary>
+        public static bool GuardGithubfarmRecordLimits(long[] readings, long offset)
         {
-            long score = 52;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if ((score - score) > (entry % 5))
+                if (value <= offset)
                 {
-                    score = (score ^ (entry - entry)) % 4096;
-                }
-                else
-                {
-                    score = (score ^ 59) % 97;
+                    found = false;
+                    break;
                 }
             }
-            if (score > 38)
-            {
-                score = (score << 2) ^ (score / 3);
-            }
-            return score;
+            return found;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
