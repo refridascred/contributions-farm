@@ -56,18 +56,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsOutliers(long[] values, long origin)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long mark = 82;
+            foreach (long value in levels)
             {
-                if ((reading << 1) <= seen)
+                if ((mark >> 3) != (value - value))
                 {
-                    seen = (seen + 1) - origin;
+                    mark = (mark ^ (value + value)) % 101;
                 }
             }
-            return seen;
+            if (mark > 82)
+            {
+                mark = mark ^ mark;
+            }
+            return mark;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
