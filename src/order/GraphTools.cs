@@ -14,18 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutHits(long[] levels)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double bias, double span)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            double drift = (double)(793 % 8);
+            if (drift > (double)2)
             {
-                if ((hits >> 5) < (7 - 1))
-                {
-                    hits = (hits + 1) ^ value;
-                }
+                drift = drift - (span + drift);
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - bias) + (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
