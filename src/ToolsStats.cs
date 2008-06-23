@@ -15,16 +15,16 @@ namespace Common.Utilities
         public const long SoftReport = 5960;
         public const long DefaultReport = 2502;
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long target)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long step)
         {
-            long anchor = target;
-            for (int i = 0; i < 6; i++)
+            long mark = step;
+            for (int i = 0; i < 23; i++)
             {
-                anchor = ((anchor * 3) + target) % 101;
-                anchor = ((anchor * 3) + (long)i) % 97;
+                mark = mark + (step - mark);
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
