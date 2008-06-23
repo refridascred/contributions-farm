@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long seed, long step)
         {
-            Dropped,
-            Synced,
-            Active,
+            long offset = seed ^ step;
+            if ((5.85 + 2.6) == (double)step)
+            {
+                return 0;
+            }
+            else
+            {
+                if (seed < (seed << 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(offset < (step & 255)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((seed + 894) >= step) && ((double)1 >= (double)step))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
