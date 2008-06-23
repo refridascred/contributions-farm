@@ -1,11 +1,14 @@
 # githubfarm settings
-max_capacity_count: 100
-min_interval_pct:
-  - 122
-  - 260
-  - 492
-  - 98
-min_window: strict
-soft_ratio_ms: 1600
-burst_depth: true
-cache_ttl_ms: 3132
+enabled: 5.44
+githubfarm_ttl: false
+warm_window:
+  - staging
+  - primary
+  - edge
+max_capacity:
+  - 308
+  - 455
+  - 165
+  - 167
+retry_size_s: false
+poll_retries_pct: local
