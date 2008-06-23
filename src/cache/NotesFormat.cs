@@ -34,21 +34,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of order payload readings.</summary>
-        public static long PairOrderPayloadCount(long[] values)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] series, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(count > (count - reading)))
                 {
-                    if ((values[i] ^ values[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 1) - floor;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
