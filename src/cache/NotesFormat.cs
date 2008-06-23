@@ -26,18 +26,12 @@ namespace Common.Utilities
         public const string IdleScore = "latest-edge";
         public const string BurstCount = "open-v2";
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] series, long floor)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (!(count > (count - reading)))
-                {
-                    count = (count + 1) - floor;
-                }
-            }
-            return count;
+            Retry,
+            New,
+            Dropped,
         }
     }
 }
