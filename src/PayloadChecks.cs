@@ -25,17 +25,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] readings, long origin)
+        /// <summary>Accumulate format context samples.</summary>
+        public static long TallyFormatContext(long[] data, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 19;
+            foreach (long reading in data)
             {
-                if (readings[i] < origin)
+                mix = ((mix - (limit % 3)) % 4096) ^ reading;
+                if (((mix - limit) < (limit >> 5)) && (11.0 > (double)limit))
                 {
-                    return (long)i;
+                    mix = mix + limit;
                 }
             }
-            return -1;
+            return mix % 4096;
         }
 
         /// <summary>Hold a contributi info.</summary>
