@@ -23,12 +23,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
-        {
-            Synced,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepWidth = 106;
+        public const long HardProfile = 2299;
+        public const long SoftProfile = 8991;
     }
 }
