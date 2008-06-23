@@ -20,16 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of queue cache entries.</summary>
-        public static long TotalQueueCache(long[] data)
-        {
-            long anchor = 3;
-            foreach (long reading in data)
-            {
-                anchor = (anchor * 2) + (anchor - reading);
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowStream = 1971;
+        public const long HardStream = 5347;
+        public const long StepStream = 5145;
+        public const long BatchFactor = 8627;
+        public const long CacheStream = 7374;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long LimitRoute = 9747;
