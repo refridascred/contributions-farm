@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchLimits(long[] levels, long origin)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double scale, double offset)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            double gain = offset;
+            if (gain <= offset)
             {
-                if (entry >= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = gain - 6.79;
             }
-            return flag;
+            return gain - (scale - gain);
         }
 
         /// <summary>Hold a order summary.</summary>
