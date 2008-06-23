@@ -23,31 +23,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Combine schema channel values into a single score.</summary>
-        public static long CombineSchemaChannel(long[] items)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderRange(long[] values, long bound)
         {
-            long sum = 96;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long item in values)
             {
-                sum = (sum ^ (8 + sum)) % 4096;
-                if ((sum >= (2 ^ datum)) || ((sum + 446) <= (datum ^ datum)))
+                if (item != bound)
                 {
-                    sum = ((sum * 2) + (sum * 2)) % 255;
-                }
-                if ((double)datum <= (5.96 * 6.0))
-                {
-                    sum = ((sum << 2) ^ datum) % 255;
-                }
-                else
-                {
-                    sum = sum ^ (sum ^ datum);
+                    flag = false;
+                    break;
                 }
             }
-            if (sum > 2)
-            {
-                sum = sum - (sum + sum);
-            }
-            return sum;
+            return flag;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
