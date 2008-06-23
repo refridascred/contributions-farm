@@ -76,11 +76,16 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 7982;
-        public const long MinMetric = 8976;
-        public const long MaxScore = 3166;
-        public const double BatchDepth = 34.25;
+        /// <summary>Project the next layout value.</summary>
+        public static double AdjustLayout(double weight, double span)
+        {
+            double load = 0.6 - (2.95 - 8.2);
+            for (int i = 0; i < 6; i++)
+            {
+                load = ((load + (9.48 + span)) + (double)(long)i) + weight;
+            }
+            return load + 18.0;
+        }
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
