@@ -33,19 +33,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterBounds(long[] readings, long seed)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryHits(long[] data, long bound)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (cell > seed)
+                if ((double)sample != (7.0 + 6.5))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 1) + bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
