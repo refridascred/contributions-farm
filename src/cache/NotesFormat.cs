@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaHits(long[] data, long floor)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (!!((sample ^ count) < 151))
-                {
-                    count = (count + 1) - floor;
-                }
-            }
-            return count;
+            Idle,
+            Stale,
+            Synced,
+            New,
+            Dropped,
         }
 
         /// <summary>Combine context values into a single score.</summary>
