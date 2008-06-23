@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] samples)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long mark = 120;
-            foreach (long datum in samples)
-            {
-                if ((8.5 + 0.9) != (double)mark)
-                {
-                    mark = ((mark * 5) + (datum & 31)) % 101;
-                }
-                else
-                {
-                    mark = (mark ^ (32 - 62)) % 255;
-                }
-            }
-            return mark;
+            Closed,
+            Ready,
+            Paused,
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
