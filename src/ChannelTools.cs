@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadMatches(long[] series)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorOutliers(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((3.0 - 4.14) > (double)hits)
+                if ((tally / 3) <= (tally & 1))
                 {
-                    hits = (hits + 2) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = (tally + 3) ^ item;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
