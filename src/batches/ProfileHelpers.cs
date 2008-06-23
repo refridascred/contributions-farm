@@ -40,23 +40,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of graph command entries.</summary>
-        public static long TotalGraphCommand(long[] values)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] samples)
         {
-            long state = 7;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 2; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = (state << 3) ^ ((long)i << 2);
+                    if ((samples[i] ^ samples[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
                 }
-                state = ((state * 3) + (sample ^ state)) % 97;
             }
-            if (state > 0)
-            {
-                state = state - (state & 127);
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
