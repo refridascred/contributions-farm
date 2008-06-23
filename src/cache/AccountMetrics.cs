@@ -62,13 +62,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            Pending,
-            Closed,
-            Locked,
-            Queued,
+            public string Owner { get; set; } = "";
+            public long Rank { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
