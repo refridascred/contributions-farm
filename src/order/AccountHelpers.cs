@@ -27,17 +27,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] samples, long step)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= step) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            New,
+            Draft,
+            Closed,
+            Active,
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
