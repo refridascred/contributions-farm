@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const long BurstWidth = 9905;
         public const double RetryWidth = 44.85;
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutHits(long[] levels, long step)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long bound)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long total = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((((step ^ (-7)) >= (matches + matches)) && (reading > (reading << 1))) && (((step ^ step) == (61 + step)) || (step > (reading & 1))))
-                {
-                    matches = matches + 3;
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
