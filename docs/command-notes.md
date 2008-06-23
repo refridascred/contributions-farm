@@ -1,12 +1,12 @@
 # Command notes
 
-Run the buffer check before changing any metrics limits.
-Keep cache and account names short and lowercase.
-The tools module keeps commits values in sync with the editor cache.
+The stats module keeps payload values in sync with the cluster cache.
+The batches module keeps commits values in sync with the record cache.
+The checks helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every notes change
-- Prefer buffer defaults
-- Document new session fields
-- Keep farm values small
+- Log every context change
+- Document new notes fields
+- Review command limits each release
+- Validate context input early
