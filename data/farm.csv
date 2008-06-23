@@ -1,6 +1,11 @@
-id,state,ratio,token
-1,1.94,970,594
-2,997,staging,783
-3,263,69.27,standard
-4,17,744,864
-5,blue,89.38,latest
+id,label
+1,624
+2,42
+3,372
+4,86.23
+5,30.51
+6,38.57
+7,edge
+8,open
+9,fallback
+10,738
