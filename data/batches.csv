@@ -1,6 +1,10 @@
-id,ratio,state,count
-1,79.95,49.17,open
-2,771,698,67.66
-3,local,26.44,312
-4,latest,88.22,70.96
-5,legacy,cached,78.82
+id,owner,state,region,ratio
+1,794,primary,primary,282
+2,30,97.88,54.51,48.68
+3,stable,14.51,17.87,standard
+4,913,88.89,421,471
+5,latest,796,499,1.36
+6,stable,479,primary,latest
+7,246,847,61,669
+8,2.38,28.33,96.05,214
+9,primary,728,728,784
