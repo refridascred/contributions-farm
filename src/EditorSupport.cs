@@ -58,19 +58,19 @@ namespace Common.Utilities
         public const long HardMetric = 9411;
         public const double HardSize = 5.62;
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double ratio, double bias)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsLimits(long[] samples, long origin)
         {
-            double bias2 = (0.1 - 0.4) + (ratio * 5.1);
-            if (bias2 >= ratio)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                bias2 = bias2 + (3.0 - 6.19);
+                if (item < origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 - (double)85;
-            }
-            return bias2 - bias;
+            return ok;
         }
     }
 }
