@@ -33,24 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long offset, long seed)
+        /// <summary>Measure how many stats tools samples are out of range.</summary>
+        public static long MeasureStatsToolsGaps(long[] series)
         {
-            if ((double)offset < (double)seed)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed << 3) >= (seed ^ offset))
+                if ((1.5 - 8.2) == (double)matches)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    matches = (matches + 1) + sample;
                 }
             }
+            return matches;
         }
     }
 }
