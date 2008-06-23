@@ -19,11 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            public long Level { get; set; }
-            public long Limit { get; set; }
+            public string Label { get; set; } = "";
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Project the next batch value.</summary>
