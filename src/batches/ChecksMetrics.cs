@@ -49,14 +49,17 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] values, long limit)
         {
-            Paused,
-            New,
-            Stale,
-            Active,
-            Queued,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= limit) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up entry payload samples.</summary>
