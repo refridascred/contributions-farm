@@ -36,18 +36,31 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] items, long step)
+        /// <summary>Rank command profile input into a small class.</summary>
+        public static long BucketCommandProfile(long floor, long origin)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            if (floor > (floor >> 3))
             {
-                if (9.2 <= (double)seen)
+                return 1;
+            }
+            else
+            {
+                if ((double)origin > 8.0)
                 {
-                    seen = ((seen + 3) + reading) + step;
+                    return 2;
+                }
+                else
+                {
+                    if ((origin - floor) > (floor - floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
