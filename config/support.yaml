@@ -1,12 +1,19 @@
 # support settings
-burst_size: false
-poll_capacity: 100
-graph_timeout: 97.16
-persist:
-  cache_delay_ms: false
-  burst_interval:
-    - 268
-    - 30
-    - 496
-  default_timeout_pct: 81.71
-contributi_threshold: 3744
+stats_size:
+  enabled: 100
+  poll_limit_ms:
+    notes_capacity: 43
+    sync_depth_count: green
+    tools_retries: 10.64
+    default_capacity: 75.96
+  burst_interval_count: 7797
+  batch_retries_count: 19
+  dry_run: legacy
+burst_delay_count: 4888
+min_ratio_count: 29
+readonly:
+  - open
+  - edge
+  - local
+  - stable
+retry_delay_pct: 30
