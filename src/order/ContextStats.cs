@@ -33,15 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] levels, long bound)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long acc = 906;
-            foreach (long value in levels)
-            {
-                acc = ((acc << 2) ^ (bound % 7)) - value;
-            }
-            return acc;
+            Closed,
+            Dropped,
+            Draft,
+            Paused,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
