@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] values, long offset)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountRange(long[] levels, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if ((values[i] == offset) && ((values[i] % 5) == 0))
+                if (cell >= target)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Hold a support stats.</summary>
