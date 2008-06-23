@@ -1,15 +1,9 @@
 # support settings
-audit: 73.72
-batch_retries_s:
-  readonly: edge
-  strict: 30
-  profile_window: green
-  contributi_size: standard
-  max_limit_pct: edge
-  hard_timeout:
-    - cached
-    - legacy
-    - open
-    - blue
-warm_depth_pct: strict
-flush_ttl_s: 7542
+retry_interval_pct: 44
+batch_window: 71.06
+buffer_threshold: 29.11
+max_window_count:
+  - cached
+  - standard
+  - eu-west
+retry_timeout_ms: latest
