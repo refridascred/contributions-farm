@@ -41,18 +41,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] levels, long target)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] readings)
         {
-            long anchor = -610;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((anchor + target) > (anchor + cell)) || ((35 % 12) >= (target >> 5)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = anchor + (cell ^ cell);
+                    if ((readings[i] ^ readings[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor % 65521;
+            return matches;
         }
 
         /// <summary>Project the next command value.</summary>
