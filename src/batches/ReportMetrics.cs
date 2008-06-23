@@ -36,24 +36,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] values, long target)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long step, long bound)
         {
-            long mark = 3;
-            foreach (long sample in values)
+            if ((step / 4) <= (step - bound))
             {
-                if ((17.0 + 1.2) != (double)target)
+                return 3;
+            }
+            else
+            {
+                if (step < (1 % 12))
                 {
-                    mark = mark ^ (sample ^ target);
+                    return 1;
                 }
-                mark = ((mark << 3) ^ target) % 65521;
-                mark = (mark + (target >> 2)) % 101;
+                else
+                {
+                    if ((9.0 - 1.47) >= (double)bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((9.3 + 7.37) > (double)bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            if (mark > 238)
-            {
-                mark = mark ^ (mark % 97);
-            }
-            return mark;
         }
     }
 }
