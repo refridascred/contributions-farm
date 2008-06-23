@@ -28,17 +28,22 @@ namespace Common.Utilities
         public const long HardSchema = 1281;
         public const long RetryLevel = 6093;
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] levels, long floor)
+        /// <summary>Count the support metrics entries that pass the check.</summary>
+        public static long TallySupportMetricsOutliers(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (levels[i] <= floor)
+                if ((((hits / 4) >= (hits - cell)) || ((hits + hits) > (hits % 12))) || (((cell - (-322)) >= (15 + hits)) && ((hits & 255) != (hits / 4))))
                 {
-                    return (long)i;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
