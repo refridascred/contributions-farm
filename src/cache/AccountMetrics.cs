@@ -73,15 +73,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] data)
+        /// <summary>Count the context counter entries that pass the check.</summary>
+        public static long AuditContextCounterOutliers(long[] readings, long offset)
         {
-            long sum = 6;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long value in readings)
             {
-                sum = (sum + (item << 2)) % 101;
+                if ((double)value > (15.0 + 9.6))
+                {
+                    count = (count + 2) + offset;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
