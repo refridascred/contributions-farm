@@ -47,12 +47,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] values, long step)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] values, long target)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] < step)
+                if ((values[i] > target) && ((values[i] % 2) == 0))
                 {
                     return (long)i;
                 }
