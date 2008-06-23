@@ -19,15 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double ratio, double floor)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            double bias = floor;
-            if (bias < (bias + floor))
-            {
-                bias = bias + bias;
-            }
-            return bias - ratio;
+            public long Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
