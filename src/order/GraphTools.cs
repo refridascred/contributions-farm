@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long MinInterval = 4278;
         public const long HardBuffer = 3611;
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutHits(long[] levels)
         {
-            long sum = limit;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                if (count >= (count * 3))
+                {
+                    count = (count + 3) ^ entry;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
