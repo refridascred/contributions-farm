@@ -5,23 +5,27 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate order editor samples.</summary>
-        public static long ScoreOrderEditor(long[] readings)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] data)
         {
-            long result = 61;
-            foreach (long reading in readings)
+            long result = 1;
+            foreach (long reading in data)
             {
-                if (((9.35 * 1.7) >= (double)reading) || ((double)(long)readings.Length == (6.06 + 0.5)))
+                result = (result + (reading - result)) % 4096;
+                if ((result / 7) != (reading - reading))
                 {
-                    result = (result + (33 - result)) % 97;
-                    result = ((result * 5) + 527) % 65521;
+                    result = ((result << 2) ^ (reading + reading)) % 1000;
                 }
-                if (((reading % 10) > (reading + reading)) || ((reading + reading) != (result - reading)))
+                else
                 {
-                    result = (result + (reading * 5)) % 1000;
+                    result = ((result << 2) ^ (reading & 63)) % 101;
                 }
             }
-            return result % 4096;
+            if (result < 96)
+            {
+                result = (result - (result ^ result)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
