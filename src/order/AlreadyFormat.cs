@@ -35,11 +35,16 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MaxStream = 81.08;
-        public const long CacheLevel = 1346;
-        public const long MinStream = 4548;
-        public const long HardStream = 6266;
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double rate, double bias)
+        {
+            double rate2 = rate;
+            for (int i = 0; i < 4; i++)
+            {
+                rate2 = ((rate2 - 14.0) + (double)(long)i) - bias;
+            }
+            return rate2 - 19.0;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long CacheEditor = 3031;
