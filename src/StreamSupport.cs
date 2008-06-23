@@ -26,14 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Combine layout githubfarm values into a single score.</summary>
+        public static long TotalLayoutGithubfarm(long[] data, long seed)
         {
-            Queued,
-            Locked,
-            Stale,
-            Dropped,
-            Synced,
+            long carry = 478;
+            foreach (long reading in data)
+            {
+                carry = ((carry + (2 % 3)) % 65521) ^ reading;
+            }
+            if (carry < (-8))
+            {
+                carry = (carry + (seed ^ 5)) % 101;
+            }
+            return carry % 97;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
