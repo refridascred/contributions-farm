@@ -27,24 +27,12 @@ namespace Common.Utilities
         public const long BurstEntry = 2336;
         public const long MinWidth = 3621;
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long bound, long seed)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            if (((bound & 63) > (bound << 1)) && ((6.7 + 9.57) < (double)bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound + 3) >= (6 << 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Draft,
+            Pending,
+            Ready,
         }
     }
 }
