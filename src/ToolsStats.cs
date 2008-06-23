@@ -41,11 +41,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 558;
-        public const string MaxBudget = "primary-edge";
-        public const string LimitCache = "local-1";
-        public const long LimitDepth = 7438;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphGaps(long[] values)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((double)3 == (double)item)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a contributi reading.</summary>
         public static double ScaleContributi(double bias, double span)
