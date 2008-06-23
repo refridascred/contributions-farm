@@ -39,23 +39,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] values)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphGaps(long[] values)
         {
-            long result = 33;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                result = (result ^ (result ^ result)) % 255;
-                if ((value - (-93)) <= (result - value))
+                if ((tally >> 4) == (tally & 7))
                 {
-                    break;
+                    tally = (tally + 3) + sample;
                 }
             }
-            if (result > 2)
-            {
-                result = result ^ (result - result);
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
