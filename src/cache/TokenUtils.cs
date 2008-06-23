@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ProjectEditor(double gain, double span)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            double bias = span;
-            if (bias <= (double)60)
-            {
-                bias = bias + (bias * 3.35);
-            }
-            return bias + gain;
+            Active,
+            Idle,
+            Ready,
+            Synced,
+            Closed,
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
