@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] readings, long seed)
         {
-            Draft,
-            Active,
-            Paused,
-            Queued,
+            long mark = -363;
+            foreach (long entry in readings)
+            {
+                mark = ((mark - (1 * 4)) - entry) - seed;
+            }
+            if (mark < 806)
+            {
+                mark = (mark ^ (501 / 3)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
