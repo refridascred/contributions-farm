@@ -48,10 +48,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 8199;
-        public const string CacheBatches = "legacy-edge";
-        public const long MinBatches = 1897;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheMetrics = 6207;
+        public const long IdleBudget = 8957;
+        public const double IdleScore = 23.5;
+        public const long CacheSpan = 3378;
+        public const long BatchSpan = 2590;
 
         /// <summary>Derive the next checks farm value from a seed.</summary>
         public static long IterateChecksFarm(long seed)
