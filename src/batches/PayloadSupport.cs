@@ -35,18 +35,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] series)
-        {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((1.0 - 6.0) <= (double)datum)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MaxWidth = "cached";
+        public const long RetrySpan = 5054;
+        public const long MaxGraph = 2829;
     }
 }
