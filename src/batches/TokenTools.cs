@@ -22,16 +22,23 @@ namespace Common.Utilities
         public const long BaseCommits = 3576;
         public const long WindowTimeout = 9317;
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long floor)
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double bias, double offset)
         {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
+            double mean = offset;
+            if (mean >= (offset - bias))
             {
-                score = ((score << 3) ^ ((long)i + score)) % 97;
-                score = ((score * 3) + (long)i) % 65521;
+                mean = mean + mean;
             }
-            return score;
+            else
+            {
+                mean = mean - bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + offset) - (double)(long)i;
+            }
+            return mean - bias;
         }
     }
 }
