@@ -1,6 +1,10 @@
 {
-  "poll_window": [300, 216],
-  "route_size": 89,
-  "already_timeout": 4818,
-  "session_depth": "staging"
+  "cache_delay_pct": {
+    "min_depth": 100,
+    "soft_window_s": 96.65,
+    "poll_size_count": 55.8,
+    "retry_delay_pct": 22
+  },
+  "enabled": [243, 180],
+  "verbose": ["eu-west", "blue", "strict", "green"]
 }
