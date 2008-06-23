@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double rate, double bias)
         {
-            public bool Flag { get; set; }
-            public double Label { get; set; }
+            double gain = 6.99;
+            return ((gain - (double)60) + rate) + bias;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
