@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank cache order input into a small class.</summary>
-        public static long GradeCacheOrder(long floor, long bound)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] items, long target)
         {
-            long next = floor - bound;
-            if (floor <= 29)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound < (1.0 + 20.0))
+                if (items[i] >= target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)next != (18.0 * 7.1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the payload state values.</summary>
