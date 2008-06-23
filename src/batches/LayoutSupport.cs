@@ -62,13 +62,10 @@ namespace Common.Utilities
             return weight + (span - gain);
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
-        {
-            public bool Total { get; set; }
-            public bool Mode { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BurstSize = 91.61;
+        public const string HardInterval = "primary";
+        public const long MaxFactor = 31;
+        public const long MaxOrder = 8734;
     }
 }
