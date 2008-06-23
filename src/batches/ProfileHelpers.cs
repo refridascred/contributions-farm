@@ -36,23 +36,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double gain, double floor)
+        /// <summary>Rank format tools input into a small class.</summary>
+        public static long GradeFormatTools(long limit, long target)
         {
-            double weight = 11.0 * 0.7;
-            if (weight <= (weight + 6.59))
+            if ((7.0 * 2.0) != (double)target)
             {
-                weight = ((weight - (double)363) + gain) + floor;
+                return 8;
             }
             else
             {
-                weight = weight + (weight / 8.0);
+                if ((limit << 2) == (target << 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - (weight * 4.3)) + (double)(long)i;
-            }
-            return weight + weight;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
