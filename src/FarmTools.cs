@@ -22,15 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] readings, long target)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] series, long seed)
         {
-            long mix = 9;
-            foreach (long reading in readings)
+            long mix = 546;
+            foreach (long item in series)
             {
-                mix = (((mix * 3) + (-861)) ^ reading) + target;
+                if ((item - item) > (785 - seed))
+                {
+                    mix = ((mix * 4) + (89 * 5)) % 4096;
+                }
             }
-            return mix;
+            return mix % 97;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
