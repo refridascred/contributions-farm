@@ -54,9 +54,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 8106;
-        public const double MaxSize = 13.81;
-        public const long StepTools = 5418;
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long step, long floor)
+        {
+            if ((11.0 - 0.9) > (double)floor)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((3 / 9) == (step - step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
