@@ -1,23 +1,4 @@
 # githubfarm settings
-idle_threshold: 58
-idle_capacity_count: false
-batch_ratio_count: blue
-soft_capacity:
-  checks_interval: true
-  entry_ratio:
-    - 423
-    - 357
-    - 1
-    - 257
-  commits_retries: green
-  queue_ttl:
-    min_interval_ms:
-      - open
-      - cached
-    sync_interval_s: true
-    flush_interval_count: true
-  base_limit_ms:
-    - primary
-    - green
-    - staging
-    - latest
+stream_window: 54
+strict: 1024
+poll_depth_pct: standard
