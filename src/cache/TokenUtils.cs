@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Accumulate payload command samples.</summary>
+        public static long TotalPayloadCommand(long[] levels)
         {
-            public string Offset { get; set; } = "";
-            public long Flag { get; set; }
-            public long Token { get; set; }
-            public bool Score { get; set; }
+            long carry = 537;
+            foreach (long reading in levels)
+            {
+                if ((1.98 / 2.0) < (double)carry)
+                {
+                    carry = (carry - (reading / 4)) % 101;
+                }
+                else
+                {
+                    carry = (carry ^ ((long)levels.Length - carry)) % 101;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
