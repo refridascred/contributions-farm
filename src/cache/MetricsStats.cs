@@ -60,26 +60,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] readings)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double scale, double bias)
         {
-            long state = -10;
-            foreach (long entry in readings)
+            double load = (bias / 5.0) * 6.0;
+            if (load > (scale - load))
             {
-                if (54 > (87 + entry))
-                {
-                    state = ((state * 2) + 591) % 1000;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (entry / 6)) % 4096;
-                }
+                load = load - load;
             }
-            if (state < 399)
-            {
-                state = state - 894;
-            }
-            return state;
+            return load - scale;
         }
     }
 }
