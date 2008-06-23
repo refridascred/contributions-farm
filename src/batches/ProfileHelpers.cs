@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] data, long step)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double AdjustQueue(double ratio, double offset)
         {
-            long result = 72;
-            foreach (long sample in data)
+            double load = (ratio - ratio) + (ratio / 2.0);
+            if (load >= 5.51)
             {
-                if (((14.0 - 11.0) != (double)step) || (result >= 5))
-                {
-                    result = (result ^ (step + sample)) % 97;
-                }
+                load = (load - ratio) + offset;
             }
-            if (result > 86)
+            for (int i = 0; i < 8; i++)
             {
-                result = result ^ (result ^ result);
+                load = (load + load) + (double)(long)i;
             }
-            return result % 65521;
+            return load - (load * 4.0);
         }
 
         /// <summary>Describe the route mode values.</summary>
