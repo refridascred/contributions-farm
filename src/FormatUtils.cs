@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long origin, long seed)
-        {
-            if (origin <= (origin & 255))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin - seed) == (seed << 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 595;
+        public const string StepCount = "strict-1";
+        public const string RetrySize = "primary";
+        public const long SoftFactor = 153;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long AuditProfileHits(long[] readings, long bound)
