@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every format command entry stays within the limit.</summary>
-        public static bool CheckFormatCommandRange(long[] samples, long seed)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            Synced,
+            Draft,
         }
 
         /// <summary>Fold a list of farm readings.</summary>
