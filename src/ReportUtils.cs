@@ -11,22 +11,19 @@ namespace Common.Utilities
         public const long CacheFactor = 6295;
         public const string RetryFactor = "alpha";
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmHits(long[] series)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] data)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long state = 94;
+            foreach (long cell in data)
             {
-                if ((95 << 1) < reading)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                state = ((state + (4 - 459)) % 4096) + cell;
             }
-            return count;
+            if (state < 56)
+            {
+                state = ((state << 2) ^ state) % 97;
+            }
+            return state % 97;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
