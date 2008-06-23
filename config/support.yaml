@@ -1,16 +1,23 @@
 # support settings
-poll_retries_pct:
-  retry_interval: false
-  farm_size: 87.68
-  flush_timeout_ms: 29.67
-  sync_capacity_pct:
-    cache_limit: 35.63
-    default_timeout_pct: 66.37
-    default_ratio_ms: 100
-    warm_depth_count: 7323
-    batch_window: primary
-  metrics_ratio:
-    - standard
-    - open
-readonly: 250
-batch_retries: eu-west
+max_retries_count: false
+account_limit: strict
+max_ttl_ms:
+  - 19
+  - 233
+  - 276
+readonly:
+  batches_capacity:
+    command_window:
+      - 463
+      - 380
+      - 86
+    compress: true
+    readonly: standard
+  base_delay_ms: 30
+  hard_size: true
+  max_size:
+    - 75
+    - 276
+    - 481
+entry_interval: 90.44
+flush_size: blue
