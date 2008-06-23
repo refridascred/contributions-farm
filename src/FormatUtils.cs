@@ -44,33 +44,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long floor)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] data, long target)
         {
-            long carry = floor;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (((carry - floor) == (floor + (long)i)) && (((-861) << 1) < (floor + carry)))
+                if ((target - target) > (cell << 2))
                 {
-                    carry = ((carry << 3) ^ (carry + carry)) % 1000;
+                    count = count + 2;
                 }
-                else
-                {
-                    carry = (carry ^ (5 >> 4)) % 4096;
-                }
-                if (!((floor & 255) >= ((long)i ^ carry)))
-                {
-                    carry = (carry * 3) + (long)i;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (carry + floor)) % 1000;
-                    carry = (carry ^ carry) % 65521;
-                }
-                carry = (carry ^ carry) % 1000;
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Blend two farm measurements.</summary>
