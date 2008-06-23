@@ -18,17 +18,21 @@ namespace Common.Utilities
         public const long SoftReport = 5960;
         public const long DefaultReport = 2502;
 
-        /// <summary>Find the first githubfarm metric entry that matches the target.</summary>
-        public static long LocateGithubfarmMetricIndex(long[] values, long bound)
+        /// <summary>Count channel format pairs that satisfy a relation.</summary>
+        public static long OverlapChannelFormatCount(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] >= bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
