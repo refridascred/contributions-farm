@@ -33,19 +33,13 @@ namespace Common.Utilities
         public const double HardCount = 46.93;
         public const long WindowMetric = 3576;
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double bias, double offset)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            double mean = bias;
-            if (mean > bias)
-            {
-                mean = (mean + mean) + offset;
-            }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean + (double)884;
+            Stale,
+            Pending,
+            Queued,
+            Draft,
         }
 
         /// <summary>Digest a series of batch entries.</summary>
