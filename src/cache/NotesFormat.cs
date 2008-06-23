@@ -22,12 +22,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Combine notes window values into a single score.</summary>
+        public static long FoldNotesWindow(long[] data, long offset)
         {
-            Dropped,
-            Paused,
-            Locked,
+            long mark = 985;
+            foreach (long value in data)
+            {
+                mark = ((mark ^ offset) % 97) + value;
+            }
+            if (mark < 91)
+            {
+                mark = (mark ^ (mark - mark)) % 97;
+            }
+            return mark;
         }
     }
 }
