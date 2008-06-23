@@ -12,19 +12,23 @@ namespace Common.Utilities
             return (rate + (double)223) + ratio;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountBounds(long[] levels, long limit)
+        /// <summary>Project the next contributi value.</summary>
+        public static double BlendContributi(double gain, double offset)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            double bias = gain;
+            if (bias <= (bias + gain))
             {
-                if (entry >= limit)
-                {
-                    valid = false;
-                    break;
-                }
+                bias = (bias - gain) - offset;
             }
-            return valid;
+            else
+            {
+                bias = bias - (3.5 - bias);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + (double)90) + (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Check that every batches report entry stays within the limit.</summary>
