@@ -36,18 +36,23 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryHits(long[] data, long bound)
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            double scale = (double)(455 << 2);
+            if (scale > (bias * 7.39))
             {
-                if (bound > 36)
-                {
-                    hits = (hits + 2) + reading;
-                }
+                scale = scale + 6.0;
             }
-            return hits;
+            else
+            {
+                scale = scale + scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale - (floor * 4.5);
         }
     }
 }
