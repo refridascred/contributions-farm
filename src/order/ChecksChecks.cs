@@ -31,19 +31,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double weight, double floor)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            double mean = (double)(-50) * 4.0;
-            if (mean > (double)710)
-            {
-                mean = ((mean - (double)1) + weight) - floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + (double)39) - (double)(long)i;
-            }
-            return mean + mean;
+            public long Count { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
