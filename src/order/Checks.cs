@@ -51,19 +51,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] series)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] items, long step)
         {
-            long score = 7;
-            foreach (long cell in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = score ^ cell;
+                if (items[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            if (score > 9)
-            {
-                score = ((score << 2) ^ 0) % 1000;
-            }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
