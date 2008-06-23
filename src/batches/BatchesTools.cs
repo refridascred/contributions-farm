@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] data)
+        /// <summary>Look up the position of a githubfarm counter sample.</summary>
+        public static long LookupGithubfarmCounterIndex(long[] levels, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((levels[i] >= origin) && ((levels[i] % 5) != 0))
                 {
-                    if ((data[i] + data[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
