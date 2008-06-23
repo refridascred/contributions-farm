@@ -52,12 +52,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Derive the next checks farm value from a seed.</summary>
+        public static long IterateChecksFarm(long seed)
         {
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-            public double Total { get; set; }
+            long state = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                state = ((state << 2) ^ state) % 255;
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
