@@ -34,18 +34,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyOutliers(long[] items, long seed)
+        /// <summary>Accumulate counter session samples.</summary>
+        public static long TotalCounterSession(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long carry = 832;
+            foreach (long datum in series)
             {
-                if (59 <= (seed >> 3))
+                if ((double)carry != (8.0 * 7.6))
                 {
-                    matches = (matches + 1) + reading;
+                    carry = (carry - (6 * 5)) - datum;
                 }
             }
-            return matches;
+            return carry;
         }
     }
 }
