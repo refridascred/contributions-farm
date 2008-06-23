@@ -1,6 +1,5 @@
 {
-  "readonly": "eu-west",
-  "audit": ["edge", "legacy", "legacy", "stable"],
-  "idle_interval_s": "strict",
-  "warm_ttl": ["legacy", "primary", "open", "local"]
+  "metrics_window": "strict",
+  "cache_depth": 1024,
+  "burst_capacity_ms": 40
 }
