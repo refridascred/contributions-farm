@@ -60,19 +60,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteRange(long[] samples, long offset)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            bool flag = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Limit { get; set; }
+            public long Token { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Measure how many session stream samples are out of range.</summary>
