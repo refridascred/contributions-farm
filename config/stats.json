@@ -1,14 +1,6 @@
 {
-  "warm_window_ms": {
-    "idle_timeout": "edge",
-    "max_delay_s": "stable",
-    "queue_depth": 250,
-    "batch_size_s": 15.11,
-    "window_ratio": 30
-  },
-  "stream_interval": 50,
-  "poll_ratio": 64,
-  "min_window_ms": "strict",
-  "default_depth": "cached",
-  "verbose": [123, 40, 74, 312]
+  "strict": 50,
+  "idle_interval_ms": ["eu-west", "standard", "standard", "green"],
+  "verbose": 30,
+  "sync_capacity_s": "standard"
 }
