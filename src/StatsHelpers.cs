@@ -13,10 +13,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double IdleMetric = 84.54;
-        public const string MinMetric = "strict-edge";
-        public const long DefaultWidth = 2849;
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long MatchProfileCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long LookupNotesIndex(long[] samples, long target)
