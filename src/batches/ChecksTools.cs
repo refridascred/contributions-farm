@@ -34,13 +34,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            Idle,
-            Pending,
-            Queued,
-            Closed,
+            public bool Owner { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
