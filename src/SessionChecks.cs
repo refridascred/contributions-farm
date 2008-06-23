@@ -34,13 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsRange(long[] samples, long step)
         {
-            Idle,
-            Closed,
-            Retry,
-            Synced,
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the metrics level values.</summary>
