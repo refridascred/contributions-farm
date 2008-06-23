@@ -40,11 +40,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double weight, double floor)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] levels)
         {
-            double scale = weight - (double)504;
-            return (scale + 8.3) + floor;
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
