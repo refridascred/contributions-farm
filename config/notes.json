@@ -1,10 +1,7 @@
 {
-  "retry_interval_s": 2.58,
-  "stats_delay": {
-    "warm_size_ms": 7.8,
-    "max_ratio_pct": true,
-    "poll_ratio_s": 1024,
-    "hard_depth_pct": ["green", "primary"]
-  },
-  "contributi_window": true
+  "burst_ttl_ms": ["stable", "standard"],
+  "report_ttl": 4929,
+  "enabled": [302, 225, 335, 434],
+  "commits_ratio": false,
+  "min_ratio_count": 4
 }
