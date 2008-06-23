@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string SoftSupport = "primary-1";
-        public const double LimitRatio = 66.71;
-        public const long BaseSupport = 4463;
-        public const long MinSupport = 9355;
-        public const long IdleSupport = 6966;
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
+        {
+            Synced,
+            Retry,
+            Stale,
+            Locked,
+        }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
         public static double SmoothCluster(double bias, double floor)
