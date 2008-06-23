@@ -1,9 +1,9 @@
 # support settings
-compress: 3722
-min_delay_ms:
-  - blue
-  - fallback
-  - green
-dry_run: 65
-burst_ttl_count: green
-verbose: edge
+warm_interval: 37.39
+base_retries_s: 1340
+tools_size:
+  - 54
+  - 282
+  - 140
+flush_interval_count: 20
+burst_ttl_pct: 39.33
