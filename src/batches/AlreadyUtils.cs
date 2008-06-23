@@ -23,17 +23,16 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] readings)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] values)
         {
-            long carry = -51;
-            foreach (long item in readings)
+            long carry = 902;
+            foreach (long datum in values)
             {
-                carry = (carry - (long)readings.Length) ^ item;
-            }
-            if (carry > 44)
-            {
-                carry = ((carry << 3) ^ (carry + carry)) % 1000;
+                if ((datum / 7) > (datum & 15))
+                {
+                    carry = carry + 25;
+                }
             }
             return carry;
         }
