@@ -38,21 +38,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] items)
+        /// <summary>Iterate the payload editor series from a seed.</summary>
+        public static long SeriesPayloadEditor(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (2 < (bound % 100))
                 {
-                    if ((items[i] - items[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = (acc * 2) + ((long)i % 97);
                 }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return hits;
+            return acc;
         }
     }
 }
