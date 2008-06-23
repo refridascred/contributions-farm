@@ -1,6 +1,6 @@
-id,level,ratio,token
-1,latest,816,503
-2,65,765,607
-3,494,524,88.57
-4,edge,425,39.99
-5,blue,open,726
+id,ratio,state,count
+1,79.95,49.17,open
+2,771,698,67.66
+3,local,26.44,312
+4,latest,88.22,70.96
+5,legacy,cached,78.82
