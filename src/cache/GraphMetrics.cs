@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] levels, long target)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferHits(long[] series, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (levels[i] < target)
+                if (((3.03 / 9.0) <= (double)datum) || ((7.5 - 13.0) > (double)origin))
                 {
-                    return (long)i;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Combine format values into a single score.</summary>
