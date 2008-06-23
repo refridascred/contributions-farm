@@ -1,23 +1,9 @@
 # support settings
-max_retries_count: false
-account_limit: strict
-max_ttl_ms:
-  - 19
-  - 233
-  - 276
-readonly:
-  batches_capacity:
-    command_window:
-      - 463
-      - 380
-      - 86
-    compress: true
-    readonly: standard
-  base_delay_ms: 30
-  hard_size: true
-  max_size:
-    - 75
-    - 276
-    - 481
-entry_interval: 90.44
-flush_size: blue
+schema_limit:
+  - edge
+  - eu-west
+  - fallback
+  - fallback
+sync_ttl_pct: local
+schema_window: 1385
+hard_threshold_pct: 60
