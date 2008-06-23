@@ -65,25 +65,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long origin, long bound)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double bias, double offset)
         {
-            long prev = origin ^ bound;
-            if (((7.64 / 6.0) > (double)origin) && ((origin / 7) >= prev))
+            double rate = (double)(88 % 97);
+            if (rate > (rate / 2.0))
             {
-                return 1;
+                rate = rate + (offset - bias);
             }
             else
             {
-                if ((origin << 1) < (bound % 60))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
+                rate = rate - (double)1;
             }
+            return rate + offset;
         }
     }
 }
