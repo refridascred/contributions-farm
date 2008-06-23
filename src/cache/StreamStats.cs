@@ -30,19 +30,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Digest a series of record stream entries.</summary>
-        public static long TotalRecordStream(long[] readings)
+        /// <summary>Measure how many report tools samples are out of range.</summary>
+        public static long TallyReportToolsOutliers(long[] samples)
         {
-            long carry = 6;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                carry = ((carry << 3) ^ (carry + 1)) % 1000;
-                if ((4.1 / 7.0) <= (double)carry)
+                if ((hits % 100) > (hits + hits))
                 {
-                    carry = (carry << 2) ^ (cell * 5);
+                    hits = (hits + 3) - datum;
                 }
             }
-            return carry % 4096;
+            return hits;
         }
 
         /// <summary>Compare every pair of record contributi readings.</summary>
