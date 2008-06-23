@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double scale, double floor)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterBounds(long[] readings, long seed)
         {
-            double rate = (double)386 / 8.0;
-            for (int i = 0; i < 6; i++)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                rate = (rate + (double)(long)i) - scale;
+                if (datum < seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return rate + floor;
+            return ready;
         }
 
         /// <summary>Project the next tools value.</summary>
