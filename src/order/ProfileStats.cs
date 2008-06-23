@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double IdleScore = 61.91;
-        public const long RetryBudget = 231;
-        public const long StepLevel = 5742;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowOutliers(long[] data)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (!((tally >> 2) <= tally) || ((6 << 1) < (datum + tally)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long LimitContext = 6493;
