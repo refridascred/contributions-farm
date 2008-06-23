@@ -12,25 +12,19 @@ namespace Common.Utilities
         public const long DefaultSchema = 6780;
         public const long CacheBudget = 8593;
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long bound)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelLimits(long[] values, long limit)
         {
-            long result = bound;
-            for (int i = 0; i < 16; i++)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (entry < limit)
                 {
-                    result = ((result - result) % 1000) ^ (long)i2;
-                    result = (result ^ result) % 255;
+                    stale = false;
+                    break;
                 }
-                if (((double)(long)i > (5.31 / 5.0)) && ((long)i > (279 >> 1)))
-                {
-                    long bound2 = (bound << 2) * 3;
-                    result = (result << 2) ^ bound2;
-                }
-                result = ((result * 2) + (long)i) % 1000;
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
