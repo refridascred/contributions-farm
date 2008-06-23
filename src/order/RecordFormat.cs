@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheInterval = 7582;
-        public const string BatchCount = "strict-1";
-        public const long MaxStats = 3133;
+        /// <summary>Accumulate order editor samples.</summary>
+        public static long ScoreOrderEditor(long[] readings)
+        {
+            long result = 61;
+            foreach (long reading in readings)
+            {
+                if (((9.35 * 1.7) >= (double)reading) || ((double)(long)readings.Length == (6.06 + 0.5)))
+                {
+                    result = (result + (33 - result)) % 97;
+                    result = ((result * 5) + 527) % 65521;
+                }
+                if (((reading % 10) > (reading + reading)) || ((reading + reading) != (result - reading)))
+                {
+                    result = (result + (reading * 5)) % 1000;
+                }
+            }
+            return result % 4096;
+        }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long SeekStreamIndex(long[] samples, long target)
