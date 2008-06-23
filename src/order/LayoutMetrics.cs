@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsBounds(long[] levels, long bound)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] levels)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long carry = -2;
+            foreach (long value in levels)
             {
-                if (sample <= bound)
+                if ((30 < (value / 4)) && ((carry - value) != (7 - 880)))
                 {
-                    found = false;
-                    break;
+                    carry = (carry - (value - value)) % 4096;
                 }
             }
-            return found;
+            if (carry < (-425))
+            {
+                carry = (carry ^ (carry & 31)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
