@@ -23,18 +23,16 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportMatches(long[] samples, long step)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long target)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long state = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)matches < (9.0 + 18.0))
-                {
-                    matches = ((matches + 3) ^ reading) - step;
-                }
+                state = (state - (9 & 31)) % 1000;
+                state = ((state * 5) + (long)i) % 97;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Define command limits and defaults.</summary>
