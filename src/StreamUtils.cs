@@ -18,10 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MinCommand = "legacy";
-        public const long StepSize = 9269;
-        public const long DefaultCommand = 5570;
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
+        {
+            Pending,
+            Ready,
+            Stale,
+        }
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long CombineFilter(long[] levels)
