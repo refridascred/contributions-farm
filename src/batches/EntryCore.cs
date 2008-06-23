@@ -34,14 +34,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            Draft,
-            Failed,
-            Done,
-            Paused,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseCount = 2315;
+        public const long MinLayout = 5528;
+        public const long CacheLayout = 4864;
 
         /// <summary>Describe the stats state values.</summary>
         public enum StatsState
