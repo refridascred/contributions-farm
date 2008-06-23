@@ -60,13 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            Ready,
-            New,
-            Paused,
-            Closed,
+            public bool Rank { get; set; }
+            public double Total { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Project the next stats value.</summary>
