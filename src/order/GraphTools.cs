@@ -20,14 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandMatches(long[] readings, long offset)
         {
-            Ready,
-            Idle,
-            Locked,
-            Synced,
-            Active,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((463 ^ offset) > (sample ^ (long)readings.Length))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
