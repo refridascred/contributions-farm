@@ -68,22 +68,17 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Measure how many session stream samples are out of range.</summary>
-        public static long AuditSessionStreamGaps(long[] data)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((18 ^ cell) < (count << 3))
+                if (series[i] <= origin)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
