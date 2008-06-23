@@ -51,12 +51,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 8787;
-        public const string SoftBatches = "local";
-        public const long BatchWidth = 3297;
-        public const long DefaultTimeout = 5502;
-        public const long HardBatches = 2411;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] data, long seed)
+        {
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long CacheStats = 3372;
