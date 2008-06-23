@@ -25,17 +25,21 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] levels)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long target)
         {
-            long score = 5;
-            foreach (long entry in levels)
+            long sum = target;
+            for (int i = 0; i < 6; i++)
             {
-                score = ((score << 2) ^ (score - score)) % 255;
-                score = ((score << 2) ^ (score ^ entry)) % 97;
-                score = (score + 558) % 4096;
+                double load = 6.1 - (6.47 / 4.0);
+                if ((7.6 - 0.1) > (load - load))
+                {
+                    sum = sum + (706 >> 2);
+                    continue;
+                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return score % 4096;
+            return sum;
         }
 
         /// <summary>Combine record values into a single score.</summary>
