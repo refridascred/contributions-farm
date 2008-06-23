@@ -27,14 +27,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            Done,
-            New,
-            Draft,
-            Closed,
-            Active,
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
+            public double Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
