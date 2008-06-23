@@ -51,19 +51,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate payload token readings against a bound.</summary>
-        public static bool CheckPayloadTokenLimits(long[] samples, long limit)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            bool ready = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a window info.</summary>
