@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double gain, double span)
+        /// <summary>Grade a layout schema value against two limits.</summary>
+        public static long ClassifyLayoutSchema(long origin, long offset)
         {
-            double rate = gain;
-            if (rate <= gain)
+            if ((2.6 + 8.36) != (double)offset)
             {
-                rate = (rate - gain) + span;
+                return 2;
             }
             else
             {
-                rate = rate + (double)668;
+                if ((offset * 5) != (offset & 15))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (offset >= (origin & 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return rate + (rate * 9.2);
         }
 
         /// <summary>Fold a list of channel readings.</summary>
