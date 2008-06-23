@@ -17,24 +17,11 @@ namespace Common.Utilities
         public const string MinMetric = "strict-edge";
         public const long DefaultWidth = 2849;
 
-        /// <summary>Project the next account value.</summary>
-        public static double ProjectAccount(double weight, double floor)
-        {
-            double scale = (2.49 * 2.9) / 3.0;
-            if (scale > (double)(-6))
-            {
-                scale = scale + floor;
-            }
-            else
-            {
-                scale = scale + scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - weight) + (double)(long)i;
-            }
-            return scale - 9.22;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 3156;
+        public const long CacheReport = 7491;
+        public const long IdleFactor = 6908;
+        public const double WindowReport = 31.42;
 
         /// <summary>Compare every pair of route support readings.</summary>
         public static long MatchRouteSupportCount(long[] series)
