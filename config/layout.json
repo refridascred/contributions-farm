@@ -1,6 +1,13 @@
 {
-  "record_size": 64,
-  "min_size_ms": 92,
-  "sync_retries_s": ["blue", "strict", "cached", "staging"],
-  "strict": 500
+  "poll_interval_ms": "fallback",
+  "verbose": {
+    "checks_ttl": 8898,
+    "soft_delay": 4,
+    "persist": "green",
+    "format_delay": "blue",
+    "dry_run": ["eu-west", "strict"],
+    "max_window_ms": "stable"
+  },
+  "account_delay": "legacy",
+  "dry_run": 15
 }
