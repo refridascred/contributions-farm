@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first notes session entry that matches the target.</summary>
-        public static long FindNotesSessionIndex(long[] levels, long origin)
+        /// <summary>Classify a order record pair into a bucket.</summary>
+        public static long BucketOrderRecord(long target, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long delta = target - step;
+            if ((double)delta > 12.0)
             {
-                if (levels[i] >= origin)
+                return 3;
+            }
+            else
+            {
+                if ((step >> 3) <= (step + step))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the counter level values.</summary>
