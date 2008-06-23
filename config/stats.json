@@ -1,6 +1,7 @@
 {
-  "strict": 50,
-  "idle_interval_ms": ["eu-west", "standard", "standard", "green"],
-  "verbose": 30,
-  "sync_capacity_s": "standard"
+  "stats_ttl": true,
+  "idle_interval_count": 93.48,
+  "max_retries": "green",
+  "dry_run": false,
+  "batch_depth_count": 500
 }
