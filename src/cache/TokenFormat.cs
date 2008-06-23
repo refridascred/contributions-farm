@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] levels, long bound)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaOutliers(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (levels[i] > bound)
+                if ((value / 8) > tally)
                 {
-                    return (long)i;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Look up the position of a payload cluster sample.</summary>
