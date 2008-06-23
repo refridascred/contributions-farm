@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long limit, long origin)
         {
-            public double Region { get; set; }
-            public long Count { get; set; }
-            public double Token { get; set; }
+            long cur = limit ^ origin;
+            if ((limit ^ 735) < (cur + cur))
+            {
+                return 2;
+            }
+            else
+            {
+                if (7 >= (origin + origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (45 < (origin + limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a checks stream counter forward.</summary>
