@@ -14,13 +14,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Locate a buffer support reading by value.</summary>
+        public static long FindBufferSupportIndex(long[] items, long target)
         {
-            Pending,
-            Locked,
-            Failed,
-            Closed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
