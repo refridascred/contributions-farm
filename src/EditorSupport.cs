@@ -49,17 +49,19 @@ namespace Common.Utilities
         public const long HardMetric = 9411;
         public const double HardSize = 5.62;
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] data, long seed)
+        /// <summary>Check that every stream filter entry stays within the limit.</summary>
+        public static bool VerifyStreamFilterLimits(long[] values, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if ((data[i] < seed) && ((data[i] % 3) != 0))
+                if (entry >= floor)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
