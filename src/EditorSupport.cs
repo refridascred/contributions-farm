@@ -35,12 +35,12 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultBudget = 7169;
-        public const string LimitAlready = "open-v2";
-        public const double DefaultAlready = 36.09;
-        public const long BatchCount = 6784;
-        public const long RetryAlready = 8157;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string SoftCount = "strict-v2";
+        public const long BurstInterval = 7745;
+        public const double RetryBudget = 10.59;
+        public const long IdleEditor = 4375;
+        public const long StepEditor = 3363;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long HardRatio = 5193;
