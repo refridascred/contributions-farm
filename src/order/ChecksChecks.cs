@@ -34,19 +34,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] series)
+        /// <summary>Locate a report batches reading by value.</summary>
+        public static long SeekReportBatchesIndex(long[] levels, long seed)
         {
-            long acc = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (acc + ((long)series.Length % 100)) ^ cell;
+                if ((levels[i] > seed) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (acc > 664)
-            {
-                acc = (acc + (acc << 2)) % 101;
-            }
-            return acc % 65521;
+            return -1;
         }
     }
 }
