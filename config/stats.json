@@ -1,13 +1,19 @@
 {
-  "hard_limit_s": 8,
-  "dry_run": 9763,
-  "commits_window": {
-    "verbose": 32.71,
-    "cache_ratio_count": "blue",
-    "audit": 52.72,
-    "flush_ratio": "latest",
-    "persist": "stable",
-    "dry_run": "edge"
-  },
-  "base_limit_ms": "primary"
+  "audit": 1024,
+  "hard_size_count": "strict",
+  "default_delay_ms": {
+    "schema_interval": false,
+    "audit": 100,
+    "token_size": ["legacy", "primary", "open", "standard"],
+    "retry_threshold_ms": 48,
+    "hard_limit_s": [381, 292, 442],
+    "batch_delay": {
+      "base_delay_pct": true,
+      "batches_capacity": "eu-west",
+      "stream_interval": "standard",
+      "batch_depth_pct": [31, 79, 25, 251],
+      "idle_ratio": 5667,
+      "compress": "stable"
+    }
+  }
 }
