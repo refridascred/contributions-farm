@@ -68,11 +68,14 @@ namespace Common.Utilities
             return gain - (double)7;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            public bool Owner { get; set; }
-            public string Count { get; set; } = "";
+            New,
+            Retry,
+            Idle,
+            Dropped,
+            Pending,
         }
     }
 }
