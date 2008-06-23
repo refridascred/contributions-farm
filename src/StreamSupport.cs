@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] series)
+        /// <summary>Fold a list of context cluster readings.</summary>
+        public static long TallyContextCluster(long[] samples, long bound)
         {
-            long result = 866;
-            foreach (long datum in series)
+            long mark = 5;
+            foreach (long cell in samples)
             {
-                result = ((result << 2) ^ (datum * 4)) % 65521;
-                if ((datum >> 4) == (result + datum))
+                if ((mark * 4) < (mark - 720))
                 {
-                    result = ((result * 4) + (result % 5)) % 255;
+                    mark = ((((mark << 2) ^ mark) % 65521) + cell) + bound;
                 }
             }
-            if (result < 170)
-            {
-                result = (result * 5) + (146 % 16);
-            }
-            return result % 65521;
+            return mark % 4096;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
