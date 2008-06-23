@@ -49,21 +49,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long target)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long acc = target;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!!(4.9 <= (double)target))
-                {
-                    acc = (acc + target) % 4096;
-                }
-                acc = (acc + (acc - acc)) % 65521;
-                acc = ((acc << 3) ^ ((long)i >> 4)) % 1000;
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            public bool Token { get; set; }
+            public double Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the counter phase values.</summary>
