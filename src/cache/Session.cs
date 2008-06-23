@@ -17,21 +17,13 @@ namespace Common.Utilities
         public const long WindowContext = 5994;
         public const string DefaultContext = "standard-v2";
 
-        /// <summary>Match up token payload samples.</summary>
-        public static long OverlapTokenPayloadCount(long[] values)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Token { get; set; }
+            public bool Label { get; set; }
+            public bool Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Project the next profile value.</summary>
