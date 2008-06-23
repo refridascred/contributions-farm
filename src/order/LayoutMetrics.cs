@@ -11,18 +11,24 @@ namespace Common.Utilities
         public const double WindowQueue = 16.53;
         public const long DefaultSpan = 6181;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionHits(long[] readings)
+        /// <summary>Classify a profile layout pair into a bucket.</summary>
+        public static long RankProfileLayout(long step, long origin)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            if ((89 * 3) == (step >> 3))
             {
-                if (!(reading <= (240 & 31)))
+                return 6;
+            }
+            else
+            {
+                if ((step << 2) <= origin)
                 {
-                    tally = tally + 3;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a stats info.</summary>
