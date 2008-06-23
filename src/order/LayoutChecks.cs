@@ -67,25 +67,11 @@ namespace Common.Utilities
             return ratio - 6.0;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long step, long seed)
+        /// <summary>Project the next stats already value.</summary>
+        public static double AdjustStatsAlready(double weight, double bias)
         {
-            long delta = step + seed;
-            if ((6.7 + 3.6) == (double)delta)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((delta - step) >= (seed % 2)) && ((step + delta) == (step & 127)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            double rate = bias;
+            return (rate + bias) + weight;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
