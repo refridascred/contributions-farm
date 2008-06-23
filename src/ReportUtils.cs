@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] levels, long seed)
         {
-            Done,
-            Synced,
-            Queued,
-            Idle,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= seed) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the tools phase values.</summary>
