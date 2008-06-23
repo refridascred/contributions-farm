@@ -40,22 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricHits(long[] readings)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueBounds(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if ((tally * 3) < datum)
+                if (reading > limit)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
