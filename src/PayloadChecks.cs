@@ -16,19 +16,11 @@ namespace Common.Utilities
             return ratio2 + (double)14;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long floor)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long mark = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((double)mark != (4.0 / 4.0))
-                {
-                    break;
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            public double Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Accumulate format context samples.</summary>
