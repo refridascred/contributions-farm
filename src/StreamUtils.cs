@@ -63,18 +63,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorMatches(long[] samples, long target)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long result = 7;
+            foreach (long value in samples)
             {
-                if ((75 - 84) != (reading & 15))
+                if ((value << 3) <= (value ^ result))
                 {
-                    count = (count + 3) - target;
+                    result = ((result << 2) ^ (result + result)) % 65521;
+                    result = (result + ((-40) - 722)) % 255;
+                }
+                if ((value * 5) == (value & 3))
+                {
+                    result = (result + 34) % 65521;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
