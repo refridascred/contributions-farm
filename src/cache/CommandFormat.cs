@@ -36,17 +36,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first stats entry entry that matches the target.</summary>
-        public static long LookupStatsEntryIndex(long[] series, long step)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long target, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (target > (bound / 9))
             {
-                if (series[i] > step)
+                return 4;
+            }
+            else
+            {
+                if (!((8.7 + 19.0) != (double)target))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the stats level values.</summary>
