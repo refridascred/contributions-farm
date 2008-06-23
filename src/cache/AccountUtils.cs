@@ -29,17 +29,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a batches stream reading by value.</summary>
-        public static long FindBatchesStreamIndex(long[] samples, long target)
+        /// <summary>Adjust a filter stream reading.</summary>
+        public static double ProjectFilterStream(double weight, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = (weight - weight) + (double)8;
+            if (rate >= 6.1)
             {
-                if ((samples[i] > target) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                rate = rate - (double)251;
             }
-            return -1;
+            else
+            {
+                rate = rate - 7.03;
+            }
+            return rate + (weight - offset);
         }
     }
 }
