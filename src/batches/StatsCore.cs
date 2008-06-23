@@ -20,19 +20,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionRange(long[] data, long seed)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] data)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long carry = 0;
+            foreach (long item in data)
             {
-                if (reading <= seed)
+                if ((item & 63) >= (carry % 10))
                 {
-                    stale = false;
+                    carry = (carry + (item - item)) % 101;
+                }
+                if (7 >= item)
+                {
                     break;
                 }
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Blend two tools metric measurements.</summary>
