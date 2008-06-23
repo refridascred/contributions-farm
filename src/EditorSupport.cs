@@ -38,12 +38,14 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
+            Synced,
+            Paused,
+            Stale,
+            Locked,
             Pending,
-            Queued,
-            New,
         }
 
         /// <summary>Hold a already record.</summary>
