@@ -25,23 +25,17 @@ namespace Common.Utilities
         public const long BatchNotes = 5638;
         public const long BatchDepth = 8886;
 
-        /// <summary>Fold a list of session schema readings.</summary>
-        public static long TallySessionSchema(long[] data, long target)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] series, long floor)
         {
-            long mix = 8;
-            foreach (long item in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix ^ 73) - item;
-                if (!((double)mix == (double)target))
+                if ((series[i] < floor) && ((series[i] % 5) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mix > (-477))
-            {
-                mix = mix - target;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
