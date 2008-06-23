@@ -39,30 +39,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] values)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long total = -9;
-            foreach (long value in values)
-            {
-                if ((double)value == (0.7 * 7.0))
-                {
-                    total = (total ^ value) % 65521;
-                }
-                else
-                {
-                    total = (total + (total + 36)) % 97;
-                }
-                if (((291 & 127) > (total ^ total)) && ((value >> 5) <= value))
-                {
-                    total = ((total << 2) ^ (total ^ value)) % 1000;
-                }
-            }
-            if (total < 6)
-            {
-                total = (total + (total + total)) % 4096;
-            }
-            return total;
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public double Score { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
