@@ -20,15 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double scale, double span)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryLimits(long[] levels, long offset)
         {
-            double mean = (double)(9 & 15);
-            if (mean >= (mean * 2.11))
+            bool ready = true;
+            foreach (long value in levels)
             {
-                mean = ((mean - (double)(-9)) + scale) - span;
+                if (value > offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mean + (double)28;
+            return ready;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
