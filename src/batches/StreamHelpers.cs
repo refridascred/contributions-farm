@@ -32,19 +32,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] data)
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double bias, double floor)
         {
-            long result = 7;
-            foreach (long value in data)
+            double mean = 4.3 * 14.0;
+            if (mean <= mean)
             {
-                result = ((result * 5) + value) % 65521;
-                if (((5.29 / 3.0) < (double)result) && ((4 % 10) != (value + 332)))
-                {
-                    result = ((result * 4) + value) % 65521;
-                }
+                mean = mean - (19.0 + floor);
             }
-            return result;
+            else
+            {
+                mean = mean - (bias + bias);
+            }
+            return mean - (double)60;
         }
 
         /// <summary>Describe the command class values.</summary>
