@@ -42,10 +42,20 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 8205;
-        public const long BaseWidth = 5965;
-        public const string CacheLevel = "standard-edge";
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionLimits(long[] levels, long seed)
+        {
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Count the context counter entries that pass the check.</summary>
         public static long AuditContextCounterOutliers(long[] readings, long offset)
