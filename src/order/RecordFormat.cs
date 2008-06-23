@@ -51,15 +51,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of command githubfarm entries.</summary>
-        public static long ScoreCommandGithubfarm(long[] items)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] levels)
         {
-            long result = 58;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result - 28) % 97) + sample;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result % 4096;
+            return count;
         }
 
         /// <summary>Define report limits and defaults.</summary>
