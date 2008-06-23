@@ -62,13 +62,12 @@ namespace Common.Utilities
             return weight + (span - gain);
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            public long Score { get; set; }
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
+            public string Label { get; set; } = "";
         }
     }
 }
