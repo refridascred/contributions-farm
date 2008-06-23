@@ -1,17 +1,18 @@
 {
-  "min_retries_ms": "fallback",
-  "burst_retries": "latest",
-  "channel_threshold": {
-    "cache_ttl_count": 66.68,
-    "retry_capacity_ms": 1024,
-    "dry_run": {
-      "burst_retries_ms": true,
-      "githubfarm_ratio": "local",
-      "schema_ttl": "open",
-      "audit": "blue",
-      "poll_depth_count": 500,
-      "context_retries": "standard"
-    }
+  "dry_run": 87.24,
+  "verbose": {
+    "batches_threshold": 72.74,
+    "idle_depth_ms": "open",
+    "cache_capacity": {
+      "warm_ratio_ms": 7,
+      "hard_ttl": "edge",
+      "dry_run": "green",
+      "audit": "legacy",
+      "persist": "fallback",
+      "batches_ratio": 9.71
+    },
+    "verbose": 8.16
   },
-  "persist": 1.44
+  "retry_size": ["green", "standard", "local"],
+  "flush_depth_count": 4044
 }
