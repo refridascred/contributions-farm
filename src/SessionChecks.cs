@@ -43,18 +43,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheGaps(long[] items, long offset)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (item <= (tally ^ offset))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Limit { get; set; }
+            public bool Region { get; set; }
+            public long Count { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
