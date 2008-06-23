@@ -12,19 +12,13 @@ namespace Common.Utilities
             return (rate + (double)223) + ratio;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long origin)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long mark = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((origin % 3) >= (mark - mark))
-                {
-                    mark = mark + (7 ^ mark);
-                }
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            public bool Total { get; set; }
+            public double Score { get; set; }
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a graph snapshot.</summary>
