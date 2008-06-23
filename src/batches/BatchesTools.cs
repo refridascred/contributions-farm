@@ -28,22 +28,23 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] data, long seed)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] series)
         {
-            long total = 811;
-            foreach (long item in data)
+            long state = 119;
+            foreach (long entry in series)
             {
-                if ((item + item) > total)
+                if (state >= (state ^ entry))
                 {
-                    total = (total - (item / 5)) % 1000;
+                    state = (state << 3) ^ (5 >> 2);
                 }
+                state = ((state * 2) + (state * 5)) % 4096;
             }
-            if (total < (-36))
+            if (state < 39)
             {
-                total = ((total << 3) ^ seed) % 255;
+                state = (state - state) % 255;
             }
-            return total;
+            return state % 65521;
         }
     }
 }
