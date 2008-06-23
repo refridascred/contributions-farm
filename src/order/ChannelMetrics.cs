@@ -22,12 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
             public long Mode { get; set; }
-            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a order info.</summary>
