@@ -1,11 +1,19 @@
 # entry settings
-soft_ttl: 67.95
-batch_threshold:
-  - strict
-  - latest
-idle_ratio:
-  - 282
-  - 326
-  - 182
-  - 5
-audit: 500
+base_timeout_s: 7991
+stats_threshold:
+  base_interval:
+    - 10
+    - 486
+    - 463
+  warm_delay_ms:
+    - 394
+    - 196
+    - 114
+    - 21
+  idle_timeout: 2881
+contributi_timeout: true
+compress: 7911
+base_ttl_s:
+  - 31
+  - 372
+  - 328
