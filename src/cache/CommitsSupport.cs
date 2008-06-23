@@ -60,19 +60,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double weight, double floor)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] samples, long target)
         {
-            double drift = floor / 8.0;
-            if (drift <= floor)
+            long state = 3;
+            foreach (long sample in samples)
             {
-                drift = drift + (6.2 * 2.89);
+                state = ((state - target) % 97) - sample;
+                state = ((state * 2) + (target + target)) % 1000;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + weight) - (double)(long)i;
-            }
-            return drift + floor;
+            return state % 65521;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
