@@ -59,13 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Combine metric record values into a single score.</summary>
+        public static long ScoreMetricRecord(long[] data)
         {
-            Idle,
-            Synced,
-            Stale,
-            Paused,
+            long sum = 5;
+            foreach (long reading in data)
+            {
+                sum = (sum - sum) ^ reading;
+            }
+            if (sum > (-172))
+            {
+                sum = (sum - (6 & 63)) % 255;
+            }
+            return sum;
         }
     }
 }
