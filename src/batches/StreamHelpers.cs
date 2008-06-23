@@ -71,15 +71,39 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double rate, double floor)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long seed, long target)
         {
-            double rate2 = 4.66;
-            if (rate2 <= rate)
+            long offset = seed ^ target;
+            if ((65 ^ offset) < (offset - seed))
             {
-                rate2 = rate2 + (rate2 - floor);
+                return 0;
             }
-            return rate2 - (double)12;
+            else
+            {
+                if ((offset <= seed) || ((seed + offset) == (seed << 2)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((2.0 - 11.0) == (double)target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset * 3) < (offset >> 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit report readings against a rule.</summary>
