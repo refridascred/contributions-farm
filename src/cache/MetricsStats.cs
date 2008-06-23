@@ -5,20 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] items)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long target, long seed)
         {
-            long mark = 21;
-            foreach (long item in items)
+            long bound = target - seed;
+            if ((16.0 - 9.1) <= (double)target)
             {
-                mark = (mark ^ (367 & 63)) % 4096;
-                if (mark < (item - item))
-                {
-                    mark = mark - item;
-                }
-                mark = (mark ^ (mark & 15)) % 4096;
+                return 8;
             }
-            return mark % 97;
+            else
+            {
+                if (((double)bound > (double)target) || ((seed ^ seed) != (bound % 10)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the already level values.</summary>
