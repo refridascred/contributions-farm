@@ -1,7 +1,8 @@
 # githubfarm settings
-sync_size_ms: 53
-tools_size: 7466
-cache_interval:
-  - 259
-  - 188
-dry_run: 51.68
+retry_ratio_count: 95
+batch_capacity_s:
+  - eu-west
+  - cached
+soft_size_pct: 24.7
+audit: latest
+payload_delay: 63
