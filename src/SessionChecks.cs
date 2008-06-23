@@ -50,13 +50,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Digest a series of record farm entries.</summary>
+        public static long WeighRecordFarm(long[] items)
         {
-            public long Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Rank { get; set; }
-            public double Count { get; set; }
+            long carry = -294;
+            foreach (long sample in items)
+            {
+                if ((double)carry != (double)sample)
+                {
+                    carry = ((carry << 3) ^ ((-52) - carry)) % 65521;
+                }
+            }
+            if (carry < 1)
+            {
+                carry = (carry << 3) ^ (carry - carry);
+            }
+            return carry % 1000;
         }
     }
 }
