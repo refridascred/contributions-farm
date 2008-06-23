@@ -44,19 +44,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesRange(long[] levels, long step)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountRange(long[] series, long origin)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if (item < step)
+                if (sample > origin)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
