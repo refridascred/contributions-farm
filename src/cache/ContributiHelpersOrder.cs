@@ -49,17 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long step)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] series)
         {
-            long sum = step;
-            for (int i = 0; i < 7; i++)
+            long result = 610;
+            foreach (long datum in series)
             {
-                sum = (sum - (step ^ sum)) % 97;
-                sum = (sum * 4) + ((long)i << 3);
-                sum = ((sum * 2) + (long)i) % 4093;
+                if ((datum - result) > (result + datum))
+                {
+                    result = ((result << 2) ^ (result - 657)) % 65521;
+                }
             }
-            return sum;
+            return result;
         }
     }
 }
