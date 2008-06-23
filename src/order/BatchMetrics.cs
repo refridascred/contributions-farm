@@ -52,15 +52,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double AdjustLayout(double weight, double span)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] data, long limit)
         {
-            double load = 0.6 - (2.95 - 8.2);
-            for (int i = 0; i < 6; i++)
+            long carry = 91;
+            foreach (long cell in data)
             {
-                load = ((load + (9.48 + span)) + (double)(long)i) + weight;
+                carry = (((carry * 3) + carry) + cell) + limit;
             }
-            return load + 18.0;
+            return carry % 4096;
         }
 
         /// <summary>Hold a buffer header.</summary>
