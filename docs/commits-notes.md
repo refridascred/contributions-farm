@@ -1,14 +1,12 @@
 # Commits notes
 
-A filter that stays idle for too long is moved to the session list.
-The tools report groups every schema by commits.
-Each editor is validated before it reaches the editor queue.
-
-The token report groups every support by contributi.
-The editor helpers are pure functions, so they are safe to call from any thread.
+The schema report groups every stats by cache.
+When a editor fails, the graph handler retries a few times before giving up.
+Defaults for farm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep buffer values small
-- Log every commits change
-- Prefer commits defaults
+- Keep stream values small
+- Validate session input early
+- Document new graph fields
+- Review tools limits each release
