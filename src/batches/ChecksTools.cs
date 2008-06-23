@@ -20,19 +20,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the command stream entries that pass the check.</summary>
-        public static long CountCommandStreamHits(long[] series, long origin)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((double)entry < (12.0 + 3.07))
-                {
-                    count = (count + 3) - origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSchema = 8896;
+        public const long BurstDepth = 5922;
+        public const double MinSchema = 0.6;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long DefaultTimeout = 1386;
