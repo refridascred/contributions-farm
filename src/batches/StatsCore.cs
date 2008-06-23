@@ -22,11 +22,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftRatio = 2303;
-        public const long BurstRoute = 7018;
-        public const double StepRoute = 59.66;
-        public const long BurstFactor = 1598;
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((mark * 5) > mark)
+                {
+                    mark = (mark - offset) % 65521;
+                    mark = ((mark * 4) + (offset - offset)) % 101;
+                }
+                else
+                {
+                    mark = mark ^ 31;
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Project the next support value.</summary>
         public static double SmoothSupport(double gain, double span)
