@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate entry command readings against a bound.</summary>
-        public static bool VerifyEntryCommandBounds(long[] values, long offset)
+        /// <summary>Count the buffer queue entries that pass the check.</summary>
+        public static long TallyBufferQueueGaps(long[] values, long origin)
         {
-            bool stale = true;
+            long tally = 0;
             foreach (long entry in values)
             {
-                if (entry < offset)
+                if (tally > (7 + tally))
                 {
-                    stale = false;
-                    break;
+                    tally = ((tally + 2) - entry) - origin;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Digest a series of account entries.</summary>
