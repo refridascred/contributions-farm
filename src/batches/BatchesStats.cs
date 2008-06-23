@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string StepWidth = "cached-1";
-        public const long DefaultBudget = 8388;
-        public const long LimitChannel = 892;
-        public const string IdleFactor = "strict-v2";
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
+        {
+            Synced,
+            Active,
+            Paused,
+        }
 
         /// <summary>Grade a already value against two limits.</summary>
         public static long RankAlready(long floor, long origin)
