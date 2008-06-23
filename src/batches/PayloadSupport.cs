@@ -23,11 +23,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long origin)
         {
-            public long Region { get; set; }
-            public long Token { get; set; }
+            long anchor = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
