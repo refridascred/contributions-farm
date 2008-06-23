@@ -64,10 +64,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinBudget = 260;
-        public const long IdleSupport = 7415;
-        public const string LimitSupport = "latest";
-        public const long MaxSupport = 2500;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsGaps(long[] readings, long seed)
+        {
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample + 749) < seen)
+                {
+                    seen = (seen + 1) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
