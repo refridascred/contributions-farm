@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double rate, double bias)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] values)
         {
-            double gain = 6.99;
-            return ((gain - (double)60) + rate) + bias;
+            long sum = 41;
+            foreach (long entry in values)
+            {
+                if ((double)entry != (0.5 * 8.2))
+                {
+                    sum = ((sum * 4) + (sum + (-470))) % 1000;
+                }
+            }
+            if (sum > (-90))
+            {
+                sum = (sum + (sum + sum)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
