@@ -31,27 +31,14 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] readings, long seed)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long anchor = 505;
-            foreach (long cell in readings)
-            {
-                if (((double)seed != (5.8 * 4.6)) && ((seed ^ 6) != (cell + 875)))
-                {
-                    anchor = (anchor ^ seed) % 255;
-                    continue;
-                }
-                if ((cell * 5) < (cell ^ seed))
-                {
-                    anchor = anchor + anchor;
-                }
-                else
-                {
-                    anchor = anchor + anchor;
-                }
-            }
-            return anchor;
+            Idle,
+            Synced,
+            Pending,
+            Done,
+            Active,
         }
 
         /// <summary>Count the context counter entries that pass the check.</summary>
