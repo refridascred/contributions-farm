@@ -28,11 +28,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] values, long seed)
         {
-            public bool Weight { get; set; }
-            public long Score { get; set; }
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
