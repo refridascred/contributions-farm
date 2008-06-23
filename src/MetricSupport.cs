@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long DeriveNotes(long target)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long carry = target;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = carry - (carry ^ (long)i);
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            public long Region { get; set; }
+            public double Level { get; set; }
+            public double Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
