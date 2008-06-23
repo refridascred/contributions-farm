@@ -19,31 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a githubfarm already value against two limits.</summary>
-        public static long BucketGithubfarmAlready(long offset, long seed)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            if ((7 % 64) < (offset + seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((1.64 * 16.0) != (double)seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed + offset) <= (offset & 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Fold a list of support readings.</summary>
