@@ -64,39 +64,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long step, long offset)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] values, long bound)
         {
-            long slot = step - offset;
-            if ((slot % 24) == (slot - offset))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(slot < (offset + step)))
+                if (values[i] == bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)4 <= (double)offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((7.7 / 2.0) == (double)offset)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
