@@ -19,11 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] readings, long limit)
         {
-            public string Count { get; set; } = "";
-            public double Ratio { get; set; }
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the metric context entries that pass the check.</summary>
