@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string WindowContext = "standard-edge";
-        public const string BaseContext = "legacy-1";
-        public const double BaseSize = 95.66;
-        public const long HardContext = 3354;
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
+        {
+            Ready,
+            Idle,
+            Retry,
+            Paused,
+        }
 
         /// <summary>Scale a filter figure with a bias.</summary>
         public static double BlendFilter(double gain, double bias)
