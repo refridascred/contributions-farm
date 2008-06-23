@@ -33,21 +33,19 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long target)
+        /// <summary>Adjust a tools batch reading.</summary>
+        public static double AdjustToolsBatch(double scale, double span)
         {
-            long sum = target;
-            for (int i = 0; i < 6; i++)
+            double weight = (double)(871 - 6);
+            if (weight < 8.7)
             {
-                double load = 6.1 - (6.47 / 4.0);
-                if ((7.6 - 0.1) > (load - load))
-                {
-                    sum = sum + (706 >> 2);
-                    continue;
-                }
-                sum = ((sum * 2) + (long)i) % 101;
+                weight = weight - (double)4;
             }
-            return sum;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (span + span)) + (double)(long)i;
+            }
+            return weight - (span + scale);
         }
 
         /// <summary>Combine record values into a single score.</summary>
