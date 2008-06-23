@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long floor, long offset)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long floor, long bound)
         {
-            long step = floor ^ offset;
-            if ((offset / 9) <= step)
+            long delta = floor - bound;
+            if ((446 & 255) >= (delta / 9))
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if ((double)864 != (double)offset)
+                if (delta <= (floor + floor))
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    return 2;
+                    return 5;
                 }
             }
         }
