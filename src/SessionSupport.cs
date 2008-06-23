@@ -39,20 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double scale, double span)
-        {
-            double scale2 = scale;
-            if (scale2 > (double)97)
-            {
-                scale2 = (scale2 - (scale - scale2)) - span;
-            }
-            else
-            {
-                scale2 = scale2 - (double)2;
-            }
-            return scale2 + (2.0 - scale2);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultSize = 3442;
+        public const string DefaultTimeout = "alpha-v2";
+        public const long DefaultPayload = 1066;
 
         /// <summary>Rank report input into a small class.</summary>
         public static long BucketReport(long origin, long bound)
