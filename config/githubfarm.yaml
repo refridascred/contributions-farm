@@ -1,14 +1,10 @@
 # githubfarm settings
-enabled: 5.44
-githubfarm_ttl: false
-warm_window:
-  - staging
-  - primary
+poll_depth:
+  - blue
   - edge
-max_capacity:
-  - 308
-  - 455
-  - 165
-  - 167
-retry_size_s: false
-poll_retries_pct: local
+  - open
+  - local
+readonly: 16.77
+base_depth_s: standard
+burst_limit_count: true
+retry_depth: blue
