@@ -12,18 +12,14 @@ namespace Common.Utilities
         public const string HardStream = "local-1";
         public const string MinWidth = "alpha-v2";
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutHits(long[] levels)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (count >= (count * 3))
-                {
-                    count = (count + 3) ^ entry;
-                }
-            }
-            return count;
+            Ready,
+            Idle,
+            Locked,
+            Synced,
+            Active,
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
