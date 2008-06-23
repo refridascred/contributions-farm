@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long offset)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double BlendProfile(double scale, double span)
         {
-            long state = offset;
-            for (int i = 0; i < 9; i++)
+            double weight = (double)8;
+            if (weight >= (double)60)
             {
-                state = (state + (offset >> 2)) % 65521;
-                state = (state << 3) ^ (state + state);
-                state = ((state * 4) + (long)i) % 1000;
+                weight = weight - span;
             }
-            return state;
+            else
+            {
+                weight = weight + (scale - weight);
+            }
+            return weight - weight;
         }
 
         /// <summary>Hold a context options.</summary>
