@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Classify a editor already pair into a bucket.</summary>
+        public static long BucketEditorAlready(long origin, long seed)
         {
-            public long Count { get; set; }
-            public string Level { get; set; } = "";
-            public string Total { get; set; } = "";
-            public string Size { get; set; } = "";
+            if ((double)origin >= (16.0 + 2.9))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((3.1 < (double)origin) || ((285 / 4) < origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed << 1) != (origin / 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a queue window value against two limits.</summary>
