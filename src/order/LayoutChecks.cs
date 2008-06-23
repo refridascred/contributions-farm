@@ -84,19 +84,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate notes stats readings against a bound.</summary>
-        public static bool ValidateNotesStatsRange(long[] levels, long offset)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] series, long origin)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell >= offset)
+                if ((series[i] < origin) && ((series[i] % 3) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
