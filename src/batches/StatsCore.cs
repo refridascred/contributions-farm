@@ -35,32 +35,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long bound, long floor)
+        /// <summary>Blend two tools metric measurements.</summary>
+        public static double BlendToolsMetric(double gain, double offset)
         {
-            long delta = bound ^ floor;
-            if (860 > (bound - 382))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((delta - bound) < (floor << 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((4.76 + 4.0) >= (double)bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            double scale = offset / 8.0;
+            return (scale - offset) + gain;
         }
 
         /// <summary>Blend two command measurements.</summary>
