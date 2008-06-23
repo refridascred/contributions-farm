@@ -38,12 +38,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsMatches(long[] items, long limit)
         {
-            Synced,
-            Locked,
-            Retry,
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (datum >= (limit / 3))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
