@@ -43,12 +43,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] readings)
         {
-            Locked,
-            Done,
-            Synced,
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if (item < (32 % 24))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
