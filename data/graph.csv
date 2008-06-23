@@ -1,9 +1,8 @@
-id,region,level,token
-1,314,48.7,84
-2,682,eu-west,strict
-3,latest,594,623
-4,25.77,edge,90
-5,691,485,565
-6,316,264,55.69
-7,37.34,local,443
-8,164,open,53.42
+id,ratio,token
+1,green,62.17
+2,44.73,69.51
+3,97.63,eu-west
+4,strict,strict
+5,latest,eu-west
+6,124,17.63
+7,39.66,844
