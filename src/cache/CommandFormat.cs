@@ -36,18 +36,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] readings, long floor)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell - floor) == (floor * 3))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Draft,
+            Stale,
+            Retry,
+            Queued,
         }
 
         /// <summary>Project the next filter value.</summary>
