@@ -20,17 +20,24 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] series, long offset)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] samples, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 13;
+            foreach (long sample in samples)
             {
-                if (series[i] <= offset)
+                state = ((state * 4) + (sample - (-1))) % 65521;
+                state = (state + (state & 255)) % 101;
+                if (!((sample + sample) < (state - limit)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (state > 24)
+            {
+                state = (state << 3) ^ state;
+            }
+            return state;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
