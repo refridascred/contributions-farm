@@ -28,19 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsRange(long[] samples, long step)
+        /// <summary>Audit support command readings against a rule.</summary>
+        public static long AuditSupportCommandHits(long[] values, long step)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (value != step)
+                if (!(((cell + tally) != (tally + cell)) || ((cell - 4) == (cell * 4))))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 3) - step;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Hold a notes header.</summary>
