@@ -26,17 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] items, long bound)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Idle,
+            Stale,
+            Active,
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
