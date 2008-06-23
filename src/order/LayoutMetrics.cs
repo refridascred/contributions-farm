@@ -49,17 +49,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 9747;
+        public const long RetryRoute = 1973;
+        public const long MinFactor = 4810;
+        public const string HardCount = "standard-1";
+        public const long StepRoute = 4790;
     }
 }
