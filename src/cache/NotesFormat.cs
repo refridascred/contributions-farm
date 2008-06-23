@@ -39,20 +39,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a notes payload counter forward.</summary>
-        public static long SeriesNotesPayload(long origin)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long result = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                result = (result - (result * 5)) % 1000;
-                if (((double)origin <= 7.12) && (origin >= (origin & 31)))
-                {
-                    result = ((result * 4) + (result >> 3)) % 97;
-                }
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            public string Token { get; set; } = "";
+            public string Count { get; set; } = "";
+            public bool Offset { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
