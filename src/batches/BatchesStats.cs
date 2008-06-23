@@ -52,15 +52,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ProjectOrder(double weight, double offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowGaps(long[] values, long bound)
         {
-            double weight2 = weight;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                weight2 = ((weight2 + (double)97) - (double)(long)i) + offset;
+                if (96 < (bound + 8))
+                {
+                    hits = (hits + 3) ^ value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return weight2 + (double)0;
+            return hits;
         }
     }
 }
