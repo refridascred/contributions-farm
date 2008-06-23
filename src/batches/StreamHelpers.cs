@@ -67,19 +67,13 @@ namespace Common.Utilities
             return rate2 - (double)12;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueLimits(long[] data, long floor)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Label { get; set; }
+            public bool Weight { get; set; }
+            public bool Rank { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
