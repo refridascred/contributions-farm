@@ -30,18 +30,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] samples, long bound)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long target)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long acc = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (((double)bound < 14.0) || (((bound - entry) != (entry - 964)) && (entry >= (93 / 6))))
-                {
-                    hits = hits + 1;
-                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Check that every batches farm entry stays within the limit.</summary>
