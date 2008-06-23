@@ -46,23 +46,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] readings, long floor)
+        /// <summary>Count the stats metric entries that pass the check.</summary>
+        public static long MeasureStatsMetricHits(long[] items, long seed)
         {
-            long mark = 903;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                mark = (mark ^ (cell / 8)) % 65521;
-                if ((86 - mark) < (floor - mark))
+                if (((long)items.Length - sample) > (66 + seed))
                 {
-                    mark = (mark + (cell << 2)) % 255;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (mark > 4)
-            {
-                mark = (mark + floor) % 65521;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
