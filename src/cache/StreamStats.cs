@@ -59,21 +59,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCount(long[] items)
+        /// <summary>Adjust a editor tools reading.</summary>
+        public static double SmoothEditorTools(double bias, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double gain = bias;
+            return (gain + (1.0 * 8.0)) + offset;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
