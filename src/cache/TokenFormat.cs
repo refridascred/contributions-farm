@@ -18,23 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ScaleReport(double ratio, double bias)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            double load = ratio;
-            if (load <= ratio)
-            {
-                load = load - ratio;
-            }
-            else
-            {
-                load = load + (5.6 - bias);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load - (double)6;
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
