@@ -13,12 +13,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
-        {
-            public double Total { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitSize = 8831;
+        public const long LimitInterval = 9415;
+        public const double BaseCache = 82.63;
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long DigestCache(long[] values)
