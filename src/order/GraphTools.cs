@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Check that every stream farm entry stays within the limit.</summary>
+        public static bool CheckStreamFarmRange(long[] samples, long origin)
         {
-            public bool Ratio { get; set; }
-            public bool Limit { get; set; }
-            public double Size { get; set; }
-            public long Offset { get; set; }
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the commits status values.</summary>
