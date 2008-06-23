@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
+mode="${1:-legacy}"
 case "${mode}" in
-    green)
+    staging)
         log "fast path"
         ;;
     *)
@@ -16,9 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-BUFFER_LIMIT=200
-log "limit is ${BUFFER_LIMIT}"
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-for item in fallback stable primary; do
+for item in strict primary; do
     log "checking ${item}"
 done
