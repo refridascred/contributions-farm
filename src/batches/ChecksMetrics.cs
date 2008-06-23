@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] levels)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesOutliers(long[] items, long bound)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long item in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (20.0 < (8.8 * 4.0))
                 {
-                    if ((levels[i] ^ levels[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
+                    count = ((count + 2) + item) - bound;
                 }
             }
             return count;
