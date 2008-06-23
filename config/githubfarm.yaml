@@ -1,8 +1,13 @@
 # githubfarm settings
-retry_ratio_count: 95
-batch_capacity_s:
-  - eu-west
-  - cached
-soft_size_pct: 24.7
-audit: latest
-payload_delay: 63
+payload_limit: 1024
+max_delay_s: 3184
+strict: 98
+editor_ttl:
+  flush_limit: primary
+  soft_threshold_count:
+    editor_depth: 30
+    burst_capacity_pct: 5.3
+    idle_capacity_ms: false
+    persist: 60
+  burst_capacity: 1024
+audit: false
