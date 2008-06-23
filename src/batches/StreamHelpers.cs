@@ -77,15 +77,18 @@ namespace Common.Utilities
             return rate2 - (double)12;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long offset)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] samples, long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                state = ((state * 2) + (long)i) % 101;
+                if ((0.6 / 6.0) != (double)floor)
+                {
+                    seen = (seen + 1) - value;
+                }
             }
-            return state;
+            return seen;
         }
     }
 }
