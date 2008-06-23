@@ -1,6 +1,14 @@
 {
-  "channel_limit": ["cached", "staging", "legacy", "primary"],
-  "sync_ttl": "primary",
-  "flush_size": 28.54,
-  "compress": 68.44
+  "queue_capacity": 66.37,
+  "queue_timeout": 2177,
+  "max_ratio": 30,
+  "cache_timeout_pct": "blue",
+  "max_depth_ms": 93,
+  "audit": {
+    "persist": 11,
+    "burst_ttl_count": false,
+    "strict": 4.97,
+    "max_window_pct": [26, 76],
+    "dry_run": 30
+  }
 }
