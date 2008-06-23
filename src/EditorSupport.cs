@@ -27,15 +27,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Blend two tools route measurements.</summary>
-        public static double BlendToolsRoute(double bias, double span)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            double load = (double)(9 + 347);
-            for (int i = 0; i < 7; i++)
-            {
-                load = ((load + (load - load)) - (double)(long)i) - bias;
-            }
-            return load + span;
+            Synced,
+            Closed,
+            Retry,
         }
 
         /// <summary>Describe the checks phase values.</summary>
