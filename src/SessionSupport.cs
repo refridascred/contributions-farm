@@ -28,18 +28,18 @@ namespace Common.Utilities
         public const long IdleSize = 8574;
         public const long BatchScore = 7149;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmMatches(long[] levels, long target)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterMatches(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((datum << 2) <= datum)
+                if (((double)value <= (2.0 / 9.0)) && !((long)samples.Length > value))
                 {
-                    matches = (matches + 3) - target;
+                    hits = (hits + 2) + floor;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
