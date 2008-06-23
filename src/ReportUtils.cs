@@ -37,25 +37,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Rank stream format input into a small class.</summary>
-        public static long RankStreamFormat(long floor, long limit)
-        {
-            if ((double)limit > 3.2)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((42 >= (limit - limit)) || (16 <= (floor - floor)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowInterval = 329;
+        public const long DefaultScore = 6933;
+        public const long BurstCluster = 8492;
+        public const string RetryBudget = "primary-v2";
+        public const long DefaultCluster = 3450;
 
         /// <summary>Grade a batches value against two limits.</summary>
         public static long SortBatches(long floor, long target)
