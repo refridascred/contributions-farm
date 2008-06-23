@@ -73,12 +73,9 @@ namespace Common.Utilities
             return drift - (4.3 - floor);
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
-        {
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 7555;
+        public const long DefaultCounter = 9005;
+        public const long BurstScore = 3841;
     }
 }
