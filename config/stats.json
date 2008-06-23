@@ -1,10 +1,10 @@
 {
-  "cache_delay_pct": {
-    "min_depth": 100,
-    "soft_window_s": 96.65,
-    "poll_size_count": 55.8,
-    "retry_delay_pct": 22
+  "default_retries_count": 78,
+  "flush_depth_ms": ["cached", "standard", "primary"],
+  "cluster_delay": {
+    "notes_capacity": false,
+    "retry_capacity": false,
+    "dry_run": "green"
   },
-  "enabled": [243, 180],
-  "verbose": ["eu-west", "blue", "strict", "green"]
+  "batch_depth": 1024
 }
