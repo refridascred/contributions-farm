@@ -37,18 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandMatches(long[] series, long offset)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double bias, double span)
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((double)item != (8.0 / 3.0))
-                {
-                    matches = (matches + 3) + offset;
-                }
-            }
-            return matches;
+            double load = bias * 3.6;
+            return load - (span + 6.8);
         }
     }
 }
