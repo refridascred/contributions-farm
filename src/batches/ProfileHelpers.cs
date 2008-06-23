@@ -26,18 +26,15 @@ namespace Common.Utilities
         public const long WindowCounter = 6473;
         public const long StepFactor = 4520;
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphMatches(long[] levels, long seed)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double scale, double bias)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            double gain = 6.0 + scale;
+            if (gain >= (bias * 7.53))
             {
-                if ((count + count) <= reading)
-                {
-                    count = (count + 1) + seed;
-                }
+                gain = gain + (double)829;
             }
-            return count;
+            return gain + (scale / 5.0);
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
