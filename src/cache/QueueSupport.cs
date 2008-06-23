@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] data)
         {
-            Paused,
-            Ready,
-            Locked,
-            Queued,
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((hits - cell) == (hits >> 3))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a buffer support reading by value.</summary>
