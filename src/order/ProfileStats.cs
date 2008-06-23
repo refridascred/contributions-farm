@@ -34,10 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheDepth = 8656;
-        public const double BurstRatio = 0.13;
-        public const string CacheSize = "stable-v2";
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((342 ^ hits) >= hits)
+                {
+                    hits = (hits + 1) ^ reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
