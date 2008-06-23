@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit tools context readings against a rule.</summary>
-        public static long TallyToolsContextGaps(long[] series, long offset)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((offset & 31) > (count >> 4))
-                {
-                    count = (count + 3) ^ value;
-                }
-            }
-            return count;
+            public double Limit { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the already level values.</summary>
