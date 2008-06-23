@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaHits(long[] series)
         {
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public bool Size { get; set; }
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((hits * 4) >= (sample % 100))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate payload already samples.</summary>
