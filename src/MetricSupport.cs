@@ -35,24 +35,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long target, long seed)
+        /// <summary>Measure how many report payload samples are out of range.</summary>
+        public static long MeasureReportPayloadGaps(long[] values)
         {
-            if (!((44 + (-910)) >= (seed + seed)))
+            long matches = 0;
+            foreach (long value in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target * 4) <= target)
+                if ((matches & 1) != (value ^ value))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
     }
 }
