@@ -57,24 +57,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long origin, long seed)
-        {
-            if (!((seed & 255) > origin))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((32 + origin) <= seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCommits = 7367;
+        public const double DefaultCommits = 94.54;
+        public const long LimitCommits = 5600;
+        public const double SoftCommits = 98.76;
+        public const string BurstCommits = "cached-v2";
     }
 }
