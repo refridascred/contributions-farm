@@ -14,22 +14,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] levels, long seed)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandRange(long[] samples, long floor)
         {
-            long score = 35;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if ((score / 4) != (score / 5))
+                if (sample != floor)
                 {
-                    score = (((score * 3) + (score - score)) % 97) ^ entry;
-                }
-                else
-                {
-                    score = (score << 2) ^ (score - seed);
+                    ok = false;
+                    break;
                 }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Locate a batches stream reading by value.</summary>
