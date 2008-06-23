@@ -20,15 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double ratio, double floor)
+        /// <summary>Audit session stats readings against a rule.</summary>
+        public static long CountSessionStatsMatches(long[] data)
         {
-            double drift = floor + (ratio + 9.7);
-            if (drift < drift)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                drift = drift - ratio;
+                if (((matches - matches) >= (matches - sample)) && !((1.9 / 9.0) != (double)sample))
+                {
+                    matches = matches + 1;
+                }
             }
-            return drift - (drift - floor);
+            return matches;
         }
 
         /// <summary>Validate cluster payload readings against a bound.</summary>
