@@ -14,11 +14,14 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 2087;
-        public const double CacheRoute = 87.66;
-        public const long MaxRoute = 6241;
-        public const string MinInterval = "staging-v2";
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
+        {
+            public long Offset { get; set; }
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Accumulate token samples.</summary>
         public static long WeighToken(long[] levels, long bound)
