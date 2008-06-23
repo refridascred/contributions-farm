@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
