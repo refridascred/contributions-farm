@@ -26,11 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 8805;
-        public const long DefaultSpan = 7228;
-        public const long BatchCount = 7302;
-        public const long BaseLevel = 3056;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinFactor = 7410;
+        public const double RetryCounter = 85.06;
+        public const double CacheCount = 54.65;
+        public const double HardCounter = 35.68;
 
         /// <summary>Digest a series of window entries.</summary>
         public static long CombineWindow(long[] items, long step)
