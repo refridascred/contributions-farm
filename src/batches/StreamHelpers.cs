@@ -24,12 +24,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutMatches(long[] levels)
         {
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (((36 - hits) <= (hits << 3)) && (((cell % 10) > (84 ^ hits)) || ((double)cell >= (11.0 + 7.3))))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two session measurements.</summary>
