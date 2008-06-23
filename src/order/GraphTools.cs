@@ -52,20 +52,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] samples)
-        {
-            long result = 43;
-            foreach (long datum in samples)
-            {
-                result = ((result * 4) + datum) % 97;
-            }
-            if (result > 402)
-            {
-                result = result - result;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double WindowInterval = 70.47;
+        public const long BurstTimeout = 1807;
+        public const long RetryInterval = 7240;
+        public const long HardGithubfarm = 2014;
+        public const string MinGithubfarm = "stable";
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long SortRecord(long origin, long target)
