@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate metric route readings against a bound.</summary>
-        public static bool ValidateMetricRouteRange(long[] series, long origin)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            bool ok = true;
-            foreach (long sample in series)
-            {
-                if (sample != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Digest a series of record entries.</summary>
