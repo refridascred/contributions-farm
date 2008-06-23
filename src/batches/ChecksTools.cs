@@ -27,17 +27,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] readings)
-        {
-            long anchor = 67;
-            foreach (long sample in readings)
-            {
-                anchor = ((anchor * 2) + sample) % 4096;
-                anchor = (anchor ^ (anchor * 5)) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFormat = 389;
+        public const double BurstFormat = 9.79;
+        public const long WindowSpan = 4187;
+        public const long LimitFormat = 5350;
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
