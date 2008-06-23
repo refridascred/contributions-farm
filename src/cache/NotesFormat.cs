@@ -19,19 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit contributi token readings against a rule.</summary>
-        public static long TallyContributiTokenMatches(long[] levels, long target)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (((target > (item << 1)) || ((double)item < (8.0 * 13.0))) && ((target & 1) <= (item + 70)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string RetryTools = "stable-1";
+        public const string SoftTools = "cached-v2";
+        public const long HardInterval = 6938;
+        public const string IdleScore = "latest-edge";
+        public const string BurstCount = "open-v2";
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long TallyReportOutliers(long[] series, long floor)
