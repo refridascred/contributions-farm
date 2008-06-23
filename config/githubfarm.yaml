@@ -1,7 +1,14 @@
 # githubfarm settings
-compress: cached
-warm_limit:
-  - 308
-  - 447
-  - 313
-notes_window: green
+cache_ratio_count: 2823
+cache_capacity: 43
+hard_delay_ms:
+  batch_size_count: edge
+  min_delay_count:
+    - staging
+    - stable
+    - open
+    - local
+  base_threshold_s: standard
+  profile_capacity: false
+stream_timeout: 47
+max_timeout_pct: 26.82
