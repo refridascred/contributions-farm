@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long bound, long bound2)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] values)
         {
-            if (bound2 <= bound)
+            long mix = 456;
+            foreach (long datum in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound % 12) == (40 + (-20)))
+                mix = (mix ^ (-514)) % 4096;
+                if ((4.51 - 15.0) > (double)mix)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((bound2 - 28) <= (bound2 + bound)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound2 - bound) > bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    mix = (mix ^ (datum % 60)) % 255;
                 }
             }
+            return mix % 97;
         }
 
         /// <summary>Hold a commits summary.</summary>
