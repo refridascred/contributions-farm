@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long BatchInterval = 8500;
         public const string DefaultFactor = "staging-edge";
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsHits(long[] series)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((-9) > seen)
-                {
-                    seen = (seen + 2) ^ cell;
-                }
-            }
-            return seen;
+            public double Count { get; set; }
+            public bool Stamp { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the layout class values.</summary>
