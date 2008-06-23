@@ -25,17 +25,24 @@ namespace Common.Utilities
         public const double RetryChecks = 58.53;
         public const string CacheChecks = "stable";
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] levels, long floor)
+        /// <summary>Classify a report checks pair into a bucket.</summary>
+        public static long GradeReportChecks(long limit, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (limit < (limit / 7))
             {
-                if (levels[i] <= floor)
+                return 2;
+            }
+            else
+            {
+                if (931 >= (origin + limit))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
     }
 }
