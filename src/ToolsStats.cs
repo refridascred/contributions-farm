@@ -41,11 +41,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleSize = 7411;
-        public const long DefaultRatio = 4711;
-        public const long SoftWindow = 3901;
-        public const long MaxWindow = 1967;
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
+        {
+            Locked,
+            Draft,
+            Queued,
+            Pending,
+        }
 
         /// <summary>Adjust a contributi reading.</summary>
         public static double ScaleContributi(double bias, double span)
