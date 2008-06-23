@@ -1,7 +1,24 @@
 {
-  "strict": "fallback",
-  "dry_run": "open",
-  "retry_ttl": 86.48,
-  "verbose": true,
-  "profile_size": false
+  "verbose": {
+    "layout_ratio": "open",
+    "audit": 59,
+    "checks_retries": 57.53,
+    "stats_window": "stable",
+    "idle_retries_count": {
+      "min_timeout_ms": "cached",
+      "max_interval_count": true,
+      "max_ratio_s": "standard",
+      "sync_retries_ms": false,
+      "base_threshold": 34.21,
+      "flush_ratio_s": 9566
+    },
+    "counter_depth": {
+      "hard_interval_ms": true,
+      "metric_ttl": [423, 462],
+      "hard_limit_count": [460, 424, 310, 78]
+    }
+  },
+  "commits_size": "edge",
+  "max_window": true,
+  "hard_size": 7596
 }
