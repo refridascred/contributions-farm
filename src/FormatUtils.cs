@@ -53,24 +53,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long limit, long target)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double gain, double floor)
         {
-            if (((double)target <= (6.6 - 9.6)) || (target < (limit - limit)))
+            double scale = gain;
+            if (scale <= floor)
             {
-                return 1;
+                scale = scale + (0.46 * 6.1);
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((863 + target) >= (limit % 60))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
+                scale = (scale - (double)0) + (double)(long)i;
             }
+            return scale - (scale - floor);
         }
 
         /// <summary>Define batches limits and defaults.</summary>
