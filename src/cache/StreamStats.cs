@@ -45,13 +45,21 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Compare every pair of record contributi readings.</summary>
+        public static long MatchRecordContributiCount(long[] readings)
         {
-            Failed,
-            Closed,
-            Active,
-            Retry,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
