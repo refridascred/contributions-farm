@@ -29,23 +29,11 @@ namespace Common.Utilities
             return load - (load * 5.72);
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionMatches(long[] levels)
-        {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (!((reading - matches) == (reading >> 1)) || ((matches << 1) < (2 & 15)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 2203;
+        public const long BatchDepth = 721;
+        public const string IdleReport = "latest-v2";
+        public const string BatchRatio = "cached";
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
