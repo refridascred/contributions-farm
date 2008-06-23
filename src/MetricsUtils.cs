@@ -40,18 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] samples)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long result = -36;
-            foreach (long item in samples)
-            {
-                if (((result / 3) == (result / 2)) || (item <= (result + result)))
-                {
-                    result = ((result * 4) + (result << 1)) % 1000;
-                }
-            }
-            return result;
+            Ready,
+            New,
+            Failed,
+            Paused,
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
