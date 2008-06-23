@@ -12,22 +12,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] samples)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long MatchFilterCount(long[] values)
         {
-            long acc = 47;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 5; i++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = ((acc << 3) ^ (value / 4)) - (long)i;
-                }
-                if (((acc >> 5) > (value & 31)) || ((double)value < (4.0 / 9.0)))
-                {
-                    acc = ((acc << 2) ^ (acc - acc)) % 255;
+                    if ((values[i] ^ values[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
