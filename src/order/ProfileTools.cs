@@ -15,10 +15,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 483;
-        public const string DefaultToken = "fallback-v2";
-        public const long RetryTimeout = 4979;
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
+        {
+            public bool Total { get; set; }
+            public string Owner { get; set; } = "";
+            public long Limit { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long MatchRecordCount(long[] samples)
