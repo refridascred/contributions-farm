@@ -12,20 +12,12 @@ namespace Common.Utilities
             return (gain + (double)(-60)) + span;
         }
 
-        /// <summary>Roll a batch metrics counter forward.</summary>
-        public static long SeriesBatchMetrics(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((27 ^ 9) >= (acc - acc))
-                {
-                    acc = ((acc * 2) + (acc & 127)) % 97;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchTimeout = 8979;
+        public const long HardBudget = 7442;
+        public const long RetryFactor = 1109;
+        public const long StepInterval = 86;
+        public const string LimitLayout = "fallback-edge";
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
