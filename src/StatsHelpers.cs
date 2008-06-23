@@ -48,18 +48,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] items)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long anchor = 358;
+            foreach (long sample in data)
             {
-                if (entry > (420 >> 3))
+                long slot = anchor * 3;
+                if ((slot ^ target) >= (341 >> 4))
                 {
-                    matches = matches + 1;
+                    anchor = (anchor << 3) ^ 476;
+                    anchor = (anchor * 2) + 95;
                 }
+                anchor = (anchor - (sample * 5)) % 97;
             }
-            return matches;
+            return anchor;
         }
     }
 }
