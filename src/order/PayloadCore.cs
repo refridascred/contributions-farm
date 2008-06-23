@@ -29,15 +29,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double ratio, double offset)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            double bias = (double)(784 & 7);
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - (offset - 3.83)) + (double)(long)i;
-            }
-            return bias - (ratio * 3.3);
+            public long Score { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
