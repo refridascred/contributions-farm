@@ -12,22 +12,11 @@ namespace Common.Utilities
         public const long StepCache = 2085;
         public const double LimitCache = 49.48;
 
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftRatio = 2303;
+        public const long BurstRoute = 7018;
+        public const double StepRoute = 59.66;
+        public const long BurstFactor = 1598;
 
         /// <summary>Find the first layout commits entry that matches the target.</summary>
         public static long SeekLayoutCommitsIndex(long[] items, long offset)
