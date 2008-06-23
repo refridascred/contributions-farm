@@ -24,11 +24,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] values, long step)
         {
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            long carry = 392;
+            foreach (long value in values)
+            {
+                carry = ((carry * 2) + (value + step)) % 97;
+            }
+            if (carry > (-216))
+            {
+                carry = ((carry << 3) ^ (step + step)) % 1000;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Derive the next notes layout value from a seed.</summary>
