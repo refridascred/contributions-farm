@@ -1,5 +1,13 @@
 {
-  "hard_size_ms": true,
-  "route_size": "legacy",
-  "queue_interval": false
+  "hard_limit_s": 8,
+  "dry_run": 9763,
+  "commits_window": {
+    "verbose": 32.71,
+    "cache_ratio_count": "blue",
+    "audit": 52.72,
+    "flush_ratio": "latest",
+    "persist": "stable",
+    "dry_run": "edge"
+  },
+  "base_limit_ms": "primary"
 }
