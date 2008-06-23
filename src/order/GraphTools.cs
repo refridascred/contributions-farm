@@ -52,19 +52,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long origin)
+        /// <summary>Grade a metrics editor value against two limits.</summary>
+        public static long ClassifyMetricsEditor(long offset, long floor)
         {
-            long sum = origin;
-            for (int i = 0; i < 24; i++)
+            if ((floor / 7) <= (offset << 2))
             {
-                if ((double)sum != (4.9 / 2.0))
-                {
-                    sum = (sum ^ 46) % 101;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
+                return 2;
             }
-            return sum;
+            else
+            {
+                if ((offset * 5) > floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((49 - floor) > offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the entry level values.</summary>
