@@ -59,18 +59,12 @@ namespace Common.Utilities
         public const double BurstRatio = 0.13;
         public const string CacheSize = "stable-v2";
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsHits(long[] items, long offset)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (!(seen <= offset) && (datum < (offset - seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Ready,
+            Closed,
+            Dropped,
         }
     }
 }
