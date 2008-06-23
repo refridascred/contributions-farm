@@ -19,13 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] samples, long target)
         {
-            public string Label { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Rank { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two account measurements.</summary>
