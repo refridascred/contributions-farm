@@ -46,19 +46,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate cache tools readings against a bound.</summary>
-        public static bool ValidateCacheToolsRange(long[] series, long limit)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] samples, long seed)
         {
-            bool stale = true;
-            foreach (long value in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value >= limit)
+                if (samples[i] > seed)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
