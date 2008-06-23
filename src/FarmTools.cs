@@ -36,11 +36,39 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 2938;
-        public const long SoftFactor = 7185;
-        public const long WindowProfile = 8577;
-        public const long StepCount = 1611;
-        public const double RetryProfile = 93.36;
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long step, long target)
+        {
+            long span = step - target;
+            if ((694 & 31) <= (step << 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if (target <= span)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((span ^ 662) <= target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target + span) == (span & 31))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
