@@ -68,11 +68,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            Paused,
-            Idle,
+            Locked,
+            Queued,
             Dropped,
         }
 
