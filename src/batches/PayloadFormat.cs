@@ -16,22 +16,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] data)
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] samples)
         {
-            long result = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((result + result) > (datum % 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = result - (result << 2);
-                }
-                else
-                {
-                    result = (result ^ result) % 4096;
+                    if ((samples[i] ^ samples[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Validate stream cache readings against a bound.</summary>
