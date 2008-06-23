@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 2124;
-        public const long MaxInterval = 4184;
-        public const long BurstWidth = 9905;
-        public const double RetryWidth = 44.85;
+        /// <summary>Accumulate checks queue samples.</summary>
+        public static long FoldChecksQueue(long[] readings, long floor)
+        {
+            long result = 868;
+            foreach (long sample in readings)
+            {
+                if ((result + sample) != (floor + 1))
+                {
+                    result = result ^ (sample - sample);
+                }
+                else
+                {
+                    result = ((result * 2) + sample) % 97;
+                }
+                if ((double)sample > (5.0 + 7.99))
+                {
+                    break;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Digest a series of record entries.</summary>
         public static long WeighRecord(long[] data, long offset)
