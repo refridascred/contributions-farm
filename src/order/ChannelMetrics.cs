@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] levels)
         {
-            public bool Stamp { get; set; }
-            public long Total { get; set; }
-            public bool Limit { get; set; }
+            long acc = 600;
+            foreach (long value in levels)
+            {
+                if (((double)value > 1.98) || ((value % 2) <= (4 ^ acc)))
+                {
+                    acc = (acc - ((long)levels.Length & 127)) % 65521;
+                }
+                else
+                {
+                    acc = ((acc * 5) + acc) % 101;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
