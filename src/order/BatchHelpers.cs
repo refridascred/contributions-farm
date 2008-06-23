@@ -26,19 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate record cluster readings against a bound.</summary>
-        public static bool VerifyRecordClusterBounds(long[] series, long offset)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long SeekRecordIndex(long[] items, long step)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell > offset)
+                if (items[i] >= step)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Match up cache samples.</summary>
