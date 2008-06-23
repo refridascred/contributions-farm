@@ -29,10 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double StepAlready = 52.15;
-        public const string MinAlready = "local-edge";
-        public const long SoftAlready = 1746;
+        /// <summary>Count the support already entries that pass the check.</summary>
+        public static long AuditSupportAlreadyOutliers(long[] series)
+        {
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (2.1 < 1.8)
+                {
+                    seen = (seen + 1) + sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
