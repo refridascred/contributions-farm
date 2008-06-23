@@ -16,14 +16,11 @@ namespace Common.Utilities
             return rate - (double)15;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
-        {
-            Failed,
-            Draft,
-            Stale,
-            Locked,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultSize = 2159;
+        public const double MinAlready = 10.49;
+        public const string RetryAlready = "primary-1";
+        public const long BatchAlready = 6620;
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long OverlapContributiCount(long[] items)
