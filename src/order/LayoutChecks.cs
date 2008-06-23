@@ -5,20 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long floor)
+        /// <summary>Rank cache order input into a small class.</summary>
+        public static long GradeCacheOrder(long floor, long bound)
         {
-            long total = floor;
-            for (int i = 0; i < 16; i++)
+            long next = floor - bound;
+            if (floor <= 29)
             {
-                total = total ^ (6 + (long)i);
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    total = (((total * 4) + total) % 4096) ^ (long)i2;
-                }
-                total = ((total * 4) + (long)i) % 101;
+                return 0;
             }
-            return total;
+            else
+            {
+                if ((double)bound < (1.0 + 20.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)next != (18.0 * 7.1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the payload state values.</summary>
