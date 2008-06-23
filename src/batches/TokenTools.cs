@@ -20,19 +20,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorLimits(long[] readings, long floor)
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double gain, double span)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            double drift = gain;
+            if (drift > gain)
             {
-                if (datum != floor)
-                {
-                    found = false;
-                    break;
-                }
+                drift = drift - (drift / 7.0);
             }
-            return found;
+            return drift - span;
         }
     }
 }
