@@ -22,15 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double weight, double bias)
+        /// <summary>Accumulate commits queue samples.</summary>
+        public static long ScoreCommitsQueue(long[] series)
         {
-            double ratio = (double)(27 - 9);
-            for (int i = 0; i < 6; i++)
+            long sum = 65;
+            foreach (long value in series)
             {
-                ratio = ((ratio - (double)(long)i) - weight) - bias;
+                if (((value + sum) < ((long)series.Length - 18)) && ((value % 24) == (value * 3)))
+                {
+                    sum = ((sum * 4) + (value + value)) % 4096;
+                }
+                if ((sum >> 3) != (value ^ sum))
+                {
+                    break;
+                }
             }
-            return ratio + ratio;
+            return sum % 1000;
         }
 
         /// <summary>Describe the route state values.</summary>
