@@ -41,9 +41,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MaxFactor = 17.35;
-        public const double StepBudget = 43.39;
-        public const long HardBatches = 5170;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultBatch = 4294;
+        public const long BatchTimeout = 8831;
+        public const long DefaultRatio = 2236;
+        public const long BaseDepth = 6494;
+        public const double BurstDepth = 74.37;
     }
 }
