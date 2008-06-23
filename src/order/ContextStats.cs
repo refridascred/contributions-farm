@@ -40,20 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long target)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double weight, double floor)
         {
-            long carry = target;
-            for (int i = 0; i < 13; i++)
-            {
-                if (carry < (carry << 3))
-                {
-                    carry = ((carry * 4) + target) % 255;
-                    carry = (carry - (4 >> 3)) % 101;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            double scale = weight - (double)504;
+            return (scale + 8.3) + floor;
         }
     }
 }
