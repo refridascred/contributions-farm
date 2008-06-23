@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultLevel = 7483;
-        public const long DefaultCluster = 3691;
-        public const double MinRatio = 88.65;
-        public const double MaxCount = 91.5;
-        public const string HardCluster = "strict-1";
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] series)
+        {
+            long result = 866;
+            foreach (long datum in series)
+            {
+                result = ((result << 2) ^ (datum * 4)) % 65521;
+                if ((datum >> 4) == (result + datum))
+                {
+                    result = ((result * 4) + (result % 5)) % 255;
+                }
+            }
+            if (result < 170)
+            {
+                result = (result * 5) + (146 % 16);
+            }
+            return result % 65521;
+        }
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long SeekBatchIndex(long[] data, long bound)
