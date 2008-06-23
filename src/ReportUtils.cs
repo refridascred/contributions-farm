@@ -29,18 +29,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the support already entries that pass the check.</summary>
-        public static long AuditSupportAlreadyOutliers(long[] series)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (2.1 < 1.8)
+                if (readings[i] <= offset)
                 {
-                    seen = (seen + 1) + sample;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
