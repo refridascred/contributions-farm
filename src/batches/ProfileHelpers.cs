@@ -22,24 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long floor)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long result = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                if (floor <= (result << 2))
-                {
-                    result = (result << 2) ^ floor;
-                    break;
-                }
-                else
-                {
-                    result = (result * 4) + (0 + (long)i);
-                }
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            Active,
+            Locked,
+            Closed,
+            Paused,
+            Done,
         }
 
         /// <summary>Digest a series of layout entries.</summary>
