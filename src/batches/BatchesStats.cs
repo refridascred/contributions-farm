@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the tools route series from a seed.</summary>
-        public static long SeriesToolsRoute(long origin)
+        /// <summary>Count queue context pairs that satisfy a relation.</summary>
+        public static long OverlapQueueContextCount(long[] series)
         {
-            long carry = origin;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                long lane = ((long)i + 883) / 4;
-                if (lane >= origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    lane = (lane + (carry + carry)) % 97;
+                    if ((series[i] ^ series[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                carry = ((carry * 4) + (long)i) % 97;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Digest a series of order entries.</summary>
