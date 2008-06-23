@@ -44,18 +44,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] series, long origin)
+        /// <summary>Validate format profile readings against a bound.</summary>
+        public static bool CheckFormatProfileRange(long[] series, long step)
         {
-            long total = 89;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if ((double)total > (double)sample)
+                if (item <= step)
                 {
-                    total = (total << 3) ^ (origin / 7);
+                    ready = false;
+                    break;
                 }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Iterate the tools layout series from a seed.</summary>
