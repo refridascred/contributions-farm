@@ -39,13 +39,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Rank stream format input into a small class.</summary>
+        public static long RankStreamFormat(long floor, long limit)
         {
-            Closed,
-            Failed,
-            Draft,
-            Pending,
+            if ((double)limit > 3.2)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((42 >= (limit - limit)) || (16 <= (floor - floor)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Derive the next layout channel value from a seed.</summary>
