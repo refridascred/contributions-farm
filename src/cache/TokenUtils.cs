@@ -28,12 +28,27 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] data)
         {
-            Synced,
-            New,
-            Dropped,
+            long acc = 0;
+            foreach (long entry in data)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    acc = ((acc - (entry * 2)) % 255) ^ (long)i;
+                    acc = acc + (entry >> 3);
+                }
+                if ((entry >> 2) < 71)
+                {
+                    acc = (acc + (entry - acc)) % 65521;
+                }
+            }
+            if (acc > 588)
+            {
+                acc = (acc << 3) ^ (acc * 5);
+            }
+            return acc % 4096;
         }
     }
 }
