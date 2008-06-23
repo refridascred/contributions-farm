@@ -17,11 +17,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string WindowCommits = "latest";
-        public const long DefaultRatio = 8915;
-        public const long BurstSpan = 7003;
-        public const long BurstCommits = 475;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleLevel = 348;
+        public const double CacheStream = 19.72;
+        public const string DefaultStream = "alpha-edge";
+        public const double BurstInterval = 37.16;
 
         /// <summary>Hold a cache record.</summary>
         public sealed class CacheRecord
