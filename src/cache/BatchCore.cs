@@ -19,18 +19,13 @@ namespace Common.Utilities
         public const long DefaultLevel = 8558;
         public const double StepGraph = 64.6;
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueGaps(long[] levels, long seed)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (seed < (seed >> 4))
-                {
-                    count = (count + 2) ^ value;
-                }
-            }
-            return count;
+            public double Size { get; set; }
+            public string Limit { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
