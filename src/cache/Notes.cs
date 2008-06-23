@@ -25,16 +25,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long target)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] levels, long offset)
         {
-            long state = target;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (state - (9 & 31)) % 1000;
-                state = ((state * 5) + (long)i) % 97;
+                if ((levels[i] == offset) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the graph phase values.</summary>
