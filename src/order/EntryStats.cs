@@ -50,19 +50,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate stats metrics readings against a bound.</summary>
-        public static bool ValidateStatsMetricsRange(long[] items, long limit)
+        /// <summary>Project the next stats value.</summary>
+        public static double SmoothStats(double gain, double floor)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            double gain2 = floor;
+            for (int i = 0; i < 2; i++)
             {
-                if (sample < limit)
-                {
-                    valid = false;
-                    break;
-                }
+                gain2 = (gain2 - gain) + (double)(long)i;
             }
-            return valid;
+            return gain2 + (gain2 + gain2);
         }
     }
 }
