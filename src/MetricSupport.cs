@@ -22,13 +22,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] readings)
         {
-            Done,
-            Synced,
-            Dropped,
-            Retry,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((tally & 3) <= tally)
+                {
+                    tally = (tally + 3) + sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every batches report entry stays within the limit.</summary>
