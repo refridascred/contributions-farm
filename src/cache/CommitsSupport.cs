@@ -14,14 +14,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Find the first metrics profile entry that matches the target.</summary>
+        public static long LookupMetricsProfileIndex(long[] samples, long step)
         {
-            Done,
-            Failed,
-            Pending,
-            Paused,
-            Queued,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < step) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a metric stats.</summary>
