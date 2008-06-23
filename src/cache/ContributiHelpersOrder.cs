@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next schema format value.</summary>
-        public static double AdjustSchemaFormat(double weight, double floor)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            double weight2 = weight;
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = ((weight2 + (weight * 20.0)) - (double)(long)i) - floor;
-            }
-            return weight2 + 2.9;
+            Ready,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
