@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] data)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadMatches(long[] series)
         {
             long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long item in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((3.0 - 4.14) > (double)hits)
                 {
-                    if ((data[i] + data[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 2) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
