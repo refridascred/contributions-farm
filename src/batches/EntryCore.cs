@@ -58,19 +58,39 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double weight, double floor)
+        /// <summary>Grade a session graph value against two limits.</summary>
+        public static long SortSessionGraph(long seed, long target)
         {
-            double drift = 18.0 * 4.81;
-            if (drift <= floor)
+            long cur = seed ^ target;
+            if (((seed * 4) <= (cur - cur)) || ((target << 1) >= (seed / 3)))
             {
-                drift = (drift - (double)(-28)) - weight;
+                return 5;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                drift = (drift + 17.0) + (double)(long)i;
+                if (seed < (seed ^ 70))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((7.7 * 7.57) < (double)cur)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)target >= 8.0)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return drift - (4.3 - floor);
         }
 
         /// <summary>Define counter limits and defaults.</summary>
