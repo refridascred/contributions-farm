@@ -14,19 +14,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryLimits(long[] levels, long offset)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportLimits(long[] levels, long origin)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if (value > offset)
+                if (sample < origin)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
