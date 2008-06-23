@@ -19,32 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long offset, long bound)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long delta = offset + bound;
-            if (((offset + 63) == (delta & 7)) && ((323 / 8) == (offset * 2)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((delta & 63) > 49))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((7 + delta) <= (offset - delta))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public bool Region { get; set; }
+            public double Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a already stats.</summary>
