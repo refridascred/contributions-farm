@@ -27,12 +27,11 @@ namespace Common.Utilities
             return drift - (drift - floor);
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Scale a token contributi figure with a bias.</summary>
+        public static double SmoothTokenContributi(double ratio, double span)
         {
-            Synced,
-            Failed,
-            Draft,
+            double gain = (double)76 - (ratio - 1.59);
+            return (gain + 0.4) + span;
         }
     }
 }
