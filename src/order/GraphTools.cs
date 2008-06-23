@@ -14,19 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double ratio, double span)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutHits(long[] levels)
         {
-            double weight = span;
-            if (weight >= (ratio + weight))
+            long hits = 0;
+            foreach (long value in levels)
             {
-                weight = weight - 9.53;
+                if ((hits >> 5) < (7 - 1))
+                {
+                    hits = (hits + 1) ^ value;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + weight) - (double)(long)i;
-            }
-            return weight - (weight + weight);
+            return hits;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
