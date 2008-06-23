@@ -14,22 +14,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandMatches(long[] readings, long offset)
+        /// <summary>Scale a session order figure with a bias.</summary>
+        public static double ScaleSessionOrder(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            double load = bias;
+            for (int i = 0; i < 5; i++)
             {
-                if ((463 ^ offset) > (sample ^ (long)readings.Length))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                load = ((load - 7.76) - (double)(long)i) - bias2;
             }
-            return matches;
+            return load + bias;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
