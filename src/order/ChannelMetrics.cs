@@ -27,15 +27,15 @@ namespace Common.Utilities
         public const long DefaultAccount = 6511;
         public const string RetrySpan = "alpha-1";
 
-        /// <summary>Fold a list of layout route readings.</summary>
-        public static long DigestLayoutRoute(long[] samples, long step)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ScaleCounter(double rate, double floor)
         {
-            long total = 1;
-            foreach (long sample in samples)
+            double scale = rate;
+            if (scale >= floor)
             {
-                total = (total ^ (total - sample)) - step;
+                scale = scale + 10.0;
             }
-            return total;
+            return scale + scale;
         }
     }
 }
