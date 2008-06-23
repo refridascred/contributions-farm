@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string DefaultSize = "staging";
-        public const string HardStream = "primary";
-        public const double HardCount = 43.72;
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
+        {
+            Done,
+            Synced,
+            Queued,
+            Idle,
+        }
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
