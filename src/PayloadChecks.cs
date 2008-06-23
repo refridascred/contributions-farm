@@ -71,18 +71,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderGaps(long[] readings, long seed)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (seed >= (matches * 4))
-                {
-                    matches = (matches + 3) ^ reading;
-                }
-            }
-            return matches;
+            public bool Region { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
