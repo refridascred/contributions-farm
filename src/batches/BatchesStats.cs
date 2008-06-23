@@ -47,23 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double scale, double floor)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] data)
         {
-            double mean = floor;
-            if (mean < (3.38 - floor))
+            long hits = 0;
+            foreach (long reading in data)
             {
-                mean = mean + (double)(-39);
+                if (reading < (hits + hits))
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                mean = mean - (mean + scale);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (scale - 6.2)) + (double)(long)i;
-            }
-            return mean - floor;
+            return hits;
         }
 
         /// <summary>Project the next command value.</summary>
