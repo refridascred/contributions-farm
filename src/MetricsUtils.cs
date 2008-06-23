@@ -40,21 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] values)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = -36;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((result / 3) == (result / 2)) || (item <= (result + result)))
                 {
-                    if ((values[i] - values[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = ((result * 4) + (result << 1)) % 1000;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
