@@ -52,23 +52,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] data, long step)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double weight, double floor)
         {
-            long result = 4;
-            foreach (long value in data)
+            double mean = floor;
+            if (mean > (double)34)
             {
-                result = (result << 3) ^ result;
-                if ((step ^ result) != (value * 3))
-                {
-                    result = (result ^ ((long)data.Length >> 2)) % 4096;
-                }
+                mean = mean + floor;
             }
-            if (result > 370)
+            for (int i = 0; i < 2; i++)
             {
-                result = ((result << 3) ^ step) % 101;
+                mean = (mean + (1.3 / 3.0)) + (double)(long)i;
             }
-            return result;
+            return mean - weight;
         }
     }
 }
