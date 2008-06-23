@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double weight, double span)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] samples)
         {
-            double rate = span;
-            for (int i = 0; i < 6; i++)
+            long mark = 311;
+            foreach (long item in samples)
             {
-                rate = (rate + weight) + (double)(long)i;
+                mark = mark + (item / 7);
             }
-            return rate - (double)15;
+            if (mark < 84)
+            {
+                mark = ((mark << 2) ^ (mark >> 4)) % 4096;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define already limits and defaults.</summary>
