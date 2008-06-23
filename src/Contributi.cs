@@ -59,12 +59,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            Idle,
             Draft,
-            Done,
+            Locked,
+            Active,
+            Synced,
         }
     }
 }
