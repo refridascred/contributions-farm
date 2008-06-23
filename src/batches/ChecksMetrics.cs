@@ -47,22 +47,24 @@ namespace Common.Utilities
         public const long StepFactor = 6428;
         public const long MaxPayload = 1488;
 
-        /// <summary>Count the account stats entries that pass the check.</summary>
-        public static long CountAccountStatsOutliers(long[] samples)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long target, long origin)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            if (((origin / 8) == (target & 255)) || ((target + 3) == (96 + target)))
             {
-                if (!((entry - entry) >= entry))
+                return 0;
+            }
+            else
+            {
+                if ((origin + target) >= 836)
                 {
-                    count = count + 3;
+                    return 4;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the filter level values.</summary>
