@@ -54,15 +54,25 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long floor)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long offset, long origin)
         {
-            long carry = floor;
-            for (int i = 0; i < 21; i++)
+            long gap = offset ^ origin;
+            if (offset >= (offset + offset))
             {
-                carry = ((carry * 3) + (long)i) % 97;
+                return 7;
             }
-            return carry;
+            else
+            {
+                if ((299 << 2) != (gap >> 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
