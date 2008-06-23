@@ -14,18 +14,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesHits(long[] readings, long offset)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((1.5 * 6.4) >= (double)tally)
-                {
-                    tally = ((tally + 3) + cell) + offset;
-                }
-            }
-            return tally;
+            Locked,
+            Active,
+            Closed,
+            New,
         }
 
         /// <summary>Measure how many stream metrics samples are out of range.</summary>
