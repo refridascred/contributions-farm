@@ -33,13 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Iterate the metrics farm series from a seed.</summary>
+        public static long DeriveMetricsFarm(long bound)
         {
-            public long Owner { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                mark = (mark ^ ((long)i + mark)) % 101;
+                long count = bound;
+                if (bound < count)
+                {
+                    continue;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
