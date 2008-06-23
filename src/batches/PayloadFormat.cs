@@ -47,19 +47,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutLimits(long[] levels, long step)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] data)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value <= step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] - data[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
