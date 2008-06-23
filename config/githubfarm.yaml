@@ -1,10 +1,7 @@
 # githubfarm settings
-window_threshold:
-  - 73
-  - 316
-  - 240
-compress: true
-verbose: 90
-default_size_count: 96.65
-cache_interval_count: 30
-enabled: local
+poll_delay_count: 60
+record_interval: 6632
+cache_size_count: fallback
+cache_capacity_s: staging
+max_threshold_ms: true
+burst_ttl_s: 500
