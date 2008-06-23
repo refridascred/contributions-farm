@@ -10,23 +10,11 @@ namespace Common.Utilities
         public const long RetryBudget = 231;
         public const long StepLevel = 5742;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] items)
-        {
-            long result = 40;
-            foreach (long datum in items)
-            {
-                if ((3.1 / 2.0) == (double)result)
-                {
-                    result = ((result ^ result) % 1000) ^ datum;
-                }
-            }
-            if (result < 8)
-            {
-                result = (result ^ result) % 4096;
-            }
-            return result;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 6493;
+        public const long SoftRatio = 7747;
+        public const string SoftDepth = "standard-edge";
+        public const double MinContext = 86.16;
 
         /// <summary>Hold a context options.</summary>
         public sealed class ContextOptions
