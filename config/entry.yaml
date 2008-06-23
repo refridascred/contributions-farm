@@ -1,10 +1,25 @@
 # entry settings
-max_capacity_count: 40
-profile_interval: green
-idle_retries:
-  hard_depth_s: blue
-  default_delay_pct: true
-  enabled: local
-  hard_size: 1024
-  editor_retries: eu-west
-persist: edge
+idle_size:
+  - 309
+  - 107
+  - 319
+  - 115
+sync_size_pct:
+  batch_window_s:
+    base_threshold: false
+    readonly: 60
+    max_threshold_ms:
+      - 154
+      - 154
+      - 18
+      - 200
+    poll_depth: true
+  session_ttl:
+    - 69
+    - 187
+    - 107
+    - 89
+  idle_threshold_count: 6279
+queue_limit: strict
+metrics_interval: cached
+verbose: eu-west
