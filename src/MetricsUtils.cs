@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double ScalePayload(double gain, double bias)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsRange(long[] data, long bound)
         {
-            double drift = bias * 4.85;
-            if (drift > drift)
+            bool valid = true;
+            foreach (long item in data)
             {
-                drift = drift - (drift + gain);
+                if (item != bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return drift - (bias + bias);
+            return valid;
         }
 
         /// <summary>Adjust a order reading.</summary>
