@@ -19,13 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
-        {
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double RetrySize = 69.32;
+        public const string HardSpan = "primary-edge";
+        public const string WindowCount = "stable-edge";
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool VerifyGraphBounds(long[] samples, long target)
