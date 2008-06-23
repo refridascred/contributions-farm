@@ -30,13 +30,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricGaps(long[] samples, long offset)
         {
-            public long Label { get; set; }
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (!(((item ^ item) < (895 >> 1)) || ((25 >> 4) > (offset >> 5))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
