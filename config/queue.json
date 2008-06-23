@@ -1,8 +1,11 @@
 {
-  "hard_delay_s": 20.21,
-  "base_ttl_s": false,
-  "min_interval_count": 250,
-  "editor_limit": "cached",
-  "account_timeout": "open",
-  "batch_ttl_ms": 40
+  "base_interval": true,
+  "idle_retries_pct": "local",
+  "warm_threshold_ms": {
+    "farm_ratio": 30,
+    "default_timeout": 955,
+    "audit": 36.98,
+    "batch_ratio_pct": "blue"
+  },
+  "soft_retries_ms": 46
 }
