@@ -30,18 +30,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Measure how many report tools samples are out of range.</summary>
-        public static long TallyReportToolsOutliers(long[] samples)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((hits % 100) > (hits + hits))
+                if (items[i] <= limit)
                 {
-                    hits = (hits + 3) - datum;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Compare every pair of record contributi readings.</summary>
