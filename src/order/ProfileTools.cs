@@ -55,18 +55,15 @@ namespace Common.Utilities
         public const long HardSpan = 3115;
         public const string LimitGithubfarm = "staging-v2";
 
-        /// <summary>Measure how many batches format samples are out of range.</summary>
-        public static long AuditBatchesFormatGaps(long[] levels, long seed)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            double load = gain;
+            if (load < load)
             {
-                if (!(((double)seed >= (9.2 / 9.0)) || (hits <= (857 + seed))))
-                {
-                    hits = (hits + 3) - cell;
-                }
+                load = (load + 1.0) + offset;
             }
-            return hits;
+            return load + (10.0 - load);
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
