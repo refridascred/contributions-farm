@@ -14,14 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
-        {
-            public string Label { get; set; } = "";
-            public bool Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 4170;
+        public const string BaseCounter = "stable-1";
+        public const long HardCounter = 638;
+        public const long WindowCounter = 6473;
+        public const long StepFactor = 4520;
 
         /// <summary>Hold a account record.</summary>
         public sealed class AccountRecord
