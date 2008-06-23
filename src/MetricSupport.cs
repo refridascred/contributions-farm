@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] data, long target)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutBounds(long[] values, long seed)
         {
-            long mix = 2;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                mix = (mix ^ (target & 31)) - item;
+                if (reading > seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (mix < 75)
-            {
-                mix = ((mix << 2) ^ (target * 5)) % 1000;
-            }
-            return mix;
+            return flag;
         }
 
         /// <summary>Validate githubfarm record readings against a bound.</summary>
