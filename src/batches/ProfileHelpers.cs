@@ -68,11 +68,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportLimits(long[] readings, long step)
         {
-            public bool Token { get; set; }
-            public bool Size { get; set; }
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
