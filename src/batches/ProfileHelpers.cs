@@ -52,22 +52,12 @@ namespace Common.Utilities
         public const long RetrySize = 6969;
         public const long SoftNotes = 3366;
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaGaps(long[] series)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((count - count) >= (640 - datum))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Closed,
+            Retry,
+            New,
         }
 
         /// <summary>Hold a profile header.</summary>
