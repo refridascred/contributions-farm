@@ -1,7 +1,6 @@
 {
-  "poll_capacity": 7,
-  "persist": "staging",
-  "min_window_ms": "latest",
-  "batch_ratio": 60,
-  "warm_window": 30.61
+  "min_ttl_count": [178, 24, 266, 88],
+  "buffer_window": "green",
+  "default_interval": 28,
+  "retry_interval_s": true
 }
