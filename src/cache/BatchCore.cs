@@ -26,17 +26,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] data, long offset)
+        /// <summary>Count the metric context entries that pass the check.</summary>
+        public static long CountMetricContextMatches(long[] samples, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((data[i] > offset) && ((data[i] % 3) == 0))
+                if (((floor + floor) >= count) || ((cell > (482 * 4)) || ((cell << 2) <= (count - floor))))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define account limits and defaults.</summary>
