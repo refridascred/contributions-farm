@@ -49,19 +49,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every schema cluster entry stays within the limit.</summary>
-        public static bool VerifySchemaClusterBounds(long[] series, long target)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long step)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long sum = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (datum <= target)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = (sum - (step ^ sum)) % 97;
+                sum = (sum * 4) + ((long)i << 3);
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return valid;
+            return sum;
         }
     }
 }
