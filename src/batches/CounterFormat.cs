@@ -38,26 +38,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate session report samples.</summary>
-        public static long CombineSessionReport(long[] series, long offset)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long state = 214;
-            foreach (long cell in series)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    state = (state * 2) + (cell + (long)i);
-                }
-                if (((offset << 3) > (offset + offset)) && ((5 - state) != (6 * 5)))
-                {
-                    state = state + state;
-                }
-            }
-            if (state < 845)
-            {
-                state = (state - (157 ^ offset)) % 4096;
-            }
-            return state % 65521;
+            public bool Token { get; set; }
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
