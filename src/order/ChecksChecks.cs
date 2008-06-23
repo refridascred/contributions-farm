@@ -26,9 +26,18 @@ namespace Common.Utilities
         public const long MinStats = 4068;
         public const long HardStats = 3328;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 9660;
-        public const long MinCount = 4806;
-        public const string BurstWindow = "alpha-edge";
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyOutliers(long[] items, long seed)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (59 <= (seed >> 3))
+                {
+                    matches = (matches + 1) + reading;
+                }
+            }
+            return matches;
+        }
     }
 }
