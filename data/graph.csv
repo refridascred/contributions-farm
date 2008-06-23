@@ -1,6 +1,11 @@
-id,active,rank,owner
-1,856,269,52.08
-2,primary,22.13,17.21
-3,stable,466,181
-4,658,18.16,154
-5,313,legacy,43.69
+id,score,weight
+1,staging,0.87
+2,2.08,770
+3,958,312
+4,74.83,742
+5,138,73.52
+6,fallback,local
+7,14,611
+8,906,558
+9,green,standard
+10,40.38,standard
