@@ -41,19 +41,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphGaps(long[] values)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((double)3 == (double)item)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleSize = 7411;
+        public const long DefaultRatio = 4711;
+        public const long SoftWindow = 3901;
+        public const long MaxWindow = 1967;
 
         /// <summary>Adjust a contributi reading.</summary>
         public static double ScaleContributi(double bias, double span)
