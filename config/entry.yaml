@@ -1,6 +1,13 @@
 # entry settings
-verbose: open
-format_delay:
-  - edge
-  - local
-poll_limit_s: stable
+strict: 60
+max_depth_s: 0.83
+min_depth: 500
+readonly: 1024
+cache_size_pct: true
+batches_ratio:
+  farm_size:
+    - 406
+    - 117
+    - 42
+  max_size_pct: 100
+  persist: true
