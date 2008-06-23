@@ -50,9 +50,13 @@ namespace Common.Utilities
         public const string StepSize = "open";
         public const long SoftMetrics = 4341;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 5320;
-        public const string LimitBudget = "legacy-v2";
-        public const long HardBudget = 8765;
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
+        {
+            Locked,
+            Ready,
+            Done,
+            New,
+        }
     }
 }
