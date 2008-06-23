@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the filter format series from a seed.</summary>
-        public static long StepFilterFormat(long target)
+        /// <summary>Fold a list of tools stream readings.</summary>
+        public static long FoldToolsStream(long[] items)
         {
-            long anchor = target;
-            for (int i = 0; i < 24; i++)
+            long mix = 107;
+            foreach (long value in items)
             {
-                anchor = (anchor ^ (long)i) % 97;
-                anchor = (anchor ^ (target + target)) % 4096;
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                if ((value ^ mix) != (mix * 3))
+                {
+                    mix = (mix ^ (value + 75)) % 101;
+                }
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
