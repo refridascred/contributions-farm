@@ -49,12 +49,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            Draft,
-            Retry,
-            Paused,
+            public long Stamp { get; set; }
+            public double Count { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a batch record.</summary>
