@@ -12,12 +12,12 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string DefaultBudget = "primary-1";
-        public const long WindowGraph = 5362;
-        public const long DefaultRatio = 8931;
-        public const long DefaultLevel = 8558;
-        public const double StepGraph = 64.6;
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
+        {
+            public string Count { get; set; } = "";
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
