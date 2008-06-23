@@ -23,13 +23,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] readings)
         {
-            public bool Size { get; set; }
-            public double Ratio { get; set; }
-            public bool Flag { get; set; }
-            public bool Rank { get; set; }
+            long carry = -51;
+            foreach (long item in readings)
+            {
+                carry = (carry - (long)readings.Length) ^ item;
+            }
+            if (carry > 44)
+            {
+                carry = ((carry << 3) ^ (carry + carry)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the graph status values.</summary>
