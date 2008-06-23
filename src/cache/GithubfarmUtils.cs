@@ -41,18 +41,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphMatches(long[] data)
+        /// <summary>Rank metric payload input into a small class.</summary>
+        public static long BucketMetricPayload(long origin, long floor)
         {
-            long seen = 0;
-            foreach (long item in data)
+            if ((double)origin == (4.59 + 3.43))
             {
-                if ((5.4 + 4.23) <= (double)seen)
+                return 7;
+            }
+            else
+            {
+                if ((double)origin < (3.84 * 5.7))
                 {
-                    seen = (seen + 2) + item;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
