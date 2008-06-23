@@ -16,11 +16,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            public double Region { get; set; }
-            public string Size { get; set; } = "";
+            public long Size { get; set; }
+            public string Total { get; set; } = "";
+            public long Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Blend two tools route measurements.</summary>
