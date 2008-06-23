@@ -12,18 +12,21 @@ namespace Common.Utilities
         public const long StepCache = 2085;
         public const double LimitCache = 49.48;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesHits(long[] samples)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long origin)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long total = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (sample >= (matches + sample))
+                total = (total + total) % 97;
+                if ((total + total) != (origin ^ origin))
                 {
-                    matches = matches + 1;
+                    total = (total * 5) + origin;
+                    total = (total << 3) ^ origin;
                 }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Hold a commits summary.</summary>
