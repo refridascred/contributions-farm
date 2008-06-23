@@ -30,23 +30,18 @@ namespace Common.Utilities
         public const long WindowEditor = 2822;
         public const double StepEditor = 39.47;
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] samples)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandMatches(long[] series, long offset)
         {
-            long sum = 546;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long item in series)
             {
-                sum = sum + sample;
-                if (sample >= (sample ^ sample))
+                if ((double)item != (8.0 / 3.0))
                 {
-                    break;
+                    matches = (matches + 3) + offset;
                 }
             }
-            if (sum > 625)
-            {
-                sum = sum + sum;
-            }
-            return sum;
+            return matches;
         }
     }
 }
