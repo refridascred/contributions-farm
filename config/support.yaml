@@ -1,17 +1,5 @@
 # support settings
-min_limit_count: 63
-sync_interval:
-  route_size: standard
-  max_interval_ms:
-    soft_interval_s: stable
-    poll_size_ms: staging
-    batch_ttl: true
-    batch_limit_count: latest
-    enabled: primary
-    compress:
-      - 187
-      - 440
-  flush_timeout_s: 45
-  persist: 69
-burst_limit_s: false
-compress: 250
+retry_threshold_pct: 75
+hard_delay_s: local
+max_capacity_ms: 60
+enabled: 87.0
