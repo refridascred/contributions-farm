@@ -29,14 +29,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            Synced,
-            Stale,
-            Retry,
+            Ready,
             Pending,
-            Draft,
+            Locked,
+            Active,
+            Paused,
         }
 
         /// <summary>Rank record input into a small class.</summary>
