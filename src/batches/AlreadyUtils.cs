@@ -39,15 +39,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] levels)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long mix = -82;
-            foreach (long cell in levels)
-            {
-                mix = ((mix * 5) + (mix / 9)) - cell;
-            }
-            return mix % 65521;
+            public bool Size { get; set; }
+            public double Ratio { get; set; }
+            public bool Flag { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the graph status values.</summary>
