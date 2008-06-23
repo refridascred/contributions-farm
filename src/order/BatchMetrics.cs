@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] items)
+        /// <summary>Combine cache filter values into a single score.</summary>
+        public static long TallyCacheFilter(long[] values, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 229;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = (((acc - acc) % 255) + sample) - origin;
             }
-            return seen;
+            if (acc > 454)
+            {
+                acc = ((acc * 4) + (acc % 64)) % 97;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Hold a notes info.</summary>
