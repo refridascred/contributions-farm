@@ -59,20 +59,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamBounds(long[] readings, long origin)
-        {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MinRatio = 57.37;
+        public const string BaseSpan = "alpha";
+        public const long CacheDepth = 565;
 
         /// <summary>Measure how many batches format samples are out of range.</summary>
         public static long AuditBatchesFormatGaps(long[] levels, long seed)
