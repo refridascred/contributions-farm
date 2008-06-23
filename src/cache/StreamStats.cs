@@ -16,11 +16,14 @@ namespace Common.Utilities
             return rate - (double)15;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string IdleFactor = "cached-1";
-        public const string HardInterval = "open-edge";
-        public const double MaxTools = 92.26;
-        public const long MinTools = 2016;
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
+        {
+            Failed,
+            Draft,
+            Stale,
+            Locked,
+        }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long OverlapContributiCount(long[] items)
