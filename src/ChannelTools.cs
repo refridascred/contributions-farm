@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of cache metrics entries.</summary>
-        public static long TotalCacheMetrics(long[] levels, long bound)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long sum = 736;
-            foreach (long datum in levels)
-            {
-                if ((datum >> 1) <= (sum - bound))
-                {
-                    sum = sum ^ (bound * 5);
-                }
-            }
-            return sum % 4096;
+            public double Rank { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
