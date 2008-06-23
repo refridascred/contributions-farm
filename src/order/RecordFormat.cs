@@ -54,14 +54,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
-        {
-            Ready,
-            Pending,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowReport = 3199;
+        public const string IdleInterval = "open";
+        public const long LimitReport = 3559;
+        public const long WindowBudget = 744;
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
