@@ -19,13 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate record cache readings against a bound.</summary>
-        public static bool VerifyRecordCacheRange(long[] samples, long offset)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsRange(long[] values, long target)
         {
             bool found = true;
-            foreach (long value in samples)
+            foreach (long datum in values)
             {
-                if (value <= offset)
+                if (datum < target)
                 {
                     found = false;
                     break;
