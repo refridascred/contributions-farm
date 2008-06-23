@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the channel farm entries that pass the check.</summary>
-        public static long AuditChannelFarmMatches(long[] items, long target)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsGaps(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((double)target > (1.37 - 3.91))
+                if ((2.3 * 12.0) != (double)item)
                 {
-                    seen = (seen + 2) - datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 1) - target;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a token entry.</summary>
