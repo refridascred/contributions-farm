@@ -33,13 +33,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long origin)
         {
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public double Token { get; set; }
-            public string Region { get; set; } = "";
+            long mark = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = (mark << 2) ^ ((long)i << 2);
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Describe the stats kind values.</summary>
