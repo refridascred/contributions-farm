@@ -31,21 +31,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] samples)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 1;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)mix >= (4.8 - 9.6))
                 {
-                    if ((samples[i] - samples[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix * 4) + (cell & 63);
+                }
+                else
+                {
+                    mix = (mix + (cell << 1)) % 4096;
+                }
+                if ((3.61 * 3.0) == (double)cell)
+                {
+                    mix = (mix << 3) ^ (83 >> 1);
+                }
+                if (((cell / 8) < (mix - cell)) && ((871 + (long)series.Length) <= (cell ^ cell)))
+                {
+                    break;
                 }
             }
-            return count;
+            return mix;
         }
     }
 }
