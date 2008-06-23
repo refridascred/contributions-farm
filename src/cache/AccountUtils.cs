@@ -14,19 +14,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaLimits(long[] items, long bound)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] levels, long seed)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long score = 35;
+            foreach (long entry in levels)
             {
-                if (sample != bound)
+                if ((score / 4) != (score / 5))
                 {
-                    found = false;
-                    break;
+                    score = (((score * 3) + (score - score)) % 97) ^ entry;
+                }
+                else
+                {
+                    score = (score << 2) ^ (score - seed);
                 }
             }
-            return found;
+            return score;
         }
 
         /// <summary>Locate a batches stream reading by value.</summary>
