@@ -25,10 +25,14 @@ namespace Common.Utilities
         public const long CacheCluster = 6590;
         public const long MaxSpan = 6161;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double RetryBatch = 50.91;
-        public const double MinDepth = 84.27;
-        public const double SoftBatch = 95.36;
-        public const long DefaultTimeout = 7188;
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
+        {
+            Ready,
+            Done,
+            Retry,
+            Failed,
+            Synced,
+        }
     }
 }
