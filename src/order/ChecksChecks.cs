@@ -34,17 +34,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a report batches reading by value.</summary>
-        public static long SeekReportBatchesIndex(long[] levels, long seed)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheHits(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((levels[i] > seed) && ((levels[i] % 3) == 0))
+                if ((entry - seen) <= seen)
                 {
-                    return (long)i;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
