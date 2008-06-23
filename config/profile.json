@@ -1,7 +1,7 @@
 {
-  "order_interval": "strict",
-  "default_ttl_count": 1024,
-  "min_interval_count": "eu-west",
-  "soft_ttl": 7.75,
-  "compress": 1024
+  "soft_window": 100,
+  "poll_capacity": 58,
+  "notes_ratio": false,
+  "readonly": 60,
+  "verbose": true
 }
