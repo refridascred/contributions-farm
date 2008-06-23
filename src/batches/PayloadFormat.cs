@@ -20,10 +20,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MinTimeout = 69.32;
-        public const long BatchNotes = 5638;
-        public const long BatchDepth = 8886;
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
+        {
+            public bool Stamp { get; set; }
+            public long Count { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long SeekQueueIndex(long[] series, long floor)
