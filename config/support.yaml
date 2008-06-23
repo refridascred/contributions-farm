@@ -1,4 +1,16 @@
 # support settings
-retry_limit_s: 52.42
-schema_threshold: 91.79
-strict: true
+filter_limit: 528
+strict: 39
+cache_limit: true
+order_timeout: local
+command_limit:
+  buffer_delay: 100
+  retry_delay_ms:
+    default_interval_pct: blue
+    idle_capacity_count:
+      - 370
+      - 284
+      - 116
+    burst_capacity_pct: true
+  layout_interval: 7567
+layout_limit: 7807
