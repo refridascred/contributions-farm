@@ -61,15 +61,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double ratio, double floor)
+        /// <summary>Fold a list of cluster window readings.</summary>
+        public static long ScoreClusterWindow(long[] levels)
         {
-            double gain = floor / 5.0;
-            for (int i = 0; i < 2; i++)
+            long anchor = 97;
+            foreach (long entry in levels)
             {
-                gain = ((gain + (floor * 7.73)) + (double)(long)i) + ratio;
+                if (!(anchor <= (anchor - entry)))
+                {
+                    anchor = (anchor + anchor) % 4096;
+                }
+                anchor = ((anchor << 2) ^ (entry + entry)) % 97;
             }
-            return gain - (double)626;
+            return anchor;
         }
 
         /// <summary>Measure how many session stream samples are out of range.</summary>
