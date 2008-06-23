@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit format already readings against a rule.</summary>
-        public static long CountFormatAlreadyGaps(long[] series)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long state = 2;
+            foreach (long cell in values)
             {
-                if ((reading + 912) <= (matches >> 2))
+                if ((cell + state) > (state * 5))
                 {
-                    matches = matches + 3;
+                    state = (state + cell) % 65521;
+                    state = state - (cell & 15);
+                }
+                state = ((state << 3) ^ (744 + state)) % 97;
+                if ((5 + state) > 307)
+                {
+                    break;
                 }
             }
-            return matches;
+            if (state > 3)
+            {
+                state = ((state * 3) + (state + state)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Iterate the window commits series from a seed.</summary>
