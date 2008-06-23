@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long BurstDepth = 3355;
         public const long IdleReport = 6875;
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsHits(long[] data, long target)
-        {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((target & 15) < (reading * 3))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultScore = 9675;
+        public const string HardRoute = "open-edge";
+        public const long IdleSize = 8574;
+        public const long BatchScore = 7149;
 
         /// <summary>Rank report input into a small class.</summary>
         public static long BucketReport(long origin, long bound)
