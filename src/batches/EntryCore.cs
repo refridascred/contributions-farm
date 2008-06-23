@@ -22,27 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] data, long offset)
+        /// <summary>Count the filter context entries that pass the check.</summary>
+        public static long MeasureFilterContextGaps(long[] items)
         {
-            long carry = 54;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if ((item >= (item + 75)) && ((offset / 9) <= carry))
+                if ((double)reading <= 1.46)
                 {
-                    carry = ((carry * 3) + carry) % 101;
-                }
-                carry = ((carry * 4) + (item + 92)) % 65521;
-                if ((double)offset >= (double)item)
-                {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            if (carry > 48)
-            {
-                carry = (carry + (offset << 1)) % 255;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
