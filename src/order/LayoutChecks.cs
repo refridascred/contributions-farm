@@ -67,15 +67,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] samples)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] series)
         {
-            long state = 710;
-            foreach (long entry in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state - state) % 255) + entry;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state % 97;
+            return hits;
         }
 
         /// <summary>Validate notes stats readings against a bound.</summary>
