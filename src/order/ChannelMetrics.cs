@@ -22,10 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitWidth = 3154;
-        public const long DefaultAccount = 6511;
-        public const string RetrySpan = "alpha-1";
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsMatches(long[] series)
+        {
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((double)datum != (double)533)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a counter reading.</summary>
         public static double ScaleCounter(double rate, double floor)
