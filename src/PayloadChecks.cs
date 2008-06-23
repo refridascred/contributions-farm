@@ -62,19 +62,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double weight, double floor)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiHits(long[] readings, long bound)
         {
-            double mean = floor;
-            if (mean > (double)34)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                mean = mean + floor;
+                if ((value + value) >= value)
+                {
+                    tally = (tally + 3) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (1.3 / 3.0)) + (double)(long)i;
-            }
-            return mean - weight;
+            return tally;
         }
     }
 }
