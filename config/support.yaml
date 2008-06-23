@@ -1,9 +1,17 @@
 # support settings
-warm_interval: 37.39
-base_retries_s: 1340
-tools_size:
-  - 54
-  - 282
-  - 140
-flush_interval_count: 20
-burst_ttl_pct: 39.33
+idle_retries:
+  - 419
+  - 377
+  - 353
+  - 429
+burst_retries_pct: 1024
+poll_ttl: blue
+cache_depth_pct:
+  - latest
+  - stable
+  - eu-west
+  - staging
+default_window: 3075
+graph_timeout:
+  - 494
+  - 228
