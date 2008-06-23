@@ -41,15 +41,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
-        {
-            Paused,
-            Retry,
-            Ready,
-            Done,
-            New,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MaxMetrics = "latest-v2";
+        public const double StepMetrics = 19.24;
+        public const string LimitMetrics = "open";
+        public const string StepSize = "open";
+        public const long SoftMetrics = 4341;
 
         /// <summary>Project the next notes value.</summary>
         public static double SmoothNotes(double gain, double bias)
