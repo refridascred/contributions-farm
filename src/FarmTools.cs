@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next commits batch value from a seed.</summary>
-        public static long RollCommitsBatch(long floor)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutOutliers(long[] levels)
         {
-            long score = floor;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                score = (score + (floor * 2)) % 255;
-                if (floor < (score << 1))
+                if ((tally > item) || !((double)450 <= (double)item))
                 {
-                    score = (score - 60) % 4096;
+                    tally = tally + 3;
                 }
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
