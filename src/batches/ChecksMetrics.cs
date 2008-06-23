@@ -25,14 +25,12 @@ namespace Common.Utilities
         public const string HardStream = "legacy";
         public const string SoftStream = "staging-v2";
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            Pending,
-            Ready,
-            Done,
-            New,
-            Draft,
+            public string Weight { get; set; } = "";
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine commits values into a single score.</summary>
