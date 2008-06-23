@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge cached; do
+mode="${1:-staging}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in strict eu-west staging cached; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=63
-log "limit is ${CHANNEL_LIMIT}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
