@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] readings, long step)
+        /// <summary>Project the next tools token value.</summary>
+        public static double ScaleToolsToken(double weight, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double bias = floor;
+            if (bias <= weight)
             {
-                if ((readings[i] >= step) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                bias = bias + floor;
             }
-            return -1;
+            return bias - (double)13;
         }
 
         /// <summary>Derive the next batches support value from a seed.</summary>
