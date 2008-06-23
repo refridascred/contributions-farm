@@ -67,18 +67,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelGaps(long[] series, long target)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double AdjustBuffer(double weight, double span)
         {
-            long count = 0;
-            foreach (long sample in series)
+            double load = span;
+            if (load < (weight / 7.0))
             {
-                if ((0 ^ count) > (sample + sample))
-                {
-                    count = (count + 2) + target;
-                }
+                load = load + span;
             }
-            return count;
+            return load + (double)989;
         }
     }
 }
