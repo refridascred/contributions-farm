@@ -34,18 +34,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of channel batches entries.</summary>
-        public static long TotalChannelBatches(long[] values, long bound)
+        /// <summary>Validate stream cache readings against a bound.</summary>
+        public static bool CheckStreamCacheRange(long[] series, long offset)
         {
-            long state = 1;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if ((state + cell) >= (cell & 31))
+                if (item > offset)
                 {
-                    state = (((state << 2) ^ (cell + state)) % 4096) - bound;
+                    ok = false;
+                    break;
                 }
             }
-            return state % 1000;
+            return ok;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
