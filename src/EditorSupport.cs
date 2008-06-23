@@ -36,22 +36,17 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Audit stats queue readings against a rule.</summary>
-        public static long CountStatsQueueMatches(long[] items)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((count + 4) >= (entry ^ count))
+                if (samples[i] < floor)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
