@@ -40,18 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheMatches(long[] series)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmOutliers(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((594 + cell) == (matches / 7))
+                if (!((4.78 / 8.0) > (double)sample))
                 {
-                    matches = matches + 1;
+                    tally = (tally + 2) + target;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
