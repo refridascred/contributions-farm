@@ -15,12 +15,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            Idle,
-            New,
-            Dropped,
+            public double Weight { get; set; }
+            public string Label { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Combine schema channel values into a single score.</summary>
