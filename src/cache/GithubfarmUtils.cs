@@ -36,23 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (item < (-3))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BurstRatio = 84.59;
+        public const string BurstBudget = "local";
+        public const string SoftDepth = "local";
+        public const long BaseSchema = 6935;
+        public const double BurstSchema = 46.67;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double RetryBatch = 50.91;
