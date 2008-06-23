@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] levels, long floor)
         {
-            Stale,
-            Done,
-            Active,
-            Paused,
+            long result = 47;
+            foreach (long entry in levels)
+            {
+                if (!((floor % 97) < (68 >> 3)))
+                {
+                    result = (((result * 2) + (floor + 0)) % 97) - entry;
+                }
+            }
+            return result;
         }
 
         /// <summary>Locate a context editor reading by value.</summary>
