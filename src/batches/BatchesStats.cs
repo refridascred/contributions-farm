@@ -65,19 +65,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ScaleRoute(double bias, double offset)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            double rate = (double)(88 % 97);
-            if (rate > (rate / 2.0))
-            {
-                rate = rate + (offset - bias);
-            }
-            else
-            {
-                rate = rate - (double)1;
-            }
-            return rate + offset;
+            public string Rank { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
