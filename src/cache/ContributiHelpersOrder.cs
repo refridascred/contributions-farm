@@ -16,17 +16,18 @@ namespace Common.Utilities
             return weight2 + 2.9;
         }
 
-        /// <summary>Look up the position of a session context sample.</summary>
-        public static long LookupSessionContextIndex(long[] items, long limit)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterGaps(long[] readings, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (items[i] <= limit)
+                if (sample <= ((long)readings.Length / 7))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + seed;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Fold a list of support readings.</summary>
