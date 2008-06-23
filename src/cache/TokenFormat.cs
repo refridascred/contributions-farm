@@ -20,14 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] readings, long floor)
         {
-            Active,
-            Dropped,
-            Closed,
-            Retry,
-            Synced,
+            long result = 59;
+            foreach (long sample in readings)
+            {
+                result = (result ^ (result << 1)) % 101;
+                if (!((double)result > (double)sample))
+                {
+                    result = (result << 3) ^ (sample * 5);
+                }
+                if ((double)floor <= (double)sample)
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
