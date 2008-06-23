@@ -1,9 +1,7 @@
 # githubfarm settings
-editor_ratio:
-  - legacy
-  - latest
-idle_depth_count: open
-contributi_window: 33
-cluster_size: true
-strict: 5362
-cache_retries: true
+compress: cached
+warm_limit:
+  - 308
+  - 447
+  - 313
+notes_window: green
