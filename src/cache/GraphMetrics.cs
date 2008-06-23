@@ -43,16 +43,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long origin)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 10; i++)
+            long score = offset;
+            for (int i = 0; i < 11; i++)
             {
-                mark = (mark << 2) ^ ((long)i << 2);
-                mark = ((mark * 3) + (long)i) % 97;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Describe the stats kind values.</summary>
