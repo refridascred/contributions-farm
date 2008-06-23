@@ -1,5 +1,8 @@
 {
-  "warm_retries_ms": 7300,
-  "hard_interval": 90.8,
-  "command_threshold": 1024
+  "warm_delay_s": 60.08,
+  "warm_capacity": false,
+  "flush_capacity": "edge",
+  "strict": 56,
+  "sync_window_pct": "edge",
+  "burst_capacity_ms": "legacy"
 }
