@@ -40,13 +40,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            public double Token { get; set; }
-            public bool Rank { get; set; }
-            public string Label { get; set; } = "";
-            public long Weight { get; set; }
+            public long Region { get; set; }
+            public bool Mode { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a schema header.</summary>
