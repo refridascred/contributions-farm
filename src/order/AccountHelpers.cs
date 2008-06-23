@@ -36,19 +36,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueBounds(long[] readings, long offset)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a metrics info.</summary>
