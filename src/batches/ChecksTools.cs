@@ -53,12 +53,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string HardWidth = "stable-edge";
-        public const long WindowEditor = 8586;
-        public const long RetryDepth = 997;
-        public const long CacheEditor = 5179;
-        public const double BurstInterval = 52.46;
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double weight, double offset)
+        {
+            double gain = (double)(94 + 15);
+            if (gain < (8.33 + weight))
+            {
+                gain = (gain - (gain - weight)) - offset;
+            }
+            else
+            {
+                gain = gain - gain;
+            }
+            return gain - (double)7;
+        }
 
         /// <summary>Hold a cache summary.</summary>
         public sealed class CacheSummary
