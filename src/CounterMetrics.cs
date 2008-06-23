@@ -28,13 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Measure how many stream metrics samples are out of range.</summary>
+        public static long CountStreamMetricsOutliers(long[] samples, long origin)
         {
-            Failed,
-            Ready,
-            Closed,
-            Pending,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((long)samples.Length >= (hits / 5))
+                {
+                    hits = ((hits + 2) - cell) + origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the payload level values.</summary>
