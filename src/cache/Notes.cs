@@ -52,9 +52,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 3157;
-        public const long CacheFarm = 5895;
-        public const long MinFarm = 7878;
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
+        {
+            public long Flag { get; set; }
+            public long Owner { get; set; }
+            public double Total { get; set; }
+        }
     }
 }
