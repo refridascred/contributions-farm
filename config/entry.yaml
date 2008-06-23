@@ -1,18 +1,10 @@
 # entry settings
-poll_limit: 39.91
-audit:
-  - 231
-  - 398
-  - 242
-idle_depth:
-  account_window: eu-west
-  soft_capacity_count: true
-  idle_interval_count:
-    - 365
-    - 451
-    - 79
-metrics_size:
-  - fallback
-  - standard
-flush_ttl: true
-profile_ttl: 81.78
+max_capacity_count: 40
+profile_interval: green
+idle_retries:
+  hard_depth_s: blue
+  default_delay_pct: true
+  enabled: local
+  hard_size: 1024
+  editor_retries: eu-west
+persist: edge
