@@ -52,12 +52,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitSize = 9118;
-        public const long BaseCluster = 4635;
-        public const long SoftSize = 2724;
-        public const double BatchScore = 48.12;
-        public const string WindowSpan = "cached-edge";
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueBounds(long[] readings, long offset)
+        {
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Validate window token readings against a bound.</summary>
         public static bool GuardWindowTokenBounds(long[] items, long target)
