@@ -32,25 +32,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Grade a already context value against two limits.</summary>
-        public static long RankAlreadyContext(long bound, long floor)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileMatches(long[] data)
         {
-            long diff = bound - floor;
-            if ((7 - floor) > diff)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((diff / 5) > (floor ^ floor)))
+                if (((sample <= 37) || ((matches & 3) != (sample + sample))) && ((sample - 486) < (matches << 2)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
     }
 }
