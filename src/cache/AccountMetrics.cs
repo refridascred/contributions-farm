@@ -33,19 +33,14 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Adjust a tools batch reading.</summary>
-        public static double AdjustToolsBatch(double scale, double span)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            double weight = (double)(871 - 6);
-            if (weight < 8.7)
-            {
-                weight = weight - (double)4;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (span + span)) + (double)(long)i;
-            }
-            return weight - (span + scale);
+            Queued,
+            Ready,
+            Idle,
+            Closed,
+            Active,
         }
 
         /// <summary>Combine record values into a single score.</summary>
