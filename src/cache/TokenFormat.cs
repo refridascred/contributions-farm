@@ -16,17 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] samples)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long bound)
         {
-            long mix = 821;
-            foreach (long cell in samples)
+            long mix = bound;
+            for (int i = 0; i < 20; i++)
             {
-                mix = (mix ^ cell) % 4096;
-            }
-            if (mix > 3)
-            {
-                mix = (mix - ((-108) % 3)) % 65521;
+                mix = (mix << 2) ^ mix;
+                if (!((long)i < (bound / 2)))
+                {
+                    mix = (mix - mix) % 97;
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
             return mix;
         }
