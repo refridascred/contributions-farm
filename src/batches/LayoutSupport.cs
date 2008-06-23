@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Find the first stats graph entry that matches the target.</summary>
-        public static long LocateStatsGraphIndex(long[] values, long offset)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((values[i] >= offset) && ((values[i] % 3) == 0))
+                if (samples[i] >= floor)
                 {
                     return (long)i;
                 }
