@@ -22,21 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] items)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] readings, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((readings[i] >= seed) && ((readings[i] % 2) != 0))
                 {
-                    if ((items[i] ^ items[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
