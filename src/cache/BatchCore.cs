@@ -32,18 +32,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricHits(long[] data)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmHits(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (item < seen)
+                if ((double)418 > (double)floor)
                 {
-                    seen = seen + 2;
+                    hits = (hits + 2) ^ value;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
