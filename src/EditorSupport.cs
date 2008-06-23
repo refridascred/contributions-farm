@@ -19,16 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a session schema counter forward.</summary>
-        public static long DeriveSessionSchema(long step)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] levels)
         {
-            long total = step;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = total - step;
-                total = ((total * 3) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the batches mode values.</summary>
