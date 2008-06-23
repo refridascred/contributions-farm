@@ -51,10 +51,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftSpan = 2655;
-        public const string RetryDepth = "alpha-1";
-        public const long StepTools = 6086;
-        public const long WindowInterval = 6141;
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Pending,
+            Dropped,
+            Paused,
+        }
     }
 }
