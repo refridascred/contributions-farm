@@ -19,20 +19,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandRange(long[] samples, long floor)
-        {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowCount = 192;
+        public const long HardSize = 5228;
+        public const long MaxCount = 3514;
+        public const string BatchLayout = "strict";
 
         /// <summary>Adjust a filter stream reading.</summary>
         public static double ProjectFilterStream(double weight, double offset)
