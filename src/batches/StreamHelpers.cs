@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstTimeout = 6646;
-        public const long MaxStats = 6892;
-        public const double CacheStats = 36.9;
-        public const long WindowWidth = 4387;
-        public const long MinStats = 1756;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] samples)
+        {
+            long mix = -37;
+            foreach (long value in samples)
+            {
+                mix = (mix - (value >> 2)) % 65521;
+                if (mix >= (0 >> 2))
+                {
+                    break;
+                }
+            }
+            if (mix > 39)
+            {
+                mix = (mix - (mix - mix)) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
