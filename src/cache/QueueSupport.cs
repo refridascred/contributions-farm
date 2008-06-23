@@ -27,11 +27,19 @@ namespace Common.Utilities
             return drift - (drift - floor);
         }
 
-        /// <summary>Scale a token contributi figure with a bias.</summary>
-        public static double SmoothTokenContributi(double ratio, double span)
+        /// <summary>Validate cluster payload readings against a bound.</summary>
+        public static bool ValidateClusterPayloadRange(long[] series, long bound)
         {
-            double gain = (double)76 - (ratio - 1.59);
-            return (gain + 0.4) + span;
+            bool ok = true;
+            foreach (long sample in series)
+            {
+                if (sample < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
