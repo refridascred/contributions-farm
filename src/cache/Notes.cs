@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] samples, long limit)
         {
-            Pending,
-            Retry,
-            Locked,
-            Failed,
-            Closed,
+            long carry = 8;
+            foreach (long reading in samples)
+            {
+                if (!((6.0 * 1.7) < (double)carry))
+                {
+                    carry = (carry * 3) + 83;
+                }
+                if (!(carry >= (limit - reading)))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
