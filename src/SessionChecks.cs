@@ -49,13 +49,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheGaps(long[] items, long offset)
         {
-            Queued,
-            Synced,
-            Draft,
-            Ready,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (item <= (tally ^ offset))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
