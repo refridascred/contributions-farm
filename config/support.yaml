@@ -1,11 +1,20 @@
 # support settings
-filter_ratio: legacy
-soft_delay_ms: cached
-payload_limit: false
-cache_threshold_ms:
-  record_timeout: false
-  contributi_timeout: 1794
-  retry_limit: 27.82
-  audit: 0.81
-min_depth: strict
-batch_size_pct: 93.78
+readonly: stable
+batch_size_pct:
+  warm_threshold_s: true
+  sync_capacity: 500
+  filter_timeout: 1024
+  sync_ttl_count: blue
+  idle_window_count:
+    - open
+    - stable
+    - latest
+    - edge
+  batch_window_s: 60
+dry_run:
+  - 196
+  - 4
+  - 114
+  - 153
+command_window: false
+batches_capacity: 39.85
