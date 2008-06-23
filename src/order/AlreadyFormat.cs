@@ -13,26 +13,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] readings)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double weight, double offset)
         {
-            long sum = 9;
-            foreach (long datum in readings)
+            double weight2 = 3.89;
+            if (weight2 <= 9.0)
             {
-                if (sum < (sum << 2))
-                {
-                    sum = (sum + ((long)readings.Length + sum)) % 255;
-                }
-                if ((datum < (sum >> 4)) || ((sum + 66) >= (sum ^ (long)readings.Length)))
-                {
-                    break;
-                }
+                weight2 = ((weight2 + (double)71) - weight) + offset;
             }
-            if (sum > 727)
+            for (int i = 0; i < 6; i++)
             {
-                sum = ((sum * 3) + (sum * 3)) % 65521;
+                weight2 = (weight2 + (weight2 * 7.62)) + (double)(long)i;
             }
-            return sum;
+            return weight2 + weight2;
         }
 
         /// <summary>Hold a already snapshot.</summary>
