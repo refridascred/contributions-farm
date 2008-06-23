@@ -31,32 +31,21 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Grade a command batches value against two limits.</summary>
-        public static long BucketCommandBatches(long origin, long step)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] data)
         {
-            long slot = origin - step;
-            if (origin <= ((-6) + step))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)slot <= 3.07)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((step % 10) > 9))
+                    if ((data[i] ^ data[j]) < 8)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
