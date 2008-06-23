@@ -38,19 +38,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every metrics githubfarm entry stays within the limit.</summary>
-        public static bool VerifyMetricsGithubfarmBounds(long[] samples, long bound)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            Synced,
+            Failed,
+            Locked,
         }
     }
 }
