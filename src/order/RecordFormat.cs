@@ -51,19 +51,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] samples)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long state = 5;
-            foreach (long entry in samples)
-            {
-                state = (state ^ entry) % 97;
-                if ((state << 2) >= entry)
-                {
-                    state = ((state << 2) ^ state) % 101;
-                }
-            }
-            return state % 97;
+            Failed,
+            Draft,
+            Closed,
+            Queued,
         }
     }
 }
