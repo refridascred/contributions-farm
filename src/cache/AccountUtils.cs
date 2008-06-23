@@ -35,17 +35,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] levels, long floor)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] data, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 3;
+            foreach (long entry in data)
             {
-                if ((levels[i] >= floor) && ((levels[i] % 5) != 0))
+                if ((bound % 12) <= ((long)data.Length % 100))
                 {
-                    return (long)i;
+                    score = (score - (bound % 24)) % 101;
+                }
+                else
+                {
+                    score = (score ^ entry) % 4096;
                 }
             }
-            return -1;
+            return score % 65521;
         }
     }
 }
