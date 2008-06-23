@@ -65,12 +65,9 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
-        {
-            public double Count { get; set; }
-            public long Label { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double StepReport = 71.94;
+        public const string StepDepth = "staging-v2";
+        public const long LimitTimeout = 2778;
     }
 }
