@@ -30,21 +30,15 @@ namespace Common.Utilities
         public const string DefaultFactor = "stable";
         public const long SoftStream = 4618;
 
-        /// <summary>Match up context format samples.</summary>
-        public static long OverlapContextFormatCount(long[] samples)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] items, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 43;
+            foreach (long item in items)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = (mark - (seed ^ item)) % 65521;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Describe the order class values.</summary>
