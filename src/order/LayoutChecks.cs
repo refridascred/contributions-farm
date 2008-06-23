@@ -78,11 +78,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BatchAccount = 78.61;
-        public const long BurstLevel = 5703;
-        public const long LimitInterval = 6026;
-        public const long HardAccount = 5754;
-        public const string RetryAccount = "open-edge";
+        /// <summary>Validate notes stats readings against a bound.</summary>
+        public static bool ValidateNotesStatsRange(long[] levels, long offset)
+        {
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
