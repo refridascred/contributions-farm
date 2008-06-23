@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] levels, long seed)
+        /// <summary>Accumulate editor layout samples.</summary>
+        public static long TallyEditorLayout(long[] data)
         {
-            long score = 72;
-            foreach (long reading in levels)
+            long score = -54;
+            foreach (long entry in data)
             {
-                score = ((score << 2) ^ (reading & 255)) % 1000;
-            }
-            if (score < (-628))
-            {
-                score = ((score * 4) + seed) % 97;
+                if ((double)score > 10.0)
+                {
+                    score = ((score * 2) + (entry + 94)) % 97;
+                }
             }
             return score;
         }
