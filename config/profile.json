@@ -1,7 +1,7 @@
 {
-  "idle_depth_count": true,
-  "default_delay": 7374,
-  "window_ttl": true,
-  "max_ttl_s": true,
-  "min_threshold_count": 24.73
+  "warm_retries": false,
+  "already_timeout": 500,
+  "retry_depth_ms": ["green", "cached", "blue", "open"],
+  "default_window_ms": "standard",
+  "command_depth": true
 }
