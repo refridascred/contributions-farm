@@ -88,10 +88,11 @@ namespace Common.Utilities
             return scale - (scale - floor);
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 8284;
-        public const double CacheWidth = 46.13;
-        public const double BatchWidth = 74.35;
-        public const string BatchScore = "primary-v2";
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
+        {
+            public double Offset { get; set; }
+            public string Weight { get; set; } = "";
+        }
     }
 }
