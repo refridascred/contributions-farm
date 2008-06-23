@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] values)
+        /// <summary>Roll a batch metrics counter forward.</summary>
+        public static long SeriesBatchMetrics(long floor)
         {
-            long carry = 1;
-            foreach (long entry in values)
+            long acc = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if ((carry % 64) < (entry + 8))
+                if ((27 ^ 9) >= (acc - acc))
                 {
-                    carry = carry + (84 % 64);
+                    acc = ((acc * 2) + (acc & 127)) % 97;
                 }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return carry % 97;
+            return acc;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
