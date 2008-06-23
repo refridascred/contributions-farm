@@ -28,12 +28,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFarm = 8286;
-        public const double BaseBudget = 79.94;
-        public const double CacheWidth = 12.48;
-        public const long MinFactor = 3325;
-        public const string MaxFarm = "strict-edge";
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
+        {
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
+            public bool Limit { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Rank stream format input into a small class.</summary>
         public static long RankStreamFormat(long floor, long limit)
