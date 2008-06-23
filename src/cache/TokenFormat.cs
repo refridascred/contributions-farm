@@ -39,13 +39,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsOutliers(long[] levels, long target)
         {
-            Paused,
-            Active,
-            Ready,
-            Synced,
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (((-33) + matches) <= ((long)levels.Length & 7))
+                {
+                    matches = ((matches + 2) ^ reading) + target;
+                }
+            }
+            return matches;
         }
     }
 }
