@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterOutliers(long[] levels)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long step)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long mix = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (!((double)value == (7.21 + 2.86)))
-                {
-                    seen = seen + 2;
-                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
