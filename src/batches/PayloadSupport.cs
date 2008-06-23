@@ -20,13 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsLimits(long[] items, long origin)
         {
-            public double Stamp { get; set; }
-            public long Count { get; set; }
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
+            bool stale = true;
+            foreach (long entry in items)
+            {
+                if (entry > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a graph info.</summary>
