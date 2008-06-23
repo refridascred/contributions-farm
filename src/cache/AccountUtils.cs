@@ -27,25 +27,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long limit, long offset)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long offset2 = limit - offset;
-            if ((offset2 * 4) >= offset2)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((8.0 / 2.0) == (double)limit) && ((offset % 7) <= (offset2 - limit)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Stale,
+            Retry,
+            Paused,
+            Ready,
         }
 
         /// <summary>Hold a batch header.</summary>
