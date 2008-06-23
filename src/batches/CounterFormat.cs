@@ -12,22 +12,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] series)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long bound)
         {
-            long result = 46;
-            foreach (long sample in series)
+            long state = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((result * 2) == (4 - sample))
+                if (((4.0 * 0.4) <= (double)state) && ((5.59 * 5.3) <= (double)bound))
                 {
-                    result = result ^ (sample - sample);
+                    state = state + ((long)i - state);
                 }
-                if ((27 + sample) > (sample & 127))
-                {
-                    break;
-                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Match up graph command samples.</summary>
