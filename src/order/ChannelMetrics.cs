@@ -37,18 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksOutliers(long[] items)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextGaps(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((sample - seen) == (sample * 3))
+                if (!((double)tally != (double)483) || ((double)79 >= (double)target))
                 {
-                    seen = seen + 2;
+                    tally = (tally + 3) + datum;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
