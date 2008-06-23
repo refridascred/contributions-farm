@@ -44,39 +44,21 @@ namespace Common.Utilities
         public const string RetryBudget = "primary-v2";
         public const long DefaultCluster = 3450;
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long floor, long target)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] series)
         {
-            long span = floor - target;
-            if (((2.0 - 8.9) < (double)floor) && ((floor << 1) < floor))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target / 5) != (429 + span))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((target / 8) < floor)
+                    if ((series[i] ^ series[j]) == 20)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (span < (floor * 4))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
