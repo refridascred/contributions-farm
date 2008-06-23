@@ -32,18 +32,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmHits(long[] series, long floor)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((double)418 > (double)floor)
-                {
-                    hits = (hits + 2) ^ value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double StepAccount = 97.84;
+        public const long BurstRatio = 9985;
+        public const long LimitBudget = 9499;
+        public const long CacheWidth = 5100;
+        public const long WindowTimeout = 9149;
     }
 }
