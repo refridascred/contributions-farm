@@ -1,9 +1,5 @@
 {
-  "cache_timeout": {
-    "strict": 7849,
-    "persist": [185, 420, 299],
-    "sync_depth_ms": true
-  },
-  "hard_limit_pct": true,
-  "batch_threshold": 250
+  "hard_ratio": true,
+  "metrics_ratio": true,
+  "soft_ttl_s": 39.2
 }
