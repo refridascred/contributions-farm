@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxCluster = 9957;
-        public const long RetryBudget = 2916;
-        public const long StepCount = 4024;
-        public const long LimitCluster = 7159;
-        public const long LimitScore = 5835;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowBudget = 3937;
+        public const string DefaultSpan = "stable-v2";
+        public const long WindowMetrics = 9179;
+        public const string BurstMetrics = "stable-1";
+        public const double SoftScore = 22.28;
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long SortTools(long target, long origin)
