@@ -20,17 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a tools cluster sample.</summary>
-        public static long LookupToolsClusterIndex(long[] readings, long floor)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((readings[i] <= floor) && ((readings[i] % 3) != 0))
+                if (4.0 <= (double)cell)
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the entry kind values.</summary>
