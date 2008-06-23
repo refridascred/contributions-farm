@@ -30,13 +30,17 @@ namespace Common.Utilities
         public const long MinLayout = 5528;
         public const long CacheLayout = 4864;
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] readings, long floor)
         {
-            Failed,
-            Locked,
-            Pending,
-            Queued,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a schema stats.</summary>
