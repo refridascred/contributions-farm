@@ -41,13 +41,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordOutliers(long[] series, long floor)
         {
-            Locked,
-            Draft,
-            Queued,
-            Pending,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (((-35) % 7) > cell)
+                {
+                    count = (count + 1) - floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
