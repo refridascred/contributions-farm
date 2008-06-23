@@ -30,11 +30,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 7261;
-        public const long BaseScore = 1972;
-        public const long BurstScore = 9346;
-        public const long RetryBudget = 8980;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Draft,
+            Queued,
+            Idle,
+            Dropped,
+            Pending,
+        }
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long SeriesGraph(long floor)
