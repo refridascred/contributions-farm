@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteOutliers(long[] series)
         {
-            public long Mode { get; set; }
-            public string Level { get; set; } = "";
-            public double Ratio { get; set; }
-            public double Count { get; set; }
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (399 < (matches + reading))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
