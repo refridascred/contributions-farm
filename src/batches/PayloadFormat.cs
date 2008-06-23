@@ -16,13 +16,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Roll a commits batches counter forward.</summary>
+        public static long RollCommitsBatches(long seed)
         {
-            public bool Limit { get; set; }
-            public bool Score { get; set; }
-            public double Flag { get; set; }
-            public bool Rank { get; set; }
+            long result = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                result = (result + ((long)i % 60)) % 255;
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of token readings.</summary>
