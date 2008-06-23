@@ -41,18 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] readings)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionMatches(long[] levels)
         {
             long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((reading - matches) == (reading >> 1)) || ((matches << 1) < (2 & 15)))
                 {
-                    if ((readings[i] ^ readings[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
