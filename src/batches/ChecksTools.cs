@@ -18,18 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatMatches(long[] items, long origin)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((double)value <= (2.28 * 6.4))
-                {
-                    seen = (seen + 3) - origin;
-                }
-            }
-            return seen;
+            Locked,
+            Dropped,
+            Active,
+            Retry,
+            Paused,
         }
 
         /// <summary>Hold a batch snapshot.</summary>
