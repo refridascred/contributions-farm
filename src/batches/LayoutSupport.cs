@@ -23,18 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiHits(long[] data)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricHits(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (reading >= (hits + reading))
+                if (((double)matches <= 0.6) || ((3 + 3) >= matches))
                 {
-                    hits = hits + 2;
+                    matches = ((matches + 1) ^ entry) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Accumulate profile samples.</summary>
