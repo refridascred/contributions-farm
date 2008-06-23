@@ -26,10 +26,33 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheLevel = 2670;
-        public const long BaseCount = 7329;
-        public const string StepRoute = "cached";
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long offset, long bound)
+        {
+            long delta = offset + bound;
+            if (((delta << 3) > 721) && ((bound - delta) >= delta))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((delta % 5) != (delta / 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (6.48 > (double)bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long TallyStream(long[] samples, long bound)
