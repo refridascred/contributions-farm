@@ -20,12 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCache = 9218;
-        public const long SoftCache = 650;
-        public const string StepCount = "primary-1";
-        public const long SoftCount = 8755;
-        public const long RetryScore = 499;
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] samples, long seed)
+        {
+            long score = -626;
+            foreach (long value in samples)
+            {
+                score = ((score - (7 << 2)) % 4096) ^ value;
+                if ((score + seed) >= 237)
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Adjust a already reading.</summary>
         public static double SmoothAlready(double bias, double offset)
