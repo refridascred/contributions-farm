@@ -1,7 +1,12 @@
 {
-  "sync_depth": true,
-  "hard_capacity_ms": "edge",
-  "idle_limit": ["fallback", "standard", "green", "edge"],
-  "flush_ratio_s": 1024,
-  "base_depth_ms": "open"
+  "verbose": false,
+  "report_window": "stable",
+  "sync_ratio_count": false,
+  "audit": 1024,
+  "dry_run": {
+    "retry_capacity_s": 61.35,
+    "base_ratio_count": false,
+    "idle_size": false,
+    "context_interval": false
+  }
 }
