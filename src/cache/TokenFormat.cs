@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaOutliers(long[] items)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long anchor = 438;
+            foreach (long reading in values)
             {
-                if ((value / 8) > tally)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = (((anchor << 3) ^ (804 + reading)) % 4096) + bound;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Look up the position of a payload cluster sample.</summary>
