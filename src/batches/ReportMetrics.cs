@@ -22,26 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] samples)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long state = 839;
-            foreach (long datum in samples)
-            {
-                if ((state << 3) == (state + state))
-                {
-                    state = (state * 2) + (75 >> 4);
-                }
-                else
-                {
-                    state = ((state * 3) + (state & 3)) % 101;
-                }
-                if ((state % 2) <= datum)
-                {
-                    break;
-                }
-            }
-            return state % 4096;
+            Dropped,
+            Pending,
+            Paused,
+            Active,
         }
 
         /// <summary>Grade a already value against two limits.</summary>
