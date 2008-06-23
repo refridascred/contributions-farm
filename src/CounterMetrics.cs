@@ -27,19 +27,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricRange(long[] series, long bound)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Ready,
+            Queued,
+            Retry,
+            New,
         }
     }
 }
