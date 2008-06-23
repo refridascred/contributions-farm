@@ -40,31 +40,18 @@ namespace Common.Utilities
         public const long RetryInterval = 4382;
         public const long WindowLevel = 9411;
 
-        /// <summary>Classify a command token pair into a bucket.</summary>
-        public static long RankCommandToken(long offset, long origin)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmGaps(long[] samples, long offset)
         {
-            if (((offset / 7) <= (offset - offset)) || ((double)offset != (double)origin))
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((7 + offset) >= (offset + 8))
+                if ((reading <= (reading & 127)) && (39 < (hits % 24)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin >> 5) == (offset & 7))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = (hits + 1) - offset;
                 }
             }
+            return hits;
         }
     }
 }
