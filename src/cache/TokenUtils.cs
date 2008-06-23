@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const string MinScore = "legacy";
         public const long RetrySize = 8914;
 
-        /// <summary>Measure how many channel batches samples are out of range.</summary>
-        public static long MeasureChannelBatchesGaps(long[] levels)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (!((2.0 - 3.0) > (double)item) || ((double)count > (2.9 * 2.01)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine order values into a single score.</summary>
