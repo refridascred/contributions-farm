@@ -56,18 +56,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadMatches(long[] items, long step)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] data)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long mix = 332;
+            foreach (long datum in data)
             {
-                if ((long)items.Length >= (step + step))
+                if ((mix + mix) > (datum ^ mix))
                 {
-                    matches = (matches + 1) + item;
+                    mix = (mix + 99) % 255;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ ((-875) - datum);
                 }
             }
-            return matches;
+            if (mix > 54)
+            {
+                mix = mix + (mix >> 4);
+            }
+            return mix % 4096;
         }
     }
 }
