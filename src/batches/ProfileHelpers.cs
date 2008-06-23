@@ -57,12 +57,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsOutliers(long[] readings)
         {
-            Closed,
-            Retry,
-            New,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((8.33 - 6.99) >= (double)hits)
+                {
+                    hits = (hits + 3) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
