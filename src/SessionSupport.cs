@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((offset ^ state) >= ((long)i - state))
-                {
-                    state = ((state << 2) ^ state) % 97;
-                }
-                if ((5 << 3) < (state ^ 26))
-                {
-                    break;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (offset ^ state)) % 65521;
-                }
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseScore = 26;
+        public const long StepWidth = 4267;
+        public const string WindowWidth = "open-v2";
+        public const long BurstDepth = 3355;
+        public const long IdleReport = 6875;
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long MeasureCommitsHits(long[] data, long target)
