@@ -53,12 +53,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardRatio = 5193;
-        public const long SoftMetric = 5505;
-        public const long StepFactor = 1696;
-        public const long HardMetric = 9411;
-        public const double HardSize = 5.62;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((count + 915) >= (count - sample))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every stream filter entry stays within the limit.</summary>
         public static bool VerifyStreamFilterLimits(long[] values, long floor)
