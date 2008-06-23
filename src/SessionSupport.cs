@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long target, long floor)
         {
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Score { get; set; }
+            if (((floor << 3) <= 39) && ((double)floor > (5.4 + 17.0)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (target < floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (floor >= (406 / 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
