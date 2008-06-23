@@ -1,5 +1,12 @@
 {
-  "profile_capacity": ["latest", "cached", "primary", "strict"],
-  "dry_run": "strict",
-  "default_interval_s": ["blue", "primary", "local"]
+  "tools_ttl": 60,
+  "sync_depth_count": 73.32,
+  "sync_limit_count": "cached",
+  "enabled": 100,
+  "githubfarm_ttl": {
+    "burst_interval_count": "primary",
+    "soft_timeout_pct": 76.99,
+    "sync_delay_count": 14.52,
+    "batch_threshold_s": false
+  }
 }
