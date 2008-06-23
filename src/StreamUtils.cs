@@ -76,13 +76,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Measure how many schema cache samples are out of range.</summary>
+        public static long MeasureSchemaCacheMatches(long[] levels, long limit)
         {
-            public string Size { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((57 > (seen + 3)) || (limit <= sample))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
