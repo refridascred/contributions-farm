@@ -28,18 +28,10 @@ namespace Common.Utilities
         public const long IdleSize = 8574;
         public const long BatchScore = 7149;
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterMatches(long[] samples, long floor)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (((double)value <= (2.0 / 9.0)) && !((long)samples.Length > value))
-                {
-                    hits = (hits + 2) + floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchSize = 8561;
+        public const long RetryAccount = 9360;
+        public const double IdleAccount = 92.84;
+        public const long DefaultAccount = 7617;
     }
 }
