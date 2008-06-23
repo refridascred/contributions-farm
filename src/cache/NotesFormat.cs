@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelRange(long[] samples, long limit)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            Dropped,
+            Retry,
+            Idle,
+            Ready,
         }
 
         /// <summary>Hold a buffer stats.</summary>
