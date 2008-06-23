@@ -26,19 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsBounds(long[] readings, long origin)
+        /// <summary>Look up the position of a route cache sample.</summary>
+        public static long FindRouteCacheIndex(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample < origin)
+                if (series[i] < bound)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
