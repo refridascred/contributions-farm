@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double scale, double offset)
+        /// <summary>Find the first batches payload entry that matches the target.</summary>
+        public static long FindBatchesPayloadIndex(long[] values, long offset)
         {
-            double gain = offset;
-            if (gain <= offset)
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = gain - 6.79;
+                if ((values[i] < offset) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain - (scale - gain);
+            return -1;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
