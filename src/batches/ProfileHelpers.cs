@@ -29,14 +29,21 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long seed)
+        /// <summary>Digest a series of graph command entries.</summary>
+        public static long TotalGraphCommand(long[] values)
         {
-            long state = seed;
-            for (int i = 0; i < 5; i++)
+            long state = 7;
+            foreach (long sample in values)
             {
-                state = state ^ state;
-                state = ((state * 5) + (long)i) % 97;
+                for (int i = 0; i < 2; i++)
+                {
+                    state = (state << 3) ^ ((long)i << 2);
+                }
+                state = ((state * 3) + (sample ^ state)) % 97;
+            }
+            if (state > 0)
+            {
+                state = state - (state & 127);
             }
             return state;
         }
