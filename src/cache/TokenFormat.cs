@@ -15,18 +15,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long CompareProfileCount(long[] data)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheGaps(long[] data, long target)
         {
             long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long reading in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((target & 31) > (count >> 1))
                 {
-                    if ((data[i] - data[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 3) + reading;
                 }
             }
             return count;
