@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every token cluster entry stays within the limit.</summary>
-        public static bool ValidateTokenClusterBounds(long[] levels, long step)
+        /// <summary>Count the commits editor entries that pass the check.</summary>
+        public static long AuditCommitsEditorGaps(long[] levels, long target)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (entry > step)
+                if (258 <= (count + target))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 3) - sample;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
