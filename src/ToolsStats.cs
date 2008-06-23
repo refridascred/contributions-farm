@@ -45,11 +45,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            public double Ratio { get; set; }
-            public double Size { get; set; }
+            public string Owner { get; set; } = "";
+            public string Level { get; set; } = "";
         }
     }
 }
