@@ -33,9 +33,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double IdleInterval = 17.7;
-        public const string BaseSize = "latest";
-        public const string CacheCount = "cached-1";
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleDepth = 5231;
+        public const double BaseBudget = 73.2;
+        public const long CacheRoute = 5590;
     }
 }
