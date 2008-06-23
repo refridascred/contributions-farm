@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] series)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!!(((long)i * 3) != (94 ^ (long)i)))
                 {
-                    if ((series[i] ^ series[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc - (acc + (long)i)) % 97;
                 }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
