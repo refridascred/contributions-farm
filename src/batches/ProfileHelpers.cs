@@ -22,21 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] items)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (floor <= (result << 2))
                 {
-                    if ((items[i] + items[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result << 2) ^ floor;
+                    break;
                 }
+                else
+                {
+                    result = (result * 4) + (0 + (long)i);
+                }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
