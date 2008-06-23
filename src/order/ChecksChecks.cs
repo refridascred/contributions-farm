@@ -19,23 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double bias, double span)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterBounds(long[] data, long limit)
         {
-            double bias2 = (bias + bias) + span;
-            if (bias2 >= (8.0 * 5.65))
+            bool stale = true;
+            foreach (long value in data)
             {
-                bias2 = bias2 + (bias * 16.0);
+                if (value > limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 + (bias2 - 5.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 + (double)(-984)) + (double)(long)i;
-            }
-            return bias2 - (bias * 2.95);
+            return stale;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
