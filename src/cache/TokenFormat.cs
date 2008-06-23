@@ -12,20 +12,21 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long bound)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsCount(long[] samples)
         {
-            long mix = bound;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix << 2) ^ mix;
-                if (!((long)i < (bound / 2)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (mix - mix) % 97;
+                    if ((samples[i] - samples[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
