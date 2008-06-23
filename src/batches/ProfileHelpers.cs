@@ -50,10 +50,14 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 6813;
-        public const long RetrySize = 6969;
-        public const long SoftNotes = 3366;
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
+        {
+            Closed,
+            Ready,
+            Stale,
+            Active,
+        }
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
