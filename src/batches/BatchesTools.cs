@@ -22,23 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a session batches figure with a bias.</summary>
-        public static double ScaleSessionBatches(double rate, double bias)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] data)
         {
-            double gain = rate;
-            if (gain < (bias - gain))
+            long seen = 0;
+            foreach (long value in data)
             {
-                gain = gain + 4.3;
+                if ((double)value >= 6.0)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                gain = gain - (double)2;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + gain) - (double)(long)i;
-            }
-            return gain + (double)9;
+            return seen;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
