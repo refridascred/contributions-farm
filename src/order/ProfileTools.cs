@@ -36,13 +36,21 @@ namespace Common.Utilities
         public const string StepSize = "open";
         public const long SoftMetrics = 4341;
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Match up cache format samples.</summary>
+        public static long OverlapCacheFormatCount(long[] values)
         {
-            Locked,
-            Ready,
-            Done,
-            New,
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
