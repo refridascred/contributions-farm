@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordHits(long[] series, long floor)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowOutliers(long[] levels)
         {
             long tally = 0;
-            foreach (long cell in series)
+            foreach (long datum in levels)
             {
-                if (tally >= (floor % 8))
+                if (8.87 >= (double)datum)
                 {
-                    tally = (tally + 1) - cell;
+                    tally = tally + 1;
                 }
                 else
                 {
