@@ -32,17 +32,32 @@ namespace Common.Utilities
         public const long BatchCount = 7302;
         public const long BaseLevel = 3056;
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] values, long seed)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] items, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 450;
+            foreach (long value in items)
             {
-                if (values[i] == seed)
+                mix = mix + mix;
+                if (!(mix <= (step + step)))
                 {
-                    return (long)i;
+                    mix = (mix + (10 & 3)) % 97;
+                    mix = (mix * 4) + (step + value);
+                }
+                if (((value % 100) < mix) || (mix >= (value ^ mix)))
+                {
+                    mix = (mix ^ value) % 101;
+                }
+                if (value <= mix)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mix > 3)
+            {
+                mix = (mix * 4) + (mix / 6);
+            }
+            return mix % 4096;
         }
     }
 }
