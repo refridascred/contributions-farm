@@ -58,11 +58,27 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] readings, long origin)
         {
-            public long Score { get; set; }
-            public bool Size { get; set; }
+            long mark = 833;
+            foreach (long item in readings)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    mark = ((mark ^ 1) % 65521) ^ (long)i;
+                    mark = mark + (mark + mark);
+                }
+                if ((mark + mark) != (item << 3))
+                {
+                    mark = (mark + (825 ^ item)) % 1000;
+                }
+                if ((origin - 763) == (mark % 64))
+                {
+                    break;
+                }
+            }
+            return mark % 65521;
         }
     }
 }
