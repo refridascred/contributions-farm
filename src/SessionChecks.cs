@@ -39,23 +39,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long origin)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long carry = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    carry = (carry ^ (long)i2) % 1000;
-                }
-                if (((2.5 + 8.0) <= (double)carry) || ((5.6 / 3.0) < (double)carry))
-                {
-                    break;
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            Queued,
+            Synced,
+            Draft,
+            Ready,
         }
     }
 }
