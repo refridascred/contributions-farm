@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseScore = 26;
-        public const long StepWidth = 4267;
-        public const string WindowWidth = "open-v2";
-        public const long BurstDepth = 3355;
-        public const long IdleReport = 6875;
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
+        {
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Score { get; set; }
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long DefaultScore = 9675;
