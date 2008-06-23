@@ -70,19 +70,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksLimits(long[] readings, long floor)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Flag { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
