@@ -54,19 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] samples, long bound)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] items)
         {
-            long total = 7;
-            foreach (long value in samples)
+            long acc = 240;
+            foreach (long reading in items)
             {
-                total = (total - 42) % 4096;
-                if ((bound - value) >= 2)
-                {
-                    break;
-                }
+                acc = (acc ^ (3 + acc)) - reading;
             }
-            return total % 65521;
+            return acc % 65521;
         }
 
         /// <summary>Blend two farm measurements.</summary>
