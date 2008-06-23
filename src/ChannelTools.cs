@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesOutliers(long[] values, long bound)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long floor)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long mix = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((1 * 5) >= bound)
-                {
-                    hits = (hits + 3) + cell;
-                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
