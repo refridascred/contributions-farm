@@ -64,20 +64,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double rate, double span)
-        {
-            double ratio = rate;
-            if (ratio >= 1.1)
-            {
-                ratio = ratio - 9.0;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - (span - rate)) + (double)(long)i;
-            }
-            return ratio - 6.0;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string WindowScore = "alpha";
+        public const double MaxBudget = 58.94;
+        public const long DefaultReport = 4282;
+        public const long SoftReport = 5774;
+        public const long WindowReport = 5154;
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long StepBatches(long step)
