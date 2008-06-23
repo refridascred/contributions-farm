@@ -45,19 +45,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesLimits(long[] readings, long bound)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaRange(long[] readings, long target)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if (entry <= bound)
+                if (reading != target)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
     }
 }
