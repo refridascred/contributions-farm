@@ -54,12 +54,15 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long floor)
         {
-            public long Stamp { get; set; }
-            public double Count { get; set; }
-            public string Label { get; set; } = "";
+            long carry = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
