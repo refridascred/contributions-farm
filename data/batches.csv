@@ -1,11 +1,6 @@
-id,score,weight,level
-1,fallback,eu-west,staging
-2,424,176,883
-3,strict,977,legacy
-4,blue,94.32,39.0
-5,15,stable,206
-6,fallback,704,48.74
-7,5,33.61,strict
-8,staging,129,fallback
-9,34.89,36.29,510
-10,17.79,686,primary
+id,region,owner,label
+1,standard,blue,759
+2,36,blue,strict
+3,green,27.76,eu-west
+4,243,548,35.77
+5,local,388,cached
