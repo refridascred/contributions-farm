@@ -52,19 +52,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsLimits(long[] samples, long seed)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double rate, double span)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            double ratio = rate;
+            if (ratio >= 1.1)
             {
-                if (value >= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio = ratio - 9.0;
             }
-            return ok;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - (span - rate)) + (double)(long)i;
+            }
+            return ratio - 6.0;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
