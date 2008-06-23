@@ -1,19 +1,6 @@
 {
-  "layout_threshold": 79,
-  "profile_size": {
-    "burst_ttl_s": true,
-    "soft_capacity_ms": 8430,
-    "flush_retries_ms": 18,
-    "retry_depth_s": "local",
-    "poll_timeout": {
-      "poll_ttl": 61.23,
-      "burst_delay_s": 42.89,
-      "queue_ratio": [179, 308, 478, 398],
-      "flush_timeout": ["latest", "strict", "strict", "cached"]
-    }
-  },
-  "dry_run": 7494,
-  "readonly": 100,
-  "persist": 30,
-  "verbose": "local"
+  "warm_capacity_pct": ["green", "stable", "green"],
+  "readonly": false,
+  "hard_limit_ms": true,
+  "verbose": 30
 }
