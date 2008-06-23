@@ -18,17 +18,9 @@ namespace Common.Utilities
         public const long IdleSize = 8574;
         public const long BatchScore = 7149;
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 2742;
+        public const long LimitRatio = 8312;
+        public const long IdleMetrics = 3921;
     }
 }
