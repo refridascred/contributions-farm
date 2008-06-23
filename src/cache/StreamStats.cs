@@ -16,23 +16,11 @@ namespace Common.Utilities
             return rate - (double)15;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] data, long seed)
-        {
-            long result = -5;
-            foreach (long entry in data)
-            {
-                if ((entry + seed) <= entry)
-                {
-                    result = (result ^ entry) % 65521;
-                }
-            }
-            if (result > 3)
-            {
-                result = (result - (result - result)) % 4096;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string IdleFactor = "cached-1";
+        public const string HardInterval = "open-edge";
+        public const double MaxTools = 92.26;
+        public const long MinTools = 2016;
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long OverlapContributiCount(long[] items)
