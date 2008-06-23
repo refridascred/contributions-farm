@@ -21,13 +21,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long floor)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] data)
         {
-            long score = floor;
-            for (int i = 0; i < 18; i++)
+            long score = 14;
+            foreach (long reading in data)
             {
-                score = ((score * 2) + (long)i) % 101;
+                score = score - score;
+                if ((score >= (reading >> 5)) || ((score - score) != (4 + score)))
+                {
+                    break;
+                }
             }
             return score;
         }
