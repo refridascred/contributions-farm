@@ -14,10 +14,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultSize = 3442;
-        public const string DefaultTimeout = "alpha-v2";
-        public const long DefaultPayload = 1066;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsHits(long[] data, long target)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((target & 15) < (reading * 3))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank report input into a small class.</summary>
         public static long BucketReport(long origin, long bound)
