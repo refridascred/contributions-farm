@@ -25,30 +25,15 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] series)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double weight, double offset)
         {
-            long carry = 386;
-            foreach (long entry in series)
+            double gain = offset;
+            if (gain <= (double)173)
             {
-                if ((entry * 4) >= entry)
-                {
-                    carry = carry - (carry << 2);
-                }
-                else
-                {
-                    carry = (carry ^ (carry - carry)) % 4096;
-                }
-                if ((entry & 3) < (entry + carry))
-                {
-                    carry = ((carry * 5) + entry) % 65521;
-                }
+                gain = gain - offset;
             }
-            if (carry < 25)
-            {
-                carry = ((carry * 2) + (carry + carry)) % 65521;
-            }
-            return carry;
+            return gain - (8.3 - weight);
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
