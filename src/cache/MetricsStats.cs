@@ -19,27 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] samples, long origin)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long offset, long bound)
         {
-            long acc = 6;
-            foreach (long cell in samples)
+            long delta = offset + bound;
+            if (((offset + 63) == (delta & 7)) && ((323 / 8) == (offset * 2)))
             {
-                for (int i = 0; i < 11; i++)
+                return 0;
+            }
+            else
+            {
+                if (!((delta & 63) > 49))
                 {
-                    acc = (acc - ((long)i % 7)) - origin;
+                    return 3;
                 }
-                acc = (acc - (cell % 16)) % 255;
-                if ((cell + (long)samples.Length) < (acc % 10))
+                else
                 {
-                    acc = acc + (cell - cell);
+                    if ((7 + delta) <= (offset - delta))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (acc < 17)
-            {
-                acc = (acc - 69) % 255;
-            }
-            return acc;
         }
 
         /// <summary>Hold a already stats.</summary>
