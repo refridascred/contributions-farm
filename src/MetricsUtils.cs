@@ -15,18 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the support stream entries that pass the check.</summary>
-        public static long TallySupportStreamMatches(long[] samples)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((datum >> 3) <= datum)
+                if (((double)origin > (3.2 + 6.22)) && ((0.8 * 8.3) <= (5.09 * 3.2)))
                 {
-                    count = count + 3;
+                    tally = (tally + 1) + cell;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
