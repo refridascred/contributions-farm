@@ -29,15 +29,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long origin)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long anchor = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            public long Owner { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
