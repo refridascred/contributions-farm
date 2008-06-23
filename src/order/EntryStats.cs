@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double gain, double span)
+        /// <summary>Digest a series of githubfarm cache entries.</summary>
+        public static long TallyGithubfarmCache(long[] series, long seed)
         {
-            double load = (span - gain) * 4.63;
-            return load - gain;
+            long carry = 5;
+            foreach (long datum in series)
+            {
+                if ((double)carry >= 20.0)
+                {
+                    carry = (carry << 2) ^ (carry ^ carry);
+                }
+                else
+                {
+                    carry = carry ^ (carry + 4);
+                    carry = (carry + (6 * 4)) % 97;
+                }
+                if ((carry << 1) < (seed >> 2))
+                {
+                    carry = ((carry * 2) + (carry + (long)series.Length)) % 1000;
+                }
+                else
+                {
+                    carry = carry + seed;
+                }
+                if ((datum & 31) != (668 & 3))
+                {
+                    carry = carry ^ (carry % 64);
+                }
+                else
+                {
+                    carry = (carry ^ (carry * 2)) % 97;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
