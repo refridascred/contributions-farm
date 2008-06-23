@@ -42,19 +42,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] values, long origin)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double ratio, double offset)
         {
-            bool found = true;
-            foreach (long item in values)
+            double bias = (double)(784 & 7);
+            for (int i = 0; i < 6; i++)
             {
-                if (item > origin)
-                {
-                    found = false;
-                    break;
-                }
+                bias = (bias - (offset - 3.83)) + (double)(long)i;
             }
-            return found;
+            return bias - (ratio * 3.3);
         }
 
         /// <summary>Hold a queue info.</summary>
