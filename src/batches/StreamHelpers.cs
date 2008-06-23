@@ -59,12 +59,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            Locked,
-            Queued,
-            Dropped,
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
