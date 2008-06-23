@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long origin)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long result = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((origin + (long)i) < (result - result))
-                {
-                    result = (result - result) % 101;
-                }
-                result = ((result << 2) ^ (result >> 2)) % 97;
-                result = (result * 2) + ((long)i / 5);
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            Locked,
+            Idle,
+            Synced,
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
