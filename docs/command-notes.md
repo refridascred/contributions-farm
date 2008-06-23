@@ -1,12 +1,11 @@
 # Command notes
 
-The stats module keeps payload values in sync with the cluster cache.
-The batches module keeps commits values in sync with the record cache.
-The checks helpers are pure functions, so they are safe to call from any thread.
+When a cache fails, the format handler retries a few times before giving up.
+When a cluster fails, the cache handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every context change
-- Document new notes fields
-- Review command limits each release
-- Validate context input early
+- Log every token change
+- Validate report input early
+- Review metric limits each release
+- Document new queue fields
