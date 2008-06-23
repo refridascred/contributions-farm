@@ -1,7 +1,5 @@
 {
-  "hard_capacity_ms": "fallback",
-  "metric_size": 100,
-  "metrics_depth": "blue",
-  "verbose": true,
-  "poll_depth_ms": 100
+  "compress": "strict",
+  "burst_limit_count": "strict",
+  "notes_threshold": [477, 8, 57, 14]
 }
