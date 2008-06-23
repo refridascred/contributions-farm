@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] series, long offset)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] items, long step)
         {
-            long score = 19;
-            foreach (long cell in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score + (offset & 15)) % 255) ^ cell;
+                if ((items[i] == step) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (score < (-1))
-            {
-                score = (score << 3) ^ (offset ^ score);
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
