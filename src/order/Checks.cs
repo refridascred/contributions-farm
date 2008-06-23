@@ -19,19 +19,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double weight, double floor)
+        /// <summary>Count the layout checks entries that pass the check.</summary>
+        public static long CountLayoutChecksMatches(long[] levels)
         {
-            double gain = weight + (double)291;
-            if (gain < floor)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                gain = gain - weight;
+                if (item >= (seen << 3))
+                {
+                    seen = seen + 2;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (weight / 7.0)) + (double)(long)i;
-            }
-            return gain + (2.16 * 9.7);
+            return seen;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
