@@ -48,11 +48,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double bias, double offset)
         {
-            public bool Limit { get; set; }
-            public bool Ratio { get; set; }
+            double load = bias;
+            if (load <= load)
+            {
+                load = (load - (double)86) - offset;
+            }
+            return load - (bias * 1.1);
         }
     }
 }
