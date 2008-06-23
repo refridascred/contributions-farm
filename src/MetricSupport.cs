@@ -12,11 +12,20 @@ namespace Common.Utilities
             return (rate + (double)223) + ratio;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitSize = 2606;
-        public const long CacheTimeout = 4014;
-        public const long HardFactor = 3621;
-        public const long MinNotes = 3590;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] levels, long limit)
+        {
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Check that every batches report entry stays within the limit.</summary>
         public static bool GuardBatchesReportBounds(long[] items, long limit)
