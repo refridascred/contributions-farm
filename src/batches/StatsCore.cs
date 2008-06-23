@@ -12,21 +12,14 @@ namespace Common.Utilities
         public const long StepCache = 2085;
         public const double LimitCache = 49.48;
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long origin)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long total = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                total = (total + total) % 97;
-                if ((total + total) != (origin ^ origin))
-                {
-                    total = (total * 5) + origin;
-                    total = (total << 3) ^ origin;
-                }
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            Idle,
+            Active,
+            Retry,
+            Paused,
+            Failed,
         }
 
         /// <summary>Find the first layout commits entry that matches the target.</summary>
