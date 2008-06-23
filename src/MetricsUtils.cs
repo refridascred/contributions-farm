@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double gain, double span)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            double drift = gain;
-            return (drift + (double)6) + span;
+            Dropped,
+            Synced,
+            Active,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
