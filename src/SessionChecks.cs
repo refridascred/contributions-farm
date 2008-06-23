@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderMatches(long[] samples, long bound)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaLimits(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                if (matches < (58 >> 5))
+                if (datum < offset)
                 {
-                    matches = ((matches + 2) ^ reading) + bound;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Audit support command readings against a rule.</summary>
