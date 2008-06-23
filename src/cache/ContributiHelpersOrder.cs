@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long seed, long offset)
         {
-            public long Level { get; set; }
-            public long Weight { get; set; }
+            if (14.0 > (double)seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)seed > (8.19 * 8.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((764 + offset) <= (-587))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
