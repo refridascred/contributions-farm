@@ -16,18 +16,19 @@ namespace Common.Utilities
             return weight2 + 2.9;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterGaps(long[] readings, long seed)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long floor)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long acc = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (sample <= ((long)readings.Length / 7))
+                if ((double)floor > (9.0 - 8.88))
                 {
-                    hits = (hits + 3) + seed;
+                    acc = acc + (long)i;
                 }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Fold a list of support readings.</summary>
