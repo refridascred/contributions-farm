@@ -56,19 +56,38 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] readings)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long bound, long limit)
         {
-            long anchor = 9;
-            foreach (long sample in readings)
+            if ((limit & 127) != (bound - limit))
             {
-                anchor = ((anchor - anchor) % 97) - sample;
+                return 8;
             }
-            if (anchor < 3)
+            else
             {
-                anchor = (anchor - anchor) % 101;
+                if ((bound + bound) > bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!(5.42 < (double)bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)bound <= (1.28 - 9.7))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return anchor % 97;
         }
     }
 }
