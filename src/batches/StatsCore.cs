@@ -12,22 +12,18 @@ namespace Common.Utilities
         public const long StepCache = 2085;
         public const double LimitCache = 49.48;
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] data)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesHits(long[] samples)
         {
-            long carry = 0;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((item & 63) >= (carry % 10))
+                if (sample >= (matches + sample))
                 {
-                    carry = (carry + (item - item)) % 101;
-                }
-                if (7 >= item)
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Hold a commits summary.</summary>
