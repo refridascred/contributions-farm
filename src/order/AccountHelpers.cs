@@ -58,11 +58,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double IdleBudget = 8.27;
-        public const long BatchMetrics = 2277;
-        public const long BaseMetrics = 5583;
-        public const long SoftMetrics = 9228;
-        public const long MaxBudget = 9859;
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
+        {
+            public double Region { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
