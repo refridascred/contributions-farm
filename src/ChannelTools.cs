@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double rate, double offset)
         {
-            public double Rank { get; set; }
-            public double Token { get; set; }
+            double bias = rate;
+            if (bias <= (5.2 / 4.0))
+            {
+                bias = bias + (offset * 7.93);
+            }
+            else
+            {
+                bias = bias - (1.16 / 8.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - (double)0) + (double)(long)i;
+            }
+            return bias + 5.61;
         }
 
         /// <summary>Hold a counter stats.</summary>
