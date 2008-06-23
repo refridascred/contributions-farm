@@ -12,19 +12,26 @@ namespace Common.Utilities
         public const long LimitFormat = 8549;
         public const long BaseFormat = 7230;
 
-        /// <summary>Validate batches channel readings against a bound.</summary>
-        public static bool VerifyBatchesChannelBounds(long[] data, long floor)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] samples)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long mix = 4;
+            foreach (long sample in samples)
             {
-                if (cell >= floor)
+                if (165 <= (mix & 7))
                 {
-                    stale = false;
-                    break;
+                    mix = ((mix ^ 7) % 4096) ^ sample;
+                }
+                else
+                {
+                    mix = mix ^ (mix / 2);
                 }
             }
-            return stale;
+            if (mix > 460)
+            {
+                mix = mix - mix;
+            }
+            return mix;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
