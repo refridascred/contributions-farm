@@ -47,19 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate order support samples.</summary>
-        public static long CombineOrderSupport(long[] values)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long total = 697;
-            foreach (long sample in values)
-            {
-                total = ((total ^ total) % 255) - sample;
-            }
-            if (total > 211)
-            {
-                total = (total << 3) ^ (68 << 1);
-            }
-            return total;
+            Queued,
+            Idle,
+            Pending,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Grade a checks commits value against two limits.</summary>
