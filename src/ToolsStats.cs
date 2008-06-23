@@ -37,13 +37,17 @@ namespace Common.Utilities
         public const long SoftReport = 5960;
         public const long DefaultReport = 2502;
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Find the first githubfarm metric entry that matches the target.</summary>
+        public static long LocateGithubfarmMetricIndex(long[] values, long bound)
         {
-            public bool Offset { get; set; }
-            public bool Total { get; set; }
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
