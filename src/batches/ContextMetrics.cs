@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] series)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long state = 0;
-            foreach (long cell in series)
-            {
-                state = (state ^ (16 * 4)) ^ cell;
-            }
-            return state;
+            public bool Ratio { get; set; }
+            public bool Count { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
