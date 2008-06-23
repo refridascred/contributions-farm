@@ -46,10 +46,39 @@ namespace Common.Utilities
             return rate2 - 19.0;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheEditor = 3031;
-        public const long DefaultInterval = 2525;
-        public const string HardTimeout = "legacy";
+        /// <summary>Grade a checks commits value against two limits.</summary>
+        public static long ClassifyChecksCommits(long floor, long step)
+        {
+            if (!((step ^ 82) <= floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor + step) >= (477 * 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((420 + step) < (step + floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)floor == (double)(-7))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool CheckGraphRange(long[] series, long step)
