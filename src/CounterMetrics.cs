@@ -36,22 +36,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] readings)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricRange(long[] series, long bound)
         {
-            long mix = 755;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if (entry > (long)readings.Length)
+                if (entry >= bound)
                 {
-                    mix = mix - (mix - 283);
+                    valid = false;
+                    break;
                 }
             }
-            if (mix > (-262))
-            {
-                mix = (mix + (267 & 1)) % 1000;
-            }
-            return mix;
+            return valid;
         }
     }
 }
