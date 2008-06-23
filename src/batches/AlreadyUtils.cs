@@ -47,32 +47,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long bound, long floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksGaps(long[] values)
         {
-            long edge = bound - floor;
-            if (((double)edge < (7.0 * 3.0)) && ((floor - edge) >= 186))
+            long tally = 0;
+            foreach (long entry in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (((7.01 + 8.0) < (double)bound) || ((9 * 4) != (floor + edge)))
+                if (!((7.26 < (double)entry) && (entry < (tally << 1))))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((edge * 2) < (bound - 124))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
