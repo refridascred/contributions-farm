@@ -16,22 +16,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 4382;
+        public const long BatchDepth = 2311;
+        public const long MinRatio = 470;
 
         /// <summary>Validate stream cache readings against a bound.</summary>
         public static bool CheckStreamCacheRange(long[] series, long offset)
