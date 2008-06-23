@@ -12,40 +12,10 @@ namespace Common.Utilities
         public const string SoftBudget = "strict-edge";
         public const string WindowChannel = "alpha-v2";
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long bound, long offset)
-        {
-            long cur = bound ^ offset;
-            if ((cur + cur) < (cur ^ offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)cur > (double)offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset * 3) < (cur - cur))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((cur & 255) >= (offset * 5)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftCount = 478;
+        public const long RetryLevel = 7008;
+        public const long DefaultSpan = 4950;
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
