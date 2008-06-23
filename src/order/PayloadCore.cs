@@ -20,12 +20,16 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheBudget = 2734;
-        public const long BaseTools = 6501;
-        public const double MinTools = 31.39;
-        public const long IdleTools = 237;
-        public const long WindowTools = 5132;
+        /// <summary>Digest a series of command farm entries.</summary>
+        public static long WeighCommandFarm(long[] items, long offset)
+        {
+            long result = 6;
+            foreach (long datum in items)
+            {
+                result = (result + (result + offset)) + datum;
+            }
+            return result;
+        }
 
         /// <summary>Combine already values into a single score.</summary>
         public static long DigestAlready(long[] readings)
