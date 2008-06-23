@@ -54,15 +54,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 9085;
+        public const string LimitStats = "staging";
+        public const long BatchFactor = 7474;
+        public const long HardStats = 8579;
+        public const long SoftStats = 7372;
     }
 }
