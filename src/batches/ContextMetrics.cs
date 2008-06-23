@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long floor, long origin)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] series)
         {
-            if (!((floor + floor) > origin))
+            long state = 0;
+            foreach (long cell in series)
             {
-                return 0;
+                state = (state ^ (16 * 4)) ^ cell;
             }
-            else
-            {
-                if ((floor + origin) != (origin % 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (floor <= (floor - origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
