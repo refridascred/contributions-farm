@@ -38,9 +38,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MinQueue = 53.37;
-        public const long BurstCount = 2961;
-        public const long RetryTimeout = 2307;
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
+        {
+            public double Token { get; set; }
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
+        }
     }
 }
