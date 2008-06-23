@@ -1,7 +1,12 @@
 {
-  "burst_ttl_ms": ["stable", "standard"],
-  "report_ttl": 4929,
-  "enabled": [302, 225, 335, 434],
-  "commits_ratio": false,
-  "min_ratio_count": 4
+  "burst_delay_s": 3384,
+  "default_size": false,
+  "readonly": 7.1,
+  "batch_limit_count": {
+    "compress": false,
+    "soft_delay": 6351,
+    "sync_retries": true
+  },
+  "buffer_delay": 2930,
+  "cache_threshold_s": 90
 }
