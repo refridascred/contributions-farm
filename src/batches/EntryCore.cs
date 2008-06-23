@@ -38,12 +38,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
+            Queued,
+            New,
             Retry,
-            Stale,
-            Locked,
         }
 
         /// <summary>Describe the session phase values.</summary>
