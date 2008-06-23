@@ -59,10 +59,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MinRatio = 57.37;
-        public const string BaseSpan = "alpha";
-        public const long CacheDepth = 565;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 9471;
+        public const long HardSpan = 3115;
+        public const string LimitGithubfarm = "staging-v2";
 
         /// <summary>Measure how many batches format samples are out of range.</summary>
         public static long AuditBatchesFormatGaps(long[] levels, long seed)
