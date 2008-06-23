@@ -37,21 +37,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of editor metric readings.</summary>
-        public static long OverlapEditorMetricCount(long[] items)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyMatches(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((hits >> 5) > (cell * 2))
                 {
-                    if ((items[i] - items[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Match up farm samples.</summary>
