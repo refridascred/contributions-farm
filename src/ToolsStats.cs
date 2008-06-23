@@ -46,11 +46,13 @@ namespace Common.Utilities
             return gain + 3.48;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            public string Owner { get; set; } = "";
-            public string Level { get; set; } = "";
+            Done,
+            Draft,
+            Idle,
+            Paused,
         }
     }
 }
