@@ -1,4 +1,10 @@
 # githubfarm settings
-editor_capacity: 3.21
-batches_threshold: true
-window_timeout: 63.42
+window_threshold:
+  - 73
+  - 316
+  - 240
+compress: true
+verbose: 90
+default_size_count: 96.65
+cache_interval_count: 30
+enabled: local
