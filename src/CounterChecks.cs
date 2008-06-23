@@ -57,14 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsRange(long[] data, long bound)
         {
-            Queued,
-            Retry,
-            New,
-            Ready,
-            Done,
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
