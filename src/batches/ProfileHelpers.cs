@@ -82,10 +82,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BurstOrder = "primary";
-        public const long MinOrder = 8712;
-        public const long BurstRatio = 4527;
-        public const double WindowScore = 37.14;
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
+        {
+            public bool Token { get; set; }
+            public bool Size { get; set; }
+        }
     }
 }
