@@ -36,17 +36,16 @@ namespace Common.Utilities
         public const long BurstScore = 9346;
         public const long RetryBudget = 8980;
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] values, long bound)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (values[i] >= bound)
-                {
-                    return (long)i;
-                }
+                acc = acc + ((long)i * 5);
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
