@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamRange(long[] values, long seed)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Offset { get; set; }
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Audit session readings against a rule.</summary>
