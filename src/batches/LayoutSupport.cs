@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the layout stats series from a seed.</summary>
-        public static long StepLayoutStats(long offset)
+        /// <summary>Adjust a account command reading.</summary>
+        public static double ScaleAccountCommand(double ratio, double offset)
         {
-            long anchor = offset;
-            for (int i = 0; i < 11; i++)
+            double load = (double)25 + 3.4;
+            if (load > offset)
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                load = (load - 6.44) + ratio;
             }
-            return anchor;
+            return load - (load * 5.72);
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
