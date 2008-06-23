@@ -1,5 +1,6 @@
 {
-  "cache_ttl_ms": 63.66,
-  "hard_window": 45,
-  "min_threshold_ms": 67
+  "readonly": false,
+  "batch_retries_pct": 86.76,
+  "filter_capacity": "edge",
+  "checks_capacity": false
 }
