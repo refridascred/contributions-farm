@@ -1,16 +1,29 @@
 # support settings
-filter_limit: 528
-strict: 39
-cache_limit: true
-order_timeout: local
-command_limit:
-  buffer_delay: 100
-  retry_delay_ms:
-    default_interval_pct: blue
-    idle_capacity_count:
-      - 370
-      - 284
-      - 116
-    burst_capacity_pct: true
-  layout_interval: 7567
-layout_limit: 7807
+compress:
+  - staging
+  - staging
+  - green
+enabled:
+  default_window_pct:
+    - standard
+    - open
+    - open
+    - strict
+  default_window: 14
+  verbose: 9614
+idle_limit_s: green
+schema_window: latest
+retry_capacity:
+  soft_limit: 5313
+  warm_retries_s: false
+  counter_window: 100
+  default_size:
+    - latest
+    - open
+    - strict
+  cache_retries: 63
+sync_size_count:
+  - 404
+  - 50
+  - 51
+  - 287
