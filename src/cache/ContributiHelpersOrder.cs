@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            Ready,
-            Queued,
-            Dropped,
+            public long Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
