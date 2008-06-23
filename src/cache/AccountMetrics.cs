@@ -84,12 +84,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long seed)
         {
-            New,
-            Locked,
-            Failed,
+            long sum = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
