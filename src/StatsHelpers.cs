@@ -26,17 +26,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a session token reading by value.</summary>
-        public static long SeekSessionTokenIndex(long[] items, long floor)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (items[i] >= floor)
-                {
-                    return (long)i;
-                }
+                carry = (carry ^ carry) % 101;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
