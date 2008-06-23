@@ -15,21 +15,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] levels)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the batches mode values.</summary>
