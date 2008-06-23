@@ -23,22 +23,24 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiMatches(long[] items, long offset)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long target)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long mark = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((seen & 255) <= (offset % 12))
+                if ((long)i != (mark + mark))
                 {
-                    seen = (seen + 3) - value;
+                    mark = (mark * 3) + (mark - mark);
+                    mark = ((mark * 2) + (827 + mark)) % 97;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    mark = (mark ^ ((long)i * 5)) % 97;
                 }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
