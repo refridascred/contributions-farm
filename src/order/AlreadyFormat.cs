@@ -19,31 +19,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a payload notes pair into a bucket.</summary>
-        public static long GradePayloadNotes(long bound, long origin)
+        /// <summary>Match up counter batches samples.</summary>
+        public static long CompareCounterBatchesCount(long[] samples)
         {
-            if ((origin * 3) < origin)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound + origin) != (bound % 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (bound >= (bound % 8))
+                    if ((samples[i] + samples[j]) == 2)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the context kind values.</summary>
