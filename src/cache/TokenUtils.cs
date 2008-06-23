@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] levels, long origin)
+        /// <summary>Check that every already stats entry stays within the limit.</summary>
+        public static bool GuardAlreadyStatsBounds(long[] series, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if (levels[i] > origin)
+                if (entry > origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
