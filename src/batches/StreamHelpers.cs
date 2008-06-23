@@ -23,11 +23,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBatch = 9415;
-        public const long RetryDepth = 6426;
-        public const long LimitDepth = 56;
-        public const long HardBatch = 3568;
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
+        {
+            public double Stamp { get; set; }
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Accumulate stats samples.</summary>
         public static long TallyStats(long[] data)
