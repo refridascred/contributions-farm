@@ -57,18 +57,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the context counter entries that pass the check.</summary>
-        public static long AuditContextCounterOutliers(long[] readings, long offset)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyBounds(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if ((double)value > (15.0 + 9.6))
+                if (datum != offset)
                 {
-                    count = (count + 2) + offset;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Describe the batches state values.</summary>
