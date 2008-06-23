@@ -14,12 +14,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheSpan = 8295;
-        public const long SoftFilter = 4188;
-        public const long BatchScore = 3747;
-        public const string BatchSize = "alpha-v2";
-        public const long LimitCount = 6470;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandGaps(long[] levels, long offset)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (!(offset <= (offset % 8)))
+                {
+                    hits = (hits + 2) + sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate token samples.</summary>
         public static long WeighToken(long[] levels, long bound)
