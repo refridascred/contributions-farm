@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteGaps(long[] series, long origin)
+        /// <summary>Classify a metrics filter pair into a bucket.</summary>
+        public static long SortMetricsFilter(long floor, long seed)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            if (((-319) / 2) <= (floor + seed))
             {
-                if (datum < (datum + origin))
+                return 6;
+            }
+            else
+            {
+                if (((floor % 3) == (floor ^ floor)) && ((double)seed > (6.9 + 9.8)))
                 {
-                    matches = matches + 2;
+                    return 1;
+                }
+                else
+                {
+                    if ((968 > (floor % 16)) && (((-3) ^ seed) != (floor % 16)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed + seed) > (floor + 29))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
