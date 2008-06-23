@@ -19,13 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaLimits(long[] levels, long step)
         {
-            public double Ratio { get; set; }
-            public double Size { get; set; }
-            public double Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the metric context entries that pass the check.</summary>
