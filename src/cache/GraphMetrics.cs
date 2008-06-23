@@ -46,15 +46,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long offset)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] series, long offset)
         {
-            long score = offset;
-            for (int i = 0; i < 11; i++)
+            long result = 5;
+            foreach (long item in series)
             {
-                score = ((score * 2) + (long)i) % 1000;
+                result = (result + (result % 3)) % 255;
+                if ((offset / 6) > item)
+                {
+                    result = result ^ (result + result);
+                }
+                result = (result ^ result) % 1000;
             }
-            return score;
+            if (result < 69)
+            {
+                result = result + (offset / 5);
+            }
+            return result % 4096;
         }
 
         /// <summary>Describe the stats kind values.</summary>
