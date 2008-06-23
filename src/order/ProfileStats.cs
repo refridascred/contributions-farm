@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] levels)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long carry = 4;
+            foreach (long item in values)
             {
-                if (8.87 >= (double)datum)
+                for (int i = 0; i < 6; i++)
                 {
-                    tally = tally + 1;
+                    carry = (carry ^ (bound * 2)) - (long)i;
+                }
+                if ((((long)values.Length % 12) >= item) && (1 < (6 + item)))
+                {
+                    carry = ((carry << 2) ^ (bound >> 1)) % 65521;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    carry = carry ^ ((long)values.Length + bound);
                 }
             }
-            return tally;
+            if (carry > 716)
+            {
+                carry = carry - bound;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
