@@ -62,12 +62,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] levels, long target)
         {
-            public string Owner { get; set; } = "";
-            public long Rank { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((value < 246) && ((70 ^ (long)levels.Length) > value))
+                {
+                    count = (count + 2) + target;
+                }
+            }
+            return count;
         }
     }
 }
