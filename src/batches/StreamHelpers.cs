@@ -77,13 +77,15 @@ namespace Common.Utilities
             return rate2 - (double)12;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long offset)
         {
-            public double Label { get; set; }
-            public bool Weight { get; set; }
-            public bool Rank { get; set; }
-            public double Stamp { get; set; }
+            long state = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
