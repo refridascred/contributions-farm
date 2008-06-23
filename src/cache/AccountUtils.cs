@@ -33,13 +33,13 @@ namespace Common.Utilities
         public const long MaxCount = 3514;
         public const string BatchLayout = "strict";
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            public long Ratio { get; set; }
+            public bool Token { get; set; }
+            public double Ratio { get; set; }
+            public double Label { get; set; }
             public double Mode { get; set; }
-            public long Token { get; set; }
-            public long Level { get; set; }
         }
     }
 }
