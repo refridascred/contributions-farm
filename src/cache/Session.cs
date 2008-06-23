@@ -18,11 +18,21 @@ namespace Common.Utilities
         public const long WindowContext = 5994;
         public const string DefaultContext = "standard-v2";
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double rate, double span)
+        /// <summary>Match up token payload samples.</summary>
+        public static long OverlapTokenPayloadCount(long[] values)
         {
-            double mean = (double)(682 >> 2);
-            return ((mean - (double)5) + rate) + span;
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next profile value.</summary>
