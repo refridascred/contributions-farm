@@ -13,21 +13,20 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] levels)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                result = ((result << 2) ^ bound) % 255;
+                if (((-64) * 4) >= ((long)i + 0))
                 {
-                    if ((levels[i] + levels[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result ^ (long)i) % 255;
                 }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Describe the cache class values.</summary>
