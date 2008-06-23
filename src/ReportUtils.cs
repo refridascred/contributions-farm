@@ -18,14 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Check that every format command entry stays within the limit.</summary>
+        public static bool CheckFormatCommandRange(long[] samples, long seed)
         {
-            Stale,
-            Dropped,
-            Paused,
-            Ready,
-            Idle,
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a filter record.</summary>
