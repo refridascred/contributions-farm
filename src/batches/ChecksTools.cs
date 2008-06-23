@@ -34,20 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double weight, double offset)
-        {
-            double gain = (double)(94 + 15);
-            if (gain < (8.33 + weight))
-            {
-                gain = (gain - (gain - weight)) - offset;
-            }
-            else
-            {
-                gain = gain - gain;
-            }
-            return gain - (double)7;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultTimeout = 1386;
+        public const double BaseDepth = 94.62;
+        public const double BurstBatch = 33.09;
+        public const long MaxDepth = 9494;
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
