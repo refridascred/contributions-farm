@@ -1,5 +1,7 @@
 # entry settings
-max_interval_ms: primary
-hard_delay_s: 46
-base_ratio_ms: 250
-account_limit: 64.25
+warm_timeout_s: 75.16
+support_size:
+  - eu-west
+  - eu-west
+  - blue
+hard_delay: 32.55
