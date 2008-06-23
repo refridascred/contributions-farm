@@ -44,13 +44,33 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long floor)
         {
-            Retry,
-            Dropped,
-            Closed,
-            Queued,
+            long carry = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                if (((carry - floor) == (floor + (long)i)) && (((-861) << 1) < (floor + carry)))
+                {
+                    carry = ((carry << 3) ^ (carry + carry)) % 1000;
+                }
+                else
+                {
+                    carry = (carry ^ (5 >> 4)) % 4096;
+                }
+                if (!((floor & 255) >= ((long)i ^ carry)))
+                {
+                    carry = (carry * 3) + (long)i;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (carry + floor)) % 1000;
+                    carry = (carry ^ carry) % 65521;
+                }
+                carry = (carry ^ carry) % 1000;
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Blend two farm measurements.</summary>
