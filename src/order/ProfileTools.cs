@@ -32,21 +32,17 @@ namespace Common.Utilities
         public const string StepSize = "open";
         public const long SoftMetrics = 4341;
 
-        /// <summary>Match up cache format samples.</summary>
-        public static long OverlapCacheFormatCount(long[] values)
+        /// <summary>Look up the position of a queue account sample.</summary>
+        public static long LookupQueueAccountIndex(long[] series, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((series[i] < target) && ((series[i] % 3) != 0))
                 {
-                    if ((values[i] - values[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
