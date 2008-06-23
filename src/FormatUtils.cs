@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelLimits(long[] values, long limit)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileHits(long[] readings, long bound)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (entry < limit)
+                if ((double)(long)readings.Length != (double)771)
                 {
-                    stale = false;
-                    break;
+                    hits = ((hits + 3) + item) + bound;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
