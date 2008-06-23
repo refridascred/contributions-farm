@@ -1,11 +1,6 @@
-id,label,active,region
-1,legacy,7,75.73
-2,73.51,98.62,426
-3,624,864,52.26
-4,127,318,743
-5,blue,91.62,edge
-6,57.55,strict,96.19
-7,legacy,791,30.68
-8,52.43,standard,62.17
-9,green,19.89,47.48
-10,706,4.79,520
+id,count,ratio
+1,86.07,edge
+2,578,eu-west
+3,970,303
+4,cached,local
+5,open,80.49
