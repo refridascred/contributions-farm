@@ -77,15 +77,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long seed)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long bound)
         {
-            long sum = seed;
-            for (int i = 0; i < 11; i++)
+            long anchor = bound;
+            for (int i = 0; i < 16; i++)
             {
-                sum = ((sum * 4) + (long)i) % 1000;
+                if (((long)i >> 3) > (701 + anchor))
+                {
+                    anchor = (anchor ^ bound) % 65521;
+                    anchor = anchor ^ (921 & 1);
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return sum;
+            return anchor;
         }
     }
 }
