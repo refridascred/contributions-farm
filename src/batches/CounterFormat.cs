@@ -38,22 +38,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsMatches(long[] items, long limit)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterRange(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if (datum >= (limit / 3))
+                if (item >= floor)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
