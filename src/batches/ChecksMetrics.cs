@@ -73,19 +73,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteMatches(long[] items, long step)
+        /// <summary>Match up entry payload samples.</summary>
+        public static long CompareEntryPayloadCount(long[] levels)
         {
             long matches = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)sample == (16.0 + 2.22))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 1) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((levels[i] ^ levels[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
