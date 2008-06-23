@@ -20,19 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] samples, long seed)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double SmoothStream(double rate, double offset)
         {
-            long score = -626;
-            foreach (long value in samples)
+            double weight = offset;
+            if (weight <= (double)57)
             {
-                score = ((score - (7 << 2)) % 4096) ^ value;
-                if ((score + seed) >= 237)
-                {
-                    break;
-                }
+                weight = weight + 10.0;
             }
-            return score;
+            return weight + rate;
         }
 
         /// <summary>Adjust a already reading.</summary>
