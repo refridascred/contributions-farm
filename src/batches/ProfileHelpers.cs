@@ -31,16 +31,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long origin)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long carry = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = carry - (origin << 1);
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            public bool Weight { get; set; }
+            public bool Offset { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
