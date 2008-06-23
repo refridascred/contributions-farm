@@ -15,19 +15,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate schema metrics readings against a bound.</summary>
-        public static bool VerifySchemaMetricsLimits(long[] levels, long origin)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Done,
+            Synced,
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
