@@ -27,22 +27,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] items, long target)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long acc = 2;
-            foreach (long value in items)
-            {
-                if (((long)items.Length ^ target) < 87)
-                {
-                    acc = ((acc + target) % 97) ^ value;
-                }
-            }
-            if (acc > 745)
-            {
-                acc = (acc ^ (target << 3)) % 65521;
-            }
-            return acc;
+            Failed,
+            Ready,
+            Closed,
+            Pending,
         }
 
         /// <summary>Describe the filter class values.</summary>
