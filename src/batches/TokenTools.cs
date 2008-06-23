@@ -32,15 +32,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double gain, double span)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long floor)
         {
-            double drift = gain;
-            if (drift > gain)
+            long score = floor;
+            for (int i = 0; i < 19; i++)
             {
-                drift = drift - (drift / 7.0);
+                score = ((score << 3) ^ ((long)i + score)) % 97;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return drift - span;
+            return score;
         }
     }
 }
