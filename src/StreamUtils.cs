@@ -49,19 +49,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchBounds(long[] items, long target)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long bound)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long mix = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (sample != target)
-                {
-                    found = false;
-                    break;
-                }
+                mix = (mix - (bound & 7)) % 255;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Accumulate counter samples.</summary>
