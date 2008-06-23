@@ -24,14 +24,17 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Look up the position of a booking sample.</summary>
+        public static long SeekBookingIndex(long[] samples, long target)
         {
-            Closed,
-            Idle,
-            Queued,
-            Dropped,
-            Synced,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a entry cluster reading by value.</summary>
