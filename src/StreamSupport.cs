@@ -12,26 +12,17 @@ namespace Common.Utilities
         public const double MaxCount = 91.5;
         public const string HardCluster = "strict-1";
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] values, long floor)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] data, long bound)
         {
-            long state = 6;
-            foreach (long reading in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading % 24) == (422 + floor))
+                if ((data[i] < bound) && ((data[i] % 3) == 0))
                 {
-                    state = state ^ (state + floor);
-                }
-                else
-                {
-                    state = (state - (floor + state)) % 4096;
+                    return (long)i;
                 }
             }
-            if (state > (-38))
-            {
-                state = (state ^ (state % 12)) % 1000;
-            }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
