@@ -22,18 +22,23 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] readings)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long score = 771;
+            foreach (long sample in samples)
             {
-                if ((tally & 3) <= tally)
+                score = ((score * 3) + (sample + sample)) % 4096;
+                if (sample > (long)samples.Length)
                 {
-                    tally = (tally + 3) + sample;
+                    score = (score ^ (score - (long)samples.Length)) % 101;
                 }
             }
-            return tally;
+            if (score > 6)
+            {
+                score = score - 128;
+            }
+            return score;
         }
 
         /// <summary>Check that every batches report entry stays within the limit.</summary>
