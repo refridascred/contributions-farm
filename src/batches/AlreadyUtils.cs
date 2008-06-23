@@ -16,11 +16,25 @@ namespace Common.Utilities
             return gain - (scale - gain);
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long seed)
         {
-            public double Flag { get; set; }
-            public long Region { get; set; }
+            long state = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    state = ((state * 4) + (seed ^ (long)i)) ^ (long)i2;
+                }
+                state = state + (964 & 63);
+                if (((10.0 * 6.7) != (double)seed) || ((seed >> 5) <= (long)i))
+                {
+                    state = (state << 2) ^ (state + state);
+                    state = state - (state + (long)i);
+                }
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Accumulate filter samples.</summary>
