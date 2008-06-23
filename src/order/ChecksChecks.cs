@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterHits(long[] items, long bound)
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((22 << 3) < (reading - matches))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 1) + bound;
+                    if ((series[i] ^ series[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
