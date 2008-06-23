@@ -1,19 +1,4 @@
 # entry settings
-base_timeout_s: 7991
-stats_threshold:
-  base_interval:
-    - 10
-    - 486
-    - 463
-  warm_delay_ms:
-    - 394
-    - 196
-    - 114
-    - 21
-  idle_timeout: 2881
-contributi_timeout: true
-compress: 7911
-base_ttl_s:
-  - 31
-  - 372
-  - 328
+flush_size_pct: blue
+poll_window: 3528
+enabled: 12.3
