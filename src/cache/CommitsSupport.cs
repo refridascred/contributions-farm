@@ -22,19 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of contributi metrics readings.</summary>
-        public static long TotalContributiMetrics(long[] items)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] samples)
         {
-            long anchor = -999;
-            foreach (long entry in items)
+            long state = 759;
+            foreach (long entry in samples)
             {
-                anchor = (anchor - entry) % 97;
+                if ((double)entry > 0.73)
+                {
+                    state = state + (58 - state);
+                }
             }
-            if (anchor > 0)
-            {
-                anchor = anchor ^ (8 + anchor);
-            }
-            return anchor;
+            return state % 97;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
