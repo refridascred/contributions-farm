@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFarm = 6502;
-        public const double LimitCount = 20.09;
-        public const long HardFarm = 3628;
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
+        {
+            public long Label { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
