@@ -19,39 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long floor, long origin)
-        {
-            if (floor > (262 / 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor << 3) < (floor & 255))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin >> 2) >= (origin >> 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor % 10) != (floor >> 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double DefaultDepth = 14.46;
+        public const long DefaultCache = 1801;
+        public const double IdleCache = 95.85;
+        public const double WindowCache = 23.48;
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long AuditToolsOutliers(long[] values, long origin)
