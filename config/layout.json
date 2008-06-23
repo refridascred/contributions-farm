@@ -1,6 +1,6 @@
 {
-  "enabled": ["staging", "legacy"],
-  "batch_limit_count": ["primary", "open"],
-  "metrics_ttl": 3179,
-  "batch_capacity": 52.65
+  "base_threshold_pct": 66,
+  "hard_timeout_pct": true,
+  "burst_window_s": "strict",
+  "sync_threshold": 9824
 }
