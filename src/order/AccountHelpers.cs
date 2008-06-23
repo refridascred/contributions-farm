@@ -45,20 +45,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a layout counter reading.</summary>
-        public static double AdjustLayoutCounter(double rate, double bias)
-        {
-            double gain = bias;
-            if (gain > (rate - bias))
-            {
-                gain = gain - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + rate) + (double)(long)i;
-            }
-            return gain - bias;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitSize = 9118;
+        public const long BaseCluster = 4635;
+        public const long SoftSize = 2724;
+        public const double BatchScore = 48.12;
+        public const string WindowSpan = "cached-edge";
 
         /// <summary>Validate window token readings against a bound.</summary>
         public static bool GuardWindowTokenBounds(long[] items, long target)
