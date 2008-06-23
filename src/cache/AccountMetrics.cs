@@ -40,18 +40,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatOutliers(long[] levels)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (seen > 9)
-                {
-                    seen = (seen + 1) ^ reading;
-                }
-            }
-            return seen;
+            public double Limit { get; set; }
+            public double Size { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Combine record values into a single score.</summary>
