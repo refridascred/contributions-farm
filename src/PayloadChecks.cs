@@ -26,12 +26,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] readings, long bound)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] readings, long origin)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if ((readings[i] > bound) && ((readings[i] % 3) == 0))
+                if (readings[i] < origin)
                 {
                     return (long)i;
                 }
