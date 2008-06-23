@@ -56,11 +56,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsOutliers(long[] values, long origin)
         {
-            public long Stamp { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((reading << 1) <= seen)
+                {
+                    seen = (seen + 1) - origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
