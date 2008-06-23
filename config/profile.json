@@ -1,16 +1,5 @@
 {
-  "soft_interval_pct": {
-    "notes_ratio": true,
-    "sync_limit_pct": {
-      "base_capacity": true,
-      "token_retries": 29.89,
-      "cache_size_ms": 85.53,
-      "graph_depth": 2.07,
-      "enabled": 7488
-    },
-    "soft_delay": "green",
-    "verbose": "staging"
-  },
-  "poll_timeout_ms": 30,
-  "dry_run": false
+  "compress": false,
+  "hard_ratio_count": 40.99,
+  "base_delay_ms": 93.29
 }
