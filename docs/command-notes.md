@@ -1,11 +1,11 @@
 # Command notes
 
-When a cache fails, the format handler retries a few times before giving up.
-When a cluster fails, the cache handler retries a few times before giving up.
+Use metrics settings to tune how often farm data is refreshed.
+The window module keeps record values in sync with the queue cache.
+Defaults for queue live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every token change
-- Validate report input early
-- Review metric limits each release
-- Document new queue fields
+- Prefer report defaults
+- Document new filter fields
+- Validate schema input early
