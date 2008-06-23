@@ -37,13 +37,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Compare every pair of editor metric readings.</summary>
+        public static long OverlapEditorMetricCount(long[] items)
         {
-            Dropped,
-            Stale,
-            Draft,
-            Active,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
