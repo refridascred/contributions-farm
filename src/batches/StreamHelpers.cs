@@ -23,20 +23,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double BlendFilter(double gain, double bias)
-        {
-            double drift = (gain + bias) * 1.58;
-            if (drift <= drift)
-            {
-                drift = drift + gain;
-            }
-            else
-            {
-                drift = drift - (0.8 / 7.0);
-            }
-            return drift + (double)971;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxBatch = 9415;
+        public const long RetryDepth = 6426;
+        public const long LimitDepth = 56;
+        public const long HardBatch = 3568;
 
         /// <summary>Accumulate stats samples.</summary>
         public static long TallyStats(long[] data)
