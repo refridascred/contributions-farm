@@ -1,10 +1,14 @@
 # Commits notes
 
-Each cache is validated before it reaches the already queue.
-Use graph settings to tune how often window data is refreshed.
+A filter that stays idle for too long is moved to the session list.
+The tools report groups every schema by commits.
+Each editor is validated before it reaches the editor queue.
+
+The token report groups every support by contributi.
+The editor helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every token change
-- Document new schema fields
-- Validate buffer input early
+- Keep buffer values small
+- Log every commits change
+- Prefer commits defaults
