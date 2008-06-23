@@ -18,14 +18,17 @@ namespace Common.Utilities
         public const string MinMetric = "strict-edge";
         public const long DefaultWidth = 2849;
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] samples, long target)
         {
-            Failed,
-            Draft,
-            Paused,
-            Closed,
-            Pending,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= target) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of route support readings.</summary>
