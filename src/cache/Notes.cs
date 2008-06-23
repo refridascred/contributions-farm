@@ -48,12 +48,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 6207;
-        public const long IdleBudget = 8957;
-        public const double IdleScore = 23.5;
-        public const long CacheSpan = 3378;
-        public const long BatchSpan = 2590;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((hits <= (hits + 39)) && ((double)item <= (4.0 + 10.0)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
