@@ -17,11 +17,20 @@ namespace Common.Utilities
         public const string MinMetric = "strict-edge";
         public const long DefaultWidth = 2849;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 3156;
-        public const long CacheReport = 7491;
-        public const long IdleFactor = 6908;
-        public const double WindowReport = 31.42;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountRange(long[] values, long origin)
+        {
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Compare every pair of route support readings.</summary>
         public static long MatchRouteSupportCount(long[] series)
