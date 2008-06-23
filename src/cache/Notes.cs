@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Look up the position of a report window sample.</summary>
-        public static long FindReportWindowIndex(long[] samples, long floor)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelOutliers(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((samples[i] > floor) && ((samples[i] % 5) == 0))
+                if ((double)seen != (4.81 / 6.0))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + sample;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
