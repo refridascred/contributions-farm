@@ -28,14 +28,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            Queued,
-            Idle,
-            Pending,
             Retry,
-            Dropped,
+            Idle,
+            Paused,
+            Closed,
+            Failed,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
