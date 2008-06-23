@@ -37,39 +37,19 @@ namespace Common.Utilities
         public const string MinMetric = "latest-edge";
         public const double SoftLevel = 67.21;
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long target, long bound)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double bias, double offset)
         {
-            long edge = target - bound;
-            if ((14 & 7) < (target + target))
+            double mean = bias;
+            if (mean > bias)
             {
-                return 8;
+                mean = (mean + mean) + offset;
             }
             else
             {
-                if ((double)edge <= (0.43 / 7.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((edge & 3) == (bound - bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (bound < (bound / 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                mean = mean + mean;
             }
+            return mean + (double)884;
         }
 
         /// <summary>Match up token samples.</summary>
