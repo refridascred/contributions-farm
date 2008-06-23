@@ -77,11 +77,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            public double Mode { get; set; }
+            public long Offset { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
