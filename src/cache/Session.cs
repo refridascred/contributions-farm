@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == seed) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxCluster = 9957;
+        public const long RetryBudget = 2916;
+        public const long StepCount = 4024;
+        public const long LimitCluster = 7159;
+        public const long LimitScore = 5835;
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long SortTools(long target, long origin)
