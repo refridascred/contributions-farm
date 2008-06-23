@@ -20,19 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsLimits(long[] items, long origin)
+        /// <summary>Look up the position of a tools cluster sample.</summary>
+        public static long LookupToolsClusterIndex(long[] readings, long floor)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry > origin)
+                if ((readings[i] <= floor) && ((readings[i] % 3) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Hold a graph info.</summary>
