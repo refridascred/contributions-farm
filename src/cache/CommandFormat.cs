@@ -36,22 +36,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchOutliers(long[] data, long offset)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!!(offset >= (value / 8)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((readings[i] + readings[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
