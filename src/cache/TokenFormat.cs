@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long floor, long bound)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] levels, long bound)
         {
-            long delta = floor - bound;
-            if ((446 & 255) >= (delta / 9))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (delta <= (floor + floor))
+                if (levels[i] > bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two report measurements.</summary>
