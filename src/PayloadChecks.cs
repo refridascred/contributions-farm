@@ -16,15 +16,13 @@ namespace Common.Utilities
             return ratio2 + (double)14;
         }
 
-        /// <summary>Roll a githubfarm support counter forward.</summary>
-        public static long RollGithubfarmSupport(long target)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long acc = target;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            Queued,
+            New,
+            Synced,
+            Paused,
         }
 
         /// <summary>Locate a stream reading by value.</summary>
