@@ -60,12 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesMatches(long[] series, long offset)
         {
-            public bool Rank { get; set; }
-            public double Total { get; set; }
-            public double Stamp { get; set; }
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((cell & 7) < (10 - offset))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next stats value.</summary>
