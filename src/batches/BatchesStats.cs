@@ -37,18 +37,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsOutliers(long[] values, long origin)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (((item + 40) <= (item << 2)) || ((5 / 2) < origin))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Total { get; set; } = "";
+            public double Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a filter snapshot.</summary>
