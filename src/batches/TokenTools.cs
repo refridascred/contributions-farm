@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every window route entry stays within the limit.</summary>
-        public static bool GuardWindowRouteBounds(long[] levels, long bound)
-        {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string DefaultLevel = "primary";
+        public const double SoftTimeout = 32.94;
+        public const double SoftFactor = 87.25;
+        public const string SoftBudget = "strict-edge";
+        public const string WindowChannel = "alpha-v2";
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long ClassifyToken(long bound, long offset)
