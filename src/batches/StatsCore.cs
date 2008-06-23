@@ -58,13 +58,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            Failed,
-            Draft,
-            Stale,
+            Idle,
+            Done,
+            Ready,
             Dropped,
+            Synced,
         }
     }
 }
