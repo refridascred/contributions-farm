@@ -35,17 +35,11 @@ namespace Common.Utilities
         public const long IdleRoute = 6732;
         public const double BaseRoute = 90.11;
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] readings, long floor)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= floor) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Owner { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
