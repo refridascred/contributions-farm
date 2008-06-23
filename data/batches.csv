@@ -1,6 +1,8 @@
-id,level,ratio,label,score
-1,fallback,927,47.65,241
-2,34.52,307,latest,8.56
-3,open,900,69,59.48
-4,55.32,cached,651,4.25
-5,8.53,960,857,12.93
+id,token
+1,edge
+2,29.67
+3,latest
+4,803
+5,61.99
+6,strict
+7,latest
