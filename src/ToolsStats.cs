@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftRatio = 2708;
-        public const long WindowTimeout = 7926;
-        public const long BaseFactor = 4413;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepCount = 1367;
+        public const long CacheInterval = 8373;
+        public const string SoftLayout = "stable-edge";
+        public const double BaseTimeout = 62.78;
 
         /// <summary>Hold a profile info.</summary>
         public sealed class ProfileInfo
