@@ -1,9 +1,17 @@
 # support settings
-retry_interval_pct: 44
-batch_window: 71.06
-buffer_threshold: 29.11
-max_window_count:
-  - cached
-  - standard
-  - eu-west
-retry_timeout_ms: latest
+min_limit_count: 63
+sync_interval:
+  route_size: standard
+  max_interval_ms:
+    soft_interval_s: stable
+    poll_size_ms: staging
+    batch_ttl: true
+    batch_limit_count: latest
+    enabled: primary
+    compress:
+      - 187
+      - 440
+  flush_timeout_s: 45
+  persist: 69
+burst_limit_s: false
+compress: 250
