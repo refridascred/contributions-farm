@@ -32,19 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long floor)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long score = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((score + floor) < ((long)i << 1))
-                {
-                    break;
-                }
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            public double Level { get; set; }
+            public bool Flag { get; set; }
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
