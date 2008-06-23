@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many batches report samples are out of range.</summary>
-        public static long MeasureBatchesReportHits(long[] data)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long acc = 5;
+            foreach (long cell in series)
             {
-                if (sample <= matches)
+                acc = acc + cell;
+                for (int i = 0; i < 9; i++)
                 {
-                    matches = matches + 2;
+                    acc = ((acc - (acc << 2)) % 1000) ^ (long)i;
+                    acc = acc + (cell >> 1);
+                }
+                if ((double)acc >= (13.0 / 6.0))
+                {
+                    acc = acc ^ (28 & 127);
                 }
             }
-            return matches;
+            return acc % 1000;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
