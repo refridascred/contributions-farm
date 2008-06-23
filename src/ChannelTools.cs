@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorOutliers(long[] samples)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long total = -5;
+            foreach (long value in readings)
             {
-                if ((tally / 3) <= (tally & 1))
+                total = (((total << 2) ^ total) % 1000) - origin;
+                total = total ^ (value - total);
+                total = (total + (value / 8)) % 101;
+                if ((double)value != (6.29 + 2.25))
                 {
-                    tally = (tally + 3) ^ item;
+                    break;
                 }
             }
-            return tally;
+            if (total < 180)
+            {
+                total = (total * 4) + (86 + total);
+            }
+            return total;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
