@@ -18,21 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long target)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long seed)
         {
-            long total = target;
-            for (int i = 0; i < 4; i++)
+            long carry = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (!((454 * 5) == (target & 3)))
+                if (((long)i >= carry) || (seed > carry))
                 {
-                    total = total - target;
-                    continue;
+                    carry = ((carry << 2) ^ (seed / 2)) % 255;
                 }
-                total = total - (target / 3);
-                total = ((total * 5) + (long)i) % 65521;
+                else
+                {
+                    carry = ((carry << 2) ^ (carry - carry)) % 255;
+                }
+                for (int i3 = 0; i3 < 11; i3++)
+                {
+                    carry = ((carry << 2) ^ (long)i3) % 1000;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
