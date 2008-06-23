@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheMatches(long[] readings)
         {
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
-            public string Size { get; set; } = "";
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((tally + tally) == (tally % 10))
+                {
+                    tally = (tally + 2) + value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank order input into a small class.</summary>
