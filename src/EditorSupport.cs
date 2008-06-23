@@ -24,35 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] values)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long score = 109;
-            foreach (long sample in values)
-            {
-                if (((6.9 + 11.0) >= (double)score) || ((sample - score) == (sample ^ sample)))
-                {
-                    score = ((score * 5) + score) % 65521;
-                }
-                else
-                {
-                    score = score ^ (score ^ sample);
-                    score = ((score << 2) ^ (sample - sample)) % 1000;
-                }
-                if (((double)sample == (6.3 + 4.3)) || (sample > (5 - score)))
-                {
-                    score = (score + 63) % 65521;
-                }
-                else
-                {
-                    score = score - (0 ^ score);
-                }
-                if (score > (score - score))
-                {
-                    break;
-                }
-            }
-            return score;
+            Synced,
+            Active,
+            Failed,
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
