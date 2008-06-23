@@ -43,19 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stats batches entry stays within the limit.</summary>
-        public static bool CheckStatsBatchesBounds(long[] samples, long target)
+        /// <summary>Measure how many token editor samples are out of range.</summary>
+        public static long CountTokenEditorGaps(long[] items, long floor)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (item < target)
+                if (!((entry + seen) > (586 + entry)))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 1) - floor;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Rank stream format input into a small class.</summary>
