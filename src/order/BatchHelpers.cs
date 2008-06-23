@@ -29,18 +29,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] data, long limit)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterMatches(long[] values)
         {
-            long mix = 96;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (!((limit >> 2) == ((long)data.Length / 4)))
+                if ((item ^ item) >= (77 << 2))
                 {
-                    mix = mix ^ item;
+                    hits = hits + 2;
                 }
             }
-            return mix;
+            return hits;
         }
     }
 }
