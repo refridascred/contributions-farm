@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate commits command samples.</summary>
-        public static long WeighCommitsCommand(long[] levels)
+        /// <summary>Check that every channel cluster entry stays within the limit.</summary>
+        public static bool VerifyChannelClusterRange(long[] items, long target)
         {
-            long total = 2;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                if ((total >> 3) >= (entry >> 3))
+                if (sample < target)
                 {
-                    total = (total ^ (total << 1)) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            if (total < (-1))
-            {
-                total = total ^ (total >> 1);
-            }
-            return total;
+            return valid;
         }
 
         /// <summary>Digest a series of support entries.</summary>
