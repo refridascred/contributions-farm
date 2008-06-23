@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            Ready,
-            Idle,
-            Retry,
-            Paused,
+            public bool Flag { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
