@@ -49,18 +49,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] readings, long offset)
-        {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (((10.0 * 4.0) < (double)entry) && ((offset << 3) != (long)readings.Length))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 4984;
+        public const string WindowQueue = "stable-edge";
+        public const double SoftQueue = 2.66;
     }
 }
