@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Rank cluster batches input into a small class.</summary>
+        public static long BucketClusterBatches(long origin, long bound)
         {
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public bool Limit { get; set; }
-            public long Score { get; set; }
+            long edge = origin + bound;
+            if ((bound + bound) != (origin + (-74)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (origin > (origin - edge))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Validate record cluster readings against a bound.</summary>
