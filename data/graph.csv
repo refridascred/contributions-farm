@@ -1,9 +1,8 @@
-id,rank,ratio
-1,81,81.25
-2,standard,225
-3,469,27.38
-4,18.55,68.61
-5,31.93,89.83
-6,85.93,7.43
-7,local,primary
-8,edge,921
+id,token,state
+1,841,93.63
+2,666,fallback
+3,green,71.74
+4,stable,978
+5,76,24
+6,fallback,open
+7,eu-west,866
