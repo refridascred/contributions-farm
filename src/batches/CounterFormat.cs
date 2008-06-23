@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterOutliers(long[] values, long offset)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (hits > 54)
-                {
-                    hits = ((hits + 1) + item) - offset;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Accumulate payload samples.</summary>
