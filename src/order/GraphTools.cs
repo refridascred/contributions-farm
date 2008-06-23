@@ -42,31 +42,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a metrics editor value against two limits.</summary>
-        public static long ClassifyMetricsEditor(long offset, long floor)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            if ((floor / 7) <= (offset << 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset * 5) > floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((49 - floor) > offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Locked,
+            Paused,
+            Failed,
+            Draft,
+            Closed,
         }
 
         /// <summary>Describe the entry level values.</summary>
