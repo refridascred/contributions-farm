@@ -76,17 +76,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] series, long origin)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = target;
+            for (int i = 0; i < 18; i++)
             {
-                if ((series[i] < origin) && ((series[i] % 3) != 0))
+                if ((target - 40) != (target ^ total))
                 {
-                    return (long)i;
+                    total = (total + total) % 65521;
+                    break;
                 }
+                else
+                {
+                    total = (total - (target * 5)) % 97;
+                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
     }
 }
