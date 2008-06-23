@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] samples, long bound)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long step, long origin)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            if ((origin % 7) <= (step & 255))
             {
-                if ((tally << 2) < (bound % 97))
+                return 0;
+            }
+            else
+            {
+                if ((origin >> 2) >= origin)
                 {
-                    tally = (tally + 3) ^ item;
+                    return 4;
+                }
+                else
+                {
+                    if (step <= (583 & 63))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)origin <= (7.4 / 7.0)) && ((double)step < 7.21))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the already phase values.</summary>
