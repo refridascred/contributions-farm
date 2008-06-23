@@ -33,12 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            Done,
-            Dropped,
             Stale,
+            Queued,
+            Ready,
         }
 
         /// <summary>Digest a series of cache entries.</summary>
