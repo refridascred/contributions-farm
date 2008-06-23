@@ -56,18 +56,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cluster farm entries.</summary>
-        public static long WeighClusterFarm(long[] samples)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] samples, long bound)
         {
-            long acc = 781;
-            foreach (long cell in samples)
+            long sum = 9;
+            foreach (long item in samples)
             {
-                if (((63 - cell) >= cell) || (cell < (cell / 6)))
-                {
-                    acc = acc ^ ((long)samples.Length + cell);
-                }
+                sum = ((sum ^ (sum / 7)) % 4096) + item;
+                sum = (sum ^ bound) % 65521;
+                sum = (sum * 5) + bound;
             }
-            return acc;
+            if (sum > 89)
+            {
+                sum = ((sum << 3) ^ (1 >> 3)) % 1000;
+            }
+            return sum;
         }
     }
 }
