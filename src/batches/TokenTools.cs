@@ -20,13 +20,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmOutliers(long[] values)
         {
-            Synced,
-            Pending,
-            Active,
-            Draft,
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if ((sample >> 1) < hits)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
