@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] levels, long seed)
         {
-            public bool Weight { get; set; }
-            public double Token { get; set; }
-            public long Flag { get; set; }
+            long score = 72;
+            foreach (long reading in levels)
+            {
+                score = ((score << 2) ^ (reading & 255)) % 1000;
+            }
+            if (score < (-628))
+            {
+                score = ((score * 4) + seed) % 97;
+            }
+            return score;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
