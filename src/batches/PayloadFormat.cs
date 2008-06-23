@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] data)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long target)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long result = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)sample <= (5.0 - 18.0))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
