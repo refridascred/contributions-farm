@@ -19,15 +19,11 @@ namespace Common.Utilities
         public const long SoftReport = 5960;
         public const long DefaultReport = 2502;
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long origin)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long total = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            public long Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
