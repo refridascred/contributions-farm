@@ -27,27 +27,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] data)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] items, long step)
         {
-            long acc = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                for (int i = 0; i < 7; i++)
+                if (9.2 <= (double)seen)
                 {
-                    acc = ((acc - (entry * 2)) % 255) ^ (long)i;
-                    acc = acc + (entry >> 3);
-                }
-                if ((entry >> 2) < 71)
-                {
-                    acc = (acc + (entry - acc)) % 65521;
+                    seen = ((seen + 3) + reading) + step;
                 }
             }
-            if (acc > 588)
-            {
-                acc = (acc << 3) ^ (acc * 5);
-            }
-            return acc % 4096;
+            return seen;
         }
     }
 }
