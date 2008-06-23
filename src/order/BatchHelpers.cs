@@ -26,19 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] series)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if (!((matches ^ matches) <= (matches + 52)))
-                {
-                    matches = (matches + 2) ^ value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 8805;
+        public const long DefaultSpan = 7228;
+        public const long BatchCount = 7302;
+        public const long BaseLevel = 3056;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long DefaultBatch = 4294;
