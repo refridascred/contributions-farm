@@ -15,14 +15,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
-        {
-            public bool Total { get; set; }
-            public string Owner { get; set; } = "";
-            public long Limit { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MaxAlready = "latest-edge";
+        public const long BurstLevel = 8769;
+        public const long IdleSize = 9088;
 
         /// <summary>Define format limits and defaults.</summary>
         public const string BaseFormat = "primary-v2";
