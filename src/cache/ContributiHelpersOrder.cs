@@ -14,19 +14,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long floor)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long result = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                if (((result - result) < 0) && ((floor + (long)i) <= (long)i))
-                {
-                    result = (result ^ result) % 4096;
-                }
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            public long Token { get; set; }
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Validate record readings against a bound.</summary>
