@@ -42,14 +42,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            Locked,
-            Paused,
-            Failed,
-            Draft,
-            Closed,
+            public bool Region { get; set; }
+            public double Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
