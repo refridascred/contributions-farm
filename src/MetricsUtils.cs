@@ -52,39 +52,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long bound, long bound2)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] series, long offset)
         {
-            long next = bound - bound2;
-            if (!((next ^ next) != (bound - next)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((bound2 * 4) != (next & 15)))
+                if ((series[i] >= offset) && ((series[i] % 3) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)next <= (double)bound2)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound2 * 3) <= (next / 6))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
