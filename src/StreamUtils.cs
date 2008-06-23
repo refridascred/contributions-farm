@@ -41,25 +41,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long target, long step)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long diff = target + step;
-            if (((55 >> 3) >= (target + target)) || ((double)target < (double)diff))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((diff - step) > (diff - diff))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Done,
+            Locked,
+            Retry,
         }
 
         /// <summary>Adjust a already reading.</summary>
