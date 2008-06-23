@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of context cluster readings.</summary>
-        public static long TallyContextCluster(long[] samples, long bound)
+        /// <summary>Combine stats format values into a single score.</summary>
+        public static long WeighStatsFormat(long[] values)
         {
-            long mark = 5;
-            foreach (long cell in samples)
+            long mark = 78;
+            foreach (long sample in values)
             {
-                if ((mark * 4) < (mark - 720))
+                if (542 > (mark + mark))
                 {
-                    mark = ((((mark << 2) ^ mark) % 65521) + cell) + bound;
+                    mark = (((mark << 3) ^ (mark & 127)) % 255) + sample;
                 }
             }
-            return mark % 4096;
+            return mark;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
