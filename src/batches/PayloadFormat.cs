@@ -50,15 +50,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double weight, double floor)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] values, long step)
         {
-            double drift = 8.2;
-            if (drift < (double)6)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                drift = (drift + weight) - floor;
+                if ((seen << 1) >= (seen / 8))
+                {
+                    seen = ((seen + 3) + sample) + step;
+                }
             }
-            return drift + (double)0;
+            return seen;
         }
     }
 }
