@@ -1,9 +1,7 @@
-id,weight,ratio
-1,943,open
-2,stable,206
-3,edge,180
-4,36.98,standard
-5,963,local
-6,69.33,open
-7,110,11.57
-8,917,eu-west
+id,owner,ratio,token
+1,63.63,79.83,open
+2,stable,89.29,654
+3,13.51,968,90.01
+4,eu-west,455,2.64
+5,867,open,125
+6,green,731,22.89
