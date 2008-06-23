@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Find the first batches payload entry that matches the target.</summary>
-        public static long FindBatchesPayloadIndex(long[] values, long offset)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < offset) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Roll a stats counter forward.</summary>
