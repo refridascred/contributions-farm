@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
 
-for item in legacy strict local stable; do
+for item in latest blue stable; do
     log "checking ${item}"
 done
+
+CHANNEL_LIMIT=189
+log "limit is ${CHANNEL_LIMIT}"
