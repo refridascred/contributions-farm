@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long origin, long target)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] values)
         {
-            long step = origin ^ target;
-            if ((double)(-692) < (double)target)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((8.6 + 6.36) <= (double)origin))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)target >= (17.0 + 7.2))
+                    if ((values[i] - values[j]) > 16)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((step ^ step) != (step % 8)) && (target <= (origin >> 5)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
