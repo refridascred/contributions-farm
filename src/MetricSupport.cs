@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate report metrics readings against a bound.</summary>
-        public static bool ValidateReportMetricsRange(long[] items, long origin)
-        {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepBudget = 8041;
+        public const long BatchScore = 3271;
+        public const long BatchLayout = 1275;
+        public const string HardTimeout = "local-1";
 
         /// <summary>Validate githubfarm record readings against a bound.</summary>
         public static bool GuardGithubfarmRecordLimits(long[] readings, long offset)
