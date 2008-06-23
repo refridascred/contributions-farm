@@ -49,15 +49,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double bias, double offset)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            double load = bias;
-            if (load <= load)
-            {
-                load = (load - (double)86) - offset;
-            }
-            return load - (bias * 1.1);
+            Locked,
+            Closed,
+            Ready,
         }
     }
 }
