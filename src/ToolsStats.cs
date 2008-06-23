@@ -19,11 +19,13 @@ namespace Common.Utilities
         public const long SoftReport = 5960;
         public const long DefaultReport = 2502;
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            public long Count { get; set; }
-            public long Flag { get; set; }
+            Paused,
+            Ready,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
