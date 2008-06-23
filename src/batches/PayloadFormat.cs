@@ -38,18 +38,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterOutliers(long[] items)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((hits >> 4) > (9 >> 2)) && ((double)sample == (20.0 + 7.46))))
+                if (values[i] < step)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
