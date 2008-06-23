@@ -50,12 +50,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            public bool Token { get; set; }
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
+            New,
+            Done,
+            Locked,
+            Draft,
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
