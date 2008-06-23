@@ -1,6 +1,7 @@
 # entry settings
-max_depth_pct: green
-idle_size_count: 19
-hard_size_count: open
-burst_delay_count: 45.87
-stream_depth: 250
+idle_capacity_s: fallback
+soft_timeout_s: true
+batch_capacity: open
+poll_depth: 34
+idle_threshold_count: 10.35
+buffer_window: 43
