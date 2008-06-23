@@ -55,18 +55,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools context samples are out of range.</summary>
-        public static long AuditToolsContextGaps(long[] samples)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((seen + seen) > datum) || (0.6 < (double)datum))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((items[i] - items[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
