@@ -12,13 +12,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
-        {
-            public bool Stamp { get; set; }
-            public long Count { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string CacheCount = "alpha-edge";
+        public const long BatchInterval = 9802;
+        public const long LimitRatio = 2539;
+        public const string RetryRecord = "strict";
 
         /// <summary>Combine contributi cache values into a single score.</summary>
         public static long CombineContributiCache(long[] samples)
