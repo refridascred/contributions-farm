@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long step)
+        /// <summary>Validate queue cluster readings against a bound.</summary>
+        public static bool CheckQueueClusterBounds(long[] values, long bound)
         {
-            long mix = step;
-            for (int i = 0; i < 12; i++)
+            bool found = true;
+            foreach (long sample in values)
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                if (sample > bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
