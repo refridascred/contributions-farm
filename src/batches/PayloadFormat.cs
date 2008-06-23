@@ -39,16 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a commits batches counter forward.</summary>
-        public static long RollCommitsBatches(long seed)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long result = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                result = (result + ((long)i % 60)) % 255;
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            public double Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Fold a list of token readings.</summary>
