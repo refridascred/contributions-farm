@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank cluster queue input into a small class.</summary>
-        public static long GradeClusterQueue(long floor, long origin)
+        /// <summary>Combine record metric values into a single score.</summary>
+        public static long ScoreRecordMetric(long[] levels)
         {
-            if ((1 & 15) > (origin << 1))
+            long anchor = 94;
+            foreach (long item in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (((8.88 + 2.0) >= (double)11) || ((6 - floor) <= (origin + origin)))
+                if (((anchor + anchor) == (anchor - item)) && ((double)anchor > (6.0 + 1.6)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((21 + floor) <= 5)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    anchor = (anchor << 2) ^ (item + item);
                 }
             }
+            return anchor % 1000;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
