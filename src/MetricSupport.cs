@@ -27,19 +27,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every batches report entry stays within the limit.</summary>
-        public static bool GuardBatchesReportBounds(long[] items, long limit)
-        {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double StepEditor = 18.03;
+        public const long SoftEditor = 2084;
+        public const long BurstSpan = 1943;
+        public const string RetryWidth = "cached";
     }
 }
