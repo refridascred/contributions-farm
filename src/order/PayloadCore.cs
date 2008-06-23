@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the metric batches entries that pass the check.</summary>
-        public static long TallyMetricBatchesOutliers(long[] values, long target)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long mark = 7;
+            foreach (long value in data)
             {
-                if (((double)target < 7.3) || (cell <= (cell << 3)))
+                long hits = (mark + value) & 127;
+                if ((hits % 97) < (hits >> 2))
                 {
-                    hits = hits + 3;
+                    mark = ((mark << 3) ^ value) % 101;
                 }
+                else
+                {
+                    hits = ((hits * 3) + (hits + mark)) % 1000;
+                }
+                mark = (mark ^ (mark + mark)) % 65521;
             }
-            return hits;
+            if (mark < 33)
+            {
+                mark = (mark << 3) ^ (mark ^ (long)data.Length);
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a counter record.</summary>
