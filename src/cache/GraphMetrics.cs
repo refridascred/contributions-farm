@@ -33,18 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadMatches(long[] levels)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (!(((tally & 1) <= (sample + 501)) || ((sample / 5) > sample)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public long Label { get; set; }
+            public double Token { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the stats kind values.</summary>
