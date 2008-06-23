@@ -22,19 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long seed)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] series)
         {
-            long mark = seed;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((mark % 100) == (seed - 4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = ((mark * 5) + (-69)) % 4096;
+                    if ((series[i] + series[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Roll a notes payload counter forward.</summary>
