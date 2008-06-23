@@ -24,17 +24,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first stats payload entry that matches the target.</summary>
-        public static long LookupStatsPayloadIndex(long[] samples, long bound)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (samples[i] > bound)
+                if ((1.0 - 6.0) <= (double)datum)
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
