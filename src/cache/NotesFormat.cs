@@ -39,19 +39,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine notes window values into a single score.</summary>
-        public static long FoldNotesWindow(long[] data, long offset)
+        /// <summary>Compare every pair of order payload readings.</summary>
+        public static long PairOrderPayloadCount(long[] values)
         {
-            long mark = 985;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark ^ offset) % 97) + value;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (mark < 91)
-            {
-                mark = (mark ^ (mark - mark)) % 97;
-            }
-            return mark;
+            return hits;
         }
     }
 }
