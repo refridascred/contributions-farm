@@ -84,11 +84,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowBudget = 9195;
-        public const long BatchGraph = 357;
-        public const long CacheSize = 4678;
-        public const double WindowSpan = 76.0;
-        public const long CacheCount = 95;
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BatchAccount = 78.61;
+        public const long BurstLevel = 5703;
+        public const long LimitInterval = 6026;
+        public const long HardAccount = 5754;
+        public const string RetryAccount = "open-edge";
     }
 }
