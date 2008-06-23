@@ -58,15 +58,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] items)
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double weight, double floor)
         {
-            long total = 44;
-            foreach (long item in items)
+            double drift = floor / 8.0;
+            if (drift <= floor)
             {
-                total = total ^ item;
+                drift = drift + (6.2 * 2.89);
             }
-            return total;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + weight) - (double)(long)i;
+            }
+            return drift + floor;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
