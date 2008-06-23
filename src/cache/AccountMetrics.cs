@@ -40,14 +40,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatOutliers(long[] levels)
         {
-            Queued,
-            Ready,
-            Idle,
-            Closed,
-            Active,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (seen > 9)
+                {
+                    seen = (seen + 1) ^ reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine record values into a single score.</summary>
