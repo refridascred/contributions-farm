@@ -33,15 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a checks stream counter forward.</summary>
-        public static long SeriesChecksStream(long step)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderMatches(long[] samples, long bound)
         {
-            long total = step;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                total = ((total * 2) + (long)i) % 65521;
+                if (matches < (58 >> 5))
+                {
+                    matches = ((matches + 2) ^ reading) + bound;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Digest a series of metrics tools entries.</summary>
