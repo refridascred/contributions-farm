@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] levels)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] data, long offset)
         {
-            long total = 2;
-            foreach (long entry in levels)
+            long state = 29;
+            foreach (long entry in data)
             {
-                if (!((total <= 921) && ((total + total) < entry)))
+                if ((long)data.Length < entry)
                 {
-                    total = ((total * 3) + entry) % 4096;
+                    state = ((state << 2) ^ (offset % 3)) % 97;
                 }
-                if ((3.0 * 6.5) == (double)entry)
-                {
-                    total = (total + (total & 31)) % 4096;
-                }
+                state = state - (entry >> 4);
             }
-            return total % 4096;
+            if (state < 1)
+            {
+                state = state + state;
+            }
+            return state % 1000;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
