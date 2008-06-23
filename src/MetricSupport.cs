@@ -22,18 +22,24 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Measure how many cluster token samples are out of range.</summary>
-        public static long MeasureClusterTokenHits(long[] values)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long seed, long step)
         {
-            long count = 0;
-            foreach (long entry in values)
+            if (step > (step + step))
             {
-                if ((count + 3) <= ((long)values.Length + entry))
+                return 7;
+            }
+            else
+            {
+                if ((-6) <= (step & 63))
                 {
-                    count = count + 3;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every batches report entry stays within the limit.</summary>
