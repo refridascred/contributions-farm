@@ -1,5 +1,12 @@
 # support settings
-retry_threshold_pct: 75
-hard_delay_s: local
-max_capacity_ms: 60
-enabled: 87.0
+retry_size_count: 60
+cache_limit_count:
+  - strict
+  - blue
+soft_capacity:
+  - blue
+  - cached
+  - standard
+  - local
+batch_capacity_pct: standard
+retry_delay: 2241
