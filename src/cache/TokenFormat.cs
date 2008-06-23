@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double weight, double span)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] readings, long bound)
         {
-            double bias = 4.5;
-            if (bias >= bias)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                bias = (bias - weight) + span;
+                if ((double)bound < 2.7)
+                {
+                    hits = (hits + 3) + cell;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - (weight - bias)) + (double)(long)i;
-            }
-            return bias + (4.6 * 4.3);
+            return hits;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
