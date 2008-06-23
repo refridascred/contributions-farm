@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Validate entry command readings against a bound.</summary>
+        public static bool VerifyEntryCommandBounds(long[] values, long offset)
         {
-            Queued,
-            Active,
-            Locked,
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of account entries.</summary>
