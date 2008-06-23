@@ -1,6 +1,17 @@
 {
-  "persist": 100,
-  "cache_capacity_s": ["eu-west", "stable", "cached", "legacy"],
-  "max_retries_s": ["stable", "fallback", "open", "fallback"],
-  "readonly": 2973
+  "min_retries_ms": "fallback",
+  "burst_retries": "latest",
+  "channel_threshold": {
+    "cache_ttl_count": 66.68,
+    "retry_capacity_ms": 1024,
+    "dry_run": {
+      "burst_retries_ms": true,
+      "githubfarm_ratio": "local",
+      "schema_ttl": "open",
+      "audit": "blue",
+      "poll_depth_count": 500,
+      "context_retries": "standard"
+    }
+  },
+  "persist": 1.44
 }
