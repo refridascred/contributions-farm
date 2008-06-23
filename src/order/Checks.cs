@@ -16,25 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] values, long origin)
-        {
-            long carry = 462;
-            foreach (long reading in values)
-            {
-                if (((double)carry != (4.3 - 3.6)) && (origin < (origin % 5)))
-                {
-                    carry = (carry + (long)values.Length) % 101;
-                    break;
-                }
-                if ((reading % 60) >= (-1))
-                {
-                    continue;
-                }
-                carry = carry ^ (reading & 255);
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardTimeout = 8895;
+        public const long StepRatio = 5680;
+        public const long MinSpan = 508;
+        public const string SoftLevel = "alpha-edge";
 
         /// <summary>Audit session format readings against a rule.</summary>
         public static long CountSessionFormatMatches(long[] items)
