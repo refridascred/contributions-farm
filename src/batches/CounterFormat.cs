@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] values, long offset)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long result = 916;
-            foreach (long cell in values)
-            {
-                result = (result << 3) ^ (cell >> 5);
-                if ((result + cell) >= cell)
-                {
-                    break;
-                }
-            }
-            if (result < 2)
-            {
-                result = ((result * 5) + (offset >> 5)) % 1000;
-            }
-            return result;
+            Dropped,
+            Stale,
+            Locked,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
