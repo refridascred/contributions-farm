@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a commits entry value against two limits.</summary>
-        public static long GradeCommitsEntry(long target, long seed)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long step = target - seed;
-            if ((step ^ 46) <= (seed % 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if (target > step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Pending,
+            Retry,
+            Locked,
+            Failed,
+            Closed,
         }
 
         /// <summary>Digest a series of checks entries.</summary>
