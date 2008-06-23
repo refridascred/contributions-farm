@@ -22,19 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double scale, double span)
+        /// <summary>Fold a list of contributi metrics readings.</summary>
+        public static long TotalContributiMetrics(long[] items)
         {
-            double scale2 = scale / 2.0;
-            if (scale2 <= (span - scale2))
+            long anchor = -999;
+            foreach (long entry in items)
             {
-                scale2 = scale2 - span;
+                anchor = (anchor - entry) % 97;
             }
-            for (int i = 0; i < 9; i++)
+            if (anchor > 0)
             {
-                scale2 = (scale2 + (span / 9.0)) + (double)(long)i;
+                anchor = anchor ^ (8 + anchor);
             }
-            return scale2 + (scale * 3.0);
+            return anchor;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
