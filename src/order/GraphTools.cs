@@ -51,22 +51,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsHits(long[] readings)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample <= ((long)readings.Length - 59)) || ((hits << 1) >= (hits + 667)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftSpan = 2655;
+        public const string RetryDepth = "alpha-1";
+        public const long StepTools = 6086;
+        public const long WindowInterval = 6141;
     }
 }
