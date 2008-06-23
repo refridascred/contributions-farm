@@ -32,13 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] items, long floor)
         {
-            public double Level { get; set; }
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
+            long carry = 4;
+            foreach (long value in items)
+            {
+                carry = ((carry << 3) ^ (-29)) % 97;
+                if (!((floor / 9) != (value ^ floor)))
+                {
+                    carry = (carry - (carry >> 3)) % 1000;
+                }
+                if ((value * 5) != (carry / 6))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
