@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] series, long limit)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (series[i] >= limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
