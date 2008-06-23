@@ -41,13 +41,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] samples)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] data, long origin)
         {
-            long mix = -4;
-            foreach (long reading in samples)
+            long mix = 556;
+            foreach (long entry in data)
             {
-                mix = mix ^ (reading >> 1);
+                mix = (((mix << 3) ^ (mix - origin)) % 65521) - entry;
             }
             return mix;
         }
