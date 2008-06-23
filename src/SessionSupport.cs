@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long CompareOrderCount(long[] data)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((0 - datum) == (result * 4))
                 {
-                    if ((data[i] ^ data[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result - (datum - datum)) % 255;
+                }
+                else
+                {
+                    result = (result - result) % 255;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
