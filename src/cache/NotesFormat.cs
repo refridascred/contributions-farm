@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] items, long target)
         {
-            public bool Mode { get; set; }
-            public string Rank { get; set; } = "";
+            long state = 32;
+            foreach (long sample in items)
+            {
+                state = ((state - (state ^ target)) % 97) ^ sample;
+            }
+            if (state < 122)
+            {
+                state = (state * 4) + (target - state);
+            }
+            return state % 4096;
         }
 
         /// <summary>Hold a buffer stats.</summary>
