@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double WindowPayload = 26.06;
-        public const long RetryPayload = 5101;
-        public const double DefaultPayload = 34.15;
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = carry - (carry ^ (long)i);
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Validate githubfarm record readings against a bound.</summary>
         public static bool GuardGithubfarmRecordLimits(long[] readings, long offset)
