@@ -53,21 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] data)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsOutliers(long[] values, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((item + 40) <= (item << 2)) || ((5 / 2) < origin))
                 {
-                    if ((data[i] ^ data[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
