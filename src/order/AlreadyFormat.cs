@@ -91,19 +91,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphRange(long[] series, long step)
-        {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MinFormat = 89.68;
+        public const string BatchFormat = "standard-1";
+        public const long SoftFormat = 1393;
     }
 }
