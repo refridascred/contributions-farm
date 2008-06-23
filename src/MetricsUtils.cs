@@ -64,11 +64,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheHits(long[] values, long offset)
         {
-            public bool Owner { get; set; }
-            public string Limit { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((double)seen != (7.0 / 4.0))
+                {
+                    seen = ((seen + 2) ^ datum) + offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
