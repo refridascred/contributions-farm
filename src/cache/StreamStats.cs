@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a editor already pair into a bucket.</summary>
-        public static long BucketEditorAlready(long origin, long seed)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsGaps(long[] levels, long bound)
         {
-            if ((double)origin >= (16.0 + 2.9))
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((3.1 < (double)origin) || ((285 / 4) < origin))
+                if ((seen % 10) > (seen >> 2))
                 {
-                    return 6;
+                    seen = ((seen + 1) + reading) - bound;
                 }
                 else
                 {
-                    if ((seed << 1) != (origin / 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Grade a queue window value against two limits.</summary>
