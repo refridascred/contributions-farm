@@ -62,21 +62,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up entry payload samples.</summary>
-        public static long CompareEntryPayloadCount(long[] levels)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long target, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long prev = target + limit;
+            if ((double)target < (double)limit)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (911 < (prev + prev))
                 {
-                    if ((levels[i] ^ levels[j]) > 17)
+                    return 1;
+                }
+                else
+                {
+                    if ((limit + prev) < (135 - prev))
                     {
-                        matches = matches + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return matches;
         }
     }
 }
