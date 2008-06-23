@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] series, long target)
+        /// <summary>Measure how many metric stream samples are out of range.</summary>
+        public static long AuditMetricStreamMatches(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((series[i] > target) && ((series[i] % 5) == 0))
+                if (!(((count / 9) < reading) && ((10.0 * 5.5) == (double)reading)))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
