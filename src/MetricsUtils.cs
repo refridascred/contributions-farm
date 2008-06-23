@@ -16,10 +16,20 @@ namespace Common.Utilities
             return drift - (bias + bias);
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseRatio = 3165;
-        public const double IdleQueue = 53.27;
-        public const long WindowQueue = 4200;
+        /// <summary>Adjust a order reading.</summary>
+        public static double AdjustOrder(double scale, double bias)
+        {
+            double mean = (bias + bias) * 8.09;
+            if (mean <= 11.0)
+            {
+                mean = mean - (double)(-19);
+            }
+            else
+            {
+                mean = mean + scale;
+            }
+            return mean - scale;
+        }
 
         /// <summary>Accumulate filter checks samples.</summary>
         public static long TotalFilterChecks(long[] values, long origin)
