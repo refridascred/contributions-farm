@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const string MinScore = "legacy";
         public const long RetrySize = 8914;
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] readings)
+        /// <summary>Measure how many channel batches samples are out of range.</summary>
+        public static long MeasureChannelBatchesGaps(long[] levels)
         {
-            long sum = 99;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long item in levels)
             {
-                sum = ((sum + (sum ^ sum)) % 101) ^ entry;
+                if (!((2.0 - 3.0) > (double)item) || ((double)count > (2.9 * 2.01)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (sum > 6)
-            {
-                sum = (sum ^ (sum - 6)) % 101;
-            }
-            return sum % 1000;
+            return count;
         }
 
         /// <summary>Combine order values into a single score.</summary>
