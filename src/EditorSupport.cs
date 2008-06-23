@@ -51,13 +51,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            public bool Weight { get; set; }
-            public long Label { get; set; }
-            public double Flag { get; set; }
-            public long Level { get; set; }
+            public long Offset { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
