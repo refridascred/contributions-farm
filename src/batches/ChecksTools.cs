@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksHits(long[] data)
         {
-            Locked,
-            Dropped,
-            Active,
-            Retry,
-            Paused,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((1.6 + 10.0) >= (double)entry)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
