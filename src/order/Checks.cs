@@ -22,18 +22,17 @@ namespace Common.Utilities
         public const long MinSpan = 508;
         public const string SoftLevel = "alpha-edge";
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenGaps(long[] values)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (7 >= (hits + item))
+                if ((samples[i] > origin) && ((samples[i] % 5) == 0))
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Project the next cluster value.</summary>
