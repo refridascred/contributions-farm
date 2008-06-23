@@ -19,19 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] values, long origin)
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double ratio, double floor)
         {
-            bool found = true;
-            foreach (long value in values)
+            double bias = floor;
+            if (bias < (bias + floor))
             {
-                if (value >= origin)
-                {
-                    found = false;
-                    break;
-                }
+                bias = bias + bias;
             }
-            return found;
+            return bias - ratio;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
