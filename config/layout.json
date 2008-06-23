@@ -1,6 +1,5 @@
 {
-  "readonly": "stable",
-  "metrics_interval": "local",
-  "idle_ratio_s": [387, 26, 157],
-  "hard_capacity": "blue"
+  "audit": 89.25,
+  "warm_ttl_s": ["primary", "standard", "stable", "blue"],
+  "cache_depth_ms": 22.96
 }
