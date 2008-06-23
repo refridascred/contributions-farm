@@ -19,21 +19,29 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] data)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 47;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((cell - cell) >= (cell + sum))
                 {
-                    if ((data[i] + data[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = ((sum * 3) + (cell ^ sum)) % 255;
+                    break;
                 }
+                else
+                {
+                    long diff = (sum - sum) ^ cell;
+                    sum = ((sum << 2) ^ (diff % 97)) % 97;
+                }
+                sum = (sum ^ (cell + cell)) % 65521;
             }
-            return matches;
+            if (sum < 642)
+            {
+                sum = (sum << 2) ^ (sum % 5);
+            }
+            return sum;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
