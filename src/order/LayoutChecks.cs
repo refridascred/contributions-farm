@@ -71,21 +71,17 @@ namespace Common.Utilities
         public const long SoftReport = 5774;
         public const long WindowReport = 5154;
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long step)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] items, long target)
         {
-            long total = step;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (step < (total >> 3))
+                if (items[i] > target)
                 {
-                    total = (total - ((long)i / 5)) % 4096;
-                    total = (total ^ (step & 63)) % 1000;
+                    return (long)i;
                 }
-                total = (total ^ (total + (-255))) % 97;
-                total = ((total * 5) + (long)i) % 65521;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
