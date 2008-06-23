@@ -59,22 +59,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiHits(long[] readings, long bound)
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            double load = (double)(66 + (-8));
+            if (load > (load + 12.0))
             {
-                if ((value + value) >= value)
-                {
-                    tally = (tally + 3) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                load = ((load - load) - weight) + offset;
             }
-            return tally;
+            return load + (double)120;
         }
     }
 }
