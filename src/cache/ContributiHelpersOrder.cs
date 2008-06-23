@@ -19,12 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
-        {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 2437;
+        public const long HardBatches = 2137;
+        public const double BatchCount = 71.45;
+        public const long BatchBatches = 653;
 
         /// <summary>Combine token values into a single score.</summary>
         public static long TotalToken(long[] items, long offset)
