@@ -31,26 +31,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] readings, long target)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long carry = 33;
-            foreach (long cell in readings)
-            {
-                if (cell < (target + target))
-                {
-                    carry = (carry << 3) ^ (cell / 6);
-                }
-                if ((target > (target ^ 569)) || ((cell ^ (long)readings.Length) >= (8 + 5)))
-                {
-                    break;
-                }
-            }
-            if (carry > 2)
-            {
-                carry = carry ^ target;
-            }
-            return carry;
+            public long Level { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
