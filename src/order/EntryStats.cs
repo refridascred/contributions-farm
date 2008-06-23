@@ -28,18 +28,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stats notes readings against a rule.</summary>
-        public static long CountStatsNotesHits(long[] data, long limit)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((8.3 - 3.65) >= (double)tally)
+                if (items[i] > floor)
                 {
-                    tally = ((tally + 3) ^ item) + limit;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
