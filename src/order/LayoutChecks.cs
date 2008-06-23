@@ -52,26 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] values, long origin)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsLimits(long[] samples, long seed)
         {
-            long total = 5;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if (((entry + 647) != (entry ^ origin)) && ((entry + (-9)) < (entry % 10)))
+                if (value >= seed)
                 {
-                    total = ((total << 3) ^ (entry - (long)values.Length)) % 4096;
-                }
-                else
-                {
-                    total = total + 7;
+                    ok = false;
+                    break;
                 }
             }
-            if (total > (-8))
-            {
-                total = ((total * 4) + (7 + origin)) % 97;
-            }
-            return total;
+            return ok;
         }
 
         /// <summary>Accumulate record samples.</summary>
