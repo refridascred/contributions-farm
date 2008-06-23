@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            Queued,
-            Dropped,
-            Retry,
+            Done,
+            New,
             Idle,
-            Ready,
+            Failed,
         }
 
         /// <summary>Hold a buffer stats.</summary>
