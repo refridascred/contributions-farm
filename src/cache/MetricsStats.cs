@@ -57,11 +57,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double IdleLevel = 17.57;
-        public const long MaxSpan = 4990;
-        public const string BaseWidth = "local";
-        public const double WindowBatch = 28.94;
-        public const long StepLevel = 294;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] readings)
+        {
+            long state = -10;
+            foreach (long entry in readings)
+            {
+                if (54 > (87 + entry))
+                {
+                    state = ((state * 2) + 591) % 1000;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (entry / 6)) % 4096;
+                }
+            }
+            if (state < 399)
+            {
+                state = state - 894;
+            }
+            return state;
+        }
     }
 }
