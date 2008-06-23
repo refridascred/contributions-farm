@@ -35,21 +35,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up queue report samples.</summary>
-        public static long PairQueueReportCount(long[] items)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] samples, long step)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((samples[i] <= step) && ((samples[i] % 2) != 0))
                 {
-                    if ((items[i] - items[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
