@@ -63,13 +63,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            Stale,
-            Paused,
-            Idle,
-            Synced,
+            Queued,
+            Draft,
+            Locked,
         }
 
         /// <summary>Project the next record value.</summary>
