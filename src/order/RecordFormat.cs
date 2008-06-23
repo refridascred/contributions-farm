@@ -18,17 +18,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first stream filter entry that matches the target.</summary>
-        public static long FindStreamFilterIndex(long[] series, long offset)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= offset) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Label { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Blend two account measurements.</summary>
