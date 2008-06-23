@@ -1,13 +1,22 @@
 # githubfarm settings
-record_ratio: 838
-audit:
-  retry_depth: 99
-  warm_interval_s: 57.34
-  persist: 16.39
-sync_ratio_count: 35.14
-batch_limit_pct:
-  - 31
-  - 258
-  - 49
-cache_retries_pct: green
-githubfarm_size: 2831
+burst_retries_s: 100
+readonly:
+  max_ratio_count:
+    - eu-west
+    - blue
+    - staging
+  cache_size_ms: fallback
+  burst_delay: 37.36
+  compress: 60
+  idle_retries:
+    sync_size_s: 37
+    compress:
+      - legacy
+      - green
+      - legacy
+      - strict
+    min_retries_count: staging
+    route_retries: edge
+    enabled: 68.69
+    batch_depth_count: false
+strict: 45.55
