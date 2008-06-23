@@ -29,19 +29,19 @@ namespace Common.Utilities
             return drift + (double)971;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryLimits(long[] series, long floor)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] data)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long result = 7;
+            foreach (long value in data)
             {
-                if (cell > floor)
+                result = ((result * 5) + value) % 65521;
+                if (((5.29 / 3.0) < (double)result) && ((4 % 10) != (value + 332)))
                 {
-                    found = false;
-                    break;
+                    result = ((result * 4) + value) % 65521;
                 }
             }
-            return found;
+            return result;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
