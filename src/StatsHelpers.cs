@@ -49,9 +49,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 6353;
-        public const long BaseAccount = 1532;
-        public const long BatchDepth = 510;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BurstScore = "staging";
+        public const long StepCount = 9795;
+        public const long BurstToken = 3623;
+        public const long IdleTimeout = 4540;
+        public const string BatchRatio = "open-1";
     }
 }
