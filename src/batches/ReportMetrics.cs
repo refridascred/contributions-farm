@@ -20,26 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] samples)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] values, long limit)
         {
-            long mix = 4;
-            foreach (long sample in samples)
+            long state = 1;
+            foreach (long cell in values)
             {
-                if (165 <= (mix & 7))
+                if ((cell << 1) > (state >> 5))
                 {
-                    mix = ((mix ^ 7) % 4096) ^ sample;
-                }
-                else
-                {
-                    mix = mix ^ (mix / 2);
+                    state = (state + (cell - state)) - limit;
                 }
             }
-            if (mix > 460)
-            {
-                mix = mix - mix;
-            }
-            return mix;
+            return state % 1000;
         }
 
         /// <summary>Define route limits and defaults.</summary>
