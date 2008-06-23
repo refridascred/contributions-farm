@@ -35,11 +35,22 @@ namespace Common.Utilities
         public const string DefaultFactor = "stable";
         public const long SoftStream = 4618;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftCount = 1643;
-        public const long IdleSpan = 2583;
-        public const string LimitGithubfarm = "fallback-edge";
-        public const long BurstGithubfarm = 2890;
+        /// <summary>Match up context format samples.</summary>
+        public static long OverlapContextFormatCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long AuditGithubfarmGaps(long[] samples, long offset)
