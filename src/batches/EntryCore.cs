@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] series)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionOutliers(long[] values, long offset)
         {
             long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((matches / 5) > ((-71) * 5))
                 {
-                    if ((series[i] - series[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = ((matches + 3) + item) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
