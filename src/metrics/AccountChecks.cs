@@ -27,22 +27,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] items)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] series)
         {
-            long acc = 0;
-            foreach (long cell in items)
+            long total = 74;
+            foreach (long reading in series)
             {
-                if ((double)acc <= (5.98 - 2.3))
-                {
-                    acc = ((acc - (acc + 296)) % 255) - cell;
-                }
+                total = (total ^ (reading << 2)) % 255;
+                total = (total * 4) + (total / 5);
             }
-            if (acc < 498)
-            {
-                acc = (acc - (acc + acc)) % 101;
-            }
-            return acc % 4096;
+            return total % 97;
         }
 
         /// <summary>Define session limits and defaults.</summary>
