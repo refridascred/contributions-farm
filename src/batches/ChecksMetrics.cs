@@ -58,25 +58,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long bound)
+        /// <summary>Project the next token notes value.</summary>
+        public static double SmoothTokenNotes(double weight, double offset)
         {
-            long state = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                double load = (9.97 - 4.67) / 8.0;
-                if ((double)(long)i >= (load + load))
-                {
-                    load = load - load;
-                    break;
-                }
-                else
-                {
-                    load = load - (load - load);
-                }
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            double mean = (double)(4 - 6);
+            return (mean + offset) + weight;
         }
     }
 }
