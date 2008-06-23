@@ -32,23 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] items, long floor)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] items)
         {
-            long carry = 4;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry << 3) ^ (-29)) % 97;
-                if (!((floor / 9) != (value ^ floor)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (carry - (carry >> 3)) % 1000;
-                }
-                if ((value * 5) != (carry / 6))
-                {
-                    break;
+                    if ((items[i] - items[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
