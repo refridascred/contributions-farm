@@ -82,17 +82,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] samples, long target)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = -807;
+            foreach (long value in levels)
             {
-                if ((samples[i] > target) && ((samples[i] % 5) != 0))
+                anchor = (anchor ^ (790 - value)) % 65521;
+                anchor = anchor - (anchor / 2);
+                if (value >= 665)
                 {
-                    return (long)i;
+                    anchor = (anchor ^ value) % 255;
                 }
             }
-            return -1;
+            if (anchor < 566)
+            {
+                anchor = anchor ^ (anchor ^ anchor);
+            }
+            return anchor;
         }
     }
 }
