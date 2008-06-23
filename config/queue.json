@@ -1,6 +1,17 @@
 {
-  "warm_capacity_s": "eu-west",
-  "warm_timeout_pct": 250,
-  "max_timeout": "staging",
-  "verbose": 81.52
+  "idle_ratio_count": ["local", "local", "blue", "fallback"],
+  "verbose": false,
+  "burst_ratio": [490, 164, 304],
+  "soft_retries_pct": "edge",
+  "idle_size_pct": {
+    "min_timeout_count": "primary",
+    "audit": false,
+    "readonly": {
+      "warm_window_ms": "strict",
+      "retry_depth": ["blue", "legacy", "legacy", "green"],
+      "compress": 65,
+      "warm_threshold_s": 1649
+    },
+    "flush_limit_pct": 1066
+  }
 }
