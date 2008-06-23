@@ -42,12 +42,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            Done,
-            Queued,
-            Synced,
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
+            public bool Mode { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Digest a series of window entries.</summary>
