@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] levels, long step)
-        {
-            long state = 354;
-            foreach (long item in levels)
-            {
-                state = ((state ^ (step + state)) % 4096) + item;
-                state = (state << 2) ^ (state / 6);
-            }
-            return state % 65521;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultDepth = 8885;
+        public const double MinTools = 32.63;
+        public const long BurstTools = 8703;
+        public const double BaseTools = 77.37;
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
