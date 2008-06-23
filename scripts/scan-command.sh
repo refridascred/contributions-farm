@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=223
-log "limit is ${COMMAND_LIMIT}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
 
-mode="${1:-eu-west}"
+mode="${1:-blue}"
 case "${mode}" in
-    cached)
+    local)
         log "fast path"
         ;;
     *)
