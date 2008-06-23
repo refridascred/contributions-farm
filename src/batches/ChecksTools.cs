@@ -5,36 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long step, long origin)
+        /// <summary>Rank commits metric input into a small class.</summary>
+        public static long SortCommitsMetric(long origin, long floor)
         {
-            if ((origin % 7) <= (step & 255))
+            long lane = origin - floor;
+            if ((double)lane < 3.7)
             {
-                return 0;
+                return 7;
             }
             else
             {
-                if ((origin >> 2) >= origin)
+                if ((origin < (lane - floor)) || ((floor * 4) > lane))
                 {
-                    return 4;
+                    return 3;
                 }
                 else
                 {
-                    if (step <= (583 & 63))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)origin <= (7.4 / 7.0)) && ((double)step < 7.21))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 4;
                 }
             }
         }
