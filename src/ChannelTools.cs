@@ -31,15 +31,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next route batches value.</summary>
-        public static double BlendRouteBatches(double scale, double offset)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteHits(long[] series, long bound)
         {
-            double bias = scale / 8.0;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                bias = ((bias + (double)950) - (double)(long)i) - offset;
+                if (((count ^ bound) < (121 + 0)) || (bound <= (bound + sample)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return bias - (double)523;
+            return count;
         }
     }
 }
