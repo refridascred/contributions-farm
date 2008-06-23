@@ -74,12 +74,10 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
-        {
-            public double Mode { get; set; }
-            public long Offset { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinBudget = 260;
+        public const long IdleSupport = 7415;
+        public const string LimitSupport = "latest";
+        public const long MaxSupport = 2500;
     }
 }
