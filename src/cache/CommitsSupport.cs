@@ -14,17 +14,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first metrics profile entry that matches the target.</summary>
-        public static long LookupMetricsProfileIndex(long[] samples, long step)
+        /// <summary>Digest a series of token filter entries.</summary>
+        public static long CombineTokenFilter(long[] data, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 61;
+            foreach (long datum in data)
             {
-                if ((samples[i] < step) && ((samples[i] % 3) != 0))
+                state = (state << 3) ^ (7 % 2);
+                if ((datum << 3) == (target + 825))
                 {
-                    return (long)i;
+                    state = (state - (state / 7)) % 65521;
                 }
+                state = state ^ 30;
             }
-            return -1;
+            if (state < 1)
+            {
+                state = (state << 3) ^ state;
+            }
+            return state % 1000;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
