@@ -1,12 +1,17 @@
 # support settings
-retry_size_count: 60
-cache_limit_count:
-  - strict
-  - blue
-soft_capacity:
-  - blue
-  - cached
-  - standard
-  - local
-batch_capacity_pct: standard
-retry_delay: 2241
+enabled: open
+record_ttl:
+  persist: 14
+  compress:
+    enabled: 59.57
+    min_ttl_ms: local
+    compress:
+      - 486
+      - 49
+    burst_depth: 2418
+    verbose: 1892
+  min_depth_pct: 43.75
+  sync_timeout_count: true
+  verbose: 30.26
+  base_ttl: 4.22
+max_threshold_pct: latest
