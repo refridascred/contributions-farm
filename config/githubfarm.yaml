@@ -1,23 +1,13 @@
 # githubfarm settings
-base_delay_count:
-  buffer_limit: green
-  enabled: 500
-  retry_size: eu-west
-  base_delay_ms: true
-  batches_size:
-    - primary
-    - eu-west
-  poll_size: 41.35
-metric_depth: 48.45
-soft_capacity_pct:
-  default_threshold: 64
-  retry_limit_s: false
-  contributi_retries: 6470
-  warm_window:
-    - 254
-    - 424
-  max_window: 60
-  burst_threshold: open
-payload_timeout: true
-cache_ratio: legacy
-sync_capacity_ms: 1024
+record_ratio: 838
+audit:
+  retry_depth: 99
+  warm_interval_s: 57.34
+  persist: 16.39
+sync_ratio_count: 35.14
+batch_limit_pct:
+  - 31
+  - 258
+  - 49
+cache_retries_pct: green
+githubfarm_size: 2831
