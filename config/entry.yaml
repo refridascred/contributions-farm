@@ -1,16 +1,27 @@
 # entry settings
-payload_retries: 63
-batches_size:
-  soft_delay_s:
-    - open
-    - fallback
-    - stable
+dry_run:
+  account_threshold:
     - strict
-  soft_size_count: true
-  order_ratio: latest
-  flush_ttl_s:
-    - legacy
-    - staging
-  route_capacity: staging
-  verbose: 12
-dry_run: 40.75
+    - latest
+  default_retries_s:
+    max_delay_count: 86.02
+    burst_capacity: 26
+    min_retries_count:
+      - latest
+      - open
+      - local
+    flush_ratio_count:
+      - primary
+      - standard
+      - edge
+    counter_ttl: 30
+    min_limit_ms: 58.49
+  readonly: true
+  retry_size_pct: fallback
+channel_interval: 152
+burst_threshold: 39
+burst_timeout:
+  - fallback
+  - fallback
+sync_size_count: false
+format_delay: 38.78
