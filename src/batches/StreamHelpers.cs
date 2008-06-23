@@ -68,10 +68,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardFarm = 3515;
-        public const long LimitFarm = 4892;
-        public const string MinFarm = "cached";
-        public const long MinTimeout = 984;
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueLimits(long[] data, long floor)
+        {
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
