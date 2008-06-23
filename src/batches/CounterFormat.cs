@@ -38,19 +38,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the payload editor series from a seed.</summary>
-        public static long SeriesPayloadEditor(long bound)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long acc = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                if (2 < (bound % 100))
-                {
-                    acc = (acc * 2) + ((long)i % 97);
-                }
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            Synced,
+            Locked,
+            Retry,
         }
     }
 }
