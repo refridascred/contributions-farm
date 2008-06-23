@@ -72,15 +72,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double rate, double offset)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] values)
         {
-            double ratio = (double)316 + (offset / 5.0);
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = ratio - (double)(long)i;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return ratio - (rate - ratio);
+            return count;
         }
     }
 }
