@@ -43,23 +43,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] levels, long offset)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)seen != (double)offset)
-                {
-                    seen = (seen + 1) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 10;
+        public const long WindowSpan = 8507;
+        public const string CacheReport = "latest-1";
 
         /// <summary>Fold a list of window account readings.</summary>
         public static long TotalWindowAccount(long[] readings, long offset)
