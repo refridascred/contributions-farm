@@ -28,14 +28,13 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            Retry,
-            Done,
-            Paused,
-            Ready,
-            Pending,
+            public long Level { get; set; }
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
