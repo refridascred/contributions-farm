@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] levels, long floor)
+        /// <summary>Look up the position of a session context sample.</summary>
+        public static long LookupSessionContextIndex(long[] items, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (levels[i] > floor)
+                if (items[i] <= limit)
                 {
                     return (long)i;
                 }
