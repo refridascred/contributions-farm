@@ -39,18 +39,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricGaps(long[] samples, long offset)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (!(((item ^ item) < (895 >> 1)) || ((25 >> 4) > (offset >> 5))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Paused,
+            Active,
+            Ready,
+            Synced,
         }
     }
 }
