@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= bound) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BurstCount = 13.07;
+        public const string HardNotes = "stable-v2";
+        public const long BurstScore = 2552;
+        public const long DefaultSize = 8843;
+        public const long IdleNotes = 3143;
 
         /// <summary>Accumulate context samples.</summary>
         public static long CombineContext(long[] data, long seed)
