@@ -18,22 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricHits(long[] readings, long bound)
+        /// <summary>Iterate the layout stats series from a seed.</summary>
+        public static long StepLayoutStats(long offset)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long anchor = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (((double)matches <= 0.6) || ((3 + 3) >= matches))
-                {
-                    matches = ((matches + 1) ^ entry) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
