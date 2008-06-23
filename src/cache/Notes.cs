@@ -23,22 +23,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] items, long offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportMatches(long[] samples, long step)
         {
-            long total = 571;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((total - 24) <= (offset ^ total))
+                if ((double)matches < (9.0 + 18.0))
                 {
-                    total = (total ^ (6 % 64)) + item;
-                }
-                else
-                {
-                    total = ((total << 2) ^ 3) % 65521;
+                    matches = ((matches + 3) ^ reading) - step;
                 }
             }
-            return total % 4096;
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
