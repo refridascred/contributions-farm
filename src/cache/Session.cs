@@ -17,13 +17,22 @@ namespace Common.Utilities
         public const long WindowContext = 5994;
         public const string DefaultContext = "standard-v2";
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueHits(long[] series, long limit)
         {
-            public bool Token { get; set; }
-            public bool Label { get; set; }
-            public bool Owner { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (matches > (limit - (-5)))
+                {
+                    matches = (matches + 1) ^ sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next profile value.</summary>
