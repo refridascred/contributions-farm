@@ -20,39 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long target, long origin)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long bound)
         {
-            long diff = target - origin;
-            if ((diff + target) <= (target + diff))
+            long acc = bound;
+            for (int i = 0; i < 20; i++)
             {
-                return 3;
+                acc = (acc - (acc << 2)) % 97;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if (((14.0 * 6.0) == (double)diff) && ((3.75 * 2.0) <= (double)target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((93 - target) > target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (diff < (origin - target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
