@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const double RetrySize = 51.7;
         public const long MinLayout = 6045;
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
-        {
-            public double Rank { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double DefaultStats = 55.93;
+        public const long MaxTimeout = 4433;
+        public const long CacheStats = 9954;
+        public const long MinStats = 4068;
+        public const long HardStats = 3328;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long SoftWindow = 9660;
