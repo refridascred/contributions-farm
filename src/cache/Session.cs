@@ -18,22 +18,12 @@ namespace Common.Utilities
         public const long WindowContext = 5994;
         public const string DefaultContext = "standard-v2";
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long CompareCommandCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double RetryInterval = 42.08;
+        public const long MaxGraph = 2898;
+        public const double IdleCount = 65.43;
+        public const long SoftGraph = 2277;
+        public const string RetryRatio = "staging-1";
 
         /// <summary>Project the next profile value.</summary>
         public static double AdjustProfile(double weight, double floor)
