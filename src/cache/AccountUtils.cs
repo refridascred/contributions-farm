@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            Dropped,
-            Locked,
-            Ready,
-            Synced,
-            Failed,
+            public long Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Look up the position of a already notes sample.</summary>
