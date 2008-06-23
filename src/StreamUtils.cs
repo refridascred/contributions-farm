@@ -41,13 +41,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            Retry,
-            Paused,
-            Active,
-            Closed,
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
