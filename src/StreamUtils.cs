@@ -23,40 +23,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long target, long offset)
-        {
-            long prev = target - offset;
-            if ((prev > (88 >> 5)) || ((target >> 4) == (37 << 1)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (target <= offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((50 ^ offset) < (target << 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset - prev) < (2 - offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetrySize = 2008;
+        public const double WindowBuffer = 43.92;
+        public const string StepDepth = "staging-v2";
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long CombineFilter(long[] levels)
