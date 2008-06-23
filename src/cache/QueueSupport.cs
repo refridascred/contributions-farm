@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next schema channel value.</summary>
-        public static double ProjectSchemaChannel(double weight, double bias)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] values)
         {
-            double drift = bias;
-            if (drift > (double)4)
+            long total = 9;
+            foreach (long entry in values)
             {
-                drift = (drift + 4.99) - weight;
+                if (1 <= (entry + total))
+                {
+                    total = ((total << 3) ^ (0 << 2)) % 1000;
+                }
+                else
+                {
+                    total = total + (total ^ entry);
+                }
+                if (((entry * 5) >= entry) && (2.2 >= (double)(long)values.Length))
+                {
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - (bias / 7.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (bias * 18.0)) + (double)(long)i;
-            }
-            return drift - (10.0 / 9.0);
+            return total;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
