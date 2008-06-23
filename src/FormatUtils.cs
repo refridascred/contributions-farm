@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const string RetrySize = "primary";
         public const long SoftFactor = 153;
 
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] samples)
+        /// <summary>Fold a list of record order readings.</summary>
+        public static long ScoreRecordOrder(long[] series, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = -1;
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = ((acc - (item & 1)) % 1000) - seed;
             }
-            return seen;
+            if (acc > 281)
+            {
+                acc = ((acc * 5) + acc) % 97;
+            }
+            return acc % 97;
         }
 
         /// <summary>Define route limits and defaults.</summary>
