@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            public string Label { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Region { get; set; }
+            public double Token { get; set; }
+            public bool Size { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a metrics entry.</summary>
