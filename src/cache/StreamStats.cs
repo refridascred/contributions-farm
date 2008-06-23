@@ -14,11 +14,32 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultSize = 2159;
-        public const double MinAlready = 10.49;
-        public const string RetryAlready = "primary-1";
-        public const long BatchAlready = 6620;
+        /// <summary>Grade a queue window value against two limits.</summary>
+        public static long ClassifyQueueWindow(long floor, long origin)
+        {
+            if ((9.73 / 4.0) < (double)origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if (origin < floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((floor * 2) != (floor & 1)) && ((floor + 8) != (floor << 2)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long OverlapContributiCount(long[] items)
