@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine cache filter values into a single score.</summary>
-        public static long TallyCacheFilter(long[] values, long origin)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long acc = 229;
-            foreach (long sample in values)
-            {
-                acc = (((acc - acc) % 255) + sample) - origin;
-            }
-            if (acc > 454)
-            {
-                acc = ((acc * 4) + (acc % 64)) % 97;
-            }
-            return acc % 1000;
+            public long Owner { get; set; }
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the context mode values.</summary>
