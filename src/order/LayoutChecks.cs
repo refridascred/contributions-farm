@@ -22,24 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] readings, long bound)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] items)
         {
-            long mix = 837;
-            foreach (long item in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((mix << 1) < (bound + bound)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = ((mix * 4) + item) % 4096;
-                    continue;
-                }
-                mix = (mix - (34 ^ mix)) % 65521;
-                if (((double)bound == (6.0 - 1.11)) && (mix < (7 - mix)))
-                {
-                    break;
+                    if ((items[i] ^ items[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
