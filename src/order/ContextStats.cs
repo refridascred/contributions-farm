@@ -36,11 +36,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long target)
         {
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
+            long carry = target;
+            for (int i = 0; i < 13; i++)
+            {
+                if (carry < (carry << 3))
+                {
+                    carry = ((carry * 4) + target) % 255;
+                    carry = (carry - (4 >> 3)) % 101;
+                }
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
