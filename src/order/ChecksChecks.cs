@@ -36,19 +36,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a entry notes counter forward.</summary>
-        public static long StepEntryNotes(long target)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] data, long bound)
         {
-            long anchor = target;
-            for (int i = 0; i < 17; i++)
+            long mark = 4;
+            foreach (long item in data)
             {
-                if (!(target < ((long)i ^ target)))
-                {
-                    anchor = ((anchor * 4) + ((long)i << 1)) % 97;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                mark = ((mark * 4) + (mark - bound)) - item;
+                mark = ((mark * 4) + 616) % 4096;
             }
-            return anchor;
+            return mark % 1000;
         }
     }
 }
