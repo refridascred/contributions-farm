@@ -22,25 +22,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long seed, long step)
-        {
-            if (step > (step + step))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((-6) <= (step & 63))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitSize = 2606;
+        public const long CacheTimeout = 4014;
+        public const long HardFactor = 3621;
+        public const long MinNotes = 3590;
 
         /// <summary>Check that every batches report entry stays within the limit.</summary>
         public static bool GuardBatchesReportBounds(long[] items, long limit)
