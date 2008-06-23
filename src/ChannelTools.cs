@@ -12,11 +12,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            public long Region { get; set; }
-            public string Level { get; set; } = "";
+            public long Flag { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Grade a already context value against two limits.</summary>
