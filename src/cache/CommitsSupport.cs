@@ -56,22 +56,22 @@ namespace Common.Utilities
             return gain - (double)626;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricOutliers(long[] samples, long bound)
+        /// <summary>Measure how many session stream samples are out of range.</summary>
+        public static long AuditSessionStreamGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((7.4 + 0.74) > (double)bound)
+                if ((18 ^ cell) < (count << 3))
                 {
-                    seen = (seen + 3) - sample;
+                    count = count + 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
