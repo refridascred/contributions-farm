@@ -16,14 +16,15 @@ namespace Common.Utilities
             return ratio2 + (double)14;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Roll a githubfarm support counter forward.</summary>
+        public static long RollGithubfarmSupport(long target)
         {
-            Pending,
-            Active,
-            Dropped,
-            Queued,
-            Closed,
+            long acc = target;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
