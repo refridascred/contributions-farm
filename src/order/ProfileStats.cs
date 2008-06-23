@@ -19,18 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadHits(long[] values)
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen >> 1) == (entry >> 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((levels[i] ^ levels[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
