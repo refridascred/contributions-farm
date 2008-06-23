@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] readings)
-        {
-            long anchor = 6;
-            foreach (long item in readings)
-            {
-                anchor = ((anchor << 2) ^ item) % 97;
-                if (((4.85 - 5.8) > (double)item) || ((3.68 / 5.0) <= (double)anchor))
-                {
-                    break;
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double StepInterval = 43.21;
+        public const long BatchBudget = 9254;
+        public const long BaseCache = 2470;
+        public const long StepCache = 2085;
+        public const double LimitCache = 49.48;
 
         /// <summary>Fold a list of window readings.</summary>
         public static long FoldWindow(long[] data)
