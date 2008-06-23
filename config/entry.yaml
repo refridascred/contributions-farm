@@ -1,10 +1,5 @@
 # entry settings
-checks_interval: latest
-session_threshold:
-  commits_depth: legacy
-  batches_retries: 80.22
-  editor_ttl: 90.0
-  strict: blue
-  warm_limit: false
-warm_window_pct: legacy
-profile_timeout: 84.34
+max_interval_ms: primary
+hard_delay_s: 46
+base_ratio_ms: 250
+account_limit: 64.25
