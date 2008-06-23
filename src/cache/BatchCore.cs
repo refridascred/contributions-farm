@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long target, long bound)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandHits(long[] readings, long step)
         {
-            long delta = target - bound;
-            if (delta >= bound)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (delta > (delta ^ bound))
+                if ((step + step) != (matches % 12))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((bound - 945) > delta))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound + 489) == (delta + target))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    matches = (matches + 2) + item;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a stream info.</summary>
