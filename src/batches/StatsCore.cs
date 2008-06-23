@@ -53,18 +53,18 @@ namespace Common.Utilities
             return drift - (double)9;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsGaps(long[] series, long target)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long total = 89;
+            foreach (long sample in series)
             {
-                if ((reading + target) >= (tally - reading))
+                if ((double)total > (double)sample)
                 {
-                    tally = tally + 3;
+                    total = (total << 3) ^ (origin / 7);
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Iterate the tools layout series from a seed.</summary>
