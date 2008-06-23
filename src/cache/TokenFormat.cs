@@ -30,18 +30,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaMatches(long[] series)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (((long)series.Length / 7) < (cell - matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public long Region { get; set; }
+            public string Count { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
