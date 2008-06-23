@@ -43,18 +43,10 @@ namespace Common.Utilities
         public const long IdleRoute = 6732;
         public const double BaseRoute = 90.11;
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= offset) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double RetryCommand = 59.66;
+        public const long WindowScore = 3478;
+        public const long RetrySize = 9914;
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long SeriesSupport(long floor)
