@@ -1,9 +1,6 @@
 {
-  "cluster_ttl": true,
-  "tools_threshold": {
-    "default_capacity_s": "staging",
-    "verbose": 37,
-    "base_limit_count": 250
-  },
-  "enabled": "fallback"
+  "readonly": "stable",
+  "metrics_interval": "local",
+  "idle_ratio_s": [387, 26, 157],
+  "hard_capacity": "blue"
 }
