@@ -40,22 +40,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultBudget = 7169;
+        public const string LimitAlready = "open-v2";
+        public const double DefaultAlready = 36.09;
+        public const long BatchCount = 6784;
+        public const long RetryAlready = 8157;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long HardRatio = 5193;
