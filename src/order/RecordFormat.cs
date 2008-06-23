@@ -31,13 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double scale, double floor)
         {
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public long Owner { get; set; }
+            double weight = (double)45 * 0.6;
+            if (weight < floor)
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight - scale;
         }
 
         /// <summary>Describe the context mode values.</summary>
