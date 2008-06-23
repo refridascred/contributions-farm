@@ -1,6 +1,8 @@
 {
-  "min_ttl_count": [178, 24, 266, 88],
-  "buffer_window": "green",
-  "default_interval": 28,
-  "retry_interval_s": true
+  "soft_threshold_pct": 64.31,
+  "batch_window_ms": 14,
+  "stats_interval": 63.24,
+  "cache_timeout": "fallback",
+  "max_depth": "fallback",
+  "base_window_ms": "latest"
 }
