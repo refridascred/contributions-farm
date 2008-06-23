@@ -5,31 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] values, long bound)
-        {
-            long carry = 4;
-            foreach (long item in values)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    carry = (carry ^ (bound * 2)) - (long)i;
-                }
-                if ((((long)values.Length % 12) >= item) && (1 < (6 + item)))
-                {
-                    carry = ((carry << 2) ^ (bound >> 1)) % 65521;
-                }
-                else
-                {
-                    carry = carry ^ ((long)values.Length + bound);
-                }
-            }
-            if (carry > 716)
-            {
-                carry = carry - bound;
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double IdleScore = 61.91;
+        public const long RetryBudget = 231;
+        public const long StepLevel = 5742;
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long FoldNotes(long[] items)
