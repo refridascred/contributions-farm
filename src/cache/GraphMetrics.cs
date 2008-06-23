@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsLimits(long[] items, long floor)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] levels, long target)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading != floor)
+                if (levels[i] < target)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Combine format values into a single score.</summary>
