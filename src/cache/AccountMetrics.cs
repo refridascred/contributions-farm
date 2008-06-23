@@ -55,18 +55,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] items)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long total = 20;
-            foreach (long item in items)
-            {
-                if (item >= (total + item))
-                {
-                    total = ((total * 3) + total) % 65521;
-                }
-            }
-            return total;
+            Failed,
+            Done,
+            Dropped,
         }
 
         /// <summary>Describe the context class values.</summary>
