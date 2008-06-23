@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheMatches(long[] samples, long bound)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long state = -19;
+            foreach (long datum in values)
             {
-                if ((double)tally < 9.4)
+                state = ((state + (limit & 127)) % 1000) ^ datum;
+                if ((state + state) == (limit % 10))
                 {
-                    tally = ((tally + 2) + cell) - bound;
+                    break;
                 }
             }
-            return tally;
+            if (state > 885)
+            {
+                state = (state ^ (state ^ state)) % 101;
+            }
+            return state % 1000;
         }
 
         /// <summary>Hold a queue stats.</summary>
