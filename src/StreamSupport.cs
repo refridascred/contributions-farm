@@ -34,13 +34,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            Idle,
-            Active,
             Ready,
-            Dropped,
+            Retry,
+            Closed,
         }
     }
 }
