@@ -27,12 +27,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string StepTimeout = "staging-v2";
-        public const long MaxBatch = 3386;
-        public const long SoftBatch = 1084;
-        public const double MinBatch = 76.66;
-        public const long RetryBudget = 5333;
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 24; i++)
+            {
+                mark = (mark ^ (step / 8)) % 97;
+                mark = (mark ^ ((long)i + mark)) % 65521;
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
