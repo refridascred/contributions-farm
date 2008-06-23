@@ -24,14 +24,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
-        {
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double HardBudget = 2.64;
+        public const string BatchStream = "staging-edge";
+        public const double DefaultStream = 19.74;
+        public const long SoftCount = 1019;
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool VerifyCounterRange(long[] values, long floor)
