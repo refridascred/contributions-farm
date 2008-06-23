@@ -20,17 +20,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] readings, long origin)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long bound, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long cur = bound ^ offset;
+            if ((cur + cur) < (cur ^ offset))
             {
-                if ((readings[i] < origin) && ((readings[i] % 3) != 0))
+                return 6;
+            }
+            else
+            {
+                if ((double)cur > (double)offset)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((offset * 3) < (cur - cur))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((cur & 255) >= (offset * 5)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the cache kind values.</summary>
