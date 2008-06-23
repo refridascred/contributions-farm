@@ -69,26 +69,31 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Fold a list of profile session readings.</summary>
-        public static long FoldProfileSession(long[] readings, long bound)
+        /// <summary>Classify a graph counter pair into a bucket.</summary>
+        public static long BucketGraphCounter(long limit, long origin)
         {
-            long result = 81;
-            foreach (long item in readings)
+            if (((double)origin > 8.5) || ((origin << 2) < origin))
             {
-                if ((double)bound >= 3.7)
+                return 2;
+            }
+            else
+            {
+                if ((914 ^ 284) <= (limit * 3))
                 {
-                    result = (result + result) % 101;
+                    return 1;
                 }
                 else
                 {
-                    result = result - (bound % 3);
-                }
-                if (((bound + (long)readings.Length) != (46 - bound)) && ((item - result) < (item + result)))
-                {
-                    break;
+                    if ((10.0 - 8.94) > (double)origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return result;
         }
     }
 }
