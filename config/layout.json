@@ -1,6 +1,6 @@
 {
-  "channel_depth": 60,
-  "token_ratio": 1024,
-  "sync_threshold_pct": true,
-  "strict": [194, 354]
+  "persist": 100,
+  "cache_capacity_s": ["eu-west", "stable", "cached", "legacy"],
+  "max_retries_s": ["stable", "fallback", "open", "fallback"],
+  "readonly": 2973
 }
