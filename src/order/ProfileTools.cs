@@ -41,10 +41,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BaseFormat = "primary-v2";
-        public const long WindowFormat = 504;
-        public const double MaxBudget = 44.62;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamBounds(long[] readings, long origin)
+        {
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string MaxMetrics = "latest-v2";
