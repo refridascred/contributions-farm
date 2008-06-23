@@ -1,7 +1,7 @@
 {
-  "persist": 62.5,
-  "entry_threshold": 82.52,
-  "readonly": 500,
-  "base_ratio_s": "primary",
-  "route_delay": true
+  "soft_size_ms": "primary",
+  "already_interval": false,
+  "poll_retries_count": "legacy",
+  "warm_delay": 5563,
+  "hard_limit": ["primary", "edge", "cached"]
 }
