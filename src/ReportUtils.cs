@@ -50,21 +50,11 @@ namespace Common.Utilities
         public const string RetryBudget = "primary-v2";
         public const long DefaultCluster = 3450;
 
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 5005;
+        public const long BaseWindow = 8218;
+        public const string BatchScore = "standard-edge";
+        public const long LimitWindow = 8011;
+        public const long BatchDepth = 9436;
     }
 }
