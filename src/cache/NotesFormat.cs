@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Count the stats account entries that pass the check.</summary>
+        public static long MeasureStatsAccountHits(long[] series)
         {
-            Done,
-            New,
-            Idle,
-            Failed,
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((value & 63) <= value)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a buffer stats.</summary>
