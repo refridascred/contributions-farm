@@ -16,18 +16,15 @@ namespace Common.Utilities
             return rate + floor;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterMatches(long[] items)
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long item in items)
+            double drift = floor + (ratio + 9.7);
+            if (drift < drift)
             {
-                if (((item ^ matches) < (matches - matches)) || ((item + item) >= item))
-                {
-                    matches = matches + 1;
-                }
+                drift = drift - ratio;
             }
-            return matches;
+            return drift - (drift - floor);
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
