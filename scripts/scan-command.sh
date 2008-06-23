@@ -12,15 +12,18 @@ while [ "${count}" -lt 4 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-open}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+mode="${1:-staging}"
 case "${mode}" in
-    green)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-COMMAND_LIMIT=36
-log "limit is ${COMMAND_LIMIT}"
