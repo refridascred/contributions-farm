@@ -29,15 +29,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long step)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamOutliers(long[] values, long floor)
         {
-            long mix = step;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                if ((double)reading >= (5.7 / 8.0))
+                {
+                    count = (count + 3) - floor;
+                }
             }
-            return mix;
+            return count;
         }
     }
 }
