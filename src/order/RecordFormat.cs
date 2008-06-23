@@ -23,18 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] samples, long offset)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long mark = 4;
-            foreach (long entry in samples)
-            {
-                if (!((mark + entry) <= 5))
-                {
-                    mark = ((mark + mark) % 97) - offset;
-                }
-            }
-            return mark % 4096;
+            public long Limit { get; set; }
+            public bool Score { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the context mode values.</summary>
