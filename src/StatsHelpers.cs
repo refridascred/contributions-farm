@@ -38,21 +38,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of route support readings.</summary>
-        public static long MatchRouteSupportCount(long[] series)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] values, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (values[i] > limit)
                 {
-                    if ((series[i] + series[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the session mode values.</summary>
