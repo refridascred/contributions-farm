@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] data, long origin)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (!((datum << 3) != (datum & 3)))
-                {
-                    hits = (hits + 3) + origin;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
