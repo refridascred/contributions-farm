@@ -47,14 +47,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
-        {
-            Done,
-            Locked,
-            Dropped,
-            Draft,
-            Queued,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 8106;
+        public const double MaxSize = 13.81;
+        public const long StepTools = 5418;
     }
 }
