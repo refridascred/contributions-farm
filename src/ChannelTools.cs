@@ -23,16 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] series, long limit)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long result = -348;
-            foreach (long reading in series)
-            {
-                result = ((result + (result & 3)) ^ reading) + limit;
-                result = (result - ((-50) - 698)) % 97;
-            }
-            return result % 97;
+            Synced,
+            Retry,
+            Paused,
         }
     }
 }
