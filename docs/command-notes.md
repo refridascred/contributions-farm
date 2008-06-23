@@ -1,15 +1,11 @@
 # Command notes
 
-Use buffer settings to tune how often route data is refreshed.
-The channel helpers are pure functions, so they are safe to call from any thread.
-Run the session check before changing any entry limits.
-
-A stream that stays idle for too long is moved to the layout list.
-The editor report groups every contributi by layout.
-The buffer module keeps farm values in sync with the commits cache.
+The channel report groups every profile by layout.
+Defaults for layout live in the config folder and can be overridden per environment.
+Each report is validated before it reaches the batches queue.
 
 ## Guidelines
 
-- Validate entry input early
-- Keep profile values small
-- Review already limits each release
+- Validate counter input early
+- Prefer session defaults
+- Document new route fields
