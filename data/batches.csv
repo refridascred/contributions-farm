@@ -1,6 +1,11 @@
-id,region,owner,label
-1,standard,blue,759
-2,36,blue,strict
-3,green,27.76,eu-west
-4,243,548,35.77
-5,local,388,cached
+id,active,rank
+1,335,649
+2,596,44.54
+3,eu-west,58.78
+4,625,open
+5,47.94,25.63
+6,364,10.49
+7,97.35,56.65
+8,63.77,42.99
+9,19.14,70.69
+10,fallback,868
