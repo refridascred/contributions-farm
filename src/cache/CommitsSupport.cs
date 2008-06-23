@@ -48,21 +48,15 @@ namespace Common.Utilities
             return mean + (double)884;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] samples)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 44;
+            foreach (long item in items)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = total ^ item;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
