@@ -35,21 +35,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] items)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Rank { get; set; }
+            public double Region { get; set; }
+            public long Limit { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a editor record.</summary>
