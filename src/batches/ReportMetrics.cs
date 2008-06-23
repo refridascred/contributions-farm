@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] series, long target)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 41;
+            foreach (long cell in levels)
             {
-                if (series[i] >= target)
+                if ((result ^ cell) > (result << 1))
                 {
-                    return (long)i;
+                    result = (result * 5) + (cell - result);
                 }
             }
-            return -1;
+            if (result > 3)
+            {
+                result = (result + (-723)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
