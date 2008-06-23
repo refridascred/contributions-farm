@@ -1,9 +1,9 @@
 # support settings
-retry_ttl_s:
-  - 157
-  - 54
-  - 211
-  - 48
-sync_window_count: 296
-route_threshold: false
-persist: edge
+strict: strict
+burst_threshold_count: 92
+verbose: 500
+flush_interval: 250
+readonly:
+  - 290
+  - 378
+  - 86
