@@ -19,17 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] readings, long limit)
+        /// <summary>Validate payload counter readings against a bound.</summary>
+        public static bool VerifyPayloadCounterRange(long[] values, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if ((readings[i] == limit) && ((readings[i] % 5) != 0))
+                if (entry > floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
