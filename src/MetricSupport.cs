@@ -17,19 +17,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate githubfarm record readings against a bound.</summary>
-        public static bool GuardGithubfarmRecordLimits(long[] readings, long offset)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Synced,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Measure how many report payload samples are out of range.</summary>
