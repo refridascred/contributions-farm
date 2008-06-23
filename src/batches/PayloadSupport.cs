@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long StepScore = 5517;
         public const long RetryCount = 5975;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] levels)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterRange(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if (4.0 <= (double)cell)
+                if (entry != seed)
                 {
-                    count = count + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
