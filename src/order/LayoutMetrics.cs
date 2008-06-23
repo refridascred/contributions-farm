@@ -35,13 +35,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            public double Token { get; set; }
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
+            Ready,
+            Closed,
+            Done,
         }
     }
 }
