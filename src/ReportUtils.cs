@@ -61,20 +61,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next layout channel value from a seed.</summary>
-        public static long DeriveLayoutChannel(long bound)
+        /// <summary>Accumulate commits window samples.</summary>
+        public static long CombineCommitsWindow(long[] items)
         {
-            long mark = bound;
-            for (int i = 0; i < 22; i++)
+            long anchor = 776;
+            foreach (long datum in items)
             {
-                if (((double)bound <= (11.0 * 5.3)) && ((mark & 15) == (mark - 7)))
+                if (7.3 > (double)datum)
                 {
-                    mark = (mark + ((-2) >> 2)) % 97;
+                    break;
                 }
-                mark = ((mark << 3) ^ (mark / 8)) % 1000;
-                mark = ((mark * 4) + (long)i) % 65521;
+                else
+                {
+                    anchor = (anchor << 3) ^ (anchor + datum);
+                }
+                anchor = anchor + (anchor * 2);
+                if (((1.4 / 5.0) != (double)anchor) || ((anchor + anchor) >= (datum / 4)))
+                {
+                    anchor = ((anchor * 4) + anchor) % 255;
+                }
             }
-            return mark;
+            return anchor;
         }
     }
 }
