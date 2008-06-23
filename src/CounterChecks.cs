@@ -30,15 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double scale, double bias)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            double mean = bias;
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (double)(long)i) + scale;
-            }
-            return mean + (bias * 5.4);
+            Draft,
+            Done,
+            Active,
+            Queued,
         }
 
         /// <summary>Hold a channel record.</summary>
