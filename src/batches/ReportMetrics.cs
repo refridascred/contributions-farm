@@ -34,25 +34,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long bound, long bound2)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] data)
         {
-            long lane = bound ^ bound2;
-            if (54 <= (lane - 7))
+            long seen = 0;
+            foreach (long cell in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound2 & 127) != (bound & 3))
+                if (((double)seen != (7.7 / 9.0)) || (((double)cell >= (double)seen) || ((double)seen > (2.71 - 12.0))))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
     }
 }
