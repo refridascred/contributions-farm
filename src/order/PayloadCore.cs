@@ -29,18 +29,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphHits(long[] samples, long target)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (count >= (count << 1))
+                if ((levels[i] < limit) && ((levels[i] % 2) == 0))
                 {
-                    count = ((count + 3) + item) - target;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a checks summary.</summary>
