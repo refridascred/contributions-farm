@@ -58,11 +58,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 9085;
-        public const string LimitStats = "staging";
-        public const long BatchFactor = 7474;
-        public const long HardStats = 8579;
-        public const long SoftStats = 7372;
+        /// <summary>Compare every pair of stats filter readings.</summary>
+        public static long OverlapStatsFilterCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
