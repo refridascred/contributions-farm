@@ -29,17 +29,19 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] samples, long seed)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueBounds(long[] samples, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                if (samples[i] < seed)
+                if (entry <= offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Hold a session stats.</summary>
