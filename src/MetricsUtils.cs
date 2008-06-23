@@ -21,19 +21,22 @@ namespace Common.Utilities
         public const double IdleQueue = 53.27;
         public const long WindowQueue = 4200;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteBounds(long[] series, long target)
+        /// <summary>Measure how many filter stream samples are out of range.</summary>
+        public static long AuditFilterStreamOutliers(long[] levels)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (value != target)
+                if ((matches >> 4) < item)
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
