@@ -54,14 +54,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            Failed,
-            New,
+            Locked,
+            Retry,
             Paused,
-            Closed,
-            Synced,
+            Pending,
+            New,
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
