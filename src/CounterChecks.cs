@@ -61,27 +61,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] readings, long origin)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long bound)
         {
-            long mark = 833;
-            foreach (long item in readings)
+            long acc = bound;
+            for (int i = 0; i < 4; i++)
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    mark = ((mark ^ 1) % 65521) ^ (long)i;
-                    mark = mark + (mark + mark);
-                }
-                if ((mark + mark) != (item << 3))
-                {
-                    mark = (mark + (825 ^ item)) % 1000;
-                }
-                if ((origin - 763) == (mark % 64))
-                {
-                    break;
-                }
+                acc = (acc << 2) ^ (acc * 5);
+                acc = (acc ^ bound) % 97;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return mark % 65521;
+            return acc;
         }
     }
 }
