@@ -48,10 +48,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultFactor = 3251;
-        public const string DefaultSchema = "latest-v2";
-        public const long MaxSchema = 1060;
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long SortContext(long origin, long bound)
