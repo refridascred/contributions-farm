@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double scale, double offset)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyRange(long[] values, long step)
         {
-            double weight = (double)(4 << 2);
-            if (weight >= (13.0 / 6.0))
+            bool valid = true;
+            foreach (long item in values)
             {
-                weight = (weight + (offset + offset)) - scale;
+                if (item != step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return weight - offset;
+            return valid;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
