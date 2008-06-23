@@ -79,12 +79,22 @@ namespace Common.Utilities
             return ratio - 6.0;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MaxRatio = "latest-v2";
-        public const double CacheChannel = 36.48;
-        public const long DefaultChannel = 7297;
-        public const double HardChannel = 44.08;
-        public const long WindowChannel = 7175;
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 6; i++)
+            {
+                if (step < (total >> 3))
+                {
+                    total = (total - ((long)i / 5)) % 4096;
+                    total = (total ^ (step & 63)) % 1000;
+                }
+                total = (total ^ (total + (-255))) % 97;
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long TallyStreamGaps(long[] samples, long floor)
