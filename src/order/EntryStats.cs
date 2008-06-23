@@ -62,18 +62,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmGaps(long[] samples, long offset)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading <= (reading & 127)) && (39 < (hits % 24)))
-                {
-                    hits = (hits + 1) - offset;
-                }
-            }
-            return hits;
+            Pending,
+            Paused,
+            Retry,
         }
     }
 }
