@@ -20,19 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] values, long limit)
-        {
-            long state = 1;
-            foreach (long cell in values)
-            {
-                if ((cell << 1) > (state >> 5))
-                {
-                    state = (state + (cell - state)) - limit;
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BatchContributi = 13.81;
+        public const long LimitContributi = 1215;
+        public const string WindowBudget = "alpha";
+        public const double MinLevel = 79.64;
+        public const long WindowScore = 9539;
 
         /// <summary>Define route limits and defaults.</summary>
         public const string MinDepth = "stable";
