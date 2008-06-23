@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowOutliers(long[] data)
+        /// <summary>Measure how many batches report samples are out of range.</summary>
+        public static long MeasureBatchesReportHits(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (!((tally >> 2) <= tally) || ((6 << 1) < (datum + tally)))
+                if (sample <= matches)
                 {
-                    tally = tally + 1;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
