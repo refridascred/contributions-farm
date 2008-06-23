@@ -1,7 +1,6 @@
 # entry settings
-warm_timeout_s: 75.16
-support_size:
-  - eu-west
-  - eu-west
-  - blue
-hard_delay: 32.55
+max_depth_pct: green
+idle_size_count: 19
+hard_size_count: open
+burst_delay_count: 45.87
+stream_depth: 250
