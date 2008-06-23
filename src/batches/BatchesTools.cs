@@ -25,18 +25,31 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of metric context readings.</summary>
-        public static long CombineMetricContext(long[] series, long seed)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long target, long seed)
         {
-            long sum = 47;
-            foreach (long entry in series)
+            if ((target & 1) >= (seed - seed))
             {
-                if (16 <= (sum - entry))
+                return 4;
+            }
+            else
+            {
+                if (!((seed >> 5) <= (seed << 1)))
                 {
-                    sum = (sum + (4 & 255)) - seed;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed >> 3) >= (seed % 7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return sum % 97;
         }
     }
 }
