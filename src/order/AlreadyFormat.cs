@@ -20,19 +20,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double weight, double offset)
+        /// <summary>Classify a payload notes pair into a bucket.</summary>
+        public static long GradePayloadNotes(long bound, long origin)
         {
-            double weight2 = 3.89;
-            if (weight2 <= 9.0)
+            if ((origin * 3) < origin)
             {
-                weight2 = ((weight2 + (double)71) - weight) + offset;
+                return 1;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                weight2 = (weight2 + (weight2 * 7.62)) + (double)(long)i;
+                if ((bound + origin) != (bound % 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (bound >= (bound % 8))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return weight2 + weight2;
         }
 
         /// <summary>Project the next contributi value.</summary>
