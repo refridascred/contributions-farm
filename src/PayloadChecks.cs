@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] series)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] data)
         {
-            long mark = 3;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item + item) > (item % 10))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = mark + (71 - 19);
+                    if ((data[i] - data[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
                 }
-                mark = (mark * 2) + (item % 8);
             }
-            if (mark > (-10))
-            {
-                mark = ((mark * 3) + (mark >> 2)) % 4096;
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Describe the checks class values.</summary>
