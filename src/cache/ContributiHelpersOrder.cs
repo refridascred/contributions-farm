@@ -39,18 +39,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryGaps(long[] series)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long mix = 8;
+            foreach (long cell in items)
             {
-                if (entry < (count * 3))
+                if (((long)items.Length % 2) >= (cell + 69))
                 {
-                    count = count + 2;
+                    mix = (mix << 2) ^ (86 & 63);
                 }
             }
-            return count;
+            if (mix < 733)
+            {
+                mix = mix - (offset ^ mix);
+            }
+            return mix % 65521;
         }
     }
 }
