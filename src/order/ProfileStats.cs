@@ -33,23 +33,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryHits(long[] data, long bound)
-        {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((double)sample != (7.0 + 6.5))
-                {
-                    count = (count + 1) + bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BatchBudget = "fallback-v2";
+        public const string StepCount = "local-1";
+        public const long MaxNotes = 7116;
+        public const string DefaultNotes = "fallback-1";
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long DeriveFormat(long offset)
