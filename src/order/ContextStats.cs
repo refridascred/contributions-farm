@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsGaps(long[] samples, long seed)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading + seed) < (reading % 24))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Label { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
