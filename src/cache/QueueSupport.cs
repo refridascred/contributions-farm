@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionOutliers(long[] data)
+        /// <summary>Rank cluster queue input into a small class.</summary>
+        public static long GradeClusterQueue(long floor, long origin)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            if ((1 & 15) > (origin << 1))
             {
-                if ((hits - cell) == (hits >> 3))
+                return 4;
+            }
+            else
+            {
+                if (((8.88 + 2.0) >= (double)11) || ((6 - floor) <= (origin + origin)))
                 {
-                    hits = hits + 1;
+                    return 1;
+                }
+                else
+                {
+                    if ((21 + floor) <= 5)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
