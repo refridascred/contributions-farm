@@ -39,12 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Count the command stream entries that pass the check.</summary>
+        public static long CountCommandStreamHits(long[] series, long origin)
         {
-            Paused,
-            Ready,
-            Done,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((double)entry < (12.0 + 3.07))
+                {
+                    count = (count + 3) - origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
