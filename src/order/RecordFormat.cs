@@ -40,11 +40,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowReport = 3199;
-        public const string IdleInterval = "open";
-        public const long LimitReport = 3559;
-        public const long WindowBudget = 744;
+        /// <summary>Digest a series of command githubfarm entries.</summary>
+        public static long ScoreCommandGithubfarm(long[] items)
+        {
+            long result = 58;
+            foreach (long sample in items)
+            {
+                result = ((result - 28) % 97) + sample;
+            }
+            return result % 4096;
+        }
 
         /// <summary>Hold a channel stats.</summary>
         public sealed class ChannelStats
