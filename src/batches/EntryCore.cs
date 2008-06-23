@@ -50,12 +50,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] samples, long bound)
         {
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Weight { get; set; }
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (((double)bound < 14.0) || (((bound - entry) != (entry - 964)) && (entry >= (93 / 6))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a session graph value against two limits.</summary>
