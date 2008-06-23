@@ -41,19 +41,19 @@ namespace Common.Utilities
             return gain + 3.48;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] readings)
+        /// <summary>Blend two stream already measurements.</summary>
+        public static double ScaleStreamAlready(double ratio, double floor)
         {
-            long score = 3;
-            foreach (long item in readings)
+            double scale = floor;
+            if (scale > (scale - ratio))
             {
-                score = score - (item + score);
-                if ((double)score <= (double)item)
-                {
-                    break;
-                }
+                scale = scale - scale;
             }
-            return score;
+            else
+            {
+                scale = scale + (ratio / 2.0);
+            }
+            return scale + floor;
         }
     }
 }
