@@ -35,19 +35,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterBounds(long[] items, long floor)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsRange(long[] items, long target)
         {
-            bool valid = true;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if (item != floor)
+                if (entry > target)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
