@@ -42,15 +42,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long origin)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 13; i++)
+            long total = floor;
+            for (int i = 0; i < 18; i++)
             {
-                mix = ((mix * 4) + (long)i) % 97;
+                total = total - (total + (long)i);
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
