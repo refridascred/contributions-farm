@@ -1,5 +1,5 @@
 {
-  "hard_ratio": true,
-  "metrics_ratio": true,
-  "soft_ttl_s": 39.2
+  "warm_retries_ms": 7300,
+  "hard_interval": 90.8,
+  "command_threshold": 1024
 }
