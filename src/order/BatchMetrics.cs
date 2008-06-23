@@ -48,18 +48,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] readings)
+        /// <summary>Combine order batch values into a single score.</summary>
+        public static long TallyOrderBatch(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long mark = 3;
+            foreach (long datum in readings)
             {
-                if (((reading + reading) > (hits * 3)) || ((reading * 3) >= (hits + hits)))
-                {
-                    hits = hits + 1;
-                }
+                mark = ((mark - ((-248) ^ (long)readings.Length)) % 65521) ^ datum;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Accumulate layout samples.</summary>
