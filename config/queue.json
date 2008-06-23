@@ -1,12 +1,20 @@
 {
-  "command_delay": 88.61,
-  "context_depth": ["staging", "staging", "cached", "green"],
-  "audit": 89.36,
-  "enabled": {
-    "verbose": 30,
-    "queue_retries": false,
-    "min_delay_ms": 24.36
+  "stats_timeout": "fallback",
+  "idle_timeout_pct": {
+    "graph_window": "legacy",
+    "contributi_timeout": 7,
+    "burst_limit_s": false,
+    "command_interval": [175, 346, 341],
+    "persist": 87,
+    "batch_capacity": 9988
   },
-  "poll_size_ms": 58,
-  "max_threshold": "strict"
+  "order_timeout": {
+    "persist": {
+      "cache_ttl_count": 24,
+      "verbose": false,
+      "readonly": false
+    },
+    "metric_window": 6.62,
+    "audit": 50
+  }
 }
