@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a githubfarm farm reading.</summary>
-        public static double AdjustGithubfarmFarm(double rate, double bias)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long target, long bound)
         {
-            double rate2 = bias;
-            for (int i = 0; i < 5; i++)
+            long delta = target - bound;
+            if (delta >= bound)
             {
-                rate2 = (rate2 + bias) - (double)(long)i;
+                return 2;
             }
-            return rate2 - (7.12 - rate);
+            else
+            {
+                if (delta > (delta ^ bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((bound - 945) > delta))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound + 489) == (delta + target))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a stream info.</summary>
