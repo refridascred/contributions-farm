@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 2131;
-        public const double BaseCount = 28.87;
-        public const long BaseContext = 2831;
-        public const string BatchInterval = "strict-1";
-        public const long SoftContext = 9318;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsLimits(long[] levels, long limit)
+        {
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long DeriveOrder(long target)
