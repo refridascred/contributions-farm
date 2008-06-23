@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long limit)
         {
-            Paused,
-            Locked,
-            Dropped,
-            Stale,
-            Active,
+            long acc = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Hold a cluster stats.</summary>
