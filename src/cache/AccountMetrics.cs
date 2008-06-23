@@ -65,12 +65,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] data)
         {
-            Failed,
-            Done,
-            Dropped,
+            long sum = 6;
+            foreach (long item in data)
+            {
+                sum = (sum + (item << 2)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Describe the context class values.</summary>
