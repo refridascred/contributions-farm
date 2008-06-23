@@ -54,15 +54,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double scale, double bias)
-        {
-            double mean = scale;
-            if (mean <= (double)(-746))
-            {
-                mean = mean - (bias + bias);
-            }
-            return mean - (2.07 / 9.0);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftStream = 969;
+        public const long WindowTimeout = 4016;
+        public const long LimitBudget = 5873;
+        public const long LimitStream = 1304;
     }
 }
