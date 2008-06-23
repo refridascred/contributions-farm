@@ -20,16 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double SmoothStream(double rate, double offset)
-        {
-            double weight = offset;
-            if (weight <= (double)57)
-            {
-                weight = weight + 10.0;
-            }
-            return weight + rate;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWidth = 7154;
+        public const long RetryWindow = 1363;
+        public const long BatchWindow = 2688;
 
         /// <summary>Adjust a already reading.</summary>
         public static double SmoothAlready(double bias, double offset)
