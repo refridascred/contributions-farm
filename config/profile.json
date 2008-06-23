@@ -1,27 +1,5 @@
 {
-  "base_retries": 72.57,
-  "burst_ttl_pct": false,
-  "soft_threshold_ms": 85.03,
-  "payload_window": {
-    "queue_interval": {
-      "warm_threshold_s": 46.29,
-      "soft_timeout_ms": 51.05,
-      "audit": "latest"
-    },
-    "profile_capacity": {
-      "max_ttl": 5406,
-      "default_threshold_count": "standard",
-      "hard_retries_count": "green",
-      "warm_limit_count": false,
-      "cache_retries_s": 100
-    },
-    "batch_timeout": {
-      "cache_timeout_pct": 500,
-      "hard_threshold_s": 9902,
-      "metric_ttl": "edge",
-      "min_timeout_s": 8694,
-      "base_threshold_count": "standard",
-      "verbose": "strict"
-    }
-  }
+  "readonly": false,
+  "retry_interval": 1024,
+  "default_capacity": 500
 }
