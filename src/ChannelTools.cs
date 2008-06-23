@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheSpan = 2337;
-        public const double HardAccount = 78.99;
-        public const long BatchCount = 597;
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long step, long target)
+        {
+            if ((target >= (step ^ step)) && ((12.0 * 3.1) >= (double)target))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step - target) > (target << 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target - target) > (step - target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long RollChannel(long floor)
