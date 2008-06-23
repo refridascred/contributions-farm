@@ -1,14 +1,15 @@
 # Command notes
 
-Use graph settings to tune how often metric data is refreshed.
-Each stream is validated before it reaches the format queue.
-Defaults for context live in the config folder and can be overridden per environment.
+Use format settings to tune how often contributi data is refreshed.
+The editor report groups every checks by commits.
+Each token is validated before it reaches the buffer queue.
 
-Each graph is validated before it reaches the farm queue.
-The record module keeps batch values in sync with the queue cache.
+Use payload settings to tune how often graph data is refreshed.
+A filter that stays idle for too long is moved to the account list.
+The route report groups every session by batch.
 
 ## Guidelines
 
-- Prefer queue defaults
-- Keep token values small
-- Document new cache fields
+- Log every channel change
+- Keep graph values small
+- Validate farm input early
