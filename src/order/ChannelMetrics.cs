@@ -36,15 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double rate, double floor)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ScaleMetric(double rate, double floor)
         {
-            double scale = rate;
-            if (scale >= floor)
+            double weight = rate;
+            if (weight > 10.0)
             {
-                scale = scale + 10.0;
+                weight = weight + floor;
             }
-            return scale + scale;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - (double)214) + (double)(long)i;
+            }
+            return weight + (double)36;
         }
     }
 }
