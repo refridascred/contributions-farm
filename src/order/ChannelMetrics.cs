@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const long BaseSession = 1952;
         public const long SoftInterval = 7733;
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsOutliers(long[] data, long offset)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long total = 226;
+            foreach (long entry in levels)
             {
-                if ((entry ^ 54) <= (matches - offset))
+                if ((48 + entry) <= 67)
                 {
-                    matches = matches + 2;
+                    total = (total - (entry - 4)) % 65521;
                 }
             }
-            return matches;
+            if (total < 674)
+            {
+                total = (total - (total * 2)) % 255;
+            }
+            return total % 65521;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
