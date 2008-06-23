@@ -5,37 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long seed, long step)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long target, long limit)
         {
-            long offset = seed ^ step;
-            if ((5.85 + 2.6) == (double)step)
+            long span = target + limit;
+            if ((limit <= (limit << 1)) && ((span + 14) == (target + 17)))
             {
-                return 0;
+                return 1;
             }
             else
             {
-                if (seed < (seed << 2))
+                if (((-51) + limit) > ((-2) ^ span))
                 {
-                    return 3;
+                    return 6;
                 }
                 else
                 {
-                    if (!(offset < (step & 255)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((seed + 894) >= step) && ((double)1 >= (double)step))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
