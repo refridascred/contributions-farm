@@ -1,5 +1,24 @@
 {
-  "compress": false,
-  "hard_ratio_count": 40.99,
-  "base_delay_ms": 93.29
+  "idle_interval": {
+    "poll_size_pct": "blue",
+    "farm_timeout": "green",
+    "retry_limit_ms": "standard"
+  },
+  "poll_threshold_pct": {
+    "persist": 8140,
+    "warm_depth_count": 5160,
+    "route_depth": ["blue", "green", "legacy", "cached"],
+    "metrics_ratio": true,
+    "min_threshold_ms": "staging"
+  },
+  "hard_capacity_s": false,
+  "enabled": 30,
+  "persist": "local",
+  "dry_run": {
+    "editor_depth": 10,
+    "dry_run": "latest",
+    "idle_ratio": 500,
+    "verbose": 74.16,
+    "poll_window_s": [439, 175, 303, 328]
+  }
 }
