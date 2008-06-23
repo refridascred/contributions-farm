@@ -33,13 +33,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            Closed,
-            Dropped,
-            Draft,
-            Paused,
+            Active,
+            Locked,
+            Ready,
+            Failed,
+            Queued,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
