@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] readings, long offset)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] values)
         {
-            long total = -104;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((total % 60) > total)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = (total - (offset >> 2)) + entry;
-                }
-                else
-                {
-                    total = (total * 4) + (offset / 9);
+                    if ((values[i] + values[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Locate a token reading by value.</summary>
