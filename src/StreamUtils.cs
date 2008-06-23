@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metric stream samples are out of range.</summary>
-        public static long AuditMetricStreamMatches(long[] levels)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (!(((count / 9) < reading) && ((10.0 * 5.5) == (double)reading)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MinCommand = "legacy";
+        public const long StepSize = 9269;
+        public const long DefaultCommand = 5570;
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long CombineFilter(long[] levels)
