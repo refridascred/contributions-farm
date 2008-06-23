@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double BlendProfile(double scale, double span)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteHits(long[] items, long floor)
         {
-            double weight = (double)8;
-            if (weight >= (double)60)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                weight = weight - span;
+                if ((matches + matches) > floor)
+                {
+                    matches = (matches + 1) + entry;
+                }
             }
-            else
-            {
-                weight = weight + (scale - weight);
-            }
-            return weight - weight;
+            return matches;
         }
 
         /// <summary>Hold a context options.</summary>
