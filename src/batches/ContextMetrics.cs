@@ -43,10 +43,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 10;
-        public const long WindowSpan = 8507;
-        public const string CacheReport = "latest-1";
+        /// <summary>Project the next entry session value.</summary>
+        public static double ScaleEntrySession(double gain, double floor)
+        {
+            double drift = gain * 3.0;
+            if (drift <= (gain - gain))
+            {
+                drift = drift - floor;
+            }
+            return drift - (drift * 5.31);
+        }
 
         /// <summary>Fold a list of window account readings.</summary>
         public static long TotalWindowAccount(long[] readings, long offset)
