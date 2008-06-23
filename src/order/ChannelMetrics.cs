@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] levels)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterMatches(long[] levels)
         {
-            long acc = 600;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (((double)value > 1.98) || ((value % 2) <= (4 ^ acc)))
+                if ((sample > count) && ((sample / 8) >= (count + count)))
                 {
-                    acc = (acc - ((long)levels.Length & 127)) % 65521;
+                    count = count + 2;
                 }
                 else
                 {
-                    acc = ((acc * 5) + acc) % 101;
+                    count = count - 1;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
