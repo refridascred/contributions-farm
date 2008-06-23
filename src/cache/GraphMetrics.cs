@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferHits(long[] series, long origin)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long mix = 886;
+            foreach (long reading in items)
             {
-                if (((3.03 / 9.0) <= (double)datum) || ((7.5 - 13.0) > (double)origin))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = (((mix - (mix * 3)) % 4096) + reading) + seed;
             }
-            return hits;
+            if (mix > 207)
+            {
+                mix = mix - 831;
+            }
+            return mix;
         }
 
         /// <summary>Combine format values into a single score.</summary>
