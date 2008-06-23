@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 9653;
-        public const long CacheMetrics = 9469;
-        public const long StepFactor = 8702;
-        public const long BurstSize = 5485;
+        /// <summary>Match up already samples.</summary>
+        public static long OverlapAlreadyCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Scale a session batches figure with a bias.</summary>
         public static double ScaleSessionBatches(double rate, double bias)
