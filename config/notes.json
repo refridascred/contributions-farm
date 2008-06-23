@@ -1,16 +1,11 @@
 {
-  "audit": "stable",
-  "persist": 88,
-  "metric_limit": {
-    "window_capacity": 100,
-    "command_timeout": {
-      "sync_capacity_s": 100,
-      "poll_window": 5912,
-      "already_window": false,
-      "poll_window_ms": "open"
-    },
-    "sync_retries_s": "standard",
-    "readonly": false
+  "hard_timeout_count": [430, 62, 476],
+  "batches_ttl": true,
+  "session_ttl": {
+    "compress": [379, 257],
+    "checks_retries": "fallback",
+    "verbose": "edge"
   },
-  "cache_depth_pct": 9554
+  "max_ttl_s": true,
+  "flush_delay_count": 92
 }
