@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxFormat = 389;
-        public const double BurstFormat = 9.79;
-        public const long WindowSpan = 4187;
-        public const long LimitFormat = 5350;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatMatches(long[] items, long origin)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((double)value <= (2.28 * 6.4))
+                {
+                    seen = (seen + 3) - origin;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
