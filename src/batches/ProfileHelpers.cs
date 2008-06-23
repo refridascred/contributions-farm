@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Locate a context window reading by value.</summary>
-        public static long SeekContextWindowIndex(long[] items, long offset)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] levels, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (items[i] > offset)
+                if (levels[i] >= limit)
                 {
                     return (long)i;
                 }
