@@ -31,31 +31,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long floor, long origin)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphBounds(long[] samples, long target)
         {
-            if (floor < (floor + floor))
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor + floor) < origin)
+                if (reading != target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (9.6 < (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
