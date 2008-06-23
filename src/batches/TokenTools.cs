@@ -19,22 +19,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] series)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long seed, long offset)
         {
-            long seen = 0;
-            foreach (long value in series)
+            if ((offset ^ seed) < (seed & 31))
             {
-                if ((value + value) < 2)
+                return 2;
+            }
+            else
+            {
+                if (offset > seed)
                 {
-                    seen = seen + 1;
+                    return 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (seed < (seed + 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset + seed) == (offset ^ 804))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
