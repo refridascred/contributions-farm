@@ -60,19 +60,22 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double gain, double floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsMatches(long[] data)
         {
-            double scale = gain;
-            if (scale <= floor)
+            long count = 0;
+            foreach (long datum in data)
             {
-                scale = scale + (0.46 * 6.1);
+                if ((count + count) != (98 % 7))
+                {
+                    count = (count + 2) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - (double)0) + (double)(long)i;
-            }
-            return scale - (scale - floor);
+            return count;
         }
 
         /// <summary>Hold a context header.</summary>
