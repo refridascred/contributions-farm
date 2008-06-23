@@ -40,25 +40,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long floor)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] levels)
         {
-            long carry = floor;
-            for (int i = 0; i < 20; i++)
+            long mix = 613;
+            foreach (long item in levels)
             {
-                long edge = (732 / 5) + (carry + carry);
-                edge = ((edge * 5) + ((long)i % 64)) % 4096;
-                if ((edge + (long)i) != (edge - floor))
-                {
-                    carry = (carry << 2) ^ (390 >> 3);
-                }
-                else
-                {
-                    edge = edge + (floor << 1);
-                }
-                carry = ((carry * 4) + (long)i) % 101;
+                mix = ((mix << 3) ^ (mix >> 3)) + item;
             }
-            return carry;
+            if (mix > 15)
+            {
+                mix = (mix + (mix << 3)) % 1000;
+            }
+            return mix % 65521;
         }
     }
 }
