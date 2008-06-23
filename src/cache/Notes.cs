@@ -25,18 +25,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == offset) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 7036;
+        public const long HardFactor = 14;
+        public const string StepSize = "stable-1";
+        public const long IdleInterval = 6407;
 
         /// <summary>Describe the graph phase values.</summary>
         public enum GraphPhase
