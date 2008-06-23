@@ -58,23 +58,9 @@ namespace Common.Utilities
         public const long DefaultTimeout = 5502;
         public const long HardBatches = 2411;
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] levels, long step)
-        {
-            long score = 75;
-            foreach (long reading in levels)
-            {
-                score = (score + (step + score)) ^ reading;
-                if ((score + 332) >= step)
-                {
-                    score = score + (score - 8);
-                }
-            }
-            if (score > 7)
-            {
-                score = (score + (step + score)) % 255;
-            }
-            return score;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheStats = 3372;
+        public const long WindowStats = 9351;
+        public const long BaseRatio = 6639;
     }
 }
