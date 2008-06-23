@@ -1,5 +1,10 @@
 {
-  "batch_delay": true,
-  "retry_ratio_pct": [208, 307, 17],
-  "min_delay": 5810
+  "retry_interval_s": 2.58,
+  "stats_delay": {
+    "warm_size_ms": 7.8,
+    "max_ratio_pct": true,
+    "poll_ratio_s": 1024,
+    "hard_depth_pct": ["green", "primary"]
+  },
+  "contributi_window": true
 }
