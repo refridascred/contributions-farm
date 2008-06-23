@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 8078;
-        public const string MinScore = "legacy";
-        public const long RetrySize = 8914;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 2131;
+        public const double BaseCount = 28.87;
+        public const long BaseContext = 2831;
+        public const string BatchInterval = "strict-1";
+        public const long SoftContext = 9318;
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long DeriveOrder(long target)
