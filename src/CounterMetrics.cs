@@ -12,12 +12,20 @@ namespace Common.Utilities
             return (gain + (double)(-60)) + span;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchTimeout = 8979;
-        public const long HardBudget = 7442;
-        public const long RetryFactor = 1109;
-        public const long StepInterval = 86;
-        public const string LimitLayout = "fallback-edge";
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyBounds(long[] series, long origin)
+        {
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
