@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesOutliers(long[] items, long bound)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (20.0 < (8.8 * 4.0))
-                {
-                    count = ((count + 2) + item) - bound;
-                }
-            }
-            return count;
+            Paused,
+            Closed,
+            Done,
+            Failed,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
