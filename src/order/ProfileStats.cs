@@ -49,21 +49,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] levels)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!!(4.9 <= (double)target))
                 {
-                    if ((levels[i] + levels[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc + target) % 4096;
                 }
+                acc = (acc + (acc - acc)) % 65521;
+                acc = ((acc << 3) ^ ((long)i >> 4)) % 1000;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Describe the counter phase values.</summary>
