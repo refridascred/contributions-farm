@@ -16,10 +16,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 4382;
-        public const long BatchDepth = 2311;
-        public const long MinRatio = 470;
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate stream cache readings against a bound.</summary>
         public static bool CheckStreamCacheRange(long[] series, long offset)
