@@ -15,10 +15,18 @@ namespace Common.Utilities
         public const long BurstTimeout = 1048;
         public const long RetryFarm = 3512;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MaxMetric = 80.25;
-        public const long IdleInterval = 2639;
-        public const double HardInterval = 41.6;
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of command readings.</summary>
         public static long FoldCommand(long[] data, long bound)
