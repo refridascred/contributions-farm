@@ -27,11 +27,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double LimitGraph = 81.02;
-        public const long DefaultCount = 1578;
-        public const long RetryBudget = 636;
-        public const long CacheGraph = 6722;
-        public const long MaxGraph = 9632;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] series, long target)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((cell % 5) < target)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
