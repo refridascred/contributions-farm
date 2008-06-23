@@ -39,11 +39,24 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string LimitPayload = "cached-edge";
-        public const long DefaultDepth = 1596;
-        public const long StepFactor = 6428;
-        public const long MaxPayload = 1488;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] values)
+        {
+            long result = 33;
+            foreach (long value in values)
+            {
+                result = (result ^ (result ^ result)) % 255;
+                if ((value - (-93)) <= (result - value))
+                {
+                    break;
+                }
+            }
+            if (result > 2)
+            {
+                result = result ^ (result - result);
+            }
+            return result;
+        }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long GradeChannel(long target, long origin)
