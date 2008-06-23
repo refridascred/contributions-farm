@@ -14,14 +14,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            Stale,
-            Done,
-            Queued,
+            Pending,
+            Locked,
+            Failed,
             Closed,
-            Idle,
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
