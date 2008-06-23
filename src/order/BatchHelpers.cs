@@ -29,32 +29,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a farm entry value against two limits.</summary>
-        public static long GradeFarmEntry(long floor, long origin)
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] data)
         {
-            long slot = floor ^ origin;
-            if ((((-419) / 9) > (slot << 2)) && ((origin + slot) > (floor << 3)))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((slot & 127) <= floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (14.0 >= (double)slot)
+                    if ((data[i] + data[j]) < 12)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
