@@ -13,15 +13,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double rate, double span)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] readings, long origin)
         {
-            double weight = span / 5.0;
-            if (weight > rate)
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = weight + (span * 6.98);
+                if (readings[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return weight + 9.6;
+            return -1;
         }
 
         /// <summary>Locate a session token reading by value.</summary>
