@@ -65,11 +65,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
+            Stale,
+            Draft,
+            Synced,
         }
     }
 }
