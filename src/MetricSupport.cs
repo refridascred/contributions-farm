@@ -27,10 +27,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double StepEditor = 18.03;
-        public const long SoftEditor = 2084;
-        public const long BurstSpan = 1943;
-        public const string RetryWidth = "cached";
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
+        {
+            public long Label { get; set; }
+            public string Rank { get; set; } = "";
+            public long Count { get; set; }
+        }
     }
 }
