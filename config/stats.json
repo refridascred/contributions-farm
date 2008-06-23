@@ -1,8 +1,12 @@
 {
-  "commits_size": "edge",
-  "poll_limit_pct": [349, 449, 457],
-  "sync_limit": true,
-  "notes_timeout": [328, 103],
-  "default_limit_pct": 71.56,
-  "already_ratio": [90, 283]
+  "warm_retries": {
+    "max_retries_ms": 96.92,
+    "cache_capacity_pct": "green",
+    "entry_threshold": ["green", "blue"],
+    "stats_size": "fallback"
+  },
+  "poll_window": "green",
+  "retry_timeout": "blue",
+  "audit": 87.68,
+  "verbose": false
 }
