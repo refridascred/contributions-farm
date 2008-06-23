@@ -36,14 +36,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            Active,
-            Locked,
-            Ready,
-            Failed,
-            Queued,
+            Synced,
+            Stale,
+            Retry,
+            Pending,
+            Draft,
         }
 
         /// <summary>Rank record input into a small class.</summary>
