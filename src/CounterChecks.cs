@@ -56,38 +56,24 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long bound, long limit)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] data, long seed)
         {
-            if ((limit & 127) != (bound - limit))
+            long score = 847;
+            foreach (long item in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound + bound) > bound)
+                if (item < (seed - score))
                 {
-                    return 5;
+                    score = ((score << 2) ^ (score / 9)) % 65521;
+                    break;
                 }
-                else
+                score = score ^ (item % 10);
+                if (item >= (seed % 24))
                 {
-                    if (!(5.42 < (double)bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)bound <= (1.28 - 9.7))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    break;
                 }
             }
+            return score;
         }
     }
 }
