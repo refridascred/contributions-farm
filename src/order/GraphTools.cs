@@ -59,24 +59,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long origin, long target)
+        /// <summary>Check that every channel schema entry stays within the limit.</summary>
+        public static bool CheckChannelSchemaRange(long[] samples, long bound)
         {
-            if ((target + origin) <= target)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target % 60) > (origin & 255))
+                if (entry >= bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
