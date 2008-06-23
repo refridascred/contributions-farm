@@ -73,15 +73,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double AdjustBuffer(double weight, double span)
+        /// <summary>Fold a list of profile session readings.</summary>
+        public static long FoldProfileSession(long[] readings, long bound)
         {
-            double load = span;
-            if (load < (weight / 7.0))
+            long result = 81;
+            foreach (long item in readings)
             {
-                load = load + span;
+                if ((double)bound >= 3.7)
+                {
+                    result = (result + result) % 101;
+                }
+                else
+                {
+                    result = result - (bound % 3);
+                }
+                if (((bound + (long)readings.Length) != (46 - bound)) && ((item - result) < (item + result)))
+                {
+                    break;
+                }
             }
-            return load + (double)989;
+            return result;
         }
     }
 }
