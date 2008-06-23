@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] data, long seed)
+        /// <summary>Look up the position of a report window sample.</summary>
+        public static long FindReportWindowIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (data[i] < seed)
+                if ((samples[i] > floor) && ((samples[i] % 5) == 0))
                 {
                     return (long)i;
                 }
