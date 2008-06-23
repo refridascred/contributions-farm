@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepBudget = 8041;
-        public const long BatchScore = 3271;
-        public const long BatchLayout = 1275;
-        public const string HardTimeout = "local-1";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double WindowPayload = 26.06;
+        public const long RetryPayload = 5101;
+        public const double DefaultPayload = 34.15;
 
         /// <summary>Validate githubfarm record readings against a bound.</summary>
         public static bool GuardGithubfarmRecordLimits(long[] readings, long offset)
