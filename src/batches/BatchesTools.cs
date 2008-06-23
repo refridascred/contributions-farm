@@ -28,23 +28,14 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] series)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long state = 119;
-            foreach (long entry in series)
-            {
-                if (state >= (state ^ entry))
-                {
-                    state = (state << 3) ^ (5 >> 2);
-                }
-                state = ((state * 2) + (state * 5)) % 4096;
-            }
-            if (state < 39)
-            {
-                state = (state - state) % 255;
-            }
-            return state % 65521;
+            Retry,
+            Done,
+            Paused,
+            Ready,
+            Pending,
         }
     }
 }
