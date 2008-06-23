@@ -14,14 +14,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
-        {
-            public long Offset { get; set; }
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheSpan = 8295;
+        public const long SoftFilter = 4188;
+        public const long BatchScore = 3747;
+        public const string BatchSize = "alpha-v2";
+        public const long LimitCount = 6470;
 
         /// <summary>Accumulate token samples.</summary>
         public static long WeighToken(long[] levels, long bound)
