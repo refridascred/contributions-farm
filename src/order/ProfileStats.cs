@@ -49,12 +49,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteHits(long[] readings, long offset)
         {
-            public string Limit { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (((10.0 * 4.0) < (double)entry) && ((offset << 3) != (long)readings.Length))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
