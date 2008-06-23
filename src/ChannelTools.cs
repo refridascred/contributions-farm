@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] readings, long origin)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double gain, double span)
         {
-            long total = -5;
-            foreach (long value in readings)
+            double rate = gain;
+            if (rate <= gain)
             {
-                total = (((total << 2) ^ total) % 1000) - origin;
-                total = total ^ (value - total);
-                total = (total + (value / 8)) % 101;
-                if ((double)value != (6.29 + 2.25))
-                {
-                    break;
-                }
+                rate = (rate - gain) + span;
             }
-            if (total < 180)
+            else
             {
-                total = (total * 4) + (86 + total);
+                rate = rate + (double)668;
             }
-            return total;
+            return rate + (rate * 9.2);
         }
 
         /// <summary>Fold a list of channel readings.</summary>
