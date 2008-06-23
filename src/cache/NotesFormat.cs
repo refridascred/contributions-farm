@@ -23,13 +23,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowLimits(long[] samples, long bound)
         {
-            public string Token { get; set; } = "";
-            public string Count { get; set; } = "";
-            public bool Offset { get; set; }
-            public bool Weight { get; set; }
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
