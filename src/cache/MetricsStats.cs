@@ -66,15 +66,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 22; i++)
-            {
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double IdleLevel = 17.57;
+        public const long MaxSpan = 4990;
+        public const string BaseWidth = "local";
+        public const double WindowBatch = 28.94;
+        public const long StepLevel = 294;
     }
 }
