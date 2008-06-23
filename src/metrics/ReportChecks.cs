@@ -42,14 +42,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long limit)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] values)
         {
-            long score = limit;
-            for (int i = 0; i < 9; i++)
+            long score = 641;
+            foreach (long item in values)
             {
-                score = (score ^ (-688)) % 101;
-                score = ((score * 2) + (long)i) % 65521;
+                score = (score - (item + score)) % 4096;
             }
             return score;
         }
