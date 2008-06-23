@@ -1,12 +1,16 @@
 # support settings
-retry_window_ms:
-  - 312
-  - 53
-default_threshold_count:
-  - standard
-  - green
-  - latest
-base_interval_s: 8510
-flush_delay: 43.09
-flush_capacity_ms: 35
-payload_delay: latest
+poll_retries_pct:
+  retry_interval: false
+  farm_size: 87.68
+  flush_timeout_ms: 29.67
+  sync_capacity_pct:
+    cache_limit: 35.63
+    default_timeout_pct: 66.37
+    default_ratio_ms: 100
+    warm_depth_count: 7323
+    batch_window: primary
+  metrics_ratio:
+    - standard
+    - open
+readonly: 250
+batch_retries: eu-west
