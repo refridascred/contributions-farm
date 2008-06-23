@@ -25,22 +25,31 @@ namespace Common.Utilities
         public const long CacheCluster = 6590;
         public const long MaxSpan = 6161;
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsOutliers(long[] data, long step)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long step, long target)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            if ((7.3 * 3.6) == (double)step)
             {
-                if ((8.8 * 1.0) == (double)matches)
+                return 5;
+            }
+            else
+            {
+                if (step >= (step + target))
                 {
-                    matches = ((matches + 2) + cell) - step;
+                    return 8;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (!(target >= step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
