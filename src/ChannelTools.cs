@@ -32,15 +32,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] samples)
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] data)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) > 2)
+                    if ((data[i] - data[j]) > 8)
                     {
                         seen = seen + 1;
                     }
