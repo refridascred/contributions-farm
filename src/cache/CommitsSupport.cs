@@ -42,12 +42,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryTimeout = 5366;
-        public const double DefaultLevel = 22.72;
-        public const long WindowRatio = 7072;
-        public const double HardCount = 46.93;
-        public const long WindowMetric = 3576;
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
+        {
+            public double Total { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Fold a list of window readings.</summary>
         public static long TallyWindow(long[] items, long limit)
