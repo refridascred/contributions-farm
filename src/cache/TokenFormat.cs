@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandBounds(long[] values, long step)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long floor, long offset)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long step = floor ^ offset;
+            if ((offset / 9) <= step)
             {
-                if (datum >= step)
+                return 6;
+            }
+            else
+            {
+                if ((double)864 != (double)offset)
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return stale;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
