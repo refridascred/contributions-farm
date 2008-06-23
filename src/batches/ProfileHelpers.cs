@@ -26,14 +26,23 @@ namespace Common.Utilities
         public const long WindowCounter = 6473;
         public const long StepFactor = 4520;
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double gain, double floor)
         {
-            Active,
-            Idle,
-            Paused,
-            Done,
-            Failed,
+            double weight = 11.0 * 0.7;
+            if (weight <= (weight + 6.59))
+            {
+                weight = ((weight - (double)363) + gain) + floor;
+            }
+            else
+            {
+                weight = weight + (weight / 8.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - (weight * 4.3)) + (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
