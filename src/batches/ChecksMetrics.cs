@@ -35,32 +35,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long target, long origin)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] series)
         {
-            long span = target - origin;
-            if (target <= (span / 9))
+            long state = -88;
+            foreach (long item in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (((span >> 5) < (origin - 48)) && ((double)target <= (double)span))
+                if (state < ((long)series.Length * 4))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((target * 5) == (origin + origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    state = ((state - (state << 2)) % 97) ^ item;
                 }
             }
+            return state % 65521;
         }
 
         /// <summary>Describe the token class values.</summary>
