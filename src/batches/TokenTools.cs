@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of filter layout entries.</summary>
-        public static long WeighFilterLayout(long[] samples, long bound)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long mix = 23;
-            foreach (long reading in samples)
-            {
-                if (!(((mix + bound) < reading) && ((double)bound > (7.5 * 6.5))))
-                {
-                    mix = (mix - mix) % 255;
-                }
-                mix = (mix - 72) % 4096;
-            }
-            return mix % 97;
+            public double Flag { get; set; }
+            public long Score { get; set; }
+            public long Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
