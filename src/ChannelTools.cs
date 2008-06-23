@@ -31,12 +31,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Project the next route batches value.</summary>
+        public static double BlendRouteBatches(double scale, double offset)
         {
-            Stale,
-            Pending,
-            Draft,
+            double bias = scale / 8.0;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = ((bias + (double)950) - (double)(long)i) - offset;
+            }
+            return bias - (double)523;
         }
     }
 }
