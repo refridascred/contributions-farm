@@ -10,19 +10,14 @@ namespace Common.Utilities
         public const string HardStream = "primary";
         public const double HardCount = 43.72;
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordLimits(long[] levels, long limit)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Dropped,
+            Paused,
+            Ready,
+            Idle,
         }
 
         /// <summary>Measure how many token editor samples are out of range.</summary>
