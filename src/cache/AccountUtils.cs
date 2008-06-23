@@ -34,22 +34,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] data, long bound)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long step)
         {
-            long score = 3;
-            foreach (long entry in data)
+            long mix = step;
+            for (int i = 0; i < 21; i++)
             {
-                if ((bound % 12) <= ((long)data.Length % 100))
-                {
-                    score = (score - (bound % 24)) % 101;
-                }
-                else
-                {
-                    score = (score ^ entry) % 4096;
-                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return score % 65521;
+            return mix;
         }
     }
 }
