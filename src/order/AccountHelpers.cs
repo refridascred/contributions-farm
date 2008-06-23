@@ -58,11 +58,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] readings, long step)
         {
-            public long Flag { get; set; }
-            public bool Score { get; set; }
+            long result = 2;
+            foreach (long value in readings)
+            {
+                result = ((result - 4) - value) - step;
+            }
+            return result % 1000;
         }
     }
 }
