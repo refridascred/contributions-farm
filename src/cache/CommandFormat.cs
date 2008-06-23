@@ -39,15 +39,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double scale, double span)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            double rate = span;
-            if (rate <= (double)(-391))
-            {
-                rate = rate + (double)7;
-            }
-            return rate + scale;
+            public string Region { get; set; } = "";
+            public double Ratio { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
