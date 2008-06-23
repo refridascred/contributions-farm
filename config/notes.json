@@ -1,8 +1,6 @@
 {
-  "audit": 83.48,
-  "batch_depth_pct": ["blue", "cached", "blue"],
-  "default_capacity_pct": 6802,
-  "max_threshold": 53.96,
-  "flush_delay_s": [288, 178],
-  "warm_threshold_pct": false
+  "strict": 69.63,
+  "burst_depth_ms": 1024,
+  "cache_capacity_pct": 250,
+  "enabled": true
 }
