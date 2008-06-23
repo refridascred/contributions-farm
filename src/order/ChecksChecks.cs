@@ -19,12 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double DefaultStats = 55.93;
-        public const long MaxTimeout = 4433;
-        public const long CacheStats = 9954;
-        public const long MinStats = 4068;
-        public const long HardStats = 3328;
+        /// <summary>Validate record cache readings against a bound.</summary>
+        public static bool VerifyRecordCacheRange(long[] samples, long offset)
+        {
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long TallyAlreadyOutliers(long[] items, long seed)
