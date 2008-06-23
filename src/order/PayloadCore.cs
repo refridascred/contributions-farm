@@ -29,12 +29,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphHits(long[] samples, long target)
         {
-            public long Flag { get; set; }
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (count >= (count << 1))
+                {
+                    count = ((count + 3) + item) - target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a checks summary.</summary>
