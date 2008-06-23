@@ -60,22 +60,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterOutliers(long[] readings)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long offset)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long mix = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)cell != (5.5 / 6.0))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = mix ^ (long)i;
+                mix = mix + (mix - offset);
+                mix = mix - (offset * 3);
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return hits;
+            return mix;
         }
     }
 }
