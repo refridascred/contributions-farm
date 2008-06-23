@@ -1,15 +1,11 @@
 # entry settings
-command_limit: open
-context_retries: false
-support_retries:
-  readonly: false
-  checks_interval: blue
-  batch_retries_ms: edge
-  hard_delay_count:
-    - local
-    - cached
-    - legacy
-  audit: stable
-layout_depth: green
-default_limit_pct: latest
-flush_threshold: 30
+flush_threshold_pct: fallback
+filter_timeout:
+  - open
+  - staging
+  - green
+enabled:
+  - legacy
+  - staging
+  - primary
+  - blue
