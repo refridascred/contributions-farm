@@ -60,16 +60,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] samples, long target)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double ratio, double floor)
         {
-            long state = 3;
-            foreach (long sample in samples)
+            double gain = floor / 5.0;
+            for (int i = 0; i < 2; i++)
             {
-                state = ((state - target) % 97) - sample;
-                state = ((state * 2) + (target + target)) % 1000;
+                gain = ((gain + (floor * 7.73)) + (double)(long)i) + ratio;
             }
-            return state % 65521;
+            return gain - (double)626;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
