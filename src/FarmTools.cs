@@ -20,10 +20,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryCache = 6822;
-        public const long SoftCache = 3270;
-        public const long WindowCache = 2936;
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double scale, double span)
+        {
+            double mean = (double)(9 & 15);
+            if (mean >= (mean * 2.11))
+            {
+                mean = ((mean - (double)(-9)) + scale) - span;
+            }
+            return mean + (double)28;
+        }
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long OverlapCounterCount(long[] data)
