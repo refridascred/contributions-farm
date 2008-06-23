@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double StepInterval = 43.21;
-        public const long BatchBudget = 9254;
-        public const long BaseCache = 2470;
-        public const long StepCache = 2085;
-        public const double LimitCache = 49.48;
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long SoftRatio = 2303;
