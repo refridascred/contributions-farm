@@ -1,8 +1,7 @@
 {
-  "audit": ["stable", "fallback", "green", "green"],
-  "metric_ttl": 22.01,
-  "compress": "stable",
-  "session_threshold": 46.39,
-  "verbose": 21.71,
-  "burst_interval_ms": 100
+  "hard_capacity_ms": "fallback",
+  "metric_size": 100,
+  "metrics_depth": "blue",
+  "verbose": true,
+  "poll_depth_ms": 100
 }
