@@ -1,12 +1,12 @@
 {
-  "sync_limit": 30,
-  "default_ratio_pct": {
-    "readonly": [156, 447, 95],
-    "verbose": 6744,
-    "filter_timeout": "latest",
-    "max_limit_count": "local",
-    "default_retries_count": 4579,
-    "format_threshold": 90.99
+  "dry_run": {
+    "dry_run": ["edge", "local", "legacy", "legacy"],
+    "queue_depth": 48,
+    "max_limit_ms": 65,
+    "profile_limit": 60
   },
-  "sync_window_pct": 80.91
+  "sync_size_count": "edge",
+  "compress": "legacy",
+  "session_delay": 6559,
+  "readonly": 7175
 }
