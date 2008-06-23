@@ -63,11 +63,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double ratio, double bias)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorMatches(long[] samples, long target)
         {
-            double mean = ratio;
-            return mean + bias;
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((75 - 84) != (reading & 15))
+                {
+                    count = (count + 3) - target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
