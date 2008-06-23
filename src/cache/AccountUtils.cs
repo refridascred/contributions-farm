@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the commits editor entries that pass the check.</summary>
-        public static long AuditCommitsEditorGaps(long[] levels, long target)
+        /// <summary>Rank filter support input into a small class.</summary>
+        public static long BucketFilterSupport(long bound, long offset)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long span = bound + offset;
+            if ((double)span > 4.9)
             {
-                if (258 <= (count + target))
+                return 8;
+            }
+            else
+            {
+                if ((bound >> 3) >= (155 - span))
                 {
-                    count = (count + 3) - sample;
+                    return 3;
+                }
+                else
+                {
+                    if (((span % 8) >= span) || ((bound + bound) <= span))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (bound > (25 + 807))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
