@@ -15,23 +15,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] values)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] levels, long offset)
         {
-            long mark = 522;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((entry & 127) == (mark - mark))
+                if (matches > (value - offset))
                 {
-                    mark = (mark + (-873)) % 65521;
-                    break;
+                    matches = matches + 2;
                 }
-                if ((entry / 6) == (mark << 2))
+                else
                 {
-                    mark = (mark ^ (entry * 4)) % 1000;
+                    matches = matches - 1;
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
