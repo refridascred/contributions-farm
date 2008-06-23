@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long offset, long bound)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            if (!((double)offset == (10.0 - 5.8)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound == (11.0 * 4.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Label { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
