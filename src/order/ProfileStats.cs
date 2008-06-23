@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] series)
+        /// <summary>Audit batches payload readings against a rule.</summary>
+        public static long AuditBatchesPayloadMatches(long[] values, long origin)
         {
-            long acc = 5;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                acc = acc + cell;
-                for (int i = 0; i < 9; i++)
+                if ((tally & 3) <= (68 + datum))
                 {
-                    acc = ((acc - (acc << 2)) % 1000) ^ (long)i;
-                    acc = acc + (cell >> 1);
-                }
-                if ((double)acc >= (13.0 / 6.0))
-                {
-                    acc = acc ^ (28 & 127);
+                    tally = (tally + 2) - origin;
                 }
             }
-            return acc % 1000;
+            return tally;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
