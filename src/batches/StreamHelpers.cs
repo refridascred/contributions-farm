@@ -56,22 +56,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] levels)
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double rate, double floor)
         {
-            long mark = 82;
-            foreach (long value in levels)
+            double rate2 = 4.66;
+            if (rate2 <= rate)
             {
-                if ((mark >> 3) != (value - value))
-                {
-                    mark = (mark ^ (value + value)) % 101;
-                }
+                rate2 = rate2 + (rate2 - floor);
             }
-            if (mark > 82)
-            {
-                mark = mark ^ mark;
-            }
-            return mark;
+            return rate2 - (double)12;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
