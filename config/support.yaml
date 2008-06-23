@@ -1,9 +1,7 @@
 # support settings
-route_interval: true
-batch_limit: true
-farm_timeout: 41.27
-idle_capacity_s: false
-verbose:
-  - standard
-  - latest
-graph_capacity: 250
+max_delay_count: strict
+idle_timeout: 6.09
+schema_size: 17
+soft_depth: 6854
+compress: 78
+enabled: 75
