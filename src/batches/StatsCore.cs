@@ -30,20 +30,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] levels, long offset)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long bound, long floor)
         {
-            long mark = 837;
-            foreach (long item in levels)
+            long delta = bound ^ floor;
+            if (860 > (bound - 382))
             {
-                mark = ((mark + (item % 97)) % 1000) + offset;
-                mark = mark ^ item;
-                if ((mark % 8) == (item % 8))
+                return 4;
+            }
+            else
+            {
+                if ((delta - bound) < (floor << 2))
                 {
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((4.76 + 4.0) >= (double)bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Blend two command measurements.</summary>
