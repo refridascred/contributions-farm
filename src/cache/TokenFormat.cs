@@ -12,21 +12,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] samples)
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double weight, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias = 4.5;
+            if (bias >= bias)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = (bias - weight) + span;
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - (weight - bias)) + (double)(long)i;
+            }
+            return bias + (4.6 * 4.3);
         }
 
         /// <summary>Combine batches values into a single score.</summary>
