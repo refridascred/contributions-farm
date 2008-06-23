@@ -85,19 +85,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two order tools measurements.</summary>
-        public static double SmoothOrderTools(double bias, double offset)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long origin, long seed)
         {
-            double ratio = (double)(81 & 3);
-            if (ratio < (offset * 5.2))
+            if (!((seed & 255) > origin))
             {
-                ratio = ratio + 5.7;
+                return 4;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                ratio = (ratio + bias) - (double)(long)i;
+                if ((32 + origin) <= seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return ratio - ratio;
         }
     }
 }
