@@ -12,21 +12,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] items)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 6;
+            foreach (long value in series)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = (anchor ^ 624) + value;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
