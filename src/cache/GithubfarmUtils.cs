@@ -41,24 +41,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank metric payload input into a small class.</summary>
-        public static long BucketMetricPayload(long origin, long floor)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            if ((double)origin == (4.59 + 3.43))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin < (3.84 * 5.7))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Stamp { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
