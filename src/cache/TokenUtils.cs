@@ -21,31 +21,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank command profile input into a small class.</summary>
-        public static long BucketCommandProfile(long floor, long origin)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] levels)
         {
-            if (floor > (floor >> 3))
+            long sum = 621;
+            foreach (long item in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin > 8.0)
+                if ((sum + sum) < (sum - item))
                 {
-                    return 2;
+                    sum = ((sum << 2) ^ (item & 127)) % 1000;
                 }
                 else
                 {
-                    if ((origin - floor) > (floor - floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    sum = (sum << 2) ^ sum;
+                }
+                if (sum <= item)
+                {
+                    break;
                 }
             }
+            return sum % 4096;
         }
     }
 }
