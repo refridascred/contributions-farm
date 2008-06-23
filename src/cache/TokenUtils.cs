@@ -28,27 +28,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long seed)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long carry = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                if (((long)i >= carry) || (seed > carry))
-                {
-                    carry = ((carry << 2) ^ (seed / 2)) % 255;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (carry - carry)) % 255;
-                }
-                for (int i3 = 0; i3 < 11; i3++)
-                {
-                    carry = ((carry << 2) ^ (long)i3) % 1000;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            Draft,
+            Queued,
+            Active,
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
