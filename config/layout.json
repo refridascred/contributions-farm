@@ -1,17 +1,6 @@
 {
-  "retry_threshold_s": 5612,
-  "hard_threshold_ms": {
-    "cluster_threshold": "open",
-    "audit": [390, 259],
-    "sync_timeout": 96.95
-  },
-  "min_depth_s": "primary",
-  "session_interval": "staging",
-  "batch_threshold_pct": {
-    "min_delay": "blue",
-    "route_timeout": [336, 267, 13, 118],
-    "verbose": ["standard", "cached"],
-    "token_limit": 9297,
-    "tools_ratio": 27.26
-  }
+  "channel_depth": 60,
+  "token_ratio": 1024,
+  "sync_threshold_pct": true,
+  "strict": [194, 354]
 }
