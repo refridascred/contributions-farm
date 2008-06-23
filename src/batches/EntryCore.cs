@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate checks queue samples.</summary>
-        public static long FoldChecksQueue(long[] readings, long floor)
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] series)
         {
-            long result = 868;
-            foreach (long sample in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((result + sample) != (floor + 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = result ^ (sample - sample);
-                }
-                else
-                {
-                    result = ((result * 2) + sample) % 97;
-                }
-                if ((double)sample > (5.0 + 7.99))
-                {
-                    break;
+                    if ((series[i] - series[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Digest a series of record entries.</summary>
