@@ -22,10 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowFactor = 7410;
-        public const string BatchSpan = "strict";
-        public const long IdleDepth = 1637;
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
+        {
+            public bool Total { get; set; }
+            public bool Weight { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long AuditChannelOutliers(long[] samples, long bound)
