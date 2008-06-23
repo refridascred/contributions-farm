@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutBounds(long[] values, long seed)
+        /// <summary>Validate report metrics readings against a bound.</summary>
+        public static bool ValidateReportMetricsRange(long[] items, long origin)
         {
             bool flag = true;
-            foreach (long reading in values)
+            foreach (long entry in items)
             {
-                if (reading > seed)
+                if (entry <= origin)
                 {
                     flag = false;
                     break;
