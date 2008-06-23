@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank filter support input into a small class.</summary>
-        public static long BucketFilterSupport(long bound, long offset)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long span = bound + offset;
-            if ((double)span > 4.9)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound >> 3) >= (155 - span))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((span % 8) >= span) || ((bound + bound) <= span))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (bound > (25 + 807))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public long Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
