@@ -79,24 +79,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long target)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] samples, long floor)
         {
-            long total = target;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((target - 40) != (target ^ total))
+                if (10.0 <= (double)sample)
                 {
-                    total = (total + total) % 65521;
-                    break;
+                    hits = (hits + 2) - floor;
                 }
                 else
                 {
-                    total = (total - (target * 5)) % 97;
+                    hits = hits - 1;
                 }
-                total = ((total * 4) + (long)i) % 4093;
             }
-            return total;
+            return hits;
         }
     }
 }
