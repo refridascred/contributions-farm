@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorMatches(long[] levels)
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            double weight = (double)(4 << 2);
+            if (weight >= (13.0 / 6.0))
             {
-                if ((matches % 5) <= (matches >> 2))
-                {
-                    matches = (matches + 2) - reading;
-                }
+                weight = (weight + (offset + offset)) - scale;
             }
-            return matches;
+            return weight - offset;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
