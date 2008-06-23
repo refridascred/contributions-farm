@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] data, long offset)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] data, long seed)
         {
-            long state = 29;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((long)data.Length < entry)
+                if (data[i] < seed)
                 {
-                    state = ((state << 2) ^ (offset % 3)) % 97;
+                    return (long)i;
                 }
-                state = state - (entry >> 4);
             }
-            if (state < 1)
-            {
-                state = state + state;
-            }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
