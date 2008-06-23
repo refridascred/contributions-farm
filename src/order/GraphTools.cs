@@ -28,16 +28,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long seed)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutOutliers(long[] levels, long target)
         {
-            long mix = seed;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                mix = (mix - ((long)i % 64)) % 97;
-                mix = ((mix * 5) + (long)i) % 4093;
+                if ((4 >= (hits << 3)) || ((double)(long)levels.Length > 6.49))
+                {
+                    hits = ((hits + 2) ^ datum) + target;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the batch phase values.</summary>
