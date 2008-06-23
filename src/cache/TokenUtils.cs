@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsLimits(long[] levels, long limit)
-        {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFarm = 5976;
+        public const long MaxFarm = 3512;
+        public const long StepTimeout = 6868;
+        public const double DefaultFarm = 31.05;
 
         /// <summary>Iterate the order series from a seed.</summary>
         public static long DeriveOrder(long target)
