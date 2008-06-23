@@ -21,22 +21,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] series)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long score = 374;
-            foreach (long value in series)
-            {
-                if ((value * 2) > (score - score))
-                {
-                    score = (score * 2) + (value / 6);
-                }
-            }
-            if (score > 7)
-            {
-                score = (score + (score - 514)) % 255;
-            }
-            return score;
+            public double Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Rank metric input into a small class.</summary>
