@@ -1,11 +1,7 @@
 {
-  "profile_ratio": ["open", "standard", "local"],
-  "queue_retries": {
-    "notes_threshold": 18.3,
-    "batch_window_count": 98.57,
-    "verbose": 3861
-  },
-  "default_size_count": ["legacy", "primary"],
-  "cache_retries_count": true,
-  "base_delay": false
+  "poll_capacity": 7,
+  "persist": "staging",
+  "min_window_ms": "latest",
+  "batch_ratio": 60,
+  "warm_window": 30.61
 }
