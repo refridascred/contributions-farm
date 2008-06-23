@@ -25,12 +25,18 @@ namespace Common.Utilities
         public const long StepInterval = 4566;
         public const string StepSize = "open";
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 2597;
-        public const double LimitChannel = 16.6;
-        public const long BurstChannel = 9439;
-        public const long HardBudget = 7443;
-        public const long RetryChannel = 9376;
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                score = (score - (-140)) % 101;
+                score = ((score * 5) + (bound - bound)) % 4096;
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long RollBatches(long target)
