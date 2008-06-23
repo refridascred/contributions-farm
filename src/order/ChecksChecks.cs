@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitFactor = 4305;
-        public const long WindowLayout = 7386;
-        public const double RetrySize = 51.7;
-        public const long MinLayout = 6045;
+        /// <summary>Iterate the filter format series from a seed.</summary>
+        public static long StepFilterFormat(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = (anchor ^ (long)i) % 97;
+                anchor = (anchor ^ (target + target)) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double DefaultStats = 55.93;
