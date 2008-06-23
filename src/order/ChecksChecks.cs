@@ -36,16 +36,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] data, long bound)
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] values)
         {
-            long mark = 4;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark * 4) + (mark - bound)) - item;
-                mark = ((mark * 4) + 616) % 4096;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark % 1000;
+            return seen;
         }
     }
 }
