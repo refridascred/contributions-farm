@@ -1,10 +1,5 @@
 {
-  "default_timeout_ms": "open",
-  "warm_depth_pct": 5,
-  "flush_window": {
-    "idle_ratio": "staging",
-    "report_capacity": 18.53,
-    "warm_depth": true
-  },
-  "sync_depth_s": "green"
+  "counter_ttl": 61.73,
+  "hard_retries": "staging",
+  "hard_threshold": "strict"
 }
