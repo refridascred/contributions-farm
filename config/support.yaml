@@ -1,9 +1,12 @@
 # support settings
-githubfarm_limit: 49.71
-batch_limit_s:
-  channel_threshold: 250
-  min_depth_pct: 9
-  record_ttl: 1024
-  soft_timeout_ms: false
-  account_delay: 60
-cache_size_count: strict
+burst_size: false
+poll_capacity: 100
+graph_timeout: 97.16
+persist:
+  cache_delay_ms: false
+  burst_interval:
+    - 268
+    - 30
+    - 496
+  default_timeout_pct: 81.71
+contributi_threshold: 3744
