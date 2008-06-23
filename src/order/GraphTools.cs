@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            Paused,
+            Idle,
             Ready,
-            Draft,
-            Queued,
+            Active,
         }
 
         /// <summary>Blend two layout measurements.</summary>
