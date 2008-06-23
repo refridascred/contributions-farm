@@ -1,13 +1,10 @@
 # entry settings
-strict: 60
-max_depth_s: 0.83
-min_depth: 500
-readonly: 1024
-cache_size_pct: true
-batches_ratio:
-  farm_size:
-    - 406
-    - 117
-    - 42
-  max_size_pct: 100
-  persist: true
+checks_interval: latest
+session_threshold:
+  commits_depth: legacy
+  batches_retries: 80.22
+  editor_ttl: 90.0
+  strict: blue
+  warm_limit: false
+warm_window_pct: legacy
+profile_timeout: 84.34
