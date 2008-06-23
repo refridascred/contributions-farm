@@ -1,11 +1,10 @@
 # Command notes
 
-Run the batches check before changing any cluster limits.
-A farm that stays idle for too long is moved to the already list.
+Defaults for context live in the config folder and can be overridden per environment.
+The contributi report groups every account by queue.
 
 ## Guidelines
 
-- Keep metric values small
-- Validate layout input early
-- Log every buffer change
-- Prefer profile defaults
+- Keep token values small
+- Log every order change
+- Prefer record defaults
