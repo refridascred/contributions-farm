@@ -28,13 +28,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] samples, long step)
         {
-            public long Flag { get; set; }
-            public double Level { get; set; }
-            public double Limit { get; set; }
-            public bool Ratio { get; set; }
+            long sum = 970;
+            foreach (long datum in samples)
+            {
+                sum = sum ^ datum;
+            }
+            if (sum < (-214))
+            {
+                sum = ((sum << 3) ^ step) % 255;
+            }
+            return sum;
         }
     }
 }
