@@ -38,9 +38,18 @@ namespace Common.Utilities
         public const long IdleSize = 8574;
         public const long BatchScore = 7149;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 2742;
-        public const long LimitRatio = 8312;
-        public const long IdleMetrics = 3921;
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmMatches(long[] levels, long target)
+        {
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum << 2) <= datum)
+                {
+                    matches = (matches + 3) - target;
+                }
+            }
+            return matches;
+        }
     }
 }
