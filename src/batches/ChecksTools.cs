@@ -53,19 +53,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorLimits(long[] series, long floor)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            Pending,
+            Queued,
+            Closed,
         }
     }
 }
