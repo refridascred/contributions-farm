@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] readings)
         {
-            public long Limit { get; set; }
-            public long Mode { get; set; }
+            long total = 4;
+            foreach (long item in readings)
+            {
+                if (!((item & 7) < (item - total)))
+                {
+                    total = (total - (item % 60)) % 255;
+                }
+            }
+            return total;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
