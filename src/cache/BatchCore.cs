@@ -19,12 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            public long Mode { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Count { get; set; }
+            public double Ratio { get; set; }
+            public double Size { get; set; }
+            public double Stamp { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Count the metric context entries that pass the check.</summary>
