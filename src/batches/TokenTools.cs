@@ -13,22 +13,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterOutliers(long[] data, long origin)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((origin >> 3) != (origin ^ tally))
-                {
-                    tally = (tally + 1) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Synced,
+            Done,
+            Idle,
+            Paused,
         }
 
         /// <summary>Describe the cache kind values.</summary>
