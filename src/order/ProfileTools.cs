@@ -24,21 +24,23 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] samples)
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double rate, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias2 = bias;
+            if (bias2 < bias)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias2 = bias2 + (bias2 * 8.0);
             }
-            return matches;
+            else
+            {
+                bias2 = bias2 + (bias2 + rate);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 - bias2) + (double)(long)i;
+            }
+            return bias2 + (rate - bias);
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
