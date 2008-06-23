@@ -12,12 +12,24 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BurstProfile = "cached-1";
-        public const string StepSize = "open-edge";
-        public const double SoftTimeout = 15.0;
-        public const long SoftProfile = 7982;
-        public const string RetryProfile = "fallback-v2";
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] values, long offset)
+        {
+            long state = 6;
+            foreach (long item in values)
+            {
+                state = (state - state) % 255;
+                if ((offset >= (item + offset)) && ((offset - offset) != (offset * 2)))
+                {
+                    state = (state + (long)values.Length) % 4096;
+                }
+                else
+                {
+                    state = (state << 2) ^ item;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long WeighGithubfarm(long[] levels)
