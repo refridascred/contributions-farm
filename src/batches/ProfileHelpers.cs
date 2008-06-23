@@ -19,14 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            Queued,
-            Synced,
-            Closed,
-            Dropped,
-            Retry,
+            public long Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Project the next batch value.</summary>
