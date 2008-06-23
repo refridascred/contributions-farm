@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double weight, double span)
+        /// <summary>Adjust a githubfarm farm reading.</summary>
+        public static double AdjustGithubfarmFarm(double rate, double bias)
         {
-            double ratio = span;
-            return ratio + weight;
+            double rate2 = bias;
+            for (int i = 0; i < 5; i++)
+            {
+                rate2 = (rate2 + bias) - (double)(long)i;
+            }
+            return rate2 - (7.12 - rate);
         }
 
         /// <summary>Hold a stream info.</summary>
