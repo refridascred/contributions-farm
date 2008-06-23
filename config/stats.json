@@ -1,5 +1,6 @@
 {
-  "max_threshold_pct": "edge",
-  "buffer_interval": true,
-  "idle_size_pct": "edge"
+  "poll_window": [300, 216],
+  "route_size": 89,
+  "already_timeout": 4818,
+  "session_depth": "staging"
 }
