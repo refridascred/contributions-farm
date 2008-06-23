@@ -1,11 +1,6 @@
 {
-  "hard_timeout_count": [430, 62, 476],
-  "batches_ttl": true,
-  "session_ttl": {
-    "compress": [379, 257],
-    "checks_retries": "fallback",
-    "verbose": "edge"
-  },
-  "max_ttl_s": true,
-  "flush_delay_count": 92
+  "channel_limit": ["cached", "staging", "legacy", "primary"],
+  "sync_ttl": "primary",
+  "flush_size": 28.54,
+  "compress": 68.44
 }
