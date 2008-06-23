@@ -27,9 +27,17 @@ namespace Common.Utilities
             return ratio - (bias + floor);
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double LimitTimeout = 30.85;
-        public const string RetryCommand = "alpha-1";
-        public const long LimitCommand = 7441;
+        /// <summary>Find the first window notes entry that matches the target.</summary>
+        public static long SeekWindowNotesIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= target) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
