@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every stream farm entry stays within the limit.</summary>
-        public static bool CheckStreamFarmRange(long[] samples, long origin)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Idle,
+            Draft,
+            Done,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
