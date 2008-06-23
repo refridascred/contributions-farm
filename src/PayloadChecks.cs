@@ -16,13 +16,19 @@ namespace Common.Utilities
             return ratio2 + (double)14;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long floor)
         {
-            Queued,
-            New,
-            Synced,
-            Paused,
+            long mark = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((double)mark != (4.0 / 4.0))
+                {
+                    break;
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate format context samples.</summary>
