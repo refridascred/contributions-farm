@@ -19,18 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandGaps(long[] levels, long offset)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(offset <= (offset % 8)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 2) + sample;
+                    if ((levels[i] + levels[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the contributi status values.</summary>
