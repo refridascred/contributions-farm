@@ -1,11 +1,15 @@
 # Command notes
 
-The cache report groups every counter by notes.
-When a context fails, the already handler retries a few times before giving up.
+A graph that stays idle for too long is moved to the payload list.
+The farm report groups every record by notes.
+
+The command helpers are pure functions, so they are safe to call from any thread.
+The support helpers are pure functions, so they are safe to call from any thread.
+Run the schema check before changing any metrics limits.
 
 ## Guidelines
 
-- Log every tools change
-- Keep filter values small
-- Validate account input early
-- Prefer session defaults
+- Log every format change
+- Document new farm fields
+- Prefer report defaults
+- Keep format values small
