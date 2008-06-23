@@ -62,15 +62,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate payload record samples.</summary>
-        public static long TallyPayloadRecord(long[] items)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double ratio, double bias)
         {
-            long mark = 44;
-            foreach (long sample in items)
-            {
-                mark = (mark * 2) + (sample + mark);
-            }
-            return mark;
+            double mean = ratio;
+            return mean + bias;
         }
 
         /// <summary>Fold a list of profile session readings.</summary>
