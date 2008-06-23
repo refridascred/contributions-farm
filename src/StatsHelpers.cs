@@ -12,13 +12,10 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
-        {
-            Dropped,
-            Paused,
-            Locked,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double IdleMetric = 84.54;
+        public const string MinMetric = "strict-edge";
+        public const long DefaultWidth = 2849;
 
         /// <summary>Project the next account value.</summary>
         public static double ProjectAccount(double weight, double floor)
