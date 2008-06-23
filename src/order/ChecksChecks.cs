@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] items, long limit)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long bound)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long anchor = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if ((limit - cell) < (tally + tally))
-                {
-                    tally = tally + 3;
-                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
