@@ -33,19 +33,13 @@ namespace Common.Utilities
         public const long MaxCount = 3514;
         public const string BatchLayout = "strict";
 
-        /// <summary>Adjust a filter stream reading.</summary>
-        public static double ProjectFilterStream(double weight, double offset)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            double rate = (weight - weight) + (double)8;
-            if (rate >= 6.1)
-            {
-                rate = rate - (double)251;
-            }
-            else
-            {
-                rate = rate - 7.03;
-            }
-            return rate + (weight - offset);
+            public long Ratio { get; set; }
+            public double Mode { get; set; }
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
     }
 }
