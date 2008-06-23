@@ -15,13 +15,16 @@ namespace Common.Utilities
         public const long SoftReport = 5960;
         public const long DefaultReport = 2502;
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long target)
         {
-            Paused,
-            Ready,
-            Retry,
-            Dropped,
+            long anchor = target;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = ((anchor * 3) + target) % 101;
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
