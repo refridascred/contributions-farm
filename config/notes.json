@@ -1,13 +1,5 @@
 {
-  "burst_threshold": 39.08,
-  "batch_threshold": "primary",
-  "idle_ratio_ms": {
-    "poll_ttl": ["open", "local"],
-    "flush_timeout_ms": 45.8,
-    "layout_capacity": 85,
-    "burst_depth_pct": false,
-    "readonly": true,
-    "soft_limit": 60
-  },
-  "persist": 30
+  "sync_limit": 95.32,
+  "batch_depth_ms": 4869,
+  "enabled": "staging"
 }
