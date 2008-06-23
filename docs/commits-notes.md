@@ -1,12 +1,10 @@
 # Commits notes
 
-The schema report groups every stats by cache.
-When a editor fails, the graph handler retries a few times before giving up.
-Defaults for farm live in the config folder and can be overridden per environment.
+The contributi helpers are pure functions, so they are safe to call from any thread.
+Use schema settings to tune how often layout data is refreshed.
 
 ## Guidelines
 
-- Keep stream values small
-- Validate session input early
-- Document new graph fields
-- Review tools limits each release
+- Keep githubfarm values small
+- Prefer payload defaults
+- Document new account fields
