@@ -53,26 +53,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] data)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] items)
         {
-            long mix = 332;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((mix + mix) > (datum ^ mix))
+                if (entry > (420 >> 3))
                 {
-                    mix = (mix + 99) % 255;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ ((-875) - datum);
+                    matches = matches + 1;
                 }
             }
-            if (mix > 54)
-            {
-                mix = mix + (mix >> 4);
-            }
-            return mix % 4096;
+            return matches;
         }
     }
 }
