@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterBounds(long[] samples, long step)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double AdjustBuffer(double scale, double span)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            double weight = (double)((-634) * 5);
+            if (weight < span)
             {
-                if (cell > step)
-                {
-                    stale = false;
-                    break;
-                }
+                weight = (weight - (4.25 / 8.0)) - scale;
             }
-            return stale;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - span) + (double)(long)i;
+            }
+            return weight - (double)4;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
