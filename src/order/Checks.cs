@@ -19,17 +19,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a context editor reading by value.</summary>
-        public static long SeekContextEditorIndex(long[] series, long seed)
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double weight, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain = weight + (double)291;
+            if (gain < floor)
             {
-                if (series[i] >= seed)
-                {
-                    return (long)i;
-                }
+                gain = gain - weight;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + (weight / 7.0)) + (double)(long)i;
+            }
+            return gain + (2.16 * 9.7);
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
