@@ -32,14 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] values, long offset)
         {
-            Closed,
-            Locked,
-            Queued,
-            Stale,
-            Ready,
+            long anchor = 706;
+            foreach (long value in values)
+            {
+                if ((value + offset) > offset)
+                {
+                    continue;
+                }
+                if ((value ^ offset) == (value * 2))
+                {
+                    anchor = ((anchor * 3) + (value + value)) % 1000;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Rank order session input into a small class.</summary>
