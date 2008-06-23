@@ -78,27 +78,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate commits window samples.</summary>
-        public static long CombineCommitsWindow(long[] items)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long anchor = 776;
-            foreach (long datum in items)
-            {
-                if (7.3 > (double)datum)
-                {
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (anchor + datum);
-                }
-                anchor = anchor + (anchor * 2);
-                if (((1.4 / 5.0) != (double)anchor) || ((anchor + anchor) >= (datum / 4)))
-                {
-                    anchor = ((anchor * 4) + anchor) % 255;
-                }
-            }
-            return anchor;
+            Retry,
+            New,
+            Done,
+            Active,
         }
     }
 }
