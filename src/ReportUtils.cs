@@ -26,19 +26,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyRange(long[] levels, long offset)
+        /// <summary>Check that every stats batches entry stays within the limit.</summary>
+        public static bool CheckStatsBatchesBounds(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if (value != offset)
+                if (item < target)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Rank stream format input into a small class.</summary>
