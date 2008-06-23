@@ -59,19 +59,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metric record values into a single score.</summary>
-        public static long ScoreMetricRecord(long[] data)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] samples)
         {
-            long sum = 5;
-            foreach (long reading in data)
+            long mix = -4;
+            foreach (long reading in samples)
             {
-                sum = (sum - sum) ^ reading;
+                mix = mix ^ (reading >> 1);
             }
-            if (sum > (-172))
-            {
-                sum = (sum - (6 & 63)) % 255;
-            }
-            return sum;
+            return mix;
         }
     }
 }
