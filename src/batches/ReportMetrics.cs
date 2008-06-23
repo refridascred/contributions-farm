@@ -36,15 +36,31 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] data, long step)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long floor, long origin)
         {
-            long state = 630;
-            foreach (long value in data)
+            if (floor < (floor + floor))
             {
-                state = ((state - value) % 1000) - step;
+                return 8;
             }
-            return state % 4096;
+            else
+            {
+                if ((floor + floor) < origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (9.6 < (double)floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
