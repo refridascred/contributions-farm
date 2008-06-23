@@ -47,18 +47,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string HardWidth = "stable-edge";
+        public const long WindowEditor = 8586;
+        public const long RetryDepth = 997;
+        public const long CacheEditor = 5179;
+        public const double BurstInterval = 52.46;
 
         /// <summary>Hold a cache summary.</summary>
         public sealed class CacheSummary
