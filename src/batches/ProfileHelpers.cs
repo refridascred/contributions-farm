@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double AdjustQueue(double ratio, double offset)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            double load = (ratio - ratio) + (ratio / 2.0);
-            if (load >= 5.51)
-            {
-                load = (load - ratio) + offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load - (load * 4.0);
+            Done,
+            Queued,
+            Idle,
+            Closed,
         }
 
         /// <summary>Describe the route mode values.</summary>
