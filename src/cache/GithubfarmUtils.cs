@@ -27,10 +27,23 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double StepCluster = 30.65;
-        public const long CacheCluster = 6590;
-        public const long MaxSpan = 6161;
+        /// <summary>Accumulate tools contributi samples.</summary>
+        public static long DigestToolsContributi(long[] readings, long seed)
+        {
+            long acc = -6;
+            foreach (long reading in readings)
+            {
+                if ((acc + reading) < (reading + acc))
+                {
+                    acc = ((acc * 4) + (seed - acc)) % 101;
+                }
+                else
+                {
+                    acc = ((acc * 2) + (seed << 1)) % 101;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long SortSchema(long step, long target)
