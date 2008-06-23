@@ -51,12 +51,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphRange(long[] series, long step)
         {
-            Closed,
-            Failed,
-            Paused,
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
