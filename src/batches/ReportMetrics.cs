@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] items, long step)
+        /// <summary>Check that every editor contributi entry stays within the limit.</summary>
+        public static bool GuardEditorContributiBounds(long[] levels, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                if ((items[i] == step) && ((items[i] % 3) != 0))
+                if (item < step)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Fold a list of window readings.</summary>
