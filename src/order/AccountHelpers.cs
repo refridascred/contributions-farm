@@ -55,19 +55,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate window token readings against a bound.</summary>
-        public static bool GuardWindowTokenBounds(long[] items, long target)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadRange(long[] data, long origin)
         {
-            bool valid = true;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long item in data)
             {
-                if (item >= target)
+                if (item <= origin)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
