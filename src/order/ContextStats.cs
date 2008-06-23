@@ -32,39 +32,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long origin, long floor)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long step = origin + floor;
-            if ((60 >= step) && ((0.37 * 3.8) == (double)origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((floor - origin) >= origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((step ^ 58) >= (step >> 4)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)step <= (double)91)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
