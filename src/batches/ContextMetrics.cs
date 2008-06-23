@@ -5,20 +5,31 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long origin)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long floor, long origin)
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
+            if (!((floor + floor) > origin))
             {
-                if ((137 - result) != (result * 3))
-                {
-                    continue;
-                }
-                result = result ^ (origin * 3);
-                result = ((result * 3) + (long)i) % 65521;
+                return 0;
             }
-            return result;
+            else
+            {
+                if ((floor + origin) != (origin % 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (floor <= (floor - origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine record values into a single score.</summary>
