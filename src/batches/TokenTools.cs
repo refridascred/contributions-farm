@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a token graph reading by value.</summary>
-        public static long LocateTokenGraphIndex(long[] values, long seed)
+        /// <summary>Digest a series of filter layout entries.</summary>
+        public static long WeighFilterLayout(long[] samples, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 23;
+            foreach (long reading in samples)
             {
-                if (values[i] > seed)
+                if (!(((mix + bound) < reading) && ((double)bound > (7.5 * 6.5))))
                 {
-                    return (long)i;
+                    mix = (mix - mix) % 255;
                 }
+                mix = (mix - 72) % 4096;
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
