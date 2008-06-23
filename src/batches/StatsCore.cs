@@ -45,15 +45,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ScaleCommand(double bias, double span)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long origin)
         {
-            double drift = 2.8;
-            if (drift > (double)55)
+            long mix = origin;
+            for (int i = 0; i < 13; i++)
             {
-                drift = (drift - span) - bias;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return drift - (double)9;
+            return mix;
         }
 
         /// <summary>Accumulate command samples.</summary>
