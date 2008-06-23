@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long bound)
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] data)
         {
-            long total = bound;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total << 2) ^ ((long)i & 63);
-                total = ((total << 2) ^ (total + bound)) % 101;
-                total = (total + bound) % 255;
-                total = ((total * 2) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Digest a series of order entries.</summary>
