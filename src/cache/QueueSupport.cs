@@ -27,11 +27,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstEditor = 9458;
-        public const long DefaultEditor = 8757;
-        public const long WindowEditor = 2822;
-        public const double StepEditor = 39.47;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterMatches(long[] items)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (((item ^ matches) < (matches - matches)) || ((item + item) >= item))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long TallyCommandMatches(long[] series, long offset)
