@@ -88,22 +88,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] levels, long step)
+        /// <summary>Iterate the tools layout series from a seed.</summary>
+        public static long IterateToolsLayout(long origin)
         {
-            long mark = 15;
-            foreach (long item in levels)
+            long mix = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((step & 255) > (mark & 3))
-                {
-                    mark = (mark ^ (step & 255)) % 1000;
-                }
-                else
-                {
-                    mark = (mark - (item - 1)) % 97;
-                }
+                mix = (mix - (origin ^ origin)) % 101;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return mark;
+            return mix;
         }
     }
 }
