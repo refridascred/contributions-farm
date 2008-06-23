@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardGithubfarm = 3389;
-        public const long StepScore = 5517;
-        public const long RetryCount = 5975;
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double weight, double span)
+        {
+            double gain = 19.0 * 16.0;
+            if (gain < (gain + weight))
+            {
+                gain = gain + weight;
+            }
+            else
+            {
+                gain = gain - (span + span);
+            }
+            return gain - gain;
+        }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool VerifyCounterRange(long[] data, long seed)
