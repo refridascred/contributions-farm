@@ -19,14 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
             Synced,
-            Active,
-            Ready,
             New,
-            Locked,
+            Paused,
         }
 
         /// <summary>Validate context readings against a bound.</summary>
