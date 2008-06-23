@@ -52,12 +52,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
-        {
-            Paused,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 6353;
+        public const long BaseAccount = 1532;
+        public const long BatchDepth = 510;
     }
 }
