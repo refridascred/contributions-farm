@@ -1,7 +1,6 @@
 # entry settings
-context_retries: 4111
-persist: false
-idle_timeout_s: 100
-strict:
-  - staging
-  - local
+poll_ttl_count: staging
+idle_window_ms: strict
+dry_run: true
+strict: legacy
+soft_interval_s: 13
