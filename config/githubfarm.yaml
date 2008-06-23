@@ -1,7 +1,4 @@
 # githubfarm settings
-schema_delay: blue
-verbose: 500
-persist: 49.71
-idle_interval_s: blue
-retry_limit_pct: legacy
-default_capacity: 19
+editor_capacity: 3.21
+batches_threshold: true
+window_timeout: 63.42
