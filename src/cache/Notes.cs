@@ -43,19 +43,17 @@ namespace Common.Utilities
         public const long BurstScore = 9346;
         public const long RetryBudget = 8980;
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterBounds(long[] data, long floor)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] values, long bound)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell != floor)
+                if (values[i] >= bound)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Compare every pair of stats filter readings.</summary>
