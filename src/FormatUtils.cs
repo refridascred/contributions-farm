@@ -11,19 +11,14 @@ namespace Common.Utilities
         public const string RetrySize = "primary";
         public const long SoftFactor = 153;
 
-        /// <summary>Fold a list of record order readings.</summary>
-        public static long ScoreRecordOrder(long[] series, long seed)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long acc = -1;
-            foreach (long item in series)
-            {
-                acc = ((acc - (item & 1)) % 1000) - seed;
-            }
-            if (acc > 281)
-            {
-                acc = ((acc * 5) + acc) % 97;
-            }
-            return acc % 97;
+            Draft,
+            New,
+            Stale,
+            Retry,
+            Paused,
         }
 
         /// <summary>Rank editor input into a small class.</summary>
