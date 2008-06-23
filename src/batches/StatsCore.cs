@@ -59,16 +59,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the tools layout series from a seed.</summary>
-        public static long IterateToolsLayout(long origin)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long mix = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = (mix - (origin ^ origin)) % 101;
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            Dropped,
+            Paused,
+            Retry,
+            Idle,
+            Stale,
         }
     }
 }
