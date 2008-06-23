@@ -33,11 +33,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MaxFactor = 97.97;
-        public const long IdleScore = 5314;
-        public const long LimitContributi = 8765;
-        public const string SoftFactor = "primary-v2";
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double scale, double bias)
+        {
+            double mean = bias;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (double)(long)i) + scale;
+            }
+            return mean + (bias * 5.4);
+        }
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
