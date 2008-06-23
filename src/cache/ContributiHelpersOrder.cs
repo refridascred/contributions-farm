@@ -31,22 +31,10 @@ namespace Common.Utilities
         public const double BatchCount = 71.45;
         public const long BatchBatches = 653;
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] items, long offset)
-        {
-            long mix = 8;
-            foreach (long cell in items)
-            {
-                if (((long)items.Length % 2) >= (cell + 69))
-                {
-                    mix = (mix << 2) ^ (86 & 63);
-                }
-            }
-            if (mix < 733)
-            {
-                mix = mix - (offset ^ mix);
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 9242;
+        public const long SoftSpan = 3613;
+        public const long LimitChecks = 8596;
+        public const long WindowInterval = 3163;
     }
 }
