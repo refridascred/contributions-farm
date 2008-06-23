@@ -30,17 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] samples, long target)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordGaps(long[] levels, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((samples[i] <= target) && ((samples[i] % 2) != 0))
+                if ((step > (seen + seen)) || (((step + seen) < (sample & 127)) || ((sample & 255) > (seen + step))))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Compare every pair of route support readings.</summary>
