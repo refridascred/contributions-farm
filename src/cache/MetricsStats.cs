@@ -49,25 +49,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Derive the next session context value from a seed.</summary>
-        public static long IterateSessionContext(long step)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] samples)
         {
-            long anchor = step;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor << 3) ^ ((long)i * 2)) % 101;
-                if ((double)anchor != (0.34 * 9.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] - samples[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    anchor = ((anchor * 5) + (step / 4)) % 1000;
-                }
-                anchor = (anchor - (step % 60)) % 97;
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
