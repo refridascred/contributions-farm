@@ -1,10 +1,7 @@
 {
-  "base_depth_pct": "open",
-  "audit": 1024,
-  "default_window_s": {
-    "compress": false,
-    "context_window": "latest",
-    "commits_size": 76.78
-  },
-  "poll_ratio_pct": "eu-west"
+  "max_limit": true,
+  "poll_window_ms": "local",
+  "min_ratio": ["cached", "stable", "cached", "edge"],
+  "idle_threshold_count": "local",
+  "enabled": true
 }
