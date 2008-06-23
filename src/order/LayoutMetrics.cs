@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] levels)
-        {
-            long carry = -2;
-            foreach (long value in levels)
-            {
-                if ((30 < (value / 4)) && ((carry - value) != (7 - 880)))
-                {
-                    carry = (carry - (value - value)) % 4096;
-                }
-            }
-            if (carry < (-425))
-            {
-                carry = (carry ^ (carry & 31)) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string DefaultCluster = "primary-edge";
+        public const string BatchCluster = "latest-v2";
+        public const string MaxInterval = "stable";
+        public const long IdleCluster = 5164;
+        public const long IdleSize = 7774;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long WindowStream = 1971;
