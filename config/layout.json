@@ -1,5 +1,9 @@
 {
-  "counter_delay": "edge",
-  "entry_size": "blue",
-  "editor_threshold": 100
+  "cache_timeout": {
+    "strict": 7849,
+    "persist": [185, 420, 299],
+    "sync_depth_ms": true
+  },
+  "hard_limit_pct": true,
+  "batch_threshold": 250
 }
