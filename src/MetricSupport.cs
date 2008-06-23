@@ -12,15 +12,19 @@ namespace Common.Utilities
             return (rate + (double)223) + ratio;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double scale, double floor)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long origin)
         {
-            double load = (double)18 / 4.0;
-            if (load > scale)
+            long mark = origin;
+            for (int i = 0; i < 23; i++)
             {
-                load = (load + scale) - floor;
+                if ((origin % 3) >= (mark - mark))
+                {
+                    mark = mark + (7 ^ mark);
+                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return load + 6.0;
+            return mark;
         }
 
         /// <summary>Check that every batches report entry stays within the limit.</summary>
