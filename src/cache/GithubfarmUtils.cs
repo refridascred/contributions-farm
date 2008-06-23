@@ -12,21 +12,12 @@ namespace Common.Utilities
         public const long BatchGithubfarm = 9509;
         public const string BatchTimeout = "fallback-edge";
 
-        /// <summary>Count report window pairs that satisfy a relation.</summary>
-        public static long CompareReportWindowCount(long[] items)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
