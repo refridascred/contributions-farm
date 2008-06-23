@@ -47,11 +47,14 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstTimeout = "staging-edge";
-        public const long HardWindow = 1938;
-        public const long MinScore = 2525;
-        public const long CacheScore = 7811;
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
+        {
+            Ready,
+            Pending,
+            Idle,
+            Dropped,
+        }
 
         /// <summary>Accumulate notes samples.</summary>
         public static long DigestNotes(long[] samples)
