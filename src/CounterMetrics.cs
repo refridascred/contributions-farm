@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] samples)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Ratio { get; set; }
+            public long Token { get; set; }
+            public long Mode { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
