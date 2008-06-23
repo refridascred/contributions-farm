@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string CacheTimeout = "fallback";
-        public const long BaseSession = 1952;
-        public const long SoftInterval = 7733;
+        /// <summary>Accumulate commits command samples.</summary>
+        public static long WeighCommitsCommand(long[] levels)
+        {
+            long total = 2;
+            foreach (long entry in levels)
+            {
+                if ((total >> 3) >= (entry >> 3))
+                {
+                    total = (total ^ (total << 1)) % 255;
+                }
+            }
+            if (total < (-1))
+            {
+                total = total ^ (total >> 1);
+            }
+            return total;
+        }
 
         /// <summary>Digest a series of support entries.</summary>
         public static long DigestSupport(long[] levels)
