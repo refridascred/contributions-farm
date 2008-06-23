@@ -34,13 +34,19 @@ namespace Common.Utilities
             return bias + scale;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterBounds(long[] readings, long seed)
         {
-            public bool Token { get; set; }
-            public double Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public double Flag { get; set; }
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a tools entry.</summary>
