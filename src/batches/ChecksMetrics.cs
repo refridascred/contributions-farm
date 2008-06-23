@@ -13,11 +13,27 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string IdleStream = "fallback-1";
-        public const long BaseScore = 796;
-        public const string HardStream = "legacy";
-        public const string SoftStream = "staging-v2";
+        /// <summary>Accumulate payload already samples.</summary>
+        public static long ScorePayloadAlready(long[] items, long floor)
+        {
+            long carry = 4;
+            foreach (long datum in items)
+            {
+                if (!(floor >= 33))
+                {
+                    carry = ((carry * 4) + 28) % 4096;
+                }
+                else
+                {
+                    carry = carry + (200 - carry);
+                }
+                if (((double)floor <= (double)datum) && ((datum << 2) != (9 + datum)))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long WeighFormat(long[] readings)
