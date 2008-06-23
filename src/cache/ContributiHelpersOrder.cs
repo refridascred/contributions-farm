@@ -19,36 +19,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long offset, long offset2)
+        /// <summary>Grade a githubfarm already value against two limits.</summary>
+        public static long BucketGithubfarmAlready(long offset, long seed)
         {
-            long diff = offset ^ offset2;
-            if ((offset2 > offset) || ((6.0 - 8.8) < (double)offset))
+            if ((7 % 64) < (offset + seed))
             {
-                return 0;
+                return 1;
             }
             else
             {
-                if (!(offset2 <= (offset & 3)))
+                if ((1.64 * 16.0) != (double)seed)
                 {
-                    return 2;
+                    return 3;
                 }
                 else
                 {
-                    if (((offset2 >> 1) > (diff - offset2)) && ((offset2 & 7) != (offset & 255)))
+                    if ((seed + offset) <= (offset & 1))
                     {
-                        return 1;
+                        return 2;
                     }
                     else
                     {
-                        if ((diff << 2) <= (offset + offset))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        return 8;
                     }
                 }
             }
