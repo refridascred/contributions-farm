@@ -1,5 +1,11 @@
 # support settings
-command_ratio: green
-flush_threshold: stable
-channel_retries: 9678
-strict: open
+burst_capacity_s: fallback
+support_size: stable
+sync_depth:
+  flush_interval: stable
+  dry_run: 3081
+  sync_ttl: fallback
+  editor_ttl: 500
+  buffer_threshold: 8393
+  base_depth: 37.82
+flush_delay: 6953
