@@ -24,18 +24,17 @@ namespace Common.Utilities
             return weight + 9.6;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordGaps(long[] levels, long step)
+        /// <summary>Locate a session token reading by value.</summary>
+        public static long SeekSessionTokenIndex(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((step > (seen + seen)) || (((step + seen) < (sample & 127)) || ((sample & 255) > (seen + step))))
+                if (items[i] >= floor)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
