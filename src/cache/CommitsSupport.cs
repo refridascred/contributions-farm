@@ -89,10 +89,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCache = 8947;
-        public const long RetryCache = 4735;
-        public const long BaseCache = 6515;
-        public const long MaxTimeout = 903;
+        /// <summary>Grade a buffer githubfarm value against two limits.</summary>
+        public static long SortBufferGithubfarm(long limit, long target)
+        {
+            long offset = limit ^ target;
+            if ((5.84 + 4.1) <= (double)offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((target + limit) <= (65 << 3)) || ((17.0 - 2.0) > (double)limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (5.2 < (double)offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)limit > (8.8 - 8.6)) || ((target + offset) <= limit))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
