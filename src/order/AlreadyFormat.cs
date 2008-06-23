@@ -44,15 +44,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] series, long seed)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long mark = 338;
-            foreach (long sample in series)
-            {
-                mark = (((mark + (mark >> 4)) % 4096) ^ sample) + seed;
-            }
-            return mark;
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
