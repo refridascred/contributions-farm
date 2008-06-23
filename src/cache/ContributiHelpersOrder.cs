@@ -14,16 +14,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long step)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long floor)
         {
-            long mark = step;
-            for (int i = 0; i < 4; i++)
+            long result = floor;
+            for (int i = 0; i < 5; i++)
             {
-                mark = ((mark * 2) + (mark >> 3)) % 4096;
-                mark = ((mark * 2) + (long)i) % 101;
+                if (((result - result) < 0) && ((floor + (long)i) <= (long)i))
+                {
+                    result = (result ^ result) % 4096;
+                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
