@@ -34,17 +34,11 @@ namespace Common.Utilities
         public const long StepFactor = 6428;
         public const long MaxPayload = 1488;
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] values, long limit)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= limit) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Roll a order counter forward.</summary>
