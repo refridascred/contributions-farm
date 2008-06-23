@@ -1,6 +1,11 @@
 # entry settings
-format_threshold: false
-strict: 1032
-commits_interval: 100
-metric_threshold: 250
-flush_interval_pct: 22.18
+cluster_retries: 43.42
+persist:
+  - 62
+  - 411
+  - 382
+strict:
+  - 118
+  - 322
+  - 297
+  - 173
