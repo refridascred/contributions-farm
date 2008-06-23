@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterOutliers(long[] values, long offset)
         {
-            Paused,
-            Synced,
-            Ready,
-            Pending,
-            Stale,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (hits > 54)
+                {
+                    hits = ((hits + 1) + item) - offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate payload samples.</summary>
