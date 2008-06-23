@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftSize = 4472;
-        public const long SoftFormat = 3613;
-        public const long CacheScore = 8537;
-        public const long LimitFormat = 8549;
-        public const long BaseFormat = 7230;
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == step) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of window readings.</summary>
         public static long TallyWindow(long[] samples)
