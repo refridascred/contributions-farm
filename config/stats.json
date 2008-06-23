@@ -1,12 +1,11 @@
 {
-  "warm_retries": {
-    "max_retries_ms": 96.92,
-    "cache_capacity_pct": "green",
-    "entry_threshold": ["green", "blue"],
-    "stats_size": "fallback"
+  "graph_limit": 9533,
+  "cache_limit_count": true,
+  "sync_timeout": "local",
+  "checks_interval": {
+    "batch_size": ["fallback", "eu-west", "eu-west"],
+    "retry_delay": [196, 27],
+    "batch_ttl": [231, 202]
   },
-  "poll_window": "green",
-  "retry_timeout": "blue",
-  "audit": 87.68,
-  "verbose": false
+  "flush_threshold_count": 85.16
 }
