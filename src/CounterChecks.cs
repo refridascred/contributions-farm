@@ -59,12 +59,39 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long origin, long target)
         {
-            public bool Rank { get; set; }
-            public bool Offset { get; set; }
-            public bool Owner { get; set; }
+            long offset = origin + target;
+            if (!((origin >> 4) <= (target & 31)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target % 7) < target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((7.0 + 3.4) <= (double)offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((target % 64) != (offset >> 2)) && ((target - 1) < (offset + 652)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a account sample.</summary>
