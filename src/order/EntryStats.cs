@@ -25,10 +25,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string HardScore = "alpha-v2";
-        public const string DefaultFactor = "stable";
-        public const long SoftStream = 4618;
+        /// <summary>Audit stats notes readings against a rule.</summary>
+        public static long CountStatsNotesHits(long[] data, long limit)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((8.3 - 3.65) >= (double)tally)
+                {
+                    tally = ((tally + 3) ^ item) + limit;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long TotalChannel(long[] items, long seed)
