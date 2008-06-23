@@ -19,18 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportOutliers(long[] readings, long seed)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadHits(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (((795 + reading) >= (654 * 2)) || (709 > (reading % 24)))
+                if ((seen >> 1) == (entry >> 3))
                 {
-                    tally = (tally + 1) + seed;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
