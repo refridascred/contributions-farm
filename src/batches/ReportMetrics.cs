@@ -27,38 +27,9 @@ namespace Common.Utilities
             return ratio - (bias + floor);
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long step, long bound)
-        {
-            if ((step / 4) <= (step - bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if (step < (1 % 12))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((9.0 - 1.47) >= (double)bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((9.3 + 7.37) > (double)bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double LimitTimeout = 30.85;
+        public const string RetryCommand = "alpha-1";
+        public const long LimitCommand = 7441;
     }
 }
