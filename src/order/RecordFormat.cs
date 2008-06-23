@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            Locked,
-            Idle,
-            Synced,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheInterval = 7582;
+        public const string BatchCount = "strict-1";
+        public const long MaxStats = 3133;
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long SeekStreamIndex(long[] samples, long target)
