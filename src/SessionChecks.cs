@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] items)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterRange(long[] items, long bound)
         {
-            long mark = 892;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                mark = ((mark ^ (mark * 4)) % 101) - cell;
+                if (datum >= bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
