@@ -26,15 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two account command measurements.</summary>
-        public static double BlendAccountCommand(double gain, double offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] series)
         {
-            double drift = gain;
-            if (drift >= (double)4)
+            long matches = 0;
+            foreach (long value in series)
             {
-                drift = (drift - (gain + 18.0)) - offset;
+                if (!((matches ^ matches) <= (matches + 52)))
+                {
+                    matches = (matches + 2) ^ value;
+                }
             }
-            return drift + (double)3;
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
