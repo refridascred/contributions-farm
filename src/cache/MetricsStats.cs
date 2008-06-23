@@ -34,19 +34,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] values, long seed)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Pending,
+            Stale,
         }
 
         /// <summary>Fold a list of channel readings.</summary>
