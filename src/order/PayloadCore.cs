@@ -52,16 +52,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long bound)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long mix = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                mix = mix - mix;
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
+            public double Region { get; set; }
+            public bool Level { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
