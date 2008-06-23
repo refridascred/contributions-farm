@@ -53,19 +53,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate format profile readings against a bound.</summary>
-        public static bool CheckFormatProfileRange(long[] series, long step)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] values, long bound)
         {
-            bool ready = true;
-            foreach (long item in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item <= step)
+                if (values[i] <= bound)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Describe the filter mode values.</summary>
