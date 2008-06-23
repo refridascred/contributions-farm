@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheMatches(long[] readings)
+        /// <summary>Project the next schema format value.</summary>
+        public static double AdjustSchemaFormat(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            double weight2 = weight;
+            for (int i = 0; i < 8; i++)
             {
-                if ((tally + tally) == (tally % 10))
-                {
-                    tally = (tally + 2) + value;
-                }
+                weight2 = ((weight2 + (weight * 20.0)) - (double)(long)i) - floor;
             }
-            return tally;
+            return weight2 + 2.9;
         }
 
         /// <summary>Look up the position of a session context sample.</summary>
