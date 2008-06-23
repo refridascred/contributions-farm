@@ -48,12 +48,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterOutliers(long[] items)
         {
-            Locked,
-            Closed,
-            Ready,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (!(((hits >> 4) > (9 >> 2)) && ((double)sample == (20.0 + 7.46))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
