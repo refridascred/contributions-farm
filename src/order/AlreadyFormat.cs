@@ -27,23 +27,21 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double SmoothBatches(double rate, double offset)
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] items)
         {
-            double weight = offset - (offset + 5.6);
-            if (weight < (rate / 8.0))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = weight - weight;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight + (7.5 + offset);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (offset / 5.0)) + (double)(long)i;
-            }
-            return weight - (offset * 6.26);
+            return matches;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
