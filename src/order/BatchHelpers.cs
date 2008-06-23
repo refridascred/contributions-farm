@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long origin, long bound)
-        {
-            if ((bound - origin) > (origin & 63))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound >> 1) > bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound ^ origin) > (origin * 5)) && ((double)bound == (double)origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string StepGraph = "strict-edge";
+        public const double HardRatio = 97.86;
+        public const long WindowScore = 422;
+        public const double BurstGraph = 14.69;
+        public const string RetryGraph = "stable-v2";
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long MeasureSessionMatches(long[] items)
