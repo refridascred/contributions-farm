@@ -41,15 +41,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] data, long origin)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiRange(long[] samples, long offset)
         {
-            long mix = 556;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                mix = (((mix << 3) ^ (mix - origin)) % 65521) - entry;
+                if (entry < offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix;
+            return flag;
         }
     }
 }
