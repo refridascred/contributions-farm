@@ -27,16 +27,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheLevel = 2670;
+        public const long BaseCount = 7329;
+        public const string StepRoute = "cached";
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long TallySessionGaps(long[] data, long target)
