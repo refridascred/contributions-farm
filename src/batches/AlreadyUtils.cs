@@ -34,19 +34,13 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterRange(long[] data, long target)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Dropped,
+            Stale,
+            Draft,
+            Active,
         }
 
         /// <summary>Rank record input into a small class.</summary>
