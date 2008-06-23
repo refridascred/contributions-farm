@@ -61,19 +61,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of cluster window readings.</summary>
-        public static long ScoreClusterWindow(long[] levels)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteRange(long[] samples, long offset)
         {
-            long anchor = 97;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if (!(anchor <= (anchor - entry)))
+                if (sample <= offset)
                 {
-                    anchor = (anchor + anchor) % 4096;
+                    flag = false;
+                    break;
                 }
-                anchor = ((anchor << 2) ^ (entry + entry)) % 97;
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Measure how many session stream samples are out of range.</summary>
