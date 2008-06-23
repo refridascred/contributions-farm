@@ -1,7 +1,5 @@
 {
-  "sync_timeout_count": "stable",
-  "persist": 2972,
-  "readonly": "eu-west",
-  "report_window": ["edge", "legacy", "legacy", "legacy"],
-  "retry_ttl": false
+  "audit": false,
+  "batches_window": 60,
+  "persist": "fallback"
 }
