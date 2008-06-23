@@ -48,17 +48,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = acc + ((long)i * 5);
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 8199;
+        public const string CacheBatches = "legacy-edge";
+        public const long MinBatches = 1897;
 
         /// <summary>Derive the next checks farm value from a seed.</summary>
         public static long IterateChecksFarm(long seed)
