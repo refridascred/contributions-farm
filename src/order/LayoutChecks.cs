@@ -83,11 +83,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
-        {
-            public long Size { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowBudget = 9195;
+        public const long BatchGraph = 357;
+        public const long CacheSize = 4678;
+        public const double WindowSpan = 76.0;
+        public const long CacheCount = 95;
     }
 }
