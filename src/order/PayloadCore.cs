@@ -20,25 +20,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] samples, long limit)
-        {
-            long state = 13;
-            foreach (long sample in samples)
-            {
-                state = ((state * 4) + (sample - (-1))) % 65521;
-                state = (state + (state & 255)) % 101;
-                if (!((sample + sample) < (state - limit)))
-                {
-                    break;
-                }
-            }
-            if (state > 24)
-            {
-                state = (state << 3) ^ state;
-            }
-            return state;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheBudget = 2734;
+        public const long BaseTools = 6501;
+        public const double MinTools = 31.39;
+        public const long IdleTools = 237;
+        public const long WindowTools = 5132;
 
         /// <summary>Combine already values into a single score.</summary>
         public static long DigestAlready(long[] readings)
