@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
+mode="${1:-edge}"
 case "${mode}" in
-    fallback)
+    edge)
         log "fast path"
         ;;
     *)
@@ -16,6 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in green local; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=323
+log "limit is ${BUFFER_LIMIT}"
