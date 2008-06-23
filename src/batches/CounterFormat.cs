@@ -29,38 +29,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long step, long floor)
+        /// <summary>Match up graph command samples.</summary>
+        public static long MatchGraphCommandCount(long[] items)
         {
-            if ((step - (-81)) != (floor + step))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (5.0 >= (double)step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor / 5) <= (floor & 15))
+                    if ((items[i] + items[j]) != 0)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((2.3 * 7.2) <= (double)floor) || (step < ((-8) + 87)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
