@@ -22,21 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] series)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double SmoothQueue(double rate, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = (rate - rate) * 9.0;
+            if (drift < (5.0 + span))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = drift + (span - drift);
             }
-            return matches;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + rate) - (double)(long)i;
+            }
+            return drift + (double)99;
         }
 
         /// <summary>Hold a window info.</summary>
