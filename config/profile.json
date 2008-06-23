@@ -1,7 +1,24 @@
 {
-  "warm_retries": false,
-  "already_timeout": 500,
-  "retry_depth_ms": ["green", "cached", "blue", "open"],
-  "default_window_ms": "standard",
-  "command_depth": true
+  "default_window_s": 7232,
+  "soft_interval_pct": {
+    "persist": {
+      "verbose": true,
+      "context_capacity": 99,
+      "metric_capacity": 84.16,
+      "base_ratio_s": false,
+      "compress": "blue",
+      "retry_ttl": "green"
+    },
+    "burst_interval_pct": 2916,
+    "audit": 9319,
+    "base_depth_pct": {
+      "base_capacity": 61.23,
+      "token_ttl": 3216,
+      "warm_limit": "strict",
+      "hard_delay_pct": 13.18,
+      "githubfarm_delay": "primary",
+      "idle_delay": "open"
+    }
+  },
+  "warm_window": "eu-west"
 }
