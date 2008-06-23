@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BurstRecord = "local-edge";
-        public const long BatchBudget = 1175;
-        public const string WindowRecord = "stable-edge";
-        public const string CacheRecord = "local-v2";
-        public const string LimitRecord = "open-1";
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
+        {
+            public long Level { get; set; }
+            public long Score { get; set; }
+            public double Ratio { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long LimitRoute = 2087;
