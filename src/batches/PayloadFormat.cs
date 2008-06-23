@@ -44,21 +44,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] data)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Idle,
+            Ready,
+            Paused,
         }
     }
 }
