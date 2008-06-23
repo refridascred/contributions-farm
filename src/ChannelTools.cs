@@ -32,18 +32,21 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileMatches(long[] data)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((sample <= 37) || ((matches & 3) != (sample + sample))) && ((sample - 486) < (matches << 2)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((samples[i] + samples[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
