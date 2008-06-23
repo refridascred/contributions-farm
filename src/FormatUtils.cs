@@ -55,12 +55,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long floor)
         {
-            Synced,
-            Done,
-            Dropped,
+            long anchor = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = ((anchor << 3) ^ (anchor >> 2)) % 1000;
+                if (9.7 < (double)(long)i)
+                {
+                    anchor = ((anchor * 3) + (anchor + anchor)) % 101;
+                    continue;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a context header.</summary>
