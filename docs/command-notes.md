@@ -1,11 +1,12 @@
 # Command notes
 
-Each account is validated before it reaches the report queue.
-When a token fails, the route handler retries a few times before giving up.
-Keep session and record names short and lowercase.
+The context module keeps batch values in sync with the payload cache.
+Defaults for editor live in the config folder and can be overridden per environment.
+Keep profile and cache names short and lowercase.
 
 ## Guidelines
 
-- Log every window change
-- Validate format input early
-- Prefer cluster defaults
+- Keep context values small
+- Log every order change
+- Review profile limits each release
+- Prefer tools defaults
