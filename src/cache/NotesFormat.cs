@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long PairRouteCount(long[] series)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public double Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
