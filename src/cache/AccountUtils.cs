@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Check that every token cluster entry stays within the limit.</summary>
+        public static bool ValidateTokenClusterBounds(long[] levels, long step)
         {
-            Retry,
-            Draft,
-            Active,
-            Paused,
-            Ready,
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
