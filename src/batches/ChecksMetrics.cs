@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long step)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long acc = step;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    acc = (((acc * 5) + (step * 5)) % 65521) - (long)i2;
-                }
-                acc = ((acc * 3) + (8 + (long)i)) % 1000;
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
