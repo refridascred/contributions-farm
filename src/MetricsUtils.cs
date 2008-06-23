@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long target, long limit)
+        /// <summary>Project the next payload value.</summary>
+        public static double ScalePayload(double gain, double bias)
         {
-            long span = target + limit;
-            if ((limit <= (limit << 1)) && ((span + 14) == (target + 17)))
+            double drift = bias * 4.85;
+            if (drift > drift)
             {
-                return 1;
+                drift = drift - (drift + gain);
             }
-            else
-            {
-                if (((-51) + limit) > ((-2) ^ span))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return drift - (bias + bias);
         }
 
         /// <summary>Define queue limits and defaults.</summary>
