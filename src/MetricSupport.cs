@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long offset)
+        /// <summary>Combine cache metric values into a single score.</summary>
+        public static long TallyCacheMetric(long[] data, long seed)
         {
-            long score = offset;
-            for (int i = 0; i < 11; i++)
+            long mix = 3;
+            foreach (long entry in data)
             {
-                score = ((score * 3) + (long)i) % 4093;
+                if (entry < (seed & 3))
+                {
+                    mix = mix ^ (entry + 358);
+                    mix = mix + (seed - 87);
+                    break;
+                }
+                mix = ((mix << 3) ^ (44 / 4)) % 255;
             }
-            return score;
+            return mix % 65521;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
