@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 8490;
-        public const long BaseInterval = 9733;
-        public const long WindowStream = 477;
-        public const string HardStream = "local-1";
-        public const string MinWidth = "alpha-v2";
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
+        {
+            public bool Ratio { get; set; }
+            public bool Limit { get; set; }
+            public double Size { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Describe the commits status values.</summary>
         public enum CommitsStatus
