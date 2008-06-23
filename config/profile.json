@@ -1,7 +1,11 @@
 {
-  "idle_depth": false,
-  "stream_limit": [168, 327],
-  "persist": 6757,
-  "poll_retries": "fallback",
-  "retry_retries_count": 250
+  "verbose": 64.56,
+  "filter_limit": {
+    "batch_delay_s": true,
+    "enabled": 30,
+    "strict": 2087,
+    "batch_timeout_ms": false,
+    "poll_threshold_s": 55.4
+  },
+  "enabled": 1024
 }
