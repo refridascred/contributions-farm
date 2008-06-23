@@ -26,23 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of farm channel entries.</summary>
-        public static long TotalFarmChannel(long[] data)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] items)
         {
-            long mix = 3;
-            foreach (long datum in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix * 2) + (mix + datum)) % 97;
-                if (345 >= (mix % 100))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = ((mix << 3) ^ (datum - datum)) % 255;
+                    if ((items[i] - items[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mix > 155)
-            {
-                mix = (mix - (mix & 63)) % 65521;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
