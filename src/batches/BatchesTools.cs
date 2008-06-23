@@ -20,31 +20,22 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long target, long seed)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] data, long seed)
         {
-            if ((target & 1) >= (seed - seed))
+            long total = 811;
+            foreach (long item in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((seed >> 5) <= (seed << 1)))
+                if ((item + item) > total)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed >> 3) >= (seed % 7))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    total = (total - (item / 5)) % 1000;
                 }
             }
+            if (total < (-36))
+            {
+                total = ((total << 3) ^ seed) % 255;
+            }
+            return total;
         }
     }
 }
