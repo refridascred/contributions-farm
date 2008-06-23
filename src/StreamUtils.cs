@@ -41,12 +41,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long target, long step)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public long Region { get; set; }
+            long diff = target + step;
+            if (((55 >> 3) >= (target + target)) || ((double)target < (double)diff))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((diff - step) > (diff - diff))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Accumulate payload record samples.</summary>
