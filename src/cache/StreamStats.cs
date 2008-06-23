@@ -43,21 +43,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of record contributi readings.</summary>
-        public static long MatchRecordContributiCount(long[] readings)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = -9;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)value == (0.7 * 7.0))
                 {
-                    if ((readings[i] + readings[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total ^ value) % 65521;
+                }
+                else
+                {
+                    total = (total + (total + 36)) % 97;
+                }
+                if (((291 & 127) > (total ^ total)) && ((value >> 5) <= value))
+                {
+                    total = ((total << 2) ^ (total ^ value)) % 1000;
                 }
             }
-            return count;
+            if (total < 6)
+            {
+                total = (total + (total + total)) % 4096;
+            }
+            return total;
         }
     }
 }
