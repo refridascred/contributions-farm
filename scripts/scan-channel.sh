@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local stable; do
+CHANNEL_LIMIT=181
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in primary stable legacy edge; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 4))
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
-
-mode="${1:-fallback}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+log "ran ${count} rounds"
