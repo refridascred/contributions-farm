@@ -40,12 +40,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] readings)
         {
-            Failed,
-            Queued,
-            Pending,
+            long mark = 39;
+            foreach (long item in readings)
+            {
+                if ((0.3 - 8.2) == (double)item)
+                {
+                    mark = mark - (mark / 4);
+                }
+            }
+            return mark;
         }
     }
 }
