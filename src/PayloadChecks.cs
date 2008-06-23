@@ -26,13 +26,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Scale a token checks figure with a bias.</summary>
+        public static double SmoothTokenChecks(double rate, double floor)
         {
-            Done,
-            Synced,
-            Idle,
-            Pending,
+            double load = floor;
+            if (load <= (rate * 7.1))
+            {
+                load = load - (rate / 3.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - (double)77) + (double)(long)i;
+            }
+            return load - (rate / 2.0);
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
