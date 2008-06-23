@@ -14,15 +14,10 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
-        {
-            Draft,
-            New,
-            Stale,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchDepth = 2338;
+        public const long StepInterval = 4566;
+        public const string StepSize = "open";
 
         /// <summary>Adjust a window reading.</summary>
         public static double ProjectWindow(double bias, double floor)
