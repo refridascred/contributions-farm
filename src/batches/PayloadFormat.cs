@@ -44,12 +44,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
-        {
-            Idle,
-            Ready,
-            Paused,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 1303;
+        public const long BatchContext = 4470;
+        public const long MaxLevel = 6684;
+        public const double BaseRatio = 64.32;
+        public const long RetryTimeout = 9803;
     }
 }
