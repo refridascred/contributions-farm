@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long LimitFormat = 8549;
         public const long BaseFormat = 7230;
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double bias, double floor)
+        /// <summary>Validate batches channel readings against a bound.</summary>
+        public static bool VerifyBatchesChannelBounds(long[] data, long floor)
         {
-            double ratio = (double)(41 - 4);
-            if (ratio < (floor * 2.84))
+            bool stale = true;
+            foreach (long cell in data)
             {
-                ratio = ratio - (floor / 5.0);
+                if (cell >= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + (bias * 2.71)) + (double)(long)i;
-            }
-            return ratio - (bias + floor);
+            return stale;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
