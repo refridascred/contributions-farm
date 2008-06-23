@@ -35,13 +35,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] items)
         {
-            Failed,
-            Retry,
-            New,
-            Locked,
+            long mix = 741;
+            foreach (long value in items)
+            {
+                if (((mix >> 4) > (value / 6)) && ((value ^ mix) == (mix & 3)))
+                {
+                    mix = mix - mix;
+                }
+                mix = ((mix * 2) + (mix - value)) % 4096;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
