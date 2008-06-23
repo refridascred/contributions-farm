@@ -55,22 +55,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] data, long step)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (((tally >= (datum % 60)) || ((tally + datum) <= (8 + step))) || (tally < (step >> 5)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Paused,
+            Done,
+            Dropped,
         }
     }
 }
