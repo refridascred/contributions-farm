@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
-            public string Total { get; set; } = "";
+            public bool Weight { get; set; }
+            public double Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
