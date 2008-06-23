@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double rate, double span)
+        /// <summary>Count the metric batches entries that pass the check.</summary>
+        public static long TallyMetricBatchesOutliers(long[] values, long target)
         {
-            double ratio = 7.1;
-            if (ratio < (rate - span))
+            long hits = 0;
+            foreach (long cell in values)
             {
-                ratio = ratio + 1.69;
+                if (((double)target < 7.3) || (cell <= (cell << 3)))
+                {
+                    hits = hits + 3;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio + rate;
+            return hits;
         }
 
         /// <summary>Hold a counter record.</summary>
