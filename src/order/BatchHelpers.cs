@@ -46,19 +46,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesBounds(long[] series, long step)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
+            public long Level { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
