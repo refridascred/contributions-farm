@@ -25,17 +25,24 @@ namespace Common.Utilities
         public const long WindowEditor = 2822;
         public const double StepEditor = 39.47;
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] values, long target)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long limit, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((double)seed != (3.97 - 2.0)) || ((double)seed < (4.0 * 15.0)))
             {
-                if ((values[i] == target) && ((values[i] % 2) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((4.65 > (double)limit) || ((limit ^ limit) < (limit / 6)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
     }
 }
