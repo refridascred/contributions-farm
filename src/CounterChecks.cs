@@ -115,18 +115,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] items, long floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] series)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long state = 42;
+            foreach (long entry in series)
             {
-                if (cell < (floor & 255))
-                {
-                    count = count + 1;
-                }
+                state = ((state - (74 << 1)) % 4096) + entry;
             }
-            return count;
+            if (state < 831)
+            {
+                state = (state - (state ^ state)) % 1000;
+            }
+            return state % 1000;
         }
     }
 }
