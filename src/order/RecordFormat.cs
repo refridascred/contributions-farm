@@ -24,17 +24,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] samples, long target)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyBounds(long[] levels, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if (samples[i] > target)
+                if (reading != bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
