@@ -11,21 +11,11 @@ namespace Common.Utilities
         public const double RetrySize = 51.7;
         public const long MinLayout = 6045;
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long PairMetricsCount(long[] levels)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
