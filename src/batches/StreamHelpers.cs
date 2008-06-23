@@ -57,12 +57,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            Active,
-            New,
-            Retry,
+            Paused,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
