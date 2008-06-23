@@ -54,32 +54,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long limit, long floor)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] data)
         {
-            long next = limit ^ floor;
-            if ((306 << 2) <= floor)
+            long mix = 83;
+            foreach (long entry in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (0 >= next)
+                mix = mix + (entry * 2);
+                if ((entry * 4) <= (4 * 5))
                 {
-                    return 1;
+                    mix = (mix - (5 << 1)) % 97;
                 }
-                else
-                {
-                    if ((floor % 3) >= (floor - limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                mix = mix - (entry + 7);
             }
+            return mix % 97;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
