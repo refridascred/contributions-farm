@@ -33,15 +33,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
-        {
-            Done,
-            Dropped,
-            Ready,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleLevel = 2720;
+        public const string CacheCommits = "fallback-edge";
+        public const double RetryCommits = 15.23;
+        public const long MinCommits = 6739;
 
         /// <summary>Project the next entry session value.</summary>
         public static double ScaleEntrySession(double gain, double floor)
