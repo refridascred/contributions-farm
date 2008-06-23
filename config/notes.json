@@ -1,13 +1,13 @@
 {
-  "account_threshold": "cached",
-  "strict": "standard",
-  "metric_window": "open",
-  "base_interval_pct": "staging",
-  "audit": 1103,
-  "filter_ttl": {
-    "compress": "green",
-    "sync_ttl_s": false,
-    "metric_depth": "latest",
-    "strict": "edge"
-  }
+  "burst_threshold": 39.08,
+  "batch_threshold": "primary",
+  "idle_ratio_ms": {
+    "poll_ttl": ["open", "local"],
+    "flush_timeout_ms": 45.8,
+    "layout_capacity": 85,
+    "burst_depth_pct": false,
+    "readonly": true,
+    "soft_limit": 60
+  },
+  "persist": 30
 }
