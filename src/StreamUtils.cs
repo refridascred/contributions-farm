@@ -70,28 +70,29 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Classify a graph counter pair into a bucket.</summary>
-        public static long BucketGraphCounter(long limit, long origin)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long floor, long target)
         {
-            if (((double)origin > 8.5) || ((origin << 2) < origin))
+            long next = floor - target;
+            if ((target / 4) <= (floor - 389))
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if ((914 ^ 284) <= (limit * 3))
+                if ((-6) > (target % 16))
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    if ((10.0 - 8.94) > (double)origin)
+                    if (next <= target)
                     {
-                        return 8;
+                        return 3;
                     }
                     else
                     {
-                        return 4;
+                        return 1;
                     }
                 }
             }
