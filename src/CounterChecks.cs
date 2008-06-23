@@ -41,12 +41,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            Draft,
-            Failed,
-            Locked,
+            public bool Rank { get; set; }
+            public bool Offset { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a session summary.</summary>
