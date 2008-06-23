@@ -1,8 +1,8 @@
-id,score,weight,active,token
-1,primary,985,134,87.67
-2,14.04,stable,stable,602
-3,96.43,29.81,83,127
-4,fallback,latest,edge,58.53
-5,19.27,830,91.96,blue
-6,258,81.81,27.15,292
-7,97,blue,50.56,17.87
+id,token,level,ratio,region
+1,78.04,39.27,278,30
+2,67.86,29.54,38,stable
+3,edge,778,latest,eu-west
+4,fallback,373,866,769
+5,4,stable,432,663
+6,edge,blue,13.5,73
+7,standard,425,566,902
