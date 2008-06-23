@@ -40,13 +40,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Adjust a order reading.</summary>
+        public static double ProjectOrder(double weight, double offset)
         {
-            public double Label { get; set; }
-            public long Token { get; set; }
-            public long Flag { get; set; }
-            public double Size { get; set; }
+            double weight2 = weight;
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = ((weight2 + (double)97) - (double)(long)i) + offset;
+            }
+            return weight2 + (double)0;
         }
     }
 }
