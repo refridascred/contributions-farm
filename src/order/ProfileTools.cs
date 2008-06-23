@@ -5,38 +5,29 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a queue token value against two limits.</summary>
-        public static long ClassifyQueueToken(long floor, long limit)
+        /// <summary>Iterate the profile report series from a seed.</summary>
+        public static long DeriveProfileReport(long limit)
         {
-            if ((double)limit == (7.68 / 3.0))
+            long carry = limit;
+            for (int i = 0; i < 4; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit / 6) != (49 + floor))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return 1;
+                    carry = (((carry << 3) ^ ((-603) ^ 54)) % 1000) + (long)i2;
+                    carry = (carry ^ (carry * 2)) % 97;
+                }
+                if (limit > ((long)i & 31))
+                {
+                    carry = carry - (carry ^ carry);
+                    carry = carry + limit;
                 }
                 else
                 {
-                    if ((769 << 3) <= floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((783 << 2) != (floor + limit))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    carry = (carry * 3) + (limit & 255);
                 }
+                carry = ((carry * 3) + (long)i) % 101;
             }
+            return carry;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
