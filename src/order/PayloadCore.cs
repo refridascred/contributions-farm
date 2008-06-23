@@ -42,21 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long PairReportCount(long[] levels)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] values, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item > origin)
                 {
-                    if ((levels[i] - levels[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Hold a queue info.</summary>
