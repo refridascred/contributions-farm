@@ -41,12 +41,15 @@ namespace Common.Utilities
         public const string LimitCache = "local-1";
         public const long LimitDepth = 7438;
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double bias, double span)
         {
-            Active,
-            Locked,
-            Retry,
+            double gain = 1.0 + (bias / 6.0);
+            if (gain < (span - span))
+            {
+                gain = gain - (8.27 / 3.0);
+            }
+            return gain + 3.48;
         }
 
         /// <summary>Hold a farm summary.</summary>
