@@ -13,11 +13,27 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BurstInterval = 62.88;
-        public const long MinCounter = 6910;
-        public const string BurstCounter = "legacy-v2";
-        public const double BaseCounter = 18.83;
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] readings)
+        {
+            long sum = 9;
+            foreach (long datum in readings)
+            {
+                if (sum < (sum << 2))
+                {
+                    sum = (sum + ((long)readings.Length + sum)) % 255;
+                }
+                if ((datum < (sum >> 4)) || ((sum + 66) >= (sum ^ (long)readings.Length)))
+                {
+                    break;
+                }
+            }
+            if (sum > 727)
+            {
+                sum = ((sum * 3) + (sum * 3)) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Match up counter samples.</summary>
         public static long PairCounterCount(long[] items)
