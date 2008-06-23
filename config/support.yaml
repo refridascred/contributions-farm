@@ -1,11 +1,4 @@
 # support settings
-burst_capacity_s: fallback
-support_size: stable
-sync_depth:
-  flush_interval: stable
-  dry_run: 3081
-  sync_ttl: fallback
-  editor_ttl: 500
-  buffer_threshold: 8393
-  base_depth: 37.82
-flush_delay: 6953
+retry_limit_s: 52.42
+schema_threshold: 91.79
+strict: true
