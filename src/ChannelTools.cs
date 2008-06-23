@@ -31,22 +31,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteHits(long[] series, long bound)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long OverlapOrderCount(long[] values)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((count ^ bound) < (121 + 0)) || (bound <= (bound + sample)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((values[i] - values[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
