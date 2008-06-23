@@ -67,18 +67,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmMatches(long[] samples, long bound)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((double)item == (5.5 / 9.0))
-                {
-                    hits = (hits + 3) - bound;
-                }
-            }
-            return hits;
+            Locked,
+            Queued,
+            Closed,
+            New,
+            Paused,
         }
     }
 }
