@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] values, long bound)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long anchor = 438;
-            foreach (long reading in values)
-            {
-                anchor = (((anchor << 3) ^ (804 + reading)) % 4096) + bound;
-            }
-            return anchor;
+            public string Size { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
