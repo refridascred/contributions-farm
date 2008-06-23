@@ -19,11 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double DefaultDepth = 14.46;
-        public const long DefaultCache = 1801;
-        public const double IdleCache = 95.85;
-        public const double WindowCache = 23.48;
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] levels, long offset)
+        {
+            long carry = -636;
+            foreach (long value in levels)
+            {
+                if ((double)carry > (double)value)
+                {
+                    carry = (carry - (carry >> 4)) % 4096;
+                }
+            }
+            if (carry < 634)
+            {
+                carry = ((carry << 3) ^ (offset + carry)) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long AuditToolsOutliers(long[] values, long origin)
