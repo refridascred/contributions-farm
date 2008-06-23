@@ -33,18 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesGaps(long[] levels, long seed)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (!(((seed >> 3) <= (seed >> 5)) || ((item - item) <= item)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Score { get; set; }
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define payload limits and defaults.</summary>
