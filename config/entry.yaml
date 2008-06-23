@@ -1,31 +1,32 @@
 # entry settings
-dry_run: edge
-max_limit_ms:
-  schema_depth: primary
-  retry_depth: 250
-  flush_capacity: false
-  schema_limit:
-    - 262
-    - 486
-    - 100
-    - 435
-  compress: 3384
-  max_timeout_s:
-    warm_limit_count: 74.97
-    cache_capacity:
-      - stable
+persist: 39
+default_ratio_s:
+  warm_delay_pct: stable
+  support_window: green
+  verbose: 84.02
+  idle_delay_count: 1063
+strict:
+  poll_threshold_s: 95.08
+  batch_delay_s:
+    - 236
+    - 363
+    - 418
+    - 368
+  cache_threshold: 4.12
+  base_window_pct: edge
+  idle_depth_count: open
+  burst_limit_ms:
+    context_interval: 4.01
+    idle_depth_pct: 25.97
+    githubfarm_ratio:
+      - green
       - local
-      - strict
-      - standard
-    burst_size: 33.29
-    context_capacity: false
-contributi_capacity: strict
-batch_threshold_count:
-  batch_ttl:
-    - local
-    - blue
-    - edge
-    - eu-west
-  session_retries: local
-  hard_ttl_ms: staging
-context_retries: 18
+      - fallback
+    dry_run: legacy
+soft_timeout_count: staging
+warm_limit: true
+profile_ttl:
+  retry_delay: false
+  queue_depth: 9785
+  readonly: 83.86
+  max_threshold: true
