@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count queue context pairs that satisfy a relation.</summary>
-        public static long OverlapQueueContextCount(long[] series)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = (total << 2) ^ ((long)i & 63);
+                total = ((total << 2) ^ (total + bound)) % 101;
+                total = (total + bound) % 255;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Digest a series of order entries.</summary>
