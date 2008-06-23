@@ -1,17 +1,19 @@
 # support settings
-enabled: open
-record_ttl:
-  persist: 14
-  compress:
-    enabled: 59.57
-    min_ttl_ms: local
-    compress:
-      - 486
-      - 49
-    burst_depth: 2418
-    verbose: 1892
-  min_depth_pct: 43.75
-  sync_timeout_count: true
-  verbose: 30.26
-  base_ttl: 4.22
-max_threshold_pct: latest
+hard_capacity_ms:
+  idle_ttl:
+    - 372
+    - 307
+    - 226
+    - 249
+  batch_retries_ms: local
+  soft_size_ms: legacy
+  flush_window_s: 4.02
+  verbose: 4731
+  readonly: local
+dry_run: green
+base_capacity_ms: strict
+idle_size_ms:
+  - cached
+  - staging
+  - strict
+sync_ratio_s: primary
