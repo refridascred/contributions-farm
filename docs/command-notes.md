@@ -1,14 +1,15 @@
 # Command notes
 
-Run the batches check before changing any metric limits.
-A contributi that stays idle for too long is moved to the support list.
+A token that stays idle for too long is moved to the report list.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+The command report groups every profile by batch.
 
-Each schema is validated before it reaches the context queue.
-Keep payload and batch names short and lowercase.
-Keep editor and checks names short and lowercase.
+Run the buffer check before changing any entry limits.
+When a payload fails, the entry handler retries a few times before giving up.
+The batch helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every cache change
-- Review record limits each release
-- Document new stats fields
+- Prefer batches defaults
+- Log every counter change
+- Document new route fields
