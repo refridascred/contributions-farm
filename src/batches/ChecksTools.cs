@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] items, long step)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferHits(long[] samples, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((items[i] == step) && ((items[i] % 3) != 0))
+                if ((tally << 2) < (bound % 97))
                 {
-                    return (long)i;
+                    tally = (tally + 3) ^ item;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
