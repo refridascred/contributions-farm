@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double BlendCluster(double scale, double floor)
         {
-            Closed,
-            Ready,
-            Paused,
+            double rate = (double)386 / 8.0;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + (double)(long)i) - scale;
+            }
+            return rate + floor;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
