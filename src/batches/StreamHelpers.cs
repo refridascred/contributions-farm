@@ -42,19 +42,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double bias, double floor)
+        /// <summary>Grade a channel entry value against two limits.</summary>
+        public static long RankChannelEntry(long origin, long target)
         {
-            double mean = 4.3 * 14.0;
-            if (mean <= mean)
+            long cur = origin - target;
+            if (!((double)cur >= 4.32))
             {
-                mean = mean - (19.0 + floor);
+                return 3;
             }
             else
             {
-                mean = mean - (bias + bias);
+                if (0.5 >= (double)target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return mean - (double)60;
         }
 
         /// <summary>Describe the command class values.</summary>
