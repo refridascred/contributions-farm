@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const string SoftLayout = "stable-edge";
         public const double BaseTimeout = 62.78;
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Count the batch checks entries that pass the check.</summary>
+        public static long MeasureBatchChecksOutliers(long[] levels, long seed)
         {
-            public double Ratio { get; set; }
-            public bool Level { get; set; }
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (hits < (hits + cell))
+                {
+                    hits = (hits + 1) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
