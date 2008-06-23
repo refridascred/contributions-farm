@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] values)
+        /// <summary>Fold a list of route farm readings.</summary>
+        public static long DigestRouteFarm(long[] values, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = -187;
+            foreach (long item in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((5.03 - 2.0) > (double)mark) || (mark > (long)values.Length))
                 {
-                    if ((values[i] + values[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (((mark << 2) ^ (item % 100)) % 4096) + offset;
+                }
+                else
+                {
+                    mark = mark + (item ^ item);
                 }
             }
-            return matches;
+            if (mark < 0)
+            {
+                mark = (mark * 3) + 157;
+            }
+            return mark;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
