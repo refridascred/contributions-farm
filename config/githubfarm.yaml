@@ -1,14 +1,7 @@
 # githubfarm settings
-cache_ratio_count: 2823
-cache_capacity: 43
-hard_delay_ms:
-  batch_size_count: edge
-  min_delay_count:
-    - staging
-    - stable
-    - open
-    - local
-  base_threshold_s: standard
-  profile_capacity: false
-stream_timeout: 47
-max_timeout_pct: 26.82
+min_capacity: 9430
+strict:
+  - 399
+  - 27
+sync_interval_s: 85.37
+audit: 32
