@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] data, long seed)
         {
-            Active,
-            Idle,
-            Ready,
-            Synced,
-            Closed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
