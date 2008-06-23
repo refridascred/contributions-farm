@@ -68,18 +68,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] data)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long mark = 261;
-            foreach (long reading in data)
-            {
-                if (((reading - mark) < (mark * 3)) || (33 >= (671 + mark)))
-                {
-                    mark = ((mark * 4) + mark) % 65521;
-                }
-            }
-            return mark % 4096;
+            Failed,
+            Draft,
+            Stale,
+            Dropped,
         }
     }
 }
