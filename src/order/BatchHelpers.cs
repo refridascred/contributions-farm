@@ -47,12 +47,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
-        {
-            public string Weight { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MinCommits = 65.31;
+        public const long CacheFactor = 8932;
+        public const long BatchCommits = 1264;
+        public const long LimitRatio = 2324;
     }
 }
