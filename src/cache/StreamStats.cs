@@ -51,12 +51,21 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Count order filter pairs that satisfy a relation.</summary>
+        public static long OverlapOrderFilterCount(long[] readings)
         {
-            public double Count { get; set; }
-            public double Level { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
