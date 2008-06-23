@@ -1,21 +1,11 @@
 # githubfarm settings
-readonly: 4736
-profile_delay: cached
-default_delay_pct: 11.46
-soft_size_pct: 500
-warm_capacity_ms:
-  persist: 100
-  session_ttl:
-    - 241
-    - 440
-    - 438
-    - 402
-  batch_limit: 68.94
-  cache_capacity_count:
-    - edge
-    - cached
-compress:
-  command_window: 9507
-  burst_interval: staging
-  warm_window_pct: strict
-  soft_ratio_ms: legacy
+verbose: true
+retry_threshold: 8811
+compress: 100
+cache_window: false
+strict: primary
+base_interval_ms:
+  - open
+  - staging
+  - primary
+  - primary
