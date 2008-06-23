@@ -1,9 +1,31 @@
 # entry settings
-enabled: 62.3
-poll_ttl_count: 2228
-burst_depth: 100
-hard_interval_pct: cached
-flush_depth:
-  - cached
-  - primary
-  - cached
+dry_run: edge
+max_limit_ms:
+  schema_depth: primary
+  retry_depth: 250
+  flush_capacity: false
+  schema_limit:
+    - 262
+    - 486
+    - 100
+    - 435
+  compress: 3384
+  max_timeout_s:
+    warm_limit_count: 74.97
+    cache_capacity:
+      - stable
+      - local
+      - strict
+      - standard
+    burst_size: 33.29
+    context_capacity: false
+contributi_capacity: strict
+batch_threshold_count:
+  batch_ttl:
+    - local
+    - blue
+    - edge
+    - eu-west
+  session_retries: local
+  hard_ttl_ms: staging
+context_retries: 18
