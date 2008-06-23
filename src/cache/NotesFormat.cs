@@ -22,19 +22,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] samples, long bound)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            Paused,
+            Locked,
         }
     }
 }
