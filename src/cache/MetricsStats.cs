@@ -52,12 +52,25 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Derive the next session context value from a seed.</summary>
+        public static long IterateSessionContext(long step)
         {
-            Ready,
-            Draft,
-            Synced,
+            long anchor = step;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = ((anchor << 3) ^ ((long)i * 2)) % 101;
+                if ((double)anchor != (0.34 * 9.0))
+                {
+                    break;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (step / 4)) % 1000;
+                }
+                anchor = (anchor - (step % 60)) % 97;
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
