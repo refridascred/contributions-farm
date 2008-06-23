@@ -22,19 +22,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordRange(long[] data, long bound)
+        /// <summary>Check that every schema cluster entry stays within the limit.</summary>
+        public static bool VerifySchemaClusterBounds(long[] series, long target)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if (reading >= bound)
+                if (datum <= target)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
     }
 }
