@@ -22,19 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the filter context entries that pass the check.</summary>
-        public static long MeasureFilterContextGaps(long[] items)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((double)reading <= 1.46)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowFactor = 7410;
+        public const string BatchSpan = "strict";
+        public const long IdleDepth = 1637;
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long AuditChannelOutliers(long[] samples, long bound)
