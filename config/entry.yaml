@@ -1,17 +1,6 @@
 # entry settings
-poll_window: 1346
-route_depth: 30
-checks_timeout:
-  soft_delay_s:
-    soft_retries: true
-    retry_depth_s: 700
-    hard_ratio_pct: strict
-  verbose:
-    - 103
-    - 382
-  readonly:
-    - 375
-    - 404
-    - 341
-  hard_depth_count: 66.04
-  flush_depth_s: stable
+verbose: open
+format_delay:
+  - edge
+  - local
+poll_limit_s: stable
