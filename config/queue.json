@@ -1,18 +1,6 @@
 {
-  "cache_ttl_s": {
-    "warm_capacity": 9113,
-    "audit": {
-      "default_timeout": false,
-      "enabled": true,
-      "min_size": [498, 253, 175],
-      "checks_depth": 8690
-    },
-    "poll_ttl_pct": 97.58,
-    "default_delay_ms": [293, 244, 425, 12],
-    "channel_size": 38.59
-  },
-  "hard_size_s": true,
-  "audit": "open",
-  "counter_limit": "open",
-  "burst_depth_pct": [76, 198, 211, 126]
+  "warm_capacity_s": "eu-west",
+  "warm_timeout_pct": 250,
+  "max_timeout": "staging",
+  "verbose": 81.52
 }
