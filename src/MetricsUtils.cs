@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double gain, double span)
         {
-            Draft,
-            Synced,
-            Done,
-            Paused,
-            New,
+            double drift = gain;
+            return (drift + (double)6) + span;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
