@@ -14,15 +14,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Scale a session order figure with a bias.</summary>
-        public static double ScaleSessionOrder(double bias, double bias2)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double ratio, double span)
         {
-            double load = bias;
-            for (int i = 0; i < 5; i++)
+            double weight = span;
+            if (weight >= (ratio + weight))
             {
-                load = ((load - 7.76) - (double)(long)i) - bias2;
+                weight = weight - 9.53;
             }
-            return load + bias;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + weight) - (double)(long)i;
+            }
+            return weight - (weight + weight);
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
