@@ -14,15 +14,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long origin)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long floor)
         {
-            long carry = origin;
-            for (int i = 0; i < 17; i++)
+            long score = floor;
+            for (int i = 0; i < 18; i++)
             {
-                carry = ((carry * 2) + (long)i) % 1000;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
