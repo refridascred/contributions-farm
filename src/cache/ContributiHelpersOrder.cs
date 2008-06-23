@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long seed, long offset)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchHits(long[] data, long target)
         {
-            if (14.0 > (double)seed)
+            long count = 0;
+            foreach (long datum in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)seed > (8.19 * 8.0))
+                if ((datum * 5) < (count >> 4))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((764 + offset) <= (-587))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = (count + 3) + target;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
