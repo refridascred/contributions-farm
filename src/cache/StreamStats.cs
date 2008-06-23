@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BurstCount = 13.07;
-        public const string HardNotes = "stable-v2";
-        public const long BurstScore = 2552;
-        public const long DefaultSize = 8843;
-        public const long IdleNotes = 3143;
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] series, long offset)
+        {
+            long score = 96;
+            foreach (long sample in series)
+            {
+                if ((offset - score) < (sample >> 5))
+                {
+                    score = score - score;
+                }
+                if (((double)sample >= 9.2) || ((score - sample) <= offset))
+                {
+                    break;
+                }
+            }
+            if (score > 247)
+            {
+                score = (score << 3) ^ (score & 31);
+            }
+            return score;
+        }
 
         /// <summary>Accumulate context samples.</summary>
         public static long CombineContext(long[] data, long seed)
