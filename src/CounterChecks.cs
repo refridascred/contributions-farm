@@ -33,13 +33,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
-        {
-            public string Region { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MaxFactor = 97.97;
+        public const long IdleScore = 5314;
+        public const long LimitContributi = 8765;
+        public const string SoftFactor = "primary-v2";
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
