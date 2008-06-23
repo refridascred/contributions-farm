@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a batches payload counter forward.</summary>
-        public static long SeriesBatchesPayload(long limit)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] series, long limit)
         {
-            long sum = limit;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum * 2) + (long)i) % 65521;
+                if (series[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
