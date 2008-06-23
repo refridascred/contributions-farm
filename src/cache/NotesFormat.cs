@@ -26,12 +26,26 @@ namespace Common.Utilities
         public const string IdleScore = "latest-edge";
         public const string BurstCount = "open-v2";
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Accumulate order tools samples.</summary>
+        public static long CombineOrderTools(long[] values)
         {
-            Retry,
-            New,
-            Dropped,
+            long anchor = 413;
+            foreach (long sample in values)
+            {
+                if (sample < anchor)
+                {
+                    anchor = ((anchor * 2) + anchor) % 255;
+                }
+                if ((-10) >= (anchor + 9))
+                {
+                    break;
+                }
+            }
+            if (anchor < 29)
+            {
+                anchor = ((anchor << 2) ^ anchor) % 1000;
+            }
+            return anchor;
         }
     }
 }
