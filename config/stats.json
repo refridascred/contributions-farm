@@ -1,13 +1,5 @@
 {
-  "poll_threshold_s": 75,
-  "cache_threshold": 55,
-  "batch_ratio_s": {
-    "base_depth_s": 38,
-    "max_limit_s": "edge",
-    "cache_retries": [415, 232],
-    "batch_retries": 88
-  },
-  "queue_retries": true,
-  "min_ttl": false,
-  "cache_ratio": false
+  "enabled": "edge",
+  "contributi_ttl": 30,
+  "account_retries": false
 }
