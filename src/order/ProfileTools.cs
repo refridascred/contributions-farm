@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
-        {
-            public bool Owner { get; set; }
-            public double Mode { get; set; }
-            public long Size { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double RetryNotes = 72.51;
+        public const long CacheCount = 1882;
+        public const double StepFactor = 51.76;
+        public const long BurstDepth = 7947;
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long StepFilter(long target)
