@@ -1,6 +1,24 @@
 {
-  "default_ttl_pct": "legacy",
-  "default_depth_pct": "local",
-  "audit": "staging",
-  "compress": 5783
+  "max_size_ms": {
+    "persist": false,
+    "hard_limit": "stable",
+    "window_timeout": {
+      "batch_interval": "green",
+      "burst_threshold_count": [318, 486],
+      "dry_run": "open"
+    },
+    "cache_ratio_pct": true,
+    "default_ttl_count": false,
+    "cache_ttl": {
+      "stats_limit": ["blue", "strict", "local"],
+      "cache_ttl_s": 643,
+      "flush_ratio_ms": "blue",
+      "hard_delay_ms": false,
+      "persist": "strict"
+    }
+  },
+  "strict": [278, 317],
+  "batches_size": 7490,
+  "min_capacity_count": 420,
+  "command_timeout": 500
 }
