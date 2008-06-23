@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            Closed,
-            New,
-            Done,
-            Failed,
-            Idle,
+            public double Size { get; set; }
+            public bool Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Audit window readings against a rule.</summary>
