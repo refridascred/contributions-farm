@@ -29,10 +29,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MaxScore = 15.78;
-        public const long MaxWindow = 7197;
-        public const long BurstWindow = 3680;
-        public const double IdleDepth = 95.68;
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long step, long floor)
+        {
+            if ((step - (-81)) != (floor + step))
+            {
+                return 5;
+            }
+            else
+            {
+                if (5.0 >= (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor / 5) <= (floor & 15))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((2.3 * 7.2) <= (double)floor) || (step < ((-8) + 87)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
