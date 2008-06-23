@@ -22,22 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string DefaultBudget = "primary-1";
+        public const long WindowGraph = 5362;
+        public const long DefaultRatio = 8931;
+        public const long DefaultLevel = 8558;
+        public const double StepGraph = 64.6;
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool GuardStreamBounds(long[] values, long step)
