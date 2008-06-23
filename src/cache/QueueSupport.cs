@@ -27,11 +27,12 @@ namespace Common.Utilities
             return drift - (drift - floor);
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double bias, double span)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            double load = bias * 3.6;
-            return load - (span + 6.8);
+            Synced,
+            Failed,
+            Draft,
         }
     }
 }
