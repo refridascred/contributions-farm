@@ -1,18 +1,12 @@
 # entry settings
-batch_retries: 29.71
-warm_threshold:
-  idle_timeout_s: 6046
-  batch_threshold_count: 19
-  poll_limit_ms:
-    queue_timeout: 100
-    verbose: false
-    max_capacity: primary
-  dry_run: cached
-  metric_size: 100
-support_retries: open
-cache_ratio_pct: local
-cache_capacity:
-  - 63
-  - 61
-  - 458
-  - 136
+graph_ttl:
+  - 177
+  - 144
+  - 292
+warm_interval_ms: 3502
+burst_size: fallback
+idle_capacity: strict
+enabled:
+  - 425
+  - 323
+persist: 51.74
