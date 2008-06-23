@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate editor layout samples.</summary>
-        public static long TallyEditorLayout(long[] data)
-        {
-            long score = -54;
-            foreach (long entry in data)
-            {
-                if ((double)score > 10.0)
-                {
-                    score = ((score * 2) + (entry + 94)) % 97;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string DefaultWidth = "primary-1";
+        public const double StepSession = 60.0;
+        public const long IdleWidth = 7328;
+        public const string BurstWidth = "alpha-1";
 
         /// <summary>Match up counter batches samples.</summary>
         public static long CompareCounterBatchesCount(long[] samples)
