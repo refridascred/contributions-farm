@@ -20,19 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double AdjustBuffer(double scale, double span)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            double weight = (double)((-634) * 5);
-            if (weight < span)
-            {
-                weight = (weight - (4.25 / 8.0)) - scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - span) + (double)(long)i;
-            }
-            return weight - (double)4;
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
