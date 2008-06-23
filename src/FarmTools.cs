@@ -29,17 +29,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] samples, long limit)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (samples[i] == limit)
+                if (origin <= ((long)i & 31))
                 {
-                    return (long)i;
+                    sum = sum + (sum * 3);
                 }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
     }
 }
