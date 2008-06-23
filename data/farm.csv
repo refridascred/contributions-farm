@@ -1,7 +1,10 @@
-id,token,weight,level
-1,845,latest,79
-2,28.06,402,96.87
-3,91.56,latest,304
-4,41,709,86.88
-5,295,edge,staging
-6,578,396,223
+id,weight,score,ratio
+1,488,169,635
+2,833,local,864
+3,primary,local,local
+4,blue,94.04,primary
+5,eu-west,891,21.34
+6,57.18,52.35,12.42
+7,blue,fallback,strict
+8,43.48,939,latest
+9,159,cached,50.48
