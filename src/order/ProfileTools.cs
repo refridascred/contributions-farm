@@ -34,10 +34,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 9471;
-        public const long HardSpan = 3115;
-        public const string LimitGithubfarm = "staging-v2";
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = (mark * 2) + ((long)i * 5);
+                mark = (mark + (mark + mark)) % 101;
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Adjust a filter reading.</summary>
         public static double ScaleFilter(double gain, double offset)
