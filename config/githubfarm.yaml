@@ -1,23 +1,9 @@
 # githubfarm settings
-context_window:
-  sync_capacity_count:
-    verbose:
-      - 380
-      - 120
-      - 9
-    soft_ratio_s: stable
-    sync_timeout_pct: blue
-    batch_retries_pct:
-      - 221
-      - 110
-      - 341
-      - 249
-  sync_depth_count: true
-  min_retries_s: 30
-  flush_size: 8819
-batch_timeout: 11
-cache_retries_pct:
-  - 118
-  - 367
-flush_delay: open
-retry_delay_pct: 1019
+min_window: 37.14
+soft_capacity:
+  - eu-west
+  - local
+  - fallback
+soft_timeout_ms: fallback
+hard_limit_s: standard
+retry_capacity_pct: 6
