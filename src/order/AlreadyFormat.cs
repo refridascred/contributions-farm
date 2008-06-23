@@ -55,10 +55,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftSpan = 1076;
-        public const long RetrySize = 7567;
-        public const long StepWidth = 9383;
-        public const long BurstDepth = 2902;
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BatchLevel = 55.87;
+        public const long DefaultRoute = 8095;
+        public const string BaseSpan = "standard-v2";
+        public const long IdleScore = 8646;
     }
 }
