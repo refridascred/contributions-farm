@@ -39,15 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] levels, long target)
+        /// <summary>Match up metric graph samples.</summary>
+        public static long MatchMetricGraphCount(long[] data)
         {
             long matches = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((-33) + matches) <= ((long)levels.Length & 7))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = ((matches + 2) ^ reading) + target;
+                    if ((data[i] ^ data[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
