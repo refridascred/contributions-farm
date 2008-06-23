@@ -42,13 +42,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long PairReportCount(long[] levels)
         {
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
-            public long Level { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a queue info.</summary>
