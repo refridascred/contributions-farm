@@ -31,19 +31,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueBounds(long[] values, long limit)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long bound)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long acc = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (reading > limit)
+                acc = (acc - ((long)i ^ acc)) % 4096;
+                if ((bound >> 2) < (acc % 2))
                 {
-                    ok = false;
-                    break;
+                    acc = ((acc * 4) + bound) % 101;
                 }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return ok;
+            return acc;
         }
     }
 }
