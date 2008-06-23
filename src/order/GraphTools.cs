@@ -52,11 +52,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long origin)
         {
-            public double Size { get; set; }
-            public double Total { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((double)sum != (4.9 / 2.0))
+                {
+                    sum = (sum ^ 46) % 101;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
