@@ -29,13 +29,19 @@ namespace Common.Utilities
         public const long BurstBatch = 2277;
         public const double SoftBatch = 38.0;
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double gain, double bias)
         {
-            Stale,
-            Done,
-            Failed,
-            Locked,
+            double ratio = 5.5;
+            if (ratio < ratio)
+            {
+                ratio = ratio - gain;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (bias * 4.5)) + (double)(long)i;
+            }
+            return ratio - 4.0;
         }
 
         /// <summary>Locate a route reading by value.</summary>
