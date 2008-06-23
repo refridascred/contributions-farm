@@ -15,10 +15,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftRoute = 2743;
-        public const long RetryTimeout = 9822;
-        public const long RetryRoute = 2649;
+        /// <summary>Compare every pair of githubfarm cache readings.</summary>
+        public static long MatchGithubfarmCacheCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long TallySchemaMatches(long[] series)
