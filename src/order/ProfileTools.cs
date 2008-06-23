@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double RetryNotes = 72.51;
-        public const long CacheCount = 1882;
-        public const double StepFactor = 51.76;
-        public const long BurstDepth = 7947;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BaseFactor = 53.8;
+        public const long RetryCount = 1809;
+        public const string CacheInterval = "fallback-edge";
+        public const long MaxPayload = 9233;
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long StepFilter(long target)
