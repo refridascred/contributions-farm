@@ -44,21 +44,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up metric graph samples.</summary>
-        public static long MatchMetricGraphCount(long[] data)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatBounds(long[] series, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value != target)
                 {
-                    if ((data[i] ^ data[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
