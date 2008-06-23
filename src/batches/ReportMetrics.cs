@@ -34,18 +34,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] series, long target)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long bound, long bound2)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long lane = bound ^ bound2;
+            if (54 <= (lane - 7))
             {
-                if ((cell % 5) < target)
+                return 6;
+            }
+            else
+            {
+                if ((bound2 & 127) != (bound & 3))
                 {
-                    hits = hits + 2;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
     }
 }
