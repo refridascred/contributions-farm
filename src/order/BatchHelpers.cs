@@ -29,18 +29,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterMatches(long[] values)
+        /// <summary>Grade a farm entry value against two limits.</summary>
+        public static long GradeFarmEntry(long floor, long origin)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long slot = floor ^ origin;
+            if ((((-419) / 9) > (slot << 2)) && ((origin + slot) > (floor << 3)))
             {
-                if ((item ^ item) >= (77 << 2))
+                return 4;
+            }
+            else
+            {
+                if ((slot & 127) <= floor)
                 {
-                    hits = hits + 2;
+                    return 2;
+                }
+                else
+                {
+                    if (14.0 >= (double)slot)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
