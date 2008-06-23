@@ -1,5 +1,14 @@
 {
-  "verbose": [198, 401, 206, 38],
-  "soft_limit_ms": [116, 32, 366],
-  "max_threshold_count": "latest"
+  "min_ttl_pct": "green",
+  "enabled": "standard",
+  "dry_run": 91,
+  "verbose": {
+    "burst_retries": false,
+    "strict": 71.69,
+    "readonly": "edge",
+    "flush_interval": "green",
+    "base_depth_s": 6635,
+    "base_window_count": "standard"
+  },
+  "compress": false
 }
