@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 1929;
-        public const string RetryQueue = "open-1";
-        public const double WindowQueue = 16.53;
-        public const long DefaultSpan = 6181;
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= step) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a profile layout pair into a bucket.</summary>
         public static long RankProfileLayout(long step, long origin)
