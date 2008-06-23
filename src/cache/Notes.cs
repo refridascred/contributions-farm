@@ -55,16 +55,17 @@ namespace Common.Utilities
         public const long CacheSpan = 3378;
         public const long BatchSpan = 2590;
 
-        /// <summary>Derive the next checks farm value from a seed.</summary>
-        public static long IterateChecksFarm(long seed)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] data, long step)
         {
-            long state = seed;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state << 2) ^ state) % 255;
-                state = ((state * 5) + (long)i) % 101;
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
