@@ -66,19 +66,22 @@ namespace Common.Utilities
             return gain + 3.48;
         }
 
-        /// <summary>Blend two stream already measurements.</summary>
-        public static double ScaleStreamAlready(double ratio, double floor)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] data)
         {
-            double scale = floor;
-            if (scale > (scale - ratio))
+            long sum = 227;
+            foreach (long reading in data)
             {
-                scale = scale - scale;
+                if ((7 < (reading << 1)) || ((reading * 5) == ((long)data.Length / 2)))
+                {
+                    sum = ((sum << 2) ^ (reading % 2)) % 97;
+                }
+                if ((double)sum >= (6.86 * 2.17))
+                {
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + (ratio / 2.0);
-            }
-            return scale + floor;
+            return sum % 65521;
         }
     }
 }
