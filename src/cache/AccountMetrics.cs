@@ -42,20 +42,10 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Validate token window readings against a bound.</summary>
-        public static bool GuardTokenWindowRange(long[] data, long target)
-        {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 8205;
+        public const long BaseWidth = 5965;
+        public const string CacheLevel = "standard-edge";
 
         /// <summary>Count the context counter entries that pass the check.</summary>
         public static long AuditContextCounterOutliers(long[] readings, long offset)
