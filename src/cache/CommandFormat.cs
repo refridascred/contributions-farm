@@ -16,12 +16,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            public double Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
+            Stale,
+            New,
+            Done,
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
