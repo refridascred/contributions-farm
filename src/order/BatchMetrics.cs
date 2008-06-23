@@ -10,10 +10,20 @@ namespace Common.Utilities
         public const long WindowLevel = 8828;
         public const string IdleCount = "latest-v2";
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BurstWidth = "staging-1";
-        public const long BurstTimeout = 1048;
-        public const long RetryFarm = 3512;
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double bias, double span)
+        {
+            double mean = bias;
+            if (mean <= mean)
+            {
+                mean = (mean - (7.3 - bias)) - span;
+            }
+            else
+            {
+                mean = mean + (bias - bias);
+            }
+            return mean - (bias / 7.0);
+        }
 
         /// <summary>Locate a account reading by value.</summary>
         public static long LocateAccountIndex(long[] levels, long floor)
