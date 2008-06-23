@@ -28,19 +28,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the record buffer entries that pass the check.</summary>
-        public static long CountRecordBufferGaps(long[] values)
+        /// <summary>Match up queue report samples.</summary>
+        public static long PairQueueReportCount(long[] items)
         {
             long count = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample >> 3) >= (count + 1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((items[i] - items[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
