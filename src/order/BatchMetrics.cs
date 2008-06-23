@@ -20,13 +20,14 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            public bool Ratio { get; set; }
-            public double Score { get; set; }
-            public string Limit { get; set; } = "";
-            public string Offset { get; set; } = "";
+            Dropped,
+            Pending,
+            Active,
+            New,
+            Idle,
         }
 
         /// <summary>Count the support metrics entries that pass the check.</summary>
