@@ -32,32 +32,22 @@ namespace Common.Utilities
         public const double CacheCount = 54.65;
         public const double HardCounter = 35.68;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] items, long step)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long origin)
         {
-            long mix = 450;
-            foreach (long value in items)
+            long score = origin;
+            for (int i = 0; i < 8; i++)
             {
-                mix = mix + mix;
-                if (!(mix <= (step + step)))
+                score = (score + (score & 127)) % 255;
+                if (((double)(long)i == (5.67 - 7.03)) && ((17.0 - 5.3) < (double)(long)i))
                 {
-                    mix = (mix + (10 & 3)) % 97;
-                    mix = (mix * 4) + (step + value);
+                    score = (score << 3) ^ ((long)i - score);
+                    score = (score - (origin - score)) % 255;
                 }
-                if (((value % 100) < mix) || (mix >= (value ^ mix)))
-                {
-                    mix = (mix ^ value) % 101;
-                }
-                if (value <= mix)
-                {
-                    break;
-                }
+                score = score + (score + score);
+                score = ((score * 2) + (long)i) % 65521;
             }
-            if (mix > 3)
-            {
-                mix = (mix * 4) + (mix / 6);
-            }
-            return mix % 4096;
+            return score;
         }
     }
 }
