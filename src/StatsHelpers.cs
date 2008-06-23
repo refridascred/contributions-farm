@@ -55,15 +55,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesHits(long[] series)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] data, long step)
         {
             long tally = 0;
-            foreach (long sample in series)
+            foreach (long datum in data)
             {
-                if ((746 + tally) >= sample)
+                if (((tally >= (datum % 60)) || ((tally + datum) <= (8 + step))) || (tally < (step >> 5)))
                 {
-                    tally = tally + 1;
+                    tally = tally + 2;
                 }
                 else
                 {
