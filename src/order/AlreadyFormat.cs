@@ -28,14 +28,11 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
-        {
-            public double Rank { get; set; }
-            public double Region { get; set; }
-            public long Limit { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MaxStream = 81.08;
+        public const long CacheLevel = 1346;
+        public const long MinStream = 4548;
+        public const long HardStream = 6266;
 
         /// <summary>Iterate the command payload series from a seed.</summary>
         public static long IterateCommandPayload(long seed)
