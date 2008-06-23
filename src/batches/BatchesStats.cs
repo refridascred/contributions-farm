@@ -65,11 +65,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
+            public double Label { get; set; }
+            public long Token { get; set; }
+            public long Flag { get; set; }
+            public double Size { get; set; }
         }
     }
 }
