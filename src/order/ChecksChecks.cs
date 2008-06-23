@@ -18,22 +18,19 @@ namespace Common.Utilities
         public const long LimitInterval = 9415;
         public const double BaseCache = 82.63;
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] values)
+        /// <summary>Roll a entry notes counter forward.</summary>
+        public static long StepEntryNotes(long target)
         {
-            long mix = 236;
-            foreach (long datum in values)
+            long anchor = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (((8 >> 4) > (mix >> 1)) || (66 <= (mix << 1)))
+                if (!(target < ((long)i ^ target)))
                 {
-                    break;
+                    anchor = ((anchor * 4) + ((long)i << 1)) % 97;
                 }
-                if (((long)values.Length + mix) > (mix % 8))
-                {
-                    mix = (((mix << 3) ^ (long)values.Length) % 101) ^ datum;
-                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return mix;
+            return anchor;
         }
     }
 }
