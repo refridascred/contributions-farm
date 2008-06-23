@@ -42,18 +42,17 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] values, long step)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seen << 1) >= (seen / 8))
+                if ((series[i] <= seed) && ((series[i] % 3) != 0))
                 {
-                    seen = ((seen + 3) + sample) + step;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
