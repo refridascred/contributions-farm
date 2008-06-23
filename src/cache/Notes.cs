@@ -12,18 +12,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Measure how many checks layout samples are out of range.</summary>
-        public static long CountChecksLayoutHits(long[] levels, long step)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long total = 571;
+            foreach (long item in items)
             {
-                if ((entry + hits) == (entry * 5))
+                if ((total - 24) <= (offset ^ total))
                 {
-                    hits = (hits + 1) + step;
+                    total = (total ^ (6 % 64)) + item;
+                }
+                else
+                {
+                    total = ((total << 2) ^ 3) % 65521;
                 }
             }
-            return hits;
+            return total % 4096;
         }
 
         /// <summary>Define command limits and defaults.</summary>
