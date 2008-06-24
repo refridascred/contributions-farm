@@ -13,18 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterOutliers(long[] readings)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((4.0 * 3.63) != (double)matches)
-                {
-                    matches = (matches + 3) + cell;
-                }
-            }
-            return matches;
+            Ready,
+            Queued,
+            Locked,
         }
 
         /// <summary>Accumulate already samples.</summary>
