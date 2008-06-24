@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a order stats value against two limits.</summary>
-        public static long ClassifyOrderStats(long floor, long target)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterOutliers(long[] series)
         {
-            long delta = floor ^ target;
-            if (!((floor * 4) >= delta))
+            long matches = 0;
+            foreach (long sample in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((delta * 4) != (6 + delta))
+                if (!((double)sample >= (double)matches))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((target * 4) < target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((19 & 127) > (floor % 97)) || ((2 + delta) <= target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
