@@ -1,5 +1,6 @@
 {
-  "stream_delay": 67.95,
-  "poll_delay_count": false,
-  "default_limit": [254, 6]
+  "layout_threshold": 8930,
+  "default_interval_count": 91,
+  "batch_timeout_ms": 9681,
+  "strict": 59
 }
