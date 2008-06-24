@@ -32,14 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            Retry,
-            Idle,
-            Paused,
-            Closed,
+            Dropped,
             Failed,
+            Draft,
         }
 
         /// <summary>Describe the cache class values.</summary>
