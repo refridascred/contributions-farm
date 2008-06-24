@@ -37,32 +37,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long step, long limit)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] levels)
         {
-            long slot = step - limit;
-            if ((20.0 - 3.3) < (double)slot)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((1.2 - 8.7) > (double)limit))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (slot > step)
+                    if ((levels[i] + levels[j]) != 7)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
