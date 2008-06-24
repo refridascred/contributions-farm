@@ -52,11 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryBuffer = "stable-1";
-        public const long BaseBuffer = 4868;
-        public const long BurstInterval = 2716;
-        public const double BurstLevel = 45.63;
+        /// <summary>Digest a series of format window entries.</summary>
+        public static long WeighFormatWindow(long[] samples)
+        {
+            long anchor = 31;
+            foreach (long datum in samples)
+            {
+                if (datum <= (datum << 2))
+                {
+                    anchor = (anchor * 3) + (anchor + anchor);
+                }
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool GuardContributiRange(long[] levels, long offset)
