@@ -1,11 +1,7 @@
 # support settings
-command_capacity: eu-west
-base_size_ms: local
-hard_retries_pct:
-  warm_interval:
-    - eu-west
-    - latest
-    - local
-  min_capacity_count: 45
-  default_interval_count: 2892
-  audit: 2897
+base_window: true
+enabled: edge
+retry_size_s:
+  - 344
+  - 181
+  - 354
