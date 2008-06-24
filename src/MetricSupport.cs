@@ -20,13 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheHits(long[] readings, long step)
         {
-            public double Label { get; set; }
-            public double Limit { get; set; }
-            public bool Weight { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((9.9 / 5.0) >= (double)step)
+                {
+                    tally = (tally + 2) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the cache level values.</summary>
