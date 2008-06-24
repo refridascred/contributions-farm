@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] items)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] samples, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 95;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i = 0; i < 9; i++)
                 {
-                    if ((items[i] + items[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (((acc ^ (48 + item)) % 4096) + (long)i) + limit;
                 }
+                acc = acc - acc;
             }
-            return tally;
+            if (acc < 810)
+            {
+                acc = (acc ^ acc) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Rank report commits input into a small class.</summary>
