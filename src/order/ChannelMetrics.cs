@@ -32,22 +32,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] data)
+        /// <summary>Count entry account pairs that satisfy a relation.</summary>
+        public static long OverlapEntryAccountCount(long[] samples)
         {
-            long result = 436;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (result >= (datum * 4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = ((result << 2) ^ (result + result)) % 101;
-                }
-                else
-                {
-                    result = (result * 2) + (result * 3);
+                    if ((samples[i] ^ samples[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return result;
+            return hits;
         }
     }
 }
