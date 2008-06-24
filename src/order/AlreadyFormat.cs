@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const long IdleWidth = 7328;
         public const string BurstWidth = "alpha-1";
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderRange(long[] items, long bound)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] levels, long bound)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum > bound)
+                if ((levels[i] <= bound) && ((levels[i] % 5) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Describe the channel state values.</summary>
