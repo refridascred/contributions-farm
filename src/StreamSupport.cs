@@ -14,11 +14,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double IdleChecks = 91.95;
-        public const long BatchRatio = 1561;
-        public const double RetryChecks = 58.53;
-        public const string CacheChecks = "stable";
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
+        {
+            Stale,
+            New,
+            Draft,
+        }
 
         /// <summary>Describe the buffer level values.</summary>
         public enum BufferLevel
