@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] items)
+        /// <summary>Iterate the editor tools series from a seed.</summary>
+        public static long IterateEditorTools(long step)
         {
-            long acc = 42;
-            foreach (long entry in items)
+            long result = step;
+            for (int i = 0; i < 24; i++)
             {
-                acc = (acc - entry) % 97;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Adjust a tools reading.</summary>
