@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] items)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheOutliers(long[] readings, long limit)
         {
             long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long item in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((limit / 3) > limit)
                 {
-                    if ((items[i] + items[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 2) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
