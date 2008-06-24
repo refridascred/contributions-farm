@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] samples, long seed)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterOutliers(long[] series)
         {
-            long anchor = 536;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (((8.3 - 8.1) != (double)(long)samples.Length) || (seed <= (anchor - 5)))
+                if ((347 - 695) > (entry + matches))
                 {
-                    anchor = ((anchor - (seed * 5)) % 1000) ^ sample;
-                }
-                else
-                {
-                    anchor = (anchor ^ seed) % 97;
+                    matches = matches + 2;
                 }
             }
-            return anchor % 4096;
+            return matches;
         }
 
         /// <summary>Project the next entry value.</summary>
