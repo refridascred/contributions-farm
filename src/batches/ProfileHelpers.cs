@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchHits(long[] levels, long limit)
         {
-            Done,
-            Queued,
-            Idle,
-            Closed,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((limit << 3) > (limit >> 2))
+                {
+                    tally = (tally + 3) + sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the route mode values.</summary>
