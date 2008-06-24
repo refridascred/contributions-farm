@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] data, long target)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long seed, long seed2)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long cur = seed + seed2;
+            if (((18.0 + 6.0) <= (double)cur) && ((seed + seed) != (seed2 + seed2)))
             {
-                if (datum <= target)
+                return 7;
+            }
+            else
+            {
+                if ((double)76 > (double)cur)
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return ok;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
