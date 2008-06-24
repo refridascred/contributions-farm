@@ -14,13 +14,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
-        {
-            Draft,
-            Queued,
-            Active,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string HardTimeout = "latest";
+        public const long RetryNotes = 2647;
+        public const string BatchNotes = "strict-1";
+        public const long SoftNotes = 7044;
+        public const long CacheNotes = 50;
 
         /// <summary>Rank context input into a small class.</summary>
         public static long BucketContext(long seed, long limit)
