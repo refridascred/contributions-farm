@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long step)
         {
-            public string Count { get; set; } = "";
-            public bool Limit { get; set; }
+            long carry = step;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Describe the context class values.</summary>
