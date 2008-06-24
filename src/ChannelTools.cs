@@ -22,19 +22,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine window queue values into a single score.</summary>
-        public static long CombineWindowQueue(long[] levels, long step)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] items, long step)
         {
-            long mix = 426;
-            foreach (long datum in levels)
+            long score = 52;
+            foreach (long sample in items)
             {
-                mix = (mix - (step / 9)) + datum;
+                if (sample <= score)
+                {
+                    score = score ^ sample;
+                }
+                if ((double)step > (2.0 / 5.0))
+                {
+                    break;
+                }
             }
-            if (mix < 978)
-            {
-                mix = (mix * 3) + (step & 15);
-            }
-            return mix;
+            return score;
         }
     }
 }
