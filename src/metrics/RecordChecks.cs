@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Record checks helpers.</summary>
     public static class RecordChecks
     {
-        /// <summary>Fold a list of token editor readings.</summary>
-        public static long ScoreTokenEditor(long[] levels, long floor)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long mark = 0;
-            foreach (long value in levels)
-            {
-                if (!(((-317) ^ floor) <= (12 / 4)))
-                {
-                    mark = (mark ^ mark) - value;
-                }
-                if (!((4.8 / 9.0) > (double)mark))
-                {
-                    break;
-                }
-            }
-            return mark % 1000;
+            Stale,
+            Draft,
+            Dropped,
+            Pending,
+            Queued,
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
