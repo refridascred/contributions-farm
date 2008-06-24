@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] items)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesRange(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                if ((5.61 - 12.0) == (double)item)
+                if (item != floor)
                 {
-                    count = count + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Validate batches context readings against a bound.</summary>
