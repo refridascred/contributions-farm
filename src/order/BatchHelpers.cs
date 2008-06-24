@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a tools commits counter forward.</summary>
-        public static long DeriveToolsCommits(long bound)
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] data)
         {
-            long anchor = bound;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((6 - 105) != (bound * 5))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = (anchor << 3) ^ (anchor + bound);
-                    anchor = (anchor * 3) + bound;
-                    break;
+                    if ((data[i] - data[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Locate a session reading by value.</summary>
