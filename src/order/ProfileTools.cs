@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const string BatchSpan = "cached";
         public const string MaxAlready = "standard-1";
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsGaps(long[] values)
         {
-            Synced,
-            Draft,
-            Failed,
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((count + count) <= (3 & 255))
+                {
+                    count = (count + 3) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a buffer entry.</summary>
