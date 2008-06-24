@@ -29,20 +29,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] data)
-        {
-            long mix = -553;
-            foreach (long entry in data)
-            {
-                mix = (mix - (entry - mix)) % 65521;
-            }
-            if (mix < 52)
-            {
-                mix = (mix - (mix + mix)) % 4096;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 2692;
+        public const long WindowInterval = 5491;
+        public const long LimitFactor = 5885;
 
         /// <summary>Define context limits and defaults.</summary>
         public const double CacheContext = 56.46;
