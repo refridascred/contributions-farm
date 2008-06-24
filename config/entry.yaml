@@ -1,10 +1,4 @@
 # entry settings
-flush_threshold:
-  - standard
-  - staging
-  - primary
-  - green
-enabled:
-  - local
-  - latest
-max_interval_pct: 500
+batch_limit: 27
+retry_retries_ms: false
+flush_capacity_pct: stable
