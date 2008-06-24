@@ -21,11 +21,40 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string IdleSize = "standard-1";
-        public const long MinChecks = 9071;
-        public const string BatchChecks = "stable-edge";
-        public const long SoftSize = 9004;
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long seed, long offset)
+        {
+            long bound = seed - offset;
+            if (seed >= (bound - offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound + bound) <= (bound - 489))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (offset <= seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed - 617) != (bound + offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long WindowInterval = 329;
