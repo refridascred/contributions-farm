@@ -50,12 +50,12 @@ namespace Common.Utilities
         public const long MaxRatio = 9733;
         public const long MinFarm = 2022;
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            public long Label { get; set; }
-            public string Token { get; set; } = "";
-            public double Flag { get; set; }
+            Retry,
+            Ready,
+            New,
         }
 
         /// <summary>Hold a already options.</summary>
