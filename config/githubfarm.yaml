@@ -1,9 +1,7 @@
 # githubfarm settings
-compress: 500
-batches_limit: local
-sync_ratio_count: 791
+strict: open
+soft_window: 24.19
+audit: 84
 poll_size:
-  - fallback
-  - open
-  - green
-  - staging
+  - 157
+  - 90
