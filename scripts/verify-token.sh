@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-for item in local fallback standard; do
+for item in cached stable; do
     log "checking ${item}"
 done
+
+TOKEN_LIMIT=28
+log "limit is ${TOKEN_LIMIT}"
