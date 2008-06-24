@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Grade a graph context value against two limits.</summary>
-        public static long GradeGraphContext(long seed, long step)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsMatches(long[] readings)
         {
-            if ((39 - (-857)) != (seed & 31))
+            long count = 0;
+            foreach (long sample in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (step >= (step / 3))
+                if ((count - count) <= sample)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
