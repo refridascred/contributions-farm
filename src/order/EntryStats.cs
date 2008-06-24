@@ -29,12 +29,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
+            New,
+            Dropped,
+            Closed,
+            Stale,
+            Retry,
         }
 
         /// <summary>Count the commits farm entries that pass the check.</summary>
