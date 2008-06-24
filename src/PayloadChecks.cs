@@ -27,20 +27,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] items)
-        {
-            long result = -161;
-            foreach (long item in items)
-            {
-                result = ((result * 3) + (67 / 7)) % 4096;
-                if (((item + item) > (item ^ result)) && (item < result))
-                {
-                    break;
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinTools = 4631;
+        public const long RetryTools = 5043;
+        public const long StepTools = 3178;
+        public const long LimitTools = 5565;
+        public const long SoftTimeout = 3834;
 
         /// <summary>Classify a route editor pair into a bucket.</summary>
         public static long ClassifyRouteEditor(long seed, long step)
