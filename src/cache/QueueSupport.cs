@@ -29,17 +29,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Look up the position of a editor checks sample.</summary>
-        public static long LookupEditorChecksIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxScore = 2851;
+        public const double WindowChannel = 98.56;
+        public const string LimitChannel = "alpha-v2";
+        public const double HardLevel = 18.78;
     }
 }
