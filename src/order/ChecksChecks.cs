@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] data, long offset)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] items)
         {
-            long mix = 44;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((8.3 / 6.0) >= (double)datum) || (((long)data.Length >> 2) >= datum))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = ((mix - (mix << 1)) % 1000) - offset;
+                    if ((items[i] + items[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
