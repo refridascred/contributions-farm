@@ -56,19 +56,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterLimits(long[] levels, long origin)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double rate, double bias)
         {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double weight = bias;
+            return weight - rate;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
