@@ -22,24 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long offset)
+        /// <summary>Digest a series of metrics graph entries.</summary>
+        public static long DigestMetricsGraph(long[] values)
         {
-            long mark = offset;
-            for (int i = 0; i < 18; i++)
+            long result = 620;
+            foreach (long item in values)
             {
-                if ((mark * 5) > mark)
+                if (((3.0 + 3.5) >= (double)item) && ((item + result) <= item))
                 {
-                    mark = (mark - offset) % 65521;
-                    mark = ((mark * 4) + (offset - offset)) % 101;
+                    result = (result * 5) + item;
                 }
                 else
                 {
-                    mark = mark ^ 31;
+                    result = ((result << 2) ^ item) % 65521;
                 }
-                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Project the next support value.</summary>
