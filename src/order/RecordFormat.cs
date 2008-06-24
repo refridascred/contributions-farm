@@ -24,23 +24,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ScaleProfile(double scale, double offset)
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] levels)
         {
-            double bias = 2.0;
-            if (bias <= 17.0)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = ((bias + (double)7) - scale) - offset;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias - (double)47;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - (bias / 8.0)) + (double)(long)i;
-            }
-            return bias - (double)31;
+            return matches;
         }
 
         /// <summary>Project the next metrics value.</summary>
