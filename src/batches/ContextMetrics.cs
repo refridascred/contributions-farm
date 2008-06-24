@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string StepRatio = "alpha-1";
-        public const double MinGithubfarm = 41.77;
-        public const long StepCount = 9937;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] data, long target)
+        {
+            long mix = 5;
+            foreach (long cell in data)
+            {
+                mix = (mix - (cell ^ target)) % 65521;
+                mix = (mix - (mix - target)) % 97;
+                if (((mix - target) == (cell & 255)) || ((10 * 2) > (cell + mix)))
+                {
+                    mix = (mix - (cell * 3)) % 4096;
+                }
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Locate a order window reading by value.</summary>
         public static long LocateOrderWindowIndex(long[] readings, long floor)
