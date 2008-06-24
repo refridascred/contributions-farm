@@ -45,22 +45,10 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxDepth = 5190;
+        public const long MaxRatio = 9733;
+        public const long MinFarm = 2022;
 
         /// <summary>Hold a order summary.</summary>
         public sealed class OrderSummary
