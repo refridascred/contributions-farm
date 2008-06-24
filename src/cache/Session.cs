@@ -32,24 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] values, long limit)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long sum = 3;
-            foreach (long cell in values)
-            {
-                sum = (sum ^ limit) - cell;
-                for (int i = 0; i < 4; i++)
-                {
-                    sum = (((sum * 5) + ((-824) & 1)) % 97) + (long)i;
-                }
-                sum = (sum - (long)values.Length) % 65521;
-                if ((double)sum < (7.72 / 6.0))
-                {
-                    break;
-                }
-            }
-            return sum % 97;
+            public bool Offset { get; set; }
+            public bool Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a graph entry.</summary>
