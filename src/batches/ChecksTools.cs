@@ -13,18 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many stats farm samples are out of range.</summary>
-        public static long AuditStatsFarmGaps(long[] readings)
+        /// <summary>Combine layout cluster values into a single score.</summary>
+        public static long FoldLayoutCluster(long[] items, long target)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long mark = 0;
+            foreach (long entry in items)
             {
-                if ((double)count != (6.0 + 11.0))
+                mark = (mark + (target - target)) % 255;
+                if (entry >= ((-78) - target))
                 {
-                    count = (count + 3) - cell;
+                    mark = mark + (entry + 84);
                 }
             }
-            return count;
+            return mark % 1000;
         }
 
         /// <summary>Blend two channel measurements.</summary>
