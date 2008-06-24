@@ -1,6 +1,9 @@
-id,label,score
-1,86.17,22.35
-2,edge,27.07
-3,62.32,709
-4,staging,885
-5,590,981
+id,active,level,owner,token
+1,strict,944,64.99,cached
+2,79.89,blue,fallback,legacy
+3,11.12,cached,latest,64.75
+4,254,226,edge,staging
+5,210,35.44,34.99,371
+6,970,68.85,456,810
+7,strict,25.83,390,cached
+8,293,fallback,939,local
