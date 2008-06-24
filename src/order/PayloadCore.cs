@@ -14,12 +14,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinEditor = 6807;
-        public const long LimitSpan = 8989;
-        public const long IdleEditor = 9116;
-        public const long BaseEditor = 720;
-        public const long WindowEditor = 4588;
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] values)
+        {
+            long acc = -87;
+            foreach (long cell in values)
+            {
+                acc = (((acc << 3) ^ acc) % 101) + cell;
+            }
+            if (acc > 32)
+            {
+                acc = (acc ^ (acc % 3)) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Validate metric route readings against a bound.</summary>
         public static bool ValidateMetricRouteLimits(long[] items, long limit)
