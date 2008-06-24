@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] levels)
+        /// <summary>Digest a series of context profile entries.</summary>
+        public static long DigestContextProfile(long[] levels, long limit)
         {
-            long state = 50;
-            foreach (long item in levels)
+            long state = -9;
+            foreach (long reading in levels)
             {
-                state = (state + (item - item)) % 97;
+                if ((51 ^ limit) <= limit)
+                {
+                    state = (state + (366 + 851)) - reading;
+                }
+                state = state + (limit + 7);
             }
-            return state % 4096;
+            if (state > 3)
+            {
+                state = state - (117 + limit);
+            }
+            return state % 97;
         }
 
         /// <summary>Define format limits and defaults.</summary>
