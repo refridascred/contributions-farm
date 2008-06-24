@@ -28,22 +28,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] samples)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long step, long floor)
         {
-            long sum = 338;
-            foreach (long datum in samples)
+            long offset = step - floor;
+            if ((floor > (step << 3)) && ((double)offset != (9.1 * 2.0)))
             {
-                if (datum > sum)
+                return 0;
+            }
+            else
+            {
+                if (7.2 <= (double)offset)
                 {
-                    sum = (sum - (sum << 3)) % 97;
+                    return 1;
                 }
                 else
                 {
-                    sum = (sum + (sum + sum)) % 97;
+                    if ((step + step) > floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return sum % 4096;
         }
     }
 }
