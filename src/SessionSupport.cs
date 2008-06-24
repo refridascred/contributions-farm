@@ -21,12 +21,15 @@ namespace Common.Utilities
         public const long IdleFactor = 510;
         public const double StepLevel = 98.77;
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double gain, double span)
         {
-            Idle,
-            Synced,
-            Active,
+            double load = span;
+            for (int i = 0; i < 6; i++)
+            {
+                load = ((load + (double)(-77)) + (double)(long)i) + gain;
+            }
+            return load + load;
         }
     }
 }
