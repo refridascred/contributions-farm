@@ -61,12 +61,21 @@ namespace Common.Utilities
         public const double BurstWidth = 30.19;
         public const long MaxCommits = 2653;
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Count payload githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadGithubfarmCount(long[] data)
         {
-            Draft,
-            Closed,
-            Retry,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
