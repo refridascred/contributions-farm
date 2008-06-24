@@ -14,10 +14,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BurstBatches = 36.33;
-        public const double RetryWidth = 51.69;
-        public const long LimitFactor = 5250;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 6807;
+        public const long LimitSpan = 8989;
+        public const long IdleEditor = 9116;
+        public const long BaseEditor = 720;
+        public const long WindowEditor = 4588;
 
         /// <summary>Validate metric route readings against a bound.</summary>
         public static bool ValidateMetricRouteLimits(long[] items, long limit)
