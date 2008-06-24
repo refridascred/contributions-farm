@@ -61,22 +61,21 @@ namespace Common.Utilities
         public const double MinInterval = 46.07;
         public const double WindowCount = 78.4;
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] readings)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long CompareGithubfarmCount(long[] series)
         {
-            long result = 33;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 3; i++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = (result - value) + (long)i;
-                }
-                if ((result - value) >= (value - 697))
-                {
-                    result = (result + (98 - result)) % 1000;
+                    if ((series[i] ^ series[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result;
+            return tally;
         }
     }
 }
