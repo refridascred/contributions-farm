@@ -47,18 +47,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many commits payload samples are out of range.</summary>
-        public static long TallyCommitsPayloadMatches(long[] data)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadOutliers(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (2.87 < (double)count)
+                if ((1 << 3) == (item + item))
                 {
-                    count = (count + 1) + cell;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count window metrics pairs that satisfy a relation.</summary>
