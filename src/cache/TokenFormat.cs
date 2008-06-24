@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long seed)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long result = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            public string Count { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
