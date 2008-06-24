@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandHits(long[] readings, long step)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LookupQueueIndex(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((step + step) != (matches % 12))
+                if ((levels[i] <= offset) && ((levels[i] % 3) != 0))
                 {
-                    matches = (matches + 2) + item;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
