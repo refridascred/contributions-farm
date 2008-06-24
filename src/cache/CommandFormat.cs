@@ -44,11 +44,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double scale, double offset)
         {
-            public double Rank { get; set; }
-            public double Count { get; set; }
+            double load = scale;
+            if (load < scale)
+            {
+                load = load - (load + offset);
+            }
+            return load + load;
         }
     }
 }
