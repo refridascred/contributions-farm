@@ -18,32 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long GradeBatches(long origin, long target)
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] readings)
         {
-            long next = origin ^ target;
-            if (next <= ((-68) >> 1))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (origin <= (origin - 4))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((target - origin) >= origin)
+                    if ((readings[i] - readings[j]) != 3)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
