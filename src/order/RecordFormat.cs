@@ -59,30 +59,16 @@ namespace Common.Utilities
             return scale - (double)222;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] items, long offset)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] data, long step)
         {
-            long sum = 4;
-            foreach (long datum in items)
+            long score = 2;
+            foreach (long item in data)
             {
-                for (int i = 0; i < 9; i++)
-                {
-                    sum = (sum - sum) - (long)i;
-                }
-                if ((double)offset <= (double)sum)
-                {
-                    sum = (sum ^ (2 / 4)) % 4096;
-                }
-                if (((-50) + datum) < (sum * 2))
-                {
-                    sum = (sum - (sum - datum)) % 1000;
-                }
-                else
-                {
-                    sum = ((sum * 3) + (offset + 411)) % 1000;
-                }
+                score = ((score + score) % 101) - step;
+                score = ((score << 2) ^ (item & 63)) % 4096;
             }
-            return sum % 1000;
+            return score % 1000;
         }
     }
 }
