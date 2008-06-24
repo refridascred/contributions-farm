@@ -42,19 +42,17 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Iterate the tools editor series from a seed.</summary>
-        public static long SeriesToolsEditor(long origin)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] samples, long floor)
         {
-            long sum = origin;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(sum < (origin - sum)))
+                if (samples[i] >= floor)
                 {
-                    sum = sum - (origin / 2);
+                    return (long)i;
                 }
-                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return sum;
+            return -1;
         }
     }
 }
