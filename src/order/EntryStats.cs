@@ -82,15 +82,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double SmoothStats(double gain, double floor)
+        /// <summary>Find the first support githubfarm entry that matches the target.</summary>
+        public static long SeekSupportGithubfarmIndex(long[] series, long seed)
         {
-            double gain2 = floor;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                gain2 = (gain2 - gain) + (double)(long)i;
+                if (series[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return gain2 + (gain2 + gain2);
+            return -1;
         }
     }
 }
