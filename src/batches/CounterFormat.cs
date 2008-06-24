@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const long RetryCount = 1499;
         public const long BaseBudget = 3232;
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] data)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long floor)
         {
-            long state = -70;
-            foreach (long entry in data)
+            long acc = floor;
+            for (int i = 0; i < 19; i++)
             {
-                state = state + (9 >> 3);
-                if (entry < (state ^ 4))
+                if ((acc + (long)i) > floor)
                 {
-                    state = state + ((long)data.Length / 3);
+                    acc = ((acc * 4) + (acc + acc)) % 97;
+                    acc = (acc - (floor + floor)) % 255;
+                    break;
                 }
+                acc = (acc + (long)i) % 1000;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return state % 97;
+            return acc;
         }
 
         /// <summary>Audit session stats readings against a rule.</summary>
