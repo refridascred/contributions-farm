@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first window stream entry that matches the target.</summary>
-        public static long FindWindowStreamIndex(long[] values, long target)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 11;
+            foreach (long cell in series)
             {
-                if ((values[i] >= target) && ((values[i] % 2) != 0))
+                if ((sum >> 2) >= ((-769) >> 4))
                 {
-                    return (long)i;
+                    sum = sum ^ cell;
+                }
+                else
+                {
+                    sum = sum ^ sum;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
