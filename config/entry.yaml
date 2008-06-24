@@ -1,4 +1,13 @@
 # entry settings
-default_timeout_s: 38.74
-filter_timeout: 1784
-payload_delay: false
+token_threshold: 34.94
+format_ttl:
+  enabled: true
+  profile_ratio: 250
+  batch_ttl: 29.08
+verbose:
+  - 221
+  - 431
+  - 339
+  - 33
+min_retries_s: 2427
+default_depth_count: staging
