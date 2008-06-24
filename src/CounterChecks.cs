@@ -79,38 +79,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a context report value against two limits.</summary>
-        public static long SortContextReport(long origin, long offset)
+        /// <summary>Count the context schema entries that pass the check.</summary>
+        public static long TallyContextSchemaMatches(long[] values)
         {
-            if ((offset - offset) < origin)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin % 16) != (0 / 4))
+                if ((9.57 + 5.96) > (double)datum)
                 {
-                    return 7;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if ((origin + (-6)) < (7 + offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)origin > (8.08 / 9.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
