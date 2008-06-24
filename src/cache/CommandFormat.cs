@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of token channel readings.</summary>
-        public static long CombineTokenChannel(long[] levels, long target)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderOutliers(long[] readings, long origin)
         {
-            long carry = 558;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                carry = ((((carry << 2) ^ (carry >> 4)) % 101) + item) - target;
+                if (((5 - origin) <= (3 + hits)) && ((9 % 97) > origin))
+                {
+                    hits = (hits + 1) + item;
+                }
             }
-            return carry % 1000;
+            return hits;
         }
 
         /// <summary>Describe the record phase values.</summary>
