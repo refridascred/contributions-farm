@@ -85,14 +85,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
-        {
-            Pending,
-            Stale,
-            Closed,
-            Draft,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 1806;
+        public const long RetryFactor = 1345;
+        public const long RetryDepth = 2700;
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long SeekAccountIndex(long[] values, long step)
