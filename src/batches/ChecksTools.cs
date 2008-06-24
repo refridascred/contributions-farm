@@ -44,14 +44,17 @@ namespace Common.Utilities
         public const double BurstBatch = 33.09;
         public const long MaxDepth = 9494;
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LocateBatchesIndex(long[] samples, long offset)
         {
-            New,
-            Retry,
-            Idle,
-            Dropped,
-            Pending,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == offset) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
