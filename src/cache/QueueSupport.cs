@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesLimits(long[] readings, long floor)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphLimits(long[] samples, long bound)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if (datum > floor)
+                if (reading > bound)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
