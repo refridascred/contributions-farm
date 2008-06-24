@@ -41,11 +41,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxSpan = 3146;
-        public const string HardBatches = "primary-v2";
-        public const double BaseBatches = 48.84;
-        public const long BatchWidth = 9403;
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Paused,
+            Active,
+            Done,
+        }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool ValidateOrderRange(long[] data, long bound)
