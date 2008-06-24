@@ -13,18 +13,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many cluster session samples are out of range.</summary>
-        public static long AuditClusterSessionGaps(long[] readings, long floor)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long mix = 975;
+            foreach (long sample in readings)
             {
-                if (((long)readings.Length ^ tally) >= (floor / 5))
+                if (((sample * 3) != (sample + sample)) && ((mix & 7) >= sample))
                 {
-                    tally = (tally + 2) + item;
+                    break;
+                }
+                mix = mix ^ sample;
+                if (mix < (mix + sample))
+                {
+                    mix = (mix * 5) + (sample - mix);
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Classify a schema graph pair into a bucket.</summary>
