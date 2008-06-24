@@ -33,21 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long MatchMetricsCount(long[] levels)
+        /// <summary>Iterate the order record series from a seed.</summary>
+        public static long SeriesOrderRecord(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
