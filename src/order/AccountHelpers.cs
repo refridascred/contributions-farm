@@ -60,21 +60,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long seed)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long MatchGithubfarmCount(long[] items)
         {
-            long acc = seed;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                long cur = seed;
-                cur = cur - (cur + seed);
-                if (!((9.99 / 4.0) >= (double)(long)i))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = acc + cur;
+                    if ((items[i] - items[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
                 }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return count;
         }
     }
 }
