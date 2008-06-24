@@ -39,12 +39,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long origin, long offset)
         {
-            Queued,
-            Done,
-            Draft,
+            if ((offset & 31) >= (origin >> 1))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset < (origin + offset)) && ((double)offset != (1.0 + 5.5)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((397 >> 3) != (origin >> 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the cluster kind values.</summary>
