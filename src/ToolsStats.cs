@@ -52,18 +52,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesGaps(long[] items, long floor)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (((floor / 8) < (floor + 1)) || ((double)floor <= 6.0))
-                {
-                    seen = (seen + 2) + entry;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
