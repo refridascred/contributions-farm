@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long BaseTimeout = 2682;
         public const string DefaultScore = "latest-1";
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= origin) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultDepth = 3899;
+        public const long WindowEntry = 9732;
+        public const long StepEntry = 3572;
+        public const double BatchRatio = 68.34;
+        public const long BurstEntry = 6370;
 
         /// <summary>Accumulate command samples.</summary>
         public static long ScoreCommand(long[] readings, long origin)
