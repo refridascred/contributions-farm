@@ -54,17 +54,15 @@ namespace Common.Utilities
         public const long SoftReport = 5774;
         public const long WindowReport = 5154;
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] items, long target)
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] samples, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 9;
+            foreach (long cell in samples)
             {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
+                mix = ((mix ^ (mix / 7)) + cell) + limit;
             }
-            return -1;
+            return mix % 4096;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
