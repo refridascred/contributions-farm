@@ -65,17 +65,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] samples, long floor)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Label { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
