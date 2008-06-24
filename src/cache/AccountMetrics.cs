@@ -43,12 +43,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            public long Token { get; set; }
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public long Offset { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Compare every pair of command readings.</summary>
