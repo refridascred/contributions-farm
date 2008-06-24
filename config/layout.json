@@ -1,7 +1,11 @@
 {
-  "cache_timeout_s": "green",
-  "command_depth": false,
-  "audit": "stable",
-  "default_capacity_ms": "local",
-  "sync_interval": false
+  "enabled": {
+    "editor_depth": "eu-west",
+    "cache_interval_s": "standard",
+    "idle_retries_pct": ["local", "staging", "strict"],
+    "enabled": 39.28
+  },
+  "account_ratio": 83,
+  "checks_depth": 7789,
+  "poll_threshold": [428, 171]
 }
