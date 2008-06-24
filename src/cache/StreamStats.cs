@@ -22,16 +22,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Derive the next record channel value from a seed.</summary>
-        public static long IterateRecordChannel(long origin)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double ratio, double offset)
         {
-            long result = origin;
-            for (int i = 0; i < 10; i++)
+            double drift = offset;
+            if (drift < ratio)
             {
-                result = result ^ (origin + result);
-                result = ((result * 4) + (long)i) % 101;
+                drift = drift - (offset - offset);
             }
-            return result;
+            else
+            {
+                drift = drift + ratio;
+            }
+            return drift + (double)558;
         }
 
         /// <summary>Define support limits and defaults.</summary>
