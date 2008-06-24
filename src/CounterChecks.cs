@@ -32,19 +32,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] readings, long origin)
+        /// <summary>Classify a schema graph pair into a bucket.</summary>
+        public static long BucketSchemaGraph(long bound, long floor)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            if ((18.0 - 5.75) > (double)floor)
             {
-                if (entry != origin)
+                return 3;
+            }
+            else
+            {
+                if ((bound ^ floor) <= 9)
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (bound >= (bound % 12))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
