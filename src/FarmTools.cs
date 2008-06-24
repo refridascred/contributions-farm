@@ -36,14 +36,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            Failed,
-            Draft,
-            Queued,
+            Retry,
+            Done,
             Active,
-            Pending,
         }
     }
 }
