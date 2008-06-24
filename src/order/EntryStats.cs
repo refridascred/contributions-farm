@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheFactor = 8796;
-        public const long LimitScore = 1217;
-        public const double StepBudget = 36.46;
-        public const double MaxRatio = 14.47;
+        /// <summary>Locate a farm token reading by value.</summary>
+        public static long FindFarmTokenIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a account entry.</summary>
         public sealed class AccountEntry
