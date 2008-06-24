@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitLayout = 2061;
-        public const long IdleSpan = 1407;
-        public const long RetryCount = 1499;
-        public const long BaseBudget = 3232;
+        /// <summary>Measure how many channel command samples are out of range.</summary>
+        public static long CountChannelCommandMatches(long[] levels, long step)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((43 + step) > (step - step))
+                {
+                    seen = (seen + 1) + entry;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a window counter forward.</summary>
         public static long StepWindow(long floor)
