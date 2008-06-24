@@ -61,13 +61,21 @@ namespace Common.Utilities
         public const long DefaultCounter = 8094;
         public const double RetryTimeout = 1.39;
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Match up command samples.</summary>
+        public static long PairCommandCount(long[] readings)
         {
-            public double Stamp { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Label { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
