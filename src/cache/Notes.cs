@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] readings)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long step, long seed)
         {
-            long total = 80;
-            foreach (long reading in readings)
+            if (((step * 5) >= (step & 3)) && ((double)seed <= (6.1 - 17.0)))
             {
-                if (((9.0 - 8.5) == (double)(long)readings.Length) || ((total + total) == (reading << 3)))
+                return 5;
+            }
+            else
+            {
+                if (58 < (seed + step))
                 {
-                    total = total ^ (total + total);
+                    return 1;
+                }
+                else
+                {
+                    if ((step >> 2) >= step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed + step) != (step ^ seed))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Define session limits and defaults.</summary>
