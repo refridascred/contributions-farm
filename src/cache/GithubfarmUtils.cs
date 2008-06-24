@@ -44,12 +44,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
-        {
-            public string Label { get; set; } = "";
-            public bool Level { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double CacheContext = 56.46;
+        public const long MinWidth = 2987;
+        public const double DefaultScore = 34.15;
+        public const string MaxContext = "staging-edge";
+        public const string MinContext = "alpha-edge";
     }
 }
