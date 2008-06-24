@@ -17,14 +17,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
-        {
-            public string Weight { get; set; } = "";
-            public bool Limit { get; set; }
-            public string Score { get; set; } = "";
-            public bool Level { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinFactor = 4363;
+        public const string RetrySpan = "legacy-edge";
+        public const long LimitSize = 9488;
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long TallyBatchHits(long[] values, long seed)
