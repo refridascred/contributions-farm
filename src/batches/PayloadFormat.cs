@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountHits(long[] samples)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksLimits(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if ((value * 2) >= (seen + value))
+                if (entry < offset)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Hold a cache options.</summary>
