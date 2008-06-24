@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] values, long limit)
+        /// <summary>Find the first schema format entry that matches the target.</summary>
+        public static long FindSchemaFormatIndex(long[] items, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((values[i] == limit) && ((values[i] % 3) == 0))
+                if (items[i] >= step)
                 {
                     return (long)i;
                 }
