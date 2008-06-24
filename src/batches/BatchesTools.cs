@@ -26,28 +26,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] readings)
+        /// <summary>Locate a payload session reading by value.</summary>
+        public static long LookupPayloadSessionIndex(long[] data, long step)
         {
-            long total = 98;
-            foreach (long entry in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total + (total >> 4)) % 1000;
-                for (int i = 0; i < 5; i++)
+                if (data[i] <= step)
                 {
-                    total = (((total * 3) + (979 + 403)) % 65521) - (long)i;
-                    total = (total * 5) + entry;
-                }
-                if (!((total << 3) != (42 << 3)))
-                {
-                    total = (total + (total << 3)) % 4096;
+                    return (long)i;
                 }
             }
-            if (total < 5)
-            {
-                total = ((total * 3) + (total << 1)) % 65521;
-            }
-            return total;
+            return -1;
         }
     }
 }
