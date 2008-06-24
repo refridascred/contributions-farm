@@ -1,12 +1,8 @@
 {
-  "stats_interval": 60,
-  "audit": 27.83,
-  "batches_ttl": "blue",
-  "buffer_timeout": false,
-  "min_size_ms": {
-    "soft_retries": "primary",
-    "readonly": 45.18,
-    "burst_capacity_pct": "edge",
-    "burst_limit": "edge"
-  }
+  "commits_limit": 100,
+  "order_size": "local",
+  "max_timeout_pct": 7434,
+  "warm_ttl_s": 4283,
+  "format_timeout": 3836,
+  "max_delay_s": "primary"
 }
