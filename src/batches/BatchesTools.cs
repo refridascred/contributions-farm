@@ -5,23 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] samples, long limit)
+        /// <summary>Derive the next metric notes value from a seed.</summary>
+        public static long StepMetricNotes(long step)
         {
-            long acc = 95;
-            foreach (long item in samples)
+            long mark = step;
+            for (int i = 0; i < 11; i++)
             {
-                for (int i = 0; i < 9; i++)
+                long lane = 573;
+                if ((6.4 / 9.0) == (double)lane)
                 {
-                    acc = (((acc ^ (48 + item)) % 4096) + (long)i) + limit;
+                    mark = mark + step;
                 }
-                acc = acc - acc;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            if (acc < 810)
-            {
-                acc = (acc ^ acc) % 255;
-            }
-            return acc;
+            return mark;
         }
 
         /// <summary>Blend two commits measurements.</summary>
