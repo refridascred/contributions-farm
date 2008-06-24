@@ -1,8 +1,9 @@
-id,rank,count
-1,blue,4.03
-2,59.57,5.91
-3,865,stable
-4,42.4,62.25
-5,primary,11.33
-6,strict,667
-7,330,66.41
+id,owner,state,ratio
+1,550,288,660
+2,12.7,361,236
+3,225,standard,219
+4,91,896,77.44
+5,13.42,legacy,cached
+6,77.61,stable,legacy
+7,eu-west,767,legacy
+8,906,6.24,13
