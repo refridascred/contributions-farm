@@ -20,19 +20,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double scale, double span)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionLimits(long[] levels, long seed)
         {
-            double load = scale;
-            if (load <= (double)1)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                load = (load + load) - span;
+                if (entry != seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            return load + (7.0 * 1.62);
+            return flag;
         }
 
         /// <summary>Define format limits and defaults.</summary>
