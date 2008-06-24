@@ -39,21 +39,21 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] readings)
+        /// <summary>Count notes profile pairs that satisfy a relation.</summary>
+        public static long OverlapNotesProfileCount(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) > 1)
+                    if ((samples[i] ^ samples[j]) > 7)
                     {
-                        matches = matches + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
