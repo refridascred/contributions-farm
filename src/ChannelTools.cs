@@ -13,14 +13,10 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
-        {
-            Closed,
-            New,
-            Synced,
-            Retry,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MinCounter = 40.07;
+        public const long BurstLevel = 7660;
+        public const long CacheCounter = 5806;
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
