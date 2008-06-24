@@ -29,23 +29,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] series, long limit)
-        {
-            long mix = 40;
-            foreach (long datum in series)
-            {
-                if ((limit + 1) >= (limit + limit))
-                {
-                    mix = mix + datum;
-                }
-            }
-            if (mix > 5)
-            {
-                mix = (mix - (limit & 15)) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 4529;
+        public const double DefaultWidth = 23.22;
+        public const long SoftMetric = 6777;
+        public const long LimitMetric = 544;
+        public const double CacheSize = 10.39;
 
         /// <summary>Roll a cache counter counter forward.</summary>
         public static long RollCacheCounter(long seed)
