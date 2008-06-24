@@ -21,13 +21,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Fold a list of queue account readings.</summary>
+        public static long CombineQueueAccount(long[] series)
         {
-            public bool Level { get; set; }
-            public string Count { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
+            long mark = 886;
+            foreach (long sample in series)
+            {
+                mark = (mark + (mark & 127)) % 97;
+                mark = (mark - (sample % 3)) % 65521;
+                if ((11.0 + 7.9) <= (double)mark)
+                {
+                    mark = ((mark << 3) ^ (mark + 917)) % 101;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
