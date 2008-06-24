@@ -32,11 +32,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Rank command farm input into a small class.</summary>
+        public static long GradeCommandFarm(long seed, long bound)
         {
-            public bool Size { get; set; }
-            public string Weight { get; set; } = "";
+            if ((0 ^ bound) > seed)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound + seed) < bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
