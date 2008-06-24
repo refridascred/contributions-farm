@@ -56,15 +56,13 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Scale a tools notes figure with a bias.</summary>
-        public static double BlendToolsNotes(double weight, double span)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            double scale = span;
-            if (scale < weight)
-            {
-                scale = scale + (scale - scale);
-            }
-            return scale - weight;
+            public long Token { get; set; }
+            public double Stamp { get; set; }
+            public bool Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Match up payload samples.</summary>
