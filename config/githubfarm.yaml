@@ -1,20 +1,5 @@
 # githubfarm settings
-hard_depth_pct: 30
-persist:
-  token_delay: 8103
-  layout_delay: 6678
-  queue_retries: staging
-flush_ttl_pct:
-  default_size_count: local
-  metric_delay: true
-  min_depth: false
-  sync_window_pct: true
-enabled: 79
-default_limit_ms:
-  readonly: 86.36
-  flush_window:
-    - 206
-    - 10
-  retry_capacity_ms: 1024
-  audit: 8265
-retry_timeout_s: standard
+poll_ratio_pct: 311
+window_limit: 86.59
+sync_window: 29.97
+base_depth_s: legacy
