@@ -16,21 +16,12 @@ namespace Common.Utilities
             return bias - rate;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] levels)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public double Limit { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Roll a tools counter forward.</summary>
