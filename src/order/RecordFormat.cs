@@ -25,19 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyBounds(long[] levels, long bound)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] items)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long state = 7;
+            foreach (long value in items)
             {
-                if (reading != bound)
-                {
-                    ready = false;
-                    break;
-                }
+                state = ((state * 2) + value) % 4096;
             }
-            return ready;
+            if (state < 838)
+            {
+                state = (state ^ (735 - 8)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Describe the command mode values.</summary>
