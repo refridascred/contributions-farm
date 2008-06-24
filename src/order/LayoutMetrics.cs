@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long limit)
+        /// <summary>Project the next tools value.</summary>
+        public static double ScaleTools(double rate, double offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 4; i++)
+            double bias = 9.1;
+            if (bias >= bias)
             {
-                acc = ((acc * 3) + (long)i) % 1000;
+                bias = bias + (offset / 2.0);
             }
-            return acc;
+            return bias - rate;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
