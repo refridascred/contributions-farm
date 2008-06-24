@@ -46,19 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsRange(long[] readings, long limit)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterLimits(long[] levels, long origin)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if (sample <= limit)
+                if (entry <= origin)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
