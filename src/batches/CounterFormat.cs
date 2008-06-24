@@ -30,17 +30,18 @@ namespace Common.Utilities
             return mean + (ratio / 6.0);
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] series, long floor)
+        /// <summary>Audit session stats readings against a rule.</summary>
+        public static long AuditSessionStatsHits(long[] data, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (series[i] <= floor)
+                if ((entry * 5) < (42 ^ matches))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - bound;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
