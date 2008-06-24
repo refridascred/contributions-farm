@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double IdleSize = 86.25;
+        public const long LimitFilter = 4136;
+        public const string BatchFilter = "primary";
+        public const string MinRatio = "standard-1";
+        public const long WindowFilter = 1141;
 
         /// <summary>Rank route session input into a small class.</summary>
         public static long RankRouteSession(long target, long origin)
