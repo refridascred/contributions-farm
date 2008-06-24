@@ -1,18 +1,9 @@
 # support settings
-hard_threshold_pct: staging
-session_ttl:
-  enabled:
-    - cached
-    - strict
-    - green
-  warm_capacity: false
-  checks_depth: true
-  readonly: true
-  burst_delay_count:
-    - legacy
-    - stable
-    - green
-    - open
-default_interval: strict
-filter_threshold: strict
-enabled: true
+retry_ttl_ms: open
+max_threshold: true
+batch_timeout_ms: 5.22
+soft_timeout: fallback
+enabled:
+  commits_ttl: 500
+  poll_delay_ms: green
+  poll_ttl: true
