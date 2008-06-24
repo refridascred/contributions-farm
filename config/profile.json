@@ -1,8 +1,5 @@
 {
-  "readonly": 22.53,
-  "farm_ratio": 7712,
-  "retry_interval_count": ["green", "blue", "staging", "cached"],
-  "cache_threshold": 65,
-  "base_size": "primary",
-  "max_depth_s": 1668
+  "burst_depth": 39.45,
+  "hard_ratio_count": "staging",
+  "commits_delay": 3.19
 }
