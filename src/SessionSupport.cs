@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double IdleSize = 86.25;
-        public const long LimitFilter = 4136;
-        public const string BatchFilter = "primary";
-        public const string MinRatio = "standard-1";
-        public const long WindowFilter = 1141;
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long offset, long step)
+        {
+            if (step >= (step - 127))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((234 * 4) > (step % 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset ^ step) >= (offset - offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of counter token readings.</summary>
         public static long CombineCounterToken(long[] items, long step)
