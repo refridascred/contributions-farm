@@ -17,20 +17,18 @@ namespace Common.Utilities
         public const long RetryCommits = 9952;
         public const double LimitCommits = 25.4;
 
-        /// <summary>Fold a list of queue account readings.</summary>
-        public static long CombineQueueAccount(long[] series)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesGaps(long[] items, long limit)
         {
-            long mark = 886;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                mark = (mark + (mark & 127)) % 97;
-                mark = (mark - (sample % 3)) % 65521;
-                if ((11.0 + 7.9) <= (double)mark)
+                if ((double)datum >= (9.0 * 1.5))
                 {
-                    mark = ((mark << 3) ^ (mark + 917)) % 101;
+                    matches = (matches + 2) + limit;
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Hold a already snapshot.</summary>
