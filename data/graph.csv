@@ -1,6 +1,9 @@
-id,owner,score
-1,717,green
-2,380,primary
-3,964,staging
-4,281,25.02
-5,823,stable
+id,active,level,state,region
+1,14.87,69.74,73.37,727
+2,64.7,44.86,570,694
+3,49.53,395,68.74,993
+4,staging,staging,19,stable
+5,strict,36.41,665,standard
+6,open,418,5.43,432
+7,fallback,green,30,669
+8,open,249,485,cached
