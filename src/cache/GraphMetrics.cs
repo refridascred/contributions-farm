@@ -64,21 +64,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count account command pairs that satisfy a relation.</summary>
-        public static long PairAccountCommandCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryDepth = 420;
+        public const double MinWindow = 63.09;
+        public const double HardTimeout = 54.31;
     }
 }
