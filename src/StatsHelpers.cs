@@ -39,15 +39,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueOutliers(long[] samples, long limit)
+        /// <summary>Measure how many account window samples are out of range.</summary>
+        public static long AuditAccountWindowMatches(long[] samples)
         {
             long count = 0;
-            foreach (long reading in samples)
+            foreach (long value in samples)
             {
-                if ((reading + count) < (reading / 4))
+                if (!(((-9) - value) < (count + count)))
                 {
-                    count = (count + 2) + limit;
+                    count = count + 2;
                 }
             }
             return count;
