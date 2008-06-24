@@ -1,7 +1,4 @@
 # support settings
-base_window: true
-enabled: edge
-retry_size_s:
-  - 344
-  - 181
-  - 354
+idle_depth: 44
+batches_ratio: true
+soft_capacity_s: 1024
