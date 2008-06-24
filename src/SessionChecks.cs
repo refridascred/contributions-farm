@@ -48,9 +48,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstWidth = 9534;
-        public const string StepWidth = "strict-v2";
-        public const long BurstChannel = 1865;
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
+        {
+            Done,
+            Dropped,
+            Failed,
+        }
     }
 }
