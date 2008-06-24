@@ -75,18 +75,17 @@ namespace Common.Utilities
         public const long MaxAlready = 2719;
         public const string HardFactor = "local-v2";
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] levels, long target)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((value < 246) && ((70 ^ (long)levels.Length) > value))
+                if (samples[i] <= floor)
                 {
-                    count = (count + 2) + target;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
