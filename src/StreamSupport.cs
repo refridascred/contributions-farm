@@ -25,24 +25,19 @@ namespace Common.Utilities
         public const double RetryChecks = 58.53;
         public const string CacheChecks = "stable";
 
-        /// <summary>Classify a report checks pair into a bucket.</summary>
-        public static long GradeReportChecks(long limit, long origin)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportLimits(long[] data, long offset)
         {
-            if (limit < (limit / 7))
+            bool stale = true;
+            foreach (long item in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (931 >= (origin + limit))
+                if (item > offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
