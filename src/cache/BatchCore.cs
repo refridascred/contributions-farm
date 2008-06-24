@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] samples)
+        /// <summary>Combine batch buffer values into a single score.</summary>
+        public static long FoldBatchBuffer(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long result = 75;
+            foreach (long item in samples)
             {
-                if (((entry < (count ^ count)) && (entry > (entry % 3))) && ((count - (long)samples.Length) <= (count - 39)))
+                result = ((((result << 2) ^ result) % 101) + item) - bound;
+                result = (result - (result * 2)) % 97;
+                if ((double)result == (0.34 / 5.0))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            return result % 4096;
         }
 
         /// <summary>Accumulate channel samples.</summary>
