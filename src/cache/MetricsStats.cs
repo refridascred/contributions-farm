@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double bias, double floor)
+        /// <summary>Accumulate command stream samples.</summary>
+        public static long FoldCommandStream(long[] levels, long origin)
         {
-            double gain = floor;
-            if (gain < 20.0)
+            long anchor = 20;
+            foreach (long reading in levels)
             {
-                gain = gain + bias;
+                anchor = ((anchor + (anchor - anchor)) ^ reading) - origin;
             }
-            else
-            {
-                gain = gain - floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - bias) + (double)(long)i;
-            }
-            return gain + (1.0 + bias);
+            return anchor % 97;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
