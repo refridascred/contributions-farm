@@ -19,19 +19,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowBounds(long[] readings, long floor)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Level { get; set; }
+            public string Count { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
