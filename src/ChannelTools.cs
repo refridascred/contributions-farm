@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmMatches(long[] samples, long seed)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)seed < 9.8)
-                {
-                    tally = (tally + 1) - datum;
-                }
-            }
-            return tally;
+            public double Weight { get; set; }
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
