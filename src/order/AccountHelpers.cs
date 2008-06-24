@@ -19,11 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsHits(long[] samples)
         {
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((14 ^ cell) > (98 % 12))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a filter options.</summary>
