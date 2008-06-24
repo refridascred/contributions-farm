@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 5363;
-        public const long DefaultScore = 7033;
-        public const long BatchRatio = 9819;
-        public const long SoftWidth = 2477;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 8370;
+        public const string MinEditor = "stable-edge";
+        public const long CacheEditor = 7834;
+        public const long HardSpan = 6045;
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long CombineCounter(long[] readings, long seed)
