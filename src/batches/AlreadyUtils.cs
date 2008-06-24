@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 1977;
-        public const long MaxInterval = 276;
-        public const string LimitChecks = "latest-v2";
-        public const long SoftChecks = 6898;
+        /// <summary>Rank format session input into a small class.</summary>
+        public static long ClassifyFormatSession(long target, long floor)
+        {
+            long diff = target + floor;
+            if ((double)target > (3.0 / 3.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((diff + diff) != (floor + floor)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((5.47 + 0.2) > (double)diff)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target - 2) >= (diff << 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate profile contributi samples.</summary>
         public static long ScoreProfileContributi(long[] levels)
