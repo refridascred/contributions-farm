@@ -34,17 +34,18 @@ namespace Common.Utilities
             return bias + weight;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long limit)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] readings, long seed)
         {
-            long mix = limit;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                mix = (mix + (long)i) % 97;
-                mix = (mix - (mix + limit)) % 4096;
-                mix = ((mix * 4) + (long)i) % 101;
+                if ((tally + seed) < (277 >> 3))
+                {
+                    tally = (tally + 2) + sample;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
