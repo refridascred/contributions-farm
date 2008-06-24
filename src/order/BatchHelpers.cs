@@ -20,13 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long offset)
         {
-            Failed,
-            Ready,
-            Closed,
-            Paused,
+            long anchor = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a account entry.</summary>
