@@ -33,32 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a record context pair into a bucket.</summary>
-        public static long BucketRecordContext(long step, long floor)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] data, long bound)
         {
-            long prev = step ^ floor;
-            if ((42 - step) == (floor * 4))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor & 1) >= (step - 6))
+                if (data[i] <= bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((prev - prev) < (89 >> 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
