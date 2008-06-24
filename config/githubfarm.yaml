@@ -1,6 +1,19 @@
 # githubfarm settings
-cache_capacity: standard
-poll_delay_count: 63
-cache_size_ms: 84
-persist: 250
-max_threshold_ms: 500
+cache_retries_s:
+  - legacy
+  - local
+cache_depth: 2101
+idle_ttl:
+  - primary
+  - cached
+  - staging
+  - strict
+base_threshold_s:
+  - blue
+  - stable
+retry_interval: 758
+strict:
+  - blue
+  - blue
+  - fallback
+  - stable
