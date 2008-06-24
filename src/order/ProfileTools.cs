@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BaseFactor = 53.8;
-        public const long RetryCount = 1809;
-        public const string CacheInterval = "fallback-edge";
-        public const long MaxPayload = 9233;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 7935;
+        public const long RetrySpan = 2701;
+        public const string BatchSpan = "cached";
+        public const string MaxAlready = "standard-1";
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long RollAlready(long seed)
