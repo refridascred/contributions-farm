@@ -36,11 +36,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] readings, long seed)
         {
-            public long Label { get; set; }
-            public long Token { get; set; }
+            long state = 610;
+            foreach (long datum in readings)
+            {
+                if ((datum % 3) < (datum & 255))
+                {
+                    state = (((state * 2) + state) % 65521) + seed;
+                }
+            }
+            return state;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
