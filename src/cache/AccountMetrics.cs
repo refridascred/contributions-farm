@@ -43,17 +43,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] readings, long floor)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == floor) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Compare every pair of command readings.</summary>
