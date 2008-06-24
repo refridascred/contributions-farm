@@ -27,12 +27,16 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] levels)
         {
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public double Label { get; set; }
+            long mark = -356;
+            foreach (long entry in levels)
+            {
+                mark = (mark ^ (mark - entry)) % 101;
+                mark = (mark + (mark & 3)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Count the commits farm entries that pass the check.</summary>
