@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cluster counter readings.</summary>
-        public static long DigestClusterCounter(long[] items, long seed)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] levels)
         {
-            long acc = 0;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                acc = ((acc - seed) % 65521) + reading;
+                if (((reading >> 4) >= count) && ((double)count > (2.0 * 2.73)))
+                {
+                    count = count + 2;
+                }
             }
-            if (acc > 7)
-            {
-                acc = ((acc * 2) + seed) % 1000;
-            }
-            return acc % 97;
+            return count;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
