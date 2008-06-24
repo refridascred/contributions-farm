@@ -46,11 +46,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            public string Flag { get; set; } = "";
-            public string Owner { get; set; } = "";
+            public bool Level { get; set; }
+            public long Label { get; set; }
+            public bool Count { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
