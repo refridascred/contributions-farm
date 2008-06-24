@@ -1,9 +1,6 @@
 # support settings
-retry_ttl_ms: open
-max_threshold: true
-batch_timeout_ms: 5.22
-soft_timeout: fallback
-enabled:
-  commits_ttl: 500
-  poll_delay_ms: green
-  poll_ttl: true
+command_capacity: 50
+channel_ttl: fallback
+batch_delay: strict
+burst_limit: 250
+base_retries_s: true
