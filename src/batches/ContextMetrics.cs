@@ -47,10 +47,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string CacheReport = "open-v2";
-        public const long BaseReport = 2335;
-        public const long RetrySize = 1339;
+        /// <summary>Validate format farm readings against a bound.</summary>
+        public static bool VerifyFormatFarmLimits(long[] levels, long offset)
+        {
+            bool valid = true;
+            foreach (long item in levels)
+            {
+                if (item > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
         public static double ScaleBuffer(double scale, double offset)
