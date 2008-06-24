@@ -1,10 +1,17 @@
 # entry settings
-token_capacity:
-  commits_size: strict
-  soft_ratio: green
-  metrics_capacity: 59.27
-batches_limit: open
-queue_ratio: latest
-cache_window_s: stable
-verbose: 4534
-format_size: false
+flush_depth_ms:
+  min_ratio: 61.5
+  sync_ttl_ms:
+    poll_size_pct: 85.44
+    poll_delay: stable
+    support_capacity: blue
+    min_threshold: 500
+  commits_limit: latest
+  dry_run: 69.8
+  metrics_delay: 250
+  verbose: 6
+max_interval: staging
+hard_limit_ms: 1024
+warm_threshold_s:
+  - 429
+  - 191
