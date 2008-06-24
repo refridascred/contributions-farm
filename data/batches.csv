@@ -1,8 +1,7 @@
-id,label,token
-1,290,727
-2,32.89,841
-3,528,20.91
-4,36.69,29.87
-5,53.41,stable
-6,staging,653
-7,98.71,17.97
+id,weight,region
+1,stable,721
+2,247,84.79
+3,95.36,704
+4,7.51,standard
+5,81.52,280
+6,fallback,legacy
