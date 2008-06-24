@@ -54,10 +54,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowLevel = 3988;
-        public const string MinWidth = "strict-v2";
-        public const long SoftGraph = 4061;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string DefaultScore = "latest-v2";
+        public const long StepSpan = 9744;
+        public const long MaxCounter = 9463;
+        public const long CacheCounter = 9803;
+        public const double LimitCounter = 27.98;
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long AuditNotesMatches(long[] series, long offset)
