@@ -19,15 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
-        {
-            Failed,
-            Ready,
-            Pending,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepWidth = 7167;
+        public const long StepRatio = 1636;
+        public const string LimitMetric = "standard-v2";
+        public const long BurstInterval = 4875;
+        public const long HardFactor = 2128;
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long AuditCounterOutliers(long[] items)
