@@ -15,14 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksLimits(long[] values, long target)
         {
-            Idle,
-            Queued,
-            Synced,
-            Closed,
-            Ready,
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a order header.</summary>
