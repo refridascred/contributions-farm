@@ -64,12 +64,15 @@ namespace Common.Utilities
         public const string RetryChecks = "local-edge";
         public const string RetryWidth = "alpha-v2";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxRatio = 1736;
-        public const string RetryTimeout = "strict-edge";
-        public const long IdleAlready = 3123;
-        public const long MaxAlready = 2719;
-        public const string HardFactor = "local-v2";
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
+        {
+            Paused,
+            Draft,
+            Queued,
+            Pending,
+            Failed,
+        }
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long LookupMetricsIndex(long[] samples, long floor)
