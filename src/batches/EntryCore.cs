@@ -14,10 +14,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFilter = 2998;
-        public const long BatchInterval = 4926;
-        public const long BurstFilter = 7401;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MaxScore = 94.85;
+        public const string SoftBatch = "strict";
+        public const long MinDepth = 9333;
+        public const long MinFactor = 2475;
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long GradeBatch(long limit, long origin)
