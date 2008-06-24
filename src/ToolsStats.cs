@@ -52,25 +52,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a entry profile value against two limits.</summary>
-        public static long RankEntryProfile(long bound, long offset)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long step)
         {
-            long next = bound + offset;
-            if ((next * 5) <= next)
+            long acc = step;
+            for (int i = 0; i < 16; i++)
             {
-                return 2;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (next >= (2 >> 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
