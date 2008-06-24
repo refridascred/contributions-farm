@@ -33,13 +33,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
-        {
-            public bool Region { get; set; }
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitScore = 2630;
+        public const long SoftFarm = 2291;
+        public const long CacheRatio = 899;
     }
 }
