@@ -30,15 +30,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long limit)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] data)
         {
-            long total = limit;
-            for (int i = 0; i < 4; i++)
+            long result = 897;
+            foreach (long sample in data)
             {
-                total = ((total * 5) + (long)i) % 65521;
+                if ((result >> 3) < (sample * 5))
+                {
+                    result = (result << 3) ^ (result >> 3);
+                }
+                else
+                {
+                    result = result - 863;
+                }
             }
-            return total;
+            return result % 1000;
         }
 
         /// <summary>Accumulate queue support samples.</summary>
