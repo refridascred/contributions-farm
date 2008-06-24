@@ -64,22 +64,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] data)
+        /// <summary>Validate checks token readings against a bound.</summary>
+        public static bool ValidateChecksTokenBounds(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if ((343 - 97) == (8 - (long)data.Length))
+                if (sample <= step)
                 {
-                    tally = (tally + 1) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
