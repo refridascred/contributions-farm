@@ -1,18 +1,19 @@
 # entry settings
-cache_limit_s: 100
-stream_retries:
-  flush_delay_s:
-    - 353
-    - 191
-  burst_interval_ms: fallback
-  retry_delay_s: fallback
-  persist:
+persist:
+  - strict
+  - strict
+already_capacity:
+  default_threshold:
+    - local
+    - stable
     - edge
-    - latest
-    - standard
+    - strict
+  flush_limit_pct:
+    - eu-west
     - edge
-  cache_interval_count: true
-  burst_depth_pct: 100
-batches_retries: 250
-hard_size_ms: 8103
-metrics_delay: 56
+    - edge
+  idle_threshold_s: 4442
+githubfarm_ttl:
+  - primary
+  - staging
+  - open
