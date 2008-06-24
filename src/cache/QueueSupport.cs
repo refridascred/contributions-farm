@@ -16,18 +16,12 @@ namespace Common.Utilities
             return load + (1.6 / 2.0);
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesGaps(long[] samples, long step)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((5.77 + 5.12) != (double)matches)
-                {
-                    matches = ((matches + 1) + entry) - step;
-                }
-            }
-            return matches;
+            Dropped,
+            Done,
+            Failed,
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
