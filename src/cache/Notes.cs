@@ -59,20 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterBounds(long[] items, long limit)
-        {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string LimitStream = "staging-1";
+        public const long MinStream = 8129;
+        public const long MaxSize = 1383;
+        public const long DefaultStream = 7657;
+        public const long SoftStream = 6068;
 
         /// <summary>Measure how many format counter samples are out of range.</summary>
         public static long TallyFormatCounterHits(long[] series, long bound)
