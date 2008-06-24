@@ -22,18 +22,24 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterOutliers(long[] values, long seed)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long bound, long target)
         {
-            long tally = 0;
-            foreach (long value in values)
+            if (274 < (bound & 7))
             {
-                if ((double)seed == (9.0 + 12.0))
+                return 1;
+            }
+            else
+            {
+                if ((target / 7) <= bound)
                 {
-                    tally = (tally + 1) + value;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
     }
 }
