@@ -32,25 +32,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long target, long floor)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long edge = target ^ floor;
-            if (((floor + edge) >= target) || ((double)edge <= (5.0 + 5.9)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((4 + 76) <= (floor - floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
+            public double Total { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
