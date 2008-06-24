@@ -32,25 +32,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long step, long limit)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] readings, long offset)
         {
-            long edge = step - limit;
-            if ((8 - 1) < (edge >> 4))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((3 + limit) < (step + step)))
+                if (readings[i] == offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
