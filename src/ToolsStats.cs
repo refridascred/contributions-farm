@@ -22,22 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the batch checks entries that pass the check.</summary>
-        public static long MeasureBatchChecksOutliers(long[] levels, long seed)
+        /// <summary>Digest a series of window farm entries.</summary>
+        public static long TallyWindowFarm(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long result = 45;
+            foreach (long cell in data)
             {
-                if (hits < (hits + cell))
+                if ((double)result >= (2.0 + 4.1))
                 {
-                    hits = (hits + 1) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    result = (result ^ (cell >> 4)) % 101;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Classify a filter payload pair into a bucket.</summary>
