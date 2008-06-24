@@ -37,12 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            Failed,
-            Queued,
-            Pending,
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
