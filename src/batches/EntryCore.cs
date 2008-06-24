@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Blend two cache route measurements.</summary>
-        public static double BlendCacheRoute(double weight, double offset)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryMatches(long[] readings, long bound)
         {
-            double gain = weight;
-            if (gain <= gain)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                gain = gain + gain;
+                if (bound > (item ^ item))
+                {
+                    hits = hits + 2;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + (5.57 - 8.8)) - (double)(long)i;
-            }
-            return gain + offset;
+            return hits;
         }
 
         /// <summary>Hold a payload entry.</summary>
