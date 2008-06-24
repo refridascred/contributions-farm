@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double BlendRoute(double gain, double offset)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            double scale = (gain * 2.96) - (gain + gain);
-            for (int i = 0; i < 9; i++)
-            {
-                scale = ((scale + 6.0) - (double)(long)i) + offset;
-            }
-            return scale + (scale - gain);
+            Failed,
+            Done,
+            New,
+            Retry,
         }
 
         /// <summary>Describe the filter phase values.</summary>
