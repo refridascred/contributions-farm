@@ -1,5 +1,10 @@
 # entry settings
-compress: latest
-flush_retries: 74
-already_threshold: 12.78
-burst_ratio: edge
+flush_threshold:
+  - standard
+  - staging
+  - primary
+  - green
+enabled:
+  - local
+  - latest
+max_interval_pct: 500
