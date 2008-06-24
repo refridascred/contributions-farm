@@ -20,18 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of contributi support entries.</summary>
-        public static long FoldContributiSupport(long[] levels, long offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesHits(long[] readings)
         {
-            long mix = 920;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if ((offset % 7) >= (datum + mix))
+                if (!((double)seen > (11.0 - 8.8)) && (seen < (sample >> 1)))
                 {
-                    mix = (mix - offset) % 4096;
+                    seen = seen + 1;
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Digest a series of window layout entries.</summary>
