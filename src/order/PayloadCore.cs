@@ -68,21 +68,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] data)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 6;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((cell + anchor) >= cell)
                 {
-                    if ((data[i] ^ data[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor - anchor) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor + anchor) % 65521;
+                }
+                if (((long)series.Length != (anchor >> 2)) || ((cell + cell) < (anchor + anchor)))
+                {
+                    break;
                 }
             }
-            return count;
+            if (anchor < 7)
+            {
+                anchor = (anchor * 3) + (anchor + anchor);
+            }
+            return anchor % 97;
         }
     }
 }
