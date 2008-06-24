@@ -22,24 +22,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double BlendCommits(double scale, double floor)
-        {
-            double weight = floor + 2.4;
-            if (weight <= (weight / 3.0))
-            {
-                weight = weight - scale;
-            }
-            else
-            {
-                weight = weight - (2.0 / 3.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight - scale;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleSpan = 846;
+        public const long RetryCommits = 7675;
+        public const long MaxCommits = 1854;
+        public const long DefaultScore = 9577;
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long RankQueue(long seed, long step)
