@@ -34,9 +34,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 1507;
-        public const long BurstTimeout = 7788;
-        public const long CacheProfile = 931;
+        /// <summary>Audit window report readings against a rule.</summary>
+        public static long MeasureWindowReportOutliers(long[] levels, long floor)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((5.0 + 9.0) > (double)sample)
+                {
+                    count = (count + 1) - floor;
+                }
+            }
+            return count;
+        }
     }
 }
