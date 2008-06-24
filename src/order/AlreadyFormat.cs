@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatGaps(long[] readings)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long floor, long offset)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long step = floor - offset;
+            if ((step > (step + offset)) || ((floor % 12) < (offset + offset)))
             {
-                if (datum <= (86 * 5))
+                return 6;
+            }
+            else
+            {
+                if ((step + floor) <= floor)
                 {
-                    tally = tally + 2;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
