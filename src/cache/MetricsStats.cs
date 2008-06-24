@@ -46,10 +46,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 6203;
-        public const string BurstSize = "cached-1";
-        public const long LimitScore = 6075;
-        public const long CacheContext = 5463;
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] series, long offset)
+        {
+            long mark = -926;
+            foreach (long value in series)
+            {
+                mark = ((mark << 3) ^ offset) + value;
+            }
+            if (mark < 9)
+            {
+                mark = (mark + (offset & 127)) % 1000;
+            }
+            return mark;
+        }
     }
 }
