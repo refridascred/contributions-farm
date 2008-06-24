@@ -1,8 +1,7 @@
 {
-  "strict": [314, 109, 30],
-  "enabled": "local",
-  "retry_timeout": 88,
-  "filter_limit": 572,
-  "payload_retries": "edge",
-  "sync_delay": "primary"
+  "default_timeout_s": 70,
+  "poll_window": "legacy",
+  "stats_size": false,
+  "readonly": [487, 112, 373],
+  "cache_capacity": true
 }
