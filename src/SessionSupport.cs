@@ -22,19 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double ratio, double offset)
+        /// <summary>Roll a account channel counter forward.</summary>
+        public static long SeriesAccountChannel(long origin)
         {
-            double bias = offset * 6.8;
-            if (bias <= (6.22 + offset))
+            long result = origin;
+            for (int i = 0; i < 13; i++)
             {
-                bias = (bias + offset) + ratio;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    result = (result + ((long)i - result)) - (long)i2;
+                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            else
-            {
-                bias = bias + bias;
-            }
-            return bias - (double)70;
+            return result;
         }
 
         /// <summary>Project the next route value.</summary>
