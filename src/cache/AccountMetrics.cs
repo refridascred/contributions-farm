@@ -34,19 +34,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsBounds(long[] series, long offset)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Paused,
+            Pending,
+            Draft,
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
