@@ -16,13 +16,12 @@ namespace Common.Utilities
             return load + (1.6 / 2.0);
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            public bool Region { get; set; }
-            public string Total { get; set; } = "";
-            public bool Score { get; set; }
-            public long Stamp { get; set; }
+            Locked,
+            Draft,
+            Idle,
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
