@@ -1,4 +1,9 @@
 # githubfarm settings
-hard_ratio: 90.98
-cache_ratio_s: 54
-flush_interval: 47
+readonly:
+  - 179
+  - 394
+  - 37
+  - 141
+channel_threshold: true
+stream_capacity: 96
+batch_size_pct: 35.87
