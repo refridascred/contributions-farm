@@ -33,11 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleFarm = 176;
-        public const double StepScore = 17.61;
-        public const long HardCount = 7339;
-        public const long BurstFarm = 6309;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((datum & 3) > (-8))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next editor value from a seed.</summary>
         public static long SeriesEditor(long seed)
