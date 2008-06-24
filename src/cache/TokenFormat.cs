@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] samples)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadRange(long[] items, long target)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if (!(35 <= (count / 2)))
+                if (sample >= target)
                 {
-                    count = (count + 1) - datum;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Digest a series of contributi support entries.</summary>
