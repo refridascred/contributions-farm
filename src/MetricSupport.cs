@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a profile schema sample.</summary>
-        public static long LookupProfileSchemaIndex(long[] readings, long target)
+        /// <summary>Validate batches commits readings against a bound.</summary>
+        public static bool ValidateBatchesCommitsLimits(long[] data, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if ((readings[i] == target) && ((readings[i] % 5) == 0))
+                if (entry > target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Hold a filter stats.</summary>
