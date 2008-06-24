@@ -21,19 +21,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] readings, long target)
+        /// <summary>Look up the position of a payload layout sample.</summary>
+        public static long LookupPayloadLayoutIndex(long[] samples, long origin)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell >= target)
+                if ((samples[i] < origin) && ((samples[i] % 5) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Hold a window options.</summary>
