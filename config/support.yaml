@@ -1,8 +1,4 @@
 # support settings
-warm_depth_count: fallback
-enabled: primary
-soft_size: 4673
-flush_depth_s:
-  - 124
-  - 438
-  - 158
+idle_capacity_pct: 29
+enabled: false
+default_interval_ms: 90
