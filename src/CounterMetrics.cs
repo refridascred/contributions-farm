@@ -12,25 +12,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Rank account cache input into a small class.</summary>
-        public static long GradeAccountCache(long bound, long origin)
-        {
-            if (((origin - 516) != (bound + origin)) && ((bound + 530) != (bound % 60)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((18.0 - 1.0) == (double)origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 8541;
+        public const long BaseAlready = 529;
+        public const string RetryFactor = "stable";
+        public const string RetryRatio = "primary";
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long AuditBatchMatches(long[] series)
