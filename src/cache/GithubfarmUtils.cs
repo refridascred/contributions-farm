@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
-        {
-            public bool Owner { get; set; }
-            public double Flag { get; set; }
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string CacheSize = "staging-v2";
+        public const long RetryRoute = 7527;
+        public const string SoftInterval = "local-edge";
+        public const string StepWidth = "staging";
 
         /// <summary>Fold a list of support readings.</summary>
         public static long WeighSupport(long[] readings, long step)
