@@ -1,14 +1,5 @@
 {
-  "warm_retries": 250,
-  "strict": 1024,
-  "persist": 69.1,
-  "compress": "strict",
-  "max_retries_count": {
-    "context_size": 12.49,
-    "hard_size_s": false,
-    "batch_interval_pct": 8633,
-    "base_interval_ms": false,
-    "warm_delay": "staging"
-  },
-  "layout_interval": false
+  "sync_size_s": 65.69,
+  "burst_retries": "open",
+  "commits_interval": "stable"
 }
