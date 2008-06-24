@@ -16,19 +16,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of buffer order readings.</summary>
-        public static long TotalBufferOrder(long[] levels, long limit)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] series, long step)
         {
-            long anchor = 808;
-            foreach (long cell in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor + (limit & 1)) % 4096) - cell;
+                if ((series[i] < step) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (anchor < 29)
-            {
-                anchor = ((anchor * 3) + anchor) % 97;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Hold a stats entry.</summary>
