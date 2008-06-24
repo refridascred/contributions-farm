@@ -35,11 +35,21 @@ namespace Common.Utilities
         public const long WindowProfile = 9125;
         public const string BatchSpan = "legacy-v2";
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double rate, double bias)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] data)
         {
-            double mean = rate;
-            return (mean - (mean * 3.9)) + bias;
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
