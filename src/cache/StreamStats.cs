@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] levels)
         {
-            Synced,
-            Locked,
-            Draft,
+            long state = 0;
+            foreach (long cell in levels)
+            {
+                state = state + (cell - state);
+                state = (state - (-5)) % 65521;
+                state = (state << 3) ^ (cell >> 5);
+                if ((502 < (state - 47)) || ((cell + state) == (cell >> 2)))
+                {
+                    break;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
