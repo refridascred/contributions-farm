@@ -1,9 +1,6 @@
-id,active,level,state,region
-1,14.87,69.74,73.37,727
-2,64.7,44.86,570,694
-3,49.53,395,68.74,993
-4,staging,staging,19,stable
-5,strict,36.41,665,standard
-6,open,418,5.43,432
-7,fallback,green,30,669
-8,open,249,485,cached
+id,ratio,state,score
+1,15.46,316,861
+2,490,green,3.36
+3,strict,752,60.6
+4,15.78,65.21,19.92
+5,65,3.25,eu-west
