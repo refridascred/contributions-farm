@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a account stream figure with a bias.</summary>
-        public static double BlendAccountStream(double gain, double offset)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] readings, long floor)
         {
-            double mean = gain;
-            if (mean > gain)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = mean - offset;
+                if (readings[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return mean - mean;
+            return -1;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
