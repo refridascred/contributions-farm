@@ -19,22 +19,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutOutliers(long[] items)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (((9.0 * 4.54) > (double)item) && ((double)item < (0.9 / 5.0)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the payload level values.</summary>
