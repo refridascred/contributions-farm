@@ -38,31 +38,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long offset, long seed)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyBounds(long[] series, long floor)
         {
-            if ((717 + offset) == (offset >> 4))
+            bool ready = true;
+            foreach (long cell in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed - 28) <= (offset - 67))
+                if (cell < floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((6.25 + 9.73) == (double)seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
