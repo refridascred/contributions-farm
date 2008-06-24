@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] data)
-        {
-            long total = 47;
-            foreach (long item in data)
-            {
-                total = (total - (total - item)) % 101;
-                for (int i = 0; i < 6; i++)
-                {
-                    total = ((total ^ item) % 1000) + (long)i;
-                }
-                if (!((item / 7) == (total >> 4)))
-                {
-                    total = ((total << 2) ^ (item - total)) % 65521;
-                }
-                if (((-818) % 16) > (item >> 4))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardInterval = 2590;
+        public const long BaseCount = 8295;
+        public const long MinCache = 3205;
+        public const long SoftCache = 9298;
+        public const string StepBudget = "staging-v2";
 
         /// <summary>Blend two cluster measurements.</summary>
         public static double SmoothCluster(double scale, double bias)
