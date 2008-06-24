@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] samples, long floor)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 2;
+            foreach (long reading in levels)
             {
-                if (samples[i] > floor)
+                if ((reading + reading) == (reading / 9))
                 {
-                    return (long)i;
+                    score = score + reading;
                 }
             }
-            return -1;
+            if (score > 5)
+            {
+                score = ((score * 2) + (score / 9)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
