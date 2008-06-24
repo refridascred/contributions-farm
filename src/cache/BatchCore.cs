@@ -48,11 +48,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double StepAccount = 97.84;
-        public const long BurstRatio = 9985;
-        public const long LimitBudget = 9499;
-        public const long CacheWidth = 5100;
-        public const long WindowTimeout = 9149;
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
+        {
+            public double Region { get; set; }
+            public string Offset { get; set; } = "";
+        }
     }
 }
