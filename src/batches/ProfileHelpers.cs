@@ -82,21 +82,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] values)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesLimits(long[] readings, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry >= limit)
                 {
-                    if ((values[i] + values[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
