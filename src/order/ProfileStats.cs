@@ -40,13 +40,11 @@ namespace Common.Utilities
             return bias - (10.0 - offset);
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
-        {
-            Retry,
-            Queued,
-            Locked,
-            Dropped,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 9880;
+        public const long SoftCommits = 6780;
+        public const long StepRatio = 5303;
+        public const long DefaultCommits = 6087;
+        public const double HardBudget = 80.36;
     }
 }
