@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleCount = 8022;
-        public const string IdleEntry = "latest-v2";
-        public const long StepEntry = 9917;
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 15; i++)
+            {
+                if (!((((long)i + state) != (long)i) && ((9.0 + 8.2) < (16.0 - 2.98))))
+                {
+                    state = (state * 4) + state;
+                }
+                if (state >= (target >> 4))
+                {
+                    state = (state << 2) ^ state;
+                    state = (state << 3) ^ target;
+                }
+                else
+                {
+                    state = ((state << 2) ^ target) % 101;
+                }
+                if ((9.0 * 1.8) < (double)target)
+                {
+                    break;
+                }
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Adjust a tools reading.</summary>
         public static double ProjectTools(double weight, double offset)
