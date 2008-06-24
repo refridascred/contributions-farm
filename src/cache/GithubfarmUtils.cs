@@ -34,19 +34,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate batches context readings against a bound.</summary>
-        public static bool GuardBatchesContextLimits(long[] series, long seed)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Mode { get; set; }
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Iterate the tools editor series from a seed.</summary>
