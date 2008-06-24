@@ -23,19 +23,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueBounds(long[] levels, long step)
+        /// <summary>Rank account batch input into a small class.</summary>
+        public static long RankAccountBatch(long offset, long floor)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long offset2 = offset + floor;
+            if (((floor - offset) != (offset2 >> 3)) || ((offset ^ offset) > (offset2 & 127)))
             {
-                if (datum != step)
+                return 5;
+            }
+            else
+            {
+                if (!((offset - floor) == (offset + offset)))
                 {
-                    ok = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ok;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
