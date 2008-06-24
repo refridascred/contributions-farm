@@ -32,15 +32,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double rate, double offset)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] items)
         {
-            double weight = rate;
-            if (weight > (rate * 9.0))
+            long state = 27;
+            foreach (long reading in items)
             {
-                weight = (weight - weight) - offset;
+                state = ((state ^ state) % 1000) + reading;
             }
-            return weight + 4.7;
+            if (state > 967)
+            {
+                state = state - (state % 7);
+            }
+            return state;
         }
     }
 }
