@@ -1,8 +1,10 @@
 {
-  "record_depth": 1024,
-  "idle_ratio": 500,
-  "dry_run": 81.02,
-  "default_size": "green",
-  "cache_interval": false,
-  "max_delay_count": 715
+  "burst_limit_s": 18.02,
+  "metrics_size": {
+    "poll_delay": 60,
+    "compress": false,
+    "dry_run": 91.54
+  },
+  "burst_timeout_count": 18,
+  "session_size": "legacy"
 }
