@@ -11,16 +11,18 @@ namespace Common.Utilities
         public const string BatchSpan = "cached";
         public const string MaxAlready = "standard-1";
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long seed)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchOutliers(long[] readings, long step)
         {
-            long state = seed;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                state = state - (seed % 60);
-                state = ((state * 2) + (long)i) % 101;
+                if (!((item & 31) > (item % 5)))
+                {
+                    seen = (seen + 3) + step;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
