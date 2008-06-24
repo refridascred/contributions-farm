@@ -77,21 +77,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] values)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferGaps(long[] items, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((tally / 3) > ((-711) - 27))
                 {
-                    if ((values[i] - values[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = ((tally + 1) ^ reading) - step;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Derive the next profile githubfarm value from a seed.</summary>
