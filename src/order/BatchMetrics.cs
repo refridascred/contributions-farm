@@ -39,31 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long origin, long offset)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamLimits(long[] items, long offset)
         {
-            if ((offset & 31) >= (origin >> 1))
+            bool ready = true;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset < (origin + offset)) && ((double)offset != (1.0 + 5.5)))
+                if (value <= offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((397 >> 3) != (origin >> 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
