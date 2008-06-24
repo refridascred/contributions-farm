@@ -53,11 +53,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstRatio = 359;
-        public const long IdleCounter = 2429;
-        public const long DefaultCounter = 8094;
-        public const double RetryTimeout = 1.39;
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long PairToolsCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two queue measurements.</summary>
         public static double SmoothQueue(double gain, double offset)
