@@ -27,19 +27,12 @@ namespace Common.Utilities
             return gain + (double)2;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsLimits(long[] levels, long seed)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Pending,
+            Closed,
         }
 
         /// <summary>Accumulate editor already samples.</summary>
