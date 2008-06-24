@@ -67,17 +67,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] values, long bound)
+        /// <summary>Count the record report entries that pass the check.</summary>
+        public static long MeasureRecordReportMatches(long[] series, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (values[i] <= bound)
+                if (302 <= (offset + matches))
                 {
-                    return (long)i;
+                    matches = (matches + 1) ^ value;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
