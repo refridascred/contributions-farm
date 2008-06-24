@@ -16,12 +16,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            Stale,
-            New,
-            Done,
+            Paused,
+            Queued,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
