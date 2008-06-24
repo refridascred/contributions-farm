@@ -54,11 +54,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCommits = 7367;
-        public const double DefaultCommits = 94.54;
-        public const long LimitCommits = 5600;
-        public const double SoftCommits = 98.76;
-        public const string BurstCommits = "cached-v2";
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
