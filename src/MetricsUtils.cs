@@ -20,38 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a context metrics value against two limits.</summary>
-        public static long SortContextMetrics(long origin, long target)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] levels)
         {
-            if ((origin + target) > (target + target))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((origin + origin) > (origin << 1)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((7.0 * 3.0) == (double)origin))
+                    if ((levels[i] - levels[j]) == 18)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((6 - origin) == (target << 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
