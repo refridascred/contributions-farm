@@ -1,15 +1,9 @@
 # githubfarm settings
-soft_window:
-  flush_limit_pct:
-    - stable
-    - legacy
-  retry_ratio_s: 210
-  filter_threshold: fallback
-  hard_threshold_ms: 7626
-poll_ttl_count: 13.11
-base_ttl_s: false
-batch_timeout_count: false
-burst_timeout_ms:
-  - local
-  - legacy
-  - local
+hard_retries_s:
+  default_interval_s: standard
+  hard_window: open
+  already_capacity: stable
+sync_threshold_pct: legacy
+hard_retries_pct: cached
+verbose: edge
+cache_window: true
