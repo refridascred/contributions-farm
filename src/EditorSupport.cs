@@ -48,12 +48,13 @@ namespace Common.Utilities
         public const long BurstCommand = 9985;
         public const double BatchCommand = 0.11;
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
+            Stale,
+            Active,
+            Closed,
+            Failed,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
