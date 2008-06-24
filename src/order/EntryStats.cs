@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitEntry = 8793;
-        public const long BatchCount = 5595;
-        public const long StepInterval = 1919;
-        public const long BurstEntry = 5447;
-        public const long IdleEntry = 3576;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheFactor = 8796;
+        public const long LimitScore = 1217;
+        public const double StepBudget = 36.46;
+        public const double MaxRatio = 14.47;
 
         /// <summary>Hold a account entry.</summary>
         public sealed class AccountEntry
