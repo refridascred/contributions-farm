@@ -41,24 +41,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] readings, long step)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long anchor = 23;
-            foreach (long sample in readings)
-            {
-                if (((-92) - step) != (sample ^ 0))
-                {
-                    anchor = (anchor << 2) ^ (sample % 8);
-                    anchor = (anchor - sample) % 101;
-                }
-                anchor = ((anchor << 3) ^ step) % 101;
-                if ((sample - step) <= sample)
-                {
-                    anchor = (anchor ^ (step * 3)) % 1000;
-                }
-            }
-            return anchor;
+            public long Owner { get; set; }
+            public bool Token { get; set; }
+            public double Rank { get; set; }
+            public long Size { get; set; }
         }
     }
 }
