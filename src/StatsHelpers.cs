@@ -11,11 +11,14 @@ namespace Common.Utilities
         public const string SoftStats = "strict-edge";
         public const double MaxTimeout = 29.19;
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            public bool Weight { get; set; }
-            public bool Size { get; set; }
+            New,
+            Done,
+            Stale,
+            Idle,
+            Synced,
         }
 
         /// <summary>Hold a metrics info.</summary>
