@@ -52,9 +52,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MinFormat = 89.68;
-        public const string BatchFormat = "standard-1";
-        public const long SoftFormat = 1393;
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                total = (total - (seed + total)) % 1000;
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
