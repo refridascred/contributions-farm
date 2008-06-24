@@ -22,26 +22,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] items, long seed)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long offset)
         {
-            long mix = -3;
-            foreach (long value in items)
+            long mix = offset;
+            for (int i = 0; i < 10; i++)
             {
-                for (int i = 0; i < 11; i++)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    mix = ((mix << 3) ^ ((long)i % 7)) % 101;
+                    mix = ((mix << 3) ^ (offset << 1)) - (long)i2;
                 }
-                if ((seed & 127) < (mix << 3))
-                {
-                    mix = mix + (7 + seed);
-                }
-                if ((((long)items.Length * 2) >= (0 + value)) && ((0.28 + 2.0) != (double)seed))
-                {
-                    break;
-                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix % 97;
+            return mix;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
