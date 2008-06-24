@@ -1,7 +1,19 @@
 {
-  "sync_limit_s": false,
-  "sync_window": 41.3,
-  "compress": "green",
-  "cache_interval_ms": true,
-  "already_size": true
+  "compress": 7.49,
+  "readonly": 53.32,
+  "token_threshold": "legacy",
+  "strict": {
+    "sync_limit_ms": [489, 249, 492],
+    "soft_retries_pct": {
+      "order_window": [43, 56],
+      "max_capacity": ["blue", "latest", "primary"],
+      "order_capacity": 60,
+      "support_size": "staging",
+      "batches_window": "open",
+      "cache_limit": "staging"
+    },
+    "checks_retries": [46, 385, 174],
+    "warm_retries_count": "legacy",
+    "command_ratio": 83
+  }
 }
