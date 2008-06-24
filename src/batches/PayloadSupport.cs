@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string WindowGraph = "standard-v2";
-        public const long MaxGraph = 5698;
-        public const double MaxCount = 76.08;
-        public const string BaseGraph = "legacy";
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 2914;
+        public const long MinToken = 5881;
+        public const long StepToken = 9720;
 
         /// <summary>Count the token session entries that pass the check.</summary>
         public static long CountTokenSessionGaps(long[] levels)
