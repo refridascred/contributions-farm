@@ -62,16 +62,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of command window entries.</summary>
-        public static long CombineCommandWindow(long[] data, long offset)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long seed)
         {
-            long acc = 0;
-            foreach (long item in data)
+            long acc = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if ((acc & 1) < (acc - item))
+                long cur = seed;
+                cur = cur - (cur + seed);
+                if (!((9.99 / 4.0) >= (double)(long)i))
                 {
-                    acc = (acc ^ (offset / 7)) % 101;
+                    acc = acc + cur;
                 }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
             return acc;
         }
