@@ -47,19 +47,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate format farm readings against a bound.</summary>
-        public static bool VerifyFormatFarmLimits(long[] levels, long offset)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            bool valid = true;
-            foreach (long item in levels)
-            {
-                if (item > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Offset { get; set; }
+            public long Weight { get; set; }
+            public bool Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
