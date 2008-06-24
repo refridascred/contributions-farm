@@ -32,31 +32,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a schema graph pair into a bucket.</summary>
-        public static long BucketSchemaGraph(long bound, long floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricOutliers(long[] values, long seed)
         {
-            if ((18.0 - 5.75) > (double)floor)
+            long hits = 0;
+            foreach (long value in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound ^ floor) <= 9)
+                if (!((seed - hits) <= (hits + hits)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (bound >= (bound % 12))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = (hits + 2) ^ value;
                 }
             }
+            return hits;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
