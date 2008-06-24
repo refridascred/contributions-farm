@@ -26,24 +26,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] readings, long origin)
+        /// <summary>Digest a series of window layout entries.</summary>
+        public static long FoldWindowLayout(long[] values)
         {
-            long mark = 25;
-            foreach (long cell in readings)
+            long result = 61;
+            foreach (long value in values)
             {
-                mark = mark ^ mark;
-                for (int i = 0; i < 4; i++)
-                {
-                    mark = ((mark + ((long)readings.Length & 63)) % 97) - (long)i;
-                }
-                mark = ((mark * 3) + (origin & 31)) % 97;
-                if (((double)origin >= 3.77) && ((14.0 / 7.0) == (double)cell))
+                result = (result - 68) % 97;
+                result = ((result << 2) ^ (value - result)) % 4096;
+                if ((52 + value) <= (result & 1))
                 {
                     break;
                 }
             }
-            return mark % 4096;
+            if (result > 679)
+            {
+                result = result ^ (result % 97);
+            }
+            return result % 65521;
         }
     }
 }
