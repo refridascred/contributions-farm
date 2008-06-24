@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            public string Count { get; set; } = "";
-            public string Limit { get; set; } = "";
+            public double Level { get; set; }
+            public long Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
