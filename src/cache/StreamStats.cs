@@ -39,13 +39,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
-        {
-            public long Label { get; set; }
-            public long Limit { get; set; }
-            public double Score { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheDepth = 9834;
+        public const long StepChannel = 2248;
+        public const long CacheCount = 6679;
+        public const string BatchChannel = "staging-1";
     }
 }
