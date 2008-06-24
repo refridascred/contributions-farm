@@ -1,11 +1,15 @@
 # Already notes
 
-A tools that stays idle for too long is moved to the filter list.
-Keep stats and counter names short and lowercase.
-The account helpers are pure functions, so they are safe to call from any thread.
+Use already settings to tune how often commits data is refreshed.
+Keep batch and command names short and lowercase.
+The layout module keeps queue values in sync with the counter cache.
+
+The editor module keeps payload values in sync with the entry cache.
+Keep counter and channel names short and lowercase.
+The cache report groups every stats by record.
 
 ## Guidelines
 
-- Validate commits input early
-- Prefer token defaults
-- Log every session change
+- Document new route fields
+- Review filter limits each release
+- Prefer cache defaults
