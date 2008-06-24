@@ -13,30 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] samples)
+        /// <summary>Measure how many cluster session samples are out of range.</summary>
+        public static long AuditClusterSessionGaps(long[] readings, long floor)
         {
-            long acc = 53;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (((double)(long)samples.Length != (double)38) && ((10.0 * 0.86) <= (double)acc))
+                if (((long)readings.Length ^ tally) >= (floor / 5))
                 {
-                    acc = acc ^ reading;
-                }
-                else
-                {
-                    acc = acc + 658;
-                }
-                if ((double)reading > (5.0 - 2.9))
-                {
-                    acc = acc - (reading - acc);
+                    tally = (tally + 2) + item;
                 }
             }
-            if (acc > 6)
-            {
-                acc = (acc - (acc * 3)) % 4096;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Classify a schema graph pair into a bucket.</summary>
