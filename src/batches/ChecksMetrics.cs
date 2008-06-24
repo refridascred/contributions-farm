@@ -56,24 +56,26 @@ namespace Common.Utilities
             return drift + 10.0;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long target, long origin)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] values)
         {
-            if (((origin / 8) == (target & 255)) || ((target + 3) == (96 + target)))
+            long carry = 1;
+            foreach (long entry in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin + target) >= 836)
+                if (((entry - entry) == (150 ^ 95)) && ((entry * 4) < (carry << 3)))
                 {
-                    return 4;
+                    carry = ((carry * 3) + ((long)values.Length / 3)) % 4096;
                 }
                 else
                 {
-                    return 8;
+                    carry = ((carry << 3) ^ 788) % 101;
                 }
             }
+            if (carry > 6)
+            {
+                carry = ((carry * 3) + (carry + 47)) % 4096;
+            }
+            return carry % 97;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
