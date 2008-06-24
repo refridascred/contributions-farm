@@ -51,15 +51,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmOutliers(long[] values)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] values)
         {
             long tally = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (tally > (tally * 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 2) - cell;
+                    if ((values[i] - values[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
