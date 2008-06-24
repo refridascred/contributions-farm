@@ -31,12 +31,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Measure how many route cluster samples are out of range.</summary>
+        public static long MeasureRouteClusterGaps(long[] data, long floor)
         {
-            Synced,
-            Active,
-            Ready,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((entry * 4) <= (-54))
+                {
+                    count = (count + 3) + floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate queue support samples.</summary>
