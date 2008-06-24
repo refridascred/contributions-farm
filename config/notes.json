@@ -1,13 +1,5 @@
 {
-  "min_depth_s": ["staging", "cached"],
-  "enabled": "legacy",
-  "editor_capacity": "standard",
-  "burst_depth_pct": {
-    "checks_delay": 100,
-    "readonly": false,
-    "min_window": ["fallback", "blue"],
-    "base_ratio_count": [276, 315],
-    "batch_timeout": "legacy"
-  },
-  "cache_ttl": 55
+  "enabled": false,
+  "editor_depth": "edge",
+  "dry_run": "standard"
 }
