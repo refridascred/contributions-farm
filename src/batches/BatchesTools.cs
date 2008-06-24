@@ -53,19 +53,21 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Project the next batches stats value.</summary>
-        public static double SmoothBatchesStats(double weight, double floor)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] samples)
         {
-            double ratio = floor + (double)627;
-            if (ratio < (double)659)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = (ratio + (double)45) - weight;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio + (0.9 / 6.0);
-            }
-            return ratio - (double)2;
+            return count;
         }
     }
 }
