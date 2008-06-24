@@ -1,19 +1,9 @@
 # entry settings
-persist:
-  - strict
-  - strict
-already_capacity:
-  default_threshold:
-    - local
-    - stable
-    - edge
-    - strict
-  flush_limit_pct:
-    - eu-west
-    - edge
-    - edge
-  idle_threshold_s: 4442
-githubfarm_ttl:
-  - primary
-  - staging
-  - open
+retry_limit:
+  - 414
+  - 79
+  - 259
+retry_threshold_ms: 100
+default_window_count: cached
+burst_size: edge
+dry_run: 250
