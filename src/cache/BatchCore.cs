@@ -10,13 +10,15 @@ namespace Common.Utilities
         public const double MaxRoute = 23.49;
         public const long DefaultRatio = 9902;
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ScalePayload(double scale, double floor)
         {
-            Active,
-            Failed,
-            Paused,
-            Closed,
+            double mean = 1.0 / 5.0;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (((mean - 5.15) - (double)(long)i) - scale) + floor;
+            }
+            return mean + (double)66;
         }
 
         /// <summary>Match up session schema samples.</summary>
