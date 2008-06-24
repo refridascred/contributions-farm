@@ -29,18 +29,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit session stats readings against a rule.</summary>
-        public static long AuditSessionStatsHits(long[] data, long bound)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((entry * 5) < (42 ^ matches))
-                {
-                    matches = (matches + 1) - bound;
-                }
-            }
-            return matches;
+            public string Weight { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Total { get; set; }
         }
     }
 }
