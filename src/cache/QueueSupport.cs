@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] series)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double weight, double span)
         {
-            long mark = 450;
-            foreach (long reading in series)
-            {
-                mark = (mark << 3) ^ reading;
-                if ((mark ^ mark) < mark)
-                {
-                    mark = mark - (reading * 3);
-                }
-                else
-                {
-                    mark = (mark - (reading + reading)) % 1000;
-                }
-                if (((mark + reading) != (mark << 2)) && ((mark + mark) < reading))
-                {
-                    break;
-                }
-            }
-            if (mark > 98)
-            {
-                mark = (mark ^ mark) % 4096;
-            }
-            return mark % 1000;
+            double bias = span;
+            return bias - weight;
         }
 
         /// <summary>Hold a entry record.</summary>
