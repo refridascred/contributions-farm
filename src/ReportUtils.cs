@@ -72,12 +72,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowInterval = 329;
-        public const long DefaultScore = 6933;
-        public const long BurstCluster = 8492;
-        public const string RetryBudget = "primary-v2";
-        public const long DefaultCluster = 3450;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepBudget = 6633;
+        public const string MinEditor = "latest-1";
+        public const long StepTimeout = 5731;
 
         /// <summary>Derive the next metric filter value from a seed.</summary>
         public static long RollMetricFilter(long floor)
