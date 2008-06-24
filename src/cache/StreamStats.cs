@@ -14,31 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a queue window value against two limits.</summary>
-        public static long ClassifyQueueWindow(long floor, long origin)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorBounds(long[] samples, long origin)
         {
-            if ((9.73 / 4.0) < (double)origin)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (origin < floor)
+                if (entry != origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((floor * 2) != (floor & 1)) && ((floor + 8) != (floor << 2)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the already kind values.</summary>
