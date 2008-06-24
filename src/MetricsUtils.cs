@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsRange(long[] data, long bound)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Paused,
+            Closed,
         }
 
         /// <summary>Adjust a order reading.</summary>
