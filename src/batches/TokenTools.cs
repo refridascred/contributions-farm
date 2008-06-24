@@ -24,13 +24,11 @@ namespace Common.Utilities
         public const long RetryWindow = 1363;
         public const long BatchWindow = 2688;
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
-        {
-            Locked,
-            Pending,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string WindowDepth = "stable-edge";
+        public const string HardLevel = "legacy-v2";
+        public const string MinCache = "stable-1";
+        public const double BatchScore = 68.8;
+        public const string WindowCache = "legacy-edge";
     }
 }
