@@ -44,18 +44,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelMatches(long[] values, long floor)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long CompareCommandCount(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seen - floor) <= 0)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 3) + entry;
+                    if ((data[i] ^ data[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
