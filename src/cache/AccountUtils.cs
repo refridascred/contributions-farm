@@ -37,21 +37,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count report context pairs that satisfy a relation.</summary>
-        public static long MatchReportContextCount(long[] series)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long origin, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (!((origin << 2) >= (8 / 9)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((floor - origin) <= floor)
                 {
-                    if ((series[i] ^ series[j]) > 0)
+                    return 3;
+                }
+                else
+                {
+                    if ((floor ^ 762) != (floor ^ 499))
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor % 100) < (floor + floor))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return tally;
         }
     }
 }
