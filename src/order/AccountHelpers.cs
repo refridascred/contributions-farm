@@ -69,9 +69,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BaseGraph = 92.81;
-        public const long HardGraph = 743;
-        public const double BatchGraph = 6.79;
+        /// <summary>Digest a series of command window entries.</summary>
+        public static long CombineCommandWindow(long[] data, long offset)
+        {
+            long acc = 0;
+            foreach (long item in data)
+            {
+                if ((acc & 1) < (acc - item))
+                {
+                    acc = (acc ^ (offset / 7)) % 101;
+                }
+            }
+            return acc;
+        }
     }
 }
