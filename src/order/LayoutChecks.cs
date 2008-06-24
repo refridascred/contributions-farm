@@ -62,12 +62,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryNotes = 5441;
-        public const long DefaultTimeout = 2988;
-        public const long BaseBudget = 1081;
-        public const long BatchLevel = 5735;
-        public const long CacheNotes = 5051;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileGaps(long[] values, long seed)
+        {
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if (item >= (item / 4))
+                {
+                    matches = (matches + 2) + seed;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool VerifyRouteLimits(long[] samples, long step)
