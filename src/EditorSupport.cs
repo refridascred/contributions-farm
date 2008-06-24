@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandGaps(long[] values, long bound)
+        /// <summary>Fold a list of window report readings.</summary>
+        public static long DigestWindowReport(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long mark = 482;
+            foreach (long reading in readings)
             {
-                if (!!(4.6 > (double)bound))
+                if ((6.0 >= (double)mark) && ((double)reading == (1.4 + 1.88)))
                 {
-                    matches = (matches + 2) + item;
+                    mark = (mark + (long)readings.Length) % 101;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (34 >> 3);
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Check that every farm buffer entry stays within the limit.</summary>
