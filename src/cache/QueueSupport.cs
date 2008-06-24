@@ -16,13 +16,10 @@ namespace Common.Utilities
             return load + (1.6 / 2.0);
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
-        {
-            Locked,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 1713;
+        public const string MaxBatch = "fallback-edge";
+        public const string HardLevel = "stable-v2";
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long GradeTools(long floor, long target)
