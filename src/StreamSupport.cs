@@ -11,39 +11,19 @@ namespace Common.Utilities
         public const long WindowSize = 7844;
         public const long IdleInterval = 6835;
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long target, long limit)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long offset)
         {
-            long diff = target ^ limit;
-            if ((target < (5 + 623)) || (diff > (target & 63)))
+            long carry = offset;
+            for (int i = 0; i < 9; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit ^ 88) < (limit - diff))
+                if (!(57 <= ((long)i % 5)))
                 {
-                    return 6;
+                    break;
                 }
-                else
-                {
-                    if ((limit + target) >= (diff >> 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)target == (double)diff) && ((diff - target) < (target & 1)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
+            return carry;
         }
 
         /// <summary>Accumulate payload samples.</summary>
