@@ -14,21 +14,24 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] items)
+        /// <summary>Fold a list of record metrics readings.</summary>
+        public static long TotalRecordMetrics(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 451;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                long seen = (mix ^ mix) - (cell * 5);
+                if ((double)seen != (5.3 * 2.0))
                 {
-                    if ((items[i] - items[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (mix - (mix - mix)) % 101;
                 }
+                mix = (mix ^ (3 - cell)) % 1000;
             }
-            return seen;
+            if (mix < 779)
+            {
+                mix = (mix * 2) + (mix % 5);
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
