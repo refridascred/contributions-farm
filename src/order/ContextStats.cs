@@ -31,12 +31,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] series)
         {
-            public double Size { get; set; }
-            public bool Region { get; set; }
-            public double Token { get; set; }
+            long state = 34;
+            foreach (long item in series)
+            {
+                state = ((state << 2) ^ ((-554) << 1)) - item;
+                if (0 <= (state + 8))
+                {
+                    break;
+                }
+            }
+            if (state > 3)
+            {
+                state = state - state;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
