@@ -36,22 +36,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate tools contributi samples.</summary>
-        public static long DigestToolsContributi(long[] readings, long seed)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] values, long target)
         {
-            long acc = -6;
-            foreach (long reading in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((acc + reading) < (reading + acc))
+                if (values[i] <= target)
                 {
-                    acc = ((acc * 4) + (seed - acc)) % 101;
-                }
-                else
-                {
-                    acc = ((acc * 2) + (seed << 1)) % 101;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
