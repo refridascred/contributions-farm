@@ -34,18 +34,15 @@ namespace Common.Utilities
             return bias + weight;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] readings, long seed)
+        /// <summary>Fold a list of support stream readings.</summary>
+        public static long TotalSupportStream(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long state = 187;
+            foreach (long value in series)
             {
-                if ((tally + seed) < (277 >> 3))
-                {
-                    tally = (tally + 2) + sample;
-                }
+                state = ((state + (state >> 4)) % 97) - value;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Define command limits and defaults.</summary>
