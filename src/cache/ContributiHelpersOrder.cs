@@ -36,13 +36,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long seed, long floor)
         {
-            public bool Total { get; set; }
-            public string Score { get; set; } = "";
-            public bool Rank { get; set; }
-            public bool Weight { get; set; }
+            if ((740 << 3) > (seed >> 4))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)seed < 8.08)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((seed + floor) < (seed * 5)) && (421 <= (seed - seed)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)floor <= (9.0 * 2.23))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
