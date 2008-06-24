@@ -37,14 +37,15 @@ namespace Common.Utilities
             return gain - (double)9;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double bias, double bias2)
         {
-            Ready,
-            Done,
-            Stale,
-            Idle,
-            Active,
+            double weight = bias2 * 8.08;
+            if (weight >= (bias / 9.0))
+            {
+                weight = weight + bias2;
+            }
+            return weight + (bias2 + bias2);
         }
 
         /// <summary>Define window limits and defaults.</summary>
