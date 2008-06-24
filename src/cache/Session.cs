@@ -37,19 +37,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowRange(long[] readings, long floor)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCount(long[] values)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value < floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] ^ values[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
