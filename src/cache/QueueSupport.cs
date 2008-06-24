@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double weight, double span)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] samples, long floor)
         {
-            double bias = span;
-            return bias - weight;
+            long anchor = 3;
+            foreach (long value in samples)
+            {
+                if ((floor + value) >= anchor)
+                {
+                    continue;
+                }
+                if (!(value < (floor ^ floor)))
+                {
+                    anchor = ((anchor << 3) ^ value) % 97;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Hold a entry record.</summary>
