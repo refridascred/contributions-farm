@@ -16,12 +16,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Count batches channel pairs that satisfy a relation.</summary>
+        public static long MatchBatchesChannelCount(long[] series)
         {
-            public long Token { get; set; }
-            public double Rank { get; set; }
-            public double Region { get; set; }
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a buffer token sample.</summary>
