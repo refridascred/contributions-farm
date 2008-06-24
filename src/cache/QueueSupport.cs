@@ -20,15 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long target)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long score = target;
-            for (int i = 0; i < 8; i++)
-            {
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            Failed,
+            Draft,
+            Queued,
+            Ready,
+            Stale,
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
