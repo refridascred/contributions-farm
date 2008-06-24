@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-local}"
+mode="${1:-staging}"
 case "${mode}" in
-    legacy)
+    staging)
         log "fast path"
         ;;
     *)
@@ -16,9 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-for item in standard latest open primary; do
+for item in local latest eu-west; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=147
-log "limit is ${COMMAND_LIMIT}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
