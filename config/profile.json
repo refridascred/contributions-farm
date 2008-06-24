@@ -1,6 +1,8 @@
 {
-  "warm_capacity_pct": ["green", "stable", "green"],
-  "readonly": false,
-  "hard_limit_ms": true,
-  "verbose": 30
+  "cache_depth": 41.01,
+  "commits_threshold": [317, 67],
+  "flush_capacity_count": "legacy",
+  "format_window": "latest",
+  "max_timeout_s": [103, 144, 400, 277],
+  "soft_delay_count": 22.35
 }
