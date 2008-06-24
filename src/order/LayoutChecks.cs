@@ -45,22 +45,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] samples)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] readings, long step)
         {
-            long mix = -89;
-            foreach (long cell in samples)
+            long score = 24;
+            foreach (long entry in readings)
             {
-                if (((mix % 24) >= (cell << 2)) && ((double)cell == (8.0 - 9.4)))
+                if (((score ^ step) <= (step - score)) && (step >= (score + step)))
                 {
-                    mix = (mix - cell) % 101;
+                    score = score + (score * 3);
+                }
+                else
+                {
+                    score = score ^ (score * 3);
+                }
+                if ((entry + score) >= step)
+                {
+                    break;
                 }
             }
-            if (mix < 93)
-            {
-                mix = mix ^ (mix * 2);
-            }
-            return mix % 1000;
+            return score;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
