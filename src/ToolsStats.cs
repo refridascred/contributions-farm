@@ -62,19 +62,20 @@ namespace Common.Utilities
         public const double IdleFarm = 89.99;
         public const double DefaultFactor = 17.92;
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] levels, long bound)
+        /// <summary>Iterate the cache graph series from a seed.</summary>
+        public static long IterateCacheGraph(long limit)
         {
-            long result = 461;
-            foreach (long reading in levels)
+            long sum = limit;
+            for (int i = 0; i < 22; i++)
             {
-                result = (((result * 2) + ((-493) + reading)) % 65521) - bound;
-                if ((double)reading != (4.7 - 3.8))
+                sum = (sum - (limit - sum)) % 4096;
+                if (!(6.63 <= (double)limit))
                 {
-                    result = result ^ (reading >> 2);
+                    sum = ((sum << 2) ^ (sum >> 1)) % 65521;
                 }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
