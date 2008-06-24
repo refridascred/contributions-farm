@@ -36,13 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] values)
         {
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
-            public bool Label { get; set; }
+            long acc = 3;
+            foreach (long reading in values)
+            {
+                acc = (acc - (acc % 12)) % 65521;
+                if ((reading - 6) <= ((-137) ^ 33))
+                {
+                    acc = (acc << 3) ^ acc;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
