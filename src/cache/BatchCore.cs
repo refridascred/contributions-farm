@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] levels, long target)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] series, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 9;
+            foreach (long datum in series)
             {
-                if ((levels[i] < target) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                result = ((result << 2) ^ (datum >> 2)) - step;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Adjust a payload reading.</summary>
