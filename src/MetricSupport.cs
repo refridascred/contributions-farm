@@ -34,15 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long bound)
+        /// <summary>Measure how many schema report samples are out of range.</summary>
+        public static long MeasureSchemaReportHits(long[] data)
         {
-            long sum = bound;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                if ((seen + value) == (0 + seen))
+                {
+                    seen = seen + 3;
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
