@@ -58,19 +58,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountRange(long[] samples, long origin)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Owner { get; set; }
+            public double Flag { get; set; }
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
