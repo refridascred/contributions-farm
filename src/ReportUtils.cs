@@ -55,10 +55,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepBudget = 6633;
-        public const string MinEditor = "latest-1";
-        public const long StepTimeout = 5731;
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
+        {
+            Queued,
+            Locked,
+            Failed,
+        }
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long WeighCache(long[] readings)
