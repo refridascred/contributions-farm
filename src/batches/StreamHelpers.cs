@@ -31,11 +31,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] samples)
         {
-            public bool Size { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((count * 4) != (reading >> 2))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
