@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyOutliers(long[] levels)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (!(item <= (count + count)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitLayout = 2061;
+        public const long IdleSpan = 1407;
+        public const long RetryCount = 1499;
+        public const long BaseBudget = 3232;
 
         /// <summary>Accumulate checks samples.</summary>
         public static long DigestChecks(long[] data)
