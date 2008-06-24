@@ -51,17 +51,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first support githubfarm entry that matches the target.</summary>
-        public static long SeekSupportGithubfarmIndex(long[] series, long seed)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
+            public long Score { get; set; }
         }
     }
 }
