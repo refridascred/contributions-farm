@@ -15,24 +15,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a layout payload pair into a bucket.</summary>
-        public static long SortLayoutPayload(long bound, long step)
+        /// <summary>Measure how many checks queue samples are out of range.</summary>
+        public static long MeasureChecksQueueOutliers(long[] items, long bound)
         {
-            if (!((1 >> 5) < (step - bound)))
+            long tally = 0;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((1.86 * 5.2) > (double)step))
+                if ((((tally % 5) > (value * 4)) || ((value - bound) <= 59)) || ((bound - tally) <= value))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
