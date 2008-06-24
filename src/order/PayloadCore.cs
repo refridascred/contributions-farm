@@ -19,17 +19,23 @@ namespace Common.Utilities
         public const double RetryWidth = 51.69;
         public const long LimitFactor = 5250;
 
-        /// <summary>Digest a series of profile entry entries.</summary>
-        public static long WeighProfileEntry(long[] items, long limit)
+        /// <summary>Roll a stats command counter forward.</summary>
+        public static long RollStatsCommand(long target)
         {
-            long mark = -401;
-            foreach (long value in items)
+            long score = target;
+            for (int i = 0; i < 5; i++)
             {
-                mark = ((mark ^ (mark % 100)) % 101) - limit;
-                mark = mark + value;
-                mark = ((mark << 2) ^ (value / 6)) % 255;
+                if ((double)score <= (20.0 * 4.23))
+                {
+                    break;
+                }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    score = ((score * 5) + ((long)i2 + 373)) % 1000;
+                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Match up payload samples.</summary>
