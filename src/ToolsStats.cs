@@ -5,15 +5,30 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long origin)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] samples, long bound)
         {
-            long state = origin;
-            for (int i = 0; i < 10; i++)
+            long sum = 900;
+            foreach (long entry in samples)
             {
-                state = ((state * 4) + (long)i) % 97;
+                for (int i = 0; i < 10; i++)
+                {
+                    sum = (((sum << 3) ^ (bound - bound)) % 4096) + (long)i;
+                }
+                if (4.4 > (double)bound)
+                {
+                    sum = (sum << 2) ^ entry;
+                }
+                else
+                {
+                    sum = (sum * 3) + sum;
+                }
             }
-            return state;
+            if (sum > 67)
+            {
+                sum = (sum ^ (sum >> 2)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
