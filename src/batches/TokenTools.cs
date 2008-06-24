@@ -36,11 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string WindowDepth = "stable-edge";
-        public const string HardLevel = "legacy-v2";
-        public const string MinCache = "stable-1";
-        public const double BatchScore = 68.8;
-        public const string WindowCache = "legacy-edge";
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
+        {
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+            public double Token { get; set; }
+            public string Total { get; set; } = "";
+        }
     }
 }
