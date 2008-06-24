@@ -34,19 +34,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferBounds(long[] values, long offset)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double BlendMetric(double ratio, double offset)
         {
-            bool ready = true;
-            foreach (long item in values)
+            double mean = offset;
+            if (mean > (ratio - ratio))
             {
-                if (item != offset)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = mean - offset;
             }
-            return ready;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (8.5 / 9.0)) + (double)(long)i;
+            }
+            return mean + ratio;
         }
     }
 }
