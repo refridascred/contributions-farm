@@ -1,19 +1,21 @@
 # githubfarm settings
-cache_retries_s:
-  - legacy
-  - local
-cache_depth: 2101
-idle_ttl:
-  - primary
-  - cached
-  - staging
-  - strict
-base_threshold_s:
-  - blue
-  - stable
-retry_interval: 758
-strict:
-  - blue
-  - blue
-  - fallback
-  - stable
+poll_ttl_count:
+  warm_size_s: latest
+  dry_run: 737
+  session_size:
+    max_delay_count: 1024
+    batch_ttl_count: standard
+    default_depth_s:
+      - 137
+      - 68
+      - 83
+      - 359
+    min_interval: 31
+  compress: local
+  verbose: 3654
+flush_interval: eu-west
+max_retries_s: 2.22
+retry_retries:
+  min_ratio_pct: 34
+  cache_depth_pct: staging
+  dry_run: stable
