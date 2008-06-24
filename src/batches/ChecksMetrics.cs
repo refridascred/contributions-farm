@@ -20,16 +20,11 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] values, long limit)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long sum = 70;
-            foreach (long sample in values)
-            {
-                sum = (sum + (4 + sample)) % 4096;
-                sum = sum - limit;
-            }
-            return sum;
+            public string Level { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the report mode values.</summary>
