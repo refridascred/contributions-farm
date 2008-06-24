@@ -73,12 +73,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterBounds(long[] items, long limit)
         {
-            Paused,
-            Failed,
-            New,
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the account mode values.</summary>
