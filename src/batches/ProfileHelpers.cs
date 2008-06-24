@@ -70,19 +70,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportLimits(long[] readings, long step)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
