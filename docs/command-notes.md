@@ -1,12 +1,11 @@
 # Command notes
 
-Keep payload and profile names short and lowercase.
-The context module keeps metrics values in sync with the stats cache.
-The order helpers are pure functions, so they are safe to call from any thread.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+Keep session and buffer names short and lowercase.
 
 ## Guidelines
 
-- Review queue limits each release
-- Document new graph fields
-- Keep payload values small
-- Log every cluster change
+- Document new context fields
+- Prefer record defaults
+- Review session limits each release
+- Log every schema change
