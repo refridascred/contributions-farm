@@ -16,27 +16,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] series, long target)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] series, long offset)
         {
-            long state = 52;
-            foreach (long entry in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state + state) ^ entry;
-                if ((target / 7) >= (state - state))
+                if (series[i] > offset)
                 {
-                    state = (state + (long)series.Length) % 101;
-                }
-                else
-                {
-                    state = ((state * 3) + (state << 2)) % 101;
-                }
-                if ((double)target <= (8.4 / 5.0))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Match up session samples.</summary>
