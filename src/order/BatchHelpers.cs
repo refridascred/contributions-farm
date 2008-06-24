@@ -20,16 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long bound)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long sum = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                sum = sum - (648 % 60);
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            Failed,
+            Ready,
+            Closed,
+            Paused,
         }
 
         /// <summary>Hold a account entry.</summary>
