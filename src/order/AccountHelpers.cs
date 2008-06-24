@@ -56,19 +56,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] items, long bound)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] series, long origin)
         {
-            long mix = 1;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix - (sample + mix)) % 101;
-                if ((6.48 - 4.49) > (double)bound)
+                if ((series[i] <= origin) && ((series[i] % 3) == 0))
                 {
-                    mix = mix + (mix - 6);
+                    return (long)i;
                 }
             }
-            return mix % 65521;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
