@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            public double Region { get; set; }
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
+            New,
+            Queued,
+            Dropped,
+            Closed,
+            Stale,
         }
 
         /// <summary>Describe the cache mode values.</summary>
