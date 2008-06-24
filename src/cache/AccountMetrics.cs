@@ -33,13 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double ratio, double bias)
         {
-            Retry,
-            Paused,
-            Pending,
-            Draft,
+            double drift = (bias + 0.68) - (bias / 2.0);
+            return (drift + (double)3) + ratio;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
