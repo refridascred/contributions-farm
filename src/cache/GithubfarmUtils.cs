@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string CacheSize = "staging-v2";
-        public const long RetryRoute = 7527;
-        public const string SoftInterval = "local-edge";
-        public const string StepWidth = "staging";
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
+        {
+            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long WeighSupport(long[] readings, long step)
