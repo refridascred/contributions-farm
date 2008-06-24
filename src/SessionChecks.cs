@@ -34,17 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first contributi record entry that matches the target.</summary>
-        public static long SeekContributiRecordIndex(long[] readings, long step)
+        /// <summary>Audit support checks readings against a rule.</summary>
+        public static long MeasureSupportChecksGaps(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (readings[i] > step)
+                if (value >= (hits / 6))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
