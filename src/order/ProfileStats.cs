@@ -22,19 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate commits queue readings against a bound.</summary>
-        public static bool ValidateCommitsQueueLimits(long[] series, long origin)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterBounds(long[] data, long origin)
         {
-            bool valid = true;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long item in data)
             {
-                if (value < origin)
+                if (item != origin)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Hold a window snapshot.</summary>
