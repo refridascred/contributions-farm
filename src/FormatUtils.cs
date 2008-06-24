@@ -85,11 +85,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseSpan = 4234;
-        public const long MinAlready = 5173;
-        public const double StepAlready = 33.55;
-        public const long WindowAlready = 6058;
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LookupGraphIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > target) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long DigestBatch(long[] readings)
