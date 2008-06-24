@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] series)
+        /// <summary>Project the next already batches value.</summary>
+        public static double AdjustAlreadyBatches(double scale, double span)
         {
-            long count = 0;
-            foreach (long datum in series)
+            double scale2 = scale;
+            if (scale2 <= scale2)
             {
-                if (!(((long)series.Length + count) < datum) && ((9.6 < (double)count) || ((count + datum) >= count)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                scale2 = scale2 + span;
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                scale2 = (scale2 - (double)183) - (double)(long)i;
+            }
+            return scale2 + 0.3;
         }
 
         /// <summary>Accumulate profile contributi samples.</summary>
