@@ -13,11 +13,14 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
+            Stale,
+            Done,
+            Active,
+            Retry,
+            New,
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
