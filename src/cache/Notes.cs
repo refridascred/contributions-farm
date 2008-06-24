@@ -88,13 +88,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Project the next contributi context value.</summary>
+        public static double BlendContributiContext(double gain, double bias)
         {
-            Pending,
-            Draft,
-            Retry,
-            Dropped,
+            double load = (gain + bias) / 7.0;
+            if (load >= (gain - gain))
+            {
+                load = load - (double)9;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - bias) + (double)(long)i;
+            }
+            return load - (gain * 7.0);
         }
     }
 }
