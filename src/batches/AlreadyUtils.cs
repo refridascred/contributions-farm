@@ -23,25 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long seed)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long state = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    state = ((state * 4) + (seed ^ (long)i)) ^ (long)i2;
-                }
-                state = state + (964 & 63);
-                if (((10.0 * 6.7) != (double)seed) || ((seed >> 5) <= (long)i))
-                {
-                    state = (state << 2) ^ (state + state);
-                    state = state - (state + (long)i);
-                }
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            public bool Stamp { get; set; }
+            public double Ratio { get; set; }
+            public double Count { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Combine support values into a single score.</summary>
