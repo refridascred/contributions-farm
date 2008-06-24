@@ -44,12 +44,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsRange(long[] readings, long limit)
         {
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
