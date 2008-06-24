@@ -46,19 +46,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderRange(long[] values, long bound)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterHits(long[] readings, long origin)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (item != bound)
+                if (((count & 127) >= datum) && (9.0 <= (double)count))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 2) + origin;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
