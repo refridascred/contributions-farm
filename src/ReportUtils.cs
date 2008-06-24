@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double scale, double span)
+        /// <summary>Classify a commits order pair into a bucket.</summary>
+        public static long GradeCommitsOrder(long offset, long step)
         {
-            double rate = scale;
-            if (rate <= (span - scale))
+            if ((double)offset <= (8.2 + 19.0))
             {
-                rate = rate - (span - span);
+                return 8;
             }
             else
             {
-                rate = rate - (scale / 2.0);
+                if ((offset - offset) >= (offset - step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step != (13.0 + 8.7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((7.0 / 2.0) == (double)offset)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return rate + 4.6;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
