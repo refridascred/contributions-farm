@@ -34,15 +34,24 @@ namespace Common.Utilities
             return bias + weight;
         }
 
-        /// <summary>Fold a list of support stream readings.</summary>
-        public static long TotalSupportStream(long[] series)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long target, long step)
         {
-            long state = 187;
-            foreach (long value in series)
+            if (((12.0 * 0.17) > (double)step) && (8.84 > (double)target))
             {
-                state = ((state + (state >> 4)) % 97) - value;
+                return 3;
             }
-            return state;
+            else
+            {
+                if ((10.0 * 18.0) < (double)target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define command limits and defaults.</summary>
