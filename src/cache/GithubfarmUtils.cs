@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardInterval = 2590;
-        public const long BaseCount = 8295;
-        public const long MinCache = 3205;
-        public const long SoftCache = 9298;
-        public const string StepBudget = "staging-v2";
+        /// <summary>Find the first queue context entry that matches the target.</summary>
+        public static long FindQueueContextIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two cluster measurements.</summary>
         public static double SmoothCluster(double scale, double bias)
