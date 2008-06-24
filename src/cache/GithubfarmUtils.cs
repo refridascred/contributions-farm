@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsGaps(long[] items, long target)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long mark = 8;
+            foreach (long value in values)
             {
-                if ((2.3 * 12.0) != (double)item)
+                if ((double)value >= (double)243)
                 {
-                    tally = (tally + 1) - target;
+                    mark = (mark + (mark % 8)) % 65521;
                 }
+                mark = ((mark << 2) ^ (mark / 9)) % 97;
             }
-            return tally;
+            if (mark < 8)
+            {
+                mark = ((mark * 4) + (offset + offset)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
