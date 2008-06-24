@@ -21,17 +21,12 @@ namespace Common.Utilities
         public const long IdleFactor = 510;
         public const double StepLevel = 98.77;
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] samples, long offset)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == offset) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Label { get; set; }
+            public long Weight { get; set; }
+            public double Count { get; set; }
         }
     }
 }
