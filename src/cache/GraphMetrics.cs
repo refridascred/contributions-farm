@@ -19,18 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamHits(long[] values, long limit)
+        /// <summary>Find the first counter already entry that matches the target.</summary>
+        public static long FindCounterAlreadyIndex(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((limit & 255) > (sample + limit)) || !(limit >= (seen ^ seen)))
+                if (items[i] == step)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Locate a checks farm reading by value.</summary>
