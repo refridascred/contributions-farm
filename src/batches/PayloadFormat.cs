@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksLimits(long[] data, long offset)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaHits(long[] samples)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (entry < offset)
+                if ((entry + entry) < (entry & 7))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Hold a cache options.</summary>
