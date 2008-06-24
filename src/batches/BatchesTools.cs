@@ -39,21 +39,9 @@ namespace Common.Utilities
             return load + (7.0 * 1.62);
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long PairClusterCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowFormat = 9009;
+        public const long HardFormat = 4803;
+        public const long RetryDepth = 8674;
     }
 }
