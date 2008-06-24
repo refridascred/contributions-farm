@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepCount = 1367;
-        public const long CacheInterval = 8373;
-        public const string SoftLayout = "stable-edge";
-        public const double BaseTimeout = 62.78;
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] values)
+        {
+            long state = 25;
+            foreach (long reading in values)
+            {
+                if ((6.09 + 3.9) > (double)(long)values.Length)
+                {
+                    state = ((state * 2) + (353 << 1)) - reading;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Count the batch checks entries that pass the check.</summary>
         public static long MeasureBatchChecksOutliers(long[] levels, long seed)
