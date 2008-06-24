@@ -60,24 +60,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] readings)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long offset)
         {
-            long mark = 632;
-            foreach (long entry in readings)
+            long anchor = offset;
+            for (int i = 0; i < 15; i++)
             {
-                long slot = (668 - 7) / 3;
-                if ((slot + 2) <= mark)
-                {
-                    mark = (mark - slot) % 4096;
-                }
-                else
-                {
-                    slot = slot ^ entry;
-                }
-                mark = (mark * 3) + (entry - mark);
+                anchor = (anchor + ((long)i * 4)) % 97;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return mark;
+            return anchor;
         }
     }
 }
