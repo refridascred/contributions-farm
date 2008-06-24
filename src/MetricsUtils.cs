@@ -13,21 +13,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count stats checks pairs that satisfy a relation.</summary>
-        public static long MatchStatsChecksCount(long[] samples)
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double gain, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = (double)5 / 9.0;
+            if (ratio >= span)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = ratio - gain;
             }
-            return hits;
+            return ratio - span;
         }
 
         /// <summary>Describe the stream mode values.</summary>
