@@ -47,12 +47,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string WindowScore = "alpha";
-        public const double MaxBudget = 58.94;
-        public const long DefaultReport = 4282;
-        public const long SoftReport = 5774;
-        public const long WindowReport = 5154;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] samples)
+        {
+            long mix = -89;
+            foreach (long cell in samples)
+            {
+                if (((mix % 24) >= (cell << 2)) && ((double)cell == (8.0 - 9.4)))
+                {
+                    mix = (mix - cell) % 101;
+                }
+            }
+            if (mix < 93)
+            {
+                mix = mix ^ (mix * 2);
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Accumulate format samples.</summary>
         public static long FoldFormat(long[] samples, long limit)
