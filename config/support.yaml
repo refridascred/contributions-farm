@@ -1,6 +1,7 @@
 # support settings
-verbose: edge
-cache_delay_ms: 5072
-retry_delay: false
-report_depth: fallback
-audit: blue
+flush_delay_ms:
+  - 466
+  - 473
+min_threshold_count: 100
+persist: 500
+retry_ttl: true
