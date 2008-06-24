@@ -35,12 +35,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] series, long target)
         {
-            Ready,
-            Closed,
-            Done,
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
