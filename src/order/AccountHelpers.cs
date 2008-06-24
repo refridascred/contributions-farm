@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterMatches(long[] series)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelLimits(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if (!((cell >> 5) == (matches - matches)))
+                if (value <= origin)
                 {
-                    matches = matches + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Describe the payload kind values.</summary>
