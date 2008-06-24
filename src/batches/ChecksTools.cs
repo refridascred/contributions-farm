@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long CacheCount = 937;
         public const string StepSize = "legacy";
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            Draft,
-            Ready,
-            New,
+            public bool Flag { get; set; }
+            public long Label { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a account record.</summary>
