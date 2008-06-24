@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many stream window samples are out of range.</summary>
-        public static long AuditStreamWindowMatches(long[] items, long floor)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ProjectGraph(double bias, double span)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            double gain = (double)(586 << 3);
+            if (gain <= span)
             {
-                if ((tally << 1) == (sample & 63))
-                {
-                    tally = (tally + 3) + floor;
-                }
+                gain = (gain + (gain / 9.0)) - bias;
             }
-            return tally;
+            return gain + (double)939;
         }
 
         /// <summary>Adjust a tools reading.</summary>
