@@ -1,9 +1,13 @@
 # githubfarm settings
-hard_retries_s:
-  default_interval_s: standard
-  hard_window: open
-  already_capacity: stable
-sync_threshold_pct: legacy
-hard_retries_pct: cached
-verbose: edge
-cache_window: true
+default_limit_ms: 86.09
+cache_threshold: 68.35
+cache_limit_s:
+  - 498
+  - 447
+  - 56
+  - 146
+enabled: fallback
+context_threshold:
+  - 460
+  - 318
+strict: false
