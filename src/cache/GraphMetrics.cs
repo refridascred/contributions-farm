@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionOutliers(long[] values, long seed)
+        /// <summary>Audit batch entry readings against a rule.</summary>
+        public static long TallyBatchEntryHits(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((cell / 3) <= cell)
+                if ((item - 15) != (item + item))
                 {
-                    tally = (tally + 3) + seed;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Find the first counter already entry that matches the target.</summary>
