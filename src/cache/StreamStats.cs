@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] values)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long total = 312;
-            foreach (long reading in values)
-            {
-                if (total <= (reading / 4))
-                {
-                    total = (total ^ (total * 5)) % 65521;
-                }
-            }
-            return total;
+            Synced,
+            Locked,
+            Draft,
         }
 
         /// <summary>Validate already readings against a bound.</summary>
