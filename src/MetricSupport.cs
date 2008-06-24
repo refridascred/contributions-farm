@@ -12,16 +12,19 @@ namespace Common.Utilities
             return (rate + (double)223) + ratio;
         }
 
-        /// <summary>Roll a counter support counter forward.</summary>
-        public static long SeriesCounterSupport(long step)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double gain, double offset)
         {
-            long carry = step;
-            for (int i = 0; i < 22; i++)
+            double ratio = (double)(957 + 1);
+            if (ratio > (2.8 - 7.0))
             {
-                carry = ((carry * 3) + (carry * 3)) % 97;
-                carry = ((carry * 4) + (long)i) % 1000;
+                ratio = ratio + 9.0;
             }
-            return carry;
+            else
+            {
+                ratio = ratio - (offset - gain);
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Describe the commits class values.</summary>
