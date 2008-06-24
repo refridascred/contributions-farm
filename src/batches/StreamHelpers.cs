@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string WindowFilter = "local";
-        public const long HardFilter = 9345;
-        public const string CacheSpan = "strict-1";
-        public const long BaseCount = 4968;
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long floor, long seed)
+        {
+            if ((seed - seed) <= seed)
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((seed * 4) > (336 - floor)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((0.1 / 8.0) == (double)seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (floor > (floor ^ floor))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long MeasureLayoutMatches(long[] levels)
