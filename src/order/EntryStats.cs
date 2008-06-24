@@ -16,12 +16,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double ratio, double offset)
         {
-            Draft,
-            Dropped,
-            Paused,
+            double mean = (offset - offset) * 20.0;
+            if (mean > 4.1)
+            {
+                mean = mean - (ratio * 19.0);
+            }
+            return mean + offset;
         }
 
         /// <summary>Hold a filter header.</summary>
