@@ -1,8 +1,9 @@
-id,token,weight,owner
-1,latest,403,strict
-2,74.85,315,526
-3,301,685,277
-4,37.76,627,edge
-5,466,latest,80.4
-6,local,fallback,green
-7,332,57.78,72.8
+id,count,level,ratio
+1,852,32,634
+2,90.55,25.47,staging
+3,26.54,640,90.66
+4,719,123,183
+5,13.64,standard,112
+6,20.02,87.69,primary
+7,838,94.31,916
+8,14.33,397,990
