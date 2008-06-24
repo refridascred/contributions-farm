@@ -39,18 +39,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the commits farm entries that pass the check.</summary>
-        public static long TallyCommitsFarmMatches(long[] data, long limit)
+        /// <summary>Check that every commits metrics entry stays within the limit.</summary>
+        public static bool CheckCommitsMetricsLimits(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                if (limit >= (limit ^ sample))
+                if (entry < offset)
                 {
-                    count = count + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Hold a channel summary.</summary>
