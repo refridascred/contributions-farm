@@ -42,11 +42,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BurstScore = "staging";
-        public const long StepCount = 9795;
-        public const long BurstToken = 3623;
-        public const long IdleTimeout = 4540;
-        public const string BatchRatio = "open-1";
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportGaps(long[] readings, long limit)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((((value & 63) > value) && ((tally / 4) > (48 + value))) && (65 >= tally))
+                {
+                    tally = (tally + 3) - limit;
+                }
+            }
+            return tally;
+        }
     }
 }
