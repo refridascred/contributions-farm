@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorGaps(long[] readings, long bound)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (40 > (tally - 477))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = ((tally + 2) ^ datum) - bound;
+                    if ((items[i] + items[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the record status values.</summary>
