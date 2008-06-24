@@ -46,17 +46,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] readings, long bound)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long bound, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((double)bound <= 0.2) || ((double)bound == (4.0 * 3.49)))
             {
-                if (readings[i] == bound)
+                return 3;
+            }
+            else
+            {
+                if (((seed - seed) >= (6 * 4)) || (bound < (seed * 5)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)seed != (8.7 * 4.1)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
