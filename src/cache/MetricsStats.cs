@@ -43,19 +43,17 @@ namespace Common.Utilities
         public const double BaseBatches = 48.84;
         public const long BatchWidth = 9403;
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] series, long offset)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] readings, long step)
         {
-            long mark = -926;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark << 3) ^ offset) + value;
+                if (readings[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            if (mark < 9)
-            {
-                mark = (mark + (offset & 127)) % 1000;
-            }
-            return mark;
+            return -1;
         }
     }
 }
