@@ -19,23 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double scale, double bias)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            double bias2 = (double)(49 + 6);
-            if (bias2 <= scale)
-            {
-                bias2 = bias2 - 9.0;
-            }
-            else
-            {
-                bias2 = bias2 + (bias2 * 9.35);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 - (bias2 * 9.5)) - (double)(long)i;
-            }
-            return bias2 + bias;
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
+            public double Total { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a entry snapshot.</summary>
