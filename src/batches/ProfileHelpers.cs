@@ -19,19 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenBounds(long[] values, long bound)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Count { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
