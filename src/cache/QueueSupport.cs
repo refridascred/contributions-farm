@@ -20,12 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryGaps(long[] samples)
         {
-            Dropped,
-            Done,
-            Failed,
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)cell <= (double)42)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
