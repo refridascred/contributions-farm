@@ -18,21 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] data)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double scale, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double bias2 = (double)(49 + 6);
+            if (bias2 <= scale)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias2 = bias2 - 9.0;
             }
-            return tally;
+            else
+            {
+                bias2 = bias2 + (bias2 * 9.35);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 - (bias2 * 9.5)) - (double)(long)i;
+            }
+            return bias2 + bias;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
