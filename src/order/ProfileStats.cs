@@ -13,19 +13,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterBounds(long[] data, long origin)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] values, long floor)
         {
-            bool found = true;
-            foreach (long item in data)
+            long total = 63;
+            foreach (long datum in values)
             {
-                if (item != origin)
+                if (((6.2 - 17.0) == (double)total) && ((683 ^ floor) == (datum & 15)))
                 {
-                    found = false;
+                    total = total - datum;
                     break;
                 }
+                total = ((total << 3) ^ (total + floor)) % 4096;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Hold a token record.</summary>
