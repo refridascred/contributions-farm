@@ -51,16 +51,22 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long step)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] series, long floor)
         {
-            long total = step;
-            for (int i = 0; i < 14; i++)
+            long state = 35;
+            foreach (long item in series)
             {
-                total = (total * 5) + total;
-                total = ((total * 2) + (long)i) % 4093;
+                if ((state - 372) < (25 & 3))
+                {
+                    state = ((state << 2) ^ 54) + item;
+                }
             }
-            return total;
+            if (state > 998)
+            {
+                state = ((state * 5) + (floor * 5)) % 97;
+            }
+            return state;
         }
     }
 }
