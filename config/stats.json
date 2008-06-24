@@ -1,11 +1,17 @@
 {
+  "retry_timeout_pct": [441, 47, 104, 291],
   "enabled": {
-    "retry_depth": false,
-    "verbose": "staging",
-    "payload_retries": "edge"
+    "poll_limit_ms": 60,
+    "warm_interval": "fallback",
+    "enabled": {
+      "dry_run": false,
+      "compress": 73,
+      "idle_timeout_ms": 500
+    },
+    "cache_threshold_pct": [487, 9, 32, 247],
+    "schema_ratio": 60
   },
-  "retry_depth": 68.11,
-  "default_size_count": false,
-  "burst_size_pct": 48.24,
-  "record_depth": ["latest", "standard", "latest"]
+  "persist": "cached",
+  "poll_size": 3168,
+  "layout_threshold": 9309
 }
