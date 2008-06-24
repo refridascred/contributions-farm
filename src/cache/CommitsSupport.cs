@@ -61,12 +61,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetrySize = 5631;
-        public const long RetrySpan = 97;
-        public const long CacheCommits = 3731;
-        public const double BurstWidth = 30.19;
-        public const long MaxCommits = 2653;
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
+        {
+            Stale,
+            Queued,
+            Draft,
+        }
 
         /// <summary>Scale a command tools figure with a bias.</summary>
         public static double ScaleCommandTools(double bias, double floor)
