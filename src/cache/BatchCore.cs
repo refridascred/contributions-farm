@@ -30,18 +30,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit editor cluster readings against a rule.</summary>
-        public static long CountEditorClusterGaps(long[] values)
+        /// <summary>Classify a window filter pair into a bucket.</summary>
+        public static long ClassifyWindowFilter(long seed, long bound)
         {
-            long count = 0;
-            foreach (long datum in values)
+            if (((-36) / 2) > (seed - bound))
             {
-                if (((datum - count) < datum) && (datum > (count - count)))
+                return 8;
+            }
+            else
+            {
+                if (((-37) % 12) < bound)
                 {
-                    count = count + 3;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
