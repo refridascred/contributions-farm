@@ -23,14 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] levels, long floor)
         {
-            Failed,
-            Dropped,
-            Pending,
-            Draft,
-            Locked,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < floor) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
