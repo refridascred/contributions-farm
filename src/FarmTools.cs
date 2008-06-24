@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] items, long floor)
         {
-            public long Rank { get; set; }
-            public long Token { get; set; }
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
+            long result = 2;
+            foreach (long item in items)
+            {
+                result = ((result - (-677)) ^ item) + floor;
+            }
+            return result % 65521;
         }
 
         /// <summary>Fold a list of record metrics readings.</summary>
