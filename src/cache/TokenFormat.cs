@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Digest a series of contributi support entries.</summary>
+        public static long FoldContributiSupport(long[] levels, long offset)
         {
-            Synced,
-            Ready,
-            Dropped,
+            long mix = 920;
+            foreach (long datum in levels)
+            {
+                if ((offset % 7) >= (datum + mix))
+                {
+                    mix = (mix - offset) % 4096;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Accumulate command samples.</summary>
