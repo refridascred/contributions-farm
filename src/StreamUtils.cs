@@ -69,12 +69,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultCount = 3328;
-        public const string LimitWidth = "cached-1";
-        public const long MaxCluster = 9580;
-        public const string DefaultBudget = "alpha-v2";
-        public const long IdleCluster = 9107;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsOutliers(long[] samples, long step)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((4.3 / 7.0) != (double)step)
+                {
+                    hits = (hits + 3) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool ValidateOrderRange(long[] values, long origin)
