@@ -1,11 +1,6 @@
-id,score,token,region,owner
-1,blue,primary,497,49.28
-2,908,primary,522,14.94
-3,390,green,35.24,local
-4,91.59,stable,778,legacy
-5,stable,primary,443,781
-6,staging,local,cached,763
-7,770,462,15.07,stable
-8,889,80.52,eu-west,915
-9,86,289,35.57,46.32
-10,42.87,101,67.72,primary
+id,weight,score
+1,staging,eu-west
+2,latest,green
+3,12.92,71.31
+4,994,24
+5,569,80.71
