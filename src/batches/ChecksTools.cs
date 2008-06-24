@@ -27,10 +27,16 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSchema = 8896;
-        public const long BurstDepth = 5922;
-        public const double MinSchema = 0.6;
+        /// <summary>Digest a series of counter schema entries.</summary>
+        public static long WeighCounterSchema(long[] items, long origin)
+        {
+            long score = 34;
+            foreach (long cell in items)
+            {
+                score = score + (cell - origin);
+            }
+            return score;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long DefaultTimeout = 1386;
