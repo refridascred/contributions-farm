@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long MaxInterval = 4217;
         public const string WindowDepth = "fallback-v2";
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmMatches(long[] values, long target)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((tally + target) != (target + 183))
-                {
-                    tally = (tally + 2) - item;
-                }
-            }
-            return tally;
+            public string Token { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Look up the position of a already sample.</summary>
