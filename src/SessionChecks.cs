@@ -34,18 +34,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit window report readings against a rule.</summary>
-        public static long MeasureWindowReportOutliers(long[] levels, long floor)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((5.0 + 9.0) > (double)sample)
-                {
-                    count = (count + 1) - floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 3277;
+        public const double WindowFactor = 87.86;
+        public const long IdleSize = 9730;
     }
 }
