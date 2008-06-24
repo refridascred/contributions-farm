@@ -33,34 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] values, long floor)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long mark = 303;
-            foreach (long datum in values)
-            {
-                if (!(floor <= (mark >> 1)))
-                {
-                    mark = mark - 698;
-                }
-                if ((double)datum > (double)floor)
-                {
-                    mark = ((mark * 5) + (floor - floor)) % 255;
-                }
-                else
-                {
-                    mark = mark + (floor * 4);
-                }
-                if ((double)3 <= (double)floor)
-                {
-                    break;
-                }
-            }
-            if (mark < 6)
-            {
-                mark = (mark ^ mark) % 97;
-            }
-            return mark;
+            Stale,
+            Draft,
+            Pending,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
