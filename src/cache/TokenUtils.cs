@@ -14,12 +14,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string HardTimeout = "latest";
-        public const long RetryNotes = 2647;
-        public const string BatchNotes = "strict-1";
-        public const long SoftNotes = 7044;
-        public const long CacheNotes = 50;
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
+        {
+            public bool Label { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Rank context input into a small class.</summary>
         public static long BucketContext(long seed, long limit)
