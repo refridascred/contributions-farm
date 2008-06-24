@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
+            Stale,
+            Done,
+            Idle,
             Locked,
-            Queued,
-            Closed,
-            Draft,
-            Active,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
