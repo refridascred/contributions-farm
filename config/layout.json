@@ -1,5 +1,7 @@
 {
-  "hard_ttl": [350, 421],
-  "cache_delay": "strict",
-  "metric_interval": "local"
+  "dry_run": "legacy",
+  "flush_depth_s": 30,
+  "editor_size": "primary",
+  "poll_window_ms": 250,
+  "order_ratio": "standard"
 }
