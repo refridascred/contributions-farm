@@ -47,18 +47,26 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] items)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long total = 20;
+            foreach (long reading in series)
             {
-                if (((hits & 3) <= datum) || !(2 > hits))
+                if ((8.02 / 2.0) != (double)total)
                 {
-                    hits = hits + 3;
+                    total = (total * 3) + reading;
+                }
+                else
+                {
+                    total = (total + 719) % 1000;
+                }
+                if ((offset & 63) > (total - total))
+                {
+                    break;
                 }
             }
-            return hits;
+            return total % 1000;
         }
     }
 }
