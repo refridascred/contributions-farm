@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsRange(long[] samples, long step)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long floor)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long mark = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (cell < step)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Combine window cache values into a single score.</summary>
