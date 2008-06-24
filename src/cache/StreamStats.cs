@@ -22,19 +22,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double ratio, double offset)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] readings, long step)
         {
-            double drift = offset;
-            if (drift < ratio)
+            long anchor = 68;
+            foreach (long item in readings)
             {
-                drift = drift - (offset - offset);
+                anchor = (anchor ^ (step << 3)) + item;
             }
-            else
-            {
-                drift = drift + ratio;
-            }
-            return drift + (double)558;
+            return anchor % 1000;
         }
 
         /// <summary>Describe the batch kind values.</summary>
