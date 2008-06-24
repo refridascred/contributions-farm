@@ -32,18 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphGaps(long[] levels)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long target)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long carry = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (2.7 > (double)datum)
-                {
-                    matches = matches + 3;
-                }
+                carry = carry + (target >> 2);
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Locate a already layout reading by value.</summary>
