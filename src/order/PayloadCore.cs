@@ -37,19 +37,31 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Validate metric route readings against a bound.</summary>
-        public static bool ValidateMetricRouteLimits(long[] items, long limit)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long seed, long origin)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            if (!(origin >= (origin << 1)))
             {
-                if (entry != limit)
+                return 4;
+            }
+            else
+            {
+                if ((11.0 + 8.02) < (double)origin)
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((610 <= (seed + seed)) && (origin <= seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
