@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] readings, long seed)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmOutliers(long[] samples, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (readings[i] <= seed)
+                if ((5.4 / 2.0) == (double)hits)
                 {
-                    return (long)i;
+                    hits = ((hits + 3) - item) - seed;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Adjust a graph reading.</summary>
