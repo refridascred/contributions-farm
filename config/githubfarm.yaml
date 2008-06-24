@@ -1,6 +1,11 @@
 # githubfarm settings
-batch_size_ms: 74
-strict: 90
-max_ttl_ms: 33.96
-route_delay: edge
-enabled: stable
+soft_interval_count: blue
+graph_window:
+  - 38
+  - 375
+flush_retries:
+  - 86
+  - 41
+  - 411
+hard_retries_pct: 6394
+min_limit_ms: true
