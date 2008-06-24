@@ -1,6 +1,18 @@
 # entry settings
-sync_timeout_count: 7289
-strict: 72.04
-layout_ttl: staging
-min_depth: 1024
-batches_capacity: false
+enabled:
+  dry_run: 60
+  compress:
+    verbose: 83.38
+    profile_size: 500
+    order_size: latest
+    sync_capacity_s: 500
+    poll_ratio_ms: latest
+    session_depth: 7591
+  sync_retries_s: staging
+  default_ratio: 60
+dry_run:
+  - 21
+  - 451
+  - 16
+  - 426
+notes_retries: edge
