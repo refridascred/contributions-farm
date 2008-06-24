@@ -24,11 +24,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] values, long origin)
         {
-            public bool Size { get; set; }
-            public bool Count { get; set; }
+            long carry = -64;
+            foreach (long sample in values)
+            {
+                if (origin >= (carry / 4))
+                {
+                    carry = (carry + (sample + 62)) % 255;
+                }
+            }
+            if (carry > 0)
+            {
+                carry = ((carry * 3) + (8 >> 4)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Hold a cache summary.</summary>
