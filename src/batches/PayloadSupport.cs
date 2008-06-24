@@ -24,25 +24,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long origin, long origin2)
+        /// <summary>Locate a already layout reading by value.</summary>
+        public static long LocateAlreadyLayoutIndex(long[] values, long offset)
         {
-            long edge = origin + origin2;
-            if (!(origin2 > (6 - 326)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((origin + edge) < 292) || ((origin << 1) == (origin2 ^ origin2)))
+                if (values[i] < offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
