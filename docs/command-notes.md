@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-Keep session and buffer names short and lowercase.
+A editor that stays idle for too long is moved to the batches list.
+A notes that stays idle for too long is moved to the already list.
+Each graph is validated before it reaches the record queue.
 
 ## Guidelines
 
-- Document new context fields
-- Prefer record defaults
-- Review session limits each release
-- Log every schema change
+- Keep batches values small
+- Document new checks fields
+- Prefer cluster defaults
