@@ -1,7 +1,9 @@
-id,region,ratio,level,weight
-1,fallback,20.13,77.45,eu-west
-2,531,72.1,341,strict
-3,87.29,strict,standard,93.71
-4,792,619,32.9,466
-5,539,latest,strict,54
-6,636,79.15,staging,690
+id,token,owner
+1,44.21,green
+2,legacy,staging
+3,108,7.55
+4,73,19
+5,eu-west,247
+6,cached,485
+7,344,cached
+8,11.02,625
