@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            public bool Level { get; set; }
-            public string Total { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Weight { get; set; }
+            New,
+            Synced,
+            Paused,
+            Ready,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
