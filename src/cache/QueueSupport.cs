@@ -20,18 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryGaps(long[] samples)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long target)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long score = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)cell <= (double)42)
-                {
-                    seen = seen + 2;
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
