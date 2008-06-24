@@ -17,10 +17,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string StepWidth = "cached-v2";
-        public const long BaseChannel = 396;
-        public const double MinWidth = 47.64;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 4002;
+        public const double WindowCount = 53.97;
+        public const long BurstSchema = 5214;
+        public const long BaseInterval = 9155;
 
         /// <summary>Measure how many schema report samples are out of range.</summary>
         public static long MeasureSchemaReportHits(long[] data)
