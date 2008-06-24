@@ -26,22 +26,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] levels)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long mark = 45;
-            foreach (long cell in levels)
-            {
-                if (((cell / 3) != (cell + cell)) || ((mark & 3) >= mark))
-                {
-                    mark = ((mark << 3) ^ (19 + 5)) % 255;
-                }
-                if ((mark - cell) <= 563)
-                {
-                    mark = mark - 40;
-                }
-            }
-            return mark;
+            Failed,
+            Pending,
+            Paused,
         }
 
         /// <summary>Roll a batch counter forward.</summary>
