@@ -20,11 +20,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            public string Level { get; set; } = "";
-            public double Offset { get; set; }
+            Queued,
+            Paused,
+            Done,
+            Stale,
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
