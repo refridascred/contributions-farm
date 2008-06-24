@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] levels)
         {
-            Pending,
-            New,
-            Ready,
-            Paused,
+            long state = 50;
+            foreach (long item in levels)
+            {
+                state = (state + (item - item)) % 97;
+            }
+            return state % 4096;
         }
 
         /// <summary>Define format limits and defaults.</summary>
