@@ -54,17 +54,18 @@ namespace Common.Utilities
         public const long HardDepth = 9043;
         public const long StepCommand = 1018;
 
-        /// <summary>Locate a graph route reading by value.</summary>
-        public static long FindGraphRouteIndex(long[] values, long target)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiGaps(long[] series, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (values[i] >= target)
+                if (((115 ^ cell) < (matches + matches)) || !((matches ^ cell) <= cell))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - bound;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
