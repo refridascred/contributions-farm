@@ -23,32 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long limit, long target)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long bound = limit ^ target;
-            if (bound <= (limit << 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if (483 > (0 - target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)target >= 4.43) || (bound > target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a window options.</summary>
