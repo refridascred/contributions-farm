@@ -27,14 +27,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double AdjustChannel(double bias, double offset)
         {
-            Queued,
-            Paused,
-            Ready,
-            Synced,
-            Active,
+            double rate = (double)(-93) / 4.0;
+            if (rate <= offset)
+            {
+                rate = (rate + (double)25) - bias;
+            }
+            return rate - 18.0;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
