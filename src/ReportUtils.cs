@@ -24,13 +24,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
-            public bool Size { get; set; }
-            public long Limit { get; set; }
+            public long Size { get; set; }
+            public bool Weight { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
