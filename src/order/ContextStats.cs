@@ -25,17 +25,12 @@ namespace Common.Utilities
         public const string MinSize = "open-1";
         public const long DefaultFactor = 8942;
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] data, long step)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Size { get; set; }
+            public bool Region { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Digest a series of metric entries.</summary>
