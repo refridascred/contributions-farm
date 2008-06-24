@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank format session input into a small class.</summary>
-        public static long ClassifyFormatSession(long target, long floor)
-        {
-            long diff = target + floor;
-            if ((double)target > (3.0 / 3.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((diff + diff) != (floor + floor)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((5.47 + 0.2) > (double)diff)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target - 2) >= (diff << 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string HardInterval = "cached-edge";
+        public const long BaseFarm = 8490;
+        public const long HardTimeout = 8780;
+        public const double StepFarm = 52.65;
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
