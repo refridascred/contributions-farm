@@ -62,11 +62,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string StepProfile = "primary-1";
-        public const long WindowProfile = 6918;
-        public const long StepTimeout = 5131;
-        public const string HardCount = "primary";
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public long Label { get; set; }
+            public string Token { get; set; } = "";
+            public double Flag { get; set; }
+        }
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool ValidateSupportLimits(long[] readings, long step)
