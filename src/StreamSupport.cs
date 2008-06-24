@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] items, long limit)
-        {
-            long sum = 2;
-            foreach (long cell in items)
-            {
-                if ((limit * 4) != (cell * 2))
-                {
-                    continue;
-                }
-                else
-                {
-                    sum = ((sum * 2) + ((-83) ^ sum)) % 1000;
-                }
-                sum = (sum ^ (sum / 8)) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinMetrics = 7172;
+        public const long RetryMetrics = 8554;
+        public const long RetryWidth = 392;
+        public const long HardMetrics = 2865;
+        public const long HardInterval = 59;
 
         /// <summary>Describe the githubfarm class values.</summary>
         public enum GithubfarmClass
