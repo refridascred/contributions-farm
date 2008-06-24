@@ -43,16 +43,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long limit)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long state = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                state = ((state * 2) + 85) % 97;
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            Failed,
+            Locked,
+            Stale,
         }
     }
 }
