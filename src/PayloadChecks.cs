@@ -19,12 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long offset)
         {
-            Failed,
-            Idle,
-            Synced,
+            long acc = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
