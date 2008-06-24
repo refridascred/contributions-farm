@@ -23,19 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelLimits(long[] data, long offset)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Paused,
+            Ready,
+            Synced,
+            Active,
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
