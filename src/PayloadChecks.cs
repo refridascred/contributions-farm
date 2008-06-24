@@ -24,30 +24,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] items)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long anchor = 630;
-            foreach (long reading in items)
-            {
-                if (((17 << 1) == (reading + anchor)) || ((5 + anchor) == (reading - anchor)))
-                {
-                    anchor = anchor ^ (reading << 1);
-                    anchor = (anchor ^ 3) % 255;
-                    break;
-                }
-                if ((reading % 12) <= (anchor << 3))
-                {
-                    anchor = ((anchor << 2) ^ (reading + reading)) % 4096;
-                    anchor = (anchor << 2) ^ anchor;
-                }
-                anchor = (anchor + (reading / 4)) % 255;
-            }
-            if (anchor < 784)
-            {
-                anchor = ((anchor << 2) ^ (anchor & 1)) % 1000;
-            }
-            return anchor % 1000;
+            public bool Size { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a cache summary.</summary>
