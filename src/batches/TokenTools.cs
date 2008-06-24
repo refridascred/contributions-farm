@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] readings)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] data, long target)
         {
-            long carry = -247;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)carry != (9.0 * 0.6))
+                if ((data[i] < target) && ((data[i] % 5) != 0))
                 {
-                    carry = (carry - sample) % 65521;
-                }
-                if ((carry - sample) >= (sample + sample))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Match up cluster token samples.</summary>
