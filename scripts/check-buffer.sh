@@ -6,19 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=443
-log "limit is ${BUFFER_LIMIT}"
+for item in fallback standard; do
+    log "checking ${item}"
+done
 
-mode="${1:-latest}"
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-edge}"
 case "${mode}" in
-    green)
+    standard)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in stable legacy; do
-    log "checking ${item}"
-done
