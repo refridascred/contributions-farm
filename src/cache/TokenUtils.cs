@@ -29,9 +29,9 @@ namespace Common.Utilities
             return scale + (double)3;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string HardAccount = "alpha-v2";
-        public const double SoftCount = 44.15;
-        public const double MinWidth = 44.63;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitSpan = 6720;
+        public const double IdleSpan = 74.14;
+        public const long DefaultDepth = 2297;
     }
 }
