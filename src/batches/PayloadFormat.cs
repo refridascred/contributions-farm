@@ -23,10 +23,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowLayout = 4645;
-        public const long BurstLayout = 415;
-        public const string RetryFactor = "latest";
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmLimits(long[] values, long seed)
+        {
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long SeriesGithubfarm(long limit)
