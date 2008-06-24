@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long floor, long seed)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            if ((seed - seed) <= seed)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((seed * 4) > (336 - floor)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((0.1 / 8.0) == (double)seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (floor > (floor ^ floor))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Audit counter editor readings against a rule.</summary>
