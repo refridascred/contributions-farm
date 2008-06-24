@@ -1,12 +1,11 @@
 # Command notes
 
-When a schema fails, the session handler retries a few times before giving up.
-A stream that stays idle for too long is moved to the notes list.
-Each buffer is validated before it reaches the route queue.
+Use payload settings to tune how often command data is refreshed.
+The order module keeps cache values in sync with the order cache.
 
 ## Guidelines
 
-- Prefer command defaults
-- Log every record change
-- Document new token fields
-- Keep buffer values small
+- Document new counter fields
+- Prefer metric defaults
+- Log every metrics change
+- Review session limits each release
