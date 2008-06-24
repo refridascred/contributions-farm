@@ -17,19 +17,12 @@ namespace Common.Utilities
         public const long RetryCommits = 9952;
         public const double LimitCommits = 25.4;
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesGaps(long[] items, long limit)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((double)datum >= (9.0 * 1.5))
-                {
-                    matches = (matches + 2) + limit;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double LimitDepth = 86.84;
+        public const long LimitToken = 8863;
+        public const string MinToken = "standard-v2";
+        public const long StepToken = 7543;
+        public const long BaseToken = 2702;
 
         /// <summary>Match up cluster samples.</summary>
         public static long OverlapClusterCount(long[] levels)
