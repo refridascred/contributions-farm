@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double ratio, double span)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            double load = (span - ratio) + (ratio * 3.0);
-            return load - ratio;
+            public double Owner { get; set; }
+            public long Weight { get; set; }
+            public bool Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the report mode values.</summary>
