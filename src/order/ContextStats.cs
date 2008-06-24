@@ -21,12 +21,20 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string SoftReport = "strict-1";
-        public const long StepSpan = 1431;
-        public const long CacheInterval = 1139;
-        public const long BaseReport = 7152;
-        public const string MinTimeout = "fallback-v2";
+        /// <summary>Check that every contributi cluster entry stays within the limit.</summary>
+        public static bool VerifyContributiClusterRange(long[] data, long bound)
+        {
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long CombineGithubfarm(long[] series)
