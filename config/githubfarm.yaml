@@ -1,13 +1,8 @@
 # githubfarm settings
-queue_ttl:
-  - 275
-  - 365
-  - 366
-editor_limit:
-  entry_size: 1229
-  default_capacity_pct: staging
-  compress: eu-west
-  burst_limit_s: fallback
-  burst_timeout: 47
-window_timeout: 1399
-sync_ttl_ms: blue
+hard_interval_ms: 500
+idle_delay: 1024
+flush_ttl_pct: legacy
+dry_run:
+  - 335
+  - 247
+  - 327
