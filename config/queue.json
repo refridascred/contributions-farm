@@ -1,13 +1,19 @@
 {
-  "retry_depth": {
-    "already_timeout": 500,
-    "default_ttl_pct": 13,
-    "base_delay_ms": 61,
-    "batch_ttl_s": 60,
-    "record_threshold": 4455
+  "base_retries_s": {
+    "batches_delay": 1024,
+    "batch_window": "edge",
+    "persist": "edge",
+    "cache_window_count": {
+      "hard_delay_pct": 57,
+      "soft_limit_count": 5923,
+      "entry_size": "edge",
+      "commits_capacity": "stable",
+      "default_size": [324, 494],
+      "burst_size_count": true
+    },
+    "verbose": 3070,
+    "stats_interval": 13
   },
-  "record_timeout": [356, 117, 44, 322],
-  "readonly": [434, 305, 379, 230],
-  "checks_depth": "primary",
-  "warm_timeout_s": "fallback"
+  "cache_window": 9535,
+  "burst_size": 29.4
 }
