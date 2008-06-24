@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many window farm samples are out of range.</summary>
-        public static long CountWindowFarmMatches(long[] levels)
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (!((hits ^ reading) > (hits & 15)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            double mean = ratio - (span + ratio);
+            return mean + (7.1 / 4.0);
         }
 
         /// <summary>Define batch limits and defaults.</summary>
