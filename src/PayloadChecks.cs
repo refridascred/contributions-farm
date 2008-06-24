@@ -48,25 +48,15 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long offset, long origin)
+        /// <summary>Combine record layout values into a single score.</summary>
+        public static long ScoreRecordLayout(long[] levels)
         {
-            long gap = offset ^ origin;
-            if (offset >= (offset + offset))
+            long result = -582;
+            foreach (long entry in levels)
             {
-                return 7;
+                result = (result - (568 + result)) ^ entry;
             }
-            else
-            {
-                if ((299 << 2) != (gap >> 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return result % 65521;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
