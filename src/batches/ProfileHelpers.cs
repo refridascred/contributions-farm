@@ -19,25 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank account batch input into a small class.</summary>
-        public static long RankAccountBatch(long offset, long floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiOutliers(long[] values, long limit)
         {
-            long offset2 = offset + floor;
-            if (((floor - offset) != (offset2 >> 3)) || ((offset ^ offset) > (offset2 & 127)))
+            long count = 0;
+            foreach (long datum in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((offset - floor) == (offset + offset)))
+                if (count < datum)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    count = (count + 1) - limit;
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
