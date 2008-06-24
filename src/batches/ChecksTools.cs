@@ -28,31 +28,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long step, long target)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            if (target <= (target - step))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((8.2 - 8.8) == (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target + target) <= (target >> 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Closed,
+            Ready,
+            Paused,
+            Stale,
         }
     }
 }
