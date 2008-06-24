@@ -40,17 +40,10 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= seed) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchFactor = 9352;
+        public const long MaxDepth = 8523;
+        public const string HardCount = "primary-v2";
+        public const long CacheRatio = 2251;
     }
 }
