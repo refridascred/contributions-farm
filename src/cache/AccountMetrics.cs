@@ -33,12 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double ratio, double bias)
-        {
-            double drift = (bias + 0.68) - (bias / 2.0);
-            return (drift + (double)3) + ratio;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double StepWindow = 4.83;
+        public const long RetryWindow = 815;
+        public const long LimitBudget = 9505;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long IdleInterval = 6293;
