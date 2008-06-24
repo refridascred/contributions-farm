@@ -59,12 +59,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] series, long origin)
         {
-            public string Size { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= origin) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
