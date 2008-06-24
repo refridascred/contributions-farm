@@ -25,19 +25,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double rate, double bias)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long bound)
         {
-            double bias2 = 8.4;
-            if (bias2 < (rate + bias2))
+            long acc = bound;
+            for (int i = 0; i < 23; i++)
             {
-                bias2 = bias2 + rate;
+                if ((long)i == (0 + 73))
+                {
+                    continue;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = bias2 - (double)(long)i;
-            }
-            return bias2 + bias;
+            return acc;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
