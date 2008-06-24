@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordBounds(long[] items, long bound)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Synced,
+            Pending,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
