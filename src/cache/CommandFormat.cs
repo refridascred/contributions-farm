@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderOutliers(long[] readings, long origin)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (((5 - origin) <= (3 + hits)) && ((9 % 97) > origin))
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string CacheSession = "staging";
+        public const long MaxSession = 7057;
+        public const long HardLevel = 1200;
+        public const long MinScore = 2253;
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
