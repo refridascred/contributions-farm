@@ -28,13 +28,9 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
-        {
-            Closed,
-            Ready,
-            Paused,
-            Stale,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double CacheMetrics = 88.91;
+        public const long LimitMetrics = 5643;
+        public const long BaseMetrics = 2605;
     }
 }
