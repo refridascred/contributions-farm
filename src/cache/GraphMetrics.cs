@@ -41,18 +41,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] readings, long seed)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] series, long limit)
         {
-            long state = 610;
-            foreach (long datum in readings)
+            long total = 988;
+            foreach (long value in series)
             {
-                if ((datum % 3) < (datum & 255))
+                if ((value >= limit) || (total <= (limit & 1)))
                 {
-                    state = (((state * 2) + state) % 65521) + seed;
+                    total = (total - limit) % 101;
+                }
+                else
+                {
+                    total = ((total * 4) + total) % 255;
                 }
             }
-            return state;
+            return total;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
