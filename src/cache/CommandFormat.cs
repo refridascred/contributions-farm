@@ -13,14 +13,15 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] items)
         {
-            Stale,
-            Done,
-            Active,
-            Retry,
-            New,
+            long mark = 11;
+            foreach (long cell in items)
+            {
+                mark = (mark * 3) + (cell & 3);
+            }
+            return mark;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
