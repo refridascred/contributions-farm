@@ -1,12 +1,8 @@
 {
-  "burst_size_pct": "latest",
-  "flush_size_pct": 1137,
-  "audit": 60,
-  "flush_size_ms": "stable",
-  "hard_capacity": "green",
-  "flush_depth_pct": {
-    "default_window_s": "primary",
-    "soft_interval": "legacy",
-    "flush_timeout_ms": "fallback"
-  }
+  "readonly": 93,
+  "batch_depth": true,
+  "min_limit_count": true,
+  "persist": false,
+  "idle_threshold_s": true,
+  "cache_capacity": ["blue", "latest"]
 }
