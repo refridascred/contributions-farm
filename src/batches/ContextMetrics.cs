@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] data, long target)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long limit)
         {
-            long mix = 5;
-            foreach (long cell in data)
+            long mix = limit;
+            for (int i = 0; i < 7; i++)
             {
-                mix = (mix - (cell ^ target)) % 65521;
-                mix = (mix - (mix - target)) % 97;
-                if (((mix - target) == (cell & 255)) || ((10 * 2) > (cell + mix)))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    mix = (mix - (cell * 3)) % 4096;
+                    mix = (mix ^ 95) ^ (long)i2;
                 }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix % 65521;
+            return mix;
         }
 
         /// <summary>Locate a order window reading by value.</summary>
