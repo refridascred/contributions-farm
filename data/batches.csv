@@ -1,7 +1,8 @@
-id,active,count,state
-1,520,staging,43.21
-2,standard,16.1,474
-3,936,blue,staging
-4,local,49,196
-5,240,919,eu-west
-6,strict,765,61.35
+id,label,count,active
+1,428,496,189
+2,stable,188,strict
+3,staging,854,31.1
+4,fallback,29.96,830
+5,39,791,18.05
+6,blue,edge,local
+7,146,fallback,85.84
