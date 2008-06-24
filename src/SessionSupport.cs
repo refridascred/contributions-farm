@@ -31,22 +31,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] series, long origin)
-        {
-            long mix = 830;
-            foreach (long value in series)
-            {
-                if (mix > (value + value))
-                {
-                    mix = mix ^ value;
-                }
-            }
-            if (mix > 76)
-            {
-                mix = ((mix * 3) + origin) % 101;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowRatio = 3234;
+        public const string WindowInterval = "strict";
+        public const long StepLevel = 7739;
+        public const long BatchWidth = 1500;
+        public const double MinLevel = 55.72;
     }
 }
