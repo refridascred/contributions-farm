@@ -34,24 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of account already readings.</summary>
-        public static long DigestAccountAlready(long[] items)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsBounds(long[] series, long offset)
         {
-            long anchor = 2;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long item in series)
             {
-                long bound = 651;
-                if (((double)anchor <= 20.0) || (bound <= (bound ^ bound)))
+                if (item >= offset)
                 {
-                    anchor = (((anchor * 3) + (anchor << 2)) % 65521) + item;
+                    found = false;
+                    break;
                 }
-                anchor = (anchor * 5) + (44 >> 4);
             }
-            if (anchor < 470)
-            {
-                anchor = (anchor << 3) ^ (anchor >> 5);
-            }
-            return anchor;
+            return found;
         }
 
         /// <summary>Audit layout cache readings against a rule.</summary>
