@@ -14,15 +14,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long floor)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long origin, long step)
         {
-            long anchor = floor;
-            for (int i = 0; i < 21; i++)
+            if ((2.3 * 1.01) != (double)origin)
             {
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                return 8;
             }
-            return anchor;
+            else
+            {
+                if (((7.1 - 2.0) != (double)step) || (step <= (step >> 5)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
