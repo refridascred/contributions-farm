@@ -29,15 +29,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] levels)
+        /// <summary>Digest a series of token profile entries.</summary>
+        public static long TotalTokenProfile(long[] series)
         {
-            long anchor = 400;
-            foreach (long entry in levels)
+            long acc = 88;
+            foreach (long sample in series)
             {
-                anchor = ((anchor * 2) + (entry * 4)) % 255;
+                if (sample > ((long)series.Length / 9))
+                {
+                    acc = (acc - (sample % 64)) % 255;
+                }
             }
-            return anchor % 65521;
+            return acc % 97;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
