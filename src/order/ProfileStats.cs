@@ -32,12 +32,13 @@ namespace Common.Utilities
             return bias - (10.0 - offset);
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            public bool Limit { get; set; }
-            public long Flag { get; set; }
-            public bool Size { get; set; }
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
+            public string Level { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
