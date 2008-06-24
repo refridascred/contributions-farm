@@ -67,25 +67,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Rank order session input into a small class.</summary>
-        public static long SortOrderSession(long limit, long offset)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterHits(long[] items)
         {
-            long gap = limit ^ offset;
-            if (212 <= gap)
+            long count = 0;
+            foreach (long datum in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (gap <= (16 - offset))
+                if ((datum & 127) <= 8)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
