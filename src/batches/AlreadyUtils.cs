@@ -24,15 +24,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] readings)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long mix = -1;
-            foreach (long reading in readings)
-            {
-                mix = (mix ^ (69 / 3)) ^ reading;
-            }
-            return mix % 65521;
+            Active,
+            Pending,
+            Idle,
+            New,
+            Paused,
         }
 
         /// <summary>Audit editor token readings against a rule.</summary>
