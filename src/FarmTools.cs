@@ -53,12 +53,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long floor)
         {
-            Retry,
-            Done,
-            Active,
+            long total = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((floor ^ (long)i) != ((long)i % 8)) || ((98 >> 5) != (total + (long)i)))
+                {
+                    total = ((total * 4) + (7 + total)) % 101;
+                }
+                total = ((total << 3) ^ total) % 4096;
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
