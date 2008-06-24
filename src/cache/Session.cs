@@ -47,21 +47,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepRecord = 649;
+        public const double IdleRecord = 72.28;
+        public const long MinTimeout = 9763;
     }
 }
