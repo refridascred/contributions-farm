@@ -18,11 +18,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a command header.</summary>
