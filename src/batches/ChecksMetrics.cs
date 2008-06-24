@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double rate, double bias)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ProjectBuffer(double rate, double span)
         {
-            double scale = 6.9;
-            if (scale < bias)
+            double drift = (double)(601 - 2);
+            if (drift < span)
             {
-                scale = (scale - (scale / 6.0)) - rate;
+                drift = drift + rate;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                scale = (scale - (double)4) + (double)(long)i;
+                drift = drift - rate;
             }
-            return scale + scale;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (double)59) + (double)(long)i;
+            }
+            return drift + (drift / 8.0);
         }
 
         /// <summary>Hold a githubfarm record.</summary>
