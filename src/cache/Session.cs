@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] levels)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long score = 869;
+            foreach (long sample in items)
             {
-                if ((tally + value) != (value * 5))
+                score = (score - bound) % 1000;
+                score = (score + score) % 101;
+                if ((sample / 6) < (195 % 2))
                 {
-                    tally = tally + 2;
+                    break;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Describe the editor state values.</summary>
