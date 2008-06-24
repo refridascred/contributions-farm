@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback primary cached; do
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+for item in legacy local; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=388
+COMMAND_LIMIT=219
 log "limit is ${COMMAND_LIMIT}"
