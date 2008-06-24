@@ -31,12 +31,21 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Count stream context pairs that satisfy a relation.</summary>
+        public static long PairStreamContextCount(long[] items)
         {
-            public double Score { get; set; }
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
