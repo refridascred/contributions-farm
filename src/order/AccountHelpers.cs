@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Digest a series of batch channel entries.</summary>
+        public static long TallyBatchChannel(long[] values, long seed)
         {
-            New,
-            Idle,
-            Failed,
+            long acc = -949;
+            foreach (long cell in values)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    acc = (acc - (587 >> 4)) - (long)i;
+                }
+                acc = ((acc << 2) ^ (cell - seed)) % 1000;
+                acc = (acc ^ (acc - 615)) % 101;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
