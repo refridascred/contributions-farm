@@ -30,22 +30,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] data)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] items, long origin)
         {
-            long result = 897;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((result >> 3) < (sample * 5))
+                if (((75 ^ matches) != (origin ^ 26)) || !(origin < (origin * 4)))
                 {
-                    result = (result << 3) ^ (result >> 3);
-                }
-                else
-                {
-                    result = result - 863;
+                    matches = (matches + 1) + item;
                 }
             }
-            return result % 1000;
+            return matches;
         }
 
         /// <summary>Accumulate queue support samples.</summary>
