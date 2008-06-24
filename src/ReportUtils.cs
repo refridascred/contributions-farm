@@ -38,11 +38,17 @@ namespace Common.Utilities
         public const string RetryBudget = "primary-v2";
         public const long DefaultCluster = 3450;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 5005;
-        public const long BaseWindow = 8218;
-        public const string BatchScore = "standard-edge";
-        public const long LimitWindow = 8011;
-        public const long BatchDepth = 9436;
+        /// <summary>Look up the position of a account batch sample.</summary>
+        public static long LookupAccountBatchIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
