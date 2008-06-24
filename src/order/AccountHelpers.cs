@@ -39,13 +39,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            public string Flag { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public bool Score { get; set; }
-            public string Label { get; set; } = "";
+            Failed,
+            Stale,
+            Queued,
+            Done,
+            Synced,
         }
 
         /// <summary>Digest a series of editor entries.</summary>
