@@ -52,30 +52,22 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long limit, long origin)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long target, long seed)
         {
-            long bound = limit + origin;
-            if (((origin + origin) > ((-9) - origin)) || ((double)bound >= (16.0 + 8.82)))
+            if ((6.8 >= (double)seed) && (9 < (seed / 3)))
             {
-                return 1;
+                return 8;
             }
             else
             {
-                if ((bound + limit) != (limit + origin))
+                if ((target / 6) >= (target << 1))
                 {
-                    return 2;
+                    return 0;
                 }
                 else
                 {
-                    if (limit > (8 >> 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 7;
                 }
             }
         }
