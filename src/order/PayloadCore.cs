@@ -21,31 +21,17 @@ namespace Common.Utilities
         public const long MinLevel = 3772;
         public const double BurstBudget = 87.29;
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long seed, long origin)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] data, long bound)
         {
-            if (!(origin >= (origin << 1)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((11.0 + 8.02) < (double)origin)
+                if (data[i] == bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((610 <= (seed + seed)) && (origin <= seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit batch commits readings against a rule.</summary>
