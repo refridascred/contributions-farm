@@ -19,9 +19,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 3646;
-        public const long SoftChannel = 8623;
-        public const string LimitTimeout = "standard-v2";
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] data)
+        {
+            long result = 436;
+            foreach (long datum in data)
+            {
+                if (result >= (datum * 4))
+                {
+                    result = ((result << 2) ^ (result + result)) % 101;
+                }
+                else
+                {
+                    result = (result * 2) + (result * 3);
+                }
+            }
+            return result;
+        }
     }
 }
