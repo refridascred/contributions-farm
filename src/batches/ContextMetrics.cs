@@ -53,18 +53,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportOutliers(long[] samples)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long origin, long step)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            if (!((double)origin > 14.0))
             {
-                if (((item <= (matches + matches)) || (item <= (item + 2))) && ((matches / 3) >= (matches << 1)))
+                return 6;
+            }
+            else
+            {
+                if ((step + step) > step)
                 {
-                    matches = matches + 2;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
