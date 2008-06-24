@@ -14,15 +14,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long floor)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long total = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            Pending,
+            Closed,
+            Retry,
+            Done,
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
