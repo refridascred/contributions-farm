@@ -33,20 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] levels, long origin)
-        {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string IdleLevel = "local-edge";
+        public const long CacheTimeout = 9857;
+        public const long MaxLevel = 5099;
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long GradeRecord(long limit, long origin)
