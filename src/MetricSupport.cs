@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate batches commits readings against a bound.</summary>
-        public static bool ValidateBatchesCommitsLimits(long[] data, long target)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long offset)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long mix = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (entry > target)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = (mix + (1 * 4)) % 255;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Describe the counter kind values.</summary>
