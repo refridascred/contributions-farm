@@ -24,19 +24,13 @@ namespace Common.Utilities
             return bias + 5.61;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricBounds(long[] series, long floor)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Done,
+            Pending,
+            Failed,
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
