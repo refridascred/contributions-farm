@@ -41,13 +41,20 @@ namespace Common.Utilities
         public const long MaxFilter = 8069;
         public const double RetryFilter = 44.6;
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] levels, long step)
         {
-            public double Label { get; set; }
-            public string Offset { get; set; } = "";
-            public double Count { get; set; }
-            public long Mode { get; set; }
+            long carry = 865;
+            foreach (long cell in levels)
+            {
+                carry = carry + (step % 3);
+                carry = (carry + 439) % 65521;
+                if ((carry + cell) <= (step / 3))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Match up profile samples.</summary>
