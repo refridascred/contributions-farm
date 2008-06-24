@@ -1,8 +1,9 @@
-id,level,rank,ratio
-1,24.4,155,994
-2,cached,40.08,stable
-3,3.55,32.28,803
-4,legacy,389,37.83
-5,47.88,442,eu-west
-6,92.96,fallback,694
-7,staging,912,12.32
+id,token,active
+1,457,legacy
+2,staging,fallback
+3,440,402
+4,16.49,green
+5,local,primary
+6,22.44,679
+7,558,854
+8,238,854
