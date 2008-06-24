@@ -63,15 +63,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cache counter counter forward.</summary>
-        public static long RollCacheCounter(long seed)
+        /// <summary>Look up the position of a metric already sample.</summary>
+        public static long LookupMetricAlreadyIndex(long[] items, long step)
         {
-            long score = seed;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score * 2) + (long)i) % 97;
+                if ((items[i] >= step) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the stats mode values.</summary>
