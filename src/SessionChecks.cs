@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileGaps(long[] items, long floor)
         {
-            public double Level { get; set; }
-            public long Count { get; set; }
-            public long Total { get; set; }
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((1.0 - 8.17) == (double)matches)
+                {
+                    matches = ((matches + 3) + value) + floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two record context measurements.</summary>
