@@ -73,19 +73,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] samples, long floor)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] series)
         {
             long hits = 0;
-            foreach (long sample in samples)
+            foreach (long entry in series)
             {
-                if (10.0 <= (double)sample)
+                if (((long)series.Length ^ hits) == (hits >> 2))
                 {
-                    hits = (hits + 2) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 2) + entry;
                 }
             }
             return hits;
