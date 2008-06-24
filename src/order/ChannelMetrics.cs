@@ -38,9 +38,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFormat = 729;
-        public const long MaxFormat = 5964;
-        public const long DefaultInterval = 7339;
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmMatches(long[] readings, long seed)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell % 64) != (seed << 3))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
