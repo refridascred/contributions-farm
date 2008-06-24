@@ -32,17 +32,12 @@ namespace Common.Utilities
             return bias - (10.0 - offset);
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] readings, long seed)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Limit { get; set; }
+            public long Flag { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
