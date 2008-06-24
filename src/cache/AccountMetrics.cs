@@ -20,21 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] values)
+        /// <summary>Count the payload commits entries that pass the check.</summary>
+        public static long AuditPayloadCommitsGaps(long[] values, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)seen != (19.0 - 6.8))
                 {
-                    if ((values[i] ^ values[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = ((seen + 1) + reading) - origin;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Fold a list of account already readings.</summary>
