@@ -51,13 +51,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmOutliers(long[] values)
         {
-            Closed,
-            Ready,
-            Stale,
-            Active,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (tally > (tally * 3))
+                {
+                    tally = (tally + 2) - cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
