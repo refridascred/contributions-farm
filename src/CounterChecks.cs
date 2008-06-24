@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long seed, long limit)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileGaps(long[] series)
         {
-            long bound = seed - limit;
-            if ((seed * 2) >= 285)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((89 + limit) != (bound * 5))
+                if ((hits - hits) <= (hits / 8))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (bound < (bound + bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = (hits + 1) + sample;
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of already readings.</summary>
