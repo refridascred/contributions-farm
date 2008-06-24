@@ -63,12 +63,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            Queued,
             Draft,
-            Locked,
+            Done,
+            Failed,
+            Idle,
+            Closed,
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
