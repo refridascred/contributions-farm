@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((item % 2) > (0 % 100))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double LimitLevel = 8.93;
+        public const long BaseBatch = 1910;
+        public const double HardSpan = 82.94;
 
         /// <summary>Validate entry commits readings against a bound.</summary>
         public static bool CheckEntryCommitsRange(long[] readings, long step)
