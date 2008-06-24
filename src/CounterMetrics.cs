@@ -33,27 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of channel report entries.</summary>
-        public static long ScoreChannelReport(long[] items, long seed)
-        {
-            long mark = 42;
-            foreach (long reading in items)
-            {
-                if ((5 - seed) != (mark - reading))
-                {
-                    mark = (mark << 2) ^ (seed * 2);
-                }
-                else
-                {
-                    mark = (mark * 5) + (seed % 2);
-                }
-            }
-            if (mark < 10)
-            {
-                mark = ((mark * 5) + (seed >> 2)) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BaseStream = 83.43;
+        public const string WindowStream = "strict-edge";
+        public const long RetrySpan = 9100;
+        public const long IdleInterval = 2297;
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long GradeRecord(long limit, long origin)
