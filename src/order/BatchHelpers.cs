@@ -14,21 +14,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] samples)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Region { get; set; }
+            public double Flag { get; set; }
+            public string Mode { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
