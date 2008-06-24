@@ -85,16 +85,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next context queue value.</summary>
-        public static double ScaleContextQueue(double scale, double bias)
-        {
-            double scale2 = scale;
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 - bias) - (double)(long)i;
-            }
-            return scale2 + bias;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseSpan = 4234;
+        public const long MinAlready = 5173;
+        public const double StepAlready = 33.55;
+        public const long WindowAlready = 6058;
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long DigestBatch(long[] readings)
