@@ -22,20 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a account channel counter forward.</summary>
-        public static long SeriesAccountChannel(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    result = (result + ((long)i - result)) - (long)i2;
-                }
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double StepTimeout = 11.03;
+        public const long BaseWidth = 4521;
+        public const long DefaultCount = 3050;
 
         /// <summary>Fold a list of window readings.</summary>
         public static long WeighWindow(long[] readings, long limit)
