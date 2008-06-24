@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next metric notes value from a seed.</summary>
-        public static long StepMetricNotes(long step)
+        /// <summary>Fold a list of editor token readings.</summary>
+        public static long TotalEditorToken(long[] data, long floor)
         {
-            long mark = step;
-            for (int i = 0; i < 11; i++)
+            long mix = 760;
+            foreach (long value in data)
             {
-                long lane = 573;
-                if ((6.4 / 9.0) == (double)lane)
-                {
-                    mark = mark + step;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
+                mix = ((mix ^ ((-1) * 3)) - value) - floor;
             }
-            return mark;
+            if (mix > 606)
+            {
+                mix = (mix + (mix - mix)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Blend two commits measurements.</summary>
