@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Measure how many window farm samples are out of range.</summary>
+        public static long CountWindowFarmMatches(long[] levels)
         {
-            Stale,
-            Done,
-            Idle,
-            Locked,
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (!((hits ^ reading) > (hits & 15)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
