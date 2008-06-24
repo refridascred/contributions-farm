@@ -1,13 +1,9 @@
 # support settings
-hard_interval:
-  - 48
-  - 412
-  - 479
+report_size: blue
 compress:
-  farm_limit:
-    cache_capacity: standard
-    base_capacity_ms: staging
-    default_ttl_ms: false
-  burst_depth: 47.31
-  poll_threshold: legacy
-readonly: legacy
+  - 146
+  - 497
+  - 33
+  - 325
+min_limit_ms: 24.09
+hard_size_ms: true
