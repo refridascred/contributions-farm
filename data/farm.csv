@@ -1,6 +1,10 @@
-id,token,ratio,region,score
-1,latest,199,47.83,81.37
-2,4.04,31.62,6,931
-3,62.75,5,open,609
-4,17.76,531,95.51,5.03
-5,51.64,59.97,legacy,716
+id,score,owner
+1,legacy,open
+2,131,local
+3,31,local
+4,open,5.99
+5,stable,green
+6,3.97,65.76
+7,95.28,edge
+8,62.84,strict
+9,stable,green
