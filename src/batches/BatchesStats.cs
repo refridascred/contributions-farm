@@ -38,11 +38,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Check that every notes report entry stays within the limit.</summary>
+        public static bool CheckNotesReportRange(long[] series, long limit)
         {
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
