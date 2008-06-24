@@ -1,7 +1,9 @@
 {
-  "default_timeout_s": 70,
-  "poll_window": "legacy",
-  "stats_size": false,
-  "readonly": [487, 112, 373],
-  "cache_capacity": true
+  "default_depth_s": ["cached", "cached", "standard", "blue"],
+  "default_interval_s": {
+    "verbose": 250,
+    "persist": "local",
+    "default_ratio_s": "staging"
+  },
+  "flush_interval_count": 58
 }
