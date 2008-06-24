@@ -73,12 +73,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsHits(long[] items, long limit)
         {
-            Stale,
-            Draft,
-            Synced,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((4 / 9) < ((long)items.Length / 6))
+                {
+                    tally = ((tally + 3) + item) - limit;
+                }
+            }
+            return tally;
         }
     }
 }
