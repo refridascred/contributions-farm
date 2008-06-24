@@ -34,12 +34,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenHits(long[] samples)
         {
-            Queued,
-            New,
-            Closed,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading > (reading - reading)) || ((double)reading >= (2.0 * 2.0)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a buffer record reading.</summary>
