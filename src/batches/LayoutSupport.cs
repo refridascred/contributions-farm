@@ -14,15 +14,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long seed)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long bound)
         {
-            long carry = seed;
-            for (int i = 0; i < 20; i++)
+            long score = bound;
+            for (int i = 0; i < 4; i++)
             {
-                carry = ((carry * 3) + (long)i) % 101;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Hold a filter info.</summary>
