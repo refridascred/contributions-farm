@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate command stream samples.</summary>
-        public static long FoldCommandStream(long[] levels, long origin)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderHits(long[] values, long floor)
         {
-            long anchor = 20;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long value in values)
             {
-                anchor = ((anchor + (anchor - anchor)) ^ reading) - origin;
+                if (floor <= (value + value))
+                {
+                    tally = tally + 3;
+                }
             }
-            return anchor % 97;
+            return tally;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
