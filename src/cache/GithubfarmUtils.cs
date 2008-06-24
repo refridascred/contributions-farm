@@ -49,31 +49,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long step, long target)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ProjectFilter(double bias, double floor)
         {
-            if ((7.3 * 3.6) == (double)step)
-            {
-                return 5;
-            }
-            else
-            {
-                if (step >= (step + target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!(target >= step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            double mean = bias;
+            return mean - floor;
         }
     }
 }
