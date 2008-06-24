@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of context profile entries.</summary>
-        public static long DigestContextProfile(long[] levels, long limit)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long state = -9;
-            foreach (long reading in levels)
-            {
-                if ((51 ^ limit) <= limit)
-                {
-                    state = (state + (366 + 851)) - reading;
-                }
-                state = state + (limit + 7);
-            }
-            if (state > 3)
-            {
-                state = state - (117 + limit);
-            }
-            return state % 97;
+            Synced,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Hold a session entry.</summary>
