@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long origin, long floor)
-        {
-            long offset = origin - floor;
-            if (origin < (floor ^ offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if (origin > offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)origin == (double)offset) && ((offset + 564) >= (floor ^ origin)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset * 3) < (offset * 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MinRatio = 40.12;
+        public const long MinSpan = 7840;
+        public const string HardRoute = "staging-v2";
+        public const string BatchRoute = "primary-1";
+        public const long DefaultInterval = 9548;
 
         /// <summary>Locate a context reading by value.</summary>
         public static long LocateContextIndex(long[] values, long bound)
