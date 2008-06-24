@@ -1,5 +1,6 @@
 {
-  "enabled": false,
-  "editor_depth": "edge",
-  "dry_run": "standard"
+  "stream_delay": 49,
+  "layout_size": false,
+  "max_window": [305, 242, 69, 256],
+  "sync_ratio_s": true
 }
