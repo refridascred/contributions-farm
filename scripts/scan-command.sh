@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=208
-log "limit is ${COMMAND_LIMIT}"
-
-for item in primary cached fallback standard; do
-    log "checking ${item}"
-done
-
-mode="${1:-edge}"
+mode="${1:-stable}"
 case "${mode}" in
-    latest)
+    edge)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in latest stable primary edge; do
+    log "checking ${item}"
+done
