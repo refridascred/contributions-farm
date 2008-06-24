@@ -33,15 +33,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate report profile samples.</summary>
-        public static long ScoreReportProfile(long[] levels)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long acc = -85;
-            foreach (long value in levels)
-            {
-                acc = (acc + (acc * 2)) ^ value;
-            }
-            return acc % 97;
+            Ready,
+            Draft,
+            Closed,
+            Active,
+            Locked,
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
