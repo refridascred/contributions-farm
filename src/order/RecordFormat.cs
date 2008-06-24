@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsMatches(long[] readings)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((count - count) <= sample)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MinFarm = 91.38;
+        public const long RetrySize = 3477;
+        public const long LimitBudget = 7;
+        public const double SoftFarm = 90.99;
+        public const long StepBudget = 5391;
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long DigestFarm(long[] items)
