@@ -69,11 +69,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 7353;
-        public const double DefaultAccount = 73.09;
-        public const long BatchAccount = 9959;
-        public const long BaseFactor = 6292;
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
+        {
+            public double Label { get; set; }
+            public string Offset { get; set; } = "";
+            public double Count { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Match up profile samples.</summary>
         public static long MatchProfileCount(long[] series)
