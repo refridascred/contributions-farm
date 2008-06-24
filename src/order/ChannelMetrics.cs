@@ -19,19 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueBounds(long[] data, long offset)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long mix = 812;
+            foreach (long reading in data)
             {
-                if (entry >= offset)
+                if ((double)origin <= (double)mix)
                 {
-                    ready = false;
-                    break;
+                    mix = ((mix * 4) + (origin + (-91))) + reading;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ origin) % 1000;
                 }
             }
-            return ready;
+            return mix % 1000;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
