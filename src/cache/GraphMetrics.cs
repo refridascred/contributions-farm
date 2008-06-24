@@ -19,19 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryHits(long[] levels)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamHits(long[] values, long limit)
         {
             long seen = 0;
-            foreach (long sample in levels)
+            foreach (long sample in values)
             {
-                if ((seen > (seen >> 4)) || (((4.2 * 0.6) >= (double)seen) && ((sample * 2) >= (sample >> 4))))
+                if (((limit & 255) > (sample + limit)) || !(limit >= (seen ^ seen)))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 3;
                 }
             }
             return seen;
