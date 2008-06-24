@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit batches payload readings against a rule.</summary>
-        public static long AuditBatchesPayloadMatches(long[] values, long origin)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally & 3) <= (68 + datum))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 2) - origin;
+                    if ((series[i] + series[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
