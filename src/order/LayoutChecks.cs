@@ -18,31 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a stream stats value against two limits.</summary>
-        public static long GradeStreamStats(long floor, long target)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            if ((floor / 4) >= (915 + 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor - floor) == (floor << 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((557 + floor) != (target + floor)) && ((target + floor) >= (floor - 6)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
