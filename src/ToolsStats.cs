@@ -39,13 +39,10 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
-        {
-            public double Weight { get; set; }
-            public double Rank { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleRatio = 476;
+        public const string RetryDepth = "latest-1";
+        public const long MaxCount = 7937;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BatchBudget = 2658;
