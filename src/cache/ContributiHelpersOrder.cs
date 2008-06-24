@@ -20,21 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up editor notes samples.</summary>
-        public static long MatchEditorNotesCount(long[] levels)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 8;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((3.77 / 4.0) >= (double)state)
                 {
-                    if ((levels[i] - levels[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = (state * 4) + sample;
+                    break;
                 }
+                state = ((state * 5) + (state + state)) % 255;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
