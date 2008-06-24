@@ -18,18 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the farm notes entries that pass the check.</summary>
-        public static long MeasureFarmNotesOutliers(long[] values, long origin)
+        /// <summary>Combine graph editor values into a single score.</summary>
+        public static long DigestGraphEditor(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long carry = 856;
+            foreach (long item in data)
             {
-                if ((double)entry != (2.4 - 5.8))
+                for (int i = 0; i < 9; i++)
                 {
-                    matches = (matches + 1) + origin;
+                    carry = (((carry * 2) + (item - 476)) % 101) + (long)i;
+                }
+                carry = (carry ^ (item & 255)) % 255;
+                if ((479 * 5) < (carry - 312))
+                {
+                    carry = (carry ^ (item << 3)) % 1000;
+                }
+                if ((item - carry) <= (carry >> 2))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (carry > 97)
+            {
+                carry = ((carry << 3) ^ carry) % 65521;
+            }
+            return carry % 97;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
