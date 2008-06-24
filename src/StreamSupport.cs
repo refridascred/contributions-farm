@@ -19,32 +19,18 @@ namespace Common.Utilities
         public const long BaseScore = 5831;
         public const long BurstWidth = 1966;
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long step, long floor)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] readings)
         {
-            long offset = step - floor;
-            if ((floor > (step << 3)) && ((double)offset != (9.1 * 2.0)))
+            long acc = 6;
+            foreach (long datum in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (7.2 <= (double)offset)
+                if ((datum * 3) > (acc ^ 6))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((step + step) > floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    acc = ((acc * 2) + (acc & 255)) % 65521;
                 }
             }
+            return acc;
         }
     }
 }
