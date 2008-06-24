@@ -53,12 +53,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] series, long limit)
+        /// <summary>Look up the position of a cluster tools sample.</summary>
+        public static long SeekClusterToolsIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((series[i] > limit) && ((series[i] % 5) != 0))
+                if (readings[i] <= offset)
                 {
                     return (long)i;
                 }
