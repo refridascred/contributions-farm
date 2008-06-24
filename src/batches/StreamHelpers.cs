@@ -83,38 +83,16 @@ namespace Common.Utilities
         public const long BaseWidth = 2615;
         public const string SoftTimeout = "stable";
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long bound, long offset)
+        /// <summary>Combine commits order values into a single score.</summary>
+        public static long FoldCommitsOrder(long[] readings)
         {
-            if ((bound + offset) == (239 + 5))
+            long acc = 53;
+            foreach (long item in readings)
             {
-                return 0;
+                acc = ((acc * 5) + (acc + acc)) ^ item;
+                acc = (acc - (-9)) % 1000;
             }
-            else
-            {
-                if (!((7 + bound) != (bound >> 2)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset - bound) > bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset & 7) < (offset & 15))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
