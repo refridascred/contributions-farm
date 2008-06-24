@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterHits(long[] readings, long origin)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long mix = 66;
+            foreach (long cell in levels)
             {
-                if ((double)seen > (20.0 * 5.38))
+                mix = (mix + (mix + cell)) % 4096;
+                mix = (mix ^ (mix - mix)) % 255;
+                if ((7.5 + 8.3) == (double)floor)
                 {
-                    seen = ((seen + 1) + entry) + origin;
+                    mix = ((mix * 5) + 9) % 1000;
                 }
             }
-            return seen;
+            if (mix < 464)
+            {
+                mix = (mix ^ (floor - 48)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Grade a context metrics value against two limits.</summary>
