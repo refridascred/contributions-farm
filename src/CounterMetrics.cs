@@ -46,10 +46,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string RetryStats = "standard-edge";
-        public const double HardLevel = 97.61;
-        public const long CacheFactor = 2605;
-        public const string WindowInterval = "stable-1";
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
+        {
+            public string Total { get; set; } = "";
+            public double Region { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
