@@ -40,22 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate editor already samples.</summary>
-        public static long FoldEditorAlready(long[] levels, long seed)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] readings)
         {
-            long anchor = 3;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (((double)(long)levels.Length > (double)1) && (anchor > (cell + (-46))))
+                if (((value + value) >= 56) && (tally > (tally >> 1)))
                 {
-                    anchor = (anchor << 3) ^ (cell - cell);
-                }
-                else
-                {
-                    anchor = (anchor - (cell - seed)) % 1000;
+                    tally = tally + 3;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Fold a list of schema contributi readings.</summary>
