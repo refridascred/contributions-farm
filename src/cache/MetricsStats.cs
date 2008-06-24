@@ -15,12 +15,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCounter = 4855;
-        public const long StepBudget = 6618;
-        public const long StepCounter = 2013;
-        public const long DefaultCounter = 5169;
-        public const long BaseSpan = 3510;
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
+        {
+            Retry,
+            Active,
+            Synced,
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long AuditBatchMatches(long[] items)
