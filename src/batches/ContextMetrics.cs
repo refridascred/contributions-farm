@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            public bool Ratio { get; set; }
-            public bool Count { get; set; }
-            public string Mode { get; set; } = "";
+            Idle,
+            Retry,
+            Paused,
+            Done,
         }
 
         /// <summary>Locate a order window reading by value.</summary>
