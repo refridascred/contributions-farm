@@ -12,22 +12,14 @@ namespace Common.Utilities
             return (scale + 0.05) + weight;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsGaps(long[] values)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((count + count) <= (3 & 255))
-                {
-                    count = (count + 3) + datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Synced,
+            Done,
+            Retry,
+            Failed,
+            Draft,
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
