@@ -31,18 +31,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] readings, long limit)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long mix = 853;
-            foreach (long value in readings)
-            {
-                if (!((966 / 5) > (mix << 1)))
-                {
-                    mix = (mix + value) - limit;
-                }
-            }
-            return mix % 65521;
+            Idle,
+            Synced,
+            Active,
         }
     }
 }
