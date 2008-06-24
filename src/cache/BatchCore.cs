@@ -21,11 +21,14 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepSpan = 1863;
-        public const double IdleEditor = 64.77;
-        public const long MinLevel = 58;
-        public const long DefaultDepth = 8877;
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
+        {
+            Active,
+            Failed,
+            Paused,
+            Closed,
+        }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
         public static long OverlapToolsCount(long[] items)
