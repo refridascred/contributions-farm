@@ -1,6 +1,6 @@
-id,weight,score
-1,staging,eu-west
-2,latest,green
-3,12.92,71.31
-4,994,24
-5,569,80.71
+id,label,score
+1,86.17,22.35
+2,edge,27.07
+3,62.32,709
+4,staging,885
+5,590,981
