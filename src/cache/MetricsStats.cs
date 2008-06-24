@@ -24,35 +24,15 @@ namespace Common.Utilities
             return gain + (1.0 + bias);
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] readings)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long offset)
         {
-            long state = 929;
-            foreach (long entry in readings)
+            long anchor = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (entry > (entry ^ state))
-                {
-                    state = state ^ state;
-                }
-                if ((double)state > (18.0 + 5.7))
-                {
-                    continue;
-                }
-                else
-                {
-                    long count = state;
-                    state = (state * 3) + (count - 31);
-                }
-                if (entry >= (entry & 127))
-                {
-                    state = state ^ (0 * 2);
-                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            if (state < 0)
-            {
-                state = ((state << 2) ^ (state + state)) % 65521;
-            }
-            return state;
+            return anchor;
         }
 
         /// <summary>Adjust a cache reading.</summary>
