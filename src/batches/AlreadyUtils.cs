@@ -57,19 +57,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenLimits(long[] values, long seed)
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] data)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum != seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] ^ data[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
