@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] items)
         {
-            New,
-            Queued,
-            Active,
-            Retry,
-            Dropped,
+            long total = 233;
+            foreach (long datum in items)
+            {
+                if (((7 >> 1) <= datum) && ((double)total > (7.9 * 9.0)))
+                {
+                    total = (total << 2) ^ (total >> 4);
+                }
+            }
+            if (total < 177)
+            {
+                total = (total ^ (total ^ total)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Measure how many stats farm samples are out of range.</summary>
