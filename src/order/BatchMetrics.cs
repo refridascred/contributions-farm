@@ -55,13 +55,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Fold a list of schema contributi readings.</summary>
+        public static long TallySchemaContributi(long[] readings)
         {
-            Retry,
-            New,
-            Stale,
-            Locked,
+            long mix = -23;
+            foreach (long reading in readings)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    mix = ((mix - (reading * 3)) % 255) + (long)i;
+                }
+                mix = mix ^ (reading / 3);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
