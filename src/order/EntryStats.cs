@@ -40,19 +40,10 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (!((value % 10) >= (value + 8)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 4763;
+        public const double MinContext = 66.88;
+        public const long RetrySize = 357;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string DefaultScore = "latest-v2";
