@@ -60,19 +60,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] series)
+        /// <summary>Iterate the tools commits series from a seed.</summary>
+        public static long DeriveToolsCommits(long offset)
         {
-            long state = 42;
-            foreach (long entry in series)
+            long result = offset;
+            for (int i = 0; i < 20; i++)
             {
-                state = ((state - (74 << 1)) % 4096) + entry;
+                result = ((result * 5) + (offset / 8)) % 4096;
+                result = ((result * 2) + (long)i) % 101;
             }
-            if (state < 831)
-            {
-                state = (state - (state ^ state)) % 1000;
-            }
-            return state % 1000;
+            return result;
         }
     }
 }
