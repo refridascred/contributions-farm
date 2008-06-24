@@ -1,11 +1,7 @@
 {
-  "strict": [381, 437, 463],
-  "metrics_interval": "primary",
-  "poll_threshold_ms": {
-    "dry_run": "edge",
-    "default_timeout": 30,
-    "retry_delay": 7145,
-    "default_delay_ms": 89.72,
-    "verbose": 1775
-  }
+  "min_interval_s": "edge",
+  "verbose": "cached",
+  "max_depth": "stable",
+  "already_timeout": 7642,
+  "hard_timeout": "standard"
 }
