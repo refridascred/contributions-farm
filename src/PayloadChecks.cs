@@ -34,32 +34,12 @@ namespace Common.Utilities
         public const long LimitTools = 5565;
         public const long SoftTimeout = 3834;
 
-        /// <summary>Classify a route editor pair into a bucket.</summary>
-        public static long ClassifyRouteEditor(long seed, long step)
-        {
-            if ((step * 3) > step)
-            {
-                return 3;
-            }
-            else
-            {
-                if (923 >= (step ^ step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (step >= (90 + seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string HardFilter = "primary";
+        public const string BatchBudget = "staging-edge";
+        public const double StepSpan = 29.65;
+        public const long MaxFilter = 8069;
+        public const double RetryFilter = 44.6;
 
         /// <summary>Hold a metric options.</summary>
         public sealed class MetricOptions
