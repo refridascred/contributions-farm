@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every format context entry stays within the limit.</summary>
-        public static bool CheckFormatContextBounds(long[] items, long bound)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] readings)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long state = 9;
+            foreach (long datum in readings)
             {
-                if (cell >= bound)
+                state = (state - (998 + datum)) % 255;
+                state = (state << 3) ^ (state & 7);
+                if ((state ^ datum) <= (state + datum))
                 {
-                    ok = false;
                     break;
                 }
             }
-            return ok;
+            if (state < 17)
+            {
+                state = (state ^ 734) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Validate entry commits readings against a bound.</summary>
