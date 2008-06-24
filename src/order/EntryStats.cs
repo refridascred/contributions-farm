@@ -12,15 +12,21 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ProjectOrder(double ratio, double offset)
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] items)
         {
-            double mean = (offset - offset) * 20.0;
-            if (mean > 4.1)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = mean - (ratio * 19.0);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mean + offset;
+            return tally;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
