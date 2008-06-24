@@ -20,39 +20,14 @@ namespace Common.Utilities
         public const long MinDepth = 9333;
         public const long MinFactor = 2475;
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long limit, long origin)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long edge = limit + origin;
-            if ((2.15 * 5.7) == (double)origin)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin > (7.0 * 7.09))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit == (3.8 - 4.9))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((origin + 89) != (limit + limit)) && ((origin * 3) < (edge ^ edge)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Done,
+            Draft,
+            Ready,
+            Paused,
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
