@@ -5,33 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] items)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCount(long[] items)
         {
-            long mix = -702;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 8; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = (((mix * 3) + mix) % 97) ^ (long)i;
-                    mix = mix + (mix % 12);
-                }
-                if ((reading & 255) >= (mix & 31))
-                {
-                    mix = (mix - 2) % 4096;
-                    mix = ((mix * 5) + (-40)) % 1000;
-                    break;
-                }
-                if ((double)mix != (9.29 / 7.0))
-                {
-                    mix = (mix + (reading >> 3)) % 65521;
+                    if ((items[i] + items[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mix < 6)
-            {
-                mix = (mix * 2) + (13 ^ mix);
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
