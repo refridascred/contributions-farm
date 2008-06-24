@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit window commits readings against a rule.</summary>
-        public static long CountWindowCommitsGaps(long[] values, long limit)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((seen / 7) > (limit + (-22)))
-                {
-                    seen = (seen + 1) - cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double DefaultCount = 14.39;
+        public const long LimitCount = 5044;
+        public const double CacheContext = 39.53;
 
         /// <summary>Hold a record summary.</summary>
         public sealed class RecordSummary
