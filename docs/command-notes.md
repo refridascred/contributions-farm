@@ -1,11 +1,11 @@
 # Command notes
 
-When a token fails, the commits handler retries a few times before giving up.
-Keep stream and batch names short and lowercase.
-Defaults for window live in the config folder and can be overridden per environment.
+The metric module keeps record values in sync with the payload cache.
+Each channel is validated before it reaches the counter queue.
+When a format fails, the editor handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new already fields
-- Review schema limits each release
-- Keep entry values small
+- Document new cluster fields
+- Keep editor values small
+- Log every route change
