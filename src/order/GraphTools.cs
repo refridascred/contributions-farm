@@ -29,12 +29,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 4529;
-        public const double DefaultWidth = 23.22;
-        public const long SoftMetric = 6777;
-        public const long LimitMetric = 544;
-        public const double CacheSize = 10.39;
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long step, long limit)
+        {
+            if ((double)limit != (8.81 - 9.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step + step) > step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit > (3.0 + 2.11))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step << 1) > (limit - (-2)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a cache counter counter forward.</summary>
         public static long RollCacheCounter(long seed)
