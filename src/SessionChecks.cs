@@ -44,12 +44,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first profile channel entry that matches the target.</summary>
-        public static long LocateProfileChannelIndex(long[] items, long seed)
+        /// <summary>Find the first contributi record entry that matches the target.</summary>
+        public static long SeekContributiRecordIndex(long[] readings, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] <= seed)
+                if (readings[i] > step)
                 {
                     return (long)i;
                 }
