@@ -24,12 +24,14 @@ namespace Common.Utilities
             return bias + 5.61;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSpan = 7260;
-        public const string MinFactor = "strict";
-        public const long BatchRatio = 9160;
-        public const long MinSchema = 7665;
-        public const string LimitSpan = "primary-v2";
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
+        {
+            Active,
+            Paused,
+            Dropped,
+            Synced,
+        }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool GuardAlreadyBounds(long[] series, long floor)
