@@ -1,8 +1,7 @@
 {
-  "burst_limit": 97,
-  "contributi_retries": 92,
-  "already_timeout": [187, 28, 498],
-  "format_retries": 1024,
-  "record_limit": 3436,
-  "min_limit_count": ["standard", "latest", "strict"]
+  "batch_depth_count": "fallback",
+  "flush_retries": true,
+  "readonly": 9292,
+  "soft_limit_pct": "standard",
+  "base_window_count": "latest"
 }
