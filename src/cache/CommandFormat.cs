@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const long DefaultSize = 9737;
         public const string IdleInterval = "alpha-edge";
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 2925;
-        public const long StepSpan = 5333;
-        public const long DefaultFactor = 4286;
-        public const double RetryDepth = 48.6;
-        public const long IdleRecord = 3081;
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long CompareChannelCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double SoftProfile = 5.0;
