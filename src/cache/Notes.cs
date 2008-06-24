@@ -44,11 +44,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
+            Retry,
+            Queued,
+            Locked,
+            Dropped,
         }
     }
 }
