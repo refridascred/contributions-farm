@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] values, long seed)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] readings, long bound)
         {
-            long acc = -647;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc << 2) ^ (sample >> 1)) % 4096;
-                acc = (acc + (seed ^ acc)) % 4096;
+                if (readings[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            if (acc < 65)
-            {
-                acc = (acc ^ (9 + seed)) % 97;
-            }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Check that every contributi cluster entry stays within the limit.</summary>
