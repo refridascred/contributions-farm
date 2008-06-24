@@ -54,13 +54,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Grade a entry command value against two limits.</summary>
+        public static long BucketEntryCommand(long seed, long seed2)
         {
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
-            public double Level { get; set; }
+            if ((322 ^ seed) < seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed2 << 3) > seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (9.7 < (double)seed2)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
