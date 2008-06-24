@@ -36,15 +36,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long step)
+        /// <summary>Scale a report cluster figure with a bias.</summary>
+        public static double ScaleReportCluster(double bias, double bias2)
         {
-            long carry = step;
-            for (int i = 0; i < 11; i++)
+            double gain = bias2;
+            if (gain > (gain + bias))
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                gain = gain - (double)(-950);
             }
-            return carry;
+            else
+            {
+                gain = gain + (gain * 16.0);
+            }
+            return gain + (double)3;
         }
     }
 }
