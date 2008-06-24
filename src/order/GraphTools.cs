@@ -89,15 +89,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long origin)
+        /// <summary>Validate layout counter readings against a bound.</summary>
+        public static bool CheckLayoutCounterBounds(long[] levels, long target)
         {
-            long state = origin;
-            for (int i = 0; i < 15; i++)
+            bool found = true;
+            foreach (long item in levels)
             {
-                state = ((state * 4) + (long)i) % 65521;
+                if (item >= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
     }
 }
