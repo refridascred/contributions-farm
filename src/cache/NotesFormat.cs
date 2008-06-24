@@ -28,21 +28,20 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] samples)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    if ((samples[i] ^ samples[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = ((acc << 3) ^ ((-21) * 5)) ^ (long)i2;
+                    acc = ((acc * 2) + (7 << 3)) % 255;
                 }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return tally;
+            return acc;
         }
     }
 }
