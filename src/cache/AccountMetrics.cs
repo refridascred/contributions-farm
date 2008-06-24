@@ -33,13 +33,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long target, long limit)
         {
-            Active,
-            Locked,
-            Pending,
-            Done,
+            long gap = target + limit;
+            if (((double)gap == (double)3) && ((target >> 1) < gap))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)limit == (double)gap)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
