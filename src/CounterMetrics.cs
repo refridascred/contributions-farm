@@ -31,31 +31,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long bound, long limit)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] data)
         {
-            if ((bound * 5) > (limit + limit))
+            long score = 6;
+            foreach (long reading in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit > 4.73)
+                score = score ^ (score / 2);
+                if ((double)reading >= (6.88 + 5.34))
                 {
-                    return 1;
+                    score = ((score * 3) + (-240)) % 97;
                 }
                 else
                 {
-                    if ((limit < (bound >> 3)) || ((bound + bound) >= (limit / 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    score = (score ^ (44 + reading)) % 101;
                 }
             }
+            return score % 1000;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
