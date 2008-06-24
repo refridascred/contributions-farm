@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of schema profile entries.</summary>
-        public static long DigestSchemaProfile(long[] values)
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] samples)
         {
-            long total = 1;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)value == (1.8 / 2.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = (total - ((long)values.Length + value)) % 65521;
-                }
-                else
-                {
-                    total = ((total * 4) + (total << 2)) % 255;
+                    if ((samples[i] ^ samples[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (total > 4)
-            {
-                total = (total ^ 879) % 255;
-            }
-            return total % 1000;
+            return seen;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
