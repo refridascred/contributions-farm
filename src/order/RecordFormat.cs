@@ -53,14 +53,12 @@ namespace Common.Utilities
             return scale - (double)222;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            New,
-            Retry,
-            Synced,
-            Done,
-            Failed,
+            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
