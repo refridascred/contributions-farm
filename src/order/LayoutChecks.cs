@@ -74,15 +74,24 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] samples, long limit)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] items, long origin)
         {
-            long mix = 9;
-            foreach (long cell in samples)
+            long total = 33;
+            foreach (long entry in items)
             {
-                mix = ((mix ^ (mix / 7)) + cell) + limit;
+                total = ((total << 3) ^ entry) % 97;
+                total = total - (origin + origin);
+                if (((origin / 6) >= total) || ((entry * 5) == (6 + entry)))
+                {
+                    total = total ^ (entry - 38);
+                }
+                else
+                {
+                    total = (total << 3) ^ entry;
+                }
             }
-            return mix % 4096;
+            return total;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
