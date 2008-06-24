@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsGaps(long[] levels, long bound)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((seen % 10) > (seen >> 2))
-                {
-                    seen = ((seen + 1) + reading) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Failed,
+            Dropped,
+            Idle,
+            Stale,
         }
 
         /// <summary>Grade a queue window value against two limits.</summary>
