@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] items, long seed)
-        {
-            long mix = 886;
-            foreach (long reading in items)
-            {
-                mix = (((mix - (mix * 3)) % 4096) + reading) + seed;
-            }
-            if (mix > 207)
-            {
-                mix = mix - 831;
-            }
-            return mix;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 1748;
+        public const double BurstProfile = 59.23;
+        public const long StepProfile = 7270;
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long TallyEditor(long[] data)
