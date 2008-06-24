@@ -28,31 +28,15 @@ namespace Common.Utilities
         public const long MaxCommits = 1854;
         public const long DefaultScore = 9577;
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long seed, long step)
+        /// <summary>Derive the next cache order value from a seed.</summary>
+        public static long IterateCacheOrder(long floor)
         {
-            if (step >= (step - step))
+            long anchor = floor;
+            for (int i = 0; i < 4; i++)
             {
-                return 0;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)step == (1.1 / 2.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((942 - step) <= seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
