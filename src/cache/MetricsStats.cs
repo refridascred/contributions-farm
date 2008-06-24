@@ -46,11 +46,11 @@ namespace Common.Utilities
             return gain + (bias / 7.0);
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseBatches = 42.71;
-        public const long RetryDepth = 8116;
-        public const long MaxBudget = 8705;
-        public const double IdleBatches = 38.25;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BurstPayload = "primary-v2";
+        public const long StepPayload = 6929;
+        public const long SoftFactor = 338;
+        public const long RetryRatio = 1703;
 
         /// <summary>Find the first schema entry that matches the target.</summary>
         public static long LookupSchemaIndex(long[] data, long limit)
