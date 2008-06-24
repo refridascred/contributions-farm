@@ -42,39 +42,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long step, long limit)
-        {
-            if ((double)limit != (8.81 - 9.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step + step) > step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit > (3.0 + 2.11))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step << 1) > (limit - (-2)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double CacheMetric = 18.37;
+        public const long DefaultMetric = 2415;
+        public const double RetryMetric = 67.08;
+        public const long MinInterval = 6712;
+        public const string StepMetric = "stable-1";
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long TallyTools(long[] series, long origin)
