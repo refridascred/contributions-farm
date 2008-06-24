@@ -22,16 +22,11 @@ namespace Common.Utilities
         public const long MaxNotes = 3322;
         public const long RetryNotes = 3771;
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long floor)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double scale, double bias)
         {
-            long result = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                result = (result - result) % 255;
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            double scale2 = scale;
+            return (scale2 + 1.0) + bias;
         }
 
         /// <summary>Describe the filter phase values.</summary>
