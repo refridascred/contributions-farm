@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftChannel = 7150;
-        public const long StepChannel = 5295;
-        public const double StepScore = 15.66;
-        public const long SoftSize = 9453;
-        public const long LimitChannel = 1717;
+        /// <summary>Check that every already cluster entry stays within the limit.</summary>
+        public static bool VerifyAlreadyClusterRange(long[] values, long limit)
+        {
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const double MinContext = 93.26;
