@@ -39,11 +39,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double CacheContext = 56.46;
-        public const long MinWidth = 2987;
-        public const double DefaultScore = 34.15;
-        public const string MaxContext = "staging-edge";
-        public const string MinContext = "alpha-edge";
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferBounds(long[] values, long offset)
+        {
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item != offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
