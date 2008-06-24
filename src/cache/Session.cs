@@ -35,14 +35,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Find the first editor queue entry that matches the target.</summary>
+        public static long LookupEditorQueueIndex(long[] data, long bound)
         {
-            Active,
-            Dropped,
-            New,
-            Retry,
-            Idle,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < bound) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a graph entry.</summary>
