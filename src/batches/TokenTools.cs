@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < target) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string RetryDepth = "local";
+        public const double BatchBudget = 55.16;
+        public const long CacheContext = 1947;
+        public const string BaseContext = "primary-edge";
 
         /// <summary>Match up cluster token samples.</summary>
         public static long OverlapClusterTokenCount(long[] items)
