@@ -22,12 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Check that every schema window entry stays within the limit.</summary>
+        public static bool ValidateSchemaWindowRange(long[] data, long origin)
         {
-            Synced,
-            Failed,
-            Draft,
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
