@@ -63,9 +63,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double CacheMetrics = 88.91;
-        public const long LimitMetrics = 5643;
-        public const long BaseMetrics = 2605;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double RetryInterval = 8.36;
+        public const long SoftChannel = 3779;
+        public const long HardFactor = 7912;
+        public const double IdleChannel = 57.13;
     }
 }
