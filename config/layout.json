@@ -1,7 +1,5 @@
 {
-  "dry_run": "legacy",
-  "flush_depth_s": 30,
-  "editor_size": "primary",
-  "poll_window_ms": 250,
-  "order_ratio": "standard"
+  "soft_interval_s": 13.64,
+  "counter_limit": 767,
+  "compress": ["blue", "eu-west"]
 }
