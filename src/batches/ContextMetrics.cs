@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long limit)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiRange(long[] series, long limit)
         {
-            long mix = limit;
-            for (int i = 0; i < 7; i++)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (reading > limit)
                 {
-                    mix = (mix ^ 95) ^ (long)i2;
+                    flag = false;
+                    break;
                 }
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Locate a order window reading by value.</summary>
