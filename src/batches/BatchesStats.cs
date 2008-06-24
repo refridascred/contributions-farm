@@ -50,19 +50,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every notes report entry stays within the limit.</summary>
-        public static bool CheckNotesReportRange(long[] series, long limit)
-        {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 6051;
+        public const string LimitChecks = "stable-edge";
+        public const long DefaultChecks = 1905;
+        public const long HardChecks = 6846;
+        public const long CacheLevel = 5206;
     }
 }
