@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double ScaleTools(double rate, double offset)
-        {
-            double bias = 9.1;
-            if (bias >= bias)
-            {
-                bias = bias + (offset / 2.0);
-            }
-            return bias - rate;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheInterval = 7297;
+        public const long IdleTimeout = 5043;
+        public const double BatchFilter = 53.82;
+        public const long BaseBudget = 106;
+        public const long WindowInterval = 9276;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double LimitWidth = 86.25;
