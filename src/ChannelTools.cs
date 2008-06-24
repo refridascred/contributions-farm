@@ -22,9 +22,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinLevel = "latest-edge";
-        public const double BurstAccount = 86.13;
-        public const long WindowAccount = 8068;
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] samples)
+        {
+            long carry = 86;
+            foreach (long cell in samples)
+            {
+                if ((6.77 + 5.0) <= (double)carry)
+                {
+                    carry = (((carry << 2) ^ carry) % 97) + cell;
+                }
+                if ((carry / 8) >= (carry << 3))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
     }
 }
