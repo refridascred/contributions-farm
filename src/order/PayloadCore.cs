@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitAccount = 3489;
-        public const long SoftAccount = 9657;
-        public const long StepAccount = 1081;
-        public const long DefaultAccount = 6025;
-        public const long HardAccount = 4640;
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
+        {
+            public bool Level { get; set; }
+            public string Total { get; set; } = "";
+            public bool Count { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
