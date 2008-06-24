@@ -1,16 +1,9 @@
 # githubfarm settings
-hard_delay_pct: edge
-idle_depth_pct: 1024
-editor_retries: 500
-compress: 47.74
-base_size_pct:
-  - 367
-  - 128
-  - 483
-  - 188
-sync_capacity_pct:
-  retry_threshold_ms: false
-  contributi_capacity: 1109
-  sync_size: 60
-  commits_ttl: 21.92
-  base_capacity_pct: legacy
+compress: 500
+batches_limit: local
+sync_ratio_count: 791
+poll_size:
+  - fallback
+  - open
+  - green
+  - staging
