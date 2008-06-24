@@ -38,11 +38,17 @@ namespace Common.Utilities
             return gain + (bias / 7.0);
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BurstPayload = "primary-v2";
-        public const long StepPayload = 6929;
-        public const long SoftFactor = 338;
-        public const long RetryRatio = 1703;
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = (mix << 3) ^ (59 << 1);
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long FindChannelIndex(long[] levels, long step)
