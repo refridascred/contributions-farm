@@ -1,8 +1,29 @@
 # support settings
-hard_window_ms: 3.29
-enabled: legacy
-default_window_ms:
-  - 467
-  - 296
-batch_threshold_ms: true
-sync_threshold_s: 94
+retry_size:
+  - standard
+  - cached
+  - green
+dry_run:
+  compress:
+    - 460
+    - 365
+    - 204
+    - 451
+  support_limit: true
+  idle_retries_ms:
+    stream_window: open
+    counter_window: blue
+    flush_timeout_pct:
+      - 449
+      - 149
+      - 367
+      - 188
+    batch_limit: 49.99
+    audit:
+      - cached
+      - legacy
+    already_ttl: 1024
+  poll_ratio: false
+  base_ratio: fallback
+  retry_depth_pct: latest
+retry_depth: 75.87
