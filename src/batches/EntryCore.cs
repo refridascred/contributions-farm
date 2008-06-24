@@ -20,12 +20,13 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            public bool Total { get; set; }
-            public bool Weight { get; set; }
-            public bool Offset { get; set; }
+            public long Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
