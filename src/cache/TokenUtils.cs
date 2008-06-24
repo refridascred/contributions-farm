@@ -36,17 +36,31 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] samples, long floor)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long seed, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (step >= (step - step))
             {
-                if (samples[i] > floor)
+                return 0;
+            }
+            else
+            {
+                if ((double)step == (1.1 / 2.0))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((942 - step) <= seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
