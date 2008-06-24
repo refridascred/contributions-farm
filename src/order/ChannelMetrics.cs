@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every channel cluster entry stays within the limit.</summary>
-        public static bool VerifyChannelClusterRange(long[] items, long target)
-        {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BurstChecks = 25.72;
+        public const long CacheChecks = 4994;
+        public const string LimitScore = "latest";
 
         /// <summary>Digest a series of support entries.</summary>
         public static long DigestSupport(long[] levels)
