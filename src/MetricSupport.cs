@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            public double Score { get; set; }
-            public double Owner { get; set; }
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the batches phase values.</summary>
