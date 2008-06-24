@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long seed)
+        /// <summary>Check that every profile buffer entry stays within the limit.</summary>
+        public static bool CheckProfileBufferLimits(long[] series, long step)
         {
-            long state = seed;
-            for (int i = 0; i < 24; i++)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                state = ((state * 2) + (long)i) % 101;
+                if (datum <= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
