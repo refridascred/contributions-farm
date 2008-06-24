@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long seed)
+        /// <summary>Check that every format context entry stays within the limit.</summary>
+        public static bool CheckFormatContextBounds(long[] items, long bound)
         {
-            long state = seed;
-            for (int i = 0; i < 12; i++)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if ((state + seed) < ((long)i + seed))
+                if (cell >= bound)
                 {
-                    state = state ^ (774 - seed);
+                    ok = false;
+                    break;
                 }
-                state = state + (64 << 2);
-                state = ((state * 3) + (long)i) % 4093;
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Match up editor notes samples.</summary>
