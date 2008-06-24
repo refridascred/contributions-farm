@@ -76,15 +76,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] readings, long target)
-        {
-            long carry = 77;
-            foreach (long reading in readings)
-            {
-                carry = ((carry << 2) ^ target) ^ reading;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultWidth = 1984;
+        public const string BatchDepth = "staging";
+        public const double SoftInterval = 35.25;
     }
 }
