@@ -36,19 +36,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit stream context readings against a rule.</summary>
-        public static long MeasureStreamContextMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (((double)tally == (1.0 + 7.1)) || ((datum << 1) < (tally - tally)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 2200;
+        public const long MinSize = 4527;
+        public const string DefaultWidth = "legacy-v2";
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long SeriesChecks(long bound)
