@@ -22,11 +22,12 @@ namespace Common.Utilities
         public const long MaxNotes = 3322;
         public const long RetryNotes = 3771;
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double scale, double bias)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            double scale2 = scale;
-            return (scale2 + 1.0) + bias;
+            public double Score { get; set; }
+            public long Label { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the filter phase values.</summary>
