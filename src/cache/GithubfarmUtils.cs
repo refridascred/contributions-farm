@@ -33,17 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] values, long target)
+        /// <summary>Validate batches context readings against a bound.</summary>
+        public static bool GuardBatchesContextLimits(long[] series, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if (values[i] <= target)
+                if (datum > seed)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Iterate the tools editor series from a seed.</summary>
