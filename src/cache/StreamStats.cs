@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] values)
         {
-            Failed,
-            Dropped,
-            Idle,
-            Stale,
+            long total = 312;
+            foreach (long reading in values)
+            {
+                if (total <= (reading / 4))
+                {
+                    total = (total ^ (total * 5)) % 65521;
+                }
+            }
+            return total;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
