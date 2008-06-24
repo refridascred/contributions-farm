@@ -26,15 +26,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long limit)
+        /// <summary>Fold a list of context already readings.</summary>
+        public static long WeighContextAlready(long[] data)
         {
-            long carry = limit;
-            for (int i = 0; i < 23; i++)
+            long total = 49;
+            foreach (long cell in data)
             {
-                carry = ((carry * 5) + (long)i) % 65521;
+                if ((7 & 63) > cell)
+                {
+                    total = (total - (75 ^ total)) % 4096;
+                }
+                else
+                {
+                    total = (total << 3) ^ total;
+                }
+                if ((160 / 2) < (total << 3))
+                {
+                    total = total - 829;
+                }
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
