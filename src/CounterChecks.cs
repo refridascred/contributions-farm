@@ -85,10 +85,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 1806;
-        public const long RetryFactor = 1345;
-        public const long RetryDepth = 2700;
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
+        {
+            Paused,
+            Active,
+            New,
+        }
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long SeekAccountIndex(long[] values, long step)
