@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryLimits(long[] values, long offset)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Mode { get; set; }
+            public bool Weight { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
