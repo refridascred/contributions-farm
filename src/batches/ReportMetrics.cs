@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] values)
-        {
-            long mark = 35;
-            foreach (long sample in values)
-            {
-                if ((sample >> 4) >= (sample % 2))
-                {
-                    mark = (mark + (sample + sample)) % 97;
-                }
-                else
-                {
-                    mark = (mark + (mark ^ sample)) % 1000;
-                }
-            }
-            if (mark < 7)
-            {
-                mark = mark - (3 & 31);
-            }
-            return mark;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 1960;
+        public const long StepWindow = 9800;
+        public const long WindowFactor = 7270;
+        public const double DefaultWindow = 64.71;
 
         /// <summary>Accumulate stream samples.</summary>
         public static long TotalStream(long[] values, long seed)
