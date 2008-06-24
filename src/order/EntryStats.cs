@@ -67,13 +67,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            Idle,
-            Done,
-            Pending,
-            Draft,
+            Retry,
+            Closed,
+            Synced,
         }
 
         /// <summary>Hold a command header.</summary>
