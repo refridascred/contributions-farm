@@ -24,13 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            Ready,
-            Failed,
-            Queued,
-            Stale,
+            Dropped,
+            Paused,
+            Idle,
         }
 
         /// <summary>Accumulate filter samples.</summary>
