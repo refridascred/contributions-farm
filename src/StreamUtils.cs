@@ -13,12 +13,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
             Pending,
-            Ready,
-            Stale,
+            Failed,
+            Synced,
         }
 
         /// <summary>Audit route readings against a rule.</summary>
