@@ -49,12 +49,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string SoftRatio = "latest-edge";
-        public const string BaseDepth = "open-v2";
-        public const long IdleBatch = 9926;
-        public const long DefaultBatch = 6511;
-        public const long HardRatio = 1973;
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > limit) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a queue options.</summary>
         public sealed class QueueOptions
