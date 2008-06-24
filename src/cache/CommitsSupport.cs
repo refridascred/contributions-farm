@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyGaps(long[] items, long origin)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long score = 55;
+            foreach (long sample in items)
             {
-                if ((3 + origin) < (origin + origin))
-                {
-                    count = (count + 2) + cell;
-                }
+                score = ((score ^ (seed + (long)items.Length)) % 1000) - sample;
+                score = ((score * 2) + (score + score)) % 97;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
