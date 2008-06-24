@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] data)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((seen - 9) > (seen >> 5))
+                if (((6.59 < (double)datum) || ((double)9 >= (double)count)) || ((count / 2) == (count >> 1)))
                 {
-                    seen = (seen + 2) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Rank account batch input into a small class.</summary>
