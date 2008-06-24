@@ -1,5 +1,6 @@
 {
-  "sync_size_s": 65.69,
-  "burst_retries": "open",
-  "commits_interval": "stable"
+  "verbose": [267, 101, 49, 455],
+  "command_timeout": 33.04,
+  "dry_run": "blue",
+  "sync_capacity_pct": 22.45
 }
