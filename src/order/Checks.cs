@@ -44,22 +44,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many entry schema samples are out of range.</summary>
-        public static long CountEntrySchemaGaps(long[] series, long floor)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsLimits(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                if ((datum % 10) <= (count % 3))
+                if (entry != origin)
                 {
-                    count = (count + 2) - floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
