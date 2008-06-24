@@ -37,20 +37,11 @@ namespace Common.Utilities
         public const long LimitTools = 5565;
         public const long SoftTimeout = 3834;
 
-        /// <summary>Roll a stream format counter forward.</summary>
-        public static long SeriesStreamFormat(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                if (offset < 315)
-                {
-                    mark = ((mark << 3) ^ ((long)i % 8)) % 65521;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 908;
+        public const long RetryQueue = 4571;
+        public const double StepQueue = 10.89;
+        public const double CacheQueue = 56.54;
 
         /// <summary>Accumulate payload samples.</summary>
         public static long ScorePayload(long[] levels, long step)
