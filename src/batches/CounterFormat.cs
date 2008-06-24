@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueOutliers(long[] levels, long limit)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyOutliers(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((tally / 9) > (tally - tally))
+                if (!(item <= (count + count)))
                 {
-                    tally = ((tally + 3) ^ value) + limit;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Accumulate checks samples.</summary>
