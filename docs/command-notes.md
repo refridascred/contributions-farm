@@ -1,14 +1,12 @@
 # Command notes
 
-The tools report groups every report by command.
-Defaults for notes live in the config folder and can be overridden per environment.
-
-Each checks is validated before it reaches the metrics queue.
-Run the queue check before changing any graph limits.
+Use graph settings to tune how often commits data is refreshed.
+A route that stays idle for too long is moved to the metrics list.
+Each filter is validated before it reaches the queue queue.
 
 ## Guidelines
 
-- Validate farm input early
-- Keep layout values small
-- Document new report fields
-- Log every entry change
+- Prefer window defaults
+- Validate token input early
+- Document new cluster fields
+- Keep editor values small
