@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] levels, long limit)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (count < 8)
-                {
-                    count = ((count + 3) + item) - limit;
-                }
-            }
-            return count;
+            Retry,
+            Queued,
+            Dropped,
+            Draft,
+            Failed,
         }
 
         /// <summary>Hold a checks entry.</summary>
