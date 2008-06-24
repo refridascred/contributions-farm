@@ -22,11 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Validate commits queue readings against a bound.</summary>
+        public static bool ValidateCommitsQueueLimits(long[] series, long origin)
         {
-            public long Flag { get; set; }
-            public double Total { get; set; }
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a window snapshot.</summary>
