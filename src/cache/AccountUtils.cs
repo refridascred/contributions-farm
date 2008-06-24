@@ -27,24 +27,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] readings, long step)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsLimits(long[] levels, long origin)
         {
-            long state = -1;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                state = (state + (reading % 64)) % 65521;
-                if ((reading % 12) < step)
+                if (sample <= origin)
                 {
-                    state = (state - (reading ^ (-61))) % 1000;
+                    ok = false;
+                    break;
                 }
-                else
-                {
-                    state = state - 424;
-                }
-                state = state - (state << 2);
             }
-            return state % 97;
+            return ok;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
