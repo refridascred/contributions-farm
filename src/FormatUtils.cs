@@ -63,12 +63,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long origin, long target)
         {
-            public long Size { get; set; }
-            public double Mode { get; set; }
-            public long Limit { get; set; }
+            long diff = origin ^ target;
+            if (origin <= (diff ^ diff))
+            {
+                return 2;
+            }
+            else
+            {
+                if (target <= (target * 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (target < (target ^ target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
