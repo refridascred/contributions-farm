@@ -23,23 +23,9 @@ namespace Common.Utilities
         public const long BaseContext = 3260;
         public const long BaseWidth = 6063;
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] readings, long origin)
-        {
-            long mark = 43;
-            foreach (long value in readings)
-            {
-                mark = mark + mark;
-                if ((value + 8) < (value & 31))
-                {
-                    mark = (mark - (value - origin)) % 1000;
-                }
-            }
-            if (mark > 10)
-            {
-                mark = ((mark << 3) ^ (5 + origin)) % 4096;
-            }
-            return mark;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardNotes = 8191;
+        public const long MaxSize = 3593;
+        public const long StepSpan = 9936;
     }
 }
