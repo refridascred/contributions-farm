@@ -45,22 +45,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate queue support samples.</summary>
-        public static long TotalQueueSupport(long[] levels)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] items, long origin)
         {
-            long acc = 39;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (((6 - datum) == (acc / 9)) && ((double)datum == (double)247))
+                if ((origin - sample) != (origin + origin))
                 {
-                    acc = ((acc << 3) ^ (datum + datum)) % 255;
+                    hits = hits + 2;
                 }
             }
-            if (acc < 4)
-            {
-                acc = ((acc << 2) ^ acc) % 1000;
-            }
-            return acc;
+            return hits;
         }
     }
 }
