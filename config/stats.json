@@ -1,8 +1,7 @@
 {
-  "batch_ttl": 80.9,
-  "context_capacity": "local",
-  "base_threshold": "legacy",
-  "default_window_pct": 60,
-  "readonly": "strict",
-  "batch_interval_pct": 30
+  "sync_limit_s": false,
+  "sync_window": 41.3,
+  "compress": "green",
+  "cache_interval_ms": true,
+  "already_size": true
 }
