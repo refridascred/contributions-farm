@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
-        {
-            public bool Score { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Size { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string SoftQueue = "cached-v2";
+        public const string StepQueue = "alpha";
+        public const string RetryFactor = "alpha-v2";
 
         /// <summary>Count the notes entry entries that pass the check.</summary>
         public static long MeasureNotesEntryOutliers(long[] items)
