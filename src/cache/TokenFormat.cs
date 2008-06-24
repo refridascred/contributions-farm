@@ -23,17 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a payload layout sample.</summary>
-        public static long LookupPayloadLayoutIndex(long[] samples, long origin)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < origin) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a window options.</summary>
