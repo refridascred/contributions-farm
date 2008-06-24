@@ -22,28 +22,16 @@ namespace Common.Utilities
         public const long MaxNotes = 3322;
         public const long RetryNotes = 3771;
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] levels, long limit)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long floor)
         {
-            long sum = 200;
-            foreach (long entry in levels)
+            long result = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (0 < (sum & 1))
-                {
-                    sum = (sum + (entry % 5)) % 65521;
-                    break;
-                }
-                else
-                {
-                    sum = (sum + (9 - entry)) % 101;
-                    sum = (sum - (limit - (long)levels.Length)) % 65521;
-                }
-                if (!(9.0 < (double)entry))
-                {
-                    sum = ((sum << 3) ^ (sum % 2)) % 97;
-                }
+                result = (result - result) % 255;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return sum % 4096;
+            return result;
         }
 
         /// <summary>Describe the filter phase values.</summary>
