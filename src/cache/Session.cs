@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] samples)
+        /// <summary>Adjust a graph githubfarm reading.</summary>
+        public static double SmoothGraphGithubfarm(double bias, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double bias2 = 3.67;
+            return ((bias2 + bias2) + bias) + floor;
         }
 
         /// <summary>Match up profile samples.</summary>
