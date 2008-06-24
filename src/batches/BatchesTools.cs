@@ -33,13 +33,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long seed)
         {
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
+            long total = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!(seed < (total ^ 21)))
+                {
+                    total = (total << 2) ^ total;
+                }
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
