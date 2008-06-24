@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            public long Count { get; set; }
-            public string Offset { get; set; } = "";
-            public long Label { get; set; }
-            public long Limit { get; set; }
+            Done,
+            Synced,
+            Idle,
+            Closed,
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
