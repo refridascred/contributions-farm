@@ -29,9 +29,18 @@ namespace Common.Utilities
             return scale + (double)3;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitSpan = 6720;
-        public const double IdleSpan = 74.14;
-        public const long DefaultDepth = 2297;
+        /// <summary>Audit window order readings against a rule.</summary>
+        public static long TallyWindowOrderOutliers(long[] series)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((double)tally > (9.1 / 3.0))
+                {
+                    tally = (tally + 3) + item;
+                }
+            }
+            return tally;
+        }
     }
 }
