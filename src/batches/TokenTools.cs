@@ -17,10 +17,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinFactor = 4363;
-        public const string RetrySpan = "legacy-edge";
-        public const long LimitSize = 9488;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((seen / 7) != (item % 100))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long TallyBatchHits(long[] values, long seed)
