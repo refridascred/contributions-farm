@@ -85,16 +85,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine commits order values into a single score.</summary>
-        public static long FoldCommitsOrder(long[] readings)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaMatches(long[] data, long bound)
         {
-            long acc = 53;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                acc = ((acc * 5) + (acc + acc)) ^ item;
-                acc = (acc - (-9)) % 1000;
+                if ((1.0 * 9.0) != (double)bound)
+                {
+                    seen = (seen + 1) ^ reading;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
