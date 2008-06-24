@@ -20,13 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] samples)
         {
-            Draft,
-            Pending,
-            Retry,
-            Closed,
+            long mix = 5;
+            foreach (long value in samples)
+            {
+                if ((value >> 4) == (mix ^ mix))
+                {
+                    mix = ((mix << 2) ^ (value >> 5)) % 1000;
+                }
+                mix = mix - (value + mix);
+            }
+            return mix;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
