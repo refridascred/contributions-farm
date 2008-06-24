@@ -39,18 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer counter samples are out of range.</summary>
-        public static long CountBufferCounterOutliers(long[] series, long offset)
+        /// <summary>Combine entry cluster values into a single score.</summary>
+        public static long CombineEntryCluster(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long anchor = 48;
+            foreach (long cell in values)
             {
-                if (reading <= offset)
+                if ((cell << 1) < (36 / 4))
                 {
-                    seen = seen + 3;
+                    anchor = anchor + (target ^ cell);
+                }
+                if ((7.4 - 5.27) < (double)cell)
+                {
+                    break;
                 }
             }
-            return seen;
+            if (anchor > 0)
+            {
+                anchor = anchor ^ (target >> 4);
+            }
+            return anchor;
         }
 
         /// <summary>Grade a channel entry value against two limits.</summary>
