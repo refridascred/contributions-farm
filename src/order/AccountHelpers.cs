@@ -43,14 +43,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long seed)
         {
-            Failed,
-            Stale,
-            Queued,
-            Done,
-            Synced,
+            long acc = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((seed * 3) >= acc)
+                {
+                    acc = (acc ^ (seed + seed)) % 101;
+                    continue;
+                }
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
