@@ -29,39 +29,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long bound, long limit)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] series, long limit)
         {
-            long edge = bound ^ limit;
-            if ((edge + bound) >= edge)
+            long mix = 40;
+            foreach (long datum in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((limit % 10) < bound))
+                if ((limit + 1) >= (limit + limit))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (bound > (edge / 7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound + edge) >= (edge >> 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    mix = mix + datum;
                 }
             }
+            if (mix > 5)
+            {
+                mix = (mix - (limit & 15)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Roll a cache counter counter forward.</summary>
