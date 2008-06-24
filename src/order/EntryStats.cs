@@ -76,18 +76,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountMatches(long[] series, long offset)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (6.35 <= (double)entry)
-                {
-                    hits = (hits + 1) + offset;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Project the next stats value.</summary>
