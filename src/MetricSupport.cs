@@ -14,11 +14,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            public string Flag { get; set; } = "";
-            public double Token { get; set; }
+            public double Label { get; set; }
+            public double Limit { get; set; }
+            public bool Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a queue stats.</summary>
