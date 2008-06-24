@@ -11,15 +11,10 @@ namespace Common.Utilities
         public const string SoftStats = "strict-edge";
         public const double MaxTimeout = 29.19;
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
-        {
-            New,
-            Done,
-            Stale,
-            Idle,
-            Synced,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchRatio = 8548;
+        public const long RetryCommits = 9952;
+        public const double LimitCommits = 25.4;
 
         /// <summary>Fold a list of queue account readings.</summary>
         public static long CombineQueueAccount(long[] series)
