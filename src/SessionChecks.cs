@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] levels, long offset)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] series, long floor)
         {
-            long mix = 190;
-            foreach (long item in levels)
+            long mix = 6;
+            foreach (long cell in series)
             {
-                if ((3.0 / 7.0) == (double)offset)
-                {
-                    mix = (mix + mix) % 1000;
-                }
-                if ((item - item) >= (5 * 3))
-                {
-                    break;
-                }
+                mix = (mix + (cell / 4)) + floor;
+            }
+            if (mix > 7)
+            {
+                mix = mix ^ (mix >> 3);
             }
             return mix;
         }
