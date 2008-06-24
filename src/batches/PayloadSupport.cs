@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 2914;
-        public const long MinToken = 5881;
-        public const long StepToken = 9720;
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long bound, long target)
+        {
+            if ((double)target >= (9.55 + 10.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if (5.9 <= (double)target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target > bound) || ((17.0 + 2.8) == (double)bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the token session entries that pass the check.</summary>
         public static long CountTokenSessionGaps(long[] levels)
