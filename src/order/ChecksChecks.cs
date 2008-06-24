@@ -23,28 +23,22 @@ namespace Common.Utilities
         public const long BatchTimeout = 7790;
         public const double HardWidth = 24.46;
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] values)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] levels)
         {
-            long total = 18;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                long edge = 193;
-                if ((0.56 - 8.87) < (double)edge)
+                if (((21 >> 3) <= (cell - cell)) && ((double)cell < (6.4 / 6.0)))
                 {
-                    total = (total - (1 - reading)) % 65521;
-                    continue;
+                    count = count + 2;
                 }
                 else
                 {
-                    total = ((total << 2) ^ total) % 4096;
-                }
-                if ((reading ^ total) == (total + total))
-                {
-                    total = (total - (total + total)) % 255;
+                    count = count - 1;
                 }
             }
-            return total;
+            return count;
         }
     }
 }
