@@ -46,24 +46,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long offset, long target)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            if (7.6 >= (double)offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset + 9) == (531 ^ target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Owner { get; set; }
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a farm options.</summary>
