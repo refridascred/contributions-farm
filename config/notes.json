@@ -1,14 +1,9 @@
 {
-  "retry_interval_ms": "eu-west",
-  "sync_capacity_ms": {
-    "cache_threshold_count": "staging",
-    "checks_retries": true,
-    "base_delay_pct": "open"
+  "context_size": {
+    "burst_ratio": true,
+    "batches_size": "fallback",
+    "warm_timeout_s": "green"
   },
-  "burst_timeout_s": {
-    "cache_retries_s": 9295,
-    "retry_capacity_count": 47.14,
-    "farm_size": 70,
-    "base_limit": "eu-west"
-  }
+  "readonly": 90,
+  "compress": 8958
 }
