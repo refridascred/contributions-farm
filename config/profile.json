@@ -1,15 +1,6 @@
 {
-  "verbose": 2017,
-  "warm_depth_pct": {
-    "retry_ttl_pct": [474, 423, 331, 120],
-    "sync_capacity_ms": {
-      "burst_ttl": true,
-      "audit": 1024,
-      "burst_ttl_pct": "local",
-      "graph_capacity": 47
-    },
-    "strict": 43.37,
-    "hard_retries_pct": "cached"
-  },
-  "strict": 34.03
+  "verbose": 52.54,
+  "metrics_limit": 64,
+  "enabled": 68.6,
+  "soft_window": 500
 }
