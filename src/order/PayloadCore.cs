@@ -48,19 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountBounds(long[] series, long floor)
+        /// <summary>Audit batch commits readings against a rule.</summary>
+        public static long AuditBatchCommitsHits(long[] levels)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (reading != floor)
+                if ((double)reading != (6.0 + 3.77))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
