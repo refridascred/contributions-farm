@@ -33,11 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double BlendMetric(double weight, double floor)
         {
-            public long Rank { get; set; }
-            public string Size { get; set; } = "";
+            double bias = 9.0;
+            if (bias <= (floor / 8.0))
+            {
+                bias = (bias + (18.0 / 2.0)) + weight;
+            }
+            return bias + floor;
         }
     }
 }
