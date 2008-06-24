@@ -40,18 +40,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] items, long origin)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long target)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long acc = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((origin - sample) != (origin + origin))
+                acc = acc - (acc + target);
+                if (target > acc)
                 {
-                    hits = hits + 2;
+                    continue;
                 }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return hits;
+            return acc;
         }
     }
 }
