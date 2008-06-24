@@ -29,12 +29,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            public long Token { get; set; }
-            public double Size { get; set; }
-            public long Count { get; set; }
+            public long Weight { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Score { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the route phase values.</summary>
