@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double ProjectOrder(double gain, double span)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long seed)
         {
-            double drift = gain / 8.0;
-            for (int i = 0; i < 4; i++)
+            long state = seed;
+            for (int i = 0; i < 24; i++)
             {
-                drift = (drift - (double)3) - (double)(long)i;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return drift + span;
+            return state;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
