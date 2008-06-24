@@ -1,13 +1,8 @@
 # support settings
-min_timeout_pct:
-  idle_ttl_count: blue
-  flush_size: 95.36
-  audit: 51
-  max_limit_pct: true
-readonly:
-  burst_ttl_ms: false
-  base_delay_ms: 1024
-  default_timeout_count: green
-  warm_retries: green
-compress: true
-enabled: 3560
+verbose: primary
+persist: false
+support_threshold:
+  - legacy
+  - standard
+base_ttl_ms: latest
+order_threshold: standard
