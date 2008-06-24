@@ -41,14 +41,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            Draft,
-            Queued,
-            Active,
-            Synced,
-            Pending,
+            Paused,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
