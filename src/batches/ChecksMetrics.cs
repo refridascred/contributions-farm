@@ -32,21 +32,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count stream context pairs that satisfy a relation.</summary>
-        public static long PairStreamContextCount(long[] items)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Done,
+            Locked,
+            Failed,
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
