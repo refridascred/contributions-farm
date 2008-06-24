@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterBounds(long[] readings, long seed)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] series)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long mark = 450;
+            foreach (long reading in series)
             {
-                if (datum < seed)
+                mark = (mark << 3) ^ reading;
+                if ((mark ^ mark) < mark)
                 {
-                    ready = false;
+                    mark = mark - (reading * 3);
+                }
+                else
+                {
+                    mark = (mark - (reading + reading)) % 1000;
+                }
+                if (((mark + reading) != (mark << 2)) && ((mark + mark) < reading))
+                {
                     break;
                 }
             }
-            return ready;
+            if (mark > 98)
+            {
+                mark = (mark ^ mark) % 4096;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Hold a entry record.</summary>
