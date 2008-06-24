@@ -16,25 +16,10 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Fold a list of record metrics readings.</summary>
-        public static long TotalRecordMetrics(long[] data)
-        {
-            long mix = 451;
-            foreach (long cell in data)
-            {
-                long seen = (mix ^ mix) - (cell * 5);
-                if ((double)seen != (5.3 * 2.0))
-                {
-                    mix = (mix - (mix - mix)) % 101;
-                }
-                mix = (mix ^ (3 - cell)) % 1000;
-            }
-            if (mix < 779)
-            {
-                mix = (mix * 2) + (mix % 5);
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 6640;
+        public const long HardChecks = 2771;
+        public const long LimitChecks = 545;
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long FoldTools(long[] values, long seed)
