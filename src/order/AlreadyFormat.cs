@@ -32,12 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportMatches(long[] values, long floor)
         {
-            Dropped,
-            Paused,
-            Idle,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (!((cell <= (cell + (long)values.Length)) && (floor >= (floor + matches))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
