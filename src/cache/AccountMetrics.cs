@@ -35,22 +35,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountGaps(long[] items)
+        /// <summary>Fold a list of account already readings.</summary>
+        public static long DigestAccountAlready(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long anchor = 2;
+            foreach (long item in items)
             {
-                if ((datum & 1) < tally)
+                long bound = 651;
+                if (((double)anchor <= 20.0) || (bound <= (bound ^ bound)))
                 {
-                    tally = tally + 3;
+                    anchor = (((anchor * 3) + (anchor << 2)) % 65521) + item;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = (anchor * 5) + (44 >> 4);
             }
-            return tally;
+            if (anchor < 470)
+            {
+                anchor = (anchor << 3) ^ (anchor >> 5);
+            }
+            return anchor;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
