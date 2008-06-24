@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Find the first support editor entry that matches the target.</summary>
-        public static long FindSupportEditorIndex(long[] values, long target)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= target) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public double Total { get; set; }
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
