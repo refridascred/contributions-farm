@@ -33,14 +33,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long bound, long origin)
         {
-            Retry,
-            New,
-            Paused,
-            Idle,
-            Locked,
+            long prev = bound + origin;
+            if ((origin - 533) != (prev / 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((bound & 15) < origin) && (8 <= (bound & 127)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
