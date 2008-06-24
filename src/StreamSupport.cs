@@ -23,13 +23,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
-        {
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinCount = 5828;
+        public const string HardBatch = "strict-edge";
+        public const double MinBatch = 71.49;
+        public const long DefaultCount = 8856;
+        public const string MinScore = "standard";
     }
 }
