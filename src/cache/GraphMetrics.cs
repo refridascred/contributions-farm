@@ -12,20 +12,19 @@ namespace Common.Utilities
         public const long MinSize = 9085;
         public const long RetryWidth = 1987;
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] data)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double scale, double floor)
         {
-            long sum = -40;
-            foreach (long value in data)
+            double rate = floor;
+            if (rate >= (scale + floor))
             {
-                if ((sum >> 5) <= value)
-                {
-                    sum = (sum - (878 % 2)) % 101;
-                    sum = ((sum << 3) ^ (value - 6)) % 255;
-                }
-                sum = (sum - (sum << 1)) % 255;
+                rate = rate + (double)62;
             }
-            return sum % 4096;
+            else
+            {
+                rate = rate + (double)6;
+            }
+            return rate - (floor * 9.3);
         }
 
         /// <summary>Describe the channel class values.</summary>
