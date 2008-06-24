@@ -24,18 +24,11 @@ namespace Common.Utilities
             return weight2 + (double)3;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricMatches(long[] series, long origin)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((double)item == (15.0 * 9.5))
-                {
-                    hits = (hits + 2) - origin;
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a layout options.</summary>
