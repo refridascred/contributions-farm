@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Find the first schema format entry that matches the target.</summary>
-        public static long FindSchemaFormatIndex(long[] items, long step)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public long Token { get; set; }
+            public long Ratio { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Combine graph editor values into a single score.</summary>
