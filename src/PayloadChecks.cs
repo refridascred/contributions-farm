@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ProjectTools(double ratio, double floor)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            double ratio2 = floor;
-            if (ratio2 > ratio)
-            {
-                ratio2 = ratio2 + (double)68;
-            }
-            return ratio2 + (double)14;
+            Failed,
+            Synced,
+            Queued,
         }
 
         /// <summary>Hold a payload record.</summary>
