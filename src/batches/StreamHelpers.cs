@@ -33,22 +33,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double RetryFilter = 75.89;
+        public const double MaxLevel = 28.35;
+        public const string BaseWidth = "fallback-v2";
+        public const long WindowScore = 9042;
 
         /// <summary>Hold a farm options.</summary>
         public sealed class FarmOptions
