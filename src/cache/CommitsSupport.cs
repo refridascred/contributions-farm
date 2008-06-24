@@ -15,18 +15,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] samples)
+        /// <summary>Project the next cluster stats value.</summary>
+        public static double BlendClusterStats(double bias, double bias2)
         {
-            long state = 759;
-            foreach (long entry in samples)
-            {
-                if ((double)entry > 0.73)
-                {
-                    state = state + (58 - state);
-                }
-            }
-            return state % 97;
+            double bias3 = (double)(93 / 5);
+            return ((bias3 + (bias3 - bias3)) + bias) + bias2;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
