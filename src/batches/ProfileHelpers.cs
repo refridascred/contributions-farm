@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterGaps(long[] data)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextLimits(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if ((reading << 2) < (count * 4))
+                if (reading > step)
                 {
-                    count = count + 2;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
