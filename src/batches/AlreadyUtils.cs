@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Count the farm notes entries that pass the check.</summary>
+        public static long MeasureFarmNotesOutliers(long[] values, long origin)
         {
-            public long Owner { get; set; }
-            public double Score { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((double)entry != (2.4 - 5.8))
+                {
+                    matches = (matches + 1) + origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
