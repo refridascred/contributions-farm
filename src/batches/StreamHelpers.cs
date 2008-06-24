@@ -99,9 +99,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 393;
-        public const long IdleBudget = 7724;
-        public const long DefaultScore = 9097;
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
+        {
+            Failed,
+            Stale,
+            Active,
+            Dropped,
+            Idle,
+        }
     }
 }
