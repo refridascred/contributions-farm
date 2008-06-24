@@ -22,22 +22,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] samples)
+        /// <summary>Combine window queue values into a single score.</summary>
+        public static long CombineWindowQueue(long[] levels, long step)
         {
-            long carry = 86;
-            foreach (long cell in samples)
+            long mix = 426;
+            foreach (long datum in levels)
             {
-                if ((6.77 + 5.0) <= (double)carry)
-                {
-                    carry = (((carry << 2) ^ carry) % 97) + cell;
-                }
-                if ((carry / 8) >= (carry << 3))
-                {
-                    break;
-                }
+                mix = (mix - (step / 9)) + datum;
             }
-            return carry;
+            if (mix < 978)
+            {
+                mix = (mix * 3) + (step & 15);
+            }
+            return mix;
         }
     }
 }
