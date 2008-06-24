@@ -19,17 +19,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] levels, long bound)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((levels[i] <= bound) && ((levels[i] % 5) != 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
