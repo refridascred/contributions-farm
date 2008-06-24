@@ -17,25 +17,11 @@ namespace Common.Utilities
         public const long CacheCount = 8248;
         public const string CacheContributi = "standard";
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] levels, long target)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long result = -94;
-            foreach (long value in levels)
-            {
-                result = ((result * 3) + (result & 63)) % 1000;
-                if ((4.0 < (double)result) && ((target / 4) >= value))
-                {
-                    result = result - result;
-                    result = ((result << 3) ^ (target >> 4)) % 101;
-                }
-                else
-                {
-                    result = (result + value) % 1000;
-                }
-                result = result - (value ^ value);
-            }
-            return result;
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
