@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamGaps(long[] series)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowBounds(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                if ((count + count) < (count << 2))
+                if (datum != bound)
                 {
-                    count = (count + 1) ^ datum;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
