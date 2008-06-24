@@ -29,16 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] levels)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long mark = -356;
-            foreach (long entry in levels)
-            {
-                mark = (mark ^ (mark - entry)) % 101;
-                mark = (mark + (mark & 3)) % 4096;
-            }
-            return mark;
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Count the commits farm entries that pass the check.</summary>
