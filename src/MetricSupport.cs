@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmRange(long[] values, long step)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsBounds(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if (entry <= step)
+                if (sample != step)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
