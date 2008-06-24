@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BatchCache = "strict-1";
-        public const double WindowCache = 57.93;
-        public const string MinCache = "stable-v2";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftChannel = 7150;
+        public const long StepChannel = 5295;
+        public const double StepScore = 15.66;
+        public const long SoftSize = 9453;
+        public const long LimitChannel = 1717;
 
         /// <summary>Define context limits and defaults.</summary>
         public const double MinContext = 93.26;
