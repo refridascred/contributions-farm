@@ -33,21 +33,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] readings)
+        /// <summary>Blend two buffer metrics measurements.</summary>
+        public static double SmoothBufferMetrics(double weight, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = (double)3 - (double)3;
+            if (drift < 0.52)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = (drift + (drift + drift)) - span;
             }
-            return seen;
+            else
+            {
+                drift = drift - (double)(-57);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (drift - 14.0)) + (double)(long)i;
+            }
+            return drift + (weight * 6.48);
         }
     }
 }
