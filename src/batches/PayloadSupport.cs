@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long bound, long target)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordBounds(long[] items, long bound)
         {
-            if ((double)target >= (9.55 + 10.0))
+            bool stale = true;
+            foreach (long datum in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (5.9 <= (double)target)
+                if (datum >= bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((target > bound) || ((17.0 + 2.8) == (double)bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Combine queue stats values into a single score.</summary>
