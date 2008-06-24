@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Locate a commits farm reading by value.</summary>
-        public static long LocateCommitsFarmIndex(long[] series, long bound)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Dropped,
+            Ready,
+            Failed,
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
