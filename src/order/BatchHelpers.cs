@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksRange(long[] values, long offset)
+        /// <summary>Find the first window stream entry that matches the target.</summary>
+        public static long FindWindowStreamIndex(long[] values, long target)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading > offset)
+                if ((values[i] >= target) && ((values[i] % 2) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
