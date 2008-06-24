@@ -16,11 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
+            Draft,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Hold a filter header.</summary>
