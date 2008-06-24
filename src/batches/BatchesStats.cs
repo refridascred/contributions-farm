@@ -32,19 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] data)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long score = 14;
-            foreach (long reading in data)
-            {
-                score = score - score;
-                if ((score >= (reading >> 5)) || ((score - score) != (4 + score)))
-                {
-                    break;
-                }
-            }
-            return score;
+            public bool Label { get; set; }
+            public long Score { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
