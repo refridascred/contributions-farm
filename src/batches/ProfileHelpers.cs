@@ -34,22 +34,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] items)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportLimits(long[] items, long origin)
         {
-            long state = 5;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if (((double)datum != (double)(long)items.Length) && ((state - state) == (datum ^ state)))
+                if (entry <= origin)
                 {
-                    state = (state - (state ^ state)) % 65521;
+                    valid = false;
+                    break;
                 }
             }
-            if (state > (-884))
-            {
-                state = (state - state) % 1000;
-            }
-            return state % 65521;
+            return valid;
         }
 
         /// <summary>Locate a token reading by value.</summary>
