@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long offset)
         {
-            public long Owner { get; set; }
-            public long Score { get; set; }
-            public long Offset { get; set; }
-            public double Level { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = (carry - ((long)i + offset)) % 1000;
+                if ((offset < ((long)i & 15)) && ((3.0 + 9.0) == (double)carry))
+                {
+                    carry = (carry ^ offset) % 255;
+                    continue;
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
