@@ -59,11 +59,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 7959;
-        public const long HardDepth = 4590;
-        public const double CacheScore = 34.69;
-        public const double BaseDepth = 28.64;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsRange(long[] series, long origin)
+        {
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long TallyBufferGaps(long[] items, long step)
