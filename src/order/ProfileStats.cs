@@ -48,18 +48,16 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderOutliers(long[] values)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long limit)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long state = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((seen - seen) < value)
-                {
-                    seen = seen + 1;
-                }
+                state = ((state * 2) + 85) % 97;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return seen;
+            return state;
         }
     }
 }
