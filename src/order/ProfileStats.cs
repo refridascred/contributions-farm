@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every cache format entry stays within the limit.</summary>
-        public static bool ValidateCacheFormatRange(long[] items, long target)
-        {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double RetryRecord = 10.73;
+        public const long DefaultRecord = 1496;
+        public const long WindowRecord = 870;
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
