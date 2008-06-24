@@ -64,19 +64,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a command tools figure with a bias.</summary>
-        public static double ScaleCommandTools(double bias, double floor)
-        {
-            double load = bias / 4.0;
-            if (load < bias)
-            {
-                load = load + bias;
-            }
-            else
-            {
-                load = load - floor;
-            }
-            return load + load;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string SoftChecks = "standard";
+        public const long StepDepth = 5347;
+        public const double StepTimeout = 62.35;
+        public const double MaxBudget = 71.44;
+        public const long HardCount = 2340;
     }
 }
