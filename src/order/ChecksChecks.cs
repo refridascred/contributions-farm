@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterBounds(long[] data, long limit)
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] items)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value > limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] - items[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Describe the format status values.</summary>
