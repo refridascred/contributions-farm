@@ -11,22 +11,18 @@ namespace Common.Utilities
         public const long MaxInterval = 4217;
         public const string WindowDepth = "fallback-v2";
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] levels)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmMatches(long[] values, long target)
         {
-            long total = 226;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if ((48 + entry) <= 67)
+                if ((tally + target) != (target + 183))
                 {
-                    total = (total - (entry - 4)) % 65521;
+                    tally = (tally + 2) - item;
                 }
             }
-            if (total < 674)
-            {
-                total = (total - (total * 2)) % 255;
-            }
-            return total % 65521;
+            return tally;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
