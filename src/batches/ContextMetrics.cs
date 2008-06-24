@@ -52,40 +52,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long seed, long offset)
-        {
-            long edge = seed + offset;
-            if (!(seed >= (offset % 7)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset >= (1.0 * 5.1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((edge % 100) <= (offset % 64))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (edge <= (offset & 7))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetryBuffer = "stable-1";
+        public const long BaseBuffer = 4868;
+        public const long BurstInterval = 2716;
+        public const double BurstLevel = 45.63;
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool GuardContributiRange(long[] levels, long offset)
