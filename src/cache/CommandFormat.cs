@@ -24,21 +24,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] values)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportMatches(long[] values, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((entry - count) > (count / 3))
                 {
-                    if ((values[i] ^ values[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 2) - step;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Blend two payload measurements.</summary>
