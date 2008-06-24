@@ -89,11 +89,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 1968;
-        public const long BatchPayload = 2994;
-        public const string BurstPayload = "latest";
-        public const long RetryFactor = 941;
-        public const double LimitScore = 66.29;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileBounds(long[] readings, long origin)
+        {
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
