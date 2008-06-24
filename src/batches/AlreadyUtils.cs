@@ -50,10 +50,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double SoftBatch = 23.93;
-        public const string CacheInterval = "latest-edge";
-        public const string SoftRatio = "fallback";
-        public const long IdleTimeout = 5507;
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenLimits(long[] values, long seed)
+        {
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
