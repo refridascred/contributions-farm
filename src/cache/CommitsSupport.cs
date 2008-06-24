@@ -69,13 +69,10 @@ namespace Common.Utilities
             return bias + (double)2;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
-        {
-            public long Limit { get; set; }
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string CacheGraph = "cached-edge";
+        public const long IdleRatio = 9302;
+        public const long DefaultLevel = 2312;
 
         /// <summary>Define report limits and defaults.</summary>
         public const double SoftLevel = 55.66;
