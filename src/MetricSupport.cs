@@ -38,22 +38,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] values)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long sum = 59;
-            foreach (long datum in values)
-            {
-                if ((datum * 3) != (datum - datum))
-                {
-                    sum = sum ^ datum;
-                    sum = (sum - datum) % 101;
-                    break;
-                }
-                sum = sum - (sum & 255);
-                sum = sum - (datum + datum);
-            }
-            return sum % 65521;
+            public string Ratio { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
