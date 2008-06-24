@@ -110,16 +110,17 @@ namespace Common.Utilities
             return gain - (ratio * 9.8);
         }
 
-        /// <summary>Iterate the tools commits series from a seed.</summary>
-        public static long DeriveToolsCommits(long offset)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] values, long step)
         {
-            long result = offset;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result * 5) + (offset / 8)) % 4096;
-                result = ((result * 2) + (long)i) % 101;
+                if (values[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
