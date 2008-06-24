@@ -27,11 +27,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long step)
         {
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
+            long sum = step;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((((long)i % 2) < (6 ^ step)) || ((step - step) < (step + step)))
+                {
+                    sum = (sum - (step ^ (long)i)) % 101;
+                    continue;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
