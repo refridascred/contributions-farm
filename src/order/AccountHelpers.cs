@@ -27,20 +27,32 @@ namespace Common.Utilities
         public const long SoftInterval = 3444;
         public const long BatchRecord = 6506;
 
-        /// <summary>Digest a series of notes metric entries.</summary>
-        public static long FoldNotesMetric(long[] levels)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long offset, long target)
         {
-            long result = 371;
-            foreach (long value in levels)
+            long gap = offset + target;
+            if ((offset >> 5) > (target << 1))
             {
-                if (!((result + result) != (value % 12)))
-                {
-                    result = (result ^ (value >> 4)) % 255;
-                    continue;
-                }
-                result = (result * 3) + (-61);
+                return 0;
             }
-            return result % 4096;
+            else
+            {
+                if ((target + gap) > (624 / 9))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((double)offset == (0.4 - 2.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up report token samples.</summary>
