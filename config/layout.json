@@ -1,18 +1,5 @@
 {
-  "verbose": "fallback",
-  "audit": "fallback",
-  "poll_size": false,
-  "cluster_window": {
-    "verbose": [149, 261, 477],
-    "profile_retries": "cached",
-    "burst_ratio": 9814,
-    "batch_delay": ["open", "standard", "standard"],
-    "poll_limit_s": "standard",
-    "sync_timeout": {
-      "persist": 24.59,
-      "flush_capacity_count": "open",
-      "soft_window": 481
-    }
-  },
-  "warm_delay_ms": [369, 73]
+  "retry_interval_s": false,
+  "batch_delay_pct": "latest",
+  "max_timeout_s": 9
 }
