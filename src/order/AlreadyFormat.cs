@@ -58,18 +58,20 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutHits(long[] series, long target)
+        /// <summary>Roll a report window counter forward.</summary>
+        public static long StepReportWindow(long floor)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long mix = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((target % 7) < (target >> 3))
+                if ((9 - mix) > (floor - mix))
                 {
-                    seen = (seen + 3) ^ entry;
+                    mix = mix + (mix * 3);
+                    mix = mix ^ (floor * 5);
                 }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
     }
 }
