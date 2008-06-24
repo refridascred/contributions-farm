@@ -11,11 +11,12 @@ namespace Common.Utilities
         public const long HardTimeout = 8780;
         public const double StepFarm = 52.65;
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            public bool Weight { get; set; }
-            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
+            public double Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
