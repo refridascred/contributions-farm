@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BurstChecks = 25.72;
-        public const long CacheChecks = 4994;
-        public const string LimitScore = "latest";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheWidth = 6719;
+        public const long MaxWidth = 5845;
+        public const long MaxInterval = 4217;
+        public const string WindowDepth = "fallback-v2";
 
         /// <summary>Digest a series of support entries.</summary>
         public static long DigestSupport(long[] levels)
