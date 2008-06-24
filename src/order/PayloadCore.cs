@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
-        {
-            Active,
-            Failed,
-            Done,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardFactor = 64;
+        public const double MinWidth = 69.95;
+        public const double HardRoute = 94.46;
+        public const long DefaultSize = 9657;
+        public const long StepSize = 976;
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long TotalContributi(long[] items, long bound)
