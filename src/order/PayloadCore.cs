@@ -68,30 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] series)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountBounds(long[] series, long floor)
         {
-            long anchor = 6;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if ((cell + anchor) >= cell)
+                if (reading != floor)
                 {
-                    anchor = (anchor - anchor) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor + anchor) % 65521;
-                }
-                if (((long)series.Length != (anchor >> 2)) || ((cell + cell) < (anchor + anchor)))
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (anchor < 7)
-            {
-                anchor = (anchor * 3) + (anchor + anchor);
-            }
-            return anchor % 97;
+            return ready;
         }
     }
 }
