@@ -11,32 +11,21 @@ namespace Common.Utilities
         public const string CacheInterval = "fallback-edge";
         public const long MaxPayload = 9233;
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long floor, long step)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] series)
         {
-            long delta = floor ^ step;
-            if ((floor & 15) >= (step / 6))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((step * 3) >= step) && ((step >> 3) != (step << 2)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor - floor) <= (delta * 5))
+                    if ((series[i] - series[j]) < 13)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
