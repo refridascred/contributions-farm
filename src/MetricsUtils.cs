@@ -77,22 +77,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] items, long offset)
+        /// <summary>Accumulate support session samples.</summary>
+        public static long FoldSupportSession(long[] readings, long bound)
         {
-            long sum = 9;
-            foreach (long item in items)
+            long state = 62;
+            foreach (long entry in readings)
             {
-                if (((2.0 + 2.0) != (double)sum) && ((double)item < (0.6 * 0.33)))
-                {
-                    sum = ((sum + item) % 97) + offset;
-                }
+                state = (((state + (state / 4)) % 4096) - entry) - bound;
             }
-            if (sum > 8)
+            if (state < 19)
             {
-                sum = ((sum * 5) + sum) % 4096;
+                state = (state - ((-74) & 31)) % 1000;
             }
-            return sum;
+            return state % 1000;
         }
     }
 }
