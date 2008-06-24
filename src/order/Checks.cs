@@ -67,16 +67,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long step)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] values, long step)
         {
-            long state = step;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                state = (state - step) % 97;
-                state = ((state * 5) + (long)i) % 97;
+                if (seen > (step * 3))
+                {
+                    seen = (seen + 3) + sample;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Describe the already class values.</summary>
