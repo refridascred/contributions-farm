@@ -40,13 +40,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] samples)
         {
-            public bool Token { get; set; }
-            public double Ratio { get; set; }
-            public double Label { get; set; }
-            public double Mode { get; set; }
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
