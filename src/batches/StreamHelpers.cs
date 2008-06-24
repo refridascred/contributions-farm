@@ -67,22 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsGaps(long[] samples)
+        /// <summary>Validate cache metrics readings against a bound.</summary>
+        public static bool ValidateCacheMetricsRange(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if ((3.67 * 6.2) == (double)entry)
+                if (datum < bound)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
