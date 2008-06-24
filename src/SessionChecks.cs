@@ -26,12 +26,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            Ready,
-            Synced,
-            Pending,
+            Queued,
+            Stale,
+            Draft,
         }
 
         /// <summary>Audit window report readings against a rule.</summary>
