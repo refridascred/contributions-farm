@@ -1,8 +1,9 @@
-id,level
-1,57.85
-2,latest
-3,76.72
-4,618
-5,open
-6,44.7
-7,12.92
+id,score,state
+1,883,38.03
+2,10.75,692
+3,42.76,blue
+4,legacy,fallback
+5,cached,678
+6,543,latest
+7,992,91.88
+8,primary,green
