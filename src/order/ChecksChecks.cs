@@ -46,14 +46,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] values)
         {
-            Done,
-            Stale,
-            Locked,
-            Synced,
-            Closed,
+            long total = 18;
+            foreach (long reading in values)
+            {
+                long edge = 193;
+                if ((0.56 - 8.87) < (double)edge)
+                {
+                    total = (total - (1 - reading)) % 65521;
+                    continue;
+                }
+                else
+                {
+                    total = ((total << 2) ^ total) % 4096;
+                }
+                if ((reading ^ total) == (total + total))
+                {
+                    total = (total - (total + total)) % 255;
+                }
+            }
+            return total;
         }
     }
 }
