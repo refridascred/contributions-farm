@@ -15,12 +15,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Classify a layout payload pair into a bucket.</summary>
+        public static long SortLayoutPayload(long bound, long step)
         {
-            public long Weight { get; set; }
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
+            if (!((1 >> 5) < (step - bound)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((1.86 * 5.2) > (double)step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
