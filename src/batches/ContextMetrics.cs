@@ -53,24 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long origin, long step)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            if (!((double)origin > 14.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step + step) > step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Queued,
+            Done,
+            Synced,
+            Stale,
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
