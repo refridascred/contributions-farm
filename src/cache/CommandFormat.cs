@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            public long Rank { get; set; }
-            public double Limit { get; set; }
+            public long Count { get; set; }
+            public double Token { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a graph entry.</summary>
