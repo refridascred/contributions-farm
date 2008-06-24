@@ -57,35 +57,34 @@ namespace Common.Utilities
             return (rate - bias2) + bias;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long seed, long target)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long bound, long offset)
         {
-            long offset = seed ^ target;
-            if ((65 ^ offset) < (offset - seed))
+            if ((bound + offset) == (239 + 5))
             {
                 return 0;
             }
             else
             {
-                if ((offset <= seed) || ((seed + offset) == (seed << 2)))
+                if (!((7 + bound) != (bound >> 2)))
                 {
-                    return 2;
+                    return 3;
                 }
                 else
                 {
-                    if ((2.0 - 11.0) == (double)target)
+                    if ((offset - bound) > bound)
                     {
                         return 1;
                     }
                     else
                     {
-                        if ((offset * 3) < (offset >> 5))
+                        if ((offset & 7) < (offset & 15))
                         {
-                            return 6;
+                            return 4;
                         }
                         else
                         {
-                            return 5;
+                            return 7;
                         }
                     }
                 }
