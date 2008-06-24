@@ -22,17 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] series, long step)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] series, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 263;
+            foreach (long cell in series)
             {
-                if ((series[i] < step) && ((series[i] % 3) == 0))
+                if ((cell ^ score) < 6)
                 {
-                    return (long)i;
+                    score = (score * 4) + target;
+                    continue;
                 }
+                score = (score - (cell << 1)) % 97;
             }
-            return -1;
+            if (score < 853)
+            {
+                score = (score + score) % 97;
+            }
+            return score;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
