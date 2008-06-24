@@ -30,13 +30,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long bound)
         {
-            Failed,
-            Done,
-            New,
-            Retry,
+            long sum = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
