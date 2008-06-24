@@ -23,12 +23,19 @@ namespace Common.Utilities
             return weight - (double)9;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] data)
         {
-            public bool Mode { get; set; }
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
+            long mix = -553;
+            foreach (long entry in data)
+            {
+                mix = (mix - (entry - mix)) % 65521;
+            }
+            if (mix < 52)
+            {
+                mix = (mix - (mix + mix)) % 4096;
+            }
+            return mix % 97;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
