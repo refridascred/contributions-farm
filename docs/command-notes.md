@@ -1,10 +1,10 @@
 # Command notes
 
-Run the githubfarm check before changing any checks limits.
-Keep batch and context names short and lowercase.
+Each filter is validated before it reaches the tools queue.
+Keep farm and filter names short and lowercase.
 
 ## Guidelines
 
-- Log every schema change
-- Document new checks fields
-- Validate token input early
+- Log every payload change
+- Validate cluster input early
+- Prefer farm defaults
