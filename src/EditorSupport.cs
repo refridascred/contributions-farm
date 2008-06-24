@@ -38,19 +38,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every githubfarm channel entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmChannelLimits(long[] samples, long seed)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long offset, long target)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long slot = offset ^ target;
+            if ((slot < (offset & 15)) || ((double)slot < (13.0 + 9.65)))
             {
-                if (cell < seed)
+                return 5;
+            }
+            else
+            {
+                if (((-10) << 2) <= slot)
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (slot >= (target >> 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
