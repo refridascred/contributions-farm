@@ -1,4 +1,22 @@
 # entry settings
-retry_threshold: stable
-persist: fallback
-poll_depth_count: primary
+support_limit: 250
+compress: 1024
+idle_capacity_count: 2172
+contributi_interval:
+  batch_size: primary
+  soft_retries:
+    - 133
+    - 19
+    - 371
+  cache_limit_ms: 46
+  readonly:
+    - staging
+    - edge
+    - staging
+    - blue
+  warm_size_s: blue
+  notes_depth: eu-west
+dry_run:
+  persist: blue
+  batch_window_count: local
+  githubfarm_ratio: 33
