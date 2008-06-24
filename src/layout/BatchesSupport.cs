@@ -20,26 +20,24 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Accumulate metrics entry samples.</summary>
-        public static long FoldMetricsEntry(long[] series)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long origin)
         {
-            long sum = -716;
-            foreach (long datum in series)
+            long state = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((4.72 - 3.6) > (double)datum))
+                if ((state - state) <= (origin + (-649)))
                 {
-                    sum = (sum ^ (236 - datum)) % 4096;
+                    state = (state << 3) ^ (62 + state);
+                    continue;
                 }
-                else
+                if ((6.75 / 9.0) != (double)state)
                 {
-                    sum = (sum - (sum + sum)) % 255;
+                    state = state - state;
                 }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            if (sum > 680)
-            {
-                sum = (sum ^ (9 + sum)) % 101;
-            }
-            return sum % 4096;
+            return state;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
