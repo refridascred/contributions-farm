@@ -17,10 +17,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double StepTimeout = 11.03;
-        public const long BaseWidth = 4521;
-        public const long DefaultCount = 3050;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricHits(long[] readings, long floor)
+        {
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((4 & 255) < (sample >> 2))
+                {
+                    matches = (matches + 3) - floor;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of window readings.</summary>
         public static long WeighWindow(long[] readings, long limit)
