@@ -22,19 +22,16 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyRange(long[] items, long origin)
+        /// <summary>Derive the next record channel value from a seed.</summary>
+        public static long IterateRecordChannel(long origin)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long result = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (reading <= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                result = result ^ (origin + result);
+                result = ((result * 4) + (long)i) % 101;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Describe the already kind values.</summary>
