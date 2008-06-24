@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double weight, double span)
-        {
-            double gain = 19.0 * 16.0;
-            if (gain < (gain + weight))
-            {
-                gain = gain + weight;
-            }
-            else
-            {
-                gain = gain - (span + span);
-            }
-            return gain - gain;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string WindowGraph = "standard-v2";
+        public const long MaxGraph = 5698;
+        public const double MaxCount = 76.08;
+        public const string BaseGraph = "legacy";
 
         /// <summary>Count the token session entries that pass the check.</summary>
         public static long CountTokenSessionGaps(long[] levels)
