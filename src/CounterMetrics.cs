@@ -48,12 +48,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long limit, long origin)
         {
-            public string Total { get; set; } = "";
-            public double Region { get; set; }
-            public long Level { get; set; }
+            long bound = limit + origin;
+            if (((origin + origin) > ((-9) - origin)) || ((double)bound >= (16.0 + 8.82)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound + limit) != (limit + origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (limit > (8 >> 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
