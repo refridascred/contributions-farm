@@ -1,7 +1,10 @@
-id,rank,weight,level,score
-1,fallback,102,91.04,302
-2,549,814,421,60.54
-3,351,881,652,574
-4,75.02,760,67.85,edge
-5,36.48,970,65.27,352
-6,open,881,89.0,846
+id,region,score
+1,66.83,997
+2,blue,strict
+3,391,63.02
+4,15.65,stable
+5,84.37,primary
+6,997,97.53
+7,stable,open
+8,36.07,934
+9,cached,edge
