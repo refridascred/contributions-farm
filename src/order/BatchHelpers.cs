@@ -14,17 +14,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] levels, long floor)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((levels[i] < floor) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
