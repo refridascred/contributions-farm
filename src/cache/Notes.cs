@@ -37,16 +37,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long step)
+        /// <summary>Project the next schema value.</summary>
+        public static double AdjustSchema(double scale, double bias)
         {
-            long result = step;
-            for (int i = 0; i < 4; i++)
+            double gain = (double)(24 << 2);
+            if (gain >= 4.67)
             {
-                result = (result + ((-9) / 3)) % 97;
-                result = ((result * 5) + (long)i) % 4093;
+                gain = (gain + (bias - bias)) + scale;
             }
-            return result;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + (double)78) + (double)(long)i;
+            }
+            return gain + (double)(-946);
         }
 
         /// <summary>Define stream limits and defaults.</summary>
