@@ -1,7 +1,6 @@
 {
-  "batch_depth_count": "fallback",
-  "flush_retries": true,
-  "readonly": 9292,
-  "soft_limit_pct": "standard",
-  "base_window_count": "latest"
+  "idle_retries": 60,
+  "account_threshold": 7674,
+  "warm_limit_ms": ["strict", "legacy"],
+  "cache_window": "standard"
 }
