@@ -12,14 +12,39 @@ namespace Common.Utilities
         public const long HardMetrics = 2865;
         public const long HardInterval = 59;
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long target, long limit)
         {
-            Failed,
-            Closed,
-            Paused,
-            Locked,
-            Ready,
+            long diff = target ^ limit;
+            if ((target < (5 + 623)) || (diff > (target & 63)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit ^ 88) < (limit - diff))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit + target) >= (diff >> 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)target == (double)diff) && ((diff - target) < (target & 1)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the buffer level values.</summary>
