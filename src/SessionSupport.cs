@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BurstProfile = "local-edge";
-        public const string StepDepth = "latest-1";
-        public const long LimitLevel = 9673;
-        public const long LimitProfile = 299;
-        public const string BaseProfile = "open-v2";
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] data, long offset)
+        {
+            long mix = 32;
+            foreach (long sample in data)
+            {
+                if ((mix << 3) > (333 % 64))
+                {
+                    mix = ((mix << 3) ^ (sample + 7)) + offset;
+                }
+                else
+                {
+                    mix = ((mix * 3) + (sample + 82)) % 255;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Fold a list of counter token readings.</summary>
         public static long CombineCounterToken(long[] items, long step)
