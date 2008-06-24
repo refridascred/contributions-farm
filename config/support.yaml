@@ -1,10 +1,5 @@
 # support settings
-burst_window:
-  default_delay_ms: 35.81
-  max_timeout: true
-  hard_ttl: 33.44
-compress: strict
-strict: strict
-stats_depth:
-  - green
-  - standard
+command_size: local
+warm_ttl_count: 78
+poll_capacity_s: 100
+default_ttl_pct: false
