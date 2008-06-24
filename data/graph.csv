@@ -1,8 +1,8 @@
-id,region,score
-1,897,57.2
-2,8.95,58
-3,575,fallback
-4,51.19,stable
-5,63.46,153
-6,858,278
-7,704,152
+id,state,owner
+1,821,primary
+2,389,90.63
+3,301,94.7
+4,69.82,green
+5,local,965
+6,stable,64.84
+7,edge,30.44
