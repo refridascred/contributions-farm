@@ -1,21 +1,8 @@
 {
-  "dry_run": false,
-  "token_ratio": 61,
-  "audit": 23,
-  "hard_threshold_count": {
-    "poll_window": 15.97,
-    "warm_ratio": "open",
-    "checks_ttl": {
-      "idle_delay": 250,
-      "flush_delay": true,
-      "batch_size_count": 4457,
-      "schema_threshold": false
-    },
-    "dry_run": {
-      "poll_ttl_s": 4226,
-      "batch_interval_pct": 74.25,
-      "batch_capacity_ms": 60
-    },
-    "sync_size_count": true
-  }
+  "compress": "eu-west",
+  "filter_window": false,
+  "idle_ttl_s": false,
+  "filter_interval": 500,
+  "counter_ttl": false,
+  "schema_timeout": 32
 }
