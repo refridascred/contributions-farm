@@ -50,12 +50,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double bias, double bias2)
-        {
-            double rate = (double)(434 >> 4);
-            return (rate - bias2) + bias;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 7392;
+        public const long BaseWidth = 2615;
+        public const string SoftTimeout = "stable";
 
         /// <summary>Rank layout input into a small class.</summary>
         public static long GradeLayout(long bound, long offset)
