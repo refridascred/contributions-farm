@@ -55,13 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiBounds(long[] readings, long bound)
         {
-            Done,
-            Pending,
-            Active,
-            Failed,
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Validate checks token readings against a bound.</summary>
