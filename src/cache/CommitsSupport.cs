@@ -15,21 +15,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of cache command readings.</summary>
-        public static long OverlapCacheCommandCount(long[] samples)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long bound, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long cur = bound - offset;
+            if ((66 - cur) == (bound / 6))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((bound % 10) > offset)
                 {
-                    if ((samples[i] ^ samples[j]) > 7)
+                    return 1;
+                }
+                else
+                {
+                    if ((double)offset != (double)bound)
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
