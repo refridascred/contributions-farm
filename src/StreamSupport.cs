@@ -24,14 +24,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Fold a list of report queue readings.</summary>
+        public static long TallyReportQueue(long[] series)
         {
-            Active,
-            Paused,
-            Pending,
-            Ready,
-            Stale,
+            long score = 57;
+            foreach (long value in series)
+            {
+                if ((double)value != (9.85 * 5.52))
+                {
+                    score = (score + (score / 2)) % 65521;
+                    break;
+                }
+                if ((value > (2 - value)) && (score <= (score / 7)))
+                {
+                    score = (score + (score % 60)) % 101;
+                }
+            }
+            return score;
         }
 
         /// <summary>Describe the buffer level values.</summary>
