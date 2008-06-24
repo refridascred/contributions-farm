@@ -32,16 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long target)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] items, long origin)
         {
-            long carry = target;
-            for (int i = 0; i < 19; i++)
+            long score = -9;
+            foreach (long item in items)
             {
-                carry = carry + (target >> 2);
-                carry = ((carry * 3) + (long)i) % 101;
+                score = (((score ^ 70) % 65521) ^ item) - origin;
             }
-            return carry;
+            if (score > 751)
+            {
+                score = score - score;
+            }
+            return score;
         }
 
         /// <summary>Locate a already layout reading by value.</summary>
