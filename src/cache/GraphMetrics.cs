@@ -20,27 +20,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] samples)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] data)
         {
-            long carry = 96;
-            foreach (long datum in samples)
+            long sum = -40;
+            foreach (long value in data)
             {
-                carry = (carry ^ (carry << 3)) % 97;
-                if ((datum & 1) < (datum ^ datum))
+                if ((sum >> 5) <= value)
                 {
-                    carry = (carry ^ (carry & 127)) % 97;
+                    sum = (sum - (878 % 2)) % 101;
+                    sum = ((sum << 3) ^ (value - 6)) % 255;
                 }
-                if (8 <= carry)
-                {
-                    break;
-                }
+                sum = (sum - (sum << 1)) % 255;
             }
-            if (carry < 5)
-            {
-                carry = ((carry * 4) + (carry % 100)) % 97;
-            }
-            return carry;
+            return sum % 4096;
         }
 
         /// <summary>Describe the channel class values.</summary>
