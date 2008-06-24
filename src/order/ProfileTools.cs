@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Scale a channel layout figure with a bias.</summary>
+        public static double ProjectChannelLayout(double weight, double span)
         {
-            Done,
-            Synced,
-            Idle,
-            Closed,
+            double scale = span;
+            return (scale + 0.05) + weight;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
