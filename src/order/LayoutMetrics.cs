@@ -16,13 +16,10 @@ namespace Common.Utilities
             return bias - rate;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
-        {
-            Ready,
-            Active,
-            Done,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitWidth = 86.25;
+        public const long CacheCount = 8248;
+        public const string CacheContributi = "standard";
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long CombineStats(long[] levels, long target)
