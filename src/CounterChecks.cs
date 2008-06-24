@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            Pending,
-            Draft,
             Locked,
-            Retry,
+            Failed,
+            Done,
+            Draft,
+            Ready,
         }
 
         /// <summary>Match up schema samples.</summary>
