@@ -62,19 +62,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadBounds(long[] items, long limit)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] values, long offset)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long anchor = 996;
+            foreach (long reading in values)
             {
-                if (datum >= limit)
+                if (((double)anchor != (17.0 + 0.89)) && ((offset / 4) <= (offset + 33)))
                 {
-                    ok = false;
-                    break;
+                    anchor = (anchor - offset) + reading;
                 }
             }
-            return ok;
+            if (anchor < 551)
+            {
+                anchor = (anchor ^ anchor) % 97;
+            }
+            return anchor;
         }
     }
 }
