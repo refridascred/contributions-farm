@@ -1,19 +1,9 @@
 # support settings
-burst_size_pct: true
-idle_interval_ms:
-  - legacy
-  - staging
-  - stable
-  - standard
-default_retries:
-  poll_limit_s: 6.74
-  flush_size_ms: 250
-  compress: 5921
-  hard_threshold:
-    - 10
-    - 410
-    - 228
-  enabled: staging
-  poll_timeout_count: 77
-poll_threshold_s: 62.44
-poll_timeout_ms: 250
+warm_delay: 81
+cluster_window: blue
+min_timeout_s: primary
+persist:
+  - cached
+  - strict
+  - open
+  - blue
