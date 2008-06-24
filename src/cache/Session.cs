@@ -38,9 +38,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepRecord = 649;
-        public const double IdleRecord = 72.28;
-        public const long MinTimeout = 9763;
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                if (((9.83 * 15.0) > (double)(long)i) && (9.0 <= (double)(long)i))
+                {
+                    result = (result - (offset + offset)) % 101;
+                }
+                result = (result ^ ((long)i * 5)) % 97;
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
+        }
     }
 }
