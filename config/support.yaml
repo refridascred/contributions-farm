@@ -1,7 +1,11 @@
 # support settings
-flush_delay_ms:
-  - 466
-  - 473
-min_threshold_count: 100
-persist: 500
-retry_ttl: true
+batch_limit:
+  - cached
+  - standard
+  - legacy
+  - cached
+strict: latest
+stats_ttl:
+  githubfarm_window: 60
+  soft_timeout_count: 47.83
+  dry_run: 4398
