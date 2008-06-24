@@ -35,15 +35,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double SmoothContributi(double rate, double span)
+        /// <summary>Count the commits farm entries that pass the check.</summary>
+        public static long TallyCommitsFarmMatches(long[] data, long limit)
         {
-            double bias = 10.0 - (span / 9.0);
-            if (bias >= (bias + 9.0))
+            long count = 0;
+            foreach (long sample in data)
             {
-                bias = (bias + (double)2) + rate;
+                if (limit >= (limit ^ sample))
+                {
+                    count = count + 2;
+                }
             }
-            return bias - (double)8;
+            return count;
         }
 
         /// <summary>Find the first support githubfarm entry that matches the target.</summary>
