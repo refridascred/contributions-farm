@@ -55,25 +55,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] values, long step)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long step)
         {
-            long acc = 48;
-            foreach (long cell in values)
+            long state = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (step < (cell >> 2))
-                {
-                    acc = ((acc * 5) + (step - cell)) % 101;
-                    continue;
-                }
-                else
-                {
-                    acc = acc + (acc + 5);
-                    acc = acc - 966;
-                }
-                acc = acc ^ (acc << 3);
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return acc % 1000;
+            return state;
         }
     }
 }
