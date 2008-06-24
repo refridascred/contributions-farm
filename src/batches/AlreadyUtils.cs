@@ -56,17 +56,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleReport = 3345;
+        public const long LimitReport = 8137;
+        public const long BatchReport = 1073;
+        public const long CacheReport = 8737;
+        public const string DefaultReport = "staging-edge";
     }
 }
