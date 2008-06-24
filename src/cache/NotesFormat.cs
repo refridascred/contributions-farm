@@ -25,19 +25,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] values, long offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandMatches(long[] readings)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (reading > offset)
+                if (!(hits > (0 + hits)))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 2) + reading;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
