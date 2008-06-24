@@ -13,17 +13,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] readings, long offset)
+        /// <summary>Digest a series of entry channel entries.</summary>
+        public static long TotalEntryChannel(long[] items, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 8;
+            foreach (long datum in items)
             {
-                if (readings[i] < offset)
-                {
-                    return (long)i;
-                }
+                mix = (mix + 17) - datum;
+                mix = (mix - (limit % 60)) % 101;
             }
-            return -1;
+            if (mix > 5)
+            {
+                mix = ((mix * 4) + (mix + limit)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Project the next checks value.</summary>
