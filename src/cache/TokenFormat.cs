@@ -23,19 +23,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] samples, long step)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] readings, long origin)
         {
-            long sum = 970;
-            foreach (long datum in samples)
+            long mark = 25;
+            foreach (long cell in readings)
             {
-                sum = sum ^ datum;
+                mark = mark ^ mark;
+                for (int i = 0; i < 4; i++)
+                {
+                    mark = ((mark + ((long)readings.Length & 63)) % 97) - (long)i;
+                }
+                mark = ((mark * 3) + (origin & 31)) % 97;
+                if (((double)origin >= 3.77) && ((14.0 / 7.0) == (double)cell))
+                {
+                    break;
+                }
             }
-            if (sum < (-214))
-            {
-                sum = ((sum << 3) ^ step) % 255;
-            }
-            return sum;
+            return mark % 4096;
         }
     }
 }
