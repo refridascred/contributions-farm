@@ -1,7 +1,11 @@
 {
-  "base_capacity": "staging",
-  "persist": 18.18,
-  "burst_ratio_s": "fallback",
-  "farm_threshold": 44.15,
-  "default_retries_count": "edge"
+  "enabled": {
+    "retry_depth": false,
+    "verbose": "staging",
+    "payload_retries": "edge"
+  },
+  "retry_depth": 68.11,
+  "default_size_count": false,
+  "burst_size_pct": 48.24,
+  "record_depth": ["latest", "standard", "latest"]
 }
