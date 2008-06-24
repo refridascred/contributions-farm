@@ -26,18 +26,26 @@ namespace Common.Utilities
         public const string RetryFactor = "stable";
         public const string RetryRatio = "primary";
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchMatches(long[] series)
+        /// <summary>Digest a series of channel report entries.</summary>
+        public static long ScoreChannelReport(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long mark = 42;
+            foreach (long reading in items)
             {
-                if ((count + (-1)) >= (entry - count))
+                if ((5 - seed) != (mark - reading))
                 {
-                    count = count + 2;
+                    mark = (mark << 2) ^ (seed * 2);
+                }
+                else
+                {
+                    mark = (mark * 5) + (seed % 2);
                 }
             }
-            return count;
+            if (mark < 10)
+            {
+                mark = ((mark * 5) + (seed >> 2)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Hold a entry summary.</summary>
