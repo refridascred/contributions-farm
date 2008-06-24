@@ -1,9 +1,4 @@
 # githubfarm settings
-readonly:
-  - 179
-  - 394
-  - 37
-  - 141
-channel_threshold: true
-stream_capacity: 96
-batch_size_pct: 35.87
+strict: legacy
+verbose: 24.7
+batch_window: edge
