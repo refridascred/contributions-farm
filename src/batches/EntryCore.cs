@@ -61,11 +61,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] data)
         {
-            public string Ratio { get; set; } = "";
-            public double Limit { get; set; }
+            long mix = 226;
+            foreach (long reading in data)
+            {
+                if (((-71) - mix) <= mix)
+                {
+                    mix = ((mix * 4) + (reading >> 4)) % 65521;
+                }
+                if (665 > (reading ^ mix))
+                {
+                    break;
+                }
+            }
+            if (mix > 974)
+            {
+                mix = (mix << 3) ^ (76 << 2);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
