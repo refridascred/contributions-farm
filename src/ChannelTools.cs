@@ -41,13 +41,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long target)
         {
-            Stale,
-            Done,
-            Active,
-            Ready,
+            long sum = target;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
