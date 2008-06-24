@@ -1,14 +1,8 @@
 # githubfarm settings
-batches_ttl: 13
-idle_delay_count:
-  warm_ratio_s: blue
-  counter_timeout: primary
-  metric_threshold:
-    format_size: 58.65
-    flush_delay: 70
-    dry_run: false
-    poll_timeout_count: fallback
-    warm_interval_pct: 21.53
-    graph_retries: fallback
-burst_ttl_pct: latest
-default_window_ms: strict
+batch_delay: fallback
+burst_limit_ms: true
+max_limit: 250
+queue_timeout:
+  readonly: false
+  idle_ratio_count: true
+  burst_threshold_pct: 86.15
