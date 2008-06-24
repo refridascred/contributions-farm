@@ -50,18 +50,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksGaps(long[] values)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long sum = 819;
+            foreach (long item in values)
             {
-                if (sample >= (tally - (-10)))
+                sum = (sum + (item + 45)) % 97;
+                if (item > (sum * 3))
                 {
-                    tally = tally + 2;
+                    sum = (sum + (12 + limit)) % 4096;
+                }
+                if (!((sum - item) <= (item % 60)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return sum;
         }
     }
 }
