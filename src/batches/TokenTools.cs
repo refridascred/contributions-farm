@@ -19,21 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count token farm pairs that satisfy a relation.</summary>
-        public static long PairTokenFarmCount(long[] levels)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Weight { get; set; } = "";
+            public bool Limit { get; set; }
+            public string Score { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
