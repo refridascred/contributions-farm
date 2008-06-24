@@ -64,12 +64,20 @@ namespace Common.Utilities
         public const double IdleFarm = 89.99;
         public const double DefaultFactor = 17.92;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 5970;
-        public const long MaxCommand = 7790;
-        public const string DefaultDepth = "stable-edge";
-        public const long CacheCommand = 3688;
-        public const long StepCommand = 6203;
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double rate, double span)
+        {
+            double weight = (double)8 - rate;
+            if (weight <= (double)33)
+            {
+                weight = (weight - 3.1) + span;
+            }
+            else
+            {
+                weight = weight + (double)54;
+            }
+            return weight - (rate / 3.0);
+        }
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long ScoreStream(long[] data)
