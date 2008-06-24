@@ -41,14 +41,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            Synced,
-            Paused,
-            Stale,
-            Locked,
-            Pending,
+            public bool Flag { get; set; }
+            public long Score { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a queue options.</summary>
