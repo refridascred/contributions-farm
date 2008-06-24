@@ -35,19 +35,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double scale, double span)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long bound)
         {
-            double bias = span / 5.0;
-            if (bias >= (double)34)
+            long total = bound;
+            for (int i = 0; i < 8; i++)
             {
-                bias = bias - (scale - 4.8);
+                if (!(((bound >> 3) <= (bound * 3)) || (bound < total)))
+                {
+                    total = (total - (total & 3)) % 101;
+                }
+                total = total ^ 656;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - (bias * 1.5)) + (double)(long)i;
-            }
-            return bias + span;
+            return total;
         }
     }
 }
