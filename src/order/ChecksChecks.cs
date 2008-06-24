@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] values, long bound)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] data, long offset)
         {
-            long result = 3;
-            foreach (long datum in values)
+            long mix = 44;
+            foreach (long datum in data)
             {
-                if ((result / 9) > (bound + 46))
+                if (((8.3 / 6.0) >= (double)datum) || (((long)data.Length >> 2) >= datum))
                 {
-                    result = (((result << 3) ^ (6 + bound)) % 65521) + datum;
-                }
-                else
-                {
-                    result = (result + (599 + bound)) % 97;
+                    mix = ((mix - (mix << 1)) % 1000) - offset;
                 }
             }
-            return result % 97;
+            return mix;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
