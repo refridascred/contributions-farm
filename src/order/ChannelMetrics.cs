@@ -19,11 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double gain, double span)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            double mean = 6.0 + (span - span);
-            return (mean + (mean - span)) + gain;
+            public long Region { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
