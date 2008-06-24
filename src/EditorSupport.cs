@@ -53,17 +53,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a cluster tools sample.</summary>
-        public static long SeekClusterToolsIndex(long[] readings, long offset)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Draft,
+            Ready,
+            Closed,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
