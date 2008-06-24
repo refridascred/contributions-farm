@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchHits(long[] levels, long limit)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((limit << 3) > (limit >> 2))
+                if ((seen - 9) > (seen >> 5))
                 {
-                    tally = (tally + 3) + sample;
+                    seen = (seen + 2) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the route mode values.</summary>
