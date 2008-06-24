@@ -12,15 +12,24 @@ namespace Common.Utilities
             return (scale - gain) + bias;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long bound)
+        /// <summary>Classify a profile route pair into a bucket.</summary>
+        public static long ClassifyProfileRoute(long step, long target)
         {
-            long score = bound;
-            for (int i = 0; i < 4; i++)
+            if (((step << 1) < 52) && ((8 + step) <= (96 * 4)))
             {
-                score = ((score * 4) + (long)i) % 65521;
+                return 8;
             }
-            return score;
+            else
+            {
+                if (((target & 3) <= (-4)) && (step > (target >> 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Hold a order options.</summary>
