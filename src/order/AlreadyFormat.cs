@@ -58,16 +58,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long seed)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutHits(long[] series, long target)
         {
-            long total = seed;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                total = (total - (seed + total)) % 1000;
-                total = ((total * 3) + (long)i) % 1000;
+                if ((target % 7) < (target >> 3))
+                {
+                    seen = (seen + 3) ^ entry;
+                }
             }
-            return total;
+            return seen;
         }
     }
 }
