@@ -27,32 +27,22 @@ namespace Common.Utilities
         public const long SoftInterval = 3444;
         public const long BatchRecord = 6506;
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long offset, long target)
+        /// <summary>Combine record session values into a single score.</summary>
+        public static long CombineRecordSession(long[] samples, long step)
         {
-            long gap = offset + target;
-            if ((offset >> 5) > (target << 1))
+            long score = 1;
+            foreach (long item in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target + gap) > (624 / 9))
+                if ((item << 1) != (item / 6))
                 {
-                    return 3;
+                    score = ((score * 4) + (5 << 3)) % 4096;
                 }
-                else
+                if (((step << 1) > (step + score)) || ((step * 2) > 1))
                 {
-                    if (!((double)offset == (0.4 - 2.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    score = (score * 5) + (item >> 4);
                 }
             }
+            return score;
         }
 
         /// <summary>Match up report token samples.</summary>
