@@ -19,21 +19,9 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 3646;
+        public const long SoftChannel = 8623;
+        public const string LimitTimeout = "standard-v2";
     }
 }
