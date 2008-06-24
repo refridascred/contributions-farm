@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long WindowRatio = 8773;
         public const string HardCluster = "standard-1";
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamLimits(long[] series, long floor)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Failed,
+            Draft,
         }
 
         /// <summary>Accumulate already samples.</summary>
