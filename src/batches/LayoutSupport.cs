@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Derive the next checks contributi value from a seed.</summary>
+        public static long RollChecksContributi(long step)
         {
-            public bool Region { get; set; }
-            public bool Size { get; set; }
-            public double Offset { get; set; }
-            public long Owner { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = (anchor - (step << 2)) % 101;
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
