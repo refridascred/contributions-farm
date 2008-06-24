@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ProjectGraph(double bias, double span)
-        {
-            double gain = (double)(586 << 3);
-            if (gain <= span)
-            {
-                gain = (gain + (gain / 9.0)) - bias;
-            }
-            return gain + (double)939;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleCount = 8022;
+        public const string IdleEntry = "latest-v2";
+        public const long StepEntry = 9917;
 
         /// <summary>Adjust a tools reading.</summary>
         public static double ProjectTools(double weight, double offset)
