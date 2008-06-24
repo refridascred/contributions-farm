@@ -49,21 +49,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count tools profile pairs that satisfy a relation.</summary>
-        public static long PairToolsProfileCount(long[] readings)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = (score ^ ((long)i + limit)) % 255;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Rank queue entry input into a small class.</summary>
