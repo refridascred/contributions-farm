@@ -14,12 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesMatches(long[] values, long target)
         {
-            Stale,
-            New,
-            Draft,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((double)target >= (double)(long)values.Length)
+                {
+                    tally = (tally + 1) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the buffer level values.</summary>
