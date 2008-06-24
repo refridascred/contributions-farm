@@ -1,5 +1,7 @@
 {
-  "flush_limit_pct": "open",
-  "verbose": "edge",
-  "min_capacity_s": 9776
+  "retry_timeout": ["stable", "primary", "latest"],
+  "batch_delay_s": false,
+  "hard_interval_s": false,
+  "graph_window": "edge",
+  "enabled": 500
 }
