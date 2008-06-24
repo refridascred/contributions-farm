@@ -33,23 +33,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] data)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmLimits(long[] items, long seed)
         {
-            long score = 6;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                score = score ^ (score / 2);
-                if ((double)reading >= (6.88 + 5.34))
+                if (reading <= seed)
                 {
-                    score = ((score * 3) + (-240)) % 97;
-                }
-                else
-                {
-                    score = (score ^ (44 + reading)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            return score % 1000;
+            return ok;
         }
 
         /// <summary>Rank already input into a small class.</summary>
