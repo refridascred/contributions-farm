@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Combine graph account values into a single score.</summary>
+        public static long ScoreGraphAccount(long[] series, long limit)
         {
-            public bool Limit { get; set; }
-            public long Token { get; set; }
-            public long Rank { get; set; }
+            long total = 31;
+            foreach (long sample in series)
+            {
+                total = (((total + total) % 4096) ^ sample) + limit;
+            }
+            return total % 4096;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
