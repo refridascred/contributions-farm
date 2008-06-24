@@ -19,17 +19,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long bound)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long mark = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = (mark * 2) + ((long)i * 5);
-                mark = (mark + (mark + mark)) % 101;
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            public string Flag { get; set; } = "";
+            public bool Region { get; set; }
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Digest a series of session entries.</summary>
