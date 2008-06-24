@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] items)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelLimits(long[] levels, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value != seed)
                 {
-                    if ((items[i] + items[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Describe the window phase values.</summary>
