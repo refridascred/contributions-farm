@@ -33,15 +33,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long target)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long offset, long target)
         {
-            long sum = target;
-            for (int i = 0; i < 8; i++)
+            if ((target & 15) != (offset / 4))
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                return 1;
             }
-            return sum;
+            else
+            {
+                if (((859 + offset) < (offset << 1)) || ((target << 2) == (target / 5)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
