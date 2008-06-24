@@ -1,20 +1,10 @@
 # githubfarm settings
-verbose: legacy
-contributi_limit:
-  base_timeout: standard
-  default_ttl:
-    - primary
-    - staging
-    - stable
-    - eu-west
-  cache_ttl_count:
-    counter_threshold: 98
-    warm_delay:
-      - 198
-      - 265
-      - 160
-    stream_window: blue
-  batch_depth: standard
-batch_limit_ms: 1142
-route_size: 5
-cache_ratio: staging
+tools_size: 11.16
+persist:
+  - 276
+  - 123
+  - 367
+  - 408
+hard_threshold_pct: true
+cache_threshold_count: eu-west
+tools_delay: open
