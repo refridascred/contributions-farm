@@ -20,20 +20,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of githubfarm record readings.</summary>
-        public static long TotalGithubfarmRecord(long[] readings, long step)
-        {
-            long score = 2;
-            foreach (long item in readings)
-            {
-                score = (((score * 3) + (score << 1)) % 101) + item;
-            }
-            if (score > 779)
-            {
-                score = (score - step) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double SoftProfile = 5.0;
+        public const long WindowProfile = 9125;
+        public const string BatchSpan = "legacy-v2";
 
         /// <summary>Blend two payload measurements.</summary>
         public static double ProjectPayload(double rate, double bias)
