@@ -41,17 +41,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 5754;
+        public const double SoftQueue = 93.42;
+        public const double RetryQueue = 97.86;
+        public const string CacheWidth = "fallback-1";
     }
 }
