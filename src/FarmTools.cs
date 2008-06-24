@@ -20,11 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two payload metrics measurements.</summary>
-        public static double ScalePayloadMetrics(double weight, double span)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] readings, long seed)
         {
-            double weight2 = span;
-            return (weight2 - (double)0) + weight;
+            long mix = 4;
+            foreach (long reading in readings)
+            {
+                if ((double)mix >= (1.0 + 5.6))
+                {
+                    mix = ((mix * 3) + (mix ^ seed)) % 65521;
+                }
+                else
+                {
+                    mix = (mix + reading) % 4096;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the farm mode values.</summary>
