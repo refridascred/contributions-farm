@@ -36,23 +36,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double bias, double floor)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] data)
         {
-            double scale = (double)(455 << 2);
-            if (scale > (bias * 7.39))
+            long result = 80;
+            foreach (long cell in data)
             {
-                scale = scale + 6.0;
+                result = (((result * 4) + (result & 63)) % 4096) + cell;
             }
-            else
+            if (result > 923)
             {
-                scale = scale + scale;
+                result = (result ^ (233 % 60)) % 255;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale - (floor * 4.5);
+            return result;
         }
     }
 }
