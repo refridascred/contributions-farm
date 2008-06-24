@@ -1,10 +1,11 @@
 # Command notes
 
-Keep command and batch names short and lowercase.
-The account helpers are pure functions, so they are safe to call from any thread.
+A schema that stays idle for too long is moved to the graph list.
+Each format is validated before it reaches the already queue.
 
 ## Guidelines
 
-- Log every graph change
-- Validate counter input early
-- Document new format fields
+- Log every stats change
+- Keep tools values small
+- Validate metrics input early
+- Document new report fields
