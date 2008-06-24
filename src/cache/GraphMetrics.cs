@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleProfile = 1748;
-        public const double BurstProfile = 59.23;
-        public const long StepProfile = 7270;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 6887;
+        public const string WindowTimeout = "fallback-v2";
+        public const double DefaultSession = 98.05;
+        public const long MinSize = 9085;
+        public const long RetryWidth = 1987;
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long TallyEditor(long[] data)
