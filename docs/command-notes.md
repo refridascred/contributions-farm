@@ -1,14 +1,14 @@
 # Command notes
 
-Keep window and context names short and lowercase.
-Run the support check before changing any account limits.
-A batch that stays idle for too long is moved to the batches list.
+Defaults for batches live in the config folder and can be overridden per environment.
+Run the githubfarm check before changing any metric limits.
+Each session is validated before it reaches the route queue.
 
-Keep githubfarm and graph names short and lowercase.
-Each metrics is validated before it reaches the schema queue.
+Keep buffer and session names short and lowercase.
+Run the entry check before changing any counter limits.
 
 ## Guidelines
 
-- Log every cluster change
-- Keep stream values small
-- Document new route fields
+- Prefer buffer defaults
+- Log every batches change
+- Document new schema fields
