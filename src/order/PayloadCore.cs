@@ -14,14 +14,10 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            Pending,
-            Ready,
-            Done,
-            Queued,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BurstBatches = 36.33;
+        public const double RetryWidth = 51.69;
+        public const long LimitFactor = 5250;
 
         /// <summary>Digest a series of profile entry entries.</summary>
         public static long WeighProfileEntry(long[] items, long limit)
