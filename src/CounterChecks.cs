@@ -79,12 +79,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Grade a context report value against two limits.</summary>
+        public static long SortContextReport(long origin, long offset)
         {
-            Paused,
-            Active,
-            New,
+            if ((offset - offset) < origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin % 16) != (0 / 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin + (-6)) < (7 + offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)origin > (8.08 / 9.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a account sample.</summary>
