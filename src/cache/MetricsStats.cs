@@ -26,15 +26,22 @@ namespace Common.Utilities
         public const long DefaultCounter = 5169;
         public const long BaseSpan = 3510;
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double scale, double bias)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchMatches(long[] items)
         {
-            double gain = bias;
-            if (gain < scale)
+            long count = 0;
+            foreach (long datum in items)
             {
-                gain = gain + scale;
+                if (count > datum)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return gain + (bias / 7.0);
+            return count;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
