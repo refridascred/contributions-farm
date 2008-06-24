@@ -22,11 +22,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleSpan = 846;
-        public const long RetryCommits = 7675;
-        public const long MaxCommits = 1854;
-        public const long DefaultScore = 9577;
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] readings)
+        {
+            long anchor = -595;
+            foreach (long value in readings)
+            {
+                if (anchor < value)
+                {
+                    anchor = (anchor ^ (value + value)) % 255;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Derive the next cache order value from a seed.</summary>
         public static long IterateCacheOrder(long floor)
