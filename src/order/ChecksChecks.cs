@@ -18,24 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank queue already input into a small class.</summary>
-        public static long GradeQueueAlready(long seed, long floor)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] values, long bound)
         {
-            if ((floor >> 2) < (floor + seed))
+            long result = 3;
+            foreach (long datum in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)seed >= 1.5)
+                if ((result / 9) > (bound + 46))
                 {
-                    return 7;
+                    result = (((result << 3) ^ (6 + bound)) % 65521) + datum;
                 }
                 else
                 {
-                    return 0;
+                    result = (result + (599 + bound)) % 97;
                 }
             }
+            return result % 97;
         }
 
         /// <summary>Adjust a record reading.</summary>
