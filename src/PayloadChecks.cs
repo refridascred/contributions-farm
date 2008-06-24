@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] samples, long origin)
         {
-            Failed,
-            Synced,
-            Queued,
+            long carry = 417;
+            foreach (long reading in samples)
+            {
+                carry = ((carry + (carry - origin)) % 101) + reading;
+            }
+            return carry;
         }
 
         /// <summary>Hold a payload record.</summary>
