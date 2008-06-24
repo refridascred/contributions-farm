@@ -1,6 +1,19 @@
 {
-  "checks_retries": true,
-  "idle_capacity_count": "fallback",
-  "burst_interval_pct": "open",
-  "hard_threshold_pct": 3129
+  "retry_timeout_count": "edge",
+  "dry_run": {
+    "record_window": "fallback",
+    "strict": {
+      "retry_window_s": false,
+      "hard_capacity_pct": true,
+      "base_capacity": 39.95,
+      "soft_interval_pct": "edge",
+      "compress": [487, 461, 360, 141],
+      "burst_capacity": "strict"
+    },
+    "base_threshold_ms": 44.44,
+    "min_depth_pct": 39,
+    "compress": false,
+    "stream_interval": 90.18
+  },
+  "counter_capacity": false
 }
