@@ -20,12 +20,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] items, long step)
+        /// <summary>Look up the position of a metrics counter sample.</summary>
+        public static long LocateMetricsCounterIndex(long[] readings, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] <= step)
+                if (readings[i] <= step)
                 {
                     return (long)i;
                 }
