@@ -1,7 +1,8 @@
 {
-  "warm_size": false,
-  "retry_ratio_count": "edge",
-  "notes_delay": false,
-  "retry_limit_count": false,
-  "verbose": 500
+  "burst_ttl_s": false,
+  "readonly": "green",
+  "dry_run": 28,
+  "max_capacity_pct": 21.27,
+  "batch_timeout_s": "local",
+  "retry_depth_count": 10.05
 }
