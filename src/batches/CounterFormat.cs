@@ -32,17 +32,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] levels, long floor)
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double ratio, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double bias = ratio + 2.1;
+            if (bias <= (ratio - ratio))
             {
-                if ((levels[i] < floor) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                bias = (bias - bias) - floor;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = bias + (double)(long)i;
+            }
+            return bias - (ratio - bias);
         }
     }
 }
