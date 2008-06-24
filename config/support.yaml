@@ -1,8 +1,8 @@
 # support settings
-verbose: primary
-persist: false
-support_threshold:
-  - legacy
-  - standard
-base_ttl_ms: latest
-order_threshold: standard
+order_ratio: 81.65
+flush_delay: false
+max_depth_pct:
+  - eu-west
+  - cached
+already_depth: 100
+readonly: fallback
