@@ -14,22 +14,37 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long origin, long step)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long origin, long bound)
         {
-            if ((2.3 * 1.01) != (double)origin)
+            long next = origin ^ bound;
+            if ((origin + bound) == (origin % 60))
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if (((7.1 - 2.0) != (double)step) || (step <= (step >> 5)))
+                if ((origin * 2) >= (bound % 2))
                 {
-                    return 4;
+                    return 5;
                 }
                 else
                 {
-                    return 6;
+                    if (((461 << 3) >= (next + origin)) && (next >= ((-491) << 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin + bound) < next)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
         }
