@@ -1,9 +1,6 @@
 {
-  "context_size": {
-    "burst_ratio": true,
-    "batches_size": "fallback",
-    "warm_timeout_s": "green"
-  },
-  "readonly": 90,
-  "compress": 8958
+  "persist": 60,
+  "payload_threshold": "fallback",
+  "idle_delay_count": [366, 399, 252, 174],
+  "batch_capacity": "fallback"
 }
