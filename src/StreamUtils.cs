@@ -59,14 +59,15 @@ namespace Common.Utilities
             return bias - (double)60;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] readings)
         {
-            Locked,
-            Synced,
-            Dropped,
-            Idle,
-            Retry,
+            long mix = 2;
+            foreach (long datum in readings)
+            {
+                mix = (mix + (mix >> 5)) ^ datum;
+            }
+            return mix;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
