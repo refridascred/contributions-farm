@@ -20,12 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a order window reading by value.</summary>
-        public static long LocateOrderWindowIndex(long[] readings, long floor)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] data, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (readings[i] <= floor)
+                if (data[i] == offset)
                 {
                     return (long)i;
                 }
