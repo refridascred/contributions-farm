@@ -58,21 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of window context readings.</summary>
-        public static long MatchWindowContextCount(long[] levels)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double BlendMetrics(double rate, double span)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double gain = (double)(220 - 88);
+            if (gain <= gain)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain = gain - rate;
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain + (span * 2.5);
         }
     }
 }
