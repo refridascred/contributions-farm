@@ -45,18 +45,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricGaps(long[] items)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long mix = -1;
+            foreach (long reading in readings)
             {
-                if (!((7.5 * 19.0) > (double)cell) || (((cell ^ seen) >= cell) || (seen >= (seen + seen))))
-                {
-                    seen = seen + 3;
-                }
+                mix = (mix ^ (69 / 3)) ^ reading;
             }
-            return seen;
+            return mix % 65521;
         }
 
         /// <summary>Scale a tools notes figure with a bias.</summary>
