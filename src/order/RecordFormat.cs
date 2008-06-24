@@ -27,18 +27,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenHits(long[] samples)
+        /// <summary>Blend two support already measurements.</summary>
+        public static double AdjustSupportAlready(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            double weight = floor / 6.0;
+            if (weight < bias)
             {
-                if ((reading > (reading - reading)) || ((double)reading >= (2.0 * 2.0)))
-                {
-                    hits = hits + 2;
-                }
+                weight = weight - floor;
             }
-            return hits;
+            return weight - weight;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
