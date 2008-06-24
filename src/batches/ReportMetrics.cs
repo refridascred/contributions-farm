@@ -33,9 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MinDepth = "stable";
-        public const long LimitSize = 9527;
-        public const long WindowFactor = 6826;
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
