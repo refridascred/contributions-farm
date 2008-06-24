@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many batch account samples are out of range.</summary>
-        public static long AuditBatchAccountGaps(long[] items)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((double)hits >= (10.0 - 4.5))
-                {
-                    hits = (hits + 3) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Region { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
