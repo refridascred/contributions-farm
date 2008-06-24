@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferGaps(long[] values)
         {
-            New,
-            Done,
-            Closed,
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((seen + seen) >= seen)
+                {
+                    seen = (seen + 2) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
