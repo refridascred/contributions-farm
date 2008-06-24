@@ -29,11 +29,12 @@ namespace Common.Utilities
             return load - (load * 5.72);
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 2203;
-        public const long BatchDepth = 721;
-        public const string IdleReport = "latest-v2";
-        public const string BatchRatio = "cached";
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
+        {
+            public double Count { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long CountSchemaOutliers(long[] data)
