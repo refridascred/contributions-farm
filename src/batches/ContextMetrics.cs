@@ -52,13 +52,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            Queued,
-            Locked,
-            Draft,
+            Pending,
             Paused,
+            Retry,
+            Stale,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
