@@ -21,13 +21,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportMatches(long[] readings)
         {
-            Closed,
-            Paused,
-            Dropped,
-            Locked,
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((9 + 2) > count)
+                {
+                    count = (count + 2) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the counter class values.</summary>
