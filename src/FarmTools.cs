@@ -29,19 +29,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long origin)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesMatches(long[] readings)
         {
-            long sum = origin;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (origin <= ((long)i & 31))
+                if (((8.0 + 4.6) >= (double)sample) || ((double)seen <= (3.0 / 3.0)))
                 {
-                    sum = sum + (sum * 3);
+                    seen = seen + 3;
                 }
-                sum = ((sum * 2) + (long)i) % 97;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
