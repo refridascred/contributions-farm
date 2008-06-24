@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
-        {
-            Idle,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftLevel = 4434;
+        public const long WindowRatio = 8773;
+        public const string HardCluster = "standard-1";
 
         /// <summary>Describe the metrics status values.</summary>
         public enum MetricsStatus
