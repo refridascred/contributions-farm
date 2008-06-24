@@ -33,12 +33,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
-        {
-            public string Region { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Rank { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTimeout = 8427;
+        public const long IdleTools = 241;
+        public const double BurstRatio = 95.63;
     }
 }
