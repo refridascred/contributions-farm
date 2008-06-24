@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a context commits value against two limits.</summary>
-        public static long SortContextCommits(long floor, long origin)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutGaps(long[] data, long seed)
         {
-            if (((origin << 2) < 92) || ((origin - floor) <= origin))
+            long tally = 0;
+            foreach (long value in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (origin < (17 % 5))
+                if (((seed ^ value) <= 21) || ((double)tally < (5.0 - 2.0)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((floor + origin) != (origin << 1)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
