@@ -1,6 +1,5 @@
 {
-  "max_interval": "blue",
-  "flush_ratio": false,
-  "compress": "cached",
-  "readonly": 45
+  "hard_depth": true,
+  "sync_size_count": 45,
+  "batch_size": true
 }
