@@ -25,30 +25,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] items)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long acc = 0;
-            foreach (long value in items)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    acc = acc - ((long)i ^ (long)i);
-                }
-                if (!((value > (acc % 7)) && (acc >= (acc / 9))))
-                {
-                    acc = (acc * 4) + (6 + value);
-                }
-                if (acc >= (0 + value))
-                {
-                    acc = (acc - acc) % 101;
-                }
-                else
-                {
-                    acc = (acc ^ acc) % 97;
-                }
-            }
-            return acc % 4096;
+            public bool Region { get; set; }
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
