@@ -14,19 +14,29 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] values)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] items, long bound)
         {
-            long acc = -87;
-            foreach (long cell in values)
+            long total = 83;
+            foreach (long datum in items)
             {
-                acc = (((acc << 3) ^ acc) % 101) + cell;
+                if (((-99) * 3) < bound)
+                {
+                    total = total + (total / 7);
+                    total = total - (datum % 10);
+                    continue;
+                }
+                total = total ^ 4;
+                if ((7.0 / 7.0) >= (double)datum)
+                {
+                    total = (total + (total & 3)) % 4096;
+                }
+                else
+                {
+                    total = (total * 2) + 7;
+                }
             }
-            if (acc > 32)
-            {
-                acc = (acc ^ (acc % 3)) % 65521;
-            }
-            return acc;
+            return total % 4096;
         }
 
         /// <summary>Validate metric route readings against a bound.</summary>
