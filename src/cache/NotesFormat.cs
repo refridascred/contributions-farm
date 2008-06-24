@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit notes command readings against a rule.</summary>
-        public static long TallyNotesCommandHits(long[] levels, long step)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (!(((step + entry) <= (tally >> 2)) && (entry <= (tally * 3))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
