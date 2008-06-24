@@ -43,39 +43,12 @@ namespace Common.Utilities
             return drift + (floor - drift);
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long target, long origin)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long bound = target - origin;
-            if (((1 - target) >= (origin << 1)) || ((8.3 * 6.0) > (double)origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin - origin) >= (5 + bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((target ^ origin) >= (origin - origin)) && ((bound << 2) <= (origin - 7)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((11.0 / 4.0) > (double)origin)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Synced,
+            Idle,
         }
     }
 }
