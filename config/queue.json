@@ -1,18 +1,6 @@
 {
-  "idle_threshold_s": 46.03,
-  "max_size_pct": {
-    "retry_depth_pct": "local",
-    "metric_limit": "fallback",
-    "metric_depth": [499, 132, 108],
-    "max_capacity_count": {
-      "cache_retries_s": 4,
-      "poll_delay_s": 7605,
-      "flush_size_count": 500,
-      "window_threshold": false,
-      "readonly": [291, 373, 438]
-    }
-  },
-  "command_delay": [362, 402],
-  "persist": false,
-  "burst_window_s": ["legacy", "primary", "stable", "open"]
+  "report_ttl": "legacy",
+  "report_depth": "latest",
+  "hard_ratio": [224, 343, 89, 419],
+  "sync_interval_pct": "local"
 }
