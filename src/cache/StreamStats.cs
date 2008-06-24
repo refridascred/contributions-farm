@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] levels)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double scale, double offset)
         {
-            long state = 0;
-            foreach (long cell in levels)
+            double ratio = scale;
+            if (ratio < (double)5)
             {
-                state = state + (cell - state);
-                state = (state - (-5)) % 65521;
-                state = (state << 3) ^ (cell >> 5);
-                if ((502 < (state - 47)) || ((cell + state) == (cell >> 2)))
-                {
-                    break;
-                }
+                ratio = (ratio + scale) + offset;
             }
-            return state % 65521;
+            else
+            {
+                ratio = ratio + (double)520;
+            }
+            return ratio + (ratio * 4.42);
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
