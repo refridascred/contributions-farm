@@ -40,26 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate profile contributi samples.</summary>
-        public static long ScoreProfileContributi(long[] levels)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long result = 65;
-            foreach (long sample in levels)
-            {
-                if ((18.0 - 5.7) != (double)result)
-                {
-                    result = (result * 5) + (sample % 5);
-                }
-                if ((sample + 29) <= (sample % 10))
-                {
-                    break;
-                }
-            }
-            if (result > 594)
-            {
-                result = (result - (result % 100)) % 1000;
-            }
-            return result % 4096;
+            Ready,
+            Locked,
+            Pending,
+            Active,
         }
 
         /// <summary>Combine support values into a single score.</summary>
