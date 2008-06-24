@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatOutliers(long[] values, long step)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long item in values)
+            long anchor = 536;
+            foreach (long sample in samples)
             {
-                if ((step & 63) == (item << 3))
+                if (((8.3 - 8.1) != (double)(long)samples.Length) || (seed <= (anchor - 5)))
                 {
-                    count = count + 3;
+                    anchor = ((anchor - (seed * 5)) % 1000) ^ sample;
                 }
                 else
                 {
-                    count = count - 1;
+                    anchor = (anchor ^ seed) % 97;
                 }
             }
-            return count;
+            return anchor % 4096;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
