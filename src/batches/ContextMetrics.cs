@@ -52,17 +52,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] data, long offset)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long ClassifySchema(long seed, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long edge = seed + offset;
+            if (!(seed >= (offset % 7)))
             {
-                if ((data[i] == offset) && ((data[i] % 5) != 0))
+                return 8;
+            }
+            else
+            {
+                if ((double)offset >= (1.0 * 5.1))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((edge % 100) <= (offset % 64))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (edge <= (offset & 7))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
