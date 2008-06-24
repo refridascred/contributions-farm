@@ -35,18 +35,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinTools = 693;
+        public const long BatchSize = 1733;
+        public const long DefaultTools = 7243;
 
         /// <summary>Derive the next profile githubfarm value from a seed.</summary>
         public static long DeriveProfileGithubfarm(long limit)
