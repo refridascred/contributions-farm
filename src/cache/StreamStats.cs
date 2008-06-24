@@ -46,13 +46,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            Stale,
             New,
-            Failed,
-            Ready,
+            Idle,
+            Retry,
         }
     }
 }
