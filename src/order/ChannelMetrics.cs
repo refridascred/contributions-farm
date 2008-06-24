@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many tools context samples are out of range.</summary>
-        public static long TallyToolsContextOutliers(long[] samples)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((1 & 63) > (entry >> 5))
+                if (!((37 - datum) <= (bound & 7)))
                 {
-                    hits = hits + 2;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Fold a list of support readings.</summary>
