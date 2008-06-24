@@ -14,19 +14,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] items, long seed)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long score = 8;
-            foreach (long sample in items)
-            {
-                score = (score - (sample % 100)) % 1000;
-                if ((double)seed != (16.0 - 6.8))
-                {
-                    score = (score - (score / 8)) % 1000;
-                }
-            }
-            return score;
+            Pending,
+            Stale,
+            Failed,
+            Active,
         }
 
         /// <summary>Rank graph input into a small class.</summary>
