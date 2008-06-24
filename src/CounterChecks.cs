@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long seed, long limit)
         {
-            Locked,
-            Failed,
-            Done,
-            Draft,
-            Ready,
+            long bound = seed - limit;
+            if ((seed * 2) >= 285)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((89 + limit) != (bound * 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (bound < (bound + bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up schema samples.</summary>
