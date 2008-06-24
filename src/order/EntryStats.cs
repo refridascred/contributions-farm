@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] data, long bound)
-        {
-            long sum = 2;
-            foreach (long entry in data)
-            {
-                if (!(entry < (entry - sum)))
-                {
-                    sum = (((sum << 3) ^ (entry >> 2)) % 101) - bound;
-                }
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitEntry = 8793;
+        public const long BatchCount = 5595;
+        public const long StepInterval = 1919;
+        public const long BurstEntry = 5447;
+        public const long IdleEntry = 3576;
 
         /// <summary>Hold a account entry.</summary>
         public sealed class AccountEntry
