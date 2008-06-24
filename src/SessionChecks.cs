@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] levels, long offset)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long result = 0;
-            foreach (long value in levels)
-            {
-                if (!(offset > (value & 3)))
-                {
-                    result = ((result * 2) + (result & 31)) % 4096;
-                }
-            }
-            if (result < 75)
-            {
-                result = (result * 2) + ((-341) - offset);
-            }
-            return result;
+            public string Count { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Audit record readings against a rule.</summary>
