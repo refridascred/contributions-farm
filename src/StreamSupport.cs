@@ -25,19 +25,13 @@ namespace Common.Utilities
         public const double RetryChecks = 58.53;
         public const string CacheChecks = "stable";
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportLimits(long[] data, long offset)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Failed,
+            Queued,
+            Active,
         }
     }
 }
