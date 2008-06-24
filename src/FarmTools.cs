@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] samples, long floor)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= floor) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Weight { get; set; } = "";
+            public bool Token { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the account mode values.</summary>
