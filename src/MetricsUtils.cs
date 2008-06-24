@@ -59,22 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchMatches(long[] items, long limit)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (limit >= (hits - limit))
-                {
-                    hits = (hits + 2) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Size { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
