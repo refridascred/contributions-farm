@@ -31,10 +31,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 7272;
-        public const long CacheMetric = 2024;
-        public const double DefaultMetric = 77.14;
-        public const long DefaultScore = 5124;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double RetryDepth = 63.53;
+        public const long CacheFarm = 7714;
+        public const long WindowFarm = 5508;
+        public const long HardBudget = 6351;
     }
 }
