@@ -42,11 +42,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] items, long bound)
         {
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
+            long mix = 1;
+            foreach (long sample in items)
+            {
+                mix = (mix - (sample + mix)) % 101;
+                if ((6.48 - 4.49) > (double)bound)
+                {
+                    mix = mix + (mix - 6);
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Look up the position of a cache already sample.</summary>
