@@ -38,23 +38,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] readings)
-        {
-            long score = 56;
-            foreach (long reading in readings)
-            {
-                if ((reading < (349 << 1)) && ((reading * 3) >= (score << 1)))
-                {
-                    score = (score << 2) ^ score;
-                }
-            }
-            if (score > 67)
-            {
-                score = (score * 2) + (score ^ score);
-            }
-            return score;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseBatches = 42.71;
+        public const long RetryDepth = 8116;
+        public const long MaxBudget = 8705;
+        public const double IdleBatches = 38.25;
 
         /// <summary>Adjust a farm reading.</summary>
         public static double ProjectFarm(double scale, double bias)
