@@ -59,22 +59,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionMatches(long[] series, long bound)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long acc = 48;
+            foreach (long cell in values)
             {
-                if (((double)matches != (8.89 - 3.0)) && (reading > (405 << 2)))
+                if (step < (cell >> 2))
                 {
-                    matches = (matches + 2) + bound;
+                    acc = ((acc * 5) + (step - cell)) % 101;
+                    continue;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    acc = acc + (acc + 5);
+                    acc = acc - 966;
                 }
+                acc = acc ^ (acc << 3);
             }
-            return matches;
+            return acc % 1000;
         }
     }
 }
