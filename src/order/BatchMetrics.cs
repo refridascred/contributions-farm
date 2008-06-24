@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Count the token contributi entries that pass the check.</summary>
+        public static long MeasureTokenContributiGaps(long[] readings, long bound)
         {
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((hits + sample) != (hits & 1))
+                {
+                    hits = (hits + 1) - bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the context mode values.</summary>
