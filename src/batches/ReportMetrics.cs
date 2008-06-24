@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] samples, long step)
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double gain, double bias)
         {
-            long acc = 9;
-            foreach (long datum in samples)
+            double drift = 5.0;
+            if (drift > (drift - drift))
             {
-                if ((double)(-550) <= (double)acc)
-                {
-                    acc = acc ^ (acc + datum);
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (step ^ datum)) % 97;
-                }
+                drift = drift + (double)(-143);
             }
-            if (acc < 6)
+            else
             {
-                acc = (acc - (9 + 68)) % 1000;
+                drift = drift - (bias * 1.0);
             }
-            return acc;
+            return drift - (4.78 + gain);
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
