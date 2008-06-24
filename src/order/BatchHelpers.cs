@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] series)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long step)
         {
-            long sum = 11;
-            foreach (long cell in series)
+            long acc = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((sum >> 2) >= ((-769) >> 4))
-                {
-                    sum = sum ^ cell;
-                }
-                else
-                {
-                    sum = sum ^ sum;
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Describe the layout mode values.</summary>
