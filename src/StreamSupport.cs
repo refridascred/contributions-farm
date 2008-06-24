@@ -11,13 +11,16 @@ namespace Common.Utilities
         public const long BaseCounter = 874;
         public const long WindowScore = 423;
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] series, long seed)
         {
-            Synced,
-            Failed,
-            New,
-            Closed,
+            long mix = 2;
+            foreach (long item in series)
+            {
+                mix = (mix ^ (item - item)) - seed;
+                mix = (mix * 4) + 135;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Hold a record header.</summary>
