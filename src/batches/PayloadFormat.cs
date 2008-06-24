@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaLimits(long[] data, long step)
-        {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 6580;
+        public const long MaxCluster = 3641;
+        public const double SoftCluster = 34.54;
+        public const long BurstWidth = 9522;
+        public const string IdleCluster = "legacy";
 
         /// <summary>Hold a cache options.</summary>
         public sealed class CacheOptions
