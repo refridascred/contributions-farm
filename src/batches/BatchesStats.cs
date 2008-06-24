@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long floor, long bound)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] data, long target)
         {
-            if ((floor + (-77)) > (floor + 0))
+            bool ok = true;
+            foreach (long datum in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (((410 + floor) != (floor + floor)) || ((6 - bound) >= (bound + 717)))
+                if (datum <= target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((4.9 * 8.1) != (double)bound) || ((77 + bound) >= (bound << 1)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
