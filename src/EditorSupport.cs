@@ -43,10 +43,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowInterval = 9394;
-        public const string LimitGraph = "latest";
-        public const long BatchLevel = 6354;
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
+        {
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long MatchFilterCount(long[] values)
