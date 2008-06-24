@@ -36,19 +36,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] values)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] readings, long step)
         {
-            long acc = 3;
-            foreach (long reading in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (acc - (acc % 12)) % 65521;
-                if ((reading - 6) <= ((-137) ^ 33))
+                if (readings[i] >= step)
                 {
-                    acc = (acc << 3) ^ acc;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
