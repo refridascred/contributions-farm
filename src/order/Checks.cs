@@ -61,15 +61,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long step)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long state = step;
-            for (int i = 0; i < 13; i++)
-            {
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            Pending,
+            Paused,
+            Active,
+            Ready,
+            Idle,
         }
     }
 }
