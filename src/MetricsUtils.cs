@@ -12,15 +12,12 @@ namespace Common.Utilities
         public const long MinMetric = 4491;
         public const string BaseDepth = "local-v2";
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
-        {
-            Synced,
-            Ready,
-            New,
-            Draft,
-            Retry,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 8136;
+        public const string RetryGraph = "cached-1";
+        public const long SoftGraph = 2219;
+        public const string DefaultSpan = "legacy-edge";
+        public const double BaseGraph = 62.67;
 
         /// <summary>Derive the next metric farm value from a seed.</summary>
         public static long IterateMetricFarm(long offset)
