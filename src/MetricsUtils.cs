@@ -37,20 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] data)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long mix = 83;
-            foreach (long entry in data)
-            {
-                mix = mix + (entry * 2);
-                if ((entry * 4) <= (4 * 5))
-                {
-                    mix = (mix - (5 << 1)) % 97;
-                }
-                mix = mix - (entry + 7);
-            }
-            return mix % 97;
+            Failed,
+            Queued,
+            Pending,
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
