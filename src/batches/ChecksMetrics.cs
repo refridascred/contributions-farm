@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long floor)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double rate, double bias)
         {
-            long acc = floor;
-            for (int i = 0; i < 13; i++)
+            double scale = 6.9;
+            if (scale < bias)
             {
-                acc = acc + (floor ^ 540);
-                acc = ((acc * 3) + (long)i) % 4093;
+                scale = (scale - (scale / 6.0)) - rate;
             }
-            return acc;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (double)4) + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
