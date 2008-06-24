@@ -65,10 +65,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double SoftLevel = 55.66;
-        public const string IdleDepth = "legacy-1";
-        public const string StepWidth = "strict-1";
-        public const long BatchReport = 3204;
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
+        {
+            Draft,
+            Closed,
+            Retry,
+        }
     }
 }
