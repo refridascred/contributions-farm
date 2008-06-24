@@ -19,32 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long bound, long offset)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryOutliers(long[] levels)
         {
-            long cur = bound - offset;
-            if ((66 - cur) == (bound / 6))
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound % 10) > offset)
+                if ((entry % 24) > (count << 2))
                 {
-                    return 1;
+                    count = count + 1;
                 }
                 else
                 {
-                    if ((double)offset != (double)bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
