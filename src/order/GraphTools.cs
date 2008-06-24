@@ -63,12 +63,18 @@ namespace Common.Utilities
             return gain - (scale * 20.0);
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] data, long limit)
         {
-            New,
-            Dropped,
-            Done,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (limit < (matches >> 1))
+                {
+                    matches = (matches + 1) ^ sample;
+                }
+            }
+            return matches;
         }
     }
 }
