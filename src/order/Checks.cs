@@ -43,18 +43,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] series, long limit)
+        /// <summary>Measure how many entry schema samples are out of range.</summary>
+        public static long CountEntrySchemaGaps(long[] series, long floor)
         {
-            long score = 176;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (((7.7 + 5.0) > (double)entry) && ((score % 16) > limit))
+                if ((datum % 10) <= (count % 3))
                 {
-                    score = ((score << 3) ^ (limit + limit)) % 97;
+                    count = (count + 2) - floor;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
