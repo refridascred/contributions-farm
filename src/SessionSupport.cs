@@ -17,19 +17,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricHits(long[] readings, long floor)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((4 & 255) < (sample >> 2))
-                {
-                    matches = (matches + 3) - floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string SoftToken = "fallback-edge";
+        public const string MaxBudget = "fallback-1";
+        public const string BatchInterval = "strict";
+        public const double DefaultTimeout = 45.27;
+        public const long BurstToken = 8308;
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
