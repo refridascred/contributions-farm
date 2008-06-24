@@ -28,18 +28,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] values, long step)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long origin)
         {
-            long score = 8;
-            foreach (long entry in values)
+            long sum = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if ((score + score) <= (entry + step))
-                {
-                    score = (score - (score - 1)) % 65521;
-                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return score % 1000;
+            return sum;
         }
 
         /// <summary>Rank queue entry input into a small class.</summary>
