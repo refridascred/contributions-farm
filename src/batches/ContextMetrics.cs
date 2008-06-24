@@ -52,18 +52,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of format window entries.</summary>
-        public static long WeighFormatWindow(long[] samples)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long anchor = 31;
-            foreach (long datum in samples)
-            {
-                if (datum <= (datum << 2))
-                {
-                    anchor = (anchor * 3) + (anchor + anchor);
-                }
-            }
-            return anchor % 4096;
+            Queued,
+            Locked,
+            Draft,
+            Paused,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
