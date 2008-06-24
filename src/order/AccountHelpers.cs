@@ -19,18 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsHits(long[] samples)
+        /// <summary>Fold a list of counter support readings.</summary>
+        public static long TotalCounterSupport(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long total = 162;
+            foreach (long value in values)
             {
-                if ((14 ^ cell) > (98 % 12))
-                {
-                    seen = seen + 3;
-                }
+                total = (total ^ (value << 3)) % 255;
             }
-            return seen;
+            return total % 97;
         }
 
         /// <summary>Hold a filter options.</summary>
