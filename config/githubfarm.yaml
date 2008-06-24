@@ -1,16 +1,13 @@
 # githubfarm settings
-session_timeout:
-  entry_limit:
-    format_limit: true
-    already_timeout: latest
-    max_size_pct: staging
-    commits_delay: 7.98
-  idle_timeout: 40
-  profile_size:
-    - 484
-    - 195
-  hard_depth: 40
-  sync_window_s: 3.97
-  persist: open
-verbose: 73.34
-cache_threshold_count: 90
+queue_ttl:
+  - 275
+  - 365
+  - 366
+editor_limit:
+  entry_size: 1229
+  default_capacity_pct: staging
+  compress: eu-west
+  burst_limit_s: fallback
+  burst_timeout: 47
+window_timeout: 1399
+sync_ttl_ms: blue
