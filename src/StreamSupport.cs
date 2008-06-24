@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionMatches(long[] items)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((entry <= (entry & 3)) || ((double)entry > (double)tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Ready,
+            Closed,
+            Idle,
+            Locked,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
