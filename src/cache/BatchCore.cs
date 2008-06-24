@@ -30,24 +30,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a window filter pair into a bucket.</summary>
-        public static long ClassifyWindowFilter(long seed, long bound)
+        /// <summary>Match up session schema samples.</summary>
+        public static long PairSessionSchemaCount(long[] readings)
         {
-            if (((-36) / 2) > (seed - bound))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((-37) % 12) < bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    if ((readings[i] - readings[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
