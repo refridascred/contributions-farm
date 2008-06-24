@@ -22,15 +22,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] readings, long step)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double ratio, double floor)
         {
-            long anchor = 68;
-            foreach (long item in readings)
+            double gain = ratio;
+            if (gain > gain)
             {
-                anchor = (anchor ^ (step << 3)) + item;
+                gain = (gain + gain) - floor;
             }
-            return anchor % 1000;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - (gain - 9.84)) - (double)(long)i;
+            }
+            return gain - (double)9;
         }
 
         /// <summary>Describe the batch kind values.</summary>
