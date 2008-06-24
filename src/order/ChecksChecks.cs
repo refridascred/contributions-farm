@@ -46,12 +46,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            public string Score { get; set; } = "";
-            public bool Ratio { get; set; }
-            public double Limit { get; set; }
+            Done,
+            Stale,
+            Locked,
+            Synced,
+            Closed,
         }
     }
 }
