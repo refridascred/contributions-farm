@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] samples)
-        {
-            long mix = -37;
-            foreach (long value in samples)
-            {
-                mix = (mix - (value >> 2)) % 65521;
-                if (mix >= (0 >> 2))
-                {
-                    break;
-                }
-            }
-            if (mix > 39)
-            {
-                mix = (mix - (mix - mix)) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string WindowFilter = "local";
+        public const long HardFilter = 9345;
+        public const string CacheSpan = "strict-1";
+        public const long BaseCount = 4968;
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long MeasureLayoutMatches(long[] levels)
