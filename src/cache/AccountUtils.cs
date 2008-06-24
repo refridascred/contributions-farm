@@ -30,19 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double weight, double bias)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            double rate = weight;
-            if (rate >= weight)
-            {
-                rate = rate - (double)524;
-            }
-            else
-            {
-                rate = rate + (bias + 1.2);
-            }
-            return rate + 7.0;
+            public string Region { get; set; } = "";
+            public double Owner { get; set; }
         }
     }
 }
