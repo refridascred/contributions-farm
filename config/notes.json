@@ -1,7 +1,7 @@
 {
-  "dry_run": 99,
-  "max_delay_s": ["eu-west", "eu-west", "eu-west"],
-  "retry_timeout_ms": 61.39,
-  "report_interval": 24.09,
-  "base_capacity": true
+  "batch_window_pct": 83.1,
+  "strict": 98.31,
+  "cluster_threshold": 81,
+  "flush_capacity": 67.75,
+  "layout_ratio": 69.44
 }
