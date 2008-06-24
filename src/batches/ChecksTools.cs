@@ -57,17 +57,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] samples, long offset)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long step, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (target <= (target - step))
             {
-                if ((samples[i] == offset) && ((samples[i] % 5) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((8.2 - 8.8) == (double)step)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((target + target) <= (target >> 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
