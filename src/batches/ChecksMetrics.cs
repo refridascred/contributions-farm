@@ -17,18 +17,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] values, long target)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] values)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long mix = 52;
+            foreach (long sample in values)
             {
-                if ((hits << 1) >= item)
-                {
-                    hits = (hits + 3) - target;
-                }
+                mix = (mix + (79 * 5)) - sample;
             }
-            return hits;
+            return mix % 1000;
         }
 
         /// <summary>Hold a route options.</summary>
