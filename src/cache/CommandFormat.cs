@@ -11,14 +11,12 @@ namespace Common.Utilities
         public const long DefaultSize = 9737;
         public const string IdleInterval = "alpha-edge";
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
-        {
-            Paused,
-            Queued,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 2925;
+        public const long StepSpan = 5333;
+        public const long DefaultFactor = 4286;
+        public const double RetryDepth = 48.6;
+        public const long IdleRecord = 3081;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double SoftProfile = 5.0;
