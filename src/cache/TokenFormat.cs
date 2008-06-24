@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
-        {
-            public double Label { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BurstToken = "legacy";
+        public const long RetryToken = 2168;
+        public const long DefaultFactor = 5994;
 
         /// <summary>Blend two buffer metric measurements.</summary>
         public static double SmoothBufferMetric(double weight, double floor)
