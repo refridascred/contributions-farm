@@ -26,11 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BaseStream = 83.43;
-        public const string WindowStream = "strict-edge";
-        public const long RetrySpan = 9100;
-        public const long IdleInterval = 2297;
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long GradeRecord(long limit, long origin)
