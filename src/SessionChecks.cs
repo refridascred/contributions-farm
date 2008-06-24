@@ -34,19 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit support checks readings against a rule.</summary>
-        public static long MeasureSupportChecksGaps(long[] values)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (value >= (hits / 6))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardCount = 7632;
+        public const long BaseBatches = 7657;
+        public const double LimitBatches = 85.58;
+        public const string DefaultBatches = "legacy";
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
