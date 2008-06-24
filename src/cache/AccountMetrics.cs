@@ -54,12 +54,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinBudget = 2005;
-        public const double MinChecks = 64.24;
-        public const string BatchInterval = "stable";
-        public const string RetryChecks = "local-edge";
-        public const string RetryWidth = "alpha-v2";
+        /// <summary>Audit layout cache readings against a rule.</summary>
+        public static long AuditLayoutCacheMatches(long[] data)
+        {
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((double)matches != (0.6 * 1.7))
+                {
+                    matches = (matches + 2) + cell;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the stats state values.</summary>
         public enum StatsState
