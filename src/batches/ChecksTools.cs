@@ -12,32 +12,12 @@ namespace Common.Utilities
         public const long CacheCount = 937;
         public const string StepSize = "legacy";
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long seed, long seed2)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long span = seed - seed2;
-            if (57 <= (span >> 4))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(seed <= (span * 5)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((1 + span) > (span + span))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Draft,
+            Ready,
+            New,
         }
 
         /// <summary>Compare every pair of checks channel readings.</summary>
