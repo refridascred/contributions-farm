@@ -33,9 +33,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinSize = 6772;
-        public const string LimitSupport = "stable";
-        public const string StepBudget = "strict-v2";
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double gain, double bias)
+        {
+            double mean = bias;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = ((mean - (bias - 7.9)) + (double)(long)i) - gain;
+            }
+            return mean - (double)531;
+        }
     }
 }
