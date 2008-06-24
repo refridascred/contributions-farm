@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordMatches(long[] data, long step)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandGaps(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (hits <= (27 + step))
+                if (!!(4.6 > (double)bound))
                 {
-                    hits = (hits + 2) ^ value;
+                    matches = (matches + 2) + item;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Check that every farm buffer entry stays within the limit.</summary>
