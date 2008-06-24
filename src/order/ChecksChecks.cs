@@ -46,14 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            Synced,
-            Retry,
-            New,
-            Locked,
-            Paused,
+            public string Score { get; set; } = "";
+            public bool Ratio { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
