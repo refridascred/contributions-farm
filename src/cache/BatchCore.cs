@@ -44,19 +44,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileBounds(long[] data, long seed)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double gain, double floor)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            double mean = 13.0;
+            if (mean < 5.08)
             {
-                if (cell < seed)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = (mean + floor) - gain;
             }
-            return stale;
+            else
+            {
+                mean = mean + (double)81;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - 2.3;
         }
     }
 }
