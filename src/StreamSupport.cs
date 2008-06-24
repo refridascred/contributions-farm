@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Measure how many batch account samples are out of range.</summary>
+        public static long AuditBatchAccountGaps(long[] items)
         {
-            Pending,
-            Failed,
-            Ready,
-            Active,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((double)hits >= (10.0 - 4.5))
+                {
+                    hits = (hits + 3) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
