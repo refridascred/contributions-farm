@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 8136;
-        public const string RetryGraph = "cached-1";
-        public const long SoftGraph = 2219;
-        public const string DefaultSpan = "legacy-edge";
-        public const double BaseGraph = 62.67;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsHits(long[] levels, long bound)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (!(((value << 2) <= (181 - bound)) || (tally < (81 << 3))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of payload tools entries.</summary>
         public static long CombinePayloadTools(long[] series)
