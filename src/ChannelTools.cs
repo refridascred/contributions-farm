@@ -13,22 +13,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 2642;
+        public const double SoftSupport = 45.86;
+        public const long HardBudget = 5240;
+        public const long IdleInterval = 9493;
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
