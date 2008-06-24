@@ -12,13 +12,24 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Rank account cache input into a small class.</summary>
+        public static long GradeAccountCache(long bound, long origin)
         {
-            Locked,
-            Active,
-            Closed,
-            New,
+            if (((origin - 516) != (bound + origin)) && ((bound + 530) != (bound % 60)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((18.0 - 1.0) == (double)origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Measure how many stream metrics samples are out of range.</summary>
