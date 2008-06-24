@@ -40,31 +40,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Grade a cache batch value against two limits.</summary>
-        public static long RankCacheBatch(long seed, long offset)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutOutliers(long[] items)
         {
-            if ((seed <= (offset & 255)) || ((4 >> 1) >= (offset ^ 26)))
+            long count = 0;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (offset >= 411)
+                if (((9.0 * 4.54) > (double)item) && ((double)item < (0.9 / 5.0)))
                 {
-                    return 0;
+                    count = count + 2;
                 }
                 else
                 {
-                    if ((offset ^ seed) >= offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the payload level values.</summary>
