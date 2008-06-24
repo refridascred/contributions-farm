@@ -26,17 +26,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] samples, long origin)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphGaps(long[] levels, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (samples[i] <= origin)
+                if (!((double)reading <= (9.1 + 6.65)))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + limit;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Accumulate filter samples.</summary>
