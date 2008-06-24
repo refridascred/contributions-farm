@@ -55,9 +55,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheStats = 3372;
-        public const long WindowStats = 9351;
-        public const long BaseRatio = 6639;
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > bound) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
