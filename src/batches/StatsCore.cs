@@ -43,18 +43,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] readings, long origin)
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] items)
         {
-            long mix = 2;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (mix <= (origin + (long)readings.Length))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = (mix - (6 & 127)) + cell;
+                    if ((items[i] + items[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the batches phase values.</summary>
