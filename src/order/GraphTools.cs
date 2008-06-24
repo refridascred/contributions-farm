@@ -58,13 +58,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public string Owner { get; set; } = "";
+            Done,
+            Dropped,
+            Pending,
         }
     }
 }
