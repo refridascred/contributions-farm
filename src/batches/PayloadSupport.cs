@@ -32,19 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] series, long seed)
+        /// <summary>Combine queue stats values into a single score.</summary>
+        public static long DigestQueueStats(long[] items)
         {
-            long anchor = 102;
-            foreach (long cell in series)
+            long carry = 217;
+            foreach (long entry in items)
             {
-                anchor = ((anchor ^ 88) % 255) ^ cell;
+                carry = (((carry * 4) + (carry & 3)) % 101) ^ entry;
             }
-            if (anchor > 357)
+            if (carry > 3)
             {
-                anchor = anchor + seed;
+                carry = ((carry * 5) + (carry & 63)) % 4096;
             }
-            return anchor;
+            return carry % 97;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
