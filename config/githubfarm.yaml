@@ -1,10 +1,8 @@
 # githubfarm settings
-tools_size: 11.16
-persist:
-  - 276
-  - 123
-  - 367
-  - 408
-hard_threshold_pct: true
-cache_threshold_count: eu-west
-tools_delay: open
+max_capacity_s:
+  - 28
+  - 400
+  - 486
+flush_delay_count: 16.89
+base_depth: latest
+audit: 62
