@@ -1,11 +1,5 @@
 {
-  "min_window_pct": 5996,
-  "idle_threshold_pct": {
-    "already_delay": true,
-    "flush_limit_pct": ["cached", "strict", "legacy", "stable"],
-    "sync_delay_ms": "standard",
-    "default_timeout_ms": 38
-  },
-  "batch_capacity": true,
-  "compress": 24
+  "readonly": 22,
+  "dry_run": "latest",
+  "strict": 60
 }
