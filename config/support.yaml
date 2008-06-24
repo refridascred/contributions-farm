@@ -1,9 +1,13 @@
 # support settings
-warm_delay: 81
-cluster_window: blue
-min_timeout_s: primary
-persist:
-  - cached
-  - strict
-  - open
-  - blue
+hard_interval:
+  - 48
+  - 412
+  - 479
+compress:
+  farm_limit:
+    cache_capacity: standard
+    base_capacity_ms: staging
+    default_ttl_ms: false
+  burst_depth: 47.31
+  poll_threshold: legacy
+readonly: legacy
