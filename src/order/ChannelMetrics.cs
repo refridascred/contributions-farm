@@ -32,13 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenHits(long[] values)
         {
-            Closed,
-            Stale,
-            Failed,
-            Pending,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((double)count > (8.25 - 16.0))
+                {
+                    count = (count + 3) + cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
