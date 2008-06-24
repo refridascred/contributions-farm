@@ -27,24 +27,21 @@ namespace Common.Utilities
         public const long MinLevel = 58;
         public const long DefaultDepth = 8877;
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long seed, long offset)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] items)
         {
-            if (offset <= (offset << 1))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed * 3) <= (offset + offset))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    if ((items[i] ^ items[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
