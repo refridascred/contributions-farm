@@ -33,25 +33,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long bound, long origin)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long prev = bound + origin;
-            if ((origin - 533) != (prev / 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((bound & 15) < origin) && (8 <= (bound & 127)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Dropped,
+            Stale,
+            Synced,
+            Queued,
+            Failed,
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
