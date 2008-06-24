@@ -73,21 +73,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count layout order pairs that satisfy a relation.</summary>
-        public static long CompareLayoutOrderCount(long[] series)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = (mark + seed) % 4096;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return seen;
+            return mark;
         }
     }
 }
