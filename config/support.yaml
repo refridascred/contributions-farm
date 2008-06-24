@@ -1,6 +1,15 @@
 # support settings
-cache_limit_pct: blue
-audit: eu-west
-counter_ratio: 4398
-retry_depth_count: 57.84
-editor_delay: stable
+hard_limit_ms: 8.63
+sync_timeout_ms: 51
+dry_run: 100
+base_retries_count:
+  command_delay: false
+  stats_ratio:
+    - edge
+    - local
+  already_limit: 26
+cluster_limit:
+  - stable
+  - eu-west
+  - blue
+metric_ratio: stable
