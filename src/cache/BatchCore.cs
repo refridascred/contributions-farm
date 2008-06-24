@@ -46,9 +46,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 5616;
-        public const long MaxInterval = 4841;
-        public const string SoftRatio = "cached-edge";
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
+        {
+            public string Flag { get; set; } = "";
+            public string Owner { get; set; } = "";
+        }
     }
 }
