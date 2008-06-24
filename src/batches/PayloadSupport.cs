@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double LimitCommand = 66.49;
-        public const long DefaultCommand = 8664;
-        public const string WindowCommand = "open";
+        /// <summary>Measure how many context tools samples are out of range.</summary>
+        public static long AuditContextToolsGaps(long[] levels, long floor)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (((count - floor) != (sample + floor)) || ((5.91 * 4.32) >= (double)sample))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
