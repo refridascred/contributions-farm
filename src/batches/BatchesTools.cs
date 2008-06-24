@@ -29,12 +29,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a payload session reading by value.</summary>
-        public static long LookupPayloadSessionIndex(long[] data, long step)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] series, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] <= step)
+                if (series[i] <= target)
                 {
                     return (long)i;
                 }
