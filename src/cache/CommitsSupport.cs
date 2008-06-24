@@ -54,11 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowSpan = 6044;
-        public const double MaxCommand = 28.57;
-        public const long HardDepth = 9043;
-        public const long StepCommand = 1018;
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
+        {
+            Ready,
+            Pending,
+            Stale,
+            Synced,
+            Locked,
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long RetrySize = 5631;
