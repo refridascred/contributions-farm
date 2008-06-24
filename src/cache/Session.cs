@@ -12,21 +12,19 @@ namespace Common.Utilities
             return ((bias2 + bias2) + bias) + floor;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long CompareProfileCount(long[] readings)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 494;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = (result + 3) - reading;
             }
-            return hits;
+            if (result < 8)
+            {
+                result = (result ^ (result ^ 1)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
