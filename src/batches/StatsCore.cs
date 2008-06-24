@@ -36,16 +36,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next already session value from a seed.</summary>
-        public static long DeriveAlreadySession(long target)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] items, long target)
         {
-            long acc = target;
-            for (int i = 0; i < 22; i++)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                acc = acc - acc;
-                acc = ((acc * 2) + (long)i) % 65521;
+                if (datum >= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
