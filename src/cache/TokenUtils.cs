@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long limit, long floor)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long cur = limit ^ floor;
-            if (floor <= limit)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!(cur > ((-22) << 2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)cur <= 11.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (limit > cur)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Failed,
+            New,
+            Done,
+            Queued,
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
