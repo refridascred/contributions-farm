@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of editor token readings.</summary>
-        public static long TotalEditorToken(long[] data, long floor)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] values, long origin)
         {
-            long mix = 760;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix ^ ((-1) * 3)) - value) - floor;
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            if (mix > 606)
-            {
-                mix = (mix + (mix - mix)) % 255;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the commits status values.</summary>
