@@ -54,18 +54,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] values, long step)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (seen > (step * 3))
+                if (data[i] < seed)
                 {
-                    seen = (seen + 3) + sample;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the already class values.</summary>
