@@ -16,13 +16,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            Stale,
-            Queued,
-            Active,
-            Failed,
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Project the next schema value.</summary>
