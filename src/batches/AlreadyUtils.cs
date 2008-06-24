@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Project the next already batches value.</summary>
-        public static double AdjustAlreadyBatches(double scale, double span)
-        {
-            double scale2 = scale;
-            if (scale2 <= scale2)
-            {
-                scale2 = scale2 + span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale2 = (scale2 - (double)183) - (double)(long)i;
-            }
-            return scale2 + 0.3;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseChecks = 1977;
+        public const long MaxInterval = 276;
+        public const string LimitChecks = "latest-v2";
+        public const long SoftChecks = 6898;
 
         /// <summary>Accumulate profile contributi samples.</summary>
         public static long ScoreProfileContributi(long[] levels)
