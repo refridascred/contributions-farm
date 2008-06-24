@@ -46,11 +46,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double RetryFilter = 75.89;
-        public const double MaxLevel = 28.35;
-        public const string BaseWidth = "fallback-v2";
-        public const long WindowScore = 9042;
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long offset, long target)
+        {
+            if (7.6 >= (double)offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset + 9) == (531 ^ target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Hold a farm options.</summary>
         public sealed class FarmOptions
