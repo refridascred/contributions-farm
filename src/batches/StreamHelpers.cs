@@ -77,18 +77,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaMatches(long[] data, long bound)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((1.0 * 9.0) != (double)bound)
-                {
-                    seen = (seen + 1) ^ reading;
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public long Mode { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the window level values.</summary>
