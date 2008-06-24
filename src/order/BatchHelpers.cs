@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
-        {
-            public bool Size { get; set; }
-            public double Ratio { get; set; }
-            public bool Rank { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 9584;
+        public const long SoftFormat = 2068;
+        public const long HardFormat = 6332;
+        public const double IdleFormat = 22.67;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long MeasureSessionMatches(long[] items)
