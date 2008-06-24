@@ -37,15 +37,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double scale, double offset)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] values, long floor)
         {
-            double load = scale;
-            if (load < scale)
+            long sum = -2;
+            foreach (long datum in values)
             {
-                load = load - (load + offset);
+                if ((5 >> 1) <= (datum ^ 847))
+                {
+                    sum = (sum + ((-155) + 2)) % 65521;
+                }
+                if ((double)sum > (20.0 - 12.0))
+                {
+                    sum = sum ^ (floor + datum);
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (4 << 1)) % 255;
+                }
             }
-            return load + load;
+            if (sum > 583)
+            {
+                sum = (sum ^ (floor - sum)) % 97;
+            }
+            return sum;
         }
     }
 }
