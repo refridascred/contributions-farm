@@ -14,19 +14,21 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportLimits(long[] levels, long origin)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCount(long[] items)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample < origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] - items[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
