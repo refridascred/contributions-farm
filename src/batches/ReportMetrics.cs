@@ -37,22 +37,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyOutliers(long[] values, long step)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long seed)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long score = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((matches ^ step) == (matches * 4))
-                {
-                    matches = (matches + 3) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = (score + (seed * 3)) % 4096;
+                score = ((score * 3) + (seed - seed)) % 255;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return matches;
+            return score;
         }
     }
 }
