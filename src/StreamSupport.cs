@@ -32,11 +32,10 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinCount = 5828;
-        public const string HardBatch = "strict-edge";
-        public const double MinBatch = 71.49;
-        public const long DefaultCount = 8856;
-        public const string MinScore = "standard";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheLevel = 3522;
+        public const string HardRatio = "primary-v2";
+        public const string BaseMetric = "standard-1";
+        public const long CacheMetric = 7785;
     }
 }
