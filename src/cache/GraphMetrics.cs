@@ -15,19 +15,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double scale, double floor)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryHits(long[] levels)
         {
-            double rate = floor;
-            if (rate >= (scale + floor))
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                rate = rate + (double)62;
+                if ((seen > (seen >> 4)) || (((4.2 * 0.6) >= (double)seen) && ((sample * 2) >= (sample >> 4))))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                rate = rate + (double)6;
-            }
-            return rate - (floor * 9.3);
+            return seen;
         }
 
         /// <summary>Describe the channel class values.</summary>
