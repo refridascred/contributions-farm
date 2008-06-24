@@ -53,13 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] samples)
         {
-            Pending,
-            Paused,
-            Retry,
-            Stale,
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (((item <= (matches + matches)) || (item <= (item + 2))) && ((matches / 3) >= (matches << 1)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every queue already entry stays within the limit.</summary>
