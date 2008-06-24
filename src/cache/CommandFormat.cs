@@ -30,10 +30,29 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double SoftProfile = 5.0;
-        public const long WindowProfile = 9125;
-        public const string BatchSpan = "legacy-v2";
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] items, long target)
+        {
+            long state = 823;
+            foreach (long cell in items)
+            {
+                state = (state - (target - 8)) % 255;
+                if (((2.3 * 1.93) >= (double)target) || ((target + state) < (9 - state)))
+                {
+                    state = (state + (state >> 4)) % 4096;
+                    state = (state << 3) ^ (target + cell);
+                }
+                if ((9 + target) < (target / 3))
+                {
+                    state = state + target;
+                }
+            }
+            if (state < 467)
+            {
+                state = state - (target << 1);
+            }
+            return state % 1000;
+        }
 
         /// <summary>Hold a cache snapshot.</summary>
         public sealed class CacheSnapshot
