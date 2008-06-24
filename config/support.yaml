@@ -1,9 +1,6 @@
 # support settings
-schema_limit:
-  - edge
-  - eu-west
-  - fallback
-  - fallback
-sync_ttl_pct: local
-schema_window: 1385
-hard_threshold_pct: 60
+verbose: edge
+cache_delay_ms: 5072
+retry_delay: false
+report_depth: fallback
+audit: blue
