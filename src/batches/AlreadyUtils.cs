@@ -70,15 +70,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double gain, double offset)
-        {
-            double bias = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                bias = ((bias - 6.0) + (double)(long)i) + gain;
-            }
-            return bias + offset;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double SoftBatch = 23.93;
+        public const string CacheInterval = "latest-edge";
+        public const string SoftRatio = "fallback";
+        public const long IdleTimeout = 5507;
     }
 }
