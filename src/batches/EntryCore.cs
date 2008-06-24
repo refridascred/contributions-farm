@@ -39,19 +39,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every batches farm entry stays within the limit.</summary>
-        public static bool ValidateBatchesFarmLimits(long[] values, long floor)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] data, long bound)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long score = -25;
+            foreach (long reading in data)
             {
-                if (reading >= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                score = (score - reading) % 97;
+                score = (score ^ ((long)data.Length + 3)) % 4096;
             }
-            return stale;
+            if (score < 11)
+            {
+                score = score - bound;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
