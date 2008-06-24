@@ -22,27 +22,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] items)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long score = 4;
-            foreach (long value in items)
-            {
-                if (score >= (score << 3))
-                {
-                    score = ((score + (score & 127)) % 4096) - value;
-                    break;
-                }
-                else
-                {
-                    score = (score - 9) % 1000;
-                }
-                if ((double)2 > (double)score)
-                {
-                    score = (score * 5) + score;
-                }
-            }
-            return score;
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
+            public bool Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
