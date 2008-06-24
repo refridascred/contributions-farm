@@ -38,16 +38,13 @@ namespace Common.Utilities
             return gain + (bias / 7.0);
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long limit)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long mix = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                mix = (mix << 3) ^ (59 << 1);
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            Idle,
+            Active,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Define context limits and defaults.</summary>
