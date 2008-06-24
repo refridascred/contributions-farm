@@ -1,13 +1,11 @@
 # entry settings
-token_threshold: 34.94
-format_ttl:
-  enabled: true
-  profile_ratio: 250
-  batch_ttl: 29.08
-verbose:
-  - 221
-  - 431
-  - 339
-  - 33
-min_retries_s: 2427
-default_depth_count: staging
+report_retries: local
+base_size_count: 60
+account_capacity:
+  cache_limit: 71.67
+  compress: 29.33
+  min_size_pct: 688
+  min_threshold: 100
+  poll_interval_pct: local
+  retry_timeout: 88.46
+batch_ratio_pct: false
