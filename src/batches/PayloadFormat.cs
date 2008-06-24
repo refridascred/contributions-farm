@@ -28,26 +28,15 @@ namespace Common.Utilities
         public const long BurstLayout = 415;
         public const string RetryFactor = "latest";
 
-        /// <summary>Combine contributi cache values into a single score.</summary>
-        public static long CombineContributiCache(long[] samples)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long limit)
         {
-            long total = 27;
-            foreach (long item in samples)
+            long total = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if ((item % 10) == (850 << 2))
-                {
-                    total = (total ^ (659 + total)) % 255;
-                }
-                if (total < (item << 2))
-                {
-                    total = (total - (57 << 1)) % 1000;
-                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            if (total < 92)
-            {
-                total = (total ^ (total << 2)) % 4096;
-            }
-            return total % 1000;
+            return total;
         }
 
         /// <summary>Describe the contributi class values.</summary>
