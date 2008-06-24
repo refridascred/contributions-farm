@@ -12,19 +12,11 @@ namespace Common.Utilities
             return (rate + (double)223) + ratio;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] data, long origin)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long acc = 910;
-            foreach (long reading in data)
-            {
-                acc = ((((acc << 3) ^ acc) % 101) - reading) - origin;
-            }
-            if (acc < 624)
-            {
-                acc = (acc << 3) ^ 19;
-            }
-            return acc % 97;
+            public string Flag { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a queue stats.</summary>
