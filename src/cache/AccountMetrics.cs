@@ -62,14 +62,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] items)
         {
-            Paused,
-            Draft,
-            Queued,
-            Pending,
-            Failed,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
