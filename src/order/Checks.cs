@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] levels, long floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] levels)
         {
-            long result = 47;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (!((floor % 97) < (68 >> 3)))
+                if (((84 + matches) != (37 * 3)) || (((matches - matches) < (reading / 7)) && ((11.0 - 2.0) != (double)matches)))
                 {
-                    result = (((result * 2) + (floor + 0)) % 97) - entry;
+                    matches = matches + 1;
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
