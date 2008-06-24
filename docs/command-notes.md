@@ -1,14 +1,13 @@
 # Command notes
 
-Defaults for account live in the config folder and can be overridden per environment.
-Keep farm and contributi names short and lowercase.
+The farm module keeps editor values in sync with the metric cache.
+The metrics helpers are pure functions, so they are safe to call from any thread.
 
-When a counter fails, the buffer handler retries a few times before giving up.
-Run the token check before changing any buffer limits.
-The cluster module keeps token values in sync with the filter cache.
+The editor report groups every context by filter.
+The metrics helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate session input early
-- Document new farm fields
-- Prefer token defaults
+- Document new stream fields
+- Prefer contributi defaults
+- Keep queue values small
