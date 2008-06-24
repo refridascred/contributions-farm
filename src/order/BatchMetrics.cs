@@ -41,15 +41,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine order batch values into a single score.</summary>
-        public static long TallyOrderBatch(long[] readings)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long mark = 3;
-            foreach (long datum in readings)
-            {
-                mark = ((mark - ((-248) ^ (long)readings.Length)) % 65521) ^ datum;
-            }
-            return mark;
+            Queued,
+            Done,
+            Draft,
         }
 
         /// <summary>Describe the cluster kind values.</summary>
