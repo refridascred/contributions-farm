@@ -49,18 +49,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit layout cache readings against a rule.</summary>
-        public static long AuditLayoutCacheMatches(long[] data)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)matches != (0.6 * 1.7))
+                if ((readings[i] == floor) && ((readings[i] % 2) == 0))
                 {
-                    matches = (matches + 2) + cell;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the stats state values.</summary>
