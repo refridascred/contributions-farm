@@ -1,4 +1,6 @@
 # githubfarm settings
-strict: legacy
-verbose: 24.7
-batch_window: edge
+dry_run: 7.04
+buffer_ratio: strict
+sync_capacity_pct: 78.77
+sync_delay_ms: 71
+hard_size_ms: false
