@@ -1,19 +1,6 @@
 {
-  "base_retries_s": {
-    "batches_delay": 1024,
-    "batch_window": "edge",
-    "persist": "edge",
-    "cache_window_count": {
-      "hard_delay_pct": 57,
-      "soft_limit_count": 5923,
-      "entry_size": "edge",
-      "commits_capacity": "stable",
-      "default_size": [324, 494],
-      "burst_size_count": true
-    },
-    "verbose": 3070,
-    "stats_interval": 13
-  },
-  "cache_window": 9535,
-  "burst_size": 29.4
+  "poll_ttl": 7231,
+  "max_ratio_ms": true,
+  "dry_run": 19,
+  "max_window_count": "edge"
 }
