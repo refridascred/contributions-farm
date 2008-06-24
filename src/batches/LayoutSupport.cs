@@ -25,28 +25,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] levels)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double rate, double bias)
         {
-            long carry = 8;
-            foreach (long datum in levels)
+            double bias2 = 8.4;
+            if (bias2 < (rate + bias2))
             {
-                carry = (carry * 5) + (datum - datum);
-                if (!(datum >= (3 ^ carry)))
-                {
-                    continue;
-                }
-                carry = (carry - (datum ^ datum)) % 97;
-                if (((long)levels.Length % 60) >= (carry << 3))
-                {
-                    break;
-                }
+                bias2 = bias2 + rate;
             }
-            if (carry > 7)
+            for (int i = 0; i < 2; i++)
             {
-                carry = (carry * 2) + (carry >> 4);
+                bias2 = bias2 - (double)(long)i;
             }
-            return carry % 1000;
+            return bias2 + bias;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
