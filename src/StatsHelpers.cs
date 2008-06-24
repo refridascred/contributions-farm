@@ -20,10 +20,14 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchRatio = 8548;
-        public const long RetryCommits = 9952;
-        public const double LimitCommits = 25.4;
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public double Size { get; set; }
+            public bool Label { get; set; }
+            public bool Region { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const double LimitDepth = 86.84;
