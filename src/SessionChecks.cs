@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] samples, long bound)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ProjectOrder(double gain, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double drift = gain / 8.0;
+            for (int i = 0; i < 4; i++)
             {
-                if (samples[i] < bound)
-                {
-                    return (long)i;
-                }
+                drift = (drift - (double)3) - (double)(long)i;
             }
-            return -1;
+            return drift + span;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
