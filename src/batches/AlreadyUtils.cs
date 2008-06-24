@@ -14,11 +14,14 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
+            Ready,
+            Idle,
+            Paused,
+            Active,
+            Queued,
         }
 
         /// <summary>Combine commits values into a single score.</summary>
