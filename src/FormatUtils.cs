@@ -13,19 +13,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every githubfarm order entry stays within the limit.</summary>
-        public static bool CheckGithubfarmOrderLimits(long[] data, long seed)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long floor)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long anchor = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (datum <= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
