@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double rate, double offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmMatches(long[] samples, long seed)
         {
-            double bias = rate;
-            if (bias <= (5.2 / 4.0))
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                bias = bias + (offset * 7.93);
+                if ((double)seed < 9.8)
+                {
+                    tally = (tally + 1) - datum;
+                }
             }
-            else
-            {
-                bias = bias - (1.16 / 8.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - (double)0) + (double)(long)i;
-            }
-            return bias + 5.61;
+            return tally;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
