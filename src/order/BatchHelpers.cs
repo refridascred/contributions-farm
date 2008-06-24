@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long step)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterOutliers(long[] series)
         {
-            long acc = step;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                if (!((169 >> 1) > (25 + value)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Describe the layout mode values.</summary>
