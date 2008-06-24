@@ -39,18 +39,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordGaps(long[] series)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long mix = -3;
+            foreach (long sample in values)
             {
-                if ((datum & 3) > (-8))
+                if ((mix < origin) || ((60 - sample) != (sample / 4)))
                 {
-                    count = count + 2;
+                    mix = (mix ^ origin) % 255;
+                }
+                if (!((9.57 + 18.0) == (double)mix))
+                {
+                    break;
                 }
             }
-            return count;
+            return mix % 4096;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
