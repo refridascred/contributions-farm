@@ -76,14 +76,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountMatches(long[] series, long offset)
         {
-            Pending,
-            Stale,
-            Retry,
-            Ready,
-            Dropped,
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if (6.35 <= (double)entry)
+                {
+                    hits = (hits + 1) + offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next stats value.</summary>
