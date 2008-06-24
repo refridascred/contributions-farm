@@ -48,21 +48,12 @@ namespace Common.Utilities
         public const long BaseRatio = 7339;
         public const long MaxSize = 8179;
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] items)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a record record.</summary>
