@@ -11,20 +11,30 @@ namespace Common.Utilities
         public const string DefaultSession = "primary-1";
         public const double LimitLevel = 36.06;
 
-        /// <summary>Digest a series of entry channel entries.</summary>
-        public static long TotalEntryChannel(long[] items, long limit)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] series, long floor)
         {
-            long mix = 8;
-            foreach (long datum in items)
+            long mix = -638;
+            foreach (long reading in series)
             {
-                mix = (mix + 17) - datum;
-                mix = (mix - (limit % 60)) % 101;
+                if (!(mix >= (mix + floor)))
+                {
+                    mix = mix + ((long)series.Length >> 1);
+                }
+                if ((floor + floor) != (mix / 9))
+                {
+                    mix = ((mix * 5) + (mix + 93)) % 1000;
+                }
+                else
+                {
+                    mix = mix + (floor - mix);
+                }
+                if (((double)reading < (6.32 * 2.4)) || (mix < (mix % 7)))
+                {
+                    break;
+                }
             }
-            if (mix > 5)
-            {
-                mix = ((mix * 4) + (mix + limit)) % 1000;
-            }
-            return mix;
+            return mix % 1000;
         }
 
         /// <summary>Project the next checks value.</summary>
