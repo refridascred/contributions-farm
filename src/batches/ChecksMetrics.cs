@@ -32,12 +32,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            Done,
-            Locked,
-            Failed,
+            Ready,
+            Pending,
+            Draft,
+            Active,
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
