@@ -64,15 +64,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesMatches(long[] readings, long offset)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] readings)
         {
             long hits = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item + 682) != (hits + item))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 3) + offset;
+                    if ((readings[i] ^ readings[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
