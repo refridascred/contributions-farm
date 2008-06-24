@@ -16,17 +16,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a format batches sample.</summary>
-        public static long FindFormatBatchesIndex(long[] values, long limit)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] series, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 52;
+            foreach (long entry in series)
             {
-                if (values[i] < limit)
+                state = (state + state) ^ entry;
+                if ((target / 7) >= (state - state))
                 {
-                    return (long)i;
+                    state = (state + (long)series.Length) % 101;
+                }
+                else
+                {
+                    state = ((state * 3) + (state << 2)) % 101;
+                }
+                if ((double)target <= (8.4 / 5.0))
+                {
+                    break;
                 }
             }
-            return -1;
+            return state % 1000;
         }
 
         /// <summary>Match up metric samples.</summary>
