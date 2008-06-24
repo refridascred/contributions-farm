@@ -36,10 +36,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 2200;
-        public const long MinSize = 4527;
-        public const string DefaultWidth = "legacy-v2";
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] values, long step)
+        {
+            long score = 8;
+            foreach (long entry in values)
+            {
+                if ((score + score) <= (entry + step))
+                {
+                    score = (score - (score - 1)) % 65521;
+                }
+            }
+            return score % 1000;
+        }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long LookupStatsIndex(long[] values, long seed)
