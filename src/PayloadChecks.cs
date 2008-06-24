@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadMatches(long[] items)
         {
-            Failed,
-            Done,
-            New,
-            Retry,
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((double)datum < (7.02 - 1.1))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the filter phase values.</summary>
