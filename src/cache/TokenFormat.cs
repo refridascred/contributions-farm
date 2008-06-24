@@ -19,18 +19,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesHits(long[] readings)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long target)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long total = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((double)seen > (11.0 - 8.8)) && (seen < (sample >> 1)))
-                {
-                    seen = seen + 1;
-                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Digest a series of window layout entries.</summary>
