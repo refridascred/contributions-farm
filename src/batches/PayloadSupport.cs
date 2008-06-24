@@ -32,18 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the token session entries that pass the check.</summary>
-        public static long CountTokenSessionGaps(long[] levels)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphGaps(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (!((0.1 - 0.8) <= (double)hits))
+                if (2.7 > (double)datum)
                 {
-                    hits = (hits + 2) ^ sample;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Locate a already layout reading by value.</summary>
