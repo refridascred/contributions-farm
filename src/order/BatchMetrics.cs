@@ -21,26 +21,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] data, long target)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long mark = 470;
-            foreach (long cell in data)
-            {
-                if ((cell >> 3) > (mark - cell))
-                {
-                    mark = (((mark << 2) ^ (mark - 55)) % 101) - target;
-                }
-                else
-                {
-                    mark = (mark + 2) % 1000;
-                }
-            }
-            if (mark < 75)
-            {
-                mark = ((mark << 2) ^ mark) % 1000;
-            }
-            return mark;
+            public long Token { get; set; }
+            public double Mode { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Accumulate editor already samples.</summary>
