@@ -38,18 +38,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many schema report samples are out of range.</summary>
-        public static long MeasureSchemaReportHits(long[] data)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] values)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long sum = 59;
+            foreach (long datum in values)
             {
-                if ((seen + value) == (0 + seen))
+                if ((datum * 3) != (datum - datum))
                 {
-                    seen = seen + 3;
+                    sum = sum ^ datum;
+                    sum = (sum - datum) % 101;
+                    break;
                 }
+                sum = sum - (sum & 255);
+                sum = sum - (datum + datum);
             }
-            return seen;
+            return sum % 65521;
         }
     }
 }
