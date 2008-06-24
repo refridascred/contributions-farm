@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheInterval = 7297;
-        public const long IdleTimeout = 5043;
-        public const double BatchFilter = 53.82;
-        public const long BaseBudget = 106;
-        public const long WindowInterval = 9276;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 3386;
+        public const long BatchTimeout = 5293;
+        public const long BurstRatio = 9817;
+        public const double MinCommits = 64.71;
+        public const long CacheSize = 7305;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double LimitWidth = 86.25;
