@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] readings)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorHits(long[] data)
         {
-            long state = 9;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long item in data)
             {
-                state = (state - (998 + datum)) % 255;
-                state = (state << 3) ^ (state & 7);
-                if ((state ^ datum) <= (state + datum))
+                if ((item % 2) > (0 % 100))
                 {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            if (state < 17)
-            {
-                state = (state ^ 734) % 65521;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Validate entry commits readings against a bound.</summary>
