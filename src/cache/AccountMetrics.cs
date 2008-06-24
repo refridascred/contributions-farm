@@ -54,13 +54,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
-        {
-            Retry,
-            Ready,
-            Done,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxRatio = 1736;
+        public const string RetryTimeout = "strict-edge";
+        public const long IdleAlready = 3123;
+        public const long MaxAlready = 2719;
+        public const string HardFactor = "local-v2";
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long AuditContextGaps(long[] levels, long target)
