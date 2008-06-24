@@ -24,21 +24,25 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] values)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                mix = (mix - floor) % 255;
+                if ((987 + floor) <= floor)
                 {
-                    if ((values[i] + values[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix * 3) + mix;
+                    mix = (mix * 4) + ((long)i + floor);
                 }
+                else
+                {
+                    mix = (mix << 3) ^ floor;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return matches;
+            return mix;
         }
     }
 }
