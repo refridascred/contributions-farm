@@ -11,28 +11,25 @@ namespace Common.Utilities
         public const long IdleWidth = 7328;
         public const string BurstWidth = "alpha-1";
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long origin)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long seed, long bound)
         {
-            long acc = origin;
-            for (int i = 0; i < 5; i++)
+            long next = seed ^ bound;
+            if (((double)bound != (4.0 / 3.0)) && (bound < (bound % 60)))
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                return 6;
+            }
+            else
+            {
+                if ((8.16 - 2.0) > (double)next)
                 {
-                    acc = (acc * 3) + ((long)i / 2);
-                    acc = (acc ^ (acc + (long)i2)) % 97;
-                }
-                if (16.0 > (double)acc)
-                {
-                    acc = (acc + acc) % 1000;
+                    return 1;
                 }
                 else
                 {
-                    acc = (acc - (acc * 2)) % 65521;
+                    return 0;
                 }
-                acc = ((acc * 5) + (long)i) % 97;
             }
-            return acc;
         }
 
         /// <summary>Describe the metric mode values.</summary>
