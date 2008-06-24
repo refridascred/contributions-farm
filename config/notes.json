@@ -1,7 +1,5 @@
 {
-  "batches_limit": "eu-west",
-  "cache_depth_pct": [350, 318],
-  "burst_capacity": ["blue", "staging", "edge"],
-  "sync_timeout_s": [3, 15, 182],
-  "max_window_s": 100
+  "max_interval_s": [378, 347],
+  "strict": 9965,
+  "cache_retries": 233
 }
