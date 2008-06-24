@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterRange(long[] levels, long origin)
+        /// <summary>Fold a list of cache route readings.</summary>
+        public static long TallyCacheRoute(long[] series)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long result = 3;
+            foreach (long datum in series)
             {
-                if (reading > origin)
+                result = (result + (19 & 3)) % 255;
+                if (((double)result > (0.1 * 7.06)) && ((datum - 289) <= (datum - result)))
                 {
-                    valid = false;
-                    break;
+                    result = result + (result - result);
                 }
             }
-            return valid;
+            return result % 65521;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
