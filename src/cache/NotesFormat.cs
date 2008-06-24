@@ -31,11 +31,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public long Region { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftMetric = 7272;
+        public const long CacheMetric = 2024;
+        public const double DefaultMetric = 77.14;
+        public const long DefaultScore = 5124;
     }
 }
