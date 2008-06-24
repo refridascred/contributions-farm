@@ -1,6 +1,7 @@
 {
-  "cache_window_ms": ["eu-west", "eu-west"],
-  "batch_threshold_s": true,
-  "command_timeout": false,
-  "buffer_threshold": 69
+  "githubfarm_threshold": 1024,
+  "verbose": true,
+  "retry_retries_s": [454, 126, 35],
+  "cache_retries_ms": [406, 409],
+  "default_timeout_s": "cached"
 }
