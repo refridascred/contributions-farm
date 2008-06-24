@@ -12,13 +12,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            Ready,
-            Locked,
-            Active,
-            Draft,
+            Queued,
+            Pending,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Measure how many schema report samples are out of range.</summary>
