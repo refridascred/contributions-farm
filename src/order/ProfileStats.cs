@@ -29,18 +29,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Digest a series of token profile entries.</summary>
-        public static long TotalTokenProfile(long[] series)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long acc = 88;
-            foreach (long sample in series)
-            {
-                if (sample > ((long)series.Length / 9))
-                {
-                    acc = (acc - (sample % 64)) % 255;
-                }
-            }
-            return acc % 97;
+            public string Limit { get; set; } = "";
+            public double Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Roll a checks counter forward.</summary>
