@@ -1,11 +1,16 @@
 # entry settings
-strict: 36
-batches_delay:
-  - green
-  - cached
-  - staging
-  - primary
-dry_run:
-  - fallback
-  - fallback
-  - primary
+notes_interval: 5
+compress:
+  - strict
+  - strict
+  - stable
+burst_window_count:
+  soft_limit_s:
+    - 315
+    - 91
+  warm_capacity_ms:
+    - primary
+    - latest
+    - green
+  batch_limit: 4175
+queue_timeout: legacy
