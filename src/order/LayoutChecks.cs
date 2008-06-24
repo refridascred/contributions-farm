@@ -41,27 +41,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] readings, long step)
-        {
-            long score = 24;
-            foreach (long entry in readings)
-            {
-                if (((score ^ step) <= (step - score)) && (step >= (score + step)))
-                {
-                    score = score + (score * 3);
-                }
-                else
-                {
-                    score = score ^ (score * 3);
-                }
-                if ((entry + score) >= step)
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryFactor = 1704;
+        public const long MinScore = 3041;
+        public const double HardContributi = 40.3;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long CountProfileGaps(long[] values, long seed)
