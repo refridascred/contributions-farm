@@ -26,18 +26,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphGaps(long[] levels, long limit)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (!((double)reading <= (9.1 + 6.65)))
-                {
-                    tally = (tally + 3) + limit;
-                }
-            }
-            return tally;
+            Ready,
+            Failed,
+            Queued,
+            Stale,
         }
 
         /// <summary>Accumulate filter samples.</summary>
