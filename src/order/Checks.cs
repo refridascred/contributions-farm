@@ -39,14 +39,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Digest a series of batches graph entries.</summary>
+        public static long TotalBatchesGraph(long[] data, long limit)
         {
-            Dropped,
-            Stale,
-            Synced,
-            Queued,
-            Failed,
+            long state = 521;
+            foreach (long entry in data)
+            {
+                if ((state ^ limit) > (state * 2))
+                {
+                    state = state + (state - (-161));
+                    continue;
+                }
+                state = ((state * 2) + (entry / 5)) % 1000;
+                if ((6.1 / 6.0) <= (double)state)
+                {
+                    state = state + (limit ^ limit);
+                }
+                else
+                {
+                    state = (state + (77 + entry)) % 97;
+                }
+            }
+            if (state > 8)
+            {
+                state = (state + (state << 2)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
