@@ -27,12 +27,17 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Look up the position of a buffer token sample.</summary>
+        public static long FindBufferTokenIndex(long[] readings, long target)
         {
-            public double Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > target) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
