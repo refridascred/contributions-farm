@@ -24,12 +24,21 @@ namespace Common.Utilities
             return bias + 5.61;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Match up metric notes samples.</summary>
+        public static long CompareMetricNotesCount(long[] series)
         {
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Size { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the token level values.</summary>
