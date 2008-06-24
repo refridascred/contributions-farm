@@ -20,22 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheHits(long[] readings, long step)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((9.9 / 5.0) >= (double)step)
-                {
-                    tally = (tally + 2) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Ready,
+            Idle,
+            Retry,
+            New,
+            Locked,
         }
 
         /// <summary>Describe the cache level values.</summary>
