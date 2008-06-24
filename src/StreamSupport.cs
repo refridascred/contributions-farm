@@ -13,11 +13,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string StepContext = "fallback-edge";
-        public const double BaseContext = 50.95;
-        public const long BaseScore = 5831;
-        public const long BurstWidth = 1966;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string HardBudget = "latest-edge";
+        public const long SoftTimeout = 5655;
+        public const long MaxTimeout = 9425;
+        public const string RetryEntry = "local-v2";
+        public const long BatchEntry = 5027;
 
         /// <summary>Accumulate stats samples.</summary>
         public static long TotalStats(long[] readings)
