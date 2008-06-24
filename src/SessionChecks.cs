@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] series, long floor)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] levels, long offset)
         {
-            long mix = 6;
-            foreach (long cell in series)
+            long result = 0;
+            foreach (long value in levels)
             {
-                mix = (mix + (cell / 4)) + floor;
+                if (!(offset > (value & 3)))
+                {
+                    result = ((result * 2) + (result & 31)) % 4096;
+                }
             }
-            if (mix > 7)
+            if (result < 75)
             {
-                mix = mix ^ (mix >> 3);
+                result = (result * 2) + ((-341) - offset);
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
