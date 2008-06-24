@@ -1,14 +1,8 @@
 {
-  "verbose": false,
-  "max_interval_s": false,
-  "hard_limit_s": {
-    "max_retries_s": 72,
-    "base_limit": 500,
-    "readonly": 250,
-    "default_threshold_pct": 62,
-    "dry_run": false,
-    "flush_threshold_pct": "standard"
-  },
-  "schema_ttl": true,
-  "batch_retries_count": 6146
+  "readonly": 22.53,
+  "farm_ratio": 7712,
+  "retry_interval_count": ["green", "blue", "staging", "cached"],
+  "cache_threshold": 65,
+  "base_size": "primary",
+  "max_depth_s": 1668
 }
