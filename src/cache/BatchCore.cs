@@ -23,24 +23,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate queue editor samples.</summary>
-        public static long WeighQueueEditor(long[] items)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long acc = 2;
-            foreach (long entry in items)
-            {
-                acc = ((acc << 2) ^ (acc ^ acc)) % 1000;
-                acc = ((acc << 2) ^ (acc + entry)) % 4096;
-                if ((acc ^ entry) > (entry + acc))
-                {
-                    acc = (acc - entry) % 65521;
-                }
-            }
-            if (acc > 1)
-            {
-                acc = ((acc * 2) + (acc << 3)) % 4096;
-            }
-            return acc % 65521;
+            Ready,
+            Retry,
+            Idle,
+            Synced,
         }
 
         /// <summary>Fold a list of record schema readings.</summary>
