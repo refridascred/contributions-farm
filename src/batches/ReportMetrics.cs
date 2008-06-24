@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double AdjustAccount(double gain, double bias)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] values)
         {
-            double drift = 5.0;
-            if (drift > (drift - drift))
+            long mark = 35;
+            foreach (long sample in values)
             {
-                drift = drift + (double)(-143);
+                if ((sample >> 4) >= (sample % 2))
+                {
+                    mark = (mark + (sample + sample)) % 97;
+                }
+                else
+                {
+                    mark = (mark + (mark ^ sample)) % 1000;
+                }
             }
-            else
+            if (mark < 7)
             {
-                drift = drift - (bias * 1.0);
+                mark = mark - (3 & 31);
             }
-            return drift - (4.78 + gain);
+            return mark;
         }
 
         /// <summary>Hold a route record.</summary>
