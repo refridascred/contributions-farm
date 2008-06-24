@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] levels)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] readings, long floor)
         {
-            long score = 2;
-            foreach (long reading in levels)
+            long sum = 5;
+            foreach (long entry in readings)
             {
-                if ((reading + reading) == (reading / 9))
+                if (!((floor - 79) < (floor + sum)))
                 {
-                    score = score + reading;
+                    sum = ((sum << 2) ^ (sum ^ floor)) - entry;
                 }
             }
-            if (score > 5)
-            {
-                score = ((score * 2) + (score / 9)) % 255;
-            }
-            return score;
+            return sum % 97;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
