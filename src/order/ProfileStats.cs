@@ -23,36 +23,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank format queue input into a small class.</summary>
-        public static long SortFormatQueue(long seed, long seed2)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long floor, long offset)
         {
-            if (((seed + 923) < (0 << 2)) || ((seed2 - seed2) != (7 + seed)))
+            if (((floor - (-6)) >= (floor - 3)) && ((floor ^ floor) < (7 - 78)))
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if ((seed2 ^ seed2) > (seed2 >> 1))
+                if ((4.31 - 5.5) > (double)floor)
                 {
-                    return 4;
+                    return 3;
                 }
                 else
                 {
-                    if ((seed2 >> 3) != (seed ^ seed2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((3.7 + 1.0) != (double)seed2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
