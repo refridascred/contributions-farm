@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterOutliers(long[] series)
+        /// <summary>Roll a tools commits counter forward.</summary>
+        public static long DeriveToolsCommits(long bound)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long anchor = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (!((169 >> 1) > (25 + value)))
+                if ((6 - 105) != (bound * 5))
                 {
-                    matches = matches + 3;
+                    anchor = (anchor << 3) ^ (anchor + bound);
+                    anchor = (anchor * 3) + bound;
+                    break;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Locate a session reading by value.</summary>
