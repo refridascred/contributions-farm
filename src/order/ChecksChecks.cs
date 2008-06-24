@@ -35,11 +35,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            Failed,
-            Draft,
+            Synced,
+            Retry,
+            New,
+            Locked,
             Paused,
         }
     }
