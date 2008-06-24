@@ -59,16 +59,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long offset)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long anchor = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = (anchor + ((long)i * 4)) % 97;
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            public long Size { get; set; }
+            public double Mode { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
