@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of buffer stats readings.</summary>
-        public static long FoldBufferStats(long[] values)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long acc = 9;
-            foreach (long value in values)
-            {
-                if ((value % 24) <= (value - 314))
-                {
-                    acc = ((acc << 2) ^ acc) % 97;
-                }
-                if ((value - (long)values.Length) >= (acc * 5))
-                {
-                    acc = acc - (value % 12);
-                    acc = acc + (value & 31);
-                }
-                if (((value ^ value) != (value + acc)) || ((848 / 2) == (1 + acc)))
-                {
-                    acc = (acc + value) % 4096;
-                }
-                else
-                {
-                    acc = ((acc * 4) + value) % 4096;
-                }
-                if (((long)values.Length + acc) < (value + (-120)))
-                {
-                    break;
-                }
-            }
-            if (acc < 469)
-            {
-                acc = ((acc << 2) ^ (acc ^ acc)) % 255;
-            }
-            return acc;
+            Active,
+            Retry,
+            Stale,
         }
 
         /// <summary>Check that every githubfarm order entry stays within the limit.</summary>
