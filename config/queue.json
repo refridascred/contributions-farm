@@ -1,6 +1,13 @@
 {
-  "verbose": [267, 101, 49, 455],
-  "command_timeout": 33.04,
-  "dry_run": "blue",
-  "sync_capacity_pct": 22.45
+  "metric_depth": 18.81,
+  "retry_window": {
+    "sync_capacity": 36,
+    "report_capacity": "eu-west",
+    "sync_ratio_ms": 3270,
+    "layout_depth": 8455
+  },
+  "warm_interval_ms": "cached",
+  "default_retries_pct": 500,
+  "cache_depth": 91.04,
+  "retry_window_ms": false
 }
