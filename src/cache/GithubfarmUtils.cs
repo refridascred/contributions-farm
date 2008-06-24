@@ -44,25 +44,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Roll a record graph counter forward.</summary>
-        public static long RollRecordGraph(long bound)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long carry = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                if (((carry - (-1)) < bound) && ((4 ^ carry) >= carry))
-                {
-                    carry = (carry - (carry / 8)) % 255;
-                    carry = (carry * 5) + (bound + carry);
-                }
-                else
-                {
-                    carry = carry ^ bound;
-                    carry = (carry - 565) % 255;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
+            public string Label { get; set; } = "";
+            public bool Level { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
