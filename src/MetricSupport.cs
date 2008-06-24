@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long offset)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long mix = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = (mix + (1 * 4)) % 255;
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            public bool Mode { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
