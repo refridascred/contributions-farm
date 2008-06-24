@@ -1,9 +1,7 @@
-id,owner,state,ratio
-1,550,288,660
-2,12.7,361,236
-3,225,standard,219
-4,91,896,77.44
-5,13.42,legacy,cached
-6,77.61,stable,legacy
-7,eu-west,767,legacy
-8,906,6.24,13
+id,region,score,active
+1,831,523,5.11
+2,83.38,primary,94
+3,69,cached,977
+4,148,45.77,13.89
+5,green,24.01,staging
+6,191,3.29,green
