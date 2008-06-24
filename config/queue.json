@@ -1,8 +1,5 @@
 {
-  "graph_capacity": 250,
-  "readonly": false,
-  "retry_retries": true,
-  "persist": 24.23,
-  "sync_interval_count": 6.01,
-  "poll_window": 5444
+  "dry_run": 87.86,
+  "hard_threshold_count": 8776,
+  "default_size_count": 500
 }
