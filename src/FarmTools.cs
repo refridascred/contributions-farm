@@ -40,19 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long step)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] values, long bound)
         {
-            long acc = step;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((acc - 187) != (2 / 4))
+                if (values[i] == bound)
                 {
-                    continue;
+                    return (long)i;
                 }
-                acc = ((acc * 2) + (long)i) % 97;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the session class values.</summary>
