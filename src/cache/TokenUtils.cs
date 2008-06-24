@@ -14,19 +14,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double gain, double offset)
+        /// <summary>Find the first record session entry that matches the target.</summary>
+        public static long SeekRecordSessionIndex(long[] values, long offset)
         {
-            double scale = (double)(577 - 1);
-            if (scale <= (9.0 * 4.44))
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = scale + (scale + gain);
+                if ((values[i] == offset) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + offset) + (double)(long)i;
-            }
-            return scale + (double)3;
+            return -1;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
