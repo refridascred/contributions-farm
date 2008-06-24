@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            New,
-            Paused,
-            Closed,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftMetric = 1406;
+        public const long StepTimeout = 1238;
+        public const long CacheFactor = 158;
+        public const long MinMetric = 4491;
+        public const string BaseDepth = "local-v2";
 
         /// <summary>Adjust a support reading.</summary>
         public static double AdjustSupport(double gain, double span)
