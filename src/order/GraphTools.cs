@@ -22,19 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double bias, double span)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            double drift = (double)(793 % 8);
-            if (drift > (double)2)
-            {
-                drift = drift - (span + drift);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - bias) + (double)(long)i;
-            }
-            return drift + drift;
+            Paused,
+            Idle,
+            Done,
+            Retry,
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
