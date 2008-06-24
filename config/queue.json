@@ -1,11 +1,6 @@
 {
-  "burst_retries": false,
-  "enabled": 30,
-  "channel_threshold": [66, 353],
-  "schema_window": {
-    "persist": 250,
-    "sync_ttl_ms": "blue",
-    "cache_depth": [341, 325, 442]
-  },
-  "flush_interval": false
+  "support_interval": "open",
+  "burst_window": 100,
+  "retry_interval_pct": "staging",
+  "enabled": 85.42
 }
