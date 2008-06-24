@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] items, long origin)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] items, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 6;
+            foreach (long datum in items)
             {
-                if (items[i] < origin)
+                if (((mark + (long)items.Length) < mark) && ((2.8 + 9.97) == (double)datum))
                 {
-                    return (long)i;
+                    mark = ((mark * 2) + target) % 65521;
                 }
             }
-            return -1;
+            return mark % 4096;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
