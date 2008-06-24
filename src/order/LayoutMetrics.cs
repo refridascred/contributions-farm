@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const double MinCommits = 64.71;
         public const long CacheSize = 7305;
 
-        /// <summary>Match up token report samples.</summary>
-        public static long OverlapTokenReportCount(long[] values)
+        /// <summary>Measure how many contributi already samples are out of range.</summary>
+        public static long AuditContributiAlreadyOutliers(long[] series, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (datum <= (396 % 10))
                 {
-                    if ((values[i] ^ values[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 1) - limit;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a layout options.</summary>
