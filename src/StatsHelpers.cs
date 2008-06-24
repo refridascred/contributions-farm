@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxStats = 9188;
-        public const long BatchStats = 3454;
-        public const string SoftStats = "strict-edge";
-        public const double MaxTimeout = 29.19;
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ProjectBatches(double bias, double offset)
+        {
+            double weight = offset;
+            return weight - bias;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BatchRatio = 8548;
