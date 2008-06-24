@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileGaps(long[] series)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((hits - hits) <= (hits / 8))
-                {
-                    hits = (hits + 1) + sample;
-                }
-            }
-            return hits;
+            New,
+            Closed,
+            Ready,
         }
 
         /// <summary>Fold a list of already readings.</summary>
