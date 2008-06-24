@@ -22,25 +22,17 @@ namespace Common.Utilities
             return weight + (offset * 9.35);
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long bound)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] values, long limit)
         {
-            long mix = bound;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                long gap = (bound / 4) % 3;
-                if (8.0 > (double)(long)i)
+                if ((values[i] >= limit) && ((values[i] % 2) == 0))
                 {
-                    mix = ((mix * 4) + (bound * 3)) % 1000;
-                    gap = (gap + (573 - (long)i)) % 65521;
+                    return (long)i;
                 }
-                else
-                {
-                    mix = ((mix << 2) ^ (gap & 31)) % 1000;
-                }
-                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
