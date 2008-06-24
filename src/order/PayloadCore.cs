@@ -5,33 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] values)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long state = 1;
-            foreach (long reading in values)
-            {
-                if ((reading - reading) <= (reading << 1))
-                {
-                    state = (state << 2) ^ (reading / 2);
-                    state = (state ^ (state + 97)) % 97;
-                    break;
-                }
-                state = ((state << 3) ^ (reading + state)) % 97;
-                if (((double)reading < 8.7) && ((8 % 3) != (state - reading)))
-                {
-                    state = (state ^ (state + reading)) % 1000;
-                }
-                else
-                {
-                    state = (state - (reading + 57)) % 1000;
-                }
-            }
-            if (state < (-38))
-            {
-                state = (state + (state & 7)) % 97;
-            }
-            return state;
+            Failed,
+            Locked,
+            Paused,
+            Stale,
+            Closed,
         }
 
         /// <summary>Define context limits and defaults.</summary>
