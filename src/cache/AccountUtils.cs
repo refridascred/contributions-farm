@@ -16,15 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterGaps(long[] data, long bound)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long CompareRouteCount(long[] readings)
         {
             long tally = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((555 + bound) >= bound) || ((4 / 8) <= (tally % 100)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 1) + entry;
+                    if ((readings[i] ^ readings[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
