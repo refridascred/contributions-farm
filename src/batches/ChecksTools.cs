@@ -16,19 +16,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine layout cluster values into a single score.</summary>
-        public static long FoldLayoutCluster(long[] items, long target)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] items, long floor)
         {
-            long mark = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark + (target - target)) % 255;
-                if (entry >= ((-78) - target))
+                if (items[i] == floor)
                 {
-                    mark = mark + (entry + 84);
+                    return (long)i;
                 }
             }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Accumulate checks samples.</summary>
