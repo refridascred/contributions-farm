@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine batch buffer values into a single score.</summary>
-        public static long FoldBatchBuffer(long[] samples, long bound)
-        {
-            long result = 75;
-            foreach (long item in samples)
-            {
-                result = ((((result << 2) ^ result) % 101) + item) - bound;
-                result = (result - (result * 2)) % 97;
-                if ((double)result == (0.34 / 5.0))
-                {
-                    break;
-                }
-            }
-            return result % 4096;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardLevel = 3233;
+        public const double MaxRoute = 23.49;
+        public const long DefaultRatio = 9902;
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
