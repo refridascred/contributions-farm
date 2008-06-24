@@ -76,17 +76,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a metric already sample.</summary>
-        public static long LookupMetricAlreadyIndex(long[] items, long step)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] series, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 7;
+            foreach (long reading in series)
             {
-                if ((items[i] >= step) && ((items[i] % 3) != 0))
+                if (!(state < (state ^ origin)))
                 {
-                    return (long)i;
+                    state = ((state << 3) ^ (reading + origin)) % 255;
+                    continue;
                 }
+                state = ((state << 2) ^ (origin / 5)) % 255;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Validate layout counter readings against a bound.</summary>
