@@ -25,24 +25,13 @@ namespace Common.Utilities
             return bias + weight;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long target, long step)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            if (((12.0 * 0.17) > (double)step) && (8.84 > (double)target))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((10.0 * 18.0) < (double)target)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public bool Size { get; set; }
+            public long Owner { get; set; }
+            public double Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the checks mode values.</summary>
