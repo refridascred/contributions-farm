@@ -82,10 +82,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 7392;
-        public const long BaseWidth = 2615;
-        public const string SoftTimeout = "stable";
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsGaps(long[] samples)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((3.67 * 6.2) == (double)entry)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine commits order values into a single score.</summary>
         public static long FoldCommitsOrder(long[] readings)
