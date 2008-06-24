@@ -50,21 +50,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long floor)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long state = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                state = (state + state) % 1000;
-                if ((state >> 1) >= (state + floor))
-                {
-                    state = (state * 3) + ((long)i >> 3);
-                }
-                state = (state ^ state) % 255;
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            Done,
+            Paused,
+            Draft,
         }
     }
 }
