@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of cache route readings.</summary>
-        public static long TallyCacheRoute(long[] series)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long result = 3;
-            foreach (long datum in series)
-            {
-                result = (result + (19 & 3)) % 255;
-                if (((double)result > (0.1 * 7.06)) && ((datum - 289) <= (datum - result)))
-                {
-                    result = result + (result - result);
-                }
-            }
-            return result % 65521;
+            public bool Limit { get; set; }
+            public long Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
