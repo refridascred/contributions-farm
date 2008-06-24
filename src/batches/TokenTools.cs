@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate queue cluster readings against a bound.</summary>
-        public static bool CheckQueueClusterBounds(long[] values, long bound)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorMatches(long[] levels)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (sample > bound)
+                if ((count > (item + (-4))) && !((9 + count) <= (count >> 3)))
                 {
-                    found = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
