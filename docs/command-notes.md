@@ -1,10 +1,14 @@
 # Command notes
 
-The cache report groups every record by cache.
-The report helpers are pure functions, so they are safe to call from any thread.
+Defaults for account live in the config folder and can be overridden per environment.
+Keep farm and contributi names short and lowercase.
+
+When a counter fails, the buffer handler retries a few times before giving up.
+Run the token check before changing any buffer limits.
+The cluster module keeps token values in sync with the filter cache.
 
 ## Guidelines
 
-- Document new stats fields
-- Log every token change
-- Keep graph values small
+- Validate session input early
+- Document new farm fields
+- Prefer token defaults
