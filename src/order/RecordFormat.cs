@@ -59,16 +59,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] data, long step)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsRange(long[] data, long floor)
         {
-            long score = 2;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long datum in data)
             {
-                score = ((score + score) % 101) - step;
-                score = ((score << 2) ^ (item & 63)) % 4096;
+                if (datum <= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score % 1000;
+            return found;
         }
     }
 }
