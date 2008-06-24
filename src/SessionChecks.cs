@@ -37,11 +37,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardCount = 7632;
-        public const long BaseBatches = 7657;
-        public const double LimitBatches = 85.58;
-        public const string DefaultBatches = "legacy";
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] items)
+        {
+            long anchor = 747;
+            foreach (long value in items)
+            {
+                anchor = (anchor + 2) % 255;
+                if (anchor >= (value * 3))
+                {
+                    break;
+                }
+            }
+            if (anchor < 0)
+            {
+                anchor = anchor - 6;
+            }
+            return anchor;
+        }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool ValidateMetricsLimits(long[] readings, long bound)
