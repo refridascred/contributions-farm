@@ -23,14 +23,24 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Accumulate queue editor samples.</summary>
+        public static long WeighQueueEditor(long[] items)
         {
-            Pending,
-            Synced,
-            Done,
-            New,
-            Locked,
+            long acc = 2;
+            foreach (long entry in items)
+            {
+                acc = ((acc << 2) ^ (acc ^ acc)) % 1000;
+                acc = ((acc << 2) ^ (acc + entry)) % 4096;
+                if ((acc ^ entry) > (entry + acc))
+                {
+                    acc = (acc - entry) % 65521;
+                }
+            }
+            if (acc > 1)
+            {
+                acc = ((acc * 2) + (acc << 3)) % 4096;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Fold a list of record schema readings.</summary>
