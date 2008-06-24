@@ -1,6 +1,5 @@
 {
-  "poll_size_count": 99,
-  "enabled": 99,
-  "default_limit": [265, 128, 30],
-  "verbose": [187, 393, 462]
+  "dry_run": "staging",
+  "retry_ttl": 73.35,
+  "max_timeout": 6
 }
