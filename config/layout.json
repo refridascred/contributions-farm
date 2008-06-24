@@ -1,18 +1,5 @@
 {
-  "retry_ttl_ms": 49,
-  "idle_interval_pct": true,
-  "strict": {
-    "verbose": false,
-    "filter_timeout": 76.29,
-    "hard_retries": "eu-west",
-    "stream_interval": {
-      "burst_depth_ms": "staging",
-      "filter_size": 30,
-      "channel_size": [203, 458, 278, 54],
-      "min_capacity": 9512,
-      "burst_limit_ms": 539,
-      "payload_depth": "cached"
-    },
-    "strict": "legacy"
-  }
+  "dry_run": [271, 20, 457, 231],
+  "contributi_interval": "eu-west",
+  "persist": 62.02
 }
