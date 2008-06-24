@@ -1,8 +1,6 @@
 {
-  "burst_ttl_s": false,
-  "readonly": "green",
-  "dry_run": 28,
-  "max_capacity_pct": 21.27,
-  "batch_timeout_s": "local",
-  "retry_depth_count": 10.05
+  "soft_interval": ["stable", "cached", "legacy"],
+  "burst_capacity_pct": 71.13,
+  "buffer_window": [298, 181, 196],
+  "cache_capacity": 500
 }
