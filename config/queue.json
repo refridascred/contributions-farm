@@ -1,7 +1,20 @@
 {
-  "record_ratio": false,
-  "flush_interval_s": 9090,
-  "editor_delay": "strict",
-  "payload_interval": "open",
-  "verbose": ["fallback", "latest", "cached", "legacy"]
+  "hard_delay_s": "local",
+  "audit": {
+    "retry_limit_ms": "blue",
+    "max_retries": false,
+    "channel_ttl": {
+      "readonly": ["local", "local"],
+      "strict": 100,
+      "window_window": 92.3,
+      "channel_depth": "stable",
+      "persist": 250,
+      "warm_delay": ["primary", "green", "primary"]
+    },
+    "cache_capacity_count": [187, 275, 126, 263]
+  },
+  "base_capacity_s": 1788,
+  "support_capacity": "staging",
+  "cache_ttl": "blue",
+  "batches_limit": "standard"
 }
