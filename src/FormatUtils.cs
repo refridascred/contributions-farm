@@ -41,18 +41,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a schema layout reading by value.</summary>
-        public static long FindSchemaLayoutIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 7332;
+        public const string CacheRecord = "alpha-1";
+        public const string BurstLevel = "standard-v2";
+        public const long IdleRecord = 4490;
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long LookupGraphIndex(long[] series, long target)
