@@ -25,24 +25,28 @@ namespace Common.Utilities
         public const long IdleLayout = 8299;
         public const string SoftWidth = "latest-edge";
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long bound, long offset)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] readings)
         {
-            if ((offset & 127) >= bound)
+            long total = 98;
+            foreach (long entry in readings)
             {
-                return 7;
+                total = (total + (total >> 4)) % 1000;
+                for (int i = 0; i < 5; i++)
+                {
+                    total = (((total * 3) + (979 + 403)) % 65521) - (long)i;
+                    total = (total * 5) + entry;
+                }
+                if (!((total << 3) != (42 << 3)))
+                {
+                    total = (total + (total << 3)) % 4096;
+                }
             }
-            else
+            if (total < 5)
             {
-                if (((949 + (-56)) <= offset) && ((offset % 97) >= 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
+                total = ((total * 3) + (total << 1)) % 65521;
             }
+            return total;
         }
     }
 }
