@@ -33,32 +33,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long origin, long limit)
-        {
-            long step = origin - limit;
-            if (origin > (limit / 6))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step - 117) <= (56 << 1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)limit >= (4.21 + 6.0)) || (step > origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinSize = 6772;
+        public const string LimitSupport = "stable";
+        public const string StepBudget = "strict-v2";
     }
 }
