@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricOutliers(long[] data, long limit)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((977 >= hits) && (item <= (2 << 2)))
+                if (items[i] < origin)
                 {
-                    hits = (hits + 2) - limit;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the session level values.</summary>
