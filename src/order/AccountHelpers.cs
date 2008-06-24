@@ -63,19 +63,9 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Check that every record metrics entry stays within the limit.</summary>
-        public static bool GuardRecordMetricsRange(long[] items, long target)
-        {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BaseGraph = 92.81;
+        public const long HardGraph = 743;
+        public const double BatchGraph = 6.79;
     }
 }
