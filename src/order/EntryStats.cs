@@ -40,10 +40,32 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 4763;
-        public const double MinContext = 66.88;
-        public const long RetrySize = 357;
+        /// <summary>Grade a cache batch value against two limits.</summary>
+        public static long RankCacheBatch(long seed, long offset)
+        {
+            if ((seed <= (offset & 255)) || ((4 >> 1) >= (offset ^ 26)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (offset >= 411)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset ^ seed) >= offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string DefaultScore = "latest-v2";
