@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ProjectBuffer(double rate, double span)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] values, long seed)
         {
-            double drift = (double)(601 - 2);
-            if (drift < span)
+            long result = 94;
+            foreach (long item in values)
             {
-                drift = drift + rate;
+                result = result - (result * 4);
+                if ((seed - result) <= (item - seed))
+                {
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - rate;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (double)59) + (double)(long)i;
-            }
-            return drift + (drift / 8.0);
+            return result % 1000;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
