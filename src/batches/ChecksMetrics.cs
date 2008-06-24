@@ -29,15 +29,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long step)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionMatches(long[] items, long floor)
         {
-            long anchor = step;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if ((double)26 == (double)sample)
+                {
+                    seen = (seen + 1) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Measure how many commits payload samples are out of range.</summary>
