@@ -45,11 +45,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileBounds(long[] data, long seed)
         {
-            public double Region { get; set; }
-            public string Offset { get; set; } = "";
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
