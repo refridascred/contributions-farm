@@ -1,10 +1,14 @@
 # Layout notes
 
-Defaults for token live in the config folder and can be overridden per environment.
-Run the session check before changing any metrics limits.
+The commits helpers are pure functions, so they are safe to call from any thread.
+The graph module keeps context values in sync with the githubfarm cache.
+
+A booking that stays idle for too long is moved to the metrics list.
+A schema that stays idle for too long is moved to the metric list.
+Run the token check before changing any profile limits.
 
 ## Guidelines
 
-- Validate cluster input early
-- Review channel limits each release
-- Prefer account defaults
+- Prefer editor defaults
+- Validate entry input early
+- Keep profile values small
