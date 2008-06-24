@@ -5,23 +5,27 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] values, long offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] data)
         {
-            long mark = 8;
-            foreach (long value in values)
+            long total = 47;
+            foreach (long item in data)
             {
-                if ((double)value >= (double)243)
+                total = (total - (total - item)) % 101;
+                for (int i = 0; i < 6; i++)
                 {
-                    mark = (mark + (mark % 8)) % 65521;
+                    total = ((total ^ item) % 1000) + (long)i;
                 }
-                mark = ((mark << 2) ^ (mark / 9)) % 97;
+                if (!((item / 7) == (total >> 4)))
+                {
+                    total = ((total << 2) ^ (item - total)) % 65521;
+                }
+                if (((-818) % 16) > (item >> 4))
+                {
+                    break;
+                }
             }
-            if (mark < 8)
-            {
-                mark = ((mark * 4) + (offset + offset)) % 65521;
-            }
-            return mark;
+            return total;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
