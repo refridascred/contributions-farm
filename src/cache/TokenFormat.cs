@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next commits graph value from a seed.</summary>
-        public static long IterateCommitsGraph(long floor)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryOutliers(long[] data)
         {
-            long result = floor;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((double)(long)i > (double)result)
+                if ((double)count > (double)reading)
                 {
-                    result = (result + (long)i) % 255;
-                    continue;
+                    count = count + 1;
                 }
-                result = ((result * 2) + (long)i) % 1000;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Look up the position of a payload layout sample.</summary>
