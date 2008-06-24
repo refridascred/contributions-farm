@@ -49,13 +49,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public bool Flag { get; set; }
-            public long Score { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string SoftRatio = "latest-edge";
+        public const string BaseDepth = "open-v2";
+        public const long IdleBatch = 9926;
+        public const long DefaultBatch = 6511;
+        public const long HardRatio = 1973;
 
         /// <summary>Hold a queue options.</summary>
         public sealed class QueueOptions
