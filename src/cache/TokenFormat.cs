@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxBudget = "strict-1";
-        public const double MaxSize = 89.22;
-        public const long BaseTimeout = 2682;
-        public const string DefaultScore = "latest-1";
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long DefaultDepth = 3899;
