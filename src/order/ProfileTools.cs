@@ -42,12 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            Pending,
-            Paused,
-            New,
+            public long Score { get; set; }
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
