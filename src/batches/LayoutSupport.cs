@@ -56,31 +56,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a entry command value against two limits.</summary>
-        public static long BucketEntryCommand(long seed, long seed2)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] samples, long seed)
         {
-            if ((322 ^ seed) < seed)
+            long score = 4;
+            foreach (long sample in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed2 << 3) > seed)
+                if ((score << 3) >= seed)
                 {
-                    return 0;
+                    score = (score + score) + sample;
                 }
                 else
                 {
-                    if (9.7 < (double)seed2)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    score = (score - (seed >> 5)) % 97;
                 }
             }
+            return score % 1000;
         }
     }
 }
