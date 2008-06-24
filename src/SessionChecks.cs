@@ -43,11 +43,12 @@ namespace Common.Utilities
         public const double LimitBatches = 85.58;
         public const string DefaultBatches = "legacy";
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            Done,
-            Dropped,
+            Pending,
+            Paused,
+            Draft,
             Failed,
         }
     }
