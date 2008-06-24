@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            New,
-            Queued,
-            Dropped,
-            Closed,
-            Stale,
+            Ready,
+            Failed,
+            Done,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
