@@ -21,22 +21,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesGaps(long[] data, long origin)
+        /// <summary>Match up editor notes samples.</summary>
+        public static long MatchEditorNotesCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry & 31) <= (entry >> 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 3) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((levels[i] - levels[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
