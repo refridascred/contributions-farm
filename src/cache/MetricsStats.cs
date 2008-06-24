@@ -67,15 +67,17 @@ namespace Common.Utilities
         public const long MaxBudget = 8705;
         public const double IdleBatches = 38.25;
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double scale, double bias)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] data, long limit)
         {
-            double load = (bias / 5.0) * 6.0;
-            if (load > (scale - load))
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load - load;
+                if (data[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return load - scale;
+            return -1;
         }
     }
 }
