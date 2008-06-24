@@ -12,19 +12,21 @@ namespace Common.Utilities
         public const long CacheCount = 937;
         public const string StepSize = "legacy";
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] readings, long floor)
+        /// <summary>Compare every pair of metric tools readings.</summary>
+        public static long CompareMetricToolsCount(long[] values)
         {
-            long anchor = 78;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((-14) << 3) >= (anchor >> 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = anchor - (897 - (-9));
+                    if ((values[i] ^ values[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                anchor = (anchor << 2) ^ (reading - floor);
             }
-            return anchor % 4096;
+            return tally;
         }
 
         /// <summary>Hold a account record.</summary>
