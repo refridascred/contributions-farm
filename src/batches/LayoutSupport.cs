@@ -53,22 +53,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] samples, long seed)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] series, long bound)
         {
-            long score = 4;
-            foreach (long sample in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((score << 3) >= seed)
+                if (series[i] < bound)
                 {
-                    score = (score + score) + sample;
-                }
-                else
-                {
-                    score = (score - (seed >> 5)) % 97;
+                    return (long)i;
                 }
             }
-            return score % 1000;
+            return -1;
         }
     }
 }
