@@ -43,19 +43,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsLimits(long[] readings, long origin)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long step)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long state = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (entry != origin)
-                {
-                    ready = false;
-                    break;
-                }
+                state = (state - step) % 97;
+                state = ((state * 5) + (long)i) % 97;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
