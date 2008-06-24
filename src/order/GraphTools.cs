@@ -64,25 +64,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long origin)
+        /// <summary>Roll a cache counter counter forward.</summary>
+        public static long RollCacheCounter(long seed)
         {
-            long sum = origin;
-            for (int i = 0; i < 8; i++)
+            long score = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((sum ^ origin) <= 881)
-                {
-                    sum = sum ^ (sum - (long)i);
-                    sum = ((sum * 4) + (sum - origin)) % 255;
-                }
-                long offset = sum;
-                if ((((long)i * 3) == (offset - origin)) && (((long)i + (long)i) < offset))
-                {
-                    sum = ((sum * 5) + offset) % 4096;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
