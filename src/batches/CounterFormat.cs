@@ -23,22 +23,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderMatches(long[] values)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long item in values)
+            double mean = offset;
+            if (mean < (offset / 6.0))
             {
-                if ((4.67 * 1.7) != (double)item)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mean = mean - offset;
             }
-            return tally;
+            return mean + (ratio / 6.0);
         }
 
         /// <summary>Locate a layout reading by value.</summary>
