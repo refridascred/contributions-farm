@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamOutliers(long[] values, long target)
         {
-            Paused,
-            Failed,
-            Dropped,
-            New,
-            Done,
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((tally * 4) <= (tally / 2))
+                {
+                    tally = ((tally + 3) ^ datum) - target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the window phase values.</summary>
