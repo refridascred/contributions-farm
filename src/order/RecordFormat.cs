@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] items, long target)
-        {
-            long mark = 6;
-            foreach (long datum in items)
-            {
-                if (((mark + (long)items.Length) < mark) && ((2.8 + 9.97) == (double)datum))
-                {
-                    mark = ((mark * 2) + target) % 65521;
-                }
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 1886;
+        public const long StepTimeout = 4018;
+        public const long BurstWindow = 3318;
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long CountBatchesOutliers(long[] levels)
