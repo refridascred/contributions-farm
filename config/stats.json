@@ -1,5 +1,5 @@
 {
-  "warm_retries_count": "fallback",
-  "base_threshold": "local",
-  "payload_interval": "legacy"
+  "already_size": "blue",
+  "max_size_count": "standard",
+  "persist": "latest"
 }
