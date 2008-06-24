@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            Active,
-            Retry,
+            Failed,
             Stale,
+            Synced,
+            Retry,
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
