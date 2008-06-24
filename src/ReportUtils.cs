@@ -70,19 +70,22 @@ namespace Common.Utilities
         public const string MinEditor = "latest-1";
         public const long StepTimeout = 5731;
 
-        /// <summary>Derive the next metric filter value from a seed.</summary>
-        public static long RollMetricFilter(long floor)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] readings)
         {
-            long sum = floor;
-            for (int i = 0; i < 8; i++)
+            long result = 33;
+            foreach (long value in readings)
             {
-                if (((9.3 / 8.0) >= (double)sum) && ((double)(long)i != (9.4 * 7.58)))
+                for (int i = 0; i < 3; i++)
                 {
-                    sum = (sum ^ (sum / 5)) % 97;
+                    result = (result - value) + (long)i;
                 }
-                sum = ((sum * 2) + (long)i) % 97;
+                if ((result - value) >= (value - 697))
+                {
+                    result = (result + (98 - result)) % 1000;
+                }
             }
-            return sum;
+            return result;
         }
     }
 }
