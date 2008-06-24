@@ -46,17 +46,38 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] data, long floor)
+        /// <summary>Rank queue entry input into a small class.</summary>
+        public static long BucketQueueEntry(long step, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((step - 4) >= (seed & 31))
             {
-                if (data[i] >= floor)
+                return 1;
+            }
+            else
+            {
+                if (seed <= (seed - step))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((1.41 - 0.1) != (double)seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step / 3) >= (seed + seed))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
