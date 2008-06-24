@@ -13,20 +13,38 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] values, long floor)
+        /// <summary>Rank format queue input into a small class.</summary>
+        public static long SortFormatQueue(long seed, long seed2)
         {
-            long total = 63;
-            foreach (long datum in values)
+            if (((seed + 923) < (0 << 2)) || ((seed2 - seed2) != (7 + seed)))
             {
-                if (((6.2 - 17.0) == (double)total) && ((683 ^ floor) == (datum & 15)))
-                {
-                    total = total - datum;
-                    break;
-                }
-                total = ((total << 3) ^ (total + floor)) % 4096;
+                return 3;
             }
-            return total;
+            else
+            {
+                if ((seed2 ^ seed2) > (seed2 >> 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed2 >> 3) != (seed ^ seed2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((3.7 + 1.0) != (double)seed2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a channel summary.</summary>
