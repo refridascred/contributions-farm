@@ -47,12 +47,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double rate, double bias)
-        {
-            double weight = bias;
-            return weight - rate;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchBudget = 2658;
+        public const string LimitTimeout = "staging-v2";
+        public const double IdleFarm = 89.99;
+        public const double DefaultFactor = 17.92;
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long ScoreCluster(long[] levels, long bound)
