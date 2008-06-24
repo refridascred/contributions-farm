@@ -74,10 +74,9 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BurstRatio = 92.3;
-        public const string StepGraph = "staging-1";
-        public const long BurstSpan = 6630;
-        public const long MinCount = 9483;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitEditor = 8963;
+        public const long BaseSpan = 1922;
+        public const double RetryEditor = 4.31;
     }
 }
