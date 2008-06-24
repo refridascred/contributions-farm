@@ -13,12 +13,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string RetryTools = "stable-1";
-        public const string SoftTools = "cached-v2";
-        public const long HardInterval = 6938;
-        public const string IdleScore = "latest-edge";
-        public const string BurstCount = "open-v2";
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long PairWindowCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long TallyClusterOutliers(long[] values, long seed)
