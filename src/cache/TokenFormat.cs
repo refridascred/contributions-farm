@@ -12,12 +12,13 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultDepth = 3899;
-        public const long WindowEntry = 9732;
-        public const long StepEntry = 3572;
-        public const double BatchRatio = 68.34;
-        public const long BurstEntry = 6370;
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
+        {
+            Synced,
+            Ready,
+            Dropped,
+        }
 
         /// <summary>Accumulate command samples.</summary>
         public static long ScoreCommand(long[] readings, long origin)
