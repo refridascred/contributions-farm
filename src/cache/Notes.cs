@@ -20,13 +20,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Combine window cache values into a single score.</summary>
+        public static long TotalWindowCache(long[] values)
         {
-            Pending,
-            Stale,
-            Failed,
-            Active,
+            long carry = 4;
+            foreach (long item in values)
+            {
+                long offset = item;
+                carry = ((carry * 2) + (offset & 31)) % 255;
+                carry = ((carry * 4) + (item + carry)) % 4096;
+                if (carry < 11)
+                {
+                    break;
+                }
+            }
+            if (carry > (-7))
+            {
+                carry = (carry - carry) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
