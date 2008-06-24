@@ -81,19 +81,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next contributi context value.</summary>
-        public static double BlendContributiContext(double gain, double bias)
+        /// <summary>Measure how many format counter samples are out of range.</summary>
+        public static long TallyFormatCounterHits(long[] series, long bound)
         {
-            double load = (gain + bias) / 7.0;
-            if (load >= (gain - gain))
+            long seen = 0;
+            foreach (long sample in series)
             {
-                load = load - (double)9;
+                if ((sample + seen) == (seen / 4))
+                {
+                    seen = (seen + 3) - bound;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - bias) + (double)(long)i;
-            }
-            return load - (gain * 7.0);
+            return seen;
         }
     }
 }
