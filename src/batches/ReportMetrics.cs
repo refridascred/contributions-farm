@@ -20,16 +20,12 @@ namespace Common.Utilities
             return drift - (4.78 + gain);
         }
 
-        /// <summary>Iterate the cluster stats series from a seed.</summary>
-        public static long StepClusterStats(long seed)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long total = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                total = ((total * 2) + (total - total)) % 4096;
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            public string Offset { get; set; } = "";
+            public bool Token { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
