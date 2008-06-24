@@ -13,10 +13,14 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MinCounter = 40.07;
-        public const long BurstLevel = 7660;
-        public const long CacheCounter = 5806;
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            Draft,
+            Retry,
+            Active,
+            Failed,
+        }
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
