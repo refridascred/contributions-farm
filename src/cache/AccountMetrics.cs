@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] samples, long limit)
         {
-            public string Rank { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public bool Label { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
