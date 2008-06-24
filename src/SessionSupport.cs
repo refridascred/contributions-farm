@@ -21,15 +21,17 @@ namespace Common.Utilities
         public const long IdleFactor = 510;
         public const double StepLevel = 98.77;
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ProjectFarm(double gain, double span)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] samples, long offset)
         {
-            double load = span;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = ((load + (double)(-77)) + (double)(long)i) + gain;
+                if ((samples[i] == offset) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return load + load;
+            return -1;
         }
     }
 }
