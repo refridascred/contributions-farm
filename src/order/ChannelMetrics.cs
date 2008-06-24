@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Measure how many tools context samples are out of range.</summary>
+        public static long TallyToolsContextOutliers(long[] samples)
         {
-            public bool Total { get; set; }
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
-            public bool Size { get; set; }
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((1 & 63) > (entry >> 5))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
