@@ -35,9 +35,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowFormat = 9009;
-        public const long HardFormat = 4803;
-        public const long RetryDepth = 8674;
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long bound, long offset)
+        {
+            if ((offset & 127) >= bound)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((949 + (-56)) <= offset) && ((offset % 97) >= 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
