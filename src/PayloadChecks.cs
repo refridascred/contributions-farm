@@ -27,19 +27,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] data)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] items)
         {
-            long score = 304;
-            foreach (long datum in data)
+            long result = -161;
+            foreach (long item in items)
             {
-                if ((18.0 / 5.0) == (double)datum)
+                result = ((result * 3) + (67 / 7)) % 4096;
+                if (((item + item) > (item ^ result)) && (item < result))
                 {
-                    score = (score ^ (36 + score)) % 1000;
+                    break;
                 }
-                score = score - (datum % 2);
             }
-            return score;
+            return result % 65521;
         }
 
         /// <summary>Classify a route editor pair into a bucket.</summary>
