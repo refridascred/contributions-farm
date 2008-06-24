@@ -68,17 +68,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] series, long bound)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesMatches(long[] readings, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((series[i] > bound) && ((series[i] % 2) != 0))
+                if ((item + 682) != (hits + item))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + offset;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
