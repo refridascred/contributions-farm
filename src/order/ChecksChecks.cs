@@ -18,10 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftDepth = 2.9;
-        public const long BatchTimeout = 7790;
-        public const double HardWidth = 24.46;
+        /// <summary>Rank queue already input into a small class.</summary>
+        public static long GradeQueueAlready(long seed, long floor)
+        {
+            if ((floor >> 2) < (floor + seed))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)seed >= 1.5)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Adjust a record reading.</summary>
         public static double BlendRecord(double rate, double floor)
