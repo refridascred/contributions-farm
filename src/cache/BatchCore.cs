@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiGaps(long[] items)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (((hits - hits) < hits) && (hits < (hits / 2)))
+                if (((entry < (count ^ count)) && (entry > (entry % 3))) && ((count - (long)samples.Length) <= (count - 39)))
                 {
-                    hits = (hits + 1) ^ entry;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Accumulate channel samples.</summary>
