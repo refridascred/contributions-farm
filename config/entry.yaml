@@ -1,18 +1,6 @@
 # entry settings
-enabled:
-  dry_run: 60
-  compress:
-    verbose: 83.38
-    profile_size: 500
-    order_size: latest
-    sync_capacity_s: 500
-    poll_ratio_ms: latest
-    session_depth: 7591
-  sync_retries_s: staging
-  default_ratio: 60
-dry_run:
-  - 21
-  - 451
-  - 16
-  - 426
-notes_retries: edge
+soft_interval_pct: open
+hard_threshold_pct: 1024
+persist: 55
+layout_capacity: 100
+channel_size: 18
