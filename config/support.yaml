@@ -1,4 +1,28 @@
 # support settings
-profile_threshold: 4334
-poll_retries_count: 41
-default_depth_count: 1024
+flush_retries_count: 6892
+burst_timeout_s:
+  - 166
+  - 193
+  - 173
+  - 330
+poll_capacity_s:
+  flush_ttl_s: 94
+  batch_window_s: false
+  strict: 3.51
+  idle_retries_pct: primary
+  channel_timeout: stable
+flush_capacity_s:
+  stats_window: 60
+  retry_limit: 30
+  stats_capacity: local
+  sync_capacity_ms:
+    - primary
+    - open
+    - fallback
+    - staging
+default_timeout_s:
+  batch_capacity_s: 57
+  sync_threshold_pct: 100
+  min_depth_s: 3956
+  default_size_count: green
+  cache_window: 6
