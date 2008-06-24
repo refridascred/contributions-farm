@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long origin, long offset)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            if ((double)origin >= (4.3 * 4.12))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset + offset) >= offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (9.51 <= (double)offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Total { get; set; }
+            public double Rank { get; set; }
+            public long Ratio { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
