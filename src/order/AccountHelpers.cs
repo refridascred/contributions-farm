@@ -34,14 +34,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
-        {
-            Retry,
-            Idle,
-            Ready,
-            Active,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 2874;
+        public const long WindowSize = 5229;
+        public const long SoftInterval = 3444;
+        public const long BatchRecord = 6506;
 
         /// <summary>Derive the next editor value from a seed.</summary>
         public static long IterateEditor(long seed)
