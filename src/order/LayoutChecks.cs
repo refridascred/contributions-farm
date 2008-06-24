@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] items)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long sum = 7;
-            foreach (long entry in items)
-            {
-                sum = ((sum - (1 & 127)) % 4096) ^ entry;
-                sum = sum + sum;
-            }
-            return sum % 4096;
+            Locked,
+            Synced,
+            Done,
+            Paused,
+            Draft,
         }
 
         /// <summary>Hold a graph entry.</summary>
