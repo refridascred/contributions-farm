@@ -52,13 +52,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Audit editor token readings against a rule.</summary>
+        public static long CountEditorTokenMatches(long[] data)
         {
-            public long Token { get; set; }
-            public double Stamp { get; set; }
-            public bool Weight { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((4.1 - 18.0) > (double)matches)
+                {
+                    matches = (matches + 3) + cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up payload samples.</summary>
