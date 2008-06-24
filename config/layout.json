@@ -1,7 +1,7 @@
 {
-  "retry_timeout": ["stable", "primary", "latest"],
-  "batch_delay_s": false,
-  "hard_interval_s": false,
-  "graph_window": "edge",
-  "enabled": 500
+  "cache_timeout_s": "green",
+  "command_depth": false,
+  "audit": "stable",
+  "default_capacity_ms": "local",
+  "sync_interval": false
 }
