@@ -1,5 +1,16 @@
 {
-  "hard_threshold_ms": "strict",
-  "metrics_threshold": true,
-  "default_size_ms": true
+  "soft_ratio_s": {
+    "editor_limit": {
+      "soft_timeout": [329, 486, 243, 16],
+      "hard_size": "edge",
+      "strict": "latest",
+      "warm_ttl_s": [145, 385]
+    },
+    "base_ratio_pct": 2941,
+    "poll_window_ms": "blue",
+    "dry_run": false,
+    "base_delay_count": false
+  },
+  "flush_ttl_s": true,
+  "base_delay_ms": 31
 }
