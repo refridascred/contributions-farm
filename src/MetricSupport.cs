@@ -17,19 +17,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] data)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] series)
         {
-            long mark = 6;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (((mark * 4) + ((long)data.Length & 31)) % 97) ^ value;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (mark < 0)
-            {
-                mark = (mark ^ (mark * 3)) % 255;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
