@@ -1,9 +1,8 @@
 # support settings
-report_size: blue
-compress:
-  - 146
-  - 497
-  - 33
-  - 325
-min_limit_ms: 24.09
-hard_size_ms: true
+retry_retries:
+  - green
+  - latest
+poll_threshold_count: 9466
+batch_delay:
+  - 212
+  - 139
