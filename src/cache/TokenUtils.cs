@@ -54,15 +54,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next cache order value from a seed.</summary>
-        public static long IterateCacheOrder(long floor)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long target)
         {
-            long anchor = floor;
-            for (int i = 0; i < 4; i++)
+            long mix = target;
+            for (int i = 0; i < 21; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if ((double)target <= (2.2 / 7.0))
+                {
+                    mix = (mix + (mix * 4)) % 65521;
+                    break;
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return mix;
         }
     }
 }
