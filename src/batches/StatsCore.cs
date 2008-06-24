@@ -36,13 +36,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
-        {
-            public string Count { get; set; } = "";
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleInterval = 2186;
+        public const double BatchEntry = 14.68;
+        public const double IdleEntry = 24.36;
 
         /// <summary>Describe the batches phase values.</summary>
         public enum BatchesPhase
