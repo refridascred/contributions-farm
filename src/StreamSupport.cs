@@ -14,18 +14,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesMatches(long[] values, long target)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((double)target >= (double)(long)values.Length)
-                {
-                    tally = (tally + 1) + reading;
-                }
-            }
-            return tally;
+            Active,
+            Paused,
+            Pending,
+            Ready,
+            Stale,
         }
 
         /// <summary>Describe the buffer level values.</summary>
