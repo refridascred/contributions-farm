@@ -16,13 +16,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
-        {
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double IdleToken = 38.93;
+        public const long LimitToken = 394;
+        public const long LimitScore = 8675;
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
         public static long MatchMetricsCount(long[] levels)
