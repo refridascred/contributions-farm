@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long IdleWidth = 7328;
         public const string BurstWidth = "alpha-1";
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderRange(long[] items, long bound)
         {
-            public bool Owner { get; set; }
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
-            public long Size { get; set; }
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
