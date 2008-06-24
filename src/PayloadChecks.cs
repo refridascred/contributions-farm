@@ -67,21 +67,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of profile order readings.</summary>
-        public static long MatchProfileOrderCount(long[] series)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] values, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (values[i] == bound)
                 {
-                    if ((series[i] ^ series[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
