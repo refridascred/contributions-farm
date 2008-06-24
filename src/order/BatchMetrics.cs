@@ -73,18 +73,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterHits(long[] items)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if ((datum & 127) <= 8)
+                if (entry < seed)
                 {
-                    count = count + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
