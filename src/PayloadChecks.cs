@@ -42,12 +42,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Classify a route editor pair into a bucket.</summary>
+        public static long ClassifyRouteEditor(long seed, long step)
         {
-            public long Region { get; set; }
-            public bool Mode { get; set; }
-            public bool Total { get; set; }
+            if ((step * 3) > step)
+            {
+                return 3;
+            }
+            else
+            {
+                if (923 >= (step ^ step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (step >= (90 + seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define account limits and defaults.</summary>
