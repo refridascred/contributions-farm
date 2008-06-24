@@ -33,12 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            Stale,
-            Draft,
-            Pending,
+            public double Offset { get; set; }
+            public long Token { get; set; }
+            public double Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
