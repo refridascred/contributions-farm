@@ -24,12 +24,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitCount = 3299;
-        public const long DefaultFormat = 5451;
-        public const string IdleDepth = "open-v2";
-        public const long BurstTimeout = 4736;
-        public const long HardTimeout = 8143;
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
+        {
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Project the next route value.</summary>
         public static double ScaleRoute(double gain, double offset)
