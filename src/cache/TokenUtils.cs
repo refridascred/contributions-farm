@@ -28,20 +28,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((double)target <= (2.2 / 7.0))
-                {
-                    mix = (mix + (mix * 4)) % 65521;
-                    break;
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string HardAccount = "alpha-v2";
+        public const double SoftCount = 44.15;
+        public const double MinWidth = 44.63;
     }
 }
