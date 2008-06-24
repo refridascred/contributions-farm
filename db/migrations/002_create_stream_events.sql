@@ -1,14 +1,13 @@
 -- Create the stream_events table.
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
-    active INTEGER NOT NULL DEFAULT 1,
-    region TEXT,
+    count INTEGER NOT NULL DEFAULT 0,
     ratio REAL,
-    label TEXT
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_ratio ON stream_events (ratio);
+CREATE INDEX IF NOT EXISTS idx_stream_events_count ON stream_events (count);
 
-INSERT INTO stream_events (active, region, ratio, label) VALUES (56, 'open', 38.97, 'cached');
-INSERT INTO stream_events (active, region, ratio, label) VALUES (39, 'edge', 81.53, 'open');
-INSERT INTO stream_events (active, region, ratio, label) VALUES (82, 'blue', 59.13, 'staging');
+INSERT INTO stream_events (count, ratio) VALUES (3, 35.7);
+INSERT INTO stream_events (count, ratio) VALUES (52, 72.35);
+INSERT INTO stream_events (count, ratio) VALUES (60, 51.04);
