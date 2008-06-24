@@ -40,11 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultTimeout = 1386;
-        public const double BaseDepth = 94.62;
-        public const double BurstBatch = 33.09;
-        public const long MaxDepth = 9494;
+        /// <summary>Compare every pair of checks channel readings.</summary>
+        public static long MatchChecksChannelCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long LocateBatchesIndex(long[] samples, long offset)
