@@ -1,20 +1,5 @@
 # entry settings
-enabled: true
-poll_depth:
-  - edge
-  - eu-west
-contributi_delay:
-  dry_run: 29.2
-  cache_depth_s:
-    window_window: green
-    warm_size: true
-    poll_size_pct: 34
-  burst_ttl_pct:
-    - fallback
-    - open
-    - cached
-  enabled: blue
-  tools_interval: 250
-hard_capacity_s: strict
-stats_ttl: 2421
-support_timeout: true
+compress: false
+notes_ttl: 4110
+hard_ttl_count: 91.72
+sync_retries_count: 51
