@@ -29,10 +29,32 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxScore = 2851;
-        public const double WindowChannel = 98.56;
-        public const string LimitChannel = "alpha-v2";
-        public const double HardLevel = 18.78;
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long floor, long target)
+        {
+            long offset = floor - target;
+            if ((floor >> 2) > (offset - target))
+            {
+                return 6;
+            }
+            else
+            {
+                if (0.5 < (double)target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)offset < (double)(-9)) && (floor <= offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
