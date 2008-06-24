@@ -99,15 +99,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double ratio, double bias)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            double gain = (0.5 + 12.0) - (bias * 7.5);
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - 6.69) - (double)(long)i;
-            }
-            return gain - (ratio * 9.8);
+            Pending,
+            Stale,
+            Closed,
+            Draft,
         }
 
         /// <summary>Look up the position of a account sample.</summary>
