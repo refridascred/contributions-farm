@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] items, long origin)
         {
-            Retry,
-            Queued,
-            Dropped,
-            Draft,
-            Failed,
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a checks entry.</summary>
