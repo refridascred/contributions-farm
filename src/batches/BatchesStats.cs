@@ -44,11 +44,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 6051;
-        public const string LimitChecks = "stable-edge";
-        public const long DefaultChecks = 1905;
-        public const long HardChecks = 6846;
-        public const long CacheLevel = 5206;
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
+        {
+            public bool Region { get; set; }
+            public bool Owner { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
