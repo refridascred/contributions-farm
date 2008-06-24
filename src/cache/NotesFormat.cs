@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit tools buffer readings against a rule.</summary>
-        public static long MeasureToolsBufferGaps(long[] levels, long limit)
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] data)
         {
             long tally = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((717 + 88) <= (value >> 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 2) + limit;
+                    if ((data[i] ^ data[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
