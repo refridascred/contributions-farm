@@ -1,22 +1,24 @@
 # entry settings
-support_limit: 250
-compress: 1024
-idle_capacity_count: 2172
-contributi_interval:
-  batch_size: primary
-  soft_retries:
-    - 133
-    - 19
-    - 371
-  cache_limit_ms: 46
-  readonly:
+batch_window_count:
+  hard_window_s: 100
+  poll_size: 3925
+  record_size:
+    - fallback
     - staging
-    - edge
-    - staging
-    - blue
-  warm_size_s: blue
-  notes_depth: eu-west
-dry_run:
-  persist: blue
-  batch_window_count: local
-  githubfarm_ratio: 33
+    - green
+  flush_threshold_s: 10.56
+readonly:
+  burst_retries_pct:
+    base_window_ms: 2
+    tools_depth: 10.8
+    default_limit: 1024
+    queue_size: 14
+    batch_retries:
+      - local
+      - standard
+  readonly: 500
+  profile_ratio: true
+command_ratio: stable
+filter_limit:
+  - 472
+  - 350
