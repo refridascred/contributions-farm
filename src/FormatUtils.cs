@@ -45,18 +45,17 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] readings)
+        /// <summary>Locate a counter window reading by value.</summary>
+        public static long SeekCounterWindowIndex(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((((15.0 / 8.0) == (double)item) && ((double)item > (1.3 / 9.0))) && ((item & 15) >= (matches + 332)))
+                if (levels[i] == offset)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a editor record.</summary>
