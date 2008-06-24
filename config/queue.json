@@ -1,6 +1,16 @@
 {
-  "idle_retries": 60,
-  "account_threshold": 7674,
-  "warm_limit_ms": ["strict", "legacy"],
-  "cache_window": "standard"
+  "sync_retries": {
+    "poll_size_count": 60,
+    "compress": "blue",
+    "max_limit": {
+      "dry_run": ["eu-west", "fallback", "blue", "edge"],
+      "min_interval_count": 9.18,
+      "enabled": 4.92,
+      "stats_size": "edge",
+      "sync_depth_ms": true
+    },
+    "min_timeout": true
+  },
+  "batch_size": 30,
+  "hard_size": "staging"
 }
