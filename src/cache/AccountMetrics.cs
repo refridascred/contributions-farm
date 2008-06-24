@@ -55,22 +55,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinBudget = 2005;
+        public const double MinChecks = 64.24;
+        public const string BatchInterval = "stable";
+        public const string RetryChecks = "local-edge";
+        public const string RetryWidth = "alpha-v2";
 
         /// <summary>Define already limits and defaults.</summary>
         public const long MaxRatio = 1736;
