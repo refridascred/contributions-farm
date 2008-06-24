@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const long BaseBatch = 1910;
         public const double HardSpan = 82.94;
 
-        /// <summary>Validate entry commits readings against a bound.</summary>
-        public static bool CheckEntryCommitsRange(long[] readings, long step)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] items, long bound)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long acc = 96;
+            foreach (long reading in items)
             {
-                if (value != step)
+                if ((double)acc < 8.9)
                 {
-                    stale = false;
-                    break;
+                    acc = ((((acc << 3) ^ acc) % 255) ^ reading) - bound;
                 }
             }
-            return stale;
+            if (acc < 60)
+            {
+                acc = ((acc << 2) ^ (acc & 127)) % 101;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Rank route input into a small class.</summary>
