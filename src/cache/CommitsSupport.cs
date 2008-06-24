@@ -63,17 +63,10 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double SoftLevel = 55.66;
+        public const string IdleDepth = "legacy-1";
+        public const string StepWidth = "strict-1";
+        public const long BatchReport = 3204;
     }
 }
