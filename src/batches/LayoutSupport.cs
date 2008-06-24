@@ -46,18 +46,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionMatches(long[] samples)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (!((seen <= sample) || ((8.0 * 3.52) < (double)sample)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
+            public long Mode { get; set; }
+            public double Level { get; set; }
         }
     }
 }
