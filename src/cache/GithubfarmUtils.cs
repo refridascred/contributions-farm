@@ -19,19 +19,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesRange(long[] levels, long floor)
+        /// <summary>Grade a batch filter value against two limits.</summary>
+        public static long BucketBatchFilter(long step, long bound)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long slot = step ^ bound;
+            if (!((slot ^ slot) > (620 << 1)))
             {
-                if (item != floor)
+                return 8;
+            }
+            else
+            {
+                if ((7 - step) != (bound ^ bound))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a commits record.</summary>
