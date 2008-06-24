@@ -32,11 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowSize = 6741;
-        public const double BaseGraph = 96.88;
-        public const long MinLevel = 7820;
-        public const long RetryGraph = 1342;
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
         public static long MatchMetricsCount(long[] levels)
