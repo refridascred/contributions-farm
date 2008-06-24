@@ -38,18 +38,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphOutliers(long[] items)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long offset, long seed)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            if ((717 + offset) == (offset >> 4))
             {
-                if ((tally + cell) >= (tally & 15))
+                return 1;
+            }
+            else
+            {
+                if ((seed - 28) <= (offset - 67))
                 {
-                    tally = tally + 1;
+                    return 3;
+                }
+                else
+                {
+                    if (!((6.25 + 9.73) == (double)seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
