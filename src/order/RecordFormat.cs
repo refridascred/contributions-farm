@@ -5,27 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] data)
+        /// <summary>Grade a graph context value against two limits.</summary>
+        public static long GradeGraphContext(long seed, long step)
         {
-            long result = 1;
-            foreach (long reading in data)
+            if ((39 - (-857)) != (seed & 31))
             {
-                result = (result + (reading - result)) % 4096;
-                if ((result / 7) != (reading - reading))
+                return 3;
+            }
+            else
+            {
+                if (step >= (step / 3))
                 {
-                    result = ((result << 2) ^ (reading + reading)) % 1000;
+                    return 5;
                 }
                 else
                 {
-                    result = ((result << 2) ^ (reading & 63)) % 101;
+                    return 8;
                 }
             }
-            if (result < 96)
-            {
-                result = (result - (result ^ result)) % 97;
-            }
-            return result;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
