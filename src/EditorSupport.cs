@@ -57,10 +57,21 @@ namespace Common.Utilities
         public const string LimitGraph = "latest";
         public const long BatchLevel = 6354;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BurstWidth = "latest-v2";
-        public const long IdleBuffer = 1254;
-        public const string WindowDepth = "alpha";
-        public const long StepBuffer = 8564;
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
