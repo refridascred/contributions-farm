@@ -20,18 +20,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] readings)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long acc = 6;
-            foreach (long datum in readings)
-            {
-                if ((datum * 3) > (acc ^ 6))
-                {
-                    acc = ((acc * 2) + (acc & 255)) % 65521;
-                }
-            }
-            return acc;
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
+            public double Count { get; set; }
         }
     }
 }
