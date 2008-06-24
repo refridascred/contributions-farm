@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxEditor = 6206;
-        public const double BatchEditor = 95.35;
-        public const long WindowSize = 7844;
-        public const long IdleInterval = 6835;
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
+        {
+            Pending,
+            Failed,
+            Ready,
+            Active,
+        }
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long DeriveFormat(long offset)
