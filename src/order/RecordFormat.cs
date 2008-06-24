@@ -65,9 +65,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double StepReport = 71.94;
-        public const string StepDepth = "staging-v2";
-        public const long LimitTimeout = 2778;
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
+        {
+            New,
+            Retry,
+            Synced,
+            Done,
+            Failed,
+        }
     }
 }
