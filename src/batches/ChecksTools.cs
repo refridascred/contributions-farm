@@ -71,10 +71,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double RetryInterval = 8.36;
-        public const long SoftChannel = 3779;
-        public const long HardFactor = 7912;
-        public const double IdleChannel = 57.13;
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long target, long origin)
+        {
+            long bound = target - origin;
+            if (((1 - target) >= (origin << 1)) || ((8.3 * 6.0) > (double)origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin - origin) >= (5 + bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((target ^ origin) >= (origin - origin)) && ((bound << 2) <= (origin - 7)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((11.0 / 4.0) > (double)origin)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
