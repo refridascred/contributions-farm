@@ -22,19 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every schema window entry stays within the limit.</summary>
-        public static bool ValidateSchemaWindowRange(long[] data, long origin)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Ready,
+            Idle,
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
