@@ -28,13 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsRange(long[] samples, long seed)
         {
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
-            public long Level { get; set; }
-            public long Flag { get; set; }
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
