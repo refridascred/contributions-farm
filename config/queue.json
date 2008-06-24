@@ -1,6 +1,17 @@
 {
-  "burst_timeout": "green",
-  "warm_size_pct": false,
-  "persist": 37,
-  "retry_depth_pct": 64.96
+  "payload_capacity": 1024,
+  "min_retries_pct": {
+    "cache_ratio_ms": "stable",
+    "batch_window": 29,
+    "batch_timeout": {
+      "flush_ratio": false,
+      "batches_delay": 1024,
+      "base_limit_s": "stable",
+      "verbose": "eu-west",
+      "burst_ttl_count": "eu-west",
+      "compress": 60
+    }
+  },
+  "contributi_depth": false,
+  "batch_ratio_count": "legacy"
 }
