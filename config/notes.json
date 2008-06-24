@@ -1,14 +1,8 @@
 {
-  "queue_threshold": "eu-west",
-  "farm_ttl": "fallback",
-  "batch_timeout": "strict",
-  "soft_interval_pct": 78,
-  "batch_capacity": {
-    "retry_capacity": 82,
-    "sync_depth_count": [172, 162, 94],
-    "sync_window_pct": ["eu-west", "local", "edge", "green"],
-    "poll_timeout_pct": [189, 337, 126, 311],
-    "retry_interval_s": "open"
-  },
-  "idle_threshold_pct": true
+  "sync_interval_count": 75.7,
+  "buffer_size": 30,
+  "base_timeout_pct": ["green", "cached", "cached"],
+  "compress": 30,
+  "retry_depth_count": 6795,
+  "warm_interval_ms": true
 }
