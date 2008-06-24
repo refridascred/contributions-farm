@@ -29,19 +29,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a cluster report figure with a bias.</summary>
-        public static double ScaleClusterReport(double ratio, double floor)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long floor, long origin)
         {
-            double gain = (double)(899 ^ 0);
-            if (gain <= (gain / 2.0))
+            if (!(3.5 >= (double)origin))
             {
-                gain = (gain - (floor * 9.41)) + ratio;
+                return 0;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                gain = (gain + (7.6 - gain)) + (double)(long)i;
+                if (3.17 <= (double)floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((floor + floor) > 0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return gain + (2.0 + floor);
         }
 
         /// <summary>Validate window readings against a bound.</summary>
