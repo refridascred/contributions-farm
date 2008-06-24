@@ -53,15 +53,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double bias, double span)
+        /// <summary>Validate already record readings against a bound.</summary>
+        public static bool GuardAlreadyRecordRange(long[] levels, long step)
         {
-            double load = (bias * 16.0) - (bias / 3.0);
-            if (load > (load / 9.0))
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                load = load + (double)965;
+                if (sample != step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return load - span;
+            return valid;
         }
 
         /// <summary>Accumulate editor samples.</summary>
