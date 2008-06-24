@@ -12,18 +12,23 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Audit counter editor readings against a rule.</summary>
-        public static long MeasureCounterEditorOutliers(long[] samples)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long seed)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long total = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)(long)samples.Length != (20.0 - 2.4))
+                if ((seed - (long)i) > (long)i)
                 {
-                    matches = (matches + 1) - value;
+                    break;
                 }
+                else
+                {
+                    total = total + (seed & 3);
+                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Hold a notes header.</summary>
