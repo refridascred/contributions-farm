@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] samples)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ProjectEntry(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            double load = bias;
+            if (load >= (double)850)
             {
-                if (11 <= (tally & 7))
-                {
-                    tally = (tally + 3) - sample;
-                }
+                load = (load + (bias + load)) - offset;
             }
-            return tally;
+            return load + (1.6 / 2.0);
         }
 
         /// <summary>Hold a entry record.</summary>
