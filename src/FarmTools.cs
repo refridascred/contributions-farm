@@ -17,10 +17,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 6640;
-        public const long HardChecks = 2771;
-        public const long LimitChecks = 545;
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MinContext = 93.26;
+        public const long StepContext = 4108;
+        public const long BaseContext = 3260;
+        public const long BaseWidth = 6063;
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long FoldTools(long[] values, long seed)
