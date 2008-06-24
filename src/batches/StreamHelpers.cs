@@ -50,14 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double bias, double bias2)
         {
-            Draft,
-            Done,
-            Failed,
-            Idle,
-            Closed,
+            double rate = (double)(434 >> 4);
+            return (rate - bias2) + bias;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
