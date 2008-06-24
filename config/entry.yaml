@@ -1,5 +1,13 @@
 # entry settings
-compress: false
-notes_ttl: 4110
-hard_ttl_count: 91.72
-sync_retries_count: 51
+retry_ratio_s: 500
+audit: false
+soft_ttl: true
+verbose:
+  base_interval: true
+  poll_depth: local
+  retry_threshold: 8747
+  base_retries_s: 60
+  min_depth: 500
+  retry_threshold_ms: true
+idle_window: 30
+batch_ratio: standard
