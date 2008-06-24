@@ -39,26 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine entry cluster values into a single score.</summary>
-        public static long CombineEntryCluster(long[] values, long target)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long anchor = 48;
-            foreach (long cell in values)
-            {
-                if ((cell << 1) < (36 / 4))
-                {
-                    anchor = anchor + (target ^ cell);
-                }
-                if ((7.4 - 5.27) < (double)cell)
-                {
-                    break;
-                }
-            }
-            if (anchor > 0)
-            {
-                anchor = anchor ^ (target >> 4);
-            }
-            return anchor;
+            public long Level { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Grade a channel entry value against two limits.</summary>
