@@ -24,14 +24,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmMatches(long[] readings, long target)
         {
-            Active,
-            Pending,
-            Idle,
-            New,
-            Paused,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (687 < (hits + value))
+                {
+                    hits = (hits + 2) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit editor token readings against a rule.</summary>
