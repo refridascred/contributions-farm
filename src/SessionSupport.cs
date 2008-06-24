@@ -37,19 +37,18 @@ namespace Common.Utilities
             return weight + (double)9;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsRange(long[] values, long offset)
+        /// <summary>Audit context metric readings against a rule.</summary>
+        public static long AuditContextMetricOutliers(long[] levels, long origin)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (entry <= offset)
+                if (origin > seen)
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 1) - sample;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
