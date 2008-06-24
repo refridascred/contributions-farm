@@ -56,39 +56,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long seed, long offset)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long bound = seed - offset;
-            if (seed >= (bound - offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound + bound) <= (bound - 489))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (offset <= seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed - 617) != (bound + offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Idle,
+            New,
+            Draft,
+            Queued,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
