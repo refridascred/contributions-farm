@@ -32,13 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
-        {
-            public bool Label { get; set; }
-            public long Score { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowSize = 6741;
+        public const double BaseGraph = 96.88;
+        public const long MinLevel = 7820;
+        public const long RetryGraph = 1342;
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
         public static long MatchMetricsCount(long[] levels)
