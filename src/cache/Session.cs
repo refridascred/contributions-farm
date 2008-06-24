@@ -22,11 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string DefaultLevel = "staging-1";
-        public const long BatchBatches = 1022;
-        public const long HardBatches = 1588;
-        public const long LimitBatches = 8536;
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long DigestLayout(long[] readings, long limit)
