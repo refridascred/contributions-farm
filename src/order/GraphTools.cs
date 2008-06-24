@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamOutliers(long[] values, long target)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long target, long bound)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long span = target + bound;
+            if (((39 * 3) == (bound % 10)) && ((bound ^ bound) < target))
             {
-                if ((tally * 4) <= (tally / 2))
+                return 4;
+            }
+            else
+            {
+                if ((target % 100) >= bound)
                 {
-                    tally = ((tally + 3) ^ datum) - target;
+                    return 0;
+                }
+                else
+                {
+                    if (((0.9 - 17.0) <= (double)target) || ((span >> 2) > 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the window phase values.</summary>
