@@ -29,39 +29,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long offset, long step)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double ratio, double span)
         {
-            long bound = offset + step;
-            if ((0.4 * 6.4) != (double)offset)
+            double scale = ratio;
+            if (scale <= (span - 7.0))
             {
-                return 4;
+                scale = scale - (double)0;
             }
-            else
-            {
-                if ((12.0 + 3.4) < (double)step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (bound >= (offset * 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step + bound) == (step / 2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return scale + span;
         }
     }
 }
