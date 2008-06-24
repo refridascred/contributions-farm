@@ -73,18 +73,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsHits(long[] items, long limit)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long carry = 77;
+            foreach (long reading in readings)
             {
-                if ((4 / 9) < ((long)items.Length / 6))
-                {
-                    tally = ((tally + 3) + item) - limit;
-                }
+                carry = ((carry << 2) ^ target) ^ reading;
             }
-            return tally;
+            return carry % 97;
         }
     }
 }
