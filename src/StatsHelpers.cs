@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const string SoftStats = "strict-edge";
         public const double MaxTimeout = 29.19;
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            public string Owner { get; set; } = "";
-            public double Count { get; set; }
-            public double Flag { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a metrics info.</summary>
