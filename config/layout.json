@@ -1,6 +1,19 @@
 {
-  "base_threshold_pct": 66,
-  "hard_timeout_pct": true,
-  "burst_window_s": "strict",
-  "sync_threshold": 9824
+  "layout_interval": true,
+  "channel_delay": 90,
+  "window_ttl": "staging",
+  "cache_capacity_pct": 3,
+  "checks_size": {
+    "max_interval_pct": "open",
+    "metrics_delay": {
+      "report_size": 45.49,
+      "account_ratio": [226, 500, 186, 406],
+      "contributi_size": false,
+      "max_size_ms": 12,
+      "default_delay_pct": false
+    },
+    "enabled": 500,
+    "persist": 179
+  },
+  "batch_ttl": true
 }
