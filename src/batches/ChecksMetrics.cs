@@ -29,22 +29,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionMatches(long[] items, long floor)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)26 == (double)sample)
+                if (data[i] <= seed)
                 {
-                    seen = (seen + 1) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
