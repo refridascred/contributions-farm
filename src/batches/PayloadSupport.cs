@@ -20,20 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine queue stats values into a single score.</summary>
-        public static long DigestQueueStats(long[] items)
-        {
-            long carry = 217;
-            foreach (long entry in items)
-            {
-                carry = (((carry * 4) + (carry & 3)) % 101) ^ entry;
-            }
-            if (carry > 3)
-            {
-                carry = ((carry * 5) + (carry & 63)) % 4096;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftFactor = 7917;
+        public const string MaxQueue = "latest-v2";
+        public const long BaseQueue = 2858;
 
         /// <summary>Accumulate already samples.</summary>
         public static long WeighAlready(long[] samples)
