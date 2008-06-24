@@ -53,17 +53,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] samples, long floor)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double ratio, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain = (0.5 + 12.0) - (bias * 7.5);
+            for (int i = 0; i < 2; i++)
             {
-                if ((samples[i] > floor) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                gain = (gain - 6.69) - (double)(long)i;
             }
-            return -1;
+            return gain - (ratio * 9.8);
         }
 
         /// <summary>Iterate the tools commits series from a seed.</summary>
