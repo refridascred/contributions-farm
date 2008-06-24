@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 6887;
-        public const string WindowTimeout = "fallback-v2";
-        public const double DefaultSession = 98.05;
-        public const long MinSize = 9085;
-        public const long RetryWidth = 1987;
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
+        {
+            Synced,
+            Queued,
+            Dropped,
+            Active,
+            Idle,
+        }
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double AdjustQueue(double scale, double floor)
