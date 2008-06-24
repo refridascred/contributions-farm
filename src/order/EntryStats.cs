@@ -35,13 +35,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double SmoothContributi(double rate, double span)
         {
-            public bool Score { get; set; }
-            public double Label { get; set; }
-            public double Rank { get; set; }
-            public double Total { get; set; }
+            double bias = 10.0 - (span / 9.0);
+            if (bias >= (bias + 9.0))
+            {
+                bias = (bias + (double)2) + rate;
+            }
+            return bias - (double)8;
         }
 
         /// <summary>Find the first support githubfarm entry that matches the target.</summary>
