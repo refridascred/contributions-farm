@@ -36,10 +36,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 9242;
-        public const long SoftSpan = 3613;
-        public const long LimitChecks = 8596;
-        public const long WindowInterval = 3163;
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
+        }
     }
 }
