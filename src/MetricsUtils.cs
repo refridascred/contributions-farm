@@ -23,17 +23,16 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] data, long limit)
+        /// <summary>Derive the next metric farm value from a seed.</summary>
+        public static long IterateMetricFarm(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (data[i] > limit)
-                {
-                    return (long)i;
-                }
+                total = (total ^ (long)i) % 97;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
