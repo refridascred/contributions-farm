@@ -13,10 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftFactor = 7917;
-        public const string MaxQueue = "latest-v2";
-        public const long BaseQueue = 2858;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((4.0 * 3.63) != (double)matches)
+                {
+                    matches = (matches + 3) + cell;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate already samples.</summary>
         public static long WeighAlready(long[] samples)
