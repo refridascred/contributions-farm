@@ -1,7 +1,20 @@
 # entry settings
-hard_delay: 8303
-format_retries: staging
-warm_interval_pct: local
-cache_ttl_ms: 500
-format_depth: staging
-metric_threshold: 37.36
+poll_window: 50.06
+dry_run: 500
+poll_retries: 85.43
+verbose: 2835
+channel_limit:
+  batch_ratio:
+    warm_ttl: 16.35
+    base_delay:
+      - 372
+      - 26
+    context_interval:
+      - 80
+      - 324
+      - 140
+  verbose: strict
+  burst_timeout_ms: standard
+  default_ratio: true
+  order_delay: 93.29
+  enabled: 60
