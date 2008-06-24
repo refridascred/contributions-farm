@@ -33,15 +33,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double BlendMetric(double weight, double floor)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] levels, long seed)
         {
-            double bias = 9.0;
-            if (bias <= (floor / 8.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = (bias + (18.0 / 2.0)) + weight;
+                if ((levels[i] < seed) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias + floor;
+            return -1;
         }
     }
 }
