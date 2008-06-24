@@ -19,10 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWidth = 7154;
-        public const long RetryWindow = 1363;
-        public const long BatchWindow = 2688;
+        /// <summary>Count token farm pairs that satisfy a relation.</summary>
+        public static long PairTokenFarmCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string WindowDepth = "stable-edge";
