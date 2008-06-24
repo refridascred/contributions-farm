@@ -32,13 +32,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] readings, long step)
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public long Owner { get; set; }
+            long acc = 868;
+            foreach (long datum in readings)
+            {
+                acc = acc ^ (datum - step);
+                for (int i = 0; i < 4; i++)
+                {
+                    acc = (acc - ((long)i % 7)) % 4096;
+                }
+                if (!((acc & 15) <= (step * 2)))
+                {
+                    acc = (acc ^ (13 / 7)) % 97;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Describe the editor level values.</summary>
