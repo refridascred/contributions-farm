@@ -58,11 +58,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] items, long bound)
         {
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < bound) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
