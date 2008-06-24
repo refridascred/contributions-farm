@@ -16,17 +16,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first counter already entry that matches the target.</summary>
-        public static long FindCounterAlreadyIndex(long[] items, long step)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] == step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Locate a checks farm reading by value.</summary>
