@@ -45,11 +45,13 @@ namespace Common.Utilities
             return weight + (bias2 + bias2);
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MaxLevel = "primary-1";
-        public const double LimitWindow = 55.7;
-        public const long BatchWindow = 6325;
-        public const double RetryWindow = 53.74;
-        public const long BaseLevel = 2835;
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
+        {
+            public string Mode { get; set; } = "";
+            public double Size { get; set; }
+            public bool Count { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
