@@ -30,18 +30,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the metric context entries that pass the check.</summary>
-        public static long CountMetricContextMatches(long[] samples, long floor)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long seed, long offset)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            if (offset <= (offset << 1))
             {
-                if (((floor + floor) >= count) || ((cell > (482 * 4)) || ((cell << 2) <= (count - floor))))
+                return 1;
+            }
+            else
+            {
+                if ((seed * 3) <= (offset + offset))
                 {
-                    count = count + 1;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
