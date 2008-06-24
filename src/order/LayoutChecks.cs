@@ -75,18 +75,22 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] series)
+        /// <summary>Count the filter graph entries that pass the check.</summary>
+        public static long CountFilterGraphMatches(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (((long)series.Length ^ hits) == (hits >> 2))
+                if (tally < (tally + tally))
                 {
-                    hits = (hits + 2) + entry;
+                    tally = (tally + 1) - reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
