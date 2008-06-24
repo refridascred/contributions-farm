@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
-        {
-            public bool Level { get; set; }
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleBudget = 9137;
+        public const double StepScore = 81.69;
+        public const long StepDepth = 6013;
+        public const string BurstDepth = "open";
+        public const string IdleWidth = "alpha-edge";
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long AuditCounterGaps(long[] data, long bound)
