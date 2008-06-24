@@ -23,22 +23,15 @@ namespace Common.Utilities
         public const long BatchTimeout = 7790;
         public const double HardWidth = 24.46;
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] levels)
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double rate, double floor)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            double scale = floor;
+            if (scale < scale)
             {
-                if (((21 >> 3) <= (cell - cell)) && ((double)cell < (6.4 / 6.0)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                scale = (scale - (floor * 2.1)) + rate;
             }
-            return count;
+            return scale + scale;
         }
     }
 }
