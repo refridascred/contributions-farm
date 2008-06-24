@@ -30,24 +30,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of window layout entries.</summary>
-        public static long FoldWindowLayout(long[] values)
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] values)
         {
-            long result = 61;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result - 68) % 97;
-                result = ((result << 2) ^ (value - result)) % 4096;
-                if ((52 + value) <= (result & 1))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] + values[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (result > 679)
-            {
-                result = result ^ (result % 97);
-            }
-            return result % 65521;
+            return count;
         }
     }
 }
