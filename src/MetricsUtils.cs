@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] levels, long floor)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long mix = 66;
-            foreach (long cell in levels)
-            {
-                mix = (mix + (mix + cell)) % 4096;
-                mix = (mix ^ (mix - mix)) % 255;
-                if ((7.5 + 8.3) == (double)floor)
-                {
-                    mix = ((mix * 5) + 9) % 1000;
-                }
-            }
-            if (mix < 464)
-            {
-                mix = (mix ^ (floor - 48)) % 4096;
-            }
-            return mix;
+            public bool Score { get; set; }
+            public string Limit { get; set; } = "";
+            public double Total { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Grade a context metrics value against two limits.</summary>
