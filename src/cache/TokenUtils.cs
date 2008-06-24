@@ -22,10 +22,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftWidth = 7185;
-        public const long SoftContributi = 6584;
-        public const long BurstContributi = 4303;
-        public const long HardRatio = 1557;
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long seed, long limit)
+        {
+            if ((seed * 5) <= limit)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed + 27) < (seed + limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
