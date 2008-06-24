@@ -1,5 +1,5 @@
 {
-  "already_size": "blue",
-  "max_size_count": "standard",
-  "persist": "latest"
+  "cache_interval": [417, 319],
+  "default_window_pct": 91,
+  "max_timeout_count": "staging"
 }
