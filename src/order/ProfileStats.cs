@@ -28,15 +28,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two channel contributi measurements.</summary>
-        public static double BlendChannelContributi(double bias, double span)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            double scale = (double)(7 & 255);
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - span) + (double)(long)i;
-            }
-            return scale + bias;
+            public long Token { get; set; }
+            public double Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the route phase values.</summary>
