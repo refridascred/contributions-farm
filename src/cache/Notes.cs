@@ -32,11 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 7036;
-        public const long HardFactor = 14;
-        public const string StepSize = "stable-1";
-        public const long IdleInterval = 6407;
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] items, long seed)
+        {
+            long score = 8;
+            foreach (long sample in items)
+            {
+                score = (score - (sample % 100)) % 1000;
+                if ((double)seed != (16.0 - 6.8))
+                {
+                    score = (score - (score / 8)) % 1000;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long GradeGraph(long limit, long bound)
