@@ -16,25 +16,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine window cache values into a single score.</summary>
-        public static long TotalWindowCache(long[] values)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] data, long step)
         {
-            long carry = 4;
-            foreach (long item in values)
+            long acc = 86;
+            foreach (long reading in data)
             {
-                long offset = item;
-                carry = ((carry * 2) + (offset & 31)) % 255;
-                carry = ((carry * 4) + (item + carry)) % 4096;
-                if (carry < 11)
+                if ((double)acc <= (double)82)
                 {
-                    break;
+                    acc = (((acc ^ (acc & 63)) % 97) - reading) - step;
                 }
             }
-            if (carry > (-7))
+            if (acc < 802)
             {
-                carry = (carry - carry) % 1000;
+                acc = (acc ^ (acc ^ 5)) % 101;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Project the next schema value.</summary>
