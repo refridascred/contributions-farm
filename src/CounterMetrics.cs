@@ -33,19 +33,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmLimits(long[] items, long seed)
+        /// <summary>Digest a series of contributi stats entries.</summary>
+        public static long TotalContributiStats(long[] values, long seed)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long anchor = 0;
+            foreach (long entry in values)
             {
-                if (reading <= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = (anchor << 2) ^ (entry - 32);
+                anchor = anchor + (seed + anchor);
+                anchor = (anchor * 2) + (anchor + anchor);
             }
-            return ok;
+            if (anchor > 93)
+            {
+                anchor = ((anchor * 4) + seed) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
