@@ -34,9 +34,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 3277;
-        public const double WindowFactor = 87.86;
-        public const long IdleSize = 9730;
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
+        {
+            Dropped,
+            Locked,
+            Paused,
+        }
     }
 }
