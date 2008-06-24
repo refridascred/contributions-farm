@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheOutliers(long[] readings, long limit)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsBounds(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            bool found = true;
+            foreach (long item in values)
             {
-                if ((limit / 3) > limit)
+                if (item != origin)
                 {
-                    seen = (seen + 2) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Describe the report mode values.</summary>
