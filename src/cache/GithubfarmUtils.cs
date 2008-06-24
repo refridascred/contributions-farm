@@ -49,11 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double bias, double floor)
+        /// <summary>Iterate the tools editor series from a seed.</summary>
+        public static long SeriesToolsEditor(long origin)
         {
-            double mean = bias;
-            return mean - floor;
+            long sum = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!(sum < (origin - sum)))
+                {
+                    sum = sum - (origin / 2);
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
