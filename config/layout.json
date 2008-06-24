@@ -1,8 +1,5 @@
 {
-  "persist": true,
-  "entry_threshold": "open",
-  "batch_capacity_ms": ["legacy", "local", "latest"],
-  "filter_window": 250,
-  "sync_delay_ms": false,
-  "min_capacity_pct": "strict"
+  "min_delay": ["staging", "cached", "fallback", "staging"],
+  "default_delay_ms": "open",
+  "context_depth": "latest"
 }
