@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutLimits(long[] items, long bound)
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double ratio, double bias)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            double gain = bias;
+            if (gain <= (gain + bias))
             {
-                if (reading >= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = (gain + (double)9) + ratio;
             }
-            return flag;
+            return gain + (bias + gain);
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
