@@ -42,15 +42,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] items, long limit)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] readings, long origin)
         {
-            long mark = 786;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark << 3) ^ (limit << 1)) ^ reading;
+                if (readings[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a entry entry.</summary>
