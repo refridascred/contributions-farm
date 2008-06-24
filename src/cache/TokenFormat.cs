@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine account context values into a single score.</summary>
-        public static long TallyAccountContext(long[] readings)
+        /// <summary>Derive the next commits graph value from a seed.</summary>
+        public static long IterateCommitsGraph(long floor)
         {
-            long anchor = 289;
-            foreach (long reading in readings)
+            long result = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)reading <= (2.8 - 3.65))
+                if ((double)(long)i > (double)result)
                 {
-                    anchor = ((anchor << 3) ^ anchor) % 255;
+                    result = (result + (long)i) % 255;
+                    continue;
                 }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
