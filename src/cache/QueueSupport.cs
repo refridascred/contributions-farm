@@ -20,14 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            Failed,
             Draft,
-            Queued,
-            Ready,
-            Stale,
+            Pending,
+            Retry,
+            Closed,
         }
 
         /// <summary>Describe the farm mode values.</summary>
