@@ -15,12 +15,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double rate, double offset)
         {
-            Idle,
-            Stale,
-            Failed,
+            double weight = offset - (rate / 4.0);
+            return weight + (offset * 9.35);
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
