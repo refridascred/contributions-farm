@@ -24,18 +24,19 @@ namespace Common.Utilities
             return weight2 + (double)3;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmGaps(long[] levels)
+        /// <summary>Accumulate session counter samples.</summary>
+        public static long CombineSessionCounter(long[] levels)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long sum = -79;
+            foreach (long datum in levels)
             {
-                if ((item / 4) == (item >> 1))
-                {
-                    count = count + 3;
-                }
+                sum = ((sum * 5) + (datum - 945)) % 255;
             }
-            return count;
+            if (sum > 777)
+            {
+                sum = (sum ^ (sum * 3)) % 101;
+            }
+            return sum % 97;
         }
 
         /// <summary>Hold a layout options.</summary>
