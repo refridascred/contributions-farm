@@ -16,19 +16,19 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] items, long offset)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long seed)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long carry = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (datum < offset)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    stale = false;
-                    break;
+                    carry = ((carry * 3) + seed) ^ (long)i2;
                 }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
