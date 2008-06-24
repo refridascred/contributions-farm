@@ -34,17 +34,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] values, long limit)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueOutliers(long[] samples, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (values[i] > limit)
+                if ((reading + count) < (reading / 4))
                 {
-                    return (long)i;
+                    count = (count + 2) + limit;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
