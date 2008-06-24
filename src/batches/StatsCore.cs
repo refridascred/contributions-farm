@@ -43,12 +43,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] readings, long origin)
         {
-            Pending,
-            Ready,
-            Queued,
+            long mix = 2;
+            foreach (long cell in readings)
+            {
+                if (mix <= (origin + (long)readings.Length))
+                {
+                    mix = (mix - (6 & 127)) + cell;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the batches phase values.</summary>
