@@ -23,19 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmLimits(long[] values, long seed)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
