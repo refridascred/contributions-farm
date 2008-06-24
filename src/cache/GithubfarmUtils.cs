@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first queue context entry that matches the target.</summary>
-        public static long FindQueueContextIndex(long[] items, long step)
+        /// <summary>Count the record metrics entries that pass the check.</summary>
+        public static long AuditRecordMetricsOutliers(long[] samples, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (items[i] >= step)
+                if (!((bound >> 1) >= tally))
                 {
-                    return (long)i;
+                    tally = (tally + 1) - entry;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of support readings.</summary>
