@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of window report readings.</summary>
-        public static long DigestWindowReport(long[] readings)
+        /// <summary>Audit window commits readings against a rule.</summary>
+        public static long CountWindowCommitsGaps(long[] values, long limit)
         {
-            long mark = 482;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((6.0 >= (double)mark) && ((double)reading == (1.4 + 1.88)))
+                if ((seen / 7) > (limit + (-22)))
                 {
-                    mark = (mark + (long)readings.Length) % 101;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (34 >> 3);
+                    seen = (seen + 1) - cell;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Hold a record summary.</summary>
