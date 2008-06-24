@@ -29,12 +29,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Rank queue format input into a small class.</summary>
+        public static long RankQueueFormat(long floor, long limit)
         {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public string Label { get; set; } = "";
+            if (((-87) / 6) > (floor - floor))
+            {
+                return 2;
+            }
+            else
+            {
+                if (limit > floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit << 3) >= (floor * 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((8.3 - 1.7) != (double)limit)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
