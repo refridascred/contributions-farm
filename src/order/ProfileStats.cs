@@ -43,13 +43,17 @@ namespace Common.Utilities
             return bias - (10.0 - offset);
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] series, long offset)
         {
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
-            public string Level { get; set; } = "";
-            public long Score { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
