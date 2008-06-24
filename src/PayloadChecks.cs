@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadMatches(long[] items)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyBounds(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if ((double)datum < (7.02 - 1.1))
+                if (value > step)
                 {
-                    seen = seen + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
