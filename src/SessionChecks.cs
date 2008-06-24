@@ -37,23 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] items)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long anchor = 747;
-            foreach (long value in items)
-            {
-                anchor = (anchor + 2) % 255;
-                if (anchor >= (value * 3))
-                {
-                    break;
-                }
-            }
-            if (anchor < 0)
-            {
-                anchor = anchor - 6;
-            }
-            return anchor;
+            Ready,
+            Synced,
+            Pending,
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
