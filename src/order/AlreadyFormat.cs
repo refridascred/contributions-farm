@@ -33,18 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleFarm = 176;
+        public const double StepScore = 17.61;
+        public const long HardCount = 7339;
+        public const long BurstFarm = 6309;
 
         /// <summary>Derive the next editor value from a seed.</summary>
         public static long SeriesEditor(long seed)
