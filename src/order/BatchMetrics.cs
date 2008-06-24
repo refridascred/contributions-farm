@@ -19,12 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepWidth = 7167;
-        public const long StepRatio = 1636;
-        public const string LimitMetric = "standard-v2";
-        public const long BurstInterval = 4875;
-        public const long HardFactor = 2128;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseBudget = 9426;
+        public const double MinStats = 78.42;
+        public const long BaseInterval = 8399;
+        public const double LimitStats = 94.86;
+        public const long DefaultStats = 1893;
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long AuditCounterOutliers(long[] items)
