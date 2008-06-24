@@ -55,11 +55,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double IdleFactor = 47.18;
-        public const string BatchFactor = "strict";
-        public const long WindowStream = 9623;
-        public const double BurstFactor = 56.81;
-        public const long BaseStream = 7359;
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
+        {
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
