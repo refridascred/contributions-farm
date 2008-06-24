@@ -56,15 +56,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double bias, double span)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] values)
         {
-            double gain = 1.0 + (bias / 6.0);
-            if (gain < (span - span))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = gain - (8.27 / 3.0);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return gain + 3.48;
+            return tally;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
