@@ -28,12 +28,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Roll a checks commits counter forward.</summary>
+        public static long RollChecksCommits(long limit)
         {
-            public long Label { get; set; }
-            public long Owner { get; set; }
-            public long Score { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((limit + (long)i) != (acc % 7))
+                {
+                    acc = ((acc << 2) ^ ((long)i << 3)) % 97;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
