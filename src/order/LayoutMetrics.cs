@@ -12,10 +12,22 @@ namespace Common.Utilities
         public const double MinCommits = 64.71;
         public const long CacheSize = 7305;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double LimitWidth = 86.25;
-        public const long CacheCount = 8248;
-        public const string CacheContributi = "standard";
+        /// <summary>Match up token report samples.</summary>
+        public static long OverlapTokenReportCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a layout options.</summary>
         public sealed class LayoutOptions
