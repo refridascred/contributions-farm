@@ -36,21 +36,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] levels)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] readings, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 853;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((966 / 5) > (mix << 1)))
                 {
-                    if ((levels[i] + levels[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (mix + value) - limit;
                 }
             }
-            return seen;
+            return mix % 65521;
         }
     }
 }
