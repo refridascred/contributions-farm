@@ -20,12 +20,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long SeekChecksIndex(long[] samples, long origin)
         {
-            Dropped,
-            Failed,
-            Draft,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
