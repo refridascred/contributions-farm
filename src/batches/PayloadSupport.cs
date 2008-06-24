@@ -35,18 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterMatches(long[] values)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterBounds(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if (!(((double)hits != (7.0 * 9.89)) && ((item + item) < (hits * 4))))
+                if (cell >= target)
                 {
-                    hits = hits + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
