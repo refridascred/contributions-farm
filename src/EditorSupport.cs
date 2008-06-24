@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const long LimitCount = 5044;
         public const double CacheContext = 39.53;
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesLimits(long[] readings, long target)
         {
-            public double Total { get; set; }
-            public double Stamp { get; set; }
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count report queue pairs that satisfy a relation.</summary>
