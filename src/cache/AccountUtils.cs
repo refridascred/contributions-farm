@@ -27,38 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long origin, long floor)
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double weight, double bias)
         {
-            if (!((origin << 2) >= (8 / 9)))
+            double rate = weight;
+            if (rate >= weight)
             {
-                return 5;
+                rate = rate - (double)524;
             }
             else
             {
-                if ((floor - origin) <= floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor ^ 762) != (floor ^ 499))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor % 100) < (floor + floor))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                rate = rate + (bias + 1.2);
             }
+            return rate + 7.0;
         }
     }
 }
