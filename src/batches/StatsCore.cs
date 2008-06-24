@@ -58,16 +58,9 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 13; i++)
-            {
-                state = ((state * 4) + (target - target)) % 65521;
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetryBuffer = "fallback-v2";
+        public const long CacheWidth = 2123;
+        public const string SoftBuffer = "staging-edge";
     }
 }
