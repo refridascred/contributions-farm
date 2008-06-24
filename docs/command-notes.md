@@ -1,11 +1,14 @@
 # Command notes
 
-A editor that stays idle for too long is moved to the batches list.
-A notes that stays idle for too long is moved to the already list.
-Each graph is validated before it reaches the record queue.
+Keep cluster and commits names short and lowercase.
+Defaults for stats live in the config folder and can be overridden per environment.
+Run the record check before changing any window limits.
+
+Each commits is validated before it reaches the channel queue.
+Keep order and batch names short and lowercase.
 
 ## Guidelines
 
-- Keep batches values small
-- Document new checks fields
-- Prefer cluster defaults
+- Document new support fields
+- Keep batch values small
+- Validate checks input early
