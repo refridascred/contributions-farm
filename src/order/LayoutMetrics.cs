@@ -31,16 +31,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long origin)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long limit)
         {
-            long anchor = origin;
-            for (int i = 0; i < 14; i++)
+            long mark = limit;
+            for (int i = 0; i < 16; i++)
             {
-                anchor = ((anchor * 5) + origin) % 97;
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return mark;
         }
     }
 }
