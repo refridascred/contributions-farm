@@ -22,22 +22,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] items, long step)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long score = 52;
-            foreach (long sample in items)
-            {
-                if (sample <= score)
-                {
-                    score = score ^ sample;
-                }
-                if ((double)step > (2.0 / 5.0))
-                {
-                    break;
-                }
-            }
-            return score;
+            Closed,
+            Queued,
+            Draft,
         }
     }
 }
