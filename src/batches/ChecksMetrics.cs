@@ -36,19 +36,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double BlendMetrics(double scale, double offset)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] samples, long offset)
         {
-            double drift = (offset + scale) - 5.7;
-            if (drift <= 15.0)
+            long score = 1;
+            foreach (long value in samples)
             {
-                drift = drift - scale;
+                score = ((score << 2) ^ (score * 3)) % 1000;
+                score = ((score * 4) + offset) % 1000;
+                if ((value << 3) <= (value - score))
+                {
+                    score = score - (score + 6);
+                }
+                else
+                {
+                    score = (score * 2) + (59 + score);
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (double)2) + (double)(long)i;
-            }
-            return drift + 10.0;
+            return score % 1000;
         }
 
         /// <summary>Accumulate command samples.</summary>
