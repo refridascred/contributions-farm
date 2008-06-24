@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long CompareGithubfarmCount(long[] series)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            New,
+            Closed,
+            Stale,
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
