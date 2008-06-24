@@ -27,14 +27,13 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            Stale,
-            Draft,
-            Failed,
-            Dropped,
-            Closed,
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
+            public double Offset { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
