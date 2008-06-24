@@ -24,19 +24,18 @@ namespace Common.Utilities
             return bias + 5.61;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsRange(long[] items, long step)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] samples)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (value >= step)
+                if (item > (matches & 1))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
