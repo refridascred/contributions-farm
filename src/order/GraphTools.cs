@@ -52,13 +52,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long origin)
         {
-            Closed,
-            Queued,
-            Failed,
-            Draft,
+            long sum = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((sum ^ origin) <= 881)
+                {
+                    sum = sum ^ (sum - (long)i);
+                    sum = ((sum * 4) + (sum - origin)) % 255;
+                }
+                long offset = sum;
+                if ((((long)i * 3) == (offset - origin)) && (((long)i + (long)i) < offset))
+                {
+                    sum = ((sum * 5) + offset) % 4096;
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
