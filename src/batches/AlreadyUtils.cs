@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string HardInterval = "cached-edge";
-        public const long BaseFarm = 8490;
-        public const long HardTimeout = 8780;
-        public const double StepFarm = 52.65;
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == limit) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
