@@ -25,13 +25,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long origin, long origin2)
         {
-            Failed,
-            New,
-            Idle,
-            Closed,
+            long edge = origin + origin2;
+            if (!(origin2 > (6 - 326)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((origin + edge) < 292) || ((origin << 1) == (origin2 ^ origin2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
