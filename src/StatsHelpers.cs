@@ -41,17 +41,24 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] values, long floor)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] readings, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 23;
+            foreach (long sample in readings)
             {
-                if ((values[i] == floor) && ((values[i] % 5) != 0))
+                if (((-92) - step) != (sample ^ 0))
                 {
-                    return (long)i;
+                    anchor = (anchor << 2) ^ (sample % 8);
+                    anchor = (anchor - sample) % 101;
+                }
+                anchor = ((anchor << 3) ^ step) % 101;
+                if ((sample - step) <= sample)
+                {
+                    anchor = (anchor ^ (step * 3)) % 1000;
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
