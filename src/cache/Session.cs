@@ -29,31 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long floor, long origin)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsBounds(long[] series, long seed)
         {
-            if (!(3.5 >= (double)origin))
+            bool stale = true;
+            foreach (long reading in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (3.17 <= (double)floor)
+                if (reading < seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((floor + floor) > 0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
