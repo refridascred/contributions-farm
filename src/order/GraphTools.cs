@@ -43,13 +43,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            public bool Region { get; set; }
-            public double Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
+            Dropped,
+            Retry,
+            New,
+            Queued,
+            Pending,
         }
 
         /// <summary>Describe the route state values.</summary>
