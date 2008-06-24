@@ -23,14 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueBounds(long[] levels, long step)
         {
-            Active,
-            Locked,
-            Closed,
-            Paused,
-            Done,
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
