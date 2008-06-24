@@ -39,18 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferOutliers(long[] items)
+        /// <summary>Audit counter editor readings against a rule.</summary>
+        public static long MeasureCounterEditorOutliers(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((((seen << 3) > 83) || ((seen + seen) <= reading)) && !((seen & 127) > seen))
+                if ((double)(long)samples.Length != (20.0 - 2.4))
                 {
-                    seen = seen + 2;
+                    matches = (matches + 1) - value;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
