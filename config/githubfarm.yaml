@@ -1,7 +1,22 @@
 # githubfarm settings
-max_threshold_pct: 39.58
-soft_retries_pct: 3106
-strict: standard
-flush_interval_s: 66.49
-burst_threshold_s: true
-base_interval_ms: latest
+retry_threshold_pct: staging
+idle_interval_ms: 2169
+audit: 18
+base_ttl_s:
+  metrics_timeout: 20.39
+  order_retries: 779
+  compress: 30
+dry_run: 1024
+retry_window_ms:
+  profile_timeout: 80.16
+  batch_capacity_s: 1.84
+  idle_capacity_count: 80.71
+  enabled: false
+  idle_retries: legacy
+  base_delay:
+    idle_limit: 33
+    retry_interval_pct: false
+    readonly:
+      - staging
+      - staging
+      - strict
