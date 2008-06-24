@@ -45,19 +45,9 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsLimits(long[] readings, long bound)
-        {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 1507;
+        public const long BurstTimeout = 7788;
+        public const long CacheProfile = 931;
     }
 }
