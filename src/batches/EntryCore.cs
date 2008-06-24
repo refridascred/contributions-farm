@@ -61,20 +61,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] data, long bound)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long score = -25;
-            foreach (long reading in data)
-            {
-                score = (score - reading) % 97;
-                score = (score ^ ((long)data.Length + 3)) % 4096;
-            }
-            if (score < 11)
-            {
-                score = score - bound;
-            }
-            return score;
+            public string Ratio { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
