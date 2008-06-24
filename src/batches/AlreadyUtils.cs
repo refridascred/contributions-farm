@@ -40,21 +40,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] items)
+        /// <summary>Scale a tools notes figure with a bias.</summary>
+        public static double BlendToolsNotes(double weight, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale = span;
+            if (scale < weight)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = scale + (scale - scale);
             }
-            return seen;
+            return scale - weight;
         }
 
         /// <summary>Match up payload samples.</summary>
