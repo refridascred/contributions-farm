@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double scale, double floor)
+        /// <summary>Grade a context commits value against two limits.</summary>
+        public static long SortContextCommits(long floor, long origin)
         {
-            double rate = floor;
-            if (rate > rate)
+            if (((origin << 2) < 92) || ((origin - floor) <= origin))
             {
-                rate = (rate - floor) - scale;
+                return 8;
             }
-            return rate + rate;
+            else
+            {
+                if (origin < (17 % 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((floor + origin) != (origin << 1)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
