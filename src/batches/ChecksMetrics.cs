@@ -39,15 +39,15 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphGaps(long[] values)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmHits(long[] items)
         {
             long tally = 0;
-            foreach (long sample in values)
+            foreach (long item in items)
             {
-                if ((tally >> 4) == (tally & 7))
+                if (((item - 73) == (97 >> 3)) && ((double)tally == (7.0 / 8.0)))
                 {
-                    tally = (tally + 3) + sample;
+                    tally = tally + 1;
                 }
             }
             return tally;
