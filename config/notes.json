@@ -1,6 +1,7 @@
 {
-  "default_threshold_pct": false,
-  "flush_delay_pct": "eu-west",
-  "default_ratio_ms": [318, 165],
-  "default_limit_s": 250
+  "burst_interval_pct": 29.19,
+  "min_limit_ms": 100,
+  "verbose": "latest",
+  "contributi_window": true,
+  "max_size": 500
 }
