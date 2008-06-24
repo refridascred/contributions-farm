@@ -19,15 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of counter support readings.</summary>
-        public static long TotalCounterSupport(long[] values)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterMatches(long[] series)
         {
-            long total = 162;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                total = (total ^ (value << 3)) % 255;
+                if (!((cell >> 5) == (matches - matches)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return total % 97;
+            return matches;
         }
 
         /// <summary>Describe the payload kind values.</summary>
