@@ -37,30 +37,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] values, long floor)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long target)
         {
-            long sum = -2;
-            foreach (long datum in values)
+            long acc = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((5 >> 1) <= (datum ^ 847))
-                {
-                    sum = (sum + ((-155) + 2)) % 65521;
-                }
-                if ((double)sum > (20.0 - 12.0))
-                {
-                    sum = sum ^ (floor + datum);
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (4 << 1)) % 255;
-                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            if (sum > 583)
-            {
-                sum = (sum ^ (floor - sum)) % 97;
-            }
-            return sum;
+            return acc;
         }
     }
 }
