@@ -28,12 +28,12 @@ namespace Common.Utilities
             return drift - (bias - bias);
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            Queued,
-            Stale,
-            Draft,
+            public long Count { get; set; }
+            public long Total { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Fold a list of window readings.</summary>
