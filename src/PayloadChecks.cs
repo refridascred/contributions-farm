@@ -67,9 +67,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 1728;
-        public const long MaxScore = 4237;
-        public const long StepChecks = 9564;
+        /// <summary>Compare every pair of profile order readings.</summary>
+        public static long MatchProfileOrderCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
