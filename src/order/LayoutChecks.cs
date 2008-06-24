@@ -15,18 +15,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many checks queue samples are out of range.</summary>
-        public static long MeasureChecksQueueOutliers(long[] items, long bound)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((((tally % 5) > (value * 4)) || ((value - bound) <= 59)) || ((bound - tally) <= value))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Idle,
+            Stale,
+            Failed,
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
