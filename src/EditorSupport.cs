@@ -52,15 +52,10 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double weight, double offset)
-        {
-            double ratio = (offset + weight) / 6.0;
-            if (ratio < (double)601)
-            {
-                ratio = ratio - offset;
-            }
-            return ratio + (double)8;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BurstWidth = "latest-v2";
+        public const long IdleBuffer = 1254;
+        public const string WindowDepth = "alpha";
+        public const long StepBuffer = 8564;
     }
 }
