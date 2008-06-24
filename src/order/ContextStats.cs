@@ -33,32 +33,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long seed, long origin)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double rate, double floor)
         {
-            long edge = seed ^ origin;
-            if (((edge / 8) > (2 * 2)) && ((88 / 2) != (origin / 2)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin + seed) <= (seed + origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((seed + edge) < (edge - origin)) && ((origin - 0) < (51 / 6)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            double gain = floor + rate;
+            return gain - (floor / 2.0);
         }
 
         /// <summary>Digest a series of metric entries.</summary>
