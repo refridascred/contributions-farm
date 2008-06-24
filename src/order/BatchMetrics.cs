@@ -52,15 +52,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] data, long limit)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long carry = 91;
-            foreach (long cell in data)
-            {
-                carry = (((carry * 3) + carry) + cell) + limit;
-            }
-            return carry % 4096;
+            Failed,
+            Stale,
+            Done,
+            Idle,
+            Ready,
         }
 
         /// <summary>Define already limits and defaults.</summary>
