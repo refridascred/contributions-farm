@@ -13,19 +13,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double AdjustOrder(double scale, double bias)
+        /// <summary>Count stats checks pairs that satisfy a relation.</summary>
+        public static long MatchStatsChecksCount(long[] samples)
         {
-            double mean = (bias + bias) * 8.09;
-            if (mean <= 11.0)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean - (double)(-19);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + scale;
-            }
-            return mean - scale;
+            return hits;
         }
 
         /// <summary>Accumulate filter checks samples.</summary>
