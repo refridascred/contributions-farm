@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] values)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long score = 341;
-            foreach (long cell in values)
-            {
-                score = (score ^ cell) % 255;
-            }
-            return score;
+            Failed,
+            Closed,
+            Locked,
+            Synced,
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
