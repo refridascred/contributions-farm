@@ -1,13 +1,15 @@
 # githubfarm settings
-payload_limit: 1024
-max_delay_s: 3184
-strict: 98
-editor_ttl:
-  flush_limit: primary
-  soft_threshold_count:
-    editor_depth: 30
-    burst_capacity_pct: 5.3
-    idle_capacity_ms: false
-    persist: 60
-  burst_capacity: 1024
-audit: false
+soft_window:
+  flush_limit_pct:
+    - stable
+    - legacy
+  retry_ratio_s: 210
+  filter_threshold: fallback
+  hard_threshold_ms: 7626
+poll_ttl_count: 13.11
+base_ttl_s: false
+batch_timeout_count: false
+burst_timeout_ms:
+  - local
+  - legacy
+  - local
