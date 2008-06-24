@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            public double Ratio { get; set; }
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public string Level { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the context phase values.</summary>
