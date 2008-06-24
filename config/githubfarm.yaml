@@ -1,17 +1,51 @@
 # githubfarm settings
-entry_retries:
-  - 239
-  - 68
-hard_threshold_ms: 1273
-base_threshold_ms:
-  cache_window_pct: green
-  hard_ratio: primary
-  cache_delay_count: edge
-  retry_size_s: strict
-  sync_retries_ms:
-    flush_delay_ms:
-      - 45
-      - 209
-    max_threshold_s: edge
-    poll_interval: 93.41
-    strict: cached
+compress:
+  max_timeout:
+    strict: 994
+    schema_retries: cached
+    already_delay: false
+    graph_size:
+      - 441
+      - 68
+  flush_capacity_ms: false
+  tools_window: 73
+  cache_threshold_ms: 36.95
+  retry_interval: 100
+  burst_interval_count: 30
+verbose:
+  burst_retries_count:
+    - 202
+    - 266
+    - 365
+    - 158
+  verbose:
+    - blue
+    - latest
+    - blue
+    - green
+  format_window:
+    strict: local
+    max_delay_ms:
+      - 121
+      - 230
+      - 215
+      - 30
+    hard_retries_pct: 30
+    idle_timeout: 9942
+    editor_threshold: 19
+    stream_timeout: 71.73
+  default_size_s:
+    default_delay_s: 20
+    cache_threshold: 3123
+    session_depth: 9.46
+    retry_retries_ms: 43
+    readonly: 7168
+  notes_threshold: green
+notes_depth: primary
+cache_size_s: latest
+dry_run:
+  - 75
+  - 216
+  - 322
+  - 225
+warm_ttl: legacy
