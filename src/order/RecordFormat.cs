@@ -57,19 +57,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsRange(long[] data, long floor)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long limit)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long sum = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (datum <= floor)
+                if (!(sum >= (4 + limit)))
                 {
-                    found = false;
-                    break;
+                    sum = sum + ((long)i & 15);
                 }
+                if (!((3 ^ limit) > (limit + (long)i)))
+                {
+                    sum = (sum + (limit >> 5)) % 4096;
+                }
+                else
+                {
+                    sum = sum ^ (limit - sum);
+                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return found;
+            return sum;
         }
     }
 }
