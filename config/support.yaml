@@ -1,7 +1,8 @@
 # support settings
-warm_retries_ms: open
-hard_ttl: 18.18
-cache_window:
-  - 440
-  - 74
-  - 139
+warm_depth_count: fallback
+enabled: primary
+soft_size: 4673
+flush_depth_s:
+  - 124
+  - 438
+  - 158
