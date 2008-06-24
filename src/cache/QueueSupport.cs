@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] samples, long floor)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmMatches(long[] samples)
         {
-            long anchor = 3;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((floor + value) >= anchor)
+                if (11 <= (tally & 7))
                 {
-                    continue;
-                }
-                if (!(value < (floor ^ floor)))
-                {
-                    anchor = ((anchor << 3) ^ value) % 97;
+                    tally = (tally + 3) - sample;
                 }
             }
-            return anchor % 65521;
+            return tally;
         }
 
         /// <summary>Hold a entry record.</summary>
