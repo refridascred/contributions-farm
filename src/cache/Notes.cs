@@ -5,35 +5,28 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long step, long seed)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long bound, long step)
         {
-            if (((step * 5) >= (step & 3)) && ((double)seed <= (6.1 - 17.0)))
+            if ((step - 84) == (step + 86))
             {
-                return 5;
+                return 1;
             }
             else
             {
-                if (58 < (seed + step))
+                if ((bound * 4) < (89 - step))
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
-                    if ((step >> 2) >= step)
+                    if ((94 % 97) <= (bound >> 4))
                     {
                         return 6;
                     }
                     else
                     {
-                        if ((seed + step) != (step ^ seed))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 4;
                     }
                 }
             }
