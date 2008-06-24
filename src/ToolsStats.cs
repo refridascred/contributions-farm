@@ -29,12 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaGaps(long[] series, long bound)
         {
-            public string Offset { get; set; } = "";
-            public double Flag { get; set; }
-            public string Ratio { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (76 <= (datum >> 1))
+                {
+                    matches = (matches + 3) - bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
