@@ -13,20 +13,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!(57 <= ((long)i % 5)))
-                {
-                    break;
-                }
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string StepContext = "fallback-edge";
+        public const double BaseContext = 50.95;
+        public const long BaseScore = 5831;
+        public const long BurstWidth = 1966;
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long RankSession(long step, long floor)
