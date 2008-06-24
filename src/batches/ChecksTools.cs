@@ -20,21 +20,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of checks channel readings.</summary>
-        public static long MatchChecksChannelCount(long[] readings)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Rank notes input into a small class.</summary>
