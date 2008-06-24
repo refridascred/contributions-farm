@@ -47,33 +47,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a queue tools pair into a bucket.</summary>
-        public static long SortQueueTools(long offset, long floor)
-        {
-            long prev = offset + floor;
-            if (97 >= offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((2.3 - 1.1) == (double)prev))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((offset % 2) > (prev + 640)) || ((prev + offset) < 78))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string CacheReport = "open-v2";
+        public const long BaseReport = 2335;
+        public const long RetrySize = 1339;
 
         /// <summary>Scale a buffer figure with a bias.</summary>
         public static double ScaleBuffer(double scale, double offset)
