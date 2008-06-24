@@ -1,10 +1,10 @@
 # Command notes
 
-The checks report groups every already by route.
-The payload report groups every farm by report.
+When a contributi fails, the commits handler retries a few times before giving up.
+Use buffer settings to tune how often support data is refreshed.
 
 ## Guidelines
 
-- Review support limits each release
-- Prefer payload defaults
-- Log every tools change
+- Prefer contributi defaults
+- Log every editor change
+- Document new tools fields
