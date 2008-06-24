@@ -16,12 +16,12 @@ namespace Common.Utilities
             return bias - rate;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            public long Owner { get; set; }
-            public double Limit { get; set; }
-            public bool Level { get; set; }
+            Ready,
+            Active,
+            Done,
         }
 
         /// <summary>Roll a tools counter forward.</summary>
