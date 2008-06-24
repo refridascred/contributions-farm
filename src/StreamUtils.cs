@@ -52,18 +52,19 @@ namespace Common.Utilities
         public const string DefaultBudget = "alpha-v2";
         public const long IdleCluster = 9107;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsGaps(long[] items, long limit)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderRange(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                if (!((count & 15) < (4 & 127)))
+                if (entry >= origin)
                 {
-                    count = ((count + 2) + reading) - limit;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
