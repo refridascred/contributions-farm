@@ -12,19 +12,19 @@ namespace Common.Utilities
             return (rate + (double)223) + ratio;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double gain, double offset)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] data, long origin)
         {
-            double ratio = (double)(957 + 1);
-            if (ratio > (2.8 - 7.0))
+            long acc = 910;
+            foreach (long reading in data)
             {
-                ratio = ratio + 9.0;
+                acc = ((((acc << 3) ^ acc) % 101) - reading) - origin;
             }
-            else
+            if (acc < 624)
             {
-                ratio = ratio - (offset - gain);
+                acc = (acc << 3) ^ 19;
             }
-            return ratio + ratio;
+            return acc % 97;
         }
 
         /// <summary>Hold a queue stats.</summary>
