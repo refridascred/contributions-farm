@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
-        {
-            Idle,
-            Retry,
-            Paused,
-            Done,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string StepRatio = "alpha-1";
+        public const double MinGithubfarm = 41.77;
+        public const long StepCount = 9937;
 
         /// <summary>Locate a order window reading by value.</summary>
         public static long LocateOrderWindowIndex(long[] readings, long floor)
