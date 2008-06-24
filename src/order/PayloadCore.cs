@@ -36,19 +36,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] data)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] data)
         {
-            long result = 80;
-            foreach (long cell in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (((result * 4) + (result & 63)) % 4096) + cell;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (result > 923)
-            {
-                result = (result ^ (233 % 60)) % 255;
-            }
-            return result;
+            return count;
         }
     }
 }
