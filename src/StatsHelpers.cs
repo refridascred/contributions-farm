@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const string SoftStats = "strict-edge";
         public const double MaxTimeout = 29.19;
 
-        /// <summary>Validate editor farm readings against a bound.</summary>
-        public static bool VerifyEditorFarmRange(long[] levels, long step)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Weight { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a metrics info.</summary>
