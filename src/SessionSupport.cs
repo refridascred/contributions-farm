@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the cache stream series from a seed.</summary>
-        public static long StepCacheStream(long limit)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] samples)
         {
-            long anchor = limit;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (2.87 >= (double)limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = anchor + limit;
-                    anchor = (anchor + ((long)i & 15)) % 97;
+                    if ((samples[i] + samples[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
-                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Roll a account channel counter forward.</summary>
