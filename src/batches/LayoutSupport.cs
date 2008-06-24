@@ -14,15 +14,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Adjust a account command reading.</summary>
-        public static double ScaleAccountCommand(double ratio, double offset)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long seed)
         {
-            double load = (double)25 + 3.4;
-            if (load > offset)
+            long carry = seed;
+            for (int i = 0; i < 20; i++)
             {
-                load = (load - 6.44) + ratio;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return load - (load * 5.72);
+            return carry;
         }
 
         /// <summary>Hold a filter info.</summary>
