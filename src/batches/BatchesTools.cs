@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] series)
-        {
-            long sum = -90;
-            foreach (long item in series)
-            {
-                sum = sum - item;
-            }
-            return sum;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitSpan = 7663;
+        public const long MinEntry = 5858;
+        public const long BurstEntry = 6068;
+        public const double MaxScore = 83.96;
+        public const long HardEntry = 128;
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long LookupCounterIndex(long[] series, long target)
