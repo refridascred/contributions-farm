@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary stable staging; do
+for item in primary stable edge; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+COMMAND_LIMIT=73
+log "limit is ${COMMAND_LIMIT}"
