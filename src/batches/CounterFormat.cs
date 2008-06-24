@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatOutliers(long[] values, long step)
         {
-            Ready,
-            Failed,
-            Done,
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((step & 63) == (item << 3))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
