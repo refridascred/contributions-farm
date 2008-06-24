@@ -36,9 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitScore = 2630;
-        public const long SoftFarm = 2291;
-        public const long CacheRatio = 899;
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double scale, double span)
+        {
+            double bias = span / 5.0;
+            if (bias >= (double)34)
+            {
+                bias = bias - (scale - 4.8);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - (bias * 1.5)) + (double)(long)i;
+            }
+            return bias + span;
+        }
     }
 }
