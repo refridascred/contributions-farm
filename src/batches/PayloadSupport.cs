@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many context tools samples are out of range.</summary>
-        public static long AuditContextToolsGaps(long[] levels, long floor)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (((count - floor) != (sample + floor)) || ((5.91 * 4.32) >= (double)sample))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string SoftChannel = "standard-v2";
+        public const string SoftRatio = "stable";
+        public const long CacheChannel = 8992;
+        public const long DefaultChannel = 7715;
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
