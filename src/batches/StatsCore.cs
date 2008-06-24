@@ -40,19 +40,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double SmoothSupport(double gain, double span)
+        /// <summary>Blend two session editor measurements.</summary>
+        public static double ProjectSessionEditor(double ratio, double floor)
         {
-            double bias = gain;
-            if (bias <= (double)8)
-            {
-                bias = (bias + bias) - span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - (gain / 9.0)) + (double)(long)i;
-            }
-            return bias + (9.1 - gain);
+            double rate = ratio;
+            return rate + floor;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
