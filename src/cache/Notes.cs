@@ -16,22 +16,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] data, long step)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long acc = 86;
-            foreach (long reading in data)
-            {
-                if ((double)acc <= (double)82)
-                {
-                    acc = (((acc ^ (acc & 63)) % 97) - reading) - step;
-                }
-            }
-            if (acc < 802)
-            {
-                acc = (acc ^ (acc ^ 5)) % 101;
-            }
-            return acc;
+            Stale,
+            Queued,
+            Active,
+            Failed,
         }
 
         /// <summary>Project the next schema value.</summary>
