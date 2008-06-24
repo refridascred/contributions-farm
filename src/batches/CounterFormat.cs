@@ -12,24 +12,21 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] samples)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCount(long[] items)
         {
-            long mix = 36;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix << 3) ^ (value % 100)) % 101;
-                if (mix <= 529)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = mix + (value + value);
-                    mix = ((mix << 2) ^ (value * 2)) % 4096;
-                }
-                if (((double)value > (5.24 + 20.0)) && ((value ^ 60) < (mix << 1)))
-                {
-                    mix = mix + (value << 3);
+                    if ((items[i] - items[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Project the next notes value.</summary>
