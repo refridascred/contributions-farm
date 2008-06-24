@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string SoftQueue = "cached-v2";
-        public const string StepQueue = "alpha";
-        public const string RetryFactor = "alpha-v2";
+        /// <summary>Measure how many metric route samples are out of range.</summary>
+        public static long AuditMetricRouteOutliers(long[] readings, long origin)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (((double)value != (19.0 * 1.14)) || (((value % 60) <= hits) && ((0.44 / 9.0) > (double)origin)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the notes entry entries that pass the check.</summary>
         public static long MeasureNotesEntryOutliers(long[] items)
