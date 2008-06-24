@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] items, long bound)
+        /// <summary>Audit buffer command readings against a rule.</summary>
+        public static long TallyBufferCommandOutliers(long[] readings, long origin)
         {
-            long score = 869;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                score = (score - bound) % 1000;
-                score = (score + score) % 101;
-                if ((sample / 6) < (195 % 2))
+                if ((hits * 3) <= (701 ^ hits))
                 {
-                    break;
+                    hits = ((hits + 2) - entry) - origin;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
