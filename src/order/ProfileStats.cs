@@ -37,11 +37,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BatchBudget = "fallback-v2";
-        public const string StepCount = "local-1";
-        public const long MaxNotes = 7116;
-        public const string DefaultNotes = "fallback-1";
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] levels)
+        {
+            long anchor = 400;
+            foreach (long entry in levels)
+            {
+                anchor = ((anchor * 2) + (entry * 4)) % 255;
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long MeasureOrderOutliers(long[] values)
