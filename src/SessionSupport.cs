@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long offset)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long state = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                state = (state + (state + state)) % 97;
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            Pending,
+            Closed,
+            Retry,
+            Draft,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
