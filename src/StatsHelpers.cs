@@ -48,19 +48,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate report cache readings against a bound.</summary>
-        public static bool CheckReportCacheLimits(long[] samples, long target)
+        /// <summary>Find the first schema window entry that matches the target.</summary>
+        public static long LocateSchemaWindowIndex(long[] data, long origin)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry <= target)
+                if (data[i] < origin)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
