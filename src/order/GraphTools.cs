@@ -62,13 +62,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            public long Stamp { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Weight { get; set; }
-            public double Total { get; set; }
+            public long Flag { get; set; }
+            public bool Offset { get; set; }
+            public string Score { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
