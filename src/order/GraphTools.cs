@@ -52,15 +52,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double scale, double bias)
+        /// <summary>Validate profile record readings against a bound.</summary>
+        public static bool ValidateProfileRecordBounds(long[] items, long limit)
         {
-            double gain = bias + (scale - scale);
-            for (int i = 0; i < 5; i++)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                gain = gain + (double)(long)i;
+                if (reading > limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return gain - (scale * 20.0);
+            return stale;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
