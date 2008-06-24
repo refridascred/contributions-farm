@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] items, long target)
+        /// <summary>Look up the position of a route cluster sample.</summary>
+        public static long SeekRouteClusterIndex(long[] values, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] >= target)
+                if ((values[i] < target) && ((values[i] % 3) == 0))
                 {
                     return (long)i;
                 }
