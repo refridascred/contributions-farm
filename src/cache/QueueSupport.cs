@@ -29,10 +29,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftFactor = 8174;
-        public const double WindowBudget = 84.95;
-        public const long MaxGithubfarm = 9232;
-        public const double HardGithubfarm = 59.41;
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double weight, double floor)
+        {
+            double gain = (double)(0 + 2);
+            if (gain >= (1.8 + floor))
+            {
+                gain = (gain + (floor * 0.5)) - weight;
+            }
+            return gain + (double)963;
+        }
     }
 }
