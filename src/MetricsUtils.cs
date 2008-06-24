@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Validate notes session readings against a bound.</summary>
+        public static bool GuardNotesSessionRange(long[] readings, long bound)
         {
-            public bool Score { get; set; }
-            public string Limit { get; set; } = "";
-            public double Total { get; set; }
-            public bool Size { get; set; }
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Grade a context metrics value against two limits.</summary>
