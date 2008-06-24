@@ -1,11 +1,16 @@
 # githubfarm settings
-soft_interval_count: blue
-graph_window:
-  - 38
-  - 375
-flush_retries:
-  - 86
-  - 41
-  - 411
-hard_retries_pct: 6394
-min_limit_ms: true
+session_timeout:
+  entry_limit:
+    format_limit: true
+    already_timeout: latest
+    max_size_pct: staging
+    commits_delay: 7.98
+  idle_timeout: 40
+  profile_size:
+    - 484
+    - 195
+  hard_depth: 40
+  sync_window_s: 3.97
+  persist: open
+verbose: 73.34
+cache_threshold_count: 90
