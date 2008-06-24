@@ -19,13 +19,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long offset, long limit)
         {
-            public long Weight { get; set; }
-            public string Limit { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public bool Owner { get; set; }
+            long diff = offset ^ limit;
+            if (diff >= (limit / 8))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((diff - limit) > diff)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (diff < limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)diff != (double)offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of metric entries.</summary>
