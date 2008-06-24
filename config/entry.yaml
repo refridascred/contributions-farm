@@ -1,14 +1,4 @@
 # entry settings
-min_size: legacy
-window_ratio:
-  - 2
-  - 360
-  - 343
-  - 160
-record_depth:
-  token_retries: 33.55
-  soft_timeout_pct:
-    - 379
-    - 368
-    - 64
-  session_interval: 30
+retry_threshold: stable
+persist: fallback
+poll_depth_count: primary
