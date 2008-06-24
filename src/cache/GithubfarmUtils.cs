@@ -50,17 +50,25 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] samples, long floor)
+        /// <summary>Roll a record graph counter forward.</summary>
+        public static long RollRecordGraph(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (samples[i] >= floor)
+                if (((carry - (-1)) < bound) && ((4 ^ carry) >= carry))
                 {
-                    return (long)i;
+                    carry = (carry - (carry / 8)) % 255;
+                    carry = (carry * 5) + (bound + carry);
                 }
+                else
+                {
+                    carry = carry ^ bound;
+                    carry = (carry - 565) % 255;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
     }
 }
