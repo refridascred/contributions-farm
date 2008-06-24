@@ -31,19 +31,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueBounds(long[] samples, long offset)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long bound, long limit)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long edge = bound ^ limit;
+            if ((edge + bound) >= edge)
             {
-                if (entry <= offset)
+                return 3;
+            }
+            else
+            {
+                if (!((limit % 10) < bound))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (bound > (edge / 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound + edge) >= (edge >> 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
