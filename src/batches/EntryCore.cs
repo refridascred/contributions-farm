@@ -50,15 +50,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long origin)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long limit, long origin)
         {
-            long mix = origin;
-            for (int i = 0; i < 24; i++)
+            long edge = limit + origin;
+            if ((2.15 * 5.7) == (double)origin)
             {
-                mix = ((mix * 4) + (long)i) % 1000;
+                return 8;
             }
-            return mix;
+            else
+            {
+                if ((double)origin > (7.0 * 7.09))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit == (3.8 - 4.9))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((origin + 89) != (limit + limit)) && ((origin * 3) < (edge ^ edge)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of schema readings.</summary>
