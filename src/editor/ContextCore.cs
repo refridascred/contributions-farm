@@ -14,19 +14,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Validate token editor readings against a bound.</summary>
-        public static bool GuardTokenEditorBounds(long[] values, long limit)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
