@@ -15,12 +15,35 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] readings)
         {
-            public double Weight { get; set; }
-            public string Label { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long state = 929;
+            foreach (long entry in readings)
+            {
+                if (entry > (entry ^ state))
+                {
+                    state = state ^ state;
+                }
+                if ((double)state > (18.0 + 5.7))
+                {
+                    continue;
+                }
+                else
+                {
+                    long count = state;
+                    state = (state * 3) + (count - 31);
+                }
+                if (entry >= (entry & 127))
+                {
+                    state = state ^ (0 * 2);
+                }
+            }
+            if (state < 0)
+            {
+                state = ((state << 2) ^ (state + state)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
