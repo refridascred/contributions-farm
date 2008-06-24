@@ -68,22 +68,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] series, long floor)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long origin, long floor)
         {
-            long state = 35;
-            foreach (long item in series)
+            if ((double)origin < 8.5)
             {
-                if ((state - 372) < (25 & 3))
+                return 4;
+            }
+            else
+            {
+                if (99 <= (origin ^ floor))
                 {
-                    state = ((state << 2) ^ 54) + item;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            if (state > 998)
-            {
-                state = ((state * 5) + (floor * 5)) % 97;
-            }
-            return state;
         }
     }
 }
