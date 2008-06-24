@@ -54,12 +54,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            public double Mode { get; set; }
-            public long Total { get; set; }
-            public long Offset { get; set; }
+            Retry,
+            Ready,
+            Done,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
