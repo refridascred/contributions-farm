@@ -1,6 +1,7 @@
 {
-  "editor_ratio": "open",
-  "context_threshold": "open",
-  "readonly": [436, 85],
-  "window_capacity": "standard"
+  "warm_depth_ms": [43, 354, 218],
+  "soft_depth_s": "local",
+  "poll_limit_count": 96.4,
+  "cache_depth_pct": "primary",
+  "min_size_s": 53
 }
