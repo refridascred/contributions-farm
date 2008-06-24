@@ -18,15 +18,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] samples)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricGaps(long[] items)
         {
-            long carry = 560;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                carry = ((carry * 3) + (-92)) ^ reading;
+                if (!((7.5 * 19.0) > (double)cell) || (((cell ^ seen) >= cell) || (seen >= (seen + seen))))
+                {
+                    seen = seen + 3;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
