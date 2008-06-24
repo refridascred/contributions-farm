@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long HardFormat = 6332;
         public const double IdleFormat = 22.67;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionMatches(long[] items)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((double)cell < 4.04)
+                if (!((double)limit < (double)42) || ((6 + 738) < limit))
                 {
-                    seen = seen + 2;
+                    tally = (tally + 2) + cell;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
