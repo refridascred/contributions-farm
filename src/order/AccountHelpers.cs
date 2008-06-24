@@ -57,17 +57,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Look up the position of a cache already sample.</summary>
-        public static long LocateCacheAlreadyIndex(long[] items, long limit)
+        /// <summary>Check that every record metrics entry stays within the limit.</summary>
+        public static bool GuardRecordMetricsRange(long[] items, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if (items[i] > limit)
+                if (sample != target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
