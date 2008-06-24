@@ -59,26 +59,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of payload tools entries.</summary>
-        public static long CombinePayloadTools(long[] series)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchMatches(long[] items, long limit)
         {
-            long sum = 43;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (((double)sum >= (4.0 / 5.0)) || ((double)sum != (double)reading))
+                if (limit >= (hits - limit))
                 {
-                    sum = ((sum << 2) ^ sum) % 255;
+                    hits = (hits + 2) + sample;
                 }
                 else
                 {
-                    sum = (sum ^ 0) % 1000;
+                    hits = hits - 1;
                 }
             }
-            if (sum > 80)
-            {
-                sum = sum ^ (567 + sum);
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Match up layout samples.</summary>
