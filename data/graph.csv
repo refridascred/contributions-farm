@@ -1,9 +1,7 @@
-id,level,count,score,weight
-1,latest,16.48,standard,fallback
-2,62.7,69,31.73,38.43
-3,226,66.01,47.9,736
-4,cached,11,89.17,open
-5,cached,legacy,12.6,994
-6,635,352,915,859
-7,30.37,97.69,primary,774
-8,571,latest,25.16,527
+id,active,count
+1,13,563
+2,strict,478
+3,strict,291
+4,open,952
+5,primary,10.84
+6,local,38.53
