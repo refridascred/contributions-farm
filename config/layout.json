@@ -1,5 +1,5 @@
 {
-  "idle_interval": 41.84,
-  "report_delay": [350, 273],
-  "dry_run": "fallback"
+  "idle_ttl": "primary",
+  "idle_threshold_pct": 4450,
+  "checks_ttl": "legacy"
 }
