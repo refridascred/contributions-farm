@@ -79,9 +79,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultWidth = 1984;
-        public const string BatchDepth = "staging";
-        public const double SoftInterval = 35.25;
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
+        {
+            Pending,
+            Retry,
+            Ready,
+            Active,
+        }
     }
 }
