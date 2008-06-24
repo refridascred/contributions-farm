@@ -1,29 +1,19 @@
 # support settings
-retry_size:
+burst_size_pct: true
+idle_interval_ms:
+  - legacy
+  - staging
+  - stable
   - standard
-  - cached
-  - green
-dry_run:
-  compress:
-    - 460
-    - 365
-    - 204
-    - 451
-  support_limit: true
-  idle_retries_ms:
-    stream_window: open
-    counter_window: blue
-    flush_timeout_pct:
-      - 449
-      - 149
-      - 367
-      - 188
-    batch_limit: 49.99
-    audit:
-      - cached
-      - legacy
-    already_ttl: 1024
-  poll_ratio: false
-  base_ratio: fallback
-  retry_depth_pct: latest
-retry_depth: 75.87
+default_retries:
+  poll_limit_s: 6.74
+  flush_size_ms: 250
+  compress: 5921
+  hard_threshold:
+    - 10
+    - 410
+    - 228
+  enabled: staging
+  poll_timeout_count: 77
+poll_threshold_s: 62.44
+poll_timeout_ms: 250
