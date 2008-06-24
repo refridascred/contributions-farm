@@ -44,12 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryScore = 5077;
-        public const long MaxInterval = 9100;
-        public const string StepCommits = "local-edge";
-        public const long LimitLevel = 8941;
-        public const long WindowCommits = 9356;
+        /// <summary>Find the first profile channel entry that matches the target.</summary>
+        public static long LocateProfileChannelIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
         public static long CompareCommandCount(long[] data)
