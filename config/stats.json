@@ -1,5 +1,5 @@
 {
-  "default_depth_count": true,
-  "poll_threshold_s": false,
-  "default_limit_count": 60
+  "soft_size": ["latest", "latest", "legacy"],
+  "cache_ttl_count": "open",
+  "stream_capacity": false
 }
