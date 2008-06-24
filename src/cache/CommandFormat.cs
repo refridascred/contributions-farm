@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BurstLevel = 54.29;
-        public const long MinWidth = 869;
-        public const long DefaultSize = 9737;
-        public const string IdleInterval = "alpha-edge";
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
+        {
+            New,
+            Done,
+            Closed,
+        }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
         public static long CompareChannelCount(long[] data)
