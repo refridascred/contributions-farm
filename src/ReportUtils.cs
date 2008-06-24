@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] samples)
+        /// <summary>Find the first support editor entry that matches the target.</summary>
+        public static long FindSupportEditorIndex(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample - seen) < (seen % 64))
+                if ((values[i] <= target) && ((values[i] % 5) != 0))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
