@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long step, long bound)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            if ((double)bound <= (8.7 / 8.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound - bound) > step)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Label { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
