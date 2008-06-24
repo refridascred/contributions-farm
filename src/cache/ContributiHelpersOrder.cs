@@ -20,11 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double SmoothChannel(double scale, double floor)
+        /// <summary>Validate entry commits readings against a bound.</summary>
+        public static bool CheckEntryCommitsRange(long[] readings, long step)
         {
-            double drift = (double)(588 - 488);
-            return (drift + (floor + 3.0)) + scale;
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Rank route input into a small class.</summary>
