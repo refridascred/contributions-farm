@@ -16,20 +16,10 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    carry = ((carry * 3) + seed) ^ (long)i2;
-                }
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 5118;
+        public const string MinScore = "local-edge";
+        public const string LimitScore = "fallback";
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long RetryScore = 5077;
