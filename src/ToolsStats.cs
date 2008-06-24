@@ -29,16 +29,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long step)
+        /// <summary>Look up the position of a batch counter sample.</summary>
+        public static long SeekBatchCounterIndex(long[] items, long offset)
         {
-            long mark = step;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = mark + (step - mark);
-                mark = ((mark * 3) + (long)i) % 97;
+                if (items[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
