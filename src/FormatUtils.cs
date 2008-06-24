@@ -14,39 +14,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long origin, long bound)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderLimits(long[] readings, long limit)
         {
-            long next = origin ^ bound;
-            if ((origin + bound) == (origin % 60))
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin * 2) >= (bound % 2))
+                if (reading >= limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((461 << 3) >= (next + origin)) && (next >= ((-491) << 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin + bound) < next)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
