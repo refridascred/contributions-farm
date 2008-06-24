@@ -36,15 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] items, long offset)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long acc = 65;
-            foreach (long entry in items)
-            {
-                acc = ((acc << 3) ^ (entry * 5)) + offset;
-            }
-            return acc;
+            public long Limit { get; set; }
+            public bool Region { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
