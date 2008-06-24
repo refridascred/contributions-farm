@@ -29,20 +29,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long bound)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] values, long seed)
         {
-            long anchor = bound;
-            for (int i = 0; i < 13; i++)
+            long acc = 90;
+            foreach (long sample in values)
             {
-                anchor = anchor ^ (bound / 8);
-                if (!((bound / 2) < (long)i))
+                acc = ((acc << 3) ^ sample) + seed;
+                if ((acc << 2) > (sample - sample))
                 {
-                    anchor = (anchor * 2) + bound;
+                    acc = (acc + (sample + sample)) % 1000;
                 }
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return acc;
         }
     }
 }
