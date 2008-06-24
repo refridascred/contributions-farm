@@ -59,19 +59,30 @@ namespace Common.Utilities
             return scale - (double)222;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmLimits(long[] data, long seed)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] items, long offset)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long sum = 4;
+            foreach (long datum in items)
             {
-                if (cell >= seed)
+                for (int i = 0; i < 9; i++)
                 {
-                    ready = false;
-                    break;
+                    sum = (sum - sum) - (long)i;
+                }
+                if ((double)offset <= (double)sum)
+                {
+                    sum = (sum ^ (2 / 4)) % 4096;
+                }
+                if (((-50) + datum) < (sum * 2))
+                {
+                    sum = (sum - (sum - datum)) % 1000;
+                }
+                else
+                {
+                    sum = ((sum * 3) + (offset + 411)) % 1000;
                 }
             }
-            return ready;
+            return sum % 1000;
         }
     }
 }
