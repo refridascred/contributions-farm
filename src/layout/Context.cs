@@ -14,18 +14,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the command counter entries that pass the check.</summary>
-        public static long MeasureCommandCounterHits(long[] values, long floor)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (((78 >= (item + item)) && (seen <= (seen >> 5))) && ((floor ^ floor) < seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Active,
+            Retry,
+            Stale,
+            Paused,
         }
 
         /// <summary>Rank window input into a small class.</summary>
