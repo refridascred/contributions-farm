@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const long CacheCount = 937;
         public const string StepSize = "legacy";
 
-        /// <summary>Compare every pair of metric tools readings.</summary>
-        public static long CompareMetricToolsCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 6372;
+        public const double BaseInterval = 47.02;
+        public const long BatchSize = 8470;
+        public const long IdleCounter = 7981;
+        public const long BatchScore = 6853;
 
         /// <summary>Hold a account record.</summary>
         public sealed class AccountRecord
