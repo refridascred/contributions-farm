@@ -29,21 +29,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up window format samples.</summary>
-        public static long PairWindowFormatCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftFactor = 8174;
+        public const double WindowBudget = 84.95;
+        public const long MaxGithubfarm = 9232;
+        public const double HardGithubfarm = 59.41;
     }
 }
