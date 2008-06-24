@@ -31,18 +31,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryScore = 5077;
+        public const long MaxInterval = 9100;
+        public const string StepCommits = "local-edge";
+        public const long LimitLevel = 8941;
+        public const long WindowCommits = 9356;
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
         public static long CompareCommandCount(long[] data)
