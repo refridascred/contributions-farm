@@ -39,19 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] readings, long limit)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryOutliers(long[] data, long bound)
         {
-            long mix = 8;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long cell in data)
             {
-                mix = ((mix - (mix - mix)) % 101) - datum;
+                if ((count + (long)data.Length) < (cell & 15))
+                {
+                    count = (count + 1) + bound;
+                }
             }
-            if (mix > 281)
-            {
-                mix = mix - limit;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
