@@ -1,11 +1,11 @@
 # Command notes
 
-The metric helpers are pure functions, so they are safe to call from any thread.
-Keep record and editor names short and lowercase.
+The stream module keeps command values in sync with the metrics cache.
+Run the command check before changing any batch limits.
+The graph helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer batch defaults
-- Validate channel input early
-- Keep schema values small
-- Document new metric fields
+- Keep window values small
+- Review window limits each release
+- Log every batch change
