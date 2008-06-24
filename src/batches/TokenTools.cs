@@ -25,23 +25,13 @@ namespace Common.Utilities
         public const long RetryWindow = 1363;
         public const long BatchWindow = 2688;
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double bias, double offset)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            double mean = offset;
-            if (mean >= (offset - bias))
-            {
-                mean = mean + mean;
-            }
-            else
-            {
-                mean = mean - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + offset) - (double)(long)i;
-            }
-            return mean - bias;
+            Locked,
+            Pending,
+            Ready,
+            Idle,
         }
     }
 }
