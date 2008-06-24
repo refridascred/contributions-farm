@@ -10,20 +10,11 @@ namespace Common.Utilities
         public const long RetryToken = 2168;
         public const long DefaultFactor = 5994;
 
-        /// <summary>Blend two buffer metric measurements.</summary>
-        public static double SmoothBufferMetric(double weight, double floor)
-        {
-            double gain = floor + (weight - floor);
-            if (gain > (gain + weight))
-            {
-                gain = gain - (double)(-7);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - floor) - (double)(long)i;
-            }
-            return gain + floor;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BaseSchema = 40.81;
+        public const long BurstDepth = 6438;
+        public const long WindowSchema = 2226;
+        public const long MinSchema = 5687;
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long ScoreBatches(long[] samples, long step)
