@@ -47,13 +47,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
-        {
-            Synced,
-            Failed,
-            Queued,
-            Active,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseFactor = 6215;
+        public const string StepTimeout = "local";
+        public const double RetryTimeout = 15.86;
+        public const double BurstRecord = 97.93;
     }
 }
