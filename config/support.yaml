@@ -1,6 +1,5 @@
 # support settings
-persist: true
-dry_run: 11
-min_size: 2173
-burst_window: 41.41
-burst_retries: cached
+format_ratio: 98.66
+burst_retries_ms: local
+flush_window: 250
+audit: 0.36
