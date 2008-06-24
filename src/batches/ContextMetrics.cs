@@ -61,13 +61,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiRange(long[] levels, long offset)
+        /// <summary>Check that every queue already entry stays within the limit.</summary>
+        public static bool VerifyQueueAlreadyRange(long[] items, long floor)
         {
             bool found = true;
-            foreach (long sample in levels)
+            foreach (long datum in items)
             {
-                if (sample <= offset)
+                if (datum <= floor)
                 {
                     found = false;
                     break;
