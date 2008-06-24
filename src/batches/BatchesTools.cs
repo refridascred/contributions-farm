@@ -24,40 +24,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank report commits input into a small class.</summary>
-        public static long BucketReportCommits(long limit, long origin)
-        {
-            long edge = limit - origin;
-            if (!((edge * 4) < limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit * 3) > (83 / 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (limit < (origin - edge))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)limit >= (6.2 / 2.0)) || (552 >= origin))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 8066;
+        public const double LimitFactor = 88.1;
+        public const long DefaultBatch = 9513;
+        public const string StepTimeout = "legacy-1";
+        public const string MinInterval = "stable-v2";
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long PairClusterCount(long[] samples)
