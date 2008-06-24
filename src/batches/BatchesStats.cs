@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] data)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long floor, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((floor + (-77)) > (floor + 0))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((410 + floor) != (floor + floor)) || ((6 - bound) >= (bound + 717)))
                 {
-                    if ((data[i] ^ data[j]) > 1)
+                    return 5;
+                }
+                else
+                {
+                    if (((4.9 * 8.1) != (double)bound) || ((77 + bound) >= (bound << 1)))
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of order entries.</summary>
