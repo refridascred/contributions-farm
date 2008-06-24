@@ -25,21 +25,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCount(long[] levels)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] values, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading > offset)
                 {
-                    if ((levels[i] + levels[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
