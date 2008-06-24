@@ -40,19 +40,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double SmoothRecord(double bias, double floor)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] readings)
         {
-            double bias2 = (double)41;
-            if (bias2 > floor)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias2 = bias2 + floor;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                bias2 = bias2 + (double)28;
-            }
-            return bias2 + (bias + bias2);
+            return seen;
         }
     }
 }
