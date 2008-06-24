@@ -1,9 +1,8 @@
-id,token,active
-1,457,legacy
-2,staging,fallback
-3,440,402
-4,16.49,green
-5,local,primary
-6,22.44,679
-7,558,854
-8,238,854
+id,rank,count
+1,blue,4.03
+2,59.57,5.91
+3,865,stable
+4,42.4,62.25
+5,primary,11.33
+6,strict,667
+7,330,66.41
