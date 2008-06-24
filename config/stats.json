@@ -1,5 +1,6 @@
 {
-  "cache_interval": [417, 319],
-  "default_window_pct": 91,
-  "max_timeout_count": "staging"
+  "editor_ratio": "open",
+  "context_threshold": "open",
+  "readonly": [436, 85],
+  "window_capacity": "standard"
 }
