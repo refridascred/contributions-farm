@@ -6,21 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=147
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-fallback}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 5))
+for item in fallback open; do
+    log "checking ${item}"
 done
-log "total ${total}"
+
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
