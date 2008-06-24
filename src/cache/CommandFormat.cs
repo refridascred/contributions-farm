@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string CacheSession = "staging";
-        public const long MaxSession = 7057;
-        public const long HardLevel = 1200;
-        public const long MinScore = 2253;
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BurstLevel = 54.29;
+        public const long MinWidth = 869;
+        public const long DefaultSize = 9737;
+        public const string IdleInterval = "alpha-edge";
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
