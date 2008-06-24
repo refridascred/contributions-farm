@@ -41,18 +41,17 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportGaps(long[] readings, long limit)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((value & 63) > value) && ((tally / 4) > (48 + value))) && (65 >= tally))
+                if ((values[i] == floor) && ((values[i] % 5) != 0))
                 {
-                    tally = (tally + 3) - limit;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
