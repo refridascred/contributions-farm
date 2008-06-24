@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            public string Weight { get; set; } = "";
-            public long Limit { get; set; }
-            public double Region { get; set; }
+            Ready,
+            Retry,
+            Draft,
+            Done,
+            Queued,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
