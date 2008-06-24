@@ -81,18 +81,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] items)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((matches + matches) <= (entry + entry))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Pending,
+            Draft,
+            Retry,
+            Dropped,
         }
     }
 }
