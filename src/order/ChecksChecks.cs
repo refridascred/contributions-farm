@@ -18,21 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] items)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long GradeBatches(long origin, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long next = origin ^ target;
+            if (next <= ((-68) >> 1))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (origin <= (origin - 4))
                 {
-                    if ((items[i] - items[j]) != 9)
+                    return 3;
+                }
+                else
+                {
+                    if ((target - origin) >= origin)
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the tools kind values.</summary>
