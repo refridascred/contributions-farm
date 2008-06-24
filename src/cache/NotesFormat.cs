@@ -31,14 +31,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            Ready,
-            Stale,
-            Synced,
-            New,
-            Closed,
+            public long Region { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
