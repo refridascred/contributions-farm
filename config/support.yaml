@@ -1,6 +1,6 @@
 # support settings
-command_capacity: 50
-channel_ttl: fallback
-batch_delay: strict
-burst_limit: 250
-base_retries_s: true
+persist: true
+dry_run: 11
+min_size: 2173
+burst_window: 41.41
+burst_retries: cached
