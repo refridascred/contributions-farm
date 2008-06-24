@@ -1,24 +1,6 @@
 # entry settings
-batch_window_count:
-  hard_window_s: 100
-  poll_size: 3925
-  record_size:
-    - fallback
-    - staging
-    - green
-  flush_threshold_s: 10.56
-readonly:
-  burst_retries_pct:
-    base_window_ms: 2
-    tools_depth: 10.8
-    default_limit: 1024
-    queue_size: 14
-    batch_retries:
-      - local
-      - standard
-  readonly: 500
-  profile_ratio: true
-command_ratio: stable
-filter_limit:
-  - 472
-  - 350
+compress: 89.41
+metrics_ttl: 2604
+dry_run: 5004
+buffer_window: 500
+payload_retries: local
