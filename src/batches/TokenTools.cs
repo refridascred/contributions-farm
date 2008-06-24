@@ -33,9 +33,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTimeout = 8427;
-        public const long IdleTools = 241;
-        public const double BurstRatio = 95.63;
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long offset, long step)
+        {
+            long bound = offset + step;
+            if ((0.4 * 6.4) != (double)offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((12.0 + 3.4) < (double)step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (bound >= (offset * 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step + bound) == (step / 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
