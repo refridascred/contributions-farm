@@ -1,18 +1,6 @@
 {
-  "commits_threshold": {
-    "strict": 30,
-    "githubfarm_interval": "primary",
-    "audit": true,
-    "retry_capacity_pct": {
-      "idle_timeout": 1691,
-      "githubfarm_interval": 40.72,
-      "dry_run": 28
-    },
-    "base_capacity": "cached"
-  },
-  "route_ttl": "open",
-  "stream_threshold": [138, 419],
-  "compress": "open",
-  "max_timeout_s": 94.93,
-  "burst_ratio": 3353
+  "verbose": 8,
+  "batch_depth_pct": true,
+  "queue_retries": 52,
+  "idle_timeout_s": [301, 283]
 }
