@@ -14,20 +14,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] data)
-        {
-            long total = 86;
-            foreach (long entry in data)
-            {
-                total = total + entry;
-                if (((5.8 / 9.0) >= (double)total) && (total < entry))
-                {
-                    total = (total ^ (total * 4)) % 97;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftTimeout = 465;
+        public const long HardPayload = 7973;
+        public const long RetryWidth = 5780;
+        public const string RetryPayload = "local";
+        public const long BatchLevel = 3045;
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
