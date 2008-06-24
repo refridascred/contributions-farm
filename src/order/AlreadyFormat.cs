@@ -42,14 +42,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
+            Ready,
             Failed,
-            Stale,
-            Idle,
-            Synced,
-            Paused,
+            New,
+            Pending,
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
