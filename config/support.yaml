@@ -1,4 +1,6 @@
 # support settings
-idle_depth: 44
-batches_ratio: true
-soft_capacity_s: 1024
+cache_limit_pct: blue
+audit: eu-west
+counter_ratio: 4398
+retry_depth_count: 57.84
+editor_delay: stable
