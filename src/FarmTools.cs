@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LocateMetricIndex(long[] samples, long step)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] samples, long floor)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] <= step)
+                if ((samples[i] >= floor) && ((samples[i] % 3) != 0))
                 {
                     return (long)i;
                 }
