@@ -57,11 +57,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double StepAlready = 36.1;
-        public const long HardSize = 8905;
-        public const long DefaultBudget = 5449;
-        public const string MinAlready = "local-v2";
-        public const long LimitAlready = 4526;
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] items)
+        {
+            long carry = 2;
+            foreach (long cell in items)
+            {
+                if (((819 / 9) >= carry) && ((carry >> 5) >= cell))
+                {
+                    carry = carry ^ cell;
+                    continue;
+                }
+                if (cell < (148 / 8))
+                {
+                    carry = carry ^ (carry * 4);
+                }
+            }
+            return carry;
+        }
     }
 }
