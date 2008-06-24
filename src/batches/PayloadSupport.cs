@@ -47,17 +47,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a already layout reading by value.</summary>
-        public static long LocateAlreadyLayoutIndex(long[] values, long offset)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (values[i] < offset)
+                if (((hits & 3) <= datum) || !(2 > hits))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
