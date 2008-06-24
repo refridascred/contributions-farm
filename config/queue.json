@@ -1,5 +1,13 @@
 {
-  "dry_run": 87.86,
-  "hard_threshold_count": 8776,
-  "default_size_count": 500
+  "retry_depth": {
+    "already_timeout": 500,
+    "default_ttl_pct": 13,
+    "base_delay_ms": 61,
+    "batch_ttl_s": 60,
+    "record_threshold": 4455
+  },
+  "record_timeout": [356, 117, 44, 322],
+  "readonly": [434, 305, 379, 230],
+  "checks_depth": "primary",
+  "warm_timeout_s": "fallback"
 }
