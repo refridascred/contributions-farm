@@ -19,20 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] readings, long limit)
-        {
-            bool stale = true;
-            foreach (long value in readings)
-            {
-                if (value <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftToken = 2670;
+        public const long HardToken = 231;
+        public const long HardDepth = 2210;
+        public const double StepInterval = 93.47;
+        public const long DefaultToken = 1625;
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
