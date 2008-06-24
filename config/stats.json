@@ -1,8 +1,10 @@
 {
-  "compress": "eu-west",
-  "filter_window": false,
-  "idle_ttl_s": false,
-  "filter_interval": 500,
-  "counter_ttl": false,
-  "schema_timeout": 32
+  "verbose": 86.25,
+  "compress": 9.5,
+  "hard_threshold_count": {
+    "schema_capacity": "legacy",
+    "soft_ttl": [60, 300, 300, 312],
+    "retry_ratio": "primary",
+    "retry_delay_s": ["blue", "legacy"]
+  }
 }
