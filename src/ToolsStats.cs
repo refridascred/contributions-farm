@@ -35,29 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate context stream samples.</summary>
-        public static long DigestContextStream(long[] readings, long target)
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] readings)
         {
-            long anchor = -8;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (anchor - (target << 3)) % 255;
-                if ((double)value == (6.2 - 20.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = ((anchor << 3) ^ (value & 15)) % 101;
-                    anchor = (anchor - (anchor >> 3)) % 97;
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor - (target - anchor)) % 4096;
-                }
-                if (anchor <= (anchor << 2))
-                {
-                    anchor = (anchor << 3) ^ (target + (-5));
+                    if ((readings[i] + readings[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Grade a entry profile value against two limits.</summary>
