@@ -41,15 +41,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a buffer record reading.</summary>
-        public static double ScaleBufferRecord(double ratio, double span)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorGaps(long[] values, long offset)
         {
-            double scale = (double)(376 / 7);
-            if (scale > span)
+            long hits = 0;
+            foreach (long item in values)
             {
-                scale = scale + (ratio * 17.0);
+                if (((hits - offset) >= (offset ^ offset)) || ((hits & 255) >= (offset & 1)))
+                {
+                    hits = (hits + 2) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return scale - (double)222;
+            return hits;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
