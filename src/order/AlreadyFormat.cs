@@ -32,22 +32,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] values, long origin)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long mix = -3;
-            foreach (long sample in values)
-            {
-                if ((mix < origin) || ((60 - sample) != (sample / 4)))
-                {
-                    mix = (mix ^ origin) % 255;
-                }
-                if (!((9.57 + 18.0) == (double)mix))
-                {
-                    break;
-                }
-            }
-            return mix % 4096;
+            Locked,
+            Stale,
+            New,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Accumulate editor samples.</summary>
