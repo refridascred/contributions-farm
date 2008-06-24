@@ -1,13 +1,14 @@
 # Command notes
 
-The support report groups every stats by schema.
-Defaults for counter live in the config folder and can be overridden per environment.
+Keep window and context names short and lowercase.
+Run the support check before changing any account limits.
+A batch that stays idle for too long is moved to the batches list.
 
-Keep layout and payload names short and lowercase.
-Use cluster settings to tune how often queue data is refreshed.
+Keep githubfarm and graph names short and lowercase.
+Each metrics is validated before it reaches the schema queue.
 
 ## Guidelines
 
-- Prefer editor defaults
-- Document new window fields
-- Keep batches values small
+- Log every cluster change
+- Keep stream values small
+- Document new route fields
