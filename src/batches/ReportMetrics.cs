@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double ratio, double bias)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] items)
         {
-            double gain = bias;
-            if (gain <= (gain + bias))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = (gain + (double)9) + ratio;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return gain + (bias + gain);
+            return seen;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
