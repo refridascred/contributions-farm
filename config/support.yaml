@@ -1,11 +1,7 @@
 # support settings
-batch_limit:
-  - cached
-  - standard
-  - legacy
-  - cached
-strict: latest
-stats_ttl:
-  githubfarm_window: 60
-  soft_timeout_count: 47.83
-  dry_run: 4398
+warm_retries_ms: open
+hard_ttl: 18.18
+cache_window:
+  - 440
+  - 74
+  - 139
