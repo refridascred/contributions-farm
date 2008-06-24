@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            public string Weight { get; set; } = "";
-            public bool Token { get; set; }
-            public string Level { get; set; } = "";
+            New,
+            Queued,
+            Done,
+            Locked,
         }
 
         /// <summary>Describe the account mode values.</summary>
