@@ -35,11 +35,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            public long Size { get; set; }
-            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public bool Score { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Digest a series of editor entries.</summary>
