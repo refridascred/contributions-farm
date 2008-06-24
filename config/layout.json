@@ -1,7 +1,12 @@
 {
-  "enabled": true,
-  "sync_size_pct": ["fallback", "stable", "strict", "green"],
-  "dry_run": 25,
-  "hard_threshold_pct": 1024,
-  "sync_window": "local"
+  "compress": {
+    "profile_ratio": true,
+    "sync_threshold": "green",
+    "compress": ["fallback", "latest", "legacy"]
+  },
+  "readonly": 250,
+  "enabled": ["blue", "local", "open", "blue"],
+  "batch_retries_ms": 3318,
+  "base_ratio_pct": "local",
+  "audit": false
 }
