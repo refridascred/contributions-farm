@@ -46,18 +46,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterHits(long[] readings, long origin)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double scale, double bias)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            double gain = bias;
+            if (gain < scale)
             {
-                if (((count & 127) >= datum) && (9.0 <= (double)count))
-                {
-                    count = (count + 2) + origin;
-                }
+                gain = gain + scale;
             }
-            return count;
+            return gain + (bias / 7.0);
         }
 
         /// <summary>Define batches limits and defaults.</summary>
