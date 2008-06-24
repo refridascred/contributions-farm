@@ -19,11 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterGaps(long[] data)
         {
-            public long Count { get; set; }
-            public string Size { get; set; } = "";
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((reading << 2) < (count * 4))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
