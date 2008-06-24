@@ -1,10 +1,7 @@
-id,count,label,score
-1,374,87.87,212
-2,27.27,eu-west,11.55
-3,blue,eu-west,90
-4,683,702,blue
-5,860,legacy,793
-6,671,latest,33.09
-7,611,429,628
-8,223,799,37.23
-9,legacy,13.68,stable
+id,region,ratio,level,weight
+1,fallback,20.13,77.45,eu-west
+2,531,72.1,341,strict
+3,87.29,strict,standard,93.71
+4,792,619,32.9,466
+5,539,latest,strict,54
+6,636,79.15,staging,690
