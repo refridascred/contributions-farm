@@ -38,20 +38,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long offset)
+        /// <summary>Digest a series of order schema entries.</summary>
+        public static long WeighOrderSchema(long[] samples)
         {
-            long result = offset;
-            for (int i = 0; i < 17; i++)
+            long score = 183;
+            foreach (long sample in samples)
             {
-                if (((9.83 * 15.0) > (double)(long)i) && (9.0 <= (double)(long)i))
-                {
-                    result = (result - (offset + offset)) % 101;
-                }
-                result = (result ^ ((long)i * 5)) % 97;
-                result = ((result * 2) + (long)i) % 1000;
+                score = score - (-39);
+                score = (score << 2) ^ 41;
+                score = ((score << 2) ^ sample) % 255;
             }
-            return result;
+            if (score < 6)
+            {
+                score = score + (score ^ score);
+            }
+            return score % 1000;
         }
     }
 }
