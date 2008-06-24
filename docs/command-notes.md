@@ -1,13 +1,11 @@
 # Command notes
 
-Keep route and counter names short and lowercase.
-Keep layout and stats names short and lowercase.
-
-Run the commits check before changing any tools limits.
-Run the graph check before changing any report limits.
+A githubfarm that stays idle for too long is moved to the metrics list.
+The profile report groups every commits by metrics.
 
 ## Guidelines
 
-- Review token limits each release
-- Document new metrics fields
-- Keep commits values small
+- Document new editor fields
+- Prefer batches defaults
+- Log every stream change
+- Validate buffer input early
