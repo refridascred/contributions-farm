@@ -1,14 +1,15 @@
 {
-  "graph_ttl": "strict",
-  "verbose": {
-    "strict": 56.54,
-    "audit": 66,
-    "warm_timeout_pct": [310, 468, 2, 378],
-    "commits_window": 6.97,
-    "sync_capacity": 60
+  "base_window_pct": {
+    "audit": 15,
+    "soft_limit_ms": 83,
+    "max_interval": "strict",
+    "idle_ratio": 41.86,
+    "persist": "green"
   },
-  "counter_delay": 50.49,
-  "max_limit_ms": 97.28,
-  "persist": "primary",
-  "already_timeout": "green"
+  "burst_limit": {
+    "counter_retries": "cached",
+    "verbose": [85, 339, 427, 60],
+    "format_timeout": false
+  },
+  "sync_depth_ms": "stable"
 }
