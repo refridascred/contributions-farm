@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] samples)
         {
-            public double Owner { get; set; }
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample - seen) < (seen % 64))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
