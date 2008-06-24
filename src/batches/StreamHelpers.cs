@@ -99,18 +99,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportOutliers(long[] samples, long floor)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((0.6 / 6.0) != (double)floor)
-                {
-                    seen = (seen + 1) - value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 393;
+        public const long IdleBudget = 7724;
+        public const long DefaultScore = 9097;
     }
 }
