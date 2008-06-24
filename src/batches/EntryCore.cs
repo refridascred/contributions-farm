@@ -29,15 +29,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long target)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] series)
         {
-            long acc = target;
-            for (int i = 0; i < 5; i++)
+            long sum = 0;
+            foreach (long sample in series)
             {
-                acc = ((acc * 4) + (long)i) % 4093;
+                if (sum < ((-953) - 780))
+                {
+                    sum = (sum << 3) ^ sample;
+                }
             }
-            return acc;
+            if (sum > 939)
+            {
+                sum = (sum + (8 + sum)) % 255;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Combine account values into a single score.</summary>
