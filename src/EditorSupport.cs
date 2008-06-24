@@ -66,12 +66,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
-        {
-            public long Offset { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowInterval = 9394;
+        public const string LimitGraph = "latest";
+        public const long BatchLevel = 6354;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string BurstWidth = "latest-v2";
