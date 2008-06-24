@@ -24,25 +24,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long floor)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] levels, long target)
         {
-            long mix = floor;
-            for (int i = 0; i < 4; i++)
+            long result = -94;
+            foreach (long value in levels)
             {
-                mix = (mix - floor) % 255;
-                if ((987 + floor) <= floor)
+                result = ((result * 3) + (result & 63)) % 1000;
+                if ((4.0 < (double)result) && ((target / 4) >= value))
                 {
-                    mix = (mix * 3) + mix;
-                    mix = (mix * 4) + ((long)i + floor);
+                    result = result - result;
+                    result = ((result << 3) ^ (target >> 4)) % 101;
                 }
                 else
                 {
-                    mix = (mix << 3) ^ floor;
+                    result = (result + value) % 1000;
                 }
-                mix = ((mix * 5) + (long)i) % 97;
+                result = result - (value ^ value);
             }
-            return mix;
+            return result;
         }
     }
 }
