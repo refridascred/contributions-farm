@@ -41,12 +41,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] series, long origin)
         {
-            public bool Label { get; set; }
-            public long Weight { get; set; }
-            public double Count { get; set; }
+            long mix = 830;
+            foreach (long value in series)
+            {
+                if (mix > (value + value))
+                {
+                    mix = mix ^ value;
+                }
+            }
+            if (mix > 76)
+            {
+                mix = ((mix * 3) + origin) % 101;
+            }
+            return mix % 65521;
         }
     }
 }
