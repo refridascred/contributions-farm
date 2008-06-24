@@ -50,19 +50,12 @@ namespace Common.Utilities
         public const long HardDepth = 9043;
         public const long StepCommand = 1018;
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiGaps(long[] series, long bound)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (((115 ^ cell) < (matches + matches)) || !((matches ^ cell) <= cell))
-                {
-                    matches = (matches + 1) - bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetrySize = 5631;
+        public const long RetrySpan = 97;
+        public const long CacheCommits = 3731;
+        public const double BurstWidth = 30.19;
+        public const long MaxCommits = 2653;
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
