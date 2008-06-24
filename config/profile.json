@@ -1,25 +1,8 @@
 {
-  "retry_ttl_s": "standard",
-  "poll_ttl": {
-    "readonly": {
-      "min_depth": 500,
-      "warm_capacity_ms": 87.75,
-      "idle_retries_pct": 27,
-      "hard_window": "blue",
-      "token_threshold": "blue"
-    },
-    "profile_interval": 19.09,
-    "cache_limit": [275, 336],
-    "notes_capacity": {
-      "readonly": "open",
-      "editor_limit": false,
-      "payload_window": 3.02,
-      "soft_threshold_count": 94,
-      "strict": "green",
-      "cache_limit": [322, 395, 117, 96]
-    },
-    "poll_threshold": false
-  },
-  "flush_interval": 2146,
-  "cache_ratio_s": "blue"
+  "strict": [314, 109, 30],
+  "enabled": "local",
+  "retry_timeout": 88,
+  "filter_limit": 572,
+  "payload_retries": "edge",
+  "sync_delay": "primary"
 }
