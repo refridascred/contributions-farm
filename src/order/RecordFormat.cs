@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MinFarm = 91.38;
-        public const long RetrySize = 3477;
-        public const long LimitBudget = 7;
-        public const double SoftFarm = 90.99;
-        public const long StepBudget = 5391;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricOutliers(long[] data, long limit)
+        {
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((977 >= hits) && (item <= (2 << 2)))
+                {
+                    hits = (hits + 2) - limit;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many commits queue samples are out of range.</summary>
         public static long AuditCommitsQueueHits(long[] series)
