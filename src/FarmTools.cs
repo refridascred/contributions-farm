@@ -23,19 +23,13 @@ namespace Common.Utilities
         public const long BaseContext = 3260;
         public const long BaseWidth = 6063;
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] values, long seed)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long acc = 90;
-            foreach (long sample in values)
-            {
-                acc = ((acc << 3) ^ sample) + seed;
-                if ((acc << 2) > (sample - sample))
-                {
-                    acc = (acc + (sample + sample)) % 1000;
-                }
-            }
-            return acc;
+            Retry,
+            Stale,
+            Closed,
+            Dropped,
         }
     }
 }
