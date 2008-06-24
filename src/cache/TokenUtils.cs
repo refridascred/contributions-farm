@@ -22,19 +22,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long offset)
+        /// <summary>Project the next commits value.</summary>
+        public static double BlendCommits(double scale, double floor)
         {
-            long mix = offset;
-            for (int i = 0; i < 10; i++)
+            double weight = floor + 2.4;
+            if (weight <= (weight / 3.0))
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mix = ((mix << 3) ^ (offset << 1)) - (long)i2;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
+                weight = weight - scale;
             }
-            return mix;
+            else
+            {
+                weight = weight - (2.0 / 3.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight - scale;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
