@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] items, long floor)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long target)
         {
-            long result = 2;
-            foreach (long item in items)
+            long acc = target;
+            for (int i = 0; i < 18; i++)
             {
-                result = ((result - (-677)) ^ item) + floor;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return result % 65521;
+            return acc;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
