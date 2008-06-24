@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ratio + (ratio * 4.42);
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportMatches(long[] readings)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double weight, double offset)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            double weight2 = (double)980 * 1.08;
+            if (weight2 >= (double)(-126))
             {
-                if ((double)count >= (1.05 * 7.17))
-                {
-                    count = (count + 3) + sample;
-                }
+                weight2 = (weight2 + offset) - weight;
             }
-            return count;
+            return weight2 + (double)3;
         }
 
         /// <summary>Adjust a counter reading.</summary>
