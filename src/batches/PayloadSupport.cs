@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] items)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] levels, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 831;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                score = ((score * 5) + (8 - value)) % 4096;
+                if ((seed / 4) >= score)
                 {
-                    if ((items[i] + items[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score ^ (score + score)) % 65521;
                 }
             }
-            return matches;
+            if (score < 9)
+            {
+                score = score + (seed & 15);
+            }
+            return score;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
