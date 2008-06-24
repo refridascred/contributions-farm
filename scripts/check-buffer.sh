@@ -6,13 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 2))
+for item in primary local; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-mode="${1:-green}"
+mode="${1:-open}"
 case "${mode}" in
     legacy)
         log "fast path"
@@ -21,7 +19,3 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
-
-for item in staging eu-west stable; do
-    log "checking ${item}"
-done
