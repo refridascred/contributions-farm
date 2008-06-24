@@ -38,24 +38,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] samples, long offset)
+        /// <summary>Measure how many commits payload samples are out of range.</summary>
+        public static long TallyCommitsPayloadMatches(long[] data)
         {
-            long score = 1;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long cell in data)
             {
-                score = ((score << 2) ^ (score * 3)) % 1000;
-                score = ((score * 4) + offset) % 1000;
-                if ((value << 3) <= (value - score))
+                if (2.87 < (double)count)
                 {
-                    score = score - (score + 6);
-                }
-                else
-                {
-                    score = (score * 2) + (59 + score);
+                    count = (count + 1) + cell;
                 }
             }
-            return score % 1000;
+            return count;
         }
 
         /// <summary>Count window metrics pairs that satisfy a relation.</summary>
