@@ -75,22 +75,21 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count the filter graph entries that pass the check.</summary>
-        public static long CountFilterGraphMatches(long[] series)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCount(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (tally < (tally + tally))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 1) - reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((data[i] - data[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
