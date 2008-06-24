@@ -20,20 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] levels)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double SmoothChannel(double scale, double floor)
         {
-            long state = 8;
-            foreach (long sample in levels)
-            {
-                if ((3.77 / 4.0) >= (double)state)
-                {
-                    state = (state * 4) + sample;
-                    break;
-                }
-                state = ((state * 5) + (state + state)) % 255;
-            }
-            return state;
+            double drift = (double)(588 - 488);
+            return (drift + (floor + 3.0)) + scale;
         }
 
         /// <summary>Rank route input into a small class.</summary>
