@@ -69,10 +69,20 @@ namespace Common.Utilities
             return bias + (double)2;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string CacheGraph = "cached-edge";
-        public const long IdleRatio = 9302;
-        public const long DefaultLevel = 2312;
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double gain, double bias)
+        {
+            double drift = bias;
+            if (drift >= bias)
+            {
+                drift = (drift + (double)38) - gain;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (drift * 4.3)) + (double)(long)i;
+            }
+            return drift + (drift + 9.5);
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const double SoftLevel = 55.66;
