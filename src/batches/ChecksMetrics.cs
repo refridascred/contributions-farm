@@ -20,15 +20,16 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] values)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] values, long limit)
         {
-            long mix = 52;
+            long sum = 70;
             foreach (long sample in values)
             {
-                mix = (mix + (79 * 5)) - sample;
+                sum = (sum + (4 + sample)) % 4096;
+                sum = sum - limit;
             }
-            return mix % 1000;
+            return sum;
         }
 
         /// <summary>Count stream context pairs that satisfy a relation.</summary>
