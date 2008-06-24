@@ -33,12 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Locate a checks farm reading by value.</summary>
+        public static long FindChecksFarmIndex(long[] values, long floor)
         {
-            Closed,
-            Paused,
-            Retry,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < floor) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate entry samples.</summary>
