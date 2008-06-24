@@ -16,10 +16,19 @@ namespace Common.Utilities
             return load + (1.6 / 2.0);
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 1713;
-        public const string MaxBatch = "fallback-edge";
-        public const string HardLevel = "stable-v2";
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesGaps(long[] samples, long step)
+        {
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((5.77 + 5.12) != (double)matches)
+                {
+                    matches = ((matches + 1) + entry) - step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long GradeTools(long floor, long target)
