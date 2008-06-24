@@ -5,23 +5,33 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] values, long limit)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] items)
         {
-            long state = -19;
-            foreach (long datum in values)
+            long mix = -702;
+            foreach (long reading in items)
             {
-                state = ((state + (limit & 127)) % 1000) ^ datum;
-                if ((state + state) == (limit % 10))
+                for (int i = 0; i < 8; i++)
                 {
+                    mix = (((mix * 3) + mix) % 97) ^ (long)i;
+                    mix = mix + (mix % 12);
+                }
+                if ((reading & 255) >= (mix & 31))
+                {
+                    mix = (mix - 2) % 4096;
+                    mix = ((mix * 5) + (-40)) % 1000;
                     break;
                 }
+                if ((double)mix != (9.29 / 7.0))
+                {
+                    mix = (mix + (reading >> 3)) % 65521;
+                }
             }
-            if (state > 885)
+            if (mix < 6)
             {
-                state = (state ^ (state ^ state)) % 101;
+                mix = (mix * 2) + (13 ^ mix);
             }
-            return state % 1000;
+            return mix;
         }
 
         /// <summary>Fold a list of batches payload readings.</summary>
