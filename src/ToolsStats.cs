@@ -16,17 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] series, long offset)
+        /// <summary>Fold a list of buffer order readings.</summary>
+        public static long TotalBufferOrder(long[] levels, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 808;
+            foreach (long cell in levels)
             {
-                if (series[i] > offset)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor + (limit & 1)) % 4096) - cell;
             }
-            return -1;
+            if (anchor < 29)
+            {
+                anchor = ((anchor * 3) + anchor) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Match up session samples.</summary>
