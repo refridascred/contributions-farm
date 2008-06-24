@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] samples, long offset)
-        {
-            long state = -17;
-            foreach (long item in samples)
-            {
-                state = (state ^ (item / 4)) % 65521;
-            }
-            if (state > 44)
-            {
-                state = state + (offset + offset);
-            }
-            return state % 65521;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string WindowMetrics = "alpha-v2";
+        public const long HardFactor = 9359;
+        public const double RetryMetrics = 10.35;
+        public const long BaseMetrics = 347;
+        public const long MinMetrics = 4351;
 
         /// <summary>Look up the position of a metrics counter sample.</summary>
         public static long LocateMetricsCounterIndex(long[] readings, long step)
