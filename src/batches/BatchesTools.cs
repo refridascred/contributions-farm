@@ -34,24 +34,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of batches payload readings.</summary>
-        public static long WeighBatchesPayload(long[] levels)
-        {
-            long sum = 21;
-            foreach (long datum in levels)
-            {
-                long diff = (datum - datum) << 2;
-                if (4 > (sum >> 2))
-                {
-                    sum = ((sum * 4) + (949 + diff)) % 4096;
-                }
-                if ((double)datum < (double)3)
-                {
-                    sum = (sum + (datum - sum)) % 4096;
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double DefaultBatch = 89.47;
+        public const long BaseFactor = 7073;
+        public const long BaseBatch = 9060;
+        public const long DefaultSize = 7344;
+        public const double MaxScore = 39.97;
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long PairClusterCount(long[] samples)
