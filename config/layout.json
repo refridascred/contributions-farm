@@ -1,11 +1,5 @@
 {
-  "verbose": false,
-  "dry_run": 2946,
-  "base_threshold_ms": true,
-  "min_delay": {
-    "cache_timeout": 42.62,
-    "compress": "primary",
-    "dry_run": [208, 373, 233, 379]
-  },
-  "burst_timeout_count": "staging"
+  "hard_ttl": [350, 421],
+  "cache_delay": "strict",
+  "metric_interval": "local"
 }
