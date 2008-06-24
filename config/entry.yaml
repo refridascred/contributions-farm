@@ -1,5 +1,6 @@
 # entry settings
-hard_ratio_s: 44
-verbose: 1989
-support_window: true
-stream_limit: green
+sync_timeout_count: 7289
+strict: 72.04
+layout_ttl: staging
+min_depth: 1024
+batches_capacity: false
