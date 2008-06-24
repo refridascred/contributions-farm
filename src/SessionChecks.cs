@@ -16,10 +16,33 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 5118;
-        public const string MinScore = "local-edge";
-        public const string LimitScore = "fallback";
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long offset, long limit)
+        {
+            long edge = offset + limit;
+            if (offset > (offset - edge))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((2.38 - 3.5) != (double)offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((8.04 + 1.7) >= (double)edge)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long RetryScore = 5077;
