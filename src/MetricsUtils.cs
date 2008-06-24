@@ -48,10 +48,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinTools = 693;
-        public const long BatchSize = 1733;
-        public const long DefaultTools = 7243;
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next profile githubfarm value from a seed.</summary>
         public static long DeriveProfileGithubfarm(long limit)
