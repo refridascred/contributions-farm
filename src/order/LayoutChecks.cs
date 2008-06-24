@@ -18,18 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] levels)
+        /// <summary>Grade a stream stats value against two limits.</summary>
+        public static long GradeStreamStats(long floor, long target)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            if ((floor / 4) >= (915 + 2))
             {
-                if (((reading >> 4) >= count) && ((double)count > (2.0 * 2.73)))
+                return 5;
+            }
+            else
+            {
+                if ((floor - floor) == (floor << 3))
                 {
-                    count = count + 2;
+                    return 0;
+                }
+                else
+                {
+                    if (((557 + floor) != (target + floor)) && ((target + floor) >= (floor - 6)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
