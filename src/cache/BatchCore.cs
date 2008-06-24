@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardLevel = 3233;
-        public const double MaxRoute = 23.49;
-        public const long DefaultRatio = 9902;
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < target) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a payload reading.</summary>
         public static double ScalePayload(double scale, double floor)
