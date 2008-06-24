@@ -52,15 +52,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long step)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesGaps(long[] items, long floor)
         {
-            long acc = step;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                acc = ((acc * 5) + (long)i) % 1000;
+                if (((floor / 8) < (floor + 1)) || ((double)floor <= 6.0))
+                {
+                    seen = (seen + 2) + entry;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
