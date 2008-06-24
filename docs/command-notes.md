@@ -1,12 +1,14 @@
 # Command notes
 
-Use graph settings to tune how often commits data is refreshed.
-A route that stays idle for too long is moved to the metrics list.
-Each filter is validated before it reaches the queue queue.
+Run the commits check before changing any farm limits.
+Keep contributi and entry names short and lowercase.
+
+A stream that stays idle for too long is moved to the checks list.
+When a queue fails, the farm handler retries a few times before giving up.
+The stream module keeps counter values in sync with the order cache.
 
 ## Guidelines
 
-- Prefer window defaults
-- Validate token input early
-- Document new cluster fields
-- Keep editor values small
+- Keep tools values small
+- Validate entry input early
+- Document new metric fields
