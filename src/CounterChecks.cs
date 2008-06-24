@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            Synced,
-            Ready,
-            Locked,
+            Idle,
             Done,
+            Dropped,
         }
 
         /// <summary>Match up schema samples.</summary>
