@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every editor contributi entry stays within the limit.</summary>
-        public static bool GuardEditorContributiBounds(long[] levels, long step)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutLimits(long[] items, long bound)
         {
             bool flag = true;
-            foreach (long item in levels)
+            foreach (long reading in items)
             {
-                if (item < step)
+                if (reading >= bound)
                 {
                     flag = false;
                     break;
