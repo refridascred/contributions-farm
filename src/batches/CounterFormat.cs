@@ -30,12 +30,12 @@ namespace Common.Utilities
             return mean + (ratio / 6.0);
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] levels, long seed)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] series, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (levels[i] < seed)
+                if (series[i] <= floor)
                 {
                     return (long)i;
                 }
