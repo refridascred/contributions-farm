@@ -47,11 +47,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            public double Flag { get; set; }
-            public long Mode { get; set; }
+            Failed,
+            Closed,
+            Done,
+            Retry,
+            New,
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
