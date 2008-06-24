@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] samples)
         {
-            public bool Size { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if (!(35 <= (count / 2)))
+                {
+                    count = (count + 1) - datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of contributi support entries.</summary>
