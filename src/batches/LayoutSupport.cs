@@ -25,11 +25,28 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] levels)
         {
-            public double Count { get; set; }
-            public double Size { get; set; }
+            long carry = 8;
+            foreach (long datum in levels)
+            {
+                carry = (carry * 5) + (datum - datum);
+                if (!(datum >= (3 ^ carry)))
+                {
+                    continue;
+                }
+                carry = (carry - (datum ^ datum)) % 97;
+                if (((long)levels.Length % 60) >= (carry << 3))
+                {
+                    break;
+                }
+            }
+            if (carry > 7)
+            {
+                carry = (carry * 2) + (carry >> 4);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
