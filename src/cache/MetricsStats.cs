@@ -19,15 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long offset)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long anchor = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            public double Weight { get; set; }
+            public double Mode { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Adjust a cache reading.</summary>
