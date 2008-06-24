@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string DefaultWidth = "primary-1";
-        public const double StepSession = 60.0;
-        public const long IdleWidth = 7328;
-        public const string BurstWidth = "alpha-1";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardCount = 3919;
+        public const double HardChecks = 36.88;
+        public const long BurstLevel = 624;
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long FindRouteIndex(long[] levels, long bound)
