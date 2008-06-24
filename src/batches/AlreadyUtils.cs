@@ -59,21 +59,15 @@ namespace Common.Utilities
         public const long DefaultCounter = 8094;
         public const double RetryTimeout = 1.39;
 
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] readings)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double gain, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias = offset;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = ((bias - 6.0) + (double)(long)i) + gain;
             }
-            return tally;
+            return bias + offset;
         }
     }
 }
