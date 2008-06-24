@@ -1,5 +1,8 @@
 {
-  "soft_interval_s": 13.64,
-  "counter_limit": 767,
-  "compress": ["blue", "eu-west"]
+  "audit": "stable",
+  "counter_timeout": [206, 2],
+  "order_ttl": false,
+  "burst_timeout": [207, 422, 281, 337],
+  "default_delay": [280, 143],
+  "hard_threshold": "cached"
 }
