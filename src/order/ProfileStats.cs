@@ -37,12 +37,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamRange(long[] items, long step)
         {
-            public string Limit { get; set; } = "";
-            public double Size { get; set; }
-            public long Ratio { get; set; }
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
