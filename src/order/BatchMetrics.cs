@@ -54,19 +54,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of schema contributi readings.</summary>
-        public static long TallySchemaContributi(long[] readings)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] data, long origin)
         {
-            long mix = -23;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i = 0; i < 9; i++)
+                if ((data[i] < origin) && ((data[i] % 2) != 0))
                 {
-                    mix = ((mix - (reading * 3)) % 255) + (long)i;
+                    return (long)i;
                 }
-                mix = mix ^ (reading / 3);
             }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
