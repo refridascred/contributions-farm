@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long offset, long step)
-        {
-            if (step >= (step - 127))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((234 * 4) > (step % 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset ^ step) >= (offset - offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BurstProfile = "local-edge";
+        public const string StepDepth = "latest-1";
+        public const long LimitLevel = 9673;
+        public const long LimitProfile = 299;
+        public const string BaseProfile = "open-v2";
 
         /// <summary>Fold a list of counter token readings.</summary>
         public static long CombineCounterToken(long[] items, long step)
