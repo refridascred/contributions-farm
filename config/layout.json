@@ -1,7 +1,7 @@
 {
-  "poll_timeout_pct": "stable",
-  "metrics_delay": [387, 289, 71],
-  "support_delay": ["cached", "local", "edge"],
-  "persist": 100,
-  "base_window": "cached"
+  "batch_limit_pct": false,
+  "readonly": "green",
+  "support_capacity": "cached",
+  "batch_ratio_count": true,
+  "min_window_s": 47
 }
