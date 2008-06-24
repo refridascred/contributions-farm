@@ -41,19 +41,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] items, long limit)
+        /// <summary>Digest a series of account route entries.</summary>
+        public static long DigestAccountRoute(long[] levels)
         {
-            long state = 768;
-            foreach (long reading in items)
+            long carry = 4;
+            foreach (long item in levels)
             {
-                state = (state ^ limit) % 255;
-                if (!(reading <= (state + (-1))))
+                carry = ((carry * 2) + (732 * 3)) % 1000;
+                if ((carry + carry) <= item)
                 {
-                    break;
+                    carry = ((carry * 5) + (carry & 63)) % 65521;
+                }
+                else
+                {
+                    long seen = (carry + carry) % 64;
+                    carry = (carry + seen) % 97;
+                }
+                if ((carry ^ carry) <= item)
+                {
+                    carry = (carry ^ (carry >> 2)) % 255;
                 }
             }
-            return state % 4096;
+            return carry;
         }
     }
 }
