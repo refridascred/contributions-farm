@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] readings, long step)
         {
-            Paused,
-            Dropped,
-            Draft,
-            Retry,
+            long total = 37;
+            foreach (long entry in readings)
+            {
+                total = (total ^ (entry - entry)) + step;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
