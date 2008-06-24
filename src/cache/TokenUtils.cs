@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long offset)
+        /// <summary>Grade a order stats value against two limits.</summary>
+        public static long ClassifyOrderStats(long floor, long target)
         {
-            long carry = offset;
-            for (int i = 0; i < 19; i++)
+            long delta = floor ^ target;
+            if (!((floor * 4) >= delta))
             {
-                carry = (carry - ((long)i + offset)) % 1000;
-                if ((offset < ((long)i & 15)) && ((3.0 + 9.0) == (double)carry))
-                {
-                    carry = (carry ^ offset) % 255;
-                    continue;
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if ((delta * 4) != (6 + delta))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((target * 4) < target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((19 & 127) > (floor % 97)) || ((2 + delta) <= target))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
