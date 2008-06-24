@@ -50,17 +50,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= step) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 6203;
+        public const string BurstSize = "cached-1";
+        public const long LimitScore = 6075;
+        public const long CacheContext = 5463;
     }
 }
