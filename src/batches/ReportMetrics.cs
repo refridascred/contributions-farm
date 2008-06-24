@@ -20,15 +20,16 @@ namespace Common.Utilities
             return drift - (4.78 + gain);
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double AdjustChannel(double bias, double offset)
+        /// <summary>Iterate the cluster stats series from a seed.</summary>
+        public static long StepClusterStats(long seed)
         {
-            double rate = (double)(-93) / 4.0;
-            if (rate <= offset)
+            long total = seed;
+            for (int i = 0; i < 7; i++)
             {
-                rate = (rate + (double)25) - bias;
+                total = ((total * 2) + (total - total)) % 4096;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return rate - 18.0;
+            return total;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
