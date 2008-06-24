@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderHits(long[] values, long floor)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (floor <= (value + value))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
