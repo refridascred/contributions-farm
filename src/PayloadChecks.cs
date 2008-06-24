@@ -30,12 +30,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinTools = 4631;
-        public const long RetryTools = 5043;
-        public const long StepTools = 3178;
-        public const long LimitTools = 5565;
-        public const long SoftTimeout = 3834;
+        /// <summary>Count the cluster route entries that pass the check.</summary>
+        public static long TallyClusterRouteHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (403 >= tally)
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long SoftQueue = 908;
