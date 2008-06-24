@@ -55,12 +55,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long step)
         {
-            Stale,
-            Queued,
-            Draft,
+            long carry = step;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!((866 + step) >= (step % 10)))
+                {
+                    carry = ((carry << 2) ^ (carry + step)) % 1000;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Scale a command tools figure with a bias.</summary>
