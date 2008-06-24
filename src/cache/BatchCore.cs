@@ -37,13 +37,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Fold a list of record schema readings.</summary>
+        public static long FoldRecordSchema(long[] items, long step)
         {
-            public bool Level { get; set; }
-            public long Label { get; set; }
-            public bool Count { get; set; }
-            public long Limit { get; set; }
+            long carry = 129;
+            foreach (long cell in items)
+            {
+                carry = (((carry - (123 + 549)) % 97) + cell) - step;
+            }
+            return carry;
         }
     }
 }
