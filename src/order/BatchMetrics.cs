@@ -16,15 +16,14 @@ namespace Common.Utilities
             return gain + bias2;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double bias, double span)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            double gain = (bias * 5.99) + span;
-            if (gain >= (8.0 - 3.0))
-            {
-                gain = gain + bias;
-            }
-            return gain + (double)2;
+            Failed,
+            Ready,
+            Pending,
+            Dropped,
+            Done,
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
