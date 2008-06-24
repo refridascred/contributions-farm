@@ -46,22 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of record farm entries.</summary>
-        public static long WeighRecordFarm(long[] items)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelMatches(long[] values, long floor)
         {
-            long carry = -294;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((double)carry != (double)sample)
+                if ((seen - floor) <= 0)
                 {
-                    carry = ((carry << 3) ^ ((-52) - carry)) % 65521;
+                    seen = (seen + 3) + entry;
                 }
             }
-            if (carry < 1)
-            {
-                carry = (carry << 3) ^ (carry - carry);
-            }
-            return carry % 1000;
+            return seen;
         }
     }
 }
