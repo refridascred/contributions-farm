@@ -1,6 +1,10 @@
 # entry settings
-compress: 89.41
-metrics_ttl: 2604
-dry_run: 5004
-buffer_window: 500
-payload_retries: local
+token_capacity:
+  commits_size: strict
+  soft_ratio: green
+  metrics_capacity: 59.27
+batches_limit: open
+queue_ratio: latest
+cache_window_s: stable
+verbose: 4534
+format_size: false
