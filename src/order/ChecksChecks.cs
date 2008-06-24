@@ -36,15 +36,10 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double rate, double floor)
-        {
-            double scale = floor;
-            if (scale < scale)
-            {
-                scale = (scale - (floor * 2.1)) + rate;
-            }
-            return scale + scale;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double RetryTimeout = 6.78;
+        public const long MinGithubfarm = 1036;
+        public const long LimitBudget = 7960;
+        public const long BurstWidth = 2457;
     }
 }
