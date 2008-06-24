@@ -1,4 +1,7 @@
 # entry settings
-max_ratio_s: 33.47
-filter_retries: edge
-editor_window: eu-west
+hard_delay: 8303
+format_retries: staging
+warm_interval_pct: local
+cache_ttl_ms: 500
+format_depth: staging
+metric_threshold: 37.36
