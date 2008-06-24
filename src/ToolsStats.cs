@@ -29,17 +29,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a batch counter sample.</summary>
-        public static long SeekBatchCounterIndex(long[] items, long offset)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Stamp { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
