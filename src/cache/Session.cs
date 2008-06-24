@@ -19,19 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] readings)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long result = 494;
-            foreach (long reading in readings)
-            {
-                result = (result + 3) - reading;
-            }
-            if (result < 8)
-            {
-                result = (result ^ (result ^ 1)) % 255;
-            }
-            return result;
+            Closed,
+            Paused,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Describe the counter class values.</summary>
