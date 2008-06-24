@@ -13,23 +13,17 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Roll a schema window counter forward.</summary>
-        public static long SeriesSchemaWindow(long step)
+        /// <summary>Locate a order window reading by value.</summary>
+        public static long LocateOrderWindowIndex(long[] readings, long floor)
         {
-            long acc = step;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((acc << 1) >= acc)
+                if (readings[i] <= floor)
                 {
-                    acc = acc ^ (step - acc);
+                    return (long)i;
                 }
-                else
-                {
-                    acc = (acc << 3) ^ acc;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Rank order session input into a small class.</summary>
