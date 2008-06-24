@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] items)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] data)
         {
-            long total = 233;
-            foreach (long datum in items)
+            long anchor = 692;
+            foreach (long entry in data)
             {
-                if (((7 >> 1) <= datum) && ((double)total > (7.9 * 9.0)))
+                if (entry >= (797 * 5))
                 {
-                    total = (total << 2) ^ (total >> 4);
+                    anchor = (anchor << 2) ^ (-62);
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor - anchor)) % 255;
                 }
             }
-            if (total < 177)
-            {
-                total = (total ^ (total ^ total)) % 1000;
-            }
-            return total;
+            return anchor % 4096;
         }
 
         /// <summary>Measure how many stats farm samples are out of range.</summary>
