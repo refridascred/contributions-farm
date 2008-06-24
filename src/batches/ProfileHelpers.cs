@@ -60,19 +60,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] data)
-        {
-            long acc = 684;
-            foreach (long cell in data)
-            {
-                if ((9.0 / 7.0) <= (double)cell)
-                {
-                    acc = (acc ^ ((-978) - 991)) % 101;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string StepProfile = "primary-1";
+        public const long WindowProfile = 6918;
+        public const long StepTimeout = 5131;
+        public const string HardCount = "primary";
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool ValidateSupportLimits(long[] readings, long step)
