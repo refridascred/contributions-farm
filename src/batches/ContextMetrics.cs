@@ -67,19 +67,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every queue already entry stays within the limit.</summary>
-        public static bool VerifyQueueAlreadyRange(long[] items, long floor)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ScaleBuffer(double scale, double offset)
         {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double weight = scale;
+            return (weight + weight) + offset;
         }
     }
 }
