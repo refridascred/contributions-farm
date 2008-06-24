@@ -67,12 +67,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string DefaultScore = "latest-v2";
-        public const long StepSpan = 9744;
-        public const long MaxCounter = 9463;
-        public const long CacheCounter = 9803;
-        public const double LimitCounter = 27.98;
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            Idle,
+            Done,
+            Pending,
+            Draft,
+        }
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
