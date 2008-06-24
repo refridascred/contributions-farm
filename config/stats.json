@@ -1,5 +1,12 @@
 {
-  "soft_size": ["latest", "latest", "legacy"],
-  "cache_ttl_count": "open",
-  "stream_capacity": false
+  "enabled": 500,
+  "default_ratio": 89,
+  "report_ttl": ["blue", "eu-west", "blue", "legacy"],
+  "metric_threshold": [96, 393],
+  "sync_depth_ms": {
+    "audit": "staging",
+    "batch_capacity_s": false,
+    "persist": true,
+    "base_interval_ms": [74, 114]
+  }
 }
