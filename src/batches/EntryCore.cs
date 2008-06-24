@@ -50,19 +50,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate checks token readings against a bound.</summary>
-        public static bool ValidateChecksTokenBounds(long[] data, long step)
+        /// <summary>Check that every record buffer entry stays within the limit.</summary>
+        public static bool CheckRecordBufferBounds(long[] items, long seed)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if (sample <= step)
+                if (datum >= seed)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
     }
 }
