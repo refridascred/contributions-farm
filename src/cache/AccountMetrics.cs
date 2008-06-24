@@ -42,13 +42,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
-        {
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleInterval = 6293;
+        public const long IdleDepth = 4841;
+        public const long BaseRatio = 7339;
+        public const long MaxSize = 8179;
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long MatchCommandCount(long[] items)
