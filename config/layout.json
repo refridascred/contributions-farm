@@ -1,19 +1,6 @@
 {
-  "verbose": "cached",
-  "retry_delay_pct": {
-    "batch_limit_s": "latest",
-    "dry_run": 5,
-    "min_capacity_count": {
-      "soft_capacity_count": [354, 413, 497, 48],
-      "compress": 65,
-      "dry_run": "legacy"
-    },
-    "farm_ttl": "primary",
-    "githubfarm_size": 36.12,
-    "stats_limit": 2586
-  },
-  "max_limit_count": "blue",
-  "channel_threshold": ["blue", "latest"],
-  "idle_interval_count": 91,
-  "flush_retries": "cached"
+  "cache_window_ms": ["eu-west", "eu-west"],
+  "batch_threshold_s": true,
+  "command_timeout": false,
+  "buffer_threshold": 69
 }
