@@ -29,12 +29,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long bound)
         {
-            public bool Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = anchor ^ (bound / 8);
+                if (!((bound / 2) < (long)i))
+                {
+                    anchor = (anchor * 2) + bound;
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
