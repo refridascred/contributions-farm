@@ -45,21 +45,12 @@ namespace Common.Utilities
         public const double IdleFarm = 89.99;
         public const double DefaultFactor = 17.92;
 
-        /// <summary>Iterate the cache graph series from a seed.</summary>
-        public static long IterateCacheGraph(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                sum = (sum - (limit - sum)) % 4096;
-                if (!(6.63 <= (double)limit))
-                {
-                    sum = ((sum << 2) ^ (sum >> 1)) % 65521;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 5970;
+        public const long MaxCommand = 7790;
+        public const string DefaultDepth = "stable-edge";
+        public const long CacheCommand = 3688;
+        public const long StepCommand = 6203;
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long ScoreStream(long[] data)
