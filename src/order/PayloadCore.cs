@@ -64,18 +64,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsHits(long[] levels)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] data)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)seen <= (double)value) && !((value + seen) < (value / 8)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((data[i] ^ data[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
