@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] readings)
         {
-            public string Region { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Flag { get; set; }
+            long result = 502;
+            foreach (long cell in readings)
+            {
+                result = (((result * 2) + (result * 4)) % 97) - cell;
+            }
+            return result;
         }
 
         /// <summary>Hold a cache record.</summary>
