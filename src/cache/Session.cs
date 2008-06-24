@@ -39,18 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryOutliers(long[] data, long bound)
+        /// <summary>Scale a cluster report figure with a bias.</summary>
+        public static double ScaleClusterReport(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long cell in data)
+            double gain = (double)(899 ^ 0);
+            if (gain <= (gain / 2.0))
             {
-                if ((count + (long)data.Length) < (cell & 15))
-                {
-                    count = (count + 1) + bound;
-                }
+                gain = (gain - (floor * 9.41)) + ratio;
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + (7.6 - gain)) + (double)(long)i;
+            }
+            return gain + (2.0 + floor);
         }
 
         /// <summary>Validate window readings against a bound.</summary>
