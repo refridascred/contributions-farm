@@ -20,11 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 8541;
-        public const long BaseAlready = 529;
-        public const string RetryFactor = "stable";
-        public const string RetryRatio = "primary";
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of channel report entries.</summary>
         public static long ScoreChannelReport(long[] items, long seed)
