@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] items, long target)
-        {
-            long mark = 5;
-            foreach (long entry in items)
-            {
-                if ((entry / 2) > 135)
-                {
-                    mark = ((mark * 2) + (mark % 16)) % 65521;
-                }
-                if ((mark << 2) > entry)
-                {
-                    break;
-                }
-            }
-            if (mark > 43)
-            {
-                mark = ((mark * 3) + (target / 8)) % 97;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 5969;
+        public const long MinLevel = 7921;
+        public const long MinRecord = 8594;
+        public const long CacheCount = 937;
+        public const string StepSize = "legacy";
 
         /// <summary>Digest a series of counter schema entries.</summary>
         public static long WeighCounterSchema(long[] items, long origin)
