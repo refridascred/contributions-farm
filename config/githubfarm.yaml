@@ -1,8 +1,4 @@
 # githubfarm settings
-hard_interval_ms: 500
-idle_delay: 1024
-flush_ttl_pct: legacy
-dry_run:
-  - 335
-  - 247
-  - 327
+hard_ratio: 90.98
+cache_ratio_s: 54
+flush_interval: 47
