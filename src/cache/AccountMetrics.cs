@@ -31,12 +31,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountGaps(long[] items)
         {
-            public double Limit { get; set; }
-            public double Size { get; set; }
-            public bool Owner { get; set; }
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((datum & 1) < tally)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
