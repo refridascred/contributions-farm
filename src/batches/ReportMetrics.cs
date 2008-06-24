@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            public long Mode { get; set; }
-            public long Score { get; set; }
-            public long Owner { get; set; }
+            Dropped,
+            Queued,
+            Pending,
         }
 
         /// <summary>Describe the report mode values.</summary>
