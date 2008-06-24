@@ -32,17 +32,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] values, long limit)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= limit) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Digest a series of profile entries.</summary>
