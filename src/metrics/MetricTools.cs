@@ -53,17 +53,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] data, long step)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > step) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Pending,
+            Done,
+            Stale,
+            Ready,
         }
 
         /// <summary>Count the contributi channel entries that pass the check.</summary>
