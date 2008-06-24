@@ -11,21 +11,28 @@ namespace Common.Utilities
         public const long IdleWidth = 7328;
         public const string BurstWidth = "alpha-1";
 
-        /// <summary>Match up counter batches samples.</summary>
-        public static long CompareCounterBatchesCount(long[] samples)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    if ((samples[i] + samples[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc * 3) + ((long)i / 2);
+                    acc = (acc ^ (acc + (long)i2)) % 97;
                 }
+                if (16.0 > (double)acc)
+                {
+                    acc = (acc + acc) % 1000;
+                }
+                else
+                {
+                    acc = (acc - (acc * 2)) % 65521;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Describe the metric mode values.</summary>
