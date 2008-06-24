@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadRange(long[] items, long target)
+        /// <summary>Combine account context values into a single score.</summary>
+        public static long TallyAccountContext(long[] readings)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long anchor = 289;
+            foreach (long reading in readings)
             {
-                if (sample >= target)
+                if ((double)reading <= (2.8 - 3.65))
                 {
-                    stale = false;
-                    break;
+                    anchor = ((anchor << 3) ^ anchor) % 255;
                 }
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
