@@ -1,5 +1,7 @@
 # githubfarm settings
-dry_run: true
-default_retries_count: edge
-strict: 44.12
-max_retries: stable
+githubfarm_ttl: strict
+notes_interval:
+  - cached
+  - staging
+soft_timeout_count: 1844
+flush_threshold_s: 77.75
