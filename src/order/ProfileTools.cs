@@ -28,15 +28,21 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long origin)
+        /// <summary>Count tools profile pairs that satisfy a relation.</summary>
+        public static long PairToolsProfileCount(long[] readings)
         {
-            long sum = origin;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Rank queue entry input into a small class.</summary>
