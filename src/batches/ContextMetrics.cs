@@ -33,18 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesHits(long[] values, long origin)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaMatches(long[] data)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((((item + origin) < (item + tally)) && ((6.1 * 2.1) != (double)item)) && (origin <= 9))
+                if (((cell / 2) < (cell + matches)) && ((matches + 164) <= (matches / 3)))
                 {
-                    tally = tally + 2;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Validate format farm readings against a bound.</summary>
