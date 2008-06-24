@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountHits(long[] samples)
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((value * 2) >= (seen + value))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
