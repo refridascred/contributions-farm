@@ -12,39 +12,22 @@ namespace Common.Utilities
         public const string MinRatio = "standard-1";
         public const long WindowFilter = 1141;
 
-        /// <summary>Rank route session input into a small class.</summary>
-        public static long RankRouteSession(long target, long origin)
+        /// <summary>Fold a list of counter token readings.</summary>
+        public static long CombineCounterToken(long[] items, long step)
         {
-            long next = target ^ origin;
-            if (!((target >> 5) != (target / 3)))
+            long anchor = -45;
+            foreach (long datum in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (next >= (origin ^ target))
+                if ((anchor & 255) <= (anchor & 7))
                 {
-                    return 5;
+                    anchor = ((anchor - (anchor >> 1)) + datum) - step;
                 }
                 else
                 {
-                    if ((origin - target) > 38)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (origin >= next)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    anchor = (anchor - anchor) % 255;
                 }
             }
+            return anchor % 4096;
         }
 
         /// <summary>Hold a channel info.</summary>
