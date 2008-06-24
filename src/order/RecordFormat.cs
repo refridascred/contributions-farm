@@ -48,21 +48,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] levels)
+        /// <summary>Adjust a buffer record reading.</summary>
+        public static double ScaleBufferRecord(double ratio, double span)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale = (double)(376 / 7);
+            if (scale > span)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = scale + (ratio * 17.0);
             }
-            return count;
+            return scale - (double)222;
         }
 
         /// <summary>Describe the already kind values.</summary>
