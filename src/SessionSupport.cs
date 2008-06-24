@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] samples)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = (state + (state + state)) % 97;
+                state = ((state * 5) + (long)i) % 101;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Define already limits and defaults.</summary>
