@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            public bool Region { get; set; }
-            public bool Size { get; set; }
+            Paused,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
