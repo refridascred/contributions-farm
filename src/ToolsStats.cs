@@ -40,11 +40,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Classify a filter payload pair into a bucket.</summary>
+        public static long ClassifyFilterPayload(long target, long origin)
         {
-            public bool Stamp { get; set; }
-            public double Owner { get; set; }
+            long delta = target ^ origin;
+            if ((5.2 / 5.0) > (5.1 - 20.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin + delta) != (origin + origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
