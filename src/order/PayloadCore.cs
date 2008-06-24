@@ -5,39 +5,33 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank payload account input into a small class.</summary>
-        public static long BucketPayloadAccount(long step, long bound)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] values)
         {
-            long bound2 = step + bound;
-            if ((bound + 4) > (step * 3))
+            long state = 1;
+            foreach (long reading in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (bound2 > (step + step))
+                if ((reading - reading) <= (reading << 1))
                 {
-                    return 2;
+                    state = (state << 2) ^ (reading / 2);
+                    state = (state ^ (state + 97)) % 97;
+                    break;
+                }
+                state = ((state << 3) ^ (reading + state)) % 97;
+                if (((double)reading < 8.7) && ((8 % 3) != (state - reading)))
+                {
+                    state = (state ^ (state + reading)) % 1000;
                 }
                 else
                 {
-                    if ((bound + bound2) < step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound ^ bound) >= (3 * 5))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    state = (state - (reading + 57)) % 1000;
                 }
             }
+            if (state < (-38))
+            {
+                state = (state + (state & 7)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Define context limits and defaults.</summary>
