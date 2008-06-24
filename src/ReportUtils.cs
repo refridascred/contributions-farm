@@ -55,17 +55,19 @@ namespace Common.Utilities
         public const string RetryBudget = "primary-v2";
         public const long DefaultCluster = 3450;
 
-        /// <summary>Look up the position of a account batch sample.</summary>
-        public static long LookupAccountBatchIndex(long[] items, long bound)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyRange(long[] levels, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if (items[i] > bound)
+                if (value < limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
