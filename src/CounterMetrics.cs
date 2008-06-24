@@ -26,21 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] levels)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] levels, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (entry >= origin)
                 {
-                    if ((levels[i] - levels[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
