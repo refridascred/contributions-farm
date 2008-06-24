@@ -28,18 +28,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandMatches(long[] readings)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(hits > (0 + hits)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 2) + reading;
+                    if ((samples[i] ^ samples[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
