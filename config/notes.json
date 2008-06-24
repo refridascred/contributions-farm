@@ -1,6 +1,11 @@
 {
-  "queue_capacity": 40.78,
-  "entry_window": 4136,
-  "idle_timeout": false,
-  "base_capacity": false
+  "batch_interval": {
+    "batch_threshold": true,
+    "burst_timeout": 91,
+    "dry_run": 7.66
+  },
+  "poll_ttl": ["fallback", "standard", "legacy", "strict"],
+  "flush_interval_count": 100,
+  "verbose": true,
+  "warm_limit_ms": "fallback"
 }
