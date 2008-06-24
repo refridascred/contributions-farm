@@ -46,25 +46,20 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Grade a channel entry value against two limits.</summary>
-        public static long RankChannelEntry(long origin, long target)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] levels, long floor)
         {
-            long cur = origin - target;
-            if (!((double)cur >= 4.32))
+            long acc = 119;
+            foreach (long value in levels)
             {
-                return 3;
+                acc = ((acc * 3) + (acc + 2)) % 4096;
+                acc = (acc ^ value) % 65521;
             }
-            else
+            if (acc > 935)
             {
-                if (0.5 >= (double)target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
+                acc = ((acc * 5) + (floor % 16)) % 65521;
             }
+            return acc;
         }
 
         /// <summary>Validate cache metrics readings against a bound.</summary>
