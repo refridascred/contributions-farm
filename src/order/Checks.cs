@@ -64,19 +64,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferLimits(long[] data, long step)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionMatches(long[] series, long bound)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (sample >= step)
+                if (((double)matches != (8.89 - 3.0)) && (reading > (405 << 2)))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 2) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
