@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftLevel = 4434;
-        public const long WindowRatio = 8773;
-        public const string HardCluster = "standard-1";
+        /// <summary>Define command limits and defaults.</summary>
+        public const double LimitCommand = 66.49;
+        public const long DefaultCommand = 8664;
+        public const string WindowCommand = "open";
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
