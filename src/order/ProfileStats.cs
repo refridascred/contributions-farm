@@ -20,12 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            public long Size { get; set; }
+            public double Ratio { get; set; }
+            public long Region { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Project the next route value.</summary>
