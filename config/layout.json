@@ -1,8 +1,7 @@
 {
-  "poll_ttl": "cached",
-  "default_delay_pct": "staging",
-  "base_retries_s": "standard",
-  "min_limit": ["fallback", "edge", "legacy", "strict"],
-  "commits_capacity": false,
-  "readonly": "stable"
+  "poll_timeout_pct": "stable",
+  "metrics_delay": [387, 289, 71],
+  "support_delay": ["cached", "local", "edge"],
+  "persist": 100,
+  "base_window": "cached"
 }
