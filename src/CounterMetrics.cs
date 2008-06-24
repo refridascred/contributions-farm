@@ -32,18 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream metrics samples are out of range.</summary>
-        public static long CountStreamMetricsOutliers(long[] samples, long origin)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchMatches(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((long)samples.Length >= (hits / 5))
+                if ((count + (-1)) >= (entry - count))
                 {
-                    hits = ((hits + 2) - cell) + origin;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a entry summary.</summary>
