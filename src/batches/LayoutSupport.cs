@@ -33,13 +33,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            public long Offset { get; set; }
-            public double Count { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Flag { get; set; }
+            public bool Size { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
