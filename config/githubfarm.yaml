@@ -1,8 +1,11 @@
 # githubfarm settings
-batch_delay: fallback
-burst_limit_ms: true
-max_limit: 250
-queue_timeout:
-  readonly: false
-  idle_ratio_count: true
-  burst_threshold_pct: 86.15
+already_timeout: local
+audit: legacy
+readonly:
+  - eu-west
+  - stable
+session_threshold:
+  dry_run: 38
+  idle_size_ms: false
+  enabled: standard
+  poll_timeout_s: staging
