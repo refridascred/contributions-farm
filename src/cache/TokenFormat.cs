@@ -23,11 +23,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long limit, long target)
         {
-            public bool Label { get; set; }
-            public long Level { get; set; }
+            long bound = limit ^ target;
+            if (bound <= (limit << 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if (483 > (0 - target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)target >= 4.43) || (bound > target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a window options.</summary>
