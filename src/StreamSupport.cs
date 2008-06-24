@@ -32,10 +32,25 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheLevel = 3522;
-        public const string HardRatio = "primary-v2";
-        public const string BaseMetric = "standard-1";
-        public const long CacheMetric = 7785;
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long step, long limit)
+        {
+            long edge = step - limit;
+            if ((8 - 1) < (edge >> 4))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((3 + limit) < (step + step)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
