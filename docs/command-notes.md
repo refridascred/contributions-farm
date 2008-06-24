@@ -1,11 +1,10 @@
 # Command notes
 
-Defaults for metric live in the config folder and can be overridden per environment.
-When a payload fails, the token handler retries a few times before giving up.
-When a schema fails, the payload handler retries a few times before giving up.
+The cache report groups every record by cache.
+The report helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new graph fields
-- Prefer session defaults
-- Review entry limits each release
+- Document new stats fields
+- Log every token change
+- Keep graph values small
