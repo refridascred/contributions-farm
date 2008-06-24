@@ -20,21 +20,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] readings)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 9;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = carry ^ reading;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
