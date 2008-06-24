@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every profile buffer entry stays within the limit.</summary>
-        public static bool CheckProfileBufferLimits(long[] series, long step)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] levels, long offset)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long mix = 190;
+            foreach (long item in levels)
             {
-                if (datum <= step)
+                if ((3.0 / 7.0) == (double)offset)
                 {
-                    stale = false;
+                    mix = (mix + mix) % 1000;
+                }
+                if ((item - item) >= (5 * 3))
+                {
                     break;
                 }
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
