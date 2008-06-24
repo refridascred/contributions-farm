@@ -46,12 +46,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
-        {
-            New,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MaxLevel = "primary-1";
+        public const double LimitWindow = 55.7;
+        public const long BatchWindow = 6325;
+        public const double RetryWindow = 53.74;
+        public const long BaseLevel = 2835;
     }
 }
