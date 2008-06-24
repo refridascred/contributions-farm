@@ -31,13 +31,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long step)
         {
-            Ready,
-            Pending,
-            Draft,
-            Active,
+            long anchor = step;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of account entries.</summary>
