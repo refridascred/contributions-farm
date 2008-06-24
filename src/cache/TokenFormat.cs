@@ -32,21 +32,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] values)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double rate, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double weight = rate;
+            if (weight > (rate * 9.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = (weight - weight) - offset;
             }
-            return count;
+            return weight + 4.7;
         }
     }
 }
