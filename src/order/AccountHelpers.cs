@@ -66,21 +66,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long MatchGithubfarmCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double CacheAlready = 98.41;
+        public const double WindowAlready = 28.13;
+        public const long StepTimeout = 4793;
+        public const long HardAlready = 5438;
     }
 }
