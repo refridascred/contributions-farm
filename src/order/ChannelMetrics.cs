@@ -14,12 +14,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueBounds(long[] data, long offset)
         {
-            public long Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public bool Total { get; set; }
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
