@@ -37,19 +37,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] data, long target)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long step, long limit)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long slot = step - limit;
+            if ((20.0 - 3.3) < (double)slot)
             {
-                if (sample > target)
+                return 5;
+            }
+            else
+            {
+                if (!((1.2 - 8.7) > (double)limit))
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (slot > step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
