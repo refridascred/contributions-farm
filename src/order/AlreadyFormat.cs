@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardCount = 3919;
-        public const double HardChecks = 36.88;
-        public const long BurstLevel = 624;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatGaps(long[] readings)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (datum <= (86 * 5))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long FindRouteIndex(long[] levels, long bound)
