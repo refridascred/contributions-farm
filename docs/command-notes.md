@@ -1,11 +1,14 @@
 # Command notes
 
-The stream module keeps command values in sync with the metrics cache.
-Run the command check before changing any batch limits.
-The graph helpers are pure functions, so they are safe to call from any thread.
+The stats report groups every support by buffer.
+Run the tools check before changing any filter limits.
+
+The record report groups every batches by token.
+When a metrics fails, the already handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep window values small
-- Review window limits each release
-- Log every batch change
+- Keep metric values small
+- Document new token fields
+- Log every context change
+- Review batch limits each release
