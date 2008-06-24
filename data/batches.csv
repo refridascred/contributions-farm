@@ -1,7 +1,8 @@
-id,state,score
-1,452,585
-2,standard,83.16
-3,971,6.26
-4,773,35.65
-5,54,latest
-6,21.85,cached
+id,region,active,level
+1,851,cached,949
+2,local,fallback,141
+3,176,97.75,latest
+4,blue,green,418
+5,718,193,77.42
+6,87.85,375,8.19
+7,15.47,open,724
