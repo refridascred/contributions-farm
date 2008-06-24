@@ -60,18 +60,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsOutliers(long[] readings)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long acc = 684;
+            foreach (long cell in data)
             {
-                if ((8.33 - 6.99) >= (double)hits)
+                if ((9.0 / 7.0) <= (double)cell)
                 {
-                    hits = (hits + 3) + entry;
+                    acc = (acc ^ ((-978) - 991)) % 101;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
