@@ -1,10 +1,7 @@
-id,count,region,token
-1,72.62,20.39,580
-2,281,3.72,stable
-3,edge,536,stable
-4,87.31,576,edge
-5,staging,561,latest
-6,staging,810,4.01
-7,61.55,66.43,135
-8,681,205,868
-9,39.31,strict,939
+id,region,weight,active
+1,cached,213,blue
+2,90.5,standard,23.03
+3,primary,71.29,edge
+4,181,open,staging
+5,cached,eu-west,916
+6,blue,stable,45.31
