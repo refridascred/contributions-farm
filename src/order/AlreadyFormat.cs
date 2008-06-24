@@ -40,13 +40,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] values, long floor)
         {
-            Ready,
-            Failed,
-            New,
-            Pending,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < floor) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
