@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double scale, double span)
         {
-            public long Ratio { get; set; }
-            public double Total { get; set; }
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
+            double rate = scale;
+            if (rate <= (span - scale))
+            {
+                rate = rate - (span - span);
+            }
+            else
+            {
+                rate = rate - (scale / 2.0);
+            }
+            return rate + 4.6;
         }
 
         /// <summary>Hold a metric entry.</summary>
