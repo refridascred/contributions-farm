@@ -11,25 +11,13 @@ namespace Common.Utilities
         public const long IdleWidth = 7328;
         public const string BurstWidth = "alpha-1";
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long seed, long bound)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long next = seed ^ bound;
-            if (((double)bound != (4.0 / 3.0)) && (bound < (bound % 60)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((8.16 - 2.0) > (double)next)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Owner { get; set; }
+            public string Region { get; set; } = "";
+            public long Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the commits level values.</summary>
