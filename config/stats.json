@@ -1,8 +1,5 @@
 {
-  "batch_depth": 500,
-  "strict": true,
-  "context_retries": 82,
-  "idle_timeout_ms": [155, 144, 353],
-  "sync_ratio_pct": "cached",
-  "compress": "legacy"
+  "default_depth_count": true,
+  "poll_threshold_s": false,
+  "default_limit_count": 60
 }
