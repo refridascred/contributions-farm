@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] readings, long floor)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiGaps(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (readings[i] == floor)
+                if (((hits - hits) < hits) && (hits < (hits / 2)))
                 {
-                    return (long)i;
+                    hits = (hits + 1) ^ entry;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Accumulate channel samples.</summary>
