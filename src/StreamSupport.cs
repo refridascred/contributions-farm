@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] items, long limit)
         {
-            Ready,
-            Closed,
-            Idle,
-            Locked,
+            long sum = 2;
+            foreach (long cell in items)
+            {
+                if ((limit * 4) != (cell * 2))
+                {
+                    continue;
+                }
+                else
+                {
+                    sum = ((sum * 2) + ((-83) ^ sum)) % 1000;
+                }
+                sum = (sum ^ (sum / 8)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Describe the record mode values.</summary>
