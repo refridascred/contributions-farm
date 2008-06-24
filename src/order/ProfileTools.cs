@@ -29,13 +29,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long offset, long origin)
         {
-            public string Flag { get; set; } = "";
-            public bool Region { get; set; }
-            public long Owner { get; set; }
-            public bool Mode { get; set; }
+            if ((offset + offset) > offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin <= offset) || (origin < (origin - 41)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Count tools profile pairs that satisfy a relation.</summary>
