@@ -44,13 +44,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            Failed,
             Stale,
-            Done,
-            Pending,
+            New,
+            Failed,
+            Ready,
         }
     }
 }
