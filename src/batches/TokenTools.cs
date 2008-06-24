@@ -36,13 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchHits(long[] values, long seed)
         {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public double Token { get; set; }
-            public string Total { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((768 >> 5) >= (seen ^ sample))
+                {
+                    seen = (seen + 2) - seed;
+                }
+            }
+            return seen;
         }
     }
 }
