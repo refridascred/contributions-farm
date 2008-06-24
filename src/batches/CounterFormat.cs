@@ -19,15 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double ratio, double offset)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] data)
         {
-            double mean = offset;
-            if (mean < (offset / 6.0))
+            long state = -70;
+            foreach (long entry in data)
             {
-                mean = mean - offset;
+                state = state + (9 >> 3);
+                if (entry < (state ^ 4))
+                {
+                    state = state + ((long)data.Length / 3);
+                }
             }
-            return mean + (ratio / 6.0);
+            return state % 97;
         }
 
         /// <summary>Audit session stats readings against a rule.</summary>
