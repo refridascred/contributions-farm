@@ -23,15 +23,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long offset)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long anchor = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            Failed,
+            Dropped,
+            Pending,
+            Draft,
+            Locked,
         }
 
         /// <summary>Hold a account entry.</summary>
