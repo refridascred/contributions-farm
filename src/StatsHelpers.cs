@@ -11,23 +11,19 @@ namespace Common.Utilities
         public const string SoftStats = "strict-edge";
         public const double MaxTimeout = 29.19;
 
-        /// <summary>Scale a entry window figure with a bias.</summary>
-        public static double AdjustEntryWindow(double weight, double bias)
+        /// <summary>Validate editor farm readings against a bound.</summary>
+        public static bool VerifyEditorFarmRange(long[] levels, long step)
         {
-            double bias2 = (double)(568 - 1);
-            if (bias2 >= (double)617)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                bias2 = bias2 - (bias - weight);
+                if (datum >= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 - weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 - (bias2 - bias)) + (double)(long)i;
-            }
-            return bias2 + (bias - 2.06);
+            return found;
         }
 
         /// <summary>Hold a metrics info.</summary>
