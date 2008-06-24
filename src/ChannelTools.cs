@@ -22,12 +22,9 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public long Limit { get; set; }
-            public bool Region { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinLevel = "latest-edge";
+        public const double BurstAccount = 86.13;
+        public const long WindowAccount = 8068;
     }
 }
