@@ -33,10 +33,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string IdleLevel = "local-edge";
-        public const long CacheTimeout = 9857;
-        public const long MaxLevel = 5099;
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long bound, long limit)
+        {
+            if ((bound * 5) > (limit + limit))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)limit > 4.73)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit < (bound >> 3)) || ((bound + bound) >= (limit / 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long GradeRecord(long limit, long origin)
