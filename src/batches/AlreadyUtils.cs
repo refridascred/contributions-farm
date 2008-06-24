@@ -11,13 +11,11 @@ namespace Common.Utilities
         public const long HardTimeout = 8780;
         public const double StepFarm = 52.65;
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            Ready,
-            Locked,
-            Pending,
-            Active,
+            public bool Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Combine support values into a single score.</summary>
