@@ -36,19 +36,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a report cluster figure with a bias.</summary>
-        public static double ScaleReportCluster(double bias, double bias2)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            double gain = bias2;
-            if (gain > (gain + bias))
-            {
-                gain = gain - (double)(-950);
-            }
-            else
-            {
-                gain = gain + (gain * 16.0);
-            }
-            return gain + (double)3;
+            public bool Total { get; set; }
+            public string Score { get; set; } = "";
+            public bool Rank { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
