@@ -1,7 +1,17 @@
 {
-  "min_interval_s": "edge",
-  "verbose": "cached",
-  "max_depth": "stable",
-  "already_timeout": 7642,
-  "hard_timeout": "standard"
+  "batch_depth": ["fallback", "open", "green", "fallback"],
+  "cache_depth": true,
+  "soft_capacity_pct": 5879,
+  "persist": {
+    "entry_threshold": true,
+    "max_depth_ms": [102, 159, 96, 113],
+    "order_limit": {
+      "flush_retries_ms": "standard",
+      "warm_capacity_s": "eu-west",
+      "idle_size_ms": "cached",
+      "githubfarm_ratio": 250
+    }
+  },
+  "audit": true,
+  "hard_interval_s": 100
 }
