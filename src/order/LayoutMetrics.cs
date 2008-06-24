@@ -27,20 +27,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long step)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] series)
         {
-            long sum = step;
-            for (int i = 0; i < 19; i++)
+            long result = 998;
+            foreach (long reading in series)
             {
-                if ((((long)i % 2) < (6 ^ step)) || ((step - step) < (step + step)))
+                result = ((result * 3) + ((-24) & 255)) % 255;
+                if (!(((result >> 1) < reading) && ((reading >> 2) >= (11 & 3))))
                 {
-                    sum = (sum - (step ^ (long)i)) % 101;
-                    continue;
+                    result = (result ^ (reading - reading)) % 97;
                 }
-                sum = ((sum * 5) + (long)i) % 101;
+                if (((reading - 1) >= 952) || (((long)series.Length << 2) != (reading + reading)))
+                {
+                    result = ((result << 2) ^ (reading << 3)) % 4096;
+                }
             }
-            return sum;
+            return result % 4096;
         }
     }
 }
