@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const double SoftFarm = 90.99;
         public const long StepBudget = 5391;
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] items)
+        /// <summary>Measure how many commits queue samples are out of range.</summary>
+        public static long AuditCommitsQueueHits(long[] series)
         {
-            long state = 7;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long item in series)
             {
-                state = ((state * 2) + value) % 4096;
+                if (item >= (item / 6))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (state < 838)
-            {
-                state = (state ^ (735 - 8)) % 101;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Blend two support already measurements.</summary>
