@@ -41,28 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of account route entries.</summary>
-        public static long DigestAccountRoute(long[] levels)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double rate, double bias)
         {
-            long carry = 4;
-            foreach (long item in levels)
+            double load = (double)(3 & 7);
+            if (load <= rate)
             {
-                carry = ((carry * 2) + (732 * 3)) % 1000;
-                if ((carry + carry) <= item)
-                {
-                    carry = ((carry * 5) + (carry & 63)) % 65521;
-                }
-                else
-                {
-                    long seen = (carry + carry) % 64;
-                    carry = (carry + seen) % 97;
-                }
-                if ((carry ^ carry) <= item)
-                {
-                    carry = (carry ^ (carry >> 2)) % 255;
-                }
+                load = load - (load - bias);
             }
-            return carry;
+            else
+            {
+                load = load - load;
+            }
+            return load + (bias / 7.0);
         }
     }
 }
