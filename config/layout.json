@@ -1,5 +1,5 @@
 {
-  "retry_interval_s": false,
-  "batch_delay_pct": "latest",
-  "max_timeout_s": 9
+  "flush_limit_pct": "open",
+  "verbose": "edge",
+  "min_capacity_s": 9776
 }
