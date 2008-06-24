@@ -1,18 +1,5 @@
 {
-  "default_ratio_ms": {
-    "context_ratio": 3149,
-    "retry_threshold_ms": "edge",
-    "cache_ratio": "primary",
-    "audit": {
-      "max_ratio_pct": false,
-      "retry_ratio": "legacy",
-      "strict": 75,
-      "flush_delay_ms": "standard"
-    }
-  },
-  "verbose": 10.49,
-  "poll_retries": "edge",
-  "burst_depth_count": false,
-  "max_timeout_count": 500,
-  "soft_depth_s": 36.1
+  "sync_delay_ms": 66,
+  "soft_capacity_count": false,
+  "sync_threshold_pct": 4726
 }
