@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] values)
+        /// <summary>Iterate the cache stream series from a seed.</summary>
+        public static long StepCacheStream(long limit)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long anchor = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (((datum >= seen) || ((8.81 + 1.0) <= (double)datum)) || (((long)values.Length - seen) <= (1 + datum)))
+                if (2.87 >= (double)limit)
                 {
-                    seen = seen + 2;
+                    anchor = anchor + limit;
+                    anchor = (anchor + ((long)i & 15)) % 97;
                 }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Roll a account channel counter forward.</summary>
