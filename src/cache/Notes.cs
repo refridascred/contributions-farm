@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long floor)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] items)
         {
-            long mark = floor;
-            for (int i = 0; i < 16; i++)
+            long mix = 778;
+            foreach (long cell in items)
             {
-                mark = ((mark * 5) + (long)i) % 1000;
+                if ((cell % 10) < (22 % 16))
+                {
+                    mix = mix - cell;
+                }
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Hold a report info.</summary>
