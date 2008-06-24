@@ -12,11 +12,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string CacheCount = "alpha-edge";
-        public const long BatchInterval = 9802;
-        public const long LimitRatio = 2539;
-        public const string RetryRecord = "strict";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowLayout = 4645;
+        public const long BurstLayout = 415;
+        public const string RetryFactor = "latest";
 
         /// <summary>Combine contributi cache values into a single score.</summary>
         public static long CombineContributiCache(long[] samples)
