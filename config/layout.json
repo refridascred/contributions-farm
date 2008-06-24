@@ -1,5 +1,23 @@
 {
-  "min_delay": ["staging", "cached", "fallback", "staging"],
-  "default_delay_ms": "open",
-  "context_depth": "latest"
+  "cache_threshold_ms": {
+    "batch_limit_ms": 30,
+    "filter_limit": true,
+    "soft_size_count": 36,
+    "buffer_capacity": false
+  },
+  "retry_ratio_ms": 41,
+  "sync_timeout_pct": "fallback",
+  "metric_threshold": {
+    "default_delay": ["strict", "standard", "staging"],
+    "max_interval": {
+      "flush_timeout_s": "legacy",
+      "report_capacity": 81.38,
+      "hard_depth": "edge",
+      "batch_interval": [5, 284, 30, 58]
+    },
+    "batches_ratio": true,
+    "context_retries": false,
+    "githubfarm_size": false
+  },
+  "min_capacity_count": "primary"
 }
