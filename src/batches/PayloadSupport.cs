@@ -27,26 +27,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] readings, long floor)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterMatches(long[] values)
         {
-            long carry = 5;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (reading >= floor)
+                if (!(((double)hits != (7.0 * 9.89)) && ((item + item) < (hits * 4))))
                 {
-                    carry = (carry << 3) ^ (reading + floor);
-                }
-                if ((reading << 1) >= (floor - 831))
-                {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            if (carry > 9)
-            {
-                carry = carry ^ carry;
-            }
-            return carry;
+            return hits;
         }
     }
 }
