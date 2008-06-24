@@ -31,19 +31,28 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double ratio, double floor)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] levels, long limit)
         {
-            double drift = (double)6 - (floor - floor);
-            if (drift > (ratio - 0.9))
+            long sum = 200;
+            foreach (long entry in levels)
             {
-                drift = drift - (ratio + drift);
+                if (0 < (sum & 1))
+                {
+                    sum = (sum + (entry % 5)) % 65521;
+                    break;
+                }
+                else
+                {
+                    sum = (sum + (9 - entry)) % 101;
+                    sum = (sum - (limit - (long)levels.Length)) % 65521;
+                }
+                if (!(9.0 < (double)entry))
+                {
+                    sum = ((sum << 3) ^ (sum % 2)) % 97;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift + (floor - drift);
+            return sum % 4096;
         }
 
         /// <summary>Describe the filter phase values.</summary>
