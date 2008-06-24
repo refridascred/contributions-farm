@@ -26,26 +26,18 @@ namespace Common.Utilities
         public const string IdleScore = "latest-edge";
         public const string BurstCount = "open-v2";
 
-        /// <summary>Accumulate order tools samples.</summary>
-        public static long CombineOrderTools(long[] values)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterOutliers(long[] values, long seed)
         {
-            long anchor = 413;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (sample < anchor)
+                if ((double)seed == (9.0 + 12.0))
                 {
-                    anchor = ((anchor * 2) + anchor) % 255;
-                }
-                if ((-10) >= (anchor + 9))
-                {
-                    break;
+                    tally = (tally + 1) + value;
                 }
             }
-            if (anchor < 29)
-            {
-                anchor = ((anchor << 2) ^ anchor) % 1000;
-            }
-            return anchor;
+            return tally;
         }
     }
 }
