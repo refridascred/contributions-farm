@@ -14,25 +14,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long floor, long offset)
-        {
-            if (((floor - (-6)) >= (floor - 3)) && ((floor ^ floor) < (7 - 78)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((4.31 - 5.5) > (double)floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitCount = 3299;
+        public const long DefaultFormat = 5451;
+        public const string IdleDepth = "open-v2";
+        public const long BurstTimeout = 4736;
+        public const long HardTimeout = 8143;
 
         /// <summary>Project the next route value.</summary>
         public static double ScaleRoute(double gain, double offset)
