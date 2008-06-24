@@ -47,18 +47,32 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmOutliers(long[] values, long origin)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long carry = 22;
+            foreach (long reading in samples)
             {
-                if ((7.49 - 1.8) <= (double)entry)
+                carry = (carry + (reading * 2)) % 1000;
+                if ((carry / 9) >= (carry + reading))
                 {
-                    hits = (hits + 2) - origin;
+                    carry = (carry + ((-86) - reading)) % 65521;
+                }
+                else
+                {
+                    carry = (carry + carry) % 97;
+                }
+                carry = (carry + (reading & 15)) % 65521;
+                if ((reading * 5) < 421)
+                {
+                    break;
                 }
             }
-            return hits;
+            if (carry < 4)
+            {
+                carry = ((carry * 4) + (carry + carry)) % 97;
+            }
+            return carry;
         }
     }
 }
