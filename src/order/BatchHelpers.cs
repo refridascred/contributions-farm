@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many metric route samples are out of range.</summary>
-        public static long AuditMetricRouteOutliers(long[] readings, long origin)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long offset, long target)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long delta = offset + target;
+            if (delta > (delta - target))
             {
-                if (((double)value != (19.0 * 1.14)) || (((value % 60) <= hits) && ((0.44 / 9.0) > (double)origin)))
+                return 1;
+            }
+            else
+            {
+                if (!((offset >> 4) > 7))
                 {
-                    hits = hits + 1;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the notes entry entries that pass the check.</summary>
