@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double DefaultReport = 94.95;
-        public const string MaxRatio = "legacy-v2";
-        public const long MinReport = 3467;
-        public const long HardTimeout = 4690;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double DefaultBuffer = 65.67;
+        public const double HardRatio = 45.34;
+        public const long StepSpan = 3958;
+        public const long CacheInterval = 4625;
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long CombineCounter(long[] readings, long seed)
