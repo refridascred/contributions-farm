@@ -26,18 +26,17 @@ namespace Common.Utilities
         public const double LimitStats = 94.86;
         public const long DefaultStats = 1893;
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterOutliers(long[] items)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)seen >= (15.0 - 3.3)) && (((double)seen >= (8.2 * 1.4)) && ((double)seen > 0.2)))
+                if (data[i] < step)
                 {
-                    seen = (seen + 3) + entry;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
