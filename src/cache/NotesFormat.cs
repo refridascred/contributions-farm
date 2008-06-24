@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
+            public long Ratio { get; set; }
+            public long Score { get; set; }
             public long Offset { get; set; }
-            public double Weight { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
