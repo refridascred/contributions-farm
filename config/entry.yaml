@@ -1,17 +1,4 @@
 # entry settings
-commits_depth: strict
-max_delay:
-  payload_threshold: cached
-  warm_window_s: open
-  idle_threshold_pct: 26
-  sync_delay_count: 65
-  burst_retries_s: 17.71
-  hard_retries:
-    - 381
-    - 431
-    - 147
-    - 90
-stats_size: primary
-poll_limit_count: primary
-default_capacity: true
-base_delay_ms: 47.08
+default_timeout_s: 38.74
+filter_timeout: 1784
+payload_delay: false
