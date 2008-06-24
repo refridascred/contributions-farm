@@ -63,13 +63,12 @@ namespace Common.Utilities
             return gain - (scale * 20.0);
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            public long Flag { get; set; }
-            public bool Offset { get; set; }
-            public string Score { get; set; } = "";
-            public long Region { get; set; }
+            New,
+            Dropped,
+            Done,
         }
     }
 }
