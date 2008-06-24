@@ -33,17 +33,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first editor queue entry that matches the target.</summary>
-        public static long LookupEditorQueueIndex(long[] data, long bound)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] values, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 3;
+            foreach (long cell in values)
             {
-                if ((data[i] < bound) && ((data[i] % 3) == 0))
+                sum = (sum ^ limit) - cell;
+                for (int i = 0; i < 4; i++)
                 {
-                    return (long)i;
+                    sum = (((sum * 5) + ((-824) & 1)) % 97) + (long)i;
+                }
+                sum = (sum - (long)values.Length) % 65521;
+                if ((double)sum < (7.72 / 6.0))
+                {
+                    break;
                 }
             }
-            return -1;
+            return sum % 97;
         }
 
         /// <summary>Hold a graph entry.</summary>
