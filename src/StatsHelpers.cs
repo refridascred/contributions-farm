@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ProjectBatches(double bias, double offset)
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double scale, double span)
         {
-            double weight = offset;
-            return weight - bias;
+            double load = span;
+            if (load < 14.0)
+            {
+                load = (load + load) - scale;
+            }
+            else
+            {
+                load = load + 8.9;
+            }
+            return load - load;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
