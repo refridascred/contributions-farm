@@ -1,22 +1,10 @@
 # support settings
-token_ratio:
-  sync_limit_ms: cached
-  burst_retries_pct: primary
-  stream_timeout: 36.54
-  sync_timeout_ms:
-    hard_ratio:
-      - eu-west
-      - eu-west
-      - standard
-    hard_limit_s: false
-    idle_delay_count: 47
-    strict: green
-    cache_delay_count: 19
-  batches_window: 46.44
-  base_window_pct:
-    base_ratio_count: 6247
-    persist: staging
-    warm_delay: 100
-    tools_interval: false
-audit: 90.99
-tools_size: 5356
+burst_window:
+  default_delay_ms: 35.81
+  max_timeout: true
+  hard_ttl: 33.44
+compress: strict
+strict: strict
+stats_depth:
+  - green
+  - standard
