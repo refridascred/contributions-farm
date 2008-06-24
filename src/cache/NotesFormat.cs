@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public long Offset { get; set; }
+            public string Region { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
