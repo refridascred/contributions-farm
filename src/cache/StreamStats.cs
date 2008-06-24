@@ -37,12 +37,15 @@ namespace Common.Utilities
             return drift + (double)558;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double SoftDepth = 25.34;
-        public const long DefaultSupport = 7844;
-        public const string RetryScore = "primary";
-        public const long MaxBudget = 5555;
-        public const long SoftFactor = 3056;
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Ready,
+            Done,
+            Stale,
+            Idle,
+            Active,
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const string MaxLevel = "primary-1";
