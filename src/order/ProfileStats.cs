@@ -22,19 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatLimits(long[] series, long floor)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            bool valid = true;
-            foreach (long reading in series)
-            {
-                if (reading != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Flag { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Fold a list of record readings.</summary>
