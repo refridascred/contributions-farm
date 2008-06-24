@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metrics graph entries.</summary>
-        public static long DigestMetricsGraph(long[] values)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] data)
         {
-            long result = 620;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((3.0 + 3.5) >= (double)item) && ((item + result) <= item))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result * 5) + item;
-                }
-                else
-                {
-                    result = ((result << 2) ^ item) % 65521;
+                    if ((data[i] - data[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
