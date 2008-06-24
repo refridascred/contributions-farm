@@ -1,11 +1,11 @@
 {
-  "batch_interval": {
-    "batch_threshold": true,
-    "burst_timeout": 91,
-    "dry_run": 7.66
+  "record_limit": false,
+  "readonly": {
+    "readonly": "cached",
+    "token_depth": true,
+    "sync_delay": "primary"
   },
-  "poll_ttl": ["fallback", "standard", "legacy", "strict"],
-  "flush_interval_count": 100,
-  "verbose": true,
-  "warm_limit_ms": "fallback"
+  "verbose": 98.28,
+  "burst_threshold_pct": "latest",
+  "base_interval_s": "green"
 }
