@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsBounds(long[] readings, long step)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] items, long floor)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample != step)
+                if (items[i] <= floor)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
