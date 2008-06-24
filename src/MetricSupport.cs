@@ -29,18 +29,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderHits(long[] items)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((55 - entry) != (tally % 16))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Failed,
+            Done,
+            New,
+            Retry,
         }
     }
 }
