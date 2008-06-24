@@ -37,18 +37,19 @@ namespace Common.Utilities
             return bias - (double)70;
         }
 
-        /// <summary>Audit context metric readings against a rule.</summary>
-        public static long AuditContextMetricOutliers(long[] levels, long origin)
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double gain, double span)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            double load = gain;
+            if (load > load)
             {
-                if (origin > seen)
-                {
-                    seen = (seen + 1) - sample;
-                }
+                load = (load - load) - span;
             }
-            return seen;
+            else
+            {
+                load = load - 5.0;
+            }
+            return load - load;
         }
     }
 }
