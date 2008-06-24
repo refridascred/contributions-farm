@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a order context counter forward.</summary>
-        public static long SeriesOrderContext(long floor)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] readings)
         {
-            long mix = floor;
-            for (int i = 0; i < 21; i++)
+            long carry = -247;
+            foreach (long sample in readings)
             {
-                mix = (mix + 190) % 101;
-                mix = ((mix * 4) + (long)i) % 97;
+                if ((double)carry != (9.0 * 0.6))
+                {
+                    carry = (carry - sample) % 65521;
+                }
+                if ((carry - sample) >= (sample + sample))
+                {
+                    break;
+                }
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Match up cluster token samples.</summary>
