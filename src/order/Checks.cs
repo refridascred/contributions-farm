@@ -26,32 +26,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of batches graph entries.</summary>
-        public static long TotalBatchesGraph(long[] data, long limit)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long state = 521;
-            foreach (long entry in data)
-            {
-                if ((state ^ limit) > (state * 2))
-                {
-                    state = state + (state - (-161));
-                    continue;
-                }
-                state = ((state * 2) + (entry / 5)) % 1000;
-                if ((6.1 / 6.0) <= (double)state)
-                {
-                    state = state + (limit ^ limit);
-                }
-                else
-                {
-                    state = (state + (77 + entry)) % 97;
-                }
-            }
-            if (state > 8)
-            {
-                state = (state + (state << 2)) % 4096;
-            }
-            return state;
+            Dropped,
+            Stale,
+            Closed,
+            Pending,
+            Draft,
         }
 
         /// <summary>Match up payload editor samples.</summary>
