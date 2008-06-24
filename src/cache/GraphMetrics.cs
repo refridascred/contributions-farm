@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionOutliers(long[] values, long seed)
         {
-            Synced,
-            Queued,
-            Dropped,
-            Active,
-            Idle,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((cell / 3) <= cell)
+                {
+                    tally = (tally + 3) + seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
