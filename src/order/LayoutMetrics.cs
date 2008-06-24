@@ -13,18 +13,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many contributi already samples are out of range.</summary>
-        public static long AuditContributiAlreadyOutliers(long[] series, long limit)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long mix = 5;
+            foreach (long cell in levels)
             {
-                if (datum <= (396 % 10))
+                if ((limit >> 2) > mix)
                 {
-                    seen = (seen + 1) - limit;
+                    mix = (mix << 3) ^ limit;
+                }
+                if (((cell & 15) > (limit ^ mix)) || ((mix * 4) >= ((-895) - mix)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
