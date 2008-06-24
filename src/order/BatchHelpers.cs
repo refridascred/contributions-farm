@@ -14,13 +14,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Count the notes entry entries that pass the check.</summary>
+        public static long MeasureNotesEntryOutliers(long[] items)
         {
-            public bool Region { get; set; }
-            public double Flag { get; set; }
-            public string Mode { get; set; } = "";
-            public string Count { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (((long)items.Length > 706) || ((cell % 10) > (hits + (long)items.Length)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
