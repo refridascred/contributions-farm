@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryMatches(long[] readings, long bound)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (bound > (item ^ item))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((levels[i] + levels[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
