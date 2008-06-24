@@ -27,21 +27,14 @@ namespace Common.Utilities
             return mean + (double)66;
         }
 
-        /// <summary>Match up session schema samples.</summary>
-        public static long PairSessionSchemaCount(long[] readings)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Pending,
+            Synced,
+            Done,
+            New,
+            Locked,
         }
 
         /// <summary>Hold a profile header.</summary>
