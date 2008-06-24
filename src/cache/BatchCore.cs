@@ -16,15 +16,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ScalePayload(double scale, double floor)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            double mean = 1.0 / 5.0;
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (((mean - 5.15) - (double)(long)i) - scale) + floor;
-            }
-            return mean + (double)66;
+            public long Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the account state values.</summary>
