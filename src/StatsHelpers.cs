@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const string SoftStats = "strict-edge";
         public const double MaxTimeout = 29.19;
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] readings, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public double Token { get; set; }
-            public long Limit { get; set; }
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a metrics info.</summary>
