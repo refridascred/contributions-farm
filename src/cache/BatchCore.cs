@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] levels, long offset)
+        /// <summary>Scale a account stream figure with a bias.</summary>
+        public static double BlendAccountStream(double gain, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = gain;
+            if (mean > gain)
             {
-                if ((levels[i] <= offset) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - offset;
             }
-            return -1;
+            return mean - mean;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
