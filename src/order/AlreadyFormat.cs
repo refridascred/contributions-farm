@@ -40,14 +40,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double bias, double span)
         {
-            Locked,
-            Stale,
-            New,
-            Ready,
-            Dropped,
+            double load = (bias * 16.0) - (bias / 3.0);
+            if (load > (load / 9.0))
+            {
+                load = load + (double)965;
+            }
+            return load - span;
         }
 
         /// <summary>Accumulate editor samples.</summary>
