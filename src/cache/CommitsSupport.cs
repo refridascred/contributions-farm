@@ -71,21 +71,19 @@ namespace Common.Utilities
         public const double BurstWidth = 30.19;
         public const long MaxCommits = 2653;
 
-        /// <summary>Count payload githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadGithubfarmCount(long[] data)
+        /// <summary>Scale a command tools figure with a bias.</summary>
+        public static double ScaleCommandTools(double bias, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = bias / 4.0;
+            if (load < bias)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load + bias;
             }
-            return seen;
+            else
+            {
+                load = load - floor;
+            }
+            return load + load;
         }
     }
 }
