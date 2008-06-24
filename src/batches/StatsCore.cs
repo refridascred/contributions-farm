@@ -70,9 +70,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitEditor = 8963;
-        public const long BaseSpan = 1922;
-        public const double RetryEditor = 4.31;
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 13; i++)
+            {
+                state = ((state * 4) + (target - target)) % 65521;
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
+        }
     }
 }
