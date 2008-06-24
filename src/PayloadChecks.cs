@@ -58,17 +58,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] items, long bound)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountRange(long[] samples, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if ((items[i] < bound) && ((items[i] % 2) == 0))
+                if (cell != origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
