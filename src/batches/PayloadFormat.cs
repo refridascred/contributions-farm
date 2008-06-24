@@ -23,11 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
+            public long Token { get; set; }
+            public double Rank { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the order phase values.</summary>
