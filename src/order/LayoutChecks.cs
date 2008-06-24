@@ -73,21 +73,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] data)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] samples, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (cell >= step)
                 {
-                    if ((data[i] - data[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
