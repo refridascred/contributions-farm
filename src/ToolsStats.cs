@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] values)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] data)
         {
-            long state = 25;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((6.09 + 3.9) > (double)(long)values.Length)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = ((state * 2) + (353 << 1)) - reading;
+                    if ((data[i] ^ data[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Count the batch checks entries that pass the check.</summary>
