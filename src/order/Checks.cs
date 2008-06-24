@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] levels)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long step, long bound)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            if ((double)bound <= (8.7 / 8.0))
             {
-                if (((84 + matches) != (37 * 3)) || (((matches - matches) < (reading / 7)) && ((11.0 - 2.0) != (double)matches)))
+                return 5;
+            }
+            else
+            {
+                if ((bound - bound) > step)
                 {
-                    matches = matches + 1;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
