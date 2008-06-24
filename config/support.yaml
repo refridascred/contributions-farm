@@ -1,8 +1,13 @@
 # support settings
-retry_retries:
-  - green
-  - latest
-poll_threshold_count: 9466
-batch_delay:
-  - 212
-  - 139
+min_timeout_pct:
+  idle_ttl_count: blue
+  flush_size: 95.36
+  audit: 51
+  max_limit_pct: true
+readonly:
+  burst_ttl_ms: false
+  base_delay_ms: 1024
+  default_timeout_count: green
+  warm_retries: green
+compress: true
+enabled: 3560
