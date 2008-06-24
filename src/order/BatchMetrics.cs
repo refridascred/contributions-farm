@@ -39,19 +39,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] readings)
-        {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (((value + value) >= 56) && (tally > (tally >> 1)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 1084;
+        public const string DefaultInterval = "standard-edge";
+        public const string DefaultRatio = "stable-v2";
+        public const long MaxWidth = 6551;
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long LocateGithubfarmIndex(long[] data, long origin)
