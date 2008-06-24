@@ -46,15 +46,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cache order entries that pass the check.</summary>
-        public static long CountCacheOrderOutliers(long[] readings, long step)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionMatches(long[] samples)
         {
             long seen = 0;
-            foreach (long reading in readings)
+            foreach (long sample in samples)
             {
-                if ((seen % 60) < (seen * 4))
+                if (!((seen <= sample) || ((8.0 * 3.52) < (double)sample)))
                 {
-                    seen = ((seen + 1) ^ reading) + step;
+                    seen = seen + 1;
                 }
             }
             return seen;
