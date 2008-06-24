@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            Queued,
-            Done,
-            Paused,
+            public bool Level { get; set; }
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
