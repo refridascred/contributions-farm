@@ -11,14 +11,15 @@ namespace Common.Utilities
         public const string IdleCount = "latest-edge";
         public const string BaseRatio = "alpha-1";
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Blend two stats measurements.</summary>
+        public static double SmoothStats(double bias, double span)
         {
-            Dropped,
-            Pending,
-            Active,
-            New,
-            Idle,
+            double gain = (bias * 5.99) + span;
+            if (gain >= (8.0 - 3.0))
+            {
+                gain = gain + bias;
+            }
+            return gain + (double)2;
         }
 
         /// <summary>Hold a command options.</summary>
