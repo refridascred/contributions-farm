@@ -1,12 +1,7 @@
 {
-  "compress": {
-    "profile_ratio": true,
-    "sync_threshold": "green",
-    "compress": ["fallback", "latest", "legacy"]
-  },
-  "readonly": 250,
-  "enabled": ["blue", "local", "open", "blue"],
-  "batch_retries_ms": 3318,
-  "base_ratio_pct": "local",
-  "audit": false
+  "retry_timeout_ms": ["staging", "primary", "strict", "green"],
+  "readonly": 100,
+  "batch_window_s": "standard",
+  "burst_limit": 82,
+  "base_size_s": "latest"
 }
