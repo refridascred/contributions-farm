@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long seed, long seed2)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long seed)
         {
-            long cur = seed + seed2;
-            if (((18.0 + 6.0) <= (double)cur) && ((seed + seed) != (seed2 + seed2)))
+            long state = seed;
+            for (int i = 0; i < 6; i++)
             {
-                return 7;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((double)76 > (double)cur)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return state;
         }
 
         /// <summary>Fold a list of context already readings.</summary>
