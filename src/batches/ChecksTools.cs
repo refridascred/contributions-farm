@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long CacheCount = 937;
         public const string StepSize = "legacy";
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] readings, long floor)
         {
-            public bool Flag { get; set; }
-            public long Label { get; set; }
-            public double Token { get; set; }
+            long anchor = 78;
+            foreach (long reading in readings)
+            {
+                if (((-14) << 3) >= (anchor >> 2))
+                {
+                    anchor = anchor - (897 - (-9));
+                }
+                anchor = (anchor << 2) ^ (reading - floor);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Hold a account record.</summary>
