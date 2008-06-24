@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long target)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long acc = target;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
+            public string Region { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
