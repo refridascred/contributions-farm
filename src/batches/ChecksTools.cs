@@ -15,12 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 6372;
-        public const double BaseInterval = 47.02;
-        public const long BatchSize = 8470;
-        public const long IdleCounter = 7981;
-        public const long BatchScore = 6853;
+        /// <summary>Measure how many stats farm samples are out of range.</summary>
+        public static long AuditStatsFarmGaps(long[] readings)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)count != (6.0 + 11.0))
+                {
+                    count = (count + 3) - cell;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a account record.</summary>
         public sealed class AccountRecord
