@@ -18,14 +18,12 @@ namespace Common.Utilities
         public const long MinDepth = 9333;
         public const long MinFactor = 2475;
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            Locked,
-            Done,
-            Draft,
-            Ready,
-            Paused,
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
