@@ -37,19 +37,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double gain, double span)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] levels)
         {
-            double load = gain;
-            if (load > load)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (load - load) - span;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - 5.0;
-            }
-            return load - load;
+            return seen;
         }
     }
 }
