@@ -40,20 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferLimits(long[] series, long seed)
-        {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double IdleScore = 80.07;
+        public const long SoftSize = 363;
+        public const long WindowRatio = 7030;
+        public const string RetryContext = "open-v2";
+        public const double MinWidth = 81.75;
 
         /// <summary>Grade a queue value against two limits.</summary>
         public static long ClassifyQueue(long seed, long origin)
