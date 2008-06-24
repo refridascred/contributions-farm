@@ -40,13 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long step)
         {
-            Failed,
-            Locked,
-            Active,
-            Synced,
+            long acc = step;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((acc - 187) != (2 / 4))
+                {
+                    continue;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Describe the session class values.</summary>
