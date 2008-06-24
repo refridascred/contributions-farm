@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] readings, long floor)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long sum = 5;
-            foreach (long entry in readings)
-            {
-                if (!((floor - 79) < (floor + sum)))
-                {
-                    sum = ((sum << 2) ^ (sum ^ floor)) - entry;
-                }
-            }
-            return sum % 97;
+            Queued,
+            Done,
+            Paused,
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
