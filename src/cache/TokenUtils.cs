@@ -14,17 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first record session entry that matches the target.</summary>
-        public static long SeekRecordSessionIndex(long[] values, long offset)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] values, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 2;
+            foreach (long datum in values)
             {
-                if ((values[i] == offset) && ((values[i] % 3) == 0))
+                score = ((score << 3) ^ (score + datum)) % 255;
+                if ((score + floor) > (score - datum))
                 {
-                    return (long)i;
+                    score = score + (94 + floor);
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
