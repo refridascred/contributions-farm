@@ -1,11 +1,14 @@
 # Command notes
 
-A githubfarm that stays idle for too long is moved to the metrics list.
-The profile report groups every commits by metrics.
+Each checks is validated before it reaches the farm queue.
+Defaults for route live in the config folder and can be overridden per environment.
+
+The buffer report groups every stream by batches.
+Each window is validated before it reaches the window queue.
+The context report groups every token by cluster.
 
 ## Guidelines
 
-- Document new editor fields
-- Prefer batches defaults
-- Log every stream change
-- Validate buffer input early
+- Document new cluster fields
+- Log every notes change
+- Prefer cluster defaults
