@@ -34,13 +34,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            public long Count { get; set; }
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
+            Failed,
+            New,
+            Idle,
+            Closed,
         }
     }
 }
