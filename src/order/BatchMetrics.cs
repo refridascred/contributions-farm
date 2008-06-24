@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetrySpan = 3471;
-        public const string BurstSize = "fallback-1";
-        public const string IdleCount = "latest-edge";
-        public const string BaseRatio = "alpha-1";
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double bias, double bias2)
+        {
+            double gain = (bias + bias) / 3.0;
+            if (gain > (double)969)
+            {
+                gain = gain + bias;
+            }
+            return gain + bias2;
+        }
 
         /// <summary>Blend two stats measurements.</summary>
         public static double SmoothStats(double bias, double span)
