@@ -43,20 +43,25 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long target)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long floor, long seed)
         {
-            long acc = target;
-            for (int i = 0; i < 17; i++)
+            long cur = floor ^ seed;
+            if (((seed << 2) < (floor + floor)) && (5 >= (cur * 3)))
             {
-                acc = acc - (acc + target);
-                if (target > acc)
-                {
-                    continue;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
+                return 6;
             }
-            return acc;
+            else
+            {
+                if ((seed * 2) < (floor * 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
