@@ -25,14 +25,32 @@ namespace Common.Utilities
         public const string StepSize = "stable-1";
         public const long IdleInterval = 6407;
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long limit, long bound)
         {
-            Draft,
-            Queued,
-            Idle,
-            Dropped,
-            Pending,
+            long cur = limit + bound;
+            if (((bound ^ cur) >= (7 + bound)) || (bound > (bound % 100)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit - limit) < cur)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit ^ cur) >= bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
