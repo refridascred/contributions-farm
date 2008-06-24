@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double scale, double offset)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            double ratio = scale;
-            if (ratio < (double)5)
-            {
-                ratio = (ratio + scale) + offset;
-            }
-            else
-            {
-                ratio = ratio + (double)520;
-            }
-            return ratio + (ratio * 4.42);
+            Paused,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Adjust a counter reading.</summary>
