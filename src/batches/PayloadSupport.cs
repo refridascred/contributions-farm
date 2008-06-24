@@ -47,26 +47,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] series, long offset)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmOutliers(long[] values, long origin)
         {
-            long total = 20;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((8.02 / 2.0) != (double)total)
+                if ((7.49 - 1.8) <= (double)entry)
                 {
-                    total = (total * 3) + reading;
-                }
-                else
-                {
-                    total = (total + 719) % 1000;
-                }
-                if ((offset & 63) > (total - total))
-                {
-                    break;
+                    hits = (hits + 2) - origin;
                 }
             }
-            return total % 1000;
+            return hits;
         }
     }
 }
