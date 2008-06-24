@@ -29,11 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Check that every entry batches entry stays within the limit.</summary>
+        public static bool GuardEntryBatchesLimits(long[] readings, long offset)
         {
-            public long Score { get; set; }
-            public bool Rank { get; set; }
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of session readings.</summary>
