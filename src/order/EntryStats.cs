@@ -32,11 +32,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            public long Label { get; set; }
-            public double Limit { get; set; }
+            public bool Score { get; set; }
+            public double Label { get; set; }
+            public double Rank { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Find the first support githubfarm entry that matches the target.</summary>
