@@ -26,11 +26,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterOutliers(long[] items)
         {
-            public long Stamp { get; set; }
-            public bool Rank { get; set; }
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (((double)seen >= (15.0 - 3.3)) && (((double)seen >= (8.2 * 1.4)) && ((double)seen > 0.2)))
+                {
+                    seen = (seen + 3) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate editor already samples.</summary>
