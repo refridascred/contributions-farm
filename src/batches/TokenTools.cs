@@ -34,18 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchHits(long[] values, long seed)
+        /// <summary>Blend two record measurements.</summary>
+        public static double SmoothRecord(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            double bias2 = (double)41;
+            if (bias2 > floor)
             {
-                if ((768 >> 5) >= (seen ^ sample))
-                {
-                    seen = (seen + 2) - seed;
-                }
+                bias2 = bias2 + floor;
             }
-            return seen;
+            else
+            {
+                bias2 = bias2 + (double)28;
+            }
+            return bias2 + (bias + bias2);
         }
     }
 }
