@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const long RetryToken = 2168;
         public const long DefaultFactor = 5994;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BaseSchema = 40.81;
-        public const long BurstDepth = 6438;
-        public const long WindowSchema = 2226;
-        public const long MinSchema = 5687;
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LocateClusterIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= origin) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long ScoreBatches(long[] samples, long step)
