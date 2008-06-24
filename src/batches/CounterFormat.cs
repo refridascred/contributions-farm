@@ -41,20 +41,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the support order series from a seed.</summary>
-        public static long DeriveSupportOrder(long bound)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] levels, long seed)
         {
-            long score = bound;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (score + (score - bound)) % 4096;
-                if (!(bound <= (4 + (long)i)))
+                if (levels[i] < seed)
                 {
-                    score = (score + score) % 4096;
+                    return (long)i;
                 }
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            return -1;
         }
     }
 }
