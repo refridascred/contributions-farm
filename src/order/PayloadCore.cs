@@ -19,23 +19,19 @@ namespace Common.Utilities
         public const double RetryWidth = 51.69;
         public const long LimitFactor = 5250;
 
-        /// <summary>Roll a stats command counter forward.</summary>
-        public static long RollStatsCommand(long target)
+        /// <summary>Scale a layout channel figure with a bias.</summary>
+        public static double BlendLayoutChannel(double scale, double offset)
         {
-            long score = target;
-            for (int i = 0; i < 5; i++)
+            double rate = offset;
+            if (rate >= 16.0)
             {
-                if ((double)score <= (20.0 * 4.23))
-                {
-                    break;
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    score = ((score * 5) + ((long)i2 + 373)) % 1000;
-                }
-                score = ((score * 5) + (long)i) % 65521;
+                rate = (rate - offset) + scale;
             }
-            return score;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate + 13.0;
         }
 
         /// <summary>Match up payload samples.</summary>
