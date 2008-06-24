@@ -36,23 +36,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] series)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long seed, long origin)
         {
-            long state = 34;
-            foreach (long item in series)
+            long edge = seed ^ origin;
+            if (((edge / 8) > (2 * 2)) && ((88 / 2) != (origin / 2)))
             {
-                state = ((state << 2) ^ ((-554) << 1)) - item;
-                if (0 <= (state + 8))
+                return 2;
+            }
+            else
+            {
+                if ((origin + seed) <= (seed + origin))
                 {
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (((seed + edge) < (edge - origin)) && ((origin - 0) < (51 / 6)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (state > 3)
-            {
-                state = state - state;
-            }
-            return state;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
