@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionOutliers(long[] values, long offset)
+        /// <summary>Blend two cache route measurements.</summary>
+        public static double BlendCacheRoute(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long item in values)
+            double gain = weight;
+            if (gain <= gain)
             {
-                if ((matches / 5) > ((-71) * 5))
-                {
-                    matches = ((matches + 3) + item) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                gain = gain + gain;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + (5.57 - 8.8)) - (double)(long)i;
+            }
+            return gain + offset;
         }
 
         /// <summary>Hold a layout record.</summary>
