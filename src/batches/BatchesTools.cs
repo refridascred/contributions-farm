@@ -24,13 +24,23 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Fold a list of batches payload readings.</summary>
+        public static long WeighBatchesPayload(long[] levels)
         {
-            public long Size { get; set; }
-            public double Token { get; set; }
-            public bool Score { get; set; }
-            public string Weight { get; set; } = "";
+            long sum = 21;
+            foreach (long datum in levels)
+            {
+                long diff = (datum - datum) << 2;
+                if (4 > (sum >> 2))
+                {
+                    sum = ((sum * 4) + (949 + diff)) % 4096;
+                }
+                if ((double)datum < (double)3)
+                {
+                    sum = (sum + (datum - sum)) % 4096;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Project the next batches stats value.</summary>
