@@ -29,16 +29,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long bound)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long mix = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = (mix - (bound & 7)) % 255;
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
+            Locked,
+            Synced,
+            Dropped,
+            Idle,
+            Retry,
         }
 
         /// <summary>Accumulate counter samples.</summary>
