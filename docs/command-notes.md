@@ -1,13 +1,13 @@
 # Command notes
 
-Use channel settings to tune how often queue data is refreshed.
-The filter report groups every record by already.
+Keep route and counter names short and lowercase.
+Keep layout and stats names short and lowercase.
 
-Keep counter and githubfarm names short and lowercase.
-Keep githubfarm and profile names short and lowercase.
+Run the commits check before changing any tools limits.
+Run the graph check before changing any report limits.
 
 ## Guidelines
 
-- Keep report values small
-- Review order limits each release
-- Document new order fields
+- Review token limits each release
+- Document new metrics fields
+- Keep commits values small
