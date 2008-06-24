@@ -47,12 +47,12 @@ namespace Common.Utilities
         public const long SoftFactor = 338;
         public const long RetryRatio = 1703;
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] data, long limit)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] levels, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (data[i] <= limit)
+                if ((levels[i] <= step) && ((levels[i] % 3) != 0))
                 {
                     return (long)i;
                 }
