@@ -39,19 +39,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamLimits(long[] items, long offset)
+        /// <summary>Accumulate editor already samples.</summary>
+        public static long FoldEditorAlready(long[] levels, long seed)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long anchor = 3;
+            foreach (long cell in levels)
             {
-                if (value <= offset)
+                if (((double)(long)levels.Length > (double)1) && (anchor > (cell + (-46))))
                 {
-                    ready = false;
-                    break;
+                    anchor = (anchor << 3) ^ (cell - cell);
+                }
+                else
+                {
+                    anchor = (anchor - (cell - seed)) % 1000;
                 }
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Describe the window level values.</summary>
