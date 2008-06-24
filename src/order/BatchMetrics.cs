@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the token contributi entries that pass the check.</summary>
-        public static long MeasureTokenContributiGaps(long[] readings, long bound)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((hits + sample) != (hits & 1))
-                {
-                    hits = (hits + 1) - bound;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetrySpan = 3471;
+        public const string BurstSize = "fallback-1";
+        public const string IdleCount = "latest-edge";
+        public const string BaseRatio = "alpha-1";
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
