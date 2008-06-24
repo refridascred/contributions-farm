@@ -30,21 +30,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] items)
+        /// <summary>Audit editor cluster readings against a rule.</summary>
+        public static long CountEditorClusterGaps(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((datum - count) < datum) && (datum > (count - count)))
                 {
-                    if ((items[i] ^ items[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
