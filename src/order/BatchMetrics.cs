@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double bias, double bias2)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] series)
         {
-            double gain = (bias + bias) / 3.0;
-            if (gain > (double)969)
+            long count = 0;
+            foreach (long datum in series)
             {
-                gain = gain + bias;
+                if ((count % 5) < (count - count))
+                {
+                    count = (count + 2) + datum;
+                }
             }
-            return gain + bias2;
+            return count;
         }
 
         /// <summary>Describe the already status values.</summary>
