@@ -37,14 +37,11 @@ namespace Common.Utilities
             return gain + (bias / 7.0);
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
-        {
-            Idle,
-            Active,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxSpan = 3146;
+        public const string HardBatches = "primary-v2";
+        public const double BaseBatches = 48.84;
+        public const long BatchWidth = 9403;
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long FoldGithubfarm(long[] series, long offset)
