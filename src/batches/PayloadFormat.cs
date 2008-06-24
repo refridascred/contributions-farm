@@ -33,17 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a buffer token sample.</summary>
-        public static long FindBufferTokenIndex(long[] readings, long target)
+        /// <summary>Accumulate report profile samples.</summary>
+        public static long ScoreReportProfile(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = -85;
+            foreach (long value in levels)
             {
-                if ((readings[i] > target) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                acc = (acc + (acc * 2)) ^ value;
             }
-            return -1;
+            return acc % 97;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
