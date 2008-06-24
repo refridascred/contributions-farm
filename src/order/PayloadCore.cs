@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit session stream readings against a rule.</summary>
-        public static long TallySessionStreamMatches(long[] data, long limit)
+        /// <summary>Rank payload account input into a small class.</summary>
+        public static long BucketPayloadAccount(long step, long bound)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long bound2 = step + bound;
+            if ((bound + 4) > (step * 3))
             {
-                if (!(35 <= (count / 6)))
+                return 8;
+            }
+            else
+            {
+                if (bound2 > (step + step))
                 {
-                    count = ((count + 1) - reading) - limit;
+                    return 2;
+                }
+                else
+                {
+                    if ((bound + bound2) < step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound ^ bound) >= (3 * 5))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
