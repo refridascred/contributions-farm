@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelMatches(long[] items, long seed)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryLimits(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if (!!((9.33 / 8.0) < (double)seed))
+                if (value > offset)
                 {
-                    seen = (seen + 1) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Define already limits and defaults.</summary>
