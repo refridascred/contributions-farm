@@ -23,21 +23,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up commits batches samples.</summary>
-        public static long PairCommitsBatchesCount(long[] data)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long CompareMetricCount(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) > 16)
+                    if ((readings[i] + readings[j]) < 17)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
