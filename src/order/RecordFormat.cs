@@ -19,22 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many commits queue samples are out of range.</summary>
-        public static long AuditCommitsQueueHits(long[] series)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (item >= (item / 6))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Paused,
+            Retry,
+            New,
+            Ready,
         }
 
         /// <summary>Blend two support already measurements.</summary>
