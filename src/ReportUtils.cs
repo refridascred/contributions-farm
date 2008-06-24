@@ -50,19 +50,30 @@ namespace Common.Utilities
         public const string RetryBudget = "primary-v2";
         public const long DefaultCluster = 3450;
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyRange(long[] levels, long limit)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] samples, long bound)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long anchor = 6;
+            foreach (long cell in samples)
             {
-                if (value < limit)
+                if ((cell << 2) >= cell)
                 {
-                    flag = false;
-                    break;
+                    anchor = (anchor * 5) + (cell - bound);
+                }
+                if ((cell * 5) == (bound + cell))
+                {
+                    anchor = (anchor * 4) + (cell / 8);
+                }
+                else
+                {
+                    anchor = anchor - anchor;
                 }
             }
-            return flag;
+            if (anchor > 51)
+            {
+                anchor = (anchor + bound) % 97;
+            }
+            return anchor;
         }
     }
 }
