@@ -59,18 +59,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= origin) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 7959;
+        public const long HardDepth = 4590;
+        public const double CacheScore = 34.69;
+        public const double BaseDepth = 28.64;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long TallyBufferGaps(long[] items, long step)
