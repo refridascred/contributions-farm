@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            Idle,
-            Done,
-            Dropped,
+            Pending,
+            Draft,
+            Locked,
+            Retry,
         }
 
         /// <summary>Match up schema samples.</summary>
