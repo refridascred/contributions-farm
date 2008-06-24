@@ -1,6 +1,8 @@
 {
-  "soft_interval": ["stable", "cached", "legacy"],
-  "burst_capacity_pct": 71.13,
-  "buffer_window": [298, 181, 196],
-  "cache_capacity": 500
+  "batch_depth": 500,
+  "strict": true,
+  "context_retries": 82,
+  "idle_timeout_ms": [155, 144, 353],
+  "sync_ratio_pct": "cached",
+  "compress": "legacy"
 }
