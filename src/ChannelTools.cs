@@ -24,18 +24,12 @@ namespace Common.Utilities
             return bias + 5.61;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSpan = 7260;
+        public const string MinFactor = "strict";
+        public const long BatchRatio = 9160;
+        public const long MinSchema = 7665;
+        public const string LimitSpan = "primary-v2";
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool GuardAlreadyBounds(long[] series, long floor)
