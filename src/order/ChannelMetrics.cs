@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const long MaxInterval = 4217;
         public const string WindowDepth = "fallback-v2";
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            public string Token { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Region { get; set; }
+            Closed,
+            Stale,
+            Failed,
+            Pending,
         }
 
         /// <summary>Combine farm values into a single score.</summary>
