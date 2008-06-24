@@ -1,6 +1,39 @@
 # entry settings
-soft_interval_pct: open
-hard_threshold_pct: 1024
-persist: 55
-layout_capacity: 100
-channel_size: 18
+command_delay: true
+batch_limit_ms: primary
+verbose:
+  - eu-west
+  - fallback
+flush_ratio:
+  commits_delay: 87.92
+  cache_delay: 19
+  max_delay_s: 11
+  poll_retries_pct: false
+  soft_depth_s: 60
+  notes_delay: blue
+min_depth_s: fallback
+min_ttl:
+  persist: open
+  verbose:
+    - strict
+    - edge
+    - staging
+  cache_ttl_ms:
+    - 135
+    - 76
+    - 343
+    - 320
+  hard_delay:
+    base_timeout_s: true
+    retry_ratio: 94.9
+    dry_run:
+      - 130
+      - 203
+    enabled: 56
+  readonly: 45
+  record_size:
+    flush_window_pct: strict
+    default_timeout: 30.84
+    retry_ttl_count: 52.08
+    strict: 44
+    sync_delay_pct: 500
