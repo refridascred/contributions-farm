@@ -39,24 +39,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] samples)
-        {
-            long result = 7;
-            foreach (long value in samples)
-            {
-                if ((value << 3) <= (value ^ result))
-                {
-                    result = ((result << 2) ^ (result + result)) % 65521;
-                    result = (result + ((-40) - 722)) % 255;
-                }
-                if ((value * 5) == (value & 3))
-                {
-                    result = (result + 34) % 65521;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCount = 3328;
+        public const string LimitWidth = "cached-1";
+        public const long MaxCluster = 9580;
+        public const string DefaultBudget = "alpha-v2";
+        public const long IdleCluster = 9107;
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long AuditStatsGaps(long[] items, long limit)
