@@ -20,13 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiMatches(long[] samples)
         {
-            Queued,
-            Pending,
-            Dropped,
-            Idle,
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((value % 10) == (99 + (-363)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many schema report samples are out of range.</summary>
