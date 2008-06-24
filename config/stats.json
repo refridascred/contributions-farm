@@ -1,14 +1,12 @@
 {
-  "default_retries_pct": 8,
-  "graph_depth": 43,
-  "warm_limit_ms": "strict",
-  "default_timeout_pct": 92,
-  "report_threshold": {
-    "idle_limit_pct": true,
-    "base_threshold_pct": "local",
-    "dry_run": "legacy",
-    "counter_ttl": 74,
-    "idle_retries_ms": [96, 323],
-    "flush_threshold_pct": [261, 401, 115]
-  }
+  "max_size": true,
+  "readonly": {
+    "burst_retries_ms": "stable",
+    "max_retries_count": 38.3,
+    "poll_timeout_s": 66.41
+  },
+  "batches_threshold": [388, 375, 203, 126],
+  "metric_ratio": 100,
+  "dry_run": "legacy",
+  "channel_capacity": "legacy"
 }
