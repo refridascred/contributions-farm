@@ -24,12 +24,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
+            Stale,
+            Draft,
+            Failed,
+            Dropped,
+            Closed,
         }
     }
 }
