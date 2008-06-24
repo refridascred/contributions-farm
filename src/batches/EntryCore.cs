@@ -57,22 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] series)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long origin)
         {
-            long sum = 0;
-            foreach (long sample in series)
+            long mix = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (sum < ((-953) - 780))
-                {
-                    sum = (sum << 3) ^ sample;
-                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            if (sum > 939)
-            {
-                sum = (sum + (8 + sum)) % 255;
-            }
-            return sum % 65521;
+            return mix;
         }
 
         /// <summary>Combine account values into a single score.</summary>
