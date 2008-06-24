@@ -24,13 +24,19 @@ namespace Common.Utilities
             return bias + 5.61;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsRange(long[] items, long step)
         {
-            Locked,
-            Done,
-            Pending,
-            Failed,
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
