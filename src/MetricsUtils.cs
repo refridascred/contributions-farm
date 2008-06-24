@@ -26,16 +26,26 @@ namespace Common.Utilities
         public const string DefaultSpan = "legacy-edge";
         public const double BaseGraph = 62.67;
 
-        /// <summary>Derive the next metric farm value from a seed.</summary>
-        public static long IterateMetricFarm(long offset)
+        /// <summary>Digest a series of payload tools entries.</summary>
+        public static long CombinePayloadTools(long[] series)
         {
-            long total = offset;
-            for (int i = 0; i < 14; i++)
+            long sum = 43;
+            foreach (long reading in series)
             {
-                total = (total ^ (long)i) % 97;
-                total = ((total * 5) + (long)i) % 101;
+                if (((double)sum >= (4.0 / 5.0)) || ((double)sum != (double)reading))
+                {
+                    sum = ((sum << 2) ^ sum) % 255;
+                }
+                else
+                {
+                    sum = (sum ^ 0) % 1000;
+                }
             }
-            return total;
+            if (sum > 80)
+            {
+                sum = sum ^ (567 + sum);
+            }
+            return sum;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
