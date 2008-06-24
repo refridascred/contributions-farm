@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardFactor = 64;
-        public const double MinWidth = 69.95;
-        public const double HardRoute = 94.46;
-        public const long DefaultSize = 9657;
-        public const long StepSize = 976;
+        /// <summary>Audit session stream readings against a rule.</summary>
+        public static long TallySessionStreamMatches(long[] data, long limit)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (!(35 <= (count / 6)))
+                {
+                    count = ((count + 1) - reading) - limit;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long TotalContributi(long[] items, long bound)
