@@ -33,19 +33,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long bound)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long acc = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((long)i == (0 + 73))
-                {
-                    continue;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            public long Offset { get; set; }
+            public double Count { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
