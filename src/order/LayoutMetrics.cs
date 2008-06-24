@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheRange(long[] samples, long floor)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long limit)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long acc = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample > floor)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Hold a command header.</summary>
