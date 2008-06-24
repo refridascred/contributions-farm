@@ -52,19 +52,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate profile record readings against a bound.</summary>
-        public static bool ValidateProfileRecordBounds(long[] items, long limit)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Queued,
+            Failed,
+            Draft,
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
