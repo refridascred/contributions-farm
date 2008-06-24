@@ -41,19 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyBounds(long[] series, long floor)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] items, long limit)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long state = 768;
+            foreach (long reading in items)
             {
-                if (cell < floor)
+                state = (state ^ limit) % 255;
+                if (!(reading <= (state + (-1))))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            return state % 4096;
         }
     }
 }
