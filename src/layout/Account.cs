@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers.</summary>
     public static class Account
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            Draft,
-            Failed,
-            Active,
-            Idle,
-            Retry,
+            Closed,
+            Pending,
+            Paused,
         }
 
         /// <summary>Count the githubfarm context entries that pass the check.</summary>
