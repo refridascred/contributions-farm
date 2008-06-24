@@ -54,14 +54,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            Failed,
+            Retry,
+            New,
             Stale,
-            Done,
-            Idle,
-            Ready,
+            Locked,
         }
 
         /// <summary>Define already limits and defaults.</summary>
