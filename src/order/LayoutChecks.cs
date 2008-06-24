@@ -60,19 +60,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteLimits(long[] samples, long step)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double rate, double span)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            double scale = (double)(58 << 2);
+            if (scale < (double)88)
             {
-                if (cell >= step)
-                {
-                    stale = false;
-                    break;
-                }
+                scale = scale - (span - rate);
             }
-            return stale;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (double)462) + (double)(long)i;
+            }
+            return scale - (double)2;
         }
     }
 }
