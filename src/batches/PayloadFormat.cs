@@ -16,21 +16,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count batches channel pairs that satisfy a relation.</summary>
-        public static long MatchBatchesChannelCount(long[] series)
+        /// <summary>Classify a entry stream pair into a bucket.</summary>
+        public static long RankEntryStream(long origin, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long bound = origin - floor;
+            if (((bound + floor) == (origin / 8)) || ((double)origin <= (0.7 * 5.29)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((double)floor != (7.6 + 5.0))
                 {
-                    if ((series[i] - series[j]) == 1)
+                    return 7;
+                }
+                else
+                {
+                    if ((bound << 2) >= (origin * 2))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the graph kind values.</summary>
