@@ -41,32 +41,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long limit, long bound)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long step)
         {
-            long cur = limit + bound;
-            if (((bound ^ cur) >= (7 + bound)) || (bound > (bound % 100)))
+            long result = step;
+            for (int i = 0; i < 4; i++)
             {
-                return 2;
+                result = (result + ((-9) / 3)) % 97;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if ((limit - limit) < cur)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit ^ cur) >= bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
