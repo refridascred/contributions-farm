@@ -40,22 +40,13 @@ namespace Common.Utilities
         public const long SoftInterval = 3444;
         public const long BatchRecord = 6506;
 
-        /// <summary>Combine record session values into a single score.</summary>
-        public static long CombineRecordSession(long[] samples, long step)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long score = 1;
-            foreach (long item in samples)
-            {
-                if ((item << 1) != (item / 6))
-                {
-                    score = ((score * 4) + (5 << 3)) % 4096;
-                }
-                if (((step << 1) > (step + score)) || ((step * 2) > 1))
-                {
-                    score = (score * 5) + (item >> 4);
-                }
-            }
-            return score;
+            public string Label { get; set; } = "";
+            public bool Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Match up report token samples.</summary>
