@@ -27,19 +27,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsBounds(long[] series, long seed)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Dropped,
+            New,
+            Retry,
+            Idle,
         }
 
         /// <summary>Validate window readings against a bound.</summary>
