@@ -24,22 +24,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadOutliers(long[] levels, long floor)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long origin, long limit)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long step = origin - limit;
+            if (origin > (limit / 6))
             {
-                if ((double)floor < 4.3)
+                return 1;
+            }
+            else
+            {
+                if ((step - 117) <= (56 << 1))
                 {
-                    count = (count + 2) + sample;
+                    return 7;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (((double)limit >= (4.21 + 6.0)) || (step > origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
     }
 }
