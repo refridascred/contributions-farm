@@ -20,20 +20,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionLimits(long[] levels, long seed)
-        {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 1002;
+        public const long IdleLayout = 8299;
+        public const string SoftWidth = "latest-edge";
 
         /// <summary>Rank context input into a small class.</summary>
         public static long SortContext(long bound, long offset)
