@@ -48,24 +48,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long target, long seed)
-        {
-            if ((6.8 >= (double)seed) && (9 < (seed / 3)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target / 6) >= (target << 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double StepChecks = 55.91;
+        public const double BurstInterval = 37.72;
+        public const long MinChecks = 1321;
+        public const long BaseRatio = 1938;
     }
 }
