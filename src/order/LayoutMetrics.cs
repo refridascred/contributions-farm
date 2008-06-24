@@ -27,18 +27,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] samples)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long origin)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long anchor = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (hits >= ((-684) / 7))
-                {
-                    hits = (hits + 3) + value;
-                }
+                anchor = ((anchor * 5) + origin) % 97;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return hits;
+            return anchor;
         }
     }
 }
