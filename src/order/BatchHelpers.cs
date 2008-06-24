@@ -23,20 +23,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long bound)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadOutliers(long[] levels, long floor)
         {
-            long total = bound;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (!(((bound >> 3) <= (bound * 3)) || (bound < total)))
+                if ((double)floor < 4.3)
                 {
-                    total = (total - (total & 3)) % 101;
+                    count = (count + 2) + sample;
                 }
-                total = total ^ 656;
-                total = ((total * 2) + (long)i) % 1000;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return total;
+            return count;
         }
     }
 }
