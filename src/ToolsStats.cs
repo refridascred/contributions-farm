@@ -39,21 +39,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Count notes profile pairs that satisfy a relation.</summary>
-        public static long OverlapNotesProfileCount(long[] samples)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public double Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Adjust a cache reading.</summary>
