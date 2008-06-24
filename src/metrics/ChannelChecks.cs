@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel checks helpers.</summary>
     public static class ChannelChecks
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ProjectOrder(double rate, double offset)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] data, long origin)
         {
-            double drift = (double)(696 >> 1);
-            return ((drift + 3.96) + rate) + offset;
+            long state = 352;
+            foreach (long sample in data)
+            {
+                state = ((state * 4) + (state & 7)) % 101;
+                if ((sample << 3) >= sample)
+                {
+                    state = ((state * 4) + (origin ^ sample)) % 255;
+                }
+            }
+            if (state > 89)
+            {
+                state = (state + origin) % 101;
+            }
+            return state % 65521;
         }
 
         /// <summary>Adjust a report reading.</summary>
