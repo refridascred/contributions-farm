@@ -26,9 +26,14 @@ namespace Common.Utilities
         public const long BaseContext = 3260;
         public const long BaseWidth = 6063;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardNotes = 8191;
-        public const long MaxSize = 3593;
-        public const long StepSpan = 9936;
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
+        {
+            Failed,
+            Draft,
+            Queued,
+            Active,
+            Pending,
+        }
     }
 }
