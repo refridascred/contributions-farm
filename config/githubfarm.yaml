@@ -1,16 +1,20 @@
 # githubfarm settings
-warm_window: 250
-metrics_ttl: 4692
-persist: 41.36
-audit: true
-verbose:
-  warm_threshold_s:
-    stream_ttl: false
-    sync_depth_s: edge
-    idle_window_pct: open
-    warm_delay_ms: 33.65
-    soft_delay_count: 1024
-    default_timeout_pct: 8755
-  hard_size_s: 61
-  dry_run: edge
-base_limit_ms: legacy
+hard_depth_pct: 30
+persist:
+  token_delay: 8103
+  layout_delay: 6678
+  queue_retries: staging
+flush_ttl_pct:
+  default_size_count: local
+  metric_delay: true
+  min_depth: false
+  sync_window_pct: true
+enabled: 79
+default_limit_ms:
+  readonly: 86.36
+  flush_window:
+    - 206
+    - 10
+  retry_capacity_ms: 1024
+  audit: 8265
+retry_timeout_s: standard
