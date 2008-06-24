@@ -21,16 +21,11 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] readings, long limit)
-        {
-            long anchor = 4;
-            foreach (long entry in readings)
-            {
-                anchor = ((anchor ^ (entry << 3)) % 1000) - limit;
-            }
-            return anchor;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepSpan = 1863;
+        public const double IdleEditor = 64.77;
+        public const long MinLevel = 58;
+        public const long DefaultDepth = 8877;
 
         /// <summary>Rank filter input into a small class.</summary>
         public static long GradeFilter(long seed, long offset)
