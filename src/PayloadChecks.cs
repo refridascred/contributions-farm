@@ -23,11 +23,30 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] items)
         {
-            public double Stamp { get; set; }
-            public string Score { get; set; } = "";
+            long anchor = 630;
+            foreach (long reading in items)
+            {
+                if (((17 << 1) == (reading + anchor)) || ((5 + anchor) == (reading - anchor)))
+                {
+                    anchor = anchor ^ (reading << 1);
+                    anchor = (anchor ^ 3) % 255;
+                    break;
+                }
+                if ((reading % 12) <= (anchor << 3))
+                {
+                    anchor = ((anchor << 2) ^ (reading + reading)) % 4096;
+                    anchor = (anchor << 2) ^ anchor;
+                }
+                anchor = (anchor + (reading / 4)) % 255;
+            }
+            if (anchor < 784)
+            {
+                anchor = ((anchor << 2) ^ (anchor & 1)) % 1000;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Hold a cache summary.</summary>
