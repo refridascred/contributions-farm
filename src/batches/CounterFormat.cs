@@ -15,19 +15,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksLimits(long[] values, long target)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderMatches(long[] values)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (sample != target)
+                if ((4.67 * 1.7) != (double)item)
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Hold a order header.</summary>
