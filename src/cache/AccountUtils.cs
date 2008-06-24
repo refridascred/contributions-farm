@@ -27,19 +27,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsLimits(long[] levels, long origin)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterGaps(long[] data, long bound)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (sample <= origin)
+                if (!((555 + bound) >= bound) || ((4 / 8) <= (tally % 100)))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 1) + entry;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
