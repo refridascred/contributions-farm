@@ -23,19 +23,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Accumulate format context samples.</summary>
-        public static long TallyFormatContext(long[] data, long limit)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long mix = 19;
-            foreach (long reading in data)
-            {
-                mix = ((mix - (limit % 3)) % 4096) ^ reading;
-                if (((mix - limit) < (limit >> 5)) && (11.0 > (double)limit))
-                {
-                    mix = mix + limit;
-                }
-            }
-            return mix % 4096;
+            public double Stamp { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a cache summary.</summary>
