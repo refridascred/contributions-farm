@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
-        {
-            public long Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public string Total { get; set; } = "";
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 5363;
+        public const long DefaultScore = 7033;
+        public const long BatchRatio = 9819;
+        public const long SoftWidth = 2477;
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long CombineCounter(long[] readings, long seed)
