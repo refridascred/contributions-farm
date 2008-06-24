@@ -30,20 +30,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long bound)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long anchor = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                if (!((anchor ^ anchor) <= (bound + 35)))
-                {
-                    long count = anchor;
-                    anchor = anchor ^ (count & 63);
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            Retry,
+            Idle,
+            Ready,
+            Active,
         }
 
         /// <summary>Hold a cache info.</summary>
