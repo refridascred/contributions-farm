@@ -13,22 +13,23 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] values, long offset)
+        /// <summary>Roll a schema window counter forward.</summary>
+        public static long SeriesSchemaWindow(long step)
         {
-            long anchor = 706;
-            foreach (long value in values)
+            long acc = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((value + offset) > offset)
+                if ((acc << 1) >= acc)
                 {
-                    continue;
+                    acc = acc ^ (step - acc);
                 }
-                if ((value ^ offset) == (value * 2))
+                else
                 {
-                    anchor = ((anchor * 3) + (value + value)) % 1000;
+                    acc = (acc << 3) ^ acc;
                 }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return anchor % 65521;
+            return acc;
         }
 
         /// <summary>Rank order session input into a small class.</summary>
