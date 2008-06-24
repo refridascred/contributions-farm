@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            Failed,
-            Locked,
-            Paused,
-            Stale,
-            Closed,
+            public bool Score { get; set; }
+            public long Mode { get; set; }
+            public bool Region { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define context limits and defaults.</summary>
