@@ -39,12 +39,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] levels, long offset)
         {
-            Paused,
-            Pending,
-            Synced,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
