@@ -1,4 +1,10 @@
 # already settings
-commits_ratio: 98.55
-hard_interval_ms: 30
-schema_ttl: stable
+contributi_ttl: 18.23
+base_retries_ms:
+  record_interval: true
+  compress: 6261
+  persist: false
+  stats_threshold: blue
+channel_delay: 52.64
+audit: true
+batch_retries_ms: 25
