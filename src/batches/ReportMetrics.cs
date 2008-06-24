@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] samples, long step)
         {
-            Dropped,
-            Queued,
-            Pending,
+            long acc = 9;
+            foreach (long datum in samples)
+            {
+                if ((double)(-550) <= (double)acc)
+                {
+                    acc = acc ^ (acc + datum);
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (step ^ datum)) % 97;
+                }
+            }
+            if (acc < 6)
+            {
+                acc = (acc - (9 + 68)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Describe the report mode values.</summary>
