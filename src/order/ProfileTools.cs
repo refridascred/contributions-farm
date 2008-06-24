@@ -60,11 +60,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            public long Token { get; set; }
-            public long Size { get; set; }
+            public double Count { get; set; }
+            public double Label { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
