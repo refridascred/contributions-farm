@@ -27,18 +27,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Measure how many route cluster samples are out of range.</summary>
-        public static long MeasureRouteClusterGaps(long[] data, long floor)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((entry * 4) <= (-54))
-                {
-                    count = (count + 3) + floor;
-                }
-            }
-            return count;
+            public double Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
