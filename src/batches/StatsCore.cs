@@ -40,11 +40,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two session editor measurements.</summary>
-        public static double ProjectSessionEditor(double ratio, double floor)
+        /// <summary>Derive the next already session value from a seed.</summary>
+        public static long DeriveAlreadySession(long target)
         {
-            double rate = ratio;
-            return rate + floor;
+            long acc = target;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = acc - acc;
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
