@@ -1,5 +1,22 @@
 {
-  "sync_delay_ms": 66,
-  "soft_capacity_count": false,
-  "sync_threshold_pct": 4726
+  "hard_ratio": 2256,
+  "cache_timeout": {
+    "cache_capacity": false,
+    "cache_limit": 3995,
+    "hard_timeout": "blue",
+    "max_depth": 95.39,
+    "base_interval_ms": {
+      "default_ttl": [443, 324, 333],
+      "dry_run": 2148,
+      "queue_window": 60,
+      "sync_capacity_s": 3033,
+      "graph_timeout": [445, 200, 379],
+      "hard_window_s": "fallback"
+    },
+    "batch_timeout": ["primary", "local", "fallback", "fallback"]
+  },
+  "enabled": 72.75,
+  "persist": false,
+  "session_ttl": [303, 404, 51, 286],
+  "default_size_ms": 5527
 }
