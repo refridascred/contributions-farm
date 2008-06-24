@@ -19,12 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftToken = 2670;
-        public const long HardToken = 231;
-        public const long HardDepth = 2210;
-        public const double StepInterval = 93.47;
-        public const long DefaultToken = 1625;
+        /// <summary>Check that every farm buffer entry stays within the limit.</summary>
+        public static bool GuardFarmBufferLimits(long[] data, long floor)
+        {
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
