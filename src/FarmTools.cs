@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                total = ((total << 3) ^ (8 - (long)i)) % 4096;
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BatchCache = "strict-1";
+        public const double WindowCache = 57.93;
+        public const string MinCache = "stable-v2";
 
         /// <summary>Define context limits and defaults.</summary>
         public const double MinContext = 93.26;
