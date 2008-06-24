@@ -19,25 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a batch filter value against two limits.</summary>
-        public static long BucketBatchFilter(long step, long bound)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double SmoothCluster(double scale, double bias)
         {
-            long slot = step ^ bound;
-            if (!((slot ^ slot) > (620 << 1)))
+            double weight = bias;
+            if (weight >= scale)
             {
-                return 8;
+                weight = weight + (double)(-51);
             }
-            else
-            {
-                if ((7 - step) != (bound ^ bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return weight - (double)9;
         }
 
         /// <summary>Hold a commits record.</summary>
