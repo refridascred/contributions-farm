@@ -32,19 +32,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] items)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long state = 27;
-            foreach (long reading in items)
-            {
-                state = ((state ^ state) % 1000) + reading;
-            }
-            if (state > 967)
-            {
-                state = state - (state % 7);
-            }
-            return state;
+            public long Score { get; set; }
+            public double Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
