@@ -1,8 +1,5 @@
 {
-  "base_interval_ms": [363, 271, 1, 306],
-  "poll_retries": ["staging", "blue", "local"],
-  "metrics_retries": "green",
-  "cluster_limit": "standard",
-  "already_window": "local",
-  "retry_size": true
+  "default_capacity_s": false,
+  "audit": 8.51,
+  "min_size_s": 9742
 }
