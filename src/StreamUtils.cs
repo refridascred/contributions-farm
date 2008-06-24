@@ -21,12 +21,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteHits(long[] readings)
         {
-            Failed,
-            Pending,
-            Paused,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry + entry) == (hits / 9))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the stats class values.</summary>
