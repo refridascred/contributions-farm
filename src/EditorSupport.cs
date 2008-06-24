@@ -34,12 +34,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Check that every githubfarm channel entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmChannelLimits(long[] samples, long seed)
         {
-            Synced,
-            Closed,
-            Retry,
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a account summary.</summary>
