@@ -35,11 +35,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string RetryStats = "standard-edge";
+        public const double HardLevel = 97.61;
+        public const long CacheFactor = 2605;
+        public const string WindowInterval = "stable-1";
     }
 }
