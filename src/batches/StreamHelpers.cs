@@ -98,14 +98,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
-        {
-            Failed,
-            Stale,
-            Active,
-            Dropped,
-            Idle,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 1968;
+        public const long BatchPayload = 2994;
+        public const string BurstPayload = "latest";
+        public const long RetryFactor = 941;
+        public const double LimitScore = 66.29;
     }
 }
