@@ -1,5 +1,8 @@
 {
-  "idle_ttl": "primary",
-  "idle_threshold_pct": 4450,
-  "checks_ttl": "legacy"
+  "poll_ttl": "cached",
+  "default_delay_pct": "staging",
+  "base_retries_s": "standard",
+  "min_limit": ["fallback", "edge", "legacy", "strict"],
+  "commits_capacity": false,
+  "readonly": "stable"
 }
