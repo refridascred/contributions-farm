@@ -41,13 +41,32 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long bound, long step)
         {
-            public long Owner { get; set; }
-            public bool Token { get; set; }
-            public double Rank { get; set; }
-            public long Size { get; set; }
+            long lane = bound - step;
+            if (((bound & 1) < 83) || ((double)step > (3.73 * 4.0)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((38 << 1) >= (bound - lane))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound ^ step) <= (lane + lane))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
