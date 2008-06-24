@@ -75,23 +75,25 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] items)
+        /// <summary>Rank order session input into a small class.</summary>
+        public static long SortOrderSession(long limit, long offset)
         {
-            long carry = 2;
-            foreach (long cell in items)
+            long gap = limit ^ offset;
+            if (212 <= gap)
             {
-                if (((819 / 9) >= carry) && ((carry >> 5) >= cell))
+                return 7;
+            }
+            else
+            {
+                if (gap <= (16 - offset))
                 {
-                    carry = carry ^ cell;
-                    continue;
+                    return 8;
                 }
-                if (cell < (148 / 8))
+                else
                 {
-                    carry = carry ^ (carry * 4);
+                    return 6;
                 }
             }
-            return carry;
         }
     }
 }
