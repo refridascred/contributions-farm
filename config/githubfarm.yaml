@@ -1,8 +1,5 @@
 # githubfarm settings
-max_capacity_s:
-  - 28
-  - 400
-  - 486
-flush_delay_count: 16.89
-base_depth: latest
-audit: 62
+dry_run: true
+default_retries_count: edge
+strict: 44.12
+max_retries: stable
