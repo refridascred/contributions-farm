@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long bound)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamGaps(long[] series)
         {
-            long anchor = bound;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if ((count + count) < (count << 2))
+                {
+                    count = (count + 1) ^ datum;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
