@@ -1,10 +1,6 @@
 {
-  "burst_limit_s": 18.02,
-  "metrics_size": {
-    "poll_delay": 60,
-    "compress": false,
-    "dry_run": 91.54
-  },
-  "burst_timeout_count": 18,
-  "session_size": "legacy"
+  "dry_run": 77,
+  "command_limit": "green",
+  "hard_ttl": "blue",
+  "flush_size_ms": 9
 }
