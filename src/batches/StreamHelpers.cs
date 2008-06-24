@@ -74,12 +74,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            Locked,
-            Active,
-            Stale,
+            public bool Weight { get; set; }
+            public double Offset { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
         }
     }
 }
