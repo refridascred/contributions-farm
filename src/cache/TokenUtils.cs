@@ -21,24 +21,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long seed, long limit)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            if ((seed * 5) <= limit)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed + 27) < (seed + limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Score { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
