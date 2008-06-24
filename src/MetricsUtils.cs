@@ -12,15 +12,14 @@ namespace Common.Utilities
         public const long MinMetric = 4491;
         public const string BaseDepth = "local-v2";
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double gain, double span)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            double ratio = (double)5 / 9.0;
-            if (ratio >= span)
-            {
-                ratio = ratio - gain;
-            }
-            return ratio - span;
+            Synced,
+            Ready,
+            New,
+            Draft,
+            Retry,
         }
 
         /// <summary>Derive the next metric farm value from a seed.</summary>
