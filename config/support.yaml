@@ -1,5 +1,4 @@
 # support settings
-format_ratio: 98.66
-burst_retries_ms: local
-flush_window: 250
-audit: 0.36
+profile_threshold: 4334
+poll_retries_count: 41
+default_depth_count: 1024
