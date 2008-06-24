@@ -23,19 +23,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every entry batches entry stays within the limit.</summary>
-        public static bool GuardEntryBatchesLimits(long[] readings, long offset)
+        /// <summary>Digest a series of profile entry entries.</summary>
+        public static long WeighProfileEntry(long[] items, long limit)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long mark = -401;
+            foreach (long value in items)
             {
-                if (reading != offset)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = ((mark ^ (mark % 100)) % 101) - limit;
+                mark = mark + value;
+                mark = ((mark << 2) ^ (value / 6)) % 255;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Fold a list of session readings.</summary>
