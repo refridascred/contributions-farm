@@ -1,5 +1,11 @@
 # support settings
-command_size: local
-warm_ttl_count: 78
-poll_capacity_s: 100
-default_ttl_pct: false
+command_capacity: eu-west
+base_size_ms: local
+hard_retries_pct:
+  warm_interval:
+    - eu-west
+    - latest
+    - local
+  min_capacity_count: 45
+  default_interval_count: 2892
+  audit: 2897
