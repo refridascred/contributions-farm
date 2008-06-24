@@ -35,25 +35,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a filter payload pair into a bucket.</summary>
-        public static long ClassifyFilterPayload(long target, long origin)
+        /// <summary>Accumulate context stream samples.</summary>
+        public static long DigestContextStream(long[] readings, long target)
         {
-            long delta = target ^ origin;
-            if ((5.2 / 5.0) > (5.1 - 20.0))
+            long anchor = -8;
+            foreach (long value in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin + delta) != (origin + origin))
+                anchor = (anchor - (target << 3)) % 255;
+                if ((double)value == (6.2 - 20.0))
                 {
-                    return 8;
+                    anchor = ((anchor << 3) ^ (value & 15)) % 101;
+                    anchor = (anchor - (anchor >> 3)) % 97;
+                    break;
                 }
                 else
                 {
-                    return 6;
+                    anchor = (anchor - (target - anchor)) % 4096;
+                }
+                if (anchor <= (anchor << 2))
+                {
+                    anchor = (anchor << 3) ^ (target + (-5));
                 }
             }
+            return anchor;
         }
 
         /// <summary>Grade a entry profile value against two limits.</summary>
