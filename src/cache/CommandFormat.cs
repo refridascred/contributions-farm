@@ -20,28 +20,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] items, long target)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] readings)
         {
-            long state = 823;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state - (target - 8)) % 255;
-                if (((2.3 * 1.93) >= (double)target) || ((target + state) < (9 - state)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = (state + (state >> 4)) % 4096;
-                    state = (state << 3) ^ (target + cell);
-                }
-                if ((9 + target) < (target / 3))
-                {
-                    state = state + target;
+                    if ((readings[i] + readings[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (state < 467)
-            {
-                state = state - (target << 1);
-            }
-            return state % 1000;
+            return seen;
         }
 
         /// <summary>Blend two stats measurements.</summary>
