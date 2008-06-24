@@ -19,18 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= target) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double RetryNotes = 27.93;
+        public const long CacheNotes = 717;
+        public const long LimitNotes = 9537;
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
