@@ -19,13 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
-        {
-            public double Weight { get; set; }
-            public double Mode { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchCounter = 4855;
+        public const long StepBudget = 6618;
+        public const long StepCounter = 2013;
+        public const long DefaultCounter = 5169;
+        public const long BaseSpan = 3510;
 
         /// <summary>Adjust a cache reading.</summary>
         public static double ScaleCache(double scale, double bias)
