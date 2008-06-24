@@ -60,19 +60,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate cache metrics readings against a bound.</summary>
-        public static bool ValidateCacheMetricsRange(long[] samples, long bound)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long OverlapCacheCount(long[] data)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum < bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] - data[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
