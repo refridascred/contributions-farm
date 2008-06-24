@@ -20,15 +20,38 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] levels)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long limit, long bound)
         {
-            long carry = 9;
-            foreach (long reading in levels)
+            if ((bound >> 4) > limit)
             {
-                carry = carry ^ reading;
+                return 4;
             }
-            return carry;
+            else
+            {
+                if ((bound & 255) >= bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound << 3) < limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)bound < (double)limit)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
