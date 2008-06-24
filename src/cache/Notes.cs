@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] series, long bound)
         {
-            Synced,
-            Pending,
-            Ready,
-            Idle,
+            long score = 517;
+            foreach (long sample in series)
+            {
+                score = (score ^ (score % 24)) % 255;
+                if (score < (sample - bound))
+                {
+                    score = (score ^ (bound & 1)) % 97;
+                }
+            }
+            if (score < 8)
+            {
+                score = ((score * 4) + (5 - score)) % 97;
+            }
+            return score % 65521;
         }
 
         /// <summary>Describe the checks state values.</summary>
