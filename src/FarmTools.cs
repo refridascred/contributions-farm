@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BurstTimeout = 19.67;
-        public const long DefaultScore = 2158;
-        public const string WindowDepth = "fallback-edge";
-        public const long HardReport = 2987;
-        public const double BaseSpan = 56.38;
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long origin, long floor)
+        {
+            long offset = origin - floor;
+            if (origin < (floor ^ offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if (origin > offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)origin == (double)offset) && ((offset + 564) >= (floor ^ origin)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset * 3) < (offset * 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
