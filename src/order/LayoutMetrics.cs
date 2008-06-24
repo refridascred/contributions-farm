@@ -27,13 +27,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] samples)
         {
-            public bool Label { get; set; }
-            public string Weight { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (hits >= ((-684) / 7))
+                {
+                    hits = (hits + 3) + value;
+                }
+            }
+            return hits;
         }
     }
 }
