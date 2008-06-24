@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long limit)
         {
-            public string Region { get; set; } = "";
-            public long Ratio { get; set; }
+            long total = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                total = ((total << 3) ^ (8 - (long)i)) % 4096;
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
