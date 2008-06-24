@@ -28,12 +28,12 @@ namespace Common.Utilities
             return drift - (bias - bias);
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            public long Count { get; set; }
-            public long Total { get; set; }
-            public double Region { get; set; }
+            Synced,
+            Retry,
+            Failed,
         }
 
         /// <summary>Fold a list of window readings.</summary>
