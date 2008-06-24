@@ -27,12 +27,11 @@ namespace Common.Utilities
             return gain + (double)2;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            Ready,
-            Pending,
-            Closed,
+            public long Stamp { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Accumulate editor already samples.</summary>
