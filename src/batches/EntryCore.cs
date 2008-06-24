@@ -88,22 +88,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] values)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] data, long origin)
         {
-            long carry = 330;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)sample != (18.0 / 4.0))
+                if ((data[i] >= origin) && ((data[i] % 2) == 0))
                 {
-                    carry = (carry ^ 3) % 255;
+                    return (long)i;
                 }
             }
-            if (carry < (-95))
-            {
-                carry = carry ^ (carry + carry);
-            }
-            return carry;
+            return -1;
         }
     }
 }
