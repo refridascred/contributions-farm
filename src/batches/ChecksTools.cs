@@ -12,15 +12,32 @@ namespace Common.Utilities
         public const long CacheCount = 937;
         public const string StepSize = "legacy";
 
-        /// <summary>Digest a series of counter schema entries.</summary>
-        public static long WeighCounterSchema(long[] items, long origin)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long seed, long seed2)
         {
-            long score = 34;
-            foreach (long cell in items)
+            long span = seed - seed2;
+            if (57 <= (span >> 4))
             {
-                score = score + (cell - origin);
+                return 6;
             }
-            return score;
+            else
+            {
+                if (!(seed <= (span * 5)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((1 + span) > (span + span))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
