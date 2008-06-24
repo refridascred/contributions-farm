@@ -42,12 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmGaps(long[] data, long seed)
         {
-            public long Score { get; set; }
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((507 - entry) >= (matches + matches))
+                {
+                    matches = (matches + 2) - seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
