@@ -50,24 +50,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double weight, double span)
-        {
-            double bias = (double)53 * 0.7;
-            if (bias > span)
-            {
-                bias = (bias + (double)6) + weight;
-            }
-            else
-            {
-                bias = bias + bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - 6.1) + (double)(long)i;
-            }
-            return bias + (double)2;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowSpan = 6044;
+        public const double MaxCommand = 28.57;
+        public const long HardDepth = 9043;
+        public const long StepCommand = 1018;
 
         /// <summary>Blend two context measurements.</summary>
         public static double BlendContext(double gain, double bias)
