@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long WindowRatio = 8773;
         public const string HardCluster = "standard-1";
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamLimits(long[] series, long floor)
         {
-            Ready,
-            Queued,
-            Locked,
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Accumulate already samples.</summary>
