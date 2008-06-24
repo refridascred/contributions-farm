@@ -18,15 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double SmoothCluster(double scale, double bias)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] readings)
         {
-            double weight = bias;
-            if (weight >= scale)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = weight + (double)(-51);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return weight - (double)9;
+            return count;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
