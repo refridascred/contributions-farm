@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheWidth = 6719;
-        public const long MaxWidth = 5845;
-        public const long MaxInterval = 4217;
-        public const string WindowDepth = "fallback-v2";
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((double)(long)i >= (8.14 - 16.0))
+                {
+                    mix = ((mix * 5) + (long)i) % 255;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the buffer level values.</summary>
         public enum BufferLevel
