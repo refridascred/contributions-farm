@@ -36,10 +36,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 5754;
-        public const double SoftQueue = 93.42;
-        public const double RetryQueue = 97.86;
-        public const string CacheWidth = "fallback-1";
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] items, long offset)
+        {
+            long acc = 65;
+            foreach (long entry in items)
+            {
+                acc = ((acc << 3) ^ (entry * 5)) + offset;
+            }
+            return acc;
+        }
     }
 }
