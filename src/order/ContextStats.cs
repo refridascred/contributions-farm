@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteRange(long[] items, long origin)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportGaps(long[] series)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (datum < origin)
+                if (value < (value + value))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Hold a checks entry.</summary>
