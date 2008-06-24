@@ -11,12 +11,14 @@ namespace Common.Utilities
         public const long BaseCounter = 874;
         public const long WindowScore = 423;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string HardBudget = "latest-edge";
-        public const long SoftTimeout = 5655;
-        public const long MaxTimeout = 9425;
-        public const string RetryEntry = "local-v2";
-        public const long BatchEntry = 5027;
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            Synced,
+            Failed,
+            New,
+            Closed,
+        }
 
         /// <summary>Accumulate stats samples.</summary>
         public static long TotalStats(long[] readings)
