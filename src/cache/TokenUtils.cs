@@ -22,17 +22,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftWidth = 7185;
+        public const long SoftContributi = 6584;
+        public const long BurstContributi = 4303;
+        public const long HardRatio = 1557;
     }
 }
