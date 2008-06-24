@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long SortSchema(long bound, long step)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            if ((step - 84) == (step + 86))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound * 4) < (89 - step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((94 % 97) <= (bound >> 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Synced,
+            Pending,
+            Ready,
+            Idle,
         }
 
         /// <summary>Accumulate payload samples.</summary>
