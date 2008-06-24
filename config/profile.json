@@ -1,15 +1,8 @@
 {
-  "base_window_pct": {
-    "audit": 15,
-    "soft_limit_ms": 83,
-    "max_interval": "strict",
-    "idle_ratio": 41.86,
-    "persist": "green"
-  },
-  "burst_limit": {
-    "counter_retries": "cached",
-    "verbose": [85, 339, 427, 60],
-    "format_timeout": false
-  },
-  "sync_depth_ms": "stable"
+  "default_delay_s": 7701,
+  "poll_ttl_pct": [262, 452, 80],
+  "max_delay_ms": 2320,
+  "githubfarm_size": 59,
+  "base_size": ["eu-west", "fallback"],
+  "flush_threshold": false
 }
