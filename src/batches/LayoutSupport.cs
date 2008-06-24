@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] readings)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double BlendMetric(double gain, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double scale = gain;
+            return (scale - gain) + bias;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
