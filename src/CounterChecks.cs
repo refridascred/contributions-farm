@@ -14,38 +14,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long floor, long seed)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] series)
         {
-            if (seed >= 1)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed << 2) == (3 >> 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor & 15) != (seed * 4))
+                    if ((series[i] + series[j]) != 5)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((88 % 97) < (seed + floor))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a batch info.</summary>
