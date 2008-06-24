@@ -49,16 +49,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long limit)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long score = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                score = (score ^ ((long)i + limit)) % 255;
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            Pending,
+            Paused,
+            New,
         }
 
         /// <summary>Rank queue entry input into a small class.</summary>
