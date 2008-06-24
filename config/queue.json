@@ -1,6 +1,8 @@
 {
-  "dry_run": [381, 24, 43],
-  "graph_size": "green",
-  "idle_threshold": 47,
-  "account_size": 1785
+  "base_interval_ms": [363, 271, 1, 306],
+  "poll_retries": ["staging", "blue", "local"],
+  "metrics_retries": "green",
+  "cluster_limit": "standard",
+  "already_window": "local",
+  "retry_size": true
 }
