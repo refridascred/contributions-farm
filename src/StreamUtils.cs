@@ -75,32 +75,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long floor, long target)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsGaps(long[] items, long limit)
         {
-            long next = floor - target;
-            if ((target / 4) <= (floor - 389))
+            long count = 0;
+            foreach (long reading in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((-6) > (target % 16))
+                if (!((count & 15) < (4 & 127)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (next <= target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = ((count + 2) + reading) - limit;
                 }
             }
+            return count;
         }
     }
 }
