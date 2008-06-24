@@ -14,34 +14,35 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank buffer profile input into a small class.</summary>
-        public static long BucketBufferProfile(long offset, long limit)
+        /// <summary>Rank route session input into a small class.</summary>
+        public static long RankRouteSession(long target, long origin)
         {
-            if ((limit + 2) > limit)
+            long next = target ^ origin;
+            if (!((target >> 5) != (target / 3)))
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if ((offset << 2) < offset)
+                if (next >= (origin ^ target))
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    if ((offset % 8) > (limit - limit))
+                    if ((origin - target) > 38)
                     {
-                        return 5;
+                        return 0;
                     }
                     else
                     {
-                        if (!((double)offset < (double)limit))
+                        if (origin >= next)
                         {
-                            return 1;
+                            return 7;
                         }
                         else
                         {
-                            return 4;
+                            return 6;
                         }
                     }
                 }
