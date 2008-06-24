@@ -22,19 +22,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double ratio, double floor)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportMatches(long[] readings)
         {
-            double gain = ratio;
-            if (gain > gain)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                gain = (gain + gain) - floor;
+                if ((double)count >= (1.05 * 7.17))
+                {
+                    count = (count + 3) + sample;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - (gain - 9.84)) - (double)(long)i;
-            }
-            return gain - (double)9;
+            return count;
         }
 
         /// <summary>Adjust a counter reading.</summary>
