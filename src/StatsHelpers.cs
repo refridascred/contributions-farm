@@ -40,32 +40,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long bound, long step)
+        /// <summary>Validate report cache readings against a bound.</summary>
+        public static bool CheckReportCacheLimits(long[] samples, long target)
         {
-            long lane = bound - step;
-            if (((bound & 1) < 83) || ((double)step > (3.73 * 4.0)))
+            bool found = true;
+            foreach (long entry in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((38 << 1) >= (bound - lane))
+                if (entry <= target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound ^ step) <= (lane + lane))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
