@@ -19,18 +19,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the layout checks entries that pass the check.</summary>
-        public static long CountLayoutChecksMatches(long[] levels)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiBounds(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if (item >= (seen << 3))
+                if (reading < step)
                 {
-                    seen = seen + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Describe the format state values.</summary>
