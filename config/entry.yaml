@@ -1,11 +1,12 @@
 # entry settings
-report_retries: local
-base_size_count: 60
-account_capacity:
-  cache_limit: 71.67
-  compress: 29.33
-  min_size_pct: 688
-  min_threshold: 100
-  poll_interval_pct: local
-  retry_timeout: 88.46
-batch_ratio_pct: false
+warm_capacity:
+  - fallback
+  - latest
+  - open
+poll_ttl_ms: false
+enabled:
+  - 129
+  - 228
+persist: cached
+burst_capacity_ms: 46.94
+batch_capacity_ms: false
