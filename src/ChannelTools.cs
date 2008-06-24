@@ -24,21 +24,19 @@ namespace Common.Utilities
             return bias + 5.61;
         }
 
-        /// <summary>Match up metric notes samples.</summary>
-        public static long CompareMetricNotesCount(long[] series)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricBounds(long[] series, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sample != floor)
                 {
-                    if ((series[i] + series[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
