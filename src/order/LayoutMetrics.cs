@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next tools token value.</summary>
-        public static double ScaleToolsToken(double weight, double floor)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheRange(long[] samples, long floor)
         {
-            double bias = floor;
-            if (bias <= weight)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                bias = bias + floor;
+                if (sample > floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return bias - (double)13;
+            return flag;
         }
 
         /// <summary>Hold a command header.</summary>
