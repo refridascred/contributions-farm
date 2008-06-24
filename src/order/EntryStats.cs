@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of githubfarm cache entries.</summary>
-        public static long TallyGithubfarmCache(long[] series, long seed)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] data, long bound)
         {
-            long carry = 5;
-            foreach (long datum in series)
+            long sum = 2;
+            foreach (long entry in data)
             {
-                if ((double)carry >= 20.0)
+                if (!(entry < (entry - sum)))
                 {
-                    carry = (carry << 2) ^ (carry ^ carry);
-                }
-                else
-                {
-                    carry = carry ^ (carry + 4);
-                    carry = (carry + (6 * 4)) % 97;
-                }
-                if ((carry << 1) < (seed >> 2))
-                {
-                    carry = ((carry * 2) + (carry + (long)series.Length)) % 1000;
-                }
-                else
-                {
-                    carry = carry + seed;
-                }
-                if ((datum & 31) != (668 & 3))
-                {
-                    carry = carry ^ (carry % 64);
-                }
-                else
-                {
-                    carry = (carry ^ (carry * 2)) % 97;
+                    sum = (((sum << 3) ^ (entry >> 2)) % 101) - bound;
                 }
             }
-            return carry % 1000;
+            return sum % 65521;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
