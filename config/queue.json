@@ -1,6 +1,6 @@
 {
-  "poll_ttl": 7231,
-  "max_ratio_ms": true,
-  "dry_run": 19,
-  "max_window_count": "edge"
+  "dry_run": [381, 24, 43],
+  "graph_size": "green",
+  "idle_threshold": 47,
+  "account_size": 1785
 }
