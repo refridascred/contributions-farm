@@ -26,25 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank order session input into a small class.</summary>
-        public static long GradeOrderSession(long origin, long floor)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesHits(long[] values, long origin)
         {
-            long prev = origin + floor;
-            if ((0.4 - 3.4) < (double)prev)
+            long tally = 0;
+            foreach (long item in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (prev >= (origin * 4))
+                if ((((item + origin) < (item + tally)) && ((6.1 * 2.1) != (double)item)) && (origin <= 9))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the checks mode values.</summary>
