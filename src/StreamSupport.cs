@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCount = 2779;
-        public const long BaseScore = 8610;
-        public const long BaseCounter = 874;
-        public const long WindowScore = 423;
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] samples, long origin)
+        {
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Accumulate queue samples.</summary>
         public static long FoldQueue(long[] series, long seed)
