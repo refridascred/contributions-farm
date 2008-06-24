@@ -35,14 +35,18 @@ namespace Common.Utilities
         public const string IdleReport = "latest-v2";
         public const string BatchRatio = "cached";
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaOutliers(long[] data)
         {
-            Locked,
-            Retry,
-            Paused,
-            Pending,
-            New,
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if (((item * 2) < (item ^ (long)data.Length)) && ((75 % 12) <= (seen + seen)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
