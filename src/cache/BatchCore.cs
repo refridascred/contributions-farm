@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaLimits(long[] levels, long step)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] readings, long limit)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long anchor = 4;
+            foreach (long entry in readings)
             {
-                if (item > step)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = ((anchor ^ (entry << 3)) % 1000) - limit;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Count the metric context entries that pass the check.</summary>
