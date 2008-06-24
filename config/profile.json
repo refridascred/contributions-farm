@@ -1,5 +1,18 @@
 {
-  "burst_depth": 39.45,
-  "hard_ratio_count": "staging",
-  "commits_delay": 3.19
+  "flush_timeout": "stable",
+  "audit": [226, 432, 248],
+  "flush_retries": 70.74,
+  "metrics_size": {
+    "metrics_interval": [111, 444, 433, 167],
+    "poll_ratio": 54,
+    "stream_retries": {
+      "soft_size": "green",
+      "base_timeout_s": 6260,
+      "dry_run": "strict",
+      "cache_threshold_count": 30
+    },
+    "poll_interval_pct": false,
+    "flush_ratio_ms": ["edge", "primary", "staging"]
+  },
+  "default_interval_pct": "legacy"
 }
