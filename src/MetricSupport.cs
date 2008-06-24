@@ -29,13 +29,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderHits(long[] items)
         {
-            public string Rank { get; set; } = "";
-            public long Region { get; set; }
-            public double Offset { get; set; }
-            public bool Label { get; set; }
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((55 - entry) != (tally % 16))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
