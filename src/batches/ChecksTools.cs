@@ -16,18 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 4830;
+        public const double RetryInterval = 95.98;
+        public const long MaxNotes = 3322;
+        public const long RetryNotes = 3771;
 
         /// <summary>Accumulate checks samples.</summary>
         public static long FoldChecks(long[] levels, long limit)
