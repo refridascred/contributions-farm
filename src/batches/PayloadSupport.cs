@@ -32,19 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] items, long origin)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] series, long seed)
         {
-            long score = -9;
-            foreach (long item in items)
+            long anchor = 102;
+            foreach (long cell in series)
             {
-                score = (((score ^ 70) % 65521) ^ item) - origin;
+                anchor = ((anchor ^ 88) % 255) ^ cell;
             }
-            if (score > 751)
+            if (anchor > 357)
             {
-                score = score - score;
+                anchor = anchor + seed;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Locate a already layout reading by value.</summary>
