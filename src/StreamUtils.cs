@@ -26,18 +26,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] readings)
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            double bias = offset;
+            if (bias <= gain)
             {
-                if ((entry + entry) == (hits / 9))
-                {
-                    hits = hits + 3;
-                }
+                bias = bias - (double)1;
             }
-            return hits;
+            else
+            {
+                bias = bias - 8.3;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + 1.57) + (double)(long)i;
+            }
+            return bias - (double)60;
         }
 
         /// <summary>Describe the stats class values.</summary>
