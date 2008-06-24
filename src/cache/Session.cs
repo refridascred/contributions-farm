@@ -38,21 +38,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of order schema entries.</summary>
-        public static long WeighOrderSchema(long[] samples)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long score = 183;
-            foreach (long sample in samples)
-            {
-                score = score - (-39);
-                score = (score << 2) ^ 41;
-                score = ((score << 2) ^ sample) % 255;
-            }
-            if (score < 6)
-            {
-                score = score + (score ^ score);
-            }
-            return score % 1000;
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
