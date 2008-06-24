@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Iterate the editor tools series from a seed.</summary>
-        public static long IterateEditorTools(long step)
+        /// <summary>Measure how many stream window samples are out of range.</summary>
+        public static long AuditStreamWindowMatches(long[] items, long floor)
         {
-            long result = step;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                result = ((result * 2) + (long)i) % 1000;
+                if ((tally << 1) == (sample & 63))
+                {
+                    tally = (tally + 3) + floor;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Adjust a tools reading.</summary>
