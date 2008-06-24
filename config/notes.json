@@ -1,18 +1,13 @@
 {
-  "default_limit": {
-    "idle_size": {
-      "strict": "legacy",
-      "sync_timeout_s": "staging",
-      "dry_run": "open",
-      "base_limit_ms": 27,
-      "report_threshold": 95.47
-    },
-    "flush_size": 9307,
-    "strict": 4347
+  "min_depth_s": ["staging", "cached"],
+  "enabled": "legacy",
+  "editor_capacity": "standard",
+  "burst_depth_pct": {
+    "checks_delay": 100,
+    "readonly": false,
+    "min_window": ["fallback", "blue"],
+    "base_ratio_count": [276, 315],
+    "batch_timeout": "legacy"
   },
-  "order_size": true,
-  "report_window": false,
-  "notes_timeout": ["cached", "edge", "green", "legacy"],
-  "stats_ttl": 6358,
-  "cache_depth": 6.9
+  "cache_ttl": 55
 }
