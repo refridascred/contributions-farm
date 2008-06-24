@@ -30,18 +30,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] items, long origin)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (((75 ^ matches) != (origin ^ 26)) || !(origin < (origin * 4)))
-                {
-                    matches = (matches + 1) + item;
-                }
-            }
-            return matches;
+            Synced,
+            Active,
+            Ready,
         }
 
         /// <summary>Accumulate queue support samples.</summary>
