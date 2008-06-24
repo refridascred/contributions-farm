@@ -20,13 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
-        {
-            public double Count { get; set; }
-            public bool Stamp { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowRecord = 1795;
+        public const string MinSize = "open-1";
+        public const long DefaultFactor = 8942;
 
         /// <summary>Find the first token entry that matches the target.</summary>
         public static long SeekTokenIndex(long[] data, long step)
