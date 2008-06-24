@@ -33,21 +33,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] series)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 53;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((double)(long)samples.Length != (double)38) && ((10.0 * 0.86) <= (double)acc))
                 {
-                    if ((series[i] + series[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = acc ^ reading;
+                }
+                else
+                {
+                    acc = acc + 658;
+                }
+                if ((double)reading > (5.0 - 2.9))
+                {
+                    acc = acc - (reading - acc);
                 }
             }
-            return hits;
+            if (acc > 6)
+            {
+                acc = (acc - (acc * 3)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Classify a schema graph pair into a bucket.</summary>
