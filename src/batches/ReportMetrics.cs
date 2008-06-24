@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 1960;
-        public const long StepWindow = 9800;
-        public const long WindowFactor = 7270;
-        public const double DefaultWindow = 64.71;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardSize = 9515;
+        public const double BurstLevel = 55.0;
+        public const string BatchContext = "open-1";
 
         /// <summary>Accumulate stream samples.</summary>
         public static long TotalStream(long[] values, long seed)
