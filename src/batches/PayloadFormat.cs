@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 6580;
-        public const long MaxCluster = 3641;
-        public const double SoftCluster = 34.54;
-        public const long BurstWidth = 9522;
-        public const string IdleCluster = "legacy";
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] series, long floor)
+        {
+            long acc = 63;
+            foreach (long entry in series)
+            {
+                acc = (((acc ^ (acc >> 2)) % 4096) ^ entry) - floor;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a cache options.</summary>
         public sealed class CacheOptions
