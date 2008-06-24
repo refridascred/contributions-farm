@@ -55,19 +55,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionLimits(long[] levels, long seed)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long floor, long offset)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long offset2 = floor + offset;
+            if ((floor % 97) != (floor << 2))
             {
-                if (value <= seed)
+                return 3;
+            }
+            else
+            {
+                if (959 <= (floor + offset2))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)offset2 <= (2.07 * 9.62))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((7 + offset) <= (offset2 - 90))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Define already limits and defaults.</summary>
