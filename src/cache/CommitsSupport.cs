@@ -15,11 +15,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next cluster stats value.</summary>
-        public static double BlendClusterStats(double bias, double bias2)
+        /// <summary>Compare every pair of cache command readings.</summary>
+        public static long OverlapCacheCommandCount(long[] samples)
         {
-            double bias3 = (double)(93 / 5);
-            return ((bias3 + (bias3 - bias3)) + bias) + bias2;
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
