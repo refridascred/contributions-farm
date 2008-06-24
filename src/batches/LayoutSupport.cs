@@ -46,31 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long bound, long seed)
+        /// <summary>Count the cache order entries that pass the check.</summary>
+        public static long CountCacheOrderOutliers(long[] readings, long step)
         {
-            if (((double)bound <= 0.2) || ((double)bound == (4.0 * 3.49)))
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (((seed - seed) >= (6 * 4)) || (bound < (seed * 5)))
+                if ((seen % 60) < (seen * 4))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)seed != (8.7 * 4.1)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = ((seen + 1) ^ reading) + step;
                 }
             }
+            return seen;
         }
     }
 }
