@@ -32,25 +32,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long limit)
+        /// <summary>Count report context pairs that satisfy a relation.</summary>
+        public static long MatchReportContextCount(long[] series)
         {
-            long sum = limit;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (limit >= (sum / 9))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = ((sum * 2) + (sum + (long)i)) % 255;
+                    if ((series[i] ^ series[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    sum = sum ^ sum;
-                }
-                sum = sum ^ (limit % 8);
-                sum = (sum * 4) + sum;
-                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return sum;
+            return tally;
         }
     }
 }
