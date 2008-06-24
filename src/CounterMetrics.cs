@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] samples, long offset)
         {
-            public long Mode { get; set; }
-            public bool Weight { get; set; }
-            public double Label { get; set; }
+            long state = -17;
+            foreach (long item in samples)
+            {
+                state = (state ^ (item / 4)) % 65521;
+            }
+            if (state > 44)
+            {
+                state = state + (offset + offset);
+            }
+            return state % 65521;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
