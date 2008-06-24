@@ -19,19 +19,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiBounds(long[] data, long step)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchHits(long[] levels, long target)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (reading < step)
+                if ((target - datum) != (datum >> 4))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Describe the format state values.</summary>
