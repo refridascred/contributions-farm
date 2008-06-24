@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] readings, long floor)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            double rate = floor;
+            if (rate > rate)
             {
-                if (((floor - floor) >= (hits >> 1)) || (((floor / 3) >= (hits % 12)) || ((entry + floor) == (hits >> 5))))
-                {
-                    hits = hits + 1;
-                }
+                rate = (rate - floor) - scale;
             }
-            return hits;
+            return rate + rate;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
