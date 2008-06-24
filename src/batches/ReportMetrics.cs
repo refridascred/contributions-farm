@@ -37,18 +37,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] readings)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyOutliers(long[] values, long step)
         {
             long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((matches ^ step) == (matches * 4))
                 {
-                    if ((readings[i] - readings[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 3) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
