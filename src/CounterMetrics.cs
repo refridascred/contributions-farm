@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelMatches(long[] items, long seed)
         {
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (!!((9.33 / 8.0) < (double)seed))
+                {
+                    seen = (seen + 1) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define already limits and defaults.</summary>
