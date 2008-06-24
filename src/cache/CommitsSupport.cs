@@ -17,22 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryOutliers(long[] levels)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ProjectTools(double weight, double offset)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            double bias = 7.9;
+            if (bias < offset)
             {
-                if ((entry % 24) > (count << 2))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                bias = bias - bias;
             }
-            return count;
+            else
+            {
+                bias = bias + bias;
+            }
+            return bias + weight;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
