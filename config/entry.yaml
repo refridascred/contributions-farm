@@ -1,9 +1,14 @@
 # entry settings
-retry_limit:
-  - 414
-  - 79
-  - 259
-retry_threshold_ms: 100
-default_window_count: cached
-burst_size: edge
-dry_run: 250
+min_size: legacy
+window_ratio:
+  - 2
+  - 360
+  - 343
+  - 160
+record_depth:
+  token_retries: 33.55
+  soft_timeout_pct:
+    - 379
+    - 368
+    - 64
+  session_interval: 30
