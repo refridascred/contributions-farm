@@ -1,9 +1,20 @@
 # githubfarm settings
-cache_limit:
-  sync_timeout_count: 82.77
-  batch_limit_s: 60.52
-  verbose: 3543
-audit: 47.95
-filter_window: blue
-compress: 77.28
-queue_delay: local
+verbose: legacy
+contributi_limit:
+  base_timeout: standard
+  default_ttl:
+    - primary
+    - staging
+    - stable
+    - eu-west
+  cache_ttl_count:
+    counter_threshold: 98
+    warm_delay:
+      - 198
+      - 265
+      - 160
+    stream_window: blue
+  batch_depth: standard
+batch_limit_ms: 1142
+route_size: 5
+cache_ratio: staging
