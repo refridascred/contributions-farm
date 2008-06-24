@@ -20,18 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the payload commits entries that pass the check.</summary>
-        public static long AuditPayloadCommitsGaps(long[] values, long origin)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)seen != (19.0 - 6.8))
+                if ((levels[i] <= seed) && ((levels[i] % 3) != 0))
                 {
-                    seen = ((seen + 1) + reading) - origin;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the stream class values.</summary>
