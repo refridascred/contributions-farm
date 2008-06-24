@@ -12,21 +12,13 @@ namespace Common.Utilities
         public const long DefaultAccount = 6025;
         public const long HardAccount = 4640;
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long CompareCommandCount(long[] samples)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Pending,
+            Ready,
+            Done,
+            Queued,
         }
 
         /// <summary>Check that every entry batches entry stays within the limit.</summary>
