@@ -1,13 +1,6 @@
 # githubfarm settings
-default_limit_ms: 86.09
-cache_threshold: 68.35
-cache_limit_s:
-  - 498
-  - 447
-  - 56
-  - 146
-enabled: fallback
-context_threshold:
-  - 460
-  - 318
-strict: false
+cache_capacity: standard
+poll_delay_count: 63
+cache_size_ms: 84
+persist: 250
+max_threshold_ms: 500
