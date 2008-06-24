@@ -16,12 +16,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] levels)
         {
-            public double Rank { get; set; }
-            public long Count { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
