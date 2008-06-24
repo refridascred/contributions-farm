@@ -27,12 +27,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] values, long seed)
         {
-            public string Offset { get; set; } = "";
-            public bool Token { get; set; }
-            public long Weight { get; set; }
+            long anchor = 5;
+            foreach (long datum in values)
+            {
+                anchor = ((anchor + 886) + datum) + seed;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
