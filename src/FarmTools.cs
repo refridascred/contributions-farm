@@ -29,22 +29,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesMatches(long[] readings)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (((8.0 + 4.6) >= (double)sample) || ((double)seen <= (3.0 / 3.0)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
