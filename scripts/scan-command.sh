@@ -6,9 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary stable edge; do
+mode="${1:-green}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in eu-west fallback staging legacy; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=73
+COMMAND_LIMIT=478
 log "limit is ${COMMAND_LIMIT}"
