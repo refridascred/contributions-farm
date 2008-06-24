@@ -71,12 +71,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long origin)
         {
-            Done,
-            Dropped,
-            Pending,
+            long state = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
