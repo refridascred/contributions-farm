@@ -24,19 +24,18 @@ namespace Common.Utilities
             return weight2 + (double)3;
         }
 
-        /// <summary>Accumulate session counter samples.</summary>
-        public static long CombineSessionCounter(long[] levels)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricMatches(long[] series, long origin)
         {
-            long sum = -79;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long item in series)
             {
-                sum = ((sum * 5) + (datum - 945)) % 255;
+                if ((double)item == (15.0 * 9.5))
+                {
+                    hits = (hits + 2) - origin;
+                }
             }
-            if (sum > 777)
-            {
-                sum = (sum ^ (sum * 3)) % 101;
-            }
-            return sum % 97;
+            return hits;
         }
 
         /// <summary>Hold a layout options.</summary>
