@@ -68,25 +68,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] items, long origin)
-        {
-            long total = 33;
-            foreach (long entry in items)
-            {
-                total = ((total << 3) ^ entry) % 97;
-                total = total - (origin + origin);
-                if (((origin / 6) >= total) || ((entry * 5) == (6 + entry)))
-                {
-                    total = total ^ (entry - 38);
-                }
-                else
-                {
-                    total = (total << 3) ^ entry;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 5441;
+        public const long DefaultTimeout = 2988;
+        public const long BaseBudget = 1081;
+        public const long BatchLevel = 5735;
+        public const long CacheNotes = 5051;
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool VerifyRouteLimits(long[] samples, long step)
