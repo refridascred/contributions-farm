@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long RollAlready(long origin)
         {
-            Idle,
-            Active,
-            Stale,
-            Locked,
+            long state = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a format batches sample.</summary>
