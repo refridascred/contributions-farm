@@ -21,15 +21,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long target)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileLimits(long[] readings, long target)
         {
-            long total = target;
-            for (int i = 0; i < 18; i++)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                if (cell >= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Hold a window options.</summary>
