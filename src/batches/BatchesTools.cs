@@ -33,19 +33,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long seed)
+        /// <summary>Project the next batches stats value.</summary>
+        public static double SmoothBatchesStats(double weight, double floor)
         {
-            long total = seed;
-            for (int i = 0; i < 21; i++)
+            double ratio = floor + (double)627;
+            if (ratio < (double)659)
             {
-                if (!(seed < (total ^ 21)))
-                {
-                    total = (total << 2) ^ total;
-                }
-                total = ((total * 5) + (long)i) % 97;
+                ratio = (ratio + (double)45) - weight;
             }
-            return total;
+            else
+            {
+                ratio = ratio + (0.9 / 6.0);
+            }
+            return ratio - (double)2;
         }
     }
 }
