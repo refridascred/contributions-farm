@@ -54,21 +54,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long PairAlreadyCount(long[] levels)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 330;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)sample != (18.0 / 4.0))
                 {
-                    if ((levels[i] ^ levels[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry ^ 3) % 255;
                 }
             }
-            return count;
+            if (carry < (-95))
+            {
+                carry = carry ^ (carry + carry);
+            }
+            return carry;
         }
     }
 }
