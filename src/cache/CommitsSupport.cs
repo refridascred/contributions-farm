@@ -54,19 +54,17 @@ namespace Common.Utilities
         public const long HardDepth = 9043;
         public const long StepCommand = 1018;
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double gain, double bias)
+        /// <summary>Locate a graph route reading by value.</summary>
+        public static long FindGraphRouteIndex(long[] values, long target)
         {
-            double drift = bias;
-            if (drift >= bias)
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = (drift + (double)38) - gain;
+                if (values[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (drift * 4.3)) + (double)(long)i;
-            }
-            return drift + (drift + 9.5);
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
