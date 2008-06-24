@@ -56,26 +56,21 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] values)
+        /// <summary>Count window metrics pairs that satisfy a relation.</summary>
+        public static long CompareWindowMetricsCount(long[] levels)
         {
-            long carry = 1;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((entry - entry) == (150 ^ 95)) && ((entry * 4) < (carry << 3)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = ((carry * 3) + ((long)values.Length / 3)) % 4096;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ 788) % 101;
+                    if ((levels[i] + levels[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (carry > 6)
-            {
-                carry = ((carry * 3) + (carry + 47)) % 4096;
-            }
-            return carry % 97;
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
