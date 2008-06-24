@@ -33,10 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double StepWindow = 4.83;
-        public const long RetryWindow = 815;
-        public const long LimitBudget = 9505;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitBudget = 3922;
+        public const string SoftInterval = "latest";
+        public const long IdleFactor = 2568;
+        public const string BurstFarm = "stable-1";
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long IdleInterval = 6293;
