@@ -13,11 +13,14 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 2642;
-        public const double SoftSupport = 45.86;
-        public const long HardBudget = 5240;
-        public const long IdleInterval = 9493;
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
+        {
+            Closed,
+            New,
+            Synced,
+            Retry,
+        }
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
