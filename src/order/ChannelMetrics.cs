@@ -19,22 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] data, long origin)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double gain, double span)
         {
-            long mix = 812;
-            foreach (long reading in data)
-            {
-                if ((double)origin <= (double)mix)
-                {
-                    mix = ((mix * 4) + (origin + (-91))) + reading;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ origin) % 1000;
-                }
-            }
-            return mix % 1000;
+            double mean = 6.0 + (span - span);
+            return (mean + (mean - span)) + gain;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
