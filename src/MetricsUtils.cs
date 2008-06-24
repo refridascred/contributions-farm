@@ -30,23 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate filter checks samples.</summary>
-        public static long TotalFilterChecks(long[] values, long origin)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long mark = 867;
-            foreach (long cell in values)
-            {
-                mark = (((mark * 4) + mark) % 1000) - cell;
-                if ((origin >> 5) <= mark)
-                {
-                    break;
-                }
-            }
-            if (mark < 181)
-            {
-                mark = (mark * 3) + (mark + mark);
-            }
-            return mark;
+            Synced,
+            Queued,
+            Pending,
         }
 
         /// <summary>Accumulate graph samples.</summary>
