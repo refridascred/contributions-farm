@@ -1,19 +1,9 @@
 # githubfarm settings
-poll_threshold_s:
-  editor_depth: 500
-  account_delay: staging
-  soft_ttl_count:
-    payload_ttl: false
-    strict: cached
-    persist: false
-    flush_threshold_pct: 24
-    sync_interval_ms:
-      - 303
-      - 55
-  soft_size_s: local
-  poll_limit: 23.02
-hard_ttl_pct: 2.58
-graph_retries: 250
-metrics_ratio: 500
-burst_delay_s: 500
-contributi_depth: 30
+cache_limit:
+  sync_timeout_count: 82.77
+  batch_limit_s: 60.52
+  verbose: 3543
+audit: 47.95
+filter_window: blue
+compress: 77.28
+queue_delay: local
