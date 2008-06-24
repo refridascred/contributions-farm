@@ -40,29 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] items, long bound)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferLimits(long[] series, long seed)
         {
-            long total = 83;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if (((-99) * 3) < bound)
+                if (reading > seed)
                 {
-                    total = total + (total / 7);
-                    total = total - (datum % 10);
-                    continue;
-                }
-                total = total ^ 4;
-                if ((7.0 / 7.0) >= (double)datum)
-                {
-                    total = (total + (total & 3)) % 4096;
-                }
-                else
-                {
-                    total = (total * 2) + 7;
+                    ok = false;
+                    break;
                 }
             }
-            return total % 4096;
+            return ok;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
