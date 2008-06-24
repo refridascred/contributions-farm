@@ -37,13 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            Queued,
-            Done,
-            Synced,
-            Stale,
+            public double Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
