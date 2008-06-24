@@ -22,12 +22,40 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double DefaultBatch = 89.47;
-        public const long BaseFactor = 7073;
-        public const long BaseBatch = 9060;
-        public const long DefaultSize = 7344;
-        public const double MaxScore = 39.97;
+        /// <summary>Rank report commits input into a small class.</summary>
+        public static long BucketReportCommits(long limit, long origin)
+        {
+            long edge = limit - origin;
+            if (!((edge * 4) < limit))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit * 3) > (83 / 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (limit < (origin - edge))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)limit >= (6.2 / 2.0)) || (552 >= origin))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long PairClusterCount(long[] samples)
