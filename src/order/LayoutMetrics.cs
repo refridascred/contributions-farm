@@ -16,23 +16,12 @@ namespace Common.Utilities
             return bias - (double)13;
         }
 
-        /// <summary>Derive the next batches support value from a seed.</summary>
-        public static long DeriveBatchesSupport(long target)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long total = target;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    total = ((total * 2) + (57 & 255)) + (long)i2;
-                }
-                for (int i3 = 0; i3 < 6; i3++)
-                {
-                    total = (total - target) - (long)i3;
-                }
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            public double Rank { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
