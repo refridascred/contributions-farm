@@ -19,21 +19,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] items)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long offset, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long delta = offset ^ floor;
+            if ((delta + floor) < offset)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((double)delta <= (1.8 + 14.0)) || ((offset - floor) < (offset % 24)))
                 {
-                    if ((items[i] + items[j]) == 16)
+                    return 0;
+                }
+                else
+                {
+                    if (((delta * 4) > (delta * 5)) || ((offset - offset) > delta))
                     {
-                        matches = matches + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
