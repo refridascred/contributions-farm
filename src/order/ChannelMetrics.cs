@@ -38,18 +38,9 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextGaps(long[] samples, long target)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (!((double)tally != (double)483) || ((double)79 >= (double)target))
-                {
-                    tally = (tally + 3) + datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFormat = 729;
+        public const long MaxFormat = 5964;
+        public const long DefaultInterval = 7339;
     }
 }
