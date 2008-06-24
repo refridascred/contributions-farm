@@ -36,21 +36,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] items)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the batches phase values.</summary>
