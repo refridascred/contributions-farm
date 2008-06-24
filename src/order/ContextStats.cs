@@ -20,10 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowRecord = 1795;
-        public const string MinSize = "open-1";
-        public const long DefaultFactor = 8942;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaMatches(long[] items, long origin)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (origin <= (origin << 2))
+                {
+                    seen = (seen + 1) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a schema info.</summary>
         public sealed class SchemaInfo
