@@ -43,13 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double gain, double offset)
         {
-            public long Weight { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Score { get; set; }
-            public double Rank { get; set; }
+            double bias = (double)(681 ^ 81);
+            if (bias > offset)
+            {
+                bias = (bias - bias) - gain;
+            }
+            return bias - (10.0 - offset);
         }
 
         /// <summary>Describe the route phase values.</summary>
