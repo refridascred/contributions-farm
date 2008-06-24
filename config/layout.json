@@ -1,7 +1,7 @@
 {
-  "batch_limit_pct": false,
-  "readonly": "green",
-  "support_capacity": "cached",
-  "batch_ratio_count": true,
-  "min_window_s": 47
+  "enabled": true,
+  "sync_size_pct": ["fallback", "stable", "strict", "green"],
+  "dry_run": 25,
+  "hard_threshold_pct": 1024,
+  "sync_window": "local"
 }
