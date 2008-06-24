@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterOutliers(long[] series)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueOutliers(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if ((347 - 695) > (entry + matches))
+                if ((tally / 9) > (tally - tally))
                 {
-                    matches = matches + 2;
+                    tally = ((tally + 3) ^ value) + limit;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Project the next entry value.</summary>
