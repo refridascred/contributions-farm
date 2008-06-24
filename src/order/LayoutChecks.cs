@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Look up the position of a route cluster sample.</summary>
-        public static long SeekRouteClusterIndex(long[] values, long target)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 7;
+            foreach (long entry in items)
             {
-                if ((values[i] < target) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum - (1 & 127)) % 4096) ^ entry;
+                sum = sum + sum;
             }
-            return -1;
+            return sum % 4096;
         }
 
         /// <summary>Hold a graph entry.</summary>
