@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 8370;
-        public const string MinEditor = "stable-edge";
-        public const long CacheEditor = 7834;
-        public const long HardSpan = 6045;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double DefaultReport = 94.95;
+        public const string MaxRatio = "legacy-v2";
+        public const long MinReport = 3467;
+        public const long HardTimeout = 4690;
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long CombineCounter(long[] readings, long seed)
