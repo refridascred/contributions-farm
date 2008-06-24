@@ -16,21 +16,17 @@ namespace Common.Utilities
             return drift + 8.9;
         }
 
-        /// <summary>Match up cluster token samples.</summary>
-        public static long OverlapClusterTokenCount(long[] items)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] readings, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((readings[i] >= origin) && ((readings[i] % 3) == 0))
                 {
-                    if ((items[i] ^ items[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
