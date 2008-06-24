@@ -27,17 +27,24 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long step)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] readings, long step)
         {
-            long mark = step;
-            for (int i = 0; i < 24; i++)
+            long state = -1;
+            foreach (long reading in readings)
             {
-                mark = (mark ^ (step / 8)) % 97;
-                mark = (mark ^ ((long)i + mark)) % 65521;
-                mark = ((mark * 2) + (long)i) % 65521;
+                state = (state + (reading % 64)) % 65521;
+                if ((reading % 12) < step)
+                {
+                    state = (state - (reading ^ (-61))) % 1000;
+                }
+                else
+                {
+                    state = state - 424;
+                }
+                state = state - (state << 2);
             }
-            return mark;
+            return state % 97;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
