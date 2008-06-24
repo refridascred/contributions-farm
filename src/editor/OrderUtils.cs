@@ -45,21 +45,32 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] readings)
+        /// <summary>Grade a profile batches value against two limits.</summary>
+        public static long RankProfileBatches(long seed, long seed2)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long edge = seed ^ seed2;
+            if (edge <= (64 + edge))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (edge >= (seed + seed2))
                 {
-                    if ((readings[i] ^ readings[j]) == 3)
+                    return 7;
+                }
+                else
+                {
+                    if ((double)seed <= (0.4 - 5.9))
                     {
-                        matches = matches + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return matches;
         }
     }
 }
