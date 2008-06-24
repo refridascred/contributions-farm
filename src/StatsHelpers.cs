@@ -35,18 +35,25 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Measure how many account window samples are out of range.</summary>
-        public static long AuditAccountWindowMatches(long[] samples)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long target, long floor)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long edge = target ^ floor;
+            if (((floor + edge) >= target) || ((double)edge <= (5.0 + 5.9)))
             {
-                if (!(((-9) - value) < (count + count)))
+                return 7;
+            }
+            else
+            {
+                if ((4 + 76) <= (floor - floor))
                 {
-                    count = count + 2;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
