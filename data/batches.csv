@@ -1,8 +1,6 @@
-id,ratio,weight,score
-1,166,408,44.11
-2,570,4.06,149
-3,890,latest,300
-4,fallback,39.22,609
-5,748,open,legacy
-6,990,strict,508
-7,primary,57.22,edge
+id,token,count,ratio,region
+1,8.7,local,1.35,177
+2,strict,842,cached,49.93
+3,327,80.78,fallback,cached
+4,80.39,eu-west,362,77.86
+5,62.51,824,897,364
