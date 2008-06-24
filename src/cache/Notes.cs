@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] series, long bound)
+        /// <summary>Match up cluster farm samples.</summary>
+        public static long MatchClusterFarmCount(long[] values)
         {
-            long score = 517;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (score ^ (score % 24)) % 255;
-                if (score < (sample - bound))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (score ^ (bound & 1)) % 97;
+                    if ((values[i] + values[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (score < 8)
-            {
-                score = ((score * 4) + (5 - score)) % 97;
-            }
-            return score % 65521;
+            return matches;
         }
 
         /// <summary>Describe the checks state values.</summary>
