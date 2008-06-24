@@ -22,22 +22,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] values, long origin)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] data)
         {
-            long carry = -64;
-            foreach (long sample in values)
+            long score = 304;
+            foreach (long datum in data)
             {
-                if (origin >= (carry / 4))
+                if ((18.0 / 5.0) == (double)datum)
                 {
-                    carry = (carry + (sample + 62)) % 255;
+                    score = (score ^ (36 + score)) % 1000;
                 }
+                score = score - (datum % 2);
             }
-            if (carry > 0)
-            {
-                carry = ((carry * 3) + (8 >> 4)) % 65521;
-            }
-            return carry;
+            return score;
         }
 
         /// <summary>Hold a cache summary.</summary>
