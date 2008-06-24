@@ -29,18 +29,20 @@ namespace Common.Utilities
             return scale + (double)3;
         }
 
-        /// <summary>Audit window order readings against a rule.</summary>
-        public static long TallyWindowOrderOutliers(long[] series)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long floor)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long anchor = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if ((double)tally > (9.1 / 3.0))
+                if (floor <= (-79))
                 {
-                    tally = (tally + 3) + item;
+                    anchor = anchor - (floor + 507);
+                    anchor = (anchor * 4) + floor;
                 }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return tally;
+            return anchor;
         }
     }
 }
