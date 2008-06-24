@@ -16,18 +16,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string SoftReport = "strict-1";
+        public const long StepSpan = 1431;
+        public const long CacheInterval = 1139;
+        public const long BaseReport = 7152;
+        public const string MinTimeout = "fallback-v2";
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long CombineGithubfarm(long[] series)
