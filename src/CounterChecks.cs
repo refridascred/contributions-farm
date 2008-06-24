@@ -39,15 +39,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double scale, double bias)
+        /// <summary>Blend two report graph measurements.</summary>
+        public static double SmoothReportGraph(double scale, double floor)
         {
-            double ratio = bias * 0.88;
-            if (ratio <= (double)2)
+            double drift = floor;
+            for (int i = 0; i < 6; i++)
             {
-                ratio = ratio - (scale + 7.0);
+                drift = ((drift + drift) + (double)(long)i) + scale;
             }
-            return ratio - ratio;
+            return drift + (double)88;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
