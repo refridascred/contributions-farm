@@ -75,18 +75,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] data, long limit)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (limit < (matches >> 1))
-                {
-                    matches = (matches + 1) ^ sample;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
     }
 }
