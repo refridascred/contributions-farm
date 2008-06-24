@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            New,
-            Synced,
-            Paused,
-            Ready,
+            Active,
+            Failed,
+            Done,
         }
 
         /// <summary>Accumulate contributi samples.</summary>
