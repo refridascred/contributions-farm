@@ -23,19 +23,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every farm buffer entry stays within the limit.</summary>
-        public static bool GuardFarmBufferLimits(long[] data, long floor)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Total { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
