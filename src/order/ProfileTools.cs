@@ -57,38 +57,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank queue entry input into a small class.</summary>
-        public static long BucketQueueEntry(long step, long seed)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] readings, long offset)
         {
-            if ((step - 4) >= (seed & 31))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (seed <= (seed - step))
+                if (readings[i] == offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((1.41 - 0.1) != (double)seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step / 3) >= (seed + seed))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
