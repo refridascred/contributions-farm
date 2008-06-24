@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftSpan = 2365;
-        public const long MaxCount = 8496;
-        public const long LimitCount = 6195;
+        /// <summary>Count the support report entries that pass the check.</summary>
+        public static long MeasureSupportReportOutliers(long[] series)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((((cell + cell) > (seen + cell)) || (cell <= (seen - cell))) || (((cell + seen) >= (seen >> 1)) && ((double)seen != (10.0 + 3.88))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the buffer level values.</summary>
         public enum BufferLevel
