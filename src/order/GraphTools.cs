@@ -52,14 +52,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double scale, double bias)
         {
-            Dropped,
-            Retry,
-            New,
-            Queued,
-            Pending,
+            double gain = bias + (scale - scale);
+            for (int i = 0; i < 5; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain - (scale * 20.0);
         }
 
         /// <summary>Hold a graph header.</summary>
