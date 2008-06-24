@@ -43,13 +43,19 @@ namespace Common.Utilities
         public const double LimitBatches = 85.58;
         public const string DefaultBatches = "legacy";
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsLimits(long[] readings, long bound)
         {
-            Pending,
-            Paused,
-            Draft,
-            Failed,
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
