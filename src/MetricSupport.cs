@@ -12,14 +12,16 @@ namespace Common.Utilities
             return (rate + (double)223) + ratio;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Roll a counter support counter forward.</summary>
+        public static long SeriesCounterSupport(long step)
         {
-            Retry,
-            Idle,
-            Synced,
-            Locked,
-            New,
+            long carry = step;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = ((carry * 3) + (carry * 3)) % 97;
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
