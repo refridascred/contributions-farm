@@ -49,19 +49,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] data, long bound)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] values)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long result = 43;
+            foreach (long reading in values)
             {
-                if (value <= bound)
+                if ((reading + reading) >= (reading / 5))
                 {
-                    valid = false;
-                    break;
+                    result = (result + reading) % 101;
+                }
+                if (((reading * 2) >= 62) && (((long)values.Length >> 4) > 989))
+                {
+                    result = result + reading;
+                }
+                else
+                {
+                    result = (result ^ result) % 97;
                 }
             }
-            return valid;
+            return result;
         }
     }
 }
