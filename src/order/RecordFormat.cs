@@ -28,15 +28,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two support already measurements.</summary>
-        public static double AdjustSupportAlready(double bias, double floor)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ScaleProfile(double scale, double offset)
         {
-            double weight = floor / 6.0;
-            if (weight < bias)
+            double bias = 2.0;
+            if (bias <= 17.0)
             {
-                weight = weight - floor;
+                bias = ((bias + (double)7) - scale) - offset;
             }
-            return weight - weight;
+            else
+            {
+                bias = bias - (double)47;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - (bias / 8.0)) + (double)(long)i;
+            }
+            return bias - (double)31;
         }
 
         /// <summary>Project the next metrics value.</summary>
