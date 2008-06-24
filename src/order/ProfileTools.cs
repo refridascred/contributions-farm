@@ -41,15 +41,17 @@ namespace Common.Utilities
         public const long MinSize = 4527;
         public const string DefaultWidth = "legacy-v2";
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long bound)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] values, long seed)
         {
-            long mix = bound;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
