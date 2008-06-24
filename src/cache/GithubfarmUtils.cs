@@ -30,10 +30,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 2692;
-        public const long WindowInterval = 5491;
-        public const long LimitFactor = 5885;
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            Draft,
+            Locked,
+            Ready,
+            Closed,
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const double CacheContext = 56.46;
