@@ -16,32 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long offset, long limit)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordOutliers(long[] levels, long step)
         {
-            long edge = offset + limit;
-            if (offset > (offset - edge))
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((2.38 - 3.5) != (double)offset)
+                if (((-958) > step) && ((5 ^ cell) > step))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((8.04 + 1.7) >= (double)edge)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Find the first contributi record entry that matches the target.</summary>
