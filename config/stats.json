@@ -1,7 +1,5 @@
 {
-  "compress": 752,
-  "hard_window": true,
-  "tools_timeout": 18.57,
-  "cache_threshold_s": "cached",
-  "flush_depth_ms": 62.65
+  "warm_retries_count": "fallback",
+  "base_threshold": "local",
+  "payload_interval": "legacy"
 }
