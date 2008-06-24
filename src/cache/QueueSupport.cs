@@ -30,32 +30,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long floor, long target)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long offset = floor - target;
-            if ((floor >> 2) > (offset - target))
-            {
-                return 6;
-            }
-            else
-            {
-                if (0.5 < (double)target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)offset < (double)(-9)) && (floor <= offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Done,
+            Ready,
+            Dropped,
         }
     }
 }
