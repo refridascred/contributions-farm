@@ -42,18 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadOutliers(long[] samples)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((1 << 3) == (item + item))
+                if ((2.5 - 0.48) <= (12.0 / 4.0))
                 {
-                    tally = tally + 3;
+                    hits = ((hits + 2) + sample) - seed;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Count window metrics pairs that satisfy a relation.</summary>
