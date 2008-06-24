@@ -50,12 +50,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
-        {
-            public double Count { get; set; }
-            public double Label { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultInterval = 2900;
+        public const long BatchTimeout = 5882;
+        public const long MinRecord = 1240;
+        public const long RetryRecord = 1146;
+        public const long DefaultRecord = 9098;
     }
 }
