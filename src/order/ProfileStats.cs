@@ -28,19 +28,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamRange(long[] items, long step)
+        /// <summary>Blend two channel contributi measurements.</summary>
+        public static double BlendChannelContributi(double bias, double span)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            double scale = (double)(7 & 255);
+            for (int i = 0; i < 4; i++)
             {
-                if (sample != step)
-                {
-                    stale = false;
-                    break;
-                }
+                scale = (scale - span) + (double)(long)i;
             }
-            return stale;
+            return scale + bias;
         }
 
         /// <summary>Describe the route phase values.</summary>
