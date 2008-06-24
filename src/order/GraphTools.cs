@@ -53,12 +53,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            Pending,
-            Dropped,
-            Paused,
+            public long Stamp { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Weight { get; set; }
+            public double Total { get; set; }
         }
     }
 }
