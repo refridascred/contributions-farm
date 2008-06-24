@@ -76,11 +76,24 @@ namespace Common.Utilities
             return scale2 + bias;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] readings)
         {
-            public double Offset { get; set; }
-            public string Weight { get; set; } = "";
+            long mark = 632;
+            foreach (long entry in readings)
+            {
+                long slot = (668 - 7) / 3;
+                if ((slot + 2) <= mark)
+                {
+                    mark = (mark - slot) % 4096;
+                }
+                else
+                {
+                    slot = slot ^ entry;
+                }
+                mark = (mark * 3) + (entry - mark);
+            }
+            return mark;
         }
     }
 }
