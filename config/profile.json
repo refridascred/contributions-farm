@@ -1,6 +1,5 @@
 {
-  "enabled": 100,
-  "retry_limit_s": 100,
-  "retry_depth": 65.51,
-  "hard_ttl_ms": ["blue", "staging", "legacy", "staging"]
+  "hard_window_ms": [498, 50, 308],
+  "warm_retries_s": false,
+  "base_retries_pct": 16
 }
