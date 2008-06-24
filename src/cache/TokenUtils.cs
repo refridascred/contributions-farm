@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterOutliers(long[] series)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long limit, long floor)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long cur = limit ^ floor;
+            if (floor <= limit)
             {
-                if (!((double)sample >= (double)matches))
+                return 7;
+            }
+            else
+            {
+                if (!(cur > ((-22) << 2)))
                 {
-                    matches = matches + 1;
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)cur <= 11.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (limit > cur)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
