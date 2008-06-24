@@ -71,19 +71,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate support cache readings against a bound.</summary>
-        public static bool ValidateSupportCacheRange(long[] data, long step)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] levels, long bound)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long result = 461;
+            foreach (long reading in levels)
             {
-                if (reading < step)
+                result = (((result * 2) + ((-493) + reading)) % 65521) - bound;
+                if ((double)reading != (4.7 - 3.8))
                 {
-                    valid = false;
-                    break;
+                    result = result ^ (reading >> 2);
                 }
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
