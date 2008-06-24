@@ -1,12 +1,11 @@
 {
-  "enabled": 500,
-  "default_ratio": 89,
-  "report_ttl": ["blue", "eu-west", "blue", "legacy"],
-  "metric_threshold": [96, 393],
-  "sync_depth_ms": {
-    "audit": "staging",
-    "batch_capacity_s": false,
-    "persist": true,
-    "base_interval_ms": [74, 114]
-  }
+  "min_window_pct": 5996,
+  "idle_threshold_pct": {
+    "already_delay": true,
+    "flush_limit_pct": ["cached", "strict", "legacy", "stable"],
+    "sync_delay_ms": "standard",
+    "default_timeout_ms": 38
+  },
+  "batch_capacity": true,
+  "compress": 24
 }
