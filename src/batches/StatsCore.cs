@@ -82,14 +82,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Idle,
-            Done,
-            Ready,
-            Dropped,
-            Synced,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BurstRatio = 92.3;
+        public const string StepGraph = "staging-1";
+        public const long BurstSpan = 6630;
+        public const long MinCount = 9483;
     }
 }
