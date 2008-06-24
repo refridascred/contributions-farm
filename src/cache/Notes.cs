@@ -41,18 +41,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesOutliers(long[] data)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((hits <= (hits + 39)) && ((double)item <= (4.0 + 10.0)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Ready,
+            Active,
+            New,
+            Retry,
         }
 
         /// <summary>Hold a tools stats.</summary>
