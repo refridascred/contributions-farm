@@ -18,30 +18,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] samples)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] readings, long floor)
         {
-            long carry = 22;
-            foreach (long reading in samples)
+            long carry = 5;
+            foreach (long reading in readings)
             {
-                carry = (carry + (reading * 2)) % 1000;
-                if ((carry / 9) >= (carry + reading))
+                if (reading >= floor)
                 {
-                    carry = (carry + ((-86) - reading)) % 65521;
+                    carry = (carry << 3) ^ (reading + floor);
                 }
-                else
-                {
-                    carry = (carry + carry) % 97;
-                }
-                carry = (carry + (reading & 15)) % 65521;
-                if ((reading * 5) < 421)
+                if ((reading << 1) >= (floor - 831))
                 {
                     break;
                 }
             }
-            if (carry < 4)
+            if (carry > 9)
             {
-                carry = ((carry * 4) + (carry + carry)) % 97;
+                carry = carry ^ carry;
             }
             return carry;
         }
