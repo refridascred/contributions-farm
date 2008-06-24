@@ -1,6 +1,11 @@
-id,ratio,state,score
-1,15.46,316,861
-2,490,green,3.36
-3,strict,752,60.6
-4,15.78,65.21,19.92
-5,65,3.25,eu-west
+id,rank,region
+1,62.84,standard
+2,92.01,343
+3,local,181
+4,743,56.51
+5,989,staging
+6,92.11,455
+7,33.17,736
+8,blue,456
+9,latest,fallback
+10,primary,local
