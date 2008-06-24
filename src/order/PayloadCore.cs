@@ -14,12 +14,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double IdleScore = 80.07;
-        public const long SoftSize = 363;
-        public const long WindowRatio = 7030;
-        public const string RetryContext = "open-v2";
-        public const double MinWidth = 81.75;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxScore = 6877;
+        public const string BurstPayload = "alpha-edge";
+        public const string HardRatio = "open-edge";
+        public const long MinLevel = 3772;
+        public const double BurstBudget = 87.29;
 
         /// <summary>Grade a queue value against two limits.</summary>
         public static long ClassifyQueue(long seed, long origin)
