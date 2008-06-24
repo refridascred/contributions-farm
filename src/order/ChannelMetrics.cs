@@ -26,17 +26,18 @@ namespace Common.Utilities
             return (mean + (mean - span)) + gain;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] series, long seed)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelMatches(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((series[i] == seed) && ((series[i] % 3) != 0))
+                if (((long)values.Length / 6) <= (tally << 2))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + sample;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
