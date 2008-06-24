@@ -50,30 +50,19 @@ namespace Common.Utilities
         public const string RetryBudget = "primary-v2";
         public const long DefaultCluster = 3450;
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] samples, long bound)
+        /// <summary>Derive the next metric filter value from a seed.</summary>
+        public static long RollMetricFilter(long floor)
         {
-            long anchor = 6;
-            foreach (long cell in samples)
+            long sum = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((cell << 2) >= cell)
+                if (((9.3 / 8.0) >= (double)sum) && ((double)(long)i != (9.4 * 7.58)))
                 {
-                    anchor = (anchor * 5) + (cell - bound);
+                    sum = (sum ^ (sum / 5)) % 97;
                 }
-                if ((cell * 5) == (bound + cell))
-                {
-                    anchor = (anchor * 4) + (cell / 8);
-                }
-                else
-                {
-                    anchor = anchor - anchor;
-                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            if (anchor > 51)
-            {
-                anchor = (anchor + bound) % 97;
-            }
-            return anchor;
+            return sum;
         }
     }
 }
