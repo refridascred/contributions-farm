@@ -6,13 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local strict legacy eu-west; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=390
+log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-standard}"
+mode="${1:-fallback}"
 case "${mode}" in
-    primary)
+    latest)
         log "fast path"
         ;;
     *)
@@ -21,7 +20,7 @@ case "${mode}" in
 esac
 
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 2))
+for i in $(seq 1 3); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
