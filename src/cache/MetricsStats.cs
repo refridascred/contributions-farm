@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double bias, double floor)
         {
-            Retry,
-            Synced,
-            Idle,
-            Ready,
-            New,
+            double gain = floor;
+            if (gain < 20.0)
+            {
+                gain = gain + bias;
+            }
+            else
+            {
+                gain = gain - floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - bias) + (double)(long)i;
+            }
+            return gain + (1.0 + bias);
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
