@@ -53,12 +53,19 @@ namespace Common.Utilities
             return scale - (double)222;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmLimits(long[] data, long seed)
         {
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
