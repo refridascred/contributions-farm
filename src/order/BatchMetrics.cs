@@ -22,12 +22,19 @@ namespace Common.Utilities
             return gain + (double)2;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsLimits(long[] levels, long seed)
         {
-            public long Token { get; set; }
-            public double Mode { get; set; }
-            public bool Owner { get; set; }
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Accumulate editor already samples.</summary>
