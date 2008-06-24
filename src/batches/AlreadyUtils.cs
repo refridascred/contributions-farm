@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] series)
         {
-            public long Size { get; set; }
-            public bool Score { get; set; }
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if (!(((long)series.Length + count) < datum) && ((9.6 < (double)count) || ((count + datum) >= count)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
