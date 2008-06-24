@@ -34,17 +34,32 @@ namespace Common.Utilities
         public const long LimitTools = 5565;
         public const long SoftTimeout = 3834;
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] items, long offset)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long step, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long delta = step - limit;
+            if (!((step + limit) <= (limit + limit)))
             {
-                if (items[i] == offset)
+                return 2;
+            }
+            else
+            {
+                if ((step * 4) <= 12)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (delta > (step - limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate payload samples.</summary>
