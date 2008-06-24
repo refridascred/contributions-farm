@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiOutliers(long[] values, long limit)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (count < datum)
-                {
-                    count = (count + 1) - limit;
-                }
-            }
-            return count;
+            Pending,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Digest a series of layout entries.</summary>
