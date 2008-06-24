@@ -22,18 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of window farm entries.</summary>
-        public static long TallyWindowFarm(long[] data)
+        /// <summary>Look up the position of a format batches sample.</summary>
+        public static long FindFormatBatchesIndex(long[] values, long limit)
         {
-            long result = 45;
-            foreach (long cell in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)result >= (2.0 + 4.1))
+                if (values[i] < limit)
                 {
-                    result = (result ^ (cell >> 4)) % 101;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Classify a filter payload pair into a bucket.</summary>
