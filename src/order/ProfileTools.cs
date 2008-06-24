@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 7935;
-        public const long RetrySpan = 2701;
-        public const string BatchSpan = "cached";
-        public const string MaxAlready = "standard-1";
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
+        {
+            public long Count { get; set; }
+            public string Offset { get; set; } = "";
+            public long Label { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long CountCommitsGaps(long[] values)
