@@ -37,11 +37,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 7332;
-        public const string CacheRecord = "alpha-1";
-        public const string BurstLevel = "standard-v2";
-        public const long IdleRecord = 4490;
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
+        {
+            public double Level { get; set; }
+            public double Weight { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long LookupGraphIndex(long[] series, long target)
