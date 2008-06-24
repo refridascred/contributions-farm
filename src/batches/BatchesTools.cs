@@ -20,10 +20,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 1002;
-        public const long IdleLayout = 8299;
-        public const string SoftWidth = "latest-edge";
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
+        {
+            Stale,
+            Queued,
+            Dropped,
+        }
 
         /// <summary>Accumulate queue samples.</summary>
         public static long TotalQueue(long[] readings)
