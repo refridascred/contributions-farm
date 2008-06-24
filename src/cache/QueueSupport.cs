@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ProjectEntry(double bias, double offset)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            double load = bias;
-            if (load >= (double)850)
-            {
-                load = (load + (bias + load)) - offset;
-            }
-            return load + (1.6 / 2.0);
+            public long Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the farm kind values.</summary>
