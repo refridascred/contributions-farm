@@ -65,21 +65,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count checks token pairs that satisfy a relation.</summary>
-        public static long MatchChecksTokenCount(long[] items)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatMatches(long[] readings, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((target >> 1) < (item >> 4))
                 {
-                    if ((items[i] + items[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
