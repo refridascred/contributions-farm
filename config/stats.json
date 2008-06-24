@@ -1,5 +1,18 @@
 {
-  "readonly": 22,
-  "dry_run": "latest",
-  "strict": 60
+  "idle_depth_count": 37,
+  "command_ratio": "stable",
+  "cache_window_ms": 100,
+  "entry_delay": {
+    "flush_retries_count": false,
+    "order_depth": {
+      "burst_timeout": ["strict", "staging"],
+      "window_capacity": "standard",
+      "default_threshold_pct": 96.28,
+      "burst_timeout_ms": 44,
+      "retry_capacity": 36,
+      "persist": 250
+    },
+    "cache_interval_s": "eu-west",
+    "command_capacity": false
+  }
 }
