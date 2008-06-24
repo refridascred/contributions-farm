@@ -1,4 +1,7 @@
 # entry settings
-batch_limit: 27
-retry_retries_ms: false
-flush_capacity_pct: stable
+compress: latest
+editor_size: true
+order_interval: green
+githubfarm_window: true
+account_capacity: 4403
+sync_threshold_pct: 97
