@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorMatches(long[] levels)
+        /// <summary>Roll a order context counter forward.</summary>
+        public static long SeriesOrderContext(long floor)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long mix = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if ((count > (item + (-4))) && !((9 + count) <= (count >> 3)))
-                {
-                    count = count + 1;
-                }
+                mix = (mix + 190) % 101;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Hold a record summary.</summary>
