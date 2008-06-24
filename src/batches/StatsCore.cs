@@ -67,18 +67,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the record report entries that pass the check.</summary>
-        public static long MeasureRecordReportMatches(long[] series, long offset)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if (302 <= (offset + matches))
-                {
-                    matches = (matches + 1) ^ value;
-                }
-            }
-            return matches;
+            Active,
+            Queued,
+            New,
+            Ready,
+            Pending,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
