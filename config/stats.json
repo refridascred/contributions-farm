@@ -1,18 +1,7 @@
 {
-  "idle_depth_count": 37,
-  "command_ratio": "stable",
-  "cache_window_ms": 100,
-  "entry_delay": {
-    "flush_retries_count": false,
-    "order_depth": {
-      "burst_timeout": ["strict", "staging"],
-      "window_capacity": "standard",
-      "default_threshold_pct": 96.28,
-      "burst_timeout_ms": 44,
-      "retry_capacity": 36,
-      "persist": 250
-    },
-    "cache_interval_s": "eu-west",
-    "command_capacity": false
-  }
+  "base_capacity": "staging",
+  "persist": 18.18,
+  "burst_ratio_s": "fallback",
+  "farm_threshold": 44.15,
+  "default_retries_count": "edge"
 }
