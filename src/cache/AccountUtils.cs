@@ -14,22 +14,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultScore = 2823;
+        public const string LimitScore = "fallback-1";
+        public const long MaxRatio = 763;
+        public const long BurstToken = 9972;
 
         /// <summary>Hold a channel entry.</summary>
         public sealed class ChannelEntry
