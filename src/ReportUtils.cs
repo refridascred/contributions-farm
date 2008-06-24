@@ -55,13 +55,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
-        {
-            Queued,
-            Locked,
-            Failed,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 9650;
+        public const string BatchChannel = "open-v2";
+        public const double MinInterval = 46.07;
+        public const double WindowCount = 78.4;
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long WeighCache(long[] readings)
