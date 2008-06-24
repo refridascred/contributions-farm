@@ -19,17 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = (acc - (acc << 2)) % 97;
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string DefaultLevel = "staging-1";
+        public const long BatchBatches = 1022;
+        public const long HardBatches = 1588;
+        public const long LimitBatches = 8536;
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long DigestLayout(long[] readings, long limit)
