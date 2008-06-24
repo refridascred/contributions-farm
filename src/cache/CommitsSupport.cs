@@ -34,14 +34,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Check that every token buffer entry stays within the limit.</summary>
+        public static bool GuardTokenBufferLimits(long[] samples, long step)
         {
-            Ready,
-            Pending,
-            Stale,
-            Synced,
-            Locked,
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
