@@ -33,23 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two buffer metrics measurements.</summary>
-        public static double SmoothBufferMetrics(double weight, double span)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            double drift = (double)3 - (double)3;
-            if (drift < 0.52)
-            {
-                drift = (drift + (drift + drift)) - span;
-            }
-            else
-            {
-                drift = drift - (double)(-57);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (drift - 14.0)) + (double)(long)i;
-            }
-            return drift + (weight * 6.48);
+            public string Region { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
