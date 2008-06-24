@@ -25,19 +25,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double AdjustSchema(double scale, double bias)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] data, long seed)
         {
-            double gain = (double)(24 << 2);
-            if (gain >= 4.67)
+            long anchor = 76;
+            foreach (long item in data)
             {
-                gain = (gain + (bias - bias)) + scale;
+                if ((seed * 3) > (item % 7))
+                {
+                    anchor = (anchor << 3) ^ (anchor + (long)data.Length);
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + (double)78) + (double)(long)i;
-            }
-            return gain + (double)(-946);
+            return anchor;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
