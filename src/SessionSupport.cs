@@ -22,19 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ScaleBatches(double bias, double span)
+        /// <summary>Blend two report measurements.</summary>
+        public static double AdjustReport(double ratio, double offset)
         {
-            double weight = 5.23;
-            if (weight < (weight + span))
+            double bias = offset * 6.8;
+            if (bias <= (6.22 + offset))
             {
-                weight = weight + (weight - bias);
+                bias = (bias + offset) + ratio;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                weight = (weight - (span * 7.55)) + (double)(long)i;
+                bias = bias + bias;
             }
-            return weight + (double)9;
+            return bias - (double)70;
         }
 
         /// <summary>Audit context metric readings against a rule.</summary>
