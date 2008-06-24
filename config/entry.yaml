@@ -1,7 +1,5 @@
 # entry settings
-poll_timeout_ms: 30
-sync_ratio_ms: stable
-poll_interval: staging
-default_interval_s: staging
-profile_timeout: 463
-max_interval_s: latest
+compress: latest
+flush_retries: 74
+already_threshold: 12.78
+burst_ratio: edge
