@@ -36,36 +36,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long seed, long floor)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long origin, long target)
         {
-            if ((740 << 3) > (seed >> 4))
+            if ((origin >> 3) >= (-3))
             {
-                return 2;
+                return 5;
             }
             else
             {
-                if ((double)seed < 8.08)
+                if ((double)target <= (6.6 / 4.0))
                 {
-                    return 5;
+                    return 0;
                 }
                 else
                 {
-                    if (((seed + floor) < (seed * 5)) && (421 <= (seed - seed)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)floor <= (9.0 * 2.23))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return 8;
                 }
             }
         }
