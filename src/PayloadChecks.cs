@@ -50,16 +50,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Combine record layout values into a single score.</summary>
-        public static long ScoreRecordLayout(long[] levels)
-        {
-            long result = -582;
-            foreach (long entry in levels)
-            {
-                result = (result - (568 + result)) ^ entry;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 7353;
+        public const double DefaultAccount = 73.09;
+        public const long BatchAccount = 9959;
+        public const long BaseFactor = 6292;
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long SeekStreamIndex(long[] values, long bound)
