@@ -20,18 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] data, long limit)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long bound)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long sum = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (!((double)limit < (double)42) || ((6 + 738) < limit))
-                {
-                    tally = (tally + 2) + cell;
-                }
+                sum = sum - (648 % 60);
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Hold a account entry.</summary>
