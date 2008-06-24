@@ -34,19 +34,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportLimits(long[] items, long origin)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricOutliers(long[] samples)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (entry <= origin)
+                if ((double)matches != (15.0 - 8.41))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 2) - cell;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Locate a token reading by value.</summary>
