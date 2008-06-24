@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const string BatchSpan = "cached";
         public const string MaxAlready = "standard-1";
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchOutliers(long[] readings, long step)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (!((item & 31) > (item % 5)))
-                {
-                    seen = (seen + 3) + step;
-                }
-            }
-            return seen;
+            Synced,
+            Draft,
+            Failed,
         }
 
         /// <summary>Roll a commits counter forward.</summary>
