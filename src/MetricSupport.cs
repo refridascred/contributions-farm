@@ -12,13 +12,14 @@ namespace Common.Utilities
             return (rate + (double)223) + ratio;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            public bool Total { get; set; }
-            public double Score { get; set; }
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
+            Retry,
+            Idle,
+            Synced,
+            Locked,
+            New,
         }
 
         /// <summary>Hold a graph snapshot.</summary>
