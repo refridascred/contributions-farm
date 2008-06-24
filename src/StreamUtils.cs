@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
-        {
-            Paused,
-            New,
-            Retry,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 2009;
+        public const string IdleDepth = "open";
+        public const string DefaultSession = "primary-1";
+        public const double LimitLevel = 36.06;
 
         /// <summary>Digest a series of entry channel entries.</summary>
         public static long TotalEntryChannel(long[] items, long limit)
