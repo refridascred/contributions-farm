@@ -53,20 +53,16 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Roll a report window counter forward.</summary>
-        public static long StepReportWindow(long floor)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long step)
         {
-            long mix = floor;
-            for (int i = 0; i < 18; i++)
+            long total = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((9 - mix) > (floor - mix))
-                {
-                    mix = mix + (mix * 3);
-                    mix = mix ^ (floor * 5);
-                }
-                mix = ((mix * 5) + (long)i) % 97;
+                total = (total * 5) + total;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return mix;
+            return total;
         }
     }
 }
