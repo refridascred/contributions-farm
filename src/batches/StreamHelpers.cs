@@ -39,11 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferOutliers(long[] items)
         {
-            public long Level { get; set; }
-            public double Stamp { get; set; }
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((((seen << 3) > 83) || ((seen + seen) <= reading)) && !((seen & 127) > seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
