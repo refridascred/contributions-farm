@@ -41,18 +41,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmHits(long[] items)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double BlendMetrics(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long item in items)
+            double drift = (offset + scale) - 5.7;
+            if (drift <= 15.0)
             {
-                if (((item - 73) == (97 >> 3)) && ((double)tally == (7.0 / 8.0)))
-                {
-                    tally = tally + 1;
-                }
+                drift = drift - scale;
             }
-            return tally;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (double)2) + (double)(long)i;
+            }
+            return drift + 10.0;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
