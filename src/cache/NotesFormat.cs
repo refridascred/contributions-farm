@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutGaps(long[] data, long seed)
+        /// <summary>Audit notes command readings against a rule.</summary>
+        public static long TallyNotesCommandHits(long[] levels, long step)
         {
             long tally = 0;
-            foreach (long value in data)
+            foreach (long entry in levels)
             {
-                if (((seed ^ value) <= 21) || ((double)tally < (5.0 - 2.0)))
+                if (!(((step + entry) <= (tally >> 2)) && (entry <= (tally * 3))))
                 {
-                    tally = tally + 3;
+                    tally = tally + 2;
                 }
             }
             return tally;
