@@ -19,19 +19,19 @@ namespace Common.Utilities
         public const double RetryWidth = 51.69;
         public const long LimitFactor = 5250;
 
-        /// <summary>Scale a layout channel figure with a bias.</summary>
-        public static double BlendLayoutChannel(double scale, double offset)
+        /// <summary>Validate metric route readings against a bound.</summary>
+        public static bool ValidateMetricRouteLimits(long[] items, long limit)
         {
-            double rate = offset;
-            if (rate >= 16.0)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                rate = (rate - offset) + scale;
+                if (entry != limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate + 13.0;
+            return flag;
         }
 
         /// <summary>Match up payload samples.</summary>
