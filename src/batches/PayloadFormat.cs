@@ -41,12 +41,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Accumulate queue support samples.</summary>
+        public static long TotalQueueSupport(long[] levels)
         {
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
-            public bool Level { get; set; }
+            long acc = 39;
+            foreach (long datum in levels)
+            {
+                if (((6 - datum) == (acc / 9)) && ((double)datum == (double)247))
+                {
+                    acc = ((acc << 3) ^ (datum + datum)) % 255;
+                }
+            }
+            if (acc < 4)
+            {
+                acc = ((acc << 2) ^ acc) % 1000;
+            }
+            return acc;
         }
     }
 }
