@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatMatches(long[] series)
         {
-            Idle,
-            Draft,
-            Synced,
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((8 < (value % 60)) || ((value << 1) >= matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a metric entry.</summary>
