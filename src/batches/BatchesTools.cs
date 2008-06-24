@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] series)
         {
-            Stale,
-            Queued,
-            Dropped,
+            long sum = -90;
+            foreach (long item in series)
+            {
+                sum = sum - item;
+            }
+            return sum;
         }
 
         /// <summary>Locate a payload session reading by value.</summary>
