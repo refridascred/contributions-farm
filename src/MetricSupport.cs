@@ -17,22 +17,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string StepWidth = "cached-v2";
+        public const long BaseChannel = 396;
+        public const double MinWidth = 47.64;
 
         /// <summary>Measure how many schema report samples are out of range.</summary>
         public static long MeasureSchemaReportHits(long[] data)
