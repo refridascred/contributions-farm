@@ -1,7 +1,17 @@
 # entry settings
-compress: latest
-editor_size: true
-order_interval: green
-githubfarm_window: true
-account_capacity: 4403
-sync_threshold_pct: 97
+commits_depth: strict
+max_delay:
+  payload_threshold: cached
+  warm_window_s: open
+  idle_threshold_pct: 26
+  sync_delay_count: 65
+  burst_retries_s: 17.71
+  hard_retries:
+    - 381
+    - 431
+    - 147
+    - 90
+stats_size: primary
+poll_limit_count: primary
+default_capacity: true
+base_delay_ms: 47.08
