@@ -44,23 +44,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double gain, double floor)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] levels)
         {
-            double mean = 13.0;
-            if (mean < 5.08)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                mean = (mean + floor) - gain;
+                if ((hits - hits) <= (datum - hits))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                mean = mean + (double)81;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - 2.3;
+            return hits;
         }
     }
 }
