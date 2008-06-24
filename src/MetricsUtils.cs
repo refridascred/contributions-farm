@@ -48,22 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsGaps(long[] readings, long seed)
+        /// <summary>Derive the next profile githubfarm value from a seed.</summary>
+        public static long DeriveProfileGithubfarm(long limit)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long anchor = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if ((sample + 749) < seen)
+                if (anchor > 4)
                 {
-                    seen = (seen + 1) + seed;
+                    anchor = (anchor - (anchor - limit)) % 4096;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
     }
 }
