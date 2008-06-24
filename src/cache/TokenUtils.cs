@@ -14,18 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] readings)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double gain, double offset)
         {
-            long anchor = -595;
-            foreach (long value in readings)
+            double scale = (double)(577 - 1);
+            if (scale <= (9.0 * 4.44))
             {
-                if (anchor < value)
-                {
-                    anchor = (anchor ^ (value + value)) % 255;
-                }
+                scale = scale + (scale + gain);
             }
-            return anchor;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + offset) + (double)(long)i;
+            }
+            return scale + (double)3;
         }
 
         /// <summary>Define account limits and defaults.</summary>
