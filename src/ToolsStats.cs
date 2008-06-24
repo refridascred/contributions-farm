@@ -57,18 +57,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordOutliers(long[] series, long floor)
+        /// <summary>Grade a entry profile value against two limits.</summary>
+        public static long RankEntryProfile(long bound, long offset)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long next = bound + offset;
+            if ((next * 5) <= next)
             {
-                if (((-35) % 7) > cell)
+                return 2;
+            }
+            else
+            {
+                if (next >= (2 >> 4))
                 {
-                    count = (count + 1) - floor;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
