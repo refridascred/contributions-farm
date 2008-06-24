@@ -19,18 +19,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsHits(long[] levels, long bound)
+        /// <summary>Grade a context metrics value against two limits.</summary>
+        public static long SortContextMetrics(long origin, long target)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            if ((origin + target) > (target + target))
             {
-                if (!(((value << 2) <= (181 - bound)) || (tally < (81 << 3))))
+                return 4;
+            }
+            else
+            {
+                if (!((origin + origin) > (origin << 1)))
                 {
-                    tally = tally + 1;
+                    return 5;
+                }
+                else
+                {
+                    if (!((7.0 * 3.0) == (double)origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((6 - origin) == (target << 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of payload tools entries.</summary>
