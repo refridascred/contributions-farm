@@ -1,10 +1,7 @@
 # entry settings
-contributi_size: eu-west
-graph_threshold:
-  - standard
-  - legacy
-  - stable
-cache_limit_s: true
-verbose: local
-tools_capacity: eu-west
-compress: 7093
+poll_timeout_ms: 30
+sync_ratio_ms: stable
+poll_interval: staging
+default_interval_s: staging
+profile_timeout: 463
+max_interval_s: latest
