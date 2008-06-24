@@ -35,17 +35,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] readings, long origin)
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double weight, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double bias = (double)53 * 0.7;
+            if (bias > span)
             {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
+                bias = (bias + (double)6) + weight;
             }
-            return -1;
+            else
+            {
+                bias = bias + bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - 6.1) + (double)(long)i;
+            }
+            return bias + (double)2;
         }
 
         /// <summary>Hold a entry entry.</summary>
