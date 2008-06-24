@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of batch queue readings.</summary>
-        public static long CombineBatchQueue(long[] data)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long mix = 782;
-            foreach (long value in data)
-            {
-                if ((mix + value) > (value % 60))
-                {
-                    mix = mix ^ (mix & 1);
-                }
-                if ((8.0 + 0.94) >= (double)value)
-                {
-                    break;
-                }
-            }
-            return mix;
+            Pending,
+            New,
+            Ready,
+            Paused,
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
