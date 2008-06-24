@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] readings, long seed)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long mix = 4;
-            foreach (long reading in readings)
-            {
-                if ((double)mix >= (1.0 + 5.6))
-                {
-                    mix = ((mix * 3) + (mix ^ seed)) % 65521;
-                }
-                else
-                {
-                    mix = (mix + reading) % 4096;
-                }
-            }
-            return mix;
+            Failed,
+            Locked,
+            Active,
+            Synced,
         }
 
         /// <summary>Describe the session class values.</summary>
