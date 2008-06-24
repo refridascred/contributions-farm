@@ -74,18 +74,14 @@ namespace Common.Utilities
         public const long CacheCounter = 9803;
         public const double LimitCounter = 27.98;
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesMatches(long[] series, long offset)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((cell & 7) < (10 - offset))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Pending,
+            Stale,
+            Retry,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Project the next stats value.</summary>
