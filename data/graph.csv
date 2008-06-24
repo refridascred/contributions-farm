@@ -1,7 +1,10 @@
-id,owner,count
-1,484,local
-2,87,91
-3,577,889
-4,38.91,349
-5,cached,open
-6,3.62,blue
+id,count,region,token
+1,72.62,20.39,580
+2,281,3.72,stable
+3,edge,536,stable
+4,87.31,576,edge
+5,staging,561,latest
+6,staging,810,4.01
+7,61.55,66.43,135
+8,681,205,868
+9,39.31,strict,939
