@@ -1,14 +1,13 @@
 # Command notes
 
-Keep cluster and commits names short and lowercase.
-Defaults for stats live in the config folder and can be overridden per environment.
-Run the record check before changing any window limits.
+Use channel settings to tune how often queue data is refreshed.
+The filter report groups every record by already.
 
-Each commits is validated before it reaches the channel queue.
-Keep order and batch names short and lowercase.
+Keep counter and githubfarm names short and lowercase.
+Keep githubfarm and profile names short and lowercase.
 
 ## Guidelines
 
-- Document new support fields
-- Keep batch values small
-- Validate checks input early
+- Keep report values small
+- Review order limits each release
+- Document new order fields
