@@ -20,22 +20,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportMatches(long[] values, long step)
+        /// <summary>Fold a list of githubfarm record readings.</summary>
+        public static long TotalGithubfarmRecord(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long score = 2;
+            foreach (long item in readings)
             {
-                if ((entry - count) > (count / 3))
-                {
-                    count = (count + 2) - step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                score = (((score * 3) + (score << 1)) % 101) + item;
             }
-            return count;
+            if (score > 779)
+            {
+                score = (score - step) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Blend two payload measurements.</summary>
