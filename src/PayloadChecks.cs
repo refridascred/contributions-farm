@@ -34,32 +34,19 @@ namespace Common.Utilities
         public const long LimitTools = 5565;
         public const long SoftTimeout = 3834;
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long step, long limit)
+        /// <summary>Roll a stream format counter forward.</summary>
+        public static long SeriesStreamFormat(long offset)
         {
-            long delta = step - limit;
-            if (!((step + limit) <= (limit + limit)))
+            long mark = offset;
+            for (int i = 0; i < 22; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step * 4) <= 12)
+                if (offset < 315)
                 {
-                    return 6;
+                    mark = ((mark << 3) ^ ((long)i % 8)) % 65521;
                 }
-                else
-                {
-                    if (delta > (step - limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
+            return mark;
         }
 
         /// <summary>Accumulate payload samples.</summary>
