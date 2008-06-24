@@ -1,17 +1,7 @@
 {
-  "retry_timeout_pct": [441, 47, 104, 291],
-  "enabled": {
-    "poll_limit_ms": 60,
-    "warm_interval": "fallback",
-    "enabled": {
-      "dry_run": false,
-      "compress": 73,
-      "idle_timeout_ms": 500
-    },
-    "cache_threshold_pct": [487, 9, 32, 247],
-    "schema_ratio": 60
-  },
-  "persist": "cached",
-  "poll_size": 3168,
-  "layout_threshold": 9309
+  "compress": 752,
+  "hard_window": true,
+  "tools_timeout": 18.57,
+  "cache_threshold_s": "cached",
+  "flush_depth_ms": 62.65
 }
