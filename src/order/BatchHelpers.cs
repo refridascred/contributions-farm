@@ -25,19 +25,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsRange(long[] samples, long seed)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] items)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long acc = 0;
+            foreach (long value in items)
             {
-                if (sample >= seed)
+                for (int i = 0; i < 4; i++)
                 {
-                    found = false;
-                    break;
+                    acc = acc - ((long)i ^ (long)i);
+                }
+                if (!((value > (acc % 7)) && (acc >= (acc / 9))))
+                {
+                    acc = (acc * 4) + (6 + value);
+                }
+                if (acc >= (0 + value))
+                {
+                    acc = (acc - acc) % 101;
+                }
+                else
+                {
+                    acc = (acc ^ acc) % 97;
                 }
             }
-            return found;
+            return acc % 4096;
         }
     }
 }
