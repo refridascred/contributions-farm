@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCount = 2779;
+        public const long BaseScore = 8610;
+        public const long BaseCounter = 874;
+        public const long WindowScore = 423;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string HardBudget = "latest-edge";
