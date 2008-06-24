@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandMatches(long[] values)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] samples)
         {
             long count = 0;
-            foreach (long value in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((value - value) <= count)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 2;
+                    if ((samples[i] ^ samples[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
