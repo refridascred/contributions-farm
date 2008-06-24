@@ -1,7 +1,7 @@
 {
-  "strict": [408, 292],
-  "idle_timeout_s": false,
-  "account_capacity": 6236,
-  "max_ratio_s": "blue",
-  "hard_retries_s": 60
+  "sync_capacity_ms": 13,
+  "strict": ["staging", "edge"],
+  "dry_run": 15,
+  "default_retries": 84,
+  "readonly": "edge"
 }
