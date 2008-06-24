@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyGaps(long[] items, long origin)
         {
-            Stale,
-            Failed,
-            Synced,
-            Done,
-            Retry,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((3 + origin) < (origin + origin))
+                {
+                    count = (count + 2) + cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
