@@ -34,12 +34,18 @@ namespace Common.Utilities
         public const long LimitTools = 5565;
         public const long SoftTimeout = 3834;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string HardFilter = "primary";
-        public const string BatchBudget = "staging-edge";
-        public const double StepSpan = 29.65;
-        public const long MaxFilter = 8069;
-        public const double RetryFilter = 44.6;
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate payload samples.</summary>
         public static long ScorePayload(long[] levels, long step)
