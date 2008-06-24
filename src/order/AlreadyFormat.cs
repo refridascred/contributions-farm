@@ -33,17 +33,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] values, long floor)
+        /// <summary>Classify a record context pair into a bucket.</summary>
+        public static long BucketRecordContext(long step, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long prev = step ^ floor;
+            if ((42 - step) == (floor * 4))
             {
-                if ((values[i] < floor) && ((values[i] % 5) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((floor & 1) >= (step - 6))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((prev - prev) < (89 >> 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
