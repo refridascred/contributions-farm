@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsBounds(long[] values, long origin)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Mode { get; set; }
+            public long Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the report mode values.</summary>
