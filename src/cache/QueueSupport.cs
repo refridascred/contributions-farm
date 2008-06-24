@@ -35,15 +35,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double weight, double floor)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] values, long origin)
         {
-            double gain = (double)(0 + 2);
-            if (gain >= (1.8 + floor))
+            bool ok = true;
+            foreach (long reading in values)
             {
-                gain = (gain + (floor * 0.5)) - weight;
+                if (reading > origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return gain + (double)963;
+            return ok;
         }
     }
 }
