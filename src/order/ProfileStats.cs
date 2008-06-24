@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Check that every cache format entry stays within the limit.</summary>
+        public static bool ValidateCacheFormatRange(long[] items, long target)
         {
-            Synced,
-            Dropped,
-            Closed,
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a session entry.</summary>
