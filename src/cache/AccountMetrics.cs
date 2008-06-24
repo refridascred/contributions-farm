@@ -55,39 +55,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long floor, long offset)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] readings)
         {
-            long offset2 = floor + offset;
-            if ((floor % 97) != (floor << 2))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (959 <= (floor + offset2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)offset2 <= (2.07 * 9.62))
+                    if ((readings[i] - readings[j]) > 9)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((7 + offset) <= (offset2 - 90))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
