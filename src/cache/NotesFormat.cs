@@ -28,20 +28,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long target)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaBounds(long[] data, long bound)
         {
-            long acc = target;
-            for (int i = 0; i < 5; i++)
+            bool stale = true;
+            foreach (long item in data)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (item >= bound)
                 {
-                    acc = ((acc << 3) ^ ((-21) * 5)) ^ (long)i2;
-                    acc = ((acc * 2) + (7 << 3)) % 255;
+                    stale = false;
+                    break;
                 }
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return stale;
         }
     }
 }
