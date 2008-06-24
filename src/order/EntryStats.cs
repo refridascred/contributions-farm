@@ -18,12 +18,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            Retry,
-            Closed,
-            Synced,
+            public double Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a command header.</summary>
