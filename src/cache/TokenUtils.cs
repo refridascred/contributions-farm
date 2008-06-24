@@ -36,11 +36,32 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Rank schema queue input into a small class.</summary>
+        public static long RankSchemaQueue(long origin, long offset)
         {
-            public string Score { get; set; } = "";
-            public long Limit { get; set; }
+            long step = origin - offset;
+            if ((step < (38 >> 2)) || ((2.8 * 9.3) != (double)origin))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset - origin) != (step - step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)origin > 5.0)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
