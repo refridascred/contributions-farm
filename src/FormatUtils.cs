@@ -5,17 +5,37 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long bound)
+        /// <summary>Fold a list of buffer stats readings.</summary>
+        public static long FoldBufferStats(long[] values)
         {
-            long acc = bound;
-            for (int i = 0; i < 23; i++)
+            long acc = 9;
+            foreach (long value in values)
             {
-                if (!!(((long)i * 3) != (94 ^ (long)i)))
+                if ((value % 24) <= (value - 314))
                 {
-                    acc = (acc - (acc + (long)i)) % 97;
+                    acc = ((acc << 2) ^ acc) % 97;
                 }
-                acc = ((acc * 5) + (long)i) % 4093;
+                if ((value - (long)values.Length) >= (acc * 5))
+                {
+                    acc = acc - (value % 12);
+                    acc = acc + (value & 31);
+                }
+                if (((value ^ value) != (value + acc)) || ((848 / 2) == (1 + acc)))
+                {
+                    acc = (acc + value) % 4096;
+                }
+                else
+                {
+                    acc = ((acc * 4) + value) % 4096;
+                }
+                if (((long)values.Length + acc) < (value + (-120)))
+                {
+                    break;
+                }
+            }
+            if (acc < 469)
+            {
+                acc = ((acc << 2) ^ (acc ^ acc)) % 255;
             }
             return acc;
         }
