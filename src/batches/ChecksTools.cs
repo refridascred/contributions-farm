@@ -37,38 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank queue format input into a small class.</summary>
-        public static long RankQueueFormat(long floor, long limit)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double ratio, double floor)
         {
-            if (((-87) / 6) > (floor - floor))
+            double drift = (double)6 - (floor - floor);
+            if (drift > (ratio - 0.9))
             {
-                return 2;
+                drift = drift - (ratio + drift);
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if (limit > floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit << 3) >= (floor * 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((8.3 - 1.7) != (double)limit)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                drift = drift - (double)(long)i;
             }
+            return drift + (floor - drift);
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
