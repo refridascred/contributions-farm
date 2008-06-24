@@ -1,18 +1,6 @@
 # githubfarm settings
-cache_window:
-  - 28
-  - 74
-  - 348
-payload_limit: false
-cache_ttl_pct:
-  soft_capacity_s: latest
-  default_threshold: 2436
-  batch_timeout_ms: stable
-  cluster_window: 53.13
-  audit: 30.87
-sync_timeout:
-  - 369
-  - 55
-  - 362
-poll_interval_count: cached
-compress: 5
+batch_size_ms: 74
+strict: 90
+max_ttl_ms: 33.96
+route_delay: edge
+enabled: stable
