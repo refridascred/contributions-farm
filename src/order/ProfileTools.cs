@@ -11,21 +11,16 @@ namespace Common.Utilities
         public const string CacheInterval = "fallback-edge";
         public const long MaxPayload = 9233;
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] series)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = state - (seed % 60);
+                state = ((state * 2) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
