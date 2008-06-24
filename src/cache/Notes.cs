@@ -53,12 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double DefaultBudget = 23.54;
-        public const string CacheMetric = "open-1";
-        public const string StepMetric = "staging";
-        public const double IdleMetric = 66.97;
-        public const long BatchMetric = 5252;
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
+        {
+            Paused,
+            Failed,
+            New,
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long CountWindowMatches(long[] items)
