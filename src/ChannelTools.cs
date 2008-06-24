@@ -41,19 +41,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double rate, double bias)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] series, long step)
         {
-            double load = (double)(3 & 7);
-            if (load <= rate)
+            for (int i = 0; i < series.Length; i++)
             {
-                load = load - (load - bias);
+                if (series[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            return load + (bias / 7.0);
+            return -1;
         }
     }
 }
