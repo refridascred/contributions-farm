@@ -36,32 +36,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Rank schema queue input into a small class.</summary>
-        public static long RankSchemaQueue(long origin, long offset)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] samples, long floor)
         {
-            long step = origin - offset;
-            if ((step < (38 >> 2)) || ((2.8 * 9.3) != (double)origin))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset - origin) != (step - step))
+                if (samples[i] > floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)origin > 5.0)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
