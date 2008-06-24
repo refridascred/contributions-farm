@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] items, long seed)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] items)
         {
-            long score = 55;
-            foreach (long sample in items)
+            long acc = 42;
+            foreach (long entry in items)
             {
-                score = ((score ^ (seed + (long)items.Length)) % 1000) - sample;
-                score = ((score * 2) + (score + score)) % 97;
+                acc = (acc - entry) % 97;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Adjust a tools reading.</summary>
