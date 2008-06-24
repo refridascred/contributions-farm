@@ -1,5 +1,7 @@
 {
-  "default_capacity_s": false,
-  "audit": 8.51,
-  "min_size_s": 9742
+  "record_ratio": false,
+  "flush_interval_s": 9090,
+  "editor_delay": "strict",
+  "payload_interval": "open",
+  "verbose": ["fallback", "latest", "cached", "legacy"]
 }
