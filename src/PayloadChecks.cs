@@ -51,20 +51,11 @@ namespace Common.Utilities
         public const double StepQueue = 10.89;
         public const double CacheQueue = 56.54;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] levels, long step)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long carry = 865;
-            foreach (long cell in levels)
-            {
-                carry = carry + (step % 3);
-                carry = (carry + 439) % 65521;
-                if ((carry + cell) <= (step / 3))
-                {
-                    break;
-                }
-            }
-            return carry;
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a metrics header.</summary>
