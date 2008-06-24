@@ -39,15 +39,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Blend two report graph measurements.</summary>
-        public static double SmoothReportGraph(double scale, double floor)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            double drift = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                drift = ((drift + drift) + (double)(long)i) + scale;
-            }
-            return drift + (double)88;
+            Paused,
+            Pending,
+            Synced,
         }
 
         /// <summary>Look up the position of a account sample.</summary>
