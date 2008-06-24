@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long origin)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] readings)
         {
-            long sum = origin;
-            for (int i = 0; i < 17; i++)
+            long total = 80;
+            foreach (long reading in readings)
             {
-                if (3.07 > (double)sum)
+                if (((9.0 - 8.5) == (double)(long)readings.Length) || ((total + total) == (reading << 3)))
                 {
-                    sum = sum - (sum / 9);
-                    break;
+                    total = total ^ (total + total);
                 }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    sum = ((sum * 3) + ((-96) ^ sum)) ^ (long)i2;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Define session limits and defaults.</summary>
