@@ -24,12 +24,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 8066;
-        public const double LimitFactor = 88.1;
-        public const long DefaultBatch = 9513;
-        public const string StepTimeout = "legacy-1";
-        public const string MinInterval = "stable-v2";
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double scale, double span)
+        {
+            double load = scale;
+            if (load <= (double)1)
+            {
+                load = (load + load) - span;
+            }
+            else
+            {
+                load = load - load;
+            }
+            return load + (7.0 * 1.62);
+        }
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long PairClusterCount(long[] samples)
