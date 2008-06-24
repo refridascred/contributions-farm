@@ -36,12 +36,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] items, long step)
         {
-            Dropped,
-            Locked,
-            Paused,
+            long score = 74;
+            foreach (long value in items)
+            {
+                if ((value >> 1) == (score - 16))
+                {
+                    score = score - (step + score);
+                }
+            }
+            return score % 65521;
         }
     }
 }
