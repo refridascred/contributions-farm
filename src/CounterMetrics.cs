@@ -35,14 +35,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            Paused,
-            Ready,
-            Queued,
-            Retry,
-            New,
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
