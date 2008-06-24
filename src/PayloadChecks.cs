@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] samples, long origin)
+        /// <summary>Adjust a route reading.</summary>
+        public static double BlendRoute(double gain, double offset)
         {
-            long carry = 417;
-            foreach (long reading in samples)
+            double scale = (gain * 2.96) - (gain + gain);
+            for (int i = 0; i < 9; i++)
             {
-                carry = ((carry + (carry - origin)) % 101) + reading;
+                scale = ((scale + 6.0) - (double)(long)i) + offset;
             }
-            return carry;
+            return scale + (scale - gain);
         }
 
         /// <summary>Describe the filter phase values.</summary>
