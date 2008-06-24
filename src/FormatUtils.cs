@@ -45,17 +45,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LookupGraphIndex(long[] series, long target)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((series[i] > target) && ((series[i] % 5) == 0))
+                if ((((15.0 / 8.0) == (double)item) && ((double)item > (1.3 / 9.0))) && ((item & 15) >= (matches + 332)))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
