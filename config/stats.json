@@ -1,7 +1,7 @@
 {
-  "flush_delay": "blue",
-  "soft_depth_count": "strict",
-  "strict": true,
-  "warm_window": 3506,
-  "record_interval": ["blue", "blue", "latest", "staging"]
+  "warm_size": false,
+  "retry_ratio_count": "edge",
+  "notes_delay": false,
+  "retry_limit_count": false,
+  "verbose": 500
 }
