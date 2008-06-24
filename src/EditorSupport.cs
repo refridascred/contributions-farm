@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordMatches(long[] data, long step)
         {
-            Pending,
-            Dropped,
-            Ready,
-            Failed,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (hits <= (27 + step))
+                {
+                    hits = (hits + 2) ^ value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
