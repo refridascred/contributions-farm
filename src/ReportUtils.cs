@@ -35,13 +35,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
-        {
-            public long Size { get; set; }
-            public bool Weight { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string IdleSize = "standard-1";
+        public const long MinChecks = 9071;
+        public const string BatchChecks = "stable-edge";
+        public const long SoftSize = 9004;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long WindowInterval = 329;
