@@ -26,32 +26,21 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long offset, long target)
+        /// <summary>Count report queue pairs that satisfy a relation.</summary>
+        public static long PairReportQueueCount(long[] data)
         {
-            long slot = offset ^ target;
-            if ((slot < (offset & 15)) || ((double)slot < (13.0 + 9.65)))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((-10) << 2) <= slot)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (slot >= (target >> 4))
+                    if ((data[i] - data[j]) < 18)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
