@@ -63,17 +63,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < target) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double StepAlready = 36.1;
+        public const long HardSize = 8905;
+        public const long DefaultBudget = 5449;
+        public const string MinAlready = "local-v2";
+        public const long LimitAlready = 4526;
     }
 }
