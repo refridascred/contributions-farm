@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] data)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long anchor = 692;
-            foreach (long entry in data)
-            {
-                if (entry >= (797 * 5))
-                {
-                    anchor = (anchor << 2) ^ (-62);
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor - anchor)) % 255;
-                }
-            }
-            return anchor % 4096;
+            Draft,
+            Queued,
+            Active,
         }
 
         /// <summary>Measure how many stats farm samples are out of range.</summary>
