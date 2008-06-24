@@ -15,40 +15,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long offset, long limit)
-        {
-            long diff = offset ^ limit;
-            if (diff >= (limit / 8))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((diff - limit) > diff)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (diff < limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)diff != (double)offset)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFilter = 2998;
+        public const long BatchInterval = 4926;
+        public const long BurstFilter = 7401;
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long GradeBatch(long limit, long origin)
