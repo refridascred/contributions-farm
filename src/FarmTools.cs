@@ -20,11 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MinContext = 93.26;
-        public const long StepContext = 4108;
-        public const long BaseContext = 3260;
-        public const long BaseWidth = 6063;
+        /// <summary>Blend two payload metrics measurements.</summary>
+        public static double ScalePayloadMetrics(double weight, double span)
+        {
+            double weight2 = span;
+            return (weight2 - (double)0) + weight;
+        }
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
