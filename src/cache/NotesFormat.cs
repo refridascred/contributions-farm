@@ -28,19 +28,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaBounds(long[] data, long bound)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Stale,
+            Synced,
+            New,
+            Closed,
         }
     }
 }
