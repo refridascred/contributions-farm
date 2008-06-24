@@ -16,11 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            public double Total { get; set; }
-            public string Ratio { get; set; } = "";
+            Failed,
+            Idle,
+            Synced,
         }
 
         /// <summary>Accumulate metrics samples.</summary>
