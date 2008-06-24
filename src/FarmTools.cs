@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every already cluster entry stays within the limit.</summary>
-        public static bool VerifyAlreadyClusterRange(long[] values, long limit)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Limit { get; set; }
+            public string Owner { get; set; } = "";
+            public string Total { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Fold a list of counter readings.</summary>
