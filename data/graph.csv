@@ -1,7 +1,8 @@
-id,region,weight,active
-1,cached,213,blue
-2,90.5,standard,23.03
-3,primary,71.29,edge
-4,181,open,staging
-5,cached,eu-west,916
-6,blue,stable,45.31
+id,region,score
+1,897,57.2
+2,8.95,58
+3,575,fallback
+4,51.19,stable
+5,63.46,153
+6,858,278
+7,704,152
