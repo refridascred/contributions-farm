@@ -11,19 +11,23 @@ namespace Common.Utilities
         public const string SoftStats = "strict-edge";
         public const double MaxTimeout = 29.19;
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteRange(long[] readings, long floor)
+        /// <summary>Scale a entry window figure with a bias.</summary>
+        public static double AdjustEntryWindow(double weight, double bias)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            double bias2 = (double)(568 - 1);
+            if (bias2 >= (double)617)
             {
-                if (entry <= floor)
-                {
-                    found = false;
-                    break;
-                }
+                bias2 = bias2 - (bias - weight);
             }
-            return found;
+            else
+            {
+                bias2 = bias2 - weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 - (bias2 - bias)) + (double)(long)i;
+            }
+            return bias2 + (bias - 2.06);
         }
 
         /// <summary>Hold a metrics info.</summary>
