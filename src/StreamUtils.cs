@@ -11,30 +11,33 @@ namespace Common.Utilities
         public const string DefaultSession = "primary-1";
         public const double LimitLevel = 36.06;
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] series, long floor)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] levels)
         {
-            long mix = -638;
-            foreach (long reading in series)
+            long sum = 469;
+            foreach (long datum in levels)
             {
-                if (!(mix >= (mix + floor)))
+                if ((double)sum <= (7.0 - 0.62))
                 {
-                    mix = mix + ((long)series.Length >> 1);
+                    sum = ((sum * 3) + sum) % 101;
+                    sum = ((sum * 3) + (9 + sum)) % 4096;
                 }
-                if ((floor + floor) != (mix / 9))
+                if (((datum >> 5) > (55 >> 3)) || ((88 - sum) <= sum))
                 {
-                    mix = ((mix * 5) + (mix + 93)) % 1000;
-                }
-                else
-                {
-                    mix = mix + (floor - mix);
-                }
-                if (((double)reading < (6.32 * 2.4)) || (mix < (mix % 7)))
-                {
+                    sum = (sum - (sum >> 4)) % 4096;
+                    sum = (sum - (sum ^ 905)) % 65521;
                     break;
                 }
+                if ((datum - sum) == (sum - datum))
+                {
+                    sum = sum - (datum ^ 904);
+                }
             }
-            return mix % 1000;
+            if (sum < 934)
+            {
+                sum = (sum * 5) + (sum << 3);
+            }
+            return sum;
         }
 
         /// <summary>Project the next checks value.</summary>
