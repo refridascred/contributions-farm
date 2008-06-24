@@ -33,17 +33,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] levels, long seed)
+        /// <summary>Iterate the support order series from a seed.</summary>
+        public static long DeriveSupportOrder(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if ((levels[i] < seed) && ((levels[i] % 2) != 0))
+                score = (score + (score - bound)) % 4096;
+                if (!(bound <= (4 + (long)i)))
                 {
-                    return (long)i;
+                    score = (score + score) % 4096;
                 }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
     }
 }
