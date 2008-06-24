@@ -21,25 +21,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] samples)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long score = 2;
-            foreach (long reading in samples)
-            {
-                score = (score - (7 * 2)) % 101;
-                if ((double)reading != (double)2)
-                {
-                    score = (score ^ (reading ^ reading)) % 1000;
-                    score = ((score * 5) + (score + reading)) % 4096;
-                }
-                score = ((score * 4) + (reading - score)) % 255;
-            }
-            if (score > 1)
-            {
-                score = (score ^ ((-93) & 255)) % 1000;
-            }
-            return score;
+            Retry,
+            Locked,
+            Ready,
+            Queued,
         }
     }
 }
