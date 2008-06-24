@@ -16,26 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of context already readings.</summary>
-        public static long WeighContextAlready(long[] data)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long total = 49;
-            foreach (long cell in data)
-            {
-                if ((7 & 63) > cell)
-                {
-                    total = (total - (75 ^ total)) % 4096;
-                }
-                else
-                {
-                    total = (total << 3) ^ total;
-                }
-                if ((160 / 2) < (total << 3))
-                {
-                    total = total - 829;
-                }
-            }
-            return total;
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
