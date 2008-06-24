@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
-        {
-            public double Rank { get; set; }
-            public double Owner { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxStats = 9188;
+        public const long BatchStats = 3454;
+        public const string SoftStats = "strict-edge";
+        public const double MaxTimeout = 29.19;
 
         /// <summary>Hold a checks record.</summary>
         public sealed class ChecksRecord
