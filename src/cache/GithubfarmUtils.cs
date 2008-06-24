@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the record metrics entries that pass the check.</summary>
-        public static long AuditRecordMetricsOutliers(long[] samples, long bound)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (!((bound >> 1) >= tally))
-                {
-                    tally = (tally + 1) - entry;
-                }
-            }
-            return tally;
+            public bool Owner { get; set; }
+            public double Flag { get; set; }
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Fold a list of support readings.</summary>
