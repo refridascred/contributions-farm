@@ -31,19 +31,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsRange(long[] items, long target)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] readings, long limit)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long mix = 8;
+            foreach (long datum in readings)
             {
-                if (entry > target)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = ((mix - (mix - mix)) % 101) - datum;
             }
-            return stale;
+            if (mix > 281)
+            {
+                mix = mix - limit;
+            }
+            return mix;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
