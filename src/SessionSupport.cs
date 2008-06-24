@@ -14,12 +14,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstSpan = 9499;
-        public const long SoftBuffer = 371;
-        public const string WindowInterval = "local";
-        public const long IdleFactor = 510;
-        public const double StepLevel = 98.77;
+        /// <summary>Rank buffer profile input into a small class.</summary>
+        public static long BucketBufferProfile(long offset, long limit)
+        {
+            if ((limit + 2) > limit)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset << 2) < offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset % 8) > (limit - limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((double)offset < (double)limit))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a channel info.</summary>
         public sealed class ChannelInfo
