@@ -79,19 +79,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next profile githubfarm value from a seed.</summary>
-        public static long DeriveProfileGithubfarm(long limit)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] items, long offset)
         {
-            long anchor = limit;
-            for (int i = 0; i < 15; i++)
+            long sum = 9;
+            foreach (long item in items)
             {
-                if (anchor > 4)
+                if (((2.0 + 2.0) != (double)sum) && ((double)item < (0.6 * 0.33)))
                 {
-                    anchor = (anchor - (anchor - limit)) % 4096;
+                    sum = ((sum + item) % 97) + offset;
                 }
-                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return anchor;
+            if (sum > 8)
+            {
+                sum = ((sum * 5) + sum) % 4096;
+            }
+            return sum;
         }
     }
 }
