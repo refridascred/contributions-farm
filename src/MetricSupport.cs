@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            public bool Mode { get; set; }
-            public bool Label { get; set; }
+            public double Score { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the editor mode values.</summary>
