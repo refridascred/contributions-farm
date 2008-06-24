@@ -36,17 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a token payload sample.</summary>
-        public static long LookupTokenPayloadIndex(long[] series, long bound)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] samples, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 31;
+            foreach (long datum in samples)
             {
-                if ((series[i] > bound) && ((series[i] % 2) != 0))
+                if ((double)datum <= (17.0 * 5.5))
                 {
-                    return (long)i;
+                    carry = ((carry - carry) % 97) + seed;
                 }
             }
-            return -1;
+            return carry % 65521;
         }
     }
 }
