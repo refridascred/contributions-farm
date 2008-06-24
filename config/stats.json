@@ -1,12 +1,11 @@
 {
-  "max_size": true,
-  "readonly": {
-    "burst_retries_ms": "stable",
-    "max_retries_count": 38.3,
-    "poll_timeout_s": 66.41
-  },
-  "batches_threshold": [388, 375, 203, 126],
-  "metric_ratio": 100,
-  "dry_run": "legacy",
-  "channel_capacity": "legacy"
+  "soft_threshold": false,
+  "readonly": "latest",
+  "graph_depth": 1024,
+  "base_window_pct": {
+    "poll_limit_count": "green",
+    "flush_depth": 93,
+    "default_ratio_count": 30,
+    "dry_run": true
+  }
 }
