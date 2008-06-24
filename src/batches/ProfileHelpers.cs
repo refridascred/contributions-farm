@@ -45,10 +45,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxDepth = 5190;
-        public const long MaxRatio = 9733;
-        public const long MinFarm = 2022;
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= step) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
