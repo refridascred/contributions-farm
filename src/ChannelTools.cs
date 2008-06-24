@@ -32,21 +32,13 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] data)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Stale,
+            Done,
+            Active,
+            Ready,
         }
     }
 }
