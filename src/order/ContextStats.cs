@@ -13,22 +13,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaMatches(long[] items, long origin)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long value in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (origin <= (origin << 2))
+                if (levels[i] <= origin)
                 {
-                    seen = (seen + 1) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
