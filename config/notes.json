@@ -1,5 +1,7 @@
 {
-  "dry_run": "staging",
-  "retry_ttl": 73.35,
-  "max_timeout": 6
+  "idle_limit_ms": "cached",
+  "hard_ttl_count": 60,
+  "idle_depth": 1024,
+  "idle_threshold_pct": "eu-west",
+  "dry_run": "cached"
 }
