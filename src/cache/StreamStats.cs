@@ -39,10 +39,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheDepth = 9834;
-        public const long StepChannel = 2248;
-        public const long CacheCount = 6679;
-        public const string BatchChannel = "staging-1";
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
+        {
+            Failed,
+            Stale,
+            Done,
+            Pending,
+        }
     }
 }
