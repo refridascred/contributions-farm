@@ -17,22 +17,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesMatches(long[] series)
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] items)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seen / 7) != (item % 100))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((items[i] - items[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
