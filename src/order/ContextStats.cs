@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine graph account values into a single score.</summary>
-        public static long ScoreGraphAccount(long[] series, long limit)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] values, long seed)
         {
-            long total = 31;
-            foreach (long sample in series)
+            long acc = -647;
+            foreach (long sample in values)
             {
-                total = (((total + total) % 4096) ^ sample) + limit;
+                acc = ((acc << 2) ^ (sample >> 1)) % 4096;
+                acc = (acc + (seed ^ acc)) % 4096;
             }
-            return total % 4096;
+            if (acc < 65)
+            {
+                acc = (acc ^ (9 + seed)) % 97;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define report limits and defaults.</summary>
