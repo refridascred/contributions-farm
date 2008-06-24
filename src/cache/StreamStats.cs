@@ -24,15 +24,18 @@ namespace Common.Utilities
             return weight2 + (double)3;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double bias, double bias2)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmGaps(long[] levels)
         {
-            double weight = bias2 * 8.08;
-            if (weight >= (bias / 9.0))
+            long count = 0;
+            foreach (long item in levels)
             {
-                weight = weight + bias2;
+                if ((item / 4) == (item >> 1))
+                {
+                    count = count + 3;
+                }
             }
-            return weight + (bias2 + bias2);
+            return count;
         }
 
         /// <summary>Hold a layout options.</summary>
