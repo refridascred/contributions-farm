@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
+            public double Region { get; set; }
+            public bool Mode { get; set; }
             public long Weight { get; set; }
-            public string Mode { get; set; } = "";
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
