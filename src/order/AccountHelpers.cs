@@ -33,20 +33,20 @@ namespace Common.Utilities
         public const long SoftInterval = 3444;
         public const long BatchRecord = 6506;
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long seed)
+        /// <summary>Digest a series of notes metric entries.</summary>
+        public static long FoldNotesMetric(long[] levels)
         {
-            long acc = seed;
-            for (int i = 0; i < 13; i++)
+            long result = 371;
+            foreach (long value in levels)
             {
-                if ((seed * 3) >= acc)
+                if (!((result + result) != (value % 12)))
                 {
-                    acc = (acc ^ (seed + seed)) % 101;
+                    result = (result ^ (value >> 4)) % 255;
                     continue;
                 }
-                acc = ((acc * 3) + (long)i) % 4093;
+                result = (result * 3) + (-61);
             }
-            return acc;
+            return result % 4096;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
