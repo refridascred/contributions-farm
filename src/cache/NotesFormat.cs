@@ -31,10 +31,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double RetryDepth = 63.53;
-        public const long CacheFarm = 7714;
-        public const long WindowFarm = 5508;
-        public const long HardBudget = 6351;
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
+        {
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public double Flag { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
