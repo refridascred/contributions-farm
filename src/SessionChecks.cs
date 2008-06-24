@@ -13,18 +13,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordOutliers(long[] levels, long step)
+        /// <summary>Blend two record context measurements.</summary>
+        public static double ScaleRecordContext(double bias, double floor)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            double drift = 6.46;
+            if (drift < (bias / 2.0))
             {
-                if (((-958) > step) && ((5 ^ cell) > step))
-                {
-                    matches = matches + 3;
-                }
+                drift = (drift - (double)494) - floor;
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift - (bias - bias);
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
