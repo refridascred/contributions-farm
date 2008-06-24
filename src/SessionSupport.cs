@@ -22,11 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultScore = 9675;
-        public const string HardRoute = "open-edge";
-        public const long IdleSize = 8574;
-        public const long BatchScore = 7149;
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ScaleBatches(double bias, double span)
+        {
+            double weight = 5.23;
+            if (weight < (weight + span))
+            {
+                weight = weight + (weight - bias);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (span * 7.55)) + (double)(long)i;
+            }
+            return weight + (double)9;
+        }
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool GuardMetricsRange(long[] values, long offset)
