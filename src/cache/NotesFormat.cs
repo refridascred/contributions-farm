@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] readings)
+        /// <summary>Audit tools buffer readings against a rule.</summary>
+        public static long MeasureToolsBufferGaps(long[] levels, long limit)
         {
-            long result = 502;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                result = (((result * 2) + (result * 4)) % 97) - cell;
+                if ((717 + 88) <= (value >> 2))
+                {
+                    tally = (tally + 2) + limit;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a cache record.</summary>
