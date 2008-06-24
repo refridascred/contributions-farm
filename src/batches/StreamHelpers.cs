@@ -53,20 +53,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] levels, long floor)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long acc = 119;
-            foreach (long value in levels)
-            {
-                acc = ((acc * 3) + (acc + 2)) % 4096;
-                acc = (acc ^ value) % 65521;
-            }
-            if (acc > 935)
-            {
-                acc = ((acc * 5) + (floor % 16)) % 65521;
-            }
-            return acc;
+            public bool Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Validate cache metrics readings against a bound.</summary>
