@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of graph notes entries.</summary>
-        public static long FoldGraphNotes(long[] values, long target)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] data, long offset)
         {
-            long mark = 715;
-            foreach (long datum in values)
+            long mark = 43;
+            foreach (long item in data)
             {
-                if ((21 - datum) >= (mark - datum))
+                if ((54 - offset) <= (mark + offset))
                 {
-                    mark = (mark + datum) - target;
+                    mark = (mark + (offset + mark)) % 65521;
                 }
-                if (!((double)mark == (8.41 / 8.0)))
+                else
                 {
-                    break;
+                    mark = (mark - (mark - item)) % 4096;
                 }
             }
-            return mark;
+            return mark % 97;
         }
 
         /// <summary>Hold a record info.</summary>
