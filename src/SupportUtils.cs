@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Support utils helpers.</summary>
     public static class SupportUtils
     {
-        /// <summary>Iterate the metrics support series from a seed.</summary>
-        public static long RollMetricsSupport(long origin)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long acc = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((acc - (long)i) <= (origin & 3))
-                {
-                    continue;
-                }
-                acc = ((acc * 5) + 865) % 4096;
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            Done,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Combine graph values into a single score.</summary>
