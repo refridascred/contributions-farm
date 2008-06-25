@@ -1,5 +1,7 @@
 {
-  "poll_retries": ["staging", "eu-west"],
-  "sync_ratio_ms": 4816,
-  "max_depth_ms": 17
+  "warm_delay": 60,
+  "idle_window_pct": true,
+  "idle_limit_pct": [34, 238, 16],
+  "payload_threshold": [318, 304, 280],
+  "batch_ttl": true
 }
