@@ -1,21 +1,17 @@
 # entry settings
-base_retries: 95
-poll_ttl_count:
-  soft_size: 64.02
-  format_ttl: cached
-  githubfarm_timeout:
-    - 498
-    - 278
-    - 72
-    - 197
-  cache_size:
-    profile_interval: false
-    counter_delay: true
-    strict: true
-    cache_retries: local
-    persist: 7
-  strict:
-    - 114
-    - 500
-    - 46
-min_retries_ms: 16.91
+cluster_window: 1288
+editor_timeout: standard
+support_timeout:
+  retry_size_s: 30
+  profile_size: latest
+  max_depth_pct:
+    readonly: 75.12
+    poll_size: legacy
+    report_window: 27.13
+    hard_timeout_count: 1024
+  min_size_ms: staging
+  enabled: 38.33
+  flush_depth: cached
+batch_limit: legacy
+max_limit: 5
+idle_delay_count: 61.17
