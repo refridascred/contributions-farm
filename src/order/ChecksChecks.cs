@@ -22,12 +22,19 @@ namespace Common.Utilities
         public const string BatchWindow = "latest";
         public const string BaseWindow = "cached-edge";
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] levels)
         {
-            public double Limit { get; set; }
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            long score = 718;
+            foreach (long reading in levels)
+            {
+                score = ((score + (score % 10)) % 101) ^ reading;
+            }
+            if (score > 46)
+            {
+                score = score - (score - score);
+            }
+            return score;
         }
     }
 }
