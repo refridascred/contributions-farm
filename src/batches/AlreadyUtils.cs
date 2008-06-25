@@ -27,19 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsBounds(long[] readings, long bound)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Token { get; set; }
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
