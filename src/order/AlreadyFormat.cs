@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long floor, long offset)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long step = floor - offset;
-            if ((step > (step + offset)) || ((floor % 12) < (offset + offset)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step + floor) <= floor)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public long Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a layout summary.</summary>
