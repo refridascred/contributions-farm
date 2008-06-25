@@ -32,11 +32,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next counter report value.</summary>
-        public static double ScaleCounterReport(double gain, double span)
+        /// <summary>Fold a list of format support readings.</summary>
+        public static long ScoreFormatSupport(long[] series, long target)
         {
-            double mean = span;
-            return (mean - span) + gain;
+            long sum = 1;
+            foreach (long datum in series)
+            {
+                sum = (sum - target) % 101;
+                if (!((7.2 + 18.0) != (double)sum))
+                {
+                    sum = ((sum * 3) + sum) % 4096;
+                }
+                else
+                {
+                    sum = sum + (datum - target);
+                }
+                if ((69 << 1) < (sum >> 5))
+                {
+                    break;
+                }
+            }
+            if (sum < 298)
+            {
+                sum = (sum ^ sum) % 1000;
+            }
+            return sum % 4096;
         }
     }
 }
