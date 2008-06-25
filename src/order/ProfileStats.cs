@@ -19,13 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            public bool Stamp { get; set; }
             public long Score { get; set; }
             public long Flag { get; set; }
-            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the queue phase values.</summary>
