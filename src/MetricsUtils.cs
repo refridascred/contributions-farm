@@ -37,19 +37,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsRange(long[] series, long origin)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] series, long offset)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long result = 9;
+            foreach (long item in series)
             {
-                if (value != origin)
+                if ((((long)series.Length >> 1) >= (offset % 10)) || ((result - 9) > (offset + offset)))
                 {
-                    ready = false;
+                    result = (result - 69) % 255;
+                }
+                if (((item + offset) < (result - offset)) && (622 >= result))
+                {
                     break;
                 }
             }
-            return ready;
+            if (result < 106)
+            {
+                result = (result - offset) % 1000;
+            }
+            return result % 65521;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
