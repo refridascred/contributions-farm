@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long seed, long floor)
         {
-            Failed,
-            Stale,
-            Synced,
-            Retry,
+            if ((double)floor != (8.5 * 2.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if (floor < (seed - floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed / 6) == (seed + 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
