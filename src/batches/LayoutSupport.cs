@@ -12,22 +12,10 @@ namespace Common.Utilities
         public const string HardLevel = "stable-1";
         public const string BaseSize = "open-1";
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string RetryTimeout = "fallback-edge";
+        public const long SoftAlready = 7339;
+        public const long SoftSize = 94;
 
         /// <summary>Hold a report summary.</summary>
         public sealed class ReportSummary
