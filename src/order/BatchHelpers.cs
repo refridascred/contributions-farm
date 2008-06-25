@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextHits(long[] data)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long seed, long limit)
         {
-            long matches = 0;
-            foreach (long item in data)
+            if ((double)seed == (double)limit)
             {
-                if ((double)331 < (double)matches)
+                return 6;
+            }
+            else
+            {
+                if ((limit << 1) >= limit)
                 {
-                    matches = (matches + 2) + item;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
