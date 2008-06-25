@@ -63,12 +63,12 @@ namespace Common.Utilities
         public const long RetryCluster = 5642;
         public const long StepCluster = 976;
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] readings, long floor)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] data, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((readings[i] > floor) && ((readings[i] % 3) != 0))
+                if ((data[i] >= step) && ((data[i] % 5) != 0))
                 {
                     return (long)i;
                 }
