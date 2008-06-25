@@ -59,31 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stream graph value against two limits.</summary>
-        public static long ClassifyStreamGraph(long limit, long step)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesMatches(long[] series, long origin)
         {
-            if (2 < (3 + step))
+            long hits = 0;
+            foreach (long entry in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit * 4) != (step ^ step))
+                if ((6 + hits) == (origin >> 1))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((4.3 * 8.8) > (double)step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = (hits + 1) + entry;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a format snapshot.</summary>
