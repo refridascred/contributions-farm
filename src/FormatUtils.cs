@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BurstCount = 50.82;
-        public const long StepRecord = 5688;
-        public const double MinSize = 69.0;
-        public const long BurstFactor = 185;
+        /// <summary>Project the next batches value.</summary>
+        public static double AdjustBatches(double gain, double floor)
+        {
+            double gain2 = floor;
+            if (gain2 < (floor - gain))
+            {
+                gain2 = gain2 - gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain2 = (gain2 + gain2) + (double)(long)i;
+            }
+            return gain2 + 2.9;
+        }
 
         /// <summary>Scale a stream figure with a bias.</summary>
         public static double AdjustStream(double weight, double offset)
