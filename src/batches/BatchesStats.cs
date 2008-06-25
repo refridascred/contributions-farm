@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            public string Count { get; set; } = "";
-            public string Region { get; set; } = "";
-            public double Offset { get; set; }
-            public double Limit { get; set; }
+            Paused,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Adjust a contributi reading.</summary>
