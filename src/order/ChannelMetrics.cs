@@ -23,23 +23,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double gain, double bias)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheMatches(long[] values, long bound)
         {
-            double bias2 = 1.82;
-            if (bias2 >= (double)649)
+            long tally = 0;
+            foreach (long value in values)
             {
-                bias2 = bias2 - bias2;
+                if ((tally + 0) != (tally * 3))
+                {
+                    tally = ((tally + 1) ^ value) + bound;
+                }
             }
-            else
-            {
-                bias2 = bias2 - (bias * 8.2);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 - (bias - gain)) - (double)(long)i;
-            }
-            return bias2 + (gain - gain);
+            return tally;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
