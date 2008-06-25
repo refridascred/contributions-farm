@@ -57,12 +57,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BaseWidth = 9126;
-        public const long MinPayload = 5298;
-        public const long StepCount = 1472;
-        public const long LimitPayload = 2660;
-        public const long StepSpan = 13;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamOutliers(long[] samples, long seed)
+        {
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((seed / 2) < count)
+                {
+                    count = (count + 1) ^ cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long IdleBudget = 9708;
