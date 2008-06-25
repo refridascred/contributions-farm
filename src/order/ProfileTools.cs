@@ -20,25 +20,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long offset, long origin)
-        {
-            if ((offset + offset) > offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin <= offset) || (origin < (origin - 41)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryCount = 8645;
+        public const long SoftContext = 9229;
+        public const double CacheCount = 18.61;
+        public const string MinSize = "fallback-edge";
+        public const long MinContext = 2716;
 
         /// <summary>Blend two report measurements.</summary>
         public static double AdjustReport(double weight, double span)
