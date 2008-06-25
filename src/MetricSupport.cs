@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderRange(long[] data, long target)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmHits(long[] series)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (cell > target)
+                if (!((hits % 10) <= (datum ^ datum)) && ((double)hits == (double)datum))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
