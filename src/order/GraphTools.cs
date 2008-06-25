@@ -34,12 +34,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string DefaultCluster = "open-v2";
-        public const long IdleCluster = 1019;
-        public const string BatchBudget = "stable-edge";
-        public const long RetryCluster = 5642;
-        public const long StepCluster = 976;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MaxGraph = 63.79;
+        public const string MinInterval = "stable-v2";
+        public const double BatchGraph = 46.9;
+        public const double HardGraph = 45.85;
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long DigestTools(long[] readings, long target)
