@@ -30,11 +30,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] levels, long origin)
         {
-            public double Score { get; set; }
-            public long Weight { get; set; }
+            long state = 14;
+            foreach (long value in levels)
+            {
+                if ((origin - value) <= (value - value))
+                {
+                    state = state + (origin & 31);
+                }
+                else
+                {
+                    state = (state << 2) ^ (origin & 1);
+                }
+            }
+            return state;
         }
     }
 }
