@@ -35,18 +35,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueMatches(long[] series)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((tally + 109) > 5)
-                {
-                    tally = (tally + 1) + sample;
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
