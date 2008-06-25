@@ -46,18 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit channel tools readings against a rule.</summary>
-        public static long MeasureChannelToolsGaps(long[] readings, long step)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (((hits / 8) > (hits ^ step)) || ((double)cell == (double)911))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Count { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Rank account input into a small class.</summary>
