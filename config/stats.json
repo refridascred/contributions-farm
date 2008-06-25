@@ -1,12 +1,7 @@
 {
-  "notes_delay": ["blue", "blue", "strict"],
-  "flush_size_pct": 47.33,
-  "batches_size": 60,
-  "poll_size": {
-    "retry_limit_ms": [298, 92, 361, 91],
-    "strict": true,
-    "min_size": ["legacy", "primary", "strict", "primary"],
-    "burst_depth_pct": "eu-west"
-  },
-  "editor_ttl": "standard"
+  "base_timeout_count": 3393,
+  "verbose": "green",
+  "hard_delay_ms": 23.32,
+  "compress": 94.35,
+  "metric_interval": 5227
 }
