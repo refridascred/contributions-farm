@@ -18,40 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long offset, long floor)
-        {
-            long next = offset + floor;
-            if (((next >> 1) <= (next / 4)) && (offset >= (floor ^ next)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor + next) > (319 / 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((next % 16) >= (next ^ next)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!(next <= floor))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string SoftAccount = "local-v2";
+        public const long IdleAccount = 4120;
+        public const double MaxAccount = 66.51;
+        public const long BaseSize = 5215;
 
         /// <summary>Find the first support entry that matches the target.</summary>
         public static long SeekSupportIndex(long[] data, long bound)
