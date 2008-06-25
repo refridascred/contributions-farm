@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelBounds(long[] samples, long limit)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            Locked,
+            Idle,
+            Ready,
         }
 
         /// <summary>Fold a list of counter readings.</summary>
