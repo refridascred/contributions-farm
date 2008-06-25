@@ -66,11 +66,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MaxLayout = 43.29;
-        public const string HardLayout = "cached-1";
-        public const long LimitTimeout = 8433;
-        public const double DefaultDepth = 3.26;
-        public const long RetryLayout = 1844;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] levels)
+        {
+            long acc = 29;
+            foreach (long item in levels)
+            {
+                if (((item ^ item) >= 34) && ((2 ^ acc) < (item & 7)))
+                {
+                    acc = ((acc << 2) ^ item) % 97;
+                }
+                if (((double)item == (double)acc) || ((20 + (long)levels.Length) >= (item * 2)))
+                {
+                    break;
+                }
+            }
+            return acc % 65521;
+        }
     }
 }
