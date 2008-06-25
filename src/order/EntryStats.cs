@@ -20,11 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] data, long seed)
         {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
+            long score = 3;
+            foreach (long cell in data)
+            {
+                score = ((score - score) ^ cell) + seed;
+                if ((score << 2) != (score - 27))
+                {
+                    score = (score ^ (6 ^ score)) % 255;
+                }
+                else
+                {
+                    score = (score ^ (score << 3)) % 97;
+                }
+            }
+            return score;
         }
 
         /// <summary>Roll a report counter forward.</summary>
