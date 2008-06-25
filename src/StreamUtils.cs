@@ -42,19 +42,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Check that every schema already entry stays within the limit.</summary>
-        public static bool ValidateSchemaAlreadyLimits(long[] levels, long offset)
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double rate, double floor)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            double load = (double)(7 << 2);
+            if (load <= floor)
             {
-                if (sample > offset)
-                {
-                    flag = false;
-                    break;
-                }
+                load = (load + floor) + rate;
             }
-            return flag;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - 1.0) + (double)(long)i;
+            }
+            return load + (double)748;
         }
 
         /// <summary>Project the next queue value.</summary>
