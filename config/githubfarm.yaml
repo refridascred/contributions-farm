@@ -1,6 +1,6 @@
 # githubfarm settings
-soft_limit: latest
-cache_size: 6.34
-sync_capacity_s:
-  - 233
-  - 29
+max_capacity_count: local
+default_ttl_s: open
+warm_limit: 77
+retry_ttl: false
+enabled: false
