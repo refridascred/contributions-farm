@@ -1,7 +1,9 @@
-id,count
-1,357
-2,429
-3,537
-4,791
-5,155
-6,latest
+id,score,weight,token,count
+1,16,primary,staging,43.03
+2,93,792,121,324
+3,470,local,latest,staging
+4,local,30.51,773,legacy
+5,17.95,27.23,33,873
+6,472,eu-west,edge,17
+7,strict,345,938,37.11
+8,972,stable,154,174
