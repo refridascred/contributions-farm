@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] values, long target)
+        /// <summary>Roll a metric entry counter forward.</summary>
+        public static long IterateMetricEntry(long target)
         {
-            long total = 311;
-            foreach (long value in values)
+            long score = target;
+            for (int i = 0; i < 10; i++)
             {
-                total = ((total ^ ((long)values.Length + target)) % 255) ^ value;
+                score = ((score * 5) + (long)i) % 1000;
             }
-            if (total < 26)
-            {
-                total = (total * 4) + (total / 5);
-            }
-            return total;
+            return score;
         }
 
         /// <summary>Fold a list of order stream readings.</summary>
