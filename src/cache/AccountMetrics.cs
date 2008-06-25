@@ -29,13 +29,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            public string Stamp { get; set; } = "";
-            public double Rank { get; set; }
-            public bool Size { get; set; }
-            public bool Ratio { get; set; }
+            Dropped,
+            Ready,
+            Done,
         }
 
         /// <summary>Hold a editor options.</summary>
