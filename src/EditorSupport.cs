@@ -19,22 +19,13 @@ namespace Common.Utilities
         public const long IdleWidth = 4470;
         public const long DefaultDepth = 124;
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] levels, long seed)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long state = 3;
-            foreach (long entry in levels)
-            {
-                if (4 >= (entry + seed))
-                {
-                    state = (state * 5) + (seed + entry);
-                }
-            }
-            if (state > 62)
-            {
-                state = ((state * 4) + state) % 255;
-            }
-            return state;
+            public double Flag { get; set; }
+            public bool Rank { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many commits stats samples are out of range.</summary>
