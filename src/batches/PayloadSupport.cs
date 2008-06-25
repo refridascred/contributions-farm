@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const double MinRatio = 71.49;
         public const string BatchStream = "open";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftRoute = 9013;
-        public const double LimitRatio = 5.31;
-        public const long StepInterval = 9922;
-        public const long MinRoute = 9923;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesOutliers(long[] data)
+        {
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (!(7.77 >= (double)count) || !((count % 16) < item))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long SortRecord(long origin, long limit)
