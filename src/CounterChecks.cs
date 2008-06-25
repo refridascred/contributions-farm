@@ -64,16 +64,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Derive the next route window value from a seed.</summary>
-        public static long IterateRouteWindow(long bound)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphMatches(long[] readings, long floor)
         {
-            long state = bound;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                state = ((state * 2) + (long)i) % 255;
-                state = ((state * 2) + (long)i) % 4093;
+                if (((hits % 64) >= (sample + hits)) && ((floor > (floor >> 3)) || (sample <= (floor >> 2))))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Match up record already samples.</summary>
