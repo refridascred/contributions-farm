@@ -33,24 +33,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] values, long origin)
-        {
-            long mark = 73;
-            foreach (long reading in values)
-            {
-                mark = (mark + origin) % 255;
-                if (reading < (reading * 2))
-                {
-                    break;
-                }
-            }
-            if (mark < 1)
-            {
-                mark = mark ^ origin;
-            }
-            return mark;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double WindowSpan = 42.98;
+        public const long WindowRatio = 1203;
+        public const long MaxMetric = 1584;
+        public const string RetryInterval = "alpha-edge";
 
         /// <summary>Locate a tools reading by value.</summary>
         public static long LocateToolsIndex(long[] samples, long seed)
