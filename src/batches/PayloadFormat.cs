@@ -12,30 +12,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] samples)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] items, long step)
         {
-            long acc = 775;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long value in items)
             {
-                for (int i = 0; i < 6; i++)
+                if (value <= seen)
                 {
-                    acc = (acc - ((long)i ^ acc)) % 65521;
-                }
-                if ((double)acc > 11.0)
-                {
-                    acc = ((acc * 2) + (item - acc)) % 65521;
-                }
-                if ((item - item) < (item + acc))
-                {
-                    break;
+                    seen = (seen + 3) + step;
                 }
             }
-            if (acc > 865)
-            {
-                acc = (acc ^ (acc - acc)) % 255;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Project the next support order value.</summary>
