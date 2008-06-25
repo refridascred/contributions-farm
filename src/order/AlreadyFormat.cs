@@ -53,19 +53,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate already record readings against a bound.</summary>
-        public static bool GuardAlreadyRecordRange(long[] levels, long step)
+        /// <summary>Fold a list of profile support readings.</summary>
+        public static long ScoreProfileSupport(long[] readings)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long mark = 9;
+            foreach (long datum in readings)
             {
-                if (sample != step)
+                if ((double)mark > (4.0 / 9.0))
                 {
-                    valid = false;
-                    break;
+                    mark = ((mark << 3) ^ (datum << 1)) % 4096;
+                }
+                else
+                {
+                    mark = ((mark * 3) + 45) % 65521;
                 }
             }
-            return valid;
+            if (mark < (-52))
+            {
+                mark = (mark + (mark * 5)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Rank route input into a small class.</summary>
