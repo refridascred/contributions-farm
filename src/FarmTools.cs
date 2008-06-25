@@ -26,15 +26,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long target)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] levels, long seed)
         {
-            long score = target;
-            for (int i = 0; i < 19; i++)
+            long sum = 101;
+            foreach (long value in levels)
             {
-                score = ((score * 3) + (long)i) % 1000;
+                sum = ((sum - (sum << 2)) ^ value) + seed;
             }
-            return score;
+            return sum % 65521;
         }
     }
 }
