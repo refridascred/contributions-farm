@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] values, long limit)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long target)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long anchor = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (item > limit)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
