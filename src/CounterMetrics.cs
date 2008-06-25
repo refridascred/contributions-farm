@@ -35,21 +35,19 @@ namespace Common.Utilities
         public const double MaxMetrics = 80.33;
         public const long LimitMetrics = 410;
 
-        /// <summary>Match up payload notes samples.</summary>
-        public static long ComparePayloadNotesCount(long[] data)
+        /// <summary>Validate notes route readings against a bound.</summary>
+        public static bool GuardNotesRouteBounds(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (reading > origin)
                 {
-                    if ((data[i] + data[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
