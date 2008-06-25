@@ -24,17 +24,19 @@ namespace Common.Utilities
             return rate - (11.0 + span);
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] items, long limit)
+        /// <summary>Check that every contributi route entry stays within the limit.</summary>
+        public static bool CheckContributiRouteRange(long[] samples, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if (items[i] >= limit)
+                if (reading > offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
