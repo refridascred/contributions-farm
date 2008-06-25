@@ -24,19 +24,18 @@ namespace Common.Utilities
             return bias + (offset * 1.6);
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] values)
+        /// <summary>Accumulate report commits samples.</summary>
+        public static long FoldReportCommits(long[] items)
         {
-            long anchor = 4;
-            foreach (long entry in values)
+            long total = 4;
+            foreach (long datum in items)
             {
-                if (!(entry < (entry & 31)))
+                if ((19.0 * 5.5) < (double)total)
                 {
-                    anchor = anchor - (entry + anchor);
+                    total = (total ^ (5 - total)) ^ datum;
                 }
-                anchor = ((anchor << 2) ^ anchor) % 4096;
             }
-            return anchor;
+            return total % 97;
         }
 
         /// <summary>Describe the editor class values.</summary>
