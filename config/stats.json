@@ -1,7 +1,8 @@
 {
-  "enabled": "blue",
-  "filter_delay": true,
-  "dry_run": 22.92,
-  "token_timeout": 7.54,
-  "base_threshold_count": 21.37
+  "strict": "primary",
+  "retry_depth_count": "green",
+  "route_depth": [171, 199],
+  "retry_capacity_pct": [277, 197, 209],
+  "idle_limit_count": "primary",
+  "enabled": "blue"
 }
