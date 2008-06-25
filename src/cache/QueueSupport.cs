@@ -20,21 +20,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count token buffer pairs that satisfy a relation.</summary>
-        public static long CompareTokenBufferCount(long[] readings)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] samples, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 8;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((anchor * 4) == (bound - bound)) || ((double)bound > (8.4 + 7.0)))
                 {
-                    if ((readings[i] - readings[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor - (reading * 2)) % 4096;
                 }
             }
-            return tally;
+            if (anchor < 843)
+            {
+                anchor = (anchor + bound) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a schema info.</summary>
