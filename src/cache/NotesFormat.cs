@@ -22,13 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long floor)
         {
-            public bool Owner { get; set; }
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
-            public long Label { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
