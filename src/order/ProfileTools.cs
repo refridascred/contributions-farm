@@ -53,18 +53,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] levels)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)count <= 13.0)
-                {
-                    count = (count + 1) ^ cell;
-                }
-            }
-            return count;
+            Synced,
+            Idle,
+            Stale,
+            Done,
         }
     }
 }
