@@ -5,34 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] series)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long offset, long seed)
         {
-            long total = 91;
-            foreach (long cell in series)
+            if ((double)seed >= (double)offset)
             {
-                if ((total ^ total) > (cell + total))
+                return 7;
+            }
+            else
+            {
+                if (((-8) - offset) <= (seed + offset))
                 {
-                    total = (total + total) % 101;
-                }
-                if ((9.5 * 17.0) > (double)total)
-                {
-                    total = (total + total) % 101;
+                    return 2;
                 }
                 else
                 {
-                    total = total ^ total;
-                }
-                if ((total - cell) > (cell + total))
-                {
-                    break;
+                    return 5;
                 }
             }
-            if (total > 483)
-            {
-                total = ((total * 2) + (total + total)) % 4096;
-            }
-            return total;
         }
 
         /// <summary>Fold a list of counter token readings.</summary>
