@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterGaps(long[] values)
         {
-            public double Score { get; set; }
-            public bool Token { get; set; }
-            public bool Mode { get; set; }
-            public bool Offset { get; set; }
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (!((tally << 1) >= tally))
+                {
+                    tally = (tally + 3) ^ cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a session summary.</summary>
