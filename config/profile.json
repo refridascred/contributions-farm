@@ -1,6 +1,7 @@
 {
-  "max_threshold_ms": "primary",
-  "poll_delay_s": 54,
-  "layout_interval": "eu-west",
-  "idle_interval_ms": [69, 66]
+  "audit": false,
+  "payload_ttl": 50.16,
+  "filter_size": "blue",
+  "max_threshold": "green",
+  "retry_ttl_s": 13.03
 }
