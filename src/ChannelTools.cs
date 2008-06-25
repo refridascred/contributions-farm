@@ -22,20 +22,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of notes cluster readings.</summary>
-        public static long CombineNotesCluster(long[] items)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryGaps(long[] items, long seed)
         {
-            long mark = 3;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long item in items)
             {
-                mark = mark ^ (entry & 15);
-                mark = (mark + (mark - mark)) % 1000;
+                if (((matches - matches) > (item + seed)) && ((762 % 100) != (seed >> 2)))
+                {
+                    matches = matches + 1;
+                }
             }
-            if (mark < 13)
-            {
-                mark = ((mark << 3) ^ (87 + mark)) % 65521;
-            }
-            return mark;
+            return matches;
         }
     }
 }
