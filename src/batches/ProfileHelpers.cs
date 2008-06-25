@@ -34,39 +34,15 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Grade a stats metrics value against two limits.</summary>
-        public static long SortStatsMetrics(long target, long limit)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long offset)
         {
-            long diff = target - limit;
-            if (!(target <= (diff & 3)))
+            long carry = offset;
+            for (int i = 0; i < 9; i++)
             {
-                return 5;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((double)limit < (double)diff)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((diff < (80 * 4)) && ((double)limit < (1.3 - 20.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((diff * 5) <= (limit * 5)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
