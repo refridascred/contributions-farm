@@ -1,17 +1,14 @@
 {
-  "retry_capacity_ms": false,
-  "min_threshold": {
-    "base_timeout_ms": "fallback",
-    "token_interval": 97,
-    "filter_threshold": ["stable", "latest", "fallback", "green"],
-    "readonly": false,
-    "command_size": {
-      "metric_capacity": ["open", "fallback", "primary"],
-      "cache_retries": 250,
-      "flush_threshold_s": "strict"
-    },
-    "soft_depth": 7.82
-  },
-  "retry_limit_ms": false,
-  "max_capacity_ms": "local"
+  "burst_window": 5.43,
+  "min_window_ms": [418, 380, 320, 95],
+  "window_ratio": 25.57,
+  "base_window": 59.85,
+  "contributi_capacity": {
+    "hard_threshold": 500,
+    "default_retries_count": [141, 364],
+    "hard_ratio_ms": 45.97,
+    "batch_interval": 6.22,
+    "command_retries": 7739,
+    "burst_size": "legacy"
+  }
 }
