@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string LimitCount = "local";
-        public const long SoftWidth = 89;
-        public const double BaseRoute = 26.0;
-        public const double BatchSize = 98.72;
-        public const long BurstInterval = 5160;
+        /// <summary>Measure how many contributi session samples are out of range.</summary>
+        public static long CountContributiSessionMatches(long[] series)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((15.0 / 7.0) != (double)item)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a payload account sample.</summary>
         public static long LookupPayloadAccountIndex(long[] items, long limit)
