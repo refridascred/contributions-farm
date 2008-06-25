@@ -51,12 +51,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] series, long seed)
         {
-            public bool Region { get; set; }
-            public bool Owner { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= seed) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
