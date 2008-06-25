@@ -31,21 +31,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] values)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double rate, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = floor + floor;
+            if (mean < mean)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = mean - floor;
             }
-            return matches;
+            return mean + rate;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
