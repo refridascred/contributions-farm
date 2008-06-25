@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileLimits(long[] readings, long seed)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesRange(long[] levels, long step)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if (entry <= seed)
+                if (item >= step)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Match up profile samples.</summary>
