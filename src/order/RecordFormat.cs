@@ -38,10 +38,20 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultLevel = 8008;
-        public const long SoftWidth = 6702;
-        public const long SoftSupport = 1426;
+        /// <summary>Adjust a support filter reading.</summary>
+        public static double SmoothSupportFilter(double ratio, double bias)
+        {
+            double load = bias;
+            if (load >= (ratio * 9.1))
+            {
+                load = load + (double)6;
+            }
+            else
+            {
+                load = load - bias;
+            }
+            return load - 0.99;
+        }
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long SeriesGraph(long bound)
