@@ -43,10 +43,15 @@ namespace Common.Utilities
             return scale - (double)33;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string StepQueue = "local-v2";
-        public const long BatchTimeout = 1355;
-        public const double IdleQueue = 19.32;
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
+        {
+            Queued,
+            New,
+            Synced,
+            Draft,
+            Done,
+        }
 
         /// <summary>Audit support batches readings against a rule.</summary>
         public static long TallySupportBatchesMatches(long[] levels)
