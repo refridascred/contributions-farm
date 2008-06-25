@@ -20,12 +20,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryCount = 8645;
-        public const long SoftContext = 9229;
-        public const double CacheCount = 18.61;
-        public const string MinSize = "fallback-edge";
-        public const long MinContext = 2716;
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
+        {
+            New,
+            Failed,
+            Queued,
+            Paused,
+            Dropped,
+        }
 
         /// <summary>Blend two report measurements.</summary>
         public static double AdjustReport(double weight, double span)
