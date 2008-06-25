@@ -39,22 +39,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] samples)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((item + 3) <= item)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Stale,
+            Ready,
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
