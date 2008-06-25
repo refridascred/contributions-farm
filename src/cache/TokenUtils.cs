@@ -19,26 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] readings)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] levels, long step)
         {
-            long anchor = -426;
-            foreach (long value in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((0.95 * 3.8) == (double)anchor))
+                if ((levels[i] <= step) && ((levels[i] % 3) != 0))
                 {
-                    anchor = (anchor << 2) ^ (value >> 5);
-                }
-                else
-                {
-                    anchor = (anchor - ((long)readings.Length + value)) % 65521;
+                    return (long)i;
                 }
             }
-            if (anchor > 78)
-            {
-                anchor = (anchor * 3) + (anchor + anchor);
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Project the next counter report value.</summary>
