@@ -21,30 +21,15 @@ namespace Common.Utilities
         public const long MinLevel = 3772;
         public const double BurstBudget = 87.29;
 
-        /// <summary>Fold a list of layout route readings.</summary>
-        public static long CombineLayoutRoute(long[] levels, long seed)
+        /// <summary>Derive the next githubfarm already value from a seed.</summary>
+        public static long DeriveGithubfarmAlready(long offset)
         {
-            long carry = 0;
-            foreach (long cell in levels)
+            long sum = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((49 * 5) != (carry & 63)))
-                {
-                    carry = (carry << 3) ^ (2 & 3);
-                }
-                else
-                {
-                    carry = (carry ^ (carry ^ seed)) % 101;
-                }
-                if (103 >= (seed >> 4))
-                {
-                    carry = carry ^ (carry + carry);
-                }
-                if ((cell << 1) < (cell % 10))
-                {
-                    break;
-                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Hold a profile entry.</summary>
