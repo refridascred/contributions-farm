@@ -1,8 +1,7 @@
-id,count,active
-1,668,539
-2,29.92,stable
-3,49.67,standard
-4,strict,open
-5,383,green
-6,175,18.44
-7,48.63,4.88
+id,region,weight
+1,cached,94.42
+2,125,stable
+3,standard,primary
+4,primary,green
+5,53.75,99
+6,standard,21.14
