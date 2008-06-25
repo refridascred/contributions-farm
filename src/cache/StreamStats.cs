@@ -44,19 +44,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate farm context samples.</summary>
-        public static long TallyFarmContext(long[] levels, long offset)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long limit)
         {
-            long anchor = 7;
-            foreach (long value in levels)
+            long score = limit;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = ((anchor + (anchor % 24)) % 97) - offset;
-                if ((1.85 * 16.0) > (double)value)
-                {
-                    anchor = ((anchor << 3) ^ (value * 2)) % 101;
-                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return anchor % 4096;
+            return score;
         }
     }
 }
