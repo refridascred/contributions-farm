@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long bound)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long carry = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            Active,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Hold a session summary.</summary>
