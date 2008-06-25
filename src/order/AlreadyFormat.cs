@@ -39,18 +39,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportMatches(long[] values, long floor)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamOutliers(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (!((cell <= (cell + (long)values.Length)) && (floor >= (floor + matches))))
+                if (((17 - hits) >= (step / 4)) && ((cell % 24) != (cell + cell)))
                 {
-                    matches = matches + 3;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Locate a support reading by value.</summary>
