@@ -10,22 +10,14 @@ namespace Common.Utilities
         public const long BaseBatch = 1910;
         public const double HardSpan = 82.94;
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] items, long bound)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long acc = 96;
-            foreach (long reading in items)
-            {
-                if ((double)acc < 8.9)
-                {
-                    acc = ((((acc << 3) ^ acc) % 255) ^ reading) - bound;
-                }
-            }
-            if (acc < 60)
-            {
-                acc = ((acc << 2) ^ (acc & 127)) % 101;
-            }
-            return acc % 4096;
+            Closed,
+            Idle,
+            Locked,
+            New,
+            Draft,
         }
 
         /// <summary>Hold a stats record.</summary>
