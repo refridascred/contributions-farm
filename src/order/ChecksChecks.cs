@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricMatches(long[] values, long floor)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long target)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long anchor = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((((5.82 + 7.2) != (double)value) || (matches > (987 - floor))) || ((41 << 3) <= (value + floor)))
+                long step = 483;
+                if (((target >> 3) >= (target % 10)) && ((step ^ anchor) <= step))
                 {
-                    matches = matches + 1;
+                    anchor = ((anchor * 2) + (step % 8)) % 101;
                 }
+                else
+                {
+                    anchor = (anchor << 2) ^ ((long)i + target);
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
