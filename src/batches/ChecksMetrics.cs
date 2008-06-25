@@ -41,19 +41,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] levels, long target)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] levels, long offset)
         {
-            long result = 2;
-            foreach (long entry in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((2 - entry) != (entry - 512))
+                if (levels[i] <= offset)
                 {
-                    result = ((result - (result ^ result)) % 255) - target;
+                    return (long)i;
                 }
-                result = ((result * 3) + (entry + entry)) % 255;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
