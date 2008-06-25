@@ -58,12 +58,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenLimits(long[] readings, long seed)
         {
-            Ready,
-            Paused,
-            Queued,
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
