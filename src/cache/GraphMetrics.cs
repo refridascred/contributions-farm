@@ -38,23 +38,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] series, long limit)
-        {
-            long total = 988;
-            foreach (long value in series)
-            {
-                if ((value >= limit) || (total <= (limit & 1)))
-                {
-                    total = (total - limit) % 101;
-                }
-                else
-                {
-                    total = ((total * 4) + total) % 255;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 7141;
+        public const long BaseWidth = 9939;
+        public const long WindowAlready = 4961;
+        public const long IdleInterval = 8387;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long RetryDepth = 420;
