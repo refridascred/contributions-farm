@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long offset, long seed)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            if ((double)seed >= (double)offset)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((-8) - offset) <= (seed + offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Done,
+            Ready,
+            Retry,
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
