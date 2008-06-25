@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= seed) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowSize = 9550;
+        public const long LimitBuffer = 3658;
+        public const string BaseBuffer = "staging-1";
+        public const long HardBuffer = 809;
+        public const double MaxBuffer = 55.48;
 
         /// <summary>Project the next batches value.</summary>
         public static double AdjustBatches(double gain, double floor)
