@@ -84,13 +84,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
-        {
-            Closed,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BatchTools = "cached-edge";
+        public const string RetryDepth = "alpha";
+        public const long SoftTools = 3578;
 
         /// <summary>Scale a contributi already figure with a bias.</summary>
         public static double SmoothContributiAlready(double bias, double floor)
