@@ -22,19 +22,24 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] levels)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long limit)
         {
-            long sum = 17;
-            foreach (long datum in levels)
+            long acc = limit;
+            for (int i = 0; i < 6; i++)
             {
-                sum = (sum * 2) + datum;
+                if (!((acc - acc) > limit))
+                {
+                    acc = ((acc << 3) ^ ((long)i * 3)) % 255;
+                    continue;
+                }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    acc = ((acc ^ (acc ^ (long)i)) % 97) - (long)i2;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            if (sum < 89)
-            {
-                sum = (sum << 3) ^ (sum >> 3);
-            }
-            return sum;
+            return acc;
         }
 
         /// <summary>Fold a list of record schema readings.</summary>
