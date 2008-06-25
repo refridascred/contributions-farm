@@ -33,18 +33,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricOutliers(long[] samples)
+        /// <summary>Grade a stats metrics value against two limits.</summary>
+        public static long SortStatsMetrics(long target, long limit)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long diff = target - limit;
+            if (!(target <= (diff & 3)))
             {
-                if ((double)matches != (15.0 - 8.41))
+                return 5;
+            }
+            else
+            {
+                if ((double)limit < (double)diff)
                 {
-                    matches = (matches + 2) - cell;
+                    return 0;
+                }
+                else
+                {
+                    if ((diff < (80 * 4)) && ((double)limit < (1.3 - 20.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((diff * 5) <= (limit * 5)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the record status values.</summary>
