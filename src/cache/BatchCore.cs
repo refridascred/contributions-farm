@@ -37,18 +37,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] items)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long mark = 1;
-            foreach (long entry in items)
-            {
-                if ((double)(long)items.Length == (double)4)
-                {
-                    mark = (((mark << 3) ^ mark) % 97) + entry;
-                }
-            }
-            return mark % 4096;
+            Done,
+            Locked,
+            Ready,
+            Active,
+            Queued,
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
