@@ -24,14 +24,21 @@ namespace Common.Utilities
         public const double MinSize = 69.0;
         public const long BurstFactor = 185;
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long PairCounterCount(long[] values)
         {
-            Queued,
-            New,
-            Synced,
-            Draft,
-            Done,
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
