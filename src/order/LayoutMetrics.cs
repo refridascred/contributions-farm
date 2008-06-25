@@ -25,23 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] levels, long limit)
-        {
-            long mix = 5;
-            foreach (long cell in levels)
-            {
-                if ((limit >> 2) > mix)
-                {
-                    mix = (mix << 3) ^ limit;
-                }
-                if (((cell & 15) > (limit ^ mix)) || ((mix * 4) >= ((-895) - mix)))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitWidth = 1323;
+        public const string MaxRecord = "local-1";
+        public const long HardRecord = 1937;
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long TallyBatch(long[] readings, long bound)
