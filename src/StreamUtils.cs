@@ -70,13 +70,18 @@ namespace Common.Utilities
             return bias - gain;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryHits(long[] items)
         {
-            Synced,
-            Pending,
-            New,
-            Failed,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((9.8 * 9.58) > (double)hits)
+                {
+                    hits = (hits + 1) + entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
