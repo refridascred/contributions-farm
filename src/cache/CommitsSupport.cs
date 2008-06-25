@@ -59,38 +59,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long offset, long target)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            if (16 < target)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((offset / 5) <= offset) || ((offset % 3) <= offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)target > (9.4 / 5.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset / 5) > (target & 255))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public bool Offset { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
