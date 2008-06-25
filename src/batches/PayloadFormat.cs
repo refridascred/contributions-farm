@@ -27,13 +27,26 @@ namespace Common.Utilities
         public const double BurstInterval = 92.63;
         public const long DefaultLevel = 4510;
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Combine session cluster values into a single score.</summary>
+        public static long DigestSessionCluster(long[] readings, long offset)
         {
-            Draft,
-            Dropped,
-            Idle,
-            Stale,
+            long mix = 95;
+            foreach (long datum in readings)
+            {
+                if ((mix >> 1) <= (mix >> 5))
+                {
+                    mix = (mix * 4) + (datum & 3);
+                }
+                else
+                {
+                    mix = (mix - offset) % 65521;
+                }
+            }
+            if (mix > 13)
+            {
+                mix = (mix - (offset * 4)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Adjust a token reading.</summary>
