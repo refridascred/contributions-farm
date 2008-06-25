@@ -25,22 +25,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsHits(long[] values, long floor)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (!!(seen < entry))
-                {
-                    seen = (seen + 2) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string CacheTimeout = "standard-1";
+        public const double BatchBudget = 87.31;
+        public const double BatchEntry = 85.26;
     }
 }
