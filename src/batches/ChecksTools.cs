@@ -32,15 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] samples, long seed)
+        /// <summary>Validate already session readings against a bound.</summary>
+        public static bool GuardAlreadySessionLimits(long[] samples, long limit)
         {
-            long total = 8;
-            foreach (long value in samples)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                total = ((((total * 3) + (500 ^ total)) % 4096) + value) + seed;
+                if (datum != limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
     }
 }
