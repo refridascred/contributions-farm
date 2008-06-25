@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long floor, long floor2)
-        {
-            if ((9 - 9) != (floor2 - 982))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((230 % 8) > (floor + floor2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)floor2 < (double)floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (floor < (546 + 820))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string SoftBudget = "strict-1";
+        public const double MinCluster = 68.35;
+        public const string WindowCluster = "local-v2";
+        public const long DefaultCluster = 9464;
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long LookupPayloadIndex(long[] readings, long origin)
