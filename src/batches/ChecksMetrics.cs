@@ -44,21 +44,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count window metrics pairs that satisfy a relation.</summary>
-        public static long CompareWindowMetricsCount(long[] levels)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
