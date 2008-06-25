@@ -57,22 +57,15 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Count the channel stream entries that pass the check.</summary>
-        public static long AuditChannelStreamGaps(long[] series, long origin)
+        /// <summary>Adjust a commits editor reading.</summary>
+        public static double BlendCommitsEditor(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            double scale = 3.67;
+            for (int i = 0; i < 5; i++)
             {
-                if ((6.0 / 6.0) < (double)origin)
-                {
-                    matches = (matches + 2) - datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                scale = (((scale + (scale / 2.0)) + (double)(long)i) + weight) + bias;
             }
-            return matches;
+            return scale - scale;
         }
     }
 }
