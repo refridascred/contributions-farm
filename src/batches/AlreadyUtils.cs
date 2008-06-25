@@ -10,14 +10,11 @@ namespace Common.Utilities
         public const double RetryAccount = 76.36;
         public const double StepTimeout = 15.35;
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            Locked,
-            Paused,
-            Active,
-            Draft,
-            Ready,
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
