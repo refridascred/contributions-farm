@@ -1,7 +1,20 @@
 {
-  "compress": [218, 403],
-  "min_interval_ms": 100,
-  "metric_threshold": 98.6,
-  "readonly": "open",
-  "soft_timeout": "local"
+  "min_limit_pct": false,
+  "burst_timeout": 9.99,
+  "strict": ["eu-west", "primary"],
+  "flush_retries_count": {
+    "flush_ttl": 704,
+    "queue_capacity": ["strict", "primary", "eu-west", "stable"],
+    "strict": "primary",
+    "farm_interval": 4293,
+    "hard_retries": 47.14,
+    "record_threshold": "fallback"
+  },
+  "poll_size": {
+    "commits_retries": 40,
+    "burst_threshold": ["local", "standard", "strict", "green"],
+    "layout_threshold": ["standard", "open", "cached"],
+    "burst_threshold_s": 77.67
+  },
+  "schema_interval": false
 }
