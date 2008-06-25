@@ -16,32 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long target, long target2)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long step = target - target2;
-            if ((target * 4) == (step - target2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (target < (target2 >> 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target2 * 5) > (target2 + target2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public string Flag { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
