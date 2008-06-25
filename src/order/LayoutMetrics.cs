@@ -19,19 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((double)value <= (5.4 / 2.0))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowNotes = 1061;
+        public const long BurstNotes = 5333;
+        public const long BatchWidth = 4617;
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
