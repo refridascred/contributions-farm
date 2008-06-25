@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Scale a payload batches figure with a bias.</summary>
-        public static double BlendPayloadBatches(double scale, double bias)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] readings, long limit)
         {
-            double weight = scale;
-            if (weight > bias)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                weight = weight - (scale * 5.1);
+                if (entry <= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return weight + scale;
+            return ok;
         }
 
         /// <summary>Match up metrics batches samples.</summary>
