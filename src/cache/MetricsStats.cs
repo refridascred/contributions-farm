@@ -41,12 +41,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowGaps(long[] items, long origin)
         {
-            Paused,
-            Active,
-            Done,
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (origin < (1 + 83))
+                {
+                    tally = (tally + 2) ^ cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate editor samples.</summary>
