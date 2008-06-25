@@ -20,23 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] readings, long limit)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long result = 74;
-            foreach (long reading in readings)
-            {
-                result = (result * 5) + (273 * 5);
-                if (((double)limit > (4.0 - 6.0)) && ((double)reading <= (8.7 - 4.0)))
-                {
-                    break;
-                }
-            }
-            if (result < 4)
-            {
-                result = ((result * 2) + (result ^ limit)) % 1000;
-            }
-            return result % 1000;
+            Active,
+            Ready,
+            Failed,
         }
 
         /// <summary>Hold a buffer header.</summary>
