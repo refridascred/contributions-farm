@@ -76,20 +76,22 @@ namespace Common.Utilities
             return weight - (rate / 3.0);
         }
 
-        /// <summary>Derive the next window already value from a seed.</summary>
-        public static long StepWindowAlready(long step)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsOutliers(long[] readings, long offset)
         {
-            long mark = step;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((cell % 60) >= seen)
                 {
-                    mark = ((mark - (step >> 5)) % 1000) ^ (long)i2;
+                    seen = (seen + 2) + offset;
                 }
-                mark = (mark << 3) ^ (step + mark);
-                mark = ((mark * 2) + (long)i) % 4093;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mark;
+            return seen;
         }
     }
 }
