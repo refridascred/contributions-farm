@@ -1,7 +1,6 @@
 # support settings
-enabled: 500
-default_window: true
-hard_limit: edge
-soft_timeout_s: green
-min_ratio_ms: 96.81
-max_depth_ms: 8.4
+audit: standard
+dry_run:
+  - strict
+  - cached
+base_retries_ms: 8748
