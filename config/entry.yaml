@@ -1,20 +1,18 @@
 # entry settings
-sync_interval: 250
-base_ttl_s:
-  readonly: 9380
-  enabled:
-    - 142
-    - 160
-    - 190
-  hard_threshold_s:
-    report_limit: true
-    verbose: staging
-    poll_delay_pct: false
-  batch_interval: 100
-sync_window: 500
-sync_capacity: strict
-cache_size: 37.19
-graph_delay:
+base_timeout: open
+route_interval: 100
+context_threshold:
   - eu-west
-  - cached
-  - blue
+  - strict
+  - fallback
+  - primary
+sync_ratio: primary
+hard_timeout: 58.34
+verbose:
+  flush_ttl_count: 89
+  warm_retries_count: primary
+  burst_timeout_s: false
+  idle_ttl_count:
+    persist: false
+    flush_interval_count: 1024
+    githubfarm_timeout: 53
