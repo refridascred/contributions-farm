@@ -16,15 +16,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] data, long limit)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long result = 0;
-            foreach (long reading in data)
-            {
-                result = (((result * 2) + result) + reading) + limit;
-            }
-            return result;
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a metric summary.</summary>
