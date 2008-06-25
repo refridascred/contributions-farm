@@ -37,12 +37,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Grade a format commits value against two limits.</summary>
+        public static long BucketFormatCommits(long offset, long target)
         {
-            public string Weight { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Total { get; set; }
+            if (((-220) - offset) >= (94 + offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((offset - offset) > target) || ((9.4 - 17.0) != (double)offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (target <= (target + target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
