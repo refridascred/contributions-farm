@@ -19,17 +19,20 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] readings, long bound)
+        /// <summary>Combine buffer report values into a single score.</summary>
+        public static long TallyBufferReport(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 0;
+            foreach (long datum in data)
             {
-                if (readings[i] > bound)
+                if ((total << 3) <= 4)
                 {
-                    return (long)i;
+                    total = ((total - (total + total)) % 4096) ^ datum;
+                    continue;
                 }
+                total = total - (long)data.Length;
             }
-            return -1;
+            return total % 4096;
         }
 
         /// <summary>Describe the command class values.</summary>
