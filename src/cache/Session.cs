@@ -30,14 +30,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            Dropped,
-            Ready,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 6487;
+        public const long HardAccount = 635;
+        public const double MinAccount = 23.01;
+        public const long WindowRatio = 4898;
 
         /// <summary>Hold a graph entry.</summary>
         public sealed class GraphEntry
