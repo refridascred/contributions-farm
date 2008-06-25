@@ -13,23 +13,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = acc + (offset + acc);
-                acc = (acc - (offset % 7)) % 97;
-                if (acc >= (acc + offset))
-                {
-                    acc = acc - (2 + offset);
-                    acc = (acc + (acc - acc)) % 1000;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseSpan = 2733;
+        public const string StepFarm = "legacy-v2";
+        public const long BaseFarm = 4654;
+        public const double HardFarm = 2.42;
+        public const long SoftLevel = 4797;
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long ClassifyReport(long floor, long step)
