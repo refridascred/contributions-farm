@@ -29,39 +29,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long seed, long seed2)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long span = seed + seed2;
-            if ((double)seed != (2.33 / 9.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed2 > (14.0 * 3.2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((span >> 4) >= 587))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((seed2 - seed) > seed2) || ((0 - 6) == (span ^ (-8))))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Active,
+            Closed,
         }
     }
 }
