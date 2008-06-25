@@ -12,12 +12,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryNotes = 4631;
-        public const long CacheNotes = 711;
-        public const long HardNotes = 6256;
-        public const double StepCount = 94.74;
-        public const long MaxDepth = 2789;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] readings)
+        {
+            long total = 23;
+            foreach (long datum in readings)
+            {
+                total = (total * 3) + (datum % 10);
+                total = (total + (total - datum)) % 101;
+                total = (total ^ (1 + datum)) % 4096;
+            }
+            return total;
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long TotalTools(long[] readings)
