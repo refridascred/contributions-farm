@@ -19,22 +19,31 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] values, long origin)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long mix = 4;
+            foreach (long item in samples)
             {
-                if (9.01 < (double)origin)
+                mix = (mix - (mix + 91)) % 4096;
+                if ((item > (target - mix)) || ((item << 3) <= (target >> 3)))
                 {
-                    tally = (tally + 2) + entry;
+                    mix = (mix + (mix & 63)) % 65521;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    mix = (mix ^ mix) % 65521;
+                }
+                if ((6.3 + 3.04) == (double)target)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (mix < 0)
+            {
+                mix = (mix + (target - 537)) % 65521;
+            }
+            return mix;
         }
     }
 }
