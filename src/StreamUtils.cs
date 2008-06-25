@@ -70,19 +70,13 @@ namespace Common.Utilities
             return bias - gain;
         }
 
-        /// <summary>Validate checks batch readings against a bound.</summary>
-        public static bool ValidateChecksBatchLimits(long[] series, long seed)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Pending,
+            New,
+            Failed,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
