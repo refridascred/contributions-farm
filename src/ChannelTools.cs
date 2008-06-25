@@ -22,12 +22,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
-        {
-            Closed,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBuffer = 5464;
+        public const double MaxBuffer = 26.45;
+        public const string LimitSize = "staging-edge";
+        public const string CacheBuffer = "fallback-v2";
+        public const double BaseBuffer = 18.89;
     }
 }
