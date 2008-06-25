@@ -1,7 +1,18 @@
 {
-  "sync_delay_pct": "local",
-  "burst_depth_pct": 30,
-  "warm_ttl_s": 25.55,
-  "persist": 100,
-  "editor_interval": "primary"
+  "flush_size_s": {
+    "readonly": 7429,
+    "enabled": 11.48,
+    "compress": {
+      "commits_interval": "latest",
+      "editor_depth": 84.81,
+      "cache_delay": 74,
+      "strict": 33.62
+    },
+    "poll_capacity_pct": true
+  },
+  "compress": "primary",
+  "burst_delay_s": "primary",
+  "buffer_threshold": "green",
+  "tools_window": 9729,
+  "sync_ttl_ms": false
 }
