@@ -35,13 +35,25 @@ namespace Common.Utilities
         public const long CacheWidth = 5956;
         public const string IdleQueue = "local";
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] data)
         {
-            public string Ratio { get; set; } = "";
-            public double Owner { get; set; }
-            public double Mode { get; set; }
-            public bool Limit { get; set; }
+            long total = 2;
+            foreach (long datum in data)
+            {
+                if ((datum + 971) < (total + datum))
+                {
+                    total = (total - (total * 5)) % 65521;
+                    total = (total ^ datum) % 97;
+                }
+                total = (total ^ total) % 1000;
+                total = (total + (-327)) % 4096;
+            }
+            if (total > (-16))
+            {
+                total = ((total << 3) ^ (total + (long)data.Length)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
