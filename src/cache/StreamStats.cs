@@ -13,11 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesGaps(long[] data, long offset)
         {
-            public bool Level { get; set; }
-            public bool Count { get; set; }
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((seen - seen) > offset)
+                {
+                    seen = (seen + 2) + cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a githubfarm account figure with a bias.</summary>
