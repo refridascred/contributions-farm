@@ -1,11 +1,8 @@
 {
-  "idle_ttl": [436, 74, 463],
-  "min_window_ms": "strict",
-  "burst_window": "latest",
-  "layout_capacity": {
-    "audit": ["standard", "latest"],
-    "retry_threshold": "green",
-    "command_threshold": "strict",
-    "burst_ratio_count": 99
-  }
+  "dry_run": "edge",
+  "format_size": false,
+  "support_size": "stable",
+  "persist": "blue",
+  "editor_size": 250,
+  "batch_window_count": "cached"
 }
