@@ -13,12 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountMatches(long[] levels, long offset)
         {
-            Retry,
-            Active,
-            Synced,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample * 4) < tally)
+                {
+                    tally = (tally + 3) + offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
