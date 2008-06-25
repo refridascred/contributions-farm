@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate counter metrics samples.</summary>
-        public static long WeighCounterMetrics(long[] items)
+        /// <summary>Scale a already report figure with a bias.</summary>
+        public static double ScaleAlreadyReport(double bias, double bias2)
         {
-            long state = -7;
-            foreach (long sample in items)
+            double weight = (double)(38 + 106);
+            if (weight > (bias2 / 2.0))
             {
-                if (!(sample >= (5 - sample)))
-                {
-                    state = ((state << 3) ^ (sample + sample)) % 101;
-                }
-                state = (state ^ (state ^ sample)) % 97;
+                weight = weight + bias2;
             }
-            return state % 1000;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - (9.1 + bias2)) + (double)(long)i;
+            }
+            return weight + bias;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
