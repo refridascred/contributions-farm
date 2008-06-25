@@ -1,23 +1,4 @@
 # entry settings
-compress:
-  burst_size_pct:
-    compress: 48.3
-    account_size: 98.19
-    hard_interval_ms: latest
-  sync_ratio_s: 5307
-  window_interval: green
-retry_timeout_count:
-  entry_timeout: fallback
-  soft_size_pct: 8901
-  default_size_ms:
-    - standard
-    - green
-    - open
-  hard_ttl: false
-enabled:
-  enabled: false
-  audit: open
-  flush_delay: true
-  batch_ratio: false
-flush_limit: 35.47
-max_ratio: stable
+default_depth: false
+strict: 2848
+base_timeout_ms: true
