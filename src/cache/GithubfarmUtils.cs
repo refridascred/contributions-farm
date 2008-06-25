@@ -20,12 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultSpan = 3028;
-        public const long MinChannel = 935;
-        public const long BatchLevel = 7141;
-        public const double BatchChannel = 25.74;
-        public const double LimitFactor = 54.52;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterHits(long[] readings)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((16.0 / 2.0) < (double)cell)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of window command readings.</summary>
         public static long CompareWindowCommandCount(long[] samples)
