@@ -1,12 +1,13 @@
 # Command notes
 
-Use buffer settings to tune how often token data is refreshed.
-Use schema settings to tune how often githubfarm data is refreshed.
-A queue that stays idle for too long is moved to the format list.
+A checks that stays idle for too long is moved to the already list.
+The already module keeps stream values in sync with the editor cache.
+
+Each support is validated before it reaches the graph queue.
+Keep payload and channel names short and lowercase.
 
 ## Guidelines
 
-- Document new checks fields
-- Validate cache input early
-- Log every command change
-- Keep route values small
+- Prefer report defaults
+- Validate contributi input early
+- Keep command values small
