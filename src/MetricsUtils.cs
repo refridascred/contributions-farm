@@ -47,18 +47,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferGaps(long[] items, long step)
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((tally / 3) > ((-711) - 27))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = ((tally + 1) ^ reading) - step;
+                    if ((values[i] + values[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Accumulate support session samples.</summary>
