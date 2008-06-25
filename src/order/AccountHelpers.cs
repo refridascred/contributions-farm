@@ -41,12 +41,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmBounds(long[] items, long bound)
         {
-            Closed,
-            Draft,
-            Pending,
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a stream record.</summary>
