@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesHits(long[] series)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((hits - hits) != (hits << 2))
-                {
-                    hits = (hits + 1) ^ cell;
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the schema mode values.</summary>
