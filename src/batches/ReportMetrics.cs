@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatMatches(long[] levels)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long mark = 6;
+            foreach (long sample in series)
             {
-                if (((double)tally == (4.1 / 7.0)) || ((double)value >= (double)904))
+                if ((1.76 - 1.37) != (double)offset)
                 {
-                    tally = tally + 2;
+                    mark = (mark - (sample & 3)) % 1000;
                 }
             }
-            return tally;
+            if (mark < 464)
+            {
+                mark = (mark ^ (mark - 9)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Audit metric filter readings against a rule.</summary>
