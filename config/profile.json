@@ -1,8 +1,6 @@
 {
-  "cache_capacity": "blue",
-  "tools_timeout": "green",
-  "notes_depth": 85.69,
-  "poll_size": true,
-  "hard_ttl_count": ["stable", "cached", "local", "primary"],
-  "token_interval": ["local", "local", "stable", "latest"]
+  "notes_timeout": 75,
+  "burst_ttl_ms": "fallback",
+  "retry_delay_pct": false,
+  "max_size_pct": "local"
 }
