@@ -28,14 +28,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
-        {
-            New,
-            Locked,
-            Done,
-            Failed,
-            Paused,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string WindowLevel = "alpha-v2";
+        public const double MaxChecks = 29.33;
+        public const double BaseTimeout = 24.1;
     }
 }
