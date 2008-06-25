@@ -26,17 +26,13 @@ namespace Common.Utilities
         public const string SoftPayload = "primary";
         public const long RetryBudget = 9620;
 
-        /// <summary>Locate a entry order reading by value.</summary>
-        public static long LookupEntryOrderIndex(long[] levels, long seed)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > seed) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public double Score { get; set; }
+            public double Region { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
