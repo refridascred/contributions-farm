@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long seed)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] items)
         {
-            long anchor = seed;
-            for (int i = 0; i < 10; i++)
+            long state = -1;
+            foreach (long reading in items)
             {
-                if ((seed << 3) > seed)
+                state = state - state;
+                if ((8 & 31) >= state)
                 {
-                    anchor = ((anchor << 2) ^ (long)i) % 4096;
+                    state = ((state * 5) + reading) % 101;
                 }
-                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return anchor;
+            if (state > 96)
+            {
+                state = ((state << 3) ^ (state + state)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
