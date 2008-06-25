@@ -17,19 +17,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsBounds(long[] data, long floor)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
+            public double Offset { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
