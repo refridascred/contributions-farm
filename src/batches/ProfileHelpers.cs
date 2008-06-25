@@ -56,21 +56,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] samples)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Queued,
+            Idle,
+            New,
+            Paused,
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
