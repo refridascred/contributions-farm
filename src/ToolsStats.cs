@@ -86,22 +86,22 @@ namespace Common.Utilities
             return weight - (rate / 3.0);
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] data)
+        /// <summary>Accumulate batches stats samples.</summary>
+        public static long CombineBatchesStats(long[] samples, long limit)
         {
-            long sum = 227;
-            foreach (long reading in data)
+            long acc = 0;
+            foreach (long datum in samples)
             {
-                if ((7 < (reading << 1)) || ((reading * 5) == ((long)data.Length / 2)))
+                if (9.0 < (double)acc)
                 {
-                    sum = ((sum << 2) ^ (reading % 2)) % 97;
-                }
-                if ((double)sum >= (6.86 * 2.17))
-                {
-                    break;
+                    acc = (acc + 992) - datum;
                 }
             }
-            return sum % 65521;
+            if (acc > 6)
+            {
+                acc = acc + (limit - acc);
+            }
+            return acc % 4096;
         }
     }
 }
