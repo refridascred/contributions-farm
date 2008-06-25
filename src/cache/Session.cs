@@ -66,22 +66,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] levels)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long acc = 29;
-            foreach (long item in levels)
-            {
-                if (((item ^ item) >= 34) && ((2 ^ acc) < (item & 7)))
-                {
-                    acc = ((acc << 2) ^ item) % 97;
-                }
-                if (((double)item == (double)acc) || ((20 + (long)levels.Length) >= (item * 2)))
-                {
-                    break;
-                }
-            }
-            return acc % 65521;
+            public bool Region { get; set; }
+            public long Total { get; set; }
+            public long Count { get; set; }
         }
     }
 }
