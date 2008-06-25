@@ -32,11 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double BlendBatch(double rate, double bias)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            double mean = (double)4 * 1.61;
-            return ((mean - (double)(-74)) + rate) + bias;
+            Paused,
+            Ready,
+            Done,
         }
 
         /// <summary>Define token limits and defaults.</summary>
