@@ -78,10 +78,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double LimitSize = 73.99;
-        public const long HardDepth = 7270;
-        public const long StepTimeout = 675;
-        public const long BurstDepth = 8825;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string StepCluster = "strict";
+        public const double MaxTimeout = 52.38;
+        public const long IdleCluster = 6345;
+        public const long BaseFactor = 5456;
+        public const string BaseTimeout = "alpha-v2";
     }
 }
