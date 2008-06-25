@@ -14,19 +14,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelBounds(long[] data, long offset)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
