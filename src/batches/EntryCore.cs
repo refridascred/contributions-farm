@@ -25,21 +25,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] samples)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long seed, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((floor + 569) <= (seed + 563))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((3 ^ floor) >= (98 * 3))
                 {
-                    if ((samples[i] + samples[j]) == 17)
+                    return 5;
+                }
+                else
+                {
+                    if ((double)floor >= 8.44)
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((floor & 15) > seed) && (floor > (floor + seed)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
