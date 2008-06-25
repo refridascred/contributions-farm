@@ -21,15 +21,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of filter cluster readings.</summary>
-        public static long DigestFilterCluster(long[] readings)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelMatches(long[] samples, long target)
         {
-            long total = 7;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                total = (((total << 2) ^ total) % 65521) - entry;
+                if ((cell >> 5) <= cell)
+                {
+                    matches = (matches + 3) + target;
+                }
             }
-            return total % 1000;
+            return matches;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
