@@ -47,19 +47,15 @@ namespace Common.Utilities
             return load + (double)(-30);
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorRange(long[] data, long step)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long RollAlready(long floor)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long result = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (item > step)
-                {
-                    ready = false;
-                    break;
-                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
