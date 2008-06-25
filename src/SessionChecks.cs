@@ -29,21 +29,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count contributi command pairs that satisfy a relation.</summary>
-        public static long PairContributiCommandCount(long[] values)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Offset { get; set; }
+            public bool Total { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
