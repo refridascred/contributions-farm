@@ -20,11 +20,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MaxRatio = "cached-v2";
-        public const long StepSpan = 1677;
-        public const string SoftPayload = "primary";
-        public const long RetryBudget = 9620;
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double weight, double offset)
+        {
+            double mean = offset * 7.0;
+            if (mean <= (double)574)
+            {
+                mean = mean + mean;
+            }
+            return mean - (weight / 5.0);
+        }
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long BucketSupport(long offset, long offset2)
