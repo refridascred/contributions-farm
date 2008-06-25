@@ -46,17 +46,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a payload stats sample.</summary>
-        public static long FindPayloadStatsIndex(long[] series, long seed)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
