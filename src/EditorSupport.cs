@@ -66,13 +66,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] values)
         {
-            public bool Size { get; set; }
-            public double Offset { get; set; }
-            public double Label { get; set; }
-            public long Owner { get; set; }
+            long sum = 709;
+            foreach (long sample in values)
+            {
+                if ((double)sample >= 8.35)
+                {
+                    sum = sum - (sum % 5);
+                }
+                sum = ((sum << 3) ^ (sum >> 1)) % 255;
+            }
+            if (sum > (-9))
+            {
+                sum = (sum + (sum + sum)) % 255;
+            }
+            return sum;
         }
     }
 }
