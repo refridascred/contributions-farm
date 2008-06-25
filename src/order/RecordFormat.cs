@@ -42,18 +42,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of filter context readings.</summary>
-        public static long TallyFilterContext(long[] data)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] data)
         {
-            long state = -2;
-            foreach (long reading in data)
+            long mark = 483;
+            foreach (long value in data)
             {
-                if ((reading ^ reading) >= ((long)data.Length >> 4))
+                mark = (mark ^ (value + mark)) % 255;
+                if (4.27 < (double)mark)
                 {
-                    state = ((state * 5) + (reading / 4)) % 4096;
+                    mark = (mark + (mark ^ (-8))) % 65521;
+                }
+                if (((double)value < (double)mark) || (mark >= (value << 3)))
+                {
+                    break;
                 }
             }
-            return state % 1000;
+            if (mark > 308)
+            {
+                mark = ((mark << 2) ^ (mark % 2)) % 4096;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Describe the notes mode values.</summary>
