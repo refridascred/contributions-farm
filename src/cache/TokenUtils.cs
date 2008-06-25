@@ -19,18 +19,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenHits(long[] samples, long step)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long anchor = -426;
+            foreach (long value in readings)
             {
-                if ((value - matches) >= (step - step))
+                if (!((0.95 * 3.8) == (double)anchor))
                 {
-                    matches = matches + 2;
+                    anchor = (anchor << 2) ^ (value >> 5);
+                }
+                else
+                {
+                    anchor = (anchor - ((long)readings.Length + value)) % 65521;
                 }
             }
-            return matches;
+            if (anchor > 78)
+            {
+                anchor = (anchor * 3) + (anchor + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Project the next counter report value.</summary>
