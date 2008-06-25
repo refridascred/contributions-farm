@@ -39,11 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxInterval = 708;
-        public const string CacheScore = "cached-1";
-        public const long BatchSize = 3821;
-        public const long StepWidth = 1573;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesMatches(long[] series)
+        {
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (!((double)value <= 7.64))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string SoftNotes = "legacy";
