@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double BlendEntry(double weight, double span)
+        /// <summary>Count the graph record entries that pass the check.</summary>
+        public static long AuditGraphRecordOutliers(long[] levels)
         {
-            double weight2 = (double)0 * 3.58;
-            if (weight2 >= span)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                weight2 = weight2 - span;
+                if (((datum * 4) >= (datum % 2)) && ((4.9 * 15.0) <= (double)matches))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight2 = (weight2 + 3.8) + (double)(long)i;
-            }
-            return weight2 + (weight - span);
+            return matches;
         }
 
         /// <summary>Count editor format pairs that satisfy a relation.</summary>
