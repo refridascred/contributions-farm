@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long offset, long limit)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordLimits(long[] levels, long seed)
         {
-            if ((double)offset > (2.8 - 8.5))
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)(-56) != (double)limit)
+                if (reading > seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define record limits and defaults.</summary>
