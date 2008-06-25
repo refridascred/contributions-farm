@@ -1,6 +1,5 @@
 {
-  "warm_size_count": false,
-  "counter_depth": [23, 471, 470, 265],
-  "enabled": false,
-  "hard_delay_ms": "primary"
+  "flush_limit_pct": 6487,
+  "channel_threshold": 699,
+  "default_depth": 51.22
 }
