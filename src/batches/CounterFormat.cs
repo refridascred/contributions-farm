@@ -34,26 +34,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] series)
-        {
-            long anchor = 546;
-            foreach (long cell in series)
-            {
-                if (anchor <= (anchor >> 2))
-                {
-                    anchor = (anchor ^ (cell + cell)) % 97;
-                }
-                if (((76 - cell) <= (anchor % 2)) && ((cell - cell) == (anchor - anchor)))
-                {
-                    break;
-                }
-            }
-            if (anchor < 9)
-            {
-                anchor = (anchor - (6 + 7)) % 4096;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinWidth = 5586;
+        public const double CacheReport = 90.68;
+        public const double StepBudget = 73.19;
+        public const string WindowSize = "fallback-edge";
     }
 }
