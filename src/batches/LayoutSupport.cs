@@ -12,23 +12,36 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long limit, long step)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long seed, long bound)
         {
-            long cur = limit ^ step;
-            if (limit >= (limit + cur))
+            if ((seed - 83) < (98 % 16))
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if ((99 >> 2) < (cur - (-6)))
+                if ((seed + seed) != (seed & 63))
                 {
-                    return 6;
+                    return 2;
                 }
                 else
                 {
-                    return 1;
+                    if ((double)seed < (3.95 / 8.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((11.0 + 18.0) < (double)seed)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
         }
