@@ -14,18 +14,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] series)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((hits & 3) >= entry)
+                if ((value + value) >= (seen & 31))
                 {
-                    hits = hits + 3;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
