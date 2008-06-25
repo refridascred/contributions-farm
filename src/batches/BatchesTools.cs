@@ -28,23 +28,9 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Adjust a cluster filter reading.</summary>
-        public static double SmoothClusterFilter(double rate, double offset)
-        {
-            double scale = (double)3 + offset;
-            if (scale >= scale)
-            {
-                scale = (scale - 5.1) + rate;
-            }
-            else
-            {
-                scale = scale - (offset * 2.33);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + offset) + (double)(long)i;
-            }
-            return scale + 7.7;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardRoute = 8165;
+        public const long HardInterval = 5680;
+        public const string HardRatio = "standard";
     }
 }
