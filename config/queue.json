@@ -1,8 +1,11 @@
 {
-  "poll_interval_s": 12.07,
-  "sync_retries": "edge",
-  "min_threshold_ms": 79,
-  "record_retries": ["legacy", "green", "latest", "local"],
-  "poll_retries_pct": false,
-  "entry_capacity": 1115
+  "sync_timeout_s": {
+    "default_window_count": true,
+    "checks_size": "standard",
+    "idle_retries": "standard"
+  },
+  "hard_retries_count": "edge",
+  "sync_delay_ms": [259, 35],
+  "token_ttl": 1024,
+  "farm_capacity": 1347
 }
