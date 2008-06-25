@@ -1,10 +1,6 @@
-id,weight,rank,label
-1,40.56,43.62,70.94
-2,blue,381,12.05
-3,primary,76.13,779
-4,fallback,strict,180
-5,3.25,22.13,301
-6,145,849,green
-7,345,396,legacy
-8,988,131,legacy
-9,181,legacy,strict
+id,label,token
+1,404,345
+2,83.09,standard
+3,9.46,97.91
+4,12.34,897
+5,cached,standard
