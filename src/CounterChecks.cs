@@ -32,18 +32,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricOutliers(long[] values, long seed)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (!((seed - hits) <= (hits + hits)))
-                {
-                    hits = (hits + 2) ^ value;
-                }
-            }
-            return hits;
+            public double Offset { get; set; }
+            public string Size { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
