@@ -22,18 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine layout batch values into a single score.</summary>
-        public static long DigestLayoutBatch(long[] items, long offset)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long result = 30;
-            foreach (long sample in items)
-            {
-                if ((9.9 / 9.0) >= (double)offset)
-                {
-                    result = (result - offset) + sample;
-                }
-            }
-            return result;
+            public double Mode { get; set; }
+            public long Token { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Adjust a command reading.</summary>
