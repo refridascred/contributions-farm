@@ -10,11 +10,13 @@ namespace Common.Utilities
         public const double RetryAccount = 76.36;
         public const double StepTimeout = 15.35;
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
+            Idle,
+            Pending,
+            Ready,
+            Stale,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
