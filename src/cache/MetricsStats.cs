@@ -26,38 +26,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long floor, long step)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            if ((double)step <= 15.0)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)floor != (14.0 / 3.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((508 % 97) != (step % 60))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step - step) == ((-725) - floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public double Flag { get; set; }
+            public long Region { get; set; }
+            public bool Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the payload class values.</summary>
