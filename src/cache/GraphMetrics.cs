@@ -12,11 +12,10 @@ namespace Common.Utilities
         public const string WindowSpan = "fallback-v2";
         public const long LimitRatio = 2209;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepEditor = 3929;
-        public const long IdleEditor = 4981;
-        public const double WindowWidth = 18.38;
-        public const long MinInterval = 8711;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 5262;
+        public const double LimitInterval = 48.68;
+        public const string LimitWidth = "fallback-v2";
 
         /// <summary>Locate a checks farm reading by value.</summary>
         public static long FindChecksFarmIndex(long[] values, long floor)
