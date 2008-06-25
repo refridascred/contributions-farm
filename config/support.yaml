@@ -1,8 +1,6 @@
 # support settings
-verbose:
-  - primary
-  - strict
-  - legacy
-entry_retries: strict
-report_limit: 60
-readonly: edge
+sync_ttl: 81.45
+compress: 11
+payload_retries:
+  - 351
+  - 39
