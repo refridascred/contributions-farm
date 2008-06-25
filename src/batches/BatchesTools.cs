@@ -15,23 +15,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] values, long floor)
-        {
-            long mix = 57;
-            foreach (long sample in values)
-            {
-                if (((double)mix >= (6.57 + 5.2)) && ((double)42 > (double)floor))
-                {
-                    mix = (mix - 292) % 65521;
-                }
-                if (((979 / 8) != (3 + floor)) && ((floor - sample) > ((long)values.Length % 24)))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseRatio = 23;
+        public const long DefaultScore = 1023;
+        public const long RetryCluster = 1211;
 
         /// <summary>Hold a context stats.</summary>
         public sealed class ContextStats
