@@ -1,9 +1,6 @@
 # entry settings
-context_timeout:
-  cache_capacity_s: latest
-  compress: 8086
-  soft_threshold_s: 21.45
-  hard_capacity_ms: 26
-  verbose: eu-west
-default_threshold: 1024
-default_ttl_pct: 7355
+compress: 8972
+poll_limit_count: 1002
+max_capacity_pct: legacy
+sync_depth_ms: 8184
+poll_ratio_count: 35
