@@ -68,12 +68,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Validate checks batch readings against a bound.</summary>
+        public static bool ValidateChecksBatchLimits(long[] series, long seed)
         {
-            public string Owner { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine account values into a single score.</summary>
