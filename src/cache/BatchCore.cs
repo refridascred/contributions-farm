@@ -35,17 +35,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BaseCluster = 75.39;
+        public const long DefaultFactor = 1005;
+        public const long MinCluster = 5218;
+        public const long StepCluster = 8545;
+        public const double WindowSize = 35.54;
     }
 }
