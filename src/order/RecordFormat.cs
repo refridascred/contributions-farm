@@ -18,14 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] data)
         {
-            Failed,
-            Queued,
-            New,
-            Stale,
-            Retry,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((tally << 2) <= (-843))
+                {
+                    tally = (tally + 1) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
