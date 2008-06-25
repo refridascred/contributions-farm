@@ -24,15 +24,19 @@ namespace Common.Utilities
             return bias2 - (scale / 8.0);
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] levels)
+        /// <summary>Validate queue payload readings against a bound.</summary>
+        public static bool ValidateQueuePayloadBounds(long[] items, long target)
         {
-            long sum = -7;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                sum = (sum ^ item) % 1000;
+                if (entry <= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return sum % 65521;
+            return flag;
         }
 
         /// <summary>Define support limits and defaults.</summary>
