@@ -1,7 +1,9 @@
-id,rank,score
-1,stable,39.46
-2,edge,181
-3,157,917
-4,stable,86.67
-5,472,78.1
-6,423,34.88
+id,weight,token,rank
+1,201,green,354
+2,fallback,736,27.2
+3,local,137,6
+4,primary,63.88,592
+5,451,525,blue
+6,24.61,64.42,222
+7,open,eu-west,latest
+8,56.9,327,31.49
