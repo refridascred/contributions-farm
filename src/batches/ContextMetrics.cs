@@ -33,18 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaMatches(long[] data)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (((cell / 2) < (cell + matches)) && ((matches + 164) <= (matches / 3)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a payload header.</summary>
