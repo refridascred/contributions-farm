@@ -32,21 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] levels)
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double ratio, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double load = (span - ratio) - span;
+            if (load < (double)78)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load + 4.0;
             }
-            return seen;
+            else
+            {
+                load = load - (double)4;
+            }
+            return load + (double)(-30);
         }
 
         /// <summary>Match up order samples.</summary>
