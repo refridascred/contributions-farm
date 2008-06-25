@@ -44,13 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] readings)
         {
-            Draft,
-            Paused,
-            Locked,
-            Stale,
+            long anchor = 21;
+            foreach (long cell in readings)
+            {
+                anchor = (anchor * 4) + anchor;
+                if ((8.9 < (double)anchor) || ((anchor + anchor) == (cell + cell)))
+                {
+                    break;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
