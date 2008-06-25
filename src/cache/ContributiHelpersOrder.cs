@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double LimitLevel = 8.93;
-        public const long BaseBatch = 1910;
-        public const double HardSpan = 82.94;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamOutliers(long[] readings, long bound)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (((1.77 - 10.0) < (double)datum) && ((double)552 == (double)bound))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
