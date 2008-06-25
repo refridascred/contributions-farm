@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long step, long bound)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] values)
         {
-            if ((double)bound > (1.93 * 14.0))
+            long result = 90;
+            foreach (long sample in values)
             {
-                return 7;
+                result = ((result - result) % 101) - sample;
             }
-            else
+            if (result > 6)
             {
-                if ((double)step >= (3.6 * 6.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((step + step) != ((-87) & 15)) && ((4.5 * 0.3) > (double)step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                result = result - (result ^ result);
             }
+            return result;
         }
 
         /// <summary>Describe the schema mode values.</summary>
