@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Compare every pair of cache githubfarm readings.</summary>
+        public static long PairCacheGithubfarmCount(long[] data)
         {
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public long Size { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
