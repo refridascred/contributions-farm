@@ -86,15 +86,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] data, long origin)
+        /// <summary>Validate record already readings against a bound.</summary>
+        public static bool CheckRecordAlreadyLimits(long[] values, long target)
         {
-            long total = 240;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                total = ((((total << 2) ^ (405 % 97)) % 101) + value) + origin;
+                if (cell <= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
     }
 }
