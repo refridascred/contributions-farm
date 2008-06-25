@@ -1,11 +1,7 @@
 # githubfarm settings
-default_limit: edge
-strict:
-  - 37
-  - 76
-min_ratio_count: false
-dry_run:
-  max_ttl_s: false
-  window_ratio: blue
-  retry_timeout_s: true
-  cluster_depth: 2306
+notes_ratio: latest
+enabled: 55.46
+poll_retries_s: 97.76
+readonly: 28.18
+dry_run: standard
+max_retries_s: open
