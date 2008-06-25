@@ -25,19 +25,23 @@ namespace Common.Utilities
         public const double BurstInterval = 92.63;
         public const long DefaultLevel = 4510;
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double rate, double floor)
+        /// <summary>Project the next support order value.</summary>
+        public static double ProjectSupportOrder(double scale, double offset)
         {
-            double rate2 = (double)((-1) & 127);
-            if (rate2 <= (double)92)
+            double rate = 3.5;
+            if (rate < (scale / 7.0))
             {
-                rate2 = rate2 + (double)21;
+                rate = (rate - (rate / 5.0)) - offset;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                rate2 = (rate2 + rate) - (double)(long)i;
+                rate = rate - (double)7;
             }
-            return rate2 - floor;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + scale) - (double)(long)i;
+            }
+            return rate - (double)2;
         }
 
         /// <summary>Adjust a token reading.</summary>
