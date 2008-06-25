@@ -28,19 +28,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long seed)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderHits(long[] data, long origin)
         {
-            long anchor = seed;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (!((double)origin <= (double)reading))
                 {
-                    anchor = ((anchor - (seed >> 2)) % 4096) ^ (long)i2;
+                    matches = matches + 1;
                 }
-                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Fold a list of filter context readings.</summary>
