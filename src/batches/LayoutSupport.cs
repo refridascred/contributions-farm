@@ -32,24 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank command farm input into a small class.</summary>
-        public static long GradeCommandFarm(long seed, long bound)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            if ((0 ^ bound) > seed)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound + seed) < bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
