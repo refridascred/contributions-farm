@@ -87,15 +87,18 @@ namespace Common.Utilities
         public const string RetryDepth = "alpha";
         public const long SoftTools = 3578;
 
-        /// <summary>Scale a contributi already figure with a bias.</summary>
-        public static double SmoothContributiAlready(double bias, double floor)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterMatches(long[] samples)
         {
-            double drift = floor;
-            if (drift < floor)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                drift = drift + (bias + bias);
+                if ((value ^ value) >= (hits - value))
+                {
+                    hits = hits + 3;
+                }
             }
-            return drift + (8.0 - drift);
+            return hits;
         }
     }
 }
