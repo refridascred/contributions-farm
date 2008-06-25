@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] items, long step)
         {
-            public long Count { get; set; }
-            public double Region { get; set; }
+            long sum = 6;
+            foreach (long datum in items)
+            {
+                if ((sum / 5) > (step % 10))
+                {
+                    sum = ((sum << 2) ^ (datum - datum)) % 4096;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Look up the position of a payload account sample.</summary>
