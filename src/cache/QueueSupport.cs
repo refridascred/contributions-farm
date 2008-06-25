@@ -23,39 +23,21 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long floor, long bound)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] series)
         {
-            long span = floor - bound;
-            if (543 <= (bound + floor))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor <= ((-9) / 9)) || ((span + bound) <= (32 << 1)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((400 ^ floor) <= (span + bound))
+                    if ((series[i] - series[j]) == 20)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (bound >= (41 + bound))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
