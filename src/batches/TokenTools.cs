@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double weight, double floor)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long origin)
         {
-            double scale = floor;
-            for (int i = 0; i < 4; i++)
+            long carry = origin;
+            for (int i = 0; i < 16; i++)
             {
-                scale = ((scale + (floor / 6.0)) + (double)(long)i) - weight;
+                carry = carry + (3 % 64);
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return scale + (double)72;
+            return carry;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
