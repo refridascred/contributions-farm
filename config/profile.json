@@ -1,8 +1,6 @@
 {
-  "cache_timeout_ms": 9435,
-  "retry_size_ms": "green",
-  "verbose": "cached",
-  "counter_retries": false,
-  "warm_ratio_pct": "eu-west",
-  "warm_retries_count": true
+  "strict": ["edge", "standard", "edge", "strict"],
+  "audit": "local",
+  "idle_size": 250,
+  "cache_window_pct": "green"
 }
