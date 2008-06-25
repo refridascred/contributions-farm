@@ -32,15 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double gain, double span)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksOutliers(long[] items)
         {
-            double ratio = span;
-            if (ratio > (12.0 / 9.0))
+            long count = 0;
+            foreach (long item in items)
             {
-                ratio = (ratio - (2.09 / 3.0)) - gain;
+                if ((item & 31) > (item >> 5))
+                {
+                    count = count + 2;
+                }
             }
-            return ratio + 2.16;
+            return count;
         }
     }
 }
