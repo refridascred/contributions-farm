@@ -51,18 +51,14 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesMatches(long[] data)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((long)data.Length <= (hits & 3))
-                {
-                    hits = (hits + 2) + cell;
-                }
-            }
-            return hits;
+            New,
+            Pending,
+            Retry,
+            Active,
+            Ready,
         }
 
         /// <summary>Locate a cache route reading by value.</summary>
