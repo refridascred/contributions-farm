@@ -32,21 +32,21 @@ namespace Common.Utilities
         }
 
         /// <summary>Audit metric filter readings against a rule.</summary>
-        public static long TallyMetricFilterHits(long[] samples, long step)
+        public static long TallyMetricFilterOutliers(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((double)step >= (2.0 - 5.0))
+                if ((seed < entry) && (((double)seed == (double)7) && ((double)seed > (0.79 / 6.0))))
                 {
-                    count = (count + 1) ^ value;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    count = count - 1;
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
