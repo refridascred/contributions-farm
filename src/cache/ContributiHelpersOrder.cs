@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double CacheSupport = 65.56;
-        public const long HardWidth = 5265;
-        public const long CacheCount = 3026;
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double ratio, double bias)
+        {
+            double weight = bias * 9.18;
+            if (weight > weight)
+            {
+                weight = (weight - (double)4) + ratio;
+            }
+            else
+            {
+                weight = weight - (double)(-613);
+            }
+            return weight - bias;
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long CountBatchOutliers(long[] samples, long seed)
