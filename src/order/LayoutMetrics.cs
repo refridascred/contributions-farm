@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] readings, long bound)
         {
-            Draft,
-            Idle,
-            Failed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
