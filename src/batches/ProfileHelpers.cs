@@ -55,32 +55,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long floor, long origin)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long step = floor ^ origin;
-            if ((floor & 3) <= (floor + step))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)step >= (1.1 + 1.0)) || ((double)3 <= (double)origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (1.11 > (double)step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Queued,
+            Draft,
+            Synced,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
