@@ -20,32 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a checks cache pair into a bucket.</summary>
-        public static long RankChecksCache(long offset, long floor)
+        /// <summary>Check that every profile entry entry stays within the limit.</summary>
+        public static bool CheckProfileEntryRange(long[] readings, long origin)
         {
-            long span = offset - floor;
-            if (!(offset < floor))
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor << 1) != (floor ^ offset))
+                if (entry > origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (span > (offset ^ floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Digest a series of account entries.</summary>
