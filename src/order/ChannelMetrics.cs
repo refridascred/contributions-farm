@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long seed, long target)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            if ((seed % 97) < (seed & 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((seed / 6) < (target * 3)) || ((target << 3) >= seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((59 % 12) <= (seed * 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Synced,
+            Stale,
+            Idle,
         }
 
         /// <summary>Hold a farm summary.</summary>
