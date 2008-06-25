@@ -1,7 +1,8 @@
 {
-  "warm_threshold_ms": "eu-west",
-  "base_interval_count": false,
-  "verbose": 6645,
-  "flush_ttl_pct": 739,
-  "sync_threshold_ms": "latest"
+  "sync_timeout_ms": "fallback",
+  "compress": "stable",
+  "poll_window_count": 30,
+  "support_threshold": ["primary", "strict"],
+  "min_ratio_ms": "local",
+  "stats_ratio": [171, 461, 28, 449]
 }
