@@ -54,22 +54,12 @@ namespace Common.Utilities
         public const string BurstEditor = "stable-edge";
         public const long RetryInterval = 7555;
 
-        /// <summary>Count the account token entries that pass the check.</summary>
-        public static long CountAccountTokenHits(long[] readings, long target)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (target > 4)
-                {
-                    seen = (seen + 3) ^ entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Paused,
+            Stale,
+            Done,
         }
     }
 }
