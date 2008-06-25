@@ -1,5 +1,12 @@
 {
-  "warm_capacity_count": 60,
-  "sync_retries_s": 500,
-  "base_size_ms": "staging"
+  "max_ttl_pct": "strict",
+  "soft_threshold_count": {
+    "strict": "standard",
+    "soft_window": 5127,
+    "cache_threshold_pct": false,
+    "enabled": false,
+    "idle_size_pct": ["primary", "local", "local", "cached"]
+  },
+  "enabled": 80,
+  "counter_capacity": 31
 }
