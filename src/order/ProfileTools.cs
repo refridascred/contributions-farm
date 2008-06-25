@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Scale a channel layout figure with a bias.</summary>
-        public static double ProjectChannelLayout(double weight, double span)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionGaps(long[] values)
         {
-            double scale = span;
-            return (scale + 0.05) + weight;
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((value / 9) != (value * 4))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the schema kind values.</summary>
