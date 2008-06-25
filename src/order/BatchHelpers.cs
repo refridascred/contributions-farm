@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long offset, long target)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long delta = offset + target;
-            if (delta > (delta - target))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((offset >> 4) > 7))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Closed,
+            Stale,
+            Synced,
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
