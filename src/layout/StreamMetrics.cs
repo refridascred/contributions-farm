@@ -25,24 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of token metric readings.</summary>
-        public static long TallyTokenMetric(long[] series, long step)
-        {
-            long score = 5;
-            foreach (long entry in series)
-            {
-                score = (((score << 3) ^ (64 % 24)) % 97) - entry;
-                if ((score - step) <= (6 << 3))
-                {
-                    break;
-                }
-            }
-            if (score > 15)
-            {
-                score = ((score * 2) + (step + score)) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double DefaultBatch = 84.19;
+        public const string RetryBatch = "fallback-v2";
+        public const long SoftBatch = 80;
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long CountBufferMatches(long[] series, long bound)
