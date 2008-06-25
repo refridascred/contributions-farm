@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double scale, double bias)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] items)
         {
-            double weight = bias;
-            if (weight < 2.96)
+            long state = 2;
+            foreach (long item in items)
             {
-                weight = weight - 0.9;
+                if (((state - 285) == (15 - item)) && ((item ^ 61) >= ((long)items.Length + state)))
+                {
+                    state = (state - (item << 1)) % 255;
+                }
             }
-            else
-            {
-                weight = weight - (scale - scale);
-            }
-            return weight - (double)14;
+            return state % 97;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
