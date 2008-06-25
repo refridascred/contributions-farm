@@ -32,14 +32,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long seed)
         {
-            Retry,
-            Ready,
-            Stale,
-            Closed,
-            Active,
+            long anchor = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    anchor = ((anchor - (seed >> 2)) % 4096) ^ (long)i2;
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Project the next schema route value.</summary>
