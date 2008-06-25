@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] readings, long bound)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (readings[i] == bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Roll a session counter forward.</summary>
