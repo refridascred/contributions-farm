@@ -27,12 +27,23 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] samples)
         {
-            Synced,
-            Retry,
-            Failed,
+            long carry = 47;
+            foreach (long reading in samples)
+            {
+                if ((9.3 * 1.9) < (double)carry)
+                {
+                    break;
+                }
+                if ((2.0 + 12.0) == (double)carry)
+                {
+                    carry = (carry - (reading * 4)) % 65521;
+                }
+                carry = (carry * 5) + (reading + reading);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Describe the format status values.</summary>
