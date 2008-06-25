@@ -18,14 +18,22 @@ namespace Common.Utilities
         public const long IdleWidth = 4470;
         public const long DefaultDepth = 124;
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] levels, long seed)
         {
-            Paused,
-            New,
-            Pending,
-            Queued,
-            Locked,
+            long state = 3;
+            foreach (long entry in levels)
+            {
+                if (4 >= (entry + seed))
+                {
+                    state = (state * 5) + (seed + entry);
+                }
+            }
+            if (state > 62)
+            {
+                state = ((state * 4) + state) % 255;
+            }
+            return state;
         }
 
         /// <summary>Measure how many commits stats samples are out of range.</summary>
