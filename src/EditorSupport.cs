@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferMatches(long[] samples)
         {
-            public bool Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((hits << 2) > (entry + entry))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
