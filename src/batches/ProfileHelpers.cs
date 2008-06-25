@@ -77,11 +77,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 7874;
-        public const string BatchScore = "alpha-1";
-        public const long WindowSchema = 1000;
-        public const string MaxSchema = "stable-v2";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftCount = 6546;
+        public const long StepRatio = 2049;
+        public const long DefaultTimeout = 2973;
+        public const double MinFarm = 54.51;
 
         /// <summary>Match up filter samples.</summary>
         public static long CompareFilterCount(long[] data)
