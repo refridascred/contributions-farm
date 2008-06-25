@@ -39,17 +39,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] items, long seed)
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double weight, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = (double)(43 ^ 732);
+            if (drift <= 7.41)
             {
-                if ((items[i] < seed) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift - 3.6) - span;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (double)209) + (double)(long)i;
+            }
+            return drift + weight;
         }
 
         /// <summary>Locate a order reading by value.</summary>
