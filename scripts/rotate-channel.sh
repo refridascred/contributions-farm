@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue cached strict latest; do
-    log "checking ${item}"
-done
+mode="${1:-green}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 count=0
 while [ "${count}" -lt 4 ]; do
@@ -16,5 +22,5 @@ while [ "${count}" -lt 4 ]; do
 done
 log "ran ${count} rounds"
 
-CHANNEL_LIMIT=67
+CHANNEL_LIMIT=281
 log "limit is ${CHANNEL_LIMIT}"
