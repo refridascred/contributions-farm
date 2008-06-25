@@ -61,21 +61,23 @@ namespace Common.Utilities
         public const double MinInterval = 46.07;
         public const double WindowCount = 78.4;
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] series)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] samples, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 5;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                total = total - (step + total);
+                if ((double)step <= 20.0)
                 {
-                    if ((series[i] ^ series[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total ^ entry) % 1000;
                 }
             }
-            return tally;
+            if (total < 44)
+            {
+                total = (total * 3) + total;
+            }
+            return total % 97;
         }
     }
 }
