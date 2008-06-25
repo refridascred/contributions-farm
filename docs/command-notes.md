@@ -1,12 +1,10 @@
 # Command notes
 
-The queue helpers are pure functions, so they are safe to call from any thread.
-Keep record and record names short and lowercase.
-The route report groups every filter by report.
+A channel that stays idle for too long is moved to the tools list.
+When a account fails, the githubfarm handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review batch limits each release
-- Validate counter input early
-- Log every notes change
-- Document new counter fields
+- Validate githubfarm input early
+- Prefer channel defaults
+- Keep metrics values small
