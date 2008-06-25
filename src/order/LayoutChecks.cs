@@ -58,21 +58,10 @@ namespace Common.Utilities
         public const string CacheProfile = "standard-v2";
         public const long LimitDepth = 5456;
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftToken = 5762;
+        public const string BatchToken = "local";
+        public const string BurstWidth = "latest";
+        public const long LimitToken = 5936;
     }
 }
