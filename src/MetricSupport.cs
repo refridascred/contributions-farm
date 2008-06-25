@@ -34,16 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long bound)
+        /// <summary>Iterate the filter order series from a seed.</summary>
+        public static long RollFilterOrder(long limit)
         {
-            long mix = bound;
-            for (int i = 0; i < 24; i++)
+            long sum = limit;
+            for (int i = 0; i < 12; i++)
             {
-                mix = (mix * 3) + (mix >> 4);
-                mix = ((mix * 2) + (long)i) % 1000;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return mix;
+            return sum;
         }
     }
 }
