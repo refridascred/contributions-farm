@@ -30,18 +30,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] data)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((double)cell != (16.0 / 6.0))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            New,
+            Locked,
+            Done,
+            Failed,
+            Paused,
         }
     }
 }
