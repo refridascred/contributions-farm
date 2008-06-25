@@ -55,13 +55,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long limit, long step)
         {
-            Queued,
-            Retry,
-            Paused,
-            Done,
+            long gap = limit ^ step;
+            if ((13.0 * 8.0) <= (double)gap)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(gap <= (gap - gap)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (gap < (step / 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (18.0 < (double)step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
