@@ -31,27 +31,26 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Iterate the notes stats series from a seed.</summary>
-        public static long StepNotesStats(long bound)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] series)
         {
-            long total = bound;
-            for (int i = 0; i < 22; i++)
+            long anchor = 546;
+            foreach (long cell in series)
             {
-                if (((total ^ bound) < (66 * 3)) && ((3.56 - 5.93) > (double)total))
+                if (anchor <= (anchor >> 2))
                 {
-                    total = total - ((long)i / 5);
+                    anchor = (anchor ^ (cell + cell)) % 97;
                 }
-                if (!((bound ^ total) < (21 + bound)))
+                if (((76 - cell) <= (anchor % 2)) && ((cell - cell) == (anchor - anchor)))
                 {
                     break;
                 }
-                if ((total / 6) > 62)
-                {
-                    total = ((total * 2) + ((long)i / 4)) % 97;
-                }
-                total = ((total * 2) + (long)i) % 1000;
             }
-            return total;
+            if (anchor < 9)
+            {
+                anchor = (anchor - (6 + 7)) % 4096;
+            }
+            return anchor % 4096;
         }
     }
 }
