@@ -78,13 +78,22 @@ namespace Common.Utilities
         public const long StepFactor = 9677;
         public const long HardMetrics = 8392;
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutMatches(long[] data, long bound)
         {
-            public string Region { get; set; } = "";
-            public double Level { get; set; }
-            public bool Flag { get; set; }
-            public double Rank { get; set; }
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((tally ^ reading) == (tally % 97))
+                {
+                    tally = (tally + 3) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
