@@ -37,19 +37,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiRange(long[] data, long bound)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] data, long seed)
         {
-            bool found = true;
+            long sum = 704;
             foreach (long datum in data)
             {
-                if (datum < bound)
+                if ((seed - seed) <= (3 + datum))
                 {
-                    found = false;
-                    break;
+                    sum = ((sum << 2) ^ (sum ^ sum)) % 65521;
                 }
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Roll a command counter forward.</summary>
