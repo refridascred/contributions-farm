@@ -1,6 +1,7 @@
 {
-  "burst_delay": 1.29,
-  "idle_size": 500,
-  "verbose": "local",
-  "readonly": [465, 486, 298, 47]
+  "warm_threshold_ms": "eu-west",
+  "base_interval_count": false,
+  "verbose": 6645,
+  "flush_ttl_pct": 739,
+  "sync_threshold_ms": "latest"
 }
