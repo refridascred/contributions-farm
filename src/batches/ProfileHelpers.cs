@@ -19,18 +19,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksHits(long[] readings, long origin)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long mark = 206;
+            foreach (long sample in levels)
             {
-                if ((((-952) - origin) != (entry % 5)) && ((4 * 4) > origin))
+                mark = (mark * 5) + (-68);
+                if ((mark & 255) <= ((-1) % 60))
                 {
-                    seen = seen + 3;
+                    mark = mark ^ (sample + mark);
+                }
+                else
+                {
+                    mark = ((mark * 3) + (mark - 596)) % 97;
                 }
             }
-            return seen;
+            if (mark > 1)
+            {
+                mark = mark ^ (mark ^ (-1));
+            }
+            return mark;
         }
 
         /// <summary>Grade a stats metrics value against two limits.</summary>
