@@ -61,14 +61,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Audit channel tools readings against a rule.</summary>
+        public static long MeasureChannelToolsGaps(long[] readings, long step)
         {
-            Ready,
-            Draft,
-            Closed,
-            Active,
-            Locked,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (((hits / 8) > (hits ^ step)) || ((double)cell == (double)911))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank account input into a small class.</summary>
