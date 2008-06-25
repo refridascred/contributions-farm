@@ -46,23 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] data)
-        {
-            long sum = 7;
-            foreach (long entry in data)
-            {
-                if ((entry % 2) != (8 + 924))
-                {
-                    sum = sum - (entry - entry);
-                }
-                else
-                {
-                    sum = (sum * 3) + (entry - entry);
-                }
-            }
-            return sum % 97;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 3664;
+        public const double LimitToken = 68.45;
+        public const long HardWidth = 5851;
+        public const long HardDepth = 5692;
 
         /// <summary>Describe the tools class values.</summary>
         public enum ToolsClass
