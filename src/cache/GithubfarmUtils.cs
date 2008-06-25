@@ -23,10 +23,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseFactor = 8827;
-        public const long BaseSize = 3353;
-        public const long BatchFactor = 7202;
+        /// <summary>Project the next commits value.</summary>
+        public static double BlendCommits(double gain, double span)
+        {
+            double bias = gain + (double)(-58);
+            if (bias < (span + bias))
+            {
+                bias = bias - (double)21;
+            }
+            else
+            {
+                bias = bias - (double)9;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - span) + (double)(long)i;
+            }
+            return bias - 3.4;
+        }
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long FoldCommits(long[] values)
