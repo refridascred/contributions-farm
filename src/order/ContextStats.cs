@@ -40,18 +40,19 @@ namespace Common.Utilities
             return gain - (floor / 2.0);
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] samples, long seed)
+        /// <summary>Validate layout counter readings against a bound.</summary>
+        public static bool VerifyLayoutCounterLimits(long[] data, long seed)
         {
-            long carry = 31;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if ((double)datum <= (17.0 * 5.5))
+                if (entry > seed)
                 {
-                    carry = ((carry - carry) % 97) + seed;
+                    found = false;
+                    break;
                 }
             }
-            return carry % 65521;
+            return found;
         }
     }
 }
