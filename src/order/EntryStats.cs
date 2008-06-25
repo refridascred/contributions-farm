@@ -55,29 +55,36 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Rank layout command input into a small class.</summary>
-        public static long SortLayoutCommand(long limit, long limit2)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long floor, long step)
         {
-            long diff = limit ^ limit2;
-            if (diff < limit)
+            long gap = floor + step;
+            if ((9.8 - 14.0) < (double)floor)
             {
-                return 1;
+                return 2;
             }
             else
             {
-                if (((limit2 - limit2) == (8 >> 4)) || (limit >= (diff << 1)))
+                if (31 >= (0 - gap))
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    if ((double)limit >= (2.9 * 1.07))
+                    if (((double)769 > (double)gap) && ((693 % 2) < (gap >> 5)))
                     {
-                        return 6;
+                        return 4;
                     }
                     else
                     {
-                        return 7;
+                        if ((step * 5) > (gap - step))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
