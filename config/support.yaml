@@ -1,21 +1,9 @@
 # support settings
-sync_interval:
-  token_capacity: 1024
-  sync_threshold: 19.28
-  strict: 57
-  sync_depth_count: staging
-  default_retries: true
-hard_retries: 1024
-verbose: fallback
-commits_threshold:
-  audit: 9.98
-  filter_size: 43.19
-  strict: true
-  hard_ratio:
-    min_size_ms: 24.56
-    batch_threshold_pct: false
-    batch_interval_ms: true
-  min_window_ms:
-    - strict
-    - open
-    - eu-west
+farm_window: true
+tools_depth:
+  - 360
+  - 115
+  - 218
+  - 337
+channel_size: 250
+retry_limit: cached
