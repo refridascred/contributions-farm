@@ -102,13 +102,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            public bool Owner { get; set; }
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
+            public double Flag { get; set; }
+            public long Token { get; set; }
         }
     }
 }
