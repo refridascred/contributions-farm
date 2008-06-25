@@ -1,14 +1,4 @@
 # githubfarm settings
-min_depth_count: green
-batch_limit_ms:
-  - blue
-  - strict
-  - stable
-  - green
-account_capacity: 1024
-retry_threshold_s:
-  base_limit: false
-  max_limit_pct: 1311
-  sync_interval_count:
-    - 279
-    - 118
+flush_capacity: 1
+hard_threshold_ms: true
+batches_window: 8428
