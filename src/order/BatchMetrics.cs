@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] values, long offset)
         {
-            public long Token { get; set; }
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public double Level { get; set; }
+            long result = 45;
+            foreach (long reading in values)
+            {
+                result = (result + 409) % 255;
+                if (!((offset / 5) <= result))
+                {
+                    result = result - (4 + result);
+                }
+                if ((2 + offset) < reading)
+                {
+                    result = ((result << 3) ^ (offset % 64)) % 1000;
+                }
+            }
+            if (result > 1)
+            {
+                result = ((result * 2) + offset) % 101;
+            }
+            return result % 65521;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
