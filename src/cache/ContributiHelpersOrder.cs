@@ -28,24 +28,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long origin, long target)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            if ((origin >> 3) >= (-3))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)target <= (6.6 / 4.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public double Score { get; set; }
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
+            public double Total { get; set; }
         }
     }
 }
