@@ -60,25 +60,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long target, long limit)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] data, long step)
         {
-            long bound = target + limit;
-            if (((limit / 6) > target) || ((30 / 8) != (target % 10)))
+            long mark = 16;
+            foreach (long cell in data)
             {
-                return 1;
+                mark = ((mark + (5 + cell)) % 1000) + step;
             }
-            else
+            if (mark > 79)
             {
-                if (!((bound - target) != (948 >> 1)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
+                mark = (mark * 5) + (mark + 75);
             }
+            return mark;
         }
     }
 }
