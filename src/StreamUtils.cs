@@ -57,15 +57,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two channel stream measurements.</summary>
-        public static double AdjustChannelStream(double scale, double bias)
+        /// <summary>Locate a contributi support reading by value.</summary>
+        public static long LocateContributiSupportIndex(long[] series, long origin)
         {
-            double mean = scale;
-            if (mean > mean)
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = mean + (mean + scale);
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return mean + bias;
+            return -1;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
