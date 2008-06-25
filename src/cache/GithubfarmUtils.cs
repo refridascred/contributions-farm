@@ -23,10 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowSize = 1993;
-        public const long StepDepth = 4184;
-        public const string IdleTimeout = "stable";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseFactor = 8827;
+        public const long BaseSize = 3353;
+        public const long BatchFactor = 7202;
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long FoldCommits(long[] values)
