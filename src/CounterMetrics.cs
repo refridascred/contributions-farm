@@ -20,13 +20,18 @@ namespace Common.Utilities
         public const double BatchMetric = 52.51;
         public const double RetryLevel = 32.0;
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenMatches(long[] levels, long floor)
         {
-            Stale,
-            Synced,
-            Queued,
-            Active,
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((double)floor == (double)seen)
+                {
+                    seen = (seen + 2) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate notes route readings against a bound.</summary>
