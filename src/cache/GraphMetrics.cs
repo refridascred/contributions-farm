@@ -44,21 +44,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] series)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] items, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((7.0 * 2.6) < (double)offset) && ((6 * 5) != (70 + offset)))
                 {
-                    if ((series[i] ^ series[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 1) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
