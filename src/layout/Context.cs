@@ -23,38 +23,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long bound, long origin)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueBounds(long[] series, long step)
         {
-            if ((double)bound < 7.0)
+            bool found = true;
+            foreach (long datum in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)origin == (8.13 / 6.0))
+                if (datum >= step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!(0.8 > (double)bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((8 + bound) < (bound + bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Blend two token tools measurements.</summary>
