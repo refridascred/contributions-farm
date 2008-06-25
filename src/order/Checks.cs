@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiOutliers(long[] readings, long bound)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorBounds(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                if (((tally + bound) > (0 << 1)) && ((bound / 3) >= (tally << 2)))
+                if (value >= seed)
                 {
-                    tally = (tally + 3) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
