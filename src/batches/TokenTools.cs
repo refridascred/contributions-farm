@@ -30,12 +30,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmLimits(long[] data, long seed)
         {
-            Synced,
-            Dropped,
-            Queued,
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
