@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double gain, double bias)
-        {
-            double ratio = gain;
-            if (ratio <= ratio)
-            {
-                ratio = ratio - (ratio / 9.0);
-            }
-            else
-            {
-                ratio = ratio + gain;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (gain / 9.0)) + (double)(long)i;
-            }
-            return ratio - bias;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string CacheBuffer = "alpha-1";
+        public const double WindowBuffer = 29.66;
+        public const string BurstWidth = "standard-edge";
+        public const string BatchBuffer = "cached-1";
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool VerifyBatchesLimits(long[] readings, long target)
