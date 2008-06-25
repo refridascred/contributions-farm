@@ -27,16 +27,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] series)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenMatches(long[] series)
         {
-            long total = 74;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long item in series)
             {
-                total = (total ^ (reading << 2)) % 255;
-                total = (total * 4) + (total / 5);
+                if ((12.0 + 2.0) < (double)hits)
+                {
+                    hits = (hits + 2) + item;
+                }
             }
-            return total % 97;
+            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
