@@ -1,7 +1,10 @@
-id,count,label
-1,568,956
-2,391,32.49
-3,green,stable
-4,614,strict
-5,987,790
-6,open,997
+id,active,rank,level,token
+1,latest,108,staging,120
+2,67.01,268,edge,eu-west
+3,edge,122,strict,standard
+4,20.93,979,69.19,0.1
+5,85.68,319,408,edge
+6,530,local,green,187
+7,192,1.21,789,70.11
+8,47.23,829,84.24,65.7
+9,blue,222,stable,eu-west
