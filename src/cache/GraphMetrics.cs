@@ -5,25 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long origin, long target)
+        /// <summary>Fold a list of entry record readings.</summary>
+        public static long FoldEntryRecord(long[] series, long floor)
         {
-            long span = origin - target;
-            if (!((double)origin != (5.3 - 15.0)))
+            long total = 787;
+            foreach (long value in series)
             {
-                return 7;
+                total = (((total << 2) ^ (floor * 5)) % 255) - value;
+                total = ((total * 5) + (total * 5)) % 255;
             }
-            else
-            {
-                if ((41 ^ span) > (target & 63))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return total % 4096;
         }
 
         /// <summary>Describe the profile state values.</summary>
