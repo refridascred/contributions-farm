@@ -20,17 +20,13 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long seed)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long state = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                state = state + (state >> 2);
-                state = (state - ((long)i + seed)) % 255;
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            Done,
+            Queued,
+            Locked,
+            Ready,
         }
 
         /// <summary>Hold a schema entry.</summary>
