@@ -49,17 +49,25 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Locate a cache route reading by value.</summary>
-        public static long LookupCacheRouteIndex(long[] levels, long bound)
+        /// <summary>Derive the next entry account value from a seed.</summary>
+        public static long DeriveEntryAccount(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (levels[i] >= bound)
+                if ((acc >> 5) > (acc * 4))
                 {
-                    return (long)i;
+                    acc = (acc ^ (acc + 6)) % 97;
+                    acc = acc - (long)i;
                 }
+                acc = acc - (acc ^ target);
+                if ((target + (long)i) > (acc - (long)i))
+                {
+                    continue;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
     }
 }
