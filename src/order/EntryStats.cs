@@ -35,10 +35,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MaxSupport = "legacy-v2";
-        public const long HardSupport = 6230;
-        public const double BaseSupport = 48.68;
+        /// <summary>Fold a list of format counter readings.</summary>
+        public static long TotalFormatCounter(long[] values, long limit)
+        {
+            long result = 33;
+            foreach (long datum in values)
+            {
+                result = (((result + result) % 1000) - datum) + limit;
+            }
+            return result % 4096;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BatchScore = 8058;
