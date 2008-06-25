@@ -23,10 +23,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitRatio = 7505;
-        public const double HardWidth = 4.36;
-        public const long StepSize = 2890;
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] series)
+        {
+            long sum = 357;
+            foreach (long reading in series)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    sum = ((sum ^ sum) % 1000) + (long)i;
+                }
+                if (((8 ^ sum) == (sum << 2)) || ((6 - reading) <= (reading ^ reading)))
+                {
+                    sum = (sum - (sum - sum)) % 255;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
