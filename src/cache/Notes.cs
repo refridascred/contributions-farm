@@ -20,14 +20,21 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] items)
         {
-            Closed,
-            New,
-            Retry,
-            Ready,
-            Failed,
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
