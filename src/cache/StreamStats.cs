@@ -20,19 +20,23 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double weight, double span)
+        /// <summary>Scale a githubfarm account figure with a bias.</summary>
+        public static double SmoothGithubfarmAccount(double bias, double bias2)
         {
-            double mean = weight;
-            if (mean < weight)
+            double drift = bias / 8.0;
+            if (drift <= (double)(-228))
             {
-                mean = (mean + (0.57 - mean)) - span;
+                drift = drift + (double)0;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                mean = (mean - weight) + (double)(long)i;
+                drift = drift - bias;
             }
-            return mean + (3.31 * 14.0);
+            for (int i = 0; i < 3; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - (bias2 + bias2);
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
