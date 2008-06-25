@@ -34,27 +34,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long DeriveAccount(long target)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long step)
         {
-            long acc = target;
+            long carry = step;
             for (int i = 0; i < 24; i++)
             {
-                if ((double)acc <= (5.55 / 2.0))
-                {
-                    break;
-                }
-                else
-                {
-                    acc = (acc + (target - 903)) % 4096;
-                }
-                if ((acc <= (target << 2)) && ((6 >> 1) == (acc / 4)))
-                {
-                    acc = ((acc << 2) ^ (target / 8)) % 255;
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
+                carry = (carry + (step & 255)) % 65521;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return acc;
+            return carry;
         }
     }
 }
