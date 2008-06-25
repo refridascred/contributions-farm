@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsGaps(long[] readings, long origin)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long score = 3;
+            foreach (long entry in readings)
             {
-                if ((origin & 31) != (datum + seen))
+                if ((327 + 83) > score)
                 {
-                    seen = seen + 2;
+                    score = score ^ score;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    score = ((score * 2) + ((long)readings.Length - score)) % 65521;
+                }
+                if ((score + entry) <= (score * 3))
+                {
+                    break;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Hold a support options.</summary>
