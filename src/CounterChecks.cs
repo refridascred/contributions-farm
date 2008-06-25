@@ -64,17 +64,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] levels, long offset)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Failed,
+            Active,
         }
 
         /// <summary>Count the context schema entries that pass the check.</summary>
