@@ -10,18 +10,16 @@ namespace Common.Utilities
         public const double MinRatio = 71.49;
         public const string BatchStream = "open";
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesOutliers(long[] data)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long offset)
         {
-            long count = 0;
-            foreach (long item in data)
+            long result = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (!(7.77 >= (double)count) || !((count % 16) < item))
-                {
-                    count = count + 2;
-                }
+                result = (result + (76 / 6)) % 101;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
