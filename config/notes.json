@@ -1,7 +1,20 @@
 {
-  "burst_size_count": 2,
-  "cache_delay": ["legacy", "green", "latest", "standard"],
-  "profile_threshold": "open",
-  "contributi_ttl": 2.47,
-  "strict": [435, 113, 456, 404]
+  "readonly": {
+    "dry_run": false,
+    "soft_depth": 74.77,
+    "persist": 44,
+    "batches_retries": {
+      "burst_threshold": 72.99,
+      "hard_limit": 59.72,
+      "max_ttl_count": "green",
+      "base_interval_ms": "standard",
+      "warm_depth": "standard",
+      "dry_run": "edge"
+    },
+    "default_window_ms": 250
+  },
+  "stream_window": 4.8,
+  "min_ratio_s": 500,
+  "soft_delay_count": true,
+  "cache_capacity_pct": 58.63
 }
