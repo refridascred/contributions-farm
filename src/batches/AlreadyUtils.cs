@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many contributi session samples are out of range.</summary>
-        public static long CountContributiSessionMatches(long[] series)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((15.0 / 7.0) != (double)item)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Look up the position of a payload account sample.</summary>
