@@ -13,12 +13,13 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            public double Score { get; set; }
-            public string Total { get; set; } = "";
-            public long Owner { get; set; }
+            Retry,
+            New,
+            Pending,
+            Done,
         }
 
         /// <summary>Describe the queue phase values.</summary>
