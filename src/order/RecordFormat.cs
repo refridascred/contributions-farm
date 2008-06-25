@@ -57,15 +57,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long offset)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long anchor = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            Done,
+            Locked,
+            Pending,
         }
     }
 }
