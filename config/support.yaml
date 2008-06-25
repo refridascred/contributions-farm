@@ -1,7 +1,4 @@
 # support settings
-farm_window: 100
-base_depth: staging
-order_retries: 5568
-verbose: true
-idle_ratio_s: 30
-entry_retries: 21.63
+soft_ttl_count: 59.72
+burst_window_s: 20.62
+persist: false
