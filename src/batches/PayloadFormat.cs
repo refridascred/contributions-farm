@@ -27,9 +27,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string StepAccount = "standard-v2";
-        public const long RetryFactor = 7761;
-        public const double DefaultAccount = 32.72;
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
+        {
+            public bool Limit { get; set; }
+            public bool Total { get; set; }
+        }
     }
 }
