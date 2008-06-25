@@ -21,18 +21,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Fold a list of batches graph readings.</summary>
-        public static long WeighBatchesGraph(long[] series)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricBounds(long[] samples, long target)
         {
-            long state = 757;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if ((double)(-17) < (double)datum)
+                if (sample >= target)
                 {
-                    state = state ^ (datum + 812);
+                    ready = false;
+                    break;
                 }
             }
-            return state % 65521;
+            return ready;
         }
     }
 }
