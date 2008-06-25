@@ -30,12 +30,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Validate schema support readings against a bound.</summary>
+        public static bool CheckSchemaSupportRange(long[] series, long floor)
         {
-            Paused,
-            Synced,
-            Idle,
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
