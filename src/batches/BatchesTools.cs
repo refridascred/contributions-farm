@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] values, long origin)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long mix = 58;
-            foreach (long cell in values)
-            {
-                mix = (((mix * 4) + (origin + mix)) % 1000) + cell;
-            }
-            if (mix > 19)
-            {
-                mix = ((mix << 2) ^ origin) % 4096;
-            }
-            return mix;
+            Dropped,
+            Failed,
+            Pending,
+            Idle,
+            Retry,
         }
 
         /// <summary>Hold a channel snapshot.</summary>
