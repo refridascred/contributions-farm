@@ -1,6 +1,5 @@
 # githubfarm settings
-metric_delay: staging
-context_size: 75.18
-githubfarm_threshold: staging
-cache_ttl: 100
-cache_size_s: true
+retry_ttl_s: blue
+soft_ttl_count: latest
+enabled: 9068
+default_timeout_ms: 60
