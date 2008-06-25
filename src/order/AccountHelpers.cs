@@ -36,11 +36,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            public double Rank { get; set; }
-            public long Region { get; set; }
+            Idle,
+            Failed,
+            New,
+            Pending,
+            Paused,
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
