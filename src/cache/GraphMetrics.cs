@@ -35,12 +35,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            public double Region { get; set; }
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            Ready,
+            Retry,
+            Done,
         }
 
         /// <summary>Define already limits and defaults.</summary>
