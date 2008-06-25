@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
-        {
-            public string Label { get; set; } = "";
-            public bool Weight { get; set; }
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double CacheSupport = 65.56;
+        public const long HardWidth = 5265;
+        public const long CacheCount = 3026;
 
         /// <summary>Roll a order counter forward.</summary>
         public static long StepOrder(long target)
