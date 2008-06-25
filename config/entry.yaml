@@ -1,6 +1,4 @@
 # entry settings
-compress: 8972
-poll_limit_count: 1002
-max_capacity_pct: legacy
-sync_depth_ms: 8184
-poll_ratio_count: 35
+stats_timeout: false
+batch_window_count: 14
+route_size: primary
