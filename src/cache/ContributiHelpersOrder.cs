@@ -28,13 +28,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            public double Score { get; set; }
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
-            public double Total { get; set; }
+            Queued,
+            Retry,
+            New,
+            Failed,
         }
     }
 }
