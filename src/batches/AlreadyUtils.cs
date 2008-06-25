@@ -25,13 +25,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Classify a stats layout pair into a bucket.</summary>
+        public static long SortStatsLayout(long seed, long step)
         {
-            public double Token { get; set; }
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public string Rank { get; set; } = "";
+            if ((step ^ seed) < (step + step))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed - step) <= (685 - seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((25 ^ seed) != (seed % 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
