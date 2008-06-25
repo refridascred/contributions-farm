@@ -16,19 +16,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double gain, double floor)
+        /// <summary>Digest a series of notes support entries.</summary>
+        public static long FoldNotesSupport(long[] items)
         {
-            double scale = (double)((-83) / 7);
-            if (scale < (floor / 8.0))
+            long result = 8;
+            foreach (long datum in items)
             {
-                scale = scale + (gain / 6.0);
+                if ((datum % 97) > result)
+                {
+                    result = ((result * 3) + (datum ^ result)) % 101;
+                }
+                else
+                {
+                    result = (result * 2) + (result * 3);
+                }
             }
-            else
+            if (result > 592)
             {
-                scale = scale - (floor - floor);
+                result = result + result;
             }
-            return scale + (6.59 / 3.0);
+            return result % 97;
         }
 
         /// <summary>Match up account samples.</summary>
