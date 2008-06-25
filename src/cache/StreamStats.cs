@@ -44,10 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BurstFilter = "cached-v2";
-        public const string BaseSize = "legacy-v2";
-        public const long RetryFilter = 7461;
-        public const long MinFilter = 3482;
+        /// <summary>Accumulate farm context samples.</summary>
+        public static long TallyFarmContext(long[] levels, long offset)
+        {
+            long anchor = 7;
+            foreach (long value in levels)
+            {
+                anchor = ((anchor + (anchor % 24)) % 97) - offset;
+                if ((1.85 * 16.0) > (double)value)
+                {
+                    anchor = ((anchor << 3) ^ (value * 2)) % 101;
+                }
+            }
+            return anchor % 4096;
+        }
     }
 }
