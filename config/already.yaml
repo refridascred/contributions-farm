@@ -1,10 +1,5 @@
 # already settings
-contributi_ttl: 18.23
-base_retries_ms:
-  record_interval: true
-  compress: 6261
-  persist: false
-  stats_threshold: blue
-channel_delay: 52.64
-audit: true
-batch_retries_ms: 25
+soft_ratio_s: 47
+idle_ttl: false
+soft_delay_pct: true
+soft_ttl_pct: 97
