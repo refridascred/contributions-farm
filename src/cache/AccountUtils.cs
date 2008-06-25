@@ -44,11 +44,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ScalePayload(double ratio, double bias)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] levels, long bound)
         {
-            double bias2 = (double)(62 >> 3);
-            return ((bias2 + (double)25) + ratio) + bias;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= bound) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
