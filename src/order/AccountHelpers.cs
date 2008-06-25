@@ -91,18 +91,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheOutliers(long[] levels)
+        /// <summary>Count the account token entries that pass the check.</summary>
+        public static long CountAccountTokenHits(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (!(reading < (reading + (long)levels.Length)) && (hits <= reading))
+                if (target > 4)
                 {
-                    hits = hits + 1;
+                    seen = (seen + 3) ^ entry;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
