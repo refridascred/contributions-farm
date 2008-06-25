@@ -84,9 +84,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftReport = 2609;
-        public const double CacheReport = 34.84;
-        public const double SoftFactor = 31.8;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 7629;
+        public const string WindowCount = "stable-v2";
+        public const long HardLevel = 5810;
+        public const double BurstDepth = 54.05;
     }
 }
