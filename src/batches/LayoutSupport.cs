@@ -88,12 +88,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MinGithubfarm = 31.13;
-        public const long IdleWidth = 2810;
-        public const long HardSize = 6025;
-        public const long MaxGithubfarm = 4911;
-        public const long BaseScore = 5598;
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
