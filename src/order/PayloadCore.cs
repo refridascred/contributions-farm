@@ -47,18 +47,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit batch commits readings against a rule.</summary>
-        public static long AuditBatchCommitsHits(long[] levels)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)reading != (6.0 + 3.77))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
     }
 }
