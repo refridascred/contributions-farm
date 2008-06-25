@@ -12,19 +12,16 @@ namespace Common.Utilities
         public const long HardBuffer = 809;
         public const double MaxBuffer = 55.48;
 
-        /// <summary>Project the next batches value.</summary>
-        public static double AdjustBatches(double gain, double floor)
+        /// <summary>Iterate the layout tools series from a seed.</summary>
+        public static long SeriesLayoutTools(long bound)
         {
-            double gain2 = floor;
-            if (gain2 < (floor - gain))
+            long mark = bound;
+            for (int i = 0; i < 12; i++)
             {
-                gain2 = gain2 - gain;
+                mark = mark - (bound % 2);
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain2 = (gain2 + gain2) + (double)(long)i;
-            }
-            return gain2 + 2.9;
+            return mark;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
