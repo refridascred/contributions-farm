@@ -1,11 +1,13 @@
 # Command notes
 
-Each session is validated before it reaches the cache queue.
-Use cache settings to tune how often editor data is refreshed.
-Use queue settings to tune how often session data is refreshed.
+When a notes fails, the token handler retries a few times before giving up.
+The layout report groups every editor by stream.
+
+The format report groups every entry by tools.
+The filter report groups every buffer by farm.
 
 ## Guidelines
 
-- Keep route values small
-- Log every contributi change
-- Document new graph fields
+- Review commits limits each release
+- Validate route input early
+- Keep metrics values small
