@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
-        {
-            public long Offset { get; set; }
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string LimitCount = "local";
+        public const long SoftWidth = 89;
+        public const double BaseRoute = 26.0;
+        public const double BatchSize = 98.72;
+        public const long BurstInterval = 5160;
 
         /// <summary>Look up the position of a payload account sample.</summary>
         public static long LookupPayloadAccountIndex(long[] items, long limit)
