@@ -32,31 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of format support readings.</summary>
-        public static long ScoreFormatSupport(long[] series, long target)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] readings, long floor)
         {
-            long sum = 1;
-            foreach (long datum in series)
+            long mark = 3;
+            foreach (long sample in readings)
             {
-                sum = (sum - target) % 101;
-                if (!((7.2 + 18.0) != (double)sum))
+                mark = (((mark * 3) + (9 / 6)) % 97) + floor;
+                if (!(16 >= (sample / 2)))
                 {
-                    sum = ((sum * 3) + sum) % 4096;
-                }
-                else
-                {
-                    sum = sum + (datum - target);
-                }
-                if ((69 << 1) < (sum >> 5))
-                {
-                    break;
+                    mark = (mark + (471 + sample)) % 1000;
                 }
             }
-            if (sum < 298)
-            {
-                sum = (sum ^ sum) % 1000;
-            }
-            return sum % 4096;
+            return mark % 65521;
         }
     }
 }
