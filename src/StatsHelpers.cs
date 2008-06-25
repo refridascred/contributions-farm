@@ -47,16 +47,11 @@ namespace Common.Utilities
         public const string IdleInterval = "fallback-v2";
         public const long BurstScore = 9811;
 
-        /// <summary>Roll a farm buffer counter forward.</summary>
-        public static long RollFarmBuffer(long bound)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long anchor = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = (anchor + anchor) % 97;
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            public bool Limit { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
