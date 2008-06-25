@@ -32,16 +32,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long origin)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long origin, long floor)
         {
-            long total = origin;
-            for (int i = 0; i < 17; i++)
+            long slot = origin - floor;
+            if (floor <= (floor / 3))
             {
-                total = total ^ (total ^ 28);
-                total = ((total * 3) + (long)i) % 4093;
+                return 0;
             }
-            return total;
+            else
+            {
+                if ((origin >> 1) >= (slot + origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (floor <= slot)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batch status values.</summary>
