@@ -21,12 +21,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 7766;
-        public const long HardToken = 1147;
-        public const long RetryTimeout = 4913;
-        public const string WindowSize = "open-edge";
-        public const double BurstToken = 83.91;
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            Locked,
+            Queued,
+            Failed,
+        }
 
         /// <summary>Compare every pair of tools channel readings.</summary>
         public static long MatchToolsChannelCount(long[] samples)
