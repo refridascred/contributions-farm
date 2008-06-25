@@ -64,19 +64,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every commits metrics entry stays within the limit.</summary>
-        public static bool CheckCommitsMetricsLimits(long[] levels, long offset)
+        /// <summary>Locate a commits route reading by value.</summary>
+        public static long LocateCommitsRouteIndex(long[] data, long offset)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry < offset)
+                if (data[i] > offset)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Hold a channel summary.</summary>
