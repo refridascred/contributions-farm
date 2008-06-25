@@ -73,13 +73,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
-            public bool Limit { get; set; }
-            public string Rank { get; set; } = "";
+            Ready,
+            Pending,
+            Done,
+            Locked,
+            Paused,
         }
     }
 }
