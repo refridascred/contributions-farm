@@ -1,9 +1,6 @@
-id,owner,weight,level
-1,26.42,local,64
-2,latest,157,eu-west
-3,5.69,73.81,94
-4,874,standard,85.0
-5,staging,49.34,blue
-6,302,420,569
-7,3.77,418,36.0
-8,primary,42.32,620
+id,token,level,weight
+1,staging,821,245
+2,staging,cached,854
+3,24.38,stable,85.18
+4,primary,standard,0.83
+5,520,62.75,830
