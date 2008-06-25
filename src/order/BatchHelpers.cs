@@ -33,15 +33,19 @@ namespace Common.Utilities
         public const long IdleScore = 6883;
         public const long MinSize = 7540;
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double gain, double bias)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double scale, double bias)
         {
-            double mean = bias;
-            for (int i = 0; i < 3; i++)
+            double ratio = 4.24 + scale;
+            if (ratio < (double)0)
             {
-                mean = ((mean - (bias - 7.9)) + (double)(long)i) - gain;
+                ratio = ratio + (double)801;
             }
-            return mean - (double)531;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (bias / 7.0)) + (double)(long)i;
+            }
+            return ratio + scale;
         }
     }
 }
