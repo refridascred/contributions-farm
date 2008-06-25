@@ -41,17 +41,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] values, long bound)
+        /// <summary>Iterate the window graph series from a seed.</summary>
+        public static long DeriveWindowGraph(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 23; i++)
             {
-                if ((values[i] > bound) && ((values[i] % 2) != 0))
+                if (!((step - step) > step))
                 {
-                    return (long)i;
+                    sum = ((sum << 3) ^ (sum + step)) % 255;
+                    sum = (sum - (sum / 9)) % 97;
                 }
+                sum = sum - 1;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
