@@ -15,15 +15,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long target)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long carry = target;
-            for (int i = 0; i < 23; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            Draft,
+            Queued,
+            Pending,
+            Paused,
         }
 
         /// <summary>Fold a list of record readings.</summary>
