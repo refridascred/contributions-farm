@@ -24,32 +24,12 @@ namespace Common.Utilities
             return bias + scale;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long origin, long offset)
-        {
-            if ((0.25 / 9.0) > (double)offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((origin / 3) < (offset + offset)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin + origin) >= (46 - offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 4920;
+        public const long DefaultOrder = 867;
+        public const long BurstOrder = 9168;
+        public const long LimitLevel = 4127;
+        public const string CacheRatio = "primary-v2";
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long TallyMetricsMatches(long[] data, long floor)
