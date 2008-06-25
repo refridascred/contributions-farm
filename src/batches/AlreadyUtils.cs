@@ -14,13 +14,17 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Look up the position of a payload account sample.</summary>
+        public static long LookupPayloadAccountIndex(long[] items, long limit)
         {
-            Synced,
-            Stale,
-            New,
-            Dropped,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
