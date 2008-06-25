@@ -37,15 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double ratio, double span)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            double ratio2 = ratio;
-            if (ratio2 <= ratio2)
-            {
-                ratio2 = (ratio2 + ratio2) - span;
-            }
-            return ratio2 + ratio2;
+            public bool Limit { get; set; }
+            public bool Ratio { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the format status values.</summary>
