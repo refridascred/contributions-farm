@@ -1,6 +1,10 @@
-id,state,token
-1,eu-west,891
-2,285,98.26
-3,6.38,strict
-4,577,708
-5,cached,691
+id,ratio,rank
+1,71.49,69.44
+2,342,standard
+3,green,42
+4,local,latest
+5,legacy,646
+6,eu-west,open
+7,strict,991
+8,69.69,466
+9,19.73,strict
