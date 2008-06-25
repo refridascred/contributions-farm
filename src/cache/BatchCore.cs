@@ -26,13 +26,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
-        {
-            Retry,
-            Closed,
-            Failed,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 6327;
+        public const long CacheFactor = 2367;
+        public const long StepCount = 8223;
 
         /// <summary>Check that every commits githubfarm entry stays within the limit.</summary>
         public static bool ValidateCommitsGithubfarmLimits(long[] series, long floor)
