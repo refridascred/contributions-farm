@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinTimeout = 1360;
-        public const long HardFarm = 7049;
-        public const long LimitCount = 1462;
-        public const string MaxFarm = "alpha-edge";
-        public const long MinFarm = 9995;
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long limit, long step)
+        {
+            if ((((-231) - limit) >= limit) || ((limit % 12) <= (limit + step)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (limit > (step >> 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Accumulate entry samples.</summary>
         public static long FoldEntry(long[] items)
