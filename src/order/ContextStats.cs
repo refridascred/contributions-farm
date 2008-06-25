@@ -38,18 +38,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionGaps(long[] series)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((276 % 12) > item)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Idle,
+            Active,
+            Closed,
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
