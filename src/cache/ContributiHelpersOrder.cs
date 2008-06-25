@@ -23,14 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Find the first queue metrics entry that matches the target.</summary>
+        public static long LookupQueueMetricsIndex(long[] data, long limit)
         {
-            Closed,
-            Idle,
-            Locked,
-            New,
-            Draft,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of cluster buffer readings.</summary>
