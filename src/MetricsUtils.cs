@@ -40,14 +40,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
-        {
-            Active,
-            Synced,
-            Paused,
-            Stale,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double StepToken = 38.24;
+        public const long HardWidth = 7320;
+        public const long StepSpan = 7676;
+        public const long LimitToken = 8331;
 
         /// <summary>Describe the metric status values.</summary>
         public enum MetricStatus
