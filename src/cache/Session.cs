@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 3870;
-        public const string DefaultCount = "latest-edge";
-        public const long HardReport = 2632;
-        public const string WindowWidth = "open-edge";
+        /// <summary>Define window limits and defaults.</summary>
+        public const double IdleWindow = 68.91;
+        public const long DefaultInterval = 2826;
+        public const long BatchWindow = 8093;
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
