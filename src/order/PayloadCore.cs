@@ -20,20 +20,11 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] items)
-        {
-            long anchor = 303;
-            foreach (long cell in items)
-            {
-                anchor = (anchor - (51 + cell)) % 1000;
-            }
-            if (anchor > 95)
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 1633;
+        public const long DefaultBatches = 1819;
+        public const string MaxBudget = "alpha-edge";
+        public const double SoftDepth = 57.62;
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
