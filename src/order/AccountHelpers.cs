@@ -57,18 +57,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] items, long target)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] series)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long sum = -825;
+            foreach (long datum in series)
             {
-                if (!((target / 5) < matches))
+                if ((sum % 12) > (sum / 6))
                 {
-                    matches = (matches + 2) ^ value;
+                    sum = (sum - (sum ^ 4)) ^ datum;
                 }
             }
-            return matches;
+            return sum % 1000;
         }
 
         /// <summary>Define already limits and defaults.</summary>
