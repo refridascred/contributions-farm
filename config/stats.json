@@ -1,14 +1,10 @@
 {
-  "min_window_count": 1024,
-  "cache_interval_s": false,
-  "hard_interval": ["local", "green", "blue"],
-  "audit": {
-    "burst_ttl": false,
-    "persist": 92.64,
-    "compress": "legacy",
-    "min_interval_pct": true,
-    "flush_threshold_pct": 500,
-    "default_interval_ms": 23.88
+  "metric_depth": true,
+  "flush_timeout": {
+    "base_window_s": 58.78,
+    "verbose": 20,
+    "min_window": true,
+    "base_window_ms": "latest"
   },
-  "githubfarm_threshold": "staging"
+  "verbose": "local"
 }
