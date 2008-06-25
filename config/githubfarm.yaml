@@ -1,16 +1,6 @@
 # githubfarm settings
-cache_threshold_s: eu-west
-batch_interval_s:
-  burst_retries:
-    - 464
-    - 237
-  contributi_timeout: latest
-  stream_depth:
-    - legacy
-    - legacy
-  retry_timeout: 7795
-base_interval_count:
-  - 171
-  - 98
-  - 324
-  - 453
+retry_interval: staging
+dry_run: 75
+channel_interval: true
+cache_ttl_s: latest
+cache_threshold_pct: standard
