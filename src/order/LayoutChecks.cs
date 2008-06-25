@@ -34,12 +34,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double BlendOrder(double rate, double floor)
-        {
-            double bias = rate * 7.9;
-            return (bias + (double)153) + floor;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardWidth = 4066;
+        public const string BatchCommand = "fallback-edge";
+        public const double StepCommand = 6.17;
+        public const long DefaultCommand = 528;
 
         /// <summary>Project the next editor value.</summary>
         public static double BlendEditor(double bias, double bias2)
