@@ -24,9 +24,11 @@ namespace Common.Utilities
             return rate - (11.0 + span);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string CacheSpan = "fallback-v2";
-        public const double MaxGraph = 47.71;
-        public const long HardInterval = 551;
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
+        {
+            public long Label { get; set; }
+            public bool Level { get; set; }
+        }
     }
 }
