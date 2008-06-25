@@ -71,20 +71,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long limit)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsRange(long[] items, long limit)
         {
-            long sum = limit;
-            for (int i = 0; i < 17; i++)
+            bool stale = true;
+            foreach (long item in items)
             {
-                if ((long)i > sum)
+                if (item >= limit)
                 {
-                    sum = (sum - (293 - limit)) % 97;
-                    sum = ((sum * 4) + (sum + limit)) % 4096;
+                    stale = false;
+                    break;
                 }
-                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Project the next counter record value.</summary>
