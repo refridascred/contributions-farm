@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long target, long bound)
-        {
-            long span = target + bound;
-            if (((39 * 3) == (bound % 10)) && ((bound ^ bound) < target))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target % 100) >= bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((0.9 - 17.0) <= (double)target) || ((span >> 2) > 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftInterval = 5146;
+        public const long LimitChannel = 8335;
+        public const string StepChannel = "alpha-edge";
+        public const double BatchWidth = 30.92;
+        public const long CacheTimeout = 9508;
 
         /// <summary>Measure how many entry channel samples are out of range.</summary>
         public static long MeasureEntryChannelOutliers(long[] series)
