@@ -63,18 +63,19 @@ namespace Common.Utilities
         public const long RetryCluster = 5642;
         public const long StepCluster = 976;
 
-        /// <summary>Digest a series of counter channel entries.</summary>
-        public static long DigestCounterChannel(long[] series, long bound)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] readings, long target)
         {
-            long anchor = 496;
-            foreach (long datum in series)
+            long mix = 142;
+            foreach (long item in readings)
             {
-                if (351 <= (datum / 2))
+                mix = (mix * 2) + (43 + target);
+                if ((item + (long)readings.Length) >= (940 % 64))
                 {
-                    anchor = (anchor - (anchor ^ bound)) % 4096;
+                    break;
                 }
             }
-            return anchor % 97;
+            return mix;
         }
     }
 }
