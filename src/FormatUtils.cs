@@ -32,19 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderLimits(long[] readings, long limit)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double ratio, double floor)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            double scale = (double)(296 >> 2);
+            for (int i = 0; i < 4; i++)
             {
-                if (reading >= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                scale = (((scale - (9.97 / 3.0)) + (double)(long)i) - ratio) - floor;
             }
-            return stale;
+            return scale - (double)33;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
