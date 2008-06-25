@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardSpan = 5016;
-        public const double IdleRecord = 2.97;
-        public const long MaxWidth = 9651;
-        public const long LimitRecord = 9527;
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < floor) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a buffer reading.</summary>
         public static double SmoothBuffer(double bias, double floor)
