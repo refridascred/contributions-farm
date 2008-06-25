@@ -67,13 +67,19 @@ namespace Common.Utilities
         public const long BurstCommand = 9985;
         public const double BatchCommand = 0.11;
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowBounds(long[] levels, long seed)
         {
-            Stale,
-            Active,
-            Closed,
-            Failed,
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
