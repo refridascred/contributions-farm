@@ -62,19 +62,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of contributi format readings.</summary>
-        public static long TallyContributiFormat(long[] series)
+        /// <summary>Project the next order value.</summary>
+        public static double BlendOrder(double rate, double floor)
         {
-            long score = 643;
-            foreach (long value in series)
-            {
-                score = ((score * 4) + (value & 127)) % 4096;
-            }
-            if (score > 139)
-            {
-                score = ((score * 5) + (score * 2)) % 65521;
-            }
-            return score % 65521;
+            double bias = rate * 7.9;
+            return (bias + (double)153) + floor;
         }
 
         /// <summary>Project the next editor value.</summary>
