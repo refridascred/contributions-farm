@@ -39,12 +39,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long step, long target)
         {
-            public bool Limit { get; set; }
-            public double Weight { get; set; }
-            public string Level { get; set; } = "";
+            if (((3.0 * 3.3) != (double)target) || ((double)step == (2.4 / 5.0)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (target < (61 + target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((5.0 - 12.0) > (double)step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of window entries.</summary>
