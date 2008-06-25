@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry format helpers.</summary>
     public static class EntryFormat
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Validate batches cache readings against a bound.</summary>
+        public static bool ValidateBatchesCacheBounds(long[] values, long offset)
         {
-            public long Owner { get; set; }
-            public bool Limit { get; set; }
-            public double Level { get; set; }
-            public bool Weight { get; set; }
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a profile entry.</summary>
