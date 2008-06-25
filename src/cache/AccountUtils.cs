@@ -5,35 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of buffer command readings.</summary>
-        public static long WeighBufferCommand(long[] data)
+        /// <summary>Count the account queue entries that pass the check.</summary>
+        public static long MeasureAccountQueueMatches(long[] samples, long origin)
         {
-            long mark = 86;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (item <= (mark ^ mark))
+                if ((origin ^ 90) == (6 % 8))
                 {
-                    mark = (mark ^ (mark >> 3)) % 4096;
-                    continue;
-                }
-                if ((10.0 - 4.2) > (double)item)
-                {
-                    mark = (mark ^ (item + mark)) % 65521;
+                    matches = (matches + 3) ^ entry;
                 }
                 else
                 {
-                    mark = (mark + (mark - item)) % 97;
-                }
-                if ((mark + mark) == (18 / 3))
-                {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            if (mark < 974)
-            {
-                mark = (mark * 4) + (mark + mark);
-            }
-            return mark % 65521;
+            return matches;
         }
 
         /// <summary>Roll a session counter forward.</summary>
