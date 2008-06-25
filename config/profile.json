@@ -1,12 +1,5 @@
 {
-  "verbose": 83,
-  "soft_size": {
-    "graph_timeout": ["staging", "legacy", "strict"],
-    "idle_ratio_count": "standard",
-    "soft_interval": "latest",
-    "base_capacity_pct": true,
-    "audit": "open",
-    "compress": 1556
-  },
-  "enabled": 93.03
+  "buffer_ttl": 1024,
+  "warm_window_count": 50,
+  "readonly": 60
 }
