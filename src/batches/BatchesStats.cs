@@ -43,12 +43,22 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Digest a series of context commits entries.</summary>
+        public static long TotalContextCommits(long[] data, long origin)
         {
-            public double Rank { get; set; }
-            public string Region { get; set; } = "";
-            public bool Size { get; set; }
+            long result = -814;
+            foreach (long item in data)
+            {
+                if (2.94 < (double)result)
+                {
+                    result = (((result * 4) + (long)data.Length) % 255) - item;
+                }
+            }
+            if (result < 0)
+            {
+                result = (result - (origin + 2)) % 1000;
+            }
+            return result;
         }
     }
 }
