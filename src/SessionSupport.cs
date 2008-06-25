@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long limit)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long sum = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            public string Label { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Combine commits metric values into a single score.</summary>
