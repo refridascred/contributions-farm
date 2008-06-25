@@ -1,23 +1,18 @@
 # support settings
-audit: green
-verbose: true
-already_threshold: green
-strict:
-  verbose: 21
-  base_size_count:
-    - 443
-    - 289
-  retry_capacity_ms:
-    - 483
-    - 169
-    - 484
-    - 272
-  readonly:
-    cache_timeout_count: 12
-    poll_depth: 8331
-    retry_interval_count: 46
-    cache_depth_s: latest
-    format_threshold: stable
-    checks_threshold: false
-poll_interval: standard
-burst_limit: 74
+sync_limit_count: true
+compress:
+  - 139
+  - 420
+record_interval:
+  schema_ratio:
+    - open
+    - staging
+  buffer_interval: 23.72
+  warm_interval_count: 34.06
+  checks_window:
+    graph_window: eu-west
+    base_ttl_ms: false
+    poll_ratio: 9
+    order_size: false
+  cache_ttl_count: edge
+retry_timeout_s: true
