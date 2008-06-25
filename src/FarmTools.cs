@@ -25,9 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string CacheTimeout = "standard-1";
-        public const double BatchBudget = 87.31;
-        public const double BatchEntry = 85.26;
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
