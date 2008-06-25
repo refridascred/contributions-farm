@@ -60,38 +60,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a stream farm pair into a bucket.</summary>
-        public static long RankStreamFarm(long target, long offset)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long seed)
         {
-            if (target >= (30 / 5))
+            long total = seed;
+            for (int i = 0; i < 7; i++)
             {
-                return 7;
+                total = (total + ((long)i - 581)) % 4096;
+                total = ((total * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (374 <= target)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset >> 3) < (target * 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset ^ target) > (offset + offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return total;
         }
     }
 }
