@@ -21,17 +21,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] values, long bound)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmHits(long[] readings, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (values[i] == bound)
+                if (((double)entry == (double)count) && (count < (entry << 2)))
                 {
-                    return (long)i;
+                    count = (count + 1) + seed;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
