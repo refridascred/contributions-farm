@@ -24,19 +24,18 @@ namespace Common.Utilities
             return bias + (offset * 1.6);
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double ratio, double floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextOutliers(long[] values, long bound)
         {
-            double ratio2 = floor;
-            if (ratio2 < (double)967)
+            long matches = 0;
+            foreach (long item in values)
             {
-                ratio2 = (ratio2 + (double)901) - ratio;
+                if ((bound % 8) > (long)values.Length)
+                {
+                    matches = (matches + 3) + item;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - (floor - 7.0);
-            }
-            return ratio2 + (double)574;
+            return matches;
         }
 
         /// <summary>Describe the editor class values.</summary>
