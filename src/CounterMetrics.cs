@@ -19,22 +19,12 @@ namespace Common.Utilities
         public const double BatchMetric = 52.51;
         public const double RetryLevel = 32.0;
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheFormat = 5284;
+        public const long DefaultCount = 7866;
+        public const double StepFormat = 86.22;
+        public const long SoftFormat = 6871;
+        public const string BatchSpan = "stable-v2";
 
         /// <summary>Hold a token record.</summary>
         public sealed class TokenRecord
