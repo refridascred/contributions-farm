@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] samples, long bound)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsLimits(long[] data, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if (samples[i] >= bound)
+                if (cell != floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Classify a checks cache pair into a bucket.</summary>
