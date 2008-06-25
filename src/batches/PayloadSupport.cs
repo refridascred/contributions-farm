@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MaxQueue = "open-v2";
-        public const string StepQueue = "local-1";
-        public const double LimitQueue = 9.91;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 2609;
+        public const long BurstReport = 315;
+        public const string RetryReport = "cached";
+        public const string BatchDepth = "primary-v2";
 
         /// <summary>Define route limits and defaults.</summary>
         public const long SoftRoute = 9013;
