@@ -70,24 +70,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long origin, long floor)
-        {
-            if ((double)origin < 8.5)
-            {
-                return 4;
-            }
-            else
-            {
-                if (99 <= (origin ^ floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BaseScore = 94.2;
+        public const string LimitEditor = "latest-edge";
+        public const double BurstEditor = 32.09;
     }
 }
