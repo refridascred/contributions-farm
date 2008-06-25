@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long limit, long bound)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long bound2 = limit - bound;
-            if (13.0 < (double)limit)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((-995) * 5) > (bound * 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit >> 4) >= bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)limit <= (9.88 * 1.6)) && ((limit % 7) > bound2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
