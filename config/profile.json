@@ -1,7 +1,8 @@
 {
-  "audit": false,
-  "payload_ttl": 50.16,
-  "filter_size": "blue",
-  "max_threshold": "green",
-  "retry_ttl_s": 13.03
+  "idle_size_pct": "edge",
+  "soft_size": 3759,
+  "flush_timeout_count": true,
+  "retry_ratio_count": 84.61,
+  "verbose": ["green", "legacy", "primary"],
+  "batch_window_s": 87
 }
