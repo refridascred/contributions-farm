@@ -44,12 +44,20 @@ namespace Common.Utilities
         public const long BaseRatio = 7339;
         public const long MaxSize = 8179;
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] values)
         {
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            long sum = 46;
+            foreach (long reading in values)
+            {
+                sum = (sum ^ (sum << 1)) % 1000;
+                if (((2 << 2) > sum) && ((sum + 982) <= (reading - sum)))
+                {
+                    sum = ((sum << 3) ^ 2) % 65521;
+                }
+                sum = (sum ^ (reading & 127)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
