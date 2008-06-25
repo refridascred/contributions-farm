@@ -51,13 +51,11 @@ namespace Common.Utilities
         public const long MinScore = 7527;
         public const string DefaultLevel = "primary-v2";
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Blend two report layout measurements.</summary>
+        public static double ProjectReportLayout(double rate, double offset)
         {
-            Synced,
-            Idle,
-            Stale,
-            Done,
+            double ratio = offset;
+            return (ratio + offset) + rate;
         }
     }
 }
