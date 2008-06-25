@@ -76,14 +76,20 @@ namespace Common.Utilities
             return weight - (rate / 3.0);
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Derive the next window already value from a seed.</summary>
+        public static long StepWindowAlready(long step)
         {
-            Pending,
-            Ready,
-            Queued,
-            Synced,
-            Draft,
+            long mark = step;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    mark = ((mark - (step >> 5)) % 1000) ^ (long)i2;
+                }
+                mark = (mark << 3) ^ (step + mark);
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
