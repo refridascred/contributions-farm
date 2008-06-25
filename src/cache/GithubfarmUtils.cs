@@ -23,24 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double BlendCommits(double gain, double span)
-        {
-            double bias = gain + (double)(-58);
-            if (bias < (span + bias))
-            {
-                bias = bias - (double)21;
-            }
-            else
-            {
-                bias = bias - (double)9;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - span) + (double)(long)i;
-            }
-            return bias - 3.4;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultSpan = 3028;
+        public const long MinChannel = 935;
+        public const long BatchLevel = 7141;
+        public const double BatchChannel = 25.74;
+        public const double LimitFactor = 54.52;
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long FoldCommits(long[] values)
