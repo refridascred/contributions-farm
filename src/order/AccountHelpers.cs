@@ -21,18 +21,10 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == offset) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double RetryDepth = 84.46;
+        public const double HardFactor = 90.49;
+        public const long IdleSpan = 1620;
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long MatchTokenCount(long[] values)
