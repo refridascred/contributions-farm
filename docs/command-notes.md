@@ -1,10 +1,15 @@
 # Command notes
 
-Keep commits and cache names short and lowercase.
-Run the window check before changing any already limits.
+Use batch settings to tune how often report data is refreshed.
+Keep queue and payload names short and lowercase.
+
+The payload module keeps metric values in sync with the metrics cache.
+The context module keeps session values in sync with the metric cache.
+Run the metrics check before changing any format limits.
 
 ## Guidelines
 
-- Log every commits change
-- Document new support fields
-- Review editor limits each release
+- Document new notes fields
+- Review route limits each release
+- Log every contributi change
+- Keep schema values small
