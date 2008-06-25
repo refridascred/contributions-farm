@@ -83,34 +83,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] samples)
-        {
-            long result = 50;
-            foreach (long value in samples)
-            {
-                if ((value << 3) >= result)
-                {
-                    break;
-                }
-                else
-                {
-                    result = result + result;
-                }
-                if ((value - value) <= (976 >> 3))
-                {
-                    result = ((result << 3) ^ value) % 101;
-                }
-                if ((double)result <= (5.4 + 9.0))
-                {
-                    result = (result + value) % 65521;
-                }
-            }
-            if (result > 816)
-            {
-                result = (result + result) % 255;
-            }
-            return result;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 5582;
+        public const long HardDepth = 347;
+        public const string BatchChecks = "primary";
+        public const double SoftScore = 22.52;
+        public const long WindowChecks = 6093;
     }
 }
