@@ -35,17 +35,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first channel cache entry that matches the target.</summary>
-        public static long LocateChannelCacheIndex(long[] series, long floor)
+        /// <summary>Iterate the already command series from a seed.</summary>
+        public static long IterateAlreadyCommand(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((series[i] > floor) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
     }
 }
