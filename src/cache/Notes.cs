@@ -43,22 +43,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] data, long step)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long carry = 1;
-            foreach (long value in data)
-            {
-                if ((double)value < (6.0 - 9.8))
-                {
-                    carry = (carry << 2) ^ (step + step);
-                }
-            }
-            if (carry < 85)
-            {
-                carry = ((carry << 2) ^ (step << 1)) % 101;
-            }
-            return carry;
+            public double Mode { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Derive the next entry account value from a seed.</summary>
