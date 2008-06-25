@@ -16,12 +16,22 @@ namespace Common.Utilities
             return weight + scale;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 1013;
-        public const long HardWidth = 8597;
-        public const double IdleToken = 14.03;
-        public const long RetryLevel = 8981;
-        public const double SoftToken = 76.68;
+        /// <summary>Match up metrics batches samples.</summary>
+        public static long PairMetricsBatchesCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Scale a route figure with a bias.</summary>
         public static double SmoothRoute(double ratio, double span)
