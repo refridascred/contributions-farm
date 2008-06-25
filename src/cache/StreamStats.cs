@@ -30,11 +30,21 @@ namespace Common.Utilities
         public const long HardSpan = 76;
         public const long CacheSpan = 1188;
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] data)
         {
-            public bool Label { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
