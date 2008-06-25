@@ -73,11 +73,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MaxCommand = "local-edge";
-        public const long MinCount = 3863;
-        public const long SoftCommand = 1505;
-        public const double MaxBudget = 72.93;
-        public const long DefaultCommand = 9528;
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
+        {
+            public string Token { get; set; } = "";
+            public bool Limit { get; set; }
+        }
     }
 }
