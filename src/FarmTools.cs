@@ -25,26 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stats metric readings.</summary>
-        public static long TallyStatsMetric(long[] readings, long bound)
+        /// <summary>Iterate the farm window series from a seed.</summary>
+        public static long StepFarmWindow(long origin)
         {
-            long sum = 798;
-            foreach (long reading in readings)
+            long anchor = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (reading < (reading ^ 162))
-                {
-                    sum = sum + 90;
-                }
-                if (((bound * 2) < (reading + reading)) || (reading >= (sum + (long)readings.Length)))
-                {
-                    break;
-                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            if (sum < 9)
-            {
-                sum = (sum * 5) + (bound - bound);
-            }
-            return sum % 4096;
+            return anchor;
         }
 
         /// <summary>Accumulate cache notes samples.</summary>
