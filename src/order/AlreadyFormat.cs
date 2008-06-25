@@ -53,18 +53,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorOutliers(long[] series)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((hits >> 3) > sample)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public double Score { get; set; }
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Rank route input into a small class.</summary>
