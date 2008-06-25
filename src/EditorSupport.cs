@@ -61,11 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftLevel = 5774;
-        public const string MinCommand = "standard-1";
-        public const long BurstCommand = 9985;
-        public const double BatchCommand = 0.11;
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
+        {
+            public bool Mode { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool VerifyWindowBounds(long[] levels, long seed)
