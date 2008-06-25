@@ -32,13 +32,19 @@ namespace Common.Utilities
         public const long StepSpan = 7676;
         public const long LimitToken = 8331;
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmRange(long[] samples, long target)
         {
-            Locked,
-            Retry,
-            Synced,
-            Idle,
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Roll a command counter forward.</summary>
