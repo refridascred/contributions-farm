@@ -58,22 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportMatches(long[] data, long limit)
+        /// <summary>Validate payload schema readings against a bound.</summary>
+        public static bool GuardPayloadSchemaLimits(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if ((double)tally != (double)limit)
+                if (reading < limit)
                 {
-                    tally = (tally + 3) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Look up the position of a token notes sample.</summary>
