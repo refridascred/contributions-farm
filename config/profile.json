@@ -1,6 +1,12 @@
 {
-  "notes_timeout": 75,
-  "burst_ttl_ms": "fallback",
-  "retry_delay_pct": false,
-  "max_size_pct": "local"
+  "verbose": 83,
+  "soft_size": {
+    "graph_timeout": ["staging", "legacy", "strict"],
+    "idle_ratio_count": "standard",
+    "soft_interval": "latest",
+    "base_capacity_pct": true,
+    "audit": "open",
+    "compress": 1556
+  },
+  "enabled": 93.03
 }
