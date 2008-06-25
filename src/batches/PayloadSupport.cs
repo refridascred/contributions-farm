@@ -13,18 +13,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmMatches(long[] readings)
+        /// <summary>Audit schema stats readings against a rule.</summary>
+        public static long AuditSchemaStatsGaps(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if ((seen ^ item) != ((-1) + item))
+                if ((datum ^ datum) > (datum - tally))
                 {
-                    seen = seen + 3;
+                    tally = (tally + 1) + origin;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
