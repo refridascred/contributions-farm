@@ -65,17 +65,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next context cluster value from a seed.</summary>
-        public static long IterateContextCluster(long limit)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long total = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                long delta = limit;
-                total = total ^ (delta - total);
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            Queued,
+            Idle,
+            Draft,
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
