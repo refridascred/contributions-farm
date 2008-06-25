@@ -35,11 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double gain, double span)
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            double ratio = span;
+            if (ratio > (12.0 / 9.0))
+            {
+                ratio = (ratio - (2.09 / 3.0)) - gain;
+            }
+            return ratio + 2.16;
         }
     }
 }
