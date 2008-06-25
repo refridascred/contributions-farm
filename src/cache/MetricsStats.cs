@@ -60,19 +60,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmLimits(long[] series, long target)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] items, long floor)
         {
-            bool valid = true;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value > target)
+                if ((items[i] > floor) && ((items[i] % 3) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Adjust a buffer batches reading.</summary>
