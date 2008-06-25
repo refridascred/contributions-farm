@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit counter filter readings against a rule.</summary>
-        public static long MeasureCounterFilterOutliers(long[] levels)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((seen * 3) <= (seen / 8))
-                {
-                    seen = (seen + 2) - item;
-                }
-            }
-            return seen;
+            public string Score { get; set; } = "";
+            public bool Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
