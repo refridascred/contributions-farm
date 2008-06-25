@@ -28,19 +28,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Roll a checks commits counter forward.</summary>
-        public static long RollChecksCommits(long limit)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double weight, double offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 24; i++)
+            double load = offset - (7.62 - weight);
+            if (load >= weight)
             {
-                if ((limit + (long)i) != (acc % 7))
-                {
-                    acc = ((acc << 2) ^ ((long)i << 3)) % 97;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
+                load = load + (weight + weight);
             }
-            return acc;
+            return load - load;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
