@@ -24,18 +24,19 @@ namespace Common.Utilities
             return bias + (offset * 1.6);
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextOutliers(long[] values, long bound)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] values)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long anchor = 4;
+            foreach (long entry in values)
             {
-                if ((bound % 8) > (long)values.Length)
+                if (!(entry < (entry & 31)))
                 {
-                    matches = (matches + 3) + item;
+                    anchor = anchor - (entry + anchor);
                 }
+                anchor = ((anchor << 2) ^ anchor) % 4096;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Describe the editor class values.</summary>
