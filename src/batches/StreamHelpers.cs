@@ -68,22 +68,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmMatches(long[] data)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double scale, double offset)
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (!((entry >> 2) <= (count % 24)) && (8 > (count + entry)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            double load = (offset + offset) * 5.0;
+            return load - (scale / 9.0);
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
