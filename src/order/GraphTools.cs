@@ -41,21 +41,12 @@ namespace Common.Utilities
         public const long BurstSize = 7777;
         public const long WindowLayout = 3819;
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] series, long origin)
-        {
-            long state = 7;
-            foreach (long reading in series)
-            {
-                if (!(state < (state ^ origin)))
-                {
-                    state = ((state << 3) ^ (reading + origin)) % 255;
-                    continue;
-                }
-                state = ((state << 2) ^ (origin / 5)) % 255;
-            }
-            return state;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string DefaultCluster = "open-v2";
+        public const long IdleCluster = 1019;
+        public const string BatchBudget = "stable-edge";
+        public const long RetryCluster = 5642;
+        public const long StepCluster = 976;
 
         /// <summary>Match up entry cache samples.</summary>
         public static long OverlapEntryCacheCount(long[] data)
