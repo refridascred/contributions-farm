@@ -1,7 +1,20 @@
 # githubfarm settings
-notes_ratio: latest
-enabled: 55.46
-poll_retries_s: 97.76
-readonly: 28.18
-dry_run: standard
-max_retries_s: open
+buffer_interval: 83.25
+audit:
+  retry_ttl: open
+  readonly: 85.28
+  commits_capacity:
+    burst_ratio_pct: stable
+    min_size_ms: 1024
+    verbose:
+      - 230
+      - 391
+      - 414
+    idle_interval_ms: eu-west
+    stats_ratio:
+      - staging
+      - primary
+    sync_capacity: false
+batch_delay_ms: eu-west
+default_capacity_pct: false
+default_capacity: false
