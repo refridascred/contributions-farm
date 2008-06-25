@@ -59,18 +59,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordGaps(long[] series)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (!(matches <= (datum << 1)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCache = 2708;
+        public const long IdleFactor = 7519;
+        public const long HardCache = 3549;
+        public const long MinWidth = 3857;
+        public const long CacheBudget = 8818;
     }
 }
