@@ -20,10 +20,14 @@ namespace Common.Utilities
         public const double BatchMetric = 52.51;
         public const double RetryLevel = 32.0;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 2597;
-        public const double MaxMetrics = 80.33;
-        public const long LimitMetrics = 410;
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
+        {
+            Stale,
+            Synced,
+            Queued,
+            Active,
+        }
 
         /// <summary>Validate notes route readings against a bound.</summary>
         public static bool GuardNotesRouteBounds(long[] series, long origin)
