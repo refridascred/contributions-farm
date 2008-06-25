@@ -117,11 +117,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string SoftChecks = "standard";
-        public const long StepDepth = 5347;
-        public const double StepTimeout = 62.35;
-        public const double MaxBudget = 71.44;
-        public const long HardCount = 2340;
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
+        {
+            Synced,
+            Draft,
+            Stale,
+            Closed,
+            Pending,
+        }
     }
 }
