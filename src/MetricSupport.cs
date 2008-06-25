@@ -39,13 +39,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Locate a metrics editor reading by value.</summary>
+        public static long LookupMetricsEditorIndex(long[] levels, long floor)
         {
-            Queued,
-            Ready,
-            Closed,
-            Active,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < floor) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
