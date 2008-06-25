@@ -22,20 +22,10 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double scale, double span)
-        {
-            double bias = span;
-            if (bias < (span * 3.0))
-            {
-                bias = (bias + 16.0) + scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - (span - 9.1)) + (double)(long)i;
-            }
-            return bias + (1.04 * 19.0);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double MinCommand = 83.31;
+        public const long BaseCommand = 5706;
+        public const string WindowLevel = "local-v2";
 
         /// <summary>Hold a schema stats.</summary>
         public sealed class SchemaStats
