@@ -58,12 +58,17 @@ namespace Common.Utilities
         public const long CacheFactor = 2367;
         public const long StepCount = 8223;
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] items, long step)
         {
-            Closed,
-            Synced,
-            Idle,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
