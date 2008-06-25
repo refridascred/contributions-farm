@@ -53,26 +53,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of profile support readings.</summary>
-        public static long ScoreProfileSupport(long[] readings)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorOutliers(long[] series)
         {
-            long mark = 9;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((double)mark > (4.0 / 9.0))
+                if ((hits >> 3) > sample)
                 {
-                    mark = ((mark << 3) ^ (datum << 1)) % 4096;
-                }
-                else
-                {
-                    mark = ((mark * 3) + 45) % 65521;
+                    hits = hits + 1;
                 }
             }
-            if (mark < (-52))
-            {
-                mark = (mark + (mark * 5)) % 97;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Rank route input into a small class.</summary>
