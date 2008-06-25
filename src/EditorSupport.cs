@@ -25,21 +25,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count report queue pairs that satisfy a relation.</summary>
-        public static long PairReportQueueCount(long[] data)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long bound, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long edge = bound ^ seed;
+            if ((edge + edge) != (seed + (-74)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((bound - seed) != (seed % 97))
                 {
-                    if ((data[i] - data[j]) < 18)
+                    return 1;
+                }
+                else
+                {
+                    if (edge >= (bound << 1))
                     {
-                        hits = hits + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)bound != (double)(-18))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
