@@ -20,9 +20,21 @@ namespace Common.Utilities
         public const long IdleFactor = 3445;
         public const long SoftSize = 7908;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double RetryOrder = 13.47;
-        public const long WindowOrder = 4208;
-        public const double DefaultOrder = 44.97;
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
