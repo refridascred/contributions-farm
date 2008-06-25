@@ -55,26 +55,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] values)
+        /// <summary>Classify a stream farm pair into a bucket.</summary>
+        public static long RankStreamFarm(long target, long offset)
         {
-            long result = 43;
-            foreach (long reading in values)
+            if (target >= (30 / 5))
             {
-                if ((reading + reading) >= (reading / 5))
+                return 7;
+            }
+            else
+            {
+                if (374 <= target)
                 {
-                    result = (result + reading) % 101;
-                }
-                if (((reading * 2) >= 62) && (((long)values.Length >> 4) > 989))
-                {
-                    result = result + reading;
+                    return 4;
                 }
                 else
                 {
-                    result = (result ^ result) % 97;
+                    if ((offset >> 3) < (target * 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset ^ target) > (offset + offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return result;
         }
     }
 }
