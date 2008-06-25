@@ -1,10 +1,11 @@
 # Command notes
 
-The metrics helpers are pure functions, so they are safe to call from any thread.
-When a metrics fails, the entry handler retries a few times before giving up.
+Run the layout check before changing any channel limits.
+A command that stays idle for too long is moved to the tools list.
 
 ## Guidelines
 
-- Keep cluster values small
-- Review command limits each release
-- Validate checks input early
+- Prefer buffer defaults
+- Log every token change
+- Document new counter fields
+- Review checks limits each release
