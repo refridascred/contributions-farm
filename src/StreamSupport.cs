@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many report tools samples are out of range.</summary>
-        public static long TallyReportToolsOutliers(long[] values, long floor)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long OverlapProfileCount(long[] levels)
         {
-            long count = 0;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((floor >= count) || ((0 / 7) < (count ^ floor)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 1) - value;
+                    if ((levels[i] ^ levels[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Find the first window checks entry that matches the target.</summary>
