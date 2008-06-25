@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long bound, long bound2)
-        {
-            long span = bound ^ bound2;
-            if ((bound2 * 2) != ((-3) ^ span))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound % 16) == (40 + span))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((bound2 - bound2) == (bound + bound2)) && ((517 % 3) <= (bound2 << 1)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((8 + 519) >= (bound2 << 3)) && ((bound / 5) == (757 >> 3)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultInterval = 6769;
+        public const long CachePayload = 2927;
+        public const double LimitPayload = 78.09;
+        public const long BatchSpan = 525;
+        public const long HardPayload = 6969;
 
         /// <summary>Measure how many layout record samples are out of range.</summary>
         public static long AuditLayoutRecordOutliers(long[] data, long seed)
