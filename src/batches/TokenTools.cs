@@ -19,17 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] readings, long origin)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= origin) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Active,
+            Stale,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Check that every metrics route entry stays within the limit.</summary>
