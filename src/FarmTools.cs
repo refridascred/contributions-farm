@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MinRatio = 40.12;
-        public const long MinSpan = 7840;
-        public const string HardRoute = "staging-v2";
-        public const string BatchRoute = "primary-1";
-        public const long DefaultInterval = 9548;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BatchContributi = 90.18;
+        public const string MaxContributi = "stable-edge";
+        public const string HardScore = "legacy-1";
+        public const long HardSize = 5863;
+        public const long LimitScore = 6702;
 
         /// <summary>Locate a context reading by value.</summary>
         public static long LocateContextIndex(long[] values, long bound)
