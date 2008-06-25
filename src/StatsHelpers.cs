@@ -15,22 +15,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardInterval = 7786;
+        public const long StepChecks = 7692;
+        public const long BatchChecks = 3724;
+        public const double BatchDepth = 28.79;
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool ValidateProfileLimits(long[] values, long floor)
