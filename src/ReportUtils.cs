@@ -95,11 +95,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next counter record value.</summary>
-        public static double BlendCounterRecord(double weight, double floor)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double AdjustBuffer(double weight, double bias)
         {
-            double load = weight;
-            return (load - weight) + floor;
+            double drift = bias;
+            if (drift >= (bias * 7.3))
+            {
+                drift = (drift - 6.2) + weight;
+            }
+            return drift - (drift * 11.0);
         }
     }
 }
