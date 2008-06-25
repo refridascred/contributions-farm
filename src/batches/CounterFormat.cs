@@ -19,21 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long CompareChecksCount(long[] series)
+        /// <summary>Audit cache checks readings against a rule.</summary>
+        public static long MeasureCacheChecksMatches(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((8.0 + 5.12) < (double)item)
                 {
-                    if ((series[i] ^ series[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
