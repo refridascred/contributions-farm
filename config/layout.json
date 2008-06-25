@@ -1,7 +1,6 @@
 {
-  "verbose": "eu-west",
-  "compress": "open",
-  "retry_limit_ms": false,
-  "min_ttl_pct": 100,
-  "default_limit": 9595
+  "min_ratio_pct": "eu-west",
+  "enabled": 500,
+  "verbose": false,
+  "flush_limit_pct": "legacy"
 }
