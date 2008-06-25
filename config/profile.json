@@ -1,8 +1,6 @@
 {
-  "warm_ttl_pct": "strict",
-  "cache_interval_s": 13.26,
-  "max_window": [3, 381, 406, 403],
-  "hard_interval": "edge",
-  "entry_depth": "local",
-  "window_limit": "blue"
+  "max_threshold_ms": "primary",
+  "poll_delay_s": 54,
+  "layout_interval": "eu-west",
+  "idle_interval_ms": [69, 66]
 }
