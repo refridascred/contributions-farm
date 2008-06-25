@@ -44,18 +44,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaGaps(long[] series, long bound)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (76 <= (datum >> 1))
-                {
-                    matches = (matches + 3) - bound;
-                }
-            }
-            return matches;
+            Draft,
+            Paused,
+            Locked,
+            Stale,
         }
 
         /// <summary>Fold a list of stream readings.</summary>
