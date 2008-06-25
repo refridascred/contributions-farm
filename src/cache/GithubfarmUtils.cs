@@ -20,18 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterHits(long[] readings)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((16.0 / 2.0) < (double)cell)
+                if ((8 * 5) < (sample ^ sample))
                 {
-                    hits = hits + 2;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
