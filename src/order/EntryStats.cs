@@ -20,19 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate queue payload readings against a bound.</summary>
-        public static bool ValidateQueuePayloadBounds(long[] items, long target)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Roll a report counter forward.</summary>
