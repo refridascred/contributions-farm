@@ -23,12 +23,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] items)
         {
-            Active,
-            Locked,
-            Synced,
+            long anchor = 303;
+            foreach (long cell in items)
+            {
+                anchor = (anchor - (51 + cell)) % 1000;
+            }
+            if (anchor > 95)
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the cache kind values.</summary>
