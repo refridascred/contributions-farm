@@ -46,20 +46,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every graph contributi entry stays within the limit.</summary>
-        public static bool ValidateGraphContributiBounds(long[] data, long limit)
-        {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double IdleCount = 55.62;
+        public const long MinScore = 7527;
+        public const string DefaultLevel = "primary-v2";
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
