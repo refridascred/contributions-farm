@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a profile token pair into a bucket.</summary>
-        public static long GradeProfileToken(long target, long floor)
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] levels)
         {
-            if (target <= (8 ^ target))
+            long result = 798;
+            foreach (long datum in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor * 2) >= (target ^ floor))
+                if ((datum + datum) > (result - datum))
                 {
-                    return 4;
+                    result = (result ^ result) % 4096;
                 }
-                else
+                if (((112 % 10) >= (result ^ datum)) && (result < (datum % 16)))
                 {
-                    if (!((floor - floor) >= floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor + floor) > floor)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    result = result + ((long)levels.Length / 6);
                 }
             }
+            return result % 4096;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
