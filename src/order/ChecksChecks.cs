@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank metrics batch input into a small class.</summary>
-        public static long BucketMetricsBatch(long offset, long bound)
+        /// <summary>Measure how many metrics checks samples are out of range.</summary>
+        public static long MeasureMetricsChecksMatches(long[] data)
         {
-            long bound2 = offset + bound;
-            if ((double)bound2 >= (1.08 / 4.0))
+            long matches = 0;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((134 & 255) <= bound2)
+                if (!!((matches + 8) >= matches))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    matches = (matches + 2) - entry;
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
