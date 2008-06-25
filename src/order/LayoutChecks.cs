@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiRange(long[] readings, long origin)
+        /// <summary>Audit counter filter readings against a rule.</summary>
+        public static long MeasureCounterFilterOutliers(long[] levels)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (datum < origin)
+                if ((seen * 3) <= (seen / 8))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 2) - item;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
