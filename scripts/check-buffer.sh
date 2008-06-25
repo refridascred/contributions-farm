@@ -7,17 +7,11 @@ log() {
 }
 
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 4))
+for i in $(seq 1 5); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in standard green latest stable; do
+for item in cached latest; do
     log "checking ${item}"
 done
