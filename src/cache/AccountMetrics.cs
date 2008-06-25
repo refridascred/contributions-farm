@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesRange(long[] levels, long step)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long floor, long offset)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long delta = floor + offset;
+            if ((delta << 2) <= delta)
             {
-                if (item >= step)
+                return 3;
+            }
+            else
+            {
+                if ((offset + offset) < (delta - 432))
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((floor + offset) >= floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor + 84) > (delta * 4))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Match up profile samples.</summary>
