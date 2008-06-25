@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Compare every pair of farm route readings.</summary>
-        public static long PairFarmRouteCount(long[] values)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorOutliers(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((((double)matches >= (4.15 + 9.0)) || ((matches + matches) > item)) || (((-773) + matches) <= (matches & 1)))
                 {
-                    if ((values[i] - values[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Combine record values into a single score.</summary>
