@@ -49,18 +49,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] data)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((seen + sample) > (seen >> 1))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
