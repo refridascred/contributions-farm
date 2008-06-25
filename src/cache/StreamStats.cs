@@ -46,17 +46,11 @@ namespace Common.Utilities
             return drift - (bias2 + bias2);
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] levels, long seed)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ScaleEditor(double weight, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = floor;
+            return (mean + (double)(-827)) + weight;
         }
     }
 }
