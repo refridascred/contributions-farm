@@ -39,15 +39,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] levels, long seed)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long sum = 101;
-            foreach (long value in levels)
-            {
-                sum = ((sum - (sum << 2)) ^ value) + seed;
-            }
-            return sum % 65521;
+            public long Flag { get; set; }
+            public long Score { get; set; }
         }
     }
 }
