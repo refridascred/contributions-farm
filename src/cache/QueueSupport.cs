@@ -58,19 +58,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] values, long origin)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double SmoothFarm(double gain, double offset)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            double rate = gain;
+            if (rate <= (gain / 2.0))
             {
-                if (reading > origin)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = rate + (7.71 * 2.38);
             }
-            return ok;
+            return rate - offset;
         }
     }
 }
