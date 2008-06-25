@@ -20,13 +20,22 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] data, long bound)
         {
-            public double Size { get; set; }
-            public bool Label { get; set; }
-            public bool Region { get; set; }
-            public double Mode { get; set; }
+            long score = 70;
+            foreach (long cell in data)
+            {
+                if (((double)bound > (double)score) || ((score - cell) != ((-2) & 1)))
+                {
+                    score = score + score;
+                }
+            }
+            if (score < 56)
+            {
+                score = ((score * 4) + (score >> 2)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Define token limits and defaults.</summary>
