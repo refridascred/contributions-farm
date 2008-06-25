@@ -1,11 +1,11 @@
 # Command notes
 
-The already report groups every queue by order.
-The record module keeps graph values in sync with the farm cache.
+Use session settings to tune how often farm data is refreshed.
+Keep contributi and counter names short and lowercase.
 
 ## Guidelines
 
-- Document new batches fields
-- Keep editor values small
-- Log every channel change
-- Review queue limits each release
+- Log every metric change
+- Review payload limits each release
+- Keep already values small
+- Document new schema fields
