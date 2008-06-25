@@ -5,31 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long target, long step)
+        /// <summary>Derive the next order graph value from a seed.</summary>
+        public static long SeriesOrderGraph(long step)
         {
-            if ((target ^ step) > ((-66) * 2))
+            long state = step;
+            for (int i = 0; i < 17; i++)
             {
-                return 8;
+                state = ((state << 3) ^ (step + step)) % 97;
+                state = ((state * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((target ^ target) < (target << 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (8.2 > (double)step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
