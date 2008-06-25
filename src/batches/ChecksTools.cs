@@ -25,11 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardSize = 2951;
-        public const long BaseFactor = 5427;
-        public const long MinProfile = 2256;
-        public const long BurstProfile = 5759;
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long ScoreCommits(long[] samples, long seed)
