@@ -12,14 +12,22 @@ namespace Common.Utilities
         public const string WindowSpan = "fallback-v2";
         public const long LimitRatio = 2209;
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Measure how many route token samples are out of range.</summary>
+        public static long TallyRouteTokenHits(long[] items)
         {
-            Locked,
-            Closed,
-            Paused,
-            Synced,
-            Retry,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((29 & 127) > tally)
+                {
+                    tally = (tally + 3) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a checks farm reading by value.</summary>
