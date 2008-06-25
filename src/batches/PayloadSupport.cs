@@ -13,10 +13,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BatchSize = 51.76;
-        public const long MinSession = 3566;
-        public const long CacheSession = 372;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmMatches(long[] readings)
+        {
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((seen ^ item) != ((-1) + item))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long LimitSpan = 8509;
