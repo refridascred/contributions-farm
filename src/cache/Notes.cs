@@ -51,39 +51,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long bound, long target)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesMatches(long[] data)
         {
-            long prev = bound + target;
-            if ((bound >> 2) > (target + prev))
+            long hits = 0;
+            foreach (long cell in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound > (8.0 / 4.0))
+                if ((long)data.Length <= (hits & 3))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)target <= (5.0 * 14.0)) && ((target + target) <= (bound - target)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((prev >> 1) < 482)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    hits = (hits + 2) + cell;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
