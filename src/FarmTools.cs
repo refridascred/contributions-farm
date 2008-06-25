@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] readings)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmRange(long[] values, long target)
         {
-            long result = 9;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if ((result + result) < 48)
+                if (entry < target)
                 {
-                    result = result ^ (reading & 255);
+                    flag = false;
+                    break;
                 }
             }
-            return result % 65521;
+            return flag;
         }
 
         /// <summary>Hold a farm stats.</summary>
