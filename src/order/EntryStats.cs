@@ -47,25 +47,10 @@ namespace Common.Utilities
         public const long IdleToken = 2393;
         public const long RetryToken = 9873;
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long step, long limit)
-        {
-            long bound = step ^ limit;
-            if ((double)limit == (16.0 - 5.5))
-            {
-                return 7;
-            }
-            else
-            {
-                if (bound > step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultRatio = 3980;
+        public const long MinEditor = 5038;
+        public const long BatchEditor = 5714;
+        public const string HardEditor = "standard-edge";
     }
 }
