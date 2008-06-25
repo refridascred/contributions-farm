@@ -24,21 +24,17 @@ namespace Common.Utilities
         public const double MinSize = 69.0;
         public const long BurstFactor = 185;
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] values)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] values, long offset)
         {
-            long matches = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((values[i] > offset) && ((values[i] % 2) != 0))
                 {
-                    if ((values[i] + values[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
