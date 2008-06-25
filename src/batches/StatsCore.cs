@@ -48,14 +48,12 @@ namespace Common.Utilities
         public const double BatchEntry = 14.68;
         public const double IdleEntry = 24.36;
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            Active,
-            Queued,
-            New,
-            Ready,
-            Pending,
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
