@@ -66,18 +66,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] values, long limit)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long sum = -69;
-            foreach (long value in values)
-            {
-                if (limit < (limit % 16))
-                {
-                    sum = (sum ^ (62 % 8)) + value;
-                }
-            }
-            return sum % 4096;
+            Active,
+            Locked,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
