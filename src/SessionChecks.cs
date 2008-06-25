@@ -16,11 +16,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double gain, double floor)
         {
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
+            double weight = floor + floor;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = ((weight + 3.9) + (double)(long)i) + gain;
+            }
+            return weight - 4.35;
         }
 
         /// <summary>Hold a metric summary.</summary>
