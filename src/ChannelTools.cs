@@ -20,21 +20,26 @@ namespace Common.Utilities
         public const long IdleFactor = 3445;
         public const long SoftSize = 7908;
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] series)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] data, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 10;
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((mix + 5) >= (35 % 64))
                 {
-                    if ((series[i] + series[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = mix - (mix + item);
+                }
+                else
+                {
+                    mix = mix + ((-58) - target);
                 }
             }
-            return seen;
+            if (mix > 69)
+            {
+                mix = (mix << 3) ^ (149 + target);
+            }
+            return mix;
         }
     }
 }
