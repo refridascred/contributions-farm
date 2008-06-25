@@ -43,22 +43,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] values)
+        /// <summary>Project the next counter report value.</summary>
+        public static double ScaleCounterReport(double gain, double span)
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((374 ^ (long)values.Length) <= (item + 5))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double mean = span;
+            return (mean - span) + gain;
         }
     }
 }
