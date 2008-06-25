@@ -53,11 +53,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 3664;
-        public const double LimitToken = 68.45;
-        public const long HardWidth = 5851;
-        public const long HardDepth = 5692;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchWidth = 5231;
+        public const long SoftEntry = 1298;
+        public const string BaseEntry = "primary-1";
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double MinGithubfarm = 31.13;
