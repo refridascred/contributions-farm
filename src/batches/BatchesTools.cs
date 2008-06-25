@@ -22,10 +22,33 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseRatio = 23;
-        public const long DefaultScore = 1023;
-        public const long RetryCluster = 1211;
+        /// <summary>Grade a support route value against two limits.</summary>
+        public static long GradeSupportRoute(long target, long step)
+        {
+            long cur = target + step;
+            if ((step % 7) < ((-738) >> 4))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((cur * 2) > (target % 100))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)cur > (10.0 + 6.0)) || ((cur % 24) <= (96 - cur)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a context stats.</summary>
         public sealed class ContextStats
