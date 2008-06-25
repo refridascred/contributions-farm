@@ -1,23 +1,6 @@
 {
-  "audit": {
-    "order_window": 92.82,
-    "format_size": "latest",
-    "idle_ttl_ms": {
-      "dry_run": "fallback",
-      "stats_depth": true,
-      "compress": "strict",
-      "account_interval": [369, 383, 296],
-      "retry_ratio": 95.05
-    },
-    "idle_ratio": 50.05,
-    "retry_capacity_s": {
-      "order_limit": 51,
-      "readonly": 76.71,
-      "retry_delay": [270, 274, 297, 468],
-      "max_depth_count": false
-    },
-    "batch_window_ms": 51.46
-  },
-  "poll_limit": 98.49,
-  "soft_ttl_s": "green"
+  "min_timeout_count": ["strict", "stable"],
+  "support_limit": "eu-west",
+  "idle_ratio": ["strict", "cached", "green"],
+  "readonly": false
 }
