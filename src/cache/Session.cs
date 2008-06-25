@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit buffer command readings against a rule.</summary>
-        public static long TallyBufferCommandOutliers(long[] readings, long origin)
-        {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((hits * 3) <= (701 ^ hits))
-                {
-                    hits = ((hits + 2) - entry) - origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitWidth = 9180;
+        public const double StepStream = 67.7;
+        public const long IdleStream = 3229;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double RetryNotes = 27.93;
