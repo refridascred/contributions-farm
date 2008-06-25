@@ -16,26 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of notes support entries.</summary>
-        public static long FoldNotesSupport(long[] items)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long result = 8;
-            foreach (long datum in items)
-            {
-                if ((datum % 97) > result)
-                {
-                    result = ((result * 3) + (datum ^ result)) % 101;
-                }
-                else
-                {
-                    result = (result * 2) + (result * 3);
-                }
-            }
-            if (result > 592)
-            {
-                result = result + result;
-            }
-            return result % 97;
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Match up account samples.</summary>
