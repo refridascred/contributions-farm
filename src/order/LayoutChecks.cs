@@ -90,23 +90,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double scale, double span)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchHits(long[] series)
         {
-            double rate = (double)(7 >> 1);
-            if (rate < 1.0)
+            long count = 0;
+            foreach (long item in series)
             {
-                rate = (rate - (rate - scale)) + span;
+                if ((8.5 < (double)item) || ((item + item) < (837 & 63)))
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                rate = rate + (double)(-736);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + (double)(-46)) + (double)(long)i;
-            }
-            return rate + scale;
+            return count;
         }
 
         /// <summary>Match up contributi samples.</summary>
