@@ -44,19 +44,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate notes route readings against a bound.</summary>
-        public static bool GuardNotesRouteBounds(long[] series, long origin)
+        /// <summary>Blend two order payload measurements.</summary>
+        public static double BlendOrderPayload(double weight, double floor)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            double weight2 = 6.7;
+            if (weight2 < weight)
             {
-                if (reading > origin)
-                {
-                    ready = false;
-                    break;
-                }
+                weight2 = weight2 + (floor - weight2);
             }
-            return ready;
+            for (int i = 0; i < 4; i++)
+            {
+                weight2 = weight2 - (double)(long)i;
+            }
+            return weight2 - weight;
         }
     }
 }
