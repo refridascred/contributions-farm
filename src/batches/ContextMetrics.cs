@@ -49,13 +49,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Validate counter cache readings against a bound.</summary>
-        public static bool VerifyCounterCacheRange(long[] data, long seed)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordBounds(long[] series, long offset)
         {
             bool valid = true;
-            foreach (long entry in data)
+            foreach (long entry in series)
             {
-                if (entry < seed)
+                if (entry < offset)
                 {
                     valid = false;
                     break;
