@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 2919;
-        public const long LimitSession = 8104;
-        public const long MaxSession = 5387;
-        public const string HardLevel = "stable-1";
-        public const string BaseSize = "open-1";
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
+        {
+            public string Total { get; set; } = "";
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const string RetryTimeout = "fallback-edge";
