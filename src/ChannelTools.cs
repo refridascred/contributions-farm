@@ -13,18 +13,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 1000;
-                carry = (carry + 89) % 97;
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardCount = 5200;
+        public const long MaxScore = 4168;
+        public const long SoftRoute = 9992;
+        public const long IdleFactor = 3445;
+        public const long SoftSize = 7908;
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long MeasureEntryGaps(long[] items, long seed)
