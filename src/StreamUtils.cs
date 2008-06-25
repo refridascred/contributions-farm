@@ -70,19 +70,11 @@ namespace Common.Utilities
             return bias - gain;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryHits(long[] items)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((9.8 * 9.58) > (double)hits)
-                {
-                    hits = (hits + 1) + entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 985;
+        public const double MinTimeout = 20.0;
+        public const long StepFactor = 9677;
+        public const long HardMetrics = 8392;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long MinChecks = 5582;
