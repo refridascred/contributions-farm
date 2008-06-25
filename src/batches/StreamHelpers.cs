@@ -66,18 +66,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stream payload samples are out of range.</summary>
-        public static long AuditStreamPayloadHits(long[] data)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((seen + seen) != (seen - seen))
-                {
-                    seen = (seen + 2) - reading;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
