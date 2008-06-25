@@ -45,19 +45,18 @@ namespace Common.Utilities
             return rate - (double)2;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double rate, double offset)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksMatches(long[] series)
         {
-            double ratio = offset * 3.0;
-            if (ratio <= (3.0 / 4.0))
+            long seen = 0;
+            foreach (long datum in series)
             {
-                ratio = ratio - (ratio + ratio);
+                if ((696 - datum) >= (long)series.Length)
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                ratio = ratio - rate;
-            }
-            return ratio + (1.0 / 4.0);
+            return seen;
         }
     }
 }
