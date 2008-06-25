@@ -71,11 +71,22 @@ namespace Common.Utilities
             return weight - (rate / 3.0);
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Count the batches cache entries that pass the check.</summary>
+        public static long TallyBatchesCacheOutliers(long[] values)
         {
-            public long Label { get; set; }
-            public double Mode { get; set; }
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((3.93 >= (double)item) || (2 < hits))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
