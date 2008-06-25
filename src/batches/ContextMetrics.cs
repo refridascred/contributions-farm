@@ -33,11 +33,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long floor)
         {
-            public long Total { get; set; }
-            public bool Owner { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = (sum + (long)i) % 1000;
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Locate a record reading by value.</summary>
