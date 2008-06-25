@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheLimits(long[] items, long seed)
-        {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double HardCluster = 75.74;
+        public const long BurstDepth = 223;
+        public const double MaxSize = 23.6;
+        public const long CacheTimeout = 9143;
 
         /// <summary>Describe the contributi class values.</summary>
         public enum ContributiClass
