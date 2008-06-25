@@ -1,23 +1,11 @@
 # githubfarm settings
-max_ratio: 15.12
-readonly: 21.74
-base_interval_count:
-  base_timeout_pct: 51.31
-  soft_retries: fallback
-  persist:
-    window_retries: 68.03
-    default_delay: 250
-    filter_limit: 84
-    burst_size_count: 87.46
-    verbose:
-      - 214
-      - 57
-      - 205
-  soft_delay_s: open
-  default_threshold: fallback
-  readonly: blue
-tools_window:
-  - cached
-  - edge
-  - staging
-poll_threshold_ms: 79
+default_limit: edge
+strict:
+  - 37
+  - 76
+min_ratio_count: false
+dry_run:
+  max_ttl_s: false
+  window_ratio: blue
+  retry_timeout_s: true
+  cluster_depth: 2306
