@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long bound)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] data)
         {
-            long score = bound;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (score >= (bound + bound))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = (score * 5) + ((long)i ^ (long)i);
+                    if ((data[i] + data[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                score = ((score * 2) + (long)i) % 97;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
