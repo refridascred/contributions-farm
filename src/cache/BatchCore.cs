@@ -19,22 +19,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchMatches(long[] readings, long offset)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphHits(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((tally & 63) < tally)
+                if ((9 / 6) <= hits)
                 {
-                    tally = ((tally + 2) ^ sample) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = ((hits + 3) + reading) - bound;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the checks mode values.</summary>
