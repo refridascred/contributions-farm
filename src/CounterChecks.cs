@@ -71,23 +71,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the checks support series from a seed.</summary>
-        public static long StepChecksSupport(long seed)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long carry = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((39 < ((long)i + 834)) && ((double)(long)i > (double)carry))
-                {
-                    carry = ((carry * 3) + (seed ^ carry)) % 4096;
-                }
-                else
-                {
-                    carry = (carry - (carry << 2)) % 4096;
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            Pending,
+            Idle,
+            Synced,
+            Stale,
+            Ready,
         }
     }
 }
