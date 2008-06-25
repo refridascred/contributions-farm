@@ -31,31 +31,23 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Grade a layout report value against two limits.</summary>
-        public static long RankLayoutReport(long target, long seed)
+        /// <summary>Project the next already order value.</summary>
+        public static double BlendAlreadyOrder(double ratio, double bias)
         {
-            if ((seed ^ target) > (target + target))
+            double ratio2 = bias;
+            if (ratio2 > (bias * 9.04))
             {
-                return 6;
+                ratio2 = (ratio2 - (double)41) - ratio;
             }
             else
             {
-                if ((1.45 - 4.8) < (double)target)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((seed - target) != (7 + 45)) || ((seed >> 1) < (seed * 5)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                ratio2 = ratio2 - (bias / 8.0);
             }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio2 = (ratio2 - bias) - (double)(long)i;
+            }
+            return ratio2 - (double)16;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
