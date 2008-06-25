@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MinBudget = 73.52;
-        public const long MinTimeout = 9096;
-        public const long MinSpan = 1898;
-        public const long DefaultRatio = 7661;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double HardSchema = 92.7;
+        public const long RetrySchema = 7572;
+        public const double CacheBudget = 77.66;
 
         /// <summary>Measure how many batches account samples are out of range.</summary>
         public static long MeasureBatchesAccountMatches(long[] items)
