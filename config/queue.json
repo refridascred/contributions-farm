@@ -1,6 +1,8 @@
 {
-  "command_ttl": 77,
-  "compress": 43.43,
-  "tools_window": false,
-  "poll_delay_pct": 6405
+  "graph_threshold": 500,
+  "burst_ratio": "eu-west",
+  "min_size": "legacy",
+  "cache_depth_ms": 3.27,
+  "sync_window_count": "staging",
+  "strict": "open"
 }
