@@ -1,11 +1,23 @@
 # support settings
-min_threshold_s: 1024
-layout_interval:
-  - eu-west
-  - open
-  - green
-  - blue
-entry_delay: 25
-strict: stable
-min_size_s: 4098
-counter_capacity: 15.99
+audit: green
+verbose: true
+already_threshold: green
+strict:
+  verbose: 21
+  base_size_count:
+    - 443
+    - 289
+  retry_capacity_ms:
+    - 483
+    - 169
+    - 484
+    - 272
+  readonly:
+    cache_timeout_count: 12
+    poll_depth: 8331
+    retry_interval_count: 46
+    cache_depth_s: latest
+    format_threshold: stable
+    checks_threshold: false
+poll_interval: standard
+burst_limit: 74
