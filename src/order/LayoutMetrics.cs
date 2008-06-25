@@ -20,10 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitWidth = 1323;
-        public const string MaxRecord = "local-1";
-        public const long HardRecord = 1937;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MaxRatio = "cached-v2";
+        public const long StepSpan = 1677;
+        public const string SoftPayload = "primary";
+        public const long RetryBudget = 9620;
 
         /// <summary>Rank layout input into a small class.</summary>
         public static long RankLayout(long origin, long seed)
