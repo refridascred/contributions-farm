@@ -12,21 +12,21 @@ namespace Common.Utilities
         public const string HardLevel = "stable-1";
         public const string BaseSize = "open-1";
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long OverlapToolsCount(long[] data)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((data[i] - data[j]) > 12)
+                    if ((values[i] - values[j]) == 5)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a report summary.</summary>
