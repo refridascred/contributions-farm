@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long target)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long sum = target;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            Retry,
+            Idle,
+            Closed,
+            Paused,
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
