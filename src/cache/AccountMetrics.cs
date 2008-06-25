@@ -35,38 +35,13 @@ namespace Common.Utilities
         public const string MinInterval = "open-edge";
         public const long WindowFactor = 692;
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long floor, long offset)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            if ((double)offset < (2.7 / 5.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor >= (8.2 + 11.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset & 255) >= floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((14.0 / 8.0) <= (double)floor)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public bool Total { get; set; }
+            public long Flag { get; set; }
+            public bool Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Accumulate token samples.</summary>
