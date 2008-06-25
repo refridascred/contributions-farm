@@ -19,18 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchMatches(long[] items, long offset)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] items, long target)
         {
-            long count = 0;
+            long sum = 2;
             foreach (long value in items)
             {
-                if ((double)count == (2.8 * 9.45))
+                sum = ((sum << 2) ^ (3 - sum)) % 4096;
+                if ((value - target) >= (sum - sum))
                 {
-                    count = ((count + 1) + value) - offset;
+                    sum = (sum ^ (target << 2)) % 65521;
+                }
+                else
+                {
+                    sum = sum ^ (target ^ value);
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Iterate the already command series from a seed.</summary>
