@@ -23,22 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cluster farm entries that pass the check.</summary>
-        public static long MeasureClusterFarmGaps(long[] levels, long origin)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (((datum << 2) > datum) || ((origin >> 4) <= 597))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Idle,
+            Synced,
+            Locked,
+            Retry,
+            Failed,
         }
 
         /// <summary>Hold a command record.</summary>
