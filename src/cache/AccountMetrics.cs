@@ -35,11 +35,39 @@ namespace Common.Utilities
         public const string MinInterval = "open-edge";
         public const long WindowFactor = 692;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleInterval = 6293;
-        public const long IdleDepth = 4841;
-        public const long BaseRatio = 7339;
-        public const long MaxSize = 8179;
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long floor, long offset)
+        {
+            if ((double)offset < (2.7 / 5.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)floor >= (8.2 + 11.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset & 255) >= floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((14.0 / 8.0) <= (double)floor)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate token samples.</summary>
         public static long WeighToken(long[] values)
