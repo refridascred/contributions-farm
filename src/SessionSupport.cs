@@ -25,22 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of counter token readings.</summary>
-        public static long CombineCounterToken(long[] items, long step)
+        /// <summary>Find the first payload report entry that matches the target.</summary>
+        public static long LocatePayloadReportIndex(long[] values, long floor)
         {
-            long anchor = -45;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((anchor & 255) <= (anchor & 7))
+                if (values[i] == floor)
                 {
-                    anchor = ((anchor - (anchor >> 1)) + datum) - step;
-                }
-                else
-                {
-                    anchor = (anchor - anchor) % 255;
+                    return (long)i;
                 }
             }
-            return anchor % 4096;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
