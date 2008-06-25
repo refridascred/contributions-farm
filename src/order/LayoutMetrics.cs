@@ -31,21 +31,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] samples)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long seed, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (430 > (seed + limit))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((limit + 153) > (seed ^ limit)) && ((seed ^ limit) >= (seed % 7)))
                 {
-                    if ((samples[i] + samples[j]) > 4)
+                    return 4;
+                }
+                else
+                {
+                    if (((limit & 255) <= 87) || ((2.5 / 5.0) != (double)limit))
                     {
-                        matches = matches + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return matches;
         }
     }
 }
