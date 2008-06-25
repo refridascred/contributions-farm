@@ -12,14 +12,17 @@ namespace Common.Utilities
             return mean + (7.1 / 4.0);
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long bound)
         {
-            Stale,
-            Closed,
-            Retry,
-            Failed,
-            Done,
+            long sum = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                sum = sum ^ (sum % 97);
+                sum = (sum + (long)i) % 1000;
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Match up entry samples.</summary>
