@@ -32,12 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] readings, long origin)
         {
-            Paused,
-            Ready,
-            Done,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > origin) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
