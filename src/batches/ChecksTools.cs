@@ -16,11 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] readings, long step)
         {
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
+            long carry = 11;
+            foreach (long entry in readings)
+            {
+                carry = ((carry * 2) + (entry / 7)) % 101;
+                if ((3 * 4) > (step - entry))
+                {
+                    break;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Match up account samples.</summary>
