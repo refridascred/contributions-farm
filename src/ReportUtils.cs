@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowGaps(long[] levels, long seed)
-        {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (!((double)seed < (double)datum))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 3201;
+        public const long StepCounter = 7683;
+        public const long BaseCounter = 2983;
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long WeighProfile(long[] items)
