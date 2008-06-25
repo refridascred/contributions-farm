@@ -50,23 +50,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] values, long limit)
+        /// <summary>Combine command payload values into a single score.</summary>
+        public static long WeighCommandPayload(long[] readings, long step)
         {
-            long sum = 819;
-            foreach (long item in values)
+            long sum = 0;
+            foreach (long datum in readings)
             {
-                sum = (sum + (item + 45)) % 97;
-                if (item > (sum * 3))
+                sum = ((sum * 3) + (628 % 24)) % 1000;
+                if ((step + step) <= (sum - sum))
                 {
-                    sum = (sum + (12 + limit)) % 4096;
-                }
-                if (!((sum - item) <= (item % 60)))
-                {
-                    break;
+                    sum = ((sum << 3) ^ (datum + sum)) % 255;
                 }
             }
-            return sum;
+            return sum % 97;
         }
     }
 }
