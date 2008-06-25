@@ -1,10 +1,11 @@
 # Command notes
 
-Keep buffer and filter names short and lowercase.
-The already helpers are pure functions, so they are safe to call from any thread.
+Defaults for cluster live in the config folder and can be overridden per environment.
+Run the githubfarm check before changing any context limits.
 
 ## Guidelines
 
-- Prefer schema defaults
-- Document new graph fields
-- Log every layout change
+- Prefer buffer defaults
+- Review tools limits each release
+- Document new cluster fields
+- Keep notes values small
