@@ -13,12 +13,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSession = 7820;
-        public const long BurstSession = 7924;
-        public const string DefaultSession = "stable-1";
-        public const double WindowInterval = 96.49;
-        public const double CacheSession = 48.79;
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long ClassifyReport(long floor, long step)
