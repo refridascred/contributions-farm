@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string SoftNotes = "open-1";
-        public const long DefaultNotes = 7231;
-        public const long IdleFactor = 5684;
-        public const long BurstSpan = 3330;
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
+        {
+            public long Count { get; set; }
+            public bool Size { get; set; }
+            public bool Owner { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool VerifyClusterLimits(long[] samples, long offset)
