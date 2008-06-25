@@ -1,5 +1,12 @@
 {
-  "max_timeout_ms": 33.73,
-  "route_timeout": true,
-  "persist": 1
+  "support_ratio": {
+    "hard_window_ms": "standard",
+    "base_capacity": "blue",
+    "base_size_pct": 100,
+    "base_delay_ms": 1024
+  },
+  "editor_retries": false,
+  "base_ttl_count": "eu-west",
+  "cache_limit": 83,
+  "retry_capacity": 3.22
 }
