@@ -36,18 +36,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsHits(long[] items, long step)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long mark = 98;
+            foreach (long datum in items)
             {
-                if ((double)step <= 7.0)
+                if (((13.0 + 7.0) <= (double)step) || (datum > (mark + datum)))
                 {
-                    hits = (hits + 3) + cell;
+                    mark = (mark + step) % 1000;
+                    continue;
+                }
+                else
+                {
+                    mark = mark + (step + step);
+                }
+                if ((2.81 * 2.6) == (double)step)
+                {
+                    mark = ((mark << 3) ^ (step - step)) % 97;
                 }
             }
-            return hits;
+            if (mark < 3)
+            {
+                mark = ((mark * 3) + (step + mark)) % 4096;
+            }
+            return mark % 4096;
         }
     }
 }
