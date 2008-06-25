@@ -1,6 +1,20 @@
 {
-  "idle_depth": "legacy",
-  "soft_retries": "local",
-  "cache_delay_count": 25,
-  "burst_retries": true
+  "burst_depth_pct": false,
+  "cache_retries_pct": {
+    "cache_delay": {
+      "sync_retries_ms": "edge",
+      "stats_interval": 500,
+      "idle_timeout": 23,
+      "base_window_count": "strict",
+      "readonly": "local"
+    },
+    "support_window": 1024,
+    "idle_ratio_pct": true,
+    "sync_timeout_ms": 31.23,
+    "poll_interval": [461, 91, 489, 189],
+    "stream_retries": 250
+  },
+  "flush_ratio_s": true,
+  "notes_size": [36, 446, 125],
+  "batch_limit_count": 3365
 }
