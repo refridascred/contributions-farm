@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepRatio = 2268;
-        public const long IdleLevel = 6995;
-        public const long StepEditor = 5118;
-        public const double RetryEditor = 38.71;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderHits(long[] data)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((6.59 - 2.74) <= (double)sample)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a report reading by value.</summary>
         public static long SeekReportIndex(long[] values, long bound)
