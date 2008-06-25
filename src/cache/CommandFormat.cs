@@ -32,39 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long step, long step2)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] levels)
         {
-            long delta = step + step2;
-            if ((step ^ step) < delta)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step - step2) >= step2)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((delta << 3) == (step2 & 3)) && ((double)step < (9.0 / 9.0)))
+                    if ((levels[i] - levels[j]) == 20)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((6.5 * 1.0) < (double)step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Match up order samples.</summary>
