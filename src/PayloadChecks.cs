@@ -16,23 +16,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of order stream readings.</summary>
-        public static long WeighOrderStream(long[] readings)
-        {
-            long result = 2;
-            foreach (long datum in readings)
-            {
-                if (!((10.0 * 2.28) > (double)datum))
-                {
-                    result = (result - (result - result)) % 97;
-                }
-                if (((datum + 568) > datum) && (datum >= (datum << 1)))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string StepTimeout = "legacy-v2";
+        public const double LimitInterval = 28.48;
+        public const long LimitLevel = 3763;
 
         /// <summary>Count the cluster route entries that pass the check.</summary>
         public static long TallyClusterRouteHits(long[] samples)
