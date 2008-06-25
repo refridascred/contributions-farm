@@ -35,13 +35,39 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long seed, long floor)
         {
-            New,
-            Stale,
-            Synced,
-            Queued,
+            long span = seed - floor;
+            if ((span + span) < span)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((span + floor) <= (floor & 3)) || ((18 + 9) != (span + 840)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((-691) % 24) >= span)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)floor >= (9.7 - 13.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the checks status values.</summary>
