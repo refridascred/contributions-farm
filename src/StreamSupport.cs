@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long seed, long origin)
         {
-            Dropped,
-            Idle,
-            New,
-            Pending,
-            Active,
+            long lane = seed ^ origin;
+            if (lane < (seed * 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((lane & 1) >= lane)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin % 10) > (seed / 9))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first window checks entry that matches the target.</summary>
