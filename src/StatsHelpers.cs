@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Validate filter checks readings against a bound.</summary>
+        public static bool CheckFilterChecksRange(long[] items, long origin)
         {
-            Closed,
-            Paused,
-            Synced,
-            New,
-            Done,
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
