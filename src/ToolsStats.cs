@@ -50,22 +50,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterMatches(long[] series, long origin)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long origin, long step)
         {
-            long count = 0;
-            foreach (long sample in series)
+            if (step >= (origin << 3))
             {
-                if (88 < sample)
+                return 7;
+            }
+            else
+            {
+                if (!(step <= (step & 31)))
                 {
-                    count = (count + 1) + origin;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Count the batches cache entries that pass the check.</summary>
