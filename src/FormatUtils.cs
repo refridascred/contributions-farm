@@ -79,12 +79,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
-        {
-            public long Token { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleBudget = 9708;
+        public const long MaxSchema = 2007;
+        public const string DefaultSchema = "staging-1";
+        public const double MinScore = 41.86;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string StepCluster = "strict";
