@@ -30,12 +30,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            public bool Offset { get; set; }
-            public bool Token { get; set; }
-            public long Level { get; set; }
+            Dropped,
+            Ready,
+            Idle,
+            Retry,
         }
 
         /// <summary>Hold a graph entry.</summary>
