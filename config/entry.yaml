@@ -1,6 +1,8 @@
 # entry settings
-sync_interval_ms: true
-sync_ttl_ms: edge
-metrics_ratio: standard
-dry_run: 8348
-flush_limit_count: 56
+default_timeout_pct: primary
+warm_timeout_ms: stable
+stream_threshold:
+  - legacy
+  - local
+report_window: 1331
+contributi_size: 100
