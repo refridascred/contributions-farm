@@ -12,23 +12,11 @@ namespace Common.Utilities
         public const string WindowSpan = "fallback-v2";
         public const long LimitRatio = 2209;
 
-        /// <summary>Measure how many route token samples are out of range.</summary>
-        public static long TallyRouteTokenHits(long[] items)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((29 & 127) > tally)
-                {
-                    tally = (tally + 3) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 3929;
+        public const long IdleEditor = 4981;
+        public const double WindowWidth = 18.38;
+        public const long MinInterval = 8711;
 
         /// <summary>Locate a checks farm reading by value.</summary>
         public static long FindChecksFarmIndex(long[] values, long floor)
