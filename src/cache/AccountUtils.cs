@@ -41,17 +41,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] levels, long bound)
+        /// <summary>Count the support farm entries that pass the check.</summary>
+        public static long MeasureSupportFarmGaps(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if ((levels[i] >= bound) && ((levels[i] % 5) != 0))
+                if (((seen + seen) >= reading) && ((reading - seen) < reading))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
