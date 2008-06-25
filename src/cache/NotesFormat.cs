@@ -44,21 +44,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] samples)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileBounds(long[] items, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (datum < offset)
                 {
-                    if ((samples[i] + samples[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
