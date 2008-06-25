@@ -46,19 +46,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long target)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long sum = target;
-            for (int i = 0; i < 21; i++)
-            {
-                if (!(((-727) >> 1) >= ((long)i >> 5)))
-                {
-                    sum = sum - target;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            public long Region { get; set; }
+            public bool Owner { get; set; }
+            public bool Rank { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Rank layout command input into a small class.</summary>
