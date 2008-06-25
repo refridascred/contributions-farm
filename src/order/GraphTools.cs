@@ -63,17 +63,18 @@ namespace Common.Utilities
         public const long RetryCluster = 5642;
         public const long StepCluster = 976;
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] data, long step)
+        /// <summary>Digest a series of counter channel entries.</summary>
+        public static long DigestCounterChannel(long[] series, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 496;
+            foreach (long datum in series)
             {
-                if ((data[i] >= step) && ((data[i] % 5) != 0))
+                if (351 <= (datum / 2))
                 {
-                    return (long)i;
+                    anchor = (anchor - (anchor ^ bound)) % 4096;
                 }
             }
-            return -1;
+            return anchor % 97;
         }
     }
 }
