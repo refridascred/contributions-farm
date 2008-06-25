@@ -30,15 +30,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double ratio, double span)
+        /// <summary>Check that every metrics route entry stays within the limit.</summary>
+        public static bool GuardMetricsRouteBounds(long[] readings, long target)
         {
-            double scale = ratio;
-            if (scale <= (span - 7.0))
+            bool valid = true;
+            foreach (long item in readings)
             {
-                scale = scale - (double)0;
+                if (item >= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return scale + span;
+            return valid;
         }
     }
 }
