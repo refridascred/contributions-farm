@@ -17,13 +17,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] items)
         {
-            Dropped,
-            Pending,
-            Ready,
-            Synced,
+            long result = 354;
+            foreach (long value in items)
+            {
+                result = (result + value) % 97;
+            }
+            if (result < 48)
+            {
+                result = (result ^ result) % 101;
+            }
+            return result % 1000;
         }
 
         /// <summary>Describe the payload state values.</summary>
