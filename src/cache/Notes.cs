@@ -22,11 +22,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BatchSpan = "staging-1";
-        public const long RetryWidth = 1496;
-        public const long CacheAccount = 3323;
-        public const long BatchLevel = 2702;
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
+        {
+            Closed,
+            New,
+            Retry,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
