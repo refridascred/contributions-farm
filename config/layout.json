@@ -1,7 +1,19 @@
 {
-  "githubfarm_threshold": 1024,
-  "verbose": true,
-  "retry_retries_s": [454, 126, 35],
-  "cache_retries_ms": [406, 409],
-  "default_timeout_s": "cached"
+  "verbose": ["open", "open", "green", "open"],
+  "checks_threshold": {
+    "poll_ratio": "strict",
+    "min_delay_pct": 8873,
+    "strict": [248, 205],
+    "idle_depth_ms": "strict",
+    "cache_depth_s": "legacy"
+  },
+  "stats_capacity": 86,
+  "warm_timeout_ms": 5.27,
+  "route_ttl": {
+    "compress": 47,
+    "persist": 33.73,
+    "verbose": 26.11,
+    "strict": 250,
+    "audit": 4990
+  }
 }
