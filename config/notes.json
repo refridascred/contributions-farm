@@ -1,5 +1,7 @@
 {
-  "audit": "blue",
-  "persist": 3676,
-  "soft_interval_s": true
+  "hard_size_count": 30,
+  "batch_depth_pct": "latest",
+  "counter_ttl": [378, 289],
+  "strict": 1105,
+  "max_delay": false
 }
