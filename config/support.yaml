@@ -1,17 +1,11 @@
 # support settings
-entry_capacity: 82
-soft_window_count: 63.72
-max_timeout:
-  enabled: open
-  counter_delay: 31
-  hard_ttl_pct:
-    max_delay_ms: true
-    cache_delay_s: false
-    warm_interval_s: local
-    soft_capacity: true
-    max_threshold_count: 25
-    poll_limit_count:
-      - 300
-      - 347
-      - 4
-poll_interval_ms: 3.39
+min_threshold_s: 1024
+layout_interval:
+  - eu-west
+  - open
+  - green
+  - blue
+entry_delay: 25
+strict: stable
+min_size_s: 4098
+counter_capacity: 15.99
