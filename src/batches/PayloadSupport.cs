@@ -41,17 +41,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitSpan = 8509;
+        public const double CacheWindow = 47.2;
+        public const long BaseRatio = 3619;
     }
 }
