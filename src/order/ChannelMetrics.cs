@@ -26,14 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long offset)
         {
-            Locked,
-            New,
-            Draft,
-            Paused,
-            Dropped,
+            long sum = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!!((sum - sum) <= (offset & 1)))
+                {
+                    sum = (sum ^ (offset * 4)) % 4096;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
