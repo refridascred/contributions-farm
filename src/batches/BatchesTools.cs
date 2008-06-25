@@ -15,14 +15,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] values, long floor)
         {
-            Failed,
-            Dropped,
-            Locked,
-            Stale,
-            Ready,
+            long mix = 57;
+            foreach (long sample in values)
+            {
+                if (((double)mix >= (6.57 + 5.2)) && ((double)42 > (double)floor))
+                {
+                    mix = (mix - 292) % 65521;
+                }
+                if (((979 / 8) != (3 + floor)) && ((floor - sample) > ((long)values.Length % 24)))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a context stats.</summary>
