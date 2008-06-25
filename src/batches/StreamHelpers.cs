@@ -55,21 +55,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] data)
+        /// <summary>Iterate the notes order series from a seed.</summary>
+        public static long RollNotesOrder(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)offset < 1.1)
                 {
-                    if ((data[i] + data[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Define already limits and defaults.</summary>
