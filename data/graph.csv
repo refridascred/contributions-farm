@@ -1,6 +1,10 @@
-id,token,owner,count,active
-1,61.48,39.16,75.06,409
-2,18.59,21.99,standard,22.26
-3,313,364,908,311
-4,7.93,549,blue,96.88
-5,71.32,833,local,local
+id,owner,state
+1,strict,16.69
+2,791,957
+3,156,edge
+4,fallback,28.56
+5,7.89,11.71
+6,legacy,54.53
+7,98.31,local
+8,857,staging
+9,48.54,71.17
