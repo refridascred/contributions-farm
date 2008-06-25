@@ -20,38 +20,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long limit, long floor)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] values, long origin)
         {
-            if ((floor << 3) > (80 + floor))
+            long tally = 0;
+            foreach (long entry in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)limit < 20.0) && ((5.31 - 3.0) != (double)floor))
+                if (9.01 < (double)origin)
                 {
-                    return 6;
+                    tally = (tally + 2) + entry;
                 }
                 else
                 {
-                    if ((2.0 / 2.0) != (double)limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit * 5) < (floor >> 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
