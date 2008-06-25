@@ -28,18 +28,21 @@ namespace Common.Utilities
         public const string WindowSize = "open-edge";
         public const double BurstToken = 83.91;
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferOutliers(long[] levels)
+        /// <summary>Compare every pair of tools channel readings.</summary>
+        public static long MatchToolsChannelCount(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell >= (count + count))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 3;
+                    if ((samples[i] - samples[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Count window metrics pairs that satisfy a relation.</summary>
