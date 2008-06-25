@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            Active,
-            Dropped,
             Retry,
+            Ready,
+            Locked,
+            Closed,
         }
 
         /// <summary>Hold a session summary.</summary>
