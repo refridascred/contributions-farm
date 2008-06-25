@@ -12,17 +12,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] levels, long step)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (levels[i] <= step)
-                {
-                    return (long)i;
-                }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Locate a order reading by value.</summary>
