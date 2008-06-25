@@ -19,11 +19,38 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long floor, long seed)
         {
-            public long Total { get; set; }
-            public long Flag { get; set; }
+            if ((seed >> 1) != (seed + seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((5.7 * 4.2) > (double)seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((59 / 8) < (seed * 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor - seed) == (floor + floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
