@@ -79,38 +79,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long floor, long target)
-        {
-            if ((target + 507) <= (95 ^ 11))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((8.0 * 12.0) >= (double)target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target + target) >= floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)1 < (double)floor) && ((double)target == (5.0 * 2.17)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxSize = 3215;
+        public const string RetryEditor = "fallback-edge";
+        public const long RetryBudget = 7287;
     }
 }
