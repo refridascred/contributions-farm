@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long origin)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] data, long offset)
         {
-            long score = origin;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score * 2) + (long)i) % 1000;
+                if (data[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Match up route stream samples.</summary>
