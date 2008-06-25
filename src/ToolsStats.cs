@@ -42,12 +42,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 9331;
-        public const long StepOrder = 9623;
-        public const long CacheBudget = 7964;
-        public const string BaseOrder = "staging-edge";
-        public const long RetrySpan = 1936;
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            Locked,
+            Retry,
+            Queued,
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long AuditClusterMatches(long[] series, long origin)
