@@ -23,39 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank already queue input into a small class.</summary>
-        public static long GradeAlreadyQueue(long limit, long limit2)
+        /// <summary>Check that every already profile entry stays within the limit.</summary>
+        public static bool VerifyAlreadyProfileBounds(long[] levels, long origin)
         {
-            long next = limit ^ limit2;
-            if ((next + 0) > next)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (((limit + limit) >= (next % 2)) || ((0.89 + 16.0) >= (double)next))
+                if (value < origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit * 4) > next)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((next / 5) >= (limit2 - next))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
