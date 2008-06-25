@@ -19,17 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] items, long offset)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamGaps(long[] items, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (items[i] <= offset)
+                if (((offset ^ (-84)) <= cell) || (((cell << 1) == (count + count)) || ((double)cell == (3.2 + 4.51))))
                 {
-                    return (long)i;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
