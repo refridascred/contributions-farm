@@ -25,10 +25,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 7735;
-        public const long HardSpan = 76;
-        public const long CacheSpan = 1188;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (entry >= (entry - (long)levels.Length))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up tools samples.</summary>
         public static long CompareToolsCount(long[] data)
