@@ -46,11 +46,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 8309;
-        public const double BaseScore = 17.48;
-        public const long StepTools = 8720;
-        public const double MaxTools = 63.9;
-        public const long SoftTools = 6527;
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
+        {
+            public long Limit { get; set; }
+            public string Level { get; set; } = "";
+        }
     }
 }
