@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long origin, long limit)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long PairGraphCount(long[] levels)
         {
-            if ((limit + limit) > (origin & 3))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin > (origin + origin)) || ((limit + limit) <= (origin / 9)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (62 >= (limit - limit))
+                    if ((levels[i] - levels[j]) > 20)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (limit > (origin + 4))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a support info.</summary>
