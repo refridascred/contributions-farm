@@ -1,9 +1,8 @@
 # githubfarm settings
-context_threshold: 1024
-dry_run: 1235
-min_interval_pct: false
-order_ratio:
-  - local
-  - open
-notes_interval: 5.08
-retry_capacity_s: legacy
+verbose: 7687
+poll_threshold_ms:
+  retry_capacity_ms: true
+  max_timeout_pct: 58
+  poll_ttl: false
+  dry_run: staging
+idle_size_count: 40.3
