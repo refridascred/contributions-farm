@@ -19,22 +19,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchGaps(long[] levels, long origin)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteLimits(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if (!((origin ^ cell) == (count % 10)))
+                if (datum >= floor)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Fold a list of token cache readings.</summary>
