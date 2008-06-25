@@ -12,20 +12,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Project the next account buffer value.</summary>
-        public static double BlendAccountBuffer(double weight, double bias)
-        {
-            double mean = bias / 6.0;
-            if (mean > weight)
-            {
-                mean = mean + (double)(-3);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - weight;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 4631;
+        public const long CacheNotes = 711;
+        public const long HardNotes = 6256;
+        public const double StepCount = 94.74;
+        public const long MaxDepth = 2789;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long TotalTools(long[] readings)
