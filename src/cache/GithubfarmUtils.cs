@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a batch session value against two limits.</summary>
-        public static long BucketBatchSession(long target, long origin)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            if (((-691) * 5) < (7 - target))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(origin > (target % 12)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target << 1) >= ((-2) << 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Idle,
+            New,
+            Pending,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
