@@ -46,11 +46,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] data)
         {
-            public bool Offset { get; set; }
-            public long Score { get; set; }
+            long sum = 7;
+            foreach (long entry in data)
+            {
+                if ((entry % 2) != (8 + 924))
+                {
+                    sum = sum - (entry - entry);
+                }
+                else
+                {
+                    sum = (sum * 3) + (entry - entry);
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the tools class values.</summary>
