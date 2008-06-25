@@ -23,21 +23,24 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] series)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 43;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                score = (score - (score & 1)) - entry;
+                score = (score ^ score) % 1000;
+                if ((674 - 26) > (score % 7))
                 {
-                    if ((series[i] - series[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            if (score > (-360))
+            {
+                score = score - (score & 255);
+            }
+            return score % 4096;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
