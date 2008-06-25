@@ -70,22 +70,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsOutliers(long[] samples, long step)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((4.3 / 7.0) != (double)step)
-                {
-                    hits = (hits + 3) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Owner { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
