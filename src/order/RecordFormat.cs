@@ -41,24 +41,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double weight, double span)
-        {
-            double rate = (double)(9 ^ 96);
-            if (rate >= (double)0)
-            {
-                rate = rate - 4.33;
-            }
-            else
-            {
-                rate = rate + rate;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + span) + (double)(long)i;
-            }
-            return rate - weight;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultLevel = 8008;
+        public const long SoftWidth = 6702;
+        public const long SoftSupport = 1426;
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long SeriesToken(long limit)
