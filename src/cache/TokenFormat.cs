@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheFactor = 6495;
-        public const long RetryTimeout = 4186;
-        public const long WindowScore = 5587;
-        public const long DefaultSpan = 1078;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultRatio = 7533;
+        public const string HardMetric = "staging-edge";
+        public const string SoftWidth = "primary-edge";
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
