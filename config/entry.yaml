@@ -1,46 +1,5 @@
 # entry settings
-sync_timeout_ms:
-  - 69
-  - 110
-  - 183
-  - 327
-notes_interval: 48
-verbose:
-  compress:
-    idle_window_count:
-      - standard
-      - stable
-      - fallback
-      - legacy
-    route_ratio: 49.96
-    compress: staging
-    burst_depth: 1024
-    channel_timeout: staging
-    soft_ratio_s:
-      - 277
-      - 439
-      - 443
-  buffer_capacity: 92
-  command_interval: 60
-  audit:
-    counter_delay:
-      - 219
-      - 424
-      - 430
-    editor_delay: strict
-    max_depth_ms: staging
-    warm_capacity: 72
-    strict: true
-  hard_retries_ms: true
-  report_size: primary
-cache_capacity:
-  - primary
-  - legacy
-  - legacy
-  - edge
-strict:
-  - 450
-  - 153
-  - 474
-  - 349
-farm_retries: standard
+sync_retries_s: 30
+persist: legacy
+hard_retries_pct: 60
+base_delay_pct: 1024
