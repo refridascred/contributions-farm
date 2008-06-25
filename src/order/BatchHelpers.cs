@@ -30,12 +30,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
-        {
-            public double Mode { get; set; }
-            public double Ratio { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double CacheRatio = 56.47;
+        public const long MinReport = 7236;
+        public const string MinCount = "cached-edge";
+        public const string BurstReport = "staging-edge";
     }
 }
