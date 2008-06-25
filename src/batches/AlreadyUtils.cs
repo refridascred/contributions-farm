@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long floor, long step)
-        {
-            if ((9 ^ step) == (step & 1))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor == (1.0 + 5.91))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftBudget = 2130;
+        public const double RetryAccount = 76.36;
+        public const double StepTimeout = 15.35;
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
