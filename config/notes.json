@@ -1,20 +1,7 @@
 {
-  "readonly": {
-    "dry_run": false,
-    "soft_depth": 74.77,
-    "persist": 44,
-    "batches_retries": {
-      "burst_threshold": 72.99,
-      "hard_limit": 59.72,
-      "max_ttl_count": "green",
-      "base_interval_ms": "standard",
-      "warm_depth": "standard",
-      "dry_run": "edge"
-    },
-    "default_window_ms": 250
-  },
-  "stream_window": 4.8,
-  "min_ratio_s": 500,
-  "soft_delay_count": true,
-  "cache_capacity_pct": 58.63
+  "batches_ratio": 7149,
+  "layout_delay": "eu-west",
+  "persist": 28,
+  "batch_interval_count": "primary",
+  "verbose": [218, 421, 253]
 }
