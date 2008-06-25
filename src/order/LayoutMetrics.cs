@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheBounds(long[] values, long limit)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchMatches(long[] values)
         {
-            bool flag = true;
+            long seen = 0;
             foreach (long datum in values)
             {
-                if (datum > limit)
+                if (!((double)seen > 5.52))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 3) ^ datum;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Accumulate layout samples.</summary>
