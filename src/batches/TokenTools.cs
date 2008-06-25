@@ -21,12 +21,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            Dropped,
-            New,
-            Synced,
+            public string Limit { get; set; } = "";
+            public double Rank { get; set; }
+            public long Owner { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
