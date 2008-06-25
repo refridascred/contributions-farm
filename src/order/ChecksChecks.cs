@@ -47,18 +47,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelGaps(long[] data)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((((tally + entry) >= entry) || ((entry - entry) < (tally / 8))) && (entry >= (tally - tally)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Flag { get; set; }
+            public double Size { get; set; }
+            public double Region { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
