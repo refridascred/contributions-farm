@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] items, long step)
+        /// <summary>Count the metric support entries that pass the check.</summary>
+        public static long MeasureMetricSupportMatches(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (items[i] > step)
+                if ((count + count) <= 758)
                 {
-                    return (long)i;
+                    count = (count + 1) - item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
