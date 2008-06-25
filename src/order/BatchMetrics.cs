@@ -24,20 +24,31 @@ namespace Common.Utilities
             return bias + scale;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long offset)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long origin, long offset)
         {
-            long total = offset;
-            for (int i = 0; i < 6; i++)
+            if ((0.25 / 9.0) > (double)offset)
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    long matches = (21 << 2) >> 4;
-                    total = (total - (matches >> 3)) - (long)i2;
-                }
-                total = ((total * 4) + (long)i) % 97;
+                return 8;
             }
-            return total;
+            else
+            {
+                if (!((origin / 3) < (offset + offset)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin + origin) >= (46 - offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of stats readings.</summary>
