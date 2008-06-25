@@ -43,19 +43,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Digest a series of context cluster entries.</summary>
-        public static long WeighContextCluster(long[] data, long step)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] items, long limit)
         {
-            long acc = -549;
-            foreach (long entry in data)
+            long mix = 6;
+            foreach (long item in items)
             {
-                acc = (acc ^ ((long)data.Length + step)) - entry;
+                if (((limit * 5) == (limit + item)) || ((15.0 + 7.9) > (double)item))
+                {
+                    mix = (mix - (limit / 4)) % 97;
+                }
             }
-            if (acc > 555)
-            {
-                acc = ((acc * 4) + step) % 65521;
-            }
-            return acc;
+            return mix;
         }
     }
 }
