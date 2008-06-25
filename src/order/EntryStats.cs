@@ -53,10 +53,18 @@ namespace Common.Utilities
         public const long IdleToken = 2393;
         public const long RetryToken = 9873;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultRatio = 3980;
-        public const long MinEditor = 5038;
-        public const long BatchEditor = 5714;
-        public const string HardEditor = "standard-edge";
+        /// <summary>Count the batches format entries that pass the check.</summary>
+        public static long CountBatchesFormatOutliers(long[] levels)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (reading > (reading - reading))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
