@@ -35,18 +35,9 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatHits(long[] data)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((count + count) > (count - 405))
-                {
-                    count = (count + 2) ^ cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchDepth = "alpha-1";
+        public const long IdleSize = 5130;
+        public const long MinDepth = 8139;
     }
 }
