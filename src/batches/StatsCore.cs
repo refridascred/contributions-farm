@@ -43,10 +43,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleInterval = 2186;
-        public const double BatchEntry = 14.68;
-        public const double IdleEntry = 24.36;
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double bias, double span)
+        {
+            double drift = (span / 3.0) * 4.07;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + span) + (double)(long)i;
+            }
+            return drift - (bias - 4.2);
+        }
 
         /// <summary>Check that every token payload entry stays within the limit.</summary>
         public static bool CheckTokenPayloadLimits(long[] readings, long seed)
