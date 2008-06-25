@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long step, long offset)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long offset2 = step ^ offset;
-            if (((offset + offset2) > (step - offset)) || ((step << 3) <= (step & 7)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)step >= (7.72 * 5.4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset2 % 3) >= offset2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Classify a entry stream pair into a bucket.</summary>
