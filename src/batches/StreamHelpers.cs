@@ -13,23 +13,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long seed)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] data, long target)
         {
-            long total = seed;
-            for (int i = 0; i < 6; i++)
+            long mix = 5;
+            foreach (long item in data)
             {
-                if ((seed - (long)i) > (long)i)
+                if ((((long)data.Length ^ mix) > (target << 1)) || ((5.2 - 15.0) == (double)target))
                 {
-                    break;
+                    mix = ((mix * 4) + (79 / 9)) - item;
                 }
-                else
-                {
-                    total = total + (seed & 3);
-                }
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
