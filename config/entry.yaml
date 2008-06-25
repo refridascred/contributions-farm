@@ -1,38 +1,7 @@
 # entry settings
-persist: 24.01
-default_delay_count:
-  flush_threshold_s: 58.31
-  verbose: 500
-  editor_ratio:
-    flush_window: 88.08
-    idle_limit_pct: 100
-    hard_interval_ms: 5199
-    min_ratio_ms:
-      - 391
-      - 260
-    record_threshold: 25.53
-    persist:
-      - strict
-      - strict
-      - primary
-      - staging
-  idle_capacity_pct: fallback
-cache_timeout: true
-min_threshold:
-  persist: green
-  compress: 6443
-  poll_retries: 83
-  max_retries_s: open
-  burst_window_ms:
-    sync_limit_ms:
-      - standard
-      - stable
-      - open
-      - eu-west
-    hard_retries_s: 8731
-    idle_delay_s: strict
-    batch_retries_count:
-      - 106
-      - 306
-      - 381
-      - 94
+dry_run: latest
+channel_interval: 100
+order_threshold: 73
+enabled: 10
+hard_delay: 7422
+batch_depth: eu-west
