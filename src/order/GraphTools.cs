@@ -14,18 +14,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Measure how many entry channel samples are out of range.</summary>
-        public static long MeasureEntryChannelOutliers(long[] series)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((entry + seen) > seen)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public string Token { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Grade a stats buffer value against two limits.</summary>
