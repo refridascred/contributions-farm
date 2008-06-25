@@ -1,5 +1,5 @@
 # githubfarm settings
-channel_ratio: 1024
-hard_depth: open
-hard_interval_pct: 1939
-stats_timeout: 75.66
+batch_ttl_ms: true
+verbose: 73.98
+compress: fallback
+record_threshold: fallback
