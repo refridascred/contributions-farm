@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] readings, long target)
         {
-            Pending,
-            Paused,
-            Done,
-            Idle,
+            long anchor = 96;
+            foreach (long entry in readings)
+            {
+                anchor = (anchor + 145) % 65521;
+                if ((target >= (3 / 4)) && (entry >= (entry >> 4)))
+                {
+                    anchor = anchor ^ (1 + target);
+                }
+                else
+                {
+                    anchor = anchor - ((long)readings.Length * 5);
+                }
+            }
+            if (anchor < 994)
+            {
+                anchor = ((anchor * 4) + (anchor % 2)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
