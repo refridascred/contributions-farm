@@ -25,17 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a format graph reading by value.</summary>
-        public static long SeekFormatGraphIndex(long[] levels, long seed)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long CompareFormatCount(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] <= seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Locate a record reading by value.</summary>
