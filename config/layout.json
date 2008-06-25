@@ -1,18 +1,6 @@
 {
-  "compress": true,
-  "base_ratio": "stable",
-  "burst_window_count": 93.95,
-  "sync_threshold": {
-    "burst_ratio_pct": {
-      "verbose": 3705,
-      "idle_ratio_pct": ["edge", "stable"],
-      "cache_delay_s": 1024,
-      "flush_threshold": 60.95,
-      "cache_timeout_pct": "blue"
-    },
-    "base_limit_ms": "standard",
-    "idle_ttl": false,
-    "batch_interval_count": 30
-  },
-  "retry_ratio": 67.96
+  "burst_delay": 1.29,
+  "idle_size": 500,
+  "verbose": "local",
+  "readonly": [465, 486, 298, 47]
 }
