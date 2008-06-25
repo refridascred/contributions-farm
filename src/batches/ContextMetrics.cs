@@ -51,17 +51,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a editor buffer sample.</summary>
-        public static long LookupEditorBufferIndex(long[] series, long step)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportMatches(long[] samples, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (series[i] == step)
+                if (((item % 12) != (seed & 127)) || ((double)item < (6.0 / 2.0)))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
