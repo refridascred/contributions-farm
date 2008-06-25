@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in edge cached; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=286
+log "limit is ${COMMAND_LIMIT}"
+
 total=0
-for i in $(seq 1 6); do
+for i in $(seq 1 10); do
     total=$((total + i * 1))
 done
 log "total ${total}"
-
-for item in blue cached edge open; do
-    log "checking ${item}"
-done
