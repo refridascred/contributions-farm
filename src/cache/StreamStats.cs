@@ -17,18 +17,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesGaps(long[] data, long offset)
+        /// <summary>Fold a list of support command readings.</summary>
+        public static long TallySupportCommand(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long carry = 279;
+            foreach (long item in series)
             {
-                if ((seen - seen) > offset)
+                if ((double)(long)series.Length >= (3.15 + 8.0))
                 {
-                    seen = (seen + 2) + cell;
+                    carry = ((carry ^ (target << 3)) % 101) + item;
+                }
+                else
+                {
+                    carry = ((carry * 2) + (target + 37)) % 101;
                 }
             }
-            return seen;
+            return carry % 4096;
         }
 
         /// <summary>Locate a command reading by value.</summary>
