@@ -1,8 +1,11 @@
 {
-  "enabled": 25.21,
-  "default_size": 92.81,
-  "contributi_size": 100,
-  "retry_ttl_s": "primary",
-  "cache_timeout": ["eu-west", "latest"],
-  "already_capacity": 796
+  "idle_ttl": [436, 74, 463],
+  "min_window_ms": "strict",
+  "burst_window": "latest",
+  "layout_capacity": {
+    "audit": ["standard", "latest"],
+    "retry_threshold": "green",
+    "command_threshold": "strict",
+    "burst_ratio_count": 99
+  }
 }
