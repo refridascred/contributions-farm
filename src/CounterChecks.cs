@@ -56,13 +56,10 @@ namespace Common.Utilities
             return weight - (double)397;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
-        {
-            public double Limit { get; set; }
-            public double Size { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheDepth = 4385;
+        public const long BurstFarm = 754;
+        public const long MaxFarm = 292;
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long TallyBatchesOutliers(long[] data)
