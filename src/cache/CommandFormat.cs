@@ -38,18 +38,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many command report samples are out of range.</summary>
-        public static long TallyCommandReportMatches(long[] data, long offset)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadHits(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (!((46 > (offset & 127)) || ((seen + seen) == (7 + seen))))
+                if ((double)value != (5.55 / 3.0))
                 {
-                    seen = (seen + 1) - sample;
+                    count = (count + 3) + floor;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
