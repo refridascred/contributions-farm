@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] levels)
+        /// <summary>Count the cluster context entries that pass the check.</summary>
+        public static long AuditClusterContextMatches(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((6.79 * 2.55) == (double)seen)
                 {
-                    if ((levels[i] - levels[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 3) + value;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
