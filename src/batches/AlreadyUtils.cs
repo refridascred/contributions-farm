@@ -19,22 +19,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] samples, long target)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long mix = 0;
-            foreach (long reading in samples)
-            {
-                if ((target << 3) >= target)
-                {
-                    mix = ((mix * 4) + mix) % 97;
-                }
-                else
-                {
-                    mix = mix + (reading + reading);
-                }
-            }
-            return mix;
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the route class values.</summary>
