@@ -1,9 +1,8 @@
-id,level,token,rank,active
-1,stable,658,816,430
-2,709,806,937,993
-3,legacy,1.31,658,13.68
-4,839,803,staging,latest
-5,40.54,strict,38.06,503
-6,11.71,74.37,45.73,179
-7,eu-west,stable,789,435
-8,stable,893,green,strict
+id,level,token,rank,count
+1,16.77,11.77,staging,488
+2,83.1,latest,69,stable
+3,542,70,584,legacy
+4,staging,76.87,391,58
+5,272,13.42,926,154
+6,165,204,698,5
+7,197,309,fallback,5
