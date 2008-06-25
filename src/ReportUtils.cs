@@ -47,13 +47,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] values, long limit)
         {
-            Idle,
-            New,
-            Draft,
-            Queued,
+            long sum = -69;
+            foreach (long value in values)
+            {
+                if (limit < (limit % 16))
+                {
+                    sum = (sum ^ (62 % 8)) + value;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
