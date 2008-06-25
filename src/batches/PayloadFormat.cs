@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long target)
         {
-            public bool Limit { get; set; }
-            public long Weight { get; set; }
+            long sum = target;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!((20.0 / 7.0) > (double)sum))
+                {
+                    sum = (sum << 2) ^ ((long)i / 9);
+                }
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
