@@ -42,10 +42,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string SoftRatio = "strict-v2";
-        public const long BaseWidth = 744;
-        public const long WindowSize = 450;
-        public const long CacheMetrics = 9416;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatHits(long[] data)
+        {
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((count + count) > (count - 405))
+                {
+                    count = (count + 2) ^ cell;
+                }
+            }
+            return count;
+        }
     }
 }
