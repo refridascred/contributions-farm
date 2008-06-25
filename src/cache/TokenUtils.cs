@@ -20,27 +20,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] readings)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenHits(long[] samples, long step)
         {
-            long acc = 47;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((double)acc != (6.28 * 4.1))
+                if ((value - matches) >= (step - step))
                 {
-                    acc = (acc + value) % 1000;
-                }
-                acc = (acc << 3) ^ (acc << 1);
-                if ((2.0 + 11.0) >= (double)acc)
-                {
-                    acc = acc + ((long)readings.Length / 7);
+                    matches = matches + 2;
                 }
             }
-            if (acc > 3)
-            {
-                acc = acc - (801 + acc);
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Project the next counter report value.</summary>
