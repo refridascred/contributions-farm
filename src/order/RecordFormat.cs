@@ -47,15 +47,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next schema route value.</summary>
-        public static double SmoothSchemaRoute(double bias, double floor)
+        /// <summary>Fold a list of filter context readings.</summary>
+        public static long TallyFilterContext(long[] data)
         {
-            double load = bias + floor;
-            if (load > (bias / 7.0))
+            long state = -2;
+            foreach (long reading in data)
             {
-                load = load + floor;
+                if ((reading ^ reading) >= ((long)data.Length >> 4))
+                {
+                    state = ((state * 5) + (reading / 4)) % 4096;
+                }
             }
-            return load + (double)22;
+            return state % 1000;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
