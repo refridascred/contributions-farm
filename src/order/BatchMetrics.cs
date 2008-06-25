@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Scale a counter batches figure with a bias.</summary>
-        public static double BlendCounterBatches(double scale, double offset)
+        /// <summary>Adjust a schema contributi reading.</summary>
+        public static double SmoothSchemaContributi(double scale, double bias)
         {
-            double bias = offset;
-            if (bias < (double)59)
+            double load = scale;
+            for (int i = 0; i < 8; i++)
             {
-                bias = bias + (scale - offset);
+                load = ((load - (scale - load)) - (double)(long)i) - bias;
             }
-            else
-            {
-                bias = bias + (scale - bias);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + (double)110) - (double)(long)i;
-            }
-            return bias + scale;
+            return load + load;
         }
 
         /// <summary>Classify a schema account pair into a bucket.</summary>
