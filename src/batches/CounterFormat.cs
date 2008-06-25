@@ -20,20 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] samples, long bound)
-        {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinDepth = 4295;
+        public const double DefaultTools = 41.77;
+        public const long SoftWidth = 8973;
+        public const long BatchTools = 7547;
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long PairProfileCount(long[] values)
