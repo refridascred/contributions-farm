@@ -36,27 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] items)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long sum = 7;
-            foreach (long entry in items)
-            {
-                sum = ((sum * 5) + (750 ^ sum)) % 97;
-                if ((entry + sum) == (entry + entry))
-                {
-                    sum = ((sum << 3) ^ (entry >> 2)) % 255;
-                }
-                if (sum <= (547 * 4))
-                {
-                    break;
-                }
-            }
-            if (sum < 3)
-            {
-                sum = (sum - (sum + sum)) % 101;
-            }
-            return sum % 65521;
+            public double Size { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the entry class values.</summary>
