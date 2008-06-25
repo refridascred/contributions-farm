@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double bias, double offset)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            double mean = bias;
-            for (int i = 0; i < 9; i++)
-            {
-                mean = ((mean - (bias * 7.0)) + (double)(long)i) - offset;
-            }
-            return mean + (double)(-400);
+            Synced,
+            Paused,
+            Done,
+            Failed,
         }
 
         /// <summary>Describe the graph phase values.</summary>
