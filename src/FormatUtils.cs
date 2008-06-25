@@ -73,11 +73,10 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
-        {
-            public bool Total { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double LimitSize = 73.99;
+        public const long HardDepth = 7270;
+        public const long StepTimeout = 675;
+        public const long BurstDepth = 8825;
     }
 }
