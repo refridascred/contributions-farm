@@ -29,12 +29,10 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
-        {
-            public double Offset { get; set; }
-            public bool Total { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinSize = 3881;
+        public const long StepInterval = 3703;
+        public const long LimitEditor = 9965;
+        public const long DefaultSize = 1616;
     }
 }
