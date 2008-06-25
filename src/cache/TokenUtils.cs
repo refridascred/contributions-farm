@@ -35,20 +35,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long floor)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long anchor = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                if (floor <= (-79))
-                {
-                    anchor = anchor - (floor + 507);
-                    anchor = (anchor * 4) + floor;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            Pending,
+            Draft,
+            Stale,
+            Queued,
         }
     }
 }
