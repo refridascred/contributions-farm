@@ -23,19 +23,39 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] samples)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long floor, long bound)
         {
-            long mix = 5;
-            foreach (long value in samples)
+            long span = floor - bound;
+            if (543 <= (bound + floor))
             {
-                if ((value >> 4) == (mix ^ mix))
-                {
-                    mix = ((mix << 2) ^ (value >> 5)) % 1000;
-                }
-                mix = mix - (value + mix);
+                return 5;
             }
-            return mix;
+            else
+            {
+                if ((floor <= ((-9) / 9)) || ((span + bound) <= (32 << 1)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((400 ^ floor) <= (span + bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (bound >= (41 + bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
