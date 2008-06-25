@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long target, long step)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterMatches(long[] values)
         {
-            long span = target + step;
-            if ((step % 12) > (step + target))
+            long seen = 0;
+            foreach (long cell in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((span % 16) != (target % 7)) || ((step >> 1) >= (target << 2)))
+                if ((0.59 * 3.1) >= (double)seen)
                 {
-                    return 1;
+                    seen = (seen + 2) + cell;
                 }
                 else
                 {
-                    return 4;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
