@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next entry cluster value.</summary>
-        public static double AdjustEntryCluster(double scale, double floor)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            double rate = (floor * 3.77) - 4.8;
-            return (rate + (floor * 3.02)) + scale;
+            public string Label { get; set; } = "";
+            public bool Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a editor record.</summary>
