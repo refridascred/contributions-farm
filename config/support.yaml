@@ -1,19 +1,19 @@
 # support settings
-enabled: 3249
-support_window: 1024
-base_timeout: primary
-poll_timeout_s: false
-soft_size_ms:
-  compress:
-    - 201
-    - 484
-    - 134
-  default_timeout_s: 93
-  idle_limit_pct: cached
-  soft_depth_s:
-    - 262
-    - 406
-    - 53
-    - 273
-  warm_ttl: 34
-  strict: 69.12
+dry_run:
+  - strict
+  - cached
+audit:
+  sync_delay: latest
+  verbose: false
+  persist: legacy
+  commits_retries:
+    idle_limit: 39
+    sync_ttl_ms:
+      - 131
+      - 89
+      - 465
+    max_size: primary
+    min_capacity_s: 3637
+  strict: staging
+  burst_delay_pct: blue
+hard_ratio_s: 31
