@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=16
-log "limit is ${COMMAND_LIMIT}"
-
-for item in green fallback; do
+for item in open stable legacy green; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 2))
 done
-log "ran ${count} rounds"
+log "total ${total}"
