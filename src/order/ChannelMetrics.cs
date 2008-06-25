@@ -39,18 +39,9 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (((long)values.Length / 6) <= (tally << 2))
-                {
-                    tally = (tally + 1) + sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCache = 4641;
+        public const long SoftBudget = 8980;
+        public const double RetryWidth = 27.46;
     }
 }
