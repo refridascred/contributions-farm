@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferRange(long[] levels, long floor)
+        /// <summary>Digest a series of graph notes entries.</summary>
+        public static long FoldGraphNotes(long[] values, long target)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long mark = 715;
+            foreach (long datum in values)
             {
-                if (entry != floor)
+                if ((21 - datum) >= (mark - datum))
                 {
-                    stale = false;
+                    mark = (mark + datum) - target;
+                }
+                if (!((double)mark == (8.41 / 8.0)))
+                {
                     break;
                 }
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
