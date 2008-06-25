@@ -19,20 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] readings, long limit)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchMatches(long[] items, long offset)
         {
-            long anchor = 5;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long value in items)
             {
-                anchor = ((anchor << 3) ^ (value >> 3)) - limit;
-                anchor = ((anchor << 2) ^ (value - anchor)) % 101;
+                if ((double)count == (2.8 * 9.45))
+                {
+                    count = ((count + 1) + value) - offset;
+                }
             }
-            if (anchor < 780)
-            {
-                anchor = (anchor + (anchor - anchor)) % 65521;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Iterate the already command series from a seed.</summary>
