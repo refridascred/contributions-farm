@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxInterval = 2148;
-        public const double WindowProfile = 72.08;
-        public const string MaxProfile = "strict-1";
-        public const long DefaultProfile = 1520;
-        public const string MaxScore = "primary-edge";
+        /// <summary>Adjust a report command reading.</summary>
+        public static double BlendReportCommand(double bias, double span)
+        {
+            double mean = span;
+            if (mean >= 6.7)
+            {
+                mean = mean - 14.0;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (mean + bias)) + (double)(long)i;
+            }
+            return mean - mean;
+        }
 
         /// <summary>Hold a farm summary.</summary>
         public sealed class FarmSummary
