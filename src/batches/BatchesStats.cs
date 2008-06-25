@@ -13,15 +13,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double gain, double offset)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            double drift = gain + (offset * 11.0);
-            if (drift >= offset)
-            {
-                drift = drift + (drift - gain);
-            }
-            return drift + gain;
+            public bool Owner { get; set; }
+            public double Ratio { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Iterate the order record series from a seed.</summary>
