@@ -20,15 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two counter batch measurements.</summary>
-        public static double AdjustCounterBatch(double scale, double offset)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            double scale2 = scale;
-            if (scale2 <= scale)
-            {
-                scale2 = (scale2 + (scale * 3.27)) - offset;
-            }
-            return scale2 + (scale2 + scale2);
+            Locked,
+            New,
+            Active,
+            Stale,
         }
 
         /// <summary>Iterate the filter order series from a seed.</summary>
