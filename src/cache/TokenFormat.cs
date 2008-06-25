@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const string BatchLevel = "latest-1";
         public const double BatchInterval = 76.09;
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Validate payload entry readings against a bound.</summary>
+        public static bool VerifyPayloadEntryRange(long[] readings, long step)
         {
-            public bool Count { get; set; }
-            public long Flag { get; set; }
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
