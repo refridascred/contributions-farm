@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
-        {
-            Synced,
-            Paused,
-            Done,
-            Failed,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double HardSize = 26.6;
+        public const string StepCommits = "standard-1";
+        public const long BurstCommits = 6761;
+        public const double MinDepth = 91.34;
+        public const string WindowCommits = "latest";
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
