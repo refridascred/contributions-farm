@@ -75,12 +75,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
-        {
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BaseWidth = "legacy";
+        public const string HardSpan = "open-1";
+        public const string SoftAlready = "local-1";
+        public const string DefaultAlready = "cached-1";
+        public const long LimitCount = 2748;
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long LookupChecksIndex(long[] values, long origin)
