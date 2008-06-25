@@ -1,19 +1,7 @@
 {
-  "base_ttl_ms": {
-    "retry_window_s": 21.92,
-    "metric_size": "fallback",
-    "warm_depth_count": true,
-    "persist": {
-      "warm_ttl_ms": 56.57,
-      "idle_depth": 92.18,
-      "metric_ttl": 3446,
-      "hard_delay_s": true,
-      "min_delay_pct": "standard",
-      "command_timeout": "primary"
-    }
-  },
-  "cache_timeout": "blue",
-  "poll_ttl_pct": false,
-  "retry_limit": 88.19,
-  "max_depth_ms": "cached"
+  "enabled": "blue",
+  "filter_delay": true,
+  "dry_run": 22.92,
+  "token_timeout": 7.54,
+  "base_threshold_count": 21.37
 }
