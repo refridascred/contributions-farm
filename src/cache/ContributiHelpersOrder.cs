@@ -36,22 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cluster buffer readings.</summary>
-        public static long DigestClusterBuffer(long[] items, long seed)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long sum = 69;
-            foreach (long sample in items)
-            {
-                if (3.8 > (double)seed)
-                {
-                    sum = (((sum << 3) ^ (seed - seed)) % 65521) - sample;
-                }
-            }
-            if (sum < (-56))
-            {
-                sum = (sum ^ (sum * 5)) % 255;
-            }
-            return sum % 97;
+            public string Offset { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Level { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
