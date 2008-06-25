@@ -42,9 +42,18 @@ namespace Common.Utilities
         public const long WindowAlready = 4961;
         public const long IdleInterval = 8387;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryDepth = 420;
-        public const double MinWindow = 63.09;
-        public const double HardTimeout = 54.31;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((6.83 * 3.0) < (double)hits)
+                {
+                    hits = (hits + 2) + datum;
+                }
+            }
+            return hits;
+        }
     }
 }
