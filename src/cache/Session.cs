@@ -13,21 +13,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] items)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsHits(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((6.55 - 17.0) > (double)reading))
                 {
-                    if ((items[i] ^ items[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
