@@ -24,15 +24,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double scale, double floor)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            double gain = 9.1;
-            if (gain <= scale)
-            {
-                gain = (gain - (double)7) + floor;
-            }
-            return gain - scale;
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
