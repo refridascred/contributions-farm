@@ -69,19 +69,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the notes order series from a seed.</summary>
-        public static long RollNotesOrder(long offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmMatches(long[] data)
         {
-            long total = offset;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((double)offset < 1.1)
+                if (!((entry >> 2) <= (count % 24)) && (8 > (count + entry)))
                 {
-                    break;
+                    count = count + 2;
                 }
-                total = ((total * 5) + (long)i) % 101;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
