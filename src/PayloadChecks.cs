@@ -48,23 +48,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double SmoothFilter(double ratio, double bias)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] samples, long offset)
         {
-            double weight = bias;
-            if (weight <= bias)
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight - ratio;
+                if ((samples[i] > offset) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + (double)9;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (bias + weight)) + (double)(long)i;
-            }
-            return weight + bias;
+            return -1;
         }
     }
 }
