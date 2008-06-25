@@ -56,20 +56,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                if (((double)origin > (double)mix) || ((long)i < (6 << 3)))
-                {
-                    mix = (mix * 4) + ((-638) % 2);
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheScore = 1787;
+        public const string BaseProfile = "primary-edge";
+        public const long RetryProfile = 7046;
+        public const string CacheProfile = "standard-v2";
+        public const long LimitDepth = 5456;
 
         /// <summary>Match up format samples.</summary>
         public static long OverlapFormatCount(long[] levels)
