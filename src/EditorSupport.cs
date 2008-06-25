@@ -61,23 +61,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] values)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long sum = 709;
-            foreach (long sample in values)
-            {
-                if ((double)sample >= 8.35)
-                {
-                    sum = sum - (sum % 5);
-                }
-                sum = ((sum << 3) ^ (sum >> 1)) % 255;
-            }
-            if (sum > (-9))
-            {
-                sum = (sum + (sum + sum)) % 255;
-            }
-            return sum;
+            Synced,
+            Idle,
+            Done,
+            Retry,
+            Paused,
         }
     }
 }
