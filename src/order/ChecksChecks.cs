@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderLimits(long[] data, long limit)
+        /// <summary>Rank metrics batch input into a small class.</summary>
+        public static long BucketMetricsBatch(long offset, long bound)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long bound2 = offset + bound;
+            if ((double)bound2 >= (1.08 / 4.0))
             {
-                if (entry > limit)
+                return 2;
+            }
+            else
+            {
+                if ((134 & 255) <= bound2)
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return found;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
