@@ -22,15 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] items)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long mark = 11;
-            foreach (long cell in items)
-            {
-                mark = (mark * 3) + (cell & 3);
-            }
-            return mark;
+            public long Offset { get; set; }
+            public double Size { get; set; }
+            public double Label { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
