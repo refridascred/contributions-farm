@@ -20,18 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of account editor entries.</summary>
-        public static long DigestAccountEditor(long[] values, long origin)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] samples, long bound)
         {
-            long anchor = 454;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if (((double)item >= (13.0 - 0.2)) && ((anchor ^ origin) > item))
+                if (datum >= bound)
                 {
-                    anchor = ((anchor << 3) ^ (origin / 3)) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Define report limits and defaults.</summary>
