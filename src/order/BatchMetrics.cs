@@ -40,24 +40,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long offset, long offset2)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] items)
         {
-            if ((offset + 930) < (offset2 >> 4))
+            long score = 98;
+            foreach (long item in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset2 <= (8.33 * 5.6))
+                if (item >= (428 % 100))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    score = score - (item - item);
                 }
             }
+            return score;
         }
 
         /// <summary>Describe the order mode values.</summary>
