@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] data)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] levels, long floor)
         {
-            long anchor = 292;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                anchor = (anchor << 2) ^ ((-5) >> 3);
-                if ((anchor & 63) > (reading - 6))
+                if ((floor + count) <= (floor % 10))
                 {
-                    anchor = ((anchor << 3) ^ (anchor ^ anchor)) % 97;
+                    count = (count + 3) ^ cell;
                 }
             }
-            if (anchor > 77)
-            {
-                anchor = ((anchor * 2) + anchor) % 65521;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Describe the notes class values.</summary>
