@@ -12,14 +12,11 @@ namespace Common.Utilities
             return (rate + (floor * 3.02)) + scale;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            Failed,
-            Locked,
-            Closed,
-            Paused,
-            Draft,
+            public string Token { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
