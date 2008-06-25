@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long floor, long target)
-        {
-            long bound = floor - target;
-            if (floor > ((-631) + floor))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound <= 2.69)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinTimeout = 1360;
+        public const long HardFarm = 7049;
+        public const long LimitCount = 1462;
+        public const string MaxFarm = "alpha-edge";
+        public const long MinFarm = 9995;
 
         /// <summary>Accumulate entry samples.</summary>
         public static long FoldEntry(long[] items)
