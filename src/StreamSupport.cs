@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] levels)
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double rate, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = (double)(0 % 24);
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = ((drift + bias) + (double)(long)i) - rate;
             }
-            return hits;
+            return drift - bias;
         }
 
         /// <summary>Find the first window checks entry that matches the target.</summary>
