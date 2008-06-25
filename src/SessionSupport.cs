@@ -26,22 +26,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] levels, long origin)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long state = 14;
-            foreach (long value in levels)
-            {
-                if ((origin - value) <= (value - value))
-                {
-                    state = state + (origin & 31);
-                }
-                else
-                {
-                    state = (state << 2) ^ (origin & 1);
-                }
-            }
-            return state;
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
