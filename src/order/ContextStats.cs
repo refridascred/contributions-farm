@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long seed)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long state = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((seed % 8) < seed)
-                {
-                    state = state + state;
-                }
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
+            Closed,
+            Done,
+            Paused,
+            Stale,
+            Failed,
         }
 
         /// <summary>Adjust a cluster reading.</summary>
