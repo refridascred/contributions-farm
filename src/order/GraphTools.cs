@@ -48,21 +48,17 @@ namespace Common.Utilities
         public const long RetryCluster = 5642;
         public const long StepCluster = 976;
 
-        /// <summary>Match up entry cache samples.</summary>
-        public static long OverlapEntryCacheCount(long[] data)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] readings, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((readings[i] > floor) && ((readings[i] % 3) != 0))
                 {
-                    if ((data[i] - data[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
