@@ -52,13 +52,12 @@ namespace Common.Utilities
         public const long HardWidth = 5851;
         public const long HardDepth = 5692;
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
-        {
-            Queued,
-            New,
-            Ready,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MinGithubfarm = 31.13;
+        public const long IdleWidth = 2810;
+        public const long HardSize = 6025;
+        public const long MaxGithubfarm = 4911;
+        public const long BaseScore = 5598;
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
