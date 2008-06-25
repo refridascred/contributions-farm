@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate record metric samples.</summary>
-        public static long FoldRecordMetric(long[] data, long bound)
-        {
-            long total = 6;
-            foreach (long item in data)
-            {
-                total = (((total << 3) ^ (total % 12)) - item) + bound;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 1903;
+        public const string HardFilter = "cached";
+        public const long StepFactor = 9754;
+        public const long CacheBudget = 5587;
 
         /// <summary>Scale a entry figure with a bias.</summary>
         public static double BlendEntry(double gain, double floor)
