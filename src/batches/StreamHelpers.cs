@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Validate tools context readings against a bound.</summary>
+        public static bool VerifyToolsContextRange(long[] readings, long offset)
         {
-            Paused,
-            Failed,
-            Dropped,
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
