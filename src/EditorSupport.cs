@@ -50,20 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long step)
+        /// <summary>Audit buffer channel readings against a rule.</summary>
+        public static long TallyBufferChannelMatches(long[] readings)
         {
-            long state = step;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (((double)datum == (double)tally) || (((datum + datum) < (tally ^ tally)) && ((double)datum > (3.0 * 6.8))))
                 {
-                    state = ((state ^ (state % 64)) % 101) ^ (long)i2;
-                    state = state + (step >> 3);
+                    tally = tally + 1;
                 }
-                state = ((state * 5) + (long)i) % 101;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
