@@ -46,20 +46,39 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] values)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] items, long bound)
         {
-            long sum = 46;
-            foreach (long reading in values)
+            long mark = 516;
+            foreach (long item in items)
             {
-                sum = (sum ^ (sum << 1)) % 1000;
-                if (((2 << 2) > sum) && ((sum + 982) <= (reading - sum)))
+                if ((mark * 3) == ((-715) & 63))
                 {
-                    sum = ((sum << 3) ^ 2) % 65521;
+                    mark = (mark ^ item) % 1000;
                 }
-                sum = (sum ^ (reading & 127)) % 101;
+                else
+                {
+                    mark = mark + (item % 60);
+                }
+                if ((1.06 + 6.85) < (double)mark)
+                {
+                    long diff = item;
+                    mark = (mark ^ diff) % 65521;
+                }
+                if (23 < bound)
+                {
+                    mark = mark ^ (item + bound);
+                }
+                if (!(19.0 >= (double)bound))
+                {
+                    break;
+                }
             }
-            return sum;
+            if (mark > 24)
+            {
+                mark = (mark << 2) ^ (bound << 1);
+            }
+            return mark;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
