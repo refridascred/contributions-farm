@@ -1,6 +1,8 @@
 {
-  "min_ratio_pct": "eu-west",
-  "enabled": 500,
-  "verbose": false,
-  "flush_limit_pct": "legacy"
+  "base_threshold_ms": 77,
+  "sync_size_s": 39.54,
+  "persist": "green",
+  "compress": true,
+  "min_size": true,
+  "context_ttl": 30
 }
