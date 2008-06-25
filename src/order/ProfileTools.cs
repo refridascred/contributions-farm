@@ -27,20 +27,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadRange(long[] readings, long origin)
-        {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 3718;
+        public const long IdleRatio = 7281;
+        public const string StepSize = "strict-v2";
 
         /// <summary>Blend two report measurements.</summary>
         public static double AdjustReport(double weight, double span)
