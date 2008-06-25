@@ -26,15 +26,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] samples, long origin)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long target)
         {
-            long carry = 200;
-            foreach (long entry in samples)
+            long score = target;
+            for (int i = 0; i < 19; i++)
             {
-                carry = ((carry ^ (origin - 7)) % 97) - entry;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return carry % 97;
+            return score;
         }
     }
 }
