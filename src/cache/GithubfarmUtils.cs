@@ -25,13 +25,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] values)
         {
-            Draft,
-            Locked,
-            Ready,
-            Closed,
+            long acc = 93;
+            foreach (long cell in values)
+            {
+                if ((double)cell > (1.5 + 2.8))
+                {
+                    acc = (acc + (acc + 488)) % 1000;
+                    acc = acc ^ (cell + acc);
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (acc >> 3)) % 101;
+                }
+                acc = ((acc << 3) ^ (acc >> 5)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Blend two metric measurements.</summary>
