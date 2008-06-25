@@ -60,11 +60,25 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepEditor = 5638;
-        public const long IdleEditor = 1189;
-        public const string HardSpan = "local-v2";
-        public const string StepBudget = "fallback";
-        public const long BurstInterval = 653;
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long target, long limit)
+        {
+            long bound = target + limit;
+            if (((limit / 6) > target) || ((30 / 8) != (target % 10)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((bound - target) != (948 >> 1)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
