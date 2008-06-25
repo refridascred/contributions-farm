@@ -1,6 +1,7 @@
-id,active,ratio,owner,score
-1,15.34,strict,59,latest
-2,9.24,65.95,blue,550
-3,15,stable,stable,fallback
-4,560,177,edge,latest
-5,408,17.96,staging,86.28
+id,active,score,level,weight
+1,76.04,467,45,376
+2,25.26,525,stable,138
+3,standard,local,64.08,blue
+4,411,33.57,175,standard
+5,263,58.92,legacy,43.45
+6,241,13.98,83.32,open
