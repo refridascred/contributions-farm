@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long target)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long anchor = target;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            public double Flag { get; set; }
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
