@@ -1,7 +1,8 @@
 {
-  "warm_delay": 60,
-  "idle_window_pct": true,
-  "idle_limit_pct": [34, 238, 16],
-  "payload_threshold": [318, 304, 280],
-  "batch_ttl": true
+  "base_depth_count": ["standard", "staging", "eu-west", "primary"],
+  "route_interval": 5048,
+  "dry_run": "local",
+  "warm_limit_pct": 19,
+  "strict": [299, 240, 34],
+  "readonly": 60
 }
