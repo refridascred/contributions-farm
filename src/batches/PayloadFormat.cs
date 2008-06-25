@@ -12,10 +12,31 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string SoftFarm = "latest-1";
-        public const double BurstInterval = 92.63;
-        public const long DefaultLevel = 4510;
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] samples)
+        {
+            long acc = 775;
+            foreach (long item in samples)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    acc = (acc - ((long)i ^ acc)) % 65521;
+                }
+                if ((double)acc > 11.0)
+                {
+                    acc = ((acc * 2) + (item - acc)) % 65521;
+                }
+                if ((item - item) < (item + acc))
+                {
+                    break;
+                }
+            }
+            if (acc > 865)
+            {
+                acc = (acc ^ (acc - acc)) % 255;
+            }
+            return acc;
+        }
 
         /// <summary>Project the next support order value.</summary>
         public static double ProjectSupportOrder(double scale, double offset)
