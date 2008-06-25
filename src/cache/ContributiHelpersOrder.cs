@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a order batches figure with a bias.</summary>
-        public static double AdjustOrderBatches(double rate, double span)
+        /// <summary>Accumulate account commits samples.</summary>
+        public static long CombineAccountCommits(long[] readings)
         {
-            double mean = (span / 5.0) / 4.0;
-            for (int i = 0; i < 8; i++)
+            long result = 682;
+            foreach (long value in readings)
             {
-                mean = (mean + (rate * 14.0)) - (double)(long)i;
+                result = ((result * 5) + (value - value)) % 4096;
             }
-            return mean + 7.0;
+            return result;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
