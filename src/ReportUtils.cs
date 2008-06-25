@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a commits order pair into a bucket.</summary>
-        public static long GradeCommitsOrder(long offset, long step)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowGaps(long[] levels, long seed)
         {
-            if ((double)offset <= (8.2 + 19.0))
+            long count = 0;
+            foreach (long datum in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset - offset) >= (offset - step))
+                if (!((double)seed < (double)datum))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)step != (13.0 + 8.7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((7.0 / 2.0) == (double)offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
