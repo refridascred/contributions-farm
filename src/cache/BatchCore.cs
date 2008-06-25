@@ -19,38 +19,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long floor, long seed)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchMatches(long[] readings, long offset)
         {
-            if ((seed >> 1) != (seed + seed))
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((5.7 * 4.2) > (double)seed)
+                if ((tally & 63) < tally)
                 {
-                    return 4;
+                    tally = ((tally + 2) ^ sample) + offset;
                 }
                 else
                 {
-                    if ((59 / 8) < (seed * 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor - seed) == (floor + floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
