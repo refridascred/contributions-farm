@@ -19,24 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] samples)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandBounds(long[] levels, long seed)
         {
-            long result = 4;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                long bound = 7;
-                if (((datum + datum) > (-23)) && ((double)6 != (double)datum))
+                if (entry != seed)
                 {
-                    bound = (bound + (bound >> 5)) % 101;
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    result = (result << 3) ^ bound;
-                }
-                result = (result - (datum - result)) % 1000;
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Define context limits and defaults.</summary>
