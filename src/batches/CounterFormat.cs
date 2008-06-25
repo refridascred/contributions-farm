@@ -20,15 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of schema githubfarm readings.</summary>
-        public static long TotalSchemaGithubfarm(long[] samples, long limit)
+        /// <summary>Digest a series of account editor entries.</summary>
+        public static long DigestAccountEditor(long[] values, long origin)
         {
-            long score = 0;
-            foreach (long item in samples)
+            long anchor = 454;
+            foreach (long item in values)
             {
-                score = ((score - (score << 3)) + item) + limit;
+                if (((double)item >= (13.0 - 0.2)) && ((anchor ^ origin) > item))
+                {
+                    anchor = ((anchor << 3) ^ (origin / 3)) % 101;
+                }
             }
-            return score % 65521;
+            return anchor;
         }
 
         /// <summary>Fold a list of account readings.</summary>
