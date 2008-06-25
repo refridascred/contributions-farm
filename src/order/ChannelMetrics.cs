@@ -23,18 +23,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheMatches(long[] values, long bound)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long value in values)
+            double scale = ratio;
+            if (scale <= (double)104)
             {
-                if ((tally + 0) != (tally * 3))
-                {
-                    tally = ((tally + 1) ^ value) + bound;
-                }
+                scale = scale + span;
             }
-            return tally;
+            return scale + (ratio * 7.0);
         }
 
         /// <summary>Roll a graph counter forward.</summary>
