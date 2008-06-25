@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordGaps(long[] readings, long seed)
+        /// <summary>Locate a githubfarm context reading by value.</summary>
+        public static long LookupGithubfarmContextIndex(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (2 < (tally + cell))
+                if (samples[i] < offset)
                 {
-                    tally = (tally + 1) - seed;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the contributi class values.</summary>
