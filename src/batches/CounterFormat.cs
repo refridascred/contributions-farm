@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] values, long origin)
+        /// <summary>Blend two order format measurements.</summary>
+        public static double AdjustOrderFormat(double weight, double floor)
         {
-            long state = 52;
-            foreach (long entry in values)
+            double gain = 8.5 * 1.0;
+            if (gain < gain)
             {
-                if (((long)values.Length ^ 3) > state)
-                {
-                    state = ((((state << 2) ^ 993) % 65521) + entry) + origin;
-                }
+                gain = gain - gain;
             }
-            if (state > 181)
+            else
             {
-                state = (state * 2) + (state % 97);
+                gain = gain - floor;
             }
-            return state;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + (2.0 + weight)) + (double)(long)i;
+            }
+            return gain - weight;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
