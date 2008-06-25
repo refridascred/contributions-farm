@@ -1,19 +1,18 @@
 # support settings
-dry_run:
-  - strict
-  - cached
-audit:
-  sync_delay: latest
-  verbose: false
-  persist: legacy
-  commits_retries:
-    idle_limit: 39
-    sync_ttl_ms:
-      - 131
-      - 89
-      - 465
-    max_size: primary
-    min_capacity_s: 3637
-  strict: staging
-  burst_delay_pct: blue
-hard_ratio_s: 31
+enabled: strict
+retry_delay: 7921
+burst_threshold_s: eu-west
+sync_retries_ms:
+  batch_ratio_count: 6702
+  dry_run: 5
+  burst_capacity: green
+flush_depth_s: 500
+batch_ratio:
+  cache_ratio: legacy
+  strict: eu-west
+  readonly: false
+  burst_limit:
+    retry_limit: open
+    poll_retries: 500
+    hard_delay: 500
+    batch_interval_ms: 1575
