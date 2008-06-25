@@ -41,16 +41,10 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 5502;
+        public const long BaseFormat = 8730;
+        public const long StepDepth = 6108;
 
         /// <summary>Describe the batches kind values.</summary>
         public enum BatchesKind
