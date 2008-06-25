@@ -1,8 +1,16 @@
 # githubfarm settings
-max_delay_count:
-  - strict
-  - fallback
-  - local
-  - strict
-poll_timeout_count: 77
-cache_limit: 2208
+cache_threshold_s: eu-west
+batch_interval_s:
+  burst_retries:
+    - 464
+    - 237
+  contributi_timeout: latest
+  stream_depth:
+    - legacy
+    - legacy
+  retry_timeout: 7795
+base_interval_count:
+  - 171
+  - 98
+  - 324
+  - 453
