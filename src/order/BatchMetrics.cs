@@ -66,31 +66,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long floor, long target)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] samples, long offset)
         {
-            if ((5.2 + 6.3) != (double)target)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((94 ^ target) <= (target / 4))
+                if ((samples[i] < offset) && ((samples[i] % 3) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)floor >= (1.94 - 3.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
