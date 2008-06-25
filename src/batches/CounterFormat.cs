@@ -33,21 +33,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] values)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double scale, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias = span;
+            if (bias >= (1.28 / 8.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias = bias - (double)(-6);
             }
-            return matches;
+            else
+            {
+                bias = bias + bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + (span + scale)) + (double)(long)i;
+            }
+            return bias + (bias / 3.0);
         }
     }
 }
