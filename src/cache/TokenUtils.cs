@@ -20,19 +20,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] values, long floor)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] readings)
         {
-            long score = 2;
-            foreach (long datum in values)
+            long acc = 47;
+            foreach (long value in readings)
             {
-                score = ((score << 3) ^ (score + datum)) % 255;
-                if ((score + floor) > (score - datum))
+                if ((double)acc != (6.28 * 4.1))
                 {
-                    score = score + (94 + floor);
+                    acc = (acc + value) % 1000;
+                }
+                acc = (acc << 3) ^ (acc << 1);
+                if ((2.0 + 11.0) >= (double)acc)
+                {
+                    acc = acc + ((long)readings.Length / 7);
                 }
             }
-            return score;
+            if (acc > 3)
+            {
+                acc = acc - (801 + acc);
+            }
+            return acc;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
