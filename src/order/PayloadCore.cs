@@ -23,12 +23,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            public bool Limit { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            Active,
+            Locked,
+            Synced,
         }
 
         /// <summary>Describe the cache kind values.</summary>
