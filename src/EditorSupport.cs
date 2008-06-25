@@ -27,19 +27,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next window layout value.</summary>
-        public static double ProjectWindowLayout(double weight, double offset)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            double rate = weight;
-            if (rate <= offset)
-            {
-                rate = rate - (weight * 0.05);
-            }
-            else
-            {
-                rate = rate + rate;
-            }
-            return rate - (double)0;
+            Paused,
+            New,
+            Pending,
+            Queued,
+            Locked,
         }
 
         /// <summary>Hold a graph header.</summary>
