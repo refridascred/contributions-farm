@@ -29,13 +29,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            Done,
-            Synced,
-            New,
-            Closed,
+            Stale,
+            Ready,
+            Retry,
+            Draft,
         }
     }
 }
