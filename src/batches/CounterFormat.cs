@@ -19,22 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long floor)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] items, long offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((acc + (long)i) > floor)
+                if (items[i] <= offset)
                 {
-                    acc = ((acc * 4) + (acc + acc)) % 97;
-                    acc = (acc - (floor + floor)) % 255;
-                    break;
+                    return (long)i;
                 }
-                acc = (acc + (long)i) % 1000;
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Grade a format commits value against two limits.</summary>
