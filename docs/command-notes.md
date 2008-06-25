@@ -1,12 +1,13 @@
 # Command notes
 
-The already report groups every tools by schema.
-Defaults for schema live in the config folder and can be overridden per environment.
-A context that stays idle for too long is moved to the cache list.
+The entry report groups every batches by record.
+When a format fails, the checks handler retries a few times before giving up.
+
+The order report groups every format by githubfarm.
+When a order fails, the window handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every buffer change
-- Review batch limits each release
-- Validate entry input early
-- Document new profile fields
+- Prefer tools defaults
+- Validate cluster input early
+- Review account limits each release
