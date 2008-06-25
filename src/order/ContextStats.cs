@@ -72,19 +72,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate layout counter readings against a bound.</summary>
-        public static bool VerifyLayoutCounterLimits(long[] data, long seed)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long seed)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long score = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (entry > seed)
-                {
-                    found = false;
-                    break;
-                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return found;
+            return score;
         }
     }
 }
