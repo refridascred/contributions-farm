@@ -1,8 +1,16 @@
 {
-  "idle_size_pct": "edge",
-  "soft_size": 3759,
-  "flush_timeout_count": true,
-  "retry_ratio_count": 84.61,
-  "verbose": ["green", "legacy", "primary"],
-  "batch_window_s": 87
+  "compress": ["local", "strict", "staging"],
+  "tools_delay": "eu-west",
+  "batch_threshold": {
+    "idle_interval": 60,
+    "burst_ttl": 4268,
+    "support_timeout": {
+      "poll_capacity": false,
+      "hard_interval_count": 65.24,
+      "schema_delay": ["strict", "cached", "edge"],
+      "farm_capacity": [370, 183, 268]
+    }
+  },
+  "persist": "standard",
+  "strict": false
 }
