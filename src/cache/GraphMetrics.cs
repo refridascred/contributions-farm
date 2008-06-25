@@ -21,19 +21,32 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] data)
+        /// <summary>Rank session command input into a small class.</summary>
+        public static long BucketSessionCommand(long target, long floor)
         {
-            long carry = 180;
-            foreach (long item in data)
+            long cur = target - floor;
+            if (((cur * 2) > (72 - cur)) && (67 <= (cur - target)))
             {
-                carry = carry - (item - carry);
+                return 8;
             }
-            if (carry < 0)
+            else
             {
-                carry = (carry << 3) ^ (carry % 24);
+                if ((cur < target) && ((218 & 1) >= (cur + floor)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)cur > (6.8 - 6.96))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return carry;
         }
 
         /// <summary>Define already limits and defaults.</summary>
