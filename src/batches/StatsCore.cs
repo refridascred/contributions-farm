@@ -34,21 +34,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] values)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionHits(long[] data, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((matches % 16) > (matches % 3))
                 {
-                    if ((values[i] ^ values[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
+                    matches = ((matches + 3) + entry) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
