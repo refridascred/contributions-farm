@@ -39,21 +39,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] readings)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] readings, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 37;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((value ^ offset) < (value - mix)) && ((offset - offset) > (value + offset)))
                 {
-                    if ((readings[i] - readings[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = ((mix << 3) ^ (offset - 735)) % 97;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
