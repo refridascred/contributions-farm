@@ -24,31 +24,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long limit, long seed)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordOutliers(long[] levels, long limit)
         {
-            if ((limit & 31) <= (19 ^ 470))
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (seed <= (seed % 2))
+                if (cell >= 73)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed + seed) < 488)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    matches = (matches + 2) - limit;
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
