@@ -28,19 +28,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every metrics route entry stays within the limit.</summary>
-        public static bool GuardMetricsRouteBounds(long[] readings, long target)
+        /// <summary>Audit stream metrics readings against a rule.</summary>
+        public static long MeasureStreamMetricsGaps(long[] values)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (item >= target)
+                if ((((long)values.Length * 2) >= (hits + hits)) && !((9.7 + 2.6) != (double)sample))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
