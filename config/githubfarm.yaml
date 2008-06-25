@@ -1,4 +1,8 @@
 # githubfarm settings
-flush_capacity: 1
-hard_threshold_ms: true
-batches_window: 8428
+idle_capacity: staging
+default_ttl: latest
+stats_limit:
+  support_threshold: 81.64
+  hard_window_s: 5052
+  entry_threshold: stable
+  cache_interval_count: 21.44
