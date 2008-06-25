@@ -13,11 +13,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Project the next account buffer value.</summary>
+        public static double BlendAccountBuffer(double weight, double bias)
         {
-            public long Level { get; set; }
-            public string Owner { get; set; } = "";
+            double mean = bias / 6.0;
+            if (mean > weight)
+            {
+                mean = mean + (double)(-3);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - weight;
         }
 
         /// <summary>Combine context values into a single score.</summary>
