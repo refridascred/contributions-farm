@@ -56,11 +56,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleBudget = 9708;
-        public const long MaxSchema = 2007;
-        public const string DefaultSchema = "staging-1";
-        public const double MinScore = 41.86;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 5025;
+        public const long SoftRatio = 7728;
+        public const long CacheLevel = 4093;
 
         /// <summary>Count the channel stream entries that pass the check.</summary>
         public static long AuditChannelStreamGaps(long[] series, long origin)
