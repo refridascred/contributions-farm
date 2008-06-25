@@ -35,18 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] values)
+        /// <summary>Digest a series of payload stream entries.</summary>
+        public static long CombinePayloadStream(long[] samples)
         {
-            long anchor = -5;
-            foreach (long item in values)
+            long sum = 199;
+            foreach (long datum in samples)
             {
-                if ((double)item == (double)(-984))
+                if (((886 + (long)samples.Length) > (datum / 7)) && (datum <= (datum & 127)))
                 {
-                    anchor = ((anchor * 5) + item) % 101;
+                    sum = (sum * 5) + (sum & 15);
                 }
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Define order limits and defaults.</summary>
