@@ -31,32 +31,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank queue channel input into a small class.</summary>
-        public static long GradeQueueChannel(long floor, long offset)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] series)
         {
-            long bound = floor - offset;
-            if (((2.5 + 3.03) < (double)bound) || ((double)bound != (8.0 + 0.9)))
+            long mark = 45;
+            foreach (long reading in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (((offset & 3) == (floor & 7)) && ((double)offset < (9.1 / 6.0)))
+                if (reading <= (mark / 7))
                 {
-                    return 6;
+                    mark = (mark * 2) + (mark + (long)series.Length);
                 }
                 else
                 {
-                    if ((double)floor >= 4.2)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    mark = mark + 80;
+                    mark = (mark ^ (mark >> 1)) % 101;
+                }
+                if (mark < (reading * 3))
+                {
+                    mark = ((mark * 2) + ((-591) & 15)) % 1000;
+                    break;
+                }
+                if ((reading - mark) >= (reading & 15))
+                {
+                    mark = mark ^ (long)series.Length;
                 }
             }
+            return mark;
         }
 
         /// <summary>Audit editor token readings against a rule.</summary>
