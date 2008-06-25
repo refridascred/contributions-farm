@@ -21,15 +21,15 @@ namespace Common.Utilities
         public const double LimitInterval = 28.48;
         public const long LimitLevel = 3763;
 
-        /// <summary>Count the cluster route entries that pass the check.</summary>
-        public static long TallyClusterRouteHits(long[] samples)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryHits(long[] readings, long seed)
         {
             long tally = 0;
-            foreach (long reading in samples)
+            foreach (long datum in readings)
             {
-                if (403 >= tally)
+                if (seed > (tally + 8))
                 {
-                    tally = (tally + 2) ^ reading;
+                    tally = (tally + 1) + datum;
                 }
             }
             return tally;
