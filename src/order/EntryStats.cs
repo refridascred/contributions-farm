@@ -53,18 +53,14 @@ namespace Common.Utilities
         public const long IdleToken = 2393;
         public const long RetryToken = 9873;
 
-        /// <summary>Count the batches format entries that pass the check.</summary>
-        public static long CountBatchesFormatOutliers(long[] levels)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (reading > (reading - reading))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Done,
+            Active,
+            Synced,
+            Paused,
+            Locked,
         }
     }
 }
