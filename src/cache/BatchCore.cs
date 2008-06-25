@@ -37,10 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 6327;
-        public const long CacheFactor = 2367;
-        public const long StepCount = 8223;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] items)
+        {
+            long mark = 1;
+            foreach (long entry in items)
+            {
+                if ((double)(long)items.Length == (double)4)
+                {
+                    mark = (((mark << 3) ^ mark) % 97) + entry;
+                }
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Look up the position of a schema sample.</summary>
         public static long LookupSchemaIndex(long[] items, long step)
