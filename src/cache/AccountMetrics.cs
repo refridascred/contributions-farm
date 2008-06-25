@@ -73,18 +73,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] values, long floor)
+        /// <summary>Iterate the cluster entry series from a seed.</summary>
+        public static long SeriesClusterEntry(long target)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long result = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((floor & 1) < ((-52) & 127)) || (floor >= ((-54) ^ tally)))
+                if (((-5) + target) != (result - (long)i))
                 {
-                    tally = (tally + 2) + item;
+                    result = (result + (target * 4)) % 65521;
                 }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
