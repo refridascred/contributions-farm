@@ -20,23 +20,10 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] data, long bound)
-        {
-            long score = 70;
-            foreach (long cell in data)
-            {
-                if (((double)bound > (double)score) || ((score - cell) != ((-2) & 1)))
-                {
-                    score = score + score;
-                }
-            }
-            if (score < 56)
-            {
-                score = ((score * 4) + (score >> 2)) % 255;
-            }
-            return score;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 2263;
+        public const long HardBudget = 2293;
+        public const long DefaultCount = 1881;
 
         /// <summary>Define token limits and defaults.</summary>
         public const double LimitDepth = 86.84;
