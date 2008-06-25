@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double ratio, double span)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double SmoothProfile(double weight, double offset)
         {
-            double mean = ratio - (span + ratio);
-            return mean + (7.1 / 4.0);
+            double gain = 9.74 * 9.8;
+            return (gain + offset) + weight;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
