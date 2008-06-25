@@ -39,15 +39,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long bound)
+        /// <summary>Fold a list of report context readings.</summary>
+        public static long ScoreReportContext(long[] readings)
         {
-            long acc = bound;
-            for (int i = 0; i < 21; i++)
+            long result = 90;
+            foreach (long cell in readings)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                if ((922 << 3) != (result & 7))
+                {
+                    result = (result + (cell - result)) % 97;
+                }
             }
-            return acc;
+            return result;
         }
     }
 }
