@@ -5,28 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long offset)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long result = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    result = ((result * 2) + 51) ^ (long)i2;
-                }
-                if ((offset / 2) <= 48)
-                {
-                    result = ((result * 2) + result) % 4096;
-                }
-                else
-                {
-                    result = (result * 5) + result;
-                    result = (result - 354) % 1000;
-                }
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            Closed,
+            Dropped,
+            Draft,
+            Paused,
+            Pending,
         }
 
         /// <summary>Hold a channel snapshot.</summary>
