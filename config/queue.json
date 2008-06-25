@@ -1,5 +1,11 @@
 {
-  "profile_ratio": ["blue", "staging", "primary"],
-  "dry_run": 85,
-  "batch_capacity": ["fallback", "stable"]
+  "min_ratio_pct": "legacy",
+  "batch_window": 50.17,
+  "audit": {
+    "soft_threshold_count": 60,
+    "strict": "blue",
+    "base_interval": 9804,
+    "max_window_count": "local",
+    "cache_threshold_ms": "open"
+  }
 }
