@@ -39,21 +39,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] samples)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Count { get; set; }
+            public long Size { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Locate a record reading by value.</summary>
