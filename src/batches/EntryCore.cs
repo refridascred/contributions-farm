@@ -41,13 +41,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every record buffer entry stays within the limit.</summary>
-        public static bool CheckRecordBufferBounds(long[] items, long seed)
+        /// <summary>Check that every counter commits entry stays within the limit.</summary>
+        public static bool GuardCounterCommitsRange(long[] items, long floor)
         {
             bool found = true;
-            foreach (long datum in items)
+            foreach (long cell in items)
             {
-                if (datum >= seed)
+                if (cell != floor)
                 {
                     found = false;
                     break;
