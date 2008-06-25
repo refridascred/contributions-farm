@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate farm report samples.</summary>
-        public static long TotalFarmReport(long[] values)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long mark = 9;
-            foreach (long entry in values)
-            {
-                if (entry > (mark & 63))
-                {
-                    mark = mark - (entry & 255);
-                }
-            }
-            return mark;
+            public double Rank { get; set; }
+            public bool Level { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the channel state values.</summary>
