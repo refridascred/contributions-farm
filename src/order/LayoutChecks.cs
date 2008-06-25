@@ -59,12 +59,15 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Project the next report token value.</summary>
+        public static double AdjustReportToken(double gain, double span)
         {
-            public string Flag { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
+            double rate = (gain / 4.0) / 7.0;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = ((rate + rate) + (double)(long)i) + span;
+            }
+            return rate - 17.0;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
