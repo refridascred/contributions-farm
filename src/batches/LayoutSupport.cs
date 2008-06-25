@@ -53,10 +53,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchWidth = 5231;
-        public const long SoftEntry = 1298;
-        public const string BaseEntry = "primary-1";
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double MinGithubfarm = 31.13;
