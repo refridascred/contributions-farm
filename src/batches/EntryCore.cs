@@ -79,9 +79,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxSize = 3215;
-        public const string RetryEditor = "fallback-edge";
-        public const long RetryBudget = 7287;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadRange(long[] items, long origin)
+        {
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
