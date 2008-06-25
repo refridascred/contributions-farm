@@ -1,8 +1,7 @@
 {
-  "sync_timeout_ms": "fallback",
-  "compress": "stable",
-  "poll_window_count": 30,
-  "support_threshold": ["primary", "strict"],
-  "min_ratio_ms": "local",
-  "stats_ratio": [171, 461, 28, 449]
+  "verbose": "eu-west",
+  "compress": "open",
+  "retry_limit_ms": false,
+  "min_ttl_pct": 100,
+  "default_limit": 9595
 }
