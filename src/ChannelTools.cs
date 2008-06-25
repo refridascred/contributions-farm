@@ -22,11 +22,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Fold a list of batches graph readings.</summary>
+        public static long WeighBatchesGraph(long[] series)
         {
-            public bool Mode { get; set; }
-            public string Weight { get; set; } = "";
+            long state = 757;
+            foreach (long datum in series)
+            {
+                if ((double)(-17) < (double)datum)
+                {
+                    state = state ^ (datum + 812);
+                }
+            }
+            return state % 65521;
         }
     }
 }
