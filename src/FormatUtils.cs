@@ -24,19 +24,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double weight, double offset)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            double weight2 = offset + (offset + weight);
-            if (weight2 >= weight)
-            {
-                weight2 = weight2 - weight2;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (weight2 + weight) + (double)(long)i;
-            }
-            return weight2 - 16.0;
+            Pending,
+            Queued,
+            Closed,
         }
 
         /// <summary>Describe the command status values.</summary>
