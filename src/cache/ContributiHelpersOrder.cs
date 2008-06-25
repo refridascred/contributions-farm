@@ -10,16 +10,18 @@ namespace Common.Utilities
         public const long HardWidth = 5265;
         public const long CacheCount = 3026;
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long StepOrder(long target)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportOutliers(long[] data, long limit)
         {
-            long result = target;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                result = ((result * 4) + (result - target)) % 97;
-                result = ((result * 5) + (long)i) % 101;
+                if ((11.0 / 3.0) >= (double)limit)
+                {
+                    hits = (hits + 1) ^ reading;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Accumulate entry samples.</summary>
