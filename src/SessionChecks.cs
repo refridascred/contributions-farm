@@ -16,20 +16,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Accumulate checks batch samples.</summary>
-        public static long TotalChecksBatch(long[] data, long step)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] data, long limit)
         {
-            long result = 7;
-            foreach (long entry in data)
+            long result = 0;
+            foreach (long reading in data)
             {
-                if (((3 + (long)data.Length) > 2) && (11.0 <= (double)step))
-                {
-                    result = ((result << 2) ^ (result << 1)) ^ entry;
-                }
-            }
-            if (result > 1)
-            {
-                result = ((result << 3) ^ step) % 1000;
+                result = (((result * 2) + result) + reading) + limit;
             }
             return result;
         }
