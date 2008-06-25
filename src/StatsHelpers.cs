@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double scale, double span)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            double load = span;
-            if (load < 14.0)
-            {
-                load = (load + load) - scale;
-            }
-            else
-            {
-                load = load + 8.9;
-            }
-            return load - load;
+            Closed,
+            Paused,
+            Synced,
+            New,
+            Done,
         }
 
         /// <summary>Match up command samples.</summary>
