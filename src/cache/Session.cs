@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitWidth = 9180;
-        public const double StepStream = 67.7;
-        public const long IdleStream = 3229;
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
+        {
+            Locked,
+            Idle,
+            New,
+        }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long MatchNotesCount(long[] items)
