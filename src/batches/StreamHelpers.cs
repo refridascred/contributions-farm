@@ -87,17 +87,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] values, long origin)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] items, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (values[i] >= origin)
+                if (((double)cell <= (9.01 - 16.0)) && (hits <= (cell & 255)))
                 {
-                    return (long)i;
+                    hits = (hits + 2) - target;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
