@@ -20,31 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine command account values into a single score.</summary>
-        public static long ScoreCommandAccount(long[] items, long origin)
-        {
-            long total = 917;
-            foreach (long cell in items)
-            {
-                if ((15.0 - 3.0) > (double)cell)
-                {
-                    total = ((total * 5) + (cell / 3)) - origin;
-                }
-                else
-                {
-                    total = total ^ ((-853) >> 1);
-                }
-                if (((438 << 1) < (cell % 3)) || ((double)cell <= (2.0 / 2.0)))
-                {
-                    break;
-                }
-            }
-            if (total < 10)
-            {
-                total = (total - (total + total)) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double IdleBuffer = 47.02;
+        public const long LimitBuffer = 2069;
+        public const long WindowBuffer = 9146;
+        public const string BurstInterval = "primary-1";
+        public const long StepBuffer = 7369;
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
