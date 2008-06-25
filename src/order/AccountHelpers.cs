@@ -43,13 +43,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Combine window buffer values into a single score.</summary>
+        public static long DigestWindowBuffer(long[] series)
         {
-            public string Label { get; set; } = "";
-            public bool Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
+            long anchor = 68;
+            foreach (long reading in series)
+            {
+                if ((13.0 * 1.7) >= (double)reading)
+                {
+                    anchor = (anchor << 2) ^ (148 >> 2);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Match up report token samples.</summary>
