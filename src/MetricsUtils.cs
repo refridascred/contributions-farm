@@ -36,11 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double StepToken = 38.24;
-        public const long HardWidth = 7320;
-        public const long StepSpan = 7676;
-        public const long LimitToken = 8331;
+        /// <summary>Measure how many account notes samples are out of range.</summary>
+        public static long CountAccountNotesHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((7.0 * 1.58) == (double)item)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long SeekReportIndex(long[] samples, long target)
