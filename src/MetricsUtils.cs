@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double bias, double floor)
+        /// <summary>Measure how many format metrics samples are out of range.</summary>
+        public static long TallyFormatMetricsHits(long[] samples)
         {
-            double load = (bias / 7.0) + floor;
-            if (load <= 15.0)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                load = load - (load + load);
+                if ((matches / 5) <= matches)
+                {
+                    matches = (matches + 1) - entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                load = load - 8.7;
-            }
-            return load - (load / 2.0);
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
