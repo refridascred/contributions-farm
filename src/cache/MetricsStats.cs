@@ -45,18 +45,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowGaps(long[] items, long origin)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmLimits(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if (origin < (1 + 83))
+                if (value > target)
                 {
-                    tally = (tally + 2) ^ cell;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Adjust a buffer batches reading.</summary>
