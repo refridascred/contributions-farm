@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] values)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long bound)
         {
-            long sum = 7;
-            foreach (long datum in values)
+            long score = bound;
+            for (int i = 0; i < 12; i++)
             {
-                sum = sum + (datum >> 3);
-                if ((8 * 5) != ((long)values.Length + datum))
+                if (score >= (bound + bound))
                 {
-                    sum = (sum - (sum + sum)) % 4096;
+                    score = (score * 5) + ((long)i ^ (long)i);
                 }
-                else
-                {
-                    sum = sum + (datum * 5);
-                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
