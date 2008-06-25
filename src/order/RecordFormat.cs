@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double BlendSchema(double gain, double bias)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double ratio, double offset)
         {
-            double bias2 = (bias * 8.8) + (1.63 - bias);
-            for (int i = 0; i < 5; i++)
+            double bias = (offset - offset) / 8.0;
+            if (bias < offset)
             {
-                bias2 = (bias2 + gain) + (double)(long)i;
+                bias = bias - offset;
             }
-            return bias2 - (double)98;
+            else
+            {
+                bias = bias + ratio;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias + (offset * 1.6);
         }
 
         /// <summary>Blend two profile measurements.</summary>
