@@ -77,30 +77,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long SortToken(long origin, long origin2)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long bound, long seed)
         {
-            if ((origin & 63) > origin)
+            long cur = bound + seed;
+            if (cur > (seed - 579))
             {
-                return 1;
+                return 6;
             }
             else
             {
-                if (((4.2 - 4.5) <= (double)origin) || (origin2 > (origin >> 3)))
+                if ((double)cur <= (9.7 + 9.3))
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    if ((9.87 - 5.37) <= (double)origin)
+                    if (((7 ^ seed) == (cur - bound)) || ((bound ^ cur) < (seed / 8)))
                     {
-                        return 6;
+                        return 8;
                     }
                     else
                     {
-                        if ((double)origin <= (4.0 + 16.0))
+                        if ((double)(-594) <= 4.3)
                         {
-                            return 8;
+                            return 7;
                         }
                         else
                         {
