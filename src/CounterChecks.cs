@@ -64,12 +64,16 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Derive the next route window value from a seed.</summary>
+        public static long IterateRouteWindow(long bound)
         {
-            Done,
-            Failed,
-            Active,
+            long state = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                state = ((state * 2) + (long)i) % 255;
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Count the context schema entries that pass the check.</summary>
