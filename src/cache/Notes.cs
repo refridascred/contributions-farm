@@ -65,18 +65,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterMatches(long[] values)
+        /// <summary>Locate a cache route reading by value.</summary>
+        public static long LookupCacheRouteIndex(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (48 >= ((long)values.Length + datum))
+                if (levels[i] >= bound)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
