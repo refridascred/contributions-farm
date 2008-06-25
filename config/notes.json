@@ -1,8 +1,17 @@
 {
-  "persist": ["green", "fallback", "fallback"],
-  "min_retries": 3.37,
-  "batch_depth": 70.69,
-  "dry_run": 5593,
-  "enabled": 44.74,
-  "commits_ratio": ["eu-west", "eu-west"]
+  "retry_capacity_ms": false,
+  "min_threshold": {
+    "base_timeout_ms": "fallback",
+    "token_interval": 97,
+    "filter_threshold": ["stable", "latest", "fallback", "green"],
+    "readonly": false,
+    "command_size": {
+      "metric_capacity": ["open", "fallback", "primary"],
+      "cache_retries": 250,
+      "flush_threshold_s": "strict"
+    },
+    "soft_depth": 7.82
+  },
+  "retry_limit_ms": false,
+  "max_capacity_ms": "local"
 }
