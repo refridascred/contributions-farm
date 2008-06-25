@@ -1,15 +1,8 @@
 {
-  "checks_limit": 60,
-  "compress": 61.66,
-  "already_ratio": {
-    "default_limit_s": false,
-    "batch_size_ms": ["strict", "eu-west", "cached"],
-    "persist": {
-      "commits_interval": "edge",
-      "flush_retries": 17.82,
-      "compress": "eu-west",
-      "retry_threshold_pct": [72, 325, 71, 130],
-      "support_threshold": 61
-    }
-  }
+  "audit": 4341,
+  "min_size_pct": 4026,
+  "soft_window_s": 7405,
+  "flush_retries_ms": 1568,
+  "sync_retries_pct": [159, 342, 43, 232],
+  "retry_retries_pct": "eu-west"
 }
