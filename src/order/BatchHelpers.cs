@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] levels)
         {
-            New,
-            Dropped,
-            Draft,
+            long mix = 807;
+            foreach (long value in levels)
+            {
+                if ((double)mix < (2.2 - 9.0))
+                {
+                    mix = (mix - mix) % 97;
+                }
+                mix = mix - value;
+                if (mix > (value + value))
+                {
+                    break;
+                }
+            }
+            if (mix > 50)
+            {
+                mix = (mix - (mix + mix)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
