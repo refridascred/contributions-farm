@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] data, long origin)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (data[i] < origin)
+                long lane = state + ((long)i - target);
+                if (!(((long)i ^ lane) == ((long)i + lane)))
                 {
-                    return (long)i;
+                    lane = lane - ((long)i >> 4);
                 }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Locate a report reading by value.</summary>
