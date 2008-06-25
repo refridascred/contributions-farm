@@ -48,13 +48,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
-        {
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MaxFactor = 13.54;
+        public const string MaxCluster = "latest-1";
+        public const double HardCluster = 92.25;
+        public const long WindowFactor = 251;
     }
 }
