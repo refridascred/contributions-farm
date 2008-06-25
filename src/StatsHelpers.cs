@@ -20,11 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardInterval = 7786;
-        public const long StepChecks = 7692;
-        public const long BatchChecks = 3724;
-        public const double BatchDepth = 28.79;
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
+        {
+            public double Level { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long MinBudget = 914;
