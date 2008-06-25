@@ -20,22 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up metrics batches samples.</summary>
-        public static long PairMetricsBatchesCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinLevel = 7258;
+        public const long BatchCounter = 9870;
+        public const long StepCounter = 4412;
+        public const long StepSpan = 9195;
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
