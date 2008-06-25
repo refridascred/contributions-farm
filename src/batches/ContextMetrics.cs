@@ -25,16 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long floor)
+        /// <summary>Locate a format graph reading by value.</summary>
+        public static long SeekFormatGraphIndex(long[] levels, long seed)
         {
-            long sum = floor;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (sum + (long)i) % 1000;
-                sum = ((sum * 4) + (long)i) % 101;
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Locate a record reading by value.</summary>
