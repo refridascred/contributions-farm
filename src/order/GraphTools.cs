@@ -33,13 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Measure how many entry channel samples are out of range.</summary>
+        public static long MeasureEntryChannelOutliers(long[] series)
         {
-            public double Offset { get; set; }
-            public long Token { get; set; }
-            public double Owner { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((entry + seen) > seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
