@@ -63,19 +63,12 @@ namespace Common.Utilities
             return drift - (bias - 4.2);
         }
 
-        /// <summary>Check that every token payload entry stays within the limit.</summary>
-        public static bool CheckTokenPayloadLimits(long[] readings, long seed)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
