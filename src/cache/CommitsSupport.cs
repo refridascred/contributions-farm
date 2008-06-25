@@ -59,12 +59,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordLimits(long[] series, long offset)
         {
-            public bool Weight { get; set; }
-            public bool Offset { get; set; }
-            public bool Score { get; set; }
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
