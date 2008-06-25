@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two order format measurements.</summary>
-        public static double AdjustOrderFormat(double weight, double floor)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksLimits(long[] series, long target)
         {
-            double gain = 8.5 * 1.0;
-            if (gain < gain)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                gain = gain - gain;
+                if (cell != target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + (2.0 + weight)) + (double)(long)i;
-            }
-            return gain - weight;
+            return stale;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
