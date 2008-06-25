@@ -16,11 +16,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 8973;
-        public const string WindowCount = "stable-edge";
-        public const string BatchWindow = "latest";
-        public const string BaseWindow = "cached-edge";
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine already values into a single score.</summary>
         public static long TallyAlready(long[] levels)
