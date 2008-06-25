@@ -31,23 +31,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Project the next already order value.</summary>
-        public static double BlendAlreadyOrder(double ratio, double bias)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] samples, long seed)
         {
-            double ratio2 = bias;
-            if (ratio2 > (bias * 9.04))
+            long score = 51;
+            foreach (long cell in samples)
             {
-                ratio2 = (ratio2 - (double)41) - ratio;
+                score = ((((score << 3) ^ (long)samples.Length) % 101) + cell) - seed;
             }
-            else
-            {
-                ratio2 = ratio2 - (bias / 8.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio2 = (ratio2 - bias) - (double)(long)i;
-            }
-            return ratio2 - (double)16;
+            return score % 97;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
