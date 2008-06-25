@@ -76,22 +76,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the context schema entries that pass the check.</summary>
-        public static long TallyContextSchemaMatches(long[] values)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((9.57 + 5.96) > (double)datum)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Ratio { get; set; }
+            public long Weight { get; set; }
+            public bool Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Validate record already readings against a bound.</summary>
