@@ -1,15 +1,29 @@
 # support settings
-profile_ratio: true
-verbose: 45.71
-idle_capacity_pct: edge
-default_capacity_pct:
-  warm_interval_ms: true
-  hard_size_ms:
-    - 184
-    - 461
-    - 46
-    - 435
-  idle_ttl: open
-  support_timeout: 46
-  poll_limit_pct: stable
-  githubfarm_retries: 86.09
+burst_window_count:
+  - standard
+  - strict
+  - green
+readonly: false
+hard_size_ms:
+  soft_limit_count: blue
+  default_interval_s:
+    - 135
+    - 470
+    - 350
+    - 9
+  verbose:
+    sync_ttl_pct:
+      - 187
+      - 218
+      - 284
+    strict: 45.86
+    payload_retries: 65
+    flush_capacity: 12
+    hard_ttl_s: 75
+  base_delay:
+    - 406
+    - 408
+    - 37
+    - 95
+batch_delay: green
+min_interval: 56
