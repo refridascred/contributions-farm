@@ -35,12 +35,13 @@ namespace Common.Utilities
         public const long CacheWidth = 5956;
         public const string IdleQueue = "local";
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            public bool Size { get; set; }
-            public string Score { get; set; } = "";
-            public double Region { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Owner { get; set; }
+            public double Mode { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
