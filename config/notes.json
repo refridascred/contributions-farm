@@ -1,8 +1,9 @@
 {
-  "flush_ttl": 68.88,
-  "flush_capacity_ms": 49.35,
-  "burst_depth_count": [405, 175],
-  "sync_ttl_s": "open",
-  "metrics_depth": 49,
-  "min_limit_s": 0.29
+  "tools_retries": 7788,
+  "sync_window": {
+    "notes_timeout": false,
+    "idle_capacity_count": "blue",
+    "min_depth_s": ["stable", "local"]
+  },
+  "layout_ratio": true
 }
