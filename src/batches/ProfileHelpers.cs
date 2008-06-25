@@ -32,13 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] series, long origin)
         {
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
-            public double Region { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the route state values.</summary>
