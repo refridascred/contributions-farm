@@ -68,19 +68,18 @@ namespace Common.Utilities
         public const double MaxContributi = 35.77;
         public const long MinInterval = 4188;
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long step)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long limit)
         {
-            long carry = step;
-            for (int i = 0; i < 10; i++)
+            long state = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((866 + step) >= (step % 10)))
-                {
-                    carry = ((carry << 2) ^ (carry + step)) % 1000;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
+                state = state + (state + 18);
+                state = (state ^ (limit / 9)) % 65521;
+                state = state - (state + limit);
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
