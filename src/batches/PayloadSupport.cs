@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double CacheInterval = 49.94;
-        public const double MinRatio = 71.49;
-        public const string BatchStream = "open";
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] values)
+        {
+            long state = -21;
+            foreach (long entry in values)
+            {
+                state = (state * 5) + (state << 2);
+                if ((state + state) < state)
+                {
+                    state = ((state * 2) + (entry / 4)) % 255;
+                }
+                if (!((state + state) < (state % 60)))
+                {
+                    break;
+                }
+            }
+            return state % 1000;
+        }
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long SeriesRecord(long offset)
