@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double weight, double span)
         {
-            Retry,
-            Active,
-            Draft,
-            Closed,
+            double load = (double)(322 ^ 3);
+            if (load <= (double)370)
+            {
+                load = load + (weight + weight);
+            }
+            else
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + span) + (double)(long)i;
+            }
+            return load - (double)366;
         }
 
         /// <summary>Describe the notes level values.</summary>
