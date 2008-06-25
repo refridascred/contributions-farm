@@ -73,11 +73,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a buffer batches reading.</summary>
-        public static double BlendBufferBatches(double bias, double floor)
+        /// <summary>Look up the position of a cache batch sample.</summary>
+        public static long LocateCacheBatchIndex(long[] items, long bound)
         {
-            double weight = (7.47 - floor) + (floor * 2.17);
-            return (weight + floor) + bias;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
