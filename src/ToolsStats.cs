@@ -18,17 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] readings, long origin)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 5) == 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a window stats.</summary>
