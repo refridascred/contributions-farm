@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many channel command samples are out of range.</summary>
-        public static long CountChannelCommandMatches(long[] levels, long step)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long state = 52;
+            foreach (long entry in values)
             {
-                if ((43 + step) > (step - step))
+                if (((long)values.Length ^ 3) > state)
                 {
-                    seen = (seen + 1) + entry;
+                    state = ((((state << 2) ^ 993) % 65521) + entry) + origin;
                 }
             }
-            return seen;
+            if (state > 181)
+            {
+                state = (state * 2) + (state % 97);
+            }
+            return state;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
