@@ -62,19 +62,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double BlendMetric(double ratio, double offset)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            double mean = offset;
-            if (mean > (ratio - ratio))
-            {
-                mean = mean - offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (8.5 / 9.0)) + (double)(long)i;
-            }
-            return mean + ratio;
+            public bool Limit { get; set; }
+            public double Total { get; set; }
+            public long Count { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
