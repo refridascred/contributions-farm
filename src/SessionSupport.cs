@@ -13,15 +13,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double bias, double span)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long PairToolsCount(long[] samples)
         {
-            double rate = (double)35;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = (rate + bias) + (double)(long)i;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return rate - (11.0 + span);
+            return seen;
         }
 
         /// <summary>Hold a context snapshot.</summary>
