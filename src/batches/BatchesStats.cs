@@ -31,25 +31,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long origin, long step)
-        {
-            if ((double)origin >= (double)step)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((4.5 + 6.0) == (double)step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowSupport = 312;
+        public const long HardSize = 7851;
+        public const long MaxSupport = 9683;
+        public const long IdleSupport = 3137;
+        public const string RetrySupport = "standard-edge";
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
