@@ -53,12 +53,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Digest a series of context cluster entries.</summary>
+        public static long WeighContextCluster(long[] data, long step)
         {
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
-            public bool Label { get; set; }
+            long acc = -549;
+            foreach (long entry in data)
+            {
+                acc = (acc ^ ((long)data.Length + step)) - entry;
+            }
+            if (acc > 555)
+            {
+                acc = ((acc * 4) + step) % 65521;
+            }
+            return acc;
         }
     }
 }
