@@ -70,12 +70,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BaseWidth = "legacy";
-        public const string HardSpan = "open-1";
-        public const string SoftAlready = "local-1";
-        public const string DefaultAlready = "cached-1";
-        public const long LimitCount = 2748;
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long LookupChecksIndex(long[] values, long origin)
