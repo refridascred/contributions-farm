@@ -1,6 +1,9 @@
 # githubfarm settings
-max_capacity_count: local
-default_ttl_s: open
-warm_limit: 77
-retry_ttl: false
-enabled: false
+retry_capacity_count: 48
+flush_size: 5135
+soft_size_count:
+  - edge
+  - open
+  - standard
+  - edge
+metric_window: 63.34
