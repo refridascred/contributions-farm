@@ -20,18 +20,24 @@ namespace Common.Utilities
         public const double BatchMetric = 52.51;
         public const double RetryLevel = 32.0;
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenMatches(long[] levels, long floor)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long step, long seed)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            if (8.4 <= (double)step)
             {
-                if ((double)floor == (double)seen)
+                return 7;
+            }
+            else
+            {
+                if ((3.07 / 3.0) <= (double)step)
                 {
-                    seen = (seen + 2) + value;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Validate notes route readings against a bound.</summary>
