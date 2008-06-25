@@ -20,13 +20,24 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long origin, long step)
         {
-            Done,
-            Queued,
-            Locked,
-            Ready,
+            if ((double)origin >= (double)step)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((4.5 + 6.0) == (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a schema entry.</summary>
