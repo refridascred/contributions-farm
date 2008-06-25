@@ -20,20 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandBounds(long[] levels, long seed)
-        {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 8973;
+        public const string WindowCount = "stable-edge";
+        public const string BatchWindow = "latest";
+        public const string BaseWindow = "cached-edge";
 
         /// <summary>Define context limits and defaults.</summary>
         public const long BurstScore = 8554;
