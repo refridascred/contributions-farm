@@ -56,12 +56,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Audit support batches readings against a rule.</summary>
+        public static long TallySupportBatchesMatches(long[] levels)
         {
-            public double Level { get; set; }
-            public double Weight { get; set; }
-            public bool Mode { get; set; }
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((5 >> 5) >= seen)
+                {
+                    seen = (seen + 3) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a metrics header.</summary>
