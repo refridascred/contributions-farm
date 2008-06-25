@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
-        {
-            Retry,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MinCount = 72.3;
+        public const long HardCommits = 4745;
+        public const long BurstCommits = 3224;
+        public const long SoftCommits = 8767;
+        public const long BatchCommits = 3420;
 
         /// <summary>Project the next account buffer value.</summary>
         public static double BlendAccountBuffer(double weight, double bias)
