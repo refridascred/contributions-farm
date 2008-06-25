@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] readings, long step)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long limit, long bound)
         {
-            long score = 7;
-            foreach (long reading in readings)
+            long bound2 = limit - bound;
+            if (13.0 < (double)limit)
             {
-                score = (((score ^ (77 << 2)) % 65521) + reading) + step;
+                return 1;
             }
-            return score % 1000;
+            else
+            {
+                if (((-995) * 5) > (bound * 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit >> 4) >= bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)limit <= (9.88 * 1.6)) && ((limit % 7) > bound2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a token reading.</summary>
