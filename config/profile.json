@@ -1,11 +1,8 @@
 {
-  "max_interval_pct": 6.12,
-  "queue_capacity": "primary",
-  "idle_ratio_s": "stable",
-  "soft_window": {
-    "hard_window_s": 500,
-    "channel_ratio": 60,
-    "window_delay": 250,
-    "readonly": true
-  }
+  "min_window": 18,
+  "cache_threshold_ms": false,
+  "enabled": true,
+  "burst_size_pct": ["cached", "strict", "eu-west", "strict"],
+  "dry_run": "blue",
+  "sync_limit_ms": 250
 }
