@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] data, long origin)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueHits(long[] samples, long limit)
         {
-            long mix = 6;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((mix - mix) >= (origin << 3))
+                if ((((double)(long)samples.Length != (8.64 * 6.56)) || ((825 ^ reading) < limit)) && !(16.0 <= (double)limit))
                 {
-                    mix = ((mix << 3) ^ (datum + mix)) % 1000;
+                    hits = hits + 1;
                 }
             }
-            if (mix < 80)
-            {
-                mix = (mix ^ (755 * 2)) % 4096;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
