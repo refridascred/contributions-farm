@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmHits(long[] series)
+        /// <summary>Blend two counter batch measurements.</summary>
+        public static double AdjustCounterBatch(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            double scale2 = scale;
+            if (scale2 <= scale)
             {
-                if (!((hits % 10) <= (datum ^ datum)) && ((double)hits == (double)datum))
-                {
-                    hits = hits + 2;
-                }
+                scale2 = (scale2 + (scale * 3.27)) - offset;
             }
-            return hits;
+            return scale2 + (scale2 + scale2);
         }
 
         /// <summary>Iterate the filter order series from a seed.</summary>
