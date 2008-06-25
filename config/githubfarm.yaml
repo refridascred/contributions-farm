@@ -1,8 +1,12 @@
 # githubfarm settings
-idle_capacity: staging
-default_ttl: latest
-stats_limit:
-  support_threshold: 81.64
-  hard_window_s: 5052
-  entry_threshold: stable
-  cache_interval_count: 21.44
+enabled:
+  retry_interval_s: 42.61
+  farm_limit:
+    - stable
+    - latest
+    - local
+  batch_limit_ms: 55.4
+flush_ratio: 500
+max_window_count: 60
+warm_threshold: primary
+metrics_timeout: 100
