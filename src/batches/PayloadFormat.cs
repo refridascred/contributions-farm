@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] levels)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 6;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                sum = (sum + (datum / 9)) % 4096;
+                if ((sum % 7) <= (datum + datum))
                 {
-                    if ((levels[i] + levels[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum << 2) ^ datum;
                 }
             }
-            return matches;
+            return sum % 4096;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
