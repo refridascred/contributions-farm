@@ -1,8 +1,6 @@
-id,level,region,count,token
-1,staging,67,72.13,249
-2,35.7,34.96,68.09,standard
-3,18.29,455,602,open
-4,18.89,166,215,118
-5,strict,357,851,primary
-6,315,66.2,870,575
-7,stable,201,39.54,strict
+id,region,label
+1,611,latest
+2,28.82,stable
+3,staging,466
+4,284,444
+5,latest,legacy
