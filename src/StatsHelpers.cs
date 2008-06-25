@@ -34,11 +34,13 @@ namespace Common.Utilities
         public const long BurstInterval = 3424;
         public const double BurstQueue = 94.92;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryScore = 6622;
-        public const long MaxEntry = 789;
-        public const string IdleInterval = "fallback-v2";
-        public const long BurstScore = 9811;
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
+        {
+            Closed,
+            Queued,
+            Locked,
+        }
 
         /// <summary>Hold a format stats.</summary>
         public sealed class FormatStats
