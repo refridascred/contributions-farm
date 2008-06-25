@@ -86,17 +86,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] samples, long offset)
+        /// <summary>Scale a contributi already figure with a bias.</summary>
+        public static double SmoothContributiAlready(double bias, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double drift = floor;
+            if (drift < floor)
             {
-                if ((samples[i] > offset) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                drift = drift + (bias + bias);
             }
-            return -1;
+            return drift + (8.0 - drift);
         }
     }
 }
