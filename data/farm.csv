@@ -1,7 +1,6 @@
-id,rank,region,level,state
-1,87.39,green,green,cached
-2,cached,97,13.18,fallback
-3,2.79,legacy,73.35,70.71
-4,legacy,staging,6,40.65
-5,801,latest,87.45,300
-6,703,standard,694,green
+id,score,level,state
+1,cached,948,96.65
+2,91.54,91.08,primary
+3,cached,42.01,edge
+4,54.8,cached,primary
+5,strict,545,cached
