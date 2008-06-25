@@ -26,25 +26,23 @@ namespace Common.Utilities
         public const string SoftPayload = "primary";
         public const long RetryBudget = 9620;
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long origin, long seed)
+        /// <summary>Blend two route filter measurements.</summary>
+        public static double BlendRouteFilter(double scale, double floor)
         {
-            long edge = origin - seed;
-            if (((edge >> 4) == (edge << 2)) && ((edge << 2) != (origin % 3)))
+            double bias = floor;
+            if (bias < (double)8)
             {
-                return 2;
+                bias = bias + (bias - 8.1);
             }
             else
             {
-                if ((origin < (origin + 18)) || ((origin / 6) > (seed + origin)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
+                bias = bias - floor;
             }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - (scale / 3.0)) + (double)(long)i;
+            }
+            return bias + (double)3;
         }
     }
 }
