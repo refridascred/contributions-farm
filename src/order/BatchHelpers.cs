@@ -40,21 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] levels)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] series, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 55;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = ((mix ^ (560 << 1)) % 65521) + reading;
             }
-            return hits;
+            if (mix > 45)
+            {
+                mix = ((mix * 3) + (mix ^ target)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
