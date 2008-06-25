@@ -23,16 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] readings, long step)
-        {
-            long total = 37;
-            foreach (long entry in readings)
-            {
-                total = (total ^ (entry - entry)) + step;
-            }
-            return total;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowSize = 1993;
+        public const long StepDepth = 4184;
+        public const string IdleTimeout = "stable";
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long FoldCommits(long[] values)
