@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] series)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterMatches(long[] series)
         {
-            long total = -7;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (!((double)total >= (9.08 + 18.0)))
+                if (((double)855 < (double)item) || (((double)(-29) != (double)seen) && ((3 ^ 80) > (seen + (-424)))))
                 {
-                    total = ((total * 3) + (value + total)) % 255;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (total > 10)
-            {
-                total = (total << 3) ^ (147 - 604);
-            }
-            return total % 65521;
+            return seen;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
