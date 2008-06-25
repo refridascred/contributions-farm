@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] levels, long limit)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] readings)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (value > limit)
+                if (!((double)sample > (7.44 - 9.2)))
                 {
-                    ready = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Describe the tools level values.</summary>
