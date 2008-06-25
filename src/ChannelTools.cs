@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] values, long limit)
         {
-            public double Weight { get; set; }
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((limit >> 4) <= (matches + matches))
+                {
+                    matches = (matches + 1) + cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
