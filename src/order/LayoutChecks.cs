@@ -40,23 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double weight, double span)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandMatches(long[] values)
         {
-            double drift = span;
-            if (drift < weight)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                drift = drift - 0.16;
+                if ((4.6 / 5.0) < (double)seen)
+                {
+                    seen = (seen + 3) + cell;
+                }
             }
-            else
-            {
-                drift = drift + weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (span * 3.0)) - (double)(long)i;
-            }
-            return drift - drift;
+            return seen;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
