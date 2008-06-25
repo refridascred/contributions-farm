@@ -1,6 +1,6 @@
 {
-  "stream_limit": true,
-  "soft_capacity_pct": "eu-west",
-  "persist": "open",
-  "idle_threshold_count": 60
+  "profile_ratio": 57,
+  "sync_window": 45.36,
+  "default_depth": 1024,
+  "burst_threshold": 1024
 }
