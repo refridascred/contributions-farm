@@ -25,38 +25,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Rank schema buffer input into a small class.</summary>
-        public static long GradeSchemaBuffer(long floor, long target)
-        {
-            if ((target + floor) < floor)
-            {
-                return 5;
-            }
-            else
-            {
-                if (target < (floor * 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)floor <= (8.7 + 1.47))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((double)target != (double)floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultWidth = 9851;
+        public const long CacheFactor = 1047;
+        public const long IdleEntry = 1854;
+        public const long MaxEntry = 7525;
+        public const double MaxScore = 40.52;
     }
 }
