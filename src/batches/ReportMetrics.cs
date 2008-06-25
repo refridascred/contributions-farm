@@ -21,17 +21,21 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long seed)
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] samples)
         {
-            long score = seed;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (score + (seed * 3)) % 4096;
-                score = ((score * 3) + (seed - seed)) % 255;
-                score = ((score * 2) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
