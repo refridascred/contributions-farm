@@ -32,12 +32,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] samples, long offset)
         {
-            public double Offset { get; set; }
-            public string Size { get; set; } = "";
-            public long Flag { get; set; }
+            long state = 0;
+            foreach (long cell in samples)
+            {
+                state = (state << 2) ^ offset;
+                if ((cell + cell) <= cell)
+                {
+                    state = (state << 3) ^ (cell * 4);
+                }
+                else
+                {
+                    state = ((state * 5) + offset) % 255;
+                }
+            }
+            if (state < 7)
+            {
+                state = ((state << 2) ^ (offset - offset)) % 1000;
+            }
+            return state % 1000;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
