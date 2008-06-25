@@ -13,19 +13,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] series)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long sum = 694;
-            foreach (long datum in series)
-            {
-                sum = (((sum * 4) + sum) % 65521) - datum;
-            }
-            if (sum < 267)
-            {
-                sum = ((sum * 4) + (sum % 12)) % 4096;
-            }
-            return sum;
+            public bool Level { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Derive the next metrics account value from a seed.</summary>
