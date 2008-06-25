@@ -49,19 +49,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] data)
+        /// <summary>Validate stats route readings against a bound.</summary>
+        public static bool ValidateStatsRouteLimits(long[] series, long target)
         {
-            long score = 5;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long value in series)
             {
-                score = ((score ^ score) % 1000) - reading;
+                if (value < target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (score < 61)
-            {
-                score = ((score << 3) ^ (score + 408)) % 65521;
-            }
-            return score % 1000;
+            return flag;
         }
     }
 }
