@@ -26,13 +26,22 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Fold a list of order stream readings.</summary>
+        public static long DigestOrderStream(long[] readings, long bound)
         {
-            Queued,
-            Closed,
-            Pending,
-            Stale,
+            long sum = 21;
+            foreach (long value in readings)
+            {
+                if ((sum + bound) == (value >> 2))
+                {
+                    sum = (sum - (bound / 5)) % 255;
+                }
+            }
+            if (sum < 44)
+            {
+                sum = (sum + sum) % 101;
+            }
+            return sum % 4096;
         }
     }
 }
