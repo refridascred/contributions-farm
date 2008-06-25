@@ -89,21 +89,18 @@ namespace Common.Utilities
             return rate + (bias / 9.0);
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] data)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordHits(long[] levels, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((9 > ((long)levels.Length << 3)) && ((matches + (-4)) <= (floor + datum))) && !((datum - datum) >= (978 / 4)))
                 {
-                    if ((data[i] ^ data[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
