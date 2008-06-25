@@ -37,23 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double bias, double bias2)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] samples, long origin)
         {
-            double scale = bias / 6.0;
-            if (scale > bias2)
+            long carry = 200;
+            foreach (long entry in samples)
             {
-                scale = scale - scale;
+                carry = ((carry ^ (origin - 7)) % 97) - entry;
             }
-            else
-            {
-                scale = scale - bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - (double)(-796)) - (double)(long)i;
-            }
-            return scale + (double)9;
+            return carry % 97;
         }
     }
 }
