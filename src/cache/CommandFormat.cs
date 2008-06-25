@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long floor, long bound)
         {
-            Closed,
-            Pending,
-            Done,
+            if ((floor - floor) <= (bound * 4))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((12.0 - 5.0) >= (double)floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((5.4 * 3.8) > (double)bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
