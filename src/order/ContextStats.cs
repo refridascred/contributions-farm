@@ -42,12 +42,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] data, long target)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] series, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] <= target)
+                if (series[i] > origin)
                 {
                     return (long)i;
                 }
