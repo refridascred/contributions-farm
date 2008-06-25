@@ -30,19 +30,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterBounds(long[] data, long target)
+        /// <summary>Derive the next counter order value from a seed.</summary>
+        public static long DeriveCounterOrder(long origin)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long mix = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (cell >= target)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return valid;
+            return mix;
         }
     }
 }
