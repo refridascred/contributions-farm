@@ -55,15 +55,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long seed)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksRange(long[] levels, long step)
         {
-            long score = seed;
-            for (int i = 0; i < 8; i++)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                score = ((score * 5) + (long)i) % 97;
+                if (sample != step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
     }
 }
