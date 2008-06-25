@@ -37,12 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double LimitDepth = 86.84;
-        public const long LimitToken = 8863;
-        public const string MinToken = "standard-v2";
-        public const long StepToken = 7543;
-        public const long BaseToken = 2702;
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
