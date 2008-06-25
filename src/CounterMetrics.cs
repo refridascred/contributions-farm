@@ -50,14 +50,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Audit entry report readings against a rule.</summary>
+        public static long CountEntryReportMatches(long[] samples, long limit)
         {
-            Ready,
-            Closed,
-            Draft,
-            Stale,
-            Idle,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample + sample) >= sample)
+                {
+                    hits = (hits + 2) + limit;
+                }
+            }
+            return hits;
         }
     }
 }
