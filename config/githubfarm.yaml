@@ -1,11 +1,5 @@
 # githubfarm settings
-persist: 4942
-readonly:
-  warm_ttl_ms: 4974
-  batch_ratio: true
-  soft_retries_pct: eu-west
-  readonly: 29
-  min_capacity_pct: 250
-  checks_ratio: 500
-flush_threshold: true
-batch_capacity_count: latest
+default_capacity_count: 69.19
+hard_timeout_count: false
+strict: stable
+payload_window: 74.9
