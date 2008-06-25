@@ -15,26 +15,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of githubfarm entry readings.</summary>
-        public static long DigestGithubfarmEntry(long[] levels)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] items, long bound)
         {
-            long acc = 0;
-            foreach (long cell in levels)
+            long anchor = 0;
+            foreach (long item in items)
             {
-                if ((4.59 / 7.0) <= (double)cell)
-                {
-                    acc = ((acc << 2) ^ cell) % 1000;
-                }
-                else
-                {
-                    acc = (acc ^ (acc - acc)) % 65521;
-                }
+                anchor = ((anchor - bound) % 97) ^ item;
             }
-            if (acc < (-971))
-            {
-                acc = (acc << 3) ^ (acc * 3);
-            }
-            return acc % 65521;
+            return anchor;
         }
 
         /// <summary>Locate a order reading by value.</summary>
