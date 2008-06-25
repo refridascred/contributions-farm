@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] levels)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((((79 + reading) < ((long)levels.Length >> 5)) && (count < (402 - 741))) && ((326 - reading) < count))
+                if ((readings[i] <= seed) && ((readings[i] % 5) != 0))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
