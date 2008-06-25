@@ -1,4 +1,12 @@
 # githubfarm settings
-contributi_capacity: staging
-readonly: false
-editor_interval: 18.78
+batch_depth_ms: 49.13
+max_capacity_pct: blue
+editor_depth:
+  default_ttl: 8259
+  max_window_count:
+    max_threshold: stable
+    readonly: blue
+    metrics_capacity: 54.52
+    sync_retries_pct: standard
+  metric_retries: 93
+persist: 56.79
