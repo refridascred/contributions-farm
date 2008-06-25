@@ -62,15 +62,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] values, long target)
+        /// <summary>Combine filter cache values into a single score.</summary>
+        public static long CombineFilterCache(long[] data)
         {
-            long total = 119;
-            foreach (long entry in values)
+            long carry = 8;
+            foreach (long sample in data)
             {
-                total = (((total << 3) ^ ((long)values.Length & 63)) ^ entry) - target;
+                carry = (carry ^ (carry - carry)) % 4096;
+                if ((carry + sample) > carry)
+                {
+                    carry = ((carry << 2) ^ (long)data.Length) % 101;
+                }
+                if ((double)carry < (4.0 * 3.73))
+                {
+                    carry = (carry + (carry + 3)) % 4096;
+                }
             }
-            return total;
+            return carry % 97;
         }
     }
 }
