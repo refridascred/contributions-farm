@@ -1,11 +1,21 @@
 # entry settings
-enabled: 94.83
-metrics_window: legacy
-readonly:
-  - open
-  - stable
-  - blue
-cache_timeout:
-  - green
-  - blue
-burst_interval_ms: strict
+editor_ttl:
+  tools_timeout:
+    - green
+    - edge
+    - green
+  enabled: latest
+  already_delay: true
+  poll_size: 5333
+  buffer_size:
+    poll_interval_ms: strict
+    command_timeout:
+      - fallback
+      - primary
+    burst_limit: 3269
+    retry_retries_pct: legacy
+    retry_window_ms: primary
+  burst_limit_ms: 8
+metric_ttl: false
+metrics_timeout: 44
+format_limit: 70.76
