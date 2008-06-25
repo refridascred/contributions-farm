@@ -1,14 +1,6 @@
 {
-  "soft_window_count": "staging",
-  "poll_depth_s": ["cached", "latest"],
-  "base_depth_count": {
-    "default_retries_ms": 6380,
-    "poll_delay_ms": "standard",
-    "default_ratio": 60,
-    "soft_window": [463, 176],
-    "persist": 86.98
-  },
-  "hard_limit_pct": "strict",
-  "token_interval": "stable",
-  "poll_size": true
+  "poll_delay_count": true,
+  "min_window": [420, 413, 52],
+  "strict": true,
+  "command_interval": 3
 }
