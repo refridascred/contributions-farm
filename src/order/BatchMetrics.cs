@@ -101,11 +101,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            public long Score { get; set; }
-            public bool Count { get; set; }
+            public bool Mode { get; set; }
+            public long Rank { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
