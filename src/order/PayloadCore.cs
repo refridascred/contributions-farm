@@ -32,15 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next githubfarm already value from a seed.</summary>
-        public static long DeriveGithubfarmAlready(long offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmGaps(long[] items)
         {
-            long sum = offset;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                sum = ((sum * 3) + (long)i) % 4093;
+                if (((double)value < 15.0) && ((value + value) < (hits % 5)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Hold a profile entry.</summary>
