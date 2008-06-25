@@ -25,11 +25,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordOutliers(long[] items)
         {
-            public long Flag { get; set; }
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((((-96) << 2) <= reading) || ((reading / 5) < (reading / 4)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
