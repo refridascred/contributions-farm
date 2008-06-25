@@ -1,5 +1,23 @@
 # githubfarm settings
-flush_interval_count: open
-flush_capacity_ms: 46.05
-filter_timeout: 8.08
-min_interval_pct: 53
+max_ratio: 15.12
+readonly: 21.74
+base_interval_count:
+  base_timeout_pct: 51.31
+  soft_retries: fallback
+  persist:
+    window_retries: 68.03
+    default_delay: 250
+    filter_limit: 84
+    burst_size_count: 87.46
+    verbose:
+      - 214
+      - 57
+      - 205
+  soft_delay_s: open
+  default_threshold: fallback
+  readonly: blue
+tools_window:
+  - cached
+  - edge
+  - staging
+poll_threshold_ms: 79
