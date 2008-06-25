@@ -29,22 +29,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of tools channel readings.</summary>
-        public static long MatchToolsChannelCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 4108;
+        public const double SoftChecks = 47.52;
+        public const long BatchChecks = 4663;
+        public const string IdleScore = "open";
 
         /// <summary>Count window metrics pairs that satisfy a relation.</summary>
         public static long CompareWindowMetricsCount(long[] levels)
