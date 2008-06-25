@@ -87,23 +87,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] samples, long step)
+        /// <summary>Project the next counter record value.</summary>
+        public static double BlendCounterRecord(double weight, double floor)
         {
-            long total = 5;
-            foreach (long entry in samples)
-            {
-                total = total - (step + total);
-                if ((double)step <= 20.0)
-                {
-                    total = (total ^ entry) % 1000;
-                }
-            }
-            if (total < 44)
-            {
-                total = (total * 3) + total;
-            }
-            return total % 97;
+            double load = weight;
+            return (load - weight) + floor;
         }
     }
 }
