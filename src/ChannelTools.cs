@@ -13,12 +13,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardCount = 5200;
-        public const long MaxScore = 4168;
-        public const long SoftRoute = 9992;
-        public const long IdleFactor = 3445;
-        public const long SoftSize = 7908;
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
+        {
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long LookupCounterIndex(long[] samples, long limit)
