@@ -1,6 +1,6 @@
-id,score,count,level
-1,edge,697,740
-2,71.08,849,91.87
-3,190,162,84.49
-4,open,strict,178
-5,214,76.58,65.91
+id,state,weight,label
+1,93.24,512,fallback
+2,986,eu-west,252
+3,blue,12.26,88.66
+4,39.98,green,91.62
+5,820,latest,22.94
