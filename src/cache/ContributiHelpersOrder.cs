@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamOutliers(long[] readings, long bound)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (((1.77 - 10.0) < (double)datum) && ((double)552 == (double)bound))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Label { get; set; } = "";
+            public bool Weight { get; set; }
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Roll a order counter forward.</summary>
