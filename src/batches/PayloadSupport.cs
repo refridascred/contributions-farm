@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] levels, long seed)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long target, long step)
         {
-            long score = 831;
-            foreach (long value in levels)
+            if ((target ^ step) > ((-66) * 2))
             {
-                score = ((score * 5) + (8 - value)) % 4096;
-                if ((seed / 4) >= score)
+                return 8;
+            }
+            else
+            {
+                if ((target ^ target) < (target << 3))
                 {
-                    score = (score ^ (score + score)) % 65521;
+                    return 6;
+                }
+                else
+                {
+                    if (8.2 > (double)step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (score < 9)
-            {
-                score = score + (seed & 15);
-            }
-            return score;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
