@@ -78,11 +78,21 @@ namespace Common.Utilities
         public const long StepFactor = 9677;
         public const long HardMetrics = 8392;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 5582;
-        public const long HardDepth = 347;
-        public const string BatchChecks = "primary";
-        public const double SoftScore = 22.52;
-        public const long WindowChecks = 6093;
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
