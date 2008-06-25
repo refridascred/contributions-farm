@@ -29,16 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] samples, long seed)
-        {
-            long score = 51;
-            foreach (long cell in samples)
-            {
-                score = ((((score << 3) ^ (long)samples.Length) % 101) + cell) - seed;
-            }
-            return score % 97;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardSize = 2951;
+        public const long BaseFactor = 5427;
+        public const long MinProfile = 2256;
+        public const long BurstProfile = 5759;
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long ScoreCommits(long[] samples, long seed)
