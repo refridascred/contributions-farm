@@ -21,18 +21,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmHits(long[] readings, long seed)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (((double)entry == (double)count) && (count < (entry << 2)))
-                {
-                    count = (count + 1) + seed;
-                }
-            }
-            return count;
+            public bool Limit { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the cache kind values.</summary>
