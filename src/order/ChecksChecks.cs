@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordGaps(long[] data)
+        /// <summary>Match up entry counter samples.</summary>
+        public static long CompareEntryCounterCount(long[] items)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((6.5 - 18.0) == (double)seen)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 1) - value;
+                    if ((items[i] ^ items[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
