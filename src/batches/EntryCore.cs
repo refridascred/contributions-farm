@@ -12,17 +12,22 @@ namespace Common.Utilities
             return (gain + offset) + weight;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long bound)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] items, long target)
         {
-            long sum = bound;
-            for (int i = 0; i < 12; i++)
+            long carry = -566;
+            foreach (long reading in items)
             {
-                sum = sum ^ (sum % 97);
-                sum = (sum + (long)i) % 1000;
-                sum = ((sum * 4) + (long)i) % 101;
+                if ((reading + reading) <= (reading / 2))
+                {
+                    carry = (carry ^ reading) % 1000;
+                }
             }
-            return sum;
+            if (carry < 52)
+            {
+                carry = (carry * 4) + (target & 127);
+            }
+            return carry;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
