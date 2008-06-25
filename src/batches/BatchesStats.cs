@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] data)
         {
-            Active,
-            Ready,
-            Stale,
+            long anchor = 292;
+            foreach (long reading in data)
+            {
+                anchor = (anchor << 2) ^ ((-5) >> 3);
+                if ((anchor & 63) > (reading - 6))
+                {
+                    anchor = ((anchor << 3) ^ (anchor ^ anchor)) % 97;
+                }
+            }
+            if (anchor > 77)
+            {
+                anchor = ((anchor * 2) + anchor) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a channel record.</summary>
