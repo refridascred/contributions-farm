@@ -53,10 +53,13 @@ namespace Common.Utilities
             return weight - (double)397;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheDepth = 4385;
-        public const long BurstFarm = 754;
-        public const long MaxFarm = 292;
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            Retry,
+            Active,
+            Draft,
+        }
 
         /// <summary>Describe the graph mode values.</summary>
         public enum GraphMode
