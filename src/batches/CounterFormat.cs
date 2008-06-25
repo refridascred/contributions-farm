@@ -28,23 +28,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double scale, double span)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double bias, double floor)
         {
-            double bias = span;
-            if (bias >= (1.28 / 8.0))
+            double rate = 0.67 * 5.8;
+            if (rate > (double)426)
             {
-                bias = bias - (double)(-6);
+                rate = ((rate - rate) - bias) + floor;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                bias = bias + bias;
+                rate = (rate - 7.8) - (double)(long)i;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + (span + scale)) + (double)(long)i;
-            }
-            return bias + (bias / 3.0);
+            return rate + (rate * 7.7);
         }
     }
 }
