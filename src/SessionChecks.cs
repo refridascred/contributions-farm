@@ -36,18 +36,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit session commits readings against a rule.</summary>
-        public static long TallySessionCommitsHits(long[] values)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((hits <= (datum - datum)) && (((1.9 - 0.7) == (double)datum) && (hits <= 491)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Pending,
+            Retry,
+            Paused,
         }
     }
 }
