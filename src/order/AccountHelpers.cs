@@ -57,21 +57,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up report token samples.</summary>
-        public static long PairReportTokenCount(long[] samples)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] items, long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((target / 5) < matches))
                 {
-                    if ((samples[i] + samples[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 2) ^ value;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
