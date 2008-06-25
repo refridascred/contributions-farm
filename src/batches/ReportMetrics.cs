@@ -31,12 +31,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            Locked,
-            Dropped,
-            Done,
+            public long Flag { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
