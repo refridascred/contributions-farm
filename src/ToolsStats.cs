@@ -54,22 +54,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long OverlapToolsCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 9331;
+        public const long StepOrder = 9623;
+        public const long CacheBudget = 7964;
+        public const string BaseOrder = "staging-edge";
+        public const long RetrySpan = 1936;
 
         /// <summary>Project the next layout value.</summary>
         public static double ScaleLayout(double rate, double span)
