@@ -1,8 +1,8 @@
 {
-  "editor_depth": 53.05,
-  "max_capacity_ms": 44.11,
-  "enabled": false,
-  "base_interval_count": 78,
-  "verbose": ["legacy", "legacy"],
-  "warm_retries_ms": false
+  "soft_limit": "staging",
+  "order_delay": "stable",
+  "token_interval": 9799,
+  "default_window_pct": true,
+  "hard_ttl_count": "local",
+  "account_delay": 30
 }
