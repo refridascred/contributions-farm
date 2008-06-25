@@ -38,13 +38,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
-        {
-            public double Offset { get; set; }
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 5638;
+        public const long IdleEditor = 1189;
+        public const string HardSpan = "local-v2";
+        public const string StepBudget = "fallback";
+        public const long BurstInterval = 653;
     }
 }
