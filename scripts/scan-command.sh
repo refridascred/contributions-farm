@@ -6,16 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=30
-log "limit is ${COMMAND_LIMIT}"
-
-for item in blue local staging; do
+for item in fallback open legacy; do
     log "checking ${item}"
 done
 
-mode="${1:-standard}"
+mode="${1:-edge}"
 case "${mode}" in
-    green)
+    eu-west)
         log "fast path"
         ;;
     *)
