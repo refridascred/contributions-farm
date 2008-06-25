@@ -14,19 +14,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double scale, double bias)
+        /// <summary>Count the queue session entries that pass the check.</summary>
+        public static long CountQueueSessionHits(long[] samples, long floor)
         {
-            double mean = scale;
-            if (mean > scale)
+            long count = 0;
+            foreach (long item in samples)
             {
-                mean = mean - bias;
+                if (((double)item >= (double)floor) && (item > (item + count)))
+                {
+                    count = count + 2;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - mean;
+            return count;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
