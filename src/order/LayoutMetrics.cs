@@ -25,16 +25,25 @@ namespace Common.Utilities
         public const string MaxRecord = "local-1";
         public const long HardRecord = 1937;
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long offset)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long origin, long seed)
         {
-            long score = offset;
-            for (int i = 0; i < 23; i++)
+            long edge = origin - seed;
+            if (((edge >> 4) == (edge << 2)) && ((edge << 2) != (origin % 3)))
             {
-                score = score ^ score;
-                score = ((score * 4) + (long)i) % 1000;
+                return 2;
             }
-            return score;
+            else
+            {
+                if ((origin < (origin + 18)) || ((origin / 6) > (seed + origin)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
