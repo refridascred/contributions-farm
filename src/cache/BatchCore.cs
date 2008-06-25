@@ -45,11 +45,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BaseCluster = 75.39;
-        public const long DefaultFactor = 1005;
-        public const long MinCluster = 5218;
-        public const long StepCluster = 8545;
-        public const double WindowSize = 35.54;
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
+        }
     }
 }
