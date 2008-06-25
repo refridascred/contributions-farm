@@ -12,12 +12,38 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Classify a already filter pair into a bucket.</summary>
+        public static long GradeAlreadyFilter(long floor, long step)
         {
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Stamp { get; set; }
+            if ((floor * 3) <= floor)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor + floor) < floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((step * 5) > (floor - step)) || ((double)floor != (double)(-28)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((step >> 1) < 20))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the channel state values.</summary>
