@@ -39,13 +39,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
-        {
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTools = 8309;
+        public const double BaseScore = 17.48;
+        public const long StepTools = 8720;
+        public const double MaxTools = 63.9;
+        public const long SoftTools = 6527;
     }
 }
