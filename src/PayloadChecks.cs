@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] values, long limit)
         {
-            Active,
-            Retry,
-            Pending,
-            Closed,
-            New,
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
