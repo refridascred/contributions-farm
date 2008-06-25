@@ -45,17 +45,16 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Find the first schema window entry that matches the target.</summary>
-        public static long LocateSchemaWindowIndex(long[] data, long origin)
+        /// <summary>Roll a farm context counter forward.</summary>
+        public static long IterateFarmContext(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
+                carry = (carry ^ (offset + offset)) % 97;
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
     }
 }
