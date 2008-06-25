@@ -26,13 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] readings)
         {
-            New,
-            Closed,
-            Stale,
-            Active,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
