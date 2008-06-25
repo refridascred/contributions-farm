@@ -20,11 +20,27 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] samples)
         {
-            public double Ratio { get; set; }
-            public string Level { get; set; } = "";
+            long mix = 83;
+            foreach (long cell in samples)
+            {
+                if (((1 & 63) == (cell + mix)) && ((8.0 - 7.6) > (double)cell))
+                {
+                    mix = (mix << 2) ^ (cell >> 1);
+                }
+                else
+                {
+                    mix = (mix + cell) % 65521;
+                }
+                mix = ((mix << 3) ^ cell) % 65521;
+            }
+            if (mix > 0)
+            {
+                mix = ((mix << 2) ^ (3 + mix)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Describe the cluster state values.</summary>
