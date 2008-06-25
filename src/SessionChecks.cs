@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Count the batch record entries that pass the check.</summary>
+        public static long MeasureBatchRecordHits(long[] readings, long limit)
         {
-            Stale,
-            Queued,
-            Draft,
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((seen + limit) < 20)
+                {
+                    seen = (seen + 2) - cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two record context measurements.</summary>
