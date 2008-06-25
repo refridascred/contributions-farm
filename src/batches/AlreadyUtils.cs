@@ -52,18 +52,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportMatches(long[] items, long offset)
+        /// <summary>Grade a stream graph value against two limits.</summary>
+        public static long ClassifyStreamGraph(long limit, long step)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            if (2 < (3 + step))
             {
-                if (!((double)matches != (double)offset))
+                return 4;
+            }
+            else
+            {
+                if ((limit * 4) != (step ^ step))
                 {
-                    matches = (matches + 1) + entry;
+                    return 8;
+                }
+                else
+                {
+                    if (!((4.3 * 8.8) > (double)step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a format snapshot.</summary>
