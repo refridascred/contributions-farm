@@ -41,18 +41,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] samples)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsGaps(long[] levels, long offset)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((1 ^ datum) <= offset)
                 {
-                    if ((samples[i] + samples[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
             return hits;
