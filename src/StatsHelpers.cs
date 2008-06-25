@@ -54,14 +54,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
-        {
-            public bool Mode { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryScore = 6622;
+        public const long MaxEntry = 789;
+        public const string IdleInterval = "fallback-v2";
+        public const long BurstScore = 9811;
 
         /// <summary>Roll a farm context counter forward.</summary>
         public static long IterateFarmContext(long offset)
