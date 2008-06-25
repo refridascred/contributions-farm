@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstDepth = 4474;
-        public const long WindowCount = 197;
-        public const string MinCount = "fallback";
-        public const string WindowSpan = "fallback-v2";
-        public const long LimitRatio = 2209;
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long origin, long target)
+        {
+            long span = origin - target;
+            if (!((double)origin != (5.3 - 15.0)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((41 ^ span) > (target & 63))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
