@@ -32,13 +32,13 @@ namespace Common.Utilities
         public const long StepSpan = 7676;
         public const long LimitToken = 8331;
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            Stale,
             Locked,
-            Dropped,
+            Retry,
             Synced,
+            Idle,
         }
 
         /// <summary>Roll a command counter forward.</summary>
