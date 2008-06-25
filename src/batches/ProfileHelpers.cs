@@ -85,11 +85,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] data)
         {
-            public long Rank { get; set; }
-            public string Size { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
