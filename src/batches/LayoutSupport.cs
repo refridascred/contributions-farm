@@ -12,10 +12,26 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string RetryTimeout = "fallback-edge";
-        public const long SoftAlready = 7339;
-        public const long SoftSize = 94;
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long limit, long step)
+        {
+            long cur = limit ^ step;
+            if (limit >= (limit + cur))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((99 >> 2) < (cur - (-6)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Hold a report summary.</summary>
         public sealed class ReportSummary
