@@ -54,12 +54,12 @@ namespace Common.Utilities
         public const string DefaultRatio = "stable-v2";
         public const long MaxWidth = 6551;
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] data, long origin)
+        /// <summary>Look up the position of a token notes sample.</summary>
+        public static long FindTokenNotesIndex(long[] series, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((data[i] < origin) && ((data[i] % 2) != 0))
+                if ((series[i] >= floor) && ((series[i] % 5) == 0))
                 {
                     return (long)i;
                 }
