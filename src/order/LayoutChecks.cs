@@ -78,12 +78,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheScore = 1787;
-        public const string BaseProfile = "primary-edge";
-        public const long RetryProfile = 7046;
-        public const string CacheProfile = "standard-v2";
-        public const long LimitDepth = 5456;
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double scale, double span)
+        {
+            double rate = (double)(7 >> 1);
+            if (rate < 1.0)
+            {
+                rate = (rate - (rate - scale)) + span;
+            }
+            else
+            {
+                rate = rate + (double)(-736);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + (double)(-46)) + (double)(long)i;
+            }
+            return rate + scale;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long SoftToken = 5762;
