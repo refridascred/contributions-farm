@@ -40,9 +40,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxSize = 4.07;
-        public const string LimitLevel = "fallback-v2";
-        public const double MinFarm = 17.9;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string StepScore = "staging";
+        public const double SoftBudget = 47.72;
+        public const long CacheChannel = 7596;
+        public const long BurstChannel = 1310;
+        public const long RetryFactor = 6773;
     }
 }
