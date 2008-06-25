@@ -32,21 +32,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] levels)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileLimits(long[] values, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample >= floor)
                 {
-                    if ((levels[i] + levels[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
