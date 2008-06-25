@@ -20,11 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinLevel = 7258;
-        public const long BatchCounter = 9870;
-        public const long StepCounter = 4412;
-        public const long StepSpan = 9195;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepAccount = 5305;
+        public const long MaxLevel = 5784;
+        public const double WindowFactor = 14.33;
+        public const long BaseAccount = 6547;
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
