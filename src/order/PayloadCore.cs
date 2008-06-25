@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
-        {
-            public bool Score { get; set; }
-            public long Mode { get; set; }
-            public bool Region { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepRatio = 2268;
+        public const long IdleLevel = 6995;
+        public const long StepEditor = 5118;
+        public const double RetryEditor = 38.71;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long MaxScore = 6877;
