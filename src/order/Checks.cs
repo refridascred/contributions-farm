@@ -63,13 +63,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ProjectFilter(double rate, double offset)
         {
-            Draft,
-            Pending,
-            Synced,
-            Locked,
+            double bias = (double)6 - (7.3 + offset);
+            return bias + (rate * 5.0);
         }
     }
 }
