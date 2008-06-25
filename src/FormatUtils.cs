@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long seed, long floor)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferMatches(long[] values)
         {
-            if ((double)floor != (8.5 * 2.0))
+            long hits = 0;
+            foreach (long entry in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (floor < (seed - floor))
+                if ((5.5 + 3.42) > (double)hits)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed / 6) == (seed + 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = (hits + 2) ^ entry;
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
