@@ -10,15 +10,22 @@ namespace Common.Utilities
         public const double BurstLevel = 55.0;
         public const string BatchContext = "open-1";
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] values, long seed)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] values)
         {
-            long anchor = 5;
+            long carry = -1;
             foreach (long datum in values)
             {
-                anchor = ((anchor + 886) + datum) + seed;
+                if ((carry + 58) > datum)
+                {
+                    carry = (carry + ((-70) ^ carry)) % 101;
+                }
             }
-            return anchor % 97;
+            if (carry < 384)
+            {
+                carry = (carry << 2) ^ (carry + carry);
+            }
+            return carry;
         }
 
         /// <summary>Match up tools samples.</summary>
