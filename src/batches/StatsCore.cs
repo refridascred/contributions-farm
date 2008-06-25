@@ -44,14 +44,19 @@ namespace Common.Utilities
         public const double BatchEntry = 14.68;
         public const double IdleEntry = 24.36;
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Check that every token payload entry stays within the limit.</summary>
+        public static bool CheckTokenPayloadLimits(long[] readings, long seed)
         {
-            Pending,
-            Stale,
-            Draft,
-            Done,
-            Paused,
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
