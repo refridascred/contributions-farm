@@ -19,13 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
-        {
-            New,
-            Done,
-            Retry,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double RetryDepth = 32.48;
+        public const long HardCommand = 2204;
+        public const long SoftCommand = 295;
+        public const long BurstLevel = 4578;
+        public const string CacheFactor = "alpha-1";
 
         /// <summary>Look up the position of a cluster sample.</summary>
         public static long LocateClusterIndex(long[] values, long origin)
