@@ -16,12 +16,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double bias, double offset)
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public long Size { get; set; }
+            double gain = bias;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = ((gain - (double)6) + (double)(long)i) + offset;
+            }
+            return gain + 9.0;
         }
 
         /// <summary>Hold a window options.</summary>
