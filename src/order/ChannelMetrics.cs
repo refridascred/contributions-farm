@@ -39,22 +39,11 @@ namespace Common.Utilities
             return ((mean - (double)(-74)) + rate) + bias;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] items, long offset)
-        {
-            long state = 85;
-            foreach (long value in items)
-            {
-                if (((double)value >= (0.1 * 3.8)) && ((13.0 - 14.0) <= (double)state))
-                {
-                    state = ((state + (871 / 3)) % 255) - offset;
-                }
-                else
-                {
-                    state = state ^ (long)items.Length;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MinWidth = "alpha";
+        public const double IdleToken = 9.85;
+        public const double MaxToken = 26.41;
+        public const long RetryDepth = 5612;
+        public const long BurstToken = 6995;
     }
 }
