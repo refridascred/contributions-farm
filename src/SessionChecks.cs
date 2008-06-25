@@ -36,18 +36,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] items, long step)
+        /// <summary>Audit session commits readings against a rule.</summary>
+        public static long TallySessionCommitsHits(long[] values)
         {
-            long score = 74;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((value >> 1) == (score - 16))
+                if ((hits <= (datum - datum)) && (((1.9 - 0.7) == (double)datum) && (hits <= 491)))
                 {
-                    score = score - (step + score);
+                    hits = hits + 3;
                 }
             }
-            return score % 65521;
+            return hits;
         }
     }
 }
