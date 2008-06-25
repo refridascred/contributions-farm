@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmBounds(long[] items, long bound)
+        /// <summary>Accumulate buffer graph samples.</summary>
+        public static long TotalBufferGraph(long[] values)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long state = 62;
+            foreach (long entry in values)
             {
-                if (value >= bound)
+                state = (state * 3) + (543 << 3);
+                if (((entry ^ 19) == (entry - (-455))) && ((double)state != (5.3 + 5.0)))
                 {
-                    valid = false;
-                    break;
+                    state = ((state * 3) + (state ^ state)) % 1000;
                 }
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Hold a record info.</summary>
