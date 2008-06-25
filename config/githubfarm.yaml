@@ -1,5 +1,5 @@
 # githubfarm settings
-default_capacity_count: 69.19
-hard_timeout_count: false
-strict: stable
-payload_window: 74.9
+flush_capacity_ms: green
+session_threshold: 500
+persist: 500
+cache_retries_pct: 5708
