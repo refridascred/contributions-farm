@@ -1,18 +1,10 @@
 # support settings
-enabled: strict
-retry_delay: 7921
-burst_threshold_s: eu-west
-sync_retries_ms:
-  batch_ratio_count: 6702
-  dry_run: 5
-  burst_capacity: green
-flush_depth_s: 500
-batch_ratio:
-  cache_ratio: legacy
-  strict: eu-west
-  readonly: false
-  burst_limit:
-    retry_limit: open
-    poll_retries: 500
-    hard_delay: 500
-    batch_interval_ms: 1575
+persist: legacy
+soft_timeout_s: stable
+strict: 100
+base_ratio_count: 28
+default_retries_ms:
+  - 335
+  - 188
+  - 49
+  - 79
