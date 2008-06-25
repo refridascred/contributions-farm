@@ -22,11 +22,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double gain, double floor)
         {
-            public string Ratio { get; set; } = "";
-            public bool Level { get; set; }
+            double bias = 3.2;
+            if (bias > bias)
+            {
+                bias = bias - (gain * 9.68);
+            }
+            return bias - (floor / 7.0);
         }
 
         /// <summary>Define layout limits and defaults.</summary>
