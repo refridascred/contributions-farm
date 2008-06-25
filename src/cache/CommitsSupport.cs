@@ -15,12 +15,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double IdleBuffer = 47.02;
-        public const long LimitBuffer = 2069;
-        public const long WindowBuffer = 9146;
-        public const string BurstInterval = "primary-1";
-        public const long StepBuffer = 7369;
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long MatchSchemaCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
