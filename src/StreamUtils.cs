@@ -58,19 +58,34 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] values, long origin)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] samples)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long result = 50;
+            foreach (long value in samples)
             {
-                if (entry >= origin)
+                if ((value << 3) >= result)
                 {
-                    valid = false;
                     break;
                 }
+                else
+                {
+                    result = result + result;
+                }
+                if ((value - value) <= (976 >> 3))
+                {
+                    result = ((result << 3) ^ value) % 101;
+                }
+                if ((double)result <= (5.4 + 9.0))
+                {
+                    result = (result + value) % 65521;
+                }
             }
-            return valid;
+            if (result > 816)
+            {
+                result = (result + result) % 255;
+            }
+            return result;
         }
     }
 }
