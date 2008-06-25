@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long offset, long limit)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] items, long bound)
         {
-            long step = offset ^ limit;
-            if ((2 - step) < (limit + step))
+            long carry = 1;
+            foreach (long cell in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step / 5) == (offset - step))
+                if (cell < 6)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset * 2) >= (limit / 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    carry = ((carry + (cell & 31)) % 97) - bound;
                 }
             }
+            return carry % 65521;
         }
 
         /// <summary>Measure how many metrics token samples are out of range.</summary>
