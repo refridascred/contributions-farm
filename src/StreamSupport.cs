@@ -15,22 +15,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportGaps(long[] levels)
+        /// <summary>Find the first window checks entry that matches the target.</summary>
+        public static long LookupWindowChecksIndex(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((hits & 15) == (entry + hits)) && (hits > 9))
+                if ((series[i] <= seed) && ((series[i] % 5) != 0))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
