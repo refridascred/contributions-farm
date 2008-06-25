@@ -43,18 +43,9 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] items, long limit)
-        {
-            long mix = 6;
-            foreach (long item in items)
-            {
-                if (((limit * 5) == (limit + item)) || ((15.0 + 7.9) > (double)item))
-                {
-                    mix = (mix - (limit / 4)) % 97;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string HardWindow = "standard-v2";
+        public const string BurstRatio = "local-edge";
+        public const long RetryLevel = 8930;
     }
 }
