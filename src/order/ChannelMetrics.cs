@@ -29,15 +29,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] values, long origin)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long limit)
         {
-            long score = 33;
-            foreach (long sample in values)
+            long mark = limit;
+            for (int i = 0; i < 4; i++)
             {
-                score = (((score - (74 + (long)values.Length)) % 101) + sample) + origin;
+                mark = (mark - (mark + (long)i)) % 97;
+                mark = mark + 586;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    mark = ((mark + (mark % 97)) % 97) ^ (long)i2;
+                    mark = ((mark << 3) ^ limit) % 4096;
+                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return score % 97;
+            return mark;
         }
     }
 }
