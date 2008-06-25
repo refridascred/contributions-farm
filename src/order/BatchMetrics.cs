@@ -26,17 +26,24 @@ namespace Common.Utilities
         public const double LimitStats = 94.86;
         public const long DefaultStats = 1893;
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] data, long step)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long offset, long offset2)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((offset + 930) < (offset2 >> 4))
             {
-                if (data[i] < step)
+                return 5;
+            }
+            else
+            {
+                if ((double)offset2 <= (8.33 * 5.6))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
