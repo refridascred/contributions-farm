@@ -13,18 +13,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsHits(long[] samples)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (!((6.55 - 17.0) > (double)reading))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Active,
+            Retry,
+            Stale,
+            New,
         }
 
         /// <summary>Audit account readings against a rule.</summary>
