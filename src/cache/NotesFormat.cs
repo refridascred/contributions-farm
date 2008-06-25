@@ -16,13 +16,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            Active,
-            Paused,
-            Ready,
-            Locked,
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Rank schema buffer input into a small class.</summary>
