@@ -12,17 +12,14 @@ namespace Common.Utilities
             return (rate + (floor * 3.02)) + scale;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] readings, long limit)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Locked,
+            Closed,
+            Paused,
+            Draft,
         }
 
         /// <summary>Fold a list of notes cluster readings.</summary>
