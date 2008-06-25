@@ -75,12 +75,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultLevel = 3405;
-        public const string SoftWidth = "latest-edge";
-        public const double IdleRoute = 6.28;
-        public const double IdleSize = 14.4;
-        public const long MaxRoute = 7843;
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
+        {
+            public long Flag { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long LookupChecksIndex(long[] values, long origin)
