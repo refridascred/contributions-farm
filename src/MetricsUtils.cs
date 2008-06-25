@@ -45,31 +45,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long step, long target)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] items, long bound)
         {
-            if ((step + target) != (target & 7))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((8 + step) <= step)
+                if ((items[i] > bound) && ((items[i] % 5) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((target + step) < 28)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
