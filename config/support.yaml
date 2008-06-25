@@ -1,9 +1,7 @@
 # support settings
-verbose: open
-retry_threshold:
-  - standard
-  - local
-  - edge
-farm_timeout: 91.08
-window_ttl: cached
-idle_ratio_ms: edge
+entry_interval: 15
+already_delay: strict
+editor_timeout: true
+batches_window: 96.4
+support_ratio: open
+cache_depth: 85.41
