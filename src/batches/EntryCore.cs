@@ -30,12 +30,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
-        {
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryRatio = 8198;
+        public const long CacheWidth = 5956;
+        public const string IdleQueue = "local";
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long CombineFarm(long[] readings)
