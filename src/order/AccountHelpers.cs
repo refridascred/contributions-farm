@@ -38,18 +38,17 @@ namespace Common.Utilities
         public const long SoftReport = 6791;
         public const long RetryReport = 1203;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiGaps(long[] data, long bound)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((bound & 255) >= cell))
+                if (series[i] >= bound)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the layout phase values.</summary>
