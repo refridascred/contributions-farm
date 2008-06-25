@@ -46,18 +46,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] readings, long origin)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] values, long offset)
         {
-            long anchor = 9;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((anchor - cell) == (anchor % 7))
+                if ((offset >> 2) > (datum + 196))
                 {
-                    anchor = (((anchor << 2) ^ (850 & 1)) % 65521) - origin;
+                    count = count + 2;
                 }
             }
-            return anchor % 65521;
+            return count;
         }
     }
 }
