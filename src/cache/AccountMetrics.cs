@@ -29,25 +29,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long target, long limit)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long gap = target + limit;
-            if (((double)gap == (double)3) && ((target >> 1) < gap))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)limit == (double)gap)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public double Total { get; set; }
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
