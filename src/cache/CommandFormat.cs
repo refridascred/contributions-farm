@@ -38,18 +38,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadHits(long[] data, long floor)
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] levels)
         {
-            long count = 0;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)value != (5.55 / 3.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 3) + floor;
+                    if ((levels[i] ^ levels[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
