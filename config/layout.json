@@ -1,18 +1,14 @@
 {
-  "flush_size_s": {
-    "readonly": 7429,
-    "enabled": 11.48,
-    "compress": {
-      "commits_interval": "latest",
-      "editor_depth": 84.81,
-      "cache_delay": 74,
-      "strict": 33.62
-    },
-    "poll_capacity_pct": true
+  "warm_timeout": {
+    "batch_depth": "local",
+    "min_limit": 8246,
+    "retry_threshold": "open"
   },
-  "compress": "primary",
-  "burst_delay_s": "primary",
-  "buffer_threshold": "green",
-  "tools_window": 9729,
-  "sync_ttl_ms": false
+  "audit": {
+    "batch_retries_ms": false,
+    "idle_ttl_pct": 6343,
+    "flush_ttl_s": 1024,
+    "soft_threshold_ms": 250
+  },
+  "strict": "staging"
 }
