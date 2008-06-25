@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long limit, long target)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long target)
         {
-            if ((target << 3) > (limit << 2))
+            long sum = target;
+            for (int i = 0; i < 9; i++)
             {
-                return 7;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((4.6 + 17.0) <= (double)target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target % 97) <= target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
