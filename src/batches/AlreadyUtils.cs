@@ -38,19 +38,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheRange(long[] samples, long bound)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Token { get; set; } = "";
+            public bool Score { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
