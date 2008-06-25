@@ -20,25 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of session stream readings.</summary>
-        public static long FoldSessionStream(long[] items)
-        {
-            long mark = 912;
-            foreach (long reading in items)
-            {
-                mark = mark ^ (reading + 8);
-                mark = (mark + mark) % 4096;
-                if ((reading % 5) >= 0)
-                {
-                    break;
-                }
-            }
-            if (mark > 27)
-            {
-                mark = mark - (mark ^ (long)items.Length);
-            }
-            return mark % 97;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MaxBudget = 1.55;
+        public const long BurstScore = 8453;
+        public const string CacheSpan = "alpha-edge";
+        public const long BaseFactor = 4038;
 
         /// <summary>Define token limits and defaults.</summary>
         public const double StepToken = 38.24;
