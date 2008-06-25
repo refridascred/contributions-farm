@@ -48,11 +48,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 1084;
-        public const string DefaultInterval = "standard-edge";
-        public const string DefaultRatio = "stable-v2";
-        public const long MaxWidth = 6551;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportMatches(long[] data, long limit)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((double)tally != (double)limit)
+                {
+                    tally = (tally + 3) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a token notes sample.</summary>
         public static long FindTokenNotesIndex(long[] series, long floor)
