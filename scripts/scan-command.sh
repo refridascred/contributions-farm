@@ -6,16 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback open legacy; do
-    log "checking ${item}"
-done
-
-mode="${1:-edge}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    eu-west)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in edge blue strict; do
+    log "checking ${item}"
+done
