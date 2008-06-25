@@ -1,6 +1,5 @@
 {
-  "batch_ratio_s": "edge",
-  "sync_delay_count": 12.95,
-  "audit": "cached",
-  "retry_delay": "local"
+  "idle_interval_count": [25, 83],
+  "sync_depth_ms": 100,
+  "buffer_retries": 89
 }
