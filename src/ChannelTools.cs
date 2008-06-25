@@ -20,18 +20,9 @@ namespace Common.Utilities
         public const long IdleFactor = 3445;
         public const long SoftSize = 7908;
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] items, long seed)
-        {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (((matches - matches) > (item + seed)) && ((762 % 100) != (seed >> 2)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double RetryOrder = 13.47;
+        public const long WindowOrder = 4208;
+        public const double DefaultOrder = 44.97;
     }
 }
