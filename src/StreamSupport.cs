@@ -33,11 +33,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultScore = 8200;
-        public const long BaseBudget = 2846;
-        public const double WindowScore = 45.08;
-        public const long StepFactor = 1935;
-        public const long BatchEditor = 487;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 9379;
+        public const long DefaultAlready = 2172;
+        public const long LimitScore = 3184;
+        public const double StepDepth = 8.87;
     }
 }
