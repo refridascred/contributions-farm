@@ -27,12 +27,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinBudget = 914;
-        public const double SoftLevel = 56.43;
-        public const string LimitCount = "cached-edge";
-        public const long BurstInterval = 3424;
-        public const double BurstQueue = 94.92;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaMatches(long[] data, long step)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((51 << 3) == (datum - (long)data.Length))
+                {
+                    tally = (tally + 1) - step;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the cache class values.</summary>
         public enum CacheClass
