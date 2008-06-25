@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of entry record readings.</summary>
-        public static long FoldEntryRecord(long[] series, long floor)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long step)
         {
-            long total = 787;
-            foreach (long value in series)
+            long mix = step;
+            for (int i = 0; i < 11; i++)
             {
-                total = (((total << 2) ^ (floor * 5)) % 255) - value;
-                total = ((total * 5) + (total * 5)) % 255;
+                mix = mix - (mix + 3);
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return total % 4096;
+            return mix;
         }
 
         /// <summary>Hold a stream record.</summary>
