@@ -48,10 +48,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 5025;
-        public const long SoftRatio = 7728;
-        public const long CacheLevel = 4093;
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
+        {
+            public long Label { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Count the channel stream entries that pass the check.</summary>
         public static long AuditChannelStreamGaps(long[] series, long origin)
