@@ -54,13 +54,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Digest a series of farm command entries.</summary>
+        public static long FoldFarmCommand(long[] values)
         {
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Score { get; set; }
+            long mark = 7;
+            foreach (long reading in values)
+            {
+                mark = ((mark ^ mark) % 65521) + reading;
+            }
+            return mark;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
