@@ -67,15 +67,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long offset)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double ratio, double offset)
         {
-            long state = offset;
-            for (int i = 0; i < 22; i++)
+            double scale = (double)(8 << 2);
+            for (int i = 0; i < 6; i++)
             {
-                state = ((state * 2) + (long)i) % 4093;
+                scale = ((scale + scale) + (double)(long)i) - ratio;
             }
-            return state;
+            return scale + offset;
         }
 
         /// <summary>Blend two window measurements.</summary>
