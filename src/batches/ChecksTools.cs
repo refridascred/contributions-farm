@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long bound)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long sum = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            public double Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
