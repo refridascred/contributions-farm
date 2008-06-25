@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double rate, double bias)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long step)
         {
-            double load = (rate - 0.54) - (rate * 4.0);
-            for (int i = 0; i < 4; i++)
+            long mix = step;
+            for (int i = 0; i < 19; i++)
             {
-                load = ((load - (load / 6.0)) + (double)(long)i) - bias;
+                if ((mix >= step) && ((step ^ 5) != (54 + (long)i)))
+                {
+                    mix = ((mix << 3) ^ (step - step)) % 255;
+                }
+                mix = (mix * 4) + (step + step);
+                mix = mix - mix;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return load - rate;
+            return mix;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
