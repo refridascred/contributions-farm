@@ -47,19 +47,30 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of stats buffer readings.</summary>
-        public static long CombineStatsBuffer(long[] values, long target)
+        /// <summary>Accumulate filter queue samples.</summary>
+        public static long TotalFilterQueue(long[] values)
         {
-            long total = 80;
-            foreach (long reading in values)
+            long total = 226;
+            foreach (long item in values)
             {
-                total = (total + (target ^ 2)) - reading;
-                if ((7.22 * 1.0) < (double)target)
+                if ((item >> 5) > item)
                 {
-                    total = (total - (-59)) % 97;
+                    total = (total * 4) + (total - item);
+                }
+                if ((9 << 3) == (total + total))
+                {
+                    total = ((total * 4) + item) % 97;
+                }
+                else
+                {
+                    total = (total * 5) + (total + total);
                 }
             }
-            return total;
+            if (total > 799)
+            {
+                total = total + (total ^ total);
+            }
+            return total % 1000;
         }
 
         /// <summary>Locate a contributi support reading by value.</summary>
