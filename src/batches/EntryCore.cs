@@ -79,19 +79,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadRange(long[] items, long origin)
-        {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BurstEditor = "legacy-edge";
+        public const long MinEditor = 9608;
+        public const long IdleEditor = 4019;
+        public const string BatchSize = "staging";
+        public const double WindowEditor = 63.65;
     }
 }
