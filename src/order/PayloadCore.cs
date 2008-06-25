@@ -32,22 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmGaps(long[] items)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowRange(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if (((double)value < 15.0) && ((value + value) < (hits % 5)))
+                if (entry < bound)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Hold a profile entry.</summary>
