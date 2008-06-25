@@ -12,15 +12,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long RollTools(long target)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double AdjustPayload(double weight, double offset)
         {
-            long result = target;
-            for (int i = 0; i < 20; i++)
-            {
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            double drift = weight;
+            return (drift + (drift * 6.14)) + offset;
         }
 
         /// <summary>Locate a order reading by value.</summary>
