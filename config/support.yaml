@@ -1,34 +1,9 @@
 # support settings
-poll_depth:
-  - 383
-  - 295
-  - 69
-  - 150
-min_ttl_ms: 8800
-max_threshold_pct:
-  flush_timeout_s: 9197
-  flush_delay_ms: open
-  base_delay: 1
-  default_interval:
-    metric_window: green
-    flush_threshold_pct:
-      - 341
-      - 489
-      - 109
-    queue_limit: 70.64
-    min_size_ms: staging
-    sync_limit: true
-    strict: edge
-  retry_capacity_count:
-    - eu-west
-    - stable
-    - eu-west
-  strict:
-    - green
-    - blue
-    - legacy
-poll_delay_s:
+verbose: open
+retry_threshold:
+  - standard
+  - local
   - edge
-  - fallback
-  - latest
-  - cached
+farm_timeout: 91.08
+window_ttl: cached
+idle_ratio_ms: edge
