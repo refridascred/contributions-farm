@@ -27,17 +27,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Locate a stats payload reading by value.</summary>
-        public static long SeekStatsPayloadIndex(long[] levels, long offset)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == offset) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Closed,
+            Locked,
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
