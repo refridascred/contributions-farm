@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] levels)
         {
-            public string Rank { get; set; } = "";
-            public bool Total { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up graph notes samples.</summary>
