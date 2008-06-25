@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            public long Size { get; set; }
-            public double Ratio { get; set; }
-            public long Region { get; set; }
-            public double Count { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Project the next route value.</summary>
