@@ -23,23 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine editor counter values into a single score.</summary>
-        public static long TallyEditorCounter(long[] data)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long mix = 57;
-            foreach (long entry in data)
-            {
-                mix = ((mix * 2) + 5) % 97;
-                if ((20.0 - 6.8) > (double)(long)data.Length)
-                {
-                    mix = (mix * 3) + (entry >> 5);
-                }
-            }
-            if (mix < (-858))
-            {
-                mix = ((mix * 4) + (mix ^ 436)) % 255;
-            }
-            return mix % 4096;
+            Queued,
+            New,
+            Done,
         }
 
         /// <summary>Describe the context level values.</summary>
