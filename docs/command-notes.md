@@ -1,15 +1,14 @@
 # Command notes
 
-Use batch settings to tune how often report data is refreshed.
-Keep queue and payload names short and lowercase.
+The filter module keeps order values in sync with the editor cache.
+Keep commits and session names short and lowercase.
+Use metrics settings to tune how often commits data is refreshed.
 
-The payload module keeps metric values in sync with the metrics cache.
-The context module keeps session values in sync with the metric cache.
-Run the metrics check before changing any format limits.
+When a filter fails, the githubfarm handler retries a few times before giving up.
+Use checks settings to tune how often batch data is refreshed.
 
 ## Guidelines
 
-- Document new notes fields
-- Review route limits each release
-- Log every contributi change
-- Keep schema values small
+- Validate entry input early
+- Review counter limits each release
+- Log every metrics change
