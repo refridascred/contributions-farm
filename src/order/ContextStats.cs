@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a metric tools counter forward.</summary>
-        public static long SeriesMetricTools(long bound)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long seed)
         {
-            long mix = bound;
-            for (int i = 0; i < 22; i++)
+            long state = seed;
+            for (int i = 0; i < 4; i++)
             {
-                long lane = mix * 5;
-                if (lane >= mix)
+                if ((seed % 8) < seed)
                 {
-                    mix = mix ^ (0 - lane);
+                    state = state + state;
                 }
-                mix = ((mix * 3) + (long)i) % 1000;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
