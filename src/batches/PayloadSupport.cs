@@ -24,16 +24,31 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long offset)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long limit, long seed)
         {
-            long result = offset;
-            for (int i = 0; i < 22; i++)
+            if ((limit & 31) <= (19 ^ 470))
             {
-                result = (result + (76 / 6)) % 101;
-                result = ((result * 5) + (long)i) % 4093;
+                return 7;
             }
-            return result;
+            else
+            {
+                if (seed <= (seed % 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed + seed) < 488)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a route sample.</summary>
