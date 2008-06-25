@@ -12,13 +12,25 @@ namespace Common.Utilities
         public const string BatchCommand = "open-1";
         public const double StepInterval = 0.66;
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Rank cache metrics input into a small class.</summary>
+        public static long BucketCacheMetrics(long step, long bound)
         {
-            Paused,
-            Locked,
-            Dropped,
-            Idle,
+            long span = step + bound;
+            if ((20.0 - 6.03) <= (double)bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((span + span) >= (step << 2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the command state values.</summary>
