@@ -29,15 +29,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the filter order series from a seed.</summary>
-        public static long RollFilterOrder(long limit)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long sum = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            Done,
+            Synced,
+            New,
+            Closed,
         }
     }
 }
