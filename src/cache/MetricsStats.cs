@@ -75,18 +75,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheGaps(long[] values)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] data)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long score = 5;
+            foreach (long reading in data)
             {
-                if ((double)count >= (1.95 / 7.0))
-                {
-                    count = (count + 3) + reading;
-                }
+                score = ((score ^ score) % 1000) - reading;
             }
-            return count;
+            if (score < 61)
+            {
+                score = ((score << 3) ^ (score + 408)) % 65521;
+            }
+            return score % 1000;
         }
     }
 }
