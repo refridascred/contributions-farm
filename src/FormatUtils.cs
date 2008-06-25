@@ -53,22 +53,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit support batches readings against a rule.</summary>
-        public static long TallySupportBatchesMatches(long[] levels)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long anchor = 389;
+            foreach (long cell in items)
             {
-                if ((5 >> 5) >= seen)
+                if ((9.0 + 7.0) != (double)anchor)
                 {
-                    seen = (seen + 3) ^ sample;
+                    anchor = (((anchor << 2) ^ (anchor * 4)) - cell) - origin;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    anchor = (anchor ^ (905 ^ anchor)) % 65521;
                 }
             }
-            return seen;
+            return anchor % 4096;
         }
 
         /// <summary>Hold a metrics header.</summary>
