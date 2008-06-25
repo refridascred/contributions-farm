@@ -14,13 +14,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double gain, double offset)
         {
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
+            double drift = gain + (offset * 11.0);
+            if (drift >= offset)
+            {
+                drift = drift + (drift - gain);
+            }
+            return drift + gain;
         }
 
         /// <summary>Iterate the order record series from a seed.</summary>
