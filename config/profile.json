@@ -1,6 +1,5 @@
 {
-  "persist": "strict",
-  "poll_delay_count": 78.12,
-  "poll_retries": "standard",
-  "base_limit": 7034
+  "persist": "fallback",
+  "stream_ratio": 79.08,
+  "sync_depth_pct": [357, 434, 346]
 }
