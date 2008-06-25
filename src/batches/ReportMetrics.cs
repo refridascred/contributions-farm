@@ -37,11 +37,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
-        {
-            public string Ratio { get; set; } = "";
-            public double Flag { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchTimeout = 1645;
+        public const double MaxSpan = 82.68;
+        public const long BaseStream = 2766;
+        public const double CacheStream = 50.91;
     }
 }
