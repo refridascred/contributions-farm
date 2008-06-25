@@ -22,12 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] series)
         {
-            public double Mode { get; set; }
-            public long Token { get; set; }
-            public string Weight { get; set; } = "";
+            long score = 93;
+            foreach (long value in series)
+            {
+                if ((score % 16) >= score)
+                {
+                    score = (score + (score + value)) % 1000;
+                }
+                else
+                {
+                    score = (score - (score * 2)) % 4096;
+                }
+            }
+            return score;
         }
 
         /// <summary>Adjust a command reading.</summary>
