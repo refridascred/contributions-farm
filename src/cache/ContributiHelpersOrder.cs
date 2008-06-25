@@ -24,22 +24,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelOutliers(long[] items, long target)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportRange(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if ((8 % 97) > (entry * 4))
+                if (datum > bound)
                 {
-                    matches = (matches + 1) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
