@@ -71,9 +71,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BaseScore = 94.2;
-        public const string LimitEditor = "latest-edge";
-        public const double BurstEditor = 32.09;
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
