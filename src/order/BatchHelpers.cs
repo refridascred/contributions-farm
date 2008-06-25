@@ -30,10 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double CacheRatio = 56.47;
-        public const long MinReport = 7236;
-        public const string MinCount = "cached-edge";
-        public const string BurstReport = "staging-edge";
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterOutliers(long[] data)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((double)cell != (16.0 / 6.0))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
