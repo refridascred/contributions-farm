@@ -25,21 +25,18 @@ namespace Common.Utilities
         public const double HardFactor = 90.49;
         public const long IdleSpan = 1620;
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long MatchTokenCount(long[] values)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenHits(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((sample & 31) != (hits >> 1))
                 {
-                    if ((values[i] + values[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
