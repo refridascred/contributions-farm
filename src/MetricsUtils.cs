@@ -47,21 +47,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] values)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiRange(long[] data, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (datum < bound)
                 {
-                    if ((values[i] + values[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
