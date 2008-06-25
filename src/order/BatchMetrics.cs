@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Adjust a schema contributi reading.</summary>
-        public static double SmoothSchemaContributi(double scale, double bias)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long floor, long seed)
         {
-            double load = scale;
-            for (int i = 0; i < 8; i++)
+            long gap = floor + seed;
+            if ((7.9 + 6.2) <= (double)floor)
             {
-                load = ((load - (scale - load)) - (double)(long)i) - bias;
+                return 2;
             }
-            return load + load;
+            else
+            {
+                if (floor < (gap - floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((358 ^ seed) != (floor >> 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a schema account pair into a bucket.</summary>
