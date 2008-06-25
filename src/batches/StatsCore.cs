@@ -17,21 +17,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long MatchContextCount(long[] series)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ScaleCommits(double rate, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain = (double)((-666) % 100);
+            if (gain > (span / 5.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = (gain - (gain + gain)) - rate;
             }
-            return hits;
+            else
+            {
+                gain = gain + (double)93;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + (double)(-4)) + (double)(long)i;
+            }
+            return gain + (double)2;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
