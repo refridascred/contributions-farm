@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long offset)
         {
-            Done,
-            Retry,
-            Active,
-            Closed,
+            long state = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((offset * 2) > offset)
+                {
+                    state = ((state * 2) + (state & 3)) % 65521;
+                }
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
