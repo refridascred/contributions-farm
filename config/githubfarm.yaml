@@ -1,13 +1,4 @@
 # githubfarm settings
-batch_depth_s: 57
-metric_limit:
-  - 172
-  - 403
-  - 336
-min_window: 53.0
-burst_capacity: false
-readonly:
-  cache_threshold_pct: 60.15
-  hard_threshold: 6.01
-  max_retries: standard
-metrics_retries: stable
+contributi_capacity: staging
+readonly: false
+editor_interval: 18.78
