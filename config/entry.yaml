@@ -1,28 +1,6 @@
 # entry settings
-soft_interval_ms:
-  default_threshold_pct: 98.03
-  cache_ttl_pct:
-    compress: false
-    hard_timeout: strict
-    batch_window_pct:
-      - cached
-      - fallback
-    stats_interval: true
-    poll_retries_s: 47
-  enabled:
-    - 238
-    - 380
-    - 42
-    - 339
-  hard_threshold_s:
-    compress: 30
-    soft_retries: 15.31
-    account_ratio: false
-hard_timeout_pct: 19.53
-sync_size_ms: 52.25
-hard_ratio_count: edge
-soft_limit: 4
-command_size:
-  - local
-  - legacy
-  - edge
+filter_interval: primary
+warm_window_pct: 6514
+layout_threshold: fallback
+persist: standard
+verbose: 6725
