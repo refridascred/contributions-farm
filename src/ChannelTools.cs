@@ -13,13 +13,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
             public long Flag { get; set; }
-            public bool Stamp { get; set; }
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
+            public long Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Fold a list of batches graph readings.</summary>
