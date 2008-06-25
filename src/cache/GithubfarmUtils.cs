@@ -20,19 +20,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphHits(long[] series)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((8 * 5) < (sample ^ sample))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 5251;
+        public const long MaxSchema = 1902;
+        public const string RetrySchema = "fallback";
+        public const string MinSchema = "alpha-1";
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long IterateRecord(long floor)
