@@ -47,19 +47,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorBounds(long[] readings, long seed)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] data, long target)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell > seed)
+                if (data[i] == target)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
