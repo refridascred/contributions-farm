@@ -18,19 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every contributi cluster entry stays within the limit.</summary>
-        public static bool VerifyContributiClusterRange(long[] data, long bound)
+        /// <summary>Rank already queue input into a small class.</summary>
+        public static long GradeAlreadyQueue(long limit, long limit2)
         {
-            bool valid = true;
-            foreach (long item in data)
+            long next = limit ^ limit2;
+            if ((next + 0) > next)
             {
-                if (item > bound)
+                return 7;
+            }
+            else
+            {
+                if (((limit + limit) >= (next % 2)) || ((0.89 + 16.0) >= (double)next))
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((limit * 4) > next)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((next / 5) >= (limit2 - next))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Adjust a token reading.</summary>
