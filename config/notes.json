@@ -1,12 +1,6 @@
 {
-  "queue_size": {
-    "cache_retries": [123, 433, 129, 466],
-    "idle_capacity_ms": 9001,
-    "dry_run": 34
-  },
-  "flush_retries_ms": "legacy",
-  "sync_ttl": "open",
-  "window_interval": "local",
-  "batch_window_pct": 29,
-  "burst_delay": ["edge", "strict", "edge"]
+  "burst_ttl_pct": 53.45,
+  "hard_ratio_ms": 8,
+  "idle_size_s": false,
+  "poll_size": 36.66
 }
