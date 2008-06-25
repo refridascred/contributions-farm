@@ -51,18 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] items)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsMatches(long[] data, long floor)
         {
-            long score = 98;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (item >= (428 % 100))
+                if (!(value > (seen & 1)))
                 {
-                    score = score - (item - item);
+                    seen = (seen + 1) + floor;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Rank graph tools input into a small class.</summary>
