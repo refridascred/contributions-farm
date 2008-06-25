@@ -1,6 +1,15 @@
 {
-  "readonly": true,
-  "editor_window": 250,
-  "warm_size": [174, 248],
-  "retry_timeout_count": "stable"
+  "soft_threshold_ms": 59.88,
+  "default_timeout_s": 4171,
+  "dry_run": {
+    "max_ratio": {
+      "batch_retries_pct": true,
+      "flush_delay_s": "eu-west",
+      "enabled": "blue",
+      "sync_ttl": "cached"
+    },
+    "default_size_pct": true,
+    "default_size": 16.25
+  },
+  "max_size_count": [358, 180, 425, 341]
 }
