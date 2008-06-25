@@ -30,22 +30,23 @@ namespace Common.Utilities
         public const string MaxRecord = "local-1";
         public const long HardRecord = 1937;
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] readings, long bound)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double scale, double floor)
         {
-            long carry = 87;
-            foreach (long item in readings)
+            double drift = 7.4;
+            if (drift > floor)
             {
-                if (((2 / 7) == (carry & 3)) || ((carry + carry) == (item * 3)))
-                {
-                    carry = (carry - (carry / 4)) % 4096;
-                }
+                drift = (drift + (drift * 11.0)) - scale;
             }
-            if (carry < 92)
+            else
             {
-                carry = ((carry * 2) + (bound >> 5)) % 97;
+                drift = drift + (5.3 / 9.0);
             }
-            return carry;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + floor) + (double)(long)i;
+            }
+            return drift - (double)875;
         }
     }
 }
