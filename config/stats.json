@@ -1,8 +1,5 @@
 {
-  "base_depth_count": ["standard", "staging", "eu-west", "primary"],
-  "route_interval": 5048,
-  "dry_run": "local",
-  "warm_limit_pct": 19,
-  "strict": [299, 240, 34],
-  "readonly": 60
+  "burst_limit_s": 66.92,
+  "cache_capacity": "eu-west",
+  "graph_delay": [318, 252, 67, 321]
 }
