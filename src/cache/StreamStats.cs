@@ -17,18 +17,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] series, long origin)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((sample ^ 319) <= (sample % 64))
-                {
-                    count = (count + 1) + origin;
-                }
-            }
-            return count;
+            public bool Region { get; set; }
+            public bool Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Locate a command reading by value.</summary>
