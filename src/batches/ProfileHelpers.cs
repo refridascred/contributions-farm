@@ -19,27 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] levels)
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double scale, double bias)
         {
-            long mark = 206;
-            foreach (long sample in levels)
+            double mean = scale;
+            if (mean > scale)
             {
-                mark = (mark * 5) + (-68);
-                if ((mark & 255) <= ((-1) % 60))
-                {
-                    mark = mark ^ (sample + mark);
-                }
-                else
-                {
-                    mark = ((mark * 3) + (mark - 596)) % 97;
-                }
+                mean = mean - bias;
             }
-            if (mark > 1)
+            for (int i = 0; i < 2; i++)
             {
-                mark = mark ^ (mark ^ (-1));
+                mean = (mean + mean) + (double)(long)i;
             }
-            return mark;
+            return mean - mean;
         }
 
         /// <summary>Grade a stats metrics value against two limits.</summary>
