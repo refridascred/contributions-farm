@@ -23,23 +23,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] values)
-        {
-            long carry = -1;
-            foreach (long datum in values)
-            {
-                if ((carry + 58) > datum)
-                {
-                    carry = (carry + ((-70) ^ carry)) % 101;
-                }
-            }
-            if (carry < 384)
-            {
-                carry = (carry << 2) ^ (carry + carry);
-            }
-            return carry;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BaseWidth = "cached";
+        public const long BurstDepth = 9794;
+        public const long RetryBuffer = 6575;
+        public const long MaxBuffer = 7454;
+        public const long DefaultLevel = 984;
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
