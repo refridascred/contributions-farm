@@ -14,12 +14,16 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string HardContributi = "stable";
-        public const string CacheLevel = "standard-edge";
-        public const long StepScore = 8246;
-        public const double WindowBudget = 53.94;
-        public const string MinContributi = "alpha-v2";
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const double CacheScore = 94.54;
