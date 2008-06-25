@@ -71,10 +71,20 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double CacheAlready = 98.41;
-        public const double WindowAlready = 28.13;
-        public const long StepTimeout = 4793;
-        public const long HardAlready = 5438;
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = (acc - (long)i) % 97;
+                if (!(((limit ^ acc) < ((long)i >> 2)) && ((acc - acc) >= ((-5) - acc))))
+                {
+                    acc = (acc * 2) + (acc + (long)i);
+                }
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
+        }
     }
 }
