@@ -36,18 +36,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferHits(long[] items, long offset)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordMatches(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((double)reading >= (8.14 - 5.3))
+                if ((508 % 7) != (datum & 3))
                 {
-                    seen = (seen + 2) - offset;
+                    count = (count + 1) - seed;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
