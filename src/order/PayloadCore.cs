@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] items)
+        /// <summary>Count the batch token entries that pass the check.</summary>
+        public static long CountBatchTokenMatches(long[] items)
         {
-            long state = 55;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                for (int i = 0; i < 3; i++)
+                if (3.1 <= (double)sample)
                 {
-                    state = ((state ^ (cell - state)) % 97) + (long)i;
+                    matches = matches + 3;
                 }
-                if (((double)(long)items.Length >= (double)cell) || ((433 + cell) > cell))
+                else
                 {
-                    state = (state - (cell - cell)) % 65521;
+                    matches = matches - 1;
                 }
             }
-            return state % 97;
+            return matches;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
