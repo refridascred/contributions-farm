@@ -33,12 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelRange(long[] samples, long target)
         {
-            Locked,
-            Queued,
-            Failed,
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
