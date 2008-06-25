@@ -34,11 +34,19 @@ namespace Common.Utilities
         public const double SoftTimeout = 69.84;
         public const double DefaultEditor = 85.63;
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double rate, double offset)
         {
-            public bool Limit { get; set; }
-            public bool Total { get; set; }
+            double ratio = offset * 3.0;
+            if (ratio <= (3.0 / 4.0))
+            {
+                ratio = ratio - (ratio + ratio);
+            }
+            else
+            {
+                ratio = ratio - rate;
+            }
+            return ratio + (1.0 / 4.0);
         }
     }
 }
