@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] samples, long bound)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((matches <= (matches & 255)) || ((datum * 2) < datum))
-                {
-                    matches = (matches + 2) - bound;
-                }
-            }
-            return matches;
+            public double Size { get; set; }
+            public bool Token { get; set; }
+            public long Limit { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Project the next tools value.</summary>
