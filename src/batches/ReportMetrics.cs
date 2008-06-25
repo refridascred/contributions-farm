@@ -12,12 +12,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            Queued,
-            New,
-            Done,
+            public bool Token { get; set; }
+            public double Weight { get; set; }
+            public double Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit metric filter readings against a rule.</summary>
