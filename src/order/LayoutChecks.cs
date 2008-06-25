@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] readings, long step)
         {
-            public string Score { get; set; } = "";
-            public bool Region { get; set; }
-            public long Rank { get; set; }
+            long score = 7;
+            foreach (long reading in readings)
+            {
+                score = (((score ^ (77 << 2)) % 65521) + reading) + step;
+            }
+            return score % 1000;
         }
 
         /// <summary>Adjust a token reading.</summary>
