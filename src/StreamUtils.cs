@@ -55,17 +55,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a contributi support reading by value.</summary>
-        public static long LocateContributiSupportIndex(long[] series, long origin)
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double gain, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias = gain;
+            if (bias > 2.2)
             {
-                if (series[i] >= origin)
-                {
-                    return (long)i;
-                }
+                bias = bias + (bias * 0.76);
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + floor) + (double)(long)i;
+            }
+            return bias - gain;
         }
 
         /// <summary>Validate checks batch readings against a bound.</summary>
