@@ -22,24 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long target, long origin)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            if (target > (target + target))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((0.1 - 7.0) == (double)target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Limit { get; set; }
+            public long Rank { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
