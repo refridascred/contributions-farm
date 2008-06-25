@@ -1,15 +1,14 @@
 # Command notes
 
-A queue that stays idle for too long is moved to the layout list.
-The entry module keeps window values in sync with the counter cache.
+Each already is validated before it reaches the already queue.
+When a contributi fails, the stream handler retries a few times before giving up.
 
-The context report groups every order by format.
-When a layout fails, the record handler retries a few times before giving up.
-Defaults for contributi live in the config folder and can be overridden per environment.
+Use entry settings to tune how often command data is refreshed.
+Keep batch and window names short and lowercase.
+A stream that stays idle for too long is moved to the graph list.
 
 ## Guidelines
 
-- Prefer token defaults
-- Validate batch input early
-- Review format limits each release
-- Keep context values small
+- Prefer format defaults
+- Keep tools values small
+- Document new buffer fields
