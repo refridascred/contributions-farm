@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            Ready,
             Retry,
+            Active,
             Draft,
-            Done,
-            Queued,
+            Closed,
         }
 
         /// <summary>Describe the notes level values.</summary>
