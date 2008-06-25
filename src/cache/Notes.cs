@@ -23,13 +23,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
-            public long Region { get; set; }
+            public string Region { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Digest a series of context entries.</summary>
