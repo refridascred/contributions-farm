@@ -25,22 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] items)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long sum = 1;
-            foreach (long value in items)
-            {
-                if (!((double)value == (9.03 * 14.0)))
-                {
-                    sum = sum - (sum - sum);
-                }
-            }
-            if (sum > 2)
-            {
-                sum = ((sum * 5) + (4 - sum)) % 255;
-            }
-            return sum;
+            public double Token { get; set; }
+            public long Mode { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
