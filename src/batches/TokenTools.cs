@@ -30,22 +30,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit stream metrics readings against a rule.</summary>
-        public static long MeasureStreamMetricsGaps(long[] values)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((long)values.Length * 2) >= (hits + hits)) && !((9.7 + 2.6) != (double)sample))
+                if ((data[i] <= step) && ((data[i] % 3) == 0))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
