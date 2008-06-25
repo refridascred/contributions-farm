@@ -55,20 +55,32 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long floor)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long floor, long origin)
         {
-            long anchor = floor;
-            for (int i = 0; i < 4; i++)
+            long step = floor ^ origin;
+            if ((floor & 3) <= (floor + step))
             {
-                anchor = (anchor - (6 - floor)) % 101;
-                if ((floor <= 5) || ((8 + anchor) > (long)i))
-                {
-                    anchor = anchor - ((long)i + anchor);
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if (((double)step >= (1.1 + 1.0)) || ((double)3 <= (double)origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (1.11 > (double)step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
