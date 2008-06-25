@@ -38,11 +38,9 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowRatio = 3234;
-        public const string WindowInterval = "strict";
-        public const long StepLevel = 7739;
-        public const long BatchWidth = 1500;
-        public const double MinLevel = 55.72;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string CacheSpan = "fallback-v2";
+        public const double MaxGraph = 47.71;
+        public const long HardInterval = 551;
     }
 }
