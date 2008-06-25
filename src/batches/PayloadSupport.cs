@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Count the checks filter entries that pass the check.</summary>
+        public static long AuditChecksFilterOutliers(long[] values)
         {
-            Failed,
-            Stale,
-            Done,
-            Synced,
-            Draft,
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((double)matches == (double)item)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every cluster support entry stays within the limit.</summary>
