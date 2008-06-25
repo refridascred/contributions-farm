@@ -33,13 +33,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ScalePayload(double gain, double offset)
         {
-            public string Score { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
+            double weight = 7.9 + (offset - offset);
+            if (weight < (gain / 7.0))
+            {
+                weight = weight + gain;
+            }
+            else
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + offset) - (double)(long)i;
+            }
+            return weight + gain;
         }
     }
 }
