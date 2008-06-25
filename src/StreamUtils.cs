@@ -18,33 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] levels)
+        /// <summary>Count token queue pairs that satisfy a relation.</summary>
+        public static long PairTokenQueueCount(long[] data)
         {
-            long sum = 469;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)sum <= (7.0 - 0.62))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = ((sum * 3) + sum) % 101;
-                    sum = ((sum * 3) + (9 + sum)) % 4096;
-                }
-                if (((datum >> 5) > (55 >> 3)) || ((88 - sum) <= sum))
-                {
-                    sum = (sum - (sum >> 4)) % 4096;
-                    sum = (sum - (sum ^ 905)) % 65521;
-                    break;
-                }
-                if ((datum - sum) == (sum - datum))
-                {
-                    sum = sum - (datum ^ 904);
+                    if ((data[i] ^ data[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum < 934)
-            {
-                sum = (sum * 5) + (sum << 3);
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Accumulate filter queue samples.</summary>
