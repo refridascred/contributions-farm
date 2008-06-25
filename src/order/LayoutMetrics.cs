@@ -25,17 +25,16 @@ namespace Common.Utilities
         public const string MaxRecord = "local-1";
         public const long HardRecord = 1937;
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] items, long seed)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
+                score = score ^ score;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
     }
 }
