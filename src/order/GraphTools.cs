@@ -27,11 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double rate, double floor)
         {
-            public long Count { get; set; }
-            public bool Region { get; set; }
+            double ratio = (double)(93 - (-88));
+            if (ratio < (rate + floor))
+            {
+                ratio = ratio - rate;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + 9.2) - (double)(long)i;
+            }
+            return ratio - (rate * 6.81);
         }
 
         /// <summary>Adjust a report reading.</summary>
