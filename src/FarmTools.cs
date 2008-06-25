@@ -25,15 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the farm window series from a seed.</summary>
-        public static long StepFarmWindow(long origin)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] readings)
         {
-            long anchor = origin;
-            for (int i = 0; i < 4; i++)
+            long mix = -5;
+            foreach (long sample in readings)
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                mix = ((mix - (mix >> 3)) % 97) - sample;
+                if ((double)mix <= (1.6 - 14.0))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Accumulate cache notes samples.</summary>
