@@ -28,13 +28,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            Queued,
-            Retry,
-            New,
-            Failed,
+            public bool Count { get; set; }
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
