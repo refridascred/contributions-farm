@@ -13,18 +13,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenOutliers(long[] samples)
+        /// <summary>Combine layout batch values into a single score.</summary>
+        public static long DigestLayoutBatch(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long result = 30;
+            foreach (long sample in items)
             {
-                if ((reading + reading) < (reading + matches))
+                if ((9.9 / 9.0) >= (double)offset)
                 {
-                    matches = matches + 3;
+                    result = (result - offset) + sample;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Hold a window snapshot.</summary>
