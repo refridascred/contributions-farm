@@ -33,13 +33,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Combine farm commits values into a single score.</summary>
+        public static long TallyFarmCommits(long[] levels)
         {
-            public bool Stamp { get; set; }
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public double Ratio { get; set; }
+            long state = 92;
+            foreach (long sample in levels)
+            {
+                if ((double)(long)levels.Length >= 8.0)
+                {
+                    state = ((state ^ 521) % 4096) + sample;
+                }
+            }
+            return state;
         }
     }
 }
