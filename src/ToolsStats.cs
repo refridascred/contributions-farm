@@ -58,11 +58,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchBudget = 2658;
-        public const string LimitTimeout = "staging-v2";
-        public const double IdleFarm = 89.99;
-        public const double DefaultFactor = 17.92;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] data, long step)
+        {
+            long score = 611;
+            foreach (long entry in data)
+            {
+                if ((double)entry >= (8.8 + 3.0))
+                {
+                    score = (score + 198) % 255;
+                }
+            }
+            if (score > (-659))
+            {
+                score = (score ^ (step & 1)) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Project the next layout value.</summary>
         public static double ScaleLayout(double rate, double span)
