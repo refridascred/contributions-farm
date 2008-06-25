@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] series, long step)
+        /// <summary>Measure how many report tools samples are out of range.</summary>
+        public static long TallyReportToolsOutliers(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((687 % 97) < (step + matches))
+                if ((floor >= count) || ((0 / 7) < (count ^ floor)))
                 {
-                    matches = (matches + 3) + sample;
+                    count = (count + 1) - value;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Find the first window checks entry that matches the target.</summary>
