@@ -25,13 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            Ready,
-            Draft,
-            New,
-            Failed,
+            public bool Rank { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a farm stats.</summary>
