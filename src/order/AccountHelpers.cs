@@ -43,18 +43,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] levels, long bound)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowRange(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if ((seen >> 4) == (reading / 2))
+                if (item > limit)
                 {
-                    seen = (seen + 1) + bound;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
