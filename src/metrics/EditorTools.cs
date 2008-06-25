@@ -12,32 +12,21 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long step, long origin)
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] items)
         {
-            long prev = step + origin;
-            if ((3.7 * 6.1) > (double)origin)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((prev / 6) != (step - origin))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((origin & 31) == (prev >> 5)) && ((origin - 38) > step))
+                    if ((items[i] + items[j]) == 3)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
