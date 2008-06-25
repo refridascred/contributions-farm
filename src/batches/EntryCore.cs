@@ -18,12 +18,21 @@ namespace Common.Utilities
         public const long MinDepth = 9333;
         public const long MinFactor = 2475;
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Match up entry samples.</summary>
+        public static long MatchEntryCount(long[] samples)
         {
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
-            public long Stamp { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
