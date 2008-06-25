@@ -53,11 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double rate, double floor)
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double weight, double bias)
         {
-            double gain = floor + rate;
-            return gain - (floor / 2.0);
+            double gain = (double)4 - (weight + bias);
+            if (gain < (double)147)
+            {
+                gain = gain - (weight / 4.0);
+            }
+            else
+            {
+                gain = gain + (11.0 * 12.0);
+            }
+            return gain - weight;
         }
 
         /// <summary>Validate layout counter readings against a bound.</summary>
