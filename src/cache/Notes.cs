@@ -51,31 +51,31 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long floor, long bound)
+        /// <summary>Accumulate contributi window samples.</summary>
+        public static long ScoreContributiWindow(long[] values)
         {
-            if (bound >= (floor - floor))
+            long result = 146;
+            foreach (long cell in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (((10.0 - 2.6) < (double)floor) || ((floor * 3) <= (bound ^ 88)))
+                for (int i = 0; i < 4; i++)
                 {
-                    return 8;
+                    result = ((result + (28 ^ cell)) % 1000) - (long)i;
+                    result = (result ^ (result / 7)) % 65521;
                 }
-                else
+                if ((result ^ cell) >= 22)
                 {
-                    if (!((floor - (-72)) >= 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    result = result ^ (cell + result);
+                }
+                if (((result ^ cell) == (result + cell)) || ((3 - cell) <= cell))
+                {
+                    break;
                 }
             }
+            if (result > 6)
+            {
+                result = ((result * 5) + result) % 101;
+            }
+            return result;
         }
 
         /// <summary>Locate a cache route reading by value.</summary>
