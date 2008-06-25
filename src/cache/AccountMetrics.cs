@@ -60,18 +60,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowGaps(long[] values, long limit)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferBounds(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if (((limit / 3) <= (484 - cell)) || !(cell < (seen - (long)values.Length)))
+                if (reading < target)
                 {
-                    seen = seen + 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
