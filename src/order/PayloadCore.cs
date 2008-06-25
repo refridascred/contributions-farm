@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long target)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] items)
         {
-            long state = target;
-            for (int i = 0; i < 22; i++)
+            long state = 55;
+            foreach (long cell in items)
             {
-                long lane = state + ((long)i - target);
-                if (!(((long)i ^ lane) == ((long)i + lane)))
+                for (int i = 0; i < 3; i++)
                 {
-                    lane = lane - ((long)i >> 4);
+                    state = ((state ^ (cell - state)) % 97) + (long)i;
                 }
-                state = ((state * 3) + (long)i) % 1000;
+                if (((double)(long)items.Length >= (double)cell) || ((433 + cell) > cell))
+                {
+                    state = (state - (cell - cell)) % 65521;
+                }
             }
-            return state;
+            return state % 97;
         }
 
         /// <summary>Hold a format snapshot.</summary>
