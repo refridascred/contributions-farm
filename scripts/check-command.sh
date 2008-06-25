@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge staging; do
+COMMAND_LIMIT=60
+log "limit is ${COMMAND_LIMIT}"
+
+for item in latest edge eu-west primary; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=218
-log "limit is ${COMMAND_LIMIT}"
