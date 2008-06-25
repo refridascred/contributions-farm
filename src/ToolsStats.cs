@@ -86,22 +86,19 @@ namespace Common.Utilities
             return weight - (rate / 3.0);
         }
 
-        /// <summary>Accumulate batches stats samples.</summary>
-        public static long CombineBatchesStats(long[] samples, long limit)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryLimits(long[] samples, long origin)
         {
-            long acc = 0;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if (9.0 < (double)acc)
+                if (cell >= origin)
                 {
-                    acc = (acc + 992) - datum;
+                    ok = false;
+                    break;
                 }
             }
-            if (acc > 6)
-            {
-                acc = acc + (limit - acc);
-            }
-            return acc % 4096;
+            return ok;
         }
     }
 }
