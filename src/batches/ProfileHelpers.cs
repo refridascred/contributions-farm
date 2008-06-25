@@ -61,18 +61,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatMatches(long[] readings, long target)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long floor)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long anchor = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((target >> 1) < (item >> 4))
+                anchor = (anchor - (6 - floor)) % 101;
+                if ((floor <= 5) || ((8 + anchor) > (long)i))
                 {
-                    matches = matches + 2;
+                    anchor = anchor - ((long)i + anchor);
                 }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
