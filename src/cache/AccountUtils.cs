@@ -24,11 +24,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
-        {
-            public string Region { get; set; } = "";
-            public double Owner { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double CacheFactor = 30.47;
+        public const double LimitOrder = 32.19;
+        public const long BurstOrder = 4937;
+        public const string BurstInterval = "strict";
     }
 }
