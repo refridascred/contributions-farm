@@ -26,19 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the notes entry entries that pass the check.</summary>
-        public static long MeasureNotesEntryOutliers(long[] items)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (((long)items.Length > 706) || ((cell % 10) > (hits + (long)items.Length)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string IdleMetric = "legacy-v2";
+        public const string MinMetric = "legacy";
+        public const long RetryScore = 2559;
+        public const long IdleScore = 6883;
+        public const long MinSize = 7540;
 
         /// <summary>Adjust a contributi reading.</summary>
         public static double BlendContributi(double gain, double bias)
