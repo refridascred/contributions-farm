@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            Pending,
-            Done,
-            Draft,
-            Retry,
-            Stale,
+            public bool Token { get; set; }
+            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Combine layout values into a single score.</summary>
