@@ -1,5 +1,16 @@
 {
-  "default_ttl": 4.32,
-  "default_ratio": 46.15,
-  "sync_limit": false
+  "schema_depth": ["standard", "standard"],
+  "warm_ttl_pct": 16,
+  "retry_ratio_pct": "edge",
+  "burst_delay": {
+    "max_ttl_count": true,
+    "hard_delay": {
+      "compress": "edge",
+      "persist": 1024,
+      "soft_depth_ms": 42.9,
+      "strict": 500
+    },
+    "min_retries": [45, 310]
+  },
+  "batch_limit": false
 }
