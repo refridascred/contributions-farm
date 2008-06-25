@@ -39,20 +39,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowRange(long[] series, long limit)
-        {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxScore = 1380;
+        public const long SoftReport = 6791;
+        public const long RetryReport = 1203;
 
         /// <summary>Hold a commits stats.</summary>
         public sealed class CommitsStats
