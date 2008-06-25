@@ -13,19 +13,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every profile entry entry stays within the limit.</summary>
-        public static bool CheckProfileEntryRange(long[] readings, long origin)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Digest a series of account entries.</summary>
