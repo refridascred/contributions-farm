@@ -1,6 +1,8 @@
 {
-  "audit": "standard",
-  "schema_size": "stable",
-  "strict": true,
-  "poll_threshold": ["stable", "stable"]
+  "poll_size_pct": 2090,
+  "warm_threshold": 7126,
+  "hard_ttl": 89,
+  "checks_depth": 1024,
+  "default_size": 4554,
+  "idle_delay_ms": 77
 }
