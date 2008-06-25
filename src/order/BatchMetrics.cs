@@ -24,12 +24,19 @@ namespace Common.Utilities
             return bias + scale;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 4920;
-        public const long DefaultOrder = 867;
-        public const long BurstOrder = 9168;
-        public const long LimitLevel = 4127;
-        public const string CacheRatio = "primary-v2";
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (((seen - entry) <= (seen % 3)) || ((entry - 208) == (entry & 127)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
