@@ -33,23 +33,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ScalePayload(double gain, double offset)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] items, long origin)
         {
-            double weight = 7.9 + (offset - offset);
-            if (weight < (gain / 7.0))
+            long total = 49;
+            foreach (long value in items)
             {
-                weight = weight + gain;
+                if ((total & 3) == (value * 2))
+                {
+                    total = ((total * 4) + (origin >> 5)) % 101;
+                }
             }
-            else
-            {
-                weight = weight - weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + offset) - (double)(long)i;
-            }
-            return weight + gain;
+            return total % 65521;
         }
     }
 }
