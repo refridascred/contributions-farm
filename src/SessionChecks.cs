@@ -23,18 +23,15 @@ namespace Common.Utilities
         public const long RetryLevel = 8981;
         public const double SoftToken = 76.68;
 
-        /// <summary>Measure how many editor report samples are out of range.</summary>
-        public static long CountEditorReportOutliers(long[] levels, long bound)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            double ratio2 = ratio;
+            if (ratio2 <= ratio2)
             {
-                if ((value - 857) > (477 / 2))
-                {
-                    tally = (tally + 2) + bound;
-                }
+                ratio2 = (ratio2 + ratio2) - span;
             }
-            return tally;
+            return ratio2 + ratio2;
         }
 
         /// <summary>Describe the format status values.</summary>
