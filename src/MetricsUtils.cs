@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many format metrics samples are out of range.</summary>
-        public static long TallyFormatMetricsHits(long[] samples)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((matches / 5) <= matches)
-                {
-                    matches = (matches + 1) - entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Paused,
+            Done,
+            Ready,
         }
 
         /// <summary>Measure how many account notes samples are out of range.</summary>
