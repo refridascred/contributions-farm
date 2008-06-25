@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] items, long step)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long floor, long step)
         {
-            long sum = 6;
-            foreach (long datum in items)
+            if ((9 ^ step) == (step & 1))
             {
-                if ((sum / 5) > (step % 10))
+                return 2;
+            }
+            else
+            {
+                if ((double)floor == (1.0 + 5.91))
                 {
-                    sum = ((sum << 2) ^ (datum - datum)) % 4096;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return sum % 1000;
         }
 
         /// <summary>Describe the filter phase values.</summary>
