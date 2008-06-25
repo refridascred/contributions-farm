@@ -30,14 +30,24 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Grade a metric record value against two limits.</summary>
+        public static long BucketMetricRecord(long floor, long seed)
         {
-            Queued,
-            Failed,
-            Stale,
-            Locked,
-            Pending,
+            if ((double)282 <= (double)seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((10.0 + 9.1) >= (double)floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
