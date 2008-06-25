@@ -50,20 +50,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] items, long bound)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long total = 836;
-            foreach (long reading in items)
-            {
-                total = total + reading;
-                total = (total - (reading + bound)) % 255;
-            }
-            if (total < 22)
-            {
-                total = ((total * 5) + (total % 8)) % 255;
-            }
-            return total % 97;
+            public double Offset { get; set; }
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
