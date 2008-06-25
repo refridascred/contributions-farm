@@ -50,19 +50,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] readings, long target)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double weight, double floor)
         {
-            long carry = 509;
-            foreach (long datum in readings)
-            {
-                carry = ((carry << 2) ^ (661 & 3)) % 1000;
-                if ((target - datum) < (datum % 2))
-                {
-                    break;
-                }
-            }
-            return carry;
+            double bias = weight;
+            return (bias + bias) + floor;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
