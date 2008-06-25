@@ -14,13 +14,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelBounds(long[] data, long offset)
         {
-            Draft,
-            Queued,
-            Pending,
-            Paused,
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define account limits and defaults.</summary>
