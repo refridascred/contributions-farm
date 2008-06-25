@@ -1,13 +1,10 @@
 # entry settings
-account_capacity: 64
-enabled: 7.72
-flush_interval_s:
-  burst_size_ms: 7020
-  idle_timeout_pct: local
-  sync_size_pct:
-    max_retries_count: 250
-    sync_retries: primary
-    idle_limit_pct: 6
-    compress: 64.38
-    sync_timeout_pct: 11
-    batch_ratio_pct: 61
+sync_retries:
+  poll_window_ms:
+    - 61
+    - 374
+    - 313
+  default_depth_pct: standard
+  cache_retries: true
+default_limit_ms: true
+sync_timeout: latest
