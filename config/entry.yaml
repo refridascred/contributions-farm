@@ -1,16 +1,21 @@
 # entry settings
-cache_retries:
-  compress: green
-  audit: 250
-  stream_retries: staging
-  cache_ttl: false
-  hard_depth_s:
-    - 31
-    - 216
-    - 249
-    - 328
-  cache_retries_pct: 60
-compress:
-  - 73
-  - 371
-session_threshold: 56.26
+base_retries: 95
+poll_ttl_count:
+  soft_size: 64.02
+  format_ttl: cached
+  githubfarm_timeout:
+    - 498
+    - 278
+    - 72
+    - 197
+  cache_size:
+    profile_interval: false
+    counter_delay: true
+    strict: true
+    cache_retries: local
+    persist: 7
+  strict:
+    - 114
+    - 500
+    - 46
+min_retries_ms: 16.91
