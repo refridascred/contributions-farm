@@ -60,16 +60,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                total = (total + ((long)i - 581)) % 4096;
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double HardFactor = 31.97;
+        public const double DefaultLayout = 75.59;
+        public const long IdleLevel = 743;
+        public const double MinInterval = 67.7;
+        public const double BaseLayout = 3.87;
     }
 }
