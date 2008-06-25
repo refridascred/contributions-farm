@@ -12,11 +12,15 @@ namespace Common.Utilities
             return mean + (7.1 / 4.0);
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MaxScore = 94.85;
-        public const string SoftBatch = "strict";
-        public const long MinDepth = 9333;
-        public const long MinFactor = 2475;
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
+        {
+            Stale,
+            Closed,
+            Retry,
+            Failed,
+            Done,
+        }
 
         /// <summary>Match up entry samples.</summary>
         public static long MatchEntryCount(long[] samples)
