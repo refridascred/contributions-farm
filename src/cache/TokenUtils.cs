@@ -19,17 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] levels, long step)
+        /// <summary>Measure how many schema githubfarm samples are out of range.</summary>
+        public static long TallySchemaGithubfarmMatches(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((levels[i] <= step) && ((levels[i] % 3) != 0))
+                if ((146 >= (seen + sample)) && (((sample + seen) != (sample / 2)) && ((seen + 254) < sample)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Fold a list of format support readings.</summary>
