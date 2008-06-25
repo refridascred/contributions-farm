@@ -19,12 +19,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 7207;
-        public const long DefaultRoute = 3431;
-        public const long StepRoute = 7810;
-        public const long BaseRoute = 8873;
-        public const long BatchSpan = 5302;
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
+        {
+            Locked,
+            Paused,
+            Active,
+            Draft,
+            Ready,
+        }
 
         /// <summary>Classify a stats layout pair into a bucket.</summary>
         public static long SortStatsLayout(long seed, long step)
