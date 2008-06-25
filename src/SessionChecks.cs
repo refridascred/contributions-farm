@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 1903;
-        public const string HardFilter = "cached";
-        public const long StepFactor = 9754;
-        public const long CacheBudget = 5587;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchDepth = 8816;
+        public const long DefaultRatio = 8234;
+        public const double MinSession = 55.36;
 
         /// <summary>Scale a entry figure with a bias.</summary>
         public static double BlendEntry(double gain, double floor)
