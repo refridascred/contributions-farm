@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            Paused,
-            Dropped,
-            Synced,
+            Active,
+            Ready,
+            Stale,
         }
 
         /// <summary>Hold a buffer stats.</summary>
