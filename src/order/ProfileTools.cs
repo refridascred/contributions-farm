@@ -41,15 +41,18 @@ namespace Common.Utilities
         public const long IdleRatio = 7281;
         public const string StepSize = "strict-v2";
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double weight, double span)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsOutliers(long[] levels)
         {
-            double drift = span;
-            if (drift >= (weight * 16.0))
+            long matches = 0;
+            foreach (long item in levels)
             {
-                drift = drift - 2.85;
+                if (!((matches + 583) <= (matches + item)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return drift - (2.79 * 0.18);
+            return matches;
         }
 
         /// <summary>Describe the window mode values.</summary>
