@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long target)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderLimits(long[] data, long limit)
         {
-            long anchor = target;
-            for (int i = 0; i < 10; i++)
+            bool found = true;
+            foreach (long entry in data)
             {
-                long step = 483;
-                if (((target >> 3) >= (target % 10)) && ((step ^ anchor) <= step))
+                if (entry > limit)
                 {
-                    anchor = ((anchor * 2) + (step % 8)) % 101;
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    anchor = (anchor << 2) ^ ((long)i + target);
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
