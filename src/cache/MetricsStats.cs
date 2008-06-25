@@ -22,19 +22,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchMatches(long[] items)
+        /// <summary>Audit command notes readings against a rule.</summary>
+        public static long MeasureCommandNotesHits(long[] data)
         {
             long count = 0;
-            foreach (long datum in items)
+            foreach (long datum in data)
             {
-                if (count > datum)
+                if ((8.24 / 6.0) > (double)datum)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = count + 3;
                 }
             }
             return count;
