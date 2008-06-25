@@ -20,22 +20,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] samples, long bound)
+        /// <summary>Fold a list of farm batch readings.</summary>
+        public static long ScoreFarmBatch(long[] samples)
         {
-            long anchor = 8;
-            foreach (long reading in samples)
+            long carry = 97;
+            foreach (long datum in samples)
             {
-                if (((anchor * 4) == (bound - bound)) || ((double)bound > (8.4 + 7.0)))
-                {
-                    anchor = (anchor - (reading * 2)) % 4096;
-                }
+                carry = carry + (carry + datum);
+                carry = (carry ^ datum) % 4096;
+                carry = carry + (386 << 1);
             }
-            if (anchor < 843)
-            {
-                anchor = (anchor + bound) % 4096;
-            }
-            return anchor;
+            return carry % 65521;
         }
 
         /// <summary>Hold a schema info.</summary>
