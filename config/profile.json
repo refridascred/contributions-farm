@@ -1,8 +1,8 @@
 {
-  "min_window": 18,
-  "cache_threshold_ms": false,
-  "enabled": true,
-  "burst_size_pct": ["cached", "strict", "eu-west", "strict"],
-  "dry_run": "blue",
-  "sync_limit_ms": 250
+  "batch_window_s": true,
+  "audit": "legacy",
+  "enabled": 15,
+  "verbose": false,
+  "sync_delay": true,
+  "min_depth_ms": "edge"
 }
