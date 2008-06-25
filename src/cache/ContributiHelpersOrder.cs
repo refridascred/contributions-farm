@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double ratio, double bias)
-        {
-            double weight = bias * 9.18;
-            if (weight > weight)
-            {
-                weight = (weight - (double)4) + ratio;
-            }
-            else
-            {
-                weight = weight - (double)(-613);
-            }
-            return weight - bias;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 9150;
+        public const string HardFactor = "staging-v2";
+        public const long SoftScore = 5179;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long CountBatchOutliers(long[] samples, long seed)
