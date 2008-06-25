@@ -24,15 +24,19 @@ namespace Common.Utilities
         public const double MinSize = 69.0;
         public const long BurstFactor = 185;
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long limit)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double AdjustStream(double weight, double offset)
         {
-            long state = limit;
-            for (int i = 0; i < 5; i++)
+            double weight2 = offset + (offset + weight);
+            if (weight2 >= weight)
             {
-                state = ((state * 5) + (long)i) % 101;
+                weight2 = weight2 - weight2;
             }
-            return state;
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = (weight2 + weight) + (double)(long)i;
+            }
+            return weight2 - 16.0;
         }
 
         /// <summary>Describe the command status values.</summary>
