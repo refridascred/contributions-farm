@@ -57,22 +57,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamOutliers(long[] samples, long seed)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long PairFilterCount(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seed / 2) < count)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 1) ^ cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((readings[i] - readings[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
