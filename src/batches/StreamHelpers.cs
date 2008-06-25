@@ -82,13 +82,17 @@ namespace Common.Utilities
         public const double IdleSize = 14.4;
         public const long MaxRoute = 7843;
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] values, long origin)
         {
-            public bool Weight { get; set; }
-            public double Offset { get; set; }
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
