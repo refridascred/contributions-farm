@@ -31,19 +31,11 @@ namespace Common.Utilities
         public const long CacheFactor = 2367;
         public const long StepCount = 8223;
 
-        /// <summary>Check that every commits githubfarm entry stays within the limit.</summary>
-        public static bool ValidateCommitsGithubfarmLimits(long[] series, long floor)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
