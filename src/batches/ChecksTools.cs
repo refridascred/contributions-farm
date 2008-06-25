@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            Dropped,
-            Queued,
-            Active,
-            Paused,
-            Done,
+            public double Region { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Combine stats values into a single score.</summary>
