@@ -1,8 +1,6 @@
 {
-  "poll_size_pct": 2090,
-  "warm_threshold": 7126,
-  "hard_ttl": 89,
-  "checks_depth": 1024,
-  "default_size": 4554,
-  "idle_delay_ms": 77
+  "burst_limit_pct": true,
+  "compress": 9805,
+  "cache_ttl": 60,
+  "dry_run": 46
 }
