@@ -20,19 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] values)
-        {
-            long total = 0;
-            foreach (long datum in values)
-            {
-                if ((total >> 4) > (datum << 1))
-                {
-                    total = ((total << 2) ^ (total & 255)) % 97;
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitRatio = 7505;
+        public const double HardWidth = 4.36;
+        public const long StepSize = 2890;
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
