@@ -23,22 +23,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] series)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long sum = 357;
-            foreach (long reading in series)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    sum = ((sum ^ sum) % 1000) + (long)i;
-                }
-                if (((8 ^ sum) == (sum << 2)) || ((6 - reading) <= (reading ^ reading)))
-                {
-                    sum = (sum - (sum - sum)) % 255;
-                }
-            }
-            return sum;
+            public long Owner { get; set; }
+            public long Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
