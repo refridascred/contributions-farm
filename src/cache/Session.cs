@@ -22,18 +22,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountGaps(long[] items, long step)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (value >= step)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Ratio { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
