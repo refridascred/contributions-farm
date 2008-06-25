@@ -40,21 +40,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the window graph series from a seed.</summary>
-        public static long DeriveWindowGraph(long step)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] items, long step)
         {
-            long sum = step;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((step - step) > step))
+                if ((items[i] > step) && ((items[i] % 3) == 0))
                 {
-                    sum = ((sum << 3) ^ (sum + step)) % 255;
-                    sum = (sum - (sum / 9)) % 97;
+                    return (long)i;
                 }
-                sum = sum - 1;
-                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
