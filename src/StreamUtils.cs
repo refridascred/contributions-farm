@@ -18,23 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double weight, double offset)
+        /// <summary>Measure how many entry record samples are out of range.</summary>
+        public static long MeasureEntryRecordHits(long[] levels)
         {
-            double bias = (weight + offset) - offset;
-            if (bias >= (offset / 5.0))
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                bias = bias - (weight - weight);
+                if ((double)seen == (0.85 / 3.0))
+                {
+                    seen = (seen + 3) - reading;
+                }
             }
-            else
-            {
-                bias = bias + offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + (bias + weight)) - (double)(long)i;
-            }
-            return bias - (double)1;
+            return seen;
         }
 
         /// <summary>Check that every schema already entry stays within the limit.</summary>
