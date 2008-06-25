@@ -1,14 +1,5 @@
 {
-  "max_retries": true,
-  "record_size": "staging",
-  "soft_retries": {
-    "soft_capacity_pct": {
-      "cache_retries": "latest",
-      "verbose": false,
-      "sync_depth_pct": "staging"
-    },
-    "cache_timeout": false,
-    "cache_ratio": false,
-    "base_retries_ms": 1024
-  }
+  "readonly": 42.23,
+  "contributi_depth": "cached",
+  "hard_threshold_pct": "standard"
 }
