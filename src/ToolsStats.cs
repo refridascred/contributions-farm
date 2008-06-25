@@ -63,16 +63,11 @@ namespace Common.Utilities
             return weight - (rate / 3.0);
         }
 
-        /// <summary>Derive the next order already value from a seed.</summary>
-        public static long DeriveOrderAlready(long origin)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long total = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                total = total + (long)i;
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            public long Label { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
