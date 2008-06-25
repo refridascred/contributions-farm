@@ -28,16 +28,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long step)
+        /// <summary>Derive the next metrics account value from a seed.</summary>
+        public static long DeriveMetricsAccount(long bound)
         {
-            long mix = step;
-            for (int i = 0; i < 9; i++)
+            long result = bound;
+            for (int i = 0; i < 7; i++)
             {
-                mix = mix ^ (step - step);
-                mix = ((mix * 5) + (long)i) % 4093;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
