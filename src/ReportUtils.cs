@@ -5,10 +5,28 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 3201;
-        public const long StepCounter = 7683;
-        public const long BaseCounter = 2983;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] series)
+        {
+            long carry = 114;
+            foreach (long value in series)
+            {
+                carry = ((carry * 4) + (value + carry)) % 1000;
+                if ((double)24 < (double)carry)
+                {
+                    carry = (carry << 3) ^ (carry << 1);
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (0 % 8)) % 65521;
+                }
+            }
+            if (carry < 7)
+            {
+                carry = (carry ^ (carry + carry)) % 255;
+            }
+            return carry;
+        }
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long WeighProfile(long[] items)
