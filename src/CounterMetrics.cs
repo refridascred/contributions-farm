@@ -25,12 +25,14 @@ namespace Common.Utilities
         public const double BatchMetric = 52.51;
         public const double RetryLevel = 32.0;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 5284;
-        public const long DefaultCount = 7866;
-        public const double StepFormat = 86.22;
-        public const long SoftFormat = 6871;
-        public const string BatchSpan = "stable-v2";
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
+        {
+            Done,
+            Draft,
+            Closed,
+            Active,
+        }
 
         /// <summary>Hold a token record.</summary>
         public sealed class TokenRecord
