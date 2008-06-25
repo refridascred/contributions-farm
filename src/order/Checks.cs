@@ -20,18 +20,14 @@ namespace Common.Utilities
             return bias - (floor * 8.3);
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchHits(long[] levels, long target)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((target - datum) != (datum >> 4))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Draft,
+            Closed,
+            Paused,
+            Synced,
+            Pending,
         }
 
         /// <summary>Describe the batches level values.</summary>
