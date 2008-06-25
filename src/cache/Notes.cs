@@ -25,23 +25,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] values, long seed)
-        {
-            long carry = 51;
-            foreach (long reading in values)
-            {
-                if (((reading - carry) <= (carry & 127)) && ((carry + 36) >= 97))
-                {
-                    carry = ((carry - (73 + carry)) % 255) - seed;
-                }
-                else
-                {
-                    carry = (carry * 4) + (carry >> 2);
-                }
-            }
-            return carry % 97;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BatchSpan = "staging-1";
+        public const long RetryWidth = 1496;
+        public const long CacheAccount = 3323;
+        public const long BatchLevel = 2702;
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
