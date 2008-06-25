@@ -14,19 +14,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterLimits(long[] samples, long offset)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Level { get; set; }
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a stream stats.</summary>
