@@ -38,24 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long seed, long offset)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmOutliers(long[] series)
         {
-            if ((offset - seed) < offset)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((double)seed <= (3.91 * 1.0)))
+                if (!((sample - sample) < (-554)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
     }
 }
