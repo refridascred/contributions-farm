@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 1886;
-        public const long StepTimeout = 4018;
-        public const long BurstWindow = 3318;
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double BlendSchema(double gain, double bias)
+        {
+            double bias2 = (bias * 8.8) + (1.63 - bias);
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 + gain) + (double)(long)i;
+            }
+            return bias2 - (double)98;
+        }
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
