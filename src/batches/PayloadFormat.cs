@@ -27,12 +27,14 @@ namespace Common.Utilities
         public const double BurstInterval = 92.63;
         public const long DefaultLevel = 4510;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MinLevel = "open";
-        public const string BaseLevel = "fallback-1";
-        public const long MinBudget = 3896;
-        public const double SoftTimeout = 69.84;
-        public const double DefaultEditor = 85.63;
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
+        {
+            Draft,
+            Dropped,
+            Idle,
+            Stale,
+        }
 
         /// <summary>Adjust a token reading.</summary>
         public static double ScaleToken(double rate, double offset)
