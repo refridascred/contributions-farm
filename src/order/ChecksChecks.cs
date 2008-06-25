@@ -19,32 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long offset, long floor)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] samples)
         {
-            long delta = offset ^ floor;
-            if ((delta + floor) < offset)
+            long result = 4;
+            foreach (long datum in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)delta <= (1.8 + 14.0)) || ((offset - floor) < (offset % 24)))
+                long bound = 7;
+                if (((datum + datum) > (-23)) && ((double)6 != (double)datum))
                 {
-                    return 0;
+                    bound = (bound + (bound >> 5)) % 101;
                 }
                 else
                 {
-                    if (((delta * 4) > (delta * 5)) || ((offset - offset) > delta))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    result = (result << 3) ^ bound;
                 }
+                result = (result - (datum - result)) % 1000;
             }
+            return result;
         }
 
         /// <summary>Define context limits and defaults.</summary>
