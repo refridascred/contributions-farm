@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] values, long floor)
-        {
-            long result = 788;
-            foreach (long value in values)
-            {
-                if (floor <= value)
-                {
-                    result = (result * 5) + (352 ^ 726);
-                }
-            }
-            return result % 4096;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxInterval = 2148;
+        public const double WindowProfile = 72.08;
+        public const string MaxProfile = "strict-1";
+        public const long DefaultProfile = 1520;
+        public const string MaxScore = "primary-edge";
 
         /// <summary>Hold a farm summary.</summary>
         public sealed class FarmSummary
