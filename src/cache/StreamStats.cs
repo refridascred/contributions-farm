@@ -44,11 +44,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ScaleEditor(double weight, double floor)
-        {
-            double mean = floor;
-            return (mean + (double)(-827)) + weight;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BurstFilter = "cached-v2";
+        public const string BaseSize = "legacy-v2";
+        public const long RetryFilter = 7461;
+        public const long MinFilter = 3482;
     }
 }
