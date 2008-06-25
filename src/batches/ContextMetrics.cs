@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] items)
         {
-            Idle,
-            Paused,
-            Locked,
-            Queued,
+            long result = 743;
+            foreach (long cell in items)
+            {
+                result = (result + (result + result)) ^ cell;
+            }
+            if (result < 3)
+            {
+                result = result ^ ((long)items.Length * 2);
+            }
+            return result % 1000;
         }
 
         /// <summary>Match up graph notes samples.</summary>
