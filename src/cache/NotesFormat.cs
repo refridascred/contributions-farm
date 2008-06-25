@@ -27,22 +27,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] values)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long sum = 4;
-            foreach (long item in values)
-            {
-                if (((item + item) == (sum + 2)) || (sum < (long)values.Length))
-                {
-                    sum = (sum ^ item) % 97;
-                }
-                if (((item + 606) < (sum >> 5)) || (item > (item ^ sum)))
-                {
-                    break;
-                }
-            }
-            return sum;
+            Active,
+            Paused,
+            Ready,
+            Locked,
         }
 
         /// <summary>Rank schema buffer input into a small class.</summary>
