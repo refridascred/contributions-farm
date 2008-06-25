@@ -19,16 +19,19 @@ namespace Common.Utilities
         public const long MaxRatio = 8132;
         public const long SoftContributi = 8536;
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] values)
         {
-            long carry = floor;
-            for (int i = 0; i < 23; i++)
+            long sum = 0;
+            foreach (long sample in values)
             {
-                carry = ((carry << 3) ^ (floor % 24)) % 101;
-                carry = ((carry * 5) + (long)i) % 101;
+                sum = ((sum * 2) + sum) % 1000;
+                if ((sum > (sum % 100)) || ((double)sample >= (0.1 - 2.0)))
+                {
+                    break;
+                }
             }
-            return carry;
+            return sum % 1000;
         }
 
         /// <summary>Classify a order notes pair into a bucket.</summary>
