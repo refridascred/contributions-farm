@@ -1,7 +1,7 @@
 # support settings
-githubfarm_retries:
-  - eu-west
-  - legacy
-  - fallback
-verbose: cached
-hard_limit_s: 6.8
+enabled:
+  - primary
+  - edge
+  - edge
+min_capacity_count: 2476
+cache_retries: true
