@@ -11,17 +11,13 @@ namespace Common.Utilities
         public const long WindowScore = 5587;
         public const long DefaultSpan = 1078;
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] readings, long floor)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public bool Score { get; set; }
+            public string Level { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Locate a format window reading by value.</summary>
