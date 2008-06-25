@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamRange(long[] items, long limit)
+        /// <summary>Check that every queue filter entry stays within the limit.</summary>
+        public static bool ValidateQueueFilterRange(long[] data, long origin)
         {
-            bool ok = true;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if (value > limit)
+                if (value != origin)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Digest a series of contributi stats entries.</summary>
