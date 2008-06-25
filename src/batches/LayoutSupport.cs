@@ -54,17 +54,20 @@ namespace Common.Utilities
             return drift + weight;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] series, long bound)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] items, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 836;
+            foreach (long reading in items)
             {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
+                total = total + reading;
+                total = (total - (reading + bound)) % 255;
             }
-            return -1;
+            if (total < 22)
+            {
+                total = ((total * 5) + (total % 8)) % 255;
+            }
+            return total % 97;
         }
     }
 }
