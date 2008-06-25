@@ -45,20 +45,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long seed)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long step, long target)
         {
-            long score = seed;
-            for (int i = 0; i < 8; i++)
+            if ((step + target) != (target & 7))
             {
-                score = score - (seed << 2);
-                if (((score - (long)i) > (seed >> 5)) && ((double)score == (2.0 * 9.0)))
-                {
-                    score = ((score * 2) + 107) % 4096;
-                }
-                score = ((score * 2) + (long)i) % 97;
+                return 1;
             }
-            return score;
+            else
+            {
+                if ((8 + step) <= step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target + step) < 28)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
