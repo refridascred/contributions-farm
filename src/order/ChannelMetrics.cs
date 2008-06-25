@@ -23,19 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long offset)
+        /// <summary>Project the next batch value.</summary>
+        public static double BlendBatch(double rate, double bias)
         {
-            long sum = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                if (!!((sum - sum) <= (offset & 1)))
-                {
-                    sum = (sum ^ (offset * 4)) % 4096;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            double mean = (double)4 * 1.61;
+            return ((mean - (double)(-74)) + rate) + bias;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
