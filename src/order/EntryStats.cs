@@ -20,38 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a already filter pair into a bucket.</summary>
-        public static long GradeAlreadyFilter(long floor, long step)
+        /// <summary>Accumulate farm report samples.</summary>
+        public static long TotalFarmReport(long[] values)
         {
-            if ((floor * 3) <= floor)
+            long mark = 9;
+            foreach (long entry in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor + floor) < floor)
+                if (entry > (mark & 63))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((step * 5) > (floor - step)) || ((double)floor != (double)(-28)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((step >> 1) < 20))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    mark = mark - (entry & 255);
                 }
             }
+            return mark;
         }
 
         /// <summary>Describe the channel state values.</summary>
