@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-RECORD_LIMIT=310
-log "limit is ${RECORD_LIMIT}"
-
-for item in cached primary edge; do
+for item in legacy primary strict; do
     log "checking ${item}"
 done
