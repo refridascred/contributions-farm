@@ -1,16 +1,6 @@
 {
-  "account_interval": {
-    "schema_capacity": 35.07,
-    "retry_capacity": {
-      "verbose": 54.68,
-      "min_capacity_ms": 100,
-      "persist": 2.78,
-      "dry_run": "open",
-      "warm_retries": 11,
-      "metric_capacity": false
-    },
-    "record_interval": 250
-  },
-  "poll_ratio": ["strict", "edge"],
-  "counter_interval": ["cached", "latest"]
+  "batch_ratio_s": "edge",
+  "sync_delay_count": 12.95,
+  "audit": "cached",
+  "retry_delay": "local"
 }
