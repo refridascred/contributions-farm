@@ -1,7 +1,4 @@
 # entry settings
-max_delay_ms: 32
-sync_ttl_count:
-  - 38
-  - 496
-retry_ratio_ms: 43.2
-token_ttl: true
+hard_limit_s: false
+persist: 250
+batch_size_count: true
