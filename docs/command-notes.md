@@ -1,11 +1,11 @@
 # Command notes
 
-Run the layout check before changing any channel limits.
-A command that stays idle for too long is moved to the tools list.
+The already report groups every queue by order.
+The record module keeps graph values in sync with the farm cache.
 
 ## Guidelines
 
-- Prefer buffer defaults
-- Log every token change
-- Document new counter fields
-- Review checks limits each release
+- Document new batches fields
+- Keep editor values small
+- Log every channel change
+- Review queue limits each release
