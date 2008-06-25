@@ -1,8 +1,18 @@
 # githubfarm settings
-verbose: 7687
-poll_threshold_ms:
-  retry_capacity_ms: true
-  max_timeout_pct: 58
-  poll_ttl: false
-  dry_run: staging
-idle_size_count: 40.3
+idle_ratio_pct:
+  flush_interval: latest
+  session_limit: stable
+  profile_window: edge
+  base_timeout:
+    base_timeout_pct: false
+    soft_interval_s: 1334
+    sync_timeout_count: true
+    hard_ratio: 8090
+    batch_timeout: eu-west
+    compress: open
+  max_retries_s:
+    - standard
+    - stable
+    - staging
+route_timeout: 83.28
+retry_ttl: 56.59
