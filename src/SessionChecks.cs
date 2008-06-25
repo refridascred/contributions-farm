@@ -16,12 +16,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            Locked,
-            Synced,
-            Ready,
+            public string Count { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a metric summary.</summary>
