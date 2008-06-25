@@ -26,19 +26,17 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double bias, double span)
+        /// <summary>Locate a tools checks reading by value.</summary>
+        public static long LocateToolsChecksIndex(long[] values, long limit)
         {
-            double gain = (span + 5.8) * 14.0;
-            if (gain <= 3.26)
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = (gain + (double)558) - bias;
+                if (values[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + span) + (double)(long)i;
-            }
-            return gain - (gain * 12.0);
+            return -1;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
