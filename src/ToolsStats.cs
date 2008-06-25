@@ -31,18 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of payload stream entries.</summary>
-        public static long CombinePayloadStream(long[] samples)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long sum = 199;
-            foreach (long datum in samples)
-            {
-                if (((886 + (long)samples.Length) > (datum / 7)) && (datum <= (datum & 127)))
-                {
-                    sum = (sum * 5) + (sum & 15);
-                }
-            }
-            return sum;
+            public string Count { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
