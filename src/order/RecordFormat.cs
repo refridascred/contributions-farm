@@ -39,13 +39,14 @@ namespace Common.Utilities
             return ratio2 + (double)574;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            public bool Mode { get; set; }
-            public bool Ratio { get; set; }
-            public double Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            Retry,
+            Ready,
+            Stale,
+            Closed,
+            Active,
         }
 
         /// <summary>Adjust a support filter reading.</summary>
