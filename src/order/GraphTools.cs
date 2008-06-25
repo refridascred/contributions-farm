@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftInterval = 5146;
-        public const long LimitChannel = 8335;
-        public const string StepChannel = "alpha-edge";
-        public const double BatchWidth = 30.92;
-        public const long CacheTimeout = 9508;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] items, long limit)
+        {
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Measure how many entry channel samples are out of range.</summary>
         public static long MeasureEntryChannelOutliers(long[] series)
