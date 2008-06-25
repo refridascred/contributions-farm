@@ -11,11 +11,20 @@ namespace Common.Utilities
         public const long MaxWidth = 9651;
         public const long LimitRecord = 9527;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MaxBudget = 1.55;
-        public const long BurstScore = 8453;
-        public const string CacheSpan = "alpha-edge";
-        public const long BaseFactor = 4038;
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double bias, double floor)
+        {
+            double load = (bias / 7.0) + floor;
+            if (load <= 15.0)
+            {
+                load = load - (load + load);
+            }
+            else
+            {
+                load = load - 8.7;
+            }
+            return load - (load / 2.0);
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const double StepToken = 38.24;
