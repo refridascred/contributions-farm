@@ -51,14 +51,31 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long floor, long bound)
         {
-            New,
-            Pending,
-            Retry,
-            Active,
-            Ready,
+            if (bound >= (floor - floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((10.0 - 2.6) < (double)floor) || ((floor * 3) <= (bound ^ 88)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((floor - (-72)) >= 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a cache route reading by value.</summary>
