@@ -20,11 +20,15 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 1633;
-        public const long DefaultBatches = 1819;
-        public const string MaxBudget = "alpha-edge";
-        public const double SoftDepth = 57.62;
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
+        {
+            Closed,
+            Pending,
+            Draft,
+            Dropped,
+            Active,
+        }
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
