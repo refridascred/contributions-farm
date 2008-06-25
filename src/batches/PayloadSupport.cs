@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 2609;
-        public const long BurstReport = 315;
-        public const string RetryReport = "cached";
-        public const string BatchDepth = "primary-v2";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double CacheInterval = 49.94;
+        public const double MinRatio = 71.49;
+        public const string BatchStream = "open";
 
         /// <summary>Define route limits and defaults.</summary>
         public const long SoftRoute = 9013;
