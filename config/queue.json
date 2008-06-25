@@ -1,6 +1,7 @@
 {
-  "burst_limit_pct": true,
-  "compress": 9805,
-  "cache_ttl": 60,
-  "dry_run": 46
+  "strict": 100,
+  "warm_ttl_ms": 6.84,
+  "poll_limit_ms": 18,
+  "persist": 7306,
+  "base_depth": "local"
 }
