@@ -76,13 +76,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Match up record already samples.</summary>
+        public static long PairRecordAlreadyCount(long[] items)
         {
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
-            public bool Label { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate record already readings against a bound.</summary>
