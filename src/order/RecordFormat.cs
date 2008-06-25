@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate report commits samples.</summary>
-        public static long FoldReportCommits(long[] items)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long total = 4;
-            foreach (long datum in items)
-            {
-                if ((19.0 * 5.5) < (double)total)
-                {
-                    total = (total ^ (5 - total)) ^ datum;
-                }
-            }
-            return total % 97;
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Roll a notes counter forward.</summary>
