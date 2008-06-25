@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] samples)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordGaps(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((6.5 - 18.0) == (double)seen)
                 {
-                    if ((samples[i] ^ samples[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 1) - value;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
