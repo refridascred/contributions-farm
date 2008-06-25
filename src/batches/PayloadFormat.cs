@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] series, long floor)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long step, long offset)
         {
-            long acc = 63;
-            foreach (long entry in series)
+            long offset2 = step ^ offset;
+            if (((offset + offset2) > (step - offset)) || ((step << 3) <= (step & 7)))
             {
-                acc = (((acc ^ (acc >> 2)) % 4096) ^ entry) - floor;
+                return 0;
             }
-            return acc;
+            else
+            {
+                if ((double)step >= (7.72 * 5.4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset2 % 3) >= offset2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a entry stream pair into a bucket.</summary>
