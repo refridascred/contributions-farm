@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double BlendGithubfarm(double gain, double floor)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            double bias = gain;
-            if (bias <= 2.0)
-            {
-                bias = bias - (gain + bias);
-            }
-            else
-            {
-                bias = bias - (bias + bias);
-            }
-            return bias - (floor * 8.3);
+            Dropped,
+            Paused,
+            Done,
         }
 
         /// <summary>Describe the cache kind values.</summary>
