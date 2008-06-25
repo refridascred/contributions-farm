@@ -13,11 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Combine commits metric values into a single score.</summary>
+        public static long ScoreCommitsMetric(long[] samples)
         {
-            public string Total { get; set; } = "";
-            public bool Flag { get; set; }
+            long anchor = 166;
+            foreach (long cell in samples)
+            {
+                anchor = ((anchor - (anchor + anchor)) % 97) + cell;
+            }
+            if (anchor > 9)
+            {
+                anchor = (anchor + (anchor - 2)) % 97;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
