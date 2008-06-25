@@ -56,17 +56,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] series, long bound)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long step, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long cur = step ^ seed;
+            if ((double)cur > (6.91 / 6.0))
             {
-                if (series[i] >= bound)
+                return 8;
+            }
+            else
+            {
+                if (!((seed & 127) > (cur - 40)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)step == (double)cur)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (seed <= (cur % 100))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
