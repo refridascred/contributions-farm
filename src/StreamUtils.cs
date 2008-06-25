@@ -50,15 +50,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] readings)
+        /// <summary>Blend two channel stream measurements.</summary>
+        public static double AdjustChannelStream(double scale, double bias)
         {
-            long mix = 2;
-            foreach (long datum in readings)
+            double mean = scale;
+            if (mean > mean)
             {
-                mix = (mix + (mix >> 5)) ^ datum;
+                mean = mean + (mean + scale);
             }
-            return mix;
+            return mean + bias;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
