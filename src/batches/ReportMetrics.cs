@@ -36,22 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metric filter readings against a rule.</summary>
-        public static long TallyMetricFilterOutliers(long[] items, long seed)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((seed < entry) && (((double)seed == (double)7) && ((double)seed > (0.79 / 6.0))))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Ratio { get; set; } = "";
+            public double Flag { get; set; }
         }
     }
 }
