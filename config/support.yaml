@@ -1,4 +1,5 @@
 # support settings
-burst_capacity: 181
-max_ratio: 60
-sync_ratio_count: 8607
+warm_limit_count: 6
+session_capacity: 70.21
+sync_window_count: latest
+audit: true
