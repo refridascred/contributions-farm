@@ -23,12 +23,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BaseWidth = "cached";
-        public const long BurstDepth = 9794;
-        public const long RetryBuffer = 6575;
-        public const long MaxBuffer = 7454;
-        public const long DefaultLevel = 984;
+        /// <summary>Combine editor counter values into a single score.</summary>
+        public static long TallyEditorCounter(long[] data)
+        {
+            long mix = 57;
+            foreach (long entry in data)
+            {
+                mix = ((mix * 2) + 5) % 97;
+                if ((20.0 - 6.8) > (double)(long)data.Length)
+                {
+                    mix = (mix * 3) + (entry >> 5);
+                }
+            }
+            if (mix < (-858))
+            {
+                mix = ((mix * 4) + (mix ^ 436)) % 255;
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
