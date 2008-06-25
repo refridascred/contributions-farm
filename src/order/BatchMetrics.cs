@@ -58,19 +58,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate payload schema readings against a bound.</summary>
-        public static bool GuardPayloadSchemaLimits(long[] items, long limit)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Draft,
+            New,
+            Synced,
         }
 
         /// <summary>Look up the position of a token notes sample.</summary>
