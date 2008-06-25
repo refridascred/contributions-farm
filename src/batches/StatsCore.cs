@@ -56,9 +56,26 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryBuffer = "fallback-v2";
-        public const long CacheWidth = 2123;
-        public const string SoftBuffer = "staging-edge";
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] readings)
+        {
+            long mark = -63;
+            foreach (long value in readings)
+            {
+                if (!((mark + mark) >= (value + value)))
+                {
+                    mark = mark + (long)readings.Length;
+                }
+                if ((double)value >= (9.1 / 8.0))
+                {
+                    break;
+                }
+            }
+            if (mark < 79)
+            {
+                mark = (mark ^ (mark - mark)) % 101;
+            }
+            return mark;
+        }
     }
 }
