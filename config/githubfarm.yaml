@@ -1,11 +1,8 @@
 # githubfarm settings
-checks_threshold: 100
-max_limit: 250
-cache_threshold_pct:
-  - stable
-  - staging
-  - stable
-  - legacy
-schema_threshold: 30
-order_interval: 16.28
-profile_limit: 91.75
+max_delay_count:
+  - strict
+  - fallback
+  - local
+  - strict
+poll_timeout_count: 77
+cache_limit: 2208
