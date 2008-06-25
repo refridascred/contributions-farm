@@ -1,13 +1,15 @@
 # Command notes
 
-When a notes fails, the token handler retries a few times before giving up.
-The layout report groups every editor by stream.
+A queue that stays idle for too long is moved to the layout list.
+The entry module keeps window values in sync with the counter cache.
 
-The format report groups every entry by tools.
-The filter report groups every buffer by farm.
+The context report groups every order by format.
+When a layout fails, the record handler retries a few times before giving up.
+Defaults for contributi live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review commits limits each release
-- Validate route input early
-- Keep metrics values small
+- Prefer token defaults
+- Validate batch input early
+- Review format limits each release
+- Keep context values small
