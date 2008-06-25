@@ -12,13 +12,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatMatches(long[] levels)
         {
-            public bool Token { get; set; }
-            public double Weight { get; set; }
-            public double Level { get; set; }
-            public long Owner { get; set; }
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (((double)tally == (4.1 / 7.0)) || ((double)value >= (double)904))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit metric filter readings against a rule.</summary>
