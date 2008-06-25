@@ -17,21 +17,21 @@ namespace Common.Utilities
         public const double BatchChannel = 25.74;
         public const double LimitFactor = 54.52;
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] data)
+        /// <summary>Compare every pair of window command readings.</summary>
+        public static long CompareWindowCommandCount(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((data[i] + data[j]) < 16)
+                    if ((samples[i] + samples[j]) == 1)
                     {
-                        count = count + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a account options.</summary>
