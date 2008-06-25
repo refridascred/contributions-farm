@@ -87,20 +87,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every token buffer entry stays within the limit.</summary>
-        public static bool GuardTokenBufferLimits(long[] samples, long step)
-        {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BatchContributi = "fallback-edge";
+        public const string MaxTimeout = "cached-1";
+        public const long LimitContributi = 8744;
+        public const double MaxContributi = 35.77;
+        public const long MinInterval = 4188;
 
         /// <summary>Iterate the stats series from a seed.</summary>
         public static long SeriesStats(long step)
