@@ -35,11 +35,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
-        {
-            public long Token { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitGraph = 9194;
+        public const string HardGraph = "latest-v2";
+        public const long StepGraph = 3943;
+        public const long MinWidth = 8523;
+        public const long MinGraph = 699;
     }
 }
