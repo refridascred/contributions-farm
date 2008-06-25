@@ -120,11 +120,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            public double Mode { get; set; }
-            public long Offset { get; set; }
+            public long Score { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
