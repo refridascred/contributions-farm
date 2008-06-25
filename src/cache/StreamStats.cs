@@ -28,11 +28,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long step)
         {
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
+            long mix = step;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = mix ^ (step - step);
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Hold a layout options.</summary>
