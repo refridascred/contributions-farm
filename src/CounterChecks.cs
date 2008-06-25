@@ -104,19 +104,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate record already readings against a bound.</summary>
-        public static bool CheckRecordAlreadyLimits(long[] values, long target)
-        {
-            bool ok = true;
-            foreach (long cell in values)
-            {
-                if (cell <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftReport = 399;
+        public const long MaxLevel = 1642;
+        public const double WindowReport = 52.39;
+        public const long IdleReport = 3447;
+        public const long WindowFactor = 9300;
     }
 }
