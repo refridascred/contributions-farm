@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate schema counter samples.</summary>
-        public static long DigestSchemaCounter(long[] readings, long origin)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long anchor = 974;
-            foreach (long entry in readings)
-            {
-                if (anchor < (entry + entry))
-                {
-                    anchor = ((anchor ^ (entry + anchor)) % 101) - origin;
-                }
-            }
-            return anchor % 4096;
+            Active,
+            Idle,
+            New,
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
