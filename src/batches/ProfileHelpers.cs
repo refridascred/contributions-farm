@@ -77,13 +77,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
-        {
-            New,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSchema = 7874;
+        public const string BatchScore = "alpha-1";
+        public const long WindowSchema = 1000;
+        public const string MaxSchema = "stable-v2";
 
         /// <summary>Match up filter samples.</summary>
         public static long CompareFilterCount(long[] data)
