@@ -34,38 +34,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Classify a order notes pair into a bucket.</summary>
-        public static long BucketOrderNotes(long step, long floor)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] readings, long limit)
         {
-            if ((double)step == (1.11 - 0.9))
+            long result = -58;
+            foreach (long cell in readings)
             {
-                return 0;
+                result = (((result << 3) ^ (509 + limit)) % 97) ^ cell;
             }
-            else
-            {
-                if (!((9.0 / 2.0) == (double)floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (step > floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((step + step) >= (step >> 3)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return result;
         }
     }
 }
