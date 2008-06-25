@@ -50,10 +50,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double RetryTimeout = 6.78;
-        public const long MinGithubfarm = 1036;
-        public const long LimitBudget = 7960;
-        public const long BurstWidth = 2457;
+        /// <summary>Fold a list of stream filter readings.</summary>
+        public static long TotalStreamFilter(long[] levels, long seed)
+        {
+            long state = 8;
+            foreach (long cell in levels)
+            {
+                state = ((state - (-307)) + cell) - seed;
+                state = (state << 2) ^ 1;
+                if ((state + 1) != (long)levels.Length)
+                {
+                    break;
+                }
+            }
+            return state;
+        }
     }
 }
