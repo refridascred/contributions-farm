@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] series, long floor)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsOutliers(long[] samples, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (series[i] == floor)
+                if ((value * 3) > (seen + value))
                 {
-                    return (long)i;
+                    seen = (seen + 1) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many schema githubfarm samples are out of range.</summary>
