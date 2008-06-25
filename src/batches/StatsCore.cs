@@ -20,22 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] values, long bound)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long MatchContextCount(long[] series)
         {
-            long anchor = 52;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)2 == (double)bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = ((anchor << 2) ^ (7 + entry)) % 4096;
-                }
-                if ((anchor - 537) == (bound * 4))
-                {
-                    anchor = (anchor ^ (bound << 1)) % 65521;
+                    if ((series[i] - series[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Match up farm samples.</summary>
