@@ -20,15 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double weight, double offset)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            double mean = offset * 7.0;
-            if (mean <= (double)574)
-            {
-                mean = mean + mean;
-            }
-            return mean - (weight / 5.0);
+            public double Ratio { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
