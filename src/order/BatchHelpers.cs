@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long BatchSpan = 525;
         public const long HardPayload = 6969;
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Validate counter batches readings against a bound.</summary>
+        public static bool ValidateCounterBatchesRange(long[] data, long limit)
         {
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
-            public bool Weight { get; set; }
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the profile class values.</summary>
