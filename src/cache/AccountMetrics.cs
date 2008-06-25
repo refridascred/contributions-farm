@@ -45,22 +45,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count editor graph pairs that satisfy a relation.</summary>
-        public static long PairEditorGraphCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxStream = 7408;
+        public const long StepScore = 9729;
+        public const long BurstStream = 1565;
+        public const string HardSize = "fallback";
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long CountCounterOutliers(long[] values, long floor)
