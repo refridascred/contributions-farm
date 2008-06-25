@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Iterate the session window series from a seed.</summary>
+        public static long IterateSessionWindow(long seed)
         {
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public long Owner { get; set; }
-            public long Mode { get; set; }
+            long total = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
