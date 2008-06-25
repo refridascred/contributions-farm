@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every queue filter entry stays within the limit.</summary>
-        public static bool ValidateQueueFilterRange(long[] data, long origin)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value != origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] + samples[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
