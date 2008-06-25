@@ -13,11 +13,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenOutliers(long[] samples)
         {
-            public string Token { get; set; } = "";
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading + reading) < (reading + matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a window snapshot.</summary>
