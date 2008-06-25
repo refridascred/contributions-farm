@@ -31,10 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftLevel = 1273;
-        public const long MinFilter = 9395;
-        public const long MaxFilter = 3974;
-        public const long BaseFilter = 3206;
+        /// <summary>Measure how many account layout samples are out of range.</summary>
+        public static long CountAccountLayoutGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((count + entry) > (entry % 2))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
