@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate farm commits readings against a bound.</summary>
-        public static bool VerifyFarmCommitsRange(long[] series, long offset)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long limit)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long score = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (cell <= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Define window limits and defaults.</summary>
