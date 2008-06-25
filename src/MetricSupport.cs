@@ -18,22 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterMatches(long[] levels, long bound)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value < (value ^ (-7))) && !(2 < (3 + count)))
+                if (items[i] > bound)
                 {
-                    count = (count + 3) + bound;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
