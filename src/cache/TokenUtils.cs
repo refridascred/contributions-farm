@@ -35,13 +35,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] values)
         {
-            Pending,
-            Draft,
-            Stale,
-            Queued,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((374 ^ (long)values.Length) <= (item + 5))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
