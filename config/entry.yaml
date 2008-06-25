@@ -1,8 +1,17 @@
 # entry settings
-default_timeout_pct: primary
-warm_timeout_ms: stable
-stream_threshold:
-  - legacy
-  - local
-report_window: 1331
-contributi_size: 100
+cache_timeout_count:
+  default_interval_ms: 6512
+  cache_delay_s: 250
+  burst_interval_s: 1024
+  cluster_retries: local
+  strict:
+    - 67
+    - 311
+    - 457
+    - 253
+  flush_interval_s: 31.35
+base_capacity: 97
+burst_window_ms:
+  - 169
+  - 262
+flush_delay_count: 54.29
