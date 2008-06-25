@@ -36,17 +36,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] values, long origin)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] readings, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 6;
+            foreach (long item in readings)
             {
-                if (values[i] >= origin)
+                mark = (mark ^ (mark * 4)) % 1000;
+                mark = mark ^ (item >> 4);
+                if ((double)mark > (3.08 / 9.0))
                 {
-                    return (long)i;
+                    mark = (mark * 3) + limit;
                 }
             }
-            return -1;
+            return mark % 97;
         }
 
         /// <summary>Describe the tools mode values.</summary>
