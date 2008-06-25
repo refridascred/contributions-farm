@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinLevel = 9602;
-        public const string StepProfile = "legacy-edge";
-        public const long MinProfile = 6613;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string CacheCommand = "standard-edge";
+        public const double WindowCommand = 5.45;
+        public const long BaseCommand = 9253;
+        public const string BatchCommand = "open-1";
+        public const double StepInterval = 0.66;
 
         /// <summary>Hold a route stats.</summary>
         public sealed class RouteStats
