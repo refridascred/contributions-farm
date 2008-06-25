@@ -31,22 +31,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionHits(long[] data, long target)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long sum = 6;
+            foreach (long cell in series)
             {
-                if ((matches % 16) > (matches % 3))
+                if (18.0 <= (double)sum)
                 {
-                    matches = ((matches + 3) + entry) + target;
+                    sum = ((sum * 4) + ((long)series.Length * 3)) % 97;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    sum = (sum * 5) + offset;
+                }
+                if (((-985) > (cell + sum)) || ((cell + sum) < offset))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (sum > 0)
+            {
+                sum = sum - sum;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Hold a editor stats.</summary>
