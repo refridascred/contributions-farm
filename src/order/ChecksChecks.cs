@@ -50,19 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] levels)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelGaps(long[] data)
         {
-            long score = 718;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                score = ((score + (score % 10)) % 101) ^ reading;
+                if ((((tally + entry) >= entry) || ((entry - entry) < (tally / 8))) && (entry >= (tally - tally)))
+                {
+                    tally = tally + 2;
+                }
             }
-            if (score > 46)
-            {
-                score = score - (score - score);
-            }
-            return score;
+            return tally;
         }
     }
 }
