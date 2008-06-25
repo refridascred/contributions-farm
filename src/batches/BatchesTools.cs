@@ -21,9 +21,12 @@ namespace Common.Utilities
         public const long MinGithubfarm = 9663;
         public const long MaxGithubfarm = 7385;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardRoute = 8165;
-        public const long HardInterval = 5680;
-        public const string HardRatio = "standard";
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
+        {
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public double Weight { get; set; }
+        }
     }
 }
