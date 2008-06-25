@@ -34,10 +34,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MinCommand = 83.31;
-        public const long BaseCommand = 5706;
-        public const string WindowLevel = "local-v2";
+        /// <summary>Compare every pair of route payload readings.</summary>
+        public static long PairRoutePayloadCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long OverlapSessionCount(long[] data)
