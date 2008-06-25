@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Fold a list of report record readings.</summary>
+        public static long ScoreReportRecord(long[] items)
         {
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
-            public double Weight { get; set; }
-            public bool Label { get; set; }
+            long carry = 604;
+            foreach (long sample in items)
+            {
+                if ((carry * 5) == (sample ^ carry))
+                {
+                    carry = carry + (sample + carry);
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (carry * 5)) % 101;
+                }
+            }
+            if (carry > 85)
+            {
+                carry = (carry + (95 * 2)) % 1000;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Accumulate context samples.</summary>
