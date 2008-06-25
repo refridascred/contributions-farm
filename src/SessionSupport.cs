@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long limit)
         {
-            Stale,
-            Active,
-            Synced,
+            long sum = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Combine commits metric values into a single score.</summary>
