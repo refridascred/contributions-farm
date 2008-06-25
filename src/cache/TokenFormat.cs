@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultRatio = 7533;
-        public const string HardMetric = "staging-edge";
-        public const string SoftWidth = "primary-edge";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double StepTimeout = 9.16;
+        public const double BatchScore = 31.92;
+        public const long BatchBatches = 6517;
+        public const string BatchLevel = "latest-1";
+        public const double BatchInterval = 76.09;
 
         /// <summary>Hold a farm options.</summary>
         public sealed class FarmOptions
