@@ -35,10 +35,13 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double CacheOrder = 87.02;
-        public const string MaxSize = "standard-1";
-        public const long BatchCount = 501;
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
+        {
+            public string Flag { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long DeriveProfile(long offset)
