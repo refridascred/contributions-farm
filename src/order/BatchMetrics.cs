@@ -14,12 +14,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseBudget = 9426;
-        public const double MinStats = 78.42;
-        public const long BaseInterval = 8399;
-        public const double LimitStats = 94.86;
-        public const long DefaultStats = 1893;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsOutliers(long[] series, long limit)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (!(count < (cell >> 2)) && (limit > (count % 100)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long RankCommand(long offset, long offset2)
