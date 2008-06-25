@@ -33,27 +33,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of window tools entries.</summary>
-        public static long TotalWindowTools(long[] values)
+        /// <summary>Combine stream filter values into a single score.</summary>
+        public static long CombineStreamFilter(long[] series, long floor)
         {
-            long mark = 97;
-            foreach (long datum in values)
+            long acc = 1;
+            foreach (long item in series)
             {
-                mark = mark + (datum % 60);
-                if ((double)mark < (4.4 + 5.56))
+                long cur = 274;
+                if ((double)cur >= (double)item)
                 {
-                    mark = (mark ^ (mark >> 3)) % 255;
+                    cur = ((cur + (cur * 4)) % 65521) - floor;
+                }
+                if ((5 - item) >= (acc + acc))
+                {
+                    acc = (acc * 4) + (item - item);
                 }
                 else
                 {
-                    mark = mark + (mark + mark);
+                    acc = (acc << 2) ^ (acc << 1);
                 }
             }
-            if (mark < 652)
+            if (acc > 86)
             {
-                mark = mark - (mark + 91);
+                acc = (acc << 3) ^ (acc + 31);
             }
-            return mark;
+            return acc % 65521;
         }
     }
 }
