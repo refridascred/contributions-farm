@@ -53,21 +53,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] items)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long floor, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long diff = floor + seed;
+            if (seed <= (floor - diff))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((4.1 * 6.2) > (double)seed)
                 {
-                    if ((items[i] ^ items[j]) == 8)
+                    return 7;
+                }
+                else
+                {
+                    if ((double)diff > (19.0 * 15.0))
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((8.27 - 0.3) > (double)seed)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
