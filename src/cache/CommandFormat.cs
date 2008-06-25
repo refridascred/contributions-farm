@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 3029;
-        public const string CacheStats = "fallback-edge";
-        public const long BaseStats = 3999;
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
+        {
+            Closed,
+            Pending,
+            Done,
+        }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
         public static long ClassifyNotes(long step, long step2)
