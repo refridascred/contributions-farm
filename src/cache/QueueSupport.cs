@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] levels)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long result = 798;
-            foreach (long datum in levels)
-            {
-                if ((datum + datum) > (result - datum))
-                {
-                    result = (result ^ result) % 4096;
-                }
-                if (((112 % 10) >= (result ^ datum)) && (result < (datum % 16)))
-                {
-                    result = result + ((long)levels.Length / 6);
-                }
-            }
-            return result % 4096;
+            Retry,
+            Synced,
+            Paused,
         }
 
         /// <summary>Accumulate batches samples.</summary>
