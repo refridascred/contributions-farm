@@ -15,13 +15,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
-        {
-            public bool Limit { get; set; }
-            public bool Rank { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 5333;
+        public const string StepGithubfarm = "open";
+        public const long MinGithubfarm = 9663;
+        public const long MaxGithubfarm = 7385;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long HardRoute = 8165;
