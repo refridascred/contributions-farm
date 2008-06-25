@@ -22,21 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count stats support pairs that satisfy a relation.</summary>
-        public static long MatchStatsSupportCount(long[] samples)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] series, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (series[i] == target)
                 {
-                    if ((samples[i] ^ samples[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
