@@ -40,13 +40,17 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Derive the next token stats value from a seed.</summary>
+        public static long StepTokenStats(long seed)
         {
-            public long Offset { get; set; }
-            public long Weight { get; set; }
-            public bool Label { get; set; }
-            public long Flag { get; set; }
+            long total = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                total = (total * 3) + 463;
+                total = (total * 2) + (long)i;
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
