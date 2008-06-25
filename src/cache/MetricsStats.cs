@@ -32,18 +32,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit command notes readings against a rule.</summary>
-        public static long MeasureCommandNotesHits(long[] data)
+        /// <summary>Fold a list of filter cluster readings.</summary>
+        public static long DigestFilterCluster(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long total = 7;
+            foreach (long entry in readings)
             {
-                if ((8.24 / 6.0) > (double)datum)
-                {
-                    count = count + 3;
-                }
+                total = (((total << 2) ^ total) % 65521) - entry;
             }
-            return count;
+            return total % 1000;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
