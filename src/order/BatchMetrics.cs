@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] series)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((count % 5) < (count - count))
-                {
-                    count = (count + 2) + datum;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public long Flag { get; set; }
+            public long Score { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
