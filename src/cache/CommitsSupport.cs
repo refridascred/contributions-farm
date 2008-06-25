@@ -33,24 +33,30 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long origin, long seed)
+        /// <summary>Combine command account values into a single score.</summary>
+        public static long ScoreCommandAccount(long[] items, long origin)
         {
-            if (origin > (-281))
+            long total = 917;
+            foreach (long cell in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin & 127) >= (seed + seed))
+                if ((15.0 - 3.0) > (double)cell)
                 {
-                    return 2;
+                    total = ((total * 5) + (cell / 3)) - origin;
                 }
                 else
                 {
-                    return 7;
+                    total = total ^ ((-853) >> 1);
+                }
+                if (((438 << 1) < (cell % 3)) || ((double)cell <= (2.0 / 2.0)))
+                {
+                    break;
                 }
             }
+            if (total < 10)
+            {
+                total = (total - (total + total)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
