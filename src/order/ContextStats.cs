@@ -23,20 +23,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every already profile entry stays within the limit.</summary>
-        public static bool VerifyAlreadyProfileBounds(long[] levels, long origin)
-        {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 5354;
+        public const double BaseCount = 75.82;
+        public const string BaseTimeout = "legacy-edge";
+        public const string CacheSize = "stable";
 
         /// <summary>Describe the schema class values.</summary>
         public enum SchemaClass
