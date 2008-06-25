@@ -29,18 +29,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 7766;
+        public const long HardToken = 1147;
+        public const long RetryTimeout = 4913;
+        public const string WindowSize = "open-edge";
+        public const double BurstToken = 83.91;
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long CountRouteMatches(long[] levels, long seed)
