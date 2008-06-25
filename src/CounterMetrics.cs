@@ -33,22 +33,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of contributi stats entries.</summary>
-        public static long TotalContributiStats(long[] values, long seed)
-        {
-            long anchor = 0;
-            foreach (long entry in values)
-            {
-                anchor = (anchor << 2) ^ (entry - 32);
-                anchor = anchor + (seed + anchor);
-                anchor = (anchor * 2) + (anchor + anchor);
-            }
-            if (anchor > 93)
-            {
-                anchor = ((anchor * 4) + seed) % 255;
-            }
-            return anchor;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheMetrics = 2597;
+        public const double MaxMetrics = 80.33;
+        public const long LimitMetrics = 410;
 
         /// <summary>Audit entry report readings against a rule.</summary>
         public static long CountEntryReportMatches(long[] samples, long limit)
