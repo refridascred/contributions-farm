@@ -1,22 +1,15 @@
 {
-  "flush_threshold_ms": 100,
-  "graph_limit": "open",
-  "record_ttl": 30,
-  "format_ttl": 31,
-  "sync_interval_pct": {
-    "layout_depth": "cached",
-    "warm_threshold_s": 90.59,
-    "format_capacity": 36.75,
-    "dry_run": 17.72,
-    "default_interval_count": 30.67,
-    "strict": false
-  },
-  "readonly": {
-    "batch_retries": "local",
-    "cache_threshold_ms": 64.48,
-    "route_timeout": "legacy",
-    "entry_ratio": "eu-west",
-    "batch_size": 7193,
-    "cache_delay": 4254
+  "checks_limit": 60,
+  "compress": 61.66,
+  "already_ratio": {
+    "default_limit_s": false,
+    "batch_size_ms": ["strict", "eu-west", "cached"],
+    "persist": {
+      "commits_interval": "edge",
+      "flush_retries": 17.82,
+      "compress": "eu-west",
+      "retry_threshold_pct": [72, 325, 71, 130],
+      "support_threshold": 61
+    }
   }
 }
