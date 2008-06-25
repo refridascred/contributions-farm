@@ -31,32 +31,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] series)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsBounds(long[] readings, long bound)
         {
-            long mark = 45;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if (reading <= (mark / 7))
+                if (sample >= bound)
                 {
-                    mark = (mark * 2) + (mark + (long)series.Length);
-                }
-                else
-                {
-                    mark = mark + 80;
-                    mark = (mark ^ (mark >> 1)) % 101;
-                }
-                if (mark < (reading * 3))
-                {
-                    mark = ((mark * 2) + ((-591) & 15)) % 1000;
+                    ok = false;
                     break;
                 }
-                if ((reading - mark) >= (reading & 15))
-                {
-                    mark = mark ^ (long)series.Length;
-                }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Audit editor token readings against a rule.</summary>
