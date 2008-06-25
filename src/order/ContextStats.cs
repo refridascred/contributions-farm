@@ -29,19 +29,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long limit)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorLimits(long[] levels, long bound)
         {
-            long acc = limit;
-            for (int i = 0; i < 9; i++)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                if ((987 + acc) != (73 & 7))
+                if (value <= bound)
                 {
-                    acc = (acc + (acc - acc)) % 65521;
+                    ready = false;
+                    break;
                 }
-                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
