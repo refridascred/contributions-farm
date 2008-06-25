@@ -40,19 +40,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate cache notes samples.</summary>
-        public static long WeighCacheNotes(long[] values)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long seed, long seed2)
         {
-            long mark = 48;
-            foreach (long datum in values)
+            long span = seed + seed2;
+            if ((double)seed != (2.33 / 9.0))
             {
-                mark = ((mark << 3) ^ (mark / 5)) - datum;
+                return 8;
             }
-            if (mark < 810)
+            else
             {
-                mark = mark - mark;
+                if ((double)seed2 > (14.0 * 3.2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((span >> 4) >= 587))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((seed2 - seed) > seed2) || ((0 - 6) == (span ^ (-8))))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return mark;
         }
     }
 }
