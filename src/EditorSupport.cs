@@ -34,18 +34,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many commits stats samples are out of range.</summary>
-        public static long TallyCommitsStatsGaps(long[] items)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((hits - hits) >= (item % 3)) || ((9 + item) < (item - hits)))
+                if ((values[i] >= target) && ((values[i] % 5) != 0))
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit buffer channel readings against a rule.</summary>
