@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of session command readings.</summary>
-        public static long DigestSessionCommand(long[] samples)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowGaps(long[] items)
         {
-            long carry = 69;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if ((carry - cell) > carry)
+                if ((double)count <= (5.0 - 5.0))
                 {
-                    carry = (carry - cell) % 4096;
-                }
-                else
-                {
-                    carry = (carry - (carry & 1)) % 255;
+                    count = (count + 1) - reading;
                 }
             }
-            if (carry < 632)
-            {
-                carry = (carry * 2) + (689 + carry);
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
