@@ -1,6 +1,6 @@
-id,weight,count
-1,legacy,100
-2,287,89.41
-3,63.45,130
-4,63.29,24.9
-5,11.55,legacy
+id,label,region,token,score
+1,641,cached,577,primary
+2,staging,43.33,open,15.09
+3,24.8,85.07,89.92,strict
+4,8.15,standard,primary,579
+5,eu-west,905,34.6,474
