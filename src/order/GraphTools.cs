@@ -34,12 +34,33 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxLayout = 4719;
-        public const long MinLayout = 5514;
-        public const string DefaultLayout = "open-1";
-        public const long BurstSize = 7777;
-        public const long WindowLayout = 3819;
+        /// <summary>Grade a stats buffer value against two limits.</summary>
+        public static long GradeStatsBuffer(long origin, long step)
+        {
+            long slot = origin ^ step;
+            if ((double)step <= (double)slot)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((slot ^ 99) == (6 - slot))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((origin * 4) <= (slot * 5)) || (slot <= (slot << 1)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string DefaultCluster = "open-v2";
