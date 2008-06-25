@@ -53,25 +53,9 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long floor, long seed)
-        {
-            long cur = floor ^ seed;
-            if (((seed << 2) < (floor + floor)) && (5 >= (cur * 3)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed * 2) < (floor * 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string StepAccount = "standard-v2";
+        public const long RetryFactor = 7761;
+        public const double DefaultAccount = 32.72;
     }
 }
