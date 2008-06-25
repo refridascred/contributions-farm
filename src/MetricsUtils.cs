@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long step)
         {
-            Paused,
-            Done,
-            Ready,
+            long score = step;
+            for (int i = 0; i < 16; i++)
+            {
+                if (((double)score < (2.76 + 0.32)) && ((double)score > (double)step))
+                {
+                    score = ((score << 3) ^ (step + step)) % 4096;
+                    score = ((score << 2) ^ (score << 3)) % 101;
+                }
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
