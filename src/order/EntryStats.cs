@@ -44,11 +44,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Scale a metrics contributi figure with a bias.</summary>
+        public static double BlendMetricsContributi(double scale, double bias)
         {
-            public double Size { get; set; }
-            public bool Level { get; set; }
+            double drift = scale / 5.0;
+            if (drift <= (bias / 4.0))
+            {
+                drift = drift - scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + scale) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Hold a channel summary.</summary>
