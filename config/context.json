@@ -1,8 +1,15 @@
 {
-  "min_size_s": 32.09,
-  "metric_limit": false,
-  "hard_depth": 59.59,
-  "burst_timeout_s": 35.39,
-  "batch_limit_s": "blue",
-  "idle_timeout": "primary"
+  "audit": {
+    "dry_run": 1024,
+    "support_timeout": ["latest", "latest", "primary"],
+    "warm_size_ms": 500
+  },
+  "channel_depth": "legacy",
+  "compress": 18.56,
+  "batch_capacity": 9363,
+  "soft_threshold": {
+    "hard_threshold_s": 100,
+    "min_threshold": 89.09,
+    "already_limit": [397, 303, 202]
+  }
 }
