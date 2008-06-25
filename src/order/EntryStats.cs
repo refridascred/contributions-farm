@@ -46,12 +46,20 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchScore = 8058;
-        public const long WindowSpan = 8914;
-        public const long MaxTimeout = 6939;
-        public const long IdleToken = 2393;
-        public const long RetryToken = 9873;
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!(((-727) >> 1) >= ((long)i >> 5)))
+                {
+                    sum = sum - target;
+                }
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
