@@ -31,18 +31,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandHits(long[] levels)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long carry = 87;
+            foreach (long item in readings)
             {
-                if (value < (count << 3))
+                if (((2 / 7) == (carry & 3)) || ((carry + carry) == (item * 3)))
                 {
-                    count = count + 1;
+                    carry = (carry - (carry / 4)) % 4096;
                 }
             }
-            return count;
+            if (carry < 92)
+            {
+                carry = ((carry * 2) + (bound >> 5)) % 97;
+            }
+            return carry;
         }
     }
 }
