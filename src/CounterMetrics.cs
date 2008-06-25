@@ -27,24 +27,21 @@ namespace Common.Utilities
         public const double BatchMetric = 52.51;
         public const double RetryLevel = 32.0;
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long step, long seed)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long OverlapAccountCount(long[] values)
         {
-            if (8.4 <= (double)step)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((3.07 / 3.0) <= (double)step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    if ((values[i] + values[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate notes route readings against a bound.</summary>
