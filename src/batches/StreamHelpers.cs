@@ -87,13 +87,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
-        {
-            public string Ratio { get; set; } = "";
-            public long Size { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double RetryEntry = 27.92;
+        public const long IdleScore = 3256;
+        public const string CacheEntry = "stable-edge";
+        public const long BurstSpan = 6996;
+        public const string HardDepth = "latest";
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long TotalEditor(long[] readings, long target)
