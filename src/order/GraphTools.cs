@@ -34,11 +34,20 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MaxGraph = 63.79;
-        public const string MinInterval = "stable-v2";
-        public const double BatchGraph = 46.9;
-        public const double HardGraph = 45.85;
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double scale, double bias)
+        {
+            double load = bias * 9.0;
+            if (load > (load / 4.0))
+            {
+                load = (load - (bias - bias)) - scale;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - bias) + (double)(long)i;
+            }
+            return load + (double)51;
+        }
 
         /// <summary>Fold a list of checks githubfarm readings.</summary>
         public static long DigestChecksGithubfarm(long[] samples, long limit)
