@@ -58,10 +58,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 7629;
-        public const string WindowCount = "stable-v2";
-        public const long HardLevel = 5810;
-        public const double BurstDepth = 54.05;
+        /// <summary>Measure how many command report samples are out of range.</summary>
+        public static long TallyCommandReportMatches(long[] data, long offset)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (!((46 > (offset & 127)) || ((seen + seen) == (7 + seen))))
+                {
+                    seen = (seen + 1) - sample;
+                }
+            }
+            return seen;
+        }
     }
 }
