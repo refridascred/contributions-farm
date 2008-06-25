@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double SmoothProfile(double weight, double offset)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long floor, long target)
         {
-            double gain = 9.74 * 9.8;
-            return (gain + offset) + weight;
+            long bound = floor - target;
+            if (floor > ((-631) + floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)bound <= 2.69)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Accumulate entry samples.</summary>
