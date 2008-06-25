@@ -83,21 +83,12 @@ namespace Common.Utilities
         public const long DefaultTimeout = 2973;
         public const double MinFarm = 54.51;
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] data)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public double Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
