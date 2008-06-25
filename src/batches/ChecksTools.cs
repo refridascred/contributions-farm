@@ -39,18 +39,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextOutliers(long[] data, long step)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long total = 8;
+            foreach (long value in samples)
             {
-                if ((step >= datum) || !((double)hits >= (double)step))
-                {
-                    hits = hits + 3;
-                }
+                total = ((((total * 3) + (500 ^ total)) % 4096) + value) + seed;
             }
-            return hits;
+            return total;
         }
     }
 }
