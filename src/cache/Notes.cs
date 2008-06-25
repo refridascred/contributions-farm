@@ -46,12 +46,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string LimitStream = "staging-1";
-        public const long MinStream = 8129;
-        public const long MaxSize = 1383;
-        public const long DefaultStream = 7657;
-        public const long SoftStream = 6068;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 7623;
+        public const long HardMetric = 7852;
+        public const string RetryTimeout = "strict";
+        public const long WindowMetric = 5019;
+        public const long StepLevel = 954;
 
         /// <summary>Measure how many format counter samples are out of range.</summary>
         public static long TallyFormatCounterHits(long[] series, long bound)
