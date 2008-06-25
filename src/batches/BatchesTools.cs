@@ -25,39 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long seed, long floor)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long offset = seed + floor;
-            if (!((20.0 / 2.0) >= (double)offset))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((95 >> 4) >= seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(floor <= seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor / 9) != (offset + seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Done,
+            Queued,
+            Failed,
         }
     }
 }
