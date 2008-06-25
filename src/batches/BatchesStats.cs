@@ -43,14 +43,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            Stale,
-            Ready,
-            Pending,
-            Done,
-            Failed,
+            public double Rank { get; set; }
+            public string Region { get; set; } = "";
+            public bool Size { get; set; }
         }
     }
 }
