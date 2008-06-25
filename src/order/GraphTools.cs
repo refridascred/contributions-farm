@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] items, long limit)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Idle,
+            Draft,
+            Closed,
+            Synced,
         }
 
         /// <summary>Measure how many entry channel samples are out of range.</summary>
