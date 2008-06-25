@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            Active,
-            Dropped,
-            Draft,
-            Synced,
+            public bool Label { get; set; }
+            public bool Region { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
