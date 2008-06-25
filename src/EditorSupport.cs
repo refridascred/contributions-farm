@@ -66,12 +66,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            Locked,
-            Synced,
-            Active,
+            public bool Size { get; set; }
+            public double Offset { get; set; }
+            public double Label { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
