@@ -22,11 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long target)
         {
-            public string Region { get; set; } = "";
-            public string Level { get; set; } = "";
+            long carry = target;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of record readings.</summary>
