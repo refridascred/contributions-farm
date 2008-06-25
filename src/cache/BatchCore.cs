@@ -35,17 +35,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] samples, long limit)
+        /// <summary>Check that every commits githubfarm entry stays within the limit.</summary>
+        public static bool ValidateCommitsGithubfarmLimits(long[] series, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if (samples[i] <= limit)
+                if (datum < floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
