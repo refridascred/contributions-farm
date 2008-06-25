@@ -37,11 +37,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Measure how many commits stats samples are out of range.</summary>
+        public static long TallyCommitsStatsGaps(long[] items)
         {
-            public bool Mode { get; set; }
-            public bool Size { get; set; }
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (!((hits - hits) >= (item % 3)) || ((9 + item) < (item - hits)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate farm samples.</summary>
