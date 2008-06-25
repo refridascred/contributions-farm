@@ -19,19 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two record context measurements.</summary>
-        public static double ScaleRecordContext(double bias, double floor)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            double drift = 6.46;
-            if (drift < (bias / 2.0))
-            {
-                drift = (drift - (double)494) - floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift - (bias - bias);
+            public bool Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the filter phase values.</summary>
