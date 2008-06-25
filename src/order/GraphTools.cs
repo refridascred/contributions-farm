@@ -42,12 +42,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double CacheMetric = 18.37;
-        public const long DefaultMetric = 2415;
-        public const double RetryMetric = 67.08;
-        public const long MinInterval = 6712;
-        public const string StepMetric = "stable-1";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxLayout = 4719;
+        public const long MinLayout = 5514;
+        public const string DefaultLayout = "open-1";
+        public const long BurstSize = 7777;
+        public const long WindowLayout = 3819;
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long TallyTools(long[] series, long origin)
