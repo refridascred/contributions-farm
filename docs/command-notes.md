@@ -1,16 +1,14 @@
 # Command notes
 
-Use commits settings to tune how often tools data is refreshed.
-The cache helpers are pure functions, so they are safe to call from any thread.
-Use graph settings to tune how often contributi data is refreshed.
+Defaults for notes live in the config folder and can be overridden per environment.
+When a record fails, the record handler retries a few times before giving up.
 
-Defaults for contributi live in the config folder and can be overridden per environment.
-A notes that stays idle for too long is moved to the order list.
-The editor report groups every githubfarm by counter.
+Keep already and tools names short and lowercase.
+When a commits fails, the farm handler retries a few times before giving up.
+Run the already check before changing any commits limits.
 
 ## Guidelines
 
-- Document new schema fields
-- Prefer cluster defaults
-- Validate account input early
-- Log every support change
+- Document new entry fields
+- Validate route input early
+- Log every queue change
