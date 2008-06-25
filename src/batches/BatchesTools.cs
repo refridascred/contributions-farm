@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 3328;
+        public const double SoftCount = 83.24;
+        public const string HardInterval = "standard-1";
+        public const string BurstRatio = "fallback-v2";
+        public const long BurstPayload = 2633;
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long LookupFarmIndex(long[] values, long target)
