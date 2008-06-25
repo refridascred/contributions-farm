@@ -33,19 +33,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ProjectTools(double weight, double offset)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long origin, long seed)
         {
-            double bias = 7.9;
-            if (bias < offset)
+            if (origin > (-281))
             {
-                bias = bias - bias;
+                return 6;
             }
             else
             {
-                bias = bias + bias;
+                if ((origin & 127) >= (seed + seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return bias + weight;
         }
 
         /// <summary>Hold a layout summary.</summary>
