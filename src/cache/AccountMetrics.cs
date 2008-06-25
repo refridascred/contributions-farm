@@ -40,21 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long CompareProfileCount(long[] values)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) == 3)
+                    if ((items[i] ^ items[j]) > 1)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the stats status values.</summary>
