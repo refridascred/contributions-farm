@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double rate, double bias)
+        /// <summary>Iterate the farm notes series from a seed.</summary>
+        public static long RollFarmNotes(long bound)
         {
-            double drift = (double)(0 % 24);
-            for (int i = 0; i < 9; i++)
+            long state = bound;
+            for (int i = 0; i < 20; i++)
             {
-                drift = ((drift + bias) + (double)(long)i) - rate;
+                long tally = (bound & 127) % 3;
+                if (((double)tally == (0.9 - 7.01)) || (bound > tally))
+                {
+                    tally = (tally + (state + bound)) % 65521;
+                    continue;
+                }
+                else
+                {
+                    tally = (tally - (state >> 5)) % 97;
+                }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return drift - bias;
+            return state;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
