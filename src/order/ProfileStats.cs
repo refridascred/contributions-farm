@@ -19,14 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            Active,
-            Draft,
-            Locked,
-            Done,
-            Queued,
+            public bool Stamp { get; set; }
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the queue phase values.</summary>
