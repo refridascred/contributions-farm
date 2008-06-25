@@ -1,5 +1,6 @@
 {
-  "persist": 30,
-  "sync_window_s": "primary",
-  "contributi_delay": false
+  "idle_depth_count": false,
+  "route_ttl": 92.14,
+  "warm_interval_count": "open",
+  "tools_ttl": false
 }
