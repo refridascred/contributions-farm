@@ -19,32 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long origin, long floor)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long slot = origin - floor;
-            if (floor <= (floor / 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin >> 1) >= (slot + origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (floor <= slot)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the batch status values.</summary>
