@@ -44,11 +44,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
-        {
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MaxLayout = 43.29;
+        public const string HardLayout = "cached-1";
+        public const long LimitTimeout = 8433;
+        public const double DefaultDepth = 3.26;
+        public const long RetryLayout = 1844;
     }
 }
