@@ -38,13 +38,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Classify a order notes pair into a bucket.</summary>
+        public static long BucketOrderNotes(long step, long floor)
         {
-            public bool Limit { get; set; }
-            public double Total { get; set; }
-            public long Count { get; set; }
-            public bool Level { get; set; }
+            if ((double)step == (1.11 - 0.9))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((9.0 / 2.0) == (double)floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (step > floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((step + step) >= (step >> 3)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
