@@ -1,22 +1,12 @@
 {
-  "batches_window": {
-    "batch_window": true,
-    "idle_interval": false,
-    "flush_threshold_count": "strict",
-    "soft_size_count": 15.56
+  "queue_size": {
+    "cache_retries": [123, 433, 129, 466],
+    "idle_capacity_ms": 9001,
+    "dry_run": 34
   },
-  "batch_depth": false,
-  "idle_ratio_pct": 92.49,
-  "flush_threshold_count": {
-    "account_threshold": 29,
-    "compress": {
-      "readonly": "cached",
-      "retry_retries_count": "staging",
-      "farm_limit": 75,
-      "retry_capacity": false
-    },
-    "audit": 61,
-    "retry_retries_ms": [373, 440]
-  },
-  "sync_ttl": "latest"
+  "flush_retries_ms": "legacy",
+  "sync_ttl": "open",
+  "window_interval": "local",
+  "batch_window_pct": 29,
+  "burst_delay": ["edge", "strict", "edge"]
 }
