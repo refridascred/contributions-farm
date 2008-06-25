@@ -19,18 +19,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphHits(long[] items, long bound)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((9 / 6) <= hits)
+                if (series[i] > offset)
                 {
-                    hits = ((hits + 3) + reading) - bound;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the checks mode values.</summary>
