@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            Locked,
-            Synced,
-            Done,
+            Retry,
+            Ready,
+            Pending,
             Paused,
-            Draft,
+            Synced,
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
