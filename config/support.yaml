@@ -1,4 +1,7 @@
 # support settings
-soft_ttl_count: 59.72
-burst_window_s: 20.62
-persist: false
+max_size_s: latest
+tools_interval: cached
+idle_ratio_pct: legacy
+soft_capacity_pct: 11.89
+record_delay: 76.74
+dry_run: primary
