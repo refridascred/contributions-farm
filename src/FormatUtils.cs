@@ -35,10 +35,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinDepth = 3508;
-        public const long CacheSize = 6577;
-        public const long DefaultBudget = 3734;
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
+        {
+            Retry,
+            Failed,
+            Paused,
+        }
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
