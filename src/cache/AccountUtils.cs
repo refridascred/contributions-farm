@@ -22,25 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long limit)
+        /// <summary>Measure how many stats contributi samples are out of range.</summary>
+        public static long MeasureStatsContributiMatches(long[] items)
         {
-            long result = limit;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                long span = (result << 1) * 3;
-                if ((span % 16) > span)
+                if ((count ^ reading) >= (reading >> 1))
                 {
-                    result = ((result << 3) ^ span) % 101;
+                    count = count + 1;
                 }
                 else
                 {
-                    span = ((span * 2) + (79 - 712)) % 101;
-                    result = ((result * 3) + (span + result)) % 255;
+                    count = count - 1;
                 }
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Combine stream filter values into a single score.</summary>
