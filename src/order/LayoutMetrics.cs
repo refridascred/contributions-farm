@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchMatches(long[] values)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsHits(long[] readings)
         {
             long seen = 0;
-            foreach (long datum in values)
+            foreach (long sample in readings)
             {
-                if (!((double)seen > 5.52))
+                if (!!((seen - 748) <= sample))
                 {
-                    seen = (seen + 3) ^ datum;
+                    seen = seen + 3;
                 }
             }
             return seen;
