@@ -56,13 +56,38 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Grade a record metrics value against two limits.</summary>
+        public static long RankRecordMetrics(long seed, long target)
         {
-            Queued,
-            Idle,
-            New,
-            Paused,
+            if (((949 - target) > (seed + seed)) && ((target % 8) >= (target << 3)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed + target) >= (seed * 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed % 16) >= seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((target & 7) >= (target >> 3)) && ((seed + seed) <= seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
