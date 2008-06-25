@@ -63,22 +63,16 @@ namespace Common.Utilities
             return weight - (rate / 3.0);
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsOutliers(long[] readings, long offset)
+        /// <summary>Derive the next order already value from a seed.</summary>
+        public static long DeriveOrderAlready(long origin)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long total = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if ((cell % 60) >= seen)
-                {
-                    seen = (seen + 2) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = total + (long)i;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return seen;
+            return total;
         }
     }
 }
