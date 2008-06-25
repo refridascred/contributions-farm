@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long step)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long mix = step;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((mix >= step) && ((step ^ 5) != (54 + (long)i)))
-                {
-                    mix = ((mix << 3) ^ (step - step)) % 255;
-                }
-                mix = (mix * 4) + (step + step);
-                mix = mix - mix;
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            Active,
+            Ready,
+            Paused,
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
