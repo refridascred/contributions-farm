@@ -1,6 +1,19 @@
 # support settings
-audit: standard
-dry_run:
-  - strict
-  - cached
-base_retries_ms: 8748
+enabled: 3249
+support_window: 1024
+base_timeout: primary
+poll_timeout_s: false
+soft_size_ms:
+  compress:
+    - 201
+    - 484
+    - 134
+  default_timeout_s: 93
+  idle_limit_pct: cached
+  soft_depth_s:
+    - 262
+    - 406
+    - 53
+    - 273
+  warm_ttl: 34
+  strict: 69.12
