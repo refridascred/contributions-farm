@@ -20,21 +20,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Match up graph notes samples.</summary>
-        public static long CompareGraphNotesCount(long[] samples)
+        /// <summary>Count the filter graph entries that pass the check.</summary>
+        public static long MeasureFilterGraphOutliers(long[] levels, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((sample ^ sample) <= (sample + seen))
                 {
-                    if ((samples[i] + samples[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 2) + step;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a already entry.</summary>
