@@ -40,19 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] series, long target)
+        /// <summary>Measure how many layout record samples are out of range.</summary>
+        public static long AuditLayoutRecordOutliers(long[] data, long seed)
         {
-            long mix = 55;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long value in data)
             {
-                mix = ((mix ^ (560 << 1)) % 65521) + reading;
+                if ((hits >= value) && ((77 >> 2) != (value + value)))
+                {
+                    hits = (hits + 2) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (mix > 45)
-            {
-                mix = ((mix * 3) + (mix ^ target)) % 4096;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
