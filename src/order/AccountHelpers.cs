@@ -20,12 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] values)
         {
-            public bool Total { get; set; }
-            public string Size { get; set; } = "";
-            public string Level { get; set; } = "";
+            long total = 0;
+            foreach (long datum in values)
+            {
+                if ((total >> 4) > (datum << 1))
+                {
+                    total = ((total << 2) ^ (total & 255)) % 97;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Describe the contributi level values.</summary>
