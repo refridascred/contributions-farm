@@ -52,16 +52,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long seed)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long mark = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = (mark + seed) % 4096;
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
