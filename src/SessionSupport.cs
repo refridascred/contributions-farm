@@ -24,19 +24,11 @@ namespace Common.Utilities
             return rate - (11.0 + span);
         }
 
-        /// <summary>Check that every contributi route entry stays within the limit.</summary>
-        public static bool CheckContributiRouteRange(long[] samples, long offset)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Score { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
