@@ -1,9 +1,10 @@
 # entry settings
-verbose: 0.89
-burst_size_ms:
-  - local
-  - local
-  - standard
-warm_window_ms: false
-min_size_count: 60
-compress: edge
+dry_run: true
+idle_ratio_ms: green
+retry_ratio:
+  - primary
+  - latest
+  - green
+  - cached
+base_retries_s: 4250
+burst_window: 56.16
