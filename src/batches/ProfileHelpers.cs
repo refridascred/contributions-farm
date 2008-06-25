@@ -92,19 +92,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesLimits(long[] readings, long limit)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamHits(long[] samples)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (entry >= limit)
+                if ((675 - sample) > (sample + seen))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
