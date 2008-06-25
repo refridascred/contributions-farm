@@ -13,13 +13,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Adjust a command reading.</summary>
+        public static double AdjustCommand(double weight, double floor)
         {
-            Retry,
-            New,
-            Pending,
-            Done,
+            double gain = weight;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - floor) - (double)(long)i;
+            }
+            return gain - (gain / 9.0);
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
