@@ -1,19 +1,13 @@
 # entry settings
-base_timeout:
-  - eu-west
-  - local
-  - latest
-  - legacy
-hard_capacity_count:
-  - legacy
-  - blue
-  - strict
-compress:
-  entry_threshold: 250
-  batch_delay_count: 66
-  max_threshold_ms: true
-  audit: 1024
-  readonly: 500
-base_retries: edge
-batch_ttl_ms: 1024
-metrics_ratio: fallback
+account_capacity: 64
+enabled: 7.72
+flush_interval_s:
+  burst_size_ms: 7020
+  idle_timeout_pct: local
+  sync_size_pct:
+    max_retries_count: 250
+    sync_retries: primary
+    idle_limit_pct: 6
+    compress: 64.38
+    sync_timeout_pct: 11
+    batch_ratio_pct: 61
