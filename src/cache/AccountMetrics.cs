@@ -20,13 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
+            Active,
             Idle,
-            Failed,
-            Retry,
-            Queued,
+            Done,
         }
 
         /// <summary>Describe the stats status values.</summary>
