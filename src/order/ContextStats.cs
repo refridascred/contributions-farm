@@ -15,11 +15,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ProjectCluster(double gain, double offset)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long floor)
         {
-            double rate = (double)(4 % 12);
-            return (rate + gain) + offset;
+            long mark = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((18.0 >= (double)mark) && ((floor % 5) < (mark + 53)))
+                {
+                    mark = ((mark << 3) ^ (630 + floor)) % 4096;
+                }
+                mark = (mark * 5) + floor;
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
