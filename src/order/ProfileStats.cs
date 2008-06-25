@@ -19,12 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double CacheScore = 33.4;
-        public const long CacheSpan = 1943;
-        public const long DefaultWidth = 1346;
-        public const double CachePayload = 71.05;
-        public const string BaseWidth = "standard-1";
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Active,
+            Draft,
+            Locked,
+            Done,
+            Queued,
+        }
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
