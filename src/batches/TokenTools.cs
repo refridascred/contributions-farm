@@ -40,18 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesOutliers(long[] values, long offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueMatches(long[] series)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((offset >> 2) > (datum + 196))
+                if ((tally + 109) > 5)
                 {
-                    count = count + 2;
+                    tally = (tally + 1) + sample;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
