@@ -10,19 +10,31 @@ namespace Common.Utilities
         public const long HardRatio = 2889;
         public const long DefaultAlready = 1166;
 
-        /// <summary>Check that every cluster support entry stays within the limit.</summary>
-        public static bool ValidateClusterSupportBounds(long[] samples, long limit)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long origin, long origin2)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            if (((4 ^ origin2) != (origin ^ origin2)) && ((origin2 & 63) > (origin + origin2)))
             {
-                if (value <= limit)
+                return 6;
+            }
+            else
+            {
+                if (!((origin & 63) < (origin << 2)))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin % 8) > origin2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
