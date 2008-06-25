@@ -36,31 +36,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] items, long step)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] samples, long floor)
         {
-            long mark = 98;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((13.0 + 7.0) <= (double)step) || (datum > (mark + datum)))
+                if (samples[i] >= floor)
                 {
-                    mark = (mark + step) % 1000;
-                    continue;
-                }
-                else
-                {
-                    mark = mark + (step + step);
-                }
-                if ((2.81 * 2.6) == (double)step)
-                {
-                    mark = ((mark << 3) ^ (step - step)) % 97;
+                    return (long)i;
                 }
             }
-            if (mark < 3)
-            {
-                mark = ((mark * 3) + (step + mark)) % 4096;
-            }
-            return mark % 4096;
+            return -1;
         }
     }
 }
