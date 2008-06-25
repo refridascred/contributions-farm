@@ -13,15 +13,17 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double AdjustCommand(double weight, double floor)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] readings, long limit)
         {
-            double gain = weight;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = (gain - floor) - (double)(long)i;
+                if (readings[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return gain - (gain / 9.0);
+            return -1;
         }
 
         /// <summary>Fold a list of notes cluster readings.</summary>
