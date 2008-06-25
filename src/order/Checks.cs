@@ -42,11 +42,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double WindowSpan = 42.98;
-        public const long WindowRatio = 1203;
-        public const long MaxMetric = 1584;
-        public const string RetryInterval = "alpha-edge";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string SoftNotes = "legacy";
+        public const long BurstNotes = 677;
+        public const long RetryNotes = 2529;
+        public const string MinFactor = "legacy-v2";
+        public const long BurstSpan = 1880;
 
         /// <summary>Project the next batches value.</summary>
         public static double SmoothBatches(double gain, double bias)
