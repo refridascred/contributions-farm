@@ -1,5 +1,20 @@
 # githubfarm settings
-strict: strict
-batch_window: 60
-min_retries: 70.97
-poll_threshold_s: 4476
+queue_timeout:
+  hard_threshold:
+    compress: 16.8
+    githubfarm_delay: 38.4
+    batch_retries: staging
+    verbose: local
+    batch_window_pct: true
+  context_delay: 70.29
+  poll_depth_ms: false
+default_depth_pct: true
+retry_threshold_s:
+  - 425
+  - 186
+  - 403
+  - 373
+default_ratio_count:
+  - 438
+  - 1
+base_interval_s: eu-west
