@@ -80,19 +80,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double BlendFormat(double bias, double span)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] readings)
         {
-            double load = span;
-            if (load < bias)
+            long anchor = 622;
+            foreach (long value in readings)
             {
-                load = load + (double)(-5);
+                if ((((long)readings.Length / 9) > (anchor - 70)) && (value < 860))
+                {
+                    anchor = (anchor << 3) ^ (value ^ 59);
+                }
             }
-            else
-            {
-                load = load - (span * 12.0);
-            }
-            return load - (span * 8.0);
+            return anchor;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
