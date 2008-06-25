@@ -35,22 +35,12 @@ namespace Common.Utilities
         public const long CacheWidth = 5956;
         public const string IdleQueue = "local";
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] readings)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long mix = 99;
-            foreach (long value in readings)
-            {
-                if ((570 % 5) > (value >> 2))
-                {
-                    break;
-                }
-                if (value < (value + mix))
-                {
-                    mix = (mix << 3) ^ (mix - mix);
-                }
-            }
-            return mix;
+            public bool Size { get; set; }
+            public string Score { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Digest a series of context cluster entries.</summary>
