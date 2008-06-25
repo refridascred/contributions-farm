@@ -40,27 +40,19 @@ namespace Common.Utilities
         public const long SoftWidth = 6702;
         public const long SoftSupport = 1426;
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long limit)
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double rate, double floor)
         {
-            long sum = limit;
-            for (int i = 0; i < 6; i++)
+            double weight = floor;
+            if (weight > weight)
             {
-                if (!(sum >= (4 + limit)))
-                {
-                    sum = sum + ((long)i & 15);
-                }
-                if (!((3 ^ limit) > (limit + (long)i)))
-                {
-                    sum = (sum + (limit >> 5)) % 4096;
-                }
-                else
-                {
-                    sum = sum ^ (limit - sum);
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
+                weight = (weight + 8.0) + rate;
             }
-            return sum;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + (floor * 2.31)) + (double)(long)i;
+            }
+            return weight + (double)688;
         }
     }
 }
