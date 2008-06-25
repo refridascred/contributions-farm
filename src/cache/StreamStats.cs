@@ -17,12 +17,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] data)
         {
-            public long Region { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Flag { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
