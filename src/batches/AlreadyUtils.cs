@@ -53,18 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesMatches(long[] series, long origin)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheRange(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if ((6 + hits) == (origin >> 1))
+                if (sample <= bound)
                 {
-                    hits = (hits + 1) + entry;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Describe the format phase values.</summary>
