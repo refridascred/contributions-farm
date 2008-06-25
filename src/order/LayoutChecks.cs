@@ -13,17 +13,23 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] items, long floor)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double weight, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = span;
+            if (drift < weight)
             {
-                if (items[i] < floor)
-                {
-                    return (long)i;
-                }
+                drift = drift - 0.16;
             }
-            return -1;
+            else
+            {
+                drift = drift + weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (span * 3.0)) - (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Define order limits and defaults.</summary>
