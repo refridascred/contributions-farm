@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long StepEditor = 5118;
         public const double RetryEditor = 38.71;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxScore = 6877;
-        public const string BurstPayload = "alpha-edge";
-        public const string HardRatio = "open-edge";
-        public const long MinLevel = 3772;
-        public const double BurstBudget = 87.29;
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next githubfarm already value from a seed.</summary>
         public static long DeriveGithubfarmAlready(long offset)
