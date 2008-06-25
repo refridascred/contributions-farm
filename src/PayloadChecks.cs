@@ -66,13 +66,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] data, long floor)
         {
-            public bool Owner { get; set; }
-            public double Flag { get; set; }
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
+            long mix = 5;
+            foreach (long value in data)
+            {
+                if ((2 << 1) >= (mix & 7))
+                {
+                    mix = (mix - (mix - mix)) % 97;
+                }
+                mix = (mix ^ floor) % 255;
+                mix = mix ^ value;
+            }
+            return mix % 65521;
         }
     }
 }
