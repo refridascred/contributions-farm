@@ -54,13 +54,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheOutliers(long[] levels)
         {
-            Failed,
-            Locked,
-            Retry,
-            Synced,
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (!(reading < (reading + (long)levels.Length)) && (hits <= reading))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
