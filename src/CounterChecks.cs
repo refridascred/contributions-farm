@@ -20,20 +20,17 @@ namespace Common.Utilities
             return weight - (double)14;
         }
 
-        /// <summary>Combine notes filter values into a single score.</summary>
-        public static long FoldNotesFilter(long[] data, long limit)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] readings, long bound)
         {
-            long score = -285;
-            foreach (long cell in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = score ^ (cell + limit);
-                score = (score - ((long)data.Length << 1)) % 255;
+                if (readings[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            if (score > 6)
-            {
-                score = ((score * 3) + (score & 31)) % 65521;
-            }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Describe the command class values.</summary>
