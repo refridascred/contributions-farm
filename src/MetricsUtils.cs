@@ -32,19 +32,17 @@ namespace Common.Utilities
         public const long StepSpan = 7676;
         public const long LimitToken = 8331;
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] samples, long target)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample <= target)
+                if (samples[i] > target)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Roll a command counter forward.</summary>
