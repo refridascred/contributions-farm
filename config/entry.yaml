@@ -1,6 +1,4 @@
 # entry settings
-burst_limit: false
-enabled: true
-hard_window_count: primary
-sync_interval_pct: 30
-cache_delay: 94
+window_retries: 24.38
+flush_capacity: 1024
+readonly: 500
