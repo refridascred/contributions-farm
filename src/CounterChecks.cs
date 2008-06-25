@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] levels)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] levels, long target)
         {
-            long total = 82;
-            foreach (long cell in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((total & 1) > cell)
+                if (levels[i] >= target)
                 {
-                    total = total + (34 + cell);
+                    return (long)i;
                 }
             }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Combine record values into a single score.</summary>
