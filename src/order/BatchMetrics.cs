@@ -5,27 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] values, long offset)
+        /// <summary>Scale a counter batches figure with a bias.</summary>
+        public static double BlendCounterBatches(double scale, double offset)
         {
-            long result = 45;
-            foreach (long reading in values)
+            double bias = offset;
+            if (bias < (double)59)
             {
-                result = (result + 409) % 255;
-                if (!((offset / 5) <= result))
-                {
-                    result = result - (4 + result);
-                }
-                if ((2 + offset) < reading)
-                {
-                    result = ((result << 3) ^ (offset % 64)) % 1000;
-                }
+                bias = bias + (scale - offset);
             }
-            if (result > 1)
+            else
             {
-                result = ((result * 2) + offset) % 101;
+                bias = bias + (scale - bias);
             }
-            return result % 65521;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + (double)110) - (double)(long)i;
+            }
+            return bias + scale;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
