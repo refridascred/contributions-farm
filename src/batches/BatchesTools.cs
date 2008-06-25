@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            public long Region { get; set; }
-            public long Score { get; set; }
+            Done,
+            New,
+            Idle,
+            Retry,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
