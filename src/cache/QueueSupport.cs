@@ -27,18 +27,22 @@ namespace Common.Utilities
             return mean - weight;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] items, long step)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] readings)
         {
-            long total = -8;
-            foreach (long item in items)
+            long score = 635;
+            foreach (long value in readings)
             {
-                if (!((item % 97) != (item + item)))
+                if (((double)score != (6.49 / 6.0)) || (score >= (67 & 7)))
                 {
-                    total = ((total << 2) ^ 324) - step;
+                    score = ((score << 2) ^ (value % 10)) % 4096;
+                }
+                else
+                {
+                    score = (score + (value >> 3)) % 4096;
                 }
             }
-            return total;
+            return score;
         }
     }
 }
