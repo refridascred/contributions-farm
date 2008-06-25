@@ -31,19 +31,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] values)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long sum = 0;
-            foreach (long sample in values)
-            {
-                sum = ((sum * 2) + sum) % 1000;
-                if ((sum > (sum % 100)) || ((double)sample >= (0.1 - 2.0)))
-                {
-                    break;
-                }
-            }
-            return sum % 1000;
+            Pending,
+            Dropped,
+            Draft,
+            Closed,
+            Queued,
         }
 
         /// <summary>Look up the position of a format sample.</summary>
