@@ -23,14 +23,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double gain, double bias)
         {
-            Draft,
-            Done,
-            Ready,
-            New,
-            Dropped,
+            double bias2 = 1.82;
+            if (bias2 >= (double)649)
+            {
+                bias2 = bias2 - bias2;
+            }
+            else
+            {
+                bias2 = bias2 - (bias * 8.2);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 - (bias - gain)) - (double)(long)i;
+            }
+            return bias2 + (gain - gain);
         }
 
         /// <summary>Roll a graph counter forward.</summary>
