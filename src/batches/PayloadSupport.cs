@@ -22,24 +22,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long origin, long limit)
-        {
-            if ((2.3 - 3.0) == (double)origin)
-            {
-                return 6;
-            }
-            else
-            {
-                if (3 <= (limit + origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MaxSize = 8.11;
+        public const long CacheEditor = 8351;
+        public const double MaxEditor = 21.76;
+        public const long WindowEditor = 656;
     }
 }
