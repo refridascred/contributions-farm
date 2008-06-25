@@ -1,7 +1,8 @@
 {
-  "poll_window": 42.16,
-  "window_interval": "blue",
-  "flush_window_count": "edge",
-  "githubfarm_ratio": "edge",
-  "schema_depth": 250
+  "persist": ["green", "fallback", "fallback"],
+  "min_retries": 3.37,
+  "batch_depth": 70.69,
+  "dry_run": 5593,
+  "enabled": 44.74,
+  "commits_ratio": ["eu-west", "eu-west"]
 }
