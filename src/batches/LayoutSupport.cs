@@ -60,19 +60,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] data, long step)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long mark = 16;
-            foreach (long cell in data)
-            {
-                mark = ((mark + (5 + cell)) % 1000) + step;
-            }
-            if (mark > 79)
-            {
-                mark = (mark * 5) + (mark + 75);
-            }
-            return mark;
+            public bool Owner { get; set; }
+            public long Offset { get; set; }
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
