@@ -20,14 +20,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] levels, long floor)
         {
-            Queued,
-            Active,
-            Stale,
-            Dropped,
-            Closed,
+            long total = 3;
+            foreach (long datum in levels)
+            {
+                if (6.0 <= (double)total)
+                {
+                    total = (total * 2) + (datum - total);
+                }
+                else
+                {
+                    total = total - (floor >> 3);
+                }
+            }
+            if (total < 385)
+            {
+                total = total + total;
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
