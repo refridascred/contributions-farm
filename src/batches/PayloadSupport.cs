@@ -16,26 +16,24 @@ namespace Common.Utilities
         public const long StepInterval = 9922;
         public const long MinRoute = 9923;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] values, long floor)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long origin, long limit)
         {
-            long total = 54;
-            foreach (long item in values)
+            if ((2.3 - 3.0) == (double)origin)
             {
-                if ((double)item == (3.19 / 6.0))
+                return 6;
+            }
+            else
+            {
+                if (3 <= (limit + origin))
                 {
-                    total = (total - (total + floor)) % 255;
+                    return 5;
                 }
                 else
                 {
-                    total = total - (36 / 7);
-                }
-                if (879 < (item * 5))
-                {
-                    break;
+                    return 4;
                 }
             }
-            return total;
         }
     }
 }
