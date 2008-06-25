@@ -19,13 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
-        {
-            public bool Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 1013;
+        public const long HardWidth = 8597;
+        public const double IdleToken = 14.03;
+        public const long RetryLevel = 8981;
+        public const double SoftToken = 76.68;
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long ScoreGraph(long[] samples)
