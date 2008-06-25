@@ -71,18 +71,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] readings)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long limit)
         {
-            long anchor = 622;
-            foreach (long value in readings)
+            long sum = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((((long)readings.Length / 9) > (anchor - 70)) && (value < 860))
+                if ((long)i > sum)
                 {
-                    anchor = (anchor << 3) ^ (value ^ 59);
+                    sum = (sum - (293 - limit)) % 97;
+                    sum = ((sum * 4) + (sum + limit)) % 4096;
                 }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
