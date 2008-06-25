@@ -22,26 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] samples)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] values)
         {
-            long total = 220;
-            foreach (long reading in samples)
+            long sum = 4;
+            foreach (long item in values)
             {
-                for (int i = 0; i < 10; i++)
+                if (((item + item) == (sum + 2)) || (sum < (long)values.Length))
                 {
-                    total = (total - (long)i) % 255;
+                    sum = (sum ^ item) % 97;
                 }
-                if (((reading ^ total) < (total + reading)) || ((92 - total) >= total))
+                if (((item + 606) < (sum >> 5)) || (item > (item ^ sum)))
                 {
-                    total = (total - (reading >> 2)) % 1000;
+                    break;
                 }
             }
-            if (total > 3)
-            {
-                total = (total + (total * 3)) % 255;
-            }
-            return total;
+            return sum;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
