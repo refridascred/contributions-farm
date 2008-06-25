@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
+            Failed,
+            Queued,
+            New,
+            Stale,
+            Retry,
         }
 
         /// <summary>Roll a notes counter forward.</summary>
