@@ -1,5 +1,8 @@
 {
-  "flush_limit_pct": 6487,
-  "channel_threshold": 699,
-  "default_depth": 51.22
+  "flush_ttl": 68.88,
+  "flush_capacity_ms": 49.35,
+  "burst_depth_count": [405, 175],
+  "sync_ttl_s": "open",
+  "metrics_depth": 49,
+  "min_limit_s": 0.29
 }
