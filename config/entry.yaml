@@ -1,13 +1,10 @@
 # entry settings
-hard_ratio_pct:
-  - 142
-  - 292
-  - 296
-  - 21
-cache_ttl: 54.6
-verbose: 25.85
-max_ratio:
-  - 164
-  - 141
-  - 315
-  - 407
+commits_delay: 68.99
+min_timeout_pct: true
+layout_ratio: cached
+hard_delay_pct:
+  - 463
+  - 145
+  - 41
+  - 159
+verbose: legacy
