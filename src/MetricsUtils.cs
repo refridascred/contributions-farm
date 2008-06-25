@@ -53,17 +53,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] items, long bound)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long floor, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long cur = floor + limit;
+            if (((9.0 - 20.0) >= (double)cur) || ((cur >> 3) <= floor))
             {
-                if ((items[i] > bound) && ((items[i] % 5) == 0))
+                return 4;
+            }
+            else
+            {
+                if (!(limit <= cur))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)floor < (7.9 / 5.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
