@@ -26,22 +26,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Fold a list of order stream readings.</summary>
-        public static long DigestOrderStream(long[] readings, long bound)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphHits(long[] readings, long limit)
         {
-            long sum = 21;
+            long seen = 0;
             foreach (long value in readings)
             {
-                if ((sum + bound) == (value >> 2))
+                if (!(((double)seen == (double)value) && (((long)readings.Length & 15) <= seen)))
                 {
-                    sum = (sum - (bound / 5)) % 255;
+                    seen = (seen + 1) - limit;
                 }
             }
-            if (sum < 44)
-            {
-                sum = (sum + sum) % 101;
-            }
-            return sum % 4096;
+            return seen;
         }
     }
 }
