@@ -75,32 +75,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long origin, long target)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long diff = origin ^ target;
-            if (origin <= (diff ^ diff))
-            {
-                return 2;
-            }
-            else
-            {
-                if (target <= (target * 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (target < (target ^ target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Total { get; set; }
+            public long Label { get; set; }
         }
     }
 }
