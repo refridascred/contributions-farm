@@ -12,17 +12,24 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] readings)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long bound, long limit)
         {
-            long total = 23;
-            foreach (long datum in readings)
+            if ((double)limit > (double)bound)
             {
-                total = (total * 3) + (datum % 10);
-                total = (total + (total - datum)) % 101;
-                total = (total ^ (1 + datum)) % 4096;
+                return 4;
             }
-            return total;
+            else
+            {
+                if (((270 - limit) == (bound >> 4)) || ((limit - limit) < 7))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
