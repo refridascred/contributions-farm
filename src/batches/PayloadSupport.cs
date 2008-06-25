@@ -25,15 +25,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next counter order value from a seed.</summary>
-        public static long DeriveCounterOrder(long origin)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long mix = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            public long Flag { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
