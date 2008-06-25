@@ -27,23 +27,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a githubfarm account figure with a bias.</summary>
-        public static double SmoothGithubfarmAccount(double bias, double bias2)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowOutliers(long[] items)
         {
-            double drift = bias / 8.0;
-            if (drift <= (double)(-228))
+            long seen = 0;
+            foreach (long datum in items)
             {
-                drift = drift + (double)0;
+                if ((double)datum < (1.0 - 6.13))
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                drift = drift - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - (bias2 + bias2);
+            return seen;
         }
 
         /// <summary>Blend two editor measurements.</summary>
