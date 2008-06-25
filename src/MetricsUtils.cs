@@ -26,13 +26,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many account notes samples are out of range.</summary>
-        public static long CountAccountNotesHits(long[] readings)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatGaps(long[] readings)
         {
             long tally = 0;
-            foreach (long item in readings)
+            foreach (long datum in readings)
             {
-                if ((7.0 * 1.58) == (double)item)
+                if ((tally - tally) <= (datum << 3))
                 {
                     tally = tally + 1;
                 }
