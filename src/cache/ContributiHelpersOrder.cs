@@ -36,13 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsGaps(long[] values, long target)
         {
-            public string Offset { get; set; } = "";
-            public string Score { get; set; } = "";
-            public double Level { get; set; }
-            public bool Limit { get; set; }
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((15.0 / 8.0) < (double)target)
+                {
+                    count = (count + 1) ^ datum;
+                }
+            }
+            return count;
         }
     }
 }
