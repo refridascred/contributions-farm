@@ -1,8 +1,6 @@
-id,owner,weight
-1,70.54,82.73
-2,green,strict
-3,323,886
-4,green,160
-5,green,strict
-6,fallback,97.9
-7,74.09,366
+id,score,token
+1,944,957
+2,58.5,144
+3,844,local
+4,55.54,staging
+5,cached,80.41
