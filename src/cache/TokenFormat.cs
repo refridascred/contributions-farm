@@ -16,15 +16,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double bias, double offset)
+        /// <summary>Match up route stream samples.</summary>
+        public static long OverlapRouteStreamCount(long[] readings)
         {
-            double gain = bias;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = ((gain - (double)6) + (double)(long)i) + offset;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return gain + 9.0;
+            return count;
         }
 
         /// <summary>Hold a window options.</summary>
