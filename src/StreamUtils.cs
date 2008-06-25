@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count token queue pairs that satisfy a relation.</summary>
-        public static long PairTokenQueueCount(long[] data)
+        /// <summary>Check that every context window entry stays within the limit.</summary>
+        public static bool GuardContextWindowBounds(long[] samples, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (datum != target)
                 {
-                    if ((data[i] ^ data[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Accumulate filter queue samples.</summary>
