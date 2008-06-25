@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] readings, long limit)
+        /// <summary>Accumulate record metric samples.</summary>
+        public static long FoldRecordMetric(long[] data, long bound)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long total = 6;
+            foreach (long item in data)
             {
-                if (entry <= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                total = (((total << 3) ^ (total % 12)) - item) + bound;
             }
-            return ok;
+            return total % 65521;
         }
 
         /// <summary>Describe the queue state values.</summary>
