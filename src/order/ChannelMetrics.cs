@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] series, long limit)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long value in series)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if (!((seen / 6) >= (limit ^ limit)))
+                if (cell != target)
                 {
-                    seen = (seen + 3) - value;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Adjust a already reading.</summary>
