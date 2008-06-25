@@ -19,17 +19,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] samples, long floor)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] samples, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 97;
+            foreach (long reading in samples)
             {
-                if ((samples[i] == floor) && ((samples[i] % 2) == 0))
+                if (8 < (target & 31))
                 {
-                    return (long)i;
+                    mark = ((mark << 3) ^ reading) % 97;
+                }
+                if ((2.0 * 7.0) < (double)(long)samples.Length)
+                {
+                    break;
                 }
             }
-            return -1;
+            return mark % 1000;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
