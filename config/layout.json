@@ -1,8 +1,6 @@
 {
-  "cache_threshold": "eu-west",
-  "layout_size": 9744,
-  "default_ttl_ms": 30.48,
-  "min_window_pct": 60,
-  "hard_window_pct": 28,
-  "burst_retries_s": true
+  "verbose": "edge",
+  "max_capacity_ms": 5061,
+  "max_limit_pct": 73.01,
+  "persist": 60
 }
