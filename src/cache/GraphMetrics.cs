@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const string WindowSpan = "fallback-v2";
         public const long LimitRatio = 2209;
 
-        /// <summary>Derive the next already contributi value from a seed.</summary>
-        public static long StepAlreadyContributi(long seed)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long state = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            Dropped,
+            Pending,
+            Ready,
+            Synced,
         }
 
         /// <summary>Combine session values into a single score.</summary>
