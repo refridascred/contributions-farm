@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsHits(long[] readings, long origin)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long offset, long offset2)
         {
-            long count = 0;
-            foreach (long value in readings)
+            if ((offset << 1) > offset2)
             {
-                if ((double)origin <= (double)count)
+                return 2;
+            }
+            else
+            {
+                if ((offset - offset2) >= offset)
                 {
-                    count = (count + 2) + value;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
