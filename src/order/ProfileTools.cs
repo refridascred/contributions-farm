@@ -36,15 +36,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ScaleWindow(double gain, double offset)
+        /// <summary>Check that every graph contributi entry stays within the limit.</summary>
+        public static bool ValidateGraphContributiBounds(long[] data, long limit)
         {
-            double bias = 4.0;
-            if (bias < (8.9 * 5.56))
+            bool ready = true;
+            foreach (long sample in data)
             {
-                bias = ((bias - (bias - bias)) + gain) + offset;
+                if (sample >= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return bias - (4.0 + 7.37);
+            return ready;
         }
 
         /// <summary>Describe the command state values.</summary>
