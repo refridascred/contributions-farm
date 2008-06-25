@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsLimits(long[] data, long floor)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Done,
+            Idle,
         }
 
         /// <summary>Check that every profile entry entry stays within the limit.</summary>
