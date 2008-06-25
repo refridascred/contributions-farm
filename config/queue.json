@@ -1,8 +1,6 @@
 {
-  "graph_threshold": 500,
-  "burst_ratio": "eu-west",
-  "min_size": "legacy",
-  "cache_depth_ms": 3.27,
-  "sync_window_count": "staging",
-  "strict": "open"
+  "stream_limit": true,
+  "soft_capacity_pct": "eu-west",
+  "persist": "open",
+  "idle_threshold_count": 60
 }
