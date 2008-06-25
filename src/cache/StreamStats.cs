@@ -20,15 +20,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Derive the next metrics account value from a seed.</summary>
-        public static long DeriveMetricsAccount(long bound)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double weight, double span)
         {
-            long result = bound;
-            for (int i = 0; i < 7; i++)
+            double mean = weight;
+            if (mean < weight)
             {
-                result = ((result * 3) + (long)i) % 1000;
+                mean = (mean + (0.57 - mean)) - span;
             }
-            return result;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - weight) + (double)(long)i;
+            }
+            return mean + (3.31 * 14.0);
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
