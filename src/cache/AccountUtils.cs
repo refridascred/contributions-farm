@@ -14,11 +14,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double WindowLayout = 34.67;
-        public const double RetryLayout = 19.88;
-        public const long BatchDepth = 7612;
-        public const long MaxLayout = 2074;
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
+        {
+            Pending,
+            Failed,
+            Draft,
+            Locked,
+            New,
+        }
 
         /// <summary>Hold a channel entry.</summary>
         public sealed class ChannelEntry
