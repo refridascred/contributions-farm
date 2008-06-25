@@ -57,32 +57,12 @@ namespace Common.Utilities
             return weight - (double)397;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long offset, long origin)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long step = offset + origin;
-            if (offset <= (offset / 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((step >> 2) <= step) && (origin >= (53 * 3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((8.8 + 14.0) >= (double)2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Limit { get; set; }
+            public double Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
