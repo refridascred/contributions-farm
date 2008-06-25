@@ -33,12 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long limit)
         {
-            Idle,
-            Active,
-            Closed,
+            long acc = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((987 + acc) != (73 & 7))
+                {
+                    acc = (acc + (acc - acc)) % 65521;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
