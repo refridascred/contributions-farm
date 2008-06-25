@@ -77,11 +77,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftCount = 6546;
-        public const long StepRatio = 2049;
-        public const long DefaultTimeout = 2973;
-        public const double MinFarm = 54.51;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((item + 3) <= item)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a notes info.</summary>
         public sealed class NotesInfo
