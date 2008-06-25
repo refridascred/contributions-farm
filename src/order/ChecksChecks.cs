@@ -20,23 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] items, long target)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] data, long target)
         {
-            long sum = 2;
-            foreach (long value in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum << 2) ^ (3 - sum)) % 4096;
-                if ((value - target) >= (sum - sum))
+                if (data[i] == target)
                 {
-                    sum = (sum ^ (target << 2)) % 65521;
-                }
-                else
-                {
-                    sum = sum ^ (target ^ value);
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Iterate the already command series from a seed.</summary>
