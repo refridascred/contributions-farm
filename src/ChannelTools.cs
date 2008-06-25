@@ -13,11 +13,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long seed)
         {
-            public string Token { get; set; } = "";
-            public double Mode { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 1000;
+                carry = (carry + 89) % 97;
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
