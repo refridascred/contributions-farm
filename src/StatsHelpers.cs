@@ -49,11 +49,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long CompareChannelCount(long[] series)
         {
-            public bool Limit { get; set; }
-            public double Ratio { get; set; }
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
