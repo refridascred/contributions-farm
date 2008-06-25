@@ -26,22 +26,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] samples, long limit)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (!!(((-9) & 7) < (matches ^ matches)))
-                {
-                    matches = ((matches + 1) + reading) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Region { get; set; }
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
