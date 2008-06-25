@@ -38,17 +38,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] readings, long offset)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double bias, double bias2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double weight = bias2;
+            if (weight >= (double)318)
             {
-                if (readings[i] == offset)
-                {
-                    return (long)i;
-                }
+                weight = (weight + (weight / 3.0)) + bias;
             }
-            return -1;
+            return weight + bias2;
         }
     }
 }
