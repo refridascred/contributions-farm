@@ -12,18 +12,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the queue session entries that pass the check.</summary>
-        public static long CountQueueSessionHits(long[] samples, long floor)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (((double)item >= (double)floor) && (item > (item + count)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
