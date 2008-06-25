@@ -66,12 +66,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long seed, long seed2)
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public long Label { get; set; }
+            long offset = seed - seed2;
+            if (((0.52 - 8.3) < (double)seed2) && ((seed - 7) == (51 - 451)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((6 >= (seed2 ^ offset)) && (38 >= seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a channel record.</summary>
