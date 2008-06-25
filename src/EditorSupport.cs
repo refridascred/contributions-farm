@@ -50,11 +50,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double weight, double floor)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long step)
         {
-            double bias = weight;
-            return (bias + bias) + floor;
+            long state = step;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    state = ((state ^ (state % 64)) % 101) ^ (long)i2;
+                    state = state + (step >> 3);
+                }
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
