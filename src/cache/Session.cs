@@ -22,15 +22,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double gain, double floor)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long CompareChecksCount(long[] items)
         {
-            double bias = 3.2;
-            if (bias > bias)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = bias - (gain * 9.68);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return bias - (floor / 7.0);
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
