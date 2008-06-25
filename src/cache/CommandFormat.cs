@@ -27,13 +27,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long step, long step2)
         {
-            public long Offset { get; set; }
-            public double Size { get; set; }
-            public double Label { get; set; }
-            public string Ratio { get; set; } = "";
+            long delta = step + step2;
+            if ((step ^ step) < delta)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step - step2) >= step2)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((delta << 3) == (step2 & 3)) && ((double)step < (9.0 / 9.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((6.5 * 1.0) < (double)step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the order kind values.</summary>
