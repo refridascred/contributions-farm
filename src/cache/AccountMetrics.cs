@@ -65,11 +65,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxStream = 7408;
-        public const long StepScore = 9729;
-        public const long BurstStream = 1565;
-        public const string HardSize = "fallback";
+        /// <summary>Derive the next context cluster value from a seed.</summary>
+        public static long IterateContextCluster(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                long delta = limit;
+                total = total ^ (delta - total);
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long CountCounterOutliers(long[] values, long floor)
