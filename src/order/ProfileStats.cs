@@ -35,13 +35,31 @@ namespace Common.Utilities
             return bias - (10.0 - offset);
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long bound, long offset)
         {
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
-            public string Size { get; set; } = "";
-            public bool Offset { get; set; }
+            if ((bound << 3) == (offset % 97))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset + bound) < (bound & 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound << 3) <= (596 >> 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
