@@ -38,15 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long limit)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long score = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            Idle,
+            Pending,
+            Locked,
+            Active,
         }
     }
 }
