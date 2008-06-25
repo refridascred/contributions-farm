@@ -62,17 +62,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] items, long floor)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > floor) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Closed,
+            Done,
+            Locked,
+            Synced,
         }
 
         /// <summary>Combine layout values into a single score.</summary>
