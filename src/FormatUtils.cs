@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowSize = 9550;
-        public const long LimitBuffer = 3658;
-        public const string BaseBuffer = "staging-1";
-        public const long HardBuffer = 809;
-        public const double MaxBuffer = 55.48;
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] data, long limit)
+        {
+            long state = 3;
+            foreach (long cell in data)
+            {
+                state = state ^ limit;
+                if ((limit >= ((long)data.Length ^ limit)) && ((172 ^ cell) < limit))
+                {
+                    state = ((state << 2) ^ (cell % 5)) % 1000;
+                }
+                else
+                {
+                    state = (state << 2) ^ state;
+                }
+            }
+            if (state < 6)
+            {
+                state = state - (state + limit);
+            }
+            return state;
+        }
 
         /// <summary>Iterate the layout tools series from a seed.</summary>
         public static long SeriesLayoutTools(long bound)
