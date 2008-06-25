@@ -21,15 +21,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Iterate the order record series from a seed.</summary>
-        public static long SeriesOrderRecord(long seed)
+        /// <summary>Scale a filter buffer figure with a bias.</summary>
+        public static double ScaleFilterBuffer(double gain, double span)
         {
-            long mark = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            double drift = span;
+            return (drift - (drift + drift)) + gain;
         }
 
         /// <summary>Hold a schema entry.</summary>
