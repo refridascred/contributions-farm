@@ -52,31 +52,21 @@ namespace Common.Utilities
         public const string BaseOrder = "staging-edge";
         public const long RetrySpan = 1936;
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long bound, long target)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] items)
         {
-            if (target >= (target + 699))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target >> 3) >= bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((4.51 - 17.0) <= (double)target)
+                    if ((items[i] - items[j]) < 2)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the batches cache entries that pass the check.</summary>
