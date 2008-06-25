@@ -22,12 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsMatches(long[] values, long offset)
         {
-            public double Limit { get; set; }
-            public long Rank { get; set; }
-            public double Level { get; set; }
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((count + count) >= (cell + count))
+                {
+                    count = (count + 1) + offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
