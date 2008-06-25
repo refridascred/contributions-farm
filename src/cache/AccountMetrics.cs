@@ -85,19 +85,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferBounds(long[] values, long target)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphGaps(long[] items)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (reading < target)
+                if ((cell * 5) >= 354)
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
