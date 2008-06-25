@@ -42,13 +42,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            public string Limit { get; set; } = "";
-            public double Rank { get; set; }
-            public long Owner { get; set; }
-            public long Weight { get; set; }
+            Synced,
+            Dropped,
+            Queued,
         }
     }
 }
