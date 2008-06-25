@@ -13,13 +13,32 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Classify a checks cache pair into a bucket.</summary>
+        public static long RankChecksCache(long offset, long floor)
         {
-            Active,
-            Retry,
-            Stale,
-            New,
+            long span = offset - floor;
+            if (!(offset < floor))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor << 1) != (floor ^ offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (span > (offset ^ floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of account entries.</summary>
