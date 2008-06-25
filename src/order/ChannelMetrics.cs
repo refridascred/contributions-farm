@@ -29,11 +29,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string MinWidth = "alpha";
-        public const double IdleToken = 9.85;
-        public const double MaxToken = 26.41;
-        public const long RetryDepth = 5612;
-        public const long BurstToken = 6995;
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] values, long origin)
+        {
+            long score = 33;
+            foreach (long sample in values)
+            {
+                score = (((score - (74 + (long)values.Length)) % 101) + sample) + origin;
+            }
+            return score % 97;
+        }
     }
 }
