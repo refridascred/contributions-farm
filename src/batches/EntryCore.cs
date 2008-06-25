@@ -79,15 +79,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double ratio, double bias)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long floor, long target)
         {
-            double ratio2 = (double)(3 ^ 6);
-            for (int i = 0; i < 3; i++)
+            if ((target + 507) <= (95 ^ 11))
             {
-                ratio2 = (((ratio2 + 0.9) + (double)(long)i) + ratio) + bias;
+                return 2;
             }
-            return ratio2 - (double)20;
+            else
+            {
+                if ((8.0 * 12.0) >= (double)target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target + target) >= floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)1 < (double)floor) && ((double)target == (5.0 * 2.17)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
