@@ -36,18 +36,13 @@ namespace Common.Utilities
         public const string WindowSize = "open-edge";
         public const double BurstToken = 83.91;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteMatches(long[] levels, long seed)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((2.5 - 0.48) <= (12.0 / 4.0))
-                {
-                    hits = ((hits + 2) + sample) - seed;
-                }
-            }
-            return hits;
+            public double Total { get; set; }
+            public long Token { get; set; }
+            public bool Label { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Count window metrics pairs that satisfy a relation.</summary>
