@@ -40,19 +40,17 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Check that every schema contributi entry stays within the limit.</summary>
-        public static bool GuardSchemaContributiLimits(long[] levels, long offset)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] levels, long origin)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry < offset)
+                if (levels[i] < origin)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Look up the position of a editor buffer sample.</summary>
