@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] levels, long bound)
         {
-            public double Size { get; set; }
-            public bool Token { get; set; }
-            public long Limit { get; set; }
-            public bool Stamp { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < bound) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the queue session entries that pass the check.</summary>
