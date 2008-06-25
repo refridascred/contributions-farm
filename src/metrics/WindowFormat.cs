@@ -58,15 +58,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double bias, double bias2)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long floor)
         {
-            double drift = bias;
-            for (int i = 0; i < 5; i++)
+            long carry = floor;
+            for (int i = 0; i < 4; i++)
             {
-                drift = (drift + drift) + (double)(long)i;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return drift - (bias2 * 5.2);
+            return carry;
         }
     }
 }
