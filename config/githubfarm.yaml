@@ -1,20 +1,4 @@
 # githubfarm settings
-buffer_interval: 83.25
-audit:
-  retry_ttl: open
-  readonly: 85.28
-  commits_capacity:
-    burst_ratio_pct: stable
-    min_size_ms: 1024
-    verbose:
-      - 230
-      - 391
-      - 414
-    idle_interval_ms: eu-west
-    stats_ratio:
-      - staging
-      - primary
-    sync_capacity: false
-batch_delay_ms: eu-west
-default_capacity_pct: false
-default_capacity: false
+poll_limit_ms: 20
+persist: 8634
+enabled: 5.08
