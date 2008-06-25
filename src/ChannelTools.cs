@@ -13,12 +13,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterMatches(long[] samples, long seed)
         {
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (!((double)seed == (1.78 * 0.6)))
+                {
+                    tally = (tally + 1) ^ value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
