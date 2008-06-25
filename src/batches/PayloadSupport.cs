@@ -15,13 +15,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Check that every cluster support entry stays within the limit.</summary>
+        public static bool ValidateClusterSupportBounds(long[] samples, long limit)
         {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public long Offset { get; set; }
-            public long Token { get; set; }
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Derive the next counter order value from a seed.</summary>
