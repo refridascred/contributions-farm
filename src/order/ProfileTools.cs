@@ -29,17 +29,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Locate a tools checks reading by value.</summary>
-        public static long LocateToolsChecksIndex(long[] values, long limit)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Project the next window value.</summary>
