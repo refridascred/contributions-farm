@@ -23,12 +23,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            Queued,
-            Active,
+            Draft,
+            Done,
+            Ready,
             New,
+            Dropped,
         }
 
         /// <summary>Roll a graph counter forward.</summary>
