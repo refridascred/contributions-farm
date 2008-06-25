@@ -44,17 +44,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a commits route reading by value.</summary>
-        public static long LocateCommitsRouteIndex(long[] data, long offset)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Size { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a channel summary.</summary>
