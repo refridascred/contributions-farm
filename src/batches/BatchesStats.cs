@@ -13,12 +13,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            public bool Owner { get; set; }
-            public double Ratio { get; set; }
-            public bool Token { get; set; }
+            public string Level { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
