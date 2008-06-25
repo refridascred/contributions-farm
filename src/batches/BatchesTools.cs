@@ -35,21 +35,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] data)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long seed, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long offset = seed + floor;
+            if (!((20.0 / 2.0) >= (double)offset))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((95 >> 4) >= seed)
                 {
-                    if ((data[i] - data[j]) != 4)
+                    return 0;
+                }
+                else
+                {
+                    if (!(floor <= seed))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor / 9) != (offset + seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return tally;
         }
     }
 }
