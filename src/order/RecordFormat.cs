@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double ratio, double offset)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmBounds(long[] readings, long limit)
         {
-            double bias = (offset - offset) / 8.0;
-            if (bias < offset)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                bias = bias - offset;
+                if (reading >= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias + ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias + (offset * 1.6);
+            return ok;
         }
 
         /// <summary>Accumulate report commits samples.</summary>
