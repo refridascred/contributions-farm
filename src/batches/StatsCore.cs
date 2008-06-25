@@ -54,19 +54,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteBounds(long[] levels, long target)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordGaps(long[] series)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (item >= target)
+                if (!(matches <= (datum << 1)))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
