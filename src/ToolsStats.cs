@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] data)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = (score + (score + (long)i)) % 101;
+                score = score ^ (floor - score);
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
