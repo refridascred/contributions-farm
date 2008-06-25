@@ -22,24 +22,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long limit)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long acc = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!((acc - acc) > limit))
-                {
-                    acc = ((acc << 3) ^ ((long)i * 3)) % 255;
-                    continue;
-                }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    acc = ((acc ^ (acc ^ (long)i)) % 97) - (long)i2;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
+            Retry,
+            Closed,
+            Failed,
         }
 
         /// <summary>Locate a profile reading by value.</summary>
