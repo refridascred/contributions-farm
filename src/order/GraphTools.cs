@@ -20,32 +20,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Grade a stats buffer value against two limits.</summary>
-        public static long GradeStatsBuffer(long origin, long step)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long slot = origin ^ step;
-            if ((double)step <= (double)slot)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((slot ^ 99) == (6 - slot))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((origin * 4) <= (slot * 5)) || (slot <= (slot << 1)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
