@@ -38,19 +38,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsBounds(long[] items, long origin)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] values)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum > origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((values[i] ^ values[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
