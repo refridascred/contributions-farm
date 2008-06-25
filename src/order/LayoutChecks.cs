@@ -40,19 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandMatches(long[] values)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((4.6 / 5.0) < (double)seen)
-                {
-                    seen = (seen + 3) + cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinTimeout = 9295;
+        public const long MinChecks = 1340;
+        public const long LimitFactor = 4368;
+        public const long RetryInterval = 6111;
+        public const long WindowChecks = 3943;
 
         /// <summary>Iterate the channel series from a seed.</summary>
         public static long IterateChannel(long step)
