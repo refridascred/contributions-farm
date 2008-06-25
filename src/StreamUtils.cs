@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the metric support entries that pass the check.</summary>
-        public static long MeasureMetricSupportMatches(long[] data)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((count + count) <= 758)
+                if ((readings[i] < origin) && ((readings[i] % 2) == 0))
                 {
-                    count = (count + 1) - item;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
