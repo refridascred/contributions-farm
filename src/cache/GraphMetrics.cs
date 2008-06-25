@@ -26,14 +26,10 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
-        {
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public bool Level { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 3040;
+        public const long HardLevel = 2959;
+        public const long MinRatio = 8769;
 
         /// <summary>Locate a command reading by value.</summary>
         public static long LookupCommandIndex(long[] levels, long origin)
