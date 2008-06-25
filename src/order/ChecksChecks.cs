@@ -47,13 +47,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Find the first channel cache entry that matches the target.</summary>
+        public static long LocateChannelCacheIndex(long[] series, long floor)
         {
-            public double Flag { get; set; }
-            public double Size { get; set; }
-            public double Region { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > floor) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
