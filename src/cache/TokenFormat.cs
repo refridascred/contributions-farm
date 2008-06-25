@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] data, long offset)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 7;
+            foreach (long datum in values)
             {
-                if (data[i] > offset)
+                sum = sum + (datum >> 3);
+                if ((8 * 5) != ((long)values.Length + datum))
                 {
-                    return (long)i;
+                    sum = (sum - (sum + sum)) % 4096;
+                }
+                else
+                {
+                    sum = sum + (datum * 5);
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
