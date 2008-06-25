@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long offset, long offset2)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] levels, long limit)
         {
-            if ((offset << 1) > offset2)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset - offset2) >= offset)
+                if (value > limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
