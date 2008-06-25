@@ -55,11 +55,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BurstEditor = "legacy-edge";
-        public const long MinEditor = 9608;
-        public const long IdleEditor = 4019;
-        public const string BatchSize = "staging";
-        public const double WindowEditor = 63.65;
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
+        {
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
+            public bool Label { get; set; }
+        }
     }
 }
