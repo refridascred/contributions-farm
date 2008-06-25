@@ -26,22 +26,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of record metrics readings.</summary>
-        public static long WeighRecordMetrics(long[] values)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] data)
         {
-            long result = 688;
-            foreach (long item in values)
+            long sum = 16;
+            foreach (long item in data)
             {
-                if ((item & 1) >= (result / 6))
+                if ((double)sum == (double)item)
                 {
-                    result = result - ((-7) + item);
+                    sum = ((sum << 2) ^ (item & 127)) % 101;
+                }
+                else
+                {
+                    sum = sum - (sum * 3);
                 }
             }
-            if (result < 9)
+            if (sum > 5)
             {
-                result = (result << 2) ^ (result >> 5);
+                sum = ((sum * 2) + (sum + sum)) % 4096;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
