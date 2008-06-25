@@ -32,10 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string DefaultContext = "local-1";
-        public const double MaxContext = 11.13;
-        public const long CacheLevel = 4047;
-        public const string WindowTimeout = "staging";
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
