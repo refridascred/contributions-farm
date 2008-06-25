@@ -40,22 +40,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksGaps(long[] levels)
+        /// <summary>Adjust a cluster filter reading.</summary>
+        public static double SmoothClusterFilter(double rate, double offset)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            double scale = (double)3 + offset;
+            if (scale >= scale)
             {
-                if ((count + 13) >= datum)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                scale = (scale - 5.1) + rate;
             }
-            return count;
+            else
+            {
+                scale = scale - (offset * 2.33);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + offset) + (double)(long)i;
+            }
+            return scale + 7.7;
         }
     }
 }
