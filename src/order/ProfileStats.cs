@@ -35,11 +35,13 @@ namespace Common.Utilities
             return bias - (10.0 - offset);
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 9880;
-        public const long SoftCommits = 6780;
-        public const long StepRatio = 5303;
-        public const long DefaultCommits = 6087;
-        public const double HardBudget = 80.36;
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
+        {
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
+            public string Size { get; set; } = "";
+            public bool Offset { get; set; }
+        }
     }
 }
