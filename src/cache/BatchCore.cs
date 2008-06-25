@@ -31,11 +31,12 @@ namespace Common.Utilities
         public const long CacheFactor = 2367;
         public const long StepCount = 8223;
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
+            Closed,
+            Synced,
+            Idle,
         }
     }
 }
