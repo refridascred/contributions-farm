@@ -36,19 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two order payload measurements.</summary>
-        public static double BlendOrderPayload(double weight, double floor)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            double weight2 = 6.7;
-            if (weight2 < weight)
-            {
-                weight2 = weight2 + (floor - weight2);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight2 = weight2 - (double)(long)i;
-            }
-            return weight2 - weight;
+            public long Ratio { get; set; }
+            public long Token { get; set; }
         }
     }
 }
