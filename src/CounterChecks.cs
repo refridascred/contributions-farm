@@ -86,14 +86,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] data, long origin)
         {
-            Pending,
-            Idle,
-            Synced,
-            Stale,
-            Ready,
+            long total = 240;
+            foreach (long value in data)
+            {
+                total = ((((total << 2) ^ (405 % 97)) % 101) + value) + origin;
+            }
+            return total;
         }
     }
 }
