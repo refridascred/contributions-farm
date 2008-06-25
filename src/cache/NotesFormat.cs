@@ -44,19 +44,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileBounds(long[] items, long offset)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelLimits(long[] series, long floor)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long item in series)
             {
-                if (datum < offset)
+                if (item > floor)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
     }
 }
