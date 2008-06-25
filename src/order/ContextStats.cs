@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] data)
         {
-            Closed,
-            Done,
-            Paused,
-            Stale,
-            Failed,
+            long mark = 93;
+            foreach (long sample in data)
+            {
+                if (!((sample & 3) == (mark << 2)))
+                {
+                    break;
+                }
+                if ((mark - 941) >= (15 - mark))
+                {
+                    mark = (mark * 4) + (mark ^ mark);
+                }
+            }
+            if (mark < 62)
+            {
+                mark = (mark << 2) ^ mark;
+            }
+            return mark % 97;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
