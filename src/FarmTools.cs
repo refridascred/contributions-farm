@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long step, long step2)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            if (636 >= (step2 - step))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)step2 != (3.1 - 8.3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Pending,
+            Done,
+            Draft,
+            Retry,
+            Stale,
         }
 
         /// <summary>Combine layout values into a single score.</summary>
