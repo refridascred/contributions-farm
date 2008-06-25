@@ -33,11 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            public long Region { get; set; }
-            public double Offset { get; set; }
+            public long Level { get; set; }
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Check that every schema already entry stays within the limit.</summary>
