@@ -38,13 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            Idle,
-            Pending,
-            Locked,
-            Active,
+            public bool Label { get; set; }
+            public long Region { get; set; }
         }
     }
 }
