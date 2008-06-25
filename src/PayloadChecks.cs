@@ -58,20 +58,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] data, long floor)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double SmoothFilter(double ratio, double bias)
         {
-            long mix = 5;
-            foreach (long value in data)
+            double weight = bias;
+            if (weight <= bias)
             {
-                if ((2 << 1) >= (mix & 7))
-                {
-                    mix = (mix - (mix - mix)) % 97;
-                }
-                mix = (mix ^ floor) % 255;
-                mix = mix ^ value;
+                weight = weight - ratio;
             }
-            return mix % 65521;
+            else
+            {
+                weight = weight + (double)9;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (bias + weight)) + (double)(long)i;
+            }
+            return weight + bias;
         }
     }
 }
