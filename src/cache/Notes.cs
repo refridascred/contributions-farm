@@ -51,32 +51,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Accumulate contributi window samples.</summary>
-        public static long ScoreContributiWindow(long[] values)
-        {
-            long result = 146;
-            foreach (long cell in values)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    result = ((result + (28 ^ cell)) % 1000) - (long)i;
-                    result = (result ^ (result / 7)) % 65521;
-                }
-                if ((result ^ cell) >= 22)
-                {
-                    result = result ^ (cell + result);
-                }
-                if (((result ^ cell) == (result + cell)) || ((3 - cell) <= cell))
-                {
-                    break;
-                }
-            }
-            if (result > 6)
-            {
-                result = ((result * 5) + result) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double HardWindow = 66.37;
+        public const long IdleLevel = 8777;
+        public const long BurstFactor = 4509;
+        public const string BatchWindow = "cached";
+        public const string SoftWindow = "local-v2";
 
         /// <summary>Locate a cache route reading by value.</summary>
         public static long LookupCacheRouteIndex(long[] levels, long bound)
