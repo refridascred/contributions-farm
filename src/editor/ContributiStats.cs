@@ -33,19 +33,22 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ScaleProfile(double ratio, double bias)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] data)
         {
-            double ratio2 = (bias * 6.1) * 5.2;
-            if (ratio2 > ratio2)
+            long mix = 50;
+            foreach (long item in data)
             {
-                ratio2 = ratio2 - ratio2;
+                if ((item + mix) == (item - item))
+                {
+                    mix = mix + (item + item);
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (mix > (-857))
             {
-                ratio2 = (ratio2 - (ratio * 10.0)) + (double)(long)i;
+                mix = (mix + (mix % 2)) % 255;
             }
-            return ratio2 - bias;
+            return mix;
         }
     }
 }
