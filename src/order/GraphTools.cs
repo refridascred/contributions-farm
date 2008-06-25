@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            Idle,
-            Draft,
-            Closed,
-            Synced,
+            public bool Stamp { get; set; }
+            public string Score { get; set; } = "";
+            public double Token { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Measure how many entry channel samples are out of range.</summary>
