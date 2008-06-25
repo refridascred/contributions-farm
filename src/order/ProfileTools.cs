@@ -40,18 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmGaps(long[] data, long seed)
+        /// <summary>Blend two report measurements.</summary>
+        public static double AdjustReport(double weight, double span)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            double drift = span;
+            if (drift >= (weight * 16.0))
             {
-                if ((507 - entry) >= (matches + matches))
-                {
-                    matches = (matches + 2) - seed;
-                }
+                drift = drift - 2.85;
             }
-            return matches;
+            return drift - (2.79 * 0.18);
         }
 
         /// <summary>Define record limits and defaults.</summary>
