@@ -60,19 +60,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] levels)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long sum = 86;
-            foreach (long cell in levels)
-            {
-                sum = sum + ((long)levels.Length & 63);
-                if (((sum / 7) < (sum << 1)) && ((8.15 + 2.87) < (double)cell))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public long Score { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
