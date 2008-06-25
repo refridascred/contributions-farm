@@ -30,38 +30,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long seed, long floor)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            if ((floor + 569) <= (seed + 563))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((3 ^ floor) >= (98 * 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)floor >= 8.44)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((floor & 15) > seed) && (floor > (floor + seed)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Digest a series of farm entries.</summary>
