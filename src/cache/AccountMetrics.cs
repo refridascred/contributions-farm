@@ -29,11 +29,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 8343;
-        public const long MaxContext = 8073;
-        public const string MinInterval = "open-edge";
-        public const long WindowFactor = 692;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseSpan = 5577;
+        public const string HardNotes = "latest";
+        public const long LimitLevel = 692;
+        public const long MaxDepth = 6324;
+        public const double StepDepth = 16.39;
 
         /// <summary>Hold a editor options.</summary>
         public sealed class EditorOptions
