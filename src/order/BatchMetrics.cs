@@ -24,18 +24,39 @@ namespace Common.Utilities
             return bias + scale;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountMatches(long[] items)
+        /// <summary>Classify a schema account pair into a bucket.</summary>
+        public static long SortSchemaAccount(long offset, long target)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long lane = offset ^ target;
+            if ((7.53 <= (double)75) || ((double)target <= (1.9 + 3.3)))
             {
-                if (((seen - entry) <= (seen % 3)) || ((entry - 208) == (entry & 127)))
+                return 6;
+            }
+            else
+            {
+                if (!((476 & 7) >= offset))
                 {
-                    seen = seen + 2;
+                    return 8;
+                }
+                else
+                {
+                    if ((target ^ lane) != (1 % 24))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((487 + offset) == (lane << 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
