@@ -1,7 +1,19 @@
 # entry settings
-dry_run: latest
-channel_interval: 100
-order_threshold: 73
-enabled: 10
-hard_delay: 7422
-batch_depth: eu-west
+base_timeout:
+  - eu-west
+  - local
+  - latest
+  - legacy
+hard_capacity_count:
+  - legacy
+  - blue
+  - strict
+compress:
+  entry_threshold: 250
+  batch_delay_count: 66
+  max_threshold_ms: true
+  audit: 1024
+  readonly: 500
+base_retries: edge
+batch_ttl_ms: 1024
+metrics_ratio: fallback
