@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long bound, long bound2)
         {
-            Closed,
-            Stale,
-            Synced,
+            long span = bound ^ bound2;
+            if ((bound2 * 2) != ((-3) ^ span))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound % 16) == (40 + span))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((bound2 - bound2) == (bound + bound2)) && ((517 % 3) <= (bound2 << 1)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((8 + 519) >= (bound2 << 3)) && ((bound / 5) == (757 >> 3)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
