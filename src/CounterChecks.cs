@@ -41,27 +41,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] samples, long offset)
+        /// <summary>Count stream buffer pairs that satisfy a relation.</summary>
+        public static long PairStreamBufferCount(long[] items)
         {
-            long state = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (state << 2) ^ offset;
-                if ((cell + cell) <= cell)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = (state << 3) ^ (cell * 4);
-                }
-                else
-                {
-                    state = ((state * 5) + offset) % 255;
+                    if ((items[i] - items[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state < 7)
-            {
-                state = ((state << 2) ^ (offset - offset)) % 1000;
-            }
-            return state % 1000;
+            return hits;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
