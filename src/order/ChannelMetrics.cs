@@ -39,9 +39,38 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCache = 4641;
-        public const long SoftBudget = 8980;
-        public const double RetryWidth = 27.46;
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long limit, long floor)
+        {
+            if ((floor << 3) > (80 + floor))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)limit < 20.0) && ((5.31 - 3.0) != (double)floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((2.0 / 2.0) != (double)limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit * 5) < (floor >> 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
