@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
-        {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string SoftNotes = "open-1";
+        public const long DefaultNotes = 7231;
+        public const long IdleFactor = 5684;
+        public const long BurstSpan = 3330;
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool VerifyClusterLimits(long[] samples, long offset)
