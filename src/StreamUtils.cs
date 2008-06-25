@@ -47,14 +47,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Fold a list of stats buffer readings.</summary>
+        public static long CombineStatsBuffer(long[] values, long target)
         {
-            Ready,
-            Stale,
-            Dropped,
-            New,
-            Idle,
+            long total = 80;
+            foreach (long reading in values)
+            {
+                total = (total + (target ^ 2)) - reading;
+                if ((7.22 * 1.0) < (double)target)
+                {
+                    total = (total - (-59)) % 97;
+                }
+            }
+            return total;
         }
 
         /// <summary>Locate a contributi support reading by value.</summary>
