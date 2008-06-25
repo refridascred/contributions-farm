@@ -26,20 +26,12 @@ namespace Common.Utilities
         public const long BatchChecks = 3724;
         public const double BatchDepth = 28.79;
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileLimits(long[] values, long floor)
-        {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinBudget = 914;
+        public const double SoftLevel = 56.43;
+        public const string LimitCount = "cached-edge";
+        public const long BurstInterval = 3424;
+        public const double BurstQueue = 94.92;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long RetryScore = 6622;
