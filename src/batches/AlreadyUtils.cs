@@ -31,22 +31,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmMatches(long[] readings, long target)
+        /// <summary>Rank queue channel input into a small class.</summary>
+        public static long GradeQueueChannel(long floor, long offset)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long bound = floor - offset;
+            if (((2.5 + 3.03) < (double)bound) || ((double)bound != (8.0 + 0.9)))
             {
-                if (687 < (hits + value))
+                return 0;
+            }
+            else
+            {
+                if (((offset & 3) == (floor & 7)) && ((double)offset < (9.1 / 6.0)))
                 {
-                    hits = (hits + 2) + target;
+                    return 6;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((double)floor >= 4.2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit editor token readings against a rule.</summary>
