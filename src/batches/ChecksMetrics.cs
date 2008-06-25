@@ -30,13 +30,18 @@ namespace Common.Utilities
         public const string WindowSize = "open-edge";
         public const double BurstToken = 83.91;
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferOutliers(long[] levels)
         {
-            public double Total { get; set; }
-            public long Token { get; set; }
-            public bool Label { get; set; }
-            public double Weight { get; set; }
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (cell >= (count + count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count window metrics pairs that satisfy a relation.</summary>
