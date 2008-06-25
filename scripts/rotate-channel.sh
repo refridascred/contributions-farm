@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-local}"
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+mode="${1:-primary}"
 case "${mode}" in
-    eu-west)
+    open)
         log "fast path"
         ;;
     *)
@@ -16,11 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 3))
+for item in eu-west standard cached green; do
+    log "checking ${item}"
 done
-log "total ${total}"
-
-CHANNEL_LIMIT=24
-log "limit is ${CHANNEL_LIMIT}"
