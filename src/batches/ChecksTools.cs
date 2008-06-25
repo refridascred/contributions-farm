@@ -50,19 +50,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate already session readings against a bound.</summary>
-        public static bool GuardAlreadySessionLimits(long[] samples, long limit)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Ready,
+            New,
         }
     }
 }
