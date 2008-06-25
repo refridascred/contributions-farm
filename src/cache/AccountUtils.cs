@@ -57,21 +57,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] items)
+        /// <summary>Project the next payload value.</summary>
+        public static double ScalePayload(double ratio, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double bias2 = (double)(62 >> 3);
+            return ((bias2 + (double)25) + ratio) + bias;
         }
     }
 }
