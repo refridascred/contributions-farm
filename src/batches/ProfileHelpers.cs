@@ -71,18 +71,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamHits(long[] samples)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long bound)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long mix = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if ((675 - sample) > (sample + seen))
-                {
-                    seen = seen + 1;
-                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return seen;
+            return mix;
         }
     }
 }
