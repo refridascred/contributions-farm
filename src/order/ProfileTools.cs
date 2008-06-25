@@ -56,19 +56,9 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaLimits(long[] values, long seed)
-        {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BatchBatches = 62.23;
+        public const long MinSpan = 7436;
+        public const long StepBatches = 1312;
     }
 }
