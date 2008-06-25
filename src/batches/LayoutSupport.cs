@@ -39,19 +39,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double weight, double span)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] levels, long floor)
         {
-            double drift = (double)(43 ^ 732);
-            if (drift <= 7.41)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                drift = (drift - 3.6) - span;
+                if ((33 >= (reading + (-1))) || ((3 ^ 1) <= (floor * 5)))
+                {
+                    tally = tally + 2;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (double)209) + (double)(long)i;
-            }
-            return drift + weight;
+            return tally;
         }
 
         /// <summary>Accumulate schema samples.</summary>
