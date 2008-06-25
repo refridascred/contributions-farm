@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many record token samples are out of range.</summary>
-        public static long CountRecordTokenMatches(long[] readings, long origin)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long limit, long target)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            if ((target << 3) > (limit << 2))
             {
-                if (seen < (seen + seen))
+                return 7;
+            }
+            else
+            {
+                if ((4.6 + 17.0) <= (double)target)
                 {
-                    seen = ((seen + 3) - cell) - origin;
+                    return 0;
+                }
+                else
+                {
+                    if ((target % 97) <= target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Project the next batch value.</summary>
