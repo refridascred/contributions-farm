@@ -36,17 +36,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long step)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] values, long origin)
         {
-            long total = step;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = total ^ ((-1) % 97);
-                total = (total ^ step) % 255;
-                total = ((total * 2) + (long)i) % 1000;
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the tools mode values.</summary>
