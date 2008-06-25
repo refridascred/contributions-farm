@@ -19,13 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] values, long bound)
         {
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
-            public double Total { get; set; }
-            public bool Owner { get; set; }
+            long anchor = 52;
+            foreach (long entry in values)
+            {
+                if ((double)2 == (double)bound)
+                {
+                    anchor = ((anchor << 2) ^ (7 + entry)) % 4096;
+                }
+                if ((anchor - 537) == (bound * 4))
+                {
+                    anchor = (anchor ^ (bound << 1)) % 65521;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Check that every session command entry stays within the limit.</summary>
