@@ -1,15 +1,8 @@
 # support settings
-githubfarm_threshold: staging
-checks_ttl: false
-warm_delay_count:
-  - green
-  - open
-  - stable
-  - edge
-flush_capacity_pct:
-  batch_ratio: 38
-  soft_timeout_count:
-    hard_capacity_ms: cached
-    soft_ratio_ms: 7114
-    warm_depth_s: true
-  order_ttl: false
+verbose:
+  - primary
+  - strict
+  - legacy
+entry_retries: strict
+report_limit: 60
+readonly: edge
