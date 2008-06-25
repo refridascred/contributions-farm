@@ -81,11 +81,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowGaps(long[] values, long limit)
         {
-            public string Mode { get; set; } = "";
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if (((limit / 3) <= (484 - cell)) || !(cell < (seen - (long)values.Length)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
