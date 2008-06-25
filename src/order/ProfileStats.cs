@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the farm stream series from a seed.</summary>
-        public static long DeriveFarmStream(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MinBudget = 73.52;
+        public const long MinTimeout = 9096;
+        public const long MinSpan = 1898;
+        public const long DefaultRatio = 7661;
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
