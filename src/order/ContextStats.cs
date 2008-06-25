@@ -27,20 +27,39 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long floor)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long target, long limit)
         {
-            long mark = floor;
-            for (int i = 0; i < 22; i++)
+            long slot = target - limit;
+            if (971 <= (limit << 2))
             {
-                if ((18.0 >= (double)mark) && ((floor % 5) < (mark + 53)))
-                {
-                    mark = ((mark << 3) ^ (630 + floor)) % 4096;
-                }
-                mark = (mark * 5) + floor;
-                mark = ((mark * 5) + (long)i) % 97;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if ((limit <= target) || (4.6 > (double)target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit ^ slot) > (target << 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target * 4) != (slot >> 4))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
