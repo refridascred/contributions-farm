@@ -38,13 +38,18 @@ namespace Common.Utilities
         public const long SoftReport = 6791;
         public const long RetryReport = 1203;
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] data, long bound)
         {
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public long Score { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (!((bound & 255) >= cell))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the layout phase values.</summary>
