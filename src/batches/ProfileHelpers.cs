@@ -58,12 +58,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaLimits(long[] readings, long bound)
         {
-            public long Size { get; set; }
-            public double Weight { get; set; }
-            public long Count { get; set; }
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
