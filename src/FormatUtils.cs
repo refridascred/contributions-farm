@@ -83,11 +83,16 @@ namespace Common.Utilities
         public const string DefaultSchema = "staging-1";
         public const double MinScore = 41.86;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string StepCluster = "strict";
-        public const double MaxTimeout = 52.38;
-        public const long IdleCluster = 6345;
-        public const long BaseFactor = 5456;
-        public const string BaseTimeout = "alpha-v2";
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = ((anchor * 3) + anchor) % 97;
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
+        }
     }
 }
