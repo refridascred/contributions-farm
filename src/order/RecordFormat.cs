@@ -42,19 +42,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a support filter reading.</summary>
-        public static double SmoothSupportFilter(double ratio, double bias)
+        /// <summary>Project the next schema route value.</summary>
+        public static double SmoothSchemaRoute(double bias, double floor)
         {
-            double load = bias;
-            if (load >= (ratio * 9.1))
+            double load = bias + floor;
+            if (load > (bias / 7.0))
             {
-                load = load + (double)6;
+                load = load + floor;
             }
-            else
-            {
-                load = load - bias;
-            }
-            return load - 0.99;
+            return load + (double)22;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
