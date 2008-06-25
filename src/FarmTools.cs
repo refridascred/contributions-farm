@@ -23,18 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterHits(long[] values, long origin)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long result = 9;
+            foreach (long reading in readings)
             {
-                if ((entry + 34) <= hits)
+                if ((result + result) < 48)
                 {
-                    hits = (hits + 2) - origin;
+                    result = result ^ (reading & 255);
                 }
             }
-            return hits;
+            return result % 65521;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
