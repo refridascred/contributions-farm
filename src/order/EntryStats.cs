@@ -37,20 +37,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] values)
-        {
-            long sum = 89;
-            foreach (long item in values)
-            {
-                sum = (sum ^ (item % 60)) % 255;
-                if (((item ^ sum) <= item) || ((double)item == (9.7 * 0.8)))
-                {
-                    sum = (sum + (8 ^ item)) % 65521;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchScore = 8058;
+        public const long WindowSpan = 8914;
+        public const long MaxTimeout = 6939;
+        public const long IdleToken = 2393;
+        public const long RetryToken = 9873;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double MaxFactor = 13.54;
