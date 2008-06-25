@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
-        {
-            Active,
-            Ready,
-            Paused,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 3870;
+        public const string DefaultCount = "latest-edge";
+        public const long HardReport = 2632;
+        public const string WindowWidth = "open-edge";
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
