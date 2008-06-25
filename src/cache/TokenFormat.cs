@@ -20,17 +20,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Locate a format window reading by value.</summary>
-        public static long LocateFormatWindowIndex(long[] readings, long step)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileGaps(long[] levels, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (readings[i] >= step)
+                if ((hits - seed) == ((-94) >> 3))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + sample;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
