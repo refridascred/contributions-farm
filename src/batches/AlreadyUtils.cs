@@ -44,31 +44,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long seed, long floor)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            if (floor > (seed + seed))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((4.0 - 7.81) > (double)seed) && ((seed << 2) != (seed + floor)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!(7.6 < (double)floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Dropped,
+            Ready,
+            Failed,
+            Paused,
+            Pending,
         }
     }
 }
