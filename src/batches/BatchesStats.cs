@@ -33,12 +33,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSupport = 312;
-        public const long HardSize = 7851;
-        public const long MaxSupport = 9683;
-        public const long IdleSupport = 3137;
-        public const string RetrySupport = "standard-edge";
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryCommand = 4765;
+        public const double BurstCommand = 20.08;
+        public const long BatchCount = 6508;
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long GradeEntry(long bound, long limit)
