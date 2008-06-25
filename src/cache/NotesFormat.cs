@@ -22,15 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long floor)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long target, long origin)
         {
-            long anchor = floor;
-            for (int i = 0; i < 21; i++)
+            if (target > (target + target))
             {
-                anchor = ((anchor * 3) + (long)i) % 97;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if ((0.1 - 7.0) == (double)target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
