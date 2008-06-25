@@ -17,12 +17,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            public bool Region { get; set; }
-            public bool Limit { get; set; }
-            public long Weight { get; set; }
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
