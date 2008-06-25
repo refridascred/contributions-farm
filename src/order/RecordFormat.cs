@@ -61,24 +61,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long bound)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long sum = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((sum ^ (long)i) >= bound)
-                {
-                    sum = sum - (sum + 9);
-                    break;
-                }
-                else
-                {
-                    sum = (sum - ((long)i * 3)) % 1000;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            Locked,
+            Active,
+            Done,
         }
     }
 }
