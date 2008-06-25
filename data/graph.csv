@@ -1,9 +1,6 @@
-id,region,ratio
-1,278,450
-2,39.54,fallback
-3,fallback,legacy
-4,open,52.21
-5,30.29,932
-6,42.0,638
-7,36.33,6.88
-8,953,812
+id,label,ratio,level,state
+1,315,698,458,757
+2,553,open,green,cached
+3,44.81,720,869,eu-west
+4,76.66,0.61,latest,604
+5,561,open,local,39.55
