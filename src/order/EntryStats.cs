@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelBounds(long[] samples, long limit)
         {
-            public long Weight { get; set; }
-            public double Total { get; set; }
+            bool ok = true;
+            foreach (long entry in samples)
+            {
+                if (entry != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Classify a already filter pair into a bucket.</summary>
