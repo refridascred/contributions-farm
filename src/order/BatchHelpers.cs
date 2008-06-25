@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const long BatchSpan = 525;
         public const long HardPayload = 6969;
 
-        /// <summary>Measure how many layout record samples are out of range.</summary>
-        public static long AuditLayoutRecordOutliers(long[] data, long seed)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((hits >= value) && ((77 >> 2) != (value + value)))
-                {
-                    hits = (hits + 2) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the profile class values.</summary>
