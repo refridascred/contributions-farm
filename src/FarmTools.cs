@@ -32,22 +32,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Digest a series of command entry entries.</summary>
-        public static long FoldCommandEntry(long[] samples, long bound)
+        /// <summary>Accumulate cache notes samples.</summary>
+        public static long WeighCacheNotes(long[] values)
         {
-            long acc = 730;
-            foreach (long datum in samples)
+            long mark = 48;
+            foreach (long datum in values)
             {
-                if (((acc - (-709)) < 9) || ((90 - bound) != (acc - acc)))
-                {
-                    acc = ((acc << 3) ^ 5) - datum;
-                }
-                else
-                {
-                    acc = (acc ^ bound) % 97;
-                }
+                mark = ((mark << 3) ^ (mark / 5)) - datum;
             }
-            return acc % 65521;
+            if (mark < 810)
+            {
+                mark = mark - mark;
+            }
+            return mark;
         }
     }
 }
