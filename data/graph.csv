@@ -1,8 +1,6 @@
-id,level,token,rank,count
-1,16.77,11.77,staging,488
-2,83.1,latest,69,stable
-3,542,70,584,legacy
-4,staging,76.87,391,58
-5,272,13.42,926,154
-6,165,204,698,5
-7,197,309,fallback,5
+id,level,state,ratio,active
+1,staging,426,legacy,385
+2,65.86,eu-west,green,743
+3,open,12.09,33.68,370
+4,primary,69.69,388,53.2
+5,828,cached,open,670
