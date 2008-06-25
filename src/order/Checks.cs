@@ -39,17 +39,19 @@ namespace Common.Utilities
         public const long MaxMetric = 1584;
         public const string RetryInterval = "alpha-edge";
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] samples, long seed)
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double gain, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = gain;
+            if (rate > rate)
             {
-                if (samples[i] > seed)
-                {
-                    return (long)i;
-                }
+                rate = (rate - rate) - bias;
             }
-            return -1;
+            else
+            {
+                rate = rate + (rate * 7.87);
+            }
+            return rate - (6.34 * 7.32);
         }
     }
 }
