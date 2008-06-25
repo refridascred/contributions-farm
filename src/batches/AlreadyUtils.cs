@@ -35,13 +35,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Fold a list of token cache readings.</summary>
+        public static long CombineTokenCache(long[] levels)
         {
-            public string Token { get; set; } = "";
-            public bool Score { get; set; }
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            long state = 613;
+            foreach (long sample in levels)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    state = (state ^ 4) ^ (long)i;
+                }
+                state = (state + (sample & 7)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Describe the contributi class values.</summary>
