@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long CompareBatchesCount(long[] levels)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Idle,
+            Paused,
+            Locked,
+            Queued,
         }
 
         /// <summary>Match up graph notes samples.</summary>
