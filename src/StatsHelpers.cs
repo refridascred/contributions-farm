@@ -55,16 +55,21 @@ namespace Common.Utilities
         public const string IdleInterval = "fallback-v2";
         public const long BurstScore = 9811;
 
-        /// <summary>Roll a farm context counter forward.</summary>
-        public static long IterateFarmContext(long offset)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long PairGithubfarmCount(long[] readings)
         {
-            long carry = offset;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (carry ^ (offset + offset)) % 97;
-                carry = ((carry * 5) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry;
+            return tally;
         }
     }
 }
