@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] values, long bound)
+        /// <summary>Accumulate schema counter samples.</summary>
+        public static long DigestSchemaCounter(long[] readings, long origin)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long anchor = 974;
+            foreach (long entry in readings)
             {
-                if (datum <= bound)
+                if (anchor < (entry + entry))
                 {
-                    ready = false;
-                    break;
+                    anchor = ((anchor ^ (entry + anchor)) % 101) - origin;
                 }
             }
-            return ready;
+            return anchor % 4096;
         }
 
         /// <summary>Hold a report options.</summary>
