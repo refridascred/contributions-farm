@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] samples)
         {
-            public long Count { get; set; }
-            public double Weight { get; set; }
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (cell <= hits)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a session counter forward.</summary>
