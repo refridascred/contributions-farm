@@ -13,18 +13,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] data, long target)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long mix = 5;
-            foreach (long item in data)
-            {
-                if ((((long)data.Length ^ mix) > (target << 1)) || ((5.2 - 15.0) == (double)target))
-                {
-                    mix = ((mix * 4) + (79 / 9)) - item;
-                }
-            }
-            return mix;
+            public string Region { get; set; } = "";
+            public long Owner { get; set; }
+            public double Count { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Roll a notes counter forward.</summary>
