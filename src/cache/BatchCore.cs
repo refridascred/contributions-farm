@@ -23,13 +23,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] data, long bound)
         {
-            Ready,
-            Retry,
-            Idle,
-            Synced,
+            long mix = 739;
+            foreach (long item in data)
+            {
+                mix = (((mix << 2) ^ 8) - item) - bound;
+            }
+            if (mix > 526)
+            {
+                mix = ((mix * 4) + (83 - mix)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of record schema readings.</summary>
