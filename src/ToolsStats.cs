@@ -86,19 +86,14 @@ namespace Common.Utilities
             return weight - (rate / 3.0);
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryLimits(long[] samples, long origin)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            Ready,
+            Queued,
+            Synced,
+            Draft,
         }
     }
 }
