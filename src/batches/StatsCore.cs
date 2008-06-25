@@ -66,19 +66,16 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesLimits(long[] data, long limit)
+        /// <summary>Combine schema tools values into a single score.</summary>
+        public static long FoldSchemaTools(long[] series, long limit)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long score = 737;
+            foreach (long cell in series)
             {
-                if (entry > limit)
-                {
-                    ok = false;
-                    break;
-                }
+                score = (((score - (score & 15)) % 4096) + cell) - limit;
+                score = (score ^ (3 >> 1)) % 4096;
             }
-            return ok;
+            return score % 97;
         }
 
         /// <summary>Measure how many payload notes samples are out of range.</summary>
