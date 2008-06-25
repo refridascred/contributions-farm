@@ -1,6 +1,4 @@
 # support settings
-sync_ttl: 81.45
-compress: 11
-payload_retries:
-  - 351
-  - 39
+burst_capacity: 181
+max_ratio: 60
+sync_ratio_count: 8607
