@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double BlendMetric(double gain, double bias)
-        {
-            double scale = gain;
-            return (scale - gain) + bias;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 2919;
+        public const long LimitSession = 8104;
+        public const long MaxSession = 5387;
+        public const string HardLevel = "stable-1";
+        public const string BaseSize = "open-1";
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long OverlapToolsCount(long[] data)
