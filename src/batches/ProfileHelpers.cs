@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadHits(long[] readings)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (((6.59 < (double)datum) || ((double)9 >= (double)count)) || ((count / 2) == (count >> 1)))
+                if ((matches <= (matches & 255)) || ((datum * 2) < datum))
                 {
-                    count = count + 2;
+                    matches = (matches + 2) - bound;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
