@@ -12,20 +12,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesLimits(long[] readings, long target)
-        {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double RetryDepth = 88.61;
+        public const long RetryWindow = 9027;
+        public const long IdleWidth = 4470;
+        public const long DefaultDepth = 124;
 
         /// <summary>Describe the stream state values.</summary>
         public enum StreamState
