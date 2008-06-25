@@ -43,11 +43,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftFactor = 1447;
-        public const long RetryRatio = 526;
-        public const long BurstDepth = 2669;
-        public const string MinToken = "staging-1";
-        public const double CacheToken = 97.22;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double StepRatio = 60.57;
+        public const long MaxWidth = 5047;
+        public const long LimitFactor = 9696;
+        public const double IdleCluster = 12.26;
+        public const double WindowCluster = 97.24;
     }
 }
