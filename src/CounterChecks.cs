@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] levels, long target)
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double scale, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double weight = bias;
+            if (weight < 2.96)
             {
-                if (levels[i] >= target)
-                {
-                    return (long)i;
-                }
+                weight = weight - 0.9;
             }
-            return -1;
+            else
+            {
+                weight = weight - (scale - scale);
+            }
+            return weight - (double)14;
         }
 
         /// <summary>Combine notes filter values into a single score.</summary>
