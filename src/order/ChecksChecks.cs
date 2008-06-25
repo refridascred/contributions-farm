@@ -13,18 +13,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheGaps(long[] readings, long origin)
+        /// <summary>Project the next buffer record value.</summary>
+        public static double ProjectBufferRecord(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum * 3) == (datum + 729))
-                {
-                    matches = (matches + 3) + origin;
-                }
-            }
-            return matches;
+            double weight2 = (double)(91 ^ (-62));
+            return ((weight2 - 4.56) + weight) + floor;
         }
 
         /// <summary>Find the first channel cache entry that matches the target.</summary>
