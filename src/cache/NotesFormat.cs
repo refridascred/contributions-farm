@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of report record readings.</summary>
-        public static long ScoreReportRecord(long[] items)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long target)
         {
-            long carry = 604;
-            foreach (long sample in items)
+            long acc = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((carry * 5) == (sample ^ carry))
-                {
-                    carry = carry + (sample + carry);
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (carry * 5)) % 101;
-                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            if (carry > 85)
-            {
-                carry = (carry + (95 * 2)) % 1000;
-            }
-            return carry % 65521;
+            return acc;
         }
 
         /// <summary>Describe the profile status values.</summary>
