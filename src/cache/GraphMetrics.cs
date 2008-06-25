@@ -52,18 +52,21 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportGaps(long[] levels)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((6.83 * 3.0) < (double)hits)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 2) + datum;
+                    if ((series[i] ^ series[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
