@@ -14,12 +14,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            New,
-            Retry,
-            Dropped,
+            public long Region { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Check that every schema already entry stays within the limit.</summary>
