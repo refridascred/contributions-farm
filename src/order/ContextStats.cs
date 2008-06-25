@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] items, long bound)
+        /// <summary>Roll a metric tools counter forward.</summary>
+        public static long SeriesMetricTools(long bound)
         {
-            long carry = 1;
-            foreach (long cell in items)
+            long mix = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (cell < 6)
+                long lane = mix * 5;
+                if (lane >= mix)
                 {
-                    carry = ((carry + (cell & 31)) % 97) - bound;
+                    mix = mix ^ (0 - lane);
                 }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return carry % 65521;
+            return mix;
         }
 
         /// <summary>Measure how many metrics token samples are out of range.</summary>
