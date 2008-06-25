@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long target)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricRange(long[] levels, long limit)
         {
-            long state = target;
-            for (int i = 0; i < 15; i++)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if (!((((long)i + state) != (long)i) && ((9.0 + 8.2) < (16.0 - 2.98))))
+                if (cell < limit)
                 {
-                    state = (state * 4) + state;
-                }
-                if (state >= (target >> 4))
-                {
-                    state = (state << 2) ^ state;
-                    state = (state << 3) ^ target;
-                }
-                else
-                {
-                    state = ((state << 2) ^ target) % 101;
-                }
-                if ((9.0 * 1.8) < (double)target)
-                {
+                    found = false;
                     break;
                 }
-                state = ((state * 3) + (long)i) % 1000;
             }
-            return state;
+            return found;
         }
 
         /// <summary>Combine command account values into a single score.</summary>
