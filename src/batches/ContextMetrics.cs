@@ -54,11 +54,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchGaps(long[] items)
         {
-            public long Score { get; set; }
-            public string Owner { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (!((((-5) + 62) != (hits * 5)) || ((3.7 / 5.0) >= (double)sample)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
