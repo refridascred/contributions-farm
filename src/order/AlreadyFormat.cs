@@ -14,20 +14,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long floor)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long carry = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                if (((double)carry > (double)floor) && (floor > (620 * 3)))
-                {
-                    carry = (carry + (476 << 3)) % 97;
-                }
-                carry = (carry + 887) % 65521;
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            public string Owner { get; set; } = "";
+            public bool Offset { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
