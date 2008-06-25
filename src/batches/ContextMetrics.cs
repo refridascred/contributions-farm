@@ -20,18 +20,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count the filter graph entries that pass the check.</summary>
-        public static long MeasureFilterGraphOutliers(long[] levels, long step)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample ^ sample) <= (sample + seen))
-                {
-                    seen = (seen + 2) + step;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a already entry.</summary>
