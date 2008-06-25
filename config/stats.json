@@ -1,10 +1,27 @@
 {
-  "metric_depth": true,
-  "flush_timeout": {
-    "base_window_s": 58.78,
-    "verbose": 20,
-    "min_window": true,
-    "base_window_ms": "latest"
+  "strict": {
+    "enabled": {
+      "batch_size": false,
+      "compress": 939,
+      "stream_retries": true,
+      "default_retries": 54,
+      "audit": 250
+    },
+    "verbose": "edge",
+    "warm_retries_pct": {
+      "min_window_count": 97,
+      "retry_ttl_pct": 53.22,
+      "warm_window_ms": 250,
+      "default_size": [76, 276, 4, 5]
+    }
   },
-  "verbose": "local"
+  "cluster_timeout": {
+    "cache_size_ms": "cached",
+    "account_capacity": 67.88,
+    "warm_depth_s": ["edge", "primary", "edge"],
+    "record_timeout": 500,
+    "hard_capacity_pct": true,
+    "cache_retries": 8041
+  },
+  "default_window": "local"
 }
