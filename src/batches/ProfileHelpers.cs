@@ -32,17 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] series, long origin)
+        /// <summary>Check that every filter metrics entry stays within the limit.</summary>
+        public static bool ValidateFilterMetricsLimits(long[] values, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if (series[i] > origin)
+                if (item >= seed)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Describe the route state values.</summary>
