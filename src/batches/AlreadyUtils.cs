@@ -50,11 +50,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleReport = 3345;
-        public const long LimitReport = 8137;
-        public const long BatchReport = 1073;
-        public const long CacheReport = 8737;
-        public const string DefaultReport = "staging-edge";
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MaxCommand = "local-edge";
+        public const long MinCount = 3863;
+        public const long SoftCommand = 1505;
+        public const double MaxBudget = 72.93;
+        public const long DefaultCommand = 9528;
     }
 }
