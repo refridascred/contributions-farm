@@ -32,15 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double ratio, double floor)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long origin)
         {
-            double scale = (double)(296 >> 2);
-            for (int i = 0; i < 4; i++)
+            long total = origin;
+            for (int i = 0; i < 17; i++)
             {
-                scale = (((scale - (9.97 / 3.0)) + (double)(long)i) - ratio) - floor;
+                total = total ^ (total ^ 28);
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return scale - (double)33;
+            return total;
         }
 
         /// <summary>Describe the batch status values.</summary>
