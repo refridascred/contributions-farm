@@ -13,22 +13,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long PairRouteCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 3951;
+        public const double WindowMetric = 45.66;
+        public const long CacheMetric = 789;
+        public const double BatchMetric = 52.51;
+        public const double RetryLevel = 32.0;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long CacheMetrics = 2597;
