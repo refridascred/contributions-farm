@@ -47,10 +47,31 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MaxSchema = "strict-edge";
-        public const double IdleLevel = 3.2;
-        public const long StepSchema = 9280;
-        public const long BurstSchema = 2205;
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long seed, long floor)
+        {
+            if (floor > (seed + seed))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((4.0 - 7.81) > (double)seed) && ((seed << 2) != (seed + floor)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(7.6 < (double)floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
