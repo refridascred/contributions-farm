@@ -5,19 +5,34 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorLimits(long[] values, long limit)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] series)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long total = 91;
+            foreach (long cell in series)
             {
-                if (sample <= limit)
+                if ((total ^ total) > (cell + total))
                 {
-                    ok = false;
+                    total = (total + total) % 101;
+                }
+                if ((9.5 * 17.0) > (double)total)
+                {
+                    total = (total + total) % 101;
+                }
+                else
+                {
+                    total = total ^ total;
+                }
+                if ((total - cell) > (cell + total))
+                {
                     break;
                 }
             }
-            return ok;
+            if (total > 483)
+            {
+                total = ((total * 2) + (total + total)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of counter token readings.</summary>
