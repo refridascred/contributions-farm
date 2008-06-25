@@ -31,31 +31,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long seed, long limit)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandHits(long[] levels)
         {
-            if (430 > (seed + limit))
+            long count = 0;
+            foreach (long value in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (((limit + 153) > (seed ^ limit)) && ((seed ^ limit) >= (seed % 7)))
+                if (value < (count << 3))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((limit & 255) <= 87) || ((2.5 / 5.0) != (double)limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
