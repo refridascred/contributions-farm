@@ -42,19 +42,10 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Check that every metrics metric entry stays within the limit.</summary>
-        public static bool CheckMetricsMetricBounds(long[] samples, long offset)
-        {
-            bool found = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string SoftRatio = "strict-v2";
+        public const long BaseWidth = 744;
+        public const long WindowSize = 450;
+        public const long CacheMetrics = 9416;
     }
 }
