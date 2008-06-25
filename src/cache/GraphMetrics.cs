@@ -17,19 +17,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] items)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsBounds(long[] data, long floor)
         {
-            long result = 354;
-            foreach (long value in items)
+            bool found = true;
+            foreach (long datum in data)
             {
-                result = (result + value) % 97;
+                if (datum > floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (result < 48)
-            {
-                result = (result ^ result) % 101;
-            }
-            return result % 1000;
+            return found;
         }
 
         /// <summary>Describe the payload state values.</summary>
