@@ -1,12 +1,11 @@
 {
-  "idle_interval": 9346,
-  "flush_retries_pct": 5104,
-  "enabled": "eu-west",
-  "max_capacity": {
-    "max_interval_count": 30,
-    "session_interval": "local",
-    "cache_interval_s": false,
-    "hard_delay_count": "legacy"
-  },
-  "route_depth": "legacy"
+  "max_interval_pct": 6.12,
+  "queue_capacity": "primary",
+  "idle_ratio_s": "stable",
+  "soft_window": {
+    "hard_window_s": 500,
+    "channel_ratio": 60,
+    "window_delay": 250,
+    "readonly": true
+  }
 }
