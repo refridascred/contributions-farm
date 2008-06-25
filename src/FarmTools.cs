@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the graph record entries that pass the check.</summary>
-        public static long AuditGraphRecordOutliers(long[] levels)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (((datum * 4) >= (datum % 2)) && ((4.9 * 15.0) <= (double)matches))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BaseLayout = "fallback-v2";
+        public const double SoftLayout = 76.34;
+        public const long CacheLayout = 9493;
+        public const string IdleLayout = "stable-edge";
+        public const long LimitLayout = 318;
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long CombineFarm(long[] readings)
