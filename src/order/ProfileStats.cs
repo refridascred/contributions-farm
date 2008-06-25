@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long RetrySchema = 7572;
         public const double CacheBudget = 77.66;
 
-        /// <summary>Measure how many batches account samples are out of range.</summary>
-        public static long MeasureBatchesAccountMatches(long[] items)
-        {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (!((13 + tally) == (entry % 10)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double CacheScore = 33.4;
+        public const long CacheSpan = 1943;
+        public const long DefaultWidth = 1346;
+        public const double CachePayload = 71.05;
+        public const string BaseWidth = "standard-1";
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
