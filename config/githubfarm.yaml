@@ -1,5 +1,5 @@
 # githubfarm settings
-batch_ttl_ms: true
-verbose: 73.98
-compress: fallback
-record_threshold: fallback
+strict: strict
+batch_window: 60
+min_retries: 70.97
+poll_threshold_s: 4476
