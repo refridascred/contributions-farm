@@ -1,7 +1,9 @@
-id,region,owner
-1,primary,fallback
-2,69.15,blue
-3,152,eu-west
-4,363,596
-5,334,fallback
-6,622,stable
+id,level,token,rank,active
+1,stable,658,816,430
+2,709,806,937,993
+3,legacy,1.31,658,13.68
+4,839,803,staging,latest
+5,40.54,strict,38.06,503
+6,11.71,74.37,45.73,179
+7,eu-west,stable,789,435
+8,stable,893,green,strict
