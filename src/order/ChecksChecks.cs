@@ -19,21 +19,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] items)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long origin, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (((double)target != (7.8 * 5.4)) || ((double)origin == (7.48 / 7.0)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((origin << 1) < (origin + origin))
                 {
-                    if ((items[i] - items[j]) > 7)
+                    return 3;
+                }
+                else
+                {
+                    if (((-628) >> 3) < (origin + 81))
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((origin & 1) != (target << 1))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Find the first channel cache entry that matches the target.</summary>
