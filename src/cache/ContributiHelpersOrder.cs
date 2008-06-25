@@ -24,18 +24,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] items, long origin)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelOutliers(long[] items, long target)
         {
-            long total = 49;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((total & 3) == (value * 2))
+                if ((8 % 97) > (entry * 4))
                 {
-                    total = ((total * 4) + (origin >> 5)) % 101;
+                    matches = (matches + 1) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return total % 65521;
+            return matches;
         }
     }
 }
