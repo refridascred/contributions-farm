@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadHits(long[] items, long floor)
+        /// <summary>Measure how many session metric samples are out of range.</summary>
+        public static long MeasureSessionMetricGaps(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if ((reading > (reading + count)) || (63 < ((long)items.Length >> 5)))
+                if (!((item - item) < (item - seed)))
                 {
-                    count = (count + 3) + floor;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    count = count - 1;
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Project the next commits value.</summary>
