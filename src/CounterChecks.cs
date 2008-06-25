@@ -77,19 +77,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatBounds(long[] levels, long limit)
+        /// <summary>Iterate the checks support series from a seed.</summary>
+        public static long StepChecksSupport(long seed)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long carry = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (cell > limit)
+                if ((39 < ((long)i + 834)) && ((double)(long)i > (double)carry))
                 {
-                    flag = false;
-                    break;
+                    carry = ((carry * 3) + (seed ^ carry)) % 4096;
                 }
+                else
+                {
+                    carry = (carry - (carry << 2)) % 4096;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return flag;
+            return carry;
         }
     }
 }
