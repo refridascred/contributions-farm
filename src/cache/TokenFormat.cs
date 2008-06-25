@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterGaps(long[] values)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long bound)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long carry = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((tally << 1) >= tally))
-                {
-                    tally = (tally + 3) ^ cell;
-                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Hold a session summary.</summary>
