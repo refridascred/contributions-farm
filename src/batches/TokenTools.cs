@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long step, long target)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long seed)
         {
-            if (target >= (step + target))
+            long anchor = seed;
+            for (int i = 0; i < 10; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((7.0 / 5.0) > (double)step)
+                if ((seed << 3) > seed)
                 {
-                    return 8;
+                    anchor = ((anchor << 2) ^ (long)i) % 4096;
                 }
-                else
-                {
-                    if ((target - 90) == (step * 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
+            return anchor;
         }
 
         /// <summary>Describe the contributi class values.</summary>
