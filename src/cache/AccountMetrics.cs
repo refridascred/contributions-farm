@@ -20,13 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] values)
         {
-            Ready,
-            Retry,
-            Active,
-            Idle,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the stats status values.</summary>
