@@ -69,18 +69,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportMatches(long[] samples, long seed)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphLimits(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                if (((item % 12) != (seed & 127)) || ((double)item < (6.0 / 2.0)))
+                if (entry <= limit)
                 {
-                    hits = hits + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
