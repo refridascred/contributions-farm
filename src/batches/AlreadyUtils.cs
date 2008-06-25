@@ -34,19 +34,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of token cache readings.</summary>
-        public static long CombineTokenCache(long[] levels)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long state = 613;
-            foreach (long sample in levels)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    state = (state ^ 4) ^ (long)i;
-                }
-                state = (state + (sample & 7)) % 101;
-            }
-            return state;
+            Closed,
+            Ready,
+            Paused,
+            Pending,
+            Queued,
         }
 
         /// <summary>Describe the contributi class values.</summary>
