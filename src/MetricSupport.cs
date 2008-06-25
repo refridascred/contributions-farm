@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] values)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsHits(long[] readings, long origin)
         {
             long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long value in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)origin <= (double)count)
                 {
-                    if ((values[i] + values[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 2) + value;
                 }
             }
             return count;
