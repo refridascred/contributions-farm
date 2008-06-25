@@ -34,11 +34,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
-        {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheFactor = 6999;
+        public const string HardSupport = "latest";
+        public const long SoftSupport = 9584;
     }
 }
