@@ -43,19 +43,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double scale, double bias)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            double ratio = 4.24 + scale;
-            if (ratio < (double)0)
-            {
-                ratio = ratio + (double)801;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (bias / 7.0)) + (double)(long)i;
-            }
-            return ratio + scale;
+            public double Mode { get; set; }
+            public double Ratio { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
