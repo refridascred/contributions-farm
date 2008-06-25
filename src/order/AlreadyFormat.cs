@@ -28,12 +28,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long offset, long limit)
         {
-            public long Total { get; set; }
-            public bool Score { get; set; }
-            public long Rank { get; set; }
+            if ((limit & 15) <= (offset - limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset - offset) <= limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((9.84 + 3.61) == (double)limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit & 1) <= (offset * 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a metric record value against two limits.</summary>
