@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long limit, long offset)
         {
-            public double Region { get; set; }
-            public long Limit { get; set; }
+            if ((offset - limit) <= (offset % 60))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((offset + offset) > (limit + 55)) && (offset <= (limit + 5)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((limit >> 5) <= (limit + limit)) && ((1.1 - 5.88) >= (double)limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a layout stats.</summary>
