@@ -20,11 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepAccount = 5305;
-        public const long MaxLevel = 5784;
-        public const double WindowFactor = 14.33;
-        public const long BaseAccount = 6547;
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
+        {
+            Locked,
+            Synced,
+            Ready,
+        }
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
