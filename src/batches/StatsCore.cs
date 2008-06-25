@@ -38,19 +38,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every session command entry stays within the limit.</summary>
-        public static bool CheckSessionCommandBounds(long[] series, long origin)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsBounds(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if (reading >= origin)
+                if (datum > origin)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
