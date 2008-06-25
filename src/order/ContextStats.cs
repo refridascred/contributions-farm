@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] readings, long bound)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] values, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 62;
+            foreach (long cell in values)
             {
-                if (readings[i] < bound)
+                if ((score - 19) <= (56 % 12))
                 {
-                    return (long)i;
+                    score = ((score * 5) + (cell << 1)) % 65521;
+                }
+                else
+                {
+                    score = score - bound;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Rank already queue input into a small class.</summary>
