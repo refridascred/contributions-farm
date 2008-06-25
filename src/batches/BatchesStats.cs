@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long seed)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long state = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            public string Count { get; set; } = "";
+            public string Region { get; set; } = "";
+            public double Offset { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Match up buffer samples.</summary>
