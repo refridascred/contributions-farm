@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] samples, long origin)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long result = 869;
-            foreach (long entry in samples)
-            {
-                if (entry <= (1 * 4))
-                {
-                    result = ((result << 2) ^ (entry - origin)) % 97;
-                }
-            }
-            return result;
+            Failed,
+            Closed,
+            Locked,
+            Ready,
         }
 
         /// <summary>Locate a editor reading by value.</summary>
