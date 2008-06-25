@@ -59,22 +59,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] series)
+        /// <summary>Adjust a buffer batches reading.</summary>
+        public static double BlendBufferBatches(double bias, double floor)
         {
-            long carry = 87;
-            foreach (long value in series)
-            {
-                if (((carry >> 5) <= 85) || ((9.0 / 6.0) > (double)carry))
-                {
-                    carry = (carry - (value % 24)) % 101;
-                }
-            }
-            if (carry < 19)
-            {
-                carry = carry + (carry * 2);
-            }
-            return carry % 4096;
+            double weight = (7.47 - floor) + (floor * 2.17);
+            return (weight + floor) + bias;
         }
     }
 }
