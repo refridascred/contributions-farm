@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long limit)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long seed, long origin)
         {
-            long score = limit;
-            for (int i = 0; i < 23; i++)
+            long step = seed - origin;
+            if (!(step <= (-70)))
             {
-                score = ((score * 4) + (long)i) % 1000;
+                return 2;
             }
-            return score;
+            else
+            {
+                if ((origin + step) >= step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed * 3) > (step + seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
