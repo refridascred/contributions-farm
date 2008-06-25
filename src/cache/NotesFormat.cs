@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
+            Done,
+            Queued,
             Locked,
             Retry,
-            Draft,
-            Pending,
-            Stale,
         }
 
         /// <summary>Adjust a farm reading.</summary>
