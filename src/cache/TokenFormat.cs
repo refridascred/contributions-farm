@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long origin)
         {
-            Retry,
-            Ready,
-            Locked,
-            Closed,
+            long score = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Hold a session summary.</summary>
