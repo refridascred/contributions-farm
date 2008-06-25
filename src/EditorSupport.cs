@@ -57,9 +57,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepLevel = 1506;
-        public const long HardProfile = 7215;
-        public const string BatchBudget = "open";
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
+        {
+            Locked,
+            Synced,
+            Active,
+        }
     }
 }
