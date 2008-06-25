@@ -1,11 +1,21 @@
 # support settings
-soft_window_ms:
-  - 174
-  - 236
-strict:
-  batch_ttl_ms: latest
-  report_limit: 75.24
-  githubfarm_ratio: 3.1
-  max_limit_pct: latest
-  persist: edge
-base_ttl: 500
+sync_interval:
+  token_capacity: 1024
+  sync_threshold: 19.28
+  strict: 57
+  sync_depth_count: staging
+  default_retries: true
+hard_retries: 1024
+verbose: fallback
+commits_threshold:
+  audit: 9.98
+  filter_size: 43.19
+  strict: true
+  hard_ratio:
+    min_size_ms: 24.56
+    batch_threshold_pct: false
+    batch_interval_ms: true
+  min_window_ms:
+    - strict
+    - open
+    - eu-west
