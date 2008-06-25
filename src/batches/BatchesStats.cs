@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine metrics notes values into a single score.</summary>
-        public static long TallyMetricsNotes(long[] levels)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] data, long floor)
         {
-            long sum = -718;
-            foreach (long datum in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)sum >= (4.8 - 2.61))
+                if (data[i] == floor)
                 {
-                    sum = ((sum << 2) ^ (datum * 2)) % 65521;
+                    return (long)i;
                 }
             }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
