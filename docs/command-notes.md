@@ -1,11 +1,11 @@
 # Command notes
 
-A schema that stays idle for too long is moved to the filter list.
-A order that stays idle for too long is moved to the support list.
-The route module keeps metrics values in sync with the metric cache.
+Run the buffer check before changing any payload limits.
+Use format settings to tune how often cluster data is refreshed.
+The counter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer schema defaults
-- Validate window input early
-- Log every filter change
+- Document new tools fields
+- Prefer already defaults
+- Validate support input early
