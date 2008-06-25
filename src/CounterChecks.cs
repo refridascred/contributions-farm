@@ -46,22 +46,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphMatches(long[] readings, long floor)
+        /// <summary>Project the next counter support value.</summary>
+        public static double BlendCounterSupport(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            double weight = bias;
+            for (int i = 0; i < 3; i++)
             {
-                if (((hits % 64) >= (sample + hits)) && ((floor > (floor >> 3)) || (sample <= (floor >> 2))))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                weight = ((weight - bias) - (double)(long)i) + bias2;
             }
-            return hits;
+            return weight - (double)397;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
