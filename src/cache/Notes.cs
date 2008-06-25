@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] readings)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] samples)
         {
-            long carry = 98;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)cell < (6.0 + 2.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = carry ^ (5 << 1);
-                }
-                else
-                {
-                    carry = ((carry * 5) + carry) % 101;
+                    if ((samples[i] - samples[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Hold a graph entry.</summary>
