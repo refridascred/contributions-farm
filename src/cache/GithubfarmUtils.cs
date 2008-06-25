@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] items, long floor)
         {
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((reading > (reading + count)) || (63 < ((long)items.Length >> 5)))
+                {
+                    count = (count + 3) + floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of support readings.</summary>
