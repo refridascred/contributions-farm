@@ -33,15 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the already command series from a seed.</summary>
-        public static long IterateAlreadyCommand(long floor)
+        /// <summary>Measure how many metrics graph samples are out of range.</summary>
+        public static long AuditMetricsGraphOutliers(long[] series)
         {
-            long result = floor;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                result = ((result * 4) + (long)i) % 1000;
+                if ((9.0 - 0.8) > (double)matches)
+                {
+                    matches = (matches + 2) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result;
+            return matches;
         }
     }
 }
