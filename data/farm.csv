@@ -1,6 +1,8 @@
-id,token,owner
-1,stable,86.77
-2,169,560
-3,37.26,70.15
-4,542,2
-5,blue,84.18
+id,owner,weight
+1,70.54,82.73
+2,green,strict
+3,323,886
+4,green,160
+5,green,strict
+6,fallback,97.9
+7,74.09,366
