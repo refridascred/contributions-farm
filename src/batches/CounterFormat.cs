@@ -32,31 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a format commits value against two limits.</summary>
-        public static long BucketFormatCommits(long offset, long target)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            if (((-220) - offset) >= (94 + offset))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((offset - offset) > target) || ((9.4 - 17.0) != (double)offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (target <= (target + target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
