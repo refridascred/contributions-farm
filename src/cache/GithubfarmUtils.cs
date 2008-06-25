@@ -30,24 +30,21 @@ namespace Common.Utilities
         public const double BatchChannel = 25.74;
         public const double LimitFactor = 54.52;
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] values)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCount(long[] data)
         {
-            long acc = 93;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)cell > (1.5 + 2.8))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = (acc + (acc + 488)) % 1000;
-                    acc = acc ^ (cell + acc);
+                    if ((data[i] + data[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    acc = ((acc << 3) ^ (acc >> 3)) % 101;
-                }
-                acc = ((acc << 3) ^ (acc >> 5)) % 1000;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Hold a account options.</summary>
