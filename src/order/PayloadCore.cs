@@ -43,11 +43,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public long Limit { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftFactor = 1447;
+        public const long RetryRatio = 526;
+        public const long BurstDepth = 2669;
+        public const string MinToken = "staging-1";
+        public const double CacheToken = 97.22;
     }
 }
