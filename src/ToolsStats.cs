@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long floor)
+        /// <summary>Find the first notes entry entry that matches the target.</summary>
+        public static long LookupNotesEntryIndex(long[] data, long step)
         {
-            long score = floor;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score + (score + (long)i)) % 101;
-                score = score ^ (floor - score);
-                score = ((score * 2) + (long)i) % 4093;
+                if (data[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
