@@ -39,12 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            public bool Ratio { get; set; }
-            public bool Owner { get; set; }
-            public long Label { get; set; }
+            public bool Limit { get; set; }
+            public double Weight { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the window state values.</summary>
