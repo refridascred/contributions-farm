@@ -26,24 +26,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] readings, long step)
-        {
-            long acc = 868;
-            foreach (long datum in readings)
-            {
-                acc = acc ^ (datum - step);
-                for (int i = 0; i < 4; i++)
-                {
-                    acc = (acc - ((long)i % 7)) % 4096;
-                }
-                if (!((acc & 15) <= (step * 2)))
-                {
-                    acc = (acc ^ (13 / 7)) % 97;
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double CacheOrder = 87.02;
+        public const string MaxSize = "standard-1";
+        public const long BatchCount = 501;
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long DeriveProfile(long offset)
