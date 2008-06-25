@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] items, long bound)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long seed, long target)
         {
-            long count = 0;
-            foreach (long datum in items)
+            if ((seed % 97) < (seed & 3))
             {
-                if (!((37 - datum) <= (bound & 7)))
+                return 5;
+            }
+            else
+            {
+                if (((seed / 6) < (target * 3)) || ((target << 3) >= seed))
                 {
-                    count = count + 1;
+                    return 8;
+                }
+                else
+                {
+                    if (!((59 % 12) <= (seed * 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a farm summary.</summary>
