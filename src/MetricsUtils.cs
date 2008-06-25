@@ -20,13 +20,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Fold a list of session stream readings.</summary>
+        public static long FoldSessionStream(long[] items)
         {
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public long Total { get; set; }
+            long mark = 912;
+            foreach (long reading in items)
+            {
+                mark = mark ^ (reading + 8);
+                mark = (mark + mark) % 4096;
+                if ((reading % 5) >= 0)
+                {
+                    break;
+                }
+            }
+            if (mark > 27)
+            {
+                mark = mark - (mark ^ (long)items.Length);
+            }
+            return mark % 97;
         }
 
         /// <summary>Describe the command kind values.</summary>
