@@ -28,15 +28,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double weight, double offset)
+        /// <summary>Check that every session command entry stays within the limit.</summary>
+        public static bool CheckSessionCommandBounds(long[] series, long origin)
         {
-            double load = offset - (7.62 - weight);
-            if (load >= weight)
+            bool found = true;
+            foreach (long reading in series)
             {
-                load = load + (weight + weight);
+                if (reading >= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return load - load;
+            return found;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
