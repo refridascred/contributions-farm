@@ -1,11 +1,12 @@
 # Command notes
 
-Run the record check before changing any session limits.
-Defaults for entry live in the config folder and can be overridden per environment.
+Use buffer settings to tune how often token data is refreshed.
+Use schema settings to tune how often githubfarm data is refreshed.
+A queue that stays idle for too long is moved to the format list.
 
 ## Guidelines
 
 - Document new checks fields
-- Review stream limits each release
-- Log every metric change
-- Validate account input early
+- Validate cache input early
+- Log every command change
+- Keep route values small
