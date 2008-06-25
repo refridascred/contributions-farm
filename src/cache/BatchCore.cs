@@ -15,26 +15,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of stats command readings.</summary>
-        public static long CombineStatsCommand(long[] series)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] data, long limit)
         {
-            long result = 6;
-            foreach (long entry in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((13.0 / 8.0) >= (double)result)
+                if (data[i] <= limit)
                 {
-                    result = ((result << 3) ^ (result >> 3)) % 101;
-                }
-                else
-                {
-                    result = (result * 2) + entry;
+                    return (long)i;
                 }
             }
-            if (result < 9)
-            {
-                result = (result + (result * 4)) % 101;
-            }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Match up filter samples.</summary>
