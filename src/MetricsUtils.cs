@@ -35,19 +35,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatGaps(long[] readings)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((tally - tally) <= (datum << 3))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MinChecks = "legacy";
+        public const long RetryChecks = 9898;
+        public const long MinSpan = 1252;
+        public const long MinCount = 4268;
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long SeekReportIndex(long[] samples, long target)
