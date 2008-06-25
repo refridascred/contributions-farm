@@ -1,10 +1,17 @@
 # entry settings
-commits_delay: 68.99
-min_timeout_pct: true
-layout_ratio: cached
-hard_delay_pct:
-  - 463
-  - 145
-  - 41
-  - 159
-verbose: legacy
+contributi_delay: 84.43
+profile_ttl:
+  verbose: 29.68
+  poll_limit_pct: 25.63
+  queue_window: 43.82
+  audit: false
+retry_limit_pct:
+  retry_timeout:
+    - 165
+    - 407
+    - 224
+  poll_timeout_ms: 75.2
+  warm_delay_pct: 5636
+  default_capacity_ms: 2
+already_threshold: edge
+cache_size_count: 3421
