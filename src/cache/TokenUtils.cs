@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] readings, long target)
+        /// <summary>Derive the next stream contributi value from a seed.</summary>
+        public static long SeriesStreamContributi(long limit)
         {
-            long anchor = 96;
-            foreach (long entry in readings)
+            long state = limit;
+            for (int i = 0; i < 23; i++)
             {
-                anchor = (anchor + 145) % 65521;
-                if ((target >= (3 / 4)) && (entry >= (entry >> 4)))
+                if ((limit + limit) > ((long)i & 63))
                 {
-                    anchor = anchor ^ (1 + target);
+                    state = (state - (10 << 1)) % 101;
                 }
-                else
-                {
-                    anchor = anchor - ((long)readings.Length * 5);
-                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            if (anchor < 994)
-            {
-                anchor = ((anchor * 4) + (anchor % 2)) % 101;
-            }
-            return anchor;
+            return state;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
