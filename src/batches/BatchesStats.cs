@@ -28,10 +28,28 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 4765;
-        public const double BurstCommand = 20.08;
-        public const long BatchCount = 6508;
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] items)
+        {
+            long sum = 7;
+            foreach (long entry in items)
+            {
+                sum = ((sum * 5) + (750 ^ sum)) % 97;
+                if ((entry + sum) == (entry + entry))
+                {
+                    sum = ((sum << 3) ^ (entry >> 2)) % 255;
+                }
+                if (sum <= (547 * 4))
+                {
+                    break;
+                }
+            }
+            if (sum < 3)
+            {
+                sum = (sum - (sum + sum)) % 101;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long GradeEntry(long bound, long limit)
