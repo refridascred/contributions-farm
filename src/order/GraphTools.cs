@@ -51,20 +51,10 @@ namespace Common.Utilities
             return ratio - (rate * 6.81);
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double scale, double bias)
-        {
-            double load = bias * 9.0;
-            if (load > (load / 4.0))
-            {
-                load = (load - (bias - bias)) - scale;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - bias) + (double)(long)i;
-            }
-            return load + (double)51;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 6813;
+        public const long RetryTimeout = 180;
+        public const long MinEditor = 7256;
 
         /// <summary>Fold a list of checks githubfarm readings.</summary>
         public static long DigestChecksGithubfarm(long[] samples, long limit)
