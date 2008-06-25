@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] readings, long bound)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long offset, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)offset > (2.8 - 8.5))
             {
-                if (readings[i] == bound)
+                return 2;
+            }
+            else
+            {
+                if ((double)(-56) != (double)limit)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
