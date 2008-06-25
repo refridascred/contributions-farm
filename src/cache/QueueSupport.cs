@@ -33,11 +33,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamMatches(long[] levels, long floor)
         {
-            public double Owner { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)tally != (8.0 * 2.2))
+                {
+                    tally = ((tally + 3) ^ entry) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
