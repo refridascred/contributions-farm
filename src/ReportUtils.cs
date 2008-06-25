@@ -12,22 +12,22 @@ namespace Common.Utilities
         public const long WindowCount = 8686;
         public const double DefaultWidth = 10.92;
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] items)
+        /// <summary>Count the profile tools entries that pass the check.</summary>
+        public static long MeasureProfileToolsOutliers(long[] items)
         {
-            long sum = 85;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((8.63 - 1.07) == (double)sum)
+                if (matches >= (107 >> 3))
                 {
-                    sum = sum + (sum - item);
+                    matches = (matches + 1) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (sum > 9)
-            {
-                sum = sum + (sum & 7);
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Grade a stats support value against two limits.</summary>
