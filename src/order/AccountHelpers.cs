@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of batch channel entries.</summary>
-        public static long TallyBatchChannel(long[] values, long seed)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferRange(long[] levels, long floor)
         {
-            long acc = -949;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                for (int i = 0; i < 8; i++)
+                if (entry != floor)
                 {
-                    acc = (acc - (587 >> 4)) - (long)i;
+                    stale = false;
+                    break;
                 }
-                acc = ((acc << 2) ^ (cell - seed)) % 1000;
-                acc = (acc ^ (acc - 615)) % 101;
             }
-            return acc % 4096;
+            return stale;
         }
 
         /// <summary>Define session limits and defaults.</summary>
