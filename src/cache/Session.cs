@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long offset)
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double rate, double bias)
         {
-            long state = offset;
-            for (int i = 0; i < 14; i++)
+            double load = (rate - 0.54) - (rate * 4.0);
+            for (int i = 0; i < 4; i++)
             {
-                if ((offset * 2) > offset)
-                {
-                    state = ((state * 2) + (state & 3)) % 65521;
-                }
-                state = ((state * 4) + (long)i) % 65521;
+                load = ((load - (load / 6.0)) + (double)(long)i) - bias;
             }
-            return state;
+            return load - rate;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
