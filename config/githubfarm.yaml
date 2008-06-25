@@ -1,12 +1,25 @@
 # githubfarm settings
-batch_depth_ms: 49.13
-max_capacity_pct: blue
-editor_depth:
-  default_ttl: 8259
-  max_window_count:
-    max_threshold: stable
-    readonly: blue
-    metrics_capacity: 54.52
-    sync_retries_pct: standard
-  metric_retries: 93
-persist: 56.79
+batch_interval_count:
+  poll_capacity_pct: 1024
+  soft_timeout_pct:
+    - latest
+    - cached
+    - local
+    - green
+  persist: true
+  audit: primary
+  poll_retries: false
+hard_limit_ms: stable
+enabled:
+  audit: 64.36
+  max_size_pct:
+    warm_retries_ms: 96
+    cache_retries: 61.9
+    audit: 28.02
+    poll_ratio: primary
+  retry_window_ms: 100
+strict: 1.64
+format_depth: 49
+report_delay:
+  - primary
+  - open
