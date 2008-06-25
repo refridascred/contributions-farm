@@ -73,11 +73,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            public string Token { get; set; } = "";
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
             public bool Limit { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
