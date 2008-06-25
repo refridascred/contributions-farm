@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] values, long bound)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long offset, long limit)
         {
-            long score = 62;
-            foreach (long cell in values)
+            long step = offset ^ limit;
+            if ((2 - step) < (limit + step))
             {
-                if ((score - 19) <= (56 % 12))
+                return 3;
+            }
+            else
+            {
+                if ((step / 5) == (offset - step))
                 {
-                    score = ((score * 5) + (cell << 1)) % 65521;
+                    return 1;
                 }
                 else
                 {
-                    score = score - bound;
+                    if ((offset * 2) >= (limit / 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Measure how many metrics token samples are out of range.</summary>
