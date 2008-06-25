@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyBounds(long[] readings, long limit)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] samples, long step)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value != limit)
+                if ((samples[i] > step) && ((samples[i] % 3) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Accumulate report commits samples.</summary>
