@@ -16,18 +16,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadOutliers(long[] readings, long floor)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadCount(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((count >> 2) != (sample << 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 3) + floor;
+                    if ((levels[i] ^ levels[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
