@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const long StepTimeout = 4018;
         public const long BurstWindow = 3318;
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesOutliers(long[] levels)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (hits > value)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Retry,
+            Closed,
+            Synced,
+            New,
         }
 
         /// <summary>Hold a cache header.</summary>
