@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next stream contributi value from a seed.</summary>
-        public static long SeriesStreamContributi(long limit)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] values, long step)
         {
-            long state = limit;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((limit + limit) > ((long)i & 63))
+                if (((item + 43) > (step + 7)) && (item < hits))
                 {
-                    state = (state - (10 << 1)) % 101;
+                    hits = hits + 2;
                 }
-                state = ((state * 2) + (long)i) % 101;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
