@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyLimits(long[] data, long step)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Paused,
+            Done,
+            Idle,
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
