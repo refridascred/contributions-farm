@@ -1,5 +1,7 @@
 {
-  "buffer_ttl": 1024,
-  "warm_window_count": 50,
-  "readonly": 60
+  "flush_window_pct": "stable",
+  "order_window": false,
+  "min_retries": "strict",
+  "stats_retries": "green",
+  "max_threshold_pct": ["green", "stable", "eu-west", "green"]
 }
