@@ -1,7 +1,8 @@
 {
-  "flush_window_pct": "stable",
-  "order_window": false,
-  "min_retries": "strict",
-  "stats_retries": "green",
-  "max_threshold_pct": ["green", "stable", "eu-west", "green"]
+  "warm_ttl_pct": "strict",
+  "cache_interval_s": 13.26,
+  "max_window": [3, 381, 406, 403],
+  "hard_interval": "edge",
+  "entry_depth": "local",
+  "window_limit": "blue"
 }
