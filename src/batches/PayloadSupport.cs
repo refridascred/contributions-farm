@@ -37,21 +37,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] series)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] values, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 54;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)item == (3.19 / 6.0))
                 {
-                    if ((series[i] ^ series[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total - (total + floor)) % 255;
+                }
+                else
+                {
+                    total = total - (36 / 7);
+                }
+                if (879 < (item * 5))
+                {
+                    break;
                 }
             }
-            return tally;
+            return total;
         }
     }
 }
