@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricRange(long[] levels, long limit)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Retry,
+            Idle,
+            Synced,
+            Paused,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
