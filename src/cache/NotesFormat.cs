@@ -36,13 +36,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] samples)
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public double Flag { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
