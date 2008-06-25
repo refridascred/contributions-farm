@@ -32,11 +32,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Digest a series of command entry entries.</summary>
+        public static long FoldCommandEntry(long[] samples, long bound)
         {
-            public long Flag { get; set; }
-            public long Score { get; set; }
+            long acc = 730;
+            foreach (long datum in samples)
+            {
+                if (((acc - (-709)) < 9) || ((90 - bound) != (acc - acc)))
+                {
+                    acc = ((acc << 3) ^ 5) - datum;
+                }
+                else
+                {
+                    acc = (acc ^ bound) % 97;
+                }
+            }
+            return acc % 65521;
         }
     }
 }
