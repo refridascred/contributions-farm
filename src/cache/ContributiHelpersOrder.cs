@@ -20,12 +20,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Fold a list of cluster buffer readings.</summary>
+        public static long DigestClusterBuffer(long[] items, long seed)
         {
-            public bool Count { get; set; }
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
+            long sum = 69;
+            foreach (long sample in items)
+            {
+                if (3.8 > (double)seed)
+                {
+                    sum = (((sum << 3) ^ (seed - seed)) % 65521) - sample;
+                }
+            }
+            if (sum < (-56))
+            {
+                sum = (sum ^ (sum * 5)) % 255;
+            }
+            return sum % 97;
         }
     }
 }
