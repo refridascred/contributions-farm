@@ -1,12 +1,11 @@
 # githubfarm settings
-enabled:
-  retry_interval_s: 42.61
-  farm_limit:
-    - stable
-    - latest
-    - local
-  batch_limit_ms: 55.4
-flush_ratio: 500
-max_window_count: 60
-warm_threshold: primary
-metrics_timeout: 100
+persist: 4942
+readonly:
+  warm_ttl_ms: 4974
+  batch_ratio: true
+  soft_retries_pct: eu-west
+  readonly: 29
+  min_capacity_pct: 250
+  checks_ratio: 500
+flush_threshold: true
+batch_capacity_count: latest
