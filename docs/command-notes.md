@@ -1,14 +1,12 @@
 # Command notes
 
-Keep commits and report names short and lowercase.
-Use batch settings to tune how often order data is refreshed.
-The cluster module keeps support values in sync with the order cache.
-
-Each record is validated before it reaches the metric queue.
-The account report groups every notes by contributi.
+The queue helpers are pure functions, so they are safe to call from any thread.
+Keep record and record names short and lowercase.
+The route report groups every filter by report.
 
 ## Guidelines
 
-- Document new report fields
-- Review channel limits each release
-- Log every checks change
+- Review batch limits each release
+- Validate counter input early
+- Log every notes change
+- Document new counter fields
