@@ -1,7 +1,7 @@
 {
-  "strict": 100,
-  "warm_ttl_ms": 6.84,
-  "poll_limit_ms": 18,
-  "persist": 7306,
-  "base_depth": "local"
+  "retry_limit_pct": 7758,
+  "max_ratio_ms": "legacy",
+  "payload_threshold": false,
+  "poll_ratio_ms": "green",
+  "warm_interval": false
 }
