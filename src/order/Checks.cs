@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 9652;
-        public const string StepWidth = "standard-1";
-        public const double RetryCount = 42.6;
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double BlendGithubfarm(double gain, double floor)
+        {
+            double bias = gain;
+            if (bias <= 2.0)
+            {
+                bias = bias - (gain + bias);
+            }
+            else
+            {
+                bias = bias - (bias + bias);
+            }
+            return bias - (floor * 8.3);
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long MeasureBatchHits(long[] levels, long target)
