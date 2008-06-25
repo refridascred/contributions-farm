@@ -41,18 +41,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsGaps(long[] levels, long offset)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((1 ^ datum) <= offset)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Locked,
+            Dropped,
+            Done,
         }
     }
 }
