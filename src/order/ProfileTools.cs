@@ -53,39 +53,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long limit, long step)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] levels)
         {
-            long gap = limit ^ step;
-            if ((13.0 * 8.0) <= (double)gap)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(gap <= (gap - gap)))
+                if ((double)count <= 13.0)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (gap < (step / 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (18.0 < (double)step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = (count + 1) ^ cell;
                 }
             }
+            return count;
         }
     }
 }
