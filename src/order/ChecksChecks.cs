@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long seed, long origin)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long step = seed - origin;
-            if (!(step <= (-70)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin + step) >= step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed * 3) > (step + seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Queued,
+            Synced,
+            Closed,
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
