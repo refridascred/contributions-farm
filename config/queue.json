@@ -1,12 +1,5 @@
 {
-  "min_delay": 1024,
-  "soft_capacity": {
-    "batch_depth_s": 30,
-    "hard_threshold_count": "fallback",
-    "token_capacity": 80.84,
-    "batch_timeout_pct": false,
-    "warm_retries_count": [467, 301, 209],
-    "retry_window_ms": "cached"
-  },
-  "persist": "open"
+  "poll_threshold": 100,
+  "checks_timeout": "green",
+  "sync_interval_ms": "legacy"
 }
