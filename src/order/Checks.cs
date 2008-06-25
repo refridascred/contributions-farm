@@ -41,19 +41,25 @@ namespace Common.Utilities
         public const string MinFactor = "legacy-v2";
         public const long BurstSpan = 1880;
 
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double gain, double bias)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long target, long offset)
         {
-            double rate = gain;
-            if (rate > rate)
+            long lane = target - offset;
+            if (((target - lane) < (offset - lane)) && ((target + target) != (target - lane)))
             {
-                rate = (rate - rate) - bias;
+                return 8;
             }
             else
             {
-                rate = rate + (rate * 7.87);
+                if ((lane + lane) >= (target ^ target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return rate - (6.34 * 7.32);
         }
     }
 }
