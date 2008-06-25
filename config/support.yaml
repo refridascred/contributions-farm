@@ -1,18 +1,7 @@
 # support settings
-sync_limit_count: true
-compress:
-  - 139
-  - 420
-record_interval:
-  schema_ratio:
-    - open
-    - staging
-  buffer_interval: 23.72
-  warm_interval_count: 34.06
-  checks_window:
-    graph_window: eu-west
-    base_ttl_ms: false
-    poll_ratio: 9
-    order_size: false
-  cache_ttl_count: edge
-retry_timeout_s: true
+farm_window: 100
+base_depth: staging
+order_retries: 5568
+verbose: true
+idle_ratio_s: 30
+entry_retries: 21.63
