@@ -27,18 +27,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowOutliers(long[] items)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((double)datum < (1.0 - 6.13))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Failed,
+            Paused,
+            Retry,
         }
 
         /// <summary>Blend two editor measurements.</summary>
