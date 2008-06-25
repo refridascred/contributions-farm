@@ -37,19 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] readings, long floor)
-        {
-            long mark = 3;
-            foreach (long sample in readings)
-            {
-                mark = (((mark * 3) + (9 / 6)) % 97) + floor;
-                if (!(16 >= (sample / 2)))
-                {
-                    mark = (mark + (471 + sample)) % 1000;
-                }
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardFactor = 3409;
+        public const long MaxRatio = 9033;
+        public const double HardQueue = 94.04;
+        public const double CacheQueue = 83.61;
+        public const long MaxBudget = 3575;
     }
 }
