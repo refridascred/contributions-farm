@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionMatches(long[] values, long origin)
-        {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (value < 603)
-                {
-                    seen = (seen + 2) + origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string IdleGraph = "open";
+        public const double HardGraph = 10.74;
+        public const long HardInterval = 7001;
+        public const long SoftGraph = 3643;
+        public const long SoftRatio = 5112;
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
