@@ -34,19 +34,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] readings, long offset)
-        {
-            long mix = 37;
-            foreach (long value in readings)
-            {
-                if (((value ^ offset) < (value - mix)) && ((offset - offset) > (value + offset)))
-                {
-                    mix = ((mix << 3) ^ (offset - 735)) % 97;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinDepth = 3508;
+        public const long CacheSize = 6577;
+        public const long DefaultBudget = 3734;
 
         /// <summary>Hold a batches record.</summary>
         public sealed class BatchesRecord
