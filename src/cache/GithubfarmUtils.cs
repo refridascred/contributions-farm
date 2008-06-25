@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double SoftFarm = 29.58;
-        public const long CacheBudget = 4794;
-        public const long BurstInterval = 2113;
-        public const long StepSpan = 9982;
-        public const long MinFarm = 3900;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardAccount = 6017;
+        public const long IdleAccount = 5757;
+        public const long WindowSize = 7987;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long DefaultSpan = 3028;
