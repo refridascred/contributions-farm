@@ -40,21 +40,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] readings)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] samples, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((tally - tally) > (cell + cell))
                 {
-                    if ((readings[i] ^ readings[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 3) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
