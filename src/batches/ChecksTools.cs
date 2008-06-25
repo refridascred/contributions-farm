@@ -30,14 +30,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            Paused,
-            Failed,
-            Active,
-            Pending,
-            Dropped,
+            public long Weight { get; set; }
+            public bool Rank { get; set; }
+            public long Total { get; set; }
         }
     }
 }
