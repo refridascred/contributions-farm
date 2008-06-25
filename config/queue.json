@@ -1,8 +1,5 @@
 {
-  "soft_limit": "staging",
-  "order_delay": "stable",
-  "token_interval": 9799,
-  "default_window_pct": true,
-  "hard_ttl_count": "local",
-  "account_delay": 30
+  "profile_ratio": ["blue", "staging", "primary"],
+  "dry_run": 85,
+  "batch_capacity": ["fallback", "stable"]
 }
