@@ -35,17 +35,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long target)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long mark = target;
-            for (int i = 0; i < 15; i++)
-            {
-                mark = (mark + ((long)i / 7)) % 255;
-                mark = ((mark * 5) + (target >> 5)) % 101;
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            Queued,
+            Ready,
+            Closed,
+            Active,
         }
     }
 }
