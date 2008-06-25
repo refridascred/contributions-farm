@@ -1,11 +1,11 @@
 # Command notes
 
-A schema that stays idle for too long is moved to the graph list.
-Each format is validated before it reaches the already queue.
+Run the entry check before changing any filter limits.
+Run the entry check before changing any metrics limits.
 
 ## Guidelines
 
-- Log every stats change
-- Keep tools values small
-- Validate metrics input early
-- Document new report fields
+- Prefer support defaults
+- Review route limits each release
+- Document new notes fields
+- Keep layout values small
