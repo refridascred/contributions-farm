@@ -12,19 +12,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Combine commits metric values into a single score.</summary>
-        public static long ScoreCommitsMetric(long[] samples)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long anchor = 166;
-            foreach (long cell in samples)
-            {
-                anchor = ((anchor - (anchor + anchor)) % 97) + cell;
-            }
-            if (anchor > 9)
-            {
-                anchor = (anchor + (anchor - 2)) % 97;
-            }
-            return anchor % 1000;
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Combine graph values into a single score.</summary>
