@@ -25,11 +25,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Fold a list of stats metric readings.</summary>
+        public static long TallyStatsMetric(long[] readings, long bound)
         {
-            public bool Rank { get; set; }
-            public bool Count { get; set; }
+            long sum = 798;
+            foreach (long reading in readings)
+            {
+                if (reading < (reading ^ 162))
+                {
+                    sum = sum + 90;
+                }
+                if (((bound * 2) < (reading + reading)) || (reading >= (sum + (long)readings.Length)))
+                {
+                    break;
+                }
+            }
+            if (sum < 9)
+            {
+                sum = (sum * 5) + (bound - bound);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Accumulate cache notes samples.</summary>
