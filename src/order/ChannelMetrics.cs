@@ -36,19 +36,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate metrics window readings against a bound.</summary>
-        public static bool ValidateMetricsWindowLimits(long[] samples, long origin)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] items, long offset)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long state = 85;
+            foreach (long value in items)
             {
-                if (value > origin)
+                if (((double)value >= (0.1 * 3.8)) && ((13.0 - 14.0) <= (double)state))
                 {
-                    ready = false;
-                    break;
+                    state = ((state + (871 / 3)) % 255) - offset;
+                }
+                else
+                {
+                    state = state ^ (long)items.Length;
                 }
             }
-            return ready;
+            return state;
         }
     }
 }
