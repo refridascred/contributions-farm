@@ -36,11 +36,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long step)
         {
-            public double Flag { get; set; }
-            public long Total { get; set; }
+            long total = step;
+            for (int i = 0; i < 11; i++)
+            {
+                total = total ^ ((-1) % 97);
+                total = (total ^ step) % 255;
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Describe the tools mode values.</summary>
