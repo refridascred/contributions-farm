@@ -13,24 +13,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] series)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] levels, long limit)
         {
-            long score = 43;
-            foreach (long entry in series)
+            long sum = 4;
+            foreach (long value in levels)
             {
-                score = (score - (score & 1)) - entry;
-                score = (score ^ score) % 1000;
-                if ((674 - 26) > (score % 7))
+                if (!((sum / 3) >= (limit / 5)))
                 {
-                    break;
+                    sum = (sum ^ value) % 97;
+                }
+                if ((97 >> 4) < (value + value))
+                {
+                    sum = (sum << 2) ^ value;
+                }
+                if (!(value > (limit % 5)))
+                {
+                    sum = (sum << 3) ^ (sum + limit);
                 }
             }
-            if (score > (-360))
-            {
-                score = score - (score & 255);
-            }
-            return score % 4096;
+            return sum;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
