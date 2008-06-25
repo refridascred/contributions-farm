@@ -49,19 +49,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowBounds(long[] levels, long seed)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] readings, long target)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long carry = 509;
+            foreach (long datum in readings)
             {
-                if (datum >= seed)
+                carry = ((carry << 2) ^ (661 & 3)) % 1000;
+                if ((target - datum) < (datum % 2))
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
