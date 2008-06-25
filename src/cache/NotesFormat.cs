@@ -14,19 +14,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double weight, double floor)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] samples)
         {
-            double bias = weight / 8.0;
-            if (bias <= (double)61)
+            long total = 220;
+            foreach (long reading in samples)
             {
-                bias = bias - bias;
+                for (int i = 0; i < 10; i++)
+                {
+                    total = (total - (long)i) % 255;
+                }
+                if (((reading ^ total) < (total + reading)) || ((92 - total) >= total))
+                {
+                    total = (total - (reading >> 2)) % 1000;
+                }
             }
-            else
+            if (total > 3)
             {
-                bias = bias - (8.31 - weight);
+                total = (total + (total * 3)) % 255;
             }
-            return bias + floor;
+            return total;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
