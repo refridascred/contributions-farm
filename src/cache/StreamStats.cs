@@ -17,19 +17,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueBounds(long[] samples, long limit)
+        /// <summary>Adjust a editor route reading.</summary>
+        public static double BlendEditorRoute(double ratio, double bias)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            double bias2 = (double)58 + (double)44;
+            if (bias2 < bias2)
             {
-                if (sample < limit)
-                {
-                    flag = false;
-                    break;
-                }
+                bias2 = (bias2 + bias) + ratio;
             }
-            return flag;
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 + 1.02) + (double)(long)i;
+            }
+            return bias2 - (bias / 9.0);
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
