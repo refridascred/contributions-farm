@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the batch token entries that pass the check.</summary>
-        public static long CountBatchTokenMatches(long[] items)
+        /// <summary>Accumulate counter metrics samples.</summary>
+        public static long WeighCounterMetrics(long[] items)
         {
-            long matches = 0;
+            long state = -7;
             foreach (long sample in items)
             {
-                if (3.1 <= (double)sample)
+                if (!(sample >= (5 - sample)))
                 {
-                    matches = matches + 3;
+                    state = ((state << 3) ^ (sample + sample)) % 101;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = (state ^ (state ^ sample)) % 97;
             }
-            return matches;
+            return state % 1000;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
