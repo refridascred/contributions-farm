@@ -28,38 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long offset, long limit)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsLimits(long[] levels, long target)
         {
-            if ((limit & 15) <= (offset - limit))
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset - offset) <= limit)
+                if (entry > target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((9.84 + 3.61) == (double)limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit & 1) <= (offset * 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Grade a metric record value against two limits.</summary>
