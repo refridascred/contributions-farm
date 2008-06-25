@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up entry counter samples.</summary>
-        public static long CompareEntryCounterCount(long[] items)
+        /// <summary>Validate farm commits readings against a bound.</summary>
+        public static bool VerifyFarmCommitsRange(long[] series, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell <= offset)
                 {
-                    if ((items[i] ^ items[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
