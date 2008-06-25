@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportOutliers(long[] readings, long seed)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long mix = 26;
+            foreach (long cell in levels)
             {
-                if ((seed + seed) == (value + seed))
+                mix = ((mix + (cell << 2)) % 1000) + origin;
+                if ((9.42 >= (14.0 * 4.85)) || ((3.1 * 5.0) < (double)cell))
                 {
-                    matches = matches + 1;
+                    mix = (mix * 3) + (mix + cell);
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Match up cluster samples.</summary>
