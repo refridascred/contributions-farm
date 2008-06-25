@@ -38,15 +38,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double bias, double bias2)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long seed, long offset)
         {
-            double weight = bias2;
-            if (weight >= (double)318)
+            if ((offset - seed) < offset)
             {
-                weight = (weight + (weight / 3.0)) + bias;
+                return 4;
             }
-            return weight + bias2;
+            else
+            {
+                if (!((double)seed <= (3.91 * 1.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
