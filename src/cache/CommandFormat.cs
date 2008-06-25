@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long floor, long bound)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            if ((floor - floor) <= (bound * 4))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((12.0 - 5.0) >= (double)floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((5.4 * 3.8) > (double)bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Blend two account measurements.</summary>
