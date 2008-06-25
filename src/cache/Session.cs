@@ -30,11 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 6487;
-        public const long HardAccount = 635;
-        public const double MinAccount = 23.01;
-        public const long WindowRatio = 4898;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountGaps(long[] items, long step)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (value >= step)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a graph entry.</summary>
         public sealed class GraphEntry
