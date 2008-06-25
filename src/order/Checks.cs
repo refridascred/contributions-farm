@@ -28,10 +28,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseInterval = 7775;
-        public const string StepAlready = "cached-v2";
-        public const double BaseAlready = 46.34;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxInterval = 708;
+        public const string CacheScore = "cached-1";
+        public const long BatchSize = 3821;
+        public const long StepWidth = 1573;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string SoftNotes = "legacy";
