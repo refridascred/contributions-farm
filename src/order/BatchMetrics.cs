@@ -69,17 +69,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a token notes sample.</summary>
-        public static long FindTokenNotesIndex(long[] series, long floor)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long floor, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((5.2 + 6.3) != (double)target)
             {
-                if ((series[i] >= floor) && ((series[i] % 5) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((94 ^ target) <= (target / 4))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)floor >= (1.94 - 3.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a route summary.</summary>
