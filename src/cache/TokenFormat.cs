@@ -19,18 +19,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileGaps(long[] levels, long seed)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmOutliers(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((hits - seed) == ((-94) >> 3))
+                if ((double)matches > 6.25)
                 {
-                    hits = (hits + 1) + sample;
+                    matches = ((matches + 2) - value) - seed;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
