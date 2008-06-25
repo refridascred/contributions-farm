@@ -46,21 +46,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count graph stats pairs that satisfy a relation.</summary>
-        public static long CompareGraphStatsCount(long[] readings)
+        /// <summary>Grade a stats support value against two limits.</summary>
+        public static long ClassifyStatsSupport(long step, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((step / 5) > step)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (!((step * 5) > (floor % 3)))
                 {
-                    if ((readings[i] - readings[j]) == 19)
+                    return 4;
+                }
+                else
+                {
+                    if (((962 ^ floor) == (floor >> 4)) || (147 > step))
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step << 2) == (floor + floor))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Adjust a format reading.</summary>
