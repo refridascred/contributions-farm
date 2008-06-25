@@ -20,11 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 2440;
-        public const string LimitContributi = "alpha-edge";
-        public const long MaxRatio = 8132;
-        public const long SoftContributi = 8536;
+        /// <summary>Compare every pair of cache buffer readings.</summary>
+        public static long PairCacheBufferCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate schema samples.</summary>
         public static long CombineSchema(long[] values)
