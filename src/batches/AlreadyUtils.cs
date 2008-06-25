@@ -19,18 +19,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Look up the position of a payload account sample.</summary>
-        public static long LookupPayloadAccountIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 7207;
+        public const long DefaultRoute = 3431;
+        public const long StepRoute = 7810;
+        public const long BaseRoute = 8873;
+        public const long BatchSpan = 5302;
 
         /// <summary>Classify a stats layout pair into a bucket.</summary>
         public static long SortStatsLayout(long seed, long step)
