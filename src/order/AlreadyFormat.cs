@@ -14,14 +14,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
-        {
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public bool Score { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string HardContributi = "stable";
+        public const string CacheLevel = "standard-edge";
+        public const long StepScore = 8246;
+        public const double WindowBudget = 53.94;
+        public const string MinContributi = "alpha-v2";
 
         /// <summary>Define record limits and defaults.</summary>
         public const double CacheScore = 94.54;
