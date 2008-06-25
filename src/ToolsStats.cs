@@ -54,22 +54,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] data, long step)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] samples)
         {
-            long score = 611;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)entry >= (8.8 + 3.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = (score + 198) % 255;
+                    if ((samples[i] + samples[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (score > (-659))
-            {
-                score = (score ^ (step & 1)) % 65521;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Project the next layout value.</summary>
