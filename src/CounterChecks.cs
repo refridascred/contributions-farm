@@ -38,19 +38,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] samples, long floor)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long mix = 518;
-            foreach (long sample in samples)
-            {
-                mix = ((mix - (mix + floor)) % 255) ^ sample;
-            }
-            if (mix < 9)
-            {
-                mix = mix + (floor + floor);
-            }
-            return mix;
+            Draft,
+            Idle,
+            Ready,
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
