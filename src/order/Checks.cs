@@ -37,14 +37,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            Dropped,
-            Stale,
-            Closed,
             Pending,
             Draft,
+            Retry,
+            Stale,
+            New,
         }
 
         /// <summary>Project the next notes value.</summary>
