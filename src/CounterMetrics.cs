@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
-        {
-            public double Limit { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitFactor = 5275;
+        public const long SoftBudget = 631;
+        public const long MinReport = 3358;
+        public const long CacheScore = 5198;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long RetryMetric = 3951;
