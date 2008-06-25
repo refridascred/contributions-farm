@@ -58,19 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double weight, double bias)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] series)
         {
-            double gain = (double)4 - (weight + bias);
-            if (gain < (double)147)
+            long matches = 0;
+            foreach (long item in series)
             {
-                gain = gain - (weight / 4.0);
+                if ((276 % 12) > item)
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                gain = gain + (11.0 * 12.0);
-            }
-            return gain - weight;
+            return matches;
         }
 
         /// <summary>Validate layout counter readings against a bound.</summary>
