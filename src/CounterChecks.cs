@@ -38,21 +38,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count stream buffer pairs that satisfy a relation.</summary>
-        public static long PairStreamBufferCount(long[] items)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] samples, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 518;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = ((mix - (mix + floor)) % 255) ^ sample;
             }
-            return hits;
+            if (mix < 9)
+            {
+                mix = mix + (floor + floor);
+            }
+            return mix;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
