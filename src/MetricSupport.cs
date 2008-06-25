@@ -22,22 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up graph profile samples.</summary>
-        public static long OverlapGraphProfileCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitLayout = 3778;
+        public const double DefaultLayout = 93.0;
+        public const double SoftLayout = 51.93;
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long CountRecordGaps(long[] values, long floor)
