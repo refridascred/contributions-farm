@@ -1,9 +1,7 @@
-id,token,score,rank
-1,staging,51.55,open
-2,green,72.17,fallback
-3,82.26,96.29,905
-4,57,edge,70
-5,green,112,397
-6,32.22,341,open
-7,94,open,staging
-8,22,614,371
+id,owner,token,ratio,score
+1,eu-west,212,220,primary
+2,standard,66.24,649,fallback
+3,882,275,69.81,69.04
+4,710,edge,97.26,105
+5,218,148,blue,eu-west
+6,16.46,91.66,89.88,local
