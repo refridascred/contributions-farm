@@ -1,5 +1,6 @@
 {
-  "readonly": 42.23,
-  "contributi_depth": "cached",
-  "hard_threshold_pct": "standard"
+  "warm_size_count": false,
+  "counter_depth": [23, 471, 470, 265],
+  "enabled": false,
+  "hard_delay_ms": "primary"
 }
