@@ -1,6 +1,7 @@
-id,level,state,ratio,active
-1,staging,426,legacy,385
-2,65.86,eu-west,green,743
-3,open,12.09,33.68,370
-4,primary,69.69,388,53.2
-5,828,cached,open,670
+id,score,count
+1,primary,fallback
+2,12.23,blue
+3,168,edge
+4,green,local
+5,144,212
+6,22.85,94.89
