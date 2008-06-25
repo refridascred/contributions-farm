@@ -43,25 +43,17 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Derive the next entry account value from a seed.</summary>
-        public static long DeriveEntryAccount(long target)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] series, long bound)
         {
-            long acc = target;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((acc >> 5) > (acc * 4))
+                if (series[i] >= bound)
                 {
-                    acc = (acc ^ (acc + 6)) % 97;
-                    acc = acc - (long)i;
+                    return (long)i;
                 }
-                acc = acc - (acc ^ target);
-                if ((target + (long)i) > (acc - (long)i))
-                {
-                    continue;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
             }
-            return acc;
+            return -1;
         }
     }
 }
