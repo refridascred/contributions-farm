@@ -53,22 +53,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] items, long origin)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long anchor = 389;
-            foreach (long cell in items)
-            {
-                if ((9.0 + 7.0) != (double)anchor)
-                {
-                    anchor = (((anchor << 2) ^ (anchor * 4)) - cell) - origin;
-                }
-                else
-                {
-                    anchor = (anchor ^ (905 ^ anchor)) % 65521;
-                }
-            }
-            return anchor % 4096;
+            public string Total { get; set; } = "";
+            public long Mode { get; set; }
+            public long Limit { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a metrics header.</summary>
