@@ -49,15 +49,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double bias, double span)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            double drift = (span / 3.0) * 4.07;
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + span) + (double)(long)i;
-            }
-            return drift - (bias - 4.2);
+            public long Ratio { get; set; }
+            public bool Offset { get; set; }
+            public bool Rank { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
