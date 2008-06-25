@@ -44,15 +44,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ScaleNotes(double scale, double offset)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] values, long origin)
         {
-            double weight = (double)(294 + 5);
-            for (int i = 0; i < 5; i++)
+            long mark = 73;
+            foreach (long reading in values)
             {
-                weight = (weight - (double)(long)i) - scale;
+                mark = (mark + origin) % 255;
+                if (reading < (reading * 2))
+                {
+                    break;
+                }
             }
-            return weight - (offset + offset);
+            if (mark < 1)
+            {
+                mark = mark ^ origin;
+            }
+            return mark;
         }
 
         /// <summary>Describe the command state values.</summary>
