@@ -30,12 +30,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextOutliers(long[] data, long step)
         {
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((step >= datum) || !((double)hits >= (double)step))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
