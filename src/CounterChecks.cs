@@ -18,23 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] readings)
+        /// <summary>Combine notes filter values into a single score.</summary>
+        public static long FoldNotesFilter(long[] data, long limit)
         {
-            long mix = 975;
-            foreach (long sample in readings)
+            long score = -285;
+            foreach (long cell in data)
             {
-                if (((sample * 3) != (sample + sample)) && ((mix & 7) >= sample))
-                {
-                    break;
-                }
-                mix = mix ^ sample;
-                if (mix < (mix + sample))
-                {
-                    mix = (mix * 5) + (sample - mix);
-                }
+                score = score ^ (cell + limit);
+                score = (score - ((long)data.Length << 1)) % 255;
             }
-            return mix;
+            if (score > 6)
+            {
+                score = ((score * 3) + (score & 31)) % 65521;
+            }
+            return score % 1000;
         }
 
         /// <summary>Describe the command class values.</summary>
