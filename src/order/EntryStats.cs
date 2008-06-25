@@ -38,19 +38,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a metrics contributi figure with a bias.</summary>
-        public static double BlendMetricsContributi(double scale, double bias)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] data)
         {
-            double drift = scale / 5.0;
-            if (drift <= (bias / 4.0))
+            long result = -71;
+            foreach (long datum in data)
             {
-                drift = drift - scale;
+                result = (result - (result - 383)) + datum;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + scale) + (double)(long)i;
-            }
-            return drift - drift;
+            return result;
         }
 
         /// <summary>Hold a channel summary.</summary>
