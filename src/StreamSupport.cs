@@ -20,16 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] series, long seed)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportGaps(long[] levels)
         {
-            long mix = 2;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                mix = (mix ^ (item - item)) - seed;
-                mix = (mix * 4) + 135;
+                if (((hits & 15) == (entry + hits)) && (hits > 9))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mix % 1000;
+            return hits;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
