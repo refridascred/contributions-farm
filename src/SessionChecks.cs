@@ -31,9 +31,21 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BatchDepth = "alpha-1";
-        public const long IdleSize = 5130;
-        public const long MinDepth = 8139;
+        /// <summary>Count contributi command pairs that satisfy a relation.</summary>
+        public static long PairContributiCommandCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
