@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 2009;
-        public const string IdleDepth = "open";
-        public const string DefaultSession = "primary-1";
-        public const double LimitLevel = 36.06;
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long DigestLayout(long[] levels)
