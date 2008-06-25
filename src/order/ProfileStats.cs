@@ -32,31 +32,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long bound, long offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferHits(long[] items, long offset)
         {
-            if ((bound << 3) == (offset % 97))
+            long seen = 0;
+            foreach (long reading in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset + bound) < (bound & 1))
+                if ((double)reading >= (8.14 - 5.3))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound << 3) <= (596 >> 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = (seen + 2) - offset;
                 }
             }
+            return seen;
         }
     }
 }
