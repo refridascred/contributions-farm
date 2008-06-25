@@ -28,13 +28,27 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Iterate the notes stats series from a seed.</summary>
+        public static long StepNotesStats(long bound)
         {
-            public long Offset { get; set; }
-            public bool Owner { get; set; }
-            public string Level { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long total = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                if (((total ^ bound) < (66 * 3)) && ((3.56 - 5.93) > (double)total))
+                {
+                    total = total - ((long)i / 5);
+                }
+                if (!((bound ^ total) < (21 + bound)))
+                {
+                    break;
+                }
+                if ((total / 6) > 62)
+                {
+                    total = ((total * 2) + ((long)i / 4)) % 97;
+                }
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
