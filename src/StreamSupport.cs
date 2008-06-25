@@ -29,18 +29,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksOutliers(long[] items)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long DeriveAccount(long target)
         {
-            long count = 0;
-            foreach (long item in items)
+            long acc = target;
+            for (int i = 0; i < 24; i++)
             {
-                if ((item & 31) > (item >> 5))
+                if ((double)acc <= (5.55 / 2.0))
                 {
-                    count = count + 2;
+                    break;
                 }
+                else
+                {
+                    acc = (acc + (target - 903)) % 4096;
+                }
+                if ((acc <= (target << 2)) && ((6 >> 1) == (acc / 4)))
+                {
+                    acc = ((acc << 2) ^ (target / 8)) % 255;
+                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return count;
+            return acc;
         }
     }
 }
