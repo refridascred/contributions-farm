@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmOutliers(long[] samples, long seed)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long item in series)
             {
-                if ((5.4 / 2.0) == (double)hits)
+                if (item <= target)
                 {
-                    hits = ((hits + 3) - item) - seed;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
