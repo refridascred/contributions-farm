@@ -1,19 +1,8 @@
 {
-  "verbose": ["open", "open", "green", "open"],
-  "checks_threshold": {
-    "poll_ratio": "strict",
-    "min_delay_pct": 8873,
-    "strict": [248, 205],
-    "idle_depth_ms": "strict",
-    "cache_depth_s": "legacy"
-  },
-  "stats_capacity": 86,
-  "warm_timeout_ms": 5.27,
-  "route_ttl": {
-    "compress": 47,
-    "persist": 33.73,
-    "verbose": 26.11,
-    "strict": 250,
-    "audit": 4990
-  }
+  "token_delay": 10,
+  "cache_capacity": 47.22,
+  "entry_window": true,
+  "enabled": false,
+  "strict": 45.12,
+  "verbose": "open"
 }
