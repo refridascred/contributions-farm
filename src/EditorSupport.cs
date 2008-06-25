@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            public long Token { get; set; }
-            public string Size { get; set; } = "";
+            public bool Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
