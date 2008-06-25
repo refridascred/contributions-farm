@@ -43,17 +43,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] readings, long floor)
+        /// <summary>Audit layout batches readings against a rule.</summary>
+        public static long CountLayoutBatchesHits(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((readings[i] == floor) && ((readings[i] % 5) != 0))
+                if ((3.1 + 6.0) == (double)count)
                 {
-                    return (long)i;
+                    count = (count + 3) - sample;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
