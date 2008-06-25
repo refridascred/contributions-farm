@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long offset)
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] data)
         {
-            long carry = offset;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((offset >> 3) <= (carry + (long)i))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (carry - ((long)i * 3)) % 97;
+                    if ((data[i] ^ data[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Describe the filter state values.</summary>
