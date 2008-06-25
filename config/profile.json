@@ -1,7 +1,8 @@
 {
-  "dry_run": "staging",
-  "session_size": 60,
-  "editor_ratio": "stable",
-  "contributi_window": "legacy",
-  "account_limit": 100
+  "cache_capacity": "blue",
+  "tools_timeout": "green",
+  "notes_depth": 85.69,
+  "poll_size": true,
+  "hard_ttl_count": ["stable", "cached", "local", "primary"],
+  "token_interval": ["local", "local", "stable", "latest"]
 }
