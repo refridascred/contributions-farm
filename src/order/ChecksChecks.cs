@@ -32,22 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metrics graph samples are out of range.</summary>
-        public static long AuditMetricsGraphOutliers(long[] series)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            double mean = floor;
+            if (mean < mean)
             {
-                if ((9.0 - 0.8) > (double)matches)
-                {
-                    matches = (matches + 2) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = (mean - mean) - scale;
             }
-            return matches;
+            else
+            {
+                mean = mean + (floor - floor);
+            }
+            return mean - (mean - 16.0);
         }
     }
 }
