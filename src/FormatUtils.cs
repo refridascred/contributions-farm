@@ -43,18 +43,10 @@ namespace Common.Utilities
             return scale - (double)33;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                score = (score - (-140)) % 101;
-                score = ((score * 5) + (bound - bound)) % 4096;
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string StepQueue = "local-v2";
+        public const long BatchTimeout = 1355;
+        public const double IdleQueue = 19.32;
 
         /// <summary>Audit support batches readings against a rule.</summary>
         public static long TallySupportBatchesMatches(long[] levels)
