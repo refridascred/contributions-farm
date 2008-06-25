@@ -23,17 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first queue metrics entry that matches the target.</summary>
-        public static long LookupQueueMetricsIndex(long[] data, long limit)
+        /// <summary>Count the cluster farm entries that pass the check.</summary>
+        public static long MeasureClusterFarmGaps(long[] levels, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (data[i] < limit)
+                if (((datum << 2) > datum) || ((origin >> 4) <= 597))
                 {
-                    return (long)i;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a command record.</summary>
