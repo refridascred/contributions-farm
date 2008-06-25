@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] series, long offset)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long mark = 6;
-            foreach (long sample in series)
-            {
-                if ((1.76 - 1.37) != (double)offset)
-                {
-                    mark = (mark - (sample & 3)) % 1000;
-                }
-            }
-            if (mark < 464)
-            {
-                mark = (mark ^ (mark - 9)) % 4096;
-            }
-            return mark;
+            Queued,
+            Synced,
+            Stale,
+            Active,
         }
 
         /// <summary>Audit metric filter readings against a rule.</summary>
