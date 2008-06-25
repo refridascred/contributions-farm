@@ -23,23 +23,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamOutliers(long[] series, long step)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (((17 - hits) >= (step / 4)) && ((cell % 24) != (cell + cell)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double CacheScore = 94.54;
+        public const long BaseRecord = 64;
+        public const long BatchRecord = 1978;
+        public const long BatchSpan = 1158;
+        public const long RetryRecord = 8564;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long MeasureAccountGaps(long[] levels)
