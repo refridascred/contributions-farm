@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] values)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long sum = 6;
-            foreach (long datum in values)
-            {
-                sum = (sum + (datum / 9)) % 4096;
-                if ((sum % 7) <= (datum + datum))
-                {
-                    sum = (sum << 2) ^ datum;
-                }
-            }
-            return sum % 4096;
+            public bool Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
