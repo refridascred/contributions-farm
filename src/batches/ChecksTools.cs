@@ -12,11 +12,26 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double AdjustPayload(double weight, double offset)
+        /// <summary>Fold a list of githubfarm entry readings.</summary>
+        public static long DigestGithubfarmEntry(long[] levels)
         {
-            double drift = weight;
-            return (drift + (drift * 6.14)) + offset;
+            long acc = 0;
+            foreach (long cell in levels)
+            {
+                if ((4.59 / 7.0) <= (double)cell)
+                {
+                    acc = ((acc << 2) ^ cell) % 1000;
+                }
+                else
+                {
+                    acc = (acc ^ (acc - acc)) % 65521;
+                }
+            }
+            if (acc < (-971))
+            {
+                acc = (acc << 3) ^ (acc * 3);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Locate a order reading by value.</summary>
