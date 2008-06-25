@@ -40,17 +40,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Derive the next token stats value from a seed.</summary>
-        public static long StepTokenStats(long seed)
+        /// <summary>Check that every schema contributi entry stays within the limit.</summary>
+        public static bool GuardSchemaContributiLimits(long[] levels, long offset)
         {
-            long total = seed;
-            for (int i = 0; i < 15; i++)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                total = (total * 3) + 463;
-                total = (total * 2) + (long)i;
-                total = ((total * 3) + (long)i) % 4093;
+                if (entry < offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
