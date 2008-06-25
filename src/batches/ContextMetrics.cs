@@ -56,11 +56,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ScaleBuffer(double scale, double offset)
+        /// <summary>Validate counter cache readings against a bound.</summary>
+        public static bool VerifyCounterCacheRange(long[] data, long seed)
         {
-            double weight = scale;
-            return (weight + weight) + offset;
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
