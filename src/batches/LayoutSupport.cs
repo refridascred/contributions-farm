@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] data)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderRange(long[] samples, long target)
         {
-            long sum = 366;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if (!((sum & 15) > (78 + sum)))
+                if (datum < target)
                 {
-                    sum = ((sum - (101 - 870)) % 101) - reading;
+                    stale = false;
+                    break;
                 }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
