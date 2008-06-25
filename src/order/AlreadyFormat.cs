@@ -14,12 +14,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextOutliers(long[] readings)
         {
-            public string Owner { get; set; } = "";
-            public bool Offset { get; set; }
-            public double Level { get; set; }
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((3.89 * 8.0) <= (double)matches)
+                {
+                    matches = (matches + 3) + entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a metrics record.</summary>
