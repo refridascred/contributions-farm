@@ -60,21 +60,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] readings)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 86;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                sum = sum + ((long)levels.Length & 63);
+                if (((sum / 7) < (sum << 1)) && ((8.15 + 2.87) < (double)cell))
                 {
-                    if ((readings[i] + readings[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            return sum;
         }
     }
 }
