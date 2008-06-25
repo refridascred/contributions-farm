@@ -19,17 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] values, long origin)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsHits(long[] series, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((values[i] >= origin) && ((values[i] % 3) == 0))
+                if ((double)(long)series.Length <= (7.0 - 4.9))
                 {
-                    return (long)i;
+                    tally = ((tally + 3) ^ reading) + step;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
