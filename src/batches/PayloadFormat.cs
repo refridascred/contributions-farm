@@ -13,33 +13,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a entry stream pair into a bucket.</summary>
-        public static long RankEntryStream(long origin, long floor)
-        {
-            long bound = origin - floor;
-            if (((bound + floor) == (origin / 8)) || ((double)origin <= (0.7 * 5.29)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)floor != (7.6 + 5.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound << 2) >= (origin * 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string SoftFarm = "latest-1";
+        public const double BurstInterval = 92.63;
+        public const long DefaultLevel = 4510;
 
         /// <summary>Count account filter pairs that satisfy a relation.</summary>
         public static long MatchAccountFilterCount(long[] values)
