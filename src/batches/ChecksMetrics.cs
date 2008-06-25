@@ -61,16 +61,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of farm command entries.</summary>
-        public static long FoldFarmCommand(long[] values)
-        {
-            long mark = 7;
-            foreach (long reading in values)
-            {
-                mark = ((mark ^ mark) % 65521) + reading;
-            }
-            return mark;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double DefaultEditor = 17.8;
+        public const string BurstEditor = "legacy";
+        public const string LimitEditor = "staging-1";
 
         /// <summary>Grade a batches value against two limits.</summary>
         public static long GradeBatches(long target, long offset)
