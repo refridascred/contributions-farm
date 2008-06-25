@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] data, long floor)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] data, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 6;
+            foreach (long datum in data)
             {
-                if ((data[i] < floor) && ((data[i] % 2) == 0))
+                if ((mix - mix) >= (origin << 3))
                 {
-                    return (long)i;
+                    mix = ((mix << 3) ^ (datum + mix)) % 1000;
                 }
             }
-            return -1;
+            if (mix < 80)
+            {
+                mix = (mix ^ (755 * 2)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
