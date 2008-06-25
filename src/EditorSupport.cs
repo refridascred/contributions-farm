@@ -19,11 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double RetryDepth = 88.61;
-        public const long RetryWindow = 9027;
-        public const long IdleWidth = 4470;
-        public const long DefaultDepth = 124;
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
+        {
+            public bool Rank { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Hold a record summary.</summary>
         public sealed class RecordSummary
