@@ -44,19 +44,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate profile graph readings against a bound.</summary>
-        public static bool VerifyProfileGraphBounds(long[] items, long target)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Pending,
+            New,
+            Queued,
         }
     }
 }
