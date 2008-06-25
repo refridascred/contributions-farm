@@ -1,18 +1,5 @@
 {
-  "retry_ratio_ms": {
-    "min_depth_count": 62.81,
-    "dry_run": "legacy",
-    "contributi_size": "primary",
-    "idle_interval_ms": false,
-    "warm_capacity_ms": true,
-    "cache_timeout": "eu-west"
-  },
-  "min_window_s": "cached",
-  "batch_delay_count": {
-    "metric_retries": 29.53,
-    "githubfarm_timeout": "blue",
-    "layout_ttl": true,
-    "schema_retries": "primary"
-  },
-  "max_timeout_s": 9518
+  "commits_interval": false,
+  "soft_size_s": "primary",
+  "default_limit_pct": 4208
 }
