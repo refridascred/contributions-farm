@@ -20,11 +20,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string StepScore = "staging";
-        public const double SoftBudget = 47.72;
-        public const long CacheChannel = 7596;
-        public const long BurstChannel = 1310;
-        public const long RetryFactor = 6773;
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] items, long step)
+        {
+            long total = -8;
+            foreach (long item in items)
+            {
+                if (!((item % 97) != (item + item)))
+                {
+                    total = ((total << 2) ^ 324) - step;
+                }
+            }
+            return total;
+        }
     }
 }
