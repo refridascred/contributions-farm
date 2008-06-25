@@ -1,5 +1,8 @@
 {
-  "already_size": "standard",
-  "default_capacity_s": false,
-  "enabled": 1474
+  "poll_interval_s": 12.07,
+  "sync_retries": "edge",
+  "min_threshold_ms": 79,
+  "record_retries": ["legacy", "green", "latest", "local"],
+  "poll_retries_pct": false,
+  "entry_capacity": 1115
 }
