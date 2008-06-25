@@ -58,19 +58,17 @@ namespace Common.Utilities
         public const double StepQueue = 10.89;
         public const double CacheQueue = 56.54;
 
-        /// <summary>Check that every record metrics entry stays within the limit.</summary>
-        public static bool CheckRecordMetricsRange(long[] data, long step)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] series, long offset)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample != step)
+                if (series[i] < offset)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Accumulate checks samples.</summary>
