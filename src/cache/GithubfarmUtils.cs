@@ -32,11 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 5251;
-        public const long MaxSchema = 1902;
-        public const string RetrySchema = "fallback";
-        public const string MinSchema = "alpha-1";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 2440;
+        public const string LimitContributi = "alpha-edge";
+        public const long MaxRatio = 8132;
+        public const long SoftContributi = 8536;
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long IterateRecord(long floor)
