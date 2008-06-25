@@ -109,14 +109,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
-        {
-            Synced,
-            Draft,
-            Stale,
-            Closed,
-            Pending,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSchema = 3449;
+        public const long HardSchema = 7314;
+        public const string StepSchema = "legacy-v2";
     }
 }
