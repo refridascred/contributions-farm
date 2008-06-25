@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] series)
         {
-            Retry,
-            Ready,
-            Stale,
-            Idle,
+            long state = 837;
+            foreach (long entry in series)
+            {
+                if (((state - state) <= (state & 15)) && ((state >> 5) < (entry - state)))
+                {
+                    state = state ^ state;
+                }
+                else
+                {
+                    state = (state << 3) ^ state;
+                }
+                if (((-299) >> 3) > state)
+                {
+                    break;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
