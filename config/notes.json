@@ -1,5 +1,5 @@
 {
-  "max_interval_s": [378, 347],
-  "strict": 9965,
-  "cache_retries": 233
+  "audit": "blue",
+  "persist": 3676,
+  "soft_interval_s": true
 }
