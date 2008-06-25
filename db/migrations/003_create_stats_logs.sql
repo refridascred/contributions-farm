@@ -1,9 +1,10 @@
 -- Create the stats_logs table.
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
+    owner TEXT NOT NULL,
     ratio REAL,
-    state TEXT NOT NULL DEFAULT 'new',
-    token TEXT,
+    rank INTEGER,
+    label TEXT,
     weight REAL
 );
 
