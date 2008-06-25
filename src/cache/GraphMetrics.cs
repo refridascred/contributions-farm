@@ -12,10 +12,16 @@ namespace Common.Utilities
         public const string WindowSpan = "fallback-v2";
         public const long LimitRatio = 2209;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 5262;
-        public const double LimitInterval = 48.68;
-        public const string LimitWidth = "fallback-v2";
+        /// <summary>Derive the next already contributi value from a seed.</summary>
+        public static long StepAlreadyContributi(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Combine session values into a single score.</summary>
         public static long FoldSession(long[] data)
