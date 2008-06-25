@@ -23,21 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count editor format pairs that satisfy a relation.</summary>
-        public static long PairEditorFormatCount(long[] items)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterHits(long[] values, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((entry + 34) <= hits)
                 {
-                    if ((items[i] ^ items[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 2) - origin;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
