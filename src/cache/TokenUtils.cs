@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorGaps(long[] values, long step)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((item + 43) > (step + 7)) && (item < hits))
+                if (series[i] == floor)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many schema githubfarm samples are out of range.</summary>
