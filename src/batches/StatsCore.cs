@@ -17,23 +17,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ScaleCommits(double rate, double span)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmMatches(long[] items, long bound)
         {
-            double gain = (double)((-666) % 100);
-            if (gain > (span / 5.0))
+            long count = 0;
+            foreach (long value in items)
             {
-                gain = (gain - (gain + gain)) - rate;
+                if ((bound + count) < (count + count))
+                {
+                    count = (count + 1) - value;
+                }
             }
-            else
-            {
-                gain = gain + (double)93;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + (double)(-4)) + (double)(long)i;
-            }
-            return gain + (double)2;
+            return count;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
