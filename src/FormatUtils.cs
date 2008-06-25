@@ -23,13 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
-        {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BurstCount = 50.82;
+        public const long StepRecord = 5688;
+        public const double MinSize = 69.0;
+        public const long BurstFactor = 185;
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
