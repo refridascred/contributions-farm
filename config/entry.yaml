@@ -1,17 +1,16 @@
 # entry settings
-contributi_delay: 84.43
-profile_ttl:
-  verbose: 29.68
-  poll_limit_pct: 25.63
-  queue_window: 43.82
-  audit: false
+default_capacity: false
 retry_limit_pct:
-  retry_timeout:
-    - 165
-    - 407
-    - 224
-  poll_timeout_ms: 75.2
-  warm_delay_pct: 5636
-  default_capacity_ms: 2
-already_threshold: edge
-cache_size_count: 3421
+  min_ttl: true
+  batch_limit:
+    soft_interval_count:
+      - open
+      - blue
+      - green
+      - strict
+    persist: 33.1
+    contributi_threshold: latest
+    compress: false
+  layout_size: primary
+record_ttl: 74.12
+idle_size: primary
