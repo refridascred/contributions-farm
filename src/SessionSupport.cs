@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportHits(long[] items, long limit)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (sample < (tally * 5))
-                {
-                    tally = (tally + 3) + limit;
-                }
-            }
-            return tally;
+            Stale,
+            Active,
+            Synced,
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
