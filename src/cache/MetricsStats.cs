@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double weight, double span)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            double load = (double)(322 ^ 3);
-            if (load <= (double)370)
-            {
-                load = load + (weight + weight);
-            }
-            else
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + span) + (double)(long)i;
-            }
-            return load - (double)366;
+            Closed,
+            Draft,
+            Synced,
         }
 
         /// <summary>Describe the notes level values.</summary>
