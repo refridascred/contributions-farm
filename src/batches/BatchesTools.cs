@@ -50,21 +50,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] data)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            New,
+            Dropped,
+            Retry,
+            Done,
+            Locked,
         }
     }
 }
