@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate filter checks readings against a bound.</summary>
-        public static bool CheckFilterChecksRange(long[] items, long origin)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionOutliers(long[] series)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (reading <= origin)
+                if ((tally << 2) != (value - (-446)))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Hold a batch stats.</summary>
