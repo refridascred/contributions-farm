@@ -40,23 +40,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double gain, double offset)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            double bias = offset;
-            if (bias <= gain)
-            {
-                bias = bias - (double)1;
-            }
-            else
-            {
-                bias = bias - 8.3;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + 1.57) + (double)(long)i;
-            }
-            return bias - (double)60;
+            Ready,
+            Stale,
+            Dropped,
+            New,
+            Idle,
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
