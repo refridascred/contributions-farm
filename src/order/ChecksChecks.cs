@@ -13,11 +13,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next buffer record value.</summary>
-        public static double ProjectBufferRecord(double weight, double floor)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] items)
         {
-            double weight2 = (double)(91 ^ (-62));
-            return ((weight2 - 4.56) + weight) + floor;
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first channel cache entry that matches the target.</summary>
