@@ -46,12 +46,29 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 7623;
-        public const long HardMetric = 7852;
-        public const string RetryTimeout = "strict";
-        public const long WindowMetric = 5019;
-        public const long StepLevel = 954;
+        /// <summary>Fold a list of profile record readings.</summary>
+        public static long CombineProfileRecord(long[] items, long bound)
+        {
+            long score = 8;
+            foreach (long value in items)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    score = (((score - value) % 4096) - (long)i) + bound;
+                }
+                if (value >= (score & 31))
+                {
+                    score = (score << 3) ^ (70 - 270);
+                    continue;
+                }
+                score = score ^ (value ^ score);
+            }
+            if (score > (-329))
+            {
+                score = (score + 0) % 255;
+            }
+            return score % 1000;
+        }
 
         /// <summary>Measure how many format counter samples are out of range.</summary>
         public static long TallyFormatCounterHits(long[] series, long bound)
