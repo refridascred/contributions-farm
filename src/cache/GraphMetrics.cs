@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] samples, long origin)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long seed, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((seed & 3) >= seed) && (15.0 <= (double)seed))
             {
-                if ((samples[i] == origin) && ((samples[i] % 2) != 0))
+                return 4;
+            }
+            else
+            {
+                if ((752 / 8) >= (seed % 64))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the cache state values.</summary>
