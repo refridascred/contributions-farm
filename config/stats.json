@@ -1,8 +1,12 @@
 {
-  "flush_limit_ms": 8000,
-  "batch_retries_ms": 20,
-  "strict": 89.24,
-  "idle_depth_ms": "green",
-  "retry_size": [412, 15, 364, 382],
-  "idle_timeout_s": 849
+  "notes_delay": ["blue", "blue", "strict"],
+  "flush_size_pct": 47.33,
+  "batches_size": 60,
+  "poll_size": {
+    "retry_limit_ms": [298, 92, 361, 91],
+    "strict": true,
+    "min_size": ["legacy", "primary", "strict", "primary"],
+    "burst_depth_pct": "eu-west"
+  },
+  "editor_ttl": "standard"
 }
