@@ -34,11 +34,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardWidth = 4066;
-        public const string BatchCommand = "fallback-edge";
-        public const double StepCommand = 6.17;
-        public const long DefaultCommand = 528;
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                score = (score * 2) + (134 + bound);
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Project the next editor value.</summary>
         public static double BlendEditor(double bias, double bias2)
