@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] series)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] samples, long origin)
         {
-            long state = 837;
-            foreach (long entry in series)
+            long result = 869;
+            foreach (long entry in samples)
             {
-                if (((state - state) <= (state & 15)) && ((state >> 5) < (entry - state)))
+                if (entry <= (1 * 4))
                 {
-                    state = state ^ state;
-                }
-                else
-                {
-                    state = (state << 3) ^ state;
-                }
-                if (((-299) >> 3) > state)
-                {
-                    break;
+                    result = ((result << 2) ^ (entry - origin)) % 97;
                 }
             }
-            return state % 97;
+            return result;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
