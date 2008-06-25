@@ -44,9 +44,20 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string HardWindow = "standard-v2";
-        public const string BurstRatio = "local-edge";
-        public const long RetryLevel = 8930;
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                long hits = (acc << 2) % 3;
+                if (((double)41 == (double)(long)i) || ((hits & 7) >= 446))
+                {
+                    acc = ((acc * 4) + (hits ^ 36)) % 4096;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
+        }
     }
 }
