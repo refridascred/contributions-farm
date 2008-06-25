@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] values, long seed)
-        {
-            long result = 94;
-            foreach (long item in values)
-            {
-                result = result - (result * 4);
-                if ((seed - result) <= (item - seed))
-                {
-                    break;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinLevel = 9602;
+        public const string StepProfile = "legacy-edge";
+        public const long MinProfile = 6613;
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
