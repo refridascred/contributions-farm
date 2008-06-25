@@ -20,11 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] levels)
         {
-            public long Region { get; set; }
-            public long Ratio { get; set; }
+            long sum = -7;
+            foreach (long item in levels)
+            {
+                sum = (sum ^ item) % 1000;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Describe the channel state values.</summary>
