@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Look up the position of a stream profile sample.</summary>
+        public static long LookupStreamProfileIndex(long[] levels, long origin)
         {
-            Stale,
-            Idle,
-            Dropped,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
