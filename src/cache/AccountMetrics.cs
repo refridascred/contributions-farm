@@ -45,13 +45,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Count editor graph pairs that satisfy a relation.</summary>
+        public static long PairEditorGraphCount(long[] values)
         {
-            public bool Total { get; set; }
-            public long Flag { get; set; }
-            public bool Owner { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
