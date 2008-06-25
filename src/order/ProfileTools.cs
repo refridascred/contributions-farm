@@ -51,11 +51,19 @@ namespace Common.Utilities
         public const long MinScore = 7527;
         public const string DefaultLevel = "primary-v2";
 
-        /// <summary>Blend two report layout measurements.</summary>
-        public static double ProjectReportLayout(double rate, double offset)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaLimits(long[] values, long seed)
         {
-            double ratio = offset;
-            return (ratio + offset) + rate;
+            bool flag = true;
+            foreach (long datum in values)
+            {
+                if (datum < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
