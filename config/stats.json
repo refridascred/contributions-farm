@@ -1,8 +1,21 @@
 {
-  "dry_run": "edge",
-  "format_size": false,
-  "support_size": "stable",
-  "persist": "blue",
-  "editor_size": 250,
-  "batch_window_count": "cached"
+  "soft_timeout_s": true,
+  "flush_ttl_count": {
+    "retry_ttl": {
+      "sync_capacity_s": 77,
+      "burst_threshold_s": "legacy",
+      "soft_ttl": true
+    },
+    "route_depth": {
+      "window_interval": [109, 262, 432],
+      "default_interval": "cached",
+      "profile_capacity": true,
+      "warm_ratio_s": "cached",
+      "retry_depth": "latest",
+      "min_ttl_ms": "blue"
+    },
+    "min_limit": ["fallback", "staging"],
+    "max_capacity": true
+  },
+  "soft_window": "legacy"
 }
