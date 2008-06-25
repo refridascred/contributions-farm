@@ -71,9 +71,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string HardAlready = "latest";
-        public const string IdleLevel = "local";
-        public const long BurstAlready = 801;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftReport = 2609;
+        public const double CacheReport = 34.84;
+        public const double SoftFactor = 31.8;
     }
 }
