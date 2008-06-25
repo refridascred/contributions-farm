@@ -25,18 +25,12 @@ namespace Common.Utilities
         public const double HardFactor = 90.49;
         public const long IdleSpan = 1620;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenHits(long[] data)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((sample & 31) != (hits >> 1))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Closed,
+            Draft,
+            Pending,
         }
 
         /// <summary>Define report limits and defaults.</summary>
