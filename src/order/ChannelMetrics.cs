@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountLimits(long[] values, long limit)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] values, long floor)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long result = 788;
+            foreach (long value in values)
             {
-                if (item < limit)
+                if (floor <= value)
                 {
-                    ok = false;
-                    break;
+                    result = (result * 5) + (352 ^ 726);
                 }
             }
-            return ok;
+            return result % 4096;
         }
 
         /// <summary>Hold a farm summary.</summary>
