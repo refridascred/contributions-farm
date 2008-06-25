@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] series)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double bias, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = bias;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = ((mean - (bias * 7.0)) + (double)(long)i) - offset;
             }
-            return seen;
+            return mean + (double)(-400);
         }
 
         /// <summary>Describe the graph phase values.</summary>
