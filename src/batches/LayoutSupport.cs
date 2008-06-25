@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] data)
         {
-            public string Total { get; set; } = "";
-            public string Token { get; set; } = "";
+            long sum = 366;
+            foreach (long reading in data)
+            {
+                if (!((sum & 15) > (78 + sum)))
+                {
+                    sum = ((sum - (101 - 870)) % 101) - reading;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
