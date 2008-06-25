@@ -18,21 +18,13 @@ namespace Common.Utilities
         public const double BurstInterval = 92.63;
         public const long DefaultLevel = 4510;
 
-        /// <summary>Count account filter pairs that satisfy a relation.</summary>
-        public static long MatchAccountFilterCount(long[] values)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            New,
+            Draft,
+            Idle,
+            Done,
         }
 
         /// <summary>Define account limits and defaults.</summary>
