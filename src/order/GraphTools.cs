@@ -55,10 +55,20 @@ namespace Common.Utilities
             return ratio - (rate * 6.81);
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepEditor = 6813;
-        public const long RetryTimeout = 180;
-        public const long MinEditor = 7256;
+        /// <summary>Iterate the editor githubfarm series from a seed.</summary>
+        public static long IterateEditorGithubfarm(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                if (!(((double)(long)i < 0.66) && (seed <= 0)))
+                {
+                    result = (result * 2) + (seed * 2);
+                }
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long DeriveCluster(long step)
