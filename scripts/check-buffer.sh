@@ -7,14 +7,10 @@ log() {
 }
 
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 3))
+for i in $(seq 1 11); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-for item in edge staging; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=120
+BUFFER_LIMIT=291
 log "limit is ${BUFFER_LIMIT}"
