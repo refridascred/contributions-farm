@@ -1,10 +1,30 @@
 # support settings
-persist: legacy
-soft_timeout_s: stable
-strict: 100
-base_ratio_count: 28
-default_retries_ms:
-  - 335
-  - 188
-  - 49
-  - 79
+cluster_window: 60
+batch_ttl: legacy
+audit: 8111
+poll_capacity_ms: 1.05
+hard_timeout_pct: legacy
+stream_window:
+  readonly: 6459
+  sync_window_ms:
+    - primary
+    - staging
+  counter_retries:
+    cache_depth_pct: 890
+    soft_delay_s: open
+    soft_timeout_ms: false
+    strict:
+      - 109
+      - 404
+      - 187
+      - 4
+  base_interval_pct: 250
+  verbose: 30
+  default_delay:
+    retry_depth_ms: legacy
+    batch_capacity: true
+    warm_timeout_pct:
+      - strict
+      - green
+      - stable
+      - green
