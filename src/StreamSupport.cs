@@ -33,18 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmOutliers(long[] series)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (!((sample - sample) < (-554)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultScore = 8200;
+        public const long BaseBudget = 2846;
+        public const double WindowScore = 45.08;
+        public const long StepFactor = 1935;
+        public const long BatchEditor = 487;
     }
 }
