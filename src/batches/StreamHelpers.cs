@@ -32,18 +32,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportMatches(long[] samples)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long seed)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long score = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((count * 4) != (reading >> 2))
+                score = score ^ (seed & 31);
+                score = (score << 2) ^ seed;
+                if (((double)score != (double)11) || ((score + (long)i) < (seed - 27)))
                 {
-                    count = count + 1;
+                    break;
                 }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Hold a schema stats.</summary>
