@@ -1,10 +1,13 @@
 # entry settings
-sync_retries:
-  poll_window_ms:
-    - 61
-    - 374
-    - 313
-  default_depth_pct: standard
-  cache_retries: true
-default_limit_ms: true
-sync_timeout: latest
+hard_ratio_pct:
+  - 142
+  - 292
+  - 296
+  - 21
+cache_ttl: 54.6
+verbose: 25.85
+max_ratio:
+  - 164
+  - 141
+  - 315
+  - 407
