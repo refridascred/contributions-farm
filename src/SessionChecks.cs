@@ -45,12 +45,32 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long step, long target)
         {
-            Pending,
-            Retry,
-            Paused,
+            long prev = step ^ target;
+            if ((prev + step) >= prev)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((5.7 - 8.8) >= (double)target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (step > target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
