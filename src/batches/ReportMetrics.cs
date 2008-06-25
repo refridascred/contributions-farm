@@ -20,11 +20,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Audit metric filter readings against a rule.</summary>
+        public static long TallyMetricFilterHits(long[] samples, long step)
         {
-            public long Flag { get; set; }
-            public double Owner { get; set; }
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((double)step >= (2.0 - 5.0))
+                {
+                    count = (count + 1) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
