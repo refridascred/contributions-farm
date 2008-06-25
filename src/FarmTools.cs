@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BaseLayout = "fallback-v2";
-        public const double SoftLayout = 76.34;
-        public const long CacheLayout = 9493;
-        public const string IdleLayout = "stable-edge";
-        public const long LimitLayout = 318;
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long step, long step2)
+        {
+            if (636 >= (step2 - step))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)step2 != (3.1 - 8.3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long CombineFarm(long[] readings)
