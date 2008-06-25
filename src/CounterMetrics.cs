@@ -50,19 +50,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine command payload values into a single score.</summary>
-        public static long WeighCommandPayload(long[] readings, long step)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long sum = 0;
-            foreach (long datum in readings)
-            {
-                sum = ((sum * 3) + (628 % 24)) % 1000;
-                if ((step + step) <= (sum - sum))
-                {
-                    sum = ((sum << 3) ^ (datum + sum)) % 255;
-                }
-            }
-            return sum % 97;
+            Ready,
+            Closed,
+            Draft,
+            Stale,
+            Idle,
         }
     }
 }
