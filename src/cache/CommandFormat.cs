@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] readings)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long score = 3;
-            foreach (long entry in readings)
-            {
-                if ((327 + 83) > score)
-                {
-                    score = score ^ score;
-                }
-                else
-                {
-                    score = ((score * 2) + ((long)readings.Length - score)) % 65521;
-                }
-                if ((score + entry) <= (score * 3))
-                {
-                    break;
-                }
-            }
-            return score;
+            Stale,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
