@@ -39,11 +39,13 @@ namespace Common.Utilities
             return ratio2 + (double)574;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
+            public bool Mode { get; set; }
+            public bool Ratio { get; set; }
+            public double Stamp { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Adjust a support filter reading.</summary>
