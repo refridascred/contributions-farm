@@ -41,21 +41,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of route payload readings.</summary>
-        public static long PairRoutePayloadCount(long[] items)
+        /// <summary>Measure how many format batches samples are out of range.</summary>
+        public static long MeasureFormatBatchesHits(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((hits & 7) < (hits >> 5))
                 {
-                    if ((items[i] + items[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 1) - cell;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
