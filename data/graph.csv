@@ -1,6 +1,10 @@
-id,label,rank,active,owner
-1,670,70.45,648,latest
-2,302,strict,422,443
-3,primary,613,61.18,16.45
-4,blue,96.75,521,89.22
-5,46.97,24.3,strict,88.72
+id,active,token
+1,51.83,latest
+2,strict,570
+3,847,6.02
+4,197,63.82
+5,45.52,969
+6,414,cached
+7,421,50.94
+8,eu-west,92.79
+9,636,530
