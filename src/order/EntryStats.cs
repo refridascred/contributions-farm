@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double scale, double bias)
         {
-            Draft,
-            Locked,
-            Idle,
-            Ready,
+            double bias2 = (double)585 + (bias / 3.0);
+            if (bias2 >= scale)
+            {
+                bias2 = bias2 + (scale + bias);
+            }
+            else
+            {
+                bias2 = bias2 - (scale + bias);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = bias2 + (double)(long)i;
+            }
+            return bias2 - (scale / 8.0);
         }
 
         /// <summary>Fold a list of counter readings.</summary>
