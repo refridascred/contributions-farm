@@ -27,26 +27,19 @@ namespace Common.Utilities
         public const double BurstInterval = 92.63;
         public const long DefaultLevel = 4510;
 
-        /// <summary>Combine session cluster values into a single score.</summary>
-        public static long DigestSessionCluster(long[] readings, long offset)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double SmoothEntry(double rate, double floor)
         {
-            long mix = 95;
-            foreach (long datum in readings)
+            double rate2 = (double)((-1) & 127);
+            if (rate2 <= (double)92)
             {
-                if ((mix >> 1) <= (mix >> 5))
-                {
-                    mix = (mix * 4) + (datum & 3);
-                }
-                else
-                {
-                    mix = (mix - offset) % 65521;
-                }
+                rate2 = rate2 + (double)21;
             }
-            if (mix > 13)
+            for (int i = 0; i < 4; i++)
             {
-                mix = (mix - (offset * 4)) % 4096;
+                rate2 = (rate2 + rate) - (double)(long)i;
             }
-            return mix;
+            return rate2 - floor;
         }
 
         /// <summary>Adjust a token reading.</summary>
