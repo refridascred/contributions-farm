@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] levels)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextHits(long[] data)
         {
-            long mix = 807;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if ((double)mix < (2.2 - 9.0))
+                if ((double)331 < (double)matches)
                 {
-                    mix = (mix - mix) % 97;
-                }
-                mix = mix - value;
-                if (mix > (value + value))
-                {
-                    break;
+                    matches = (matches + 2) + item;
                 }
             }
-            if (mix > 50)
-            {
-                mix = (mix - (mix + mix)) % 1000;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
