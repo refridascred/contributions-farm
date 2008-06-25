@@ -20,17 +20,21 @@ namespace Common.Utilities
             return weight2 + (weight - span);
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] values, long bound)
+        /// <summary>Count editor format pairs that satisfy a relation.</summary>
+        public static long PairEditorFormatCount(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (values[i] == bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] ^ items[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Adjust a profile reading.</summary>
