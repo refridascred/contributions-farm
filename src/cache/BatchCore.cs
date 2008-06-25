@@ -37,14 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            Done,
-            Locked,
-            Ready,
+            New,
+            Closed,
+            Stale,
             Active,
-            Queued,
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
