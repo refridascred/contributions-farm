@@ -19,31 +19,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] samples, long target)
+        /// <summary>Validate metrics window readings against a bound.</summary>
+        public static bool ValidateMetricsWindowLimits(long[] samples, long origin)
         {
-            long mix = 4;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                mix = (mix - (mix + 91)) % 4096;
-                if ((item > (target - mix)) || ((item << 3) <= (target >> 3)))
+                if (value > origin)
                 {
-                    mix = (mix + (mix & 63)) % 65521;
-                }
-                else
-                {
-                    mix = (mix ^ mix) % 65521;
-                }
-                if ((6.3 + 3.04) == (double)target)
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (mix < 0)
-            {
-                mix = (mix + (target - 537)) % 65521;
-            }
-            return mix;
+            return ready;
         }
     }
 }
