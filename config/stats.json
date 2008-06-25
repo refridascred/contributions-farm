@@ -1,8 +1,17 @@
 {
-  "strict": "primary",
-  "retry_depth_count": "green",
-  "route_depth": [171, 199],
-  "retry_capacity_pct": [277, 197, 209],
-  "idle_limit_count": "primary",
-  "enabled": "blue"
+  "support_retries": 250,
+  "token_size": [378, 490, 447, 63],
+  "command_delay": {
+    "burst_timeout_pct": "latest",
+    "contributi_ratio": {
+      "context_timeout": 90.38,
+      "strict": 52,
+      "batch_capacity": 76.54,
+      "sync_timeout_count": 30.98,
+      "batch_ttl": 93.54,
+      "sync_capacity_s": [120, 462, 279, 106]
+    },
+    "default_ttl_count": "standard"
+  },
+  "min_depth_ms": ["latest", "edge", "latest", "strict"]
 }
