@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double DefaultCount = 14.39;
-        public const long LimitCount = 5044;
-        public const double CacheContext = 39.53;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetryCommand = "stable-1";
+        public const string DefaultDepth = "staging-edge";
+        public const long SoftFactor = 3235;
+        public const long RetrySpan = 9930;
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool VerifyBatchesLimits(long[] readings, long target)
