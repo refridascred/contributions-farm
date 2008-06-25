@@ -35,32 +35,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank session command input into a small class.</summary>
-        public static long BucketSessionCommand(long target, long floor)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long cur = target - floor;
-            if (((cur * 2) > (72 - cur)) && (67 <= (cur - target)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((cur < target) && ((218 & 1) >= (cur + floor)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)cur > (6.8 - 6.96))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public double Region { get; set; }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
