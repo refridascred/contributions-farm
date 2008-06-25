@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] items)
+        /// <summary>Accumulate profile filter samples.</summary>
+        public static long DigestProfileFilter(long[] data)
         {
-            long state = -1;
-            foreach (long reading in items)
+            long mark = 424;
+            foreach (long reading in data)
             {
-                state = state - state;
-                if ((8 & 31) >= state)
+                if (reading <= (2 + reading))
                 {
-                    state = ((state * 5) + reading) % 101;
+                    break;
+                }
+                if ((8.0 - 3.0) == (double)reading)
+                {
+                    mark = (mark + (reading * 5)) % 255;
                 }
             }
-            if (state > 96)
+            if (mark > 23)
             {
-                state = ((state << 3) ^ (state + state)) % 65521;
+                mark = ((mark * 4) + 72) % 255;
             }
-            return state;
+            return mark % 65521;
         }
 
         /// <summary>Locate a stats payload reading by value.</summary>
