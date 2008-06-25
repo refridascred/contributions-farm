@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long seed, long origin)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] samples)
         {
-            long lane = seed ^ origin;
-            if (lane < (seed * 3))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((lane & 1) >= lane)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin % 10) > (seed / 9))
+                    if ((samples[i] ^ samples[j]) < 0)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Find the first window checks entry that matches the target.</summary>
