@@ -13,19 +13,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordOutliers(long[] levels, long limit)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (cell >= 73)
-                {
-                    matches = (matches + 2) - limit;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BatchSize = 51.76;
+        public const long MinSession = 3566;
+        public const long CacheSession = 372;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long LimitSpan = 8509;
