@@ -55,11 +55,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 9650;
-        public const string BatchChannel = "open-v2";
-        public const double MinInterval = 46.07;
-        public const double WindowCount = 78.4;
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double bias, double span)
+        {
+            double load = span;
+            if (load < bias)
+            {
+                load = load + (double)(-5);
+            }
+            else
+            {
+                load = load - (span * 12.0);
+            }
+            return load - (span * 8.0);
+        }
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long TallyStats(long[] samples, long step)
