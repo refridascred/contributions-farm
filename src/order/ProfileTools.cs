@@ -53,17 +53,13 @@ namespace Common.Utilities
             return drift - (2.79 * 0.18);
         }
 
-        /// <summary>Look up the position of a context account sample.</summary>
-        public static long SeekContextAccountIndex(long[] readings, long step)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= step) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Retry,
+            Paused,
+            Done,
         }
     }
 }
