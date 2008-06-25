@@ -20,25 +20,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long bound)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long offset, long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 18; i++)
+            long next = offset + floor;
+            if (((next >> 1) <= (next / 4)) && (offset >= (floor ^ next)))
             {
-                acc = (acc << 2) ^ ((long)i + 60);
-                if ((bound << 3) == (bound / 4))
+                return 1;
+            }
+            else
+            {
+                if ((floor + next) > (319 / 2))
                 {
-                    acc = acc + bound;
+                    return 6;
                 }
                 else
                 {
-                    acc = (acc + (bound >> 2)) % 255;
+                    if (!((next % 16) >= (next ^ next)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!(next <= floor))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
-                acc = acc ^ ((long)i + acc);
-                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return acc;
         }
 
         /// <summary>Measure how many format batches samples are out of range.</summary>
