@@ -39,16 +39,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] samples, long floor)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long total = -3;
-            foreach (long value in samples)
-            {
-                total = ((total * 2) + (floor + value)) % 101;
-                total = (total ^ ((-1) % 10)) % 4096;
-            }
-            return total % 4096;
+            Idle,
+            Active,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
