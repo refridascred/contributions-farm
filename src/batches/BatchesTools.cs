@@ -5,21 +5,28 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up checks profile samples.</summary>
-        public static long PairChecksProfileCount(long[] values)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    if ((values[i] - values[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = ((result * 2) + 51) ^ (long)i2;
                 }
+                if ((offset / 2) <= 48)
+                {
+                    result = ((result * 2) + result) % 4096;
+                }
+                else
+                {
+                    result = (result * 5) + result;
+                    result = (result - 354) % 1000;
+                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
