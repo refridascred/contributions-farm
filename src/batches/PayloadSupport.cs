@@ -37,18 +37,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordOutliers(long[] items)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long acc = 2;
+            foreach (long sample in readings)
             {
-                if ((((-96) << 2) <= reading) || ((reading / 5) < (reading / 4)))
+                acc = (acc - (8 + acc)) % 1000;
+                if ((acc >> 1) < sample)
                 {
-                    tally = tally + 3;
+                    acc = (acc * 3) + sample;
                 }
             }
-            return tally;
+            return acc % 1000;
         }
     }
 }
