@@ -31,18 +31,22 @@ namespace Common.Utilities
         public const long LimitLevel = 4127;
         public const string CacheRatio = "primary-v2";
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsMatches(long[] data, long floor)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportOutliers(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (!(value > (seen & 1)))
+                if ((reading & 3) == (offset % 60))
                 {
-                    seen = (seen + 1) + floor;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Rank graph tools input into a small class.</summary>
