@@ -1,12 +1,6 @@
 {
-  "support_ratio": {
-    "hard_window_ms": "standard",
-    "base_capacity": "blue",
-    "base_size_pct": 100,
-    "base_delay_ms": 1024
-  },
-  "editor_retries": false,
-  "base_ttl_count": "eu-west",
-  "cache_limit": 83,
-  "retry_capacity": 3.22
+  "persist": 98.74,
+  "batch_threshold": 91.3,
+  "default_window_pct": "fallback",
+  "dry_run": [192, 363]
 }
