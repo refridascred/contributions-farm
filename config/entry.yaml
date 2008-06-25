@@ -1,18 +1,7 @@
 # entry settings
-base_timeout: open
-route_interval: 100
-context_threshold:
-  - eu-west
-  - strict
-  - fallback
-  - primary
-sync_ratio: primary
-hard_timeout: 58.34
-verbose:
-  flush_ttl_count: 89
-  warm_retries_count: primary
-  burst_timeout_s: false
-  idle_ttl_count:
-    persist: false
-    flush_interval_count: 1024
-    githubfarm_timeout: 53
+max_delay_ms: 32
+sync_ttl_count:
+  - 38
+  - 496
+retry_ratio_ms: 43.2
+token_ttl: true
