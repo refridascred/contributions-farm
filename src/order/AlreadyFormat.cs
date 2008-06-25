@@ -57,17 +57,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] levels, long limit)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountGaps(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (levels[i] > limit)
+                if ((item <= 55) && (((2.1 * 14.0) < (double)item) && ((item << 1) >= (item - 5))))
                 {
-                    return (long)i;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
