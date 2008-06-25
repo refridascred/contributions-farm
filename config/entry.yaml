@@ -1,21 +1,28 @@
 # entry settings
-editor_ttl:
-  tools_timeout:
-    - green
-    - edge
-    - green
-  enabled: latest
-  already_delay: true
-  poll_size: 5333
-  buffer_size:
-    poll_interval_ms: strict
-    command_timeout:
+soft_interval_ms:
+  default_threshold_pct: 98.03
+  cache_ttl_pct:
+    compress: false
+    hard_timeout: strict
+    batch_window_pct:
+      - cached
       - fallback
-      - primary
-    burst_limit: 3269
-    retry_retries_pct: legacy
-    retry_window_ms: primary
-  burst_limit_ms: 8
-metric_ttl: false
-metrics_timeout: 44
-format_limit: 70.76
+    stats_interval: true
+    poll_retries_s: 47
+  enabled:
+    - 238
+    - 380
+    - 42
+    - 339
+  hard_threshold_s:
+    compress: 30
+    soft_retries: 15.31
+    account_ratio: false
+hard_timeout_pct: 19.53
+sync_size_ms: 52.25
+hard_ratio_count: edge
+soft_limit: 4
+command_size:
+  - local
+  - legacy
+  - edge
