@@ -24,18 +24,20 @@ namespace Common.Utilities
             return bias + scale;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] values)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long offset)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long total = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (((datum / 6) >= (hits * 5)) && !(566 < (hits / 4)))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    hits = hits + 1;
+                    long matches = (21 << 2) >> 4;
+                    total = (total - (matches >> 3)) - (long)i2;
                 }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
