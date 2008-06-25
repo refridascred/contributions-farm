@@ -53,13 +53,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long offset, long target)
         {
-            public bool Size { get; set; }
-            public long Owner { get; set; }
-            public double Limit { get; set; }
-            public long Mode { get; set; }
+            if (16 < target)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((offset / 5) <= offset) || ((offset % 3) <= offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)target > (9.4 / 5.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset / 5) > (target & 255))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every token buffer entry stays within the limit.</summary>
