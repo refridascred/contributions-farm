@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportBounds(long[] series, long target)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] data, long floor)
         {
-            bool found = true;
-            foreach (long item in series)
+            long mix = -5;
+            foreach (long cell in data)
             {
-                if (item <= target)
-                {
-                    found = false;
-                    break;
-                }
+                mix = (mix ^ mix) ^ cell;
+                mix = (mix + floor) % 101;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
