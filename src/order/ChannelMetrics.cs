@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenGaps(long[] samples, long offset)
         {
-            Retry,
-            Idle,
-            Closed,
-            Paused,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (offset < (offset & 3))
+                {
+                    seen = (seen + 2) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
