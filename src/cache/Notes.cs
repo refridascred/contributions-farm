@@ -44,12 +44,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double HardWindow = 66.37;
-        public const long IdleLevel = 8777;
-        public const long BurstFactor = 4509;
-        public const string BatchWindow = "cached";
-        public const string SoftWindow = "local-v2";
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
+        {
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Locate a cache route reading by value.</summary>
         public static long LookupCacheRouteIndex(long[] levels, long bound)
