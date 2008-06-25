@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double scale, double bias)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmRange(long[] data, long limit)
         {
-            double bias2 = (double)585 + (bias / 3.0);
-            if (bias2 >= scale)
+            bool stale = true;
+            foreach (long value in data)
             {
-                bias2 = bias2 + (scale + bias);
+                if (value > limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 - (scale + bias);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = bias2 + (double)(long)i;
-            }
-            return bias2 - (scale / 8.0);
+            return stale;
         }
 
         /// <summary>Validate queue payload readings against a bound.</summary>
