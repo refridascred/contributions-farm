@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a report command reading.</summary>
-        public static double BlendReportCommand(double bias, double span)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long target, long step)
         {
-            double mean = span;
-            if (mean >= 6.7)
+            long span = target + step;
+            if ((step % 12) > (step + target))
             {
-                mean = mean - 14.0;
+                return 2;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                mean = (mean + (mean + bias)) + (double)(long)i;
+                if (((span % 16) != (target % 7)) || ((step >> 1) >= (target << 2)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return mean - mean;
         }
 
         /// <summary>Describe the contributi level values.</summary>
