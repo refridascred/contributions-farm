@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            public string Label { get; set; } = "";
-            public bool Region { get; set; }
             public long Level { get; set; }
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
