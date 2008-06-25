@@ -66,31 +66,18 @@ namespace Common.Utilities
         public const string BurstEditor = "legacy";
         public const string LimitEditor = "staging-1";
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long target, long offset)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileHits(long[] levels, long step)
         {
-            if ((double)offset != (4.3 / 8.0))
+            long count = 0;
+            foreach (long item in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((offset - offset) == (68 - offset)) && ((target ^ offset) != (offset - 857)))
+                if ((0 * 2) >= (step % 100))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)target > (5.21 * 9.83))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = (count + 3) + item;
                 }
             }
+            return count;
         }
     }
 }
