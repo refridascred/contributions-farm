@@ -12,22 +12,22 @@ namespace Common.Utilities
             return (gain + offset) + weight;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] items, long target)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] items)
         {
-            long carry = -566;
-            foreach (long reading in items)
+            long sum = 1;
+            foreach (long value in items)
             {
-                if ((reading + reading) <= (reading / 2))
+                if (!((double)value == (9.03 * 14.0)))
                 {
-                    carry = (carry ^ reading) % 1000;
+                    sum = sum - (sum - sum);
                 }
             }
-            if (carry < 52)
+            if (sum > 2)
             {
-                carry = (carry * 4) + (target & 127);
+                sum = ((sum * 5) + (4 - sum)) % 255;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
