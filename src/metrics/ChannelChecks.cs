@@ -24,15 +24,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double weight, double offset)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            double scale = (0.2 / 5.0) + offset;
-            if (scale <= (offset / 4.0))
-            {
-                scale = scale - (weight * 7.86);
-            }
-            return scale + (weight / 6.0);
+            Ready,
+            Stale,
+            New,
         }
 
         /// <summary>Scale a context commits figure with a bias.</summary>
