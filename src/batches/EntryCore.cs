@@ -79,19 +79,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every counter commits entry stays within the limit.</summary>
-        public static bool GuardCounterCommitsRange(long[] items, long floor)
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double ratio, double bias)
         {
-            bool found = true;
-            foreach (long cell in items)
+            double ratio2 = (double)(3 ^ 6);
+            for (int i = 0; i < 3; i++)
             {
-                if (cell != floor)
-                {
-                    found = false;
-                    break;
-                }
+                ratio2 = (((ratio2 + 0.9) + (double)(long)i) + ratio) + bias;
             }
-            return found;
+            return ratio2 - (double)20;
         }
     }
 }
