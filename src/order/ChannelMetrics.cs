@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesBounds(long[] series, long bound)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] data, long bound)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long score = 95;
+            foreach (long datum in data)
             {
-                if (sample < bound)
+                if ((double)score <= 5.7)
                 {
-                    stale = false;
-                    break;
+                    score = ((score << 2) ^ (bound << 3)) ^ datum;
                 }
             }
-            return stale;
+            if (score > 3)
+            {
+                score = score + (score + score);
+            }
+            return score;
         }
 
         /// <summary>Adjust a already reading.</summary>
