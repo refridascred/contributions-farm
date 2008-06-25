@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            public double Level { get; set; }
-            public long Mode { get; set; }
+            Dropped,
+            Queued,
+            Active,
+            Paused,
+            Done,
         }
 
         /// <summary>Fold a list of githubfarm entry readings.</summary>
