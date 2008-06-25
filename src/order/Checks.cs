@@ -23,13 +23,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyGaps(long[] readings, long limit)
         {
-            Failed,
-            Dropped,
-            Synced,
-            Ready,
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((matches / 3) >= (limit + limit))
+                {
+                    matches = (matches + 2) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
