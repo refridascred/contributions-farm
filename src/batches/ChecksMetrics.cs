@@ -61,11 +61,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long target, long offset)
         {
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
+            if ((double)offset != (4.3 / 8.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((offset - offset) == (68 - offset)) && ((target ^ offset) != (offset - 857)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)target > (5.21 * 9.83))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
