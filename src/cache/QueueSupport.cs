@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] values)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((offset - sum) != (offset & 15))
                 {
-                    if ((values[i] + values[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = ((sum * 2) + sum) % 97;
                 }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Count token buffer pairs that satisfy a relation.</summary>
