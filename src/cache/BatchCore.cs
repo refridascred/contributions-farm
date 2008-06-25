@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] series, long step)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long result = 9;
-            foreach (long datum in series)
-            {
-                result = ((result << 2) ^ (datum >> 2)) - step;
-            }
-            return result;
+            Ready,
+            Stale,
+            Draft,
+            Synced,
+            Closed,
         }
 
         /// <summary>Hold a report options.</summary>
