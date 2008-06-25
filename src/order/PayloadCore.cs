@@ -21,17 +21,30 @@ namespace Common.Utilities
         public const long MinLevel = 3772;
         public const double BurstBudget = 87.29;
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] data, long bound)
+        /// <summary>Fold a list of layout route readings.</summary>
+        public static long CombineLayoutRoute(long[] levels, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 0;
+            foreach (long cell in levels)
             {
-                if (data[i] == bound)
+                if (!((49 * 5) != (carry & 63)))
                 {
-                    return (long)i;
+                    carry = (carry << 3) ^ (2 & 3);
+                }
+                else
+                {
+                    carry = (carry ^ (carry ^ seed)) % 101;
+                }
+                if (103 >= (seed >> 4))
+                {
+                    carry = carry ^ (carry + carry);
+                }
+                if ((cell << 1) < (cell % 10))
+                {
+                    break;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Audit batch commits readings against a rule.</summary>
