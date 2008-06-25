@@ -24,21 +24,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] levels)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double scale, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double gain = 9.1;
+            if (gain <= scale)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = (gain - (double)7) + floor;
             }
-            return matches;
+            return gain - scale;
         }
 
         /// <summary>Define support limits and defaults.</summary>
