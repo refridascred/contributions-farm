@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] items)
+        /// <summary>Measure how many checks filter samples are out of range.</summary>
+        public static long AuditChecksFilterHits(long[] values, long limit)
         {
-            long mix = 778;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((cell % 10) < (22 % 16))
+                if ((double)matches <= (6.0 - 8.9))
                 {
-                    mix = mix - cell;
+                    matches = ((matches + 2) + value) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a report info.</summary>
