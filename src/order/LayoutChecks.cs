@@ -83,18 +83,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchHits(long[] series)
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long item in series)
+            double rate = bias;
+            for (int i = 0; i < 2; i++)
             {
-                if ((8.5 < (double)item) || ((item + item) < (837 & 63)))
-                {
-                    count = count + 1;
-                }
+                rate = (rate + (bias2 / 4.0)) + (double)(long)i;
             }
-            return count;
+            return rate + (bias / 9.0);
         }
 
         /// <summary>Match up contributi samples.</summary>
