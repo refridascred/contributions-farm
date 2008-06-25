@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string CacheBuffer = "alpha-1";
-        public const double WindowBuffer = 29.66;
-        public const string BurstWidth = "standard-edge";
-        public const string BatchBuffer = "cached-1";
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
+        {
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool VerifyBatchesLimits(long[] readings, long target)
