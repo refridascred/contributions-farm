@@ -57,10 +57,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double CacheFactor = 30.47;
-        public const double LimitOrder = 32.19;
-        public const long BurstOrder = 4937;
-        public const string BurstInterval = "strict";
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
