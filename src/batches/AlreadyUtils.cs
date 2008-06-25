@@ -68,14 +68,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
-        {
-            Ready,
-            Pending,
-            Done,
-            Locked,
-            Paused,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MaxSchema = "strict-edge";
+        public const double IdleLevel = 3.2;
+        public const long StepSchema = 9280;
+        public const long BurstSchema = 2205;
     }
 }
