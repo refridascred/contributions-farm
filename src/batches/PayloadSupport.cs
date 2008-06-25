@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the checks filter entries that pass the check.</summary>
-        public static long AuditChecksFilterOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((double)matches == (double)item)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BaseAlready = 10.38;
+        public const long HardRatio = 2889;
+        public const long DefaultAlready = 1166;
 
         /// <summary>Check that every cluster support entry stays within the limit.</summary>
         public static bool ValidateClusterSupportBounds(long[] samples, long limit)
