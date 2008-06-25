@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterHits(long[] levels)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long floor, long floor2)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            if ((9 - 9) != (floor2 - 982))
             {
-                if ((sample / 3) >= 412)
+                return 8;
+            }
+            else
+            {
+                if ((230 % 8) > (floor + floor2))
                 {
-                    count = count + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)floor2 < (double)floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (floor < (546 + 820))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
