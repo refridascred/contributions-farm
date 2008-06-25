@@ -17,22 +17,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of support command readings.</summary>
-        public static long TallySupportCommand(long[] series, long target)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] series, long origin)
         {
-            long carry = 279;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((double)(long)series.Length >= (3.15 + 8.0))
+                if ((sample ^ 319) <= (sample % 64))
                 {
-                    carry = ((carry ^ (target << 3)) % 101) + item;
-                }
-                else
-                {
-                    carry = ((carry * 2) + (target + 37)) % 101;
+                    count = (count + 1) + origin;
                 }
             }
-            return carry % 4096;
+            return count;
         }
 
         /// <summary>Locate a command reading by value.</summary>
