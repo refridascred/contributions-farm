@@ -35,15 +35,10 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
-        {
-            New,
-            Dropped,
-            Closed,
-            Stale,
-            Retry,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MaxSupport = "legacy-v2";
+        public const long HardSupport = 6230;
+        public const double BaseSupport = 48.68;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BatchScore = 8058;
