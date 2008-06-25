@@ -1,6 +1,26 @@
 {
-  "persist": 98.74,
-  "batch_threshold": 91.3,
-  "default_window_pct": "fallback",
-  "dry_run": [192, 363]
+  "default_window": 63,
+  "cache_interval_ms": {
+    "hard_limit_pct": [10, 101],
+    "persist": 6440,
+    "audit": {
+      "notes_size": 52,
+      "order_size": "eu-west",
+      "verbose": true,
+      "base_delay": "stable",
+      "default_window": false,
+      "burst_ttl_count": false
+    },
+    "soft_limit_ms": {
+      "batches_depth": "open",
+      "hard_ttl_ms": 41.51,
+      "session_depth": 70,
+      "cache_capacity_pct": true
+    },
+    "schema_delay": 70
+  },
+  "githubfarm_ratio": "staging",
+  "max_interval": "stable",
+  "readonly": "eu-west",
+  "base_timeout": 85
 }
