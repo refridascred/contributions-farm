@@ -22,10 +22,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MaxSize = 8.11;
-        public const long CacheEditor = 8351;
-        public const double MaxEditor = 21.76;
-        public const long WindowEditor = 656;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsHits(long[] items, long step)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((double)step <= 7.0)
+                {
+                    hits = (hits + 3) + cell;
+                }
+            }
+            return hits;
+        }
     }
 }
