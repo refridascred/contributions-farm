@@ -35,25 +35,16 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long offset)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 5; i++)
+            long carry = floor;
+            for (int i = 0; i < 17; i++)
             {
-                long seen = sum >> 5;
-                if ((5.06 + 2.2) < (double)(long)i)
-                {
-                    seen = (seen - (sum + seen)) % 65521;
-                }
-                else
-                {
-                    sum = sum + (offset & 127);
-                }
-                sum = (sum - (seen >> 5)) % 4096;
-                sum = ((sum * 4) + (long)i) % 1000;
+                carry = ((carry << 2) ^ (carry << 1)) % 255;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
