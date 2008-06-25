@@ -26,21 +26,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] levels)
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double bias, double span)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double gain = (span + 5.8) * 14.0;
+            if (gain <= 3.26)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain = (gain + (double)558) - bias;
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + span) + (double)(long)i;
+            }
+            return gain - (gain * 12.0);
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
