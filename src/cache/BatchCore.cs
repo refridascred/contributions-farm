@@ -42,15 +42,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of record schema readings.</summary>
-        public static long FoldRecordSchema(long[] items, long step)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] samples, long limit)
         {
-            long carry = 129;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = (((carry - (123 + 549)) % 97) + cell) - step;
+                if (samples[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
