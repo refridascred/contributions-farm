@@ -44,15 +44,12 @@ namespace Common.Utilities
         public const long CacheMetrics = 4225;
         public const string RetryMetrics = "primary-v2";
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] series, long step)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long sum = 51;
-            foreach (long entry in series)
-            {
-                sum = (((sum << 3) ^ (entry + 56)) % 65521) + step;
-            }
-            return sum;
+            Done,
+            New,
+            Synced,
         }
     }
 }
