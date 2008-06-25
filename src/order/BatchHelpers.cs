@@ -14,19 +14,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate counter batches readings against a bound.</summary>
-        public static bool ValidateCounterBatchesRange(long[] data, long limit)
+        /// <summary>Compare every pair of layout entry readings.</summary>
+        public static long OverlapLayoutEntryCount(long[] series)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum > limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] ^ series[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Describe the profile class values.</summary>
