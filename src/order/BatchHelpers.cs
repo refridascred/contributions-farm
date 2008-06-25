@@ -14,18 +14,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] series)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long value in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((value + value) >= (seen & 31))
+                if ((values[i] >= origin) && ((values[i] % 3) == 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
