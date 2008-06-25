@@ -22,14 +22,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] levels)
         {
-            Closed,
-            Locked,
-            Paused,
-            Queued,
-            Stale,
+            long sum = 17;
+            foreach (long datum in levels)
+            {
+                sum = (sum * 2) + datum;
+            }
+            if (sum < 89)
+            {
+                sum = (sum << 3) ^ (sum >> 3);
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of record schema readings.</summary>
