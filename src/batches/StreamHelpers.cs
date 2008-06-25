@@ -55,18 +55,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many format batches samples are out of range.</summary>
-        public static long MeasureFormatBatchesHits(long[] series)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((hits & 7) < (hits >> 5))
+                if ((data[i] <= bound) && ((data[i] % 5) == 0))
                 {
-                    hits = (hits + 1) - cell;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
