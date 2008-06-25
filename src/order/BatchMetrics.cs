@@ -24,18 +24,18 @@ namespace Common.Utilities
             return bias + scale;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsOutliers(long[] series, long limit)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] values)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (!(count < (cell >> 2)) && (limit > (count % 100)))
+                if (((datum / 6) >= (hits * 5)) && !(566 < (hits / 4)))
                 {
-                    count = count + 1;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
