@@ -55,10 +55,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BaseInterval = 53.5;
-        public const double MinCount = 48.32;
-        public const string MinScore = "local";
-        public const double MaxFilter = 3.32;
+        /// <summary>Look up the position of a editor buffer sample.</summary>
+        public static long LookupEditorBufferIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
