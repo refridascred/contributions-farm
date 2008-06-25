@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many checks filter samples are out of range.</summary>
-        public static long AuditChecksFilterHits(long[] values, long limit)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long carry = 98;
+            foreach (long cell in readings)
             {
-                if ((double)matches <= (6.0 - 8.9))
+                if ((double)cell < (6.0 + 2.0))
                 {
-                    matches = ((matches + 2) + value) + limit;
+                    carry = carry ^ (5 << 1);
                 }
                 else
                 {
-                    matches = matches - 1;
+                    carry = ((carry * 5) + carry) % 101;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Hold a report info.</summary>
