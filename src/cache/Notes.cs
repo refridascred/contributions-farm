@@ -70,18 +70,17 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Measure how many format counter samples are out of range.</summary>
-        public static long TallyFormatCounterHits(long[] series, long bound)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sample + seen) == (seen / 4))
+                if ((data[i] >= seed) && ((data[i] % 3) != 0))
                 {
-                    seen = (seen + 3) - bound;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
