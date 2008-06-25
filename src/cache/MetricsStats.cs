@@ -32,14 +32,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Count channel layout pairs that satisfy a relation.</summary>
+        public static long PairChannelLayoutCount(long[] samples)
         {
-            Idle,
-            Closed,
-            Done,
-            Locked,
-            Synced,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
