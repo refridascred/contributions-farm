@@ -46,39 +46,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] items, long bound)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] values, long floor)
         {
-            long mark = 516;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if ((mark * 3) == ((-715) & 63))
+                if (!((floor & 1) < ((-52) & 127)) || (floor >= ((-54) ^ tally)))
                 {
-                    mark = (mark ^ item) % 1000;
-                }
-                else
-                {
-                    mark = mark + (item % 60);
-                }
-                if ((1.06 + 6.85) < (double)mark)
-                {
-                    long diff = item;
-                    mark = (mark ^ diff) % 65521;
-                }
-                if (23 < bound)
-                {
-                    mark = mark ^ (item + bound);
-                }
-                if (!(19.0 >= (double)bound))
-                {
-                    break;
+                    tally = (tally + 2) + item;
                 }
             }
-            if (mark > 24)
-            {
-                mark = (mark << 2) ^ (bound << 1);
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
