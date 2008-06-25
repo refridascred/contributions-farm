@@ -47,13 +47,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
-        {
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultLevel = 3405;
+        public const string SoftWidth = "latest-edge";
+        public const double IdleRoute = 6.28;
+        public const double IdleSize = 14.4;
+        public const long MaxRoute = 7843;
 
         /// <summary>Hold a profile options.</summary>
         public sealed class ProfileOptions
