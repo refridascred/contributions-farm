@@ -23,23 +23,18 @@ namespace Common.Utilities
         public const long RetryLevel = 8981;
         public const double SoftToken = 76.68;
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] samples)
+        /// <summary>Measure how many editor report samples are out of range.</summary>
+        public static long CountEditorReportOutliers(long[] levels, long bound)
         {
-            long carry = 47;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if ((9.3 * 1.9) < (double)carry)
+                if ((value - 857) > (477 / 2))
                 {
-                    break;
+                    tally = (tally + 2) + bound;
                 }
-                if ((2.0 + 12.0) == (double)carry)
-                {
-                    carry = (carry - (reading * 4)) % 65521;
-                }
-                carry = (carry * 5) + (reading + reading);
             }
-            return carry % 1000;
+            return tally;
         }
 
         /// <summary>Describe the format status values.</summary>
