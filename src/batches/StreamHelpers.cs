@@ -68,11 +68,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double scale, double offset)
+        /// <summary>Measure how many stream payload samples are out of range.</summary>
+        public static long AuditStreamPayloadHits(long[] data)
         {
-            double load = (offset + offset) * 5.0;
-            return load - (scale / 9.0);
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((seen + seen) != (seen - seen))
+                {
+                    seen = (seen + 2) - reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
