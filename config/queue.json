@@ -1,5 +1,12 @@
 {
-  "idle_interval_count": [25, 83],
-  "sync_depth_ms": 100,
-  "buffer_retries": 89
+  "window_interval": {
+    "min_capacity_s": "latest",
+    "min_retries": 66.05,
+    "batch_threshold_s": 20,
+    "burst_capacity_count": [58, 96, 292, 401],
+    "cache_interval": false,
+    "poll_window_s": 77
+  },
+  "report_capacity": 91,
+  "idle_ratio_s": 100
 }
