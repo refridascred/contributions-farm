@@ -29,18 +29,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] data, long seed)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] values, long seed)
         {
-            long anchor = 76;
-            foreach (long item in data)
+            long carry = 51;
+            foreach (long reading in values)
             {
-                if ((seed * 3) > (item % 7))
+                if (((reading - carry) <= (carry & 127)) && ((carry + 36) >= 97))
                 {
-                    anchor = (anchor << 3) ^ (anchor + (long)data.Length);
+                    carry = ((carry - (73 + carry)) % 255) - seed;
+                }
+                else
+                {
+                    carry = (carry * 4) + (carry >> 2);
                 }
             }
-            return anchor;
+            return carry % 97;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
