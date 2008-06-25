@@ -89,10 +89,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseGraph = 4186;
-        public const long DefaultGraph = 4729;
-        public const string MinGraph = "strict-v2";
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
+        {
+            Closed,
+            Ready,
+            Draft,
+            Retry,
+        }
 
         /// <summary>Hold a entry header.</summary>
         public sealed class EntryHeader
