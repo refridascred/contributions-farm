@@ -42,11 +42,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string WindowSpan = "latest-edge";
-        public const string BatchLevel = "cached-v2";
-        public const double RetryRecord = 47.63;
-        public const long HardSpan = 2585;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] items, long offset)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (!((double)matches != (double)offset))
+                {
+                    matches = (matches + 1) + entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long IdleReport = 3345;
