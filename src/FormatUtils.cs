@@ -70,12 +70,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 6136;
-        public const double WindowChannel = 5.6;
-        public const double LimitChannel = 3.8;
-        public const long HardChannel = 3202;
-        public const long StepSpan = 5307;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BaseWidth = 9126;
+        public const long MinPayload = 5298;
+        public const long StepCount = 1472;
+        public const long LimitPayload = 2660;
+        public const long StepSpan = 13;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long IdleBudget = 9708;
