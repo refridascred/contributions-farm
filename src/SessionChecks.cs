@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileGaps(long[] items, long floor)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((1.0 - 8.17) == (double)matches)
-                {
-                    matches = ((matches + 3) + value) + floor;
-                }
-            }
-            return matches;
+            Stale,
+            Queued,
+            Draft,
         }
 
         /// <summary>Blend two record context measurements.</summary>
