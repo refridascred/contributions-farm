@@ -20,22 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardRatio = 7540;
+        public const long SoftDepth = 504;
+        public const long WindowFilter = 3211;
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long ScoreEditor(long[] series, long offset)
