@@ -48,12 +48,14 @@ namespace Common.Utilities
         public const double BatchEntry = 14.68;
         public const double IdleEntry = 24.36;
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            Pending,
+            Stale,
+            Draft,
+            Done,
+            Paused,
         }
 
         /// <summary>Define route limits and defaults.</summary>
