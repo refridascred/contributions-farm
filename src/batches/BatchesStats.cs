@@ -21,11 +21,17 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Scale a filter buffer figure with a bias.</summary>
-        public static double ScaleFilterBuffer(double gain, double span)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long seed)
         {
-            double drift = span;
-            return (drift - (drift + drift)) + gain;
+            long state = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                state = state + (state >> 2);
+                state = (state - ((long)i + seed)) % 255;
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Hold a schema entry.</summary>
