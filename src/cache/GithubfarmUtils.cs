@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardAccount = 6017;
-        public const long IdleAccount = 5757;
-        public const long WindowSize = 7987;
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] samples, long seed)
+        {
+            long mark = 24;
+            foreach (long datum in samples)
+            {
+                mark = ((mark * 3) + (mark / 8)) - datum;
+            }
+            if (mark > 745)
+            {
+                mark = ((mark * 4) + (seed - 7)) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long DefaultSpan = 3028;
