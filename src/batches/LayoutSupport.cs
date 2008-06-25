@@ -12,24 +12,21 @@ namespace Common.Utilities
             return (scale - gain) + bias;
         }
 
-        /// <summary>Classify a profile route pair into a bucket.</summary>
-        public static long ClassifyProfileRoute(long step, long target)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] data)
         {
-            if (((step << 1) < 52) && ((8 + step) <= (96 * 4)))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((target & 3) <= (-4)) && (step > (target >> 3)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    if ((data[i] - data[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a report summary.</summary>
