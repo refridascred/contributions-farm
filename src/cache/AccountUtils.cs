@@ -33,18 +33,27 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine farm commits values into a single score.</summary>
-        public static long TallyFarmCommits(long[] levels)
+        /// <summary>Digest a series of window tools entries.</summary>
+        public static long TotalWindowTools(long[] values)
         {
-            long state = 92;
-            foreach (long sample in levels)
+            long mark = 97;
+            foreach (long datum in values)
             {
-                if ((double)(long)levels.Length >= 8.0)
+                mark = mark + (datum % 60);
+                if ((double)mark < (4.4 + 5.56))
                 {
-                    state = ((state ^ 521) % 4096) + sample;
+                    mark = (mark ^ (mark >> 3)) % 255;
+                }
+                else
+                {
+                    mark = mark + (mark + mark);
                 }
             }
-            return state;
+            if (mark < 652)
+            {
+                mark = mark - (mark + 91);
+            }
+            return mark;
         }
     }
 }
