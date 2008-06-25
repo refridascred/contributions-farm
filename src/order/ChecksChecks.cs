@@ -47,20 +47,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stream filter readings.</summary>
-        public static long TotalStreamFilter(long[] levels, long seed)
-        {
-            long state = 8;
-            foreach (long cell in levels)
-            {
-                state = ((state - (-307)) + cell) - seed;
-                state = (state << 2) ^ 1;
-                if ((state + 1) != (long)levels.Length)
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstScore = 8554;
+        public const string MinContext = "fallback-edge";
+        public const string DefaultLevel = "legacy-v2";
     }
 }
