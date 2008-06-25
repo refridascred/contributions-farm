@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MaxContributi = 98.51;
-        public const double CacheContributi = 59.72;
-        public const long DefaultFactor = 2433;
-        public const double LimitContributi = 62.61;
-        public const long MaxSize = 9632;
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
+        {
+            public long Region { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Classify a already batches pair into a bucket.</summary>
         public static long RankAlreadyBatches(long step, long target)
