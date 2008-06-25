@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] values)
+        /// <summary>Fold a list of session command readings.</summary>
+        public static long DigestSessionCommand(long[] samples)
         {
-            long state = -21;
-            foreach (long entry in values)
+            long carry = 69;
+            foreach (long cell in samples)
             {
-                state = (state * 5) + (state << 2);
-                if ((state + state) < state)
+                if ((carry - cell) > carry)
                 {
-                    state = ((state * 2) + (entry / 4)) % 255;
+                    carry = (carry - cell) % 4096;
                 }
-                if (!((state + state) < (state % 60)))
+                else
                 {
-                    break;
+                    carry = (carry - (carry & 1)) % 255;
                 }
             }
-            return state % 1000;
+            if (carry < 632)
+            {
+                carry = (carry * 2) + (689 + carry);
+            }
+            return carry;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
