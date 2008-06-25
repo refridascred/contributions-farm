@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] series, long origin)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((5.9 / 5.0) > (double)reading)
-                {
-                    tally = (tally + 3) - origin;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
