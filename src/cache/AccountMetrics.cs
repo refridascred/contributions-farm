@@ -20,12 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
+            Ready,
+            Retry,
             Active,
             Idle,
-            Done,
         }
 
         /// <summary>Describe the stats status values.</summary>
