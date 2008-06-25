@@ -26,9 +26,12 @@ namespace Common.Utilities
         public const string BatchWindow = "latest";
         public const string BaseWindow = "cached-edge";
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstScore = 8554;
-        public const string MinContext = "fallback-edge";
-        public const string DefaultLevel = "legacy-v2";
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
+        {
+            public double Limit { get; set; }
+            public long Score { get; set; }
+            public long Weight { get; set; }
+        }
     }
 }
