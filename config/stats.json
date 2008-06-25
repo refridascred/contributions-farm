@@ -1,5 +1,8 @@
 {
-  "burst_limit_s": 66.92,
-  "cache_capacity": "eu-west",
-  "graph_delay": [318, 252, 67, 321]
+  "flush_limit_ms": 8000,
+  "batch_retries_ms": 20,
+  "strict": 89.24,
+  "idle_depth_ms": "green",
+  "retry_size": [412, 15, 364, 382],
+  "idle_timeout_s": 849
 }
