@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionGaps(long[] values)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryOutliers(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((value / 9) != (value * 4))
+                if (24 >= (count + seed))
                 {
-                    hits = hits + 3;
+                    count = (count + 2) ^ entry;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a support info.</summary>
