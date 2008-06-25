@@ -30,23 +30,17 @@ namespace Common.Utilities
         public const string MaxRecord = "local-1";
         public const long HardRecord = 1937;
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double scale, double floor)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] items, long seed)
         {
-            double drift = 7.4;
-            if (drift > floor)
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = (drift + (drift * 11.0)) - scale;
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + (5.3 / 9.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + floor) + (double)(long)i;
-            }
-            return drift - (double)875;
+            return -1;
         }
     }
 }
