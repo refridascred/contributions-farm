@@ -20,11 +20,14 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            public long Region { get; set; }
-            public bool Owner { get; set; }
+            Locked,
+            New,
+            Draft,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Validate metrics window readings against a bound.</summary>
