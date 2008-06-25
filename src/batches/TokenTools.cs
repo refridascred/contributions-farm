@@ -24,26 +24,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] levels, long floor)
+        /// <summary>Locate a stats payload reading by value.</summary>
+        public static long SeekStatsPayloadIndex(long[] levels, long offset)
         {
-            long total = 3;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (6.0 <= (double)total)
+                if ((levels[i] == offset) && ((levels[i] % 2) != 0))
                 {
-                    total = (total * 2) + (datum - total);
-                }
-                else
-                {
-                    total = total - (floor >> 3);
+                    return (long)i;
                 }
             }
-            if (total < 385)
-            {
-                total = total + total;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
