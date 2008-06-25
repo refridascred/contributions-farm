@@ -36,9 +36,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryWidth = 165;
-        public const long LimitRatio = 7332;
-        public const long BaseFormat = 3920;
+        /// <summary>Check that every metrics metric entry stays within the limit.</summary>
+        public static bool CheckMetricsMetricBounds(long[] samples, long offset)
+        {
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
