@@ -14,11 +14,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultScore = 2823;
-        public const string LimitScore = "fallback-1";
-        public const long MaxRatio = 763;
-        public const long BurstToken = 9972;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double WindowLayout = 34.67;
+        public const double RetryLayout = 19.88;
+        public const long BatchDepth = 7612;
+        public const long MaxLayout = 2074;
 
         /// <summary>Hold a channel entry.</summary>
         public sealed class ChannelEntry
