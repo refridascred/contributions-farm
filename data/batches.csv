@@ -1,9 +1,6 @@
-id,weight,token,rank
-1,201,green,354
-2,fallback,736,27.2
-3,local,137,6
-4,primary,63.88,592
-5,451,525,blue
-6,24.61,64.42,222
-7,open,eu-west,latest
-8,56.9,327,31.49
+id,active,count,level
+1,30.36,108,845
+2,793,53.45,301
+3,452,green,eu-west
+4,open,461,72.96
+5,248,52.9,edge
