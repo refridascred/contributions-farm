@@ -58,11 +58,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double DefaultRoute = 67.58;
-        public const double CacheLevel = 8.67;
-        public const double StepDepth = 84.59;
-        public const long MaxRoute = 8510;
-        public const double BatchLevel = 66.27;
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteBounds(long[] levels, long target)
+        {
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
