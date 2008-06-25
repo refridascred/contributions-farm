@@ -59,13 +59,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] series, long target)
         {
-            Synced,
-            Active,
-            Queued,
-            Locked,
+            long acc = 403;
+            foreach (long entry in series)
+            {
+                acc = (acc - (target << 3)) - entry;
+            }
+            if (acc > 57)
+            {
+                acc = acc - (5 + target);
+            }
+            return acc % 1000;
         }
     }
 }
