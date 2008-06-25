@@ -1,5 +1,32 @@
 # githubfarm settings
-flush_capacity_ms: green
-session_threshold: 500
-persist: 500
-cache_retries_pct: 5708
+readonly:
+  batch_interval_pct: green
+  dry_run:
+    - edge
+    - legacy
+    - edge
+  batch_limit_pct: staging
+  flush_capacity_ms:
+    - stable
+    - local
+    - fallback
+warm_delay_ms: latest
+batch_size:
+  account_window: cached
+  flush_delay_ms:
+    base_timeout_s: true
+    max_interval_count: 2699
+    default_ratio_ms: open
+    already_ratio:
+      - edge
+      - eu-west
+      - local
+    readonly:
+      - 199
+      - 437
+    batch_timeout:
+      - 359
+      - 271
+  already_ratio: 27
+  default_delay: 42.07
+command_window: standard
