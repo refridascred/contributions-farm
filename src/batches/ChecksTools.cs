@@ -30,19 +30,14 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Validate schema support readings against a bound.</summary>
-        public static bool CheckSchemaSupportRange(long[] series, long floor)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Failed,
+            Active,
+            Pending,
+            Dropped,
         }
     }
 }
