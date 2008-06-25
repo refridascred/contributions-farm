@@ -29,10 +29,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinSize = 3881;
-        public const long StepInterval = 3703;
-        public const long LimitEditor = 9965;
-        public const long DefaultSize = 1616;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchFactor = 1887;
+        public const double RetryNotes = 5.69;
+        public const long LimitLevel = 8321;
+        public const double IdleLevel = 16.09;
+        public const double BurstBudget = 14.59;
     }
 }
