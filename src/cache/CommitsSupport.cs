@@ -30,12 +30,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BatchContributi = "fallback-edge";
-        public const string MaxTimeout = "cached-1";
-        public const long LimitContributi = 8744;
-        public const double MaxContributi = 35.77;
-        public const long MinInterval = 4188;
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
+        {
+            Draft,
+            Dropped,
+            Failed,
+        }
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
