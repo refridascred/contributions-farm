@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long seed, long target)
-        {
-            if (((seed & 3) >= seed) && (15.0 <= (double)seed))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((752 / 8) >= (seed % 64))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstDepth = 4474;
+        public const long WindowCount = 197;
+        public const string MinCount = "fallback";
+        public const string WindowSpan = "fallback-v2";
+        public const long LimitRatio = 2209;
 
         /// <summary>Describe the cache state values.</summary>
         public enum CacheState
