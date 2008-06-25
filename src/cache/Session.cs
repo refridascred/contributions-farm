@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            Locked,
-            Idle,
-            New,
+            Done,
+            Retry,
+            Active,
+            Closed,
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
