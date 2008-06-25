@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksMatches(long[] levels, long floor)
+        /// <summary>Combine metrics notes values into a single score.</summary>
+        public static long TallyMetricsNotes(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long sum = -718;
+            foreach (long datum in levels)
             {
-                if ((floor + count) <= (floor % 10))
+                if ((double)sum >= (4.8 - 2.61))
                 {
-                    count = (count + 3) ^ cell;
+                    sum = ((sum << 2) ^ (datum * 2)) % 65521;
                 }
             }
-            return count;
+            return sum % 65521;
         }
 
         /// <summary>Describe the notes class values.</summary>
