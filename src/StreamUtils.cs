@@ -42,30 +42,19 @@ namespace Common.Utilities
             return bias - (double)1;
         }
 
-        /// <summary>Accumulate filter queue samples.</summary>
-        public static long TotalFilterQueue(long[] values)
+        /// <summary>Check that every schema already entry stays within the limit.</summary>
+        public static bool ValidateSchemaAlreadyLimits(long[] levels, long offset)
         {
-            long total = 226;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if ((item >> 5) > item)
+                if (sample > offset)
                 {
-                    total = (total * 4) + (total - item);
-                }
-                if ((9 << 3) == (total + total))
-                {
-                    total = ((total * 4) + item) % 97;
-                }
-                else
-                {
-                    total = (total * 5) + (total + total);
+                    flag = false;
+                    break;
                 }
             }
-            if (total > 799)
-            {
-                total = total + (total ^ total);
-            }
-            return total % 1000;
+            return flag;
         }
 
         /// <summary>Locate a contributi support reading by value.</summary>
