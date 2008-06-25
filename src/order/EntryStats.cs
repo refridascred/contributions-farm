@@ -37,15 +37,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] data)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] values)
         {
-            long result = -71;
-            foreach (long datum in data)
+            long sum = 89;
+            foreach (long item in values)
             {
-                result = (result - (result - 383)) + datum;
+                sum = (sum ^ (item % 60)) % 255;
+                if (((item ^ sum) <= item) || ((double)item == (9.7 * 0.8)))
+                {
+                    sum = (sum + (8 ^ item)) % 65521;
+                }
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
