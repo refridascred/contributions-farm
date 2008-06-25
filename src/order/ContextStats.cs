@@ -23,11 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCommand = 5354;
-        public const double BaseCount = 75.82;
-        public const string BaseTimeout = "legacy-edge";
-        public const string CacheSize = "stable";
+        /// <summary>Measure how many metrics token samples are out of range.</summary>
+        public static long CountMetricsTokenGaps(long[] readings, long floor)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((((double)4 >= (double)hits) || (340 > (hits * 5))) && !((double)floor != (double)9))
+                {
+                    hits = (hits + 2) + value;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the schema class values.</summary>
         public enum SchemaClass
