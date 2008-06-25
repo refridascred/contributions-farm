@@ -21,18 +21,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many metrics token samples are out of range.</summary>
-        public static long CountMetricsTokenGaps(long[] readings, long floor)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((((double)4 >= (double)hits) || (340 > (hits * 5))) && !((double)floor != (double)9))
-                {
-                    hits = (hits + 2) + value;
-                }
-            }
-            return hits;
+            public string Score { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Roll a schema counter forward.</summary>
