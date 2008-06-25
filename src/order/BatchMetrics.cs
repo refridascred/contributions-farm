@@ -38,14 +38,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
-        {
-            Draft,
-            Dropped,
-            Synced,
-            Failed,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BurstQueue = 41.38;
+        public const double MaxQueue = 81.44;
+        public const string BurstBudget = "standard-v2";
+        public const string LimitQueue = "alpha-1";
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long SeekFilterIndex(long[] data, long target)
