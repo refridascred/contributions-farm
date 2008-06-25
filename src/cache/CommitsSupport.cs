@@ -68,18 +68,12 @@ namespace Common.Utilities
         public const double MaxContributi = 35.77;
         public const long MinInterval = 4188;
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long limit)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long state = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                state = state + (state + 18);
-                state = (state ^ (limit / 9)) % 65521;
-                state = state - (state + limit);
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            Stale,
+            Dropped,
+            Active,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
