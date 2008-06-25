@@ -1,17 +1,16 @@
 # entry settings
-cache_timeout_count:
-  default_interval_ms: 6512
-  cache_delay_s: 250
-  burst_interval_s: 1024
-  cluster_retries: local
-  strict:
-    - 67
-    - 311
-    - 457
-    - 253
-  flush_interval_s: 31.35
-base_capacity: 97
-burst_window_ms:
-  - 169
-  - 262
-flush_delay_count: 54.29
+cache_retries:
+  compress: green
+  audit: 250
+  stream_retries: staging
+  cache_ttl: false
+  hard_depth_s:
+    - 31
+    - 216
+    - 249
+    - 328
+  cache_retries_pct: 60
+compress:
+  - 73
+  - 371
+session_threshold: 56.26
