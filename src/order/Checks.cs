@@ -58,17 +58,13 @@ namespace Common.Utilities
             return weight - (offset + offset);
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] data, long floor)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= floor) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Pending,
+            Synced,
+            Locked,
         }
     }
 }
