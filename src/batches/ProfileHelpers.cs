@@ -73,17 +73,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long step)
+        /// <summary>Count the format payload entries that pass the check.</summary>
+        public static long MeasureFormatPayloadHits(long[] levels)
         {
-            long carry = step;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                carry = ((carry * 4) + (long)i) % 101;
-                carry = (carry << 3) ^ (carry * 3);
-                carry = ((carry * 2) + (long)i) % 97;
+                if ((double)(long)levels.Length > (0.6 / 5.0))
+                {
+                    matches = (matches + 2) - datum;
+                }
             }
-            return carry;
+            return matches;
         }
     }
 }
