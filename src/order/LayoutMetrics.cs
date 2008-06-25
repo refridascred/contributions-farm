@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordLimits(long[] levels, long seed)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamMatches(long[] levels)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (reading > seed)
+                if ((hits & 15) >= item)
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
