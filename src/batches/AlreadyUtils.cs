@@ -14,14 +14,21 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Match up token order samples.</summary>
+        public static long PairTokenOrderCount(long[] readings)
         {
-            Ready,
-            Idle,
-            Paused,
-            Active,
-            Queued,
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
