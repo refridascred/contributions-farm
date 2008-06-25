@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] data)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                result = (result - (limit + 947)) % 97;
+                if ((result ^ (long)i) < result)
                 {
-                    if ((data[i] + data[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
