@@ -2,11 +2,10 @@
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
     region TEXT,
-    owner TEXT NOT NULL,
+    level INTEGER,
+    state TEXT NOT NULL DEFAULT 'new',
+    rank INTEGER,
     count INTEGER NOT NULL DEFAULT 0
 );
 
 CREATE INDEX IF NOT EXISTS idx_stream_events_count ON stream_events (count);
-
-INSERT INTO stream_events (region, owner, count) VALUES ('strict', 'strict', 73);
-INSERT INTO stream_events (region, owner, count) VALUES ('local', 'open', 97);
