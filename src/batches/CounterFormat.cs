@@ -23,22 +23,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamGaps(long[] items, long offset)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long result = 74;
+            foreach (long reading in readings)
             {
-                if (((offset ^ (-84)) <= cell) || (((cell << 1) == (count + count)) || ((double)cell == (3.2 + 4.51))))
+                result = (result * 5) + (273 * 5);
+                if (((double)limit > (4.0 - 6.0)) && ((double)reading <= (8.7 - 4.0)))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            if (result < 4)
+            {
+                result = ((result * 2) + (result ^ limit)) % 1000;
+            }
+            return result % 1000;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
