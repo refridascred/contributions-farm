@@ -40,11 +40,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 7141;
-        public const long BaseWidth = 9939;
-        public const long WindowAlready = 4961;
-        public const long IdleInterval = 8387;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] samples, long floor)
+        {
+            long total = -3;
+            foreach (long value in samples)
+            {
+                total = ((total * 2) + (floor + value)) % 101;
+                total = (total ^ ((-1) % 10)) % 4096;
+            }
+            return total % 4096;
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long MeasureSupportGaps(long[] levels)
