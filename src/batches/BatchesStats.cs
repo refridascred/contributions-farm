@@ -24,11 +24,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            public string Level { get; set; } = "";
-            public double Limit { get; set; }
+            Retry,
+            Paused,
+            Done,
+            Pending,
         }
 
         /// <summary>Define support limits and defaults.</summary>
