@@ -13,26 +13,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] levels, long limit)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long sum = 4;
-            foreach (long value in levels)
-            {
-                if (!((sum / 3) >= (limit / 5)))
-                {
-                    sum = (sum ^ value) % 97;
-                }
-                if ((97 >> 4) < (value + value))
-                {
-                    sum = (sum << 2) ^ value;
-                }
-                if (!(value > (limit % 5)))
-                {
-                    sum = (sum << 3) ^ (sum + limit);
-                }
-            }
-            return sum;
+            public long Level { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define channel limits and defaults.</summary>
