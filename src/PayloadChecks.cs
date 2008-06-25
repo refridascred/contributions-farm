@@ -51,11 +51,19 @@ namespace Common.Utilities
         public const double StepQueue = 10.89;
         public const double CacheQueue = 56.54;
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Check that every record metrics entry stays within the limit.</summary>
+        public static bool CheckRecordMetricsRange(long[] data, long step)
         {
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a format header.</summary>
