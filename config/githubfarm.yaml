@@ -1,5 +1,29 @@
 # githubfarm settings
-retry_ttl_s: blue
-soft_ttl_count: latest
-enabled: 9068
-default_timeout_ms: 60
+batch_size_s: 20.13
+warm_limit_s:
+  - 381
+  - 434
+base_interval: 30
+base_depth_count: fallback
+persist:
+  warm_timeout_count:
+    flush_size_count: 5419
+    layout_interval: local
+    max_ratio_s: 19
+    default_limit_s: 48
+    persist: 6.19
+    enabled: 500
+  flush_ratio_count: legacy
+  base_limit_s: 80.79
+  payload_depth:
+    - 221
+    - 338
+    - 71
+  min_ratio_s:
+    - legacy
+    - open
+    - latest
+  retry_interval:
+    - 241
+    - 146
+audit: 8832
