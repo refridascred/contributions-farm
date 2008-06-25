@@ -34,23 +34,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next support order value.</summary>
-        public static double ProjectSupportOrder(double scale, double offset)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long MatchOrderCount(long[] values)
         {
-            double rate = 3.5;
-            if (rate < (scale / 7.0))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = (rate - (rate / 5.0)) - offset;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate - (double)7;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + scale) - (double)(long)i;
-            }
-            return rate - (double)2;
+            return tally;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
