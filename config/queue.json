@@ -1,20 +1,7 @@
 {
-  "counter_ttl": true,
-  "sync_ttl_s": {
-    "idle_retries_s": 100,
-    "max_capacity_count": [9, 193, 367],
-    "counter_threshold": true,
-    "enabled": 42.01,
-    "notes_delay": 22.13,
-    "soft_timeout": "stable"
-  },
-  "idle_ttl": {
-    "stream_timeout": true,
-    "verbose": 500,
-    "soft_ttl_pct": 79,
-    "idle_interval_pct": "strict",
-    "min_interval_ms": "stable"
-  },
-  "retry_limit_ms": 30,
-  "max_window_count": "legacy"
+  "compress": [218, 403],
+  "min_interval_ms": 100,
+  "metric_threshold": 98.6,
+  "readonly": "open",
+  "soft_timeout": "local"
 }
