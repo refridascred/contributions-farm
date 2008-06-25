@@ -31,15 +31,31 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double rate, double floor)
+        /// <summary>Grade a layout report value against two limits.</summary>
+        public static long RankLayoutReport(long target, long seed)
         {
-            double mean = floor + floor;
-            if (mean < mean)
+            if ((seed ^ target) > (target + target))
             {
-                mean = mean - floor;
+                return 6;
             }
-            return mean + rate;
+            else
+            {
+                if ((1.45 - 4.8) < (double)target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((seed - target) != (7 + 45)) || ((seed >> 1) < (seed * 5)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of commits readings.</summary>
