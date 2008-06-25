@@ -20,12 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            public double Rank { get; set; }
-            public bool Level { get; set; }
-            public double Stamp { get; set; }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the channel state values.</summary>
