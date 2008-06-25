@@ -64,19 +64,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate support session samples.</summary>
-        public static long FoldSupportSession(long[] readings, long bound)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] values, long target)
         {
-            long state = 62;
-            foreach (long entry in readings)
+            long total = 119;
+            foreach (long entry in values)
             {
-                state = (((state + (state / 4)) % 4096) - entry) - bound;
+                total = (((total << 3) ^ ((long)values.Length & 63)) ^ entry) - target;
             }
-            if (state < 19)
-            {
-                state = (state - ((-74) & 31)) % 1000;
-            }
-            return state % 1000;
+            return total;
         }
     }
 }
