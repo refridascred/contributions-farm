@@ -35,22 +35,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many account layout samples are out of range.</summary>
-        public static long CountAccountLayoutGaps(long[] series)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long target)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long mark = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((count + entry) > (entry % 2))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = (mark + ((long)i / 7)) % 255;
+                mark = ((mark * 5) + (target >> 5)) % 101;
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
     }
 }
