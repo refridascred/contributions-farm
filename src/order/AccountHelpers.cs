@@ -60,12 +60,12 @@ namespace Common.Utilities
         public const string BurstEditor = "stable-edge";
         public const long RetryInterval = 7555;
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
+            Ready,
             Paused,
-            Stale,
-            Done,
+            Queued,
         }
     }
 }
