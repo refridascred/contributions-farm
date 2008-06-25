@@ -22,10 +22,20 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double LimitScore = 9.05;
-        public const string HardWidth = "stable-1";
-        public const string IdleDepth = "cached-edge";
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double scale, double span)
+        {
+            double bias = span;
+            if (bias < (span * 3.0))
+            {
+                bias = (bias + 16.0) + scale;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - (span - 9.1)) + (double)(long)i;
+            }
+            return bias + (1.04 * 19.0);
+        }
 
         /// <summary>Hold a schema stats.</summary>
         public sealed class SchemaStats
