@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] samples, long origin)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            bool found = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Idle,
+            New,
+            Pending,
+            Active,
         }
 
         /// <summary>Audit support readings against a rule.</summary>
