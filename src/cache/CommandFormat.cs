@@ -27,38 +27,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long limit, long bound)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            if ((bound >> 4) > limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound & 255) >= bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound << 3) < limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)bound < (double)limit)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Failed,
+            Draft,
+            Idle,
         }
 
         /// <summary>Define already limits and defaults.</summary>
