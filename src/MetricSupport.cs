@@ -36,12 +36,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long origin, long limit)
         {
-            public string Ratio { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Count { get; set; }
+            if ((8.7 - 12.0) == (double)limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((13.0 - 9.3) != (double)origin) && (origin >= (3 ^ origin)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit + limit) <= (limit ^ limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)limit < (double)origin) || ((origin << 2) < origin))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
