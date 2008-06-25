@@ -23,14 +23,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            Pending,
-            Draft,
-            Retry,
-            Stale,
-            New,
+            Failed,
+            Dropped,
+            Synced,
+            Ready,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
