@@ -57,18 +57,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] series)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long sum = -825;
-            foreach (long datum in series)
-            {
-                if ((sum % 12) > (sum / 6))
-                {
-                    sum = (sum - (sum ^ 4)) ^ datum;
-                }
-            }
-            return sum % 1000;
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public long Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Roll a already counter forward.</summary>
