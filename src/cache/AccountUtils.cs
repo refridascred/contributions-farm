@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the account queue entries that pass the check.</summary>
-        public static long MeasureAccountQueueMatches(long[] samples, long origin)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricRange(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                if ((origin ^ 90) == (6 % 8))
+                if (entry != target)
                 {
-                    matches = (matches + 3) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Roll a session counter forward.</summary>
