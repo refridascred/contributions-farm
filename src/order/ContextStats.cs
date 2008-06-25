@@ -21,12 +21,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ProjectCluster(double gain, double offset)
         {
-            public string Score { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Ratio { get; set; }
+            double rate = (double)(4 % 12);
+            return (rate + gain) + offset;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
