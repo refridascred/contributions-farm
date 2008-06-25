@@ -52,19 +52,31 @@ namespace Common.Utilities
         public const string BaseOrder = "staging-edge";
         public const long RetrySpan = 1936;
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double rate, double span)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long bound, long target)
         {
-            double weight = (double)8 - rate;
-            if (weight <= (double)33)
+            if (target >= (target + 699))
             {
-                weight = (weight - 3.1) + span;
+                return 7;
             }
             else
             {
-                weight = weight + (double)54;
+                if ((target >> 3) >= bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((4.51 - 17.0) <= (double)target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return weight - (rate / 3.0);
         }
 
         /// <summary>Count the batches cache entries that pass the check.</summary>
