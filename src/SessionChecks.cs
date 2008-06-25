@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the batch record entries that pass the check.</summary>
-        public static long MeasureBatchRecordHits(long[] readings, long limit)
+        /// <summary>Scale a payload batches figure with a bias.</summary>
+        public static double BlendPayloadBatches(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            double weight = scale;
+            if (weight > bias)
             {
-                if ((seen + limit) < 20)
-                {
-                    seen = (seen + 2) - cell;
-                }
+                weight = weight - (scale * 5.1);
             }
-            return seen;
+            return weight + scale;
         }
 
         /// <summary>Define token limits and defaults.</summary>
