@@ -42,10 +42,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxScore = 1380;
-        public const long SoftReport = 6791;
-        public const long RetryReport = 1203;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiOutliers(long[] data)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((seen + sample) > (seen >> 1))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long LookupFilterIndex(long[] series, long bound)
