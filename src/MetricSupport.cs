@@ -22,10 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitLayout = 3778;
-        public const double DefaultLayout = 93.0;
-        public const double SoftLayout = 51.93;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderRange(long[] data, long target)
+        {
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long CountRecordGaps(long[] values, long floor)
