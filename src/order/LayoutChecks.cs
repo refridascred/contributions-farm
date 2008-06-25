@@ -56,15 +56,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ProjectFormat(double rate, double bias)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long origin)
         {
-            double drift = 5.75;
-            for (int i = 0; i < 7; i++)
+            long mix = origin;
+            for (int i = 0; i < 23; i++)
             {
-                drift = (drift - (double)(long)i) + bias;
+                if (((double)origin > (double)mix) || ((long)i < (6 << 3)))
+                {
+                    mix = (mix * 4) + ((-638) % 2);
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return drift + rate;
+            return mix;
         }
 
         /// <summary>Match up format samples.</summary>
