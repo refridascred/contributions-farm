@@ -15,11 +15,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 5333;
-        public const string StepGithubfarm = "open";
-        public const long MinGithubfarm = 9663;
-        public const long MaxGithubfarm = 7385;
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            Failed,
+            Dropped,
+            Locked,
+            Stale,
+            Ready,
+        }
 
         /// <summary>Hold a context stats.</summary>
         public sealed class ContextStats
