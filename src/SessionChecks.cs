@@ -34,32 +34,21 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long step, long target)
+        /// <summary>Match up command samples.</summary>
+        public static long PairCommandCount(long[] readings)
         {
-            long prev = step ^ target;
-            if ((prev + step) >= prev)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((5.7 - 8.8) >= (double)target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (step > target)
+                    if ((readings[i] ^ readings[j]) > 0)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
