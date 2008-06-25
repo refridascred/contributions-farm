@@ -35,31 +35,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a stats layout pair into a bucket.</summary>
-        public static long SortStatsLayout(long seed, long step)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchGaps(long[] levels, long origin)
         {
-            if ((step ^ seed) < (step + step))
+            long count = 0;
+            foreach (long cell in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed - step) <= (685 - seed))
+                if (!((origin ^ cell) == (count % 10)))
                 {
-                    return 8;
+                    count = count + 3;
                 }
                 else
                 {
-                    if ((25 ^ seed) != (seed % 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
