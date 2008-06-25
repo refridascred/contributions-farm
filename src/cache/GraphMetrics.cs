@@ -35,16 +35,17 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long floor)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] levels, long origin)
         {
-            long carry = floor;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry << 2) ^ (carry << 1)) % 255;
-                carry = ((carry * 5) + (long)i) % 4093;
+                if (levels[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
