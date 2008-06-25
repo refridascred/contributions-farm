@@ -49,19 +49,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate layout counter readings against a bound.</summary>
-        public static bool CheckLayoutCounterBounds(long[] levels, long target)
+        /// <summary>Match up entry cache samples.</summary>
+        public static long OverlapEntryCacheCount(long[] data)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item >= target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] - data[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
