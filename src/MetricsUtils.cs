@@ -52,23 +52,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine filter cache values into a single score.</summary>
-        public static long CombineFilterCache(long[] data)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long seed)
         {
-            long carry = 8;
-            foreach (long sample in data)
+            long score = seed;
+            for (int i = 0; i < 8; i++)
             {
-                carry = (carry ^ (carry - carry)) % 4096;
-                if ((carry + sample) > carry)
+                score = score - (seed << 2);
+                if (((score - (long)i) > (seed >> 5)) && ((double)score == (2.0 * 9.0)))
                 {
-                    carry = ((carry << 2) ^ (long)data.Length) % 101;
+                    score = ((score * 2) + 107) % 4096;
                 }
-                if ((double)carry < (4.0 * 3.73))
-                {
-                    carry = (carry + (carry + 3)) % 4096;
-                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return carry % 97;
+            return score;
         }
     }
 }
