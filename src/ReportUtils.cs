@@ -46,13 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphMatches(long[] values)
         {
-            Active,
-            Locked,
-            Draft,
-            Dropped,
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((double)tally >= 13.0)
+                {
+                    tally = (tally + 2) ^ sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a format reading.</summary>
