@@ -1,9 +1,6 @@
 {
-  "tools_retries": 7788,
-  "sync_window": {
-    "notes_timeout": false,
-    "idle_capacity_count": "blue",
-    "min_depth_s": ["stable", "local"]
-  },
-  "layout_ratio": true
+  "idle_threshold": false,
+  "audit": ["blue", "legacy", "stable", "standard"],
+  "min_depth_pct": 71,
+  "sync_retries_ms": 60
 }
