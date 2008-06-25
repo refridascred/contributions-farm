@@ -13,15 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double weight, double offset)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] series)
         {
-            double weight2 = (double)980 * 1.08;
-            if (weight2 >= (double)(-126))
+            long sum = 694;
+            foreach (long datum in series)
             {
-                weight2 = (weight2 + offset) - weight;
+                sum = (((sum * 4) + sum) % 65521) - datum;
             }
-            return weight2 + (double)3;
+            if (sum < 267)
+            {
+                sum = ((sum * 4) + (sum % 12)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Hold a stats record.</summary>
