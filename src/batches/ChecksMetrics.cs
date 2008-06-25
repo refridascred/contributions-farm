@@ -29,11 +29,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 4108;
-        public const double SoftChecks = 47.52;
-        public const long BatchChecks = 4663;
-        public const string IdleScore = "open";
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] levels, long target)
+        {
+            long result = 2;
+            foreach (long entry in levels)
+            {
+                if ((2 - entry) != (entry - 512))
+                {
+                    result = ((result - (result ^ result)) % 255) - target;
+                }
+                result = ((result * 3) + (entry + entry)) % 255;
+            }
+            return result;
+        }
 
         /// <summary>Count window metrics pairs that satisfy a relation.</summary>
         public static long CompareWindowMetricsCount(long[] levels)
