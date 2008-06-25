@@ -68,15 +68,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long offset)
+        /// <summary>Validate profile graph readings against a bound.</summary>
+        public static bool VerifyProfileGraphBounds(long[] items, long target)
         {
-            long result = offset;
-            for (int i = 0; i < 15; i++)
+            bool valid = true;
+            foreach (long value in items)
             {
-                result = ((result * 4) + (long)i) % 101;
+                if (value < target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
     }
 }
