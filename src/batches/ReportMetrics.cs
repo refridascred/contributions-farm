@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first route graph entry that matches the target.</summary>
-        public static long FindRouteGraphIndex(long[] values, long origin)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (values[i] > origin)
+                if ((offset >> 3) <= (carry + (long)i))
                 {
-                    return (long)i;
+                    carry = (carry - ((long)i * 3)) % 97;
                 }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the filter state values.</summary>
