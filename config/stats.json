@@ -1,17 +1,11 @@
 {
-  "layout_ratio": {
-    "account_capacity": 42.88,
-    "dry_run": {
-      "poll_limit": ["fallback", "legacy"],
-      "window_size": 66,
-      "graph_delay": 11.22,
-      "base_threshold": "blue"
-    },
-    "graph_ratio": "legacy"
+  "strict": 8643,
+  "poll_size_ms": "latest",
+  "queue_window": {
+    "counter_ratio": 981,
+    "enabled": 17.4,
+    "soft_threshold_pct": "open",
+    "report_size": ["local", "edge", "standard"]
   },
-  "verbose": 41.77,
-  "base_threshold": true,
-  "enabled": [459, 78, 121, 155],
-  "readonly": 30,
-  "retry_limit_s": 100
+  "schema_threshold": 9134
 }
