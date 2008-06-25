@@ -1,16 +1,6 @@
 # entry settings
-default_capacity: false
-retry_limit_pct:
-  min_ttl: true
-  batch_limit:
-    soft_interval_count:
-      - open
-      - blue
-      - green
-      - strict
-    persist: 33.1
-    contributi_threshold: latest
-    compress: false
-  layout_size: primary
-record_ttl: 74.12
-idle_size: primary
+sync_interval_ms: true
+sync_ttl_ms: edge
+metrics_ratio: standard
+dry_run: 8348
+flush_limit_count: 56
