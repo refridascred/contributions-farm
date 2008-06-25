@@ -19,18 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsHits(long[] series, long step)
+        /// <summary>Look up the position of a stats payload sample.</summary>
+        public static long LookupStatsPayloadIndex(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)(long)series.Length <= (7.0 - 4.9))
+                if (items[i] > offset)
                 {
-                    tally = ((tally + 3) ^ reading) + step;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
