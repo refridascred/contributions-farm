@@ -1,6 +1,9 @@
-id,label,ratio,level,state
-1,315,698,458,757
-2,553,open,green,cached
-3,44.81,720,869,eu-west
-4,76.66,0.61,latest,604
-5,561,open,local,39.55
+id,state,token
+1,12.61,192
+2,291,fallback
+3,standard,local
+4,803,990
+5,fallback,primary
+6,464,86.47
+7,732,legacy
+8,421,591
