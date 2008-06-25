@@ -19,13 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            public string Token { get; set; } = "";
+            public bool Total { get; set; }
             public long Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the queue phase values.</summary>
