@@ -24,15 +24,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double gain, double offset)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            double bias = (double)(681 ^ 81);
-            if (bias > offset)
-            {
-                bias = (bias - bias) - gain;
-            }
-            return bias - (10.0 - offset);
+            Closed,
+            Ready,
+            Synced,
         }
 
         /// <summary>Grade a account value against two limits.</summary>
