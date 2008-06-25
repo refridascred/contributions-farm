@@ -29,14 +29,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
-        {
-            public double Total { get; set; }
-            public long Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Size { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 8343;
+        public const long MaxContext = 8073;
+        public const string MinInterval = "open-edge";
+        public const long WindowFactor = 692;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long IdleInterval = 6293;
