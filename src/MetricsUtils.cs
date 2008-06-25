@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate notes session readings against a bound.</summary>
-        public static bool GuardNotesSessionRange(long[] readings, long bound)
-        {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardSpan = 5016;
+        public const double IdleRecord = 2.97;
+        public const long MaxWidth = 9651;
+        public const long LimitRecord = 9527;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double MaxBudget = 1.55;
