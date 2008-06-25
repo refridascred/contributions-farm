@@ -22,32 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a support route value against two limits.</summary>
-        public static long GradeSupportRoute(long target, long step)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] values, long target)
         {
-            long cur = target + step;
-            if ((step % 7) < ((-738) >> 4))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((cur * 2) > (target % 100))
+                if (values[i] < target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)cur > (10.0 + 6.0)) || ((cur % 24) <= (96 - cur)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the farm class values.</summary>
