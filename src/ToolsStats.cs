@@ -44,19 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] readings)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] values)
         {
-            long anchor = 21;
-            foreach (long cell in readings)
+            long anchor = -5;
+            foreach (long item in values)
             {
-                anchor = (anchor * 4) + anchor;
-                if ((8.9 < (double)anchor) || ((anchor + anchor) == (cell + cell)))
+                if ((double)item == (double)(-984))
                 {
-                    break;
+                    anchor = ((anchor * 5) + item) % 101;
                 }
             }
-            return anchor % 65521;
+            return anchor;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
