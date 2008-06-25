@@ -65,13 +65,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Rank graph tools input into a small class.</summary>
+        public static long ClassifyGraphTools(long bound, long origin)
         {
-            Idle,
-            Draft,
-            New,
-            Synced,
+            long prev = bound - origin;
+            if ((prev << 3) < (origin + 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin - origin) < (origin % 100))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((6.3 + 6.73) <= (double)origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank editor input into a small class.</summary>
