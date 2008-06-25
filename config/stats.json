@@ -1,5 +1,17 @@
 {
-  "retry_delay": 100,
-  "strict": "cached",
-  "base_delay_ms": 23
+  "layout_ratio": {
+    "account_capacity": 42.88,
+    "dry_run": {
+      "poll_limit": ["fallback", "legacy"],
+      "window_size": 66,
+      "graph_delay": 11.22,
+      "base_threshold": "blue"
+    },
+    "graph_ratio": "legacy"
+  },
+  "verbose": 41.77,
+  "base_threshold": true,
+  "enabled": [459, 78, 121, 155],
+  "readonly": 30,
+  "retry_limit_s": 100
 }
