@@ -16,19 +16,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] readings, long step)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long SeekAccountIndex(long[] levels, long step)
         {
-            long carry = 11;
-            foreach (long entry in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry * 2) + (entry / 7)) % 101;
-                if ((3 * 4) > (step - entry))
+                if (levels[i] <= step)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
