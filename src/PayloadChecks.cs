@@ -20,15 +20,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long offset)
+        /// <summary>Fold a list of order stream readings.</summary>
+        public static long WeighOrderStream(long[] readings)
         {
-            long acc = offset;
-            for (int i = 0; i < 23; i++)
+            long result = 2;
+            foreach (long datum in readings)
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                if (!((10.0 * 2.28) > (double)datum))
+                {
+                    result = (result - (result - result)) % 97;
+                }
+                if (((datum + 568) > datum) && (datum >= (datum << 1)))
+                {
+                    break;
+                }
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Count the cluster route entries that pass the check.</summary>
