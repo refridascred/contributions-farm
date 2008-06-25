@@ -53,12 +53,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string HardEditor = "open-edge";
-        public const long BurstWidth = 2284;
-        public const long BatchDepth = 4093;
-        public const string BurstEditor = "stable-edge";
-        public const long RetryInterval = 7555;
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
+        {
+            Failed,
+            Ready,
+            Done,
+            Draft,
+        }
 
         /// <summary>Describe the metrics phase values.</summary>
         public enum MetricsPhase
