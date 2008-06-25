@@ -1,7 +1,14 @@
 {
-  "hard_size_count": 30,
-  "batch_depth_pct": "latest",
-  "counter_ttl": [378, 289],
-  "strict": 1105,
-  "max_delay": false
+  "min_depth": 100,
+  "schema_limit": "stable",
+  "retry_ttl": {
+    "audit": "stable",
+    "route_ratio": ["strict", "fallback", "staging", "staging"],
+    "retry_threshold_pct": false,
+    "counter_ttl": 100,
+    "commits_capacity": 250
+  },
+  "cluster_threshold": 34.6,
+  "verbose": 4231,
+  "batch_interval": 68
 }
