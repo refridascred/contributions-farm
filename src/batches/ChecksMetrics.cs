@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const string BatchCommand = "open-1";
         public const double StepInterval = 0.66;
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            public long Level { get; set; }
-            public string Token { get; set; } = "";
-            public long Size { get; set; }
+            Paused,
+            Locked,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Define token limits and defaults.</summary>
