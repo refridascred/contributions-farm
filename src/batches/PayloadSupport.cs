@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BaseAlready = 10.38;
-        public const long HardRatio = 2889;
-        public const long DefaultAlready = 1166;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MaxQueue = "open-v2";
+        public const string StepQueue = "local-1";
+        public const double LimitQueue = 9.91;
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long SortOrder(long origin, long origin2)
