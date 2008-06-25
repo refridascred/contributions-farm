@@ -39,17 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a metrics editor reading by value.</summary>
-        public static long LookupMetricsEditorIndex(long[] levels, long floor)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordGaps(long[] values, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((levels[i] < floor) && ((levels[i] % 3) != 0))
+                if (!((count > floor) || ((double)sample > (1.7 - 11.0))))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
