@@ -13,18 +13,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountMatches(long[] levels, long offset)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long offset)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long acc = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((sample * 4) < tally)
+                acc = acc + (offset + acc);
+                acc = (acc - (offset % 7)) % 97;
+                if (acc >= (acc + offset))
                 {
-                    tally = (tally + 3) + offset;
+                    acc = acc - (2 + offset);
+                    acc = (acc + (acc - acc)) % 1000;
                 }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
