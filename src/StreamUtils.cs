@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Grade a session filter value against two limits.</summary>
+        public static long SortSessionFilter(long floor, long bound)
         {
-            Locked,
-            Closed,
-            Pending,
-            Dropped,
+            long gap = floor - bound;
+            if ((444 - gap) < (88 / 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if (gap < (38 % 7))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)gap != (20.0 - 13.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a already options.</summary>
