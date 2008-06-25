@@ -18,19 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every context window entry stays within the limit.</summary>
-        public static bool GuardContextWindowBounds(long[] samples, long target)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double weight, double offset)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            double bias = (weight + offset) - offset;
+            if (bias >= (offset / 5.0))
             {
-                if (datum != target)
-                {
-                    ready = false;
-                    break;
-                }
+                bias = bias - (weight - weight);
             }
-            return ready;
+            else
+            {
+                bias = bias + offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + (bias + weight)) - (double)(long)i;
+            }
+            return bias - (double)1;
         }
 
         /// <summary>Accumulate filter queue samples.</summary>
