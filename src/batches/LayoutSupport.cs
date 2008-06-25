@@ -53,18 +53,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamMatches(long[] levels, long floor)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((33 >= (reading + (-1))) || ((3 ^ 1) <= (floor * 5)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Queued,
+            New,
+            Ready,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
