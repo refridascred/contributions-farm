@@ -12,39 +12,12 @@ namespace Common.Utilities
             return (scale + 0.05) + weight;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long seed, long step)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long slot = seed - step;
-            if ((double)step >= (double)seed)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((slot - step) != (step - step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (seed <= (step * 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (slot <= (seed & 255))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Retry,
+            Idle,
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
