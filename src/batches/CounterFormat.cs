@@ -39,13 +39,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            public double Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
-            public long Owner { get; set; }
+            public long Offset { get; set; }
+            public bool Owner { get; set; }
+            public string Level { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
