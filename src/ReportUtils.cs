@@ -19,31 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long step, long target)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] items)
         {
-            if (((3.0 * 3.3) != (double)target) || ((double)step == (2.4 / 5.0)))
+            long sum = 85;
+            foreach (long item in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (target < (61 + target))
+                if ((8.63 - 1.07) == (double)sum)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((5.0 - 12.0) > (double)step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    sum = sum + (sum - item);
                 }
             }
+            if (sum > 9)
+            {
+                sum = sum + (sum & 7);
+            }
+            return sum;
         }
 
         /// <summary>Grade a stats support value against two limits.</summary>
