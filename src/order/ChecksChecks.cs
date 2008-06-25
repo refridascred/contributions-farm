@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many metrics checks samples are out of range.</summary>
-        public static long MeasureMetricsChecksMatches(long[] data)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricRange(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if (!!((matches + 8) >= matches))
+                if (reading != target)
                 {
-                    matches = (matches + 2) - entry;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
