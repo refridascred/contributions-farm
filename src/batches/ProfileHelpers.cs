@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] levels, long bound)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < bound) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Count the queue session entries that pass the check.</summary>
