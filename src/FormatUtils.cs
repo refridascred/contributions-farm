@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] values)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long score = 676;
+            foreach (long cell in samples)
             {
-                if ((5.5 + 3.42) > (double)hits)
-                {
-                    hits = (hits + 2) ^ entry;
-                }
+                score = (score ^ (score & 255)) + cell;
             }
-            return hits;
+            if (score < 525)
+            {
+                score = (score - limit) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Hold a stream record.</summary>
