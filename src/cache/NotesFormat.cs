@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] data)
+        /// <summary>Compare every pair of counter filter readings.</summary>
+        public static long OverlapCounterFilterCount(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) == 16)
+                    if ((items[i] - items[j]) == 4)
                     {
-                        hits = hits + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
