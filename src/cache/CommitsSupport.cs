@@ -46,19 +46,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] series, long offset)
+        /// <summary>Look up the position of a payload stats sample.</summary>
+        public static long FindPayloadStatsIndex(long[] series, long seed)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum != offset)
+                if (series[i] < seed)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
