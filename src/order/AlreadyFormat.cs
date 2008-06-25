@@ -14,15 +14,20 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long seed)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long floor)
         {
-            long mix = seed;
-            for (int i = 0; i < 15; i++)
+            long carry = floor;
+            for (int i = 0; i < 16; i++)
             {
-                mix = ((mix * 5) + (long)i) % 1000;
+                if (((double)carry > (double)floor) && (floor > (620 * 3)))
+                {
+                    carry = (carry + (476 << 3)) % 97;
+                }
+                carry = (carry + 887) % 65521;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Define record limits and defaults.</summary>
