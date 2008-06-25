@@ -37,18 +37,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelMatches(long[] samples, long target)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long floor, long step)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            if ((double)step <= 15.0)
             {
-                if ((cell >> 5) <= cell)
+                return 5;
+            }
+            else
+            {
+                if ((double)floor != (14.0 / 3.0))
                 {
-                    matches = (matches + 3) + target;
+                    return 7;
+                }
+                else
+                {
+                    if ((508 % 97) != (step % 60))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step - step) == ((-725) - floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
