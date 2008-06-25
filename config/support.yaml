@@ -1,18 +1,15 @@
 # support settings
-soft_depth_ms: 6492
-account_depth: false
-hard_ratio_count: 24.45
-soft_delay_s: legacy
-max_retries_count:
-  persist: green
-  warm_timeout: 9957
-  strict:
-    idle_delay_s: local
-    profile_timeout:
-      - staging
-      - local
-      - primary
-      - local
-    persist: 100
-    report_depth: edge
-    default_window_s: 6852
+githubfarm_threshold: staging
+checks_ttl: false
+warm_delay_count:
+  - green
+  - open
+  - stable
+  - edge
+flush_capacity_pct:
+  batch_ratio: 38
+  soft_timeout_count:
+    hard_capacity_ms: cached
+    soft_ratio_ms: 7114
+    warm_depth_s: true
+  order_ttl: false
