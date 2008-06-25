@@ -12,40 +12,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Classify a already batches pair into a bucket.</summary>
-        public static long RankAlreadyBatches(long step, long target)
-        {
-            long lane = step - target;
-            if ((double)step > (double)244)
-            {
-                return 3;
-            }
-            else
-            {
-                if (lane <= (lane - lane))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)lane <= (double)3) && ((double)10 <= (double)lane))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((9.41 - 3.53) == (double)target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double IdleSpan = 39.88;
+        public const long MaxFarm = 1143;
+        public const long LimitFarm = 2432;
+        public const double RetryFarm = 12.43;
+        public const long IdleInterval = 2847;
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
