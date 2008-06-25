@@ -52,21 +52,22 @@ namespace Common.Utilities
         public const string BaseOrder = "staging-edge";
         public const long RetrySpan = 1936;
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] items)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterMatches(long[] series, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (88 < sample)
                 {
-                    if ((items[i] - items[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 1) + origin;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count the batches cache entries that pass the check.</summary>
