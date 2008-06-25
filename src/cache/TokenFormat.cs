@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const string BatchLevel = "latest-1";
         public const double BatchInterval = 76.09;
 
-        /// <summary>Validate payload entry readings against a bound.</summary>
-        public static bool VerifyPayloadEntryRange(long[] readings, long step)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileGaps(long[] data, long step)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (item >= step)
+                if (!((double)seen < (14.0 / 6.0)))
                 {
-                    stale = false;
-                    break;
+                    seen = ((seen + 3) + value) + step;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
