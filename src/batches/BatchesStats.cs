@@ -14,21 +14,13 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long MatchBufferCount(long[] samples)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Iterate the order record series from a seed.</summary>
