@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphLimits(long[] samples, long bound)
+        /// <summary>Classify a profile token pair into a bucket.</summary>
+        public static long GradeProfileToken(long target, long floor)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            if (target <= (8 ^ target))
             {
-                if (reading > bound)
+                return 7;
+            }
+            else
+            {
+                if ((floor * 2) >= (target ^ floor))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (!((floor - floor) >= floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor + floor) > floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
