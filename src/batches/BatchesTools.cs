@@ -12,17 +12,39 @@ namespace Common.Utilities
         public const double LimitContributi = 62.61;
         public const long MaxSize = 9632;
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] values, long target)
+        /// <summary>Classify a already batches pair into a bucket.</summary>
+        public static long RankAlreadyBatches(long step, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long lane = step - target;
+            if ((double)step > (double)244)
             {
-                if (values[i] < target)
+                return 3;
+            }
+            else
+            {
+                if (lane <= (lane - lane))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (((double)lane <= (double)3) && ((double)10 <= (double)lane))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((9.41 - 3.53) == (double)target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the session level values.</summary>
