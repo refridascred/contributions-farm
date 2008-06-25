@@ -16,18 +16,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextOutliers(long[] readings)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long target, long target2)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long step = target - target2;
+            if ((target * 4) == (step - target2))
             {
-                if ((3.89 * 8.0) <= (double)matches)
+                return 8;
+            }
+            else
+            {
+                if (target < (target2 >> 4))
                 {
-                    matches = (matches + 3) + entry;
+                    return 0;
+                }
+                else
+                {
+                    if ((target2 * 5) > (target2 + target2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
