@@ -25,20 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsHits(long[] values, long floor)
         {
-            long total = floor;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (((floor ^ (long)i) != ((long)i % 8)) || ((98 >> 5) != (total + (long)i)))
+                if (!!(seen < entry))
                 {
-                    total = ((total * 4) + (7 + total)) % 101;
+                    seen = (seen + 2) + floor;
                 }
-                total = ((total << 3) ^ total) % 4096;
-                total = ((total * 5) + (long)i) % 4093;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total;
+            return seen;
         }
     }
 }
