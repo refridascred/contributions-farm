@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] samples)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Stale,
+            Idle,
+            Draft,
+            Done,
+            Dropped,
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
