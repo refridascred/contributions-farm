@@ -1,4 +1,4 @@
 # support settings
-counter_ttl: stable
-soft_window_ms: blue
-poll_retries_ms: edge
+hard_ttl_pct: true
+record_threshold: 16
+contributi_size: true
