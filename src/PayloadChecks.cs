@@ -41,21 +41,12 @@ namespace Common.Utilities
         public const double StepQueue = 10.89;
         public const double CacheQueue = 56.54;
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] readings)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Closed,
+            Ready,
+            Idle,
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
