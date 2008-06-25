@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryRange(long[] readings, long step)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            bool stale = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Offset { get; set; }
+            public long Rank { get; set; }
+            public long Token { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Compare every pair of cache buffer readings.</summary>
