@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=421
-log "limit is ${RECORD_LIMIT}"
-
-for item in standard strict; do
-    log "checking ${item}"
-done
-
-mode="${1:-edge}"
+mode="${1:-blue}"
 case "${mode}" in
-    stable)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in green eu-west cached edge; do
+    log "checking ${item}"
+done
+
+RECORD_LIMIT=156
+log "limit is ${RECORD_LIMIT}"
