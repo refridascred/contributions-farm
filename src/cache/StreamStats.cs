@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long target)
         {
-            Paused,
-            Dropped,
-            Synced,
+            long mark = target;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = (mark + (target ^ mark)) % 4096;
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
