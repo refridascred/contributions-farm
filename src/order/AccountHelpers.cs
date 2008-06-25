@@ -43,18 +43,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine window buffer values into a single score.</summary>
-        public static long DigestWindowBuffer(long[] series)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] levels, long bound)
         {
-            long anchor = 68;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((13.0 * 1.7) >= (double)reading)
+                if ((seen >> 4) == (reading / 2))
                 {
-                    anchor = (anchor << 2) ^ (148 >> 2);
+                    seen = (seen + 1) + bound;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Match up report token samples.</summary>
