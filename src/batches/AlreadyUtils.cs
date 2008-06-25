@@ -19,10 +19,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardLevel = 4442;
-        public const double LimitWidth = 10.65;
-        public const long SoftInterval = 1609;
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] samples, long target)
+        {
+            long mix = 0;
+            foreach (long reading in samples)
+            {
+                if ((target << 3) >= target)
+                {
+                    mix = ((mix * 4) + mix) % 97;
+                }
+                else
+                {
+                    mix = mix + (reading + reading);
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
