@@ -51,11 +51,17 @@ namespace Common.Utilities
             return drift - (2.79 * 0.18);
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultInterval = 2900;
-        public const long BatchTimeout = 5882;
-        public const long MinRecord = 1240;
-        public const long RetryRecord = 1146;
-        public const long DefaultRecord = 9098;
+        /// <summary>Look up the position of a context account sample.</summary>
+        public static long SeekContextAccountIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= step) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
