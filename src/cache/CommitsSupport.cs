@@ -76,9 +76,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 3449;
-        public const long HardSchema = 7314;
-        public const string StepSchema = "legacy-v2";
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
+        }
     }
 }
