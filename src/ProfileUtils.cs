@@ -20,18 +20,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the record session entries that pass the check.</summary>
-        public static long TallyRecordSessionMatches(long[] values, long floor)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long limit, long origin)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            if ((origin / 4) >= (4 * 3))
             {
-                if ((hits >= (cell >> 4)) && ((hits / 5) != (926 % 7)))
+                return 3;
+            }
+            else
+            {
+                if (limit > 35)
                 {
-                    hits = (hits + 2) - floor;
+                    return 7;
+                }
+                else
+                {
+                    if (origin > limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Rank context editor input into a small class.</summary>
