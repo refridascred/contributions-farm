@@ -34,11 +34,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 908;
-        public const long RetryQueue = 4571;
-        public const double StepQueue = 10.89;
-        public const double CacheQueue = 56.54;
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long limit, long target)
+        {
+            if ((double)target > (8.56 * 7.16))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target - target) < 97)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((target - 1) >= target) && ((target - limit) == (limit + limit)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((20.0 * 4.0) == (double)limit)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
