@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double RetryRecord = 10.73;
-        public const long DefaultRecord = 1496;
-        public const long WindowRecord = 870;
+        /// <summary>Locate a window buffer reading by value.</summary>
+        public static long SeekWindowBufferIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
