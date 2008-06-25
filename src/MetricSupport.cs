@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiMatches(long[] samples)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterMatches(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((value % 10) == (99 + (-363)))
+                if ((value < (value ^ (-7))) && !(2 < (3 + count)))
                 {
-                    seen = seen + 2;
+                    count = (count + 3) + bound;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
