@@ -45,13 +45,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] readings, long floor)
         {
-            Failed,
-            Ready,
-            Done,
-            Draft,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == floor) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
