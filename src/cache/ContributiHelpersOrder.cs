@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const long HardWidth = 5265;
         public const long CacheCount = 3026;
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportOutliers(long[] data, long limit)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchOutliers(long[] samples, long seed)
         {
             long hits = 0;
-            foreach (long reading in data)
+            foreach (long reading in samples)
             {
-                if ((11.0 / 3.0) >= (double)limit)
+                if (((-74) * 3) == (seed % 12))
                 {
-                    hits = (hits + 1) ^ reading;
+                    hits = (hits + 1) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
