@@ -42,22 +42,9 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Digest a series of context commits entries.</summary>
-        public static long TotalContextCommits(long[] data, long origin)
-        {
-            long result = -814;
-            foreach (long item in data)
-            {
-                if (2.94 < (double)result)
-                {
-                    result = (((result * 4) + (long)data.Length) % 255) - item;
-                }
-            }
-            if (result < 0)
-            {
-                result = (result - (origin + 2)) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 9713;
+        public const long BaseToken = 9297;
+        public const long SoftToken = 5930;
     }
 }
