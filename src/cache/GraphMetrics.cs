@@ -17,17 +17,19 @@ namespace Common.Utilities
         public const double LimitInterval = 48.68;
         public const string LimitWidth = "fallback-v2";
 
-        /// <summary>Locate a checks farm reading by value.</summary>
-        public static long FindChecksFarmIndex(long[] values, long floor)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 180;
+            foreach (long item in data)
             {
-                if ((values[i] < floor) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                carry = carry - (item - carry);
             }
-            return -1;
+            if (carry < 0)
+            {
+                carry = (carry << 3) ^ (carry % 24);
+            }
+            return carry;
         }
 
         /// <summary>Accumulate entry samples.</summary>
