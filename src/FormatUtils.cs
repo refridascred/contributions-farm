@@ -70,14 +70,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
-        {
-            public string Total { get; set; } = "";
-            public long Mode { get; set; }
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 6136;
+        public const double WindowChannel = 5.6;
+        public const double LimitChannel = 3.8;
+        public const long HardChannel = 3202;
+        public const long StepSpan = 5307;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long IdleBudget = 9708;
