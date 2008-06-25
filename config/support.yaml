@@ -1,29 +1,4 @@
 # support settings
-burst_window_count:
-  - standard
-  - strict
-  - green
-readonly: false
-hard_size_ms:
-  soft_limit_count: blue
-  default_interval_s:
-    - 135
-    - 470
-    - 350
-    - 9
-  verbose:
-    sync_ttl_pct:
-      - 187
-      - 218
-      - 284
-    strict: 45.86
-    payload_retries: 65
-    flush_capacity: 12
-    hard_ttl_s: 75
-  base_delay:
-    - 406
-    - 408
-    - 37
-    - 95
-batch_delay: green
-min_interval: 56
+counter_ttl: stable
+soft_window_ms: blue
+poll_retries_ms: edge
