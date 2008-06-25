@@ -49,11 +49,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double HardFactor = 31.97;
-        public const double DefaultLayout = 75.59;
-        public const long IdleLevel = 743;
-        public const double MinInterval = 67.7;
-        public const double BaseLayout = 3.87;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] series)
+        {
+            long carry = 87;
+            foreach (long value in series)
+            {
+                if (((carry >> 5) <= 85) || ((9.0 / 6.0) > (double)carry))
+                {
+                    carry = (carry - (value % 24)) % 101;
+                }
+            }
+            if (carry < 19)
+            {
+                carry = carry + (carry * 2);
+            }
+            return carry % 4096;
+        }
     }
 }
