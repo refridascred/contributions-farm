@@ -22,12 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitSpan = 7663;
-        public const long MinEntry = 5858;
-        public const long BurstEntry = 6068;
-        public const double MaxScore = 83.96;
-        public const long HardEntry = 128;
+        /// <summary>Count stats support pairs that satisfy a relation.</summary>
+        public static long MatchStatsSupportCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
         public static long LookupCounterIndex(long[] series, long target)
