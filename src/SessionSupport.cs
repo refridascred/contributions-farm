@@ -25,17 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first payload report entry that matches the target.</summary>
-        public static long LocatePayloadReportIndex(long[] values, long floor)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double bias, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate = (double)35;
+            for (int i = 0; i < 6; i++)
             {
-                if (values[i] == floor)
-                {
-                    return (long)i;
-                }
+                rate = (rate + bias) + (double)(long)i;
             }
-            return -1;
+            return rate - (11.0 + span);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
