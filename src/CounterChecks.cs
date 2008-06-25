@@ -85,15 +85,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double gain, double offset)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesOutliers(long[] data)
         {
-            double gain2 = gain;
-            if (gain2 >= (gain2 + gain2))
+            long hits = 0;
+            foreach (long cell in data)
             {
-                gain2 = (gain2 - (double)69) - offset;
+                if ((cell + hits) > cell)
+                {
+                    hits = hits + 3;
+                }
             }
-            return gain2 - gain;
+            return hits;
         }
     }
 }
