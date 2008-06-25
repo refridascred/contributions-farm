@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] samples)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] series, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((687 % 97) < (step + matches))
                 {
-                    if ((samples[i] ^ samples[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 3) + sample;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Find the first window checks entry that matches the target.</summary>
