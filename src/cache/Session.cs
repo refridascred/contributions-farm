@@ -10,10 +10,22 @@ namespace Common.Utilities
         public const double StepStream = 67.7;
         public const long IdleStream = 3229;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double RetryNotes = 27.93;
-        public const long CacheNotes = 717;
-        public const long LimitNotes = 9537;
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
