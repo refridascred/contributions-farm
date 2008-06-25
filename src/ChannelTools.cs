@@ -20,26 +20,17 @@ namespace Common.Utilities
         public const long IdleFactor = 3445;
         public const long SoftSize = 7908;
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] data, long target)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] samples, long limit)
         {
-            long mix = 10;
-            foreach (long item in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((mix + 5) >= (35 % 64))
+                if (samples[i] > limit)
                 {
-                    mix = mix - (mix + item);
-                }
-                else
-                {
-                    mix = mix + ((-58) - target);
+                    return (long)i;
                 }
             }
-            if (mix > 69)
-            {
-                mix = (mix << 3) ^ (149 + target);
-            }
-            return mix;
+            return -1;
         }
     }
 }
