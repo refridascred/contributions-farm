@@ -22,22 +22,10 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                score = score ^ (seed & 31);
-                score = (score << 2) ^ seed;
-                if (((double)score != (double)11) || ((score + (long)i) < (seed - 27)))
-                {
-                    break;
-                }
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double LimitScore = 9.05;
+        public const string HardWidth = "stable-1";
+        public const string IdleDepth = "cached-edge";
 
         /// <summary>Hold a schema stats.</summary>
         public sealed class SchemaStats
