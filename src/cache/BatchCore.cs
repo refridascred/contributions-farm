@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            Active,
-            Idle,
-            New,
+            Queued,
+            Failed,
+            Done,
+            Closed,
+            Retry,
         }
 
         /// <summary>Fold a list of stats command readings.</summary>
