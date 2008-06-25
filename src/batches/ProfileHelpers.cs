@@ -41,10 +41,14 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 5502;
-        public const long BaseFormat = 8730;
-        public const long StepDepth = 6108;
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            New,
+            Closed,
+            Locked,
+            Synced,
+        }
 
         /// <summary>Describe the batches kind values.</summary>
         public enum BatchesKind
