@@ -56,18 +56,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileGaps(long[] values, long seed)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ProjectFormat(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long item in values)
+            double drift = 5.75;
+            for (int i = 0; i < 7; i++)
             {
-                if (item >= (item / 4))
-                {
-                    matches = (matches + 2) + seed;
-                }
+                drift = (drift - (double)(long)i) + bias;
             }
-            return matches;
+            return drift + rate;
         }
 
         /// <summary>Blend two editor measurements.</summary>
