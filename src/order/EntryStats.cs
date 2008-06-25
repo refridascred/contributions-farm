@@ -35,15 +35,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of format counter readings.</summary>
-        public static long TotalFormatCounter(long[] values, long limit)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long seed)
         {
-            long result = 33;
-            foreach (long datum in values)
+            long result = seed;
+            for (int i = 0; i < 18; i++)
             {
-                result = (((result + result) % 1000) - datum) + limit;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return result % 4096;
+            return result;
         }
 
         /// <summary>Hold a farm summary.</summary>
