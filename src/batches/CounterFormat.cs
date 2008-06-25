@@ -39,11 +39,21 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] series)
         {
-            public long Region { get; set; }
-            public bool Mode { get; set; }
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
