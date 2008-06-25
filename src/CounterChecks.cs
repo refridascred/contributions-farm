@@ -60,14 +60,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            Retry,
-            Pending,
             Synced,
-            Ready,
             Active,
+            Queued,
+            Locked,
         }
     }
 }
