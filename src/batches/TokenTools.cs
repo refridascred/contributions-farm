@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two entry channel measurements.</summary>
-        public static double SmoothEntryChannel(double rate, double span)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double weight, double floor)
         {
-            double drift = span;
-            if (drift < (rate / 8.0))
+            double scale = floor;
+            for (int i = 0; i < 4; i++)
             {
-                drift = drift + rate;
+                scale = ((scale + (floor / 6.0)) + (double)(long)i) - weight;
             }
-            return drift + 8.9;
+            return scale + (double)72;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
