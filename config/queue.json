@@ -1,6 +1,19 @@
 {
-  "poll_delay_count": true,
-  "min_window": [420, 413, 52],
-  "strict": true,
-  "command_interval": 3
+  "idle_retries": 3198,
+  "warm_capacity": {
+    "enabled": "latest",
+    "soft_timeout": {
+      "dry_run": false,
+      "notes_ratio": 1.57,
+      "base_capacity_ms": [89, 387, 40, 198],
+      "idle_depth": "legacy"
+    },
+    "soft_window_s": ["standard", "local", "stable"],
+    "dry_run": true,
+    "burst_retries_s": ["stable", "legacy", "local"]
+  },
+  "cache_size_ms": [177, 143, 357, 237],
+  "idle_threshold_s": 2981,
+  "poll_limit_pct": 49.23,
+  "warm_interval_pct": 13.31
 }
