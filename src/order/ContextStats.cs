@@ -77,17 +77,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] series, long origin)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long origin, long origin2)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((origin & 63) > origin)
             {
-                if (series[i] > origin)
+                return 1;
+            }
+            else
+            {
+                if (((4.2 - 4.5) <= (double)origin) || (origin2 > (origin >> 3)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((9.87 - 5.37) <= (double)origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)origin <= (4.0 + 16.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
