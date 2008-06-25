@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] samples, long seed)
+        /// <summary>Grade a batch session value against two limits.</summary>
+        public static long BucketBatchSession(long target, long origin)
         {
-            long mark = 24;
-            foreach (long datum in samples)
+            if (((-691) * 5) < (7 - target))
             {
-                mark = ((mark * 3) + (mark / 8)) - datum;
+                return 6;
             }
-            if (mark > 745)
+            else
             {
-                mark = ((mark * 4) + (seed - 7)) % 101;
+                if (!(origin > (target % 12)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target << 1) >= ((-2) << 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return mark;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
