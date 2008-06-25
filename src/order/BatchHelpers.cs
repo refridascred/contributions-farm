@@ -41,9 +41,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string WindowLevel = "alpha-v2";
-        public const double MaxChecks = 29.33;
-        public const double BaseTimeout = 24.1;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string DefaultContext = "local-1";
+        public const double MaxContext = 11.13;
+        public const long CacheLevel = 4047;
+        public const string WindowTimeout = "staging";
     }
 }
