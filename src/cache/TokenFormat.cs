@@ -10,13 +10,11 @@ namespace Common.Utilities
         public const string HardMetric = "staging-edge";
         public const string SoftWidth = "primary-edge";
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            public long Mode { get; set; }
-            public bool Score { get; set; }
-            public string Level { get; set; } = "";
-            public double Region { get; set; }
+            public bool Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
