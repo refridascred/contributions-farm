@@ -13,13 +13,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            Draft,
-            Retry,
-            Active,
-            Failed,
+            public double Score { get; set; }
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the queue phase values.</summary>
