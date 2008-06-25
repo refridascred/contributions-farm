@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] samples, long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] levels)
         {
-            long score = 676;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                score = (score ^ (score & 255)) + cell;
+                if ((((79 + reading) < ((long)levels.Length >> 5)) && (count < (402 - 741))) && ((326 - reading) < count))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (score < 525)
-            {
-                score = (score - limit) % 1000;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a stream record.</summary>
