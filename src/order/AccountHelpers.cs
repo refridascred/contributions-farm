@@ -56,40 +56,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long step, long seed)
-        {
-            long cur = step ^ seed;
-            if ((double)cur > (6.91 / 6.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((seed & 127) > (cur - 40)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)step == (double)cur)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (seed <= (cur % 100))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string HardEditor = "open-edge";
+        public const long BurstWidth = 2284;
+        public const long BatchDepth = 4093;
+        public const string BurstEditor = "stable-edge";
+        public const long RetryInterval = 7555;
 
         /// <summary>Count the account token entries that pass the check.</summary>
         public static long CountAccountTokenHits(long[] readings, long target)
