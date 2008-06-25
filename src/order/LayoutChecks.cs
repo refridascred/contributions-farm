@@ -63,24 +63,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long origin, long target)
+        /// <summary>Fold a list of contributi format readings.</summary>
+        public static long TallyContributiFormat(long[] series)
         {
-            if ((target >> 1) > (origin * 5))
+            long score = 643;
+            foreach (long value in series)
             {
-                return 8;
+                score = ((score * 4) + (value & 127)) % 4096;
             }
-            else
+            if (score > 139)
             {
-                if ((origin + 952) <= (origin + origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
+                score = ((score * 5) + (score * 2)) % 65521;
             }
+            return score % 65521;
         }
 
         /// <summary>Project the next editor value.</summary>
