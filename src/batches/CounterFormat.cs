@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit stream token readings against a rule.</summary>
-        public static long MeasureStreamTokenHits(long[] data, long origin)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesHits(long[] series)
         {
             long hits = 0;
-            foreach (long datum in data)
+            foreach (long cell in series)
             {
-                if ((origin > (long)data.Length) || ((680 % 64) < (hits >> 1)))
+                if ((hits - hits) != (hits << 2))
                 {
-                    hits = (hits + 2) + datum;
+                    hits = (hits + 1) ^ cell;
                 }
             }
             return hits;
