@@ -63,15 +63,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the editor queue series from a seed.</summary>
-        public static long RollEditorQueue(long target)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] samples, long seed)
         {
-            long mix = target;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                if (samples[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
