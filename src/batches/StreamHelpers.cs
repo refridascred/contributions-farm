@@ -75,11 +75,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            public long Flag { get; set; }
-            public long Label { get; set; }
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
