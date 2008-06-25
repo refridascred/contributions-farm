@@ -27,14 +27,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] samples, long limit)
         {
-            New,
-            Failed,
-            Queued,
-            Paused,
-            Dropped,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < limit) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two report measurements.</summary>
