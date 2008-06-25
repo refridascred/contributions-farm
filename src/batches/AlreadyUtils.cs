@@ -46,14 +46,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
-        {
-            New,
-            Ready,
-            Synced,
-            Done,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string WindowSpan = "latest-edge";
+        public const string BatchLevel = "cached-v2";
+        public const double RetryRecord = 47.63;
+        public const long HardSpan = 2585;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long IdleReport = 3345;
