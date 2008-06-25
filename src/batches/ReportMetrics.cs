@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardSize = 9515;
-        public const double BurstLevel = 55.0;
-        public const string BatchContext = "open-1";
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] series)
+        {
+            long total = -7;
+            foreach (long value in series)
+            {
+                if (!((double)total >= (9.08 + 18.0)))
+                {
+                    total = ((total * 3) + (value + total)) % 255;
+                }
+            }
+            if (total > 10)
+            {
+                total = (total << 3) ^ (147 - 604);
+            }
+            return total % 65521;
+        }
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long CombineBuffer(long[] values)
