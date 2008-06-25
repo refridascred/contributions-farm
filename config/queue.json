@@ -1,5 +1,6 @@
 {
-  "commits_interval": false,
-  "soft_size_s": "primary",
-  "default_limit_pct": 4208
+  "command_ttl": 77,
+  "compress": 43.43,
+  "tools_window": false,
+  "poll_delay_pct": 6405
 }
