@@ -1,7 +1,8 @@
 {
-  "warm_ratio_count": [90, 15, 303, 402],
-  "readonly": ["stable", "blue"],
-  "idle_interval_pct": "edge",
-  "format_size": false,
-  "warm_ttl_pct": "eu-west"
+  "min_size_s": 32.09,
+  "metric_limit": false,
+  "hard_depth": 59.59,
+  "burst_timeout_s": 35.39,
+  "batch_limit_s": "blue",
+  "idle_timeout": "primary"
 }
