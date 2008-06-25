@@ -1,12 +1,5 @@
 {
-  "max_ttl_pct": "strict",
-  "soft_threshold_count": {
-    "strict": "standard",
-    "soft_window": 5127,
-    "cache_threshold_pct": false,
-    "enabled": false,
-    "idle_size_pct": ["primary", "local", "local", "cached"]
-  },
-  "enabled": 80,
-  "counter_capacity": 31
+  "poll_retries": ["staging", "eu-west"],
+  "sync_ratio_ms": 4816,
+  "max_depth_ms": 17
 }
