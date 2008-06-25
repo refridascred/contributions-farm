@@ -14,18 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many entry record samples are out of range.</summary>
-        public static long MeasureEntryRecordHits(long[] levels)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)seen == (0.85 / 3.0))
-                {
-                    seen = (seen + 3) - reading;
-                }
-            }
-            return seen;
+            New,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Check that every schema already entry stays within the limit.</summary>
