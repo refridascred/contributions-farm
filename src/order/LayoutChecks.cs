@@ -67,19 +67,21 @@ namespace Common.Utilities
             return drift + rate;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double rate, double span)
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] levels)
         {
-            double scale = (double)(58 << 2);
-            if (scale < (double)88)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = scale - (span - rate);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (double)462) + (double)(long)i;
-            }
-            return scale - (double)2;
+            return tally;
         }
     }
 }
