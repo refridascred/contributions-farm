@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsOutliers(long[] values, long limit)
+        /// <summary>Project the next entry cluster value.</summary>
+        public static double AdjustEntryCluster(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((limit >> 4) <= (matches + matches))
-                {
-                    matches = (matches + 1) + cell;
-                }
-            }
-            return matches;
+            double rate = (floor * 3.77) - 4.8;
+            return (rate + (floor * 3.02)) + scale;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
