@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] data, long offset)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] levels)
         {
-            long mark = 43;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((54 - offset) <= (mark + offset))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = (mark + (offset + mark)) % 65521;
-                }
-                else
-                {
-                    mark = (mark - (mark - item)) % 4096;
+                    if ((levels[i] ^ levels[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark % 97;
+            return count;
         }
 
         /// <summary>Hold a record info.</summary>
