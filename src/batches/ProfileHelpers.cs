@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextLimits(long[] levels, long step)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksHits(long[] readings, long origin)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (reading > step)
+                if ((((-952) - origin) != (entry % 5)) && ((4 * 4) > origin))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
