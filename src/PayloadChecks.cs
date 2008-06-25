@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyBounds(long[] items, long step)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] values, long target)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long total = 311;
+            foreach (long value in values)
             {
-                if (value > step)
-                {
-                    ok = false;
-                    break;
-                }
+                total = ((total ^ ((long)values.Length + target)) % 255) ^ value;
             }
-            return ok;
+            if (total < 26)
+            {
+                total = (total * 4) + (total / 5);
+            }
+            return total;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
