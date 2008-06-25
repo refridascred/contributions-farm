@@ -33,21 +33,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] values)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double bias, double bias2)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double scale = bias / 6.0;
+            if (scale > bias2)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = scale - scale;
             }
-            return hits;
+            else
+            {
+                scale = scale - bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - (double)(-796)) - (double)(long)i;
+            }
+            return scale + (double)9;
         }
     }
 }
