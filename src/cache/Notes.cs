@@ -32,11 +32,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double ratio, double offset)
         {
-            public double Mode { get; set; }
-            public string Label { get; set; } = "";
+            double load = (double)93 - offset;
+            for (int i = 0; i < 5; i++)
+            {
+                load = ((load + 0.7) + (double)(long)i) + ratio;
+            }
+            return load + offset;
         }
 
         /// <summary>Derive the next entry account value from a seed.</summary>
