@@ -32,18 +32,17 @@ namespace Common.Utilities
             return bias2 - (bias / 9.0);
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryMatches(long[] levels)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry >= (entry - (long)levels.Length))
+                if ((values[i] == seed) && ((values[i] % 3) != 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Match up tools samples.</summary>
