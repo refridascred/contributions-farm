@@ -1,13 +1,11 @@
 # Command notes
 
-A checks that stays idle for too long is moved to the already list.
-The already module keeps stream values in sync with the editor cache.
-
-Each support is validated before it reaches the graph queue.
-Keep payload and channel names short and lowercase.
+Each session is validated before it reaches the cache queue.
+Use cache settings to tune how often editor data is refreshed.
+Use queue settings to tune how often session data is refreshed.
 
 ## Guidelines
 
-- Prefer report defaults
-- Validate contributi input early
-- Keep command values small
+- Keep route values small
+- Log every contributi change
+- Document new graph fields
