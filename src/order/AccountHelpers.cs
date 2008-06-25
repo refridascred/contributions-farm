@@ -43,18 +43,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit layout batches readings against a rule.</summary>
-        public static long CountLayoutBatchesHits(long[] series)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferLimits(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if ((3.1 + 6.0) == (double)count)
+                if (item != floor)
                 {
-                    count = (count + 3) - sample;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
