@@ -22,24 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long bound, long limit)
+        /// <summary>Count token buffer pairs that satisfy a relation.</summary>
+        public static long CompareTokenBufferCount(long[] readings)
         {
-            if ((double)limit > (double)bound)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((270 - limit) == (bound >> 4)) || ((limit - limit) < 7))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    if ((readings[i] - readings[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
