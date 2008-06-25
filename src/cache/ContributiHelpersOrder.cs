@@ -23,14 +23,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Roll a order counter forward.</summary>
+        public static long StepOrder(long target)
         {
-            Idle,
-            Synced,
-            Locked,
-            Retry,
-            Failed,
+            long result = target;
+            for (int i = 0; i < 22; i++)
+            {
+                result = ((result * 4) + (result - target)) % 97;
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Accumulate entry samples.</summary>
