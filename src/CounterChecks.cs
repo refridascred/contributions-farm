@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorOutliers(long[] samples)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long total = 82;
+            foreach (long cell in levels)
             {
-                if ((((double)matches >= (4.15 + 9.0)) || ((matches + matches) > item)) || (((-773) + matches) <= (matches & 1)))
+                if ((total & 1) > cell)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    total = total + (34 + cell);
                 }
             }
-            return matches;
+            return total % 4096;
         }
 
         /// <summary>Combine record values into a single score.</summary>
