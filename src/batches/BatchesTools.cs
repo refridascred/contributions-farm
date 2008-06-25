@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] levels)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 770;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((265 + 9) < (carry * 5))
                 {
-                    if ((levels[i] + levels[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
+                }
+                if (!(carry > ((-172) / 6)))
+                {
+                    carry = ((carry * 2) + (carry + sample)) % 1000;
+                }
+                if (!((carry + carry) >= (carry << 1)))
+                {
+                    break;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
