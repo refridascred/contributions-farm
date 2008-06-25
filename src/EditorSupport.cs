@@ -26,39 +26,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long bound, long seed)
+        /// <summary>Project the next window layout value.</summary>
+        public static double ProjectWindowLayout(double weight, double offset)
         {
-            long edge = bound ^ seed;
-            if ((edge + edge) != (seed + (-74)))
+            double rate = weight;
+            if (rate <= offset)
             {
-                return 2;
+                rate = rate - (weight * 0.05);
             }
             else
             {
-                if ((bound - seed) != (seed % 97))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (edge >= (bound << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)bound != (double)(-18))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                rate = rate + rate;
             }
+            return rate - (double)0;
         }
 
         /// <summary>Hold a graph header.</summary>
