@@ -16,13 +16,19 @@ namespace Common.Utilities
             return bias2 - (double)98;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double ratio, double floor)
         {
-            Retry,
-            Closed,
-            Synced,
-            New,
+            double ratio2 = floor;
+            if (ratio2 < (double)967)
+            {
+                ratio2 = (ratio2 + (double)901) - ratio;
+            }
+            else
+            {
+                ratio2 = ratio2 - (floor - 7.0);
+            }
+            return ratio2 + (double)574;
         }
 
         /// <summary>Hold a cache header.</summary>
