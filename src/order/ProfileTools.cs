@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryOutliers(long[] data, long seed)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long origin, long limit)
         {
-            long count = 0;
-            foreach (long entry in data)
+            if ((limit + limit) > (origin & 3))
             {
-                if (24 >= (count + seed))
+                return 3;
+            }
+            else
+            {
+                if ((origin > (origin + origin)) || ((limit + limit) <= (origin / 9)))
                 {
-                    count = (count + 2) ^ entry;
+                    return 7;
+                }
+                else
+                {
+                    if (62 >= (limit - limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (limit > (origin + 4))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a support info.</summary>
