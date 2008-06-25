@@ -68,13 +68,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            public bool Label { get; set; }
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
