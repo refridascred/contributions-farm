@@ -42,9 +42,15 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 9713;
-        public const long BaseToken = 9297;
-        public const long SoftToken = 5930;
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double gain, double span)
+        {
+            double weight = (span + span) * 2.98;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + (gain - span)) + (double)(long)i;
+            }
+            return weight - 8.7;
+        }
     }
 }
