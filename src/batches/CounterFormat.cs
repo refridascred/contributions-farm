@@ -20,12 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Fold a list of schema githubfarm readings.</summary>
+        public static long TotalSchemaGithubfarm(long[] samples, long limit)
         {
-            Active,
-            Ready,
-            Failed,
+            long score = 0;
+            foreach (long item in samples)
+            {
+                score = ((score - (score << 3)) + item) + limit;
+            }
+            return score % 65521;
         }
 
         /// <summary>Iterate the notes stats series from a seed.</summary>
