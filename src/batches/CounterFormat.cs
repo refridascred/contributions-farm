@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksLimits(long[] series, long target)
+        /// <summary>Audit stream token readings against a rule.</summary>
+        public static long MeasureStreamTokenHits(long[] data, long origin)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (cell != target)
+                if ((origin > (long)data.Length) || ((680 % 64) < (hits >> 1)))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 2) + datum;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
