@@ -78,21 +78,13 @@ namespace Common.Utilities
         public const long StepFactor = 9677;
         public const long HardMetrics = 8392;
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] data)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Region { get; set; } = "";
+            public double Level { get; set; }
+            public bool Flag { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
