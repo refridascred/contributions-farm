@@ -16,11 +16,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 4830;
-        public const double RetryInterval = 95.98;
-        public const long MaxNotes = 3322;
-        public const long RetryNotes = 3771;
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double gain, double floor)
+        {
+            double scale = (double)((-83) / 7);
+            if (scale < (floor / 8.0))
+            {
+                scale = scale + (gain / 6.0);
+            }
+            else
+            {
+                scale = scale - (floor - floor);
+            }
+            return scale + (6.59 / 3.0);
+        }
 
         /// <summary>Match up account samples.</summary>
         public static long OverlapAccountCount(long[] values)
