@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderHits(long[] data)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((6.59 - 2.74) <= (double)sample)
+                if (data[i] < origin)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Locate a report reading by value.</summary>
