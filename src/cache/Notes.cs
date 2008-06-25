@@ -44,28 +44,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of profile record readings.</summary>
-        public static long CombineProfileRecord(long[] items, long bound)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long bound, long target)
         {
-            long score = 8;
-            foreach (long value in items)
+            long prev = bound + target;
+            if ((bound >> 2) > (target + prev))
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    score = (((score - value) % 4096) - (long)i) + bound;
-                }
-                if (value >= (score & 31))
-                {
-                    score = (score << 3) ^ (70 - 270);
-                    continue;
-                }
-                score = score ^ (value ^ score);
+                return 3;
             }
-            if (score > (-329))
+            else
             {
-                score = (score + 0) % 255;
+                if ((double)bound > (8.0 / 4.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)target <= (5.0 * 14.0)) && ((target + target) <= (bound - target)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((prev >> 1) < 482)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return score % 1000;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
