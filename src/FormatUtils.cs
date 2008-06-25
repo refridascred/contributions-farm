@@ -70,16 +70,22 @@ namespace Common.Utilities
         public const string DefaultSchema = "staging-1";
         public const double MinScore = 41.86;
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long floor)
+        /// <summary>Count the channel stream entries that pass the check.</summary>
+        public static long AuditChannelStreamGaps(long[] series, long origin)
         {
-            long anchor = floor;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                anchor = ((anchor * 3) + anchor) % 97;
-                anchor = ((anchor * 4) + (long)i) % 97;
+                if ((6.0 / 6.0) < (double)origin)
+                {
+                    matches = (matches + 2) - datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return anchor;
+            return matches;
         }
     }
 }
