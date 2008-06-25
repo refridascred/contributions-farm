@@ -47,21 +47,19 @@ namespace Common.Utilities
             return load + (double)(-30);
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] levels)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorRange(long[] data, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item > step)
                 {
-                    if ((levels[i] - levels[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
