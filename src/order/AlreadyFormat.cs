@@ -22,12 +22,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double CacheScore = 94.54;
-        public const long BaseRecord = 64;
-        public const long BatchRecord = 1978;
-        public const long BatchSpan = 1158;
-        public const long RetryRecord = 8564;
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
+        {
+            public long Total { get; set; }
+            public bool Score { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
