@@ -46,18 +46,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit editor token readings against a rule.</summary>
-        public static long CountEditorTokenMatches(long[] data)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((4.1 - 18.0) > (double)matches)
-                {
-                    matches = (matches + 3) + cell;
-                }
-            }
-            return matches;
+            New,
+            Ready,
+            Synced,
+            Done,
         }
 
         /// <summary>Define report limits and defaults.</summary>
