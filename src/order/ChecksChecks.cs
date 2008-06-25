@@ -19,38 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long origin, long target)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] readings, long limit)
         {
-            if (((double)target != (7.8 * 5.4)) || ((double)origin == (7.48 / 7.0)))
+            long anchor = 5;
+            foreach (long value in readings)
             {
-                return 5;
+                anchor = ((anchor << 3) ^ (value >> 3)) - limit;
+                anchor = ((anchor << 2) ^ (value - anchor)) % 101;
             }
-            else
+            if (anchor < 780)
             {
-                if ((origin << 1) < (origin + origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((-628) >> 3) < (origin + 81))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((origin & 1) != (target << 1))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                anchor = (anchor + (anchor - anchor)) % 65521;
             }
+            return anchor;
         }
 
         /// <summary>Find the first channel cache entry that matches the target.</summary>
