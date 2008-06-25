@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricRange(long[] readings, long target)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Count { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Roll a session counter forward.</summary>
