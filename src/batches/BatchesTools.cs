@@ -27,17 +27,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long FindBatchesIndex(long[] series, long target)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Limit { get; set; }
+            public bool Rank { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Adjust a cluster filter reading.</summary>
