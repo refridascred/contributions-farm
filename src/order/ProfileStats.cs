@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const long MinSpan = 1898;
         public const long DefaultRatio = 7661;
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Measure how many batches account samples are out of range.</summary>
+        public static long MeasureBatchesAccountMatches(long[] items)
         {
-            public string Weight { get; set; } = "";
-            public bool Score { get; set; }
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (!((13 + tally) == (entry % 10)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next route value.</summary>
