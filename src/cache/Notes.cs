@@ -32,15 +32,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double ratio, double offset)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long PairWindowCount(long[] values)
         {
-            double load = (double)93 - offset;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = ((load + 0.7) + (double)(long)i) + ratio;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return load + offset;
+            return hits;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
