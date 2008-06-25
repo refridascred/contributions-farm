@@ -1,19 +1,5 @@
 {
-  "soft_depth": 60,
-  "burst_depth_pct": "standard",
-  "cache_size_ms": "eu-west",
-  "compress": 1024,
-  "schema_delay": {
-    "hard_size_ms": {
-      "flush_delay": 500,
-      "payload_size": true,
-      "warm_limit_pct": "cached"
-    },
-    "cache_capacity_count": "legacy",
-    "enabled": false,
-    "flush_threshold": 60,
-    "soft_limit_pct": "blue",
-    "soft_ratio_ms": 9856
-  },
-  "soft_window_pct": 3358
+  "persist": ["primary", "stable"],
+  "retry_capacity_count": 25.74,
+  "warm_delay_ms": 4604
 }
