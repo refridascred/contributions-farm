@@ -58,15 +58,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double SmoothFarm(double gain, double offset)
-        {
-            double rate = gain;
-            if (rate <= (gain / 2.0))
-            {
-                rate = rate + (7.71 * 2.38);
-            }
-            return rate - offset;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxSize = 4.07;
+        public const string LimitLevel = "fallback-v2";
+        public const double MinFarm = 17.9;
     }
 }
