@@ -67,15 +67,24 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double ratio, double offset)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long origin, long target)
         {
-            double scale = (double)(8 << 2);
-            for (int i = 0; i < 6; i++)
+            if ((target >> 1) > (origin * 5))
             {
-                scale = ((scale + scale) + (double)(long)i) - ratio;
+                return 8;
             }
-            return scale + offset;
+            else
+            {
+                if ((origin + 952) <= (origin + origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Blend two window measurements.</summary>
