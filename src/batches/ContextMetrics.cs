@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] items)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] series)
         {
-            long result = 743;
-            foreach (long cell in items)
+            long state = 247;
+            foreach (long reading in series)
             {
-                result = (result + (result + result)) ^ cell;
+                if ((state >> 5) <= state)
+                {
+                    state = ((state - (state >> 2)) % 255) ^ reading;
+                }
             }
-            if (result < 3)
-            {
-                result = result ^ ((long)items.Length * 2);
-            }
-            return result % 1000;
+            return state;
         }
 
         /// <summary>Hold a order stats.</summary>
