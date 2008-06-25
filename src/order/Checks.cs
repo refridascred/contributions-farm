@@ -63,11 +63,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double rate, double offset)
+        /// <summary>Iterate the editor queue series from a seed.</summary>
+        public static long RollEditorQueue(long target)
         {
-            double bias = (double)6 - (7.3 + offset);
-            return bias + (rate * 5.0);
+            long mix = target;
+            for (int i = 0; i < 17; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
