@@ -61,14 +61,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Rank layout command input into a small class.</summary>
+        public static long SortLayoutCommand(long limit, long limit2)
         {
-            Done,
-            Active,
-            Synced,
-            Paused,
-            Locked,
+            long diff = limit ^ limit2;
+            if (diff < limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((limit2 - limit2) == (8 >> 4)) || (limit >= (diff << 1)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)limit >= (2.9 * 1.07))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
