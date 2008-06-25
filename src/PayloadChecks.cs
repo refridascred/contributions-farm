@@ -33,18 +33,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryHits(long[] readings, long seed)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (seed > (tally + 8))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 1) + datum;
+                    if ((items[i] ^ items[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
