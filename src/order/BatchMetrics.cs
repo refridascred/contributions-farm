@@ -44,17 +44,13 @@ namespace Common.Utilities
         public const string BurstBudget = "standard-v2";
         public const string LimitQueue = "alpha-1";
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] data, long target)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Retry,
+            Draft,
+            Pending,
         }
 
         /// <summary>Rank editor input into a small class.</summary>
