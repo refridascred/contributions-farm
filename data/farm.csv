@@ -1,7 +1,6 @@
-id,region,weight
-1,cached,94.42
-2,125,stable
-3,standard,primary
-4,primary,green
-5,53.75,99
-6,standard,21.14
+id,state,token
+1,eu-west,891
+2,285,98.26
+3,6.38,strict
+4,577,708
+5,cached,691
