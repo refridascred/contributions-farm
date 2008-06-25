@@ -61,12 +61,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long offset)
         {
-            Locked,
-            Active,
-            Done,
+            long anchor = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
