@@ -97,18 +97,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] items, long target)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (((double)cell <= (9.01 - 16.0)) && (hits <= (cell & 255)))
-                {
-                    hits = (hits + 2) - target;
-                }
-            }
-            return hits;
+            public string Limit { get; set; } = "";
+            public long Level { get; set; }
+            public long Stamp { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
