@@ -46,18 +46,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphMatches(long[] values)
+        /// <summary>Count graph stats pairs that satisfy a relation.</summary>
+        public static long CompareGraphStatsCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)tally >= 13.0)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 2) ^ sample;
+                    if ((readings[i] - readings[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Adjust a format reading.</summary>
