@@ -61,18 +61,14 @@ namespace Common.Utilities
         public const long BurstFarm = 754;
         public const long MaxFarm = 292;
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesOutliers(long[] data)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((cell + hits) > cell)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Retry,
+            Pending,
+            Synced,
+            Ready,
+            Active,
         }
     }
 }
