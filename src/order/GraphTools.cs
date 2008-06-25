@@ -56,15 +56,15 @@ namespace Common.Utilities
         public const long RetryTimeout = 180;
         public const long MinEditor = 7256;
 
-        /// <summary>Fold a list of checks githubfarm readings.</summary>
-        public static long DigestChecksGithubfarm(long[] samples, long limit)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long step)
         {
-            long acc = 69;
-            foreach (long datum in samples)
+            long sum = step;
+            for (int i = 0; i < 8; i++)
             {
-                acc = (((acc + acc) % 101) + datum) + limit;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return acc % 1000;
+            return sum;
         }
     }
 }
