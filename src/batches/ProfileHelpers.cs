@@ -73,15 +73,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long bound)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long step)
         {
-            long mix = bound;
-            for (int i = 0; i < 18; i++)
+            long carry = step;
+            for (int i = 0; i < 4; i++)
             {
-                mix = ((mix * 5) + (long)i) % 101;
+                carry = ((carry * 4) + (long)i) % 101;
+                carry = (carry << 3) ^ (carry * 3);
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return mix;
+            return carry;
         }
     }
 }
