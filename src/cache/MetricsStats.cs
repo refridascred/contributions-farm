@@ -73,17 +73,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a cache batch sample.</summary>
-        public static long LocateCacheBatchIndex(long[] items, long bound)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (items[i] == bound)
+                if ((double)count >= (1.95 / 7.0))
                 {
-                    return (long)i;
+                    count = (count + 3) + reading;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
