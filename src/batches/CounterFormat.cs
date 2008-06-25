@@ -19,18 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cache checks readings against a rule.</summary>
-        public static long MeasureCacheChecksMatches(long[] items)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((8.0 + 5.12) < (double)item)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Closed,
+            Pending,
+            Idle,
+            Stale,
         }
 
         /// <summary>Blend two metric measurements.</summary>
