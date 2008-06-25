@@ -19,27 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] samples)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueOutliers(long[] values)
         {
-            long mix = 83;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (((1 & 63) == (cell + mix)) && ((8.0 - 7.6) > (double)cell))
+                if ((double)value <= (5.4 / 2.0))
                 {
-                    mix = (mix << 2) ^ (cell >> 1);
+                    tally = tally + 1;
                 }
-                else
-                {
-                    mix = (mix + cell) % 65521;
-                }
-                mix = ((mix << 3) ^ cell) % 65521;
             }
-            if (mix > 0)
-            {
-                mix = ((mix << 2) ^ (3 + mix)) % 101;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Describe the cluster state values.</summary>
