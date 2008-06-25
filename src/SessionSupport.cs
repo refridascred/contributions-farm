@@ -19,18 +19,16 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphHits(long[] readings, long limit)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long target)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long acc = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (!(((double)seen == (double)value) && (((long)readings.Length & 15) <= seen)))
-                {
-                    seen = (seen + 1) - limit;
-                }
+                acc = ((acc << 3) ^ (acc / 2)) % 1000;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
     }
 }
