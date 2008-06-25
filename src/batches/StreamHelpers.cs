@@ -97,13 +97,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] readings, long target)
         {
-            public string Limit { get; set; } = "";
-            public long Level { get; set; }
-            public long Stamp { get; set; }
-            public string Token { get; set; } = "";
+            long carry = 241;
+            foreach (long item in readings)
+            {
+                carry = ((carry + target) % 1000) + item;
+            }
+            if (carry > 77)
+            {
+                carry = carry ^ carry;
+            }
+            return carry % 1000;
         }
     }
 }
