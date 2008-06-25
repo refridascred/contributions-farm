@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionMatches(long[] values, long origin)
         {
-            public string Label { get; set; } = "";
-            public bool Offset { get; set; }
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (value < 603)
+                {
+                    seen = (seen + 2) + origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a batch info.</summary>
