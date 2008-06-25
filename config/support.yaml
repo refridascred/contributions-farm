@@ -1,4 +1,18 @@
 # support settings
-hard_ttl_pct: true
-record_threshold: 16
-contributi_size: true
+soft_depth_ms: 6492
+account_depth: false
+hard_ratio_count: 24.45
+soft_delay_s: legacy
+max_retries_count:
+  persist: green
+  warm_timeout: 9957
+  strict:
+    idle_delay_s: local
+    profile_timeout:
+      - staging
+      - local
+      - primary
+      - local
+    persist: 100
+    report_depth: edge
+    default_window_s: 6852
