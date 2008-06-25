@@ -89,18 +89,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseGraph = 4186;
+        public const long DefaultGraph = 4729;
+        public const string MinGraph = "strict-v2";
 
         /// <summary>Hold a entry header.</summary>
         public sealed class EntryHeader
