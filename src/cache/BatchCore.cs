@@ -23,19 +23,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] data, long bound)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long mix = 739;
-            foreach (long item in data)
-            {
-                mix = (((mix << 2) ^ 8) - item) - bound;
-            }
-            if (mix > 526)
-            {
-                mix = ((mix * 4) + (83 - mix)) % 255;
-            }
-            return mix;
+            Closed,
+            Locked,
+            Paused,
+            Queued,
+            Stale,
         }
 
         /// <summary>Fold a list of record schema readings.</summary>
