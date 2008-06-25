@@ -67,19 +67,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double BlendMetrics(double rate, double span)
-        {
-            double gain = (double)(220 - 88);
-            if (gain <= gain)
-            {
-                gain = gain - rate;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain + (span * 2.5);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string HardAlready = "latest";
+        public const string IdleLevel = "local";
+        public const long BurstAlready = 801;
     }
 }
