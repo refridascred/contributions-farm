@@ -40,19 +40,15 @@ namespace Common.Utilities
         public const double BatchGraph = 46.9;
         public const double HardGraph = 45.85;
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] readings, long target)
+        /// <summary>Fold a list of checks githubfarm readings.</summary>
+        public static long DigestChecksGithubfarm(long[] samples, long limit)
         {
-            long mix = 142;
-            foreach (long item in readings)
+            long acc = 69;
+            foreach (long datum in samples)
             {
-                mix = (mix * 2) + (43 + target);
-                if ((item + (long)readings.Length) >= (940 % 64))
-                {
-                    break;
-                }
+                acc = (((acc + acc) % 101) + datum) + limit;
             }
-            return mix;
+            return acc % 1000;
         }
     }
 }
