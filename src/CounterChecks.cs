@@ -99,11 +99,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftReport = 399;
-        public const long MaxLevel = 1642;
-        public const double WindowReport = 52.39;
-        public const long IdleReport = 3447;
-        public const long WindowFactor = 9300;
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double gain, double offset)
+        {
+            double gain2 = gain;
+            if (gain2 >= (gain2 + gain2))
+            {
+                gain2 = (gain2 - (double)69) - offset;
+            }
+            return gain2 - gain;
+        }
     }
 }
