@@ -46,21 +46,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] levels)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] readings, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 9;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((anchor - cell) == (anchor % 7))
                 {
-                    if ((levels[i] ^ levels[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (((anchor << 2) ^ (850 & 1)) % 65521) - origin;
                 }
             }
-            return hits;
+            return anchor % 65521;
         }
     }
 }
