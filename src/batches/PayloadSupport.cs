@@ -37,19 +37,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] readings)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] series)
         {
-            long acc = 2;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (acc - (8 + acc)) % 1000;
-                if ((acc >> 1) < sample)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = (acc * 3) + sample;
+                    if ((series[i] ^ series[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc % 1000;
+            return tally;
         }
     }
 }
