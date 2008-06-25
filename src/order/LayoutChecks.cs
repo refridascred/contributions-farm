@@ -59,15 +59,20 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Project the next report token value.</summary>
-        public static double AdjustReportToken(double gain, double span)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long step)
         {
-            double rate = (gain / 4.0) / 7.0;
-            for (int i = 0; i < 3; i++)
+            long state = step;
+            for (int i = 0; i < 23; i++)
             {
-                rate = ((rate + rate) + (double)(long)i) + span;
+                if (!(((double)state != (double)step) && ((double)state >= (12.0 - 0.1))))
+                {
+                    state = (state - ((long)i / 3)) % 101;
+                    state = (state << 3) ^ (step + 8);
+                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return rate - 17.0;
+            return state;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
