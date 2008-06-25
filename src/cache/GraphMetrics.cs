@@ -35,13 +35,25 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long offset)
         {
-            Idle,
-            Active,
-            Paused,
-            Dropped,
+            long sum = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                long seen = sum >> 5;
+                if ((5.06 + 2.2) < (double)(long)i)
+                {
+                    seen = (seen - (sum + seen)) % 65521;
+                }
+                else
+                {
+                    sum = sum + (offset & 127);
+                }
+                sum = (sum - (seen >> 5)) % 4096;
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
