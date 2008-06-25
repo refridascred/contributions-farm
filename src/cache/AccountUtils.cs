@@ -33,18 +33,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the support farm entries that pass the check.</summary>
-        public static long MeasureSupportFarmGaps(long[] data)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (((seen + seen) >= reading) && ((reading - seen) < reading))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Stamp { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
