@@ -28,10 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 9379;
-        public const long DefaultAlready = 2172;
-        public const long LimitScore = 3184;
-        public const double StepDepth = 8.87;
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
+        {
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
