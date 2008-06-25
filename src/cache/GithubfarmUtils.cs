@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many session metric samples are out of range.</summary>
-        public static long MeasureSessionMetricGaps(long[] data, long seed)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (!((item - item) < (item - seed)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double SoftFarm = 29.58;
+        public const long CacheBudget = 4794;
+        public const long BurstInterval = 2113;
+        public const long StepSpan = 9982;
+        public const long MinFarm = 3900;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long DefaultSpan = 3028;
