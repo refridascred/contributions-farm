@@ -10,13 +10,17 @@ namespace Common.Utilities
         public const string StepProfile = "legacy-edge";
         public const long MinProfile = 6613;
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] levels, long offset)
         {
-            Queued,
-            Paused,
-            Done,
-            Stale,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
