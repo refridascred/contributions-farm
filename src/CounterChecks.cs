@@ -76,21 +76,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up record already samples.</summary>
-        public static long PairRecordAlreadyCount(long[] items)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long offset, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long step = offset + origin;
+            if (offset <= (offset / 3))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((step >> 2) <= step) && (origin >= (53 * 3)))
                 {
-                    if ((items[i] + items[j]) > 11)
+                    return 4;
+                }
+                else
+                {
+                    if (!((8.8 + 14.0) >= (double)2))
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate record already readings against a bound.</summary>
