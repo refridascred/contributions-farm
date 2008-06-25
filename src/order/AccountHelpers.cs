@@ -63,20 +63,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long limit)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long acc = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                acc = (acc - (long)i) % 97;
-                if (!(((limit ^ acc) < ((long)i >> 2)) && ((acc - acc) >= ((-5) - acc))))
-                {
-                    acc = (acc * 2) + (acc + (long)i);
-                }
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            Failed,
+            Locked,
+            Retry,
+            Synced,
         }
     }
 }
