@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowGaps(long[] items)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((double)count <= (5.0 - 5.0))
-                {
-                    count = (count + 1) - reading;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public bool Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
