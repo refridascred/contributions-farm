@@ -41,15 +41,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] readings, long limit)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] readings, long bound)
         {
-            long result = -58;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (((result << 3) ^ (509 + limit)) % 97) ^ cell;
+                if (readings[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
