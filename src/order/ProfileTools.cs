@@ -46,10 +46,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double IdleCount = 55.62;
-        public const long MinScore = 7527;
-        public const string DefaultLevel = "primary-v2";
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
+        {
+            Failed,
+            Done,
+            Draft,
+            Dropped,
+            Pending,
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool VerifySchemaLimits(long[] values, long seed)
