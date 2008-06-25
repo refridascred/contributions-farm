@@ -60,19 +60,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphLimits(long[] values, long limit)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long PairCommitsCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry <= limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] + readings[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
