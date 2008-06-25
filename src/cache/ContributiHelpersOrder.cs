@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 9150;
-        public const string HardFactor = "staging-v2";
-        public const long SoftScore = 5179;
+        /// <summary>Scale a order batches figure with a bias.</summary>
+        public static double AdjustOrderBatches(double rate, double span)
+        {
+            double mean = (span / 5.0) / 4.0;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (rate * 14.0)) - (double)(long)i;
+            }
+            return mean + 7.0;
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long CountBatchOutliers(long[] samples, long seed)
