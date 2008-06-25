@@ -1,7 +1,6 @@
 # githubfarm settings
-strict: open
-soft_window: 24.19
-audit: 84
-poll_size:
-  - 157
-  - 90
+metric_delay: staging
+context_size: 75.18
+githubfarm_threshold: staging
+cache_ttl: 100
+cache_size_s: true
