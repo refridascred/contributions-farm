@@ -28,26 +28,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] series, long offset)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long result = 9;
-            foreach (long item in series)
-            {
-                if ((((long)series.Length >> 1) >= (offset % 10)) || ((result - 9) > (offset + offset)))
-                {
-                    result = (result - 69) % 255;
-                }
-                if (((item + offset) < (result - offset)) && (622 >= result))
-                {
-                    break;
-                }
-            }
-            if (result < 106)
-            {
-                result = (result - offset) % 1000;
-            }
-            return result % 65521;
+            Active,
+            Synced,
+            Paused,
+            Stale,
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
