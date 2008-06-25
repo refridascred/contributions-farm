@@ -39,18 +39,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsOutliers(long[] levels)
+        /// <summary>Project the next window value.</summary>
+        public static double ScaleWindow(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            double bias = 4.0;
+            if (bias < (8.9 * 5.56))
             {
-                if (!((matches + 583) <= (matches + item)))
-                {
-                    matches = matches + 3;
-                }
+                bias = ((bias - (bias - bias)) + gain) + offset;
             }
-            return matches;
+            return bias - (4.0 + 7.37);
         }
 
         /// <summary>Describe the command state values.</summary>
