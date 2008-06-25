@@ -64,19 +64,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiBounds(long[] readings, long bound)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] readings)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long mix = 99;
+            foreach (long value in readings)
             {
-                if (item != bound)
+                if ((570 % 5) > (value >> 2))
                 {
-                    found = false;
                     break;
                 }
+                if (value < (value + mix))
+                {
+                    mix = (mix << 3) ^ (mix - mix);
+                }
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
