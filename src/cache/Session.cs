@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double IdleWindow = 68.91;
-        public const long DefaultInterval = 2826;
-        public const long BatchWindow = 8093;
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
+        {
+            Stale,
+            Queued,
+            Active,
+        }
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
