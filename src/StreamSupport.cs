@@ -16,17 +16,22 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Find the first window checks entry that matches the target.</summary>
-        public static long LookupWindowChecksIndex(long[] series, long seed)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterOutliers(long[] samples, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((series[i] <= seed) && ((series[i] % 5) != 0))
+                if (!!(((-9) & 7) < (matches ^ matches)))
                 {
-                    return (long)i;
+                    matches = ((matches + 1) + reading) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
