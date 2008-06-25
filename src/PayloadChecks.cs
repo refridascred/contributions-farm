@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Roll a metric entry counter forward.</summary>
-        public static long IterateMetricEntry(long target)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long score = target;
-            for (int i = 0; i < 10; i++)
-            {
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            Active,
+            Retry,
+            Pending,
+            Closed,
+            New,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
