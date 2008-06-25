@@ -1,15 +1,5 @@
 {
-  "support_window": 7108,
-  "readonly": 9296,
-  "retry_retries_s": 4354,
-  "max_size_s": {
-    "graph_threshold": false,
-    "max_interval": [226, 122, 470],
-    "base_window_count": [450, 203, 92, 206]
-  },
-  "persist": {
-    "cache_retries_count": 86.9,
-    "default_ratio_s": "latest",
-    "batch_window": 1084
-  }
+  "retry_delay": 100,
+  "strict": "cached",
+  "base_delay_ms": 23
 }
