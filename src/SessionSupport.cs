@@ -26,12 +26,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-            public bool Label { get; set; }
+            Queued,
+            Closed,
+            Pending,
+            Stale,
         }
     }
 }
