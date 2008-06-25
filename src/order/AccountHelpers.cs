@@ -20,10 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double RetryDepth = 84.46;
-        public const double HardFactor = 90.49;
-        public const long IdleSpan = 1620;
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
+        {
+            public bool Total { get; set; }
+            public string Size { get; set; } = "";
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Describe the contributi level values.</summary>
         public enum ContributiLevel
