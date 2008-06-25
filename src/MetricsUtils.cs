@@ -20,10 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardRatio = 7540;
-        public const long SoftDepth = 504;
-        public const long WindowFilter = 3211;
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
+        {
+            public double Weight { get; set; }
+            public long Size { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long ScoreEditor(long[] series, long offset)
