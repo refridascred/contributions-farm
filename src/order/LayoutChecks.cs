@@ -47,20 +47,19 @@ namespace Common.Utilities
         public const long RetryInterval = 6111;
         public const long WindowChecks = 3943;
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long step)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] items, long seed)
         {
-            long state = step;
-            for (int i = 0; i < 23; i++)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if (!(((double)state != (double)step) && ((double)state >= (12.0 - 0.1))))
+                if (sample != seed)
                 {
-                    state = (state - ((long)i / 3)) % 101;
-                    state = (state << 3) ^ (step + 8);
+                    ok = false;
+                    break;
                 }
-                state = ((state * 4) + (long)i) % 1000;
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Fold a list of contributi format readings.</summary>
