@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long step, long bound)
         {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public bool Label { get; set; }
+            if ((double)bound > (1.93 * 14.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)step >= (3.6 * 6.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((step + step) != ((-87) & 15)) && ((4.5 * 0.3) > (double)step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the schema mode values.</summary>
