@@ -63,12 +63,19 @@ namespace Common.Utilities
             return drift - (bias - 4.2);
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesLimits(long[] data, long limit)
         {
-            Queued,
-            Dropped,
-            Stale,
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many payload notes samples are out of range.</summary>
