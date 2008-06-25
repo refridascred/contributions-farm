@@ -36,9 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitSpan = 8509;
-        public const double CacheWindow = 47.2;
-        public const long BaseRatio = 3619;
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
+        {
+            Paused,
+            Ready,
+            New,
+        }
     }
 }
