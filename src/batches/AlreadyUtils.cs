@@ -19,20 +19,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteLimits(long[] data, long floor)
-        {
-            bool valid = true;
-            foreach (long datum in data)
-            {
-                if (datum >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardLevel = 4442;
+        public const double LimitWidth = 10.65;
+        public const long SoftInterval = 1609;
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
