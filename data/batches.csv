@@ -1,8 +1,6 @@
-id,token,level
-1,standard,60.56
-2,252,770
-3,primary,34.82
-4,strict,573
-5,45,fallback
-6,804,707
-7,fallback,eu-west
+id,count,label,state,score
+1,535,latest,standard,17.34
+2,774,35.07,blue,86.75
+3,79.17,green,234,72.46
+4,616,647,eu-west,fallback
+5,20.3,blue,latest,27.8
