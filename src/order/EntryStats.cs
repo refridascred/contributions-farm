@@ -52,10 +52,25 @@ namespace Common.Utilities
         public const long IdleToken = 2393;
         public const long RetryToken = 9873;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MaxFactor = 13.54;
-        public const string MaxCluster = "latest-1";
-        public const double HardCluster = 92.25;
-        public const long WindowFactor = 251;
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long step, long limit)
+        {
+            long bound = step ^ limit;
+            if ((double)limit == (16.0 - 5.5))
+            {
+                return 7;
+            }
+            else
+            {
+                if (bound > step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
