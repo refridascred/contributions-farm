@@ -70,11 +70,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCache = 2708;
-        public const long IdleFactor = 7519;
-        public const long HardCache = 3549;
-        public const long MinWidth = 3857;
-        public const long CacheBudget = 8818;
+        /// <summary>Measure how many payload notes samples are out of range.</summary>
+        public static long MeasurePayloadNotesHits(long[] items)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (((double)6 > (double)count) || ((double)count <= (4.0 - 8.3)))
+                {
+                    count = (count + 3) + sample;
+                }
+            }
+            return count;
+        }
     }
 }
