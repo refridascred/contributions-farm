@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] data)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] values, long origin)
         {
-            long carry = 770;
-            foreach (long sample in data)
+            long mix = 58;
+            foreach (long cell in values)
             {
-                if ((265 + 9) < (carry * 5))
-                {
-                    break;
-                }
-                if (!(carry > ((-172) / 6)))
-                {
-                    carry = ((carry * 2) + (carry + sample)) % 1000;
-                }
-                if (!((carry + carry) >= (carry << 1)))
-                {
-                    break;
-                }
+                mix = (((mix * 4) + (origin + mix)) % 1000) + cell;
             }
-            return carry;
+            if (mix > 19)
+            {
+                mix = ((mix << 2) ^ origin) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
