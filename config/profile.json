@@ -1,6 +1,8 @@
 {
-  "strict": ["edge", "standard", "edge", "strict"],
-  "audit": "local",
-  "idle_size": 250,
-  "cache_window_pct": "green"
+  "cache_limit_count": 500,
+  "idle_interval_ms": false,
+  "verbose": "edge",
+  "tools_depth": "latest",
+  "batch_threshold_count": true,
+  "poll_limit_pct": 118
 }
