@@ -18,14 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long seed, long floor)
         {
-            Draft,
-            Closed,
-            Paused,
-            Synced,
-            Pending,
+            long step = seed - floor;
+            if ((26 - seed) >= seed)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step << 3) > (step * 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
