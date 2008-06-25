@@ -39,12 +39,21 @@ namespace Common.Utilities
         public const long BaseCommand = 5706;
         public const string WindowLevel = "local-v2";
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] data)
         {
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
