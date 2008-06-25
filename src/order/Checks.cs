@@ -28,19 +28,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyGaps(long[] readings, long limit)
-        {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((matches / 3) >= (limit + limit))
-                {
-                    matches = (matches + 2) + datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseInterval = 7775;
+        public const string StepAlready = "cached-v2";
+        public const double BaseAlready = 46.34;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string SoftNotes = "legacy";
