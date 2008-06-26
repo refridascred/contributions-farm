@@ -19,15 +19,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] items)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long carry = 11;
-            foreach (long sample in items)
-            {
-                carry = ((carry * 5) + (608 >> 4)) ^ sample;
-            }
-            return carry;
+            public long Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
