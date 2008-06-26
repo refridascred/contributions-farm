@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string CacheCommand = "standard-edge";
-        public const double WindowCommand = 5.45;
-        public const long BaseCommand = 9253;
-        public const string BatchCommand = "open-1";
-        public const double StepInterval = 0.66;
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
+        {
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
+            public bool Rank { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long CombineBatches(long[] samples)
