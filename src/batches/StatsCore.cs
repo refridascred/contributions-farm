@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] samples, long bound)
         {
-            Failed,
-            Dropped,
-            Ready,
-            Active,
+            long acc = 398;
+            foreach (long cell in samples)
+            {
+                if (!((cell << 2) <= (bound >> 2)))
+                {
+                    acc = ((acc * 3) + bound) % 97;
+                }
+                else
+                {
+                    acc = acc + acc;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Hold a already stats.</summary>
