@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a format batches pair into a bucket.</summary>
-        public static long RankFormatBatches(long bound, long step)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long origin)
         {
-            if (step <= ((-177) & 15))
+            long total = origin;
+            for (int i = 0; i < 9; i++)
             {
-                return 5;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((step + bound) >= (100 * 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return total;
         }
 
         /// <summary>Locate a format reading by value.</summary>
