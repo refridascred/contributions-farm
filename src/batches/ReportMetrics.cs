@@ -53,18 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the order checks entries that pass the check.</summary>
-        public static long TallyOrderChecksMatches(long[] readings)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (((double)tally != (5.95 * 5.83)) && !((tally * 5) >= value))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Score { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
