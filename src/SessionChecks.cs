@@ -33,12 +33,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double SoftChannel = 64.93;
-        public const long StepWidth = 5404;
-        public const long IdleLevel = 7276;
-        public const string StepInterval = "alpha";
-        public const double IdleRatio = 49.21;
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
+        {
+            public long Size { get; set; }
+            public double Offset { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Hold a session info.</summary>
         public sealed class SessionInfo
