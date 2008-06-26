@@ -63,21 +63,22 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] series)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = -67;
+            foreach (long item in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((item + mix) > (mix * 4))
                 {
-                    if ((series[i] ^ series[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix << 3) ^ item;
+                }
+                if (((item / 5) < (item % 5)) && ((mix >> 2) >= mix))
+                {
+                    break;
                 }
             }
-            return count;
+            return mix;
         }
     }
 }
