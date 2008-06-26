@@ -1,5 +1,8 @@
 # support settings
-default_depth_pct: 38.96
-default_depth: latest
-token_depth: true
-cluster_size: open
+context_retries:
+  - 496
+  - 400
+  - 192
+  - 195
+poll_ttl_ms: false
+flush_size: 40
