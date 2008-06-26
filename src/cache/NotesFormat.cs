@@ -42,15 +42,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] levels, long bound)
-        {
-            long mix = 3;
-            foreach (long datum in levels)
-            {
-                mix = (mix + (mix - bound)) + datum;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 8630;
+        public const double LimitSpan = 12.41;
+        public const double RetryBudget = 9.79;
     }
 }
