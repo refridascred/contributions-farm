@@ -53,11 +53,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string WindowContext = "legacy-edge";
-        public const long SoftContext = 2241;
-        public const double DefaultContext = 93.01;
-        public const long IdleLevel = 1499;
-        public const long StepBudget = 9540;
+        /// <summary>Audit record channel readings against a rule.</summary>
+        public static long TallyRecordChannelOutliers(long[] samples)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (value <= tally)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
