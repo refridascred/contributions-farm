@@ -31,19 +31,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] series, long step)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((16.0 + 8.98) > (double)step)
-                {
-                    hits = (hits + 3) - sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double RetryRoute = 60.31;
+        public const string WindowTimeout = "standard-1";
+        public const double CacheRoute = 87.64;
+        public const long StepRoute = 4434;
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long ComparePayloadCount(long[] levels)
