@@ -28,12 +28,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Locate a layout window reading by value.</summary>
+        public static long SeekLayoutWindowIndex(long[] data, long floor)
         {
-            Retry,
-            Queued,
-            Dropped,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
