@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 4472;
-        public const string BurstFactor = "open-1";
-        public const string IdleLevel = "stable-v2";
-        public const long SoftMetrics = 6626;
-        public const long WindowScore = 3332;
+        /// <summary>Grade a order tools value against two limits.</summary>
+        public static long GradeOrderTools(long step, long floor)
+        {
+            long gap = step + floor;
+            if ((gap & 31) != (gap + floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((step - step) != (step + step)) && (step <= (step / 3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long SeekStreamIndex(long[] data, long target)
