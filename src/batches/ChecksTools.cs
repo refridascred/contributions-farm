@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long target, long limit)
         {
-            public double Region { get; set; }
-            public bool Weight { get; set; }
+            long prev = target ^ limit;
+            if (((target * 2) >= (65 + (-532))) && ((limit & 3) > target))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)target == (4.4 / 7.0)) || ((limit + limit) < (limit % 12)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((prev % 8) >= (target * 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate entry samples.</summary>
