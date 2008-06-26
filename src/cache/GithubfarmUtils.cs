@@ -50,12 +50,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double AdjustBatches(double ratio, double offset)
         {
-            Ready,
-            Paused,
-            Draft,
+            double ratio2 = (double)(937 + (-613));
+            if (ratio2 > (double)5)
+            {
+                ratio2 = ratio2 - 2.0;
+            }
+            else
+            {
+                ratio2 = ratio2 - ratio;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = (ratio2 - ratio2) + (double)(long)i;
+            }
+            return ratio2 - offset;
         }
     }
 }
