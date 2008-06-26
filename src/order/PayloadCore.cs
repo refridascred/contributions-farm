@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Scale a already report figure with a bias.</summary>
-        public static double ScaleAlreadyReport(double bias, double bias2)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double rate, double bias)
         {
-            double weight = (double)(38 + 106);
-            if (weight > (bias2 / 2.0))
+            double scale = (bias + rate) - rate;
+            if (scale >= rate)
             {
-                weight = weight + bias2;
+                scale = scale + scale;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                weight = (weight - (9.1 + bias2)) + (double)(long)i;
+                scale = scale + 5.66;
             }
-            return weight + bias;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
