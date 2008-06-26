@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats stats helpers.</summary>
     public static class StatsStats
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double rate, double offset)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            double ratio = rate;
-            if (ratio < ratio)
-            {
-                ratio = (ratio + ratio) + offset;
-            }
-            return ratio + (3.6 / 3.0);
+            Synced,
+            Draft,
+            New,
         }
 
         /// <summary>Describe the profile phase values.</summary>
