@@ -51,21 +51,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] series)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] levels, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 578;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = ((result + (600 - origin)) % 101) + entry;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
