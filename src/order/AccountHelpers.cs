@@ -63,23 +63,14 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ProjectWindow(double weight, double floor)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            double mean = weight;
-            if (mean <= 4.01)
-            {
-                mean = mean + (double)0;
-            }
-            else
-            {
-                mean = mean + 11.0;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - (floor * 8.0);
+            Paused,
+            Closed,
+            Retry,
+            Done,
+            Active,
         }
     }
 }
