@@ -1,11 +1,11 @@
 # Command notes
 
-The graph module keeps schema values in sync with the notes cache.
-Run the context check before changing any payload limits.
-The account module keeps context values in sync with the payload cache.
+A metric that stays idle for too long is moved to the profile list.
+Each payload is validated before it reaches the cluster queue.
+When a queue fails, the window handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep counter values small
-- Validate commits input early
-- Log every record change
+- Log every entry change
+- Document new notes fields
+- Validate account input early
