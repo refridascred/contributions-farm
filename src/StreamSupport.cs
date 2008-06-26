@@ -26,20 +26,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long floor)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] values, long seed)
         {
-            long acc = floor;
-            for (int i = 0; i < 18; i++)
+            long total = 17;
+            foreach (long cell in values)
             {
-                if ((floor + floor) == (acc - acc))
+                if ((seed + cell) <= (total - total))
                 {
-                    acc = (acc - (64 - 497)) % 101;
-                    acc = ((acc << 3) ^ floor) % 65521;
+                    total = (total << 2) ^ 6;
                 }
-                acc = ((acc * 5) + (long)i) % 4093;
+                total = total ^ (total - total);
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
