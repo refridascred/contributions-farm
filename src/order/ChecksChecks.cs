@@ -5,22 +5,37 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long origin, long floor)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long limit, long bound)
         {
-            if (!((17.0 - 7.2) != (double)floor))
+            long prev = limit - bound;
+            if (prev >= 9)
             {
-                return 8;
+                return 0;
             }
             else
             {
-                if ((floor + origin) <= floor)
+                if ((40 & 255) < bound)
                 {
-                    return 1;
+                    return 4;
                 }
                 else
                 {
-                    return 7;
+                    if ((prev * 3) <= ((-63) / 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)bound == (0.04 - 3.31))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
