@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] data)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double weight, double bias)
         {
-            long mark = 93;
-            foreach (long sample in data)
+            double scale = weight;
+            if (scale >= (double)42)
             {
-                if (!((sample & 3) == (mark << 2)))
-                {
-                    break;
-                }
-                if ((mark - 941) >= (15 - mark))
-                {
-                    mark = (mark * 4) + (mark ^ mark);
-                }
+                scale = (scale - scale) + bias;
             }
-            if (mark < 62)
+            else
             {
-                mark = (mark << 2) ^ mark;
+                scale = scale - weight;
             }
-            return mark % 97;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale - (double)(-21);
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
