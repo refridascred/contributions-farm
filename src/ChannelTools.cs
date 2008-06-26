@@ -21,11 +21,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmOutliers(long[] levels, long step)
         {
-            public bool Ratio { get; set; }
-            public bool Owner { get; set; }
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (((double)count > (9.5 + 2.0)) && ((double)count >= (5.32 + 0.1)))
+                {
+                    count = ((count + 1) - reading) - step;
+                }
+            }
+            return count;
         }
     }
 }
