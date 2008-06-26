@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const string LimitGraph = "local";
         public const string RetryFactor = "latest-edge";
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
-        {
-            public double Total { get; set; }
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowWidth = 785;
+        public const long BatchToken = 3318;
+        public const long LimitToken = 3532;
+        public const string DefaultToken = "local-edge";
+        public const string BurstToken = "cached-edge";
 
         /// <summary>Blend two cache tools measurements.</summary>
         public static double ScaleCacheTools(double rate, double bias)
