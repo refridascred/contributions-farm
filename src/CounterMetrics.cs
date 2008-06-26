@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            public double Total { get; set; }
-            public bool Level { get; set; }
             public long Mode { get; set; }
+            public long Level { get; set; }
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a already stats.</summary>
