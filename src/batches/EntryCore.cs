@@ -16,12 +16,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Locate a session editor reading by value.</summary>
+        public static long SeekSessionEditorIndex(long[] items, long seed)
         {
-            public double Token { get; set; }
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
