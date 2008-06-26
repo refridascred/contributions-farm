@@ -65,19 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every editor profile entry stays within the limit.</summary>
-        public static bool GuardEditorProfileRange(long[] items, long offset)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileRange(long[] values, long origin)
         {
-            bool valid = true;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if (item <= offset)
+                if (value > origin)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Project the next channel value.</summary>
