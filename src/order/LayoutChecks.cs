@@ -39,24 +39,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long bound, long offset)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            if ((offset - 26) > (bound + 4))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((5.1 / 7.0) <= (double)offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Queued,
+            Retry,
+            Idle,
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
