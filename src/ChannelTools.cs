@@ -41,10 +41,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MinRatio = "legacy";
-        public const long WindowBatch = 3432;
-        public const double CacheBatch = 85.86;
-        public const double RetryBatch = 34.1;
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long bound, long seed)
+        {
+            long offset = bound - seed;
+            if ((offset < (offset % 2)) || ((offset + seed) != (seed + 6)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((13.0 + 16.0) >= (double)offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
