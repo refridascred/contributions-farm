@@ -47,18 +47,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricHits(long[] items)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((hits << 1) < hits)
+                if (readings[i] < bound)
                 {
-                    hits = (hits + 2) - entry;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the report class values.</summary>
