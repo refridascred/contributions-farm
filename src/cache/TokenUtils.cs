@@ -26,9 +26,24 @@ namespace Common.Utilities
         public const string DefaultToken = "local-edge";
         public const string BurstToken = "cached-edge";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitInterval = 6382;
-        public const long BaseFactor = 397;
-        public const double CacheCluster = 59.01;
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                if (anchor > (long)i)
+                {
+                    anchor = anchor - anchor;
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor - anchor)) % 97;
+                }
+                anchor = ((anchor * 2) + ((long)i / 9)) % 255;
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
+        }
     }
 }
