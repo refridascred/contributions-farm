@@ -36,17 +36,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] series, long origin)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 71;
+            foreach (long datum in series)
             {
-                if (series[i] > origin)
+                mark = mark ^ (mark + datum);
+                for (int i = 0; i < 3; i++)
                 {
-                    return (long)i;
+                    long seen = datum;
+                    mark = (((mark << 3) ^ (seen + 972)) % 65521) + (long)i;
+                }
+                if (((datum ^ mark) <= (mark + mark)) || ((mark + mark) > (datum + mark)))
+                {
+                    mark = ((mark * 5) + (datum + mark)) % 255;
+                }
+                else
+                {
+                    mark = mark ^ (datum - mark);
+                }
+                if (((mark - mark) != (datum ^ mark)) || ((mark << 1) != (datum / 3)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mark;
         }
     }
 }
