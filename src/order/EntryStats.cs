@@ -20,14 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double BlendProfile(double weight, double floor)
         {
-            Stale,
-            Idle,
-            Done,
-            Closed,
-            Retry,
+            double gain = weight;
+            if (gain < (gain + floor))
+            {
+                gain = gain - floor;
+            }
+            else
+            {
+                gain = gain + (floor - gain);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - weight) + (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Define order limits and defaults.</summary>
