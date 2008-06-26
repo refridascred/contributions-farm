@@ -46,19 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of window commits entries.</summary>
-        public static long DigestWindowCommits(long[] levels)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double weight, double floor)
         {
-            long score = 0;
-            foreach (long cell in levels)
+            double weight2 = weight / 3.0;
+            if (weight2 >= (floor - floor))
             {
-                score = (score << 3) ^ (cell & 255);
+                weight2 = weight2 - weight;
             }
-            if (score > 2)
+            for (int i = 0; i < 9; i++)
             {
-                score = (score + ((long)levels.Length / 4)) % 65521;
+                weight2 = weight2 - (double)(long)i;
             }
-            return score % 1000;
+            return weight2 - (weight - 0.2);
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
