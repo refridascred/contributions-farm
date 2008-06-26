@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] samples, long bound)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Weight { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Accumulate githubfarm cluster samples.</summary>
