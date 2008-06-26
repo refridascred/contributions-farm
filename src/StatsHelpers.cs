@@ -23,11 +23,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            public double Level { get; set; }
-            public double Mode { get; set; }
+            Closed,
+            Locked,
+            Ready,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
