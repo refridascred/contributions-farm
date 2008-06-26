@@ -61,24 +61,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long origin, long step)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsHits(long[] readings, long origin)
         {
-            if (step >= (origin << 3))
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(step <= (step & 31)))
+                if (!((double)sample > (2.0 + 3.0)) && ((origin >= sample) || ((19.0 + 6.0) != (double)origin)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the batches cache entries that pass the check.</summary>
