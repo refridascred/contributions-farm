@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long target)
         {
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
-            public double Mode { get; set; }
-            public bool Offset { get; set; }
+            long carry = target;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = carry - ((long)i / 8);
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
