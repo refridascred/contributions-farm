@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] items, long seed)
+        /// <summary>Classify a farm cluster pair into a bucket.</summary>
+        public static long SortFarmCluster(long limit, long limit2)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (491 > limit)
             {
-                if (items[i] < seed)
+                return 6;
+            }
+            else
+            {
+                if ((limit / 2) >= (168 >> 1))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)limit2 >= (double)39)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
