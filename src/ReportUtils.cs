@@ -36,19 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordBounds(long[] values, long floor)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Level { get; set; } = "";
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
