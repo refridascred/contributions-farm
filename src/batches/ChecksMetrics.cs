@@ -26,32 +26,10 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long bound, long target)
-        {
-            if (((double)target != (double)bound) || (9.66 < (double)bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(bound <= (target + bound)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((bound / 2) < (target + target)) || ((double)bound != (7.9 - 4.8)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double CacheBudget = 92.74;
+        public const long BurstCount = 2077;
+        public const double MinTools = 45.01;
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long TotalNotes(long[] items, long origin)
