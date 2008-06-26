@@ -21,12 +21,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] samples)
         {
-            public string Flag { get; set; } = "";
-            public string Label { get; set; } = "";
-            public double Owner { get; set; }
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
