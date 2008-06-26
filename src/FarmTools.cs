@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every window cluster entry stays within the limit.</summary>
-        public static bool CheckWindowClusterBounds(long[] items, long step)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryMatches(long[] levels, long origin)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (reading <= step)
+                if (!(origin >= (origin % 100)))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 1) + sample;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
