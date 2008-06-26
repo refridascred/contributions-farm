@@ -1,18 +1,7 @@
 {
-  "burst_interval_pct": {
-    "max_depth_pct": "stable",
-    "hard_retries_ms": false,
-    "batch_depth": "eu-west",
-    "burst_size_count": {
-      "max_size": "primary",
-      "retry_delay": false,
-      "already_timeout": ["eu-west", "strict", "standard", "primary"]
-    },
-    "cache_ratio_ms": ["staging", "stable"]
-  },
-  "report_timeout": 250,
-  "hard_threshold_count": 7947,
-  "batch_threshold_count": "standard",
-  "order_retries": true,
-  "max_window_ms": 41
+  "cache_ttl_pct": [158, 216],
+  "burst_timeout": 27.49,
+  "cache_capacity_ms": 44.85,
+  "flush_delay_pct": ["primary", "eu-west", "latest"],
+  "sync_ttl_s": 3.9
 }
