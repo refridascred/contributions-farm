@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] series)
+        /// <summary>Measure how many format layout samples are out of range.</summary>
+        public static long TallyFormatLayoutHits(long[] series)
         {
-            long carry = -19;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                carry = ((carry * 3) + carry) % 97;
-                for (int i = 0; i < 12; i++)
+                if (!((double)entry == (9.2 * 5.0)) && ((double)hits != (1.63 * 8.0)))
                 {
-                    carry = ((carry - (item + carry)) % 255) - (long)i;
-                }
-                if ((double)item <= 2.7)
-                {
-                    carry = (carry << 2) ^ carry;
+                    hits = hits + 1;
                 }
             }
-            return carry % 65521;
+            return hits;
         }
 
         /// <summary>Compare every pair of editor notes readings.</summary>
