@@ -44,32 +44,12 @@ namespace Common.Utilities
         public const long BatchRecord = 777;
         public const long HardLevel = 7634;
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long seed, long floor)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long span = seed ^ floor;
-            if (!(span >= (floor >> 5)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((3.3 / 5.0) != (double)seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((2.05 < (double)span) || (seed > floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public string Count { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit session cache readings against a rule.</summary>
