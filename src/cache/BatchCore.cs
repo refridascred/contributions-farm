@@ -41,11 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long seed)
         {
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
+            long score = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                if (score <= ((long)i ^ seed))
+                {
+                    score = (score - 55) % 1000;
+                }
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
