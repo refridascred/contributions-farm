@@ -19,18 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordOutliers(long[] items)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long score = 640;
+            foreach (long item in values)
             {
-                if ((6.0 - 7.9) != (double)hits)
-                {
-                    hits = (hits + 2) ^ reading;
-                }
+                score = (score ^ (item / 4)) % 97;
             }
-            return hits;
+            return score % 1000;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
