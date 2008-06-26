@@ -18,21 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long PairEntryCount(long[] values)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 9;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((double)item == (3.6 / 2.0)))
                 {
-                    if ((values[i] + values[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = ((total << 3) ^ (item - (long)readings.Length)) % 101;
+                }
+                if (14 >= (item * 2))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (total < 85)
+            {
+                total = (total + total) % 101;
+            }
+            return total;
         }
 
         /// <summary>Describe the queue class values.</summary>
