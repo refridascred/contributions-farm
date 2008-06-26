@@ -1,11 +1,9 @@
 # githubfarm settings
-hard_interval_ms: 2254
-audit:
+soft_interval_ms: 1024
+account_ratio:
+  - fallback
   - blue
-  - local
-  - primary
-  - blue
-max_ttl_count: 94.45
-soft_ratio_ms: edge
-default_depth_pct: 500
-dry_run: edge
+  - cached
+burst_size: 4042
+default_depth: 30.92
+schema_ratio: false
