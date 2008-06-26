@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Grade a batches token value against two limits.</summary>
+        public static long ClassifyBatchesToken(long limit, long floor)
         {
-            Queued,
-            Stale,
-            Pending,
+            long bound = limit + floor;
+            if ((double)limit != (2.0 - 7.7))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((bound >> 2) != (floor - 54)) || ((1.26 / 6.0) > (double)bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)floor > 5.1)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((-18) < limit)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
