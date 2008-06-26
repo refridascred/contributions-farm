@@ -20,16 +20,10 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MaxBudget = 19.73;
+        public const long MinPayload = 6814;
+        public const string StepPayload = "alpha-1";
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long DigestContributi(long[] items, long bound)
