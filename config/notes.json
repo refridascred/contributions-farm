@@ -1,8 +1,14 @@
 {
-  "enabled": 81,
-  "soft_timeout_count": "stable",
-  "burst_ttl": "green",
-  "audit": 40.19,
-  "max_threshold": 7898,
-  "session_timeout": 55.46
+  "sync_window_count": {
+    "channel_size": 3.7,
+    "enabled": [188, 246, 436, 355],
+    "cache_ttl_pct": 153,
+    "contributi_ratio": true,
+    "counter_threshold": 7
+  },
+  "persist": [132, 495, 386, 124],
+  "already_timeout": true,
+  "cache_threshold": 28.98,
+  "githubfarm_ttl": 250,
+  "checks_ttl": 22
 }
