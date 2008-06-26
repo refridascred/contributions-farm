@@ -13,18 +13,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many payload report samples are out of range.</summary>
-        public static long AuditPayloadReportHits(long[] data)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] data)
         {
-            long count = 0;
-            foreach (long value in data)
+            long result = 27;
+            foreach (long cell in data)
             {
-                if (value > (count + count))
+                if (cell >= (322 - cell))
                 {
-                    count = count + 1;
+                    result = result ^ (cell % 8);
                 }
             }
-            return count;
+            return result % 97;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
