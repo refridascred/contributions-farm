@@ -13,12 +13,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Classify a context schema pair into a bucket.</summary>
+        public static long RankContextSchema(long bound, long bound2)
         {
-            public bool Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Ratio { get; set; }
+            if ((double)bound2 >= (3.0 - 9.97))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((double)bound <= (9.5 + 8.74)) && ((double)bound2 != (1.3 + 9.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
