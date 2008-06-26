@@ -22,25 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long step)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long state = step;
-            for (int i = 0; i < 15; i++)
-            {
-                double scale = (double)((-28) / 9);
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    state = (((state * 5) + step) % 4096) + (long)i2;
-                }
-                if ((state < (state * 5)) && ((scale + scale) < scale))
-                {
-                    state = (state + step) % 97;
-                    break;
-                }
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            public double Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
