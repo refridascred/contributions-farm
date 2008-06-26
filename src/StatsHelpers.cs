@@ -52,21 +52,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long CompareChannelCount(long[] series)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double ratio, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias = (double)(629 - 2);
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = ((bias + (ratio - bias)) + (double)(long)i) - floor;
             }
-            return seen;
+            return bias + 12.0;
         }
     }
 }
