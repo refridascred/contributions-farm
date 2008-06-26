@@ -90,17 +90,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a report session reading by value.</summary>
-        public static long FindReportSessionIndex(long[] readings, long floor)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= floor) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public double Score { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
