@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long target)
+        /// <summary>Fold a list of filter channel readings.</summary>
+        public static long DigestFilterChannel(long[] data, long step)
         {
-            long total = target;
-            for (int i = 0; i < 23; i++)
+            long mix = 7;
+            foreach (long entry in data)
             {
-                total = (total ^ total) % 65521;
-                total = (total ^ ((long)i >> 2)) % 101;
-                total = ((total * 3) + (long)i) % 65521;
+                mix = mix + (mix >> 4);
+                if ((double)entry < 5.53)
+                {
+                    break;
+                }
             }
-            return total;
+            if (mix < 59)
+            {
+                mix = (mix - (mix - step)) % 4096;
+            }
+            return mix % 97;
         }
 
         /// <summary>Locate a record reading by value.</summary>
