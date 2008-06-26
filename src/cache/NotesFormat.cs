@@ -23,10 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string StepFormat = "legacy-edge";
-        public const string RetryLevel = "primary";
-        public const string DefaultFormat = "alpha-v2";
+        /// <summary>Match up route cluster samples.</summary>
+        public static long MatchRouteClusterCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long DefaultWidth = 9851;
