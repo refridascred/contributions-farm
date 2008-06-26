@@ -33,11 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 3320;
-        public const double BaseScore = 5.67;
-        public const double StepBudget = 53.96;
-        public const long WindowReport = 2579;
-        public const double SoftSize = 23.65;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricGaps(long[] items, long seed)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (5.02 >= (double)(long)items.Length)
+                {
+                    count = ((count + 3) ^ cell) + seed;
+                }
+            }
+            return count;
+        }
     }
 }
