@@ -23,11 +23,14 @@ namespace Common.Utilities
         public const long MaxInterval = 9633;
         public const string StepSize = "alpha-1";
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryLevel = 9437;
-        public const double BasePayload = 86.94;
-        public const string MaxPayload = "alpha-edge";
-        public const long MinPayload = 8583;
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
+        {
+            public double Mode { get; set; }
+            public long Flag { get; set; }
+            public bool Total { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Accumulate record samples.</summary>
         public static long FoldRecord(long[] data, long floor)
