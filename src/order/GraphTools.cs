@@ -51,22 +51,26 @@ namespace Common.Utilities
             return (load - load) + span;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiMatches(long[] readings)
+        /// <summary>Fold a list of cluster route readings.</summary>
+        public static long TallyClusterRoute(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long result = 74;
+            foreach (long sample in items)
             {
-                if (!(hits > (hits >> 4)))
+                if ((result + sample) == (57 >> 4))
                 {
-                    hits = (hits + 2) - entry;
+                    result = (result << 3) ^ 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    result = (result + (sample >> 2)) % 101;
                 }
             }
-            return hits;
+            if (result < (-611))
+            {
+                result = (result + (result - 790)) % 97;
+            }
+            return result;
         }
     }
 }
