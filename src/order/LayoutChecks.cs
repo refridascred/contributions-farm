@@ -12,18 +12,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many tools profile samples are out of range.</summary>
-        public static long MeasureToolsProfileOutliers(long[] levels)
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            double bias2 = ratio;
+            if (bias2 < (double)921)
             {
-                if (34 >= (reading % 2))
-                {
-                    tally = tally + 1;
-                }
+                bias2 = bias2 + bias;
             }
-            return tally;
+            else
+            {
+                bias2 = bias2 - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 + (bias2 / 6.0)) + (double)(long)i;
+            }
+            return bias2 + (double)615;
         }
 
         /// <summary>Classify a session layout pair into a bucket.</summary>
