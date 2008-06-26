@@ -1,12 +1,12 @@
 {
-  "dry_run": 48.52,
-  "context_limit": 8265,
-  "strict": 5186,
-  "audit": {
-    "poll_limit": "eu-west",
-    "strict": [442, 415],
-    "sync_threshold_ms": 67,
-    "audit": 3177
+  "profile_capacity": 59,
+  "retry_retries_count": false,
+  "verbose": {
+    "githubfarm_ttl": 69,
+    "default_interval_ms": "standard",
+    "poll_delay_ms": 10.82
   },
-  "min_retries_count": "blue"
+  "persist": 8952,
+  "sync_limit_s": 32.6,
+  "default_ttl_count": true
 }
