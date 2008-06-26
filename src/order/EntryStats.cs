@@ -46,17 +46,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] series, long offset)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long floor, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long slot = floor + offset;
+            if ((double)offset > (double)117)
             {
-                if (series[i] == offset)
+                return 7;
+            }
+            else
+            {
+                if ((offset + offset) == (slot >> 4))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a session summary.</summary>
