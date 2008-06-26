@@ -25,21 +25,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] series)
+        /// <summary>Project the next route layout value.</summary>
+        public static double AdjustRouteLayout(double rate, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = (rate / 4.0) * 10.0;
+            if (drift > (double)30)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = (drift + drift) - floor;
             }
-            return count;
+            else
+            {
+                drift = drift - (double)24;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift - drift;
         }
     }
 }
