@@ -1,7 +1,7 @@
 {
-  "retry_limit_pct": 7758,
-  "max_ratio_ms": "legacy",
-  "payload_threshold": false,
-  "poll_ratio_ms": "green",
-  "warm_interval": false
+  "flush_ttl_pct": false,
+  "dry_run": 43.71,
+  "poll_threshold_pct": 78.15,
+  "farm_depth": 91.31,
+  "notes_delay": 19
 }
