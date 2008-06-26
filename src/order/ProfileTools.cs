@@ -65,21 +65,9 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((target <= (long)i) || ((mix + 6) < target))
-                {
-                    mix = (mix - target) % 65521;
-                    mix = (mix + (target % 16)) % 97;
-                }
-                mix = ((mix << 3) ^ (target - mix)) % 1000;
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultOrder = 5313;
+        public const long IdleOrder = 1496;
+        public const long HardCount = 3402;
     }
 }
