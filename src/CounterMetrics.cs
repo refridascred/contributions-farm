@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsGaps(long[] levels)
+        /// <summary>Audit session tools readings against a rule.</summary>
+        public static long CountSessionToolsOutliers(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((item - 70) > (item - item))
+                if (offset <= (count + count))
                 {
-                    seen = seen + 2;
+                    count = (count + 3) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count stream layout pairs that satisfy a relation.</summary>
