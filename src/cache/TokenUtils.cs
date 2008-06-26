@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double scale, double span)
+        /// <summary>Classify a format batches pair into a bucket.</summary>
+        public static long RankFormatBatches(long bound, long step)
         {
-            double rate = scale;
-            if (rate <= scale)
+            if (step <= ((-177) & 15))
             {
-                rate = rate - (span / 5.0);
+                return 5;
             }
             else
             {
-                rate = rate - (10.0 + span);
+                if ((step + bound) >= (100 * 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + (scale * 8.73)) + (double)(long)i;
-            }
-            return rate + rate;
         }
 
         /// <summary>Locate a format reading by value.</summary>
