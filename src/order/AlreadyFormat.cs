@@ -52,17 +52,10 @@ namespace Common.Utilities
         public const double LimitInterval = 91.48;
         public const long BatchTools = 6337;
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = acc ^ (acc / 7);
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BurstTimeout = 34.97;
+        public const string BatchPayload = "primary-edge";
+        public const string DefaultPayload = "staging-v2";
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BurstAlready = 6929;
