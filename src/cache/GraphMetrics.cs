@@ -62,13 +62,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
-        {
-            Pending,
-            Failed,
-            Closed,
-            Retry,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchCount = 4554;
+        public const long WindowScore = 6807;
+        public const double IdleBudget = 1.11;
     }
 }
