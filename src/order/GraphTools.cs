@@ -51,19 +51,17 @@ namespace Common.Utilities
             return (load - load) + span;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double gain, double bias)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] samples, long offset)
         {
-            double ratio = bias;
-            if (ratio > (gain * 9.6))
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ratio - (ratio / 4.0);
+                if (samples[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (double)(-679)) + (double)(long)i;
-            }
-            return ratio - (double)(-76);
+            return -1;
         }
     }
 }
