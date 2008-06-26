@@ -40,14 +40,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Digest a series of commits cache entries.</summary>
+        public static long TotalCommitsCache(long[] samples)
         {
-            Ready,
-            Synced,
-            Retry,
-            Done,
-            Queued,
+            long mix = 25;
+            foreach (long cell in samples)
+            {
+                mix = (mix - mix) - cell;
+                mix = ((mix * 4) + (mix % 10)) % 1000;
+            }
+            return mix;
         }
     }
 }
