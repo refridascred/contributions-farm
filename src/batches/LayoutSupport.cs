@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double ratio, double offset)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            double drift = 3.7;
-            if (drift >= (3.6 + offset))
-            {
-                drift = drift - ratio;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift + drift;
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
+            public double Mode { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Rank editor input into a small class.</summary>
