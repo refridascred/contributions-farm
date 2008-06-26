@@ -13,18 +13,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the githubfarm context entries that pass the check.</summary>
-        public static long TallyGithubfarmContextOutliers(long[] readings)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((8.0 / 4.0) <= (double)hits)
+                if ((data[i] >= bound) && ((data[i] % 3) != 0))
                 {
-                    hits = (hits + 1) - value;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
