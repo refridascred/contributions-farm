@@ -55,19 +55,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every channel context entry stays within the limit.</summary>
-        public static bool CheckChannelContextBounds(long[] readings, long step)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Active,
+            Paused,
+            Synced,
         }
 
         /// <summary>Hold a metrics summary.</summary>
