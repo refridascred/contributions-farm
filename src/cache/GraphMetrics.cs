@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const string SoftDepth = "local-1";
         public const long CacheAccount = 4638;
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] items)
         {
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
-            public double Offset { get; set; }
-            public string Weight { get; set; } = "";
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((value & 63) >= (matches >> 5))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
