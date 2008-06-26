@@ -1,7 +1,17 @@
 {
-  "report_timeout": 42.0,
-  "batch_delay_ms": true,
-  "support_depth": true,
-  "batch_size_pct": 98,
-  "route_ttl": [225, 252, 3]
+  "batch_depth": 93.64,
+  "stats_depth": "stable",
+  "verbose": 2835,
+  "cluster_capacity": {
+    "warm_threshold": "eu-west",
+    "base_ttl": false,
+    "hard_size_count": "legacy",
+    "commits_capacity": "latest",
+    "cache_threshold_count": {
+      "window_size": 30,
+      "flush_delay_pct": 63,
+      "token_size": true,
+      "batch_limit": true
+    }
+  }
 }
