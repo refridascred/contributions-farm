@@ -1,11 +1,12 @@
 # Command notes
 
-A metric that stays idle for too long is moved to the profile list.
-Each payload is validated before it reaches the cluster queue.
-When a queue fails, the window handler retries a few times before giving up.
+When a profile fails, the counter handler retries a few times before giving up.
+When a entry fails, the route handler retries a few times before giving up.
+Defaults for channel live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every entry change
-- Document new notes fields
+- Log every commits change
+- Review command limits each release
 - Validate account input early
+- Keep batch values small
