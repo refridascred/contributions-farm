@@ -5,24 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long target)
+        /// <summary>Classify a window filter pair into a bucket.</summary>
+        public static long RankWindowFilter(long target, long bound)
         {
-            long sum = target;
-            for (int i = 0; i < 16; i++)
+            long span = target ^ bound;
+            if (target >= (bound >> 4))
             {
-                if ((12.0 * 7.96) > (double)target)
+                return 1;
+            }
+            else
+            {
+                if (((double)target == (6.56 * 0.6)) || ((0.6 - 7.18) >= (double)span))
                 {
-                    sum = sum ^ (sum * 4);
-                    sum = (sum * 4) + ((long)i * 4);
+                    return 5;
                 }
                 else
                 {
-                    sum = (sum + (long)i) % 255;
+                    return 4;
                 }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
