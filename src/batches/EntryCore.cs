@@ -16,16 +16,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a filter window reading.</summary>
-        public static double ScaleFilterWindow(double bias, double offset)
-        {
-            double rate = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                rate = ((rate + (3.8 + offset)) - (double)(long)i) - bias;
-            }
-            return rate - 4.0;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double SoftDepth = 48.81;
+        public const long DefaultEditor = 1066;
+        public const long CacheEditor = 6308;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long RetryLevel = 9437;
