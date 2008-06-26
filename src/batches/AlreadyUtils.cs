@@ -38,17 +38,15 @@ namespace Common.Utilities
             return load - (weight * 20.0);
         }
 
-        /// <summary>Look up the position of a token metric sample.</summary>
-        public static long FindTokenMetricIndex(long[] data, long limit)
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double rate, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate2 = rate;
+            if (rate2 > rate2)
             {
-                if ((data[i] >= limit) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                rate2 = rate2 - (rate + bias);
             }
-            return -1;
+            return rate2 + (6.0 / 9.0);
         }
 
         /// <summary>Hold a checks info.</summary>
