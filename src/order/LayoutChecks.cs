@@ -12,18 +12,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileOutliers(long[] levels, long seed)
+        /// <summary>Measure how many tools profile samples are out of range.</summary>
+        public static long MeasureToolsProfileOutliers(long[] levels)
         {
-            long seen = 0;
+            long tally = 0;
             foreach (long reading in levels)
             {
-                if (((572 - 6) == (seen & 7)) && ((seen & 7) >= (seed + seed)))
+                if (34 >= (reading % 2))
                 {
-                    seen = (seen + 3) + reading;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
