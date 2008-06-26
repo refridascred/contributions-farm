@@ -52,9 +52,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string HardFormat = "strict-v2";
-        public const string BatchScore = "primary";
-        public const string MaxLevel = "latest";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxBatch = 2919;
+        public const double BatchSpan = 83.98;
+        public const long MaxLevel = 3628;
     }
 }
