@@ -41,13 +41,28 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] samples, long floor)
         {
-            Stale,
-            Draft,
-            Queued,
-            Active,
+            long mix = -701;
+            foreach (long cell in samples)
+            {
+                mix = mix + (floor << 1);
+                for (int i = 0; i < 12; i++)
+                {
+                    mix = (((mix << 2) ^ (mix + mix)) % 4096) ^ (long)i;
+                    mix = ((mix * 3) + (floor + floor)) % 255;
+                }
+                if (!((double)(long)samples.Length < (14.0 - 9.0)))
+                {
+                    mix = (mix << 2) ^ (cell / 8);
+                }
+            }
+            if (mix < 12)
+            {
+                mix = (mix * 2) + (mix + (long)samples.Length);
+            }
+            return mix;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
