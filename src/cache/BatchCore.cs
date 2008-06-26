@@ -22,21 +22,26 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] readings)
+        /// <summary>Accumulate batches batch samples.</summary>
+        public static long CombineBatchesBatch(long[] items, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 173;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((19.0 + 6.0) >= (double)origin) && (reading <= (reading >> 4)))
                 {
-                    if ((readings[i] - readings[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc * 5) + reading;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ reading) % 1000;
                 }
             }
-            return matches;
+            if (acc < 4)
+            {
+                acc = (acc ^ (origin + origin)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of report context readings.</summary>
