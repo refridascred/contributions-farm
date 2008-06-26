@@ -19,19 +19,19 @@ namespace Common.Utilities
         public const long RetryInterval = 6111;
         public const long WindowChecks = 3943;
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] items, long seed)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderBounds(long[] levels, long floor)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if (sample != seed)
+                if (item != floor)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
