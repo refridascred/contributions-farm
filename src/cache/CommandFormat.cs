@@ -20,17 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] data, long target)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
