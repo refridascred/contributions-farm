@@ -20,11 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] items, long bound)
         {
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
+            long total = 86;
+            foreach (long sample in items)
+            {
+                if ((double)sample == (10.0 / 3.0))
+                {
+                    total = (total * 3) + bound;
+                }
+            }
+            return total;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
