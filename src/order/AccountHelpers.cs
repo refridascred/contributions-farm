@@ -46,31 +46,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] data)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] items, long bound)
         {
-            long anchor = 16;
-            foreach (long datum in data)
+            long total = 674;
+            foreach (long cell in items)
             {
-                anchor = (anchor - (anchor - datum)) % 97;
-                if ((anchor - anchor) > (datum + anchor))
+                if ((double)total >= (double)bound)
                 {
-                    anchor = (anchor + (datum - anchor)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor - datum) % 1000;
-                }
-                if ((91 & 63) < (long)data.Length)
-                {
-                    anchor = ((anchor * 3) + datum) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor + anchor) % 255;
+                    total = (((total << 2) ^ 15) % 4096) ^ cell;
                 }
             }
-            return anchor % 1000;
+            if (total < (-79))
+            {
+                total = ((total * 3) + ((long)items.Length >> 1)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Hold a stats options.</summary>
