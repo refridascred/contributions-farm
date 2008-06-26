@@ -40,21 +40,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next contributi window value from a seed.</summary>
-        public static long IterateContributiWindow(long floor)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] levels, long offset)
         {
-            long anchor = floor;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = anchor ^ (floor - floor);
-                anchor = ((anchor * 4) + ((long)i / 4)) % 255;
-                for (int i2 = 0; i2 < 4; i2++)
+                if (levels[i] == offset)
                 {
-                    anchor = ((anchor + (467 >> 2)) % 97) - (long)i2;
+                    return (long)i;
                 }
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
+            return -1;
         }
     }
 }
