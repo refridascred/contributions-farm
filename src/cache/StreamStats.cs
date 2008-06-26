@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long target)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long OverlapCacheCount(long[] values)
         {
-            long mark = target;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark + (target ^ mark)) % 4096;
-                mark = ((mark * 3) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Adjust a payload reading.</summary>
