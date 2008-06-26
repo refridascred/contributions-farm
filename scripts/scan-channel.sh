@@ -7,14 +7,14 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-eu-west}"
+mode="${1:-edge}"
 case "${mode}" in
-    fallback)
+    local)
         log "fast path"
         ;;
     *)
@@ -22,6 +22,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in cached staging eu-west; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=154
+log "limit is ${CHANNEL_LIMIT}"
