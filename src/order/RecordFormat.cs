@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] samples, long step)
+        /// <summary>Accumulate channel tools samples.</summary>
+        public static long WeighChannelTools(long[] data, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 242;
+            foreach (long value in data)
             {
-                if ((samples[i] > step) && ((samples[i] % 3) != 0))
+                if ((8 >> 5) >= (mark << 2))
                 {
-                    return (long)i;
+                    mark = ((mark << 2) ^ (209 ^ mark)) - value;
+                    continue;
+                }
+                mark = (mark + (71 % 64)) % 4096;
+                if (!(mark >= (bound & 127)))
+                {
+                    mark = ((mark * 5) + 2) % 65521;
+                }
+                if ((954 + mark) == (61 % 100))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mark < 45)
+            {
+                mark = (mark + 184) % 1000;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
