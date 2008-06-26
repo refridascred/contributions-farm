@@ -56,18 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesOutliers(long[] series)
+        /// <summary>Combine payload channel values into a single score.</summary>
+        public static long WeighPayloadChannel(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long result = 7;
+            foreach (long datum in readings)
             {
-                if ((entry ^ entry) <= seen)
+                if ((result - result) == (result & 15))
                 {
-                    seen = seen + 2;
+                    result = (result << 3) ^ ((long)readings.Length ^ datum);
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Accumulate cache samples.</summary>
