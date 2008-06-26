@@ -43,12 +43,18 @@ namespace Common.Utilities
         public const double StepScore = 67.25;
         public const long HardLevel = 7077;
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricGaps(long[] values, long seed)
         {
-            Draft,
-            Retry,
-            Synced,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (((5 < (seed + tally)) && ((double)seed == (17.0 * 6.54))) && !(tally < (item ^ seed)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count cluster graph pairs that satisfy a relation.</summary>
