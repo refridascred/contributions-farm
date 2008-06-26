@@ -40,12 +40,18 @@ namespace Common.Utilities
         public const string CacheMetric = "cached";
         public const double WindowMetric = 97.75;
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Count the batch filter entries that pass the check.</summary>
+        public static long TallyBatchFilterMatches(long[] values)
         {
-            Retry,
-            Failed,
-            Paused,
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (13.0 > (double)item)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
