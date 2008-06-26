@@ -1,11 +1,11 @@
 # Command notes
 
-Each metric is validated before it reaches the batches queue.
-A cluster that stays idle for too long is moved to the route list.
-Keep account and window names short and lowercase.
+Run the channel check before changing any githubfarm limits.
+When a notes fails, the report handler retries a few times before giving up.
+When a channel fails, the notes handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new stats fields
-- Prefer metric defaults
-- Log every already change
+- Document new schema fields
+- Log every command change
+- Validate notes input early
