@@ -29,19 +29,28 @@ namespace Common.Utilities
         public const string MaxPayload = "alpha-edge";
         public const long MinPayload = 8583;
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double gain, double bias)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] data, long floor)
         {
-            double ratio = gain;
-            if (ratio < gain)
+            long mix = 8;
+            foreach (long reading in data)
             {
-                ratio = (ratio + gain) - bias;
+                if ((double)mix < (9.9 / 5.0))
+                {
+                    mix = ((mix * 2) + floor) % 101;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (mix ^ reading)) % 4096;
+                }
+                for (int i = 0; i < 2; i++)
+                {
+                    mix = ((mix + reading) % 255) + (long)i;
+                    mix = ((mix * 4) + (reading + floor)) % 255;
+                }
+                mix = ((mix << 2) ^ (5 ^ mix)) % 1000;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - (gain - gain)) + (double)(long)i;
-            }
-            return ratio + (double)819;
+            return mix % 97;
         }
 
         /// <summary>Hold a checks summary.</summary>
