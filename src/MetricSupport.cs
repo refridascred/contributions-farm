@@ -34,13 +34,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
-        {
-            Stale,
-            Ready,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchLevel = 6053;
+        public const long RetryBatches = 722;
+        public const double CacheRatio = 9.07;
+        public const double BaseTimeout = 31.96;
+        public const long IdleBatches = 9310;
     }
 }
