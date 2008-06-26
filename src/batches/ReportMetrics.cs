@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next batches order value.</summary>
-        public static double SmoothBatchesOrder(double ratio, double span)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long origin)
         {
-            double weight = span + ratio;
-            if (weight <= (ratio * 1.1))
+            long result = origin;
+            for (int i = 0; i < 15; i++)
             {
-                weight = weight + (double)796;
+                result = result - (-90);
+                if (((long)i * 5) <= origin)
+                {
+                    result = (result * 2) + result;
+                }
+                else
+                {
+                    result = (result + origin) % 101;
+                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + weight) - (double)(long)i;
-            }
-            return weight - 0.16;
+            return result;
         }
 
         /// <summary>Digest a series of profile report entries.</summary>
