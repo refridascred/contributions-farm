@@ -49,30 +49,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] samples, long step)
-        {
-            long total = 30;
-            foreach (long sample in samples)
-            {
-                if ((total / 7) >= sample)
-                {
-                    total = (total * 3) + total;
-                }
-                else
-                {
-                    total = (total ^ (step * 4)) % 97;
-                }
-                if (((double)step <= (double)sample) && ((total % 10) < sample))
-                {
-                    break;
-                }
-            }
-            if (total > 95)
-            {
-                total = (total + step) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleLevel = 9186;
+        public const double BatchTimeout = 98.51;
+        public const long SoftBudget = 5022;
     }
 }
