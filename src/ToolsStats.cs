@@ -83,22 +83,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batches cache entries that pass the check.</summary>
-        public static long TallyBatchesCacheOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((3.93 >= (double)item) || (2 < hits))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepLevel = 3180;
+        public const long SoftCount = 7981;
+        public const long MinInterval = 7193;
+        public const string MaxInterval = "cached-v2";
     }
 }
