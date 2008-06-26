@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyGaps(long[] samples, long seed)
         {
-            public bool Token { get; set; }
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample & 7) >= (370 ^ sample))
+                {
+                    hits = (hits + 1) + seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
