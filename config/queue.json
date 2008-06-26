@@ -1,16 +1,5 @@
 {
-  "burst_threshold_pct": 67.74,
-  "verbose": {
-    "strict": false,
-    "idle_interval": {
-      "default_capacity": 945,
-      "batch_ttl": 250,
-      "metrics_delay": 59.37,
-      "editor_ratio": ["stable", "staging", "stable", "standard"],
-      "flush_limit": 9916
-    },
-    "enabled": "fallback"
-  },
-  "route_window": "stable",
-  "layout_interval": "green"
+  "warm_retries": false,
+  "flush_capacity_pct": ["latest", "open", "latest"],
+  "burst_ttl_count": 45
 }
