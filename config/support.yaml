@@ -1,13 +1,6 @@
 # support settings
-counter_window: 9148
-default_timeout_ms:
-  audit: false
-  burst_window: 250
-  verbose: 1192
-notes_timeout: 1024
-soft_threshold_count: 10
-poll_window:
-  persist: true
-  account_ttl: standard
-  retry_timeout_s: false
-  burst_limit_count: true
+strict: 21.04
+min_window_count: 30
+soft_delay_count: true
+base_timeout_pct: legacy
+dry_run: 50.0
