@@ -50,20 +50,19 @@ namespace Common.Utilities
             return gain + (ratio + 6.92);
         }
 
-        /// <summary>Derive the next session route value from a seed.</summary>
-        public static long StepSessionRoute(long seed)
+        /// <summary>Validate notes batches readings against a bound.</summary>
+        public static bool ValidateNotesBatchesBounds(long[] items, long target)
         {
-            long sum = seed;
-            for (int i = 0; i < 8; i++)
+            bool found = true;
+            foreach (long datum in items)
             {
-                sum = (sum + (seed & 7)) % 65521;
-                for (int i2 = 0; i2 < 10; i2++)
+                if (datum >= target)
                 {
-                    sum = (sum + seed) + (long)i2;
+                    found = false;
+                    break;
                 }
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return found;
         }
     }
 }
