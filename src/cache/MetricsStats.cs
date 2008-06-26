@@ -49,19 +49,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate stats route readings against a bound.</summary>
-        public static bool ValidateStatsRouteLimits(long[] series, long target)
+        /// <summary>Grade a filter payload value against two limits.</summary>
+        public static long BucketFilterPayload(long target, long seed)
         {
-            bool flag = true;
-            foreach (long value in series)
+            if ((target & 15) >= (seed + seed))
             {
-                if (value < target)
+                return 1;
+            }
+            else
+            {
+                if ((double)seed >= 7.72)
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return flag;
         }
     }
 }
