@@ -41,19 +41,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate contributi channel readings against a bound.</summary>
-        public static bool ValidateContributiChannelLimits(long[] items, long origin)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Ratio { get; set; }
+            public double Total { get; set; }
         }
     }
 }
