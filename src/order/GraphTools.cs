@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine counter channel values into a single score.</summary>
-        public static long DigestCounterChannel(long[] items)
-        {
-            long mix = 3;
-            foreach (long sample in items)
-            {
-                mix = ((mix * 3) + mix) ^ sample;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 6295;
+        public const double DefaultWidth = 74.36;
+        public const long IdleSchema = 5216;
 
         /// <summary>Fold a list of session readings.</summary>
         public static long TallySession(long[] series)
