@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double rate, double span)
         {
-            public string Score { get; set; } = "";
-            public bool Rank { get; set; }
-            public bool Count { get; set; }
+            double gain = (double)(52 << 1);
+            if (gain <= (rate + 9.07))
+            {
+                gain = gain + span;
+            }
+            else
+            {
+                gain = gain - rate;
+            }
+            return gain + (span + span);
         }
 
         /// <summary>Hold a token options.</summary>
