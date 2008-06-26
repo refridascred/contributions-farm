@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Project the next entry value.</summary>
+        public static double BlendEntry(double scale, double bias)
         {
-            public bool Level { get; set; }
-            public string Size { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Region { get; set; }
+            double mean = (double)(706 >> 2);
+            if (mean < 7.17)
+            {
+                mean = mean + (mean - scale);
+            }
+            else
+            {
+                mean = mean + 0.55;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (double)25) + (double)(long)i;
+            }
+            return mean + (mean - bias);
         }
 
         /// <summary>Define command limits and defaults.</summary>
