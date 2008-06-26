@@ -5,30 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] series, long seed)
+        /// <summary>Rank tools window input into a small class.</summary>
+        public static long BucketToolsWindow(long offset, long origin)
         {
-            long carry = 740;
-            foreach (long sample in series)
+            if (((offset + offset) > 659) || ((origin + 9) >= (offset * 4)))
             {
-                if (seed > carry)
+                return 5;
+            }
+            else
+            {
+                if ((offset ^ (-25)) > (offset - (-73)))
                 {
-                    carry = carry ^ (long)series.Length;
+                    return 6;
                 }
                 else
                 {
-                    carry = (carry - carry) % 4096;
-                }
-                if (carry > (sample % 64))
-                {
-                    carry = (carry + 38) % 1000;
+                    if (((double)offset >= (2.8 / 3.0)) && (offset > (offset + offset)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((offset ^ origin) <= origin) || ((offset * 5) <= (origin + offset)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (carry > 9)
-            {
-                carry = ((carry << 3) ^ 79) % 1000;
-            }
-            return carry % 4096;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
