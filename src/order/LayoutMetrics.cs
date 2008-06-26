@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double bias, double bias2)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionLimits(long[] data, long bound)
         {
-            double gain = bias;
-            if (gain >= gain)
+            bool ok = true;
+            foreach (long value in data)
             {
-                gain = gain - bias2;
+                if (value <= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + bias2) + (double)(long)i;
-            }
-            return gain - bias2;
+            return ok;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
