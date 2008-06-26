@@ -22,15 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double ratio, double floor)
+        /// <summary>Iterate the stats counter series from a seed.</summary>
+        public static long RollStatsCounter(long floor)
         {
-            double ratio2 = (double)(49 - 85);
-            if (ratio2 >= (ratio2 - ratio))
+            long anchor = floor;
+            for (int i = 0; i < 9; i++)
             {
-                ratio2 = ratio2 - (3.97 * 11.0);
+                if (((long)i == (anchor / 5)) && ((anchor & 255) >= anchor))
+                {
+                    anchor = ((anchor << 2) ^ anchor) % 4096;
+                    anchor = (anchor ^ (anchor / 7)) % 65521;
+                }
+                else
+                {
+                    anchor = anchor - (floor + anchor);
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return ratio2 - (floor * 5.07);
+            return anchor;
         }
 
         /// <summary>Accumulate stats samples.</summary>
